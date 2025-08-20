@@ -5,24 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const test = harness.platform.getApiKey({
- *     identifier: "test_apikey",
- *     name: "test_apikey",
- *     parentId: "parent_id",
- *     apikeyType: "USER",
- *     accountId: "account_id",
- *     orgId: "org_id",
- *     projectId: "project_id",
- * });
- * ```
+ * Data source for retrieving a Harness ApiKey.
  */
 export function getApiKey(args: GetApiKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetApiKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,7 +34,7 @@ export interface GetApiKeyArgs {
      */
     apikeyType: string;
     /**
-     * Default expiration time of the Token within API Key
+     * Expiry time of the apiKey
      */
     defaultTimeToExpireToken?: number;
     /**
@@ -67,7 +50,7 @@ export interface GetApiKeyArgs {
      */
     orgId?: string;
     /**
-     * Parent Entity Identifier of the API Key
+     * Parent Identifier for the Entity
      */
     parentId: string;
     /**
@@ -89,7 +72,7 @@ export interface GetApiKeyResult {
      */
     readonly apikeyType: string;
     /**
-     * Default expiration time of the Token within API Key
+     * Expiry time of the apiKey
      */
     readonly defaultTimeToExpireToken?: number;
     /**
@@ -113,7 +96,7 @@ export interface GetApiKeyResult {
      */
     readonly orgId?: string;
     /**
-     * Parent Entity Identifier of the API Key
+     * Parent Identifier for the Entity
      */
     readonly parentId: string;
     /**
@@ -126,24 +109,7 @@ export interface GetApiKeyResult {
     readonly tags: string[];
 }
 /**
- * Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const test = harness.platform.getApiKey({
- *     identifier: "test_apikey",
- *     name: "test_apikey",
- *     parentId: "parent_id",
- *     apikeyType: "USER",
- *     accountId: "account_id",
- *     orgId: "org_id",
- *     projectId: "project_id",
- * });
- * ```
+ * Data source for retrieving a Harness ApiKey.
  */
 export function getApiKeyOutput(args: GetApiKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -172,7 +138,7 @@ export interface GetApiKeyOutputArgs {
      */
     apikeyType: pulumi.Input<string>;
     /**
-     * Default expiration time of the Token within API Key
+     * Expiry time of the apiKey
      */
     defaultTimeToExpireToken?: pulumi.Input<number>;
     /**
@@ -188,7 +154,7 @@ export interface GetApiKeyOutputArgs {
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Parent Entity Identifier of the API Key
+     * Parent Identifier for the Entity
      */
     parentId: pulumi.Input<string>;
     /**

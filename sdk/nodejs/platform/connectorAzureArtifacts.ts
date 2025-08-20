@@ -6,6 +6,9 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Resource for creating an Azure Artifacts connector.
+ */
 export class ConnectorAzureArtifacts extends pulumi.CustomResource {
     /**
      * Get an existing ConnectorAzureArtifacts resource's state with the given name, ID, and optional extra

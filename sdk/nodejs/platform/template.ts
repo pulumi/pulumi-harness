@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import account level template
  *
  * ```sh
@@ -68,7 +70,7 @@ export class Template extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+     * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      */
     public readonly forceDelete!: pulumi.Output<boolean>;
     /**
@@ -80,7 +82,7 @@ export class Template extends pulumi.CustomResource {
      */
     public readonly gitImportDetails!: pulumi.Output<outputs.platform.TemplateGitImportDetails | undefined>;
     /**
-     * Unique identifier of the resource
+     * Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
@@ -116,7 +118,7 @@ export class Template extends pulumi.CustomResource {
      */
     public readonly templateYaml!: pulumi.Output<string>;
     /**
-     * Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+     * Version Label for Template.
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -192,7 +194,7 @@ export interface TemplateState {
      */
     description?: pulumi.Input<string>;
     /**
-     * When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+     * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
@@ -204,7 +206,7 @@ export interface TemplateState {
      */
     gitImportDetails?: pulumi.Input<inputs.platform.TemplateGitImportDetails>;
     /**
-     * Unique identifier of the resource
+     * Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
      */
     identifier?: pulumi.Input<string>;
     /**
@@ -240,7 +242,7 @@ export interface TemplateState {
      */
     templateYaml?: pulumi.Input<string>;
     /**
-     * Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+     * Version Label for Template.
      */
     version?: pulumi.Input<string>;
 }
@@ -260,7 +262,7 @@ export interface TemplateArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+     * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
@@ -272,7 +274,7 @@ export interface TemplateArgs {
      */
     gitImportDetails?: pulumi.Input<inputs.platform.TemplateGitImportDetails>;
     /**
-     * Unique identifier of the resource
+     * Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
      */
     identifier: pulumi.Input<string>;
     /**
@@ -308,7 +310,7 @@ export interface TemplateArgs {
      */
     templateYaml?: pulumi.Input<string>;
     /**
-     * Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+     * Version Label for Template.
      */
     version: pulumi.Input<string>;
 }

@@ -46,7 +46,7 @@ export function getWorkspace(args: GetWorkspaceArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetWorkspaceArgs {
     /**
-     * Provider connector configured on the workspace
+     * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
     connectors?: inputs.platform.GetWorkspaceConnector[];
     /**
@@ -81,6 +81,9 @@ export interface GetWorkspaceArgs {
      * Repository Commit SHA in which the code should be accessed
      */
     repositorySha?: string;
+    /**
+     * Tags to associate with the resource.
+     */
     tags?: string[];
     terraformVariableFiles?: inputs.platform.GetWorkspaceTerraformVariableFile[];
     terraformVariables?: inputs.platform.GetWorkspaceTerraformVariable[];
@@ -95,7 +98,7 @@ export interface GetWorkspaceArgs {
  */
 export interface GetWorkspaceResult {
     /**
-     * Provider connector configured on the workspace
+     * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
     readonly connectors?: outputs.platform.GetWorkspaceConnector[];
     /**
@@ -170,6 +173,9 @@ export interface GetWorkspaceResult {
      * Repository Commit SHA in which the code should be accessed
      */
     readonly repositorySha: string;
+    /**
+     * Tags to associate with the resource.
+     */
     readonly tags?: string[];
     readonly terraformVariableFiles: outputs.platform.GetWorkspaceTerraformVariableFile[];
     readonly terraformVariables: outputs.platform.GetWorkspaceTerraformVariable[];
@@ -218,7 +224,7 @@ export function getWorkspaceOutput(args: GetWorkspaceOutputArgs, opts?: pulumi.I
  */
 export interface GetWorkspaceOutputArgs {
     /**
-     * Provider connector configured on the workspace
+     * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
     connectors?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceConnectorArgs>[]>;
     /**
@@ -253,6 +259,9 @@ export interface GetWorkspaceOutputArgs {
      * Repository Commit SHA in which the code should be accessed
      */
     repositorySha?: pulumi.Input<string>;
+    /**
+     * Tags to associate with the resource.
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableFileArgs>[]>;
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableArgs>[]>;

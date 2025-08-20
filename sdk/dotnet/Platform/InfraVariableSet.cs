@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for managing infrastructure Variable Sets
+    /// Resource for managing Variable Sets
     /// 
     /// ## Example Usage
     /// 
@@ -96,23 +96,31 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// ```sh
-    /// $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example &lt;varset_id&gt;
-    /// ```
+    /// The `pulumi import` command can be used, for example:
+    /// 
+    /// Import account level variable set
     /// 
     /// ```sh
-    /// $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example &lt;org_id&gt;/&lt;varset_id&gt;
+    /// $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example &lt;variable_set_id&gt;
     /// ```
     /// 
+    /// Import org level variable set
+    /// 
     /// ```sh
-    /// $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example &lt;org_id&gt;/&lt;project_id&gt;/&lt;varset_id&gt;
+    /// $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example &lt;ord_id&gt;/&lt;variable_set_id&gt;
+    /// ```
+    /// 
+    /// Import project level variable set
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example &lt;org_id&gt;/&lt;project_id&gt;/&lt;variable_set_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/infraVariableSet:InfraVariableSet")]
     public partial class InfraVariableSet : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Provider connector configured on the variable set
+        /// Provider connectors configured on the Variable Set. Only one connector of a type is supported
         /// </summary>
         [Output("connectors")]
         public Output<ImmutableArray<Outputs.InfraVariableSetConnector>> Connectors { get; private set; } = null!;
@@ -124,7 +132,7 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Environment variables configured on the variable set
+        /// Environment variables configured on the Variable Set
         /// </summary>
         [Output("environmentVariables")]
         public Output<ImmutableArray<Outputs.InfraVariableSetEnvironmentVariable>> EnvironmentVariables { get; private set; } = null!;
@@ -216,7 +224,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.InfraVariableSetConnectorArgs>? _connectors;
 
         /// <summary>
-        /// Provider connector configured on the variable set
+        /// Provider connectors configured on the Variable Set. Only one connector of a type is supported
         /// </summary>
         public InputList<Inputs.InfraVariableSetConnectorArgs> Connectors
         {
@@ -234,7 +242,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.InfraVariableSetEnvironmentVariableArgs>? _environmentVariables;
 
         /// <summary>
-        /// Environment variables configured on the variable set
+        /// Environment variables configured on the Variable Set
         /// </summary>
         public InputList<Inputs.InfraVariableSetEnvironmentVariableArgs> EnvironmentVariables
         {
@@ -306,7 +314,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.InfraVariableSetConnectorGetArgs>? _connectors;
 
         /// <summary>
-        /// Provider connector configured on the variable set
+        /// Provider connectors configured on the Variable Set. Only one connector of a type is supported
         /// </summary>
         public InputList<Inputs.InfraVariableSetConnectorGetArgs> Connectors
         {
@@ -324,7 +332,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.InfraVariableSetEnvironmentVariableGetArgs>? _environmentVariables;
 
         /// <summary>
-        /// Environment variables configured on the variable set
+        /// Environment variables configured on the Variable Set
         /// </summary>
         public InputList<Inputs.InfraVariableSetEnvironmentVariableGetArgs> EnvironmentVariables
         {

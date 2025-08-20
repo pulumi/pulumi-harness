@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class InfraVariableSetEnvironmentVariableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Key is the identifier for the variable. Must be unique within the variable set.
+        /// Key is the identifier for the variable. Must be unique within the Variable Set.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

@@ -31,7 +31,7 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
-        /// Source of the upstream (only for UPSTREAM type)
+        /// Upstream source
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

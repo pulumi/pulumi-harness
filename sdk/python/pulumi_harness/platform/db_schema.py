@@ -36,13 +36,13 @@ class DbSchemaArgs:
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input['DbSchemaChangelogScriptArgs'] changelog_script: Changelog script details
+        :param pulumi.Input['DbSchemaChangelogScriptArgs'] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input['DbSchemaSchemaSourceArgs'] schema_source: Provides a connector and path at which to find the database schema representation
-        :param pulumi.Input[_builtins.str] service: The service associated with schema.
+        :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] type: Type of the database schema (repository/script).
+        :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "org_id", org_id)
@@ -102,7 +102,7 @@ class DbSchemaArgs:
     @pulumi.getter(name="changelogScript")
     def changelog_script(self) -> Optional[pulumi.Input['DbSchemaChangelogScriptArgs']]:
         """
-        Changelog script details
+        Configuration to clone changeSets using script
         """
         return pulumi.get(self, "changelog_script")
 
@@ -150,7 +150,7 @@ class DbSchemaArgs:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The service associated with schema.
+        The service associated with schema
         """
         return pulumi.get(self, "service")
 
@@ -174,7 +174,7 @@ class DbSchemaArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of the database schema (repository/script).
+        Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         """
         return pulumi.get(self, "type")
 
@@ -198,16 +198,16 @@ class _DbSchemaState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbSchema resources.
-        :param pulumi.Input['DbSchemaChangelogScriptArgs'] changelog_script: Changelog script details
+        :param pulumi.Input['DbSchemaChangelogScriptArgs'] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input['DbSchemaSchemaSourceArgs'] schema_source: Provides a connector and path at which to find the database schema representation
-        :param pulumi.Input[_builtins.str] service: The service associated with schema.
+        :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] type: Type of the database schema (repository/script).
+        :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         """
         if changelog_script is not None:
             pulumi.set(__self__, "changelog_script", changelog_script)
@@ -234,7 +234,7 @@ class _DbSchemaState:
     @pulumi.getter(name="changelogScript")
     def changelog_script(self) -> Optional[pulumi.Input['DbSchemaChangelogScriptArgs']]:
         """
-        Changelog script details
+        Configuration to clone changeSets using script
         """
         return pulumi.get(self, "changelog_script")
 
@@ -318,7 +318,7 @@ class _DbSchemaState:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The service associated with schema.
+        The service associated with schema
         """
         return pulumi.get(self, "service")
 
@@ -342,7 +342,7 @@ class _DbSchemaState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of the database schema (repository/script).
+        Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         """
         return pulumi.get(self, "type")
 
@@ -373,6 +373,8 @@ class DbSchema(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import project level db schema
 
         ```sh
@@ -381,16 +383,16 @@ class DbSchema(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Changelog script details
+        :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']] schema_source: Provides a connector and path at which to find the database schema representation
-        :param pulumi.Input[_builtins.str] service: The service associated with schema.
+        :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] type: Type of the database schema (repository/script).
+        :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         """
         ...
     @overload
@@ -402,6 +404,8 @@ class DbSchema(pulumi.CustomResource):
         Resource for creating a Harness DBDevOps Schema.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import project level db schema
 
@@ -486,16 +490,16 @@ class DbSchema(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Changelog script details
+        :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']] schema_source: Provides a connector and path at which to find the database schema representation
-        :param pulumi.Input[_builtins.str] service: The service associated with schema.
+        :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] type: Type of the database schema (repository/script).
+        :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -517,7 +521,7 @@ class DbSchema(pulumi.CustomResource):
     @pulumi.getter(name="changelogScript")
     def changelog_script(self) -> pulumi.Output[Optional['outputs.DbSchemaChangelogScript']]:
         """
-        Changelog script details
+        Configuration to clone changeSets using script
         """
         return pulumi.get(self, "changelog_script")
 
@@ -573,7 +577,7 @@ class DbSchema(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The service associated with schema.
+        The service associated with schema
         """
         return pulumi.get(self, "service")
 
@@ -589,7 +593,7 @@ class DbSchema(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Type of the database schema (repository/script).
+        Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         """
         return pulumi.get(self, "type")
 

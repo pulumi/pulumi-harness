@@ -70,6 +70,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * Import account level file
  * 
  * ```sh
@@ -246,14 +248,14 @@ public class FileStoreFile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.orgId);
     }
     /**
-     * File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.
+     * File parent identifier on Harness File Store
      * 
      */
     @Export(name="parentIdentifier", refs={String.class}, tree="[0]")
     private Output<String> parentIdentifier;
 
     /**
-     * @return File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.
+     * @return File parent identifier on Harness File Store
      * 
      */
     public Output<String> parentIdentifier() {

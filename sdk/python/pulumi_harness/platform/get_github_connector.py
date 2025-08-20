@@ -114,6 +114,9 @@ class GetGithubConnectorResult:
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
     def execute_on_delegate(self) -> _builtins.bool:
+        """
+        Execute on delegate or not.
+        """
         return pulumi.get(self, "execute_on_delegate")
 
     @_builtins.property

@@ -22,7 +22,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.HarRegistryConfigAuth> Auths;
         /// <summary>
-        /// Source of the upstream (only for UPSTREAM type)
+        /// Upstream source
         /// </summary>
         public readonly string? Source;
         /// <summary>

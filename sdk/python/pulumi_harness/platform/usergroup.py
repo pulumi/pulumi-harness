@@ -54,7 +54,7 @@ class UsergroupArgs:
         :param pulumi.Input[_builtins.bool] sso_linked: Whether sso is linked or not.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_emails: List of user emails in the UserGroup. Either provide list of users or list of user emails.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: List of users in the UserGroup. Either provide list of users or list of user emails.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
         """
         pulumi.set(__self__, "identifier", identifier)
         if description is not None:
@@ -272,7 +272,7 @@ class UsergroupArgs:
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of users in the UserGroup. Either provide list of users or list of user emails.
+        List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
         """
         return pulumi.get(self, "users")
 
@@ -317,7 +317,7 @@ class _UsergroupState:
         :param pulumi.Input[_builtins.bool] sso_linked: Whether sso is linked or not.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_emails: List of user emails in the UserGroup. Either provide list of users or list of user emails.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: List of users in the UserGroup. Either provide list of users or list of user emails.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -536,7 +536,7 @@ class _UsergroupState:
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of users in the UserGroup. Either provide list of users or list of user emails.
+        List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
         """
         return pulumi.get(self, "users")
 
@@ -569,6 +569,36 @@ class Usergroup(pulumi.CustomResource):
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Resource for creating a Harness User Group. Linking SSO providers with User Groups:
+
+                The following fields need to be populated for LDAP SSO Providers:
+            	
+                - linked_sso_id
+            	
+                - linked_sso_display_name
+            	
+                - sso_group_id
+            	
+                - sso_group_name
+            	
+                - linked_sso_type
+            	
+                - sso_linked
+            	
+                The following fields need to be populated for SAML SSO Providers:
+            	
+                - linked_sso_id
+            	
+                - linked_sso_display_name
+            	
+                - sso_group_name
+            	
+                - sso_group_id // same as sso_group_name
+            	
+                - linked_sso_type
+            	
+                - sso_linked
+
         ## Example Usage
 
         ```python
@@ -675,6 +705,8 @@ class Usergroup(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level user group
 
@@ -711,7 +743,7 @@ class Usergroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] sso_linked: Whether sso is linked or not.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_emails: List of user emails in the UserGroup. Either provide list of users or list of user emails.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: List of users in the UserGroup. Either provide list of users or list of user emails.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
         """
         ...
     @overload
@@ -720,6 +752,36 @@ class Usergroup(pulumi.CustomResource):
                  args: UsergroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource for creating a Harness User Group. Linking SSO providers with User Groups:
+
+                The following fields need to be populated for LDAP SSO Providers:
+            	
+                - linked_sso_id
+            	
+                - linked_sso_display_name
+            	
+                - sso_group_id
+            	
+                - sso_group_name
+            	
+                - linked_sso_type
+            	
+                - sso_linked
+            	
+                The following fields need to be populated for SAML SSO Providers:
+            	
+                - linked_sso_id
+            	
+                - linked_sso_display_name
+            	
+                - sso_group_name
+            	
+                - sso_group_id // same as sso_group_name
+            	
+                - linked_sso_type
+            	
+                - sso_linked
+
         ## Example Usage
 
         ```python
@@ -826,6 +888,8 @@ class Usergroup(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level user group
 
@@ -951,7 +1015,7 @@ class Usergroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] sso_linked: Whether sso is linked or not.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_emails: List of user emails in the UserGroup. Either provide list of users or list of user emails.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: List of users in the UserGroup. Either provide list of users or list of user emails.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1099,7 +1163,7 @@ class Usergroup(pulumi.CustomResource):
     @pulumi.getter
     def users(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        List of users in the UserGroup. Either provide list of users or list of user emails.
+        List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
         """
         return pulumi.get(self, "users")
 

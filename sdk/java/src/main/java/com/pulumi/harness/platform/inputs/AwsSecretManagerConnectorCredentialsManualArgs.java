@@ -17,14 +17,14 @@ public final class AwsSecretManagerConnectorCredentialsManualArgs extends com.pu
     public static final AwsSecretManagerConnectorCredentialsManualArgs Empty = new AwsSecretManagerConnectorCredentialsManualArgs();
 
     /**
-     * The plain text AWS access key. This is required if the access*key*ref is not provided.
+     * The plain text AWS access key.
      * 
      */
     @Import(name="accessKeyPlainText")
     private @Nullable Output<String> accessKeyPlainText;
 
     /**
-     * @return The plain text AWS access key. This is required if the access*key*ref is not provided.
+     * @return The plain text AWS access key.
      * 
      */
     public Optional<Output<String>> accessKeyPlainText() {
@@ -88,7 +88,7 @@ public final class AwsSecretManagerConnectorCredentialsManualArgs extends com.pu
         }
 
         /**
-         * @param accessKeyPlainText The plain text AWS access key. This is required if the access*key*ref is not provided.
+         * @param accessKeyPlainText The plain text AWS access key.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class AwsSecretManagerConnectorCredentialsManualArgs extends com.pu
         }
 
         /**
-         * @param accessKeyPlainText The plain text AWS access key. This is required if the access*key*ref is not provided.
+         * @param accessKeyPlainText The plain text AWS access key.
          * 
          * @return builder
          * 

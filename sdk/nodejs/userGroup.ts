@@ -139,6 +139,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import using the id of the user group
  *
  * ```sh

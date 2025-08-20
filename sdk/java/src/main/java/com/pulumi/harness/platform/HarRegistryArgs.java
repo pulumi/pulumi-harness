@@ -19,14 +19,14 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
     public static final HarRegistryArgs Empty = new HarRegistryArgs();
 
     /**
-     * Allowed pattern for the registry
+     * Allowed artifact patterns
      * 
      */
     @Import(name="allowedPatterns")
     private @Nullable Output<List<String>> allowedPatterns;
 
     /**
-     * @return Allowed pattern for the registry
+     * @return Allowed artifact patterns
      * 
      */
     public Optional<Output<List<String>>> allowedPatterns() {
@@ -34,14 +34,14 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Blocked pattern for the registry
+     * Blocked artifact patterns
      * 
      */
     @Import(name="blockedPatterns")
     private @Nullable Output<List<String>> blockedPatterns;
 
     /**
-     * @return Blocked pattern for the registry
+     * @return Blocked artifact patterns
      * 
      */
     public Optional<Output<List<String>>> blockedPatterns() {
@@ -52,15 +52,15 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
      * Configuration for the registry
      * 
      */
-    @Import(name="configs", required=true)
-    private Output<List<HarRegistryConfigArgs>> configs;
+    @Import(name="configs")
+    private @Nullable Output<List<HarRegistryConfigArgs>> configs;
 
     /**
      * @return Configuration for the registry
      * 
      */
-    public Output<List<HarRegistryConfigArgs>> configs() {
-        return this.configs;
+    public Optional<Output<List<HarRegistryConfigArgs>>> configs() {
+        return Optional.ofNullable(this.configs);
     }
 
     /**
@@ -94,14 +94,14 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of package (DOCKER, HELM, etc.)
+     * Type of package (DOCKER, HELM, MAVEN, etc.)
      * 
      */
     @Import(name="packageType", required=true)
     private Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, HELM, etc.)
+     * @return Type of package (DOCKER, HELM, MAVEN, etc.)
      * 
      */
     public Output<String> packageType() {
@@ -170,7 +170,7 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedPatterns Allowed pattern for the registry
+         * @param allowedPatterns Allowed artifact patterns
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedPatterns Allowed pattern for the registry
+         * @param allowedPatterns Allowed artifact patterns
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedPatterns Allowed pattern for the registry
+         * @param allowedPatterns Allowed artifact patterns
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedPatterns Blocked pattern for the registry
+         * @param blockedPatterns Blocked artifact patterns
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedPatterns Blocked pattern for the registry
+         * @param blockedPatterns Blocked artifact patterns
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedPatterns Blocked pattern for the registry
+         * @param blockedPatterns Blocked artifact patterns
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder configs(Output<List<HarRegistryConfigArgs>> configs) {
+        public Builder configs(@Nullable Output<List<HarRegistryConfigArgs>> configs) {
             $.configs = configs;
             return this;
         }
@@ -305,7 +305,7 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageType Type of package (DOCKER, HELM, etc.)
+         * @param packageType Type of package (DOCKER, HELM, MAVEN, etc.)
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageType Type of package (DOCKER, HELM, etc.)
+         * @param packageType Type of package (DOCKER, HELM, MAVEN, etc.)
          * 
          * @return builder
          * 
@@ -368,9 +368,6 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HarRegistryArgs build() {
-            if ($.configs == null) {
-                throw new MissingRequiredPropertyException("HarRegistryArgs", "configs");
-            }
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("HarRegistryArgs", "identifier");
             }

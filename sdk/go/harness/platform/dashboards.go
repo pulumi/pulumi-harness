@@ -28,13 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewDashboards(ctx, "example", &platform.DashboardsArgs{
-//				DashboardId:        pulumi.String("48507"),
-//				Description:        pulumi.String("Example dashboard description"),
-//				ResourceIdentifier: pulumi.String("shared"),
-//				Title:              pulumi.String("Example Dashboard"),
-//				DataSources:        pulumi.StringArray{},
-//				Models:             pulumi.StringArray{},
+//			_, err := platform.NewDashboards(ctx, "dashboard", &platform.DashboardsArgs{
+//				DashboardId:        pulumi.String("111"),
+//				Description:        pulumi.String("dashboard_tag"),
+//				ResourceIdentifier: pulumi.String("999"),
+//				Title:              pulumi.String("Dashboard Title"),
 //			})
 //			if err != nil {
 //				return err

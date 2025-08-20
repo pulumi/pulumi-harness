@@ -11,86 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving Harness environment list.
-//
-// ## Example Usage
-//
-// ### Project Level Environment List
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetEnvironmentList(ctx, &platform.GetEnvironmentListArgs{
-//				OrgId:     pulumi.StringRef("org_id"),
-//				ProjectId: pulumi.StringRef("project_id"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Organisation Level Environment List
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetEnvironmentList(ctx, &platform.GetEnvironmentListArgs{
-//				OrgId: pulumi.StringRef("org_id"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Account Level Environment List
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetEnvironmentList(ctx, &platform.GetEnvironmentListArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// Data source for retrieving a Harness environment List.
 func GetEnvironmentList(ctx *pulumi.Context, args *GetEnvironmentListArgs, opts ...pulumi.InvokeOption) (*GetEnvironmentListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnvironmentListResult
@@ -103,7 +24,9 @@ func GetEnvironmentList(ctx *pulumi.Context, args *GetEnvironmentListArgs, opts 
 
 // A collection of arguments for invoking getEnvironmentList.
 type GetEnvironmentListArgs struct {
-	OrgId     *string `pulumi:"orgId"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -111,8 +34,10 @@ type GetEnvironmentListArgs struct {
 type GetEnvironmentListResult struct {
 	Environments []GetEnvironmentListEnvironment `pulumi:"environments"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string  `pulumi:"id"`
-	OrgId     *string `pulumi:"orgId"`
+	Id string `pulumi:"id"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -127,7 +52,9 @@ func GetEnvironmentListOutput(ctx *pulumi.Context, args GetEnvironmentListOutput
 
 // A collection of arguments for invoking getEnvironmentList.
 type GetEnvironmentListOutputArgs struct {
-	OrgId     pulumi.StringPtrInput `pulumi:"orgId"`
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -159,10 +86,12 @@ func (o GetEnvironmentListResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the organization.
 func (o GetEnvironmentListResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEnvironmentListResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the project.
 func (o GetEnvironmentListResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEnvironmentListResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

@@ -7,35 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving Harness project list.
- *
- * ## Example Usage
- *
- * ### Org Level Project List
- *
- * ### Without the Pagination
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getProjectList({
- *     orgId: "org_id",
- * });
- * ```
- *
- * ### With Pagination Logic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getProjectList({
- *     orgId: "org_id",
- *     page: 1,
- *     limit: 4,
- * });
- * ```
+ * Data source for retrieving a Harness project.
  */
 export function getProjectList(args: GetProjectListArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -52,19 +24,19 @@ export function getProjectList(args: GetProjectListArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getProjectList.
  */
 export interface GetProjectListArgs {
-    identifier?: string;
     /**
-     * Optional pagination parameter indicating the maximum number of entities to retrieve per page.
+     * Unique identifier of the resource.
      */
+    identifier?: string;
     limit?: number;
+    /**
+     * Name of the resource.
+     */
     name?: string;
     /**
      * Unique identifier of the organization.
      */
     orgId: string;
-    /**
-     * Optional pagination parameter indicating the page number when retrieving entities.
-     */
     page?: number;
 }
 
@@ -72,61 +44,36 @@ export interface GetProjectListArgs {
  * A collection of values returned by getProjectList.
  */
 export interface GetProjectListResult {
+    /**
+     * Description of the resource.
+     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly identifier?: string;
     /**
-     * Optional pagination parameter indicating the maximum number of entities to retrieve per page.
+     * Unique identifier of the resource.
      */
+    readonly identifier?: string;
     readonly limit?: number;
+    /**
+     * Name of the resource.
+     */
     readonly name?: string;
     /**
      * Unique identifier of the organization.
      */
     readonly orgId: string;
-    /**
-     * Optional pagination parameter indicating the page number when retrieving entities.
-     */
     readonly page?: number;
-    /**
-     * Containing list of all projects with details identifier and name.
-     */
     readonly projects: outputs.platform.GetProjectListProject[];
+    /**
+     * Tags to associate with the resource.
+     */
     readonly tags: string[];
 }
 /**
- * Data source for retrieving Harness project list.
- *
- * ## Example Usage
- *
- * ### Org Level Project List
- *
- * ### Without the Pagination
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getProjectList({
- *     orgId: "org_id",
- * });
- * ```
- *
- * ### With Pagination Logic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getProjectList({
- *     orgId: "org_id",
- *     page: 1,
- *     limit: 4,
- * });
- * ```
+ * Data source for retrieving a Harness project.
  */
 export function getProjectListOutput(args: GetProjectListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -143,18 +90,18 @@ export function getProjectListOutput(args: GetProjectListOutputArgs, opts?: pulu
  * A collection of arguments for invoking getProjectList.
  */
 export interface GetProjectListOutputArgs {
-    identifier?: pulumi.Input<string>;
     /**
-     * Optional pagination parameter indicating the maximum number of entities to retrieve per page.
+     * Unique identifier of the resource.
      */
+    identifier?: pulumi.Input<string>;
     limit?: pulumi.Input<number>;
+    /**
+     * Name of the resource.
+     */
     name?: pulumi.Input<string>;
     /**
      * Unique identifier of the organization.
      */
     orgId: pulumi.Input<string>;
-    /**
-     * Optional pagination parameter indicating the page number when retrieving entities.
-     */
     page?: pulumi.Input<number>;
 }

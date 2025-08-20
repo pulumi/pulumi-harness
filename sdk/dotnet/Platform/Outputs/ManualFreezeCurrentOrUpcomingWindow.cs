@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class ManualFreezeCurrentOrUpcomingWindow
     {
         /// <summary>
-        /// End time of the freeze
+        /// End time of the freeze window
         /// </summary>
         public readonly int? EndTime;
         /// <summary>
-        /// Start time of the freeze
+        /// Start time of the freeze window
         /// </summary>
         public readonly int? StartTime;
 

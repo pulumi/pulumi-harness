@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetProject
     {
         /// <summary>
+        /// Data source for retrieving a Harness project.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -41,6 +43,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("harness:platform/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving a Harness project.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -70,6 +74,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("harness:platform/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving a Harness project.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

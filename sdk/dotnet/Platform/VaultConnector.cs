@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
+    /// Resource for creating a HashiCorp Vault Secret Manager connector.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -208,6 +210,8 @@ namespace Pulumi.Harness.Platform
     /// ```
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level vault connector
     /// 
@@ -423,7 +427,7 @@ namespace Pulumi.Harness.Platform
         public Output<string?> VaultAwsIamRole { get; private set; } = null!;
 
         /// <summary>
-        /// Custom path at with JWT auth in enabled for Vault.
+        /// Custom path at with JWT auth in enabled for Vault
         /// </summary>
         [Output("vaultJwtAuthPath")]
         public Output<string?> VaultJwtAuthPath { get; private set; } = null!;
@@ -704,7 +708,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? VaultAwsIamRole { get; set; }
 
         /// <summary>
-        /// Custom path at with JWT auth in enabled for Vault.
+        /// Custom path at with JWT auth in enabled for Vault
         /// </summary>
         [Input("vaultJwtAuthPath")]
         public Input<string>? VaultJwtAuthPath { get; set; }
@@ -946,7 +950,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? VaultAwsIamRole { get; set; }
 
         /// <summary>
-        /// Custom path at with JWT auth in enabled for Vault.
+        /// Custom path at with JWT auth in enabled for Vault
         /// </summary>
         [Input("vaultJwtAuthPath")]
         public Input<string>? VaultJwtAuthPath { get; set; }

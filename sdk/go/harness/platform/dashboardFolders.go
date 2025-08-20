@@ -27,8 +27,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewDashboardFolders(ctx, "example", &platform.DashboardFoldersArgs{
-//				Name: pulumi.String("Example Folder"),
+//			_, err := platform.NewDashboardFolders(ctx, "folder", &platform.DashboardFoldersArgs{
+//				Name: pulumi.String("name"),
 //			})
 //			if err != nil {
 //				return err

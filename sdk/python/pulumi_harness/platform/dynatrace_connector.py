@@ -354,6 +354,8 @@ class DynatraceConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level dynatrace connector
 
         ```sh
@@ -410,6 +412,8 @@ class DynatraceConnector(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level dynatrace connector
 

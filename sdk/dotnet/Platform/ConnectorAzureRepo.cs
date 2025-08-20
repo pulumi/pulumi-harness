@@ -9,12 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness.Platform
 {
+    /// <summary>
+    /// Resource for creating a Azure Repo connector.
+    /// </summary>
     [HarnessResourceType("harness:platform/connectorAzureRepo:ConnectorAzureRepo")]
     public partial class ConnectorAzureRepo : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-        /// triggers, Webhooks management and updating Git statuses.
+        /// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         /// </summary>
         [Output("apiAuthentication")]
         public Output<Outputs.ConnectorAzureRepoApiAuthentication?> ApiAuthentication { get; private set; } = null!;
@@ -139,8 +141,7 @@ namespace Pulumi.Harness.Platform
     public sealed class ConnectorAzureRepoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-        /// triggers, Webhooks management and updating Git statuses.
+        /// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         /// </summary>
         [Input("apiAuthentication")]
         public Input<Inputs.ConnectorAzureRepoApiAuthenticationArgs>? ApiAuthentication { get; set; }
@@ -238,8 +239,7 @@ namespace Pulumi.Harness.Platform
     public sealed class ConnectorAzureRepoState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-        /// triggers, Webhooks management and updating Git statuses.
+        /// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         /// </summary>
         [Input("apiAuthentication")]
         public Input<Inputs.ConnectorAzureRepoApiAuthenticationGetArgs>? ApiAuthentication { get; set; }

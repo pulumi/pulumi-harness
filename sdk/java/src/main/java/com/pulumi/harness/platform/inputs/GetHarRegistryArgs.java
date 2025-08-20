@@ -18,76 +18,124 @@ public final class GetHarRegistryArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetHarRegistryArgs Empty = new GetHarRegistryArgs();
 
+    /**
+     * Allowed artifact patterns
+     * 
+     */
     @Import(name="allowedPatterns")
     private @Nullable Output<List<String>> allowedPatterns;
 
+    /**
+     * @return Allowed artifact patterns
+     * 
+     */
     public Optional<Output<List<String>>> allowedPatterns() {
         return Optional.ofNullable(this.allowedPatterns);
     }
 
+    /**
+     * Blocked artifact patterns
+     * 
+     */
     @Import(name="blockedPatterns")
     private @Nullable Output<List<String>> blockedPatterns;
 
+    /**
+     * @return Blocked artifact patterns
+     * 
+     */
     public Optional<Output<List<String>>> blockedPatterns() {
         return Optional.ofNullable(this.blockedPatterns);
     }
 
+    /**
+     * Configuration for the registry
+     * 
+     */
     @Import(name="configs")
     private @Nullable Output<List<GetHarRegistryConfigArgs>> configs;
 
+    /**
+     * @return Configuration for the registry
+     * 
+     */
     public Optional<Output<List<GetHarRegistryConfigArgs>>> configs() {
         return Optional.ofNullable(this.configs);
     }
 
+    /**
+     * Description of the registry
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Description of the registry
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
     /**
-     * Unique identifier of the resource.
+     * Unique identifier of the registry
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return Unique identifier of the resource.
+     * @return Unique identifier of the registry
      * 
      */
     public Output<String> identifier() {
         return this.identifier;
     }
 
+    /**
+     * Type of package (DOCKER, HELM, MAVEN, etc.)
+     * 
+     */
     @Import(name="packageType")
     private @Nullable Output<String> packageType;
 
+    /**
+     * @return Type of package (DOCKER, HELM, MAVEN, etc.)
+     * 
+     */
     public Optional<Output<String>> packageType() {
         return Optional.ofNullable(this.packageType);
     }
 
+    /**
+     * Parent reference for the registry
+     * 
+     */
     @Import(name="parentRef")
     private @Nullable Output<String> parentRef;
 
+    /**
+     * @return Parent reference for the registry
+     * 
+     */
     public Optional<Output<String>> parentRef() {
         return Optional.ofNullable(this.parentRef);
     }
 
     /**
-     * Reference of the space.
+     * Space reference for the registry
      * 
      */
-    @Import(name="spaceRef", required=true)
-    private Output<String> spaceRef;
+    @Import(name="spaceRef")
+    private @Nullable Output<String> spaceRef;
 
     /**
-     * @return Reference of the space.
+     * @return Space reference for the registry
      * 
      */
-    public Output<String> spaceRef() {
-        return this.spaceRef;
+    public Optional<Output<String>> spaceRef() {
+        return Optional.ofNullable(this.spaceRef);
     }
 
     private GetHarRegistryArgs() {}
@@ -121,56 +169,122 @@ public final class GetHarRegistryArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetHarRegistryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowedPatterns Allowed artifact patterns
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedPatterns(@Nullable Output<List<String>> allowedPatterns) {
             $.allowedPatterns = allowedPatterns;
             return this;
         }
 
+        /**
+         * @param allowedPatterns Allowed artifact patterns
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedPatterns(List<String> allowedPatterns) {
             return allowedPatterns(Output.of(allowedPatterns));
         }
 
+        /**
+         * @param allowedPatterns Allowed artifact patterns
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedPatterns(String... allowedPatterns) {
             return allowedPatterns(List.of(allowedPatterns));
         }
 
+        /**
+         * @param blockedPatterns Blocked artifact patterns
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockedPatterns(@Nullable Output<List<String>> blockedPatterns) {
             $.blockedPatterns = blockedPatterns;
             return this;
         }
 
+        /**
+         * @param blockedPatterns Blocked artifact patterns
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockedPatterns(List<String> blockedPatterns) {
             return blockedPatterns(Output.of(blockedPatterns));
         }
 
+        /**
+         * @param blockedPatterns Blocked artifact patterns
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockedPatterns(String... blockedPatterns) {
             return blockedPatterns(List.of(blockedPatterns));
         }
 
+        /**
+         * @param configs Configuration for the registry
+         * 
+         * @return builder
+         * 
+         */
         public Builder configs(@Nullable Output<List<GetHarRegistryConfigArgs>> configs) {
             $.configs = configs;
             return this;
         }
 
+        /**
+         * @param configs Configuration for the registry
+         * 
+         * @return builder
+         * 
+         */
         public Builder configs(List<GetHarRegistryConfigArgs> configs) {
             return configs(Output.of(configs));
         }
 
+        /**
+         * @param configs Configuration for the registry
+         * 
+         * @return builder
+         * 
+         */
         public Builder configs(GetHarRegistryConfigArgs... configs) {
             return configs(List.of(configs));
         }
 
+        /**
+         * @param description Description of the registry
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Description of the registry
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
         /**
-         * @param identifier Unique identifier of the resource.
+         * @param identifier Unique identifier of the registry
          * 
          * @return builder
          * 
@@ -181,7 +295,7 @@ public final class GetHarRegistryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param identifier Unique identifier of the resource.
+         * @param identifier Unique identifier of the registry
          * 
          * @return builder
          * 
@@ -190,37 +304,61 @@ public final class GetHarRegistryArgs extends com.pulumi.resources.InvokeArgs {
             return identifier(Output.of(identifier));
         }
 
+        /**
+         * @param packageType Type of package (DOCKER, HELM, MAVEN, etc.)
+         * 
+         * @return builder
+         * 
+         */
         public Builder packageType(@Nullable Output<String> packageType) {
             $.packageType = packageType;
             return this;
         }
 
+        /**
+         * @param packageType Type of package (DOCKER, HELM, MAVEN, etc.)
+         * 
+         * @return builder
+         * 
+         */
         public Builder packageType(String packageType) {
             return packageType(Output.of(packageType));
         }
 
+        /**
+         * @param parentRef Parent reference for the registry
+         * 
+         * @return builder
+         * 
+         */
         public Builder parentRef(@Nullable Output<String> parentRef) {
             $.parentRef = parentRef;
             return this;
         }
 
+        /**
+         * @param parentRef Parent reference for the registry
+         * 
+         * @return builder
+         * 
+         */
         public Builder parentRef(String parentRef) {
             return parentRef(Output.of(parentRef));
         }
 
         /**
-         * @param spaceRef Reference of the space.
+         * @param spaceRef Space reference for the registry
          * 
          * @return builder
          * 
          */
-        public Builder spaceRef(Output<String> spaceRef) {
+        public Builder spaceRef(@Nullable Output<String> spaceRef) {
             $.spaceRef = spaceRef;
             return this;
         }
 
         /**
-         * @param spaceRef Reference of the space.
+         * @param spaceRef Space reference for the registry
          * 
          * @return builder
          * 
@@ -232,9 +370,6 @@ public final class GetHarRegistryArgs extends com.pulumi.resources.InvokeArgs {
         public GetHarRegistryArgs build() {
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("GetHarRegistryArgs", "identifier");
-            }
-            if ($.spaceRef == null) {
-                throw new MissingRequiredPropertyException("GetHarRegistryArgs", "spaceRef");
             }
             return $;
         }

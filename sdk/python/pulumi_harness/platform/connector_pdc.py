@@ -31,7 +31,7 @@ class ConnectorPdcArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ConnectorPdc resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectorPdcHostArgs']]] hosts: Hosts to be provided.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectorPdcHostArgs']]] hosts: Host of the Physical data centers.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -59,7 +59,7 @@ class ConnectorPdcArgs:
     @pulumi.getter
     def hosts(self) -> pulumi.Input[Sequence[pulumi.Input['ConnectorPdcHostArgs']]]:
         """
-        Hosts to be provided.
+        Host of the Physical data centers.
         """
         return pulumi.get(self, "hosts")
 
@@ -167,7 +167,7 @@ class _ConnectorPdcState:
         Input properties used for looking up and filtering ConnectorPdc resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectorPdcHostArgs']]] hosts: Hosts to be provided.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectorPdcHostArgs']]] hosts: Host of the Physical data centers.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -219,7 +219,7 @@ class _ConnectorPdcState:
     @pulumi.getter
     def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorPdcHostArgs']]]]:
         """
-        Hosts to be provided.
+        Host of the Physical data centers.
         """
         return pulumi.get(self, "hosts")
 
@@ -304,11 +304,11 @@ class ConnectorPdc(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Resource for creating a Physical data center connector.
-
-        ## Example to create Pdc Connector at different levels (Org, Project, Account)
+        Resource for creating a Pdc connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level pdc connector
 
@@ -332,7 +332,7 @@ class ConnectorPdc(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]] hosts: Hosts to be provided.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]] hosts: Host of the Physical data centers.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -346,11 +346,11 @@ class ConnectorPdc(pulumi.CustomResource):
                  args: ConnectorPdcArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Physical data center connector.
-
-        ## Example to create Pdc Connector at different levels (Org, Project, Account)
+        Resource for creating a Pdc connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level pdc connector
 
@@ -441,7 +441,7 @@ class ConnectorPdc(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]] hosts: Hosts to be provided.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]] hosts: Host of the Physical data centers.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -482,7 +482,7 @@ class ConnectorPdc(pulumi.CustomResource):
     @pulumi.getter
     def hosts(self) -> pulumi.Output[Sequence['outputs.ConnectorPdcHost']]:
         """
-        Hosts to be provided.
+        Host of the Physical data centers.
         """
         return pulumi.get(self, "hosts")
 

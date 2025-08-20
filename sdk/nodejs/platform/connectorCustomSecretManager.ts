@@ -7,27 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ## Import
- *
- * Import account level custom secret manager connector
- *
- * ```sh
- * $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example <connector_id>
- * ```
- *
- * Import org level custom secret manager connector
- *
- * ```sh
- * $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example <ord_id>/<connector_id>
- * ```
- *
- * Import project level custom secret manager connector
- *
- * ```sh
- * $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example <org_id>/<project_id>/<connector_id>
- * ```
+ * Resource for creating a Custom Secrets Manager (CSM) connector.
  */
 export class ConnectorCustomSecretManager extends pulumi.CustomResource {
     /**
@@ -62,20 +42,17 @@ export class ConnectorCustomSecretManager extends pulumi.CustomResource {
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
-     * : A brief description of what the resource does or is used for.
+     * Description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * : Unique identifier of the resource.
+     * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * : Name of the resource.
+     * Name of the resource.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * : Specifies whether the secrets manager runs on a Harness delegate.
-     */
     public readonly onDelegate!: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier of the organization.
@@ -86,36 +63,24 @@ export class ConnectorCustomSecretManager extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * : Reference to the Harness secret containing SSH credentials for the target host. Required if `onDelegate` is set to false.
+     * SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
      */
     public readonly sshSecretRef!: pulumi.Output<string | undefined>;
     /**
-     * : Tags to associate with the resource.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * : Host address where secrets will be managed. Required if `onDelegate` is set to false.
+     * Host where the custom secrets manager is located, required if 'on_delegate' is false.
      */
     public readonly targetHost!: pulumi.Output<string | undefined>;
     public readonly templateInputs!: pulumi.Output<outputs.platform.ConnectorCustomSecretManagerTemplateInput[] | undefined>;
-    /**
-     * : Reference to the template used for managing secrets.
-     */
     public readonly templateRef!: pulumi.Output<string>;
-    /**
-     * : Timeout in seconds for secrets management operations.
-     */
     public readonly timeout!: pulumi.Output<number | undefined>;
-    /**
-     * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     */
     public readonly type!: pulumi.Output<string | undefined>;
-    /**
-     * : Version identifier of the secrets management template.
-     */
     public readonly versionLabel!: pulumi.Output<string>;
     /**
-     * : Directory path on the target host where secrets management tasks are performed. Required if `onDelegate` is set to false.
+     * The working directory for operations, required if 'on_delegate' is false.
      */
     public readonly workingDirectory!: pulumi.Output<string | undefined>;
 
@@ -190,20 +155,17 @@ export interface ConnectorCustomSecretManagerState {
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * : A brief description of what the resource does or is used for.
+     * Description of the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * : Unique identifier of the resource.
+     * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
     /**
-     * : Name of the resource.
+     * Name of the resource.
      */
     name?: pulumi.Input<string>;
-    /**
-     * : Specifies whether the secrets manager runs on a Harness delegate.
-     */
     onDelegate?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the organization.
@@ -214,36 +176,24 @@ export interface ConnectorCustomSecretManagerState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * : Reference to the Harness secret containing SSH credentials for the target host. Required if `onDelegate` is set to false.
+     * SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
      */
     sshSecretRef?: pulumi.Input<string>;
     /**
-     * : Tags to associate with the resource.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * : Host address where secrets will be managed. Required if `onDelegate` is set to false.
+     * Host where the custom secrets manager is located, required if 'on_delegate' is false.
      */
     targetHost?: pulumi.Input<string>;
     templateInputs?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorCustomSecretManagerTemplateInput>[]>;
-    /**
-     * : Reference to the template used for managing secrets.
-     */
     templateRef?: pulumi.Input<string>;
-    /**
-     * : Timeout in seconds for secrets management operations.
-     */
     timeout?: pulumi.Input<number>;
-    /**
-     * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * : Version identifier of the secrets management template.
-     */
     versionLabel?: pulumi.Input<string>;
     /**
-     * : Directory path on the target host where secrets management tasks are performed. Required if `onDelegate` is set to false.
+     * The working directory for operations, required if 'on_delegate' is false.
      */
     workingDirectory?: pulumi.Input<string>;
 }
@@ -257,20 +207,17 @@ export interface ConnectorCustomSecretManagerArgs {
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * : A brief description of what the resource does or is used for.
+     * Description of the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * : Unique identifier of the resource.
+     * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
     /**
-     * : Name of the resource.
+     * Name of the resource.
      */
     name?: pulumi.Input<string>;
-    /**
-     * : Specifies whether the secrets manager runs on a Harness delegate.
-     */
     onDelegate?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the organization.
@@ -281,36 +228,24 @@ export interface ConnectorCustomSecretManagerArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * : Reference to the Harness secret containing SSH credentials for the target host. Required if `onDelegate` is set to false.
+     * SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
      */
     sshSecretRef?: pulumi.Input<string>;
     /**
-     * : Tags to associate with the resource.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * : Host address where secrets will be managed. Required if `onDelegate` is set to false.
+     * Host where the custom secrets manager is located, required if 'on_delegate' is false.
      */
     targetHost?: pulumi.Input<string>;
     templateInputs?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorCustomSecretManagerTemplateInput>[]>;
-    /**
-     * : Reference to the template used for managing secrets.
-     */
     templateRef: pulumi.Input<string>;
-    /**
-     * : Timeout in seconds for secrets management operations.
-     */
     timeout?: pulumi.Input<number>;
-    /**
-     * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * : Version identifier of the secrets management template.
-     */
     versionLabel: pulumi.Input<string>;
     /**
-     * : Directory path on the target host where secrets management tasks are performed. Required if `onDelegate` is set to false.
+     * The working directory for operations, required if 'on_delegate' is false.
      */
     workingDirectory?: pulumi.Input<string>;
 }

@@ -104,6 +104,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("liquibaseSubstituteProperties")]
         private Dictionary<string, string>? _liquibaseSubstituteProperties;
+
+        /// <summary>
+        /// The properties to substitute in liquibase changelog
+        /// </summary>
         public Dictionary<string, string> LiquibaseSubstituteProperties
         {
             get => _liquibaseSubstituteProperties ?? (_liquibaseSubstituteProperties = new Dictionary<string, string>());
@@ -150,6 +154,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("liquibaseSubstituteProperties")]
         private InputMap<string>? _liquibaseSubstituteProperties;
+
+        /// <summary>
+        /// The properties to substitute in liquibase changelog
+        /// </summary>
         public InputMap<string> LiquibaseSubstituteProperties
         {
             get => _liquibaseSubstituteProperties ?? (_liquibaseSubstituteProperties = new InputMap<string>());
@@ -214,6 +222,9 @@ namespace Pulumi.Harness.Platform
         /// Unique identifier of the resource.
         /// </summary>
         public readonly string Identifier;
+        /// <summary>
+        /// The properties to substitute in liquibase changelog
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? LiquibaseSubstituteProperties;
         /// <summary>
         /// Name of the resource.

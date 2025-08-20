@@ -13,18 +13,78 @@ namespace Pulumi.Harness.Platform
     {
         /// <summary>
         /// Data source for retrieving a monitored service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetMonitoredService.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetMonitoredServiceResult> InvokeAsync(GetMonitoredServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMonitoredServiceResult>("harness:platform/getMonitoredService:getMonitoredService", args ?? new GetMonitoredServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a monitored service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetMonitoredService.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetMonitoredServiceResult> Invoke(GetMonitoredServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMonitoredServiceResult>("harness:platform/getMonitoredService:getMonitoredService", args ?? new GetMonitoredServiceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a monitored service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetMonitoredService.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetMonitoredServiceResult> Invoke(GetMonitoredServiceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMonitoredServiceResult>("harness:platform/getMonitoredService:getMonitoredService", args ?? new GetMonitoredServiceInvokeArgs(), options.WithDefaults());

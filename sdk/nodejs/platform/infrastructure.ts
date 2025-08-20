@@ -8,125 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness Infrastructure.
- * ## Example to create Infrastructure at different levels (Org, Project, Account)
- *
- * ### Account Level
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = new harness.platform.Infrastructure("example", {
- *     identifier: "identifier",
- *     name: "name",
- *     envId: "environmentIdentifier",
- *     type: "KubernetesDirect",
- *     deploymentType: "Kubernetes",
- *     yaml: `infrastructureDefinition:
- *  name: name
- *  identifier: identifier
- *  description: ""
- *  tags:
- *    asda: ""
- *  orgIdentifier: orgIdentifer
- *  projectIdentifier: projectIdentifier
- *  environmentRef: environmentIdentifier
- *  deploymentType: Kubernetes
- *  type: KubernetesDirect
- *  spec:
- *   connectorRef: account.gfgf
- *   namespace: asdasdsa
- *   releaseName: release-<+INFRA_KEY>
- *   allowSimultaneousDeployments: false
- * `,
- * });
- * ```
- *
- * ### Org Level
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = new harness.platform.Infrastructure("example", {
- *     identifier: "identifier",
- *     name: "name",
- *     orgId: "orgIdentifer",
- *     envId: "environmentIdentifier",
- *     type: "KubernetesDirect",
- *     deploymentType: "Kubernetes",
- *     yaml: `infrastructureDefinition:
- *  name: name
- *  identifier: identifier
- *  description: ""
- *  tags:
- *    asda: ""
- *  orgIdentifier: orgIdentifer
- *  projectIdentifier: projectIdentifier
- *  environmentRef: environmentIdentifier
- *  deploymentType: Kubernetes
- *  type: KubernetesDirect
- *  spec:
- *   connectorRef: account.gfgf
- *   namespace: asdasdsa
- *   releaseName: release-<+INFRA_KEY>
- *   allowSimultaneousDeployments: false
- * `,
- * });
- * ```
- *
- * ### Project Level
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = new harness.platform.Infrastructure("example", {
- *     identifier: "identifier",
- *     name: "name",
- *     orgId: "orgIdentifer",
- *     projectId: "projectIdentifier",
- *     envId: "environmentIdentifier",
- *     type: "KubernetesDirect",
- *     deploymentType: "Kubernetes",
- *     yaml: `infrastructureDefinition:
- *  name: name
- *  identifier: identifier
- *  description: ""
- *  tags:
- *    asda: ""
- *  orgIdentifier: orgIdentifer
- *  projectIdentifier: projectIdentifier
- *  environmentRef: environmentIdentifier
- *  deploymentType: Kubernetes
- *  type: KubernetesDirect
- *  spec:
- *   connectorRef: account.gfgf
- *   namespace: asdasdsa
- *   releaseName: release-<+INFRA_KEY>
- *   allowSimultaneousDeployments: false
- * `,
- * });
- * ```
- *
- * ### Importing Infrastructure From Git
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const test = new harness.platform.Infrastructure("test", {
- *     identifier: "identifier",
- *     name: "name",
- *     envId: "env_id",
- *     gitDetails: {
- *         storeType: "REMOTE",
- *         connectorRef: "connector_ref",
- *         repoName: "repo_name",
- *         filePath: "file_path",
- *         branch: "branch",
- *         importFromGit: true,
- *     },
- * });
- * ```
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level infrastructure
  *
@@ -187,11 +72,11 @@ export class Infrastructure extends pulumi.CustomResource {
      */
     public readonly envId!: pulumi.Output<string>;
     /**
-     * When set to true, enables force deletion of infrastructure.
+     * Enable this flag for force deletion of infrastructure
      */
     public readonly forceDelete!: pulumi.Output<boolean>;
     /**
-     * Contains Git Information for remote entities from Git for Create/Update/Import
+     * Contains parameters related to creating an Entity for Git Experience.
      */
     public readonly gitDetails!: pulumi.Output<outputs.platform.InfrastructureGitDetails>;
     /**
@@ -291,11 +176,11 @@ export interface InfrastructureState {
      */
     envId?: pulumi.Input<string>;
     /**
-     * When set to true, enables force deletion of infrastructure.
+     * Enable this flag for force deletion of infrastructure
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
-     * Contains Git Information for remote entities from Git for Create/Update/Import
+     * Contains parameters related to creating an Entity for Git Experience.
      */
     gitDetails?: pulumi.Input<inputs.platform.InfrastructureGitDetails>;
     /**
@@ -345,11 +230,11 @@ export interface InfrastructureArgs {
      */
     envId: pulumi.Input<string>;
     /**
-     * When set to true, enables force deletion of infrastructure.
+     * Enable this flag for force deletion of infrastructure
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
-     * Contains Git Information for remote entities from Git for Create/Update/Import
+     * Contains parameters related to creating an Entity for Git Experience.
      */
     gitDetails?: pulumi.Input<inputs.platform.InfrastructureGitDetails>;
     /**

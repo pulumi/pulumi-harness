@@ -6,6 +6,7 @@ package com.pulumi.harness.platform;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.AzureCloudCostConnectorBillingExportSpec2Args;
 import com.pulumi.harness.platform.inputs.AzureCloudCostConnectorBillingExportSpecArgs;
 import java.lang.String;
 import java.util.List;
@@ -31,6 +32,21 @@ public final class AzureCloudCostConnectorArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<AzureCloudCostConnectorBillingExportSpecArgs>> billingExportSpec() {
         return Optional.ofNullable(this.billingExportSpec);
+    }
+
+    /**
+     * Returns billing details for the Azure account.
+     * 
+     */
+    @Import(name="billingExportSpec2")
+    private @Nullable Output<AzureCloudCostConnectorBillingExportSpec2Args> billingExportSpec2;
+
+    /**
+     * @return Returns billing details for the Azure account.
+     * 
+     */
+    public Optional<Output<AzureCloudCostConnectorBillingExportSpec2Args>> billingExportSpec2() {
+        return Optional.ofNullable(this.billingExportSpec2);
     }
 
     /**
@@ -172,6 +188,7 @@ public final class AzureCloudCostConnectorArgs extends com.pulumi.resources.Reso
 
     private AzureCloudCostConnectorArgs(AzureCloudCostConnectorArgs $) {
         this.billingExportSpec = $.billingExportSpec;
+        this.billingExportSpec2 = $.billingExportSpec2;
         this.description = $.description;
         this.featuresEnableds = $.featuresEnableds;
         this.identifier = $.identifier;
@@ -220,6 +237,27 @@ public final class AzureCloudCostConnectorArgs extends com.pulumi.resources.Reso
          */
         public Builder billingExportSpec(AzureCloudCostConnectorBillingExportSpecArgs billingExportSpec) {
             return billingExportSpec(Output.of(billingExportSpec));
+        }
+
+        /**
+         * @param billingExportSpec2 Returns billing details for the Azure account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingExportSpec2(@Nullable Output<AzureCloudCostConnectorBillingExportSpec2Args> billingExportSpec2) {
+            $.billingExportSpec2 = billingExportSpec2;
+            return this;
+        }
+
+        /**
+         * @param billingExportSpec2 Returns billing details for the Azure account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingExportSpec2(AzureCloudCostConnectorBillingExportSpec2Args billingExportSpec2) {
+            return billingExportSpec2(Output.of(billingExportSpec2));
         }
 
         /**

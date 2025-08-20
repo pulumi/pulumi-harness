@@ -224,6 +224,8 @@ class Azure(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import using the Harness azure cloud provider id.
 
         ```sh
@@ -266,6 +268,8 @@ class Azure(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import using the Harness azure cloud provider id.
 

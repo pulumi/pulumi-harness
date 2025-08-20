@@ -543,6 +543,8 @@ class KubernetesConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level kubernetes connector
 
         ```sh
@@ -656,6 +658,8 @@ class KubernetesConnector(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level kubernetes connector
 

@@ -11,12 +11,81 @@ namespace Pulumi.Harness.Platform
 {
     public static class GetOverrides
     {
+        /// <summary>
+        /// Data source for Harness Overrides V2.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetOverrides.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "orgIdentifier",
+        ///         ProjectId = "projectIdentifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetOverridesResult> InvokeAsync(GetOverridesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOverridesResult>("harness:platform/getOverrides:getOverrides", args ?? new GetOverridesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Data source for Harness Overrides V2.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetOverrides.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "orgIdentifier",
+        ///         ProjectId = "projectIdentifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetOverridesResult> Invoke(GetOverridesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOverridesResult>("harness:platform/getOverrides:getOverrides", args ?? new GetOverridesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Data source for Harness Overrides V2.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetOverrides.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "orgIdentifier",
+        ///         ProjectId = "projectIdentifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetOverridesResult> Invoke(GetOverridesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOverridesResult>("harness:platform/getOverrides:getOverrides", args ?? new GetOverridesInvokeArgs(), options.WithDefaults());
     }
@@ -24,15 +93,27 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetOverridesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Contains parameters related to Git Experience for remote overrides
+        /// </summary>
         [Input("gitDetails")]
         public Inputs.GetOverridesGitDetailsArgs? GitDetails { get; set; }
 
+        /// <summary>
+        /// The identifier of the override entity.
+        /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
@@ -44,15 +125,27 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetOverridesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Contains parameters related to Git Experience for remote overrides
+        /// </summary>
         [Input("gitDetails")]
         public Input<Inputs.GetOverridesGitDetailsInputArgs>? GitDetails { get; set; }
 
+        /// <summary>
+        /// The identifier of the override entity.
+        /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
@@ -66,19 +159,49 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetOverridesResult
     {
+        /// <summary>
+        /// The cluster ID to which the override entity is associated.
+        /// </summary>
         public readonly string ClusterId;
+        /// <summary>
+        /// The environment ID to which the override entity is associated.
+        /// </summary>
         public readonly string EnvId;
+        /// <summary>
+        /// Contains parameters related to Git Experience for remote overrides
+        /// </summary>
         public readonly Outputs.GetOverridesGitDetailsResult GitDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The identifier of the override entity.
+        /// </summary>
         public readonly string Identifier;
+        /// <summary>
+        /// The infrastructure ID to which the override entity is associated.
+        /// </summary>
         public readonly string InfraId;
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         public readonly string? OrgId;
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         public readonly string? ProjectId;
+        /// <summary>
+        /// The service ID to which the override entity is associated.
+        /// </summary>
         public readonly string ServiceId;
+        /// <summary>
+        /// The type of the override entity.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The yaml of the override entity.
+        /// </summary>
         public readonly string Yaml;
 
         [OutputConstructor]

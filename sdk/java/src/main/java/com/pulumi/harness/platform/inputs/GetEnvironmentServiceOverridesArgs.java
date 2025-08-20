@@ -17,14 +17,14 @@ public final class GetEnvironmentServiceOverridesArgs extends com.pulumi.resourc
     public static final GetEnvironmentServiceOverridesArgs Empty = new GetEnvironmentServiceOverridesArgs();
 
     /**
-     * The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
+     * The env ID to which the overrides associated.
      * 
      */
     @Import(name="envId", required=true)
     private Output<String> envId;
 
     /**
-     * @return The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
+     * @return The env ID to which the overrides associated.
      * 
      */
     public Output<String> envId() {
@@ -77,14 +77,14 @@ public final class GetEnvironmentServiceOverridesArgs extends com.pulumi.resourc
     }
 
     /**
-     * The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
+     * The service ID to which the overrides applies.
      * 
      */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
 
     /**
-     * @return The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
+     * @return The service ID to which the overrides applies.
      * 
      */
     public Optional<Output<String>> serviceId() {
@@ -120,7 +120,7 @@ public final class GetEnvironmentServiceOverridesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param envId The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
+         * @param envId The env ID to which the overrides associated.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetEnvironmentServiceOverridesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param envId The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
+         * @param envId The env ID to which the overrides associated.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class GetEnvironmentServiceOverridesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param serviceId The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
+         * @param serviceId The service ID to which the overrides applies.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GetEnvironmentServiceOverridesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param serviceId The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
+         * @param serviceId The service ID to which the overrides applies.
          * 
          * @return builder
          * 

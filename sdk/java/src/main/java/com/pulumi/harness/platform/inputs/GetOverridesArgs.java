@@ -17,30 +17,62 @@ public final class GetOverridesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetOverridesArgs Empty = new GetOverridesArgs();
 
+    /**
+     * Contains parameters related to Git Experience for remote overrides
+     * 
+     */
     @Import(name="gitDetails")
     private @Nullable Output<GetOverridesGitDetailsArgs> gitDetails;
 
+    /**
+     * @return Contains parameters related to Git Experience for remote overrides
+     * 
+     */
     public Optional<Output<GetOverridesGitDetailsArgs>> gitDetails() {
         return Optional.ofNullable(this.gitDetails);
     }
 
+    /**
+     * The identifier of the override entity.
+     * 
+     */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
+    /**
+     * @return The identifier of the override entity.
+     * 
+     */
     public Output<String> identifier() {
         return this.identifier;
     }
 
+    /**
+     * Unique identifier of the organization.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Unique identifier of the project.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -72,38 +104,86 @@ public final class GetOverridesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetOverridesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gitDetails Contains parameters related to Git Experience for remote overrides
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitDetails(@Nullable Output<GetOverridesGitDetailsArgs> gitDetails) {
             $.gitDetails = gitDetails;
             return this;
         }
 
+        /**
+         * @param gitDetails Contains parameters related to Git Experience for remote overrides
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitDetails(GetOverridesGitDetailsArgs gitDetails) {
             return gitDetails(Output.of(gitDetails));
         }
 
+        /**
+         * @param identifier The identifier of the override entity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
 
+        /**
+         * @param identifier The identifier of the override entity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }

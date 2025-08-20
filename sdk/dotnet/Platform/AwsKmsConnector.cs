@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// ## Example Usage
+    /// Resource for creating an AWS KMS connector.
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level awskms connector
     /// 
@@ -36,10 +38,16 @@ namespace Pulumi.Harness.Platform
     public partial class AwsKmsConnector : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// A reference to the Harness secret containing the ARN of the AWS KMS.
+        /// </summary>
+        [Output("arnPlaintext")]
+        public Output<string?> ArnPlaintext { get; private set; } = null!;
+
+        /// <summary>
         /// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Output("arnRef")]
-        public Output<string> ArnRef { get; private set; } = null!;
+        public Output<string?> ArnRef { get; private set; } = null!;
 
         /// <summary>
         /// Credentials to connect to AWS.
@@ -155,10 +163,16 @@ namespace Pulumi.Harness.Platform
     public sealed class AwsKmsConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A reference to the Harness secret containing the ARN of the AWS KMS.
+        /// </summary>
+        [Input("arnPlaintext")]
+        public Input<string>? ArnPlaintext { get; set; }
+
+        /// <summary>
         /// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
-        [Input("arnRef", required: true)]
-        public Input<string> ArnRef { get; set; } = null!;
+        [Input("arnRef")]
+        public Input<string>? ArnRef { get; set; }
 
         /// <summary>
         /// Credentials to connect to AWS.
@@ -246,6 +260,12 @@ namespace Pulumi.Harness.Platform
 
     public sealed class AwsKmsConnectorState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A reference to the Harness secret containing the ARN of the AWS KMS.
+        /// </summary>
+        [Input("arnPlaintext")]
+        public Input<string>? ArnPlaintext { get; set; }
+
         /// <summary>
         /// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>

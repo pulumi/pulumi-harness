@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAwsKmsConnectorResult {
+    private String arnPlaintext;
     /**
      * @return A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -82,6 +83,9 @@ public final class GetAwsKmsConnectorResult {
     private List<String> tags;
 
     private GetAwsKmsConnectorResult() {}
+    public String arnPlaintext() {
+        return this.arnPlaintext;
+    }
     /**
      * @return A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -183,6 +187,7 @@ public final class GetAwsKmsConnectorResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String arnPlaintext;
         private String arnRef;
         private List<GetAwsKmsConnectorCredential> credentials;
         private Boolean default_;
@@ -199,6 +204,7 @@ public final class GetAwsKmsConnectorResult {
         public Builder() {}
         public Builder(GetAwsKmsConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.arnPlaintext = defaults.arnPlaintext;
     	      this.arnRef = defaults.arnRef;
     	      this.credentials = defaults.credentials;
     	      this.default_ = defaults.default_;
@@ -214,6 +220,14 @@ public final class GetAwsKmsConnectorResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
+        public Builder arnPlaintext(String arnPlaintext) {
+            if (arnPlaintext == null) {
+              throw new MissingRequiredPropertyException("GetAwsKmsConnectorResult", "arnPlaintext");
+            }
+            this.arnPlaintext = arnPlaintext;
+            return this;
+        }
         @CustomType.Setter
         public Builder arnRef(String arnRef) {
             if (arnRef == null) {
@@ -323,6 +337,7 @@ public final class GetAwsKmsConnectorResult {
         }
         public GetAwsKmsConnectorResult build() {
             final var _resultValue = new GetAwsKmsConnectorResult();
+            _resultValue.arnPlaintext = arnPlaintext;
             _resultValue.arnRef = arnRef;
             _resultValue.credentials = credentials;
             _resultValue.default_ = default_;

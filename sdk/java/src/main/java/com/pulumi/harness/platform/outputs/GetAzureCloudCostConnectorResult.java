@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetAzureCloudCostConnectorBillingExportSpec2;
 import com.pulumi.harness.platform.outputs.GetAzureCloudCostConnectorBillingExportSpec;
 import java.lang.String;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAzureCloudCostConnectorResult {
+    private List<GetAzureCloudCostConnectorBillingExportSpec2> billingExportSpec2s;
     /**
      * @return Returns billing details for the Azure account.
      * 
@@ -71,6 +73,9 @@ public final class GetAzureCloudCostConnectorResult {
     private String tenantId;
 
     private GetAzureCloudCostConnectorResult() {}
+    public List<GetAzureCloudCostConnectorBillingExportSpec2> billingExportSpec2s() {
+        return this.billingExportSpec2s;
+    }
     /**
      * @return Returns billing details for the Azure account.
      * 
@@ -158,6 +163,7 @@ public final class GetAzureCloudCostConnectorResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetAzureCloudCostConnectorBillingExportSpec2> billingExportSpec2s;
         private List<GetAzureCloudCostConnectorBillingExportSpec> billingExportSpecs;
         private String description;
         private List<String> featuresEnableds;
@@ -172,6 +178,7 @@ public final class GetAzureCloudCostConnectorResult {
         public Builder() {}
         public Builder(GetAzureCloudCostConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.billingExportSpec2s = defaults.billingExportSpec2s;
     	      this.billingExportSpecs = defaults.billingExportSpecs;
     	      this.description = defaults.description;
     	      this.featuresEnableds = defaults.featuresEnableds;
@@ -185,6 +192,17 @@ public final class GetAzureCloudCostConnectorResult {
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
+        public Builder billingExportSpec2s(List<GetAzureCloudCostConnectorBillingExportSpec2> billingExportSpec2s) {
+            if (billingExportSpec2s == null) {
+              throw new MissingRequiredPropertyException("GetAzureCloudCostConnectorResult", "billingExportSpec2s");
+            }
+            this.billingExportSpec2s = billingExportSpec2s;
+            return this;
+        }
+        public Builder billingExportSpec2s(GetAzureCloudCostConnectorBillingExportSpec2... billingExportSpec2s) {
+            return billingExportSpec2s(List.of(billingExportSpec2s));
+        }
         @CustomType.Setter
         public Builder billingExportSpecs(List<GetAzureCloudCostConnectorBillingExportSpec> billingExportSpecs) {
             if (billingExportSpecs == null) {
@@ -278,6 +296,7 @@ public final class GetAzureCloudCostConnectorResult {
         }
         public GetAzureCloudCostConnectorResult build() {
             final var _resultValue = new GetAzureCloudCostConnectorResult();
+            _resultValue.billingExportSpec2s = billingExportSpec2s;
             _resultValue.billingExportSpecs = billingExportSpecs;
             _resultValue.description = description;
             _resultValue.featuresEnableds = featuresEnableds;

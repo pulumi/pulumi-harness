@@ -73,6 +73,21 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+     * 
+     */
+    @Import(name="forceUpdate")
+    private @Nullable Output<Boolean> forceUpdate;
+
+    /**
+     * @return Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+     * 
+     */
+    public Optional<Output<Boolean>> forceUpdate() {
+        return Optional.ofNullable(this.forceUpdate);
+    }
+
+    /**
      * Identifier of the GitOps cluster.
      * 
      */
@@ -138,6 +153,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.agentId = $.agentId;
         this.forceDelete = $.forceDelete;
+        this.forceUpdate = $.forceUpdate;
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -231,6 +247,27 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forceDelete(Boolean forceDelete) {
             return forceDelete(Output.of(forceDelete));
+        }
+
+        /**
+         * @param forceUpdate Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceUpdate(@Nullable Output<Boolean> forceUpdate) {
+            $.forceUpdate = forceUpdate;
+            return this;
+        }
+
+        /**
+         * @param forceUpdate Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceUpdate(Boolean forceUpdate) {
+            return forceUpdate(Output.of(forceUpdate));
         }
 
         /**

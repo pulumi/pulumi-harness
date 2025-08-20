@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Data source for retrieving role assignment.
+//
 // ## Example Usage
 //
 // ```go
@@ -60,13 +62,13 @@ type LookupRoleAssignmentsArgs struct {
 
 // A collection of values returned by getRoleAssignments.
 type LookupRoleAssignmentsResult struct {
-	// The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
+	// Disabled or not.
 	Disabled bool `pulumi:"disabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Identifier for role assignment.
 	Identifier string `pulumi:"identifier"`
-	// Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
+	// Managed or not.
 	Managed bool `pulumi:"managed"`
 	// Org identifier.
 	OrgId *string `pulumi:"orgId"`
@@ -118,7 +120,7 @@ func (o LookupRoleAssignmentsResultOutput) ToLookupRoleAssignmentsResultOutputWi
 	return o
 }
 
-// The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
+// Disabled or not.
 func (o LookupRoleAssignmentsResultOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentsResult) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -133,7 +135,7 @@ func (o LookupRoleAssignmentsResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentsResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
+// Managed or not.
 func (o LookupRoleAssignmentsResultOutput) Managed() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentsResult) bool { return v.Managed }).(pulumi.BoolOutput)
 }

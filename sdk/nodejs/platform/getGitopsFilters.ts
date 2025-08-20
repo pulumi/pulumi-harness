@@ -22,19 +22,19 @@ export function getGitopsFilters(args: GetGitopsFiltersArgs, opts?: pulumi.Invok
  */
 export interface GetGitopsFiltersArgs {
     /**
-     * Unique identifier of the GitOps filter to retrieve.
+     * Unique identifier of the resource.
      */
     identifier: string;
     /**
-     * Organization identifier for the GitOps filter.
+     * Organization Identifier for the Entity.
      */
     orgId: string;
     /**
-     * Project identifier for the GitOps filter.
+     * Project Identifier for the Entity.
      */
     projectId: string;
     /**
-     * Type of GitOps filter. Currently, only "APPLICATION" is supported.
+     * Type of filter.
      */
     type: string;
 }
@@ -44,21 +44,36 @@ export interface GetGitopsFiltersArgs {
  */
 export interface GetGitopsFiltersResult {
     /**
-     * Properties of the filter entity defined in Harness as a JSON string. This contains filter criteria such as health status, sync status, agent identifiers, clusters, namespaces, and repositories.
+     * Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
      */
     readonly filterProperties: string;
+    /**
+     * This indicates visibility of filters, by default it is Everyone.
+     */
     readonly filterVisibility: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Unique identifier of the resource.
+     */
     readonly identifier: string;
     /**
-     * Name of the GitOps filter.
+     * Name of the Filter.
      */
     readonly name: string;
+    /**
+     * Organization Identifier for the Entity.
+     */
     readonly orgId: string;
+    /**
+     * Project Identifier for the Entity.
+     */
     readonly projectId: string;
+    /**
+     * Type of filter.
+     */
     readonly type: string;
 }
 /**
@@ -79,19 +94,19 @@ export function getGitopsFiltersOutput(args: GetGitopsFiltersOutputArgs, opts?: 
  */
 export interface GetGitopsFiltersOutputArgs {
     /**
-     * Unique identifier of the GitOps filter to retrieve.
+     * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
     /**
-     * Organization identifier for the GitOps filter.
+     * Organization Identifier for the Entity.
      */
     orgId: pulumi.Input<string>;
     /**
-     * Project identifier for the GitOps filter.
+     * Project Identifier for the Entity.
      */
     projectId: pulumi.Input<string>;
     /**
-     * Type of GitOps filter. Currently, only "APPLICATION" is supported.
+     * Type of filter.
      */
     type: pulumi.Input<string>;
 }

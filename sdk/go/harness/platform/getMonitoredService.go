@@ -12,6 +12,34 @@ import (
 )
 
 // Data source for retrieving a monitored service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupMonitoredService(ctx, &platform.LookupMonitoredServiceArgs{
+//				Identifier: "identifier",
+//				OrgId:      "org_id",
+//				ProjectId:  "project_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupMonitoredService(ctx *pulumi.Context, args *LookupMonitoredServiceArgs, opts ...pulumi.InvokeOption) (*LookupMonitoredServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitoredServiceResult

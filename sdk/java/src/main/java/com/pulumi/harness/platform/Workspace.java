@@ -65,6 +65,9 @@ import javax.annotation.Nullable;
  *             .costEstimationEnabled(true)
  *             .providerConnector(test.id())
  *             .repositoryConnector(test.id())
+ *             .tags(            
+ *                 "tag1",
+ *                 "tag2")
  *             .terraformVariables(            
  *                 WorkspaceTerraformVariableArgs.builder()
  *                     .key("key1")
@@ -123,6 +126,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * ```sh
  * $ pulumi import harness:platform/workspace:Workspace example &lt;org_id&gt;/&lt;project_id&gt;/&lt;workspace_id&gt;
  * ```
@@ -131,14 +136,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/workspace:Workspace")
 public class Workspace extends com.pulumi.resources.CustomResource {
     /**
-     * Provider connector configured on the workspace
+     * Provider connectors configured on the Workspace. Only one connector of a type is supported
      * 
      */
     @Export(name="connectors", refs={List.class,WorkspaceConnector.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkspaceConnector>> connectors;
 
     /**
-     * @return Provider connector configured on the workspace
+     * @return Provider connectors configured on the Workspace. Only one connector of a type is supported
      * 
      */
     public Output<Optional<List<WorkspaceConnector>>> connectors() {

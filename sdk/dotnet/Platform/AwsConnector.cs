@@ -14,6 +14,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import account level aws connector
     /// 
     /// ```sh
@@ -108,7 +110,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Authentication using Harness OIDC.
+        /// Authentication using harness oidc.
         /// </summary>
         [Output("oidcAuthentication")]
         public Output<Outputs.AwsConnectorOidcAuthentication?> OidcAuthentication { get; private set; } = null!;
@@ -251,7 +253,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Authentication using Harness OIDC.
+        /// Authentication using harness oidc.
         /// </summary>
         [Input("oidcAuthentication")]
         public Input<Inputs.AwsConnectorOidcAuthenticationArgs>? OidcAuthentication { get; set; }
@@ -361,7 +363,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Authentication using Harness OIDC.
+        /// Authentication using harness oidc.
         /// </summary>
         [Input("oidcAuthentication")]
         public Input<Inputs.AwsConnectorOidcAuthenticationGetArgs>? OidcAuthentication { get; set; }

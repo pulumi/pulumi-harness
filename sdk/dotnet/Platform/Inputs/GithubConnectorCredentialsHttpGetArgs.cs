@@ -16,7 +16,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<Inputs.GithubConnectorCredentialsHttpAnonymouseGetArgs>? _anonymouses;
 
         /// <summary>
-        /// Configuration for using the http anonymous github for interacting with the github api.
+        /// Configuration for using the github http anonymous for interacting with the github api.
         /// </summary>
         public InputList<Inputs.GithubConnectorCredentialsHttpAnonymouseGetArgs> Anonymouses
         {

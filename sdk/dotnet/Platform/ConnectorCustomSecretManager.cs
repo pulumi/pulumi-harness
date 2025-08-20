@@ -10,27 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ## Import
-    /// 
-    /// Import account level custom secret manager connector
-    /// 
-    /// ```sh
-    /// $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example &lt;connector_id&gt;
-    /// ```
-    /// 
-    /// Import org level custom secret manager connector
-    /// 
-    /// ```sh
-    /// $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example &lt;ord_id&gt;/&lt;connector_id&gt;
-    /// ```
-    /// 
-    /// Import project level custom secret manager connector
-    /// 
-    /// ```sh
-    /// $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
-    /// ```
+    /// Resource for creating a Custom Secrets Manager (CSM) connector.
     /// </summary>
     [HarnessResourceType("harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager")]
     public partial class ConnectorCustomSecretManager : global::Pulumi.CustomResource
@@ -42,26 +22,23 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<string>> DelegateSelectors { get; private set; } = null!;
 
         /// <summary>
-        /// : A brief description of what the resource does or is used for.
+        /// Description of the resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// : Unique identifier of the resource.
+        /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// : Name of the resource.
+        /// Name of the resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// : Specifies whether the secrets manager runs on a Harness delegate.
-        /// </summary>
         [Output("onDelegate")]
         public Output<bool?> OnDelegate { get; private set; } = null!;
 
@@ -78,19 +55,19 @@ namespace Pulumi.Harness.Platform
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+        /// SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
         /// </summary>
         [Output("sshSecretRef")]
         public Output<string?> SshSecretRef { get; private set; } = null!;
 
         /// <summary>
-        /// : Tags to associate with the resource.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+        /// Host where the custom secrets manager is located, required if 'on_delegate' is false.
         /// </summary>
         [Output("targetHost")]
         public Output<string?> TargetHost { get; private set; } = null!;
@@ -98,32 +75,20 @@ namespace Pulumi.Harness.Platform
         [Output("templateInputs")]
         public Output<ImmutableArray<Outputs.ConnectorCustomSecretManagerTemplateInput>> TemplateInputs { get; private set; } = null!;
 
-        /// <summary>
-        /// : Reference to the template used for managing secrets.
-        /// </summary>
         [Output("templateRef")]
         public Output<string> TemplateRef { get; private set; } = null!;
 
-        /// <summary>
-        /// : Timeout in seconds for secrets management operations.
-        /// </summary>
         [Output("timeout")]
         public Output<int?> Timeout { get; private set; } = null!;
 
-        /// <summary>
-        /// : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-        /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
 
-        /// <summary>
-        /// : Version identifier of the secrets management template.
-        /// </summary>
         [Output("versionLabel")]
         public Output<string> VersionLabel { get; private set; } = null!;
 
         /// <summary>
-        /// : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+        /// The working directory for operations, required if 'on_delegate' is false.
         /// </summary>
         [Output("workingDirectory")]
         public Output<string?> WorkingDirectory { get; private set; } = null!;
@@ -188,26 +153,23 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// : A brief description of what the resource does or is used for.
+        /// Description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// : Unique identifier of the resource.
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// : Name of the resource.
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// : Specifies whether the secrets manager runs on a Harness delegate.
-        /// </summary>
         [Input("onDelegate")]
         public Input<bool>? OnDelegate { get; set; }
 
@@ -224,7 +186,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+        /// SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
         /// </summary>
         [Input("sshSecretRef")]
         public Input<string>? SshSecretRef { get; set; }
@@ -233,7 +195,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// : Tags to associate with the resource.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -242,7 +204,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+        /// Host where the custom secrets manager is located, required if 'on_delegate' is false.
         /// </summary>
         [Input("targetHost")]
         public Input<string>? TargetHost { get; set; }
@@ -255,32 +217,20 @@ namespace Pulumi.Harness.Platform
             set => _templateInputs = value;
         }
 
-        /// <summary>
-        /// : Reference to the template used for managing secrets.
-        /// </summary>
         [Input("templateRef", required: true)]
         public Input<string> TemplateRef { get; set; } = null!;
 
-        /// <summary>
-        /// : Timeout in seconds for secrets management operations.
-        /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 
-        /// <summary>
-        /// : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        /// <summary>
-        /// : Version identifier of the secrets management template.
-        /// </summary>
         [Input("versionLabel", required: true)]
         public Input<string> VersionLabel { get; set; } = null!;
 
         /// <summary>
-        /// : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+        /// The working directory for operations, required if 'on_delegate' is false.
         /// </summary>
         [Input("workingDirectory")]
         public Input<string>? WorkingDirectory { get; set; }
@@ -306,26 +256,23 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// : A brief description of what the resource does or is used for.
+        /// Description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// : Unique identifier of the resource.
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// : Name of the resource.
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// : Specifies whether the secrets manager runs on a Harness delegate.
-        /// </summary>
         [Input("onDelegate")]
         public Input<bool>? OnDelegate { get; set; }
 
@@ -342,7 +289,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+        /// SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
         /// </summary>
         [Input("sshSecretRef")]
         public Input<string>? SshSecretRef { get; set; }
@@ -351,7 +298,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// : Tags to associate with the resource.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -360,7 +307,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+        /// Host where the custom secrets manager is located, required if 'on_delegate' is false.
         /// </summary>
         [Input("targetHost")]
         public Input<string>? TargetHost { get; set; }
@@ -373,32 +320,20 @@ namespace Pulumi.Harness.Platform
             set => _templateInputs = value;
         }
 
-        /// <summary>
-        /// : Reference to the template used for managing secrets.
-        /// </summary>
         [Input("templateRef")]
         public Input<string>? TemplateRef { get; set; }
 
-        /// <summary>
-        /// : Timeout in seconds for secrets management operations.
-        /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 
-        /// <summary>
-        /// : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        /// <summary>
-        /// : Version identifier of the secrets management template.
-        /// </summary>
         [Input("versionLabel")]
         public Input<string>? VersionLabel { get; set; }
 
         /// <summary>
-        /// : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+        /// The working directory for operations, required if 'on_delegate' is false.
         /// </summary>
         [Input("workingDirectory")]
         public Input<string>? WorkingDirectory { get; set; }

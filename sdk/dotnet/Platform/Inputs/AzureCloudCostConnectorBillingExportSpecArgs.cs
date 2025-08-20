@@ -13,6 +13,12 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class AzureCloudCostConnectorBillingExportSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Billing type.
+        /// </summary>
+        [Input("billingType", required: true)]
+        public Input<string> BillingType { get; set; } = null!;
+
+        /// <summary>
         /// Name of the container.
         /// </summary>
         [Input("containerName", required: true)]

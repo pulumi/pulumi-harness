@@ -11,12 +11,21 @@ namespace Pulumi.Harness.Platform
 {
     public static class GetProvider
     {
+        /// <summary>
+        /// Data source for Harness Provider.
+        /// </summary>
         public static Task<GetProviderResult> InvokeAsync(GetProviderArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProviderResult>("harness:platform/getProvider:getProvider", args ?? new GetProviderArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Data source for Harness Provider.
+        /// </summary>
         public static Output<GetProviderResult> Invoke(GetProviderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProviderResult>("harness:platform/getProvider:getProvider", args ?? new GetProviderInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Data source for Harness Provider.
+        /// </summary>
         public static Output<GetProviderResult> Invoke(GetProviderInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProviderResult>("harness:platform/getProvider:getProvider", args ?? new GetProviderInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +33,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetProviderArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The identifier of the provider entity.
+        /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
@@ -35,6 +47,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetProviderInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The identifier of the provider entity.
+        /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
@@ -52,6 +67,9 @@ namespace Pulumi.Harness.Platform
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The identifier of the provider entity.
+        /// </summary>
         public readonly string Identifier;
 
         [OutputConstructor]

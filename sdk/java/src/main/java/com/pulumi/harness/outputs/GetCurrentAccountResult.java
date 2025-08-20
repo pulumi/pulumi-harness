@@ -23,7 +23,7 @@ public final class GetCurrentAccountResult {
      */
     private String endpoint;
     /**
-     * @return Account Identifier of the current account.
+     * @return Id of the git connector.
      * 
      */
     private @Nullable String id;
@@ -44,7 +44,7 @@ public final class GetCurrentAccountResult {
         return this.endpoint;
     }
     /**
-     * @return Account Identifier of the current account.
+     * @return Id of the git connector.
      * 
      */
     public Optional<String> id() {

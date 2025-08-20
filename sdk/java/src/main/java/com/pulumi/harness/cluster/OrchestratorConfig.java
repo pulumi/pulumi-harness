@@ -11,12 +11,125 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.cluster.OrchestratorConfigArgs;
 import com.pulumi.harness.cluster.inputs.OrchestratorConfigState;
 import com.pulumi.harness.cluster.outputs.OrchestratorConfigBinpacking;
+import com.pulumi.harness.cluster.outputs.OrchestratorConfigCommitmentIntegration;
 import com.pulumi.harness.cluster.outputs.OrchestratorConfigDistribution;
 import com.pulumi.harness.cluster.outputs.OrchestratorConfigNodePreferences;
+import com.pulumi.harness.cluster.outputs.OrchestratorConfigReplacementSchedule;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Resource for ClusterOrchestrator Config.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.cluster.OrchestratorConfig;
+ * import com.pulumi.harness.cluster.OrchestratorConfigArgs;
+ * import com.pulumi.harness.cluster.inputs.OrchestratorConfigDistributionArgs;
+ * import com.pulumi.harness.cluster.inputs.OrchestratorConfigBinpackingArgs;
+ * import com.pulumi.harness.cluster.inputs.OrchestratorConfigBinpackingPodEvictionArgs;
+ * import com.pulumi.harness.cluster.inputs.OrchestratorConfigBinpackingPodEvictionThresholdArgs;
+ * import com.pulumi.harness.cluster.inputs.OrchestratorConfigBinpackingDisruptionArgs;
+ * import com.pulumi.harness.cluster.inputs.OrchestratorConfigNodePreferencesArgs;
+ * import com.pulumi.harness.cluster.inputs.OrchestratorConfigCommitmentIntegrationArgs;
+ * import com.pulumi.harness.cluster.inputs.OrchestratorConfigReplacementScheduleArgs;
+ * import com.pulumi.harness.cluster.inputs.OrchestratorConfigReplacementScheduleAppliesToArgs;
+ * import com.pulumi.harness.cluster.inputs.OrchestratorConfigReplacementScheduleWindowDetailsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var example = new OrchestratorConfig("example", OrchestratorConfigArgs.builder()
+ *             .orchestratorId("orch-cvifpfl9rbg8neldj97g")
+ *             .distribution(OrchestratorConfigDistributionArgs.builder()
+ *                 .baseOndemandCapacity(2)
+ *                 .ondemandReplicaPercentage(50.0)
+ *                 .selector("ALL")
+ *                 .strategy("CostOptimized")
+ *                 .build())
+ *             .binpacking(OrchestratorConfigBinpackingArgs.builder()
+ *                 .podEviction(OrchestratorConfigBinpackingPodEvictionArgs.builder()
+ *                     .threshold(OrchestratorConfigBinpackingPodEvictionThresholdArgs.builder()
+ *                         .cpu(60.0)
+ *                         .memory(80.0)
+ *                         .build())
+ *                     .build())
+ *                 .disruption(OrchestratorConfigBinpackingDisruptionArgs.builder()
+ *                     .criteria("WhenEmpty")
+ *                     .delay("10m")
+ *                     .budgets(                    
+ *                         OrchestratorConfigBinpackingDisruptionBudgetArgs.builder()
+ *                             .reasons(                            
+ *                                 "Drifted",
+ *                                 "Underutilized",
+ *                                 "Empty")
+ *                             .nodes("20")
+ *                             .build(),
+ *                         OrchestratorConfigBinpackingDisruptionBudgetArgs.builder()
+ *                             .reasons(                            
+ *                                 "Drifted",
+ *                                 "Empty")
+ *                             .nodes("1")
+ *                             .schedule(OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs.builder()
+ *                                 .frequency("}{@literal @}{@code monthly")
+ *                                 .duration("10m")
+ *                                 .build())
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .nodePreferences(OrchestratorConfigNodePreferencesArgs.builder()
+ *                 .ttl("Never")
+ *                 .reverseFallbackInterval("6h")
+ *                 .build())
+ *             .commitmentIntegration(OrchestratorConfigCommitmentIntegrationArgs.builder()
+ *                 .enabled(true)
+ *                 .masterAccountId("dummyAccountId")
+ *                 .build())
+ *             .replacementSchedule(OrchestratorConfigReplacementScheduleArgs.builder()
+ *                 .windowType("Custom")
+ *                 .appliesTo(OrchestratorConfigReplacementScheduleAppliesToArgs.builder()
+ *                     .consolidation(true)
+ *                     .harnessPodEviction(true)
+ *                     .reverseFallback(true)
+ *                     .build())
+ *                 .windowDetails(OrchestratorConfigReplacementScheduleWindowDetailsArgs.builder()
+ *                     .days(                    
+ *                         "SUN",
+ *                         "WED",
+ *                         "SAT")
+ *                     .timeZone("Asia/Calcutta")
+ *                     .allDay(false)
+ *                     .startTime("10:30")
+ *                     .endTime("11:30")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ */
 @ResourceType(type="harness:cluster/orchestratorConfig:OrchestratorConfig")
 public class OrchestratorConfig extends com.pulumi.resources.CustomResource {
     /**
@@ -32,6 +145,20 @@ public class OrchestratorConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<OrchestratorConfigBinpacking>> binpacking() {
         return Codegen.optional(this.binpacking);
+    }
+    /**
+     * Commitment integration configuration for Cluster Orchestrator
+     * 
+     */
+    @Export(name="commitmentIntegration", refs={OrchestratorConfigCommitmentIntegration.class}, tree="[0]")
+    private Output</* @Nullable */ OrchestratorConfigCommitmentIntegration> commitmentIntegration;
+
+    /**
+     * @return Commitment integration configuration for Cluster Orchestrator
+     * 
+     */
+    public Output<Optional<OrchestratorConfigCommitmentIntegration>> commitmentIntegration() {
+        return Codegen.optional(this.commitmentIntegration);
     }
     /**
      * Spot and Ondemand Distribution Preferences for workload replicas
@@ -74,6 +201,20 @@ public class OrchestratorConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> orchestratorId() {
         return this.orchestratorId;
+    }
+    /**
+     * Replacement schedule for Cluster Orchestrator
+     * 
+     */
+    @Export(name="replacementSchedule", refs={OrchestratorConfigReplacementSchedule.class}, tree="[0]")
+    private Output</* @Nullable */ OrchestratorConfigReplacementSchedule> replacementSchedule;
+
+    /**
+     * @return Replacement schedule for Cluster Orchestrator
+     * 
+     */
+    public Output<Optional<OrchestratorConfigReplacementSchedule>> replacementSchedule() {
+        return Codegen.optional(this.replacementSchedule);
     }
 
     /**

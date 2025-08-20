@@ -6,6 +6,86 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Resource for ClusterOrchestrator Config.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.cluster.OrchestratorConfig("example", {
+ *     orchestratorId: "orch-cvifpfl9rbg8neldj97g",
+ *     distribution: {
+ *         baseOndemandCapacity: 2,
+ *         ondemandReplicaPercentage: 50,
+ *         selector: "ALL",
+ *         strategy: "CostOptimized",
+ *     },
+ *     binpacking: {
+ *         podEviction: {
+ *             threshold: {
+ *                 cpu: 60,
+ *                 memory: 80,
+ *             },
+ *         },
+ *         disruption: {
+ *             criteria: "WhenEmpty",
+ *             delay: "10m",
+ *             budgets: [
+ *                 {
+ *                     reasons: [
+ *                         "Drifted",
+ *                         "Underutilized",
+ *                         "Empty",
+ *                     ],
+ *                     nodes: "20",
+ *                 },
+ *                 {
+ *                     reasons: [
+ *                         "Drifted",
+ *                         "Empty",
+ *                     ],
+ *                     nodes: "1",
+ *                     schedule: {
+ *                         frequency: "@monthly",
+ *                         duration: "10m",
+ *                     },
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     nodePreferences: {
+ *         ttl: "Never",
+ *         reverseFallbackInterval: "6h",
+ *     },
+ *     commitmentIntegration: {
+ *         enabled: true,
+ *         masterAccountId: "dummyAccountId",
+ *     },
+ *     replacementSchedule: {
+ *         windowType: "Custom",
+ *         appliesTo: {
+ *             consolidation: true,
+ *             harnessPodEviction: true,
+ *             reverseFallback: true,
+ *         },
+ *         windowDetails: {
+ *             days: [
+ *                 "SUN",
+ *                 "WED",
+ *                 "SAT",
+ *             ],
+ *             timeZone: "Asia/Calcutta",
+ *             allDay: false,
+ *             startTime: "10:30",
+ *             endTime: "11:30",
+ *         },
+ *     },
+ * });
+ * ```
+ */
 export class OrchestratorConfig extends pulumi.CustomResource {
     /**
      * Get an existing OrchestratorConfig resource's state with the given name, ID, and optional extra
@@ -39,6 +119,10 @@ export class OrchestratorConfig extends pulumi.CustomResource {
      */
     public readonly binpacking!: pulumi.Output<outputs.cluster.OrchestratorConfigBinpacking | undefined>;
     /**
+     * Commitment integration configuration for Cluster Orchestrator
+     */
+    public readonly commitmentIntegration!: pulumi.Output<outputs.cluster.OrchestratorConfigCommitmentIntegration | undefined>;
+    /**
      * Spot and Ondemand Distribution Preferences for workload replicas
      */
     public readonly distribution!: pulumi.Output<outputs.cluster.OrchestratorConfigDistribution>;
@@ -50,6 +134,10 @@ export class OrchestratorConfig extends pulumi.CustomResource {
      * ID of the Cluster Orchestrator Object
      */
     public readonly orchestratorId!: pulumi.Output<string>;
+    /**
+     * Replacement schedule for Cluster Orchestrator
+     */
+    public readonly replacementSchedule!: pulumi.Output<outputs.cluster.OrchestratorConfigReplacementSchedule | undefined>;
 
     /**
      * Create a OrchestratorConfig resource with the given unique name, arguments, and options.
@@ -65,9 +153,11 @@ export class OrchestratorConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OrchestratorConfigState | undefined;
             resourceInputs["binpacking"] = state ? state.binpacking : undefined;
+            resourceInputs["commitmentIntegration"] = state ? state.commitmentIntegration : undefined;
             resourceInputs["distribution"] = state ? state.distribution : undefined;
             resourceInputs["nodePreferences"] = state ? state.nodePreferences : undefined;
             resourceInputs["orchestratorId"] = state ? state.orchestratorId : undefined;
+            resourceInputs["replacementSchedule"] = state ? state.replacementSchedule : undefined;
         } else {
             const args = argsOrState as OrchestratorConfigArgs | undefined;
             if ((!args || args.distribution === undefined) && !opts.urn) {
@@ -77,9 +167,11 @@ export class OrchestratorConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'orchestratorId'");
             }
             resourceInputs["binpacking"] = args ? args.binpacking : undefined;
+            resourceInputs["commitmentIntegration"] = args ? args.commitmentIntegration : undefined;
             resourceInputs["distribution"] = args ? args.distribution : undefined;
             resourceInputs["nodePreferences"] = args ? args.nodePreferences : undefined;
             resourceInputs["orchestratorId"] = args ? args.orchestratorId : undefined;
+            resourceInputs["replacementSchedule"] = args ? args.replacementSchedule : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrchestratorConfig.__pulumiType, name, resourceInputs, opts);
@@ -95,6 +187,10 @@ export interface OrchestratorConfigState {
      */
     binpacking?: pulumi.Input<inputs.cluster.OrchestratorConfigBinpacking>;
     /**
+     * Commitment integration configuration for Cluster Orchestrator
+     */
+    commitmentIntegration?: pulumi.Input<inputs.cluster.OrchestratorConfigCommitmentIntegration>;
+    /**
      * Spot and Ondemand Distribution Preferences for workload replicas
      */
     distribution?: pulumi.Input<inputs.cluster.OrchestratorConfigDistribution>;
@@ -106,6 +202,10 @@ export interface OrchestratorConfigState {
      * ID of the Cluster Orchestrator Object
      */
     orchestratorId?: pulumi.Input<string>;
+    /**
+     * Replacement schedule for Cluster Orchestrator
+     */
+    replacementSchedule?: pulumi.Input<inputs.cluster.OrchestratorConfigReplacementSchedule>;
 }
 
 /**
@@ -116,6 +216,10 @@ export interface OrchestratorConfigArgs {
      * Binpacking preferences for Cluster Orchestrator
      */
     binpacking?: pulumi.Input<inputs.cluster.OrchestratorConfigBinpacking>;
+    /**
+     * Commitment integration configuration for Cluster Orchestrator
+     */
+    commitmentIntegration?: pulumi.Input<inputs.cluster.OrchestratorConfigCommitmentIntegration>;
     /**
      * Spot and Ondemand Distribution Preferences for workload replicas
      */
@@ -128,4 +232,8 @@ export interface OrchestratorConfigArgs {
      * ID of the Cluster Orchestrator Object
      */
     orchestratorId: pulumi.Input<string>;
+    /**
+     * Replacement schedule for Cluster Orchestrator
+     */
+    replacementSchedule?: pulumi.Input<inputs.cluster.OrchestratorConfigReplacementSchedule>;
 }

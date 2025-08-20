@@ -21,14 +21,14 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetWorkspacePlainArgs Empty = new GetWorkspacePlainArgs();
 
     /**
-     * Provider connector configured on the workspace
+     * Provider connectors configured on the Workspace. Only one connector of a type is supported
      * 
      */
     @Import(name="connectors")
     private @Nullable List<GetWorkspaceConnector> connectors;
 
     /**
-     * @return Provider connector configured on the workspace
+     * @return Provider connectors configured on the Workspace. Only one connector of a type is supported
      * 
      */
     public Optional<List<GetWorkspaceConnector>> connectors() {
@@ -155,9 +155,17 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.repositorySha);
     }
 
+    /**
+     * Tags to associate with the resource.
+     * 
+     */
     @Import(name="tags")
     private @Nullable List<String> tags;
 
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     public Optional<List<String>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -228,7 +236,7 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param connectors Provider connector configured on the workspace
+         * @param connectors Provider connectors configured on the Workspace. Only one connector of a type is supported
          * 
          * @return builder
          * 
@@ -239,7 +247,7 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param connectors Provider connector configured on the workspace
+         * @param connectors Provider connectors configured on the Workspace. Only one connector of a type is supported
          * 
          * @return builder
          * 
@@ -346,11 +354,23 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param tags Tags to associate with the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable List<String> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags Tags to associate with the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }

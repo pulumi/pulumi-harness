@@ -17,6 +17,8 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
     public static final GetGitopsApplicationsArgs Empty = new GetGitopsApplicationsArgs();
 
     /**
+     * Account identifier of the GitOps application.
+     * 
      * @deprecated
      * This field is deprecated and will be removed in a future release.
      * 
@@ -26,6 +28,8 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
     private @Nullable Output<String> accountId;
 
     /**
+     * @return Account identifier of the GitOps application.
+     * 
      * @deprecated
      * This field is deprecated and will be removed in a future release.
      * 
@@ -148,6 +152,8 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
         }
 
         /**
+         * @param accountId Account identifier of the GitOps application.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -161,6 +167,8 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
         }
 
         /**
+         * @param accountId Account identifier of the GitOps application.
+         * 
          * @return builder
          * 
          * @deprecated

@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GithubConnectorCredentialsHttp
     {
         /// <summary>
-        /// Configuration for using the http anonymous github for interacting with the github api.
+        /// Configuration for using the github http anonymous for interacting with the github api.
         /// </summary>
         public readonly ImmutableArray<Outputs.GithubConnectorCredentialsHttpAnonymouse> Anonymouses;
         /// <summary>

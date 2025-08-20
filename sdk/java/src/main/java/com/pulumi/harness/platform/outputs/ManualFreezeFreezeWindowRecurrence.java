@@ -19,7 +19,7 @@ public final class ManualFreezeFreezeWindowRecurrence {
      */
     private @Nullable List<ManualFreezeFreezeWindowRecurrenceRecurrenceSpec> recurrenceSpecs;
     /**
-     * @return Recurrence type(Daily, Weekly, Monthly, Yearly)
+     * @return Type of the recurrence
      * 
      */
     private @Nullable String type;
@@ -33,7 +33,7 @@ public final class ManualFreezeFreezeWindowRecurrence {
         return this.recurrenceSpecs == null ? List.of() : this.recurrenceSpecs;
     }
     /**
-     * @return Recurrence type(Daily, Weekly, Monthly, Yearly)
+     * @return Type of the recurrence
      * 
      */
     public Optional<String> type() {

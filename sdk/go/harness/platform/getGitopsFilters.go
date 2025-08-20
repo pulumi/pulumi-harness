@@ -24,29 +24,34 @@ func LookupGitopsFilters(ctx *pulumi.Context, args *LookupGitopsFiltersArgs, opt
 
 // A collection of arguments for invoking getGitopsFilters.
 type LookupGitopsFiltersArgs struct {
-	// Unique identifier of the GitOps filter to retrieve.
+	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// Organization identifier for the GitOps filter.
+	// Organization Identifier for the Entity.
 	OrgId string `pulumi:"orgId"`
-	// Project identifier for the GitOps filter.
+	// Project Identifier for the Entity.
 	ProjectId string `pulumi:"projectId"`
-	// Type of GitOps filter. Currently, only "APPLICATION" is supported.
+	// Type of filter.
 	Type string `pulumi:"type"`
 }
 
 // A collection of values returned by getGitopsFilters.
 type LookupGitopsFiltersResult struct {
-	// Properties of the filter entity defined in Harness as a JSON string. This contains filter criteria such as health status, sync status, agent identifiers, clusters, namespaces, and repositories.
+	// Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
 	FilterProperties string `pulumi:"filterProperties"`
+	// This indicates visibility of filters, by default it is Everyone.
 	FilterVisibility string `pulumi:"filterVisibility"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// Name of the GitOps filter.
-	Name      string `pulumi:"name"`
-	OrgId     string `pulumi:"orgId"`
+	// Name of the Filter.
+	Name string `pulumi:"name"`
+	// Organization Identifier for the Entity.
+	OrgId string `pulumi:"orgId"`
+	// Project Identifier for the Entity.
 	ProjectId string `pulumi:"projectId"`
-	Type      string `pulumi:"type"`
+	// Type of filter.
+	Type string `pulumi:"type"`
 }
 
 func LookupGitopsFiltersOutput(ctx *pulumi.Context, args LookupGitopsFiltersOutputArgs, opts ...pulumi.InvokeOption) LookupGitopsFiltersResultOutput {
@@ -60,13 +65,13 @@ func LookupGitopsFiltersOutput(ctx *pulumi.Context, args LookupGitopsFiltersOutp
 
 // A collection of arguments for invoking getGitopsFilters.
 type LookupGitopsFiltersOutputArgs struct {
-	// Unique identifier of the GitOps filter to retrieve.
+	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
-	// Organization identifier for the GitOps filter.
+	// Organization Identifier for the Entity.
 	OrgId pulumi.StringInput `pulumi:"orgId"`
-	// Project identifier for the GitOps filter.
+	// Project Identifier for the Entity.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Type of GitOps filter. Currently, only "APPLICATION" is supported.
+	// Type of filter.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -89,11 +94,12 @@ func (o LookupGitopsFiltersResultOutput) ToLookupGitopsFiltersResultOutputWithCo
 	return o
 }
 
-// Properties of the filter entity defined in Harness as a JSON string. This contains filter criteria such as health status, sync status, agent identifiers, clusters, namespaces, and repositories.
+// Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
 func (o LookupGitopsFiltersResultOutput) FilterProperties() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsFiltersResult) string { return v.FilterProperties }).(pulumi.StringOutput)
 }
 
+// This indicates visibility of filters, by default it is Everyone.
 func (o LookupGitopsFiltersResultOutput) FilterVisibility() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsFiltersResult) string { return v.FilterVisibility }).(pulumi.StringOutput)
 }
@@ -103,23 +109,27 @@ func (o LookupGitopsFiltersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsFiltersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the resource.
 func (o LookupGitopsFiltersResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsFiltersResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Name of the GitOps filter.
+// Name of the Filter.
 func (o LookupGitopsFiltersResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsFiltersResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Organization Identifier for the Entity.
 func (o LookupGitopsFiltersResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsFiltersResult) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
+// Project Identifier for the Entity.
 func (o LookupGitopsFiltersResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsFiltersResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// Type of filter.
 func (o LookupGitopsFiltersResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsFiltersResult) string { return v.Type }).(pulumi.StringOutput)
 }

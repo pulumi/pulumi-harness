@@ -486,8 +486,10 @@ class InfraModule(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
-        $ pulumi import harness:platform/infraModule:InfraModule example <org_id>/<module_id>
+        $ pulumi import harness:platform/infraModule:InfraModule example <module_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -531,8 +533,10 @@ class InfraModule(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
-        $ pulumi import harness:platform/infraModule:InfraModule example <org_id>/<module_id>
+        $ pulumi import harness:platform/infraModule:InfraModule example <module_id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -31,7 +31,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> IamRoleArn { get; set; } = null!;
 
         /// <summary>
-        /// AWS Region to perform Connection test of Connector.
+        /// Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

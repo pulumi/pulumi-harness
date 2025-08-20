@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// ## Example Usage
+    /// Resource for creating an AWS Secret Manager connector.
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level aws secret manager connector
     /// 
@@ -96,7 +98,7 @@ namespace Pulumi.Harness.Platform
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// recovery duration in days in AWS Secrets Manager.
+        /// Recovery duration in days in AWS Secrets Manager.
         /// </summary>
         [Output("recoveryWindowInDays")]
         public Output<int?> RecoveryWindowInDays { get; private set; } = null!;
@@ -239,7 +241,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// recovery duration in days in AWS Secrets Manager.
+        /// Recovery duration in days in AWS Secrets Manager.
         /// </summary>
         [Input("recoveryWindowInDays")]
         public Input<int>? RecoveryWindowInDays { get; set; }
@@ -349,7 +351,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// recovery duration in days in AWS Secrets Manager.
+        /// Recovery duration in days in AWS Secrets Manager.
         /// </summary>
         [Input("recoveryWindowInDays")]
         public Input<int>? RecoveryWindowInDays { get; set; }

@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Platform
     public static class GetConnectorPdc
     {
         /// <summary>
-        /// Datasource for looking up a Physical data center connector.
+        /// Datasource for looking up a Pdc connector.
         /// 
         /// ## Example Usage
         /// 
@@ -36,7 +36,7 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectorPdcResult>("harness:platform/getConnectorPdc:getConnectorPdc", args ?? new GetConnectorPdcArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Datasource for looking up a Physical data center connector.
+        /// Datasource for looking up a Pdc connector.
         /// 
         /// ## Example Usage
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorPdcResult>("harness:platform/getConnectorPdc:getConnectorPdc", args ?? new GetConnectorPdcInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Datasource for looking up a Physical data center connector.
+        /// Datasource for looking up a Pdc connector.
         /// 
         /// ## Example Usage
         /// 
@@ -162,7 +162,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Hosts to be provided.
+        /// Host of the Physical data centers.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectorPdcHostResult> Hosts;
         /// <summary>

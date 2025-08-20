@@ -19,6 +19,21 @@ public final class AwsKmsConnectorState extends com.pulumi.resources.ResourceArg
     public static final AwsKmsConnectorState Empty = new AwsKmsConnectorState();
 
     /**
+     * A reference to the Harness secret containing the ARN of the AWS KMS.
+     * 
+     */
+    @Import(name="arnPlaintext")
+    private @Nullable Output<String> arnPlaintext;
+
+    /**
+     * @return A reference to the Harness secret containing the ARN of the AWS KMS.
+     * 
+     */
+    public Optional<Output<String>> arnPlaintext() {
+        return Optional.ofNullable(this.arnPlaintext);
+    }
+
+    /**
      * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
@@ -201,6 +216,7 @@ public final class AwsKmsConnectorState extends com.pulumi.resources.ResourceArg
     private AwsKmsConnectorState() {}
 
     private AwsKmsConnectorState(AwsKmsConnectorState $) {
+        this.arnPlaintext = $.arnPlaintext;
         this.arnRef = $.arnRef;
         this.credentials = $.credentials;
         this.default_ = $.default_;
@@ -231,6 +247,27 @@ public final class AwsKmsConnectorState extends com.pulumi.resources.ResourceArg
 
         public Builder(AwsKmsConnectorState defaults) {
             $ = new AwsKmsConnectorState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param arnPlaintext A reference to the Harness secret containing the ARN of the AWS KMS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder arnPlaintext(@Nullable Output<String> arnPlaintext) {
+            $.arnPlaintext = arnPlaintext;
+            return this;
+        }
+
+        /**
+         * @param arnPlaintext A reference to the Harness secret containing the ARN of the AWS KMS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder arnPlaintext(String arnPlaintext) {
+            return arnPlaintext(Output.of(arnPlaintext));
         }
 
         /**

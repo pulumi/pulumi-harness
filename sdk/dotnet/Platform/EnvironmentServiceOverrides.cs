@@ -11,110 +11,9 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Harness environment service overrides.
-    /// ## Example to create Environment Service Override at different levels (Org, Project, Account)
     /// 
-    /// ### Account Level
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
+    /// ## Example Usage
     /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Harness.Platform.EnvironmentServiceOverrides("example", new()
-    ///     {
-    ///         EnvId = "environmentIdentifier",
-    ///         ServiceId = "serviceIdentifier",
-    ///         Yaml = @"serviceOverrides:
-    ///   environmentRef: environmentIdentifier
-    ///   serviceRef: serviceIdentifier
-    ///   variables:
-    ///    - name: asda
-    ///      type: String
-    ///      value: asddad
-    ///   manifests:
-    ///      - manifest:
-    ///          identifier: manifestEnv
-    ///          type: Values
-    ///          spec:
-    ///            store:
-    ///              type: Git
-    ///              spec:
-    ///                connectorRef: &lt;+input&gt;
-    ///                gitFetchType: Branch
-    ///                paths:
-    ///                  - file1
-    ///                repoName: &lt;+input&gt;
-    ///                branch: master
-    ///   configFiles:
-    ///      - configFile:
-    ///          identifier: configFileEnv
-    ///          spec:
-    ///            store:
-    ///              type: Harness
-    ///              spec:
-    ///                files:
-    ///                  - account:/Add-ons/svcOverrideTest
-    ///                secretFiles: []
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Org Level
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Harness.Platform.EnvironmentServiceOverrides("example", new()
-    ///     {
-    ///         OrgId = "orgIdentifier",
-    ///         EnvId = "environmentIdentifier",
-    ///         ServiceId = "serviceIdentifier",
-    ///         Yaml = @"serviceOverrides:
-    ///   environmentRef: environmentIdentifier
-    ///   serviceRef: serviceIdentifier
-    ///   variables:
-    ///    - name: asda
-    ///      type: String
-    ///      value: asddad
-    ///   manifests:
-    ///      - manifest:
-    ///          identifier: manifestEnv
-    ///          type: Values
-    ///          spec:
-    ///            store:
-    ///              type: Git
-    ///              spec:
-    ///                connectorRef: &lt;+input&gt;
-    ///                gitFetchType: Branch
-    ///                paths:
-    ///                  - file1
-    ///                repoName: &lt;+input&gt;
-    ///                branch: master
-    ///   configFiles:
-    ///      - configFile:
-    ///          identifier: configFileEnv
-    ///          spec:
-    ///            store:
-    ///              type: Harness
-    ///              spec:
-    ///                files:
-    ///                  - account:/Add-ons/svcOverrideTest
-    ///                secretFiles: []
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Project Level
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -168,6 +67,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import list of account level service overrides using the env id associated with them
     /// 
     /// ```sh
@@ -190,7 +91,7 @@ namespace Pulumi.Harness.Platform
     public partial class EnvironmentServiceOverrides : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        /// The env ID to which the overrides associated.
         /// </summary>
         [Output("envId")]
         public Output<string> EnvId { get; private set; } = null!;
@@ -214,7 +115,7 @@ namespace Pulumi.Harness.Platform
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        /// The service ID to which the overrides applies.
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -273,7 +174,7 @@ namespace Pulumi.Harness.Platform
     public sealed class EnvironmentServiceOverridesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        /// The env ID to which the overrides associated.
         /// </summary>
         [Input("envId", required: true)]
         public Input<string> EnvId { get; set; } = null!;
@@ -297,7 +198,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        /// The service ID to which the overrides applies.
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -317,7 +218,7 @@ namespace Pulumi.Harness.Platform
     public sealed class EnvironmentServiceOverridesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        /// The env ID to which the overrides associated.
         /// </summary>
         [Input("envId")]
         public Input<string>? EnvId { get; set; }
@@ -341,7 +242,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        /// The service ID to which the overrides applies.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

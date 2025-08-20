@@ -97,7 +97,7 @@ namespace Pulumi.Harness.Platform
         private List<Inputs.GetWorkspaceConnectorArgs>? _connectors;
 
         /// <summary>
-        /// Provider connector configured on the workspace
+        /// Provider connectors configured on the Workspace. Only one connector of a type is supported
         /// </summary>
         public List<Inputs.GetWorkspaceConnectorArgs> Connectors
         {
@@ -161,6 +161,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("tags")]
         private List<string>? _tags;
+
+        /// <summary>
+        /// Tags to associate with the resource.
+        /// </summary>
         public List<string> Tags
         {
             get => _tags ?? (_tags = new List<string>());
@@ -207,7 +211,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.GetWorkspaceConnectorInputArgs>? _connectors;
 
         /// <summary>
-        /// Provider connector configured on the workspace
+        /// Provider connectors configured on the Workspace. Only one connector of a type is supported
         /// </summary>
         public InputList<Inputs.GetWorkspaceConnectorInputArgs> Connectors
         {
@@ -271,6 +275,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags to associate with the resource.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
@@ -316,7 +324,7 @@ namespace Pulumi.Harness.Platform
     public sealed class GetWorkspaceResult
     {
         /// <summary>
-        /// Provider connector configured on the workspace
+        /// Provider connectors configured on the Workspace. Only one connector of a type is supported
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkspaceConnectorResult> Connectors;
         /// <summary>
@@ -391,6 +399,9 @@ namespace Pulumi.Harness.Platform
         /// Repository Commit SHA in which the code should be accessed
         /// </summary>
         public readonly string RepositorySha;
+        /// <summary>
+        /// Tags to associate with the resource.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
         public readonly ImmutableArray<Outputs.GetWorkspaceTerraformVariableFileResult> TerraformVariableFiles;
         public readonly ImmutableArray<Outputs.GetWorkspaceTerraformVariableResult> TerraformVariables;

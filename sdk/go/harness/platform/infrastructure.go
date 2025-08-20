@@ -13,191 +13,10 @@ import (
 )
 
 // Resource for creating a Harness Infrastructure.
-// ## Example to create Infrastructure at different levels (Org, Project, Account)
-//
-// ### Account Level
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewInfrastructure(ctx, "example", &platform.InfrastructureArgs{
-//				Identifier:     pulumi.String("identifier"),
-//				Name:           pulumi.String("name"),
-//				EnvId:          pulumi.String("environmentIdentifier"),
-//				Type:           pulumi.String("KubernetesDirect"),
-//				DeploymentType: pulumi.String("Kubernetes"),
-//				Yaml: pulumi.String(`infrastructureDefinition:
-//	 name: name
-//	 identifier: identifier
-//	 description: ""
-//	 tags:
-//	   asda: ""
-//	 orgIdentifier: orgIdentifer
-//	 projectIdentifier: projectIdentifier
-//	 environmentRef: environmentIdentifier
-//	 deploymentType: Kubernetes
-//	 type: KubernetesDirect
-//	 spec:
-//	  connectorRef: account.gfgf
-//	  namespace: asdasdsa
-//	  releaseName: release-<+INFRA_KEY>
-//	  allowSimultaneousDeployments: false
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Org Level
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewInfrastructure(ctx, "example", &platform.InfrastructureArgs{
-//				Identifier:     pulumi.String("identifier"),
-//				Name:           pulumi.String("name"),
-//				OrgId:          pulumi.String("orgIdentifer"),
-//				EnvId:          pulumi.String("environmentIdentifier"),
-//				Type:           pulumi.String("KubernetesDirect"),
-//				DeploymentType: pulumi.String("Kubernetes"),
-//				Yaml: pulumi.String(`infrastructureDefinition:
-//	 name: name
-//	 identifier: identifier
-//	 description: ""
-//	 tags:
-//	   asda: ""
-//	 orgIdentifier: orgIdentifer
-//	 projectIdentifier: projectIdentifier
-//	 environmentRef: environmentIdentifier
-//	 deploymentType: Kubernetes
-//	 type: KubernetesDirect
-//	 spec:
-//	  connectorRef: account.gfgf
-//	  namespace: asdasdsa
-//	  releaseName: release-<+INFRA_KEY>
-//	  allowSimultaneousDeployments: false
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Project Level
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewInfrastructure(ctx, "example", &platform.InfrastructureArgs{
-//				Identifier:     pulumi.String("identifier"),
-//				Name:           pulumi.String("name"),
-//				OrgId:          pulumi.String("orgIdentifer"),
-//				ProjectId:      pulumi.String("projectIdentifier"),
-//				EnvId:          pulumi.String("environmentIdentifier"),
-//				Type:           pulumi.String("KubernetesDirect"),
-//				DeploymentType: pulumi.String("Kubernetes"),
-//				Yaml: pulumi.String(`infrastructureDefinition:
-//	 name: name
-//	 identifier: identifier
-//	 description: ""
-//	 tags:
-//	   asda: ""
-//	 orgIdentifier: orgIdentifer
-//	 projectIdentifier: projectIdentifier
-//	 environmentRef: environmentIdentifier
-//	 deploymentType: Kubernetes
-//	 type: KubernetesDirect
-//	 spec:
-//	  connectorRef: account.gfgf
-//	  namespace: asdasdsa
-//	  releaseName: release-<+INFRA_KEY>
-//	  allowSimultaneousDeployments: false
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Importing Infrastructure From Git
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewInfrastructure(ctx, "test", &platform.InfrastructureArgs{
-//				Identifier: pulumi.String("identifier"),
-//				Name:       pulumi.String("name"),
-//				EnvId:      pulumi.String("env_id"),
-//				GitDetails: &platform.InfrastructureGitDetailsArgs{
-//					StoreType:     pulumi.String("REMOTE"),
-//					ConnectorRef:  pulumi.String("connector_ref"),
-//					RepoName:      pulumi.String("repo_name"),
-//					FilePath:      pulumi.String("file_path"),
-//					Branch:        pulumi.String("branch"),
-//					ImportFromGit: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // # Import account level infrastructure
 //
@@ -225,9 +44,9 @@ type Infrastructure struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Environment Identifier.
 	EnvId pulumi.StringOutput `pulumi:"envId"`
-	// When set to true, enables force deletion of infrastructure.
+	// Enable this flag for force deletion of infrastructure
 	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
-	// Contains Git Information for remote entities from Git for Create/Update/Import
+	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails InfrastructureGitDetailsOutput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -287,9 +106,9 @@ type infrastructureState struct {
 	Description *string `pulumi:"description"`
 	// Environment Identifier.
 	EnvId *string `pulumi:"envId"`
-	// When set to true, enables force deletion of infrastructure.
+	// Enable this flag for force deletion of infrastructure
 	ForceDelete *bool `pulumi:"forceDelete"`
-	// Contains Git Information for remote entities from Git for Create/Update/Import
+	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *InfrastructureGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
@@ -314,9 +133,9 @@ type InfrastructureState struct {
 	Description pulumi.StringPtrInput
 	// Environment Identifier.
 	EnvId pulumi.StringPtrInput
-	// When set to true, enables force deletion of infrastructure.
+	// Enable this flag for force deletion of infrastructure
 	ForceDelete pulumi.BoolPtrInput
-	// Contains Git Information for remote entities from Git for Create/Update/Import
+	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails InfrastructureGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
@@ -345,9 +164,9 @@ type infrastructureArgs struct {
 	Description *string `pulumi:"description"`
 	// Environment Identifier.
 	EnvId string `pulumi:"envId"`
-	// When set to true, enables force deletion of infrastructure.
+	// Enable this flag for force deletion of infrastructure
 	ForceDelete *bool `pulumi:"forceDelete"`
-	// Contains Git Information for remote entities from Git for Create/Update/Import
+	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *InfrastructureGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
@@ -373,9 +192,9 @@ type InfrastructureArgs struct {
 	Description pulumi.StringPtrInput
 	// Environment Identifier.
 	EnvId pulumi.StringInput
-	// When set to true, enables force deletion of infrastructure.
+	// Enable this flag for force deletion of infrastructure
 	ForceDelete pulumi.BoolPtrInput
-	// Contains Git Information for remote entities from Git for Create/Update/Import
+	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails InfrastructureGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
@@ -495,12 +314,12 @@ func (o InfrastructureOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.EnvId }).(pulumi.StringOutput)
 }
 
-// When set to true, enables force deletion of infrastructure.
+// Enable this flag for force deletion of infrastructure
 func (o InfrastructureOutput) ForceDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
 }
 
-// Contains Git Information for remote entities from Git for Create/Update/Import
+// Contains parameters related to creating an Entity for Git Experience.
 func (o InfrastructureOutput) GitDetails() InfrastructureGitDetailsOutput {
 	return o.ApplyT(func(v *Infrastructure) InfrastructureGitDetailsOutput { return v.GitDetails }).(InfrastructureGitDetailsOutput)
 }

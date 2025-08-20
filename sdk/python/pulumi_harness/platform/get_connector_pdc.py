@@ -76,7 +76,7 @@ class GetConnectorPdcResult:
     @pulumi.getter
     def hosts(self) -> Sequence['outputs.GetConnectorPdcHostResult']:
         """
-        Hosts to be provided.
+        Host of the Physical data centers.
         """
         return pulumi.get(self, "hosts")
 
@@ -152,7 +152,7 @@ def get_connector_pdc(identifier: Optional[_builtins.str] = None,
                       project_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectorPdcResult:
     """
-    Datasource for looking up a Physical data center connector.
+    Datasource for looking up a Pdc connector.
 
     ## Example Usage
 
@@ -193,7 +193,7 @@ def get_connector_pdc_output(identifier: Optional[pulumi.Input[_builtins.str]] =
                              project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorPdcResult]:
     """
-    Datasource for looking up a Physical data center connector.
+    Datasource for looking up a Pdc connector.
 
     ## Example Usage
 

@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ManualFreezeFreezeWindowRecurrenceRecurrenceSpec {
     /**
-     * @return Recurrence until timestamp
+     * @return Time till which freeze window recurrs
      * 
      */
     private @Nullable String until;
     /**
-     * @return Value of n, for n months recurrence
+     * @return Every n months recurrence
      * 
      */
     private @Nullable Integer value;
 
     private ManualFreezeFreezeWindowRecurrenceRecurrenceSpec() {}
     /**
-     * @return Recurrence until timestamp
+     * @return Time till which freeze window recurrs
      * 
      */
     public Optional<String> until() {
         return Optional.ofNullable(this.until);
     }
     /**
-     * @return Value of n, for n months recurrence
+     * @return Every n months recurrence
      * 
      */
     public Optional<Integer> value() {

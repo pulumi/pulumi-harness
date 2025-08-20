@@ -51,7 +51,7 @@ class AwsConnectorArgs:
         :param pulumi.Input['AwsConnectorIrsaArgs'] irsa: Use IAM role for service accounts.
         :param pulumi.Input['AwsConnectorManualArgs'] manual: Use IAM role for service accounts.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input['AwsConnectorOidcAuthenticationArgs'] oidc_authentication: Authentication using Harness OIDC.
+        :param pulumi.Input['AwsConnectorOidcAuthenticationArgs'] oidc_authentication: Authentication using harness oidc.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
@@ -236,7 +236,7 @@ class AwsConnectorArgs:
     @pulumi.getter(name="oidcAuthentication")
     def oidc_authentication(self) -> Optional[pulumi.Input['AwsConnectorOidcAuthenticationArgs']]:
         """
-        Authentication using Harness OIDC.
+        Authentication using harness oidc.
         """
         return pulumi.get(self, "oidc_authentication")
 
@@ -314,7 +314,7 @@ class _AwsConnectorState:
         :param pulumi.Input['AwsConnectorIrsaArgs'] irsa: Use IAM role for service accounts.
         :param pulumi.Input['AwsConnectorManualArgs'] manual: Use IAM role for service accounts.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input['AwsConnectorOidcAuthenticationArgs'] oidc_authentication: Authentication using Harness OIDC.
+        :param pulumi.Input['AwsConnectorOidcAuthenticationArgs'] oidc_authentication: Authentication using harness oidc.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
@@ -500,7 +500,7 @@ class _AwsConnectorState:
     @pulumi.getter(name="oidcAuthentication")
     def oidc_authentication(self) -> Optional[pulumi.Input['AwsConnectorOidcAuthenticationArgs']]:
         """
-        Authentication using Harness OIDC.
+        Authentication using harness oidc.
         """
         return pulumi.get(self, "oidc_authentication")
 
@@ -573,6 +573,8 @@ class AwsConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level aws connector
 
         ```sh
@@ -605,7 +607,7 @@ class AwsConnector(pulumi.CustomResource):
         :param pulumi.Input[Union['AwsConnectorIrsaArgs', 'AwsConnectorIrsaArgsDict']] irsa: Use IAM role for service accounts.
         :param pulumi.Input[Union['AwsConnectorManualArgs', 'AwsConnectorManualArgsDict']] manual: Use IAM role for service accounts.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Union['AwsConnectorOidcAuthenticationArgs', 'AwsConnectorOidcAuthenticationArgsDict']] oidc_authentication: Authentication using Harness OIDC.
+        :param pulumi.Input[Union['AwsConnectorOidcAuthenticationArgs', 'AwsConnectorOidcAuthenticationArgsDict']] oidc_authentication: Authentication using harness oidc.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
@@ -620,6 +622,8 @@ class AwsConnector(pulumi.CustomResource):
         Resource for creating an AWS connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level aws connector
 
@@ -742,7 +746,7 @@ class AwsConnector(pulumi.CustomResource):
         :param pulumi.Input[Union['AwsConnectorIrsaArgs', 'AwsConnectorIrsaArgsDict']] irsa: Use IAM role for service accounts.
         :param pulumi.Input[Union['AwsConnectorManualArgs', 'AwsConnectorManualArgsDict']] manual: Use IAM role for service accounts.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Union['AwsConnectorOidcAuthenticationArgs', 'AwsConnectorOidcAuthenticationArgsDict']] oidc_authentication: Authentication using Harness OIDC.
+        :param pulumi.Input[Union['AwsConnectorOidcAuthenticationArgs', 'AwsConnectorOidcAuthenticationArgsDict']] oidc_authentication: Authentication using harness oidc.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
@@ -869,7 +873,7 @@ class AwsConnector(pulumi.CustomResource):
     @pulumi.getter(name="oidcAuthentication")
     def oidc_authentication(self) -> pulumi.Output[Optional['outputs.AwsConnectorOidcAuthentication']]:
         """
-        Authentication using Harness OIDC.
+        Authentication using harness oidc.
         """
         return pulumi.get(self, "oidc_authentication")
 

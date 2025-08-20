@@ -41,6 +41,9 @@ export interface GetDbInstanceArgs {
      * Unique identifier of the resource.
      */
     identifier: string;
+    /**
+     * The properties to substitute in liquibase changelog
+     */
     liquibaseSubstituteProperties?: {[key: string]: string};
     /**
      * Name of the resource.
@@ -88,6 +91,9 @@ export interface GetDbInstanceResult {
      * Unique identifier of the resource.
      */
     readonly identifier: string;
+    /**
+     * The properties to substitute in liquibase changelog
+     */
     readonly liquibaseSubstituteProperties?: {[key: string]: string};
     /**
      * Name of the resource.
@@ -147,6 +153,9 @@ export interface GetDbInstanceOutputArgs {
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
+    /**
+     * The properties to substitute in liquibase changelog
+     */
     liquibaseSubstituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the resource.

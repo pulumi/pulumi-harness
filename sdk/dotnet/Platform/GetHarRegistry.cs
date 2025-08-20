@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Platform
     public static class GetHarRegistry
     {
         /// <summary>
-        /// Data Source for retrieving a Harness Artifact registry
+        /// Resource for creating and managing Harness Registries.
         /// 
         /// ## Example Usage
         /// 
@@ -37,7 +37,7 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHarRegistryResult>("harness:platform/getHarRegistry:getHarRegistry", args ?? new GetHarRegistryArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data Source for retrieving a Harness Artifact registry
+        /// Resource for creating and managing Harness Registries.
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetHarRegistryResult>("harness:platform/getHarRegistry:getHarRegistry", args ?? new GetHarRegistryInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data Source for retrieving a Harness Artifact registry
+        /// Resource for creating and managing Harness Registries.
         /// 
         /// ## Example Usage
         /// 
@@ -92,6 +92,10 @@ namespace Pulumi.Harness.Platform
     {
         [Input("allowedPatterns")]
         private List<string>? _allowedPatterns;
+
+        /// <summary>
+        /// Allowed artifact patterns
+        /// </summary>
         public List<string> AllowedPatterns
         {
             get => _allowedPatterns ?? (_allowedPatterns = new List<string>());
@@ -100,6 +104,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("blockedPatterns")]
         private List<string>? _blockedPatterns;
+
+        /// <summary>
+        /// Blocked artifact patterns
+        /// </summary>
         public List<string> BlockedPatterns
         {
             get => _blockedPatterns ?? (_blockedPatterns = new List<string>());
@@ -108,32 +116,45 @@ namespace Pulumi.Harness.Platform
 
         [Input("configs")]
         private List<Inputs.GetHarRegistryConfigArgs>? _configs;
+
+        /// <summary>
+        /// Configuration for the registry
+        /// </summary>
         public List<Inputs.GetHarRegistryConfigArgs> Configs
         {
             get => _configs ?? (_configs = new List<Inputs.GetHarRegistryConfigArgs>());
             set => _configs = value;
         }
 
+        /// <summary>
+        /// Description of the registry
+        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
         /// <summary>
-        /// Unique identifier of the resource.
+        /// Unique identifier of the registry
         /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Type of package (DOCKER, HELM, MAVEN, etc.)
+        /// </summary>
         [Input("packageType")]
         public string? PackageType { get; set; }
 
+        /// <summary>
+        /// Parent reference for the registry
+        /// </summary>
         [Input("parentRef")]
         public string? ParentRef { get; set; }
 
         /// <summary>
-        /// Reference of the space.
+        /// Space reference for the registry
         /// </summary>
-        [Input("spaceRef", required: true)]
-        public string SpaceRef { get; set; } = null!;
+        [Input("spaceRef")]
+        public string? SpaceRef { get; set; }
 
         public GetHarRegistryArgs()
         {
@@ -145,6 +166,10 @@ namespace Pulumi.Harness.Platform
     {
         [Input("allowedPatterns")]
         private InputList<string>? _allowedPatterns;
+
+        /// <summary>
+        /// Allowed artifact patterns
+        /// </summary>
         public InputList<string> AllowedPatterns
         {
             get => _allowedPatterns ?? (_allowedPatterns = new InputList<string>());
@@ -153,6 +178,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("blockedPatterns")]
         private InputList<string>? _blockedPatterns;
+
+        /// <summary>
+        /// Blocked artifact patterns
+        /// </summary>
         public InputList<string> BlockedPatterns
         {
             get => _blockedPatterns ?? (_blockedPatterns = new InputList<string>());
@@ -161,32 +190,45 @@ namespace Pulumi.Harness.Platform
 
         [Input("configs")]
         private InputList<Inputs.GetHarRegistryConfigInputArgs>? _configs;
+
+        /// <summary>
+        /// Configuration for the registry
+        /// </summary>
         public InputList<Inputs.GetHarRegistryConfigInputArgs> Configs
         {
             get => _configs ?? (_configs = new InputList<Inputs.GetHarRegistryConfigInputArgs>());
             set => _configs = value;
         }
 
+        /// <summary>
+        /// Description of the registry
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Unique identifier of the resource.
+        /// Unique identifier of the registry
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Type of package (DOCKER, HELM, MAVEN, etc.)
+        /// </summary>
         [Input("packageType")]
         public Input<string>? PackageType { get; set; }
 
+        /// <summary>
+        /// Parent reference for the registry
+        /// </summary>
         [Input("parentRef")]
         public Input<string>? ParentRef { get; set; }
 
         /// <summary>
-        /// Reference of the space.
+        /// Space reference for the registry
         /// </summary>
-        [Input("spaceRef", required: true)]
-        public Input<string> SpaceRef { get; set; } = null!;
+        [Input("spaceRef")]
+        public Input<string>? SpaceRef { get; set; }
 
         public GetHarRegistryInvokeArgs()
         {
@@ -198,25 +240,49 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetHarRegistryResult
     {
+        /// <summary>
+        /// Allowed artifact patterns
+        /// </summary>
         public readonly ImmutableArray<string> AllowedPatterns;
+        /// <summary>
+        /// Blocked artifact patterns
+        /// </summary>
         public readonly ImmutableArray<string> BlockedPatterns;
+        /// <summary>
+        /// Configuration for the registry
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHarRegistryConfigResult> Configs;
+        /// <summary>
+        /// Creation timestamp
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Description of the registry
+        /// </summary>
         public readonly string? Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Unique identifier of the resource.
+        /// Unique identifier of the registry
         /// </summary>
         public readonly string Identifier;
+        /// <summary>
+        /// Type of package (DOCKER, HELM, MAVEN, etc.)
+        /// </summary>
         public readonly string? PackageType;
+        /// <summary>
+        /// Parent reference for the registry
+        /// </summary>
         public readonly string? ParentRef;
         /// <summary>
-        /// Reference of the space.
+        /// Space reference for the registry
         /// </summary>
-        public readonly string SpaceRef;
+        public readonly string? SpaceRef;
+        /// <summary>
+        /// URL of the registry
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]
@@ -239,7 +305,7 @@ namespace Pulumi.Harness.Platform
 
             string? parentRef,
 
-            string spaceRef,
+            string? spaceRef,
 
             string url)
         {

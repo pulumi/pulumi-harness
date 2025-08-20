@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * DataSource for looking up a Vault connector in Harness.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -185,7 +187,7 @@ export interface GetVaultConnectorResult {
      */
     readonly vaultAwsIamRole: string;
     /**
-     * Custom path at with JWT auth in enabled for Vault.
+     * Custom path at with JWT auth in enabled for Vault
      */
     readonly vaultJwtAuthPath: string;
     /**
@@ -206,6 +208,8 @@ export interface GetVaultConnectorResult {
     readonly xvaultAwsIamServerId: string;
 }
 /**
+ * DataSource for looking up a Vault connector in Harness.
+ *
  * ## Example Usage
  *
  * ```typescript

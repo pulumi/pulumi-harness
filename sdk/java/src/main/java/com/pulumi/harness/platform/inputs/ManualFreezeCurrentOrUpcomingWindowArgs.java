@@ -16,14 +16,14 @@ public final class ManualFreezeCurrentOrUpcomingWindowArgs extends com.pulumi.re
     public static final ManualFreezeCurrentOrUpcomingWindowArgs Empty = new ManualFreezeCurrentOrUpcomingWindowArgs();
 
     /**
-     * End time of the freeze
+     * End time of the freeze window
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<Integer> endTime;
 
     /**
-     * @return End time of the freeze
+     * @return End time of the freeze window
      * 
      */
     public Optional<Output<Integer>> endTime() {
@@ -31,14 +31,14 @@ public final class ManualFreezeCurrentOrUpcomingWindowArgs extends com.pulumi.re
     }
 
     /**
-     * Start time of the freeze
+     * Start time of the freeze window
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
-     * @return Start time of the freeze
+     * @return Start time of the freeze window
      * 
      */
     public Optional<Output<Integer>> startTime() {
@@ -71,7 +71,7 @@ public final class ManualFreezeCurrentOrUpcomingWindowArgs extends com.pulumi.re
         }
 
         /**
-         * @param endTime End time of the freeze
+         * @param endTime End time of the freeze window
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ManualFreezeCurrentOrUpcomingWindowArgs extends com.pulumi.re
         }
 
         /**
-         * @param endTime End time of the freeze
+         * @param endTime End time of the freeze window
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ManualFreezeCurrentOrUpcomingWindowArgs extends com.pulumi.re
         }
 
         /**
-         * @param startTime Start time of the freeze
+         * @param startTime Start time of the freeze window
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ManualFreezeCurrentOrUpcomingWindowArgs extends com.pulumi.re
         }
 
         /**
-         * @param startTime Start time of the freeze
+         * @param startTime Start time of the freeze window
          * 
          * @return builder
          * 

@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetConnectorPdcHost {
     /**
-     * @return Host attributes with values. e.g. type, region, name, ip, etc.
+     * @return attributes for current host
      * 
      */
     private @Nullable Map<String,String> attributes;
     /**
-     * @return Hostname e.g. 87.23.66.11:80
+     * @return hostname
      * 
      */
     private String hostname;
 
     private GetConnectorPdcHost() {}
     /**
-     * @return Host attributes with values. e.g. type, region, name, ip, etc.
+     * @return attributes for current host
      * 
      */
     public Map<String,String> attributes() {
         return this.attributes == null ? Map.of() : this.attributes;
     }
     /**
-     * @return Hostname e.g. 87.23.66.11:80
+     * @return hostname
      * 
      */
     public String hostname() {

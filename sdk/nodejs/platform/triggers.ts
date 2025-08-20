@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Resource for creating triggers in Harness.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -52,6 +54,8 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import trigger
  *

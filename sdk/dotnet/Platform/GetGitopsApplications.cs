@@ -33,6 +33,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetGitopsApplicationsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account identifier of the GitOps application.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
@@ -74,6 +77,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetGitopsApplicationsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account identifier of the GitOps application.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -117,6 +123,9 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetGitopsApplicationsResult
     {
+        /// <summary>
+        /// Account identifier of the GitOps application.
+        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// Agent identifier of the GitOps application.
@@ -166,6 +175,9 @@ namespace Pulumi.Harness.Platform
         /// Repository identifier of the GitOps application.
         /// </summary>
         public readonly string RepoId;
+        /// <summary>
+        /// List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+        /// </summary>
         public readonly ImmutableArray<string> RepoIds;
         /// <summary>
         /// Request cascade to delete the GitOps application.

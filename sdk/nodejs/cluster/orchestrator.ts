@@ -19,14 +19,6 @@ import * as utilities from "../utilities";
  *     k8sConnectorId: "test",
  * });
  * ```
- *
- * ## Import
- *
- * Import using the Harness aws cloud provider id.
- *
- * ```sh
- * $ pulumi import harness:cluster/orchestrator:Orchestrator example <provider_id>
- * ```
  */
 export class Orchestrator extends pulumi.CustomResource {
     /**

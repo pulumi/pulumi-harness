@@ -29,7 +29,7 @@ public final class AwsConnectorManual {
      */
     private @Nullable List<String> delegateSelectors;
     /**
-     * @return Test Region to perform Connection test of AWS Connector.
+     * @return Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String region;
@@ -39,7 +39,7 @@ public final class AwsConnectorManual {
      */
     private String secretKeyRef;
     /**
-     * @return Reference to the Harness secret containing the aws session token.
+     * @return Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String sessionTokenRef;
@@ -67,7 +67,7 @@ public final class AwsConnectorManual {
         return this.delegateSelectors == null ? List.of() : this.delegateSelectors;
     }
     /**
-     * @return Test Region to perform Connection test of AWS Connector.
+     * @return Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> region() {
@@ -81,7 +81,7 @@ public final class AwsConnectorManual {
         return this.secretKeyRef;
     }
     /**
-     * @return Reference to the Harness secret containing the aws session token.
+     * @return Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> sessionTokenRef() {

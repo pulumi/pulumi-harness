@@ -371,7 +371,46 @@ class SecretText(pulumi.CustomResource):
         """
         Resource for creating secret of type secret text
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        inline = harness.platform.SecretText("inline",
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            secret_manager_identifier="harnessSecretManager",
+            value_type="Inline",
+            value="secret")
+        reference = harness.platform.SecretText("reference",
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            secret_manager_identifier="azureSecretManager",
+            value_type="Reference",
+            value="secret")
+        gcp_secret_manager_reference = harness.platform.SecretText("gcp_secret_manager_reference",
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            secret_manager_identifier="gcpSecretManager",
+            value_type="Reference",
+            value="secret",
+            additional_metadatas=[{
+                "values": [{
+                    "version": "1",
+                }],
+            }])
+        ```
+
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level secret text
 
@@ -413,7 +452,46 @@ class SecretText(pulumi.CustomResource):
         """
         Resource for creating secret of type secret text
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        inline = harness.platform.SecretText("inline",
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            secret_manager_identifier="harnessSecretManager",
+            value_type="Inline",
+            value="secret")
+        reference = harness.platform.SecretText("reference",
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            secret_manager_identifier="azureSecretManager",
+            value_type="Reference",
+            value="secret")
+        gcp_secret_manager_reference = harness.platform.SecretText("gcp_secret_manager_reference",
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            secret_manager_identifier="gcpSecretManager",
+            value_type="Reference",
+            value="secret",
+            additional_metadatas=[{
+                "values": [{
+                    "version": "1",
+                }],
+            }])
+        ```
+
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level secret text
 

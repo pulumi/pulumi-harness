@@ -41,6 +41,10 @@ import (
 //				CostEstimationEnabled: pulumi.Bool(true),
 //				ProviderConnector:     pulumi.Any(test.Id),
 //				RepositoryConnector:   pulumi.Any(test.Id),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("tag1"),
+//					pulumi.String("tag2"),
+//				},
 //				TerraformVariables: platform.WorkspaceTerraformVariableArray{
 //					&platform.WorkspaceTerraformVariableArgs{
 //						Key:       pulumi.String("key1"),
@@ -106,13 +110,15 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
 // $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<workspace_id>
 // ```
 type Workspace struct {
 	pulumi.CustomResourceState
 
-	// Provider connector configured on the workspace
+	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors WorkspaceConnectorArrayOutput `pulumi:"connectors"`
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled pulumi.BoolOutput `pulumi:"costEstimationEnabled"`
@@ -211,7 +217,7 @@ func GetWorkspace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Workspace resources.
 type workspaceState struct {
-	// Provider connector configured on the workspace
+	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors []WorkspaceConnector `pulumi:"connectors"`
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled *bool `pulumi:"costEstimationEnabled"`
@@ -254,7 +260,7 @@ type workspaceState struct {
 }
 
 type WorkspaceState struct {
-	// Provider connector configured on the workspace
+	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors WorkspaceConnectorArrayInput
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled pulumi.BoolPtrInput
@@ -301,7 +307,7 @@ func (WorkspaceState) ElementType() reflect.Type {
 }
 
 type workspaceArgs struct {
-	// Provider connector configured on the workspace
+	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors []WorkspaceConnector `pulumi:"connectors"`
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled bool `pulumi:"costEstimationEnabled"`
@@ -345,7 +351,7 @@ type workspaceArgs struct {
 
 // The set of arguments for constructing a Workspace resource.
 type WorkspaceArgs struct {
-	// Provider connector configured on the workspace
+	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors WorkspaceConnectorArrayInput
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled pulumi.BoolInput
@@ -474,7 +480,7 @@ func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) Works
 	return o
 }
 
-// Provider connector configured on the workspace
+// Provider connectors configured on the Workspace. Only one connector of a type is supported
 func (o WorkspaceOutput) Connectors() WorkspaceConnectorArrayOutput {
 	return o.ApplyT(func(v *Workspace) WorkspaceConnectorArrayOutput { return v.Connectors }).(WorkspaceConnectorArrayOutput)
 }

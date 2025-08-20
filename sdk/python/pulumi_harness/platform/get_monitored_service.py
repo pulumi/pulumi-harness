@@ -92,6 +92,17 @@ def get_monitored_service(identifier: Optional[_builtins.str] = None,
     """
     Data source for retrieving a monitored service.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_monitored_service(identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
+
 
     :param _builtins.str identifier: Identifier of the monitored service.
     :param _builtins.str org_id: Identifier of the organization in which the monitored service is configured.
@@ -115,6 +126,17 @@ def get_monitored_service_output(identifier: Optional[pulumi.Input[_builtins.str
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMonitoredServiceResult]:
     """
     Data source for retrieving a monitored service.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_monitored_service(identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
 
 
     :param _builtins.str identifier: Identifier of the monitored service.

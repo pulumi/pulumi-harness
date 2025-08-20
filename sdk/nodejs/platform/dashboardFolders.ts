@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = new harness.platform.DashboardFolders("example", {name: "Example Folder"});
+ * const folder = new harness.platform.DashboardFolders("folder", {name: "name"});
  * ```
  */
 export class DashboardFolders extends pulumi.CustomResource {

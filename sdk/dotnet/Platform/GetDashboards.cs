@@ -24,9 +24,9 @@ namespace Pulumi.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.Platform.GetDashboards.Invoke(new()
+        ///     var dashboard = Harness.Platform.GetDashboards.Invoke(new()
         ///     {
-        ///         Id = "48525",
+        ///         Id = "id",
         ///     });
         /// 
         /// });
@@ -48,9 +48,9 @@ namespace Pulumi.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.Platform.GetDashboards.Invoke(new()
+        ///     var dashboard = Harness.Platform.GetDashboards.Invoke(new()
         ///     {
-        ///         Id = "48525",
+        ///         Id = "id",
         ///     });
         /// 
         /// });
@@ -72,9 +72,9 @@ namespace Pulumi.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.Platform.GetDashboards.Invoke(new()
+        ///     var dashboard = Harness.Platform.GetDashboards.Invoke(new()
         ///     {
-        ///         Id = "48525",
+        ///         Id = "id",
         ///     });
         /// 
         /// });
@@ -93,11 +93,14 @@ namespace Pulumi.Harness.Platform
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         [Input("identifier")]
         public string? Identifier { get; set; }
 
         /// <summary>
-        /// Name of the Dashboard.
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -116,11 +119,14 @@ namespace Pulumi.Harness.Platform
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Name of the Dashboard.
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -148,7 +154,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly ImmutableArray<string> DataSources;
         /// <summary>
-        /// Description of the Dashboard.
+        /// Description of the resource.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -159,26 +165,32 @@ namespace Pulumi.Harness.Platform
         /// Identifier of the dashboard.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         public readonly string? Identifier;
         /// <summary>
         /// Data Models within the Dashboard.
         /// </summary>
         public readonly ImmutableArray<string> Models;
         /// <summary>
-        /// Name of the Dashboard.
+        /// Name of the resource.
         /// </summary>
         public readonly string? Name;
         /// <summary>
         /// Resource identifier of the dashboard.
         /// </summary>
         public readonly string ResourceIdentifier;
+        /// <summary>
+        /// Tags to associate with the resource.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
         /// Title of the Dashboard.
         /// </summary>
         public readonly string Title;
         /// <summary>
-        /// Type of the dashboard.
+        /// Resource identifier of the dashboard.
         /// </summary>
         public readonly string Type;
         /// <summary>

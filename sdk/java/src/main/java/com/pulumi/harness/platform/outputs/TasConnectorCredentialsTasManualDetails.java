@@ -23,7 +23,7 @@ public final class TasConnectorCredentialsTasManualDetails {
      */
     private String passwordRef;
     /**
-     * @return Reference of the secret for the token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}
+     * @return Reference token for authentication.
      * 
      */
     private @Nullable String referenceToken;
@@ -54,7 +54,7 @@ public final class TasConnectorCredentialsTasManualDetails {
         return this.passwordRef;
     }
     /**
-     * @return Reference of the secret for the token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}
+     * @return Reference token for authentication.
      * 
      */
     public Optional<String> referenceToken() {

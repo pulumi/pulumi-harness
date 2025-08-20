@@ -39,6 +39,8 @@ namespace Pulumi.Harness.Service
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import using the Harness application id and service id
     /// 
     /// ```sh

@@ -16,30 +16,62 @@ public final class GetServiceListArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetServiceListArgs Empty = new GetServiceListArgs();
 
+    /**
+     * Unique identifier of the organization.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Page index of the results to fetch. Default: 0
+     * 
+     */
     @Import(name="page")
     private @Nullable Output<Integer> page;
 
+    /**
+     * @return Page index of the results to fetch. Default: 0
+     * 
+     */
     public Optional<Output<Integer>> page() {
         return Optional.ofNullable(this.page);
     }
 
+    /**
+     * Unique identifier of the project.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * Results per page. Default: 100; Max: 1000
+     * 
+     */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
+    /**
+     * @return Results per page. Default: 100; Max: 1000
+     * 
+     */
     public Optional<Output<Integer>> size() {
         return Optional.ofNullable(this.size);
     }
@@ -71,38 +103,86 @@ public final class GetServiceListArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetServiceListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
+        /**
+         * @param page Page index of the results to fetch. Default: 0
+         * 
+         * @return builder
+         * 
+         */
         public Builder page(@Nullable Output<Integer> page) {
             $.page = page;
             return this;
         }
 
+        /**
+         * @param page Page index of the results to fetch. Default: 0
+         * 
+         * @return builder
+         * 
+         */
         public Builder page(Integer page) {
             return page(Output.of(page));
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }
 
+        /**
+         * @param size Results per page. Default: 100; Max: 1000
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(@Nullable Output<Integer> size) {
             $.size = size;
             return this;
         }
 
+        /**
+         * @param size Results per page. Default: 100; Max: 1000
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(Integer size) {
             return size(Output.of(size));
         }

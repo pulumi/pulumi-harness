@@ -65,11 +65,11 @@ import (
 //			}
 //			json1 := string(tmpJSON1)
 //			_, err = platform.NewSlo(ctx, "example", &platform.SloArgs{
-//				OrgId:      pulumi.String("default"),
-//				ProjectId:  pulumi.String("default_project"),
-//				Identifier: pulumi.String("TerraformSLO"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
 //				Request: &platform.SloRequestArgs{
-//					Name:        pulumi.String("TSLO"),
+//					Name:        pulumi.String("name"),
 //					Description: pulumi.String("description"),
 //					Tags: pulumi.StringArray{
 //						pulumi.String("foo:bar"),
@@ -103,12 +103,9 @@ import (
 //
 // ```
 //
-// Note the above example is for "Threshold" SLI type, if you want to use
-// "Ratio", the SLI should be changed appropriately.
-// Here's an example of SLO target and Spec for "Ratio" based SLI and
-// "Rolling" SLO target.
-//
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // # Import account level SLO
 //

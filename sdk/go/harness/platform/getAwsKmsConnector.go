@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Datasource for looking up an AWS KMS connector.
+//
 // ## Example Usage
 //
 // ```go
@@ -60,6 +62,7 @@ type LookupAwsKmsConnectorArgs struct {
 
 // A collection of values returned by getAwsKmsConnector.
 type LookupAwsKmsConnectorResult struct {
+	ArnPlaintext string `pulumi:"arnPlaintext"`
 	// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ArnRef string `pulumi:"arnRef"`
 	// Credentials to connect to AWS.
@@ -126,6 +129,10 @@ func (o LookupAwsKmsConnectorResultOutput) ToLookupAwsKmsConnectorResultOutput()
 
 func (o LookupAwsKmsConnectorResultOutput) ToLookupAwsKmsConnectorResultOutputWithContext(ctx context.Context) LookupAwsKmsConnectorResultOutput {
 	return o
+}
+
+func (o LookupAwsKmsConnectorResultOutput) ArnPlaintext() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAwsKmsConnectorResult) string { return v.ArnPlaintext }).(pulumi.StringOutput)
 }
 
 // A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.

@@ -15,37 +15,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectListResult {
+    /**
+     * @return Description of the resource.
+     * 
+     */
     private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    private @Nullable String identifier;
     /**
-     * @return Optional pagination parameter indicating the maximum number of entities to retrieve per page.
+     * @return Unique identifier of the resource.
      * 
      */
+    private @Nullable String identifier;
     private @Nullable Integer limit;
+    /**
+     * @return Name of the resource.
+     * 
+     */
     private @Nullable String name;
     /**
      * @return Unique identifier of the organization.
      * 
      */
     private String orgId;
-    /**
-     * @return Optional pagination parameter indicating the page number when retrieving entities.
-     * 
-     */
     private @Nullable Integer page;
+    private List<GetProjectListProject> projects;
     /**
-     * @return Containing list of all projects with details identifier and name.
+     * @return Tags to associate with the resource.
      * 
      */
-    private List<GetProjectListProject> projects;
     private List<String> tags;
 
     private GetProjectListResult() {}
+    /**
+     * @return Description of the resource.
+     * 
+     */
     public String description() {
         return this.description;
     }
@@ -56,16 +64,20 @@ public final class GetProjectListResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Unique identifier of the resource.
+     * 
+     */
     public Optional<String> identifier() {
         return Optional.ofNullable(this.identifier);
     }
-    /**
-     * @return Optional pagination parameter indicating the maximum number of entities to retrieve per page.
-     * 
-     */
     public Optional<Integer> limit() {
         return Optional.ofNullable(this.limit);
     }
+    /**
+     * @return Name of the resource.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -76,20 +88,16 @@ public final class GetProjectListResult {
     public String orgId() {
         return this.orgId;
     }
-    /**
-     * @return Optional pagination parameter indicating the page number when retrieving entities.
-     * 
-     */
     public Optional<Integer> page() {
         return Optional.ofNullable(this.page);
     }
-    /**
-     * @return Containing list of all projects with details identifier and name.
-     * 
-     */
     public List<GetProjectListProject> projects() {
         return this.projects;
     }
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }

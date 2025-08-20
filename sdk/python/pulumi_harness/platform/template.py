@@ -38,11 +38,11 @@ class TemplateArgs:
                  template_yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Template resource.
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
-        :param pulumi.Input[_builtins.str] version: Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+        :param pulumi.Input[_builtins.str] version: Version Label for Template.
         :param pulumi.Input[_builtins.str] comments: Specify comment with respect to changes.
         :param pulumi.Input[_builtins.str] description: Description of the entity. Description field is deprecated
-        :param pulumi.Input[_builtins.bool] force_delete: When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         :param pulumi.Input['TemplateGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input['TemplateGitImportDetailsArgs'] git_import_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
@@ -90,7 +90,7 @@ class TemplateArgs:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[_builtins.str]:
         """
-        Unique identifier of the resource
+        Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
         """
         return pulumi.get(self, "identifier")
 
@@ -102,7 +102,7 @@ class TemplateArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[_builtins.str]:
         """
-        Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+        Version Label for Template.
         """
         return pulumi.get(self, "version")
 
@@ -139,7 +139,7 @@ class TemplateArgs:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+        Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         """
         return pulumi.get(self, "force_delete")
 
@@ -290,10 +290,10 @@ class _TemplateState:
         Input properties used for looking up and filtering Template resources.
         :param pulumi.Input[_builtins.str] comments: Specify comment with respect to changes.
         :param pulumi.Input[_builtins.str] description: Description of the entity. Description field is deprecated
-        :param pulumi.Input[_builtins.bool] force_delete: When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         :param pulumi.Input['TemplateGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input['TemplateGitImportDetailsArgs'] git_import_details: Contains Git Information for importing entities from Git
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.bool] is_stable: True if given version for template to be set as stable.
         :param pulumi.Input[_builtins.str] name: Name of the Variable
@@ -302,7 +302,7 @@ class _TemplateState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input['TemplateTemplateImportRequestArgs'] template_import_request: Contains parameters for importing template.
         :param pulumi.Input[_builtins.str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-        :param pulumi.Input[_builtins.str] version: Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+        :param pulumi.Input[_builtins.str] version: Version Label for Template.
         """
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
@@ -367,7 +367,7 @@ class _TemplateState:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+        Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         """
         return pulumi.get(self, "force_delete")
 
@@ -403,7 +403,7 @@ class _TemplateState:
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Unique identifier of the resource
+        Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
         """
         return pulumi.get(self, "identifier")
 
@@ -511,7 +511,7 @@ class _TemplateState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+        Version Label for Template.
         """
         return pulumi.get(self, "version")
 
@@ -547,6 +547,8 @@ class Template(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level template
 
         ```sh
@@ -569,10 +571,10 @@ class Template(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comments: Specify comment with respect to changes.
         :param pulumi.Input[_builtins.str] description: Description of the entity. Description field is deprecated
-        :param pulumi.Input[_builtins.bool] force_delete: When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         :param pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']] git_import_details: Contains Git Information for importing entities from Git
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.bool] is_stable: True if given version for template to be set as stable.
         :param pulumi.Input[_builtins.str] name: Name of the Variable
@@ -581,7 +583,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']] template_import_request: Contains parameters for importing template.
         :param pulumi.Input[_builtins.str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-        :param pulumi.Input[_builtins.str] version: Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+        :param pulumi.Input[_builtins.str] version: Version Label for Template.
         """
         ...
     @overload
@@ -593,6 +595,8 @@ class Template(pulumi.CustomResource):
         Resource for creating a Template. Description field is deprecated
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level template
 
@@ -704,10 +708,10 @@ class Template(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comments: Specify comment with respect to changes.
         :param pulumi.Input[_builtins.str] description: Description of the entity. Description field is deprecated
-        :param pulumi.Input[_builtins.bool] force_delete: When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         :param pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']] git_import_details: Contains Git Information for importing entities from Git
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.bool] is_stable: True if given version for template to be set as stable.
         :param pulumi.Input[_builtins.str] name: Name of the Variable
@@ -716,7 +720,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']] template_import_request: Contains parameters for importing template.
         :param pulumi.Input[_builtins.str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-        :param pulumi.Input[_builtins.str] version: Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+        :param pulumi.Input[_builtins.str] version: Version Label for Template.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -760,7 +764,7 @@ class Template(pulumi.CustomResource):
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> pulumi.Output[_builtins.bool]:
         """
-        When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+        Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         """
         return pulumi.get(self, "force_delete")
 
@@ -784,7 +788,7 @@ class Template(pulumi.CustomResource):
     @pulumi.getter
     def identifier(self) -> pulumi.Output[_builtins.str]:
         """
-        Unique identifier of the resource
+        Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
         """
         return pulumi.get(self, "identifier")
 
@@ -856,7 +860,7 @@ class Template(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.str]:
         """
-        Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+        Version Label for Template.
         """
         return pulumi.get(self, "version")
 

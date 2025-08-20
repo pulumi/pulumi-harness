@@ -103,7 +103,7 @@ class GetWorkspaceResult:
     @pulumi.getter
     def connectors(self) -> Optional[Sequence['outputs.GetWorkspaceConnectorResult']]:
         """
-        Provider connector configured on the workspace
+        Provider connectors configured on the Workspace. Only one connector of a type is supported
         """
         return pulumi.get(self, "connectors")
 
@@ -254,6 +254,9 @@ class GetWorkspaceResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Tags to associate with the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -335,7 +338,7 @@ def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs
     ```
 
 
-    :param Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict']] connectors: Provider connector configured on the workspace
+    :param Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict']] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
     :param _builtins.str description: Description of the Workspace
     :param Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the workspace
     :param _builtins.str identifier: Identifier of the Workspace
@@ -344,6 +347,7 @@ def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs
     :param _builtins.str repository_branch: Repository Branch in which the code should be accessed
     :param _builtins.str repository_commit: Repository Tag in which the code should be accessed
     :param _builtins.str repository_sha: Repository Commit SHA in which the code should be accessed
+    :param Sequence[_builtins.str] tags: Tags to associate with the resource.
     :param Sequence[_builtins.str] variable_sets: Variable sets to use.
     """
     __args__ = dict()
@@ -416,7 +420,7 @@ def get_workspace_output(connectors: Optional[pulumi.Input[Optional[Sequence[Uni
     ```
 
 
-    :param Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict']] connectors: Provider connector configured on the workspace
+    :param Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict']] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
     :param _builtins.str description: Description of the Workspace
     :param Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the workspace
     :param _builtins.str identifier: Identifier of the Workspace
@@ -425,6 +429,7 @@ def get_workspace_output(connectors: Optional[pulumi.Input[Optional[Sequence[Uni
     :param _builtins.str repository_branch: Repository Branch in which the code should be accessed
     :param _builtins.str repository_commit: Repository Tag in which the code should be accessed
     :param _builtins.str repository_sha: Repository Commit SHA in which the code should be accessed
+    :param Sequence[_builtins.str] tags: Tags to associate with the resource.
     :param Sequence[_builtins.str] variable_sets: Variable sets to use.
     """
     __args__ = dict()

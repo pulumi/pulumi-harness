@@ -91,7 +91,7 @@ class VaultConnectorArgs:
         :param pulumi.Input[_builtins.bool] use_k8s_auth: Boolean value to indicate if K8s Auth is used for authentication.
         :param pulumi.Input[_builtins.bool] use_vault_agent: Boolean value to indicate if Vault Agent is used for authentication.
         :param pulumi.Input[_builtins.str] vault_aws_iam_role: The Vault role defined to bind to aws iam account/role being accessed.
-        :param pulumi.Input[_builtins.str] vault_jwt_auth_path: Custom path at with JWT auth in enabled for Vault.
+        :param pulumi.Input[_builtins.str] vault_jwt_auth_path: Custom path at with JWT auth in enabled for Vault
         :param pulumi.Input[_builtins.str] vault_jwt_auth_role: The Vault role defined with JWT auth type for accessing Vault as per policies binded.
         :param pulumi.Input[_builtins.str] vault_k8s_auth_role: The role where K8s Auth will happen.
         :param pulumi.Input[_builtins.str] xvault_aws_iam_server_id: The AWS IAM Header Server ID that has been configured for this AWS IAM instance.
@@ -568,7 +568,7 @@ class VaultConnectorArgs:
     @pulumi.getter(name="vaultJwtAuthPath")
     def vault_jwt_auth_path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Custom path at with JWT auth in enabled for Vault.
+        Custom path at with JWT auth in enabled for Vault
         """
         return pulumi.get(self, "vault_jwt_auth_path")
 
@@ -687,7 +687,7 @@ class _VaultConnectorState:
         :param pulumi.Input[_builtins.bool] use_k8s_auth: Boolean value to indicate if K8s Auth is used for authentication.
         :param pulumi.Input[_builtins.bool] use_vault_agent: Boolean value to indicate if Vault Agent is used for authentication.
         :param pulumi.Input[_builtins.str] vault_aws_iam_role: The Vault role defined to bind to aws iam account/role being accessed.
-        :param pulumi.Input[_builtins.str] vault_jwt_auth_path: Custom path at with JWT auth in enabled for Vault.
+        :param pulumi.Input[_builtins.str] vault_jwt_auth_path: Custom path at with JWT auth in enabled for Vault
         :param pulumi.Input[_builtins.str] vault_jwt_auth_role: The Vault role defined with JWT auth type for accessing Vault as per policies binded.
         :param pulumi.Input[_builtins.str] vault_k8s_auth_role: The role where K8s Auth will happen.
         :param pulumi.Input[_builtins.str] vault_url: URL of the HashiCorp Vault.
@@ -1156,7 +1156,7 @@ class _VaultConnectorState:
     @pulumi.getter(name="vaultJwtAuthPath")
     def vault_jwt_auth_path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Custom path at with JWT auth in enabled for Vault.
+        Custom path at with JWT auth in enabled for Vault
         """
         return pulumi.get(self, "vault_jwt_auth_path")
 
@@ -1258,6 +1258,8 @@ class VaultConnector(pulumi.CustomResource):
                  xvault_aws_iam_server_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Resource for creating a HashiCorp Vault Secret Manager connector.
+
         ## Example Usage
 
         ```python
@@ -1400,6 +1402,8 @@ class VaultConnector(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level vault connector
 
@@ -1453,7 +1457,7 @@ class VaultConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] use_k8s_auth: Boolean value to indicate if K8s Auth is used for authentication.
         :param pulumi.Input[_builtins.bool] use_vault_agent: Boolean value to indicate if Vault Agent is used for authentication.
         :param pulumi.Input[_builtins.str] vault_aws_iam_role: The Vault role defined to bind to aws iam account/role being accessed.
-        :param pulumi.Input[_builtins.str] vault_jwt_auth_path: Custom path at with JWT auth in enabled for Vault.
+        :param pulumi.Input[_builtins.str] vault_jwt_auth_path: Custom path at with JWT auth in enabled for Vault
         :param pulumi.Input[_builtins.str] vault_jwt_auth_role: The Vault role defined with JWT auth type for accessing Vault as per policies binded.
         :param pulumi.Input[_builtins.str] vault_k8s_auth_role: The role where K8s Auth will happen.
         :param pulumi.Input[_builtins.str] vault_url: URL of the HashiCorp Vault.
@@ -1466,6 +1470,8 @@ class VaultConnector(pulumi.CustomResource):
                  args: VaultConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource for creating a HashiCorp Vault Secret Manager connector.
+
         ## Example Usage
 
         ```python
@@ -1608,6 +1614,8 @@ class VaultConnector(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level vault connector
 
@@ -1817,7 +1825,7 @@ class VaultConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] use_k8s_auth: Boolean value to indicate if K8s Auth is used for authentication.
         :param pulumi.Input[_builtins.bool] use_vault_agent: Boolean value to indicate if Vault Agent is used for authentication.
         :param pulumi.Input[_builtins.str] vault_aws_iam_role: The Vault role defined to bind to aws iam account/role being accessed.
-        :param pulumi.Input[_builtins.str] vault_jwt_auth_path: Custom path at with JWT auth in enabled for Vault.
+        :param pulumi.Input[_builtins.str] vault_jwt_auth_path: Custom path at with JWT auth in enabled for Vault
         :param pulumi.Input[_builtins.str] vault_jwt_auth_role: The Vault role defined with JWT auth type for accessing Vault as per policies binded.
         :param pulumi.Input[_builtins.str] vault_k8s_auth_role: The role where K8s Auth will happen.
         :param pulumi.Input[_builtins.str] vault_url: URL of the HashiCorp Vault.
@@ -2126,7 +2134,7 @@ class VaultConnector(pulumi.CustomResource):
     @pulumi.getter(name="vaultJwtAuthPath")
     def vault_jwt_auth_path(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Custom path at with JWT auth in enabled for Vault.
+        Custom path at with JWT auth in enabled for Vault
         """
         return pulumi.get(self, "vault_jwt_auth_path")
 

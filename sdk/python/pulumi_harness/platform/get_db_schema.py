@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetDbSchemaResult',
@@ -65,7 +64,10 @@ class GetDbSchemaResult:
 
     @_builtins.property
     @pulumi.getter(name="changelogScript")
-    def changelog_script(self) -> Optional['outputs.GetDbSchemaChangelogScriptResult']:
+    def changelog_script(self) -> 'outputs.GetDbSchemaChangelogScriptResult':
+        """
+        Configuration to clone changeSets using script
+        """
         return pulumi.get(self, "changelog_script")
 
     @_builtins.property
@@ -118,7 +120,7 @@ class GetDbSchemaResult:
 
     @_builtins.property
     @pulumi.getter(name="schemaSources")
-    def schema_sources(self) -> Optional[Sequence['outputs.GetDbSchemaSchemaSourceResult']]:
+    def schema_sources(self) -> Sequence['outputs.GetDbSchemaSchemaSourceResult']:
         """
         Provides a connector and path at which to find the database schema representation
         """
@@ -143,6 +145,9 @@ class GetDbSchemaResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
+        """
+        Type of the database schema. Valid values are: Repository, Script
+        """
         return pulumi.get(self, "type")
 
 
@@ -165,12 +170,10 @@ class AwaitableGetDbSchemaResult(GetDbSchemaResult):
             type=self.type)
 
 
-def get_db_schema(changelog_script: Optional[Union['GetDbSchemaChangelogScriptArgs', 'GetDbSchemaChangelogScriptArgsDict']] = None,
-                  identifier: Optional[_builtins.str] = None,
+def get_db_schema(identifier: Optional[_builtins.str] = None,
                   name: Optional[_builtins.str] = None,
                   org_id: Optional[_builtins.str] = None,
                   project_id: Optional[_builtins.str] = None,
-                  schema_sources: Optional[Sequence[Union['GetDbSchemaSchemaSourceArgs', 'GetDbSchemaSchemaSourceArgsDict']]] = None,
                   type: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbSchemaResult:
     """
@@ -192,15 +195,13 @@ def get_db_schema(changelog_script: Optional[Union['GetDbSchemaChangelogScriptAr
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
-    :param Sequence[Union['GetDbSchemaSchemaSourceArgs', 'GetDbSchemaSchemaSourceArgsDict']] schema_sources: Provides a connector and path at which to find the database schema representation
+    :param _builtins.str type: Type of the database schema. Valid values are: Repository, Script
     """
     __args__ = dict()
-    __args__['changelogScript'] = changelog_script
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    __args__['schemaSources'] = schema_sources
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getDbSchema:getDbSchema', __args__, opts=opts, typ=GetDbSchemaResult).value
@@ -217,12 +218,10 @@ def get_db_schema(changelog_script: Optional[Union['GetDbSchemaChangelogScriptAr
         service=pulumi.get(__ret__, 'service'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
-def get_db_schema_output(changelog_script: Optional[pulumi.Input[Optional[Union['GetDbSchemaChangelogScriptArgs', 'GetDbSchemaChangelogScriptArgsDict']]]] = None,
-                         identifier: Optional[pulumi.Input[_builtins.str]] = None,
+def get_db_schema_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
                          name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          org_id: Optional[pulumi.Input[_builtins.str]] = None,
                          project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         schema_sources: Optional[pulumi.Input[Optional[Sequence[Union['GetDbSchemaSchemaSourceArgs', 'GetDbSchemaSchemaSourceArgsDict']]]]] = None,
                          type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbSchemaResult]:
     """
@@ -244,15 +243,13 @@ def get_db_schema_output(changelog_script: Optional[pulumi.Input[Optional[Union[
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
-    :param Sequence[Union['GetDbSchemaSchemaSourceArgs', 'GetDbSchemaSchemaSourceArgsDict']] schema_sources: Provides a connector and path at which to find the database schema representation
+    :param _builtins.str type: Type of the database schema. Valid values are: Repository, Script
     """
     __args__ = dict()
-    __args__['changelogScript'] = changelog_script
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    __args__['schemaSources'] = schema_sources
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getDbSchema:getDbSchema', __args__, opts=opts, typ=GetDbSchemaResult)

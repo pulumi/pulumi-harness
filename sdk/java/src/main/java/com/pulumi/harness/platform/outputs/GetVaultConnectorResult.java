@@ -181,7 +181,7 @@ public final class GetVaultConnectorResult {
      */
     private String vaultAwsIamRole;
     /**
-     * @return Custom path at with JWT auth in enabled for Vault.
+     * @return Custom path at with JWT auth in enabled for Vault
      * 
      */
     private String vaultJwtAuthPath;
@@ -439,7 +439,7 @@ public final class GetVaultConnectorResult {
         return this.vaultAwsIamRole;
     }
     /**
-     * @return Custom path at with JWT auth in enabled for Vault.
+     * @return Custom path at with JWT auth in enabled for Vault
      * 
      */
     public String vaultJwtAuthPath() {

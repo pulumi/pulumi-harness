@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupDashboards(ctx, &platform.LookupDashboardsArgs{
-//				Id: "48525",
+//				Id: "id",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,9 +51,10 @@ func LookupDashboards(ctx *pulumi.Context, args *LookupDashboardsArgs, opts ...p
 // A collection of arguments for invoking getDashboards.
 type LookupDashboardsArgs struct {
 	// Identifier of the dashboard.
-	Id         string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// Name of the Dashboard.
+	// Name of the resource.
 	Name *string `pulumi:"name"`
 }
 
@@ -65,23 +66,25 @@ type LookupDashboardsResult struct {
 	DashboardId string `pulumi:"dashboardId"`
 	// Data Sources within the Dashboard.
 	DataSources []string `pulumi:"dataSources"`
-	// Description of the Dashboard.
+	// Description of the resource.
 	Description string `pulumi:"description"`
 	// Unique identifier of the Folder.
 	FolderId string `pulumi:"folderId"`
 	// Identifier of the dashboard.
-	Id         string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Data Models within the Dashboard.
 	Models []string `pulumi:"models"`
-	// Name of the Dashboard.
+	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Resource identifier of the dashboard.
-	ResourceIdentifier string   `pulumi:"resourceIdentifier"`
-	Tags               []string `pulumi:"tags"`
+	ResourceIdentifier string `pulumi:"resourceIdentifier"`
+	// Tags to associate with the resource.
+	Tags []string `pulumi:"tags"`
 	// Title of the Dashboard.
 	Title string `pulumi:"title"`
-	// Type of the dashboard.
+	// Resource identifier of the dashboard.
 	Type string `pulumi:"type"`
 	// View count of the dashboard.
 	ViewCount int `pulumi:"viewCount"`
@@ -99,9 +102,10 @@ func LookupDashboardsOutput(ctx *pulumi.Context, args LookupDashboardsOutputArgs
 // A collection of arguments for invoking getDashboards.
 type LookupDashboardsOutputArgs struct {
 	// Identifier of the dashboard.
-	Id         pulumi.StringInput    `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
-	// Name of the Dashboard.
+	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -139,7 +143,7 @@ func (o LookupDashboardsResultOutput) DataSources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDashboardsResult) []string { return v.DataSources }).(pulumi.StringArrayOutput)
 }
 
-// Description of the Dashboard.
+// Description of the resource.
 func (o LookupDashboardsResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardsResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -154,6 +158,7 @@ func (o LookupDashboardsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the resource.
 func (o LookupDashboardsResultOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDashboardsResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
 }
@@ -163,7 +168,7 @@ func (o LookupDashboardsResultOutput) Models() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDashboardsResult) []string { return v.Models }).(pulumi.StringArrayOutput)
 }
 
-// Name of the Dashboard.
+// Name of the resource.
 func (o LookupDashboardsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDashboardsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -173,6 +178,7 @@ func (o LookupDashboardsResultOutput) ResourceIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardsResult) string { return v.ResourceIdentifier }).(pulumi.StringOutput)
 }
 
+// Tags to associate with the resource.
 func (o LookupDashboardsResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDashboardsResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -182,7 +188,7 @@ func (o LookupDashboardsResultOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardsResult) string { return v.Title }).(pulumi.StringOutput)
 }
 
-// Type of the dashboard.
+// Resource identifier of the dashboard.
 func (o LookupDashboardsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardsResult) string { return v.Type }).(pulumi.StringOutput)
 }

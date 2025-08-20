@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Data source for Harness Provider.
 func LookupProvider(ctx *pulumi.Context, args *LookupProviderArgs, opts ...pulumi.InvokeOption) (*LookupProviderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProviderResult
@@ -23,13 +24,15 @@ func LookupProvider(ctx *pulumi.Context, args *LookupProviderArgs, opts ...pulum
 
 // A collection of arguments for invoking getProvider.
 type LookupProviderArgs struct {
+	// The identifier of the provider entity.
 	Identifier string `pulumi:"identifier"`
 }
 
 // A collection of values returned by getProvider.
 type LookupProviderResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The identifier of the provider entity.
 	Identifier string `pulumi:"identifier"`
 }
 
@@ -44,6 +47,7 @@ func LookupProviderOutput(ctx *pulumi.Context, args LookupProviderOutputArgs, op
 
 // A collection of arguments for invoking getProvider.
 type LookupProviderOutputArgs struct {
+	// The identifier of the provider entity.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 }
 
@@ -71,6 +75,7 @@ func (o LookupProviderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identifier of the provider entity.
 func (o LookupProviderResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderResult) string { return v.Identifier }).(pulumi.StringOutput)
 }

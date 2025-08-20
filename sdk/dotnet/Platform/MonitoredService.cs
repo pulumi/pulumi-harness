@@ -56,9 +56,9 @@ namespace Pulumi.Harness.Platform
     ///                         {
     ///                             new Dictionary&lt;string, object?&gt;
     ///                             {
-    ///                                 ["name"] = "error_4xx",
-    ///                                 ["identifier"] = "error_4xx_id",
-    ///                                 ["query"] = "Bad Request",
+    ///                                 ["name"] = "name",
+    ///                                 ["identifier"] = "infraquery",
+    ///                                 ["query"] = "query",
     ///                                 ["index"] = "index",
     ///                                 ["groupName"] = "Logs_Group",
     ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
@@ -72,9 +72,9 @@ namespace Pulumi.Harness.Platform
     ///                             },
     ///                             new Dictionary&lt;string, object?&gt;
     ///                             {
-    ///                                 ["name"] = "error_5xx",
-    ///                                 ["identifier"] = "error_5xx_id",
-    ///                                 ["query"] = "Internal Server Error",
+    ///                                 ["name"] = "name2",
+    ///                                 ["identifier"] = "errorquery",
+    ///                                 ["query"] = "query2",
     ///                                 ["index"] = "index2",
     ///                                 ["groupName"] = "Logs_Group",
     ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
@@ -1127,6 +1127,8 @@ namespace Pulumi.Harness.Platform
     /// ```
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level monitored_service
     /// 

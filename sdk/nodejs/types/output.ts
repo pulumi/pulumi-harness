@@ -1450,6 +1450,646 @@ export namespace autostopping {
 
 }
 
+export namespace chaos {
+    export interface GetImageRegistryCustomImage {
+        ddcr: string;
+        ddcrFault: string;
+        ddcrLib: string;
+        logWatcher: string;
+    }
+
+    export interface GetInfrastructureV2ImageRegistry {
+        /**
+         * Timestamp when the registry was created.
+         */
+        createdAt: string;
+        /**
+         * Custom image configurations. Required when use*custom*images is true.
+         */
+        customImages: outputs.chaos.GetInfrastructureV2ImageRegistryCustomImage[];
+        /**
+         * Scoped identifiers for the registry.
+         */
+        identifiers: outputs.chaos.GetInfrastructureV2ImageRegistryIdentifier[];
+        /**
+         * ID of the infrastructure.
+         */
+        infraId: string;
+        /**
+         * Whether this is the default registry.
+         */
+        isDefault: boolean;
+        /**
+         * Whether override is allowed for this registry.
+         */
+        isOverrideAllowed: boolean;
+        /**
+         * Whether the registry is private.
+         */
+        isPrivate: boolean;
+        /**
+         * The account name for the container registry.
+         */
+        registryAccount: string;
+        /**
+         * The container image registry server URL (e.g., docker.io, gcr.io).
+         */
+        registryServer: string;
+        /**
+         * Name of the Kubernetes secret containing registry credentials.
+         */
+        secretName?: string;
+        /**
+         * Timestamp when the registry was last updated.
+         */
+        updatedAt: string;
+        /**
+         * Whether to use custom images instead of default ones.
+         */
+        useCustomImages: boolean;
+    }
+
+    export interface GetInfrastructureV2ImageRegistryCustomImage {
+        /**
+         * Custom image for ddcr.
+         */
+        ddcr: string;
+        /**
+         * Custom image for ddcr-fault.
+         */
+        ddcrFault: string;
+        /**
+         * Custom image for ddcr-lib.
+         */
+        ddcrLib: string;
+        /**
+         * Custom image for log-watcher.
+         */
+        logWatcher: string;
+    }
+
+    export interface GetInfrastructureV2ImageRegistryIdentifier {
+        /**
+         * Harness account identifier.
+         */
+        accountIdentifier: string;
+        /**
+         * Harness organization identifier.
+         */
+        orgIdentifier: string;
+        /**
+         * Harness project identifier.
+         */
+        projectIdentifier: string;
+    }
+
+    export interface GetInfrastructureV2Mtls {
+        /**
+         * Path to the certificate file for mTLS
+         */
+        certPath?: string;
+        /**
+         * Path to the private key file for mTLS
+         */
+        keyPath?: string;
+        /**
+         * Name of the Kubernetes secret containing mTLS certificates
+         */
+        secretName?: string;
+        /**
+         * URL for the mTLS endpoint
+         */
+        url?: string;
+    }
+
+    export interface GetInfrastructureV2Proxy {
+        /**
+         * HTTP proxy URL.
+         */
+        httpProxy?: string;
+        /**
+         * HTTPS proxy URL.
+         */
+        httpsProxy?: string;
+        /**
+         * List of hosts that should not use proxy.
+         */
+        noProxy?: string;
+        /**
+         * Proxy URL.
+         */
+        url: string;
+    }
+
+    export interface GetInfrastructureV2Toleration {
+        /**
+         * Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+         */
+        effect: string;
+        /**
+         * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists.
+         */
+        key: string;
+        /**
+         * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal.
+         */
+        operator: string;
+        /**
+         * TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+         */
+        tolerationSeconds?: number;
+        /**
+         * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+         */
+        value?: string;
+    }
+
+    export interface GetInfrastructureV2Volume {
+        /**
+         * Name of the volume. Must be a DNS_LABEL and unique within the pod.
+         */
+        name: string;
+        /**
+         * Size limit of the volume. Example: '10Gi', '100Mi'
+         */
+        sizeLimit?: string;
+    }
+
+    export interface GetInfrastructureV2VolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'.
+         */
+        mountPath: string;
+        /**
+         * Determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used.
+         */
+        mountPropagation?: string;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: string;
+        /**
+         * Mounted read-only if true, read-write otherwise.
+         */
+        readOnly?: boolean;
+        /**
+         * Path within the volume from which the container's volume should be mounted. Mutually exclusive with sub*path*expr.
+         */
+        subPath?: string;
+        /**
+         * Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
+         */
+        subPathExpr?: string;
+    }
+
+    export interface GetSecurityGovernanceConditionFaultSpec {
+        /**
+         * List of fault specifications
+         */
+        faults: outputs.chaos.GetSecurityGovernanceConditionFaultSpecFault[];
+        /**
+         * Operator for the fault specification
+         */
+        operator: string;
+    }
+
+    export interface GetSecurityGovernanceConditionFaultSpecFault {
+        /**
+         * Type of the fault
+         */
+        faultType: string;
+        /**
+         * Name of the fault
+         */
+        name: string;
+    }
+
+    export interface GetSecurityGovernanceConditionK8sSpec {
+        /**
+         * Infrastructure specification
+         */
+        infraSpecs: outputs.chaos.GetSecurityGovernanceConditionK8sSpecInfraSpec[];
+    }
+
+    export interface GetSecurityGovernanceConditionK8sSpecInfraSpec {
+        /**
+         * List of infrastructure IDs
+         */
+        infraIds: string[];
+        /**
+         * Operator for comparing infrastructure IDs
+         */
+        operator: string;
+    }
+
+    export interface GetSecurityGovernanceConditionMachineSpec {
+        /**
+         * Infrastructure specification
+         */
+        infraSpecs: outputs.chaos.GetSecurityGovernanceConditionMachineSpecInfraSpec[];
+    }
+
+    export interface GetSecurityGovernanceConditionMachineSpecInfraSpec {
+        /**
+         * List of infrastructure IDs
+         */
+        infraIds: string[];
+        /**
+         * Operator for comparing infrastructure IDs
+         */
+        operator: string;
+    }
+
+    export interface GetSecurityGovernanceRuleTimeWindow {
+        /**
+         * Duration of the time window (e.g., '30m', '2h').
+         */
+        duration: string;
+        /**
+         * End time of the time window in milliseconds since epoch.
+         */
+        endTime: number;
+        /**
+         * Recurrence configuration for the time window.
+         */
+        recurrences: outputs.chaos.GetSecurityGovernanceRuleTimeWindowRecurrence[];
+        /**
+         * Start time of the time window in milliseconds since epoch.
+         */
+        startTime: number;
+        /**
+         * Time zone for the time window.
+         */
+        timeZone: string;
+    }
+
+    export interface GetSecurityGovernanceRuleTimeWindowRecurrence {
+        /**
+         * Type of recurrence (e.g., 'Daily', 'Weekly', 'Monthly').
+         */
+        type: string;
+        /**
+         * Unix timestamp in milliseconds until when the recurrence should continue.
+         */
+        until: number;
+        /**
+         * Recurrence value (e.g., interval for daily recurrence).
+         */
+        value: number;
+    }
+
+    export interface ImageRegistryCustomImage {
+        ddcr: string;
+        ddcrFault: string;
+        ddcrLib: string;
+        logWatcher: string;
+    }
+
+    export interface InfrastructureV2Env {
+        /**
+         * Variable name from a ConfigMap or Secret. Required when valueFrom is configMapKeyRef or secretKeyRef.
+         */
+        key?: string;
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER.
+         */
+        name: string;
+        /**
+         * Variable references $(VAR*NAME) are expanded using the container's environment. If the variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+         */
+        value?: string;
+        /**
+         * Source for the environment variable's value. Cannot be used if value is not empty.
+         */
+        valueFrom?: string;
+    }
+
+    export interface InfrastructureV2Identifier {
+        /**
+         * Account identifier.
+         */
+        accountIdentifier: string;
+        /**
+         * Organization identifier.
+         */
+        orgIdentifier: string;
+        /**
+         * Project identifier.
+         */
+        projectIdentifier: string;
+    }
+
+    export interface InfrastructureV2ImageRegistry {
+        /**
+         * Timestamp when the registry was created.
+         */
+        createdAt: string;
+        /**
+         * Custom image configurations. Required when use*custom*images is true.
+         */
+        customImages: outputs.chaos.InfrastructureV2ImageRegistryCustomImage[];
+        /**
+         * Scoped identifiers for the registry.
+         */
+        identifiers: outputs.chaos.InfrastructureV2ImageRegistryIdentifier[];
+        /**
+         * ID of the infrastructure.
+         */
+        infraId: string;
+        /**
+         * Whether this is the default registry.
+         */
+        isDefault: boolean;
+        /**
+         * Whether override is allowed for this registry.
+         */
+        isOverrideAllowed: boolean;
+        /**
+         * Whether the registry is private.
+         */
+        isPrivate: boolean;
+        /**
+         * The account name for the container registry.
+         */
+        registryAccount: string;
+        /**
+         * The container image registry server URL (e.g., docker.io, gcr.io).
+         */
+        registryServer: string;
+        /**
+         * Name of the Kubernetes secret containing registry credentials.
+         */
+        secretName?: string;
+        /**
+         * Timestamp when the registry was last updated.
+         */
+        updatedAt: string;
+        /**
+         * Whether to use custom images instead of default ones.
+         */
+        useCustomImages: boolean;
+    }
+
+    export interface InfrastructureV2ImageRegistryCustomImage {
+        /**
+         * Custom image for ddcr.
+         */
+        ddcr: string;
+        /**
+         * Custom image for ddcr-fault.
+         */
+        ddcrFault: string;
+        /**
+         * Custom image for ddcr-lib.
+         */
+        ddcrLib: string;
+        /**
+         * Custom image for log-watcher.
+         */
+        logWatcher: string;
+    }
+
+    export interface InfrastructureV2ImageRegistryIdentifier {
+        /**
+         * Harness account identifier.
+         */
+        accountIdentifier: string;
+        /**
+         * Harness organization identifier.
+         */
+        orgIdentifier: string;
+        /**
+         * Harness project identifier.
+         */
+        projectIdentifier: string;
+    }
+
+    export interface InfrastructureV2Mtls {
+        /**
+         * Path to the certificate file for mTLS
+         */
+        certPath?: string;
+        /**
+         * Path to the private key file for mTLS
+         */
+        keyPath?: string;
+        /**
+         * Name of the Kubernetes secret containing mTLS certificates
+         */
+        secretName?: string;
+        /**
+         * URL for the mTLS endpoint
+         */
+        url?: string;
+    }
+
+    export interface InfrastructureV2Proxy {
+        /**
+         * HTTP proxy URL.
+         */
+        httpProxy?: string;
+        /**
+         * HTTPS proxy URL.
+         */
+        httpsProxy?: string;
+        /**
+         * List of hosts that should not use proxy.
+         */
+        noProxy?: string;
+        /**
+         * Proxy URL.
+         */
+        url: string;
+    }
+
+    export interface InfrastructureV2Toleration {
+        /**
+         * Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+         */
+        effect: string;
+        /**
+         * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists.
+         */
+        key: string;
+        /**
+         * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal.
+         */
+        operator: string;
+        /**
+         * TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+         */
+        tolerationSeconds?: number;
+        /**
+         * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+         */
+        value?: string;
+    }
+
+    export interface InfrastructureV2Volume {
+        /**
+         * Name of the volume. Must be a DNS_LABEL and unique within the pod.
+         */
+        name: string;
+        /**
+         * Size limit of the volume. Example: '10Gi', '100Mi'
+         */
+        sizeLimit?: string;
+    }
+
+    export interface InfrastructureV2VolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'.
+         */
+        mountPath: string;
+        /**
+         * Determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used.
+         */
+        mountPropagation?: string;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: string;
+        /**
+         * Mounted read-only if true, read-write otherwise.
+         */
+        readOnly?: boolean;
+        /**
+         * Path within the volume from which the container's volume should be mounted. Mutually exclusive with sub*path*expr.
+         */
+        subPath?: string;
+        /**
+         * Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
+         */
+        subPathExpr?: string;
+    }
+
+    export interface SecurityGovernanceConditionFaultSpec {
+        /**
+         * List of fault specifications
+         */
+        faults: outputs.chaos.SecurityGovernanceConditionFaultSpecFault[];
+        /**
+         * Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: string;
+    }
+
+    export interface SecurityGovernanceConditionFaultSpecFault {
+        /**
+         * Type of the fault (FAULT or FAULT_GROUP)
+         */
+        faultType: string;
+        /**
+         * Name of the fault
+         */
+        name: string;
+    }
+
+    export interface SecurityGovernanceConditionK8sSpec {
+        /**
+         * Application specification
+         */
+        applicationSpec?: outputs.chaos.SecurityGovernanceConditionK8sSpecApplicationSpec;
+        /**
+         * Chaos service account specification
+         */
+        chaosServiceAccountSpec?: outputs.chaos.SecurityGovernanceConditionK8sSpecChaosServiceAccountSpec;
+        /**
+         * Infrastructure specification
+         */
+        infraSpec?: outputs.chaos.SecurityGovernanceConditionK8sSpecInfraSpec;
+    }
+
+    export interface SecurityGovernanceConditionK8sSpecApplicationSpec {
+        /**
+         * Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: string;
+        /**
+         * List of workloads to include/exclude
+         */
+        workloads?: outputs.chaos.SecurityGovernanceConditionK8sSpecApplicationSpecWorkload[];
+    }
+
+    export interface SecurityGovernanceConditionK8sSpecApplicationSpecWorkload {
+        /**
+         * ID for the application map
+         */
+        applicationMapId?: string;
+        /**
+         * Kind of the workload (e.g., deployment, statefulset)
+         */
+        kind?: string;
+        /**
+         * Label selector for the workload
+         */
+        label?: string;
+        /**
+         * Namespace of the workload
+         */
+        namespace: string;
+        /**
+         * List of services associated with the workload
+         */
+        services?: string[];
+    }
+
+    export interface SecurityGovernanceConditionK8sSpecChaosServiceAccountSpec {
+        /**
+         * Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: string;
+        /**
+         * List of service accounts to include/exclude
+         */
+        serviceAccounts: string[];
+    }
+
+    export interface SecurityGovernanceConditionK8sSpecInfraSpec {
+        /**
+         * List of infrastructure IDs to apply the condition to
+         */
+        infraIds: string[];
+        /**
+         * Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: string;
+    }
+
+    export interface SecurityGovernanceConditionMachineSpec {
+        /**
+         * Infrastructure specification
+         */
+        infraSpec?: outputs.chaos.SecurityGovernanceConditionMachineSpecInfraSpec;
+    }
+
+    export interface SecurityGovernanceConditionMachineSpecInfraSpec {
+        /**
+         * List of infrastructure IDs to apply the condition to
+         */
+        infraIds: string[];
+        /**
+         * Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: string;
+    }
+
+    export interface SecurityGovernanceRuleTimeWindow {
+        duration: string;
+        endTime: number;
+        recurrence?: outputs.chaos.SecurityGovernanceRuleTimeWindowRecurrence;
+        startTime: number;
+        timeZone: string;
+    }
+
+    export interface SecurityGovernanceRuleTimeWindowRecurrence {
+        type: string;
+        until: number;
+        value?: number;
+    }
+
+}
+
 export namespace cloudprovider {
     export interface AwsAssumeCrossAccountRole {
         /**
@@ -1679,6 +2319,17 @@ export namespace cluster {
         memory: number;
     }
 
+    export interface GetOrchestratorConfigCommitmentIntegration {
+        /**
+         * Flag to enable Commitment Integration
+         */
+        enabled: boolean;
+        /**
+         * Master AWS account id for commitment integration
+         */
+        masterAccountId: string;
+    }
+
     export interface GetOrchestratorConfigDistribution {
         /**
          * Number of minimum ondemand replicas required for workloads
@@ -1707,6 +2358,44 @@ export namespace cluster {
          * TTL for nodes
          */
         ttl?: string;
+    }
+
+    export interface GetOrchestratorConfigReplacementSchedule {
+        /**
+         * Defines the scope of the replacement schedule
+         */
+        appliesTo: outputs.cluster.GetOrchestratorConfigReplacementScheduleAppliesTo;
+        windowDetails?: outputs.cluster.GetOrchestratorConfigReplacementScheduleWindowDetails;
+        /**
+         * Window type for replacement schedule
+         */
+        windowType: string;
+    }
+
+    export interface GetOrchestratorConfigReplacementScheduleAppliesTo {
+        consolidation: boolean;
+        harnessPodEviction: boolean;
+        reverseFallback: boolean;
+    }
+
+    export interface GetOrchestratorConfigReplacementScheduleWindowDetails {
+        allDay?: boolean;
+        /**
+         * List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+         */
+        days: string[];
+        /**
+         * End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+         */
+        endTime?: string;
+        /**
+         * Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+         */
+        startTime?: string;
+        /**
+         * Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+         */
+        timeZone: string;
     }
 
     export interface OrchestratorConfigBinpacking {
@@ -1779,6 +2468,17 @@ export namespace cluster {
         memory: number;
     }
 
+    export interface OrchestratorConfigCommitmentIntegration {
+        /**
+         * Flag to enable Commitment Integration
+         */
+        enabled: boolean;
+        /**
+         * Master AWS account id for commitment integration
+         */
+        masterAccountId: string;
+    }
+
     export interface OrchestratorConfigDistribution {
         /**
          * Number of minimum ondemand replicas required for workloads
@@ -1807,6 +2507,44 @@ export namespace cluster {
          * TTL for nodes
          */
         ttl?: string;
+    }
+
+    export interface OrchestratorConfigReplacementSchedule {
+        /**
+         * Defines the scope of the replacement schedule
+         */
+        appliesTo: outputs.cluster.OrchestratorConfigReplacementScheduleAppliesTo;
+        windowDetails?: outputs.cluster.OrchestratorConfigReplacementScheduleWindowDetails;
+        /**
+         * Window type for replacement schedule
+         */
+        windowType: string;
+    }
+
+    export interface OrchestratorConfigReplacementScheduleAppliesTo {
+        consolidation: boolean;
+        harnessPodEviction: boolean;
+        reverseFallback: boolean;
+    }
+
+    export interface OrchestratorConfigReplacementScheduleWindowDetails {
+        allDay?: boolean;
+        /**
+         * List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+         */
+        days: string[];
+        /**
+         * End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+         */
+        endTime?: string;
+        /**
+         * Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+         */
+        startTime?: string;
+        /**
+         * Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+         */
+        timeZone: string;
     }
 
 }
@@ -1918,7 +2656,7 @@ export namespace platform {
          */
         delegateSelectors: string[];
         /**
-         * Test Region to perform Connection test of AWS Connector.
+         * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: string;
     }
@@ -1929,7 +2667,7 @@ export namespace platform {
          */
         delegateSelectors: string[];
         /**
-         * Test Region to perform Connection test of AWS Connector.
+         * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: string;
     }
@@ -1948,7 +2686,7 @@ export namespace platform {
          */
         delegateSelectors?: string[];
         /**
-         * Test Region to perform Connection test of AWS Connector.
+         * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: string;
         /**
@@ -1956,7 +2694,7 @@ export namespace platform {
          */
         secretKeyRef: string;
         /**
-         * Reference to the Harness secret containing the aws session token.
+         * Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         sessionTokenRef?: string;
     }
@@ -1971,7 +2709,7 @@ export namespace platform {
          */
         iamRoleArn: string;
         /**
-         * AWS Region to perform Connection test of Connector.
+         * Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: string;
     }
@@ -2064,7 +2802,7 @@ export namespace platform {
 
     export interface AwsSecretManagerConnectorCredentialsManual {
         /**
-         * The plain text AWS access key. This is required if the access*key*ref is not provided.
+         * The plain text AWS access key.
          */
         accessKeyPlainText?: string;
         /**
@@ -2086,6 +2824,10 @@ export namespace platform {
 
     export interface AzureCloudCostConnectorBillingExportSpec {
         /**
+         * Billing type.
+         */
+        billingType: string;
+        /**
          * Name of the container.
          */
         containerName: string;
@@ -2103,6 +2845,33 @@ export namespace platform {
         storageAccountName: string;
         /**
          * Subsription Id.
+         */
+        subscriptionId: string;
+    }
+
+    export interface AzureCloudCostConnectorBillingExportSpec2 {
+        /**
+         * Billing type.
+         */
+        billingType: string;
+        /**
+         * Name of the container.
+         */
+        containerName: string;
+        /**
+         * Name of the directory.
+         */
+        directoryName: string;
+        /**
+         * Name of the report.
+         */
+        reportName: string;
+        /**
+         * Name of the storage account.
+         */
+        storageAccountName: string;
+        /**
+         * Subsription id.
          */
         subscriptionId: string;
     }
@@ -2339,13 +3108,7 @@ export namespace platform {
 
     export interface ConnectorCustomSecretManagerTemplateInputEnvironmentVariable {
         default?: boolean;
-        /**
-         * : Name of the resource.
-         */
         name: string;
-        /**
-         * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-         */
         type: string;
         value: string;
     }
@@ -2473,11 +3236,11 @@ export namespace platform {
 
     export interface ConnectorPdcHost {
         /**
-         * Host attributes with values. e.g. type, region, name, ip, etc.
+         * attributes for current host
          */
         attributes?: {[key: string]: string};
         /**
-         * Hostname e.g. 87.23.66.11:80
+         * hostname
          */
         hostname: string;
     }
@@ -2529,7 +3292,7 @@ export namespace platform {
 
     export interface DockerConnectorCredentials {
         /**
-         * The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
+         * The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef: string;
         /**
@@ -2544,7 +3307,7 @@ export namespace platform {
 
     export interface ElasticsearchConnectorApiToken {
         /**
-         * The client id used for connecting to ElasticSearch.
+         * The API Key id used for connecting to ElasticSearch.
          */
         clientId: string;
         /**
@@ -2596,11 +3359,11 @@ export namespace platform {
          */
         branch: string;
         /**
-         * message for the commit in Git Repo.
+         * Commit message used for the merge commit.
          */
         commitMessage: string;
         /**
-         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         connectorRef: string;
         /**
@@ -2608,11 +3371,11 @@ export namespace platform {
          */
         filePath: string;
         /**
-         * Flag to set if importing from Git
+         * import environment from git
          */
         importFromGit: boolean;
         /**
-         * Flag to set if force importing from Git
+         * force import environment from remote even if same file path already exist
          */
         isForceImport: boolean;
         /**
@@ -2624,11 +3387,11 @@ export namespace platform {
          */
         isNewBranch: boolean;
         /**
-         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
          */
         lastCommitId: string;
         /**
-         * Last object identifier (for Github). To be provided only when updating Environment.
+         * Last object identifier (for Github). To be provided only when updating Pipeline.
          */
         lastObjectId: string;
         /**
@@ -2636,7 +3399,7 @@ export namespace platform {
          */
         loadFromCache: string;
         /**
-         * Whether the file has to be get from fallback_branch.
+         * If the Entity is to be fetched from fallbackBranch
          */
         loadFromFallbackBranch: boolean;
         /**
@@ -2652,7 +3415,7 @@ export namespace platform {
          */
         repoName: string;
         /**
-         * store type of the entity.
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
         storeType: string;
     }
@@ -2682,11 +3445,11 @@ export namespace platform {
 
     export interface FeatureFlagEnvironmentAddTargetRule {
         /**
-         * The targets of the rule
+         * The targets that should be served this variation
          */
         targets?: string[];
         /**
-         * The identifier of the variation. Valid values are `enabled`, `disabled`
+         * The identifier of the variation
          */
         variation?: string;
     }
@@ -2704,7 +3467,7 @@ export namespace platform {
          */
         attribute: string;
         /**
-         * The ID of this resource.
+         * The rule ID. Gets auto-generated by the system
          */
         id: string;
         /**
@@ -3140,6 +3903,10 @@ export namespace platform {
 
     export interface GetAzureCloudCostConnectorBillingExportSpec {
         /**
+         * Billing type.
+         */
+        billingType: string;
+        /**
          * Name of the container.
          */
         containerName: string;
@@ -3157,6 +3924,33 @@ export namespace platform {
         storageAccountName: string;
         /**
          * Subsription Id.
+         */
+        subscriptionId: string;
+    }
+
+    export interface GetAzureCloudCostConnectorBillingExportSpec2 {
+        /**
+         * Billing type.
+         */
+        billingType: string;
+        /**
+         * Name of the container.
+         */
+        containerName: string;
+        /**
+         * Name of the directory.
+         */
+        directoryName: string;
+        /**
+         * Name of the report.
+         */
+        reportName: string;
+        /**
+         * Name of the storage account.
+         */
+        storageAccountName: string;
+        /**
+         * Subsription id.
          */
         subscriptionId: string;
     }
@@ -3438,13 +4232,7 @@ export namespace platform {
 
     export interface GetConnectorCustomSecretManagerTemplateInputEnvironmentVariable {
         default: boolean;
-        /**
-         * : Name of the resource.
-         */
         name: string;
-        /**
-         * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-         */
         type: string;
         value: string;
     }
@@ -3572,11 +4360,11 @@ export namespace platform {
 
     export interface GetConnectorPdcHost {
         /**
-         * Host attributes with values. e.g. type, region, name, ip, etc.
+         * attributes for current host
          */
         attributes?: {[key: string]: string};
         /**
-         * Hostname e.g. 87.23.66.11:80
+         * hostname
          */
         hostname: string;
     }
@@ -4916,51 +5704,53 @@ export namespace platform {
 
     export interface GetHarRegistryConfig {
         /**
-         * Authentication configuration for UPSTREAM type
+         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         */
+        authType?: string;
+        /**
+         * Authentication configuration for UPSTREAM registry type
          */
         auths?: outputs.platform.GetHarRegistryConfigAuth[];
         /**
-         * Source of the upstream
+         * Upstream source
          */
         source?: string;
         /**
-         * Type of registry (VIRTUAL, UPSTREAM)
+         * Type of registry (VIRTUAL or UPSTREAM)
          */
         type: string;
         /**
-         * URL of the upstream
+         * List of upstream proxies for VIRTUAL registry type
+         */
+        upstreamProxies?: string[];
+        /**
+         * URL of the upstream (required if type=UPSTREAM & package_type=HELM)
          */
         url?: string;
     }
 
     export interface GetHarRegistryConfigAuth {
+        accessKey?: string;
+        accessKeyIdentifier?: string;
+        accessKeySecretPath?: string;
         /**
          * Type of authentication (UserPassword, Anonymous)
          */
         authType: string;
         /**
-         * User password authentication details
-         */
-        userPassword?: outputs.platform.GetHarRegistryConfigAuthUserPassword;
-    }
-
-    export interface GetHarRegistryConfigAuthUserPassword {
-        /**
-         * Secret identifier
+         * Secret identifier for UserPassword auth type
          */
         secretIdentifier?: string;
+        secretKeyIdentifier?: string;
+        secretKeySecretPath?: string;
         /**
-         * Secret space ID
-         */
-        secretSpaceId?: number;
-        /**
-         * Secret space path
+         * Secret space path for UserPassword auth type
          */
         secretSpacePath?: string;
         /**
-         * User name
+         * User name for UserPassword auth type
          */
-        userName: string;
+        userName?: string;
     }
 
     export interface GetHelmConnectorCredential {
@@ -4980,41 +5770,41 @@ export namespace platform {
 
     export interface GetInfraVariableSetConnector {
         /**
-         * Unique identifier of the connector.
+         * Connector Ref is the reference to the connector
          */
         connectorRef: string;
         /**
-         * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * Type is the connector type of the connector. Supported types: aws, azure, gcp
          */
         type: string;
     }
 
     export interface GetInfraVariableSetEnvironmentVariable {
         /**
-         * Key is the identifier for the variable`
+         * Key is the identifier for the variable. Must be unique within the Variable Set.
          */
         key: string;
         /**
-         * value is the value of the variable
+         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
          */
         value: string;
         /**
-         * Value type indicates the value type of the variable, text or secret
+         * Value type indicates the value type of the variable. Currently we support string and secret.
          */
         valueType: string;
     }
 
     export interface GetInfraVariableSetTerraformVariable {
         /**
-         * Key is the identifier for the variable`
+         * Key is the identifier for the variable. Must be unique within the Variable Set.
          */
         key: string;
         /**
-         * value is the value of the variable
+         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
          */
         value: string;
         /**
-         * Value type indicates the value type of the variable, text or secret
+         * Value type indicates the value type of the variable. Currently we support string and secret.
          */
         valueType: string;
     }
@@ -5041,7 +5831,7 @@ export namespace platform {
          */
         repositoryPath?: string;
         /**
-         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          */
         repositorySha?: string;
     }
@@ -5287,22 +6077,22 @@ export namespace platform {
 
     export interface GetManualFreezeCurrentOrUpcomingWindow {
         /**
-         * End time of the freeze
+         * End time of the freeze window
          */
         endTime: number;
         /**
-         * Start time of the freeze
+         * Start time of the freeze window
          */
         startTime: number;
     }
 
     export interface GetManualFreezeFreezeWindow {
         /**
-         * Duration of the freeze
+         * Duration of the freeze window
          */
         duration: string;
         /**
-         * End time of the freeze
+         * End Time of the freeze window
          */
         endTime: string;
         /**
@@ -5310,11 +6100,11 @@ export namespace platform {
          */
         recurrences: outputs.platform.GetManualFreezeFreezeWindowRecurrence[];
         /**
-         * Start time of the freeze
+         * Start Time of the freeze window
          */
         startTime: string;
         /**
-         * Timezone
+         * Time zone of the freeze window
          */
         timeZone: string;
     }
@@ -5325,18 +6115,18 @@ export namespace platform {
          */
         recurrenceSpecs: outputs.platform.GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec[];
         /**
-         * Recurrence type(Daily, Weekly, Monthly, Yearly)
+         * Type of the recurrence
          */
         type: string;
     }
 
     export interface GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec {
         /**
-         * Recurrence until timestamp
+         * Time till which freeze window recurrs
          */
         until: string;
         /**
-         * Value of n, for n months recurrence
+         * Every n months recurrence
          */
         value: number;
     }
@@ -6150,11 +6940,11 @@ export namespace platform {
 
     export interface GetWorkspaceConnector {
         /**
-         * Unique identifier of the connector.
+         * Connector Ref is the reference to the connector
          */
         connectorRef: string;
         /**
-         * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * Type is the connector type of the connector. Supported types: aws, azure, gcp
          */
         type: string;
     }
@@ -7331,7 +8121,7 @@ export namespace platform {
 
     export interface GithubConnectorCredentialsHttp {
         /**
-         * Configuration for using the http anonymous github for interacting with the github api.
+         * Configuration for using the github http anonymous for interacting with the github api.
          */
         anonymouses?: outputs.platform.GithubConnectorCredentialsHttpAnonymouse[];
         /**
@@ -32550,7 +33340,7 @@ export namespace platform {
          */
         auths?: outputs.platform.HarRegistryConfigAuth[];
         /**
-         * Source of the upstream (only for UPSTREAM type)
+         * Upstream source
          */
         source?: string;
         /**
@@ -32568,6 +33358,9 @@ export namespace platform {
     }
 
     export interface HarRegistryConfigAuth {
+        accessKey?: string;
+        accessKeyIdentifier?: string;
+        accessKeySecretPath?: string;
         /**
          * Type of authentication (UserPassword, Anonymous)
          */
@@ -32576,6 +33369,8 @@ export namespace platform {
          * Secret identifier for UserPassword auth type
          */
         secretIdentifier?: string;
+        secretKeyIdentifier?: string;
+        secretKeySecretPath?: string;
         /**
          * Secret space path for UserPassword auth type
          */
@@ -32603,18 +33398,18 @@ export namespace platform {
 
     export interface InfraVariableSetConnector {
         /**
-         * Unique identifier of the connector.
+         * Connector Ref is the reference to the connector
          */
         connectorRef: string;
         /**
-         * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * Type is the connector type of the connector. Supported types: aws, azure, gcp
          */
         type: string;
     }
 
     export interface InfraVariableSetEnvironmentVariable {
         /**
-         * Key is the identifier for the variable. Must be unique within the variable set.
+         * Key is the identifier for the variable. Must be unique within the Variable Set.
          */
         key: string;
         /**
@@ -32629,7 +33424,7 @@ export namespace platform {
 
     export interface InfraVariableSetTerraformVariable {
         /**
-         * Key is the identifier for the variable. Must be unique within the variable set.
+         * Key is the identifier for the variable. Must be unique within the Variable Set.
          */
         key: string;
         /**
@@ -32664,7 +33459,7 @@ export namespace platform {
          */
         repositoryPath?: string;
         /**
-         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          */
         repositorySha?: string;
     }
@@ -32679,11 +33474,11 @@ export namespace platform {
          */
         branch: string;
         /**
-         * message for the commit in Git Repo.
+         * Commit message used for the merge commit.
          */
         commitMessage: string;
         /**
-         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         connectorRef: string;
         /**
@@ -32691,11 +33486,11 @@ export namespace platform {
          */
         filePath: string;
         /**
-         * Flag to set if importing from Git
+         * import infrastructure from git
          */
         importFromGit: boolean;
         /**
-         * Flag to set if force importing from Git
+         * force import infrastructure from remote even if same file path already exist
          */
         isForceImport: boolean;
         /**
@@ -32707,11 +33502,11 @@ export namespace platform {
          */
         isNewBranch: boolean;
         /**
-         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Infrastructures.
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating infrastructure.
          */
         lastCommitId: string;
         /**
-         * Last object identifier (for Github). To be provided only when updating Infrastructures.
+         * Last object identifier (for Github). To be provided only when updating infrastructure.
          */
         lastObjectId: string;
         /**
@@ -32719,7 +33514,7 @@ export namespace platform {
          */
         loadFromCache: string;
         /**
-         * Whether the file has to be get from fallback_branch.
+         * If the Entity is to be fetched from fallbackBranch
          */
         loadFromFallbackBranch: boolean;
         /**
@@ -32735,7 +33530,7 @@ export namespace platform {
          */
         repoName: string;
         /**
-         * store type of the entity.
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
         storeType: string;
     }
@@ -32846,7 +33641,7 @@ export namespace platform {
 
     export interface JenkinsConnectorAuthJenkinsUserNamePassword {
         /**
-         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef: string;
         /**
@@ -33001,22 +33796,22 @@ export namespace platform {
 
     export interface ManualFreezeCurrentOrUpcomingWindow {
         /**
-         * End time of the freeze
+         * End time of the freeze window
          */
         endTime: number;
         /**
-         * Start time of the freeze
+         * Start time of the freeze window
          */
         startTime: number;
     }
 
     export interface ManualFreezeFreezeWindow {
         /**
-         * Duration of the freeze
+         * Duration of the freeze window
          */
         duration: string;
         /**
-         * End time of the freeze
+         * End Time of the freeze window
          */
         endTime: string;
         /**
@@ -33024,11 +33819,11 @@ export namespace platform {
          */
         recurrences: outputs.platform.ManualFreezeFreezeWindowRecurrence[];
         /**
-         * Start time of the freeze
+         * Start Time of the freeze window
          */
         startTime: string;
         /**
-         * Timezone
+         * Time zone of the freeze window
          */
         timeZone: string;
     }
@@ -33039,18 +33834,18 @@ export namespace platform {
          */
         recurrenceSpecs: outputs.platform.ManualFreezeFreezeWindowRecurrenceRecurrenceSpec[];
         /**
-         * Recurrence type(Daily, Weekly, Monthly, Yearly)
+         * Type of the recurrence
          */
         type: string;
     }
 
     export interface ManualFreezeFreezeWindowRecurrenceRecurrenceSpec {
         /**
-         * Recurrence until timestamp
+         * Time till which freeze window recurrs
          */
         until: string;
         /**
-         * Value of n, for n months recurrence
+         * Every n months recurrence
          */
         value: number;
     }
@@ -33194,7 +33989,7 @@ export namespace platform {
 
     export interface NexusConnectorCredentials {
         /**
-         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef: string;
         /**
@@ -34137,7 +34932,7 @@ export namespace platform {
          */
         passwordRef: string;
         /**
-         * Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
+         * Reference token for authentication.
          */
         referenceToken?: string;
         /**
@@ -34312,11 +35107,11 @@ export namespace platform {
 
     export interface WorkspaceConnector {
         /**
-         * Unique identifier of the connector.
+         * Connector Ref is the reference to the connector
          */
         connectorRef: string;
         /**
-         * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * Type is the connector type of the connector. Supported types: aws, azure, gcp
          */
         type: string;
     }
@@ -34411,6 +35206,356 @@ export namespace service {
         value: string;
     }
 
+    export interface DiscoveryAgentConfig {
+        /**
+         * Docker image for the collector.
+         */
+        collectorImage?: string;
+        /**
+         * Data collection configuration.
+         */
+        datas: outputs.service.DiscoveryAgentConfigData[];
+        /**
+         * List of image pull secrets.
+         */
+        imagePullSecrets?: string[];
+        /**
+         * Kubernetes-specific configuration.
+         */
+        kubernetes: outputs.service.DiscoveryAgentConfigKubernete[];
+        /**
+         * Docker image for the log watcher.
+         */
+        logWatcherImage?: string;
+        /**
+         * mTLS configuration.
+         */
+        mtls?: outputs.service.DiscoveryAgentConfigMtl[];
+        /**
+         * Proxy configuration.
+         */
+        proxies?: outputs.service.DiscoveryAgentConfigProxy[];
+        /**
+         * Whether to skip TLS verification.
+         */
+        skipSecureVerify?: boolean;
+    }
+
+    export interface DiscoveryAgentConfigData {
+        /**
+         * List of namespaces to exclude from discovery.
+         */
+        blacklistedNamespaces?: string[];
+        /**
+         * Collection window in minutes.
+         */
+        collectionWindowInMin?: number;
+        /**
+         * Cron schedule for data collection.
+         */
+        crons?: outputs.service.DiscoveryAgentConfigDataCron[];
+        /**
+         * Whether to enable batch resources.
+         */
+        enableBatchResources?: boolean;
+        /**
+         * Whether to enable node agent.
+         */
+        enableNodeAgent?: boolean;
+        /**
+         * Whether to enable orphaned pod detection.
+         */
+        enableOrphanedPod?: boolean;
+        /**
+         * Namespace selector for the agent.
+         */
+        namespaceSelector?: string;
+        /**
+         * Node selector for the node agent.
+         */
+        nodeAgentSelector?: string;
+        /**
+         * List of namespaces to observe.
+         */
+        observedNamespaces?: string[];
+    }
+
+    export interface DiscoveryAgentConfigDataCron {
+        /**
+         * Cron expression for scheduling.
+         */
+        expression?: string;
+    }
+
+    export interface DiscoveryAgentConfigKubernete {
+        /**
+         * Annotations to add to all resources.
+         */
+        annotations?: {[key: string]: string};
+        /**
+         * Whether to disable namespace creation.
+         */
+        disableNamespaceCreation?: boolean;
+        /**
+         * The image pull policy.
+         */
+        imagePullPolicy?: string;
+        /**
+         * Labels to add to all resources.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * Kubernetes namespace to use
+         */
+        namespace: string;
+        /**
+         * Whether the agent is namespaced.
+         */
+        namespaced?: boolean;
+        /**
+         * Node selector labels.
+         */
+        nodeSelector?: {[key: string]: string};
+        /**
+         * Compute resource requirements for the agent container.
+         */
+        resources?: outputs.service.DiscoveryAgentConfigKuberneteResource[];
+        /**
+         * The group ID to run as.
+         */
+        runAsGroup?: number;
+        /**
+         * The user ID to run as.
+         */
+        runAsUser?: number;
+        /**
+         * Service account to use
+         */
+        serviceAccount?: string;
+        /**
+         * Tolerations for pod assignment.
+         */
+        tolerations?: outputs.service.DiscoveryAgentConfigKuberneteToleration[];
+    }
+
+    export interface DiscoveryAgentConfigKuberneteResource {
+        /**
+         * Maximum amount of compute resources allowed.
+         */
+        limits?: outputs.service.DiscoveryAgentConfigKuberneteResourceLimit[];
+        /**
+         * Minimum amount of compute resources required.
+         */
+        requests?: outputs.service.DiscoveryAgentConfigKuberneteResourceRequest[];
+    }
+
+    export interface DiscoveryAgentConfigKuberneteResourceLimit {
+        /**
+         * CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+         */
+        cpu?: string;
+        /**
+         * Memory limit in bytes (e.g., 128Mi, 1Gi).
+         */
+        memory?: string;
+    }
+
+    export interface DiscoveryAgentConfigKuberneteResourceRequest {
+        /**
+         * CPU request in CPU units (e.g., 100m = 0.1 CPU).
+         */
+        cpu?: string;
+        /**
+         * Memory request in bytes (e.g., 128Mi, 1Gi).
+         */
+        memory?: string;
+    }
+
+    export interface DiscoveryAgentConfigKuberneteToleration {
+        /**
+         * Effect indicates the taint effect to match.
+         */
+        effect: string;
+        /**
+         * The taint key that the toleration applies to.
+         */
+        key: string;
+        /**
+         * Operator represents a key's relationship to the value.
+         */
+        operator: string;
+        /**
+         * TolerationSeconds represents the period of time the toleration tolerates the taint.
+         */
+        tolerationSeconds?: number;
+        /**
+         * The taint value the toleration matches to.
+         */
+        value?: string;
+    }
+
+    export interface DiscoveryAgentConfigMtl {
+        /**
+         * Path to the certificate file.
+         */
+        certPath?: string;
+        /**
+         * Path to the key file.
+         */
+        keyPath?: string;
+        /**
+         * Name of the Kubernetes secret containing the certificate and key.
+         */
+        secretName?: string;
+        /**
+         * URL of the mTLS server.
+         */
+        url?: string;
+    }
+
+    export interface DiscoveryAgentConfigProxy {
+        /**
+         * HTTP proxy URL.
+         */
+        httpProxy?: string;
+        /**
+         * HTTPS proxy URL.
+         */
+        httpsProxy?: string;
+        /**
+         * Comma-separated list of hosts that should not use the proxy.
+         */
+        noProxy?: string;
+        /**
+         * Proxy server URL.
+         */
+        url?: string;
+    }
+
+    export interface DiscoveryAgentInstallationDetail {
+        /**
+         * The account identifier for the installation.
+         */
+        accountIdentifier: string;
+        /**
+         * Details about the installed agent.
+         */
+        agentDetails: outputs.service.DiscoveryAgentInstallationDetailAgentDetail[];
+        /**
+         * The ID of the installed agent.
+         */
+        agentId: string;
+        /**
+         * The timestamp when the installation was created.
+         */
+        createdAt: string;
+        /**
+         * The user who created the installation.
+         */
+        createdBy: string;
+        /**
+         * The ID of the delegate used for installation.
+         */
+        delegateId: string;
+        /**
+         * The ID of the delegate task for the installation.
+         */
+        delegateTaskId: string;
+        /**
+         * The status of the delegate task (e.g., 'SUCCESS').
+         */
+        delegateTaskStatus: string;
+        /**
+         * The environment identifier for the installation.
+         */
+        environmentIdentifier: string;
+        /**
+         * The unique identifier of the installation.
+         */
+        id: string;
+        /**
+         * Whether the installation was triggered by a cron job.
+         */
+        isCronTriggered: boolean;
+        /**
+         * The timestamp when the log stream was created.
+         */
+        logStreamCreatedAt: string;
+        /**
+         * The ID of the log stream for the installation.
+         */
+        logStreamId: string;
+        /**
+         * The organization identifier for the installation.
+         */
+        organizationIdentifier: string;
+        /**
+         * The project identifier for the installation.
+         */
+        projectIdentifier: string;
+        /**
+         * Whether the installation has been removed.
+         */
+        removed: boolean;
+        /**
+         * Whether the installation has been stopped.
+         */
+        stopped: boolean;
+        /**
+         * The timestamp when the installation was last updated.
+         */
+        updatedAt: string;
+        /**
+         * The user who last updated the installation.
+         */
+        updatedBy: string;
+    }
+
+    export interface DiscoveryAgentInstallationDetailAgentDetail {
+        /**
+         * Details about the cluster where the agent is installed.
+         */
+        clusters: outputs.service.DiscoveryAgentInstallationDetailAgentDetailCluster[];
+        /**
+         * The status of the agent installation.
+         */
+        status: string;
+    }
+
+    export interface DiscoveryAgentInstallationDetailAgentDetailCluster {
+        /**
+         * The name of the cluster.
+         */
+        name: string;
+        /**
+         * The namespace where the agent is installed.
+         */
+        namespace: string;
+        /**
+         * The status of the cluster (e.g., 'Succeeded').
+         */
+        status: string;
+        /**
+         * The UID of the cluster.
+         */
+        uid: string;
+    }
+
+    export interface DiscoverySettingImageRegistry {
+        /**
+         * The account name for the image registry.
+         */
+        account: string;
+        /**
+         * List of secrets for the image registry.
+         */
+        secrets?: string[];
+        /**
+         * The server URL for the image registry.
+         */
+        server: string;
+    }
+
     export interface EcsVariable {
         /**
          * Name of the variable
@@ -34424,6 +35569,383 @@ export namespace service {
          * Value of the variable
          */
         value: string;
+    }
+
+    export interface GetDiscoveryAgentConfig {
+        /**
+         * Docker image for the collector.
+         */
+        collectorImage: string;
+        /**
+         * Data collection configuration.
+         */
+        datas: outputs.service.GetDiscoveryAgentConfigData[];
+        /**
+         * List of image pull secrets.
+         */
+        imagePullSecrets: string[];
+        /**
+         * Kubernetes-specific configuration.
+         */
+        kubernetes: outputs.service.GetDiscoveryAgentConfigKubernete[];
+        /**
+         * Docker image for the log watcher.
+         */
+        logWatcherImage: string;
+        /**
+         * mTLS configuration.
+         */
+        mtls: outputs.service.GetDiscoveryAgentConfigMtl[];
+        /**
+         * Proxy configuration.
+         */
+        proxies: outputs.service.GetDiscoveryAgentConfigProxy[];
+        /**
+         * Whether to skip TLS verification.
+         */
+        skipSecureVerify: boolean;
+    }
+
+    export interface GetDiscoveryAgentConfigData {
+        /**
+         * List of namespaces to exclude from discovery.
+         */
+        blacklistedNamespaces: string[];
+        /**
+         * Collection window in minutes.
+         */
+        collectionWindowInMin: number;
+        /**
+         * Cron schedule for data collection.
+         */
+        crons: outputs.service.GetDiscoveryAgentConfigDataCron[];
+        /**
+         * Whether to enable batch resources.
+         */
+        enableBatchResources: boolean;
+        /**
+         * Whether to enable node agent.
+         */
+        enableNodeAgent: boolean;
+        /**
+         * Whether to enable orphaned pod detection.
+         */
+        enableOrphanedPod: boolean;
+        /**
+         * Namespace selector for the agent.
+         */
+        namespaceSelector: string;
+        /**
+         * Node selector for the node agent.
+         */
+        nodeAgentSelector: string;
+        /**
+         * List of namespaces to observe.
+         */
+        observedNamespaces: string[];
+    }
+
+    export interface GetDiscoveryAgentConfigDataCron {
+        /**
+         * Cron expression for scheduling.
+         */
+        expression: string;
+    }
+
+    export interface GetDiscoveryAgentConfigKubernete {
+        /**
+         * Annotations to add to all resources.
+         */
+        annotations: {[key: string]: string};
+        /**
+         * Whether to disable namespace creation.
+         */
+        disableNamespaceCreation: boolean;
+        /**
+         * The image pull policy.
+         */
+        imagePullPolicy: string;
+        /**
+         * Labels to add to all resources.
+         */
+        labels: {[key: string]: string};
+        /**
+         * Kubernetes namespace to use
+         */
+        namespace: string;
+        /**
+         * Whether the agent is namespaced.
+         */
+        namespaced: boolean;
+        /**
+         * Node selector labels.
+         */
+        nodeSelector: {[key: string]: string};
+        /**
+         * Compute resource requirements for the agent container.
+         */
+        resources: outputs.service.GetDiscoveryAgentConfigKuberneteResource[];
+        /**
+         * The group ID to run as.
+         */
+        runAsGroup: number;
+        /**
+         * The user ID to run as.
+         */
+        runAsUser: number;
+        /**
+         * Service account to use
+         */
+        serviceAccount: string;
+        /**
+         * Tolerations for pod assignment.
+         */
+        tolerations: outputs.service.GetDiscoveryAgentConfigKuberneteToleration[];
+    }
+
+    export interface GetDiscoveryAgentConfigKuberneteResource {
+        /**
+         * Maximum amount of compute resources allowed.
+         */
+        limits: outputs.service.GetDiscoveryAgentConfigKuberneteResourceLimit[];
+        /**
+         * Minimum amount of compute resources required.
+         */
+        requests: outputs.service.GetDiscoveryAgentConfigKuberneteResourceRequest[];
+    }
+
+    export interface GetDiscoveryAgentConfigKuberneteResourceLimit {
+        /**
+         * CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+         */
+        cpu: string;
+        /**
+         * Memory limit in bytes (e.g., 128Mi, 1Gi).
+         */
+        memory: string;
+    }
+
+    export interface GetDiscoveryAgentConfigKuberneteResourceRequest {
+        /**
+         * CPU request in CPU units (e.g., 100m = 0.1 CPU).
+         */
+        cpu: string;
+        /**
+         * Memory request in bytes (e.g., 128Mi, 1Gi).
+         */
+        memory: string;
+    }
+
+    export interface GetDiscoveryAgentConfigKuberneteToleration {
+        /**
+         * Effect indicates the taint effect to match.
+         */
+        effect: string;
+        /**
+         * The taint key that the toleration applies to.
+         */
+        key: string;
+        /**
+         * Operator represents a key's relationship to the value.
+         */
+        operator: string;
+        /**
+         * TolerationSeconds represents the period of time the toleration tolerates the taint.
+         */
+        tolerationSeconds: number;
+        /**
+         * The taint value the toleration matches to.
+         */
+        value: string;
+    }
+
+    export interface GetDiscoveryAgentConfigMtl {
+        /**
+         * Path to the certificate file.
+         */
+        certPath: string;
+        /**
+         * Path to the key file.
+         */
+        keyPath: string;
+        /**
+         * Name of the Kubernetes secret containing the certificate and key.
+         */
+        secretName: string;
+        /**
+         * URL of the mTLS server.
+         */
+        url: string;
+    }
+
+    export interface GetDiscoveryAgentConfigProxy {
+        /**
+         * HTTP proxy URL.
+         */
+        httpProxy: string;
+        /**
+         * HTTPS proxy URL.
+         */
+        httpsProxy: string;
+        /**
+         * Comma-separated list of hosts that should not use the proxy.
+         */
+        noProxy: string;
+        /**
+         * Proxy server URL.
+         */
+        url: string;
+    }
+
+    export interface GetDiscoveryAgentInstallationDetail {
+        /**
+         * Account identifier of the installation.
+         */
+        accountIdentifier: string;
+        /**
+         * Details about the agent installation.
+         */
+        agentDetails: outputs.service.GetDiscoveryAgentInstallationDetailAgentDetail[];
+        /**
+         * ID of the agent.
+         */
+        agentId: string;
+        /**
+         * When the installation was created.
+         */
+        createdAt: string;
+        /**
+         * Who created the installation.
+         */
+        createdBy: string;
+        /**
+         * ID of the delegate.
+         */
+        delegateId: string;
+        /**
+         * ID of the delegate task.
+         */
+        delegateTaskId: string;
+        /**
+         * Status of the delegate task.
+         */
+        delegateTaskStatus: string;
+        /**
+         * Environment identifier of the installation.
+         */
+        environmentIdentifier: string;
+        /**
+         * Installation ID.
+         */
+        id: string;
+        /**
+         * Whether the installation was triggered by a cron job.
+         */
+        isCronTriggered: boolean;
+        /**
+         * When the log stream was created.
+         */
+        logStreamCreatedAt: string;
+        /**
+         * ID of the log stream.
+         */
+        logStreamId: string;
+        /**
+         * Organization identifier of the installation.
+         */
+        orgIdentifier: string;
+        /**
+         * Project identifier of the installation.
+         */
+        projectIdentifier: string;
+        /**
+         * Whether the installation has been removed.
+         */
+        removed: boolean;
+        /**
+         * When the installation was removed.
+         */
+        removedAt: string;
+        /**
+         * Whether the installation has been stopped.
+         */
+        stopped: boolean;
+        /**
+         * When the installation was last updated.
+         */
+        updatedAt: string;
+        /**
+         * Who last updated the installation.
+         */
+        updatedBy: string;
+    }
+
+    export interface GetDiscoveryAgentInstallationDetailAgentDetail {
+        /**
+         * Cluster information.
+         */
+        clusters: outputs.service.GetDiscoveryAgentInstallationDetailAgentDetailCluster[];
+        /**
+         * List of nodes in the cluster.
+         */
+        nodes: outputs.service.GetDiscoveryAgentInstallationDetailAgentDetailNode[];
+        /**
+         * Status of the agent.
+         */
+        status: string;
+    }
+
+    export interface GetDiscoveryAgentInstallationDetailAgentDetailCluster {
+        /**
+         * Name of the cluster.
+         */
+        name: string;
+        /**
+         * Namespace of the cluster.
+         */
+        namespace: string;
+        /**
+         * Status of the cluster.
+         */
+        status: string;
+        /**
+         * UID of the cluster.
+         */
+        uid: string;
+    }
+
+    export interface GetDiscoveryAgentInstallationDetailAgentDetailNode {
+        /**
+         * Name of the node.
+         */
+        name: string;
+        /**
+         * Namespace of the node.
+         */
+        namespace: string;
+        /**
+         * Status of the node.
+         */
+        status: string;
+        /**
+         * UID of the node.
+         */
+        uid: string;
+    }
+
+    export interface GetDiscoverySettingImageRegistry {
+        /**
+         * The account name for the image registry.
+         */
+        account: string;
+        /**
+         * List of secrets for the image registry.
+         */
+        secrets: string[];
+        /**
+         * The server URL for the image registry.
+         */
+        server: string;
     }
 
     export interface HelmVariable {

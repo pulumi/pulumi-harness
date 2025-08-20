@@ -15,14 +15,14 @@ public final class GetInfraVariableSetTerraformVariableArgs extends com.pulumi.r
     public static final GetInfraVariableSetTerraformVariableArgs Empty = new GetInfraVariableSetTerraformVariableArgs();
 
     /**
-     * Key is the identifier for the variable`
+     * Key is the identifier for the variable. Must be unique within the Variable Set.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Key is the identifier for the variable`
+     * @return Key is the identifier for the variable. Must be unique within the Variable Set.
      * 
      */
     public Output<String> key() {
@@ -30,14 +30,14 @@ public final class GetInfraVariableSetTerraformVariableArgs extends com.pulumi.r
     }
 
     /**
-     * value is the value of the variable
+     * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return value is the value of the variable
+     * @return Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
      * 
      */
     public Output<String> value() {
@@ -45,14 +45,14 @@ public final class GetInfraVariableSetTerraformVariableArgs extends com.pulumi.r
     }
 
     /**
-     * Value type indicates the value type of the variable, text or secret
+     * Value type indicates the value type of the variable. Currently we support string and secret.
      * 
      */
     @Import(name="valueType", required=true)
     private Output<String> valueType;
 
     /**
-     * @return Value type indicates the value type of the variable, text or secret
+     * @return Value type indicates the value type of the variable. Currently we support string and secret.
      * 
      */
     public Output<String> valueType() {
@@ -86,7 +86,7 @@ public final class GetInfraVariableSetTerraformVariableArgs extends com.pulumi.r
         }
 
         /**
-         * @param key Key is the identifier for the variable`
+         * @param key Key is the identifier for the variable. Must be unique within the Variable Set.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GetInfraVariableSetTerraformVariableArgs extends com.pulumi.r
         }
 
         /**
-         * @param key Key is the identifier for the variable`
+         * @param key Key is the identifier for the variable. Must be unique within the Variable Set.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class GetInfraVariableSetTerraformVariableArgs extends com.pulumi.r
         }
 
         /**
-         * @param value value is the value of the variable
+         * @param value Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class GetInfraVariableSetTerraformVariableArgs extends com.pulumi.r
         }
 
         /**
-         * @param value value is the value of the variable
+         * @param value Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class GetInfraVariableSetTerraformVariableArgs extends com.pulumi.r
         }
 
         /**
-         * @param valueType Value type indicates the value type of the variable, text or secret
+         * @param valueType Value type indicates the value type of the variable. Currently we support string and secret.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class GetInfraVariableSetTerraformVariableArgs extends com.pulumi.r
         }
 
         /**
-         * @param valueType Value type indicates the value type of the variable, text or secret
+         * @param valueType Value type indicates the value type of the variable. Currently we support string and secret.
          * 
          * @return builder
          * 

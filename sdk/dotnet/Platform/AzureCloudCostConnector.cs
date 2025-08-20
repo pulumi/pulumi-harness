@@ -55,6 +55,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import account level azure cloud cost connector
     /// 
     /// ```sh
@@ -81,6 +83,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("billingExportSpec")]
         public Output<Outputs.AzureCloudCostConnectorBillingExportSpec?> BillingExportSpec { get; private set; } = null!;
+
+        /// <summary>
+        /// Returns billing details for the Azure account.
+        /// </summary>
+        [Output("billingExportSpec2")]
+        public Output<Outputs.AzureCloudCostConnectorBillingExportSpec2?> BillingExportSpec2 { get; private set; } = null!;
 
         /// <summary>
         /// Description of the resource.
@@ -190,6 +198,12 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.AzureCloudCostConnectorBillingExportSpecArgs>? BillingExportSpec { get; set; }
 
         /// <summary>
+        /// Returns billing details for the Azure account.
+        /// </summary>
+        [Input("billingExportSpec2")]
+        public Input<Inputs.AzureCloudCostConnectorBillingExportSpec2Args>? BillingExportSpec2 { get; set; }
+
+        /// <summary>
         /// Description of the resource.
         /// </summary>
         [Input("description")]
@@ -268,6 +282,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("billingExportSpec")]
         public Input<Inputs.AzureCloudCostConnectorBillingExportSpecGetArgs>? BillingExportSpec { get; set; }
+
+        /// <summary>
+        /// Returns billing details for the Azure account.
+        /// </summary>
+        [Input("billingExportSpec2")]
+        public Input<Inputs.AzureCloudCostConnectorBillingExportSpec2GetArgs>? BillingExportSpec2 { get; set; }
 
         /// <summary>
         /// Description of the resource.

@@ -12,145 +12,19 @@ namespace Pulumi.Harness.Platform
     public static class GetPipelineList
     {
         /// <summary>
-        /// Data source for retrieving a Harness pipeline list.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ### Without the Pagination
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetPipelineList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// ### With Pagination Logic
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetPipelineList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///         Page = 1,
-        ///         Limit = 4,
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Data source for retieving the Harness pipleine List
         /// </summary>
         public static Task<GetPipelineListResult> InvokeAsync(GetPipelineListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPipelineListResult>("harness:platform/getPipelineList:getPipelineList", args ?? new GetPipelineListArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a Harness pipeline list.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ### Without the Pagination
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetPipelineList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// ### With Pagination Logic
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetPipelineList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///         Page = 1,
-        ///         Limit = 4,
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Data source for retieving the Harness pipleine List
         /// </summary>
         public static Output<GetPipelineListResult> Invoke(GetPipelineListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPipelineListResult>("harness:platform/getPipelineList:getPipelineList", args ?? new GetPipelineListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a Harness pipeline list.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ### Without the Pagination
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetPipelineList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// ### With Pagination Logic
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetPipelineList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///         Page = 1,
-        ///         Limit = 4,
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Data source for retieving the Harness pipleine List
         /// </summary>
         public static Output<GetPipelineListResult> Invoke(GetPipelineListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPipelineListResult>("harness:platform/getPipelineList:getPipelineList", args ?? new GetPipelineListInvokeArgs(), options.WithDefaults());
@@ -159,15 +33,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetPipelineListArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         [Input("identifier")]
         public string? Identifier { get; set; }
 
-        /// <summary>
-        /// Optional pagination parameter indicating the maximum number of entities to retrieve per page.
-        /// </summary>
         [Input("limit")]
         public int? Limit { get; set; }
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -177,9 +54,6 @@ namespace Pulumi.Harness.Platform
         [Input("orgId", required: true)]
         public string OrgId { get; set; } = null!;
 
-        /// <summary>
-        /// Optional pagination parameter indicating the page number when retrieving entities.
-        /// </summary>
         [Input("page")]
         public int? Page { get; set; }
 
@@ -197,15 +71,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetPipelineListInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
-        /// <summary>
-        /// Optional pagination parameter indicating the maximum number of entities to retrieve per page.
-        /// </summary>
         [Input("limit")]
         public Input<int>? Limit { get; set; }
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -215,9 +92,6 @@ namespace Pulumi.Harness.Platform
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
-        /// <summary>
-        /// Optional pagination parameter indicating the page number when retrieving entities.
-        /// </summary>
         [Input("page")]
         public Input<int>? Page { get; set; }
 
@@ -237,33 +111,36 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetPipelineListResult
     {
+        /// <summary>
+        /// Description of the resource.
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string? Identifier;
         /// <summary>
-        /// Optional pagination parameter indicating the maximum number of entities to retrieve per page.
+        /// Unique identifier of the resource.
         /// </summary>
+        public readonly string? Identifier;
         public readonly int? Limit;
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         public readonly string? Name;
         /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
         public readonly string OrgId;
-        /// <summary>
-        /// Optional pagination parameter indicating the page number when retrieving entities.
-        /// </summary>
         public readonly int? Page;
-        /// <summary>
-        /// Containing list of all pipeline with details identifier and name.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetPipelineListPipelineResult> Pipelines;
         /// <summary>
         /// Unique identifier of the project.
         /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// Tags to associate with the resource.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]

@@ -25,7 +25,7 @@ public final class GetConnectorPdcResult {
      */
     private String description;
     /**
-     * @return Hosts to be provided.
+     * @return Host of the Physical data centers.
      * 
      */
     private List<GetConnectorPdcHost> hosts;
@@ -76,7 +76,7 @@ public final class GetConnectorPdcResult {
         return this.description;
     }
     /**
-     * @return Hosts to be provided.
+     * @return Host of the Physical data centers.
      * 
      */
     public List<GetConnectorPdcHost> hosts() {

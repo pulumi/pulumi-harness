@@ -13,6 +13,36 @@ import (
 )
 
 // Resource for managing IAC default pipelines
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewIacmDefaultPipeline(ctx, "example", &platform.IacmDefaultPipelineArgs{
+//				OrgId:           pulumi.Any(test.Id),
+//				ProjectId:       pulumi.Any(testHarnessPlatformProject.Id),
+//				ProvisionerType: pulumi.String("terraform"),
+//				Operation:       pulumi.String("plan"),
+//				Pipeline:        pulumi.String("pipeline1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type IacmDefaultPipeline struct {
 	pulumi.CustomResourceState
 

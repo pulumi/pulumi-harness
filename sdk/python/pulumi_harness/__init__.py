@@ -45,6 +45,8 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_harness.autostopping as __autostopping
     autostopping = __autostopping
+    import pulumi_harness.chaos as __chaos
+    chaos = __chaos
     import pulumi_harness.cloudprovider as __cloudprovider
     cloudprovider = __cloudprovider
     import pulumi_harness.cluster as __cluster
@@ -59,6 +61,7 @@ if typing.TYPE_CHECKING:
     service = __service
 else:
     autostopping = _utilities.lazy_import('pulumi_harness.autostopping')
+    chaos = _utilities.lazy_import('pulumi_harness.chaos')
     cloudprovider = _utilities.lazy_import('pulumi_harness.cloudprovider')
     cluster = _utilities.lazy_import('pulumi_harness.cluster')
     config = _utilities.lazy_import('pulumi_harness.config')
@@ -139,6 +142,54 @@ _utilities.register(
   "fqn": "pulumi_harness.autostopping",
   "classes": {
    "harness:autostopping/schedule:Schedule": "Schedule"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/hub",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/hub:Hub": "Hub"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/hubSync",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/hubSync:HubSync": "HubSync"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/imageRegistry",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/imageRegistry:ImageRegistry": "ImageRegistry"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/infrastructureV2",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/infrastructureV2:InfrastructureV2": "InfrastructureV2"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/securityGovernanceCondition",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/securityGovernanceCondition:SecurityGovernanceCondition": "SecurityGovernanceCondition"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/securityGovernanceRule",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/securityGovernanceRule:SecurityGovernanceRule": "SecurityGovernanceRule"
   }
  },
  {
@@ -1283,6 +1334,22 @@ _utilities.register(
   "fqn": "pulumi_harness.service",
   "classes": {
    "harness:service/codedeploy:Codedeploy": "Codedeploy"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "service/discoveryAgent",
+  "fqn": "pulumi_harness.service",
+  "classes": {
+   "harness:service/discoveryAgent:DiscoveryAgent": "DiscoveryAgent"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "service/discoverySetting",
+  "fqn": "pulumi_harness.service",
+  "classes": {
+   "harness:service/discoverySetting:DiscoverySetting": "DiscoverySetting"
   }
  },
  {

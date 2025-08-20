@@ -17,11 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Physical data center connector.
- * 
- * ## Example to create Pdc Connector at different levels (Org, Project, Account)
+ * Resource for creating a Pdc connector.
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level pdc connector
  * 
@@ -73,14 +73,14 @@ public class ConnectorPdc extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Hosts to be provided.
+     * Host of the Physical data centers.
      * 
      */
     @Export(name="hosts", refs={List.class,ConnectorPdcHost.class}, tree="[0,1]")
     private Output<List<ConnectorPdcHost>> hosts;
 
     /**
-     * @return Hosts to be provided.
+     * @return Host of the Physical data centers.
      * 
      */
     public Output<List<ConnectorPdcHost>> hosts() {

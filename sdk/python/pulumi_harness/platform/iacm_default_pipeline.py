@@ -202,6 +202,20 @@ class IacmDefaultPipeline(pulumi.CustomResource):
         """
         Resource for managing IAC default pipelines
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.IacmDefaultPipeline("example",
+            org_id=test["id"],
+            project_id=test_harness_platform_project["id"],
+            provisioner_type="terraform",
+            operation="plan",
+            pipeline="pipeline1")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] operation: The operation associated with this default.
@@ -218,6 +232,20 @@ class IacmDefaultPipeline(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for managing IAC default pipelines
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.IacmDefaultPipeline("example",
+            org_id=test["id"],
+            project_id=test_harness_platform_project["id"],
+            provisioner_type="terraform",
+            operation="plan",
+            pipeline="pipeline1")
+        ```
 
         :param str resource_name: The name of the resource.
         :param IacmDefaultPipelineArgs args: The arguments to use to populate this resource's properties.

@@ -7,11 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Physical data center connector.
- *
- * ## Example to create Pdc Connector at different levels (Org, Project, Account)
+ * Resource for creating a Pdc connector.
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level pdc connector
  *
@@ -68,7 +68,7 @@ export class ConnectorPdc extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Hosts to be provided.
+     * Host of the Physical data centers.
      */
     public readonly hosts!: pulumi.Output<outputs.platform.ConnectorPdcHost[]>;
     /**
@@ -148,7 +148,7 @@ export interface ConnectorPdcState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Hosts to be provided.
+     * Host of the Physical data centers.
      */
     hosts?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorPdcHost>[]>;
     /**
@@ -186,7 +186,7 @@ export interface ConnectorPdcArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Hosts to be provided.
+     * Host of the Physical data centers.
      */
     hosts: pulumi.Input<pulumi.Input<inputs.platform.ConnectorPdcHost>[]>;
     /**

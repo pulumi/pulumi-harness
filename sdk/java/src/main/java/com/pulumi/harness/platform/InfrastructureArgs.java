@@ -65,14 +65,14 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When set to true, enables force deletion of infrastructure.
+     * Enable this flag for force deletion of infrastructure
      * 
      */
     @Import(name="forceDelete")
     private @Nullable Output<Boolean> forceDelete;
 
     /**
-     * @return When set to true, enables force deletion of infrastructure.
+     * @return Enable this flag for force deletion of infrastructure
      * 
      */
     public Optional<Output<Boolean>> forceDelete() {
@@ -80,14 +80,14 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Contains Git Information for remote entities from Git for Create/Update/Import
+     * Contains parameters related to creating an Entity for Git Experience.
      * 
      */
     @Import(name="gitDetails")
     private @Nullable Output<InfrastructureGitDetailsArgs> gitDetails;
 
     /**
-     * @return Contains Git Information for remote entities from Git for Create/Update/Import
+     * @return Contains parameters related to creating an Entity for Git Experience.
      * 
      */
     public Optional<Output<InfrastructureGitDetailsArgs>> gitDetails() {
@@ -298,7 +298,7 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forceDelete When set to true, enables force deletion of infrastructure.
+         * @param forceDelete Enable this flag for force deletion of infrastructure
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forceDelete When set to true, enables force deletion of infrastructure.
+         * @param forceDelete Enable this flag for force deletion of infrastructure
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param gitDetails Contains Git Information for remote entities from Git for Create/Update/Import
+         * @param gitDetails Contains parameters related to creating an Entity for Git Experience.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param gitDetails Contains Git Information for remote entities from Git for Create/Update/Import
+         * @param gitDetails Contains parameters related to creating an Entity for Git Experience.
          * 
          * @return builder
          * 

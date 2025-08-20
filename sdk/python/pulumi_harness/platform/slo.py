@@ -181,11 +181,11 @@ class Slo(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.Slo("example",
-            org_id="default",
-            project_id="default_project",
-            identifier="TerraformSLO",
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier",
             request={
-                "name": "TSLO",
+                "name": "name",
                 "description": "description",
                 "tags": [
                     "foo:bar",
@@ -231,12 +231,9 @@ class Slo(pulumi.CustomResource):
             })
         ```
 
-        Note the above example is for "Threshold" SLI type, if you want to use
-        "Ratio", the SLI should be changed appropriately.
-        Here's an example of SLO target and Spec for "Ratio" based SLI and
-        "Rolling" SLO target.
-
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level SLO
 
@@ -280,11 +277,11 @@ class Slo(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.Slo("example",
-            org_id="default",
-            project_id="default_project",
-            identifier="TerraformSLO",
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier",
             request={
-                "name": "TSLO",
+                "name": "name",
                 "description": "description",
                 "tags": [
                     "foo:bar",
@@ -330,12 +327,9 @@ class Slo(pulumi.CustomResource):
             })
         ```
 
-        Note the above example is for "Threshold" SLI type, if you want to use
-        "Ratio", the SLI should be changed appropriately.
-        Here's an example of SLO target and Spec for "Ratio" based SLI and
-        "Rolling" SLO target.
-
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level SLO
 

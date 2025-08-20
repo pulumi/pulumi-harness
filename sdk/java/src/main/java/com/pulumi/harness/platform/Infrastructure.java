@@ -19,225 +19,15 @@ import javax.annotation.Nullable;
 
 /**
  * Resource for creating a Harness Infrastructure.
- * ## Example to create Infrastructure at different levels (Org, Project, Account)
  * 
- * ### Account Level
+ * ## Example Usage
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.Infrastructure;
- * import com.pulumi.harness.platform.InfrastructureArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Infrastructure("example", InfrastructureArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .envId("environmentIdentifier")
- *             .type("KubernetesDirect")
- *             .deploymentType("Kubernetes")
- *             .yaml("""
- * infrastructureDefinition:
- *  name: name
- *  identifier: identifier
- *  description: ""
- *  tags:
- *    asda: ""
- *  orgIdentifier: orgIdentifer
- *  projectIdentifier: projectIdentifier
- *  environmentRef: environmentIdentifier
- *  deploymentType: Kubernetes
- *  type: KubernetesDirect
- *  spec:
- *   connectorRef: account.gfgf
- *   namespace: asdasdsa
- *   releaseName: release-<+INFRA_KEY>
- *   allowSimultaneousDeployments: false
- *             """)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Org Level
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.Infrastructure;
- * import com.pulumi.harness.platform.InfrastructureArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Infrastructure("example", InfrastructureArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .orgId("orgIdentifer")
- *             .envId("environmentIdentifier")
- *             .type("KubernetesDirect")
- *             .deploymentType("Kubernetes")
- *             .yaml("""
- * infrastructureDefinition:
- *  name: name
- *  identifier: identifier
- *  description: ""
- *  tags:
- *    asda: ""
- *  orgIdentifier: orgIdentifer
- *  projectIdentifier: projectIdentifier
- *  environmentRef: environmentIdentifier
- *  deploymentType: Kubernetes
- *  type: KubernetesDirect
- *  spec:
- *   connectorRef: account.gfgf
- *   namespace: asdasdsa
- *   releaseName: release-<+INFRA_KEY>
- *   allowSimultaneousDeployments: false
- *             """)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Project Level
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.Infrastructure;
- * import com.pulumi.harness.platform.InfrastructureArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Infrastructure("example", InfrastructureArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .orgId("orgIdentifer")
- *             .projectId("projectIdentifier")
- *             .envId("environmentIdentifier")
- *             .type("KubernetesDirect")
- *             .deploymentType("Kubernetes")
- *             .yaml("""
- * infrastructureDefinition:
- *  name: name
- *  identifier: identifier
- *  description: ""
- *  tags:
- *    asda: ""
- *  orgIdentifier: orgIdentifer
- *  projectIdentifier: projectIdentifier
- *  environmentRef: environmentIdentifier
- *  deploymentType: Kubernetes
- *  type: KubernetesDirect
- *  spec:
- *   connectorRef: account.gfgf
- *   namespace: asdasdsa
- *   releaseName: release-<+INFRA_KEY>
- *   allowSimultaneousDeployments: false
- *             """)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Importing Infrastructure From Git
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.Infrastructure;
- * import com.pulumi.harness.platform.InfrastructureArgs;
- * import com.pulumi.harness.platform.inputs.InfrastructureGitDetailsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var test = new Infrastructure("test", InfrastructureArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .envId("env_id")
- *             .gitDetails(InfrastructureGitDetailsArgs.builder()
- *                 .storeType("REMOTE")
- *                 .connectorRef("connector_ref")
- *                 .repoName("repo_name")
- *                 .filePath("file_path")
- *                 .branch("branch")
- *                 .importFromGit(true)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level infrastructure
  * 
@@ -303,28 +93,28 @@ public class Infrastructure extends com.pulumi.resources.CustomResource {
         return this.envId;
     }
     /**
-     * When set to true, enables force deletion of infrastructure.
+     * Enable this flag for force deletion of infrastructure
      * 
      */
     @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> forceDelete;
 
     /**
-     * @return When set to true, enables force deletion of infrastructure.
+     * @return Enable this flag for force deletion of infrastructure
      * 
      */
     public Output<Boolean> forceDelete() {
         return this.forceDelete;
     }
     /**
-     * Contains Git Information for remote entities from Git for Create/Update/Import
+     * Contains parameters related to creating an Entity for Git Experience.
      * 
      */
     @Export(name="gitDetails", refs={InfrastructureGitDetails.class}, tree="[0]")
     private Output<InfrastructureGitDetails> gitDetails;
 
     /**
-     * @return Contains Git Information for remote entities from Git for Create/Update/Import
+     * @return Contains parameters related to creating an Entity for Git Experience.
      * 
      */
     public Output<InfrastructureGitDetails> gitDetails() {

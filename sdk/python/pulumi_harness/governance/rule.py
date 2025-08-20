@@ -190,6 +190,8 @@ class Rule(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import governance enforcement
 
         ```sh
@@ -213,6 +215,8 @@ class Rule(pulumi.CustomResource):
         Resource for creating, updating, and managing rule.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import governance enforcement
 

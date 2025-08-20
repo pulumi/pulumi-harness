@@ -387,6 +387,8 @@ class SumologicConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level sumologic connector
 
         ```sh
@@ -445,6 +447,8 @@ class SumologicConnector(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level sumologic connector
 

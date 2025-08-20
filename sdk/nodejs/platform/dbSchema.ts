@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import project level db schema
  *
  * ```sh
@@ -46,7 +48,7 @@ export class DbSchema extends pulumi.CustomResource {
     }
 
     /**
-     * Changelog script details
+     * Configuration to clone changeSets using script
      */
     public readonly changelogScript!: pulumi.Output<outputs.platform.DbSchemaChangelogScript | undefined>;
     /**
@@ -74,7 +76,7 @@ export class DbSchema extends pulumi.CustomResource {
      */
     public readonly schemaSource!: pulumi.Output<outputs.platform.DbSchemaSchemaSource | undefined>;
     /**
-     * The service associated with schema.
+     * The service associated with schema
      */
     public readonly service!: pulumi.Output<string | undefined>;
     /**
@@ -82,7 +84,7 @@ export class DbSchema extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Type of the database schema (repository/script).
+     * Type of the database schema. Valid values are: SCRIPT, REPOSITORY
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -141,7 +143,7 @@ export class DbSchema extends pulumi.CustomResource {
  */
 export interface DbSchemaState {
     /**
-     * Changelog script details
+     * Configuration to clone changeSets using script
      */
     changelogScript?: pulumi.Input<inputs.platform.DbSchemaChangelogScript>;
     /**
@@ -169,7 +171,7 @@ export interface DbSchemaState {
      */
     schemaSource?: pulumi.Input<inputs.platform.DbSchemaSchemaSource>;
     /**
-     * The service associated with schema.
+     * The service associated with schema
      */
     service?: pulumi.Input<string>;
     /**
@@ -177,7 +179,7 @@ export interface DbSchemaState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of the database schema (repository/script).
+     * Type of the database schema. Valid values are: SCRIPT, REPOSITORY
      */
     type?: pulumi.Input<string>;
 }
@@ -187,7 +189,7 @@ export interface DbSchemaState {
  */
 export interface DbSchemaArgs {
     /**
-     * Changelog script details
+     * Configuration to clone changeSets using script
      */
     changelogScript?: pulumi.Input<inputs.platform.DbSchemaChangelogScript>;
     /**
@@ -215,7 +217,7 @@ export interface DbSchemaArgs {
      */
     schemaSource?: pulumi.Input<inputs.platform.DbSchemaSchemaSource>;
     /**
-     * The service associated with schema.
+     * The service associated with schema
      */
     service?: pulumi.Input<string>;
     /**
@@ -223,7 +225,7 @@ export interface DbSchemaArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of the database schema (repository/script).
+     * Type of the database schema. Valid values are: SCRIPT, REPOSITORY
      */
     type?: pulumi.Input<string>;
 }

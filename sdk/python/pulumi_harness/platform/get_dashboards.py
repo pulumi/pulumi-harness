@@ -98,7 +98,7 @@ class GetDashboardsResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Description of the Dashboard.
+        Description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -121,6 +121,9 @@ class GetDashboardsResult:
     @_builtins.property
     @pulumi.getter
     def identifier(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the resource.
+        """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
@@ -135,7 +138,7 @@ class GetDashboardsResult:
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Name of the Dashboard.
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -150,6 +153,9 @@ class GetDashboardsResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
+        """
+        Tags to associate with the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -164,7 +170,7 @@ class GetDashboardsResult:
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Type of the dashboard.
+        Resource identifier of the dashboard.
         """
         return pulumi.get(self, "type")
 
@@ -212,12 +218,13 @@ def get_dashboards(id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.platform.get_dashboards(id="48525")
+    dashboard = harness.platform.get_dashboards(id="id")
     ```
 
 
     :param _builtins.str id: Identifier of the dashboard.
-    :param _builtins.str name: Name of the Dashboard.
+    :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str name: Name of the resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -254,12 +261,13 @@ def get_dashboards_output(id: Optional[pulumi.Input[_builtins.str]] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.platform.get_dashboards(id="48525")
+    dashboard = harness.platform.get_dashboards(id="id")
     ```
 
 
     :param _builtins.str id: Identifier of the dashboard.
-    :param _builtins.str name: Name of the Dashboard.
+    :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str name: Name of the resource.
     """
     __args__ = dict()
     __args__['id'] = id

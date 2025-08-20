@@ -22,14 +22,14 @@ public final class InfraVariableSetArgs extends com.pulumi.resources.ResourceArg
     public static final InfraVariableSetArgs Empty = new InfraVariableSetArgs();
 
     /**
-     * Provider connector configured on the variable set
+     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      * 
      */
     @Import(name="connectors")
     private @Nullable Output<List<InfraVariableSetConnectorArgs>> connectors;
 
     /**
-     * @return Provider connector configured on the variable set
+     * @return Provider connectors configured on the Variable Set. Only one connector of a type is supported
      * 
      */
     public Optional<Output<List<InfraVariableSetConnectorArgs>>> connectors() {
@@ -52,14 +52,14 @@ public final class InfraVariableSetArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Environment variables configured on the variable set
+     * Environment variables configured on the Variable Set
      * 
      */
     @Import(name="environmentVariables")
     private @Nullable Output<List<InfraVariableSetEnvironmentVariableArgs>> environmentVariables;
 
     /**
-     * @return Environment variables configured on the variable set
+     * @return Environment variables configured on the Variable Set
      * 
      */
     public Optional<Output<List<InfraVariableSetEnvironmentVariableArgs>>> environmentVariables() {
@@ -189,7 +189,7 @@ public final class InfraVariableSetArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param connectors Provider connector configured on the variable set
+         * @param connectors Provider connectors configured on the Variable Set. Only one connector of a type is supported
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class InfraVariableSetArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param connectors Provider connector configured on the variable set
+         * @param connectors Provider connectors configured on the Variable Set. Only one connector of a type is supported
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class InfraVariableSetArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param connectors Provider connector configured on the variable set
+         * @param connectors Provider connectors configured on the Variable Set. Only one connector of a type is supported
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class InfraVariableSetArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param environmentVariables Environment variables configured on the variable set
+         * @param environmentVariables Environment variables configured on the Variable Set
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class InfraVariableSetArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param environmentVariables Environment variables configured on the variable set
+         * @param environmentVariables Environment variables configured on the Variable Set
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class InfraVariableSetArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param environmentVariables Environment variables configured on the variable set
+         * @param environmentVariables Environment variables configured on the Variable Set
          * 
          * @return builder
          * 

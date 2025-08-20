@@ -14,14 +14,14 @@ public final class GetInfraVariableSetTerraformVariable extends com.pulumi.resou
     public static final GetInfraVariableSetTerraformVariable Empty = new GetInfraVariableSetTerraformVariable();
 
     /**
-     * Key is the identifier for the variable`
+     * Key is the identifier for the variable. Must be unique within the Variable Set.
      * 
      */
     @Import(name="key", required=true)
     private String key;
 
     /**
-     * @return Key is the identifier for the variable`
+     * @return Key is the identifier for the variable. Must be unique within the Variable Set.
      * 
      */
     public String key() {
@@ -29,14 +29,14 @@ public final class GetInfraVariableSetTerraformVariable extends com.pulumi.resou
     }
 
     /**
-     * value is the value of the variable
+     * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
      * 
      */
     @Import(name="value", required=true)
     private String value;
 
     /**
-     * @return value is the value of the variable
+     * @return Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
      * 
      */
     public String value() {
@@ -44,14 +44,14 @@ public final class GetInfraVariableSetTerraformVariable extends com.pulumi.resou
     }
 
     /**
-     * Value type indicates the value type of the variable, text or secret
+     * Value type indicates the value type of the variable. Currently we support string and secret.
      * 
      */
     @Import(name="valueType", required=true)
     private String valueType;
 
     /**
-     * @return Value type indicates the value type of the variable, text or secret
+     * @return Value type indicates the value type of the variable. Currently we support string and secret.
      * 
      */
     public String valueType() {
@@ -85,7 +85,7 @@ public final class GetInfraVariableSetTerraformVariable extends com.pulumi.resou
         }
 
         /**
-         * @param key Key is the identifier for the variable`
+         * @param key Key is the identifier for the variable. Must be unique within the Variable Set.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class GetInfraVariableSetTerraformVariable extends com.pulumi.resou
         }
 
         /**
-         * @param value value is the value of the variable
+         * @param value Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class GetInfraVariableSetTerraformVariable extends com.pulumi.resou
         }
 
         /**
-         * @param valueType Value type indicates the value type of the variable, text or secret
+         * @param valueType Value type indicates the value type of the variable. Currently we support string and secret.
          * 
          * @return builder
          * 

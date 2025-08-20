@@ -15,14 +15,14 @@ public final class GetCurrentAccountPlainArgs extends com.pulumi.resources.Invok
     public static final GetCurrentAccountPlainArgs Empty = new GetCurrentAccountPlainArgs();
 
     /**
-     * Account Identifier of the current account.
+     * Id of the git connector.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return Account Identifier of the current account.
+     * @return Id of the git connector.
      * 
      */
     public Optional<String> id() {
@@ -54,7 +54,7 @@ public final class GetCurrentAccountPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param id Account Identifier of the current account.
+         * @param id Id of the git connector.
          * 
          * @return builder
          * 

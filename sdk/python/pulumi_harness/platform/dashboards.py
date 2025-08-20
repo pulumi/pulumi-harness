@@ -441,13 +441,11 @@ class Dashboards(pulumi.CustomResource):
         import pulumi
         import pulumi_harness as harness
 
-        example = harness.platform.Dashboards("example",
-            dashboard_id="48507",
-            description="Example dashboard description",
-            resource_identifier="shared",
-            title="Example Dashboard",
-            data_sources=[],
-            models=[])
+        dashboard = harness.platform.Dashboards("dashboard",
+            dashboard_id="111",
+            description="dashboard_tag",
+            resource_identifier="999",
+            title="Dashboard Title")
         ```
 
         :param str resource_name: The name of the resource.
@@ -479,13 +477,11 @@ class Dashboards(pulumi.CustomResource):
         import pulumi
         import pulumi_harness as harness
 
-        example = harness.platform.Dashboards("example",
-            dashboard_id="48507",
-            description="Example dashboard description",
-            resource_identifier="shared",
-            title="Example Dashboard",
-            data_sources=[],
-            models=[])
+        dashboard = harness.platform.Dashboards("dashboard",
+            dashboard_id="111",
+            description="dashboard_tag",
+            resource_identifier="999",
+            title="Dashboard Title")
         ```
 
         :param str resource_name: The name of the resource.

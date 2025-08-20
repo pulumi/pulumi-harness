@@ -13,130 +13,9 @@ import (
 )
 
 // Resource for creating a Harness environment service overrides.
-// ## Example to create Environment Service Override at different levels (Org, Project, Account)
 //
-// ### Account Level
-// ```go
-// package main
+// ## Example Usage
 //
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewEnvironmentServiceOverrides(ctx, "example", &platform.EnvironmentServiceOverridesArgs{
-//				EnvId:     pulumi.String("environmentIdentifier"),
-//				ServiceId: pulumi.String("serviceIdentifier"),
-//				Yaml: pulumi.String(`serviceOverrides:
-//	  environmentRef: environmentIdentifier
-//	  serviceRef: serviceIdentifier
-//	  variables:
-//	   - name: asda
-//	     type: String
-//	     value: asddad
-//	  manifests:
-//	     - manifest:
-//	         identifier: manifestEnv
-//	         type: Values
-//	         spec:
-//	           store:
-//	             type: Git
-//	             spec:
-//	               connectorRef: <+input>
-//	               gitFetchType: Branch
-//	               paths:
-//	                 - file1
-//	               repoName: <+input>
-//	               branch: master
-//	  configFiles:
-//	     - configFile:
-//	         identifier: configFileEnv
-//	         spec:
-//	           store:
-//	             type: Harness
-//	             spec:
-//	               files:
-//	                 - account:/Add-ons/svcOverrideTest
-//	               secretFiles: []
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Org Level
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewEnvironmentServiceOverrides(ctx, "example", &platform.EnvironmentServiceOverridesArgs{
-//				OrgId:     pulumi.String("orgIdentifier"),
-//				EnvId:     pulumi.String("environmentIdentifier"),
-//				ServiceId: pulumi.String("serviceIdentifier"),
-//				Yaml: pulumi.String(`serviceOverrides:
-//	  environmentRef: environmentIdentifier
-//	  serviceRef: serviceIdentifier
-//	  variables:
-//	   - name: asda
-//	     type: String
-//	     value: asddad
-//	  manifests:
-//	     - manifest:
-//	         identifier: manifestEnv
-//	         type: Values
-//	         spec:
-//	           store:
-//	             type: Git
-//	             spec:
-//	               connectorRef: <+input>
-//	               gitFetchType: Branch
-//	               paths:
-//	                 - file1
-//	               repoName: <+input>
-//	               branch: master
-//	  configFiles:
-//	     - configFile:
-//	         identifier: configFileEnv
-//	         spec:
-//	           store:
-//	             type: Harness
-//	             spec:
-//	               files:
-//	                 - account:/Add-ons/svcOverrideTest
-//	               secretFiles: []
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Project Level
 // ```go
 // package main
 //
@@ -200,6 +79,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // # Import list of account level service overrides using the env id associated with them
 //
 // ```sh
@@ -220,7 +101,7 @@ import (
 type EnvironmentServiceOverrides struct {
 	pulumi.CustomResourceState
 
-	// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+	// The env ID to which the overrides associated.
 	EnvId pulumi.StringOutput `pulumi:"envId"`
 	// identifier of the service overrides.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -228,7 +109,7 @@ type EnvironmentServiceOverrides struct {
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+	// The service ID to which the overrides applies.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringOutput `pulumi:"yaml"`
@@ -273,7 +154,7 @@ func GetEnvironmentServiceOverrides(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EnvironmentServiceOverrides resources.
 type environmentServiceOverridesState struct {
-	// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+	// The env ID to which the overrides associated.
 	EnvId *string `pulumi:"envId"`
 	// identifier of the service overrides.
 	Identifier *string `pulumi:"identifier"`
@@ -281,14 +162,14 @@ type environmentServiceOverridesState struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+	// The service ID to which the overrides applies.
 	ServiceId *string `pulumi:"serviceId"`
 	// Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
 type EnvironmentServiceOverridesState struct {
-	// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+	// The env ID to which the overrides associated.
 	EnvId pulumi.StringPtrInput
 	// identifier of the service overrides.
 	Identifier pulumi.StringPtrInput
@@ -296,7 +177,7 @@ type EnvironmentServiceOverridesState struct {
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+	// The service ID to which the overrides applies.
 	ServiceId pulumi.StringPtrInput
 	// Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
@@ -307,7 +188,7 @@ func (EnvironmentServiceOverridesState) ElementType() reflect.Type {
 }
 
 type environmentServiceOverridesArgs struct {
-	// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+	// The env ID to which the overrides associated.
 	EnvId string `pulumi:"envId"`
 	// identifier of the service overrides.
 	Identifier *string `pulumi:"identifier"`
@@ -315,7 +196,7 @@ type environmentServiceOverridesArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+	// The service ID to which the overrides applies.
 	ServiceId string `pulumi:"serviceId"`
 	// Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml string `pulumi:"yaml"`
@@ -323,7 +204,7 @@ type environmentServiceOverridesArgs struct {
 
 // The set of arguments for constructing a EnvironmentServiceOverrides resource.
 type EnvironmentServiceOverridesArgs struct {
-	// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+	// The env ID to which the overrides associated.
 	EnvId pulumi.StringInput
 	// identifier of the service overrides.
 	Identifier pulumi.StringPtrInput
@@ -331,7 +212,7 @@ type EnvironmentServiceOverridesArgs struct {
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+	// The service ID to which the overrides applies.
 	ServiceId pulumi.StringInput
 	// Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringInput
@@ -424,7 +305,7 @@ func (o EnvironmentServiceOverridesOutput) ToEnvironmentServiceOverridesOutputWi
 	return o
 }
 
-// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+// The env ID to which the overrides associated.
 func (o EnvironmentServiceOverridesOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentServiceOverrides) pulumi.StringOutput { return v.EnvId }).(pulumi.StringOutput)
 }
@@ -444,7 +325,7 @@ func (o EnvironmentServiceOverridesOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentServiceOverrides) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+// The service ID to which the overrides applies.
 func (o EnvironmentServiceOverridesOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentServiceOverrides) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

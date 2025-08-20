@@ -11,12 +11,21 @@ namespace Pulumi.Harness.Platform
 {
     public static class GetConnectorAzureRepo
     {
+        /// <summary>
+        /// Datasource for looking up a Azure Repo connector.
+        /// </summary>
         public static Task<GetConnectorAzureRepoResult> InvokeAsync(GetConnectorAzureRepoArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectorAzureRepoResult>("harness:platform/getConnectorAzureRepo:getConnectorAzureRepo", args ?? new GetConnectorAzureRepoArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Datasource for looking up a Azure Repo connector.
+        /// </summary>
         public static Output<GetConnectorAzureRepoResult> Invoke(GetConnectorAzureRepoInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorAzureRepoResult>("harness:platform/getConnectorAzureRepo:getConnectorAzureRepo", args ?? new GetConnectorAzureRepoInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Datasource for looking up a Azure Repo connector.
+        /// </summary>
         public static Output<GetConnectorAzureRepoResult> Invoke(GetConnectorAzureRepoInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorAzureRepoResult>("harness:platform/getConnectorAzureRepo:getConnectorAzureRepo", args ?? new GetConnectorAzureRepoInvokeArgs(), options.WithDefaults());
     }
@@ -24,15 +33,27 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetConnectorAzureRepoArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
@@ -44,15 +65,27 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetConnectorAzureRepoInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
@@ -66,22 +99,61 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetConnectorAzureRepoResult
     {
+        /// <summary>
+        /// Configuration for using the azure repo api. API Access is Computed for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectorAzureRepoApiAuthenticationResult> ApiAuthentications;
+        /// <summary>
+        /// Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
+        /// </summary>
         public readonly string ConnectionType;
+        /// <summary>
+        /// Credentials to use for the connection.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectorAzureRepoCredentialResult> Credentials;
+        /// <summary>
+        /// Tags to filter delegates for connection.
+        /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
+        /// <summary>
+        /// Description of the resource.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
         public readonly bool ExecuteOnDelegate;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         public readonly string Identifier;
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         public readonly string? OrgId;
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         public readonly string? ProjectId;
+        /// <summary>
+        /// Tags to associate with the resource.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// URL of the azure repo repository or account.
+        /// </summary>
         public readonly string Url;
+        /// <summary>
+        /// Repository to test the connection with. This is only used when `connection_type` is `Account`.
+        /// </summary>
         public readonly string ValidationRepo;
 
         [OutputConstructor]

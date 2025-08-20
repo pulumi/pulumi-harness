@@ -79,7 +79,7 @@ public final class ClusterFunctions {
         return Deployment.getInstance().invokeAsync("harness:cluster/getOrchestrator:getOrchestrator", TypeShape.of(GetOrchestratorResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Resource for ClusterOrchestrator Config.
+     * Data Source for retrieving Harness CCM ClusterOrchestrator Config.
      * 
      * ## Example Usage
      * 
@@ -121,7 +121,7 @@ public final class ClusterFunctions {
         return getOrchestratorConfig(args, InvokeOptions.Empty);
     }
     /**
-     * Resource for ClusterOrchestrator Config.
+     * Data Source for retrieving Harness CCM ClusterOrchestrator Config.
      * 
      * ## Example Usage
      * 
@@ -163,7 +163,7 @@ public final class ClusterFunctions {
         return getOrchestratorConfigPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Resource for ClusterOrchestrator Config.
+     * Data Source for retrieving Harness CCM ClusterOrchestrator Config.
      * 
      * ## Example Usage
      * 
@@ -205,7 +205,7 @@ public final class ClusterFunctions {
         return Deployment.getInstance().invoke("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", TypeShape.of(GetOrchestratorConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Resource for ClusterOrchestrator Config.
+     * Data Source for retrieving Harness CCM ClusterOrchestrator Config.
      * 
      * ## Example Usage
      * 
@@ -247,7 +247,7 @@ public final class ClusterFunctions {
         return Deployment.getInstance().invoke("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", TypeShape.of(GetOrchestratorConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Resource for ClusterOrchestrator Config.
+     * Data Source for retrieving Harness CCM ClusterOrchestrator Config.
      * 
      * ## Example Usage
      * 

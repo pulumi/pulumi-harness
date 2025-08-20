@@ -26,6 +26,8 @@ export function getGitopsApplications(args: GetGitopsApplicationsArgs, opts?: pu
  */
 export interface GetGitopsApplicationsArgs {
     /**
+     * Account identifier of the GitOps application.
+     *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: string;
@@ -58,6 +60,8 @@ export interface GetGitopsApplicationsArgs {
  */
 export interface GetGitopsApplicationsResult {
     /**
+     * Account identifier of the GitOps application.
+     *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
@@ -111,6 +115,9 @@ export interface GetGitopsApplicationsResult {
      * Repository identifier of the GitOps application.
      */
     readonly repoId: string;
+    /**
+     * List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+     */
     readonly repoIds: string[];
     /**
      * Request cascade to delete the GitOps application.
@@ -153,6 +160,8 @@ export function getGitopsApplicationsOutput(args: GetGitopsApplicationsOutputArg
  */
 export interface GetGitopsApplicationsOutputArgs {
     /**
+     * Account identifier of the GitOps application.
+     *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: pulumi.Input<string>;

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Datasource for looking up a PagerDuty connector.
+//
 // ## Example Usage
 //
 // ```go

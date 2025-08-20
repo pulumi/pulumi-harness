@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Data source for retrieving service account.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -91,6 +93,8 @@ export interface GetServiceAccountResult {
     readonly tags: string[];
 }
 /**
+ * Data source for retrieving service account.
+ *
  * ## Example Usage
  *
  * ```typescript

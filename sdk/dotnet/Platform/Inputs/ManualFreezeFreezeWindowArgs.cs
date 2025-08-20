@@ -13,13 +13,13 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class ManualFreezeFreezeWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Duration of the freeze
+        /// Duration of the freeze window
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// End time of the freeze
+        /// End Time of the freeze window
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
@@ -37,13 +37,13 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
-        /// Start time of the freeze
+        /// Start Time of the freeze window
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// Timezone
+        /// Time zone of the freeze window
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }

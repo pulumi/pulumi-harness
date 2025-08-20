@@ -65,6 +65,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * Import account level ccm filter
  * 
  * ```sh
@@ -101,14 +103,14 @@ public class PlatformCcmFilters extends com.pulumi.resources.CustomResource {
         return this.filterProperties;
     }
     /**
-     * This indicates visibility of filters. By default, everyone can view this filter..
+     * This indicates visibility of filters, by default it is Everyone.
      * 
      */
     @Export(name="filterVisibility", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filterVisibility;
 
     /**
-     * @return This indicates visibility of filters. By default, everyone can view this filter..
+     * @return This indicates visibility of filters, by default it is Everyone.
      * 
      */
     public Output<Optional<String>> filterVisibility() {

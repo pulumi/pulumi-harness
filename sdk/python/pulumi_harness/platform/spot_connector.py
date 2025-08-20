@@ -275,6 +275,8 @@ class SpotConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import using spot cloud provider connector id
 
         ```sh
@@ -301,6 +303,8 @@ class SpotConnector(pulumi.CustomResource):
         Resource for creating a Spot connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import using spot cloud provider connector id
 

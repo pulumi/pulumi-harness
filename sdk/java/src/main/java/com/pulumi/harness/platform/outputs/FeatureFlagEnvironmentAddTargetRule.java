@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureFlagEnvironmentAddTargetRule {
     /**
-     * @return The targets of the rule
+     * @return The targets that should be served this variation
      * 
      */
     private @Nullable List<String> targets;
     /**
-     * @return The identifier of the variation. Valid values are `enabled`, `disabled`
+     * @return The identifier of the variation
      * 
      */
     private @Nullable String variation;
 
     private FeatureFlagEnvironmentAddTargetRule() {}
     /**
-     * @return The targets of the rule
+     * @return The targets that should be served this variation
      * 
      */
     public List<String> targets() {
         return this.targets == null ? List.of() : this.targets;
     }
     /**
-     * @return The identifier of the variation. Valid values are `enabled`, `disabled`
+     * @return The identifier of the variation
      * 
      */
     public Optional<String> variation() {

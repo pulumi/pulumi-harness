@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetAwsKmsConnector
     {
         /// <summary>
+        /// Datasource for looking up an AWS KMS connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +36,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsKmsConnectorResult>("harness:platform/getAwsKmsConnector:getAwsKmsConnector", args ?? new GetAwsKmsConnectorArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Datasource for looking up an AWS KMS connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +60,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsKmsConnectorResult>("harness:platform/getAwsKmsConnector:getAwsKmsConnector", args ?? new GetAwsKmsConnectorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Datasource for looking up an AWS KMS connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -147,6 +153,7 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetAwsKmsConnectorResult
     {
+        public readonly string ArnPlaintext;
         /// <summary>
         /// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
@@ -202,6 +209,8 @@ namespace Pulumi.Harness.Platform
 
         [OutputConstructor]
         private GetAwsKmsConnectorResult(
+            string arnPlaintext,
+
             string arnRef,
 
             ImmutableArray<Outputs.GetAwsKmsConnectorCredentialResult> credentials,
@@ -228,6 +237,7 @@ namespace Pulumi.Harness.Platform
 
             ImmutableArray<string> tags)
         {
+            ArnPlaintext = arnPlaintext;
             ArnRef = arnRef;
             Credentials = credentials;
             Default = @default;

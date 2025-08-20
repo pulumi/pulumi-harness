@@ -19,6 +19,34 @@ __all__ = [
     'AmiVariableArgsDict',
     'CodedeployVariableArgs',
     'CodedeployVariableArgsDict',
+    'DiscoveryAgentConfigArgs',
+    'DiscoveryAgentConfigArgsDict',
+    'DiscoveryAgentConfigDataArgs',
+    'DiscoveryAgentConfigDataArgsDict',
+    'DiscoveryAgentConfigDataCronArgs',
+    'DiscoveryAgentConfigDataCronArgsDict',
+    'DiscoveryAgentConfigKuberneteArgs',
+    'DiscoveryAgentConfigKuberneteArgsDict',
+    'DiscoveryAgentConfigKuberneteResourceArgs',
+    'DiscoveryAgentConfigKuberneteResourceArgsDict',
+    'DiscoveryAgentConfigKuberneteResourceLimitArgs',
+    'DiscoveryAgentConfigKuberneteResourceLimitArgsDict',
+    'DiscoveryAgentConfigKuberneteResourceRequestArgs',
+    'DiscoveryAgentConfigKuberneteResourceRequestArgsDict',
+    'DiscoveryAgentConfigKuberneteTolerationArgs',
+    'DiscoveryAgentConfigKuberneteTolerationArgsDict',
+    'DiscoveryAgentConfigMtlArgs',
+    'DiscoveryAgentConfigMtlArgsDict',
+    'DiscoveryAgentConfigProxyArgs',
+    'DiscoveryAgentConfigProxyArgsDict',
+    'DiscoveryAgentInstallationDetailArgs',
+    'DiscoveryAgentInstallationDetailArgsDict',
+    'DiscoveryAgentInstallationDetailAgentDetailArgs',
+    'DiscoveryAgentInstallationDetailAgentDetailArgsDict',
+    'DiscoveryAgentInstallationDetailAgentDetailClusterArgs',
+    'DiscoveryAgentInstallationDetailAgentDetailClusterArgsDict',
+    'DiscoverySettingImageRegistryArgs',
+    'DiscoverySettingImageRegistryArgsDict',
     'EcsVariableArgs',
     'EcsVariableArgsDict',
     'HelmVariableArgs',
@@ -173,6 +201,1707 @@ class CodedeployVariableArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class DiscoveryAgentConfigArgsDict(TypedDict):
+        kubernetes: pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteArgsDict']]]
+        """
+        Kubernetes-specific configuration.
+        """
+        collector_image: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Docker image for the collector.
+        """
+        datas: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataArgsDict']]]]
+        """
+        Data collection configuration.
+        """
+        image_pull_secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of image pull secrets.
+        """
+        log_watcher_image: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Docker image for the log watcher.
+        """
+        mtls: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigMtlArgsDict']]]]
+        """
+        mTLS configuration.
+        """
+        proxies: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigProxyArgsDict']]]]
+        """
+        Proxy configuration.
+        """
+        skip_secure_verify: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to skip TLS verification.
+        """
+elif False:
+    DiscoveryAgentConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentConfigArgs:
+    def __init__(__self__, *,
+                 kubernetes: pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteArgs']]],
+                 collector_image: Optional[pulumi.Input[_builtins.str]] = None,
+                 datas: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataArgs']]]] = None,
+                 image_pull_secrets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_watcher_image: Optional[pulumi.Input[_builtins.str]] = None,
+                 mtls: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigMtlArgs']]]] = None,
+                 proxies: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigProxyArgs']]]] = None,
+                 skip_secure_verify: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteArgs']]] kubernetes: Kubernetes-specific configuration.
+        :param pulumi.Input[_builtins.str] collector_image: Docker image for the collector.
+        :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataArgs']]] datas: Data collection configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] image_pull_secrets: List of image pull secrets.
+        :param pulumi.Input[_builtins.str] log_watcher_image: Docker image for the log watcher.
+        :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigMtlArgs']]] mtls: mTLS configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigProxyArgs']]] proxies: Proxy configuration.
+        :param pulumi.Input[_builtins.bool] skip_secure_verify: Whether to skip TLS verification.
+        """
+        pulumi.set(__self__, "kubernetes", kubernetes)
+        if collector_image is not None:
+            pulumi.set(__self__, "collector_image", collector_image)
+        if datas is not None:
+            pulumi.set(__self__, "datas", datas)
+        if image_pull_secrets is not None:
+            pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
+        if log_watcher_image is not None:
+            pulumi.set(__self__, "log_watcher_image", log_watcher_image)
+        if mtls is not None:
+            pulumi.set(__self__, "mtls", mtls)
+        if proxies is not None:
+            pulumi.set(__self__, "proxies", proxies)
+        if skip_secure_verify is not None:
+            pulumi.set(__self__, "skip_secure_verify", skip_secure_verify)
+
+    @_builtins.property
+    @pulumi.getter
+    def kubernetes(self) -> pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteArgs']]]:
+        """
+        Kubernetes-specific configuration.
+        """
+        return pulumi.get(self, "kubernetes")
+
+    @kubernetes.setter
+    def kubernetes(self, value: pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteArgs']]]):
+        pulumi.set(self, "kubernetes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="collectorImage")
+    def collector_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Docker image for the collector.
+        """
+        return pulumi.get(self, "collector_image")
+
+    @collector_image.setter
+    def collector_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "collector_image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataArgs']]]]:
+        """
+        Data collection configuration.
+        """
+        return pulumi.get(self, "datas")
+
+    @datas.setter
+    def datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataArgs']]]]):
+        pulumi.set(self, "datas", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imagePullSecrets")
+    def image_pull_secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of image pull secrets.
+        """
+        return pulumi.get(self, "image_pull_secrets")
+
+    @image_pull_secrets.setter
+    def image_pull_secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "image_pull_secrets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logWatcherImage")
+    def log_watcher_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Docker image for the log watcher.
+        """
+        return pulumi.get(self, "log_watcher_image")
+
+    @log_watcher_image.setter
+    def log_watcher_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "log_watcher_image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mtls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigMtlArgs']]]]:
+        """
+        mTLS configuration.
+        """
+        return pulumi.get(self, "mtls")
+
+    @mtls.setter
+    def mtls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigMtlArgs']]]]):
+        pulumi.set(self, "mtls", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def proxies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigProxyArgs']]]]:
+        """
+        Proxy configuration.
+        """
+        return pulumi.get(self, "proxies")
+
+    @proxies.setter
+    def proxies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigProxyArgs']]]]):
+        pulumi.set(self, "proxies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipSecureVerify")
+    def skip_secure_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to skip TLS verification.
+        """
+        return pulumi.get(self, "skip_secure_verify")
+
+    @skip_secure_verify.setter
+    def skip_secure_verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_secure_verify", value)
+
+
+if not MYPY:
+    class DiscoveryAgentConfigDataArgsDict(TypedDict):
+        blacklisted_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of namespaces to exclude from discovery.
+        """
+        collection_window_in_min: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Collection window in minutes.
+        """
+        crons: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataCronArgsDict']]]]
+        """
+        Cron schedule for data collection.
+        """
+        enable_batch_resources: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable batch resources.
+        """
+        enable_node_agent: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable node agent.
+        """
+        enable_orphaned_pod: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable orphaned pod detection.
+        """
+        namespace_selector: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Namespace selector for the agent.
+        """
+        node_agent_selector: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Node selector for the node agent.
+        """
+        observed_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of namespaces to observe.
+        """
+elif False:
+    DiscoveryAgentConfigDataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentConfigDataArgs:
+    def __init__(__self__, *,
+                 blacklisted_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 collection_window_in_min: Optional[pulumi.Input[_builtins.int]] = None,
+                 crons: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataCronArgs']]]] = None,
+                 enable_batch_resources: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_node_agent: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_orphaned_pod: Optional[pulumi.Input[_builtins.bool]] = None,
+                 namespace_selector: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_agent_selector: Optional[pulumi.Input[_builtins.str]] = None,
+                 observed_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blacklisted_namespaces: List of namespaces to exclude from discovery.
+        :param pulumi.Input[_builtins.int] collection_window_in_min: Collection window in minutes.
+        :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataCronArgs']]] crons: Cron schedule for data collection.
+        :param pulumi.Input[_builtins.bool] enable_batch_resources: Whether to enable batch resources.
+        :param pulumi.Input[_builtins.bool] enable_node_agent: Whether to enable node agent.
+        :param pulumi.Input[_builtins.bool] enable_orphaned_pod: Whether to enable orphaned pod detection.
+        :param pulumi.Input[_builtins.str] namespace_selector: Namespace selector for the agent.
+        :param pulumi.Input[_builtins.str] node_agent_selector: Node selector for the node agent.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] observed_namespaces: List of namespaces to observe.
+        """
+        if blacklisted_namespaces is not None:
+            pulumi.set(__self__, "blacklisted_namespaces", blacklisted_namespaces)
+        if collection_window_in_min is not None:
+            pulumi.set(__self__, "collection_window_in_min", collection_window_in_min)
+        if crons is not None:
+            pulumi.set(__self__, "crons", crons)
+        if enable_batch_resources is not None:
+            pulumi.set(__self__, "enable_batch_resources", enable_batch_resources)
+        if enable_node_agent is not None:
+            pulumi.set(__self__, "enable_node_agent", enable_node_agent)
+        if enable_orphaned_pod is not None:
+            pulumi.set(__self__, "enable_orphaned_pod", enable_orphaned_pod)
+        if namespace_selector is not None:
+            pulumi.set(__self__, "namespace_selector", namespace_selector)
+        if node_agent_selector is not None:
+            pulumi.set(__self__, "node_agent_selector", node_agent_selector)
+        if observed_namespaces is not None:
+            pulumi.set(__self__, "observed_namespaces", observed_namespaces)
+
+    @_builtins.property
+    @pulumi.getter(name="blacklistedNamespaces")
+    def blacklisted_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of namespaces to exclude from discovery.
+        """
+        return pulumi.get(self, "blacklisted_namespaces")
+
+    @blacklisted_namespaces.setter
+    def blacklisted_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "blacklisted_namespaces", value)
+
+    @_builtins.property
+    @pulumi.getter(name="collectionWindowInMin")
+    def collection_window_in_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Collection window in minutes.
+        """
+        return pulumi.get(self, "collection_window_in_min")
+
+    @collection_window_in_min.setter
+    def collection_window_in_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "collection_window_in_min", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def crons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataCronArgs']]]]:
+        """
+        Cron schedule for data collection.
+        """
+        return pulumi.get(self, "crons")
+
+    @crons.setter
+    def crons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataCronArgs']]]]):
+        pulumi.set(self, "crons", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableBatchResources")
+    def enable_batch_resources(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable batch resources.
+        """
+        return pulumi.get(self, "enable_batch_resources")
+
+    @enable_batch_resources.setter
+    def enable_batch_resources(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_batch_resources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableNodeAgent")
+    def enable_node_agent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable node agent.
+        """
+        return pulumi.get(self, "enable_node_agent")
+
+    @enable_node_agent.setter
+    def enable_node_agent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_node_agent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableOrphanedPod")
+    def enable_orphaned_pod(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable orphaned pod detection.
+        """
+        return pulumi.get(self, "enable_orphaned_pod")
+
+    @enable_orphaned_pod.setter
+    def enable_orphaned_pod(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_orphaned_pod", value)
+
+    @_builtins.property
+    @pulumi.getter(name="namespaceSelector")
+    def namespace_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Namespace selector for the agent.
+        """
+        return pulumi.get(self, "namespace_selector")
+
+    @namespace_selector.setter
+    def namespace_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "namespace_selector", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeAgentSelector")
+    def node_agent_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Node selector for the node agent.
+        """
+        return pulumi.get(self, "node_agent_selector")
+
+    @node_agent_selector.setter
+    def node_agent_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "node_agent_selector", value)
+
+    @_builtins.property
+    @pulumi.getter(name="observedNamespaces")
+    def observed_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of namespaces to observe.
+        """
+        return pulumi.get(self, "observed_namespaces")
+
+    @observed_namespaces.setter
+    def observed_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "observed_namespaces", value)
+
+
+if not MYPY:
+    class DiscoveryAgentConfigDataCronArgsDict(TypedDict):
+        expression: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Cron expression for scheduling.
+        """
+elif False:
+    DiscoveryAgentConfigDataCronArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentConfigDataCronArgs:
+    def __init__(__self__, *,
+                 expression: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression: Cron expression for scheduling.
+        """
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cron expression for scheduling.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expression", value)
+
+
+if not MYPY:
+    class DiscoveryAgentConfigKuberneteArgsDict(TypedDict):
+        namespace: pulumi.Input[_builtins.str]
+        """
+        Kubernetes namespace to use
+        """
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Annotations to add to all resources.
+        """
+        disable_namespace_creation: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to disable namespace creation.
+        """
+        image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The image pull policy.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Labels to add to all resources.
+        """
+        namespaced: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the agent is namespaced.
+        """
+        node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Node selector labels.
+        """
+        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceArgsDict']]]]
+        """
+        Compute resource requirements for the agent container.
+        """
+        run_as_group: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The group ID to run as.
+        """
+        run_as_user: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The user ID to run as.
+        """
+        service_account: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Service account to use
+        """
+        tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteTolerationArgsDict']]]]
+        """
+        Tolerations for pod assignment.
+        """
+elif False:
+    DiscoveryAgentConfigKuberneteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentConfigKuberneteArgs:
+    def __init__(__self__, *,
+                 namespace: pulumi.Input[_builtins.str],
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 disable_namespace_creation: Optional[pulumi.Input[_builtins.bool]] = None,
+                 image_pull_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespaced: Optional[pulumi.Input[_builtins.bool]] = None,
+                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceArgs']]]] = None,
+                 run_as_group: Optional[pulumi.Input[_builtins.int]] = None,
+                 run_as_user: Optional[pulumi.Input[_builtins.int]] = None,
+                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteTolerationArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] namespace: Kubernetes namespace to use
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations to add to all resources.
+        :param pulumi.Input[_builtins.bool] disable_namespace_creation: Whether to disable namespace creation.
+        :param pulumi.Input[_builtins.str] image_pull_policy: The image pull policy.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to add to all resources.
+        :param pulumi.Input[_builtins.bool] namespaced: Whether the agent is namespaced.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] node_selector: Node selector labels.
+        :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceArgs']]] resources: Compute resource requirements for the agent container.
+        :param pulumi.Input[_builtins.int] run_as_group: The group ID to run as.
+        :param pulumi.Input[_builtins.int] run_as_user: The user ID to run as.
+        :param pulumi.Input[_builtins.str] service_account: Service account to use
+        :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteTolerationArgs']]] tolerations: Tolerations for pod assignment.
+        """
+        pulumi.set(__self__, "namespace", namespace)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if disable_namespace_creation is not None:
+            pulumi.set(__self__, "disable_namespace_creation", disable_namespace_creation)
+        if image_pull_policy is not None:
+            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if namespaced is not None:
+            pulumi.set(__self__, "namespaced", namespaced)
+        if node_selector is not None:
+            pulumi.set(__self__, "node_selector", node_selector)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if run_as_group is not None:
+            pulumi.set(__self__, "run_as_group", run_as_group)
+        if run_as_user is not None:
+            pulumi.set(__self__, "run_as_user", run_as_user)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> pulumi.Input[_builtins.str]:
+        """
+        Kubernetes namespace to use
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "namespace", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Annotations to add to all resources.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableNamespaceCreation")
+    def disable_namespace_creation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to disable namespace creation.
+        """
+        return pulumi.get(self, "disable_namespace_creation")
+
+    @disable_namespace_creation.setter
+    def disable_namespace_creation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_namespace_creation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The image pull policy.
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @image_pull_policy.setter
+    def image_pull_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "image_pull_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Labels to add to all resources.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespaced(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the agent is namespaced.
+        """
+        return pulumi.get(self, "namespaced")
+
+    @namespaced.setter
+    def namespaced(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "namespaced", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeSelector")
+    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Node selector labels.
+        """
+        return pulumi.get(self, "node_selector")
+
+    @node_selector.setter
+    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "node_selector", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceArgs']]]]:
+        """
+        Compute resource requirements for the agent container.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceArgs']]]]):
+        pulumi.set(self, "resources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="runAsGroup")
+    def run_as_group(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The group ID to run as.
+        """
+        return pulumi.get(self, "run_as_group")
+
+    @run_as_group.setter
+    def run_as_group(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "run_as_group", value)
+
+    @_builtins.property
+    @pulumi.getter(name="runAsUser")
+    def run_as_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The user ID to run as.
+        """
+        return pulumi.get(self, "run_as_user")
+
+    @run_as_user.setter
+    def run_as_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "run_as_user", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Service account to use
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tolerations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteTolerationArgs']]]]:
+        """
+        Tolerations for pod assignment.
+        """
+        return pulumi.get(self, "tolerations")
+
+    @tolerations.setter
+    def tolerations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteTolerationArgs']]]]):
+        pulumi.set(self, "tolerations", value)
+
+
+if not MYPY:
+    class DiscoveryAgentConfigKuberneteResourceArgsDict(TypedDict):
+        limits: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceLimitArgsDict']]]]
+        """
+        Maximum amount of compute resources allowed.
+        """
+        requests: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceRequestArgsDict']]]]
+        """
+        Minimum amount of compute resources required.
+        """
+elif False:
+    DiscoveryAgentConfigKuberneteResourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentConfigKuberneteResourceArgs:
+    def __init__(__self__, *,
+                 limits: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceLimitArgs']]]] = None,
+                 requests: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceRequestArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceLimitArgs']]] limits: Maximum amount of compute resources allowed.
+        :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceRequestArgs']]] requests: Minimum amount of compute resources required.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceLimitArgs']]]]:
+        """
+        Maximum amount of compute resources allowed.
+        """
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceLimitArgs']]]]):
+        pulumi.set(self, "limits", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def requests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceRequestArgs']]]]:
+        """
+        Minimum amount of compute resources required.
+        """
+        return pulumi.get(self, "requests")
+
+    @requests.setter
+    def requests(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceRequestArgs']]]]):
+        pulumi.set(self, "requests", value)
+
+
+if not MYPY:
+    class DiscoveryAgentConfigKuberneteResourceLimitArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+        """
+        memory: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Memory limit in bytes (e.g., 128Mi, 1Gi).
+        """
+elif False:
+    DiscoveryAgentConfigKuberneteResourceLimitArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentConfigKuberneteResourceLimitArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[_builtins.str]] = None,
+                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cpu: CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+        :param pulumi.Input[_builtins.str] memory: Memory limit in bytes (e.g., 128Mi, 1Gi).
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Memory limit in bytes (e.g., 128Mi, 1Gi).
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class DiscoveryAgentConfigKuberneteResourceRequestArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        CPU request in CPU units (e.g., 100m = 0.1 CPU).
+        """
+        memory: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Memory request in bytes (e.g., 128Mi, 1Gi).
+        """
+elif False:
+    DiscoveryAgentConfigKuberneteResourceRequestArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentConfigKuberneteResourceRequestArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[_builtins.str]] = None,
+                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cpu: CPU request in CPU units (e.g., 100m = 0.1 CPU).
+        :param pulumi.Input[_builtins.str] memory: Memory request in bytes (e.g., 128Mi, 1Gi).
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CPU request in CPU units (e.g., 100m = 0.1 CPU).
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Memory request in bytes (e.g., 128Mi, 1Gi).
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class DiscoveryAgentConfigKuberneteTolerationArgsDict(TypedDict):
+        effect: pulumi.Input[_builtins.str]
+        """
+        Effect indicates the taint effect to match.
+        """
+        key: pulumi.Input[_builtins.str]
+        """
+        The taint key that the toleration applies to.
+        """
+        operator: pulumi.Input[_builtins.str]
+        """
+        Operator represents a key's relationship to the value.
+        """
+        toleration_seconds: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        TolerationSeconds represents the period of time the toleration tolerates the taint.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The taint value the toleration matches to.
+        """
+elif False:
+    DiscoveryAgentConfigKuberneteTolerationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentConfigKuberneteTolerationArgs:
+    def __init__(__self__, *,
+                 effect: pulumi.Input[_builtins.str],
+                 key: pulumi.Input[_builtins.str],
+                 operator: pulumi.Input[_builtins.str],
+                 toleration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] effect: Effect indicates the taint effect to match.
+        :param pulumi.Input[_builtins.str] key: The taint key that the toleration applies to.
+        :param pulumi.Input[_builtins.str] operator: Operator represents a key's relationship to the value.
+        :param pulumi.Input[_builtins.int] toleration_seconds: TolerationSeconds represents the period of time the toleration tolerates the taint.
+        :param pulumi.Input[_builtins.str] value: The taint value the toleration matches to.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        if toleration_seconds is not None:
+            pulumi.set(__self__, "toleration_seconds", toleration_seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def effect(self) -> pulumi.Input[_builtins.str]:
+        """
+        Effect indicates the taint effect to match.
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "effect", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The taint key that the toleration applies to.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        Operator represents a key's relationship to the value.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tolerationSeconds")
+    def toleration_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        TolerationSeconds represents the period of time the toleration tolerates the taint.
+        """
+        return pulumi.get(self, "toleration_seconds")
+
+    @toleration_seconds.setter
+    def toleration_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "toleration_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The taint value the toleration matches to.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class DiscoveryAgentConfigMtlArgsDict(TypedDict):
+        cert_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Path to the certificate file.
+        """
+        key_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Path to the key file.
+        """
+        secret_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the Kubernetes secret containing the certificate and key.
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL of the mTLS server.
+        """
+elif False:
+    DiscoveryAgentConfigMtlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentConfigMtlArgs:
+    def __init__(__self__, *,
+                 cert_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cert_path: Path to the certificate file.
+        :param pulumi.Input[_builtins.str] key_path: Path to the key file.
+        :param pulumi.Input[_builtins.str] secret_name: Name of the Kubernetes secret containing the certificate and key.
+        :param pulumi.Input[_builtins.str] url: URL of the mTLS server.
+        """
+        if cert_path is not None:
+            pulumi.set(__self__, "cert_path", cert_path)
+        if key_path is not None:
+            pulumi.set(__self__, "key_path", key_path)
+        if secret_name is not None:
+            pulumi.set(__self__, "secret_name", secret_name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter(name="certPath")
+    def cert_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the certificate file.
+        """
+        return pulumi.get(self, "cert_path")
+
+    @cert_path.setter
+    def cert_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cert_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyPath")
+    def key_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the key file.
+        """
+        return pulumi.get(self, "key_path")
+
+    @key_path.setter
+    def key_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Kubernetes secret containing the certificate and key.
+        """
+        return pulumi.get(self, "secret_name")
+
+    @secret_name.setter
+    def secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the mTLS server.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class DiscoveryAgentConfigProxyArgsDict(TypedDict):
+        http_proxy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP proxy URL.
+        """
+        https_proxy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTPS proxy URL.
+        """
+        no_proxy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Comma-separated list of hosts that should not use the proxy.
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Proxy server URL.
+        """
+elif False:
+    DiscoveryAgentConfigProxyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentConfigProxyArgs:
+    def __init__(__self__, *,
+                 http_proxy: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_proxy: Optional[pulumi.Input[_builtins.str]] = None,
+                 no_proxy: Optional[pulumi.Input[_builtins.str]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] http_proxy: HTTP proxy URL.
+        :param pulumi.Input[_builtins.str] https_proxy: HTTPS proxy URL.
+        :param pulumi.Input[_builtins.str] no_proxy: Comma-separated list of hosts that should not use the proxy.
+        :param pulumi.Input[_builtins.str] url: Proxy server URL.
+        """
+        if http_proxy is not None:
+            pulumi.set(__self__, "http_proxy", http_proxy)
+        if https_proxy is not None:
+            pulumi.set(__self__, "https_proxy", https_proxy)
+        if no_proxy is not None:
+            pulumi.set(__self__, "no_proxy", no_proxy)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter(name="httpProxy")
+    def http_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP proxy URL.
+        """
+        return pulumi.get(self, "http_proxy")
+
+    @http_proxy.setter
+    def http_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "http_proxy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpsProxy")
+    def https_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTPS proxy URL.
+        """
+        return pulumi.get(self, "https_proxy")
+
+    @https_proxy.setter
+    def https_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "https_proxy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noProxy")
+    def no_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Comma-separated list of hosts that should not use the proxy.
+        """
+        return pulumi.get(self, "no_proxy")
+
+    @no_proxy.setter
+    def no_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "no_proxy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Proxy server URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class DiscoveryAgentInstallationDetailArgsDict(TypedDict):
+        account_identifier: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The account identifier for the installation.
+        """
+        agent_details: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailArgsDict']]]]
+        """
+        Details about the installed agent.
+        """
+        agent_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the installed agent.
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The timestamp when the installation was created.
+        """
+        created_by: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The user who created the installation.
+        """
+        delegate_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the delegate used for installation.
+        """
+        delegate_task_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the delegate task for the installation.
+        """
+        delegate_task_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The status of the delegate task (e.g., 'SUCCESS').
+        """
+        environment_identifier: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The environment identifier for the installation.
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The unique identifier of the installation.
+        """
+        is_cron_triggered: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the installation was triggered by a cron job.
+        """
+        log_stream_created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The timestamp when the log stream was created.
+        """
+        log_stream_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the log stream for the installation.
+        """
+        organization_identifier: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The organization identifier for the installation.
+        """
+        project_identifier: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The project identifier for the installation.
+        """
+        removed: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the installation has been removed.
+        """
+        stopped: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the installation has been stopped.
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The timestamp when the installation was last updated.
+        """
+        updated_by: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The user who last updated the installation.
+        """
+elif False:
+    DiscoveryAgentInstallationDetailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentInstallationDetailArgs:
+    def __init__(__self__, *,
+                 account_identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent_details: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailArgs']]]] = None,
+                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 delegate_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 delegate_task_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 delegate_task_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 environment_identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_cron_triggered: Optional[pulumi.Input[_builtins.bool]] = None,
+                 log_stream_created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 log_stream_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 organization_identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 removed: Optional[pulumi.Input[_builtins.bool]] = None,
+                 stopped: Optional[pulumi.Input[_builtins.bool]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_by: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] account_identifier: The account identifier for the installation.
+        :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailArgs']]] agent_details: Details about the installed agent.
+        :param pulumi.Input[_builtins.str] agent_id: The ID of the installed agent.
+        :param pulumi.Input[_builtins.str] created_at: The timestamp when the installation was created.
+        :param pulumi.Input[_builtins.str] created_by: The user who created the installation.
+        :param pulumi.Input[_builtins.str] delegate_id: The ID of the delegate used for installation.
+        :param pulumi.Input[_builtins.str] delegate_task_id: The ID of the delegate task for the installation.
+        :param pulumi.Input[_builtins.str] delegate_task_status: The status of the delegate task (e.g., 'SUCCESS').
+        :param pulumi.Input[_builtins.str] environment_identifier: The environment identifier for the installation.
+        :param pulumi.Input[_builtins.str] id: The unique identifier of the installation.
+        :param pulumi.Input[_builtins.bool] is_cron_triggered: Whether the installation was triggered by a cron job.
+        :param pulumi.Input[_builtins.str] log_stream_created_at: The timestamp when the log stream was created.
+        :param pulumi.Input[_builtins.str] log_stream_id: The ID of the log stream for the installation.
+        :param pulumi.Input[_builtins.str] organization_identifier: The organization identifier for the installation.
+        :param pulumi.Input[_builtins.str] project_identifier: The project identifier for the installation.
+        :param pulumi.Input[_builtins.bool] removed: Whether the installation has been removed.
+        :param pulumi.Input[_builtins.bool] stopped: Whether the installation has been stopped.
+        :param pulumi.Input[_builtins.str] updated_at: The timestamp when the installation was last updated.
+        :param pulumi.Input[_builtins.str] updated_by: The user who last updated the installation.
+        """
+        if account_identifier is not None:
+            pulumi.set(__self__, "account_identifier", account_identifier)
+        if agent_details is not None:
+            pulumi.set(__self__, "agent_details", agent_details)
+        if agent_id is not None:
+            pulumi.set(__self__, "agent_id", agent_id)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if delegate_id is not None:
+            pulumi.set(__self__, "delegate_id", delegate_id)
+        if delegate_task_id is not None:
+            pulumi.set(__self__, "delegate_task_id", delegate_task_id)
+        if delegate_task_status is not None:
+            pulumi.set(__self__, "delegate_task_status", delegate_task_status)
+        if environment_identifier is not None:
+            pulumi.set(__self__, "environment_identifier", environment_identifier)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if is_cron_triggered is not None:
+            pulumi.set(__self__, "is_cron_triggered", is_cron_triggered)
+        if log_stream_created_at is not None:
+            pulumi.set(__self__, "log_stream_created_at", log_stream_created_at)
+        if log_stream_id is not None:
+            pulumi.set(__self__, "log_stream_id", log_stream_id)
+        if organization_identifier is not None:
+            pulumi.set(__self__, "organization_identifier", organization_identifier)
+        if project_identifier is not None:
+            pulumi.set(__self__, "project_identifier", project_identifier)
+        if removed is not None:
+            pulumi.set(__self__, "removed", removed)
+        if stopped is not None:
+            pulumi.set(__self__, "stopped", stopped)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+
+    @_builtins.property
+    @pulumi.getter(name="accountIdentifier")
+    def account_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The account identifier for the installation.
+        """
+        return pulumi.get(self, "account_identifier")
+
+    @account_identifier.setter
+    def account_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentDetails")
+    def agent_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailArgs']]]]:
+        """
+        Details about the installed agent.
+        """
+        return pulumi.get(self, "agent_details")
+
+    @agent_details.setter
+    def agent_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailArgs']]]]):
+        pulumi.set(self, "agent_details", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the installed agent.
+        """
+        return pulumi.get(self, "agent_id")
+
+    @agent_id.setter
+    def agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "agent_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The timestamp when the installation was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The user who created the installation.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="delegateId")
+    def delegate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the delegate used for installation.
+        """
+        return pulumi.get(self, "delegate_id")
+
+    @delegate_id.setter
+    def delegate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delegate_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="delegateTaskId")
+    def delegate_task_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the delegate task for the installation.
+        """
+        return pulumi.get(self, "delegate_task_id")
+
+    @delegate_task_id.setter
+    def delegate_task_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delegate_task_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="delegateTaskStatus")
+    def delegate_task_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the delegate task (e.g., 'SUCCESS').
+        """
+        return pulumi.get(self, "delegate_task_status")
+
+    @delegate_task_status.setter
+    def delegate_task_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delegate_task_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentIdentifier")
+    def environment_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The environment identifier for the installation.
+        """
+        return pulumi.get(self, "environment_identifier")
+
+    @environment_identifier.setter
+    def environment_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "environment_identifier", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique identifier of the installation.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isCronTriggered")
+    def is_cron_triggered(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the installation was triggered by a cron job.
+        """
+        return pulumi.get(self, "is_cron_triggered")
+
+    @is_cron_triggered.setter
+    def is_cron_triggered(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_cron_triggered", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logStreamCreatedAt")
+    def log_stream_created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The timestamp when the log stream was created.
+        """
+        return pulumi.get(self, "log_stream_created_at")
+
+    @log_stream_created_at.setter
+    def log_stream_created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "log_stream_created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logStreamId")
+    def log_stream_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the log stream for the installation.
+        """
+        return pulumi.get(self, "log_stream_id")
+
+    @log_stream_id.setter
+    def log_stream_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "log_stream_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="organizationIdentifier")
+    def organization_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The organization identifier for the installation.
+        """
+        return pulumi.get(self, "organization_identifier")
+
+    @organization_identifier.setter
+    def organization_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "organization_identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectIdentifier")
+    def project_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The project identifier for the installation.
+        """
+        return pulumi.get(self, "project_identifier")
+
+    @project_identifier.setter
+    def project_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "project_identifier", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def removed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the installation has been removed.
+        """
+        return pulumi.get(self, "removed")
+
+    @removed.setter
+    def removed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "removed", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def stopped(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the installation has been stopped.
+        """
+        return pulumi.get(self, "stopped")
+
+    @stopped.setter
+    def stopped(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "stopped", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The timestamp when the installation was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The user who last updated the installation.
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_by", value)
+
+
+if not MYPY:
+    class DiscoveryAgentInstallationDetailAgentDetailArgsDict(TypedDict):
+        clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailClusterArgsDict']]]]
+        """
+        Details about the cluster where the agent is installed.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The status of the agent installation.
+        """
+elif False:
+    DiscoveryAgentInstallationDetailAgentDetailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentInstallationDetailAgentDetailArgs:
+    def __init__(__self__, *,
+                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailClusterArgs']]]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailClusterArgs']]] clusters: Details about the cluster where the agent is installed.
+        :param pulumi.Input[_builtins.str] status: The status of the agent installation.
+        """
+        if clusters is not None:
+            pulumi.set(__self__, "clusters", clusters)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailClusterArgs']]]]:
+        """
+        Details about the cluster where the agent is installed.
+        """
+        return pulumi.get(self, "clusters")
+
+    @clusters.setter
+    def clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailClusterArgs']]]]):
+        pulumi.set(self, "clusters", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the agent installation.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class DiscoveryAgentInstallationDetailAgentDetailClusterArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the cluster.
+        """
+        namespace: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The namespace where the agent is installed.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The status of the cluster (e.g., 'Succeeded').
+        """
+        uid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The UID of the cluster.
+        """
+elif False:
+    DiscoveryAgentInstallationDetailAgentDetailClusterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoveryAgentInstallationDetailAgentDetailClusterArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the cluster.
+        :param pulumi.Input[_builtins.str] namespace: The namespace where the agent is installed.
+        :param pulumi.Input[_builtins.str] status: The status of the cluster (e.g., 'Succeeded').
+        :param pulumi.Input[_builtins.str] uid: The UID of the cluster.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The namespace where the agent is installed.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "namespace", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the cluster (e.g., 'Succeeded').
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The UID of the cluster.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uid", value)
+
+
+if not MYPY:
+    class DiscoverySettingImageRegistryArgsDict(TypedDict):
+        account: pulumi.Input[_builtins.str]
+        """
+        The account name for the image registry.
+        """
+        server: pulumi.Input[_builtins.str]
+        """
+        The server URL for the image registry.
+        """
+        secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of secrets for the image registry.
+        """
+elif False:
+    DiscoverySettingImageRegistryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiscoverySettingImageRegistryArgs:
+    def __init__(__self__, *,
+                 account: pulumi.Input[_builtins.str],
+                 server: pulumi.Input[_builtins.str],
+                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] account: The account name for the image registry.
+        :param pulumi.Input[_builtins.str] server: The server URL for the image registry.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secrets: List of secrets for the image registry.
+        """
+        pulumi.set(__self__, "account", account)
+        pulumi.set(__self__, "server", server)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
+
+    @_builtins.property
+    @pulumi.getter
+    def account(self) -> pulumi.Input[_builtins.str]:
+        """
+        The account name for the image registry.
+        """
+        return pulumi.get(self, "account")
+
+    @account.setter
+    def account(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def server(self) -> pulumi.Input[_builtins.str]:
+        """
+        The server URL for the image registry.
+        """
+        return pulumi.get(self, "server")
+
+    @server.setter
+    def server(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "server", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of secrets for the image registry.
+        """
+        return pulumi.get(self, "secrets")
+
+    @secrets.setter
+    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "secrets", value)
 
 
 if not MYPY:

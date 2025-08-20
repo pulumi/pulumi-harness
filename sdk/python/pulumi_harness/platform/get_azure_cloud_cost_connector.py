@@ -27,7 +27,10 @@ class GetAzureCloudCostConnectorResult:
     """
     A collection of values returned by getAzureCloudCostConnector.
     """
-    def __init__(__self__, billing_export_specs=None, description=None, features_enableds=None, id=None, identifier=None, name=None, org_id=None, project_id=None, subscription_id=None, tags=None, tenant_id=None):
+    def __init__(__self__, billing_export_spec2s=None, billing_export_specs=None, description=None, features_enableds=None, id=None, identifier=None, name=None, org_id=None, project_id=None, subscription_id=None, tags=None, tenant_id=None):
+        if billing_export_spec2s and not isinstance(billing_export_spec2s, list):
+            raise TypeError("Expected argument 'billing_export_spec2s' to be a list")
+        pulumi.set(__self__, "billing_export_spec2s", billing_export_spec2s)
         if billing_export_specs and not isinstance(billing_export_specs, list):
             raise TypeError("Expected argument 'billing_export_specs' to be a list")
         pulumi.set(__self__, "billing_export_specs", billing_export_specs)
@@ -61,6 +64,11 @@ class GetAzureCloudCostConnectorResult:
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="billingExportSpec2s")
+    def billing_export_spec2s(self) -> Sequence['outputs.GetAzureCloudCostConnectorBillingExportSpec2Result']:
+        return pulumi.get(self, "billing_export_spec2s")
 
     @_builtins.property
     @pulumi.getter(name="billingExportSpecs")
@@ -157,6 +165,7 @@ class AwaitableGetAzureCloudCostConnectorResult(GetAzureCloudCostConnectorResult
         if False:
             yield self
         return GetAzureCloudCostConnectorResult(
+            billing_export_spec2s=self.billing_export_spec2s,
             billing_export_specs=self.billing_export_specs,
             description=self.description,
             features_enableds=self.features_enableds,
@@ -202,6 +211,7 @@ def get_azure_cloud_cost_connector(identifier: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getAzureCloudCostConnector:getAzureCloudCostConnector', __args__, opts=opts, typ=GetAzureCloudCostConnectorResult).value
 
     return AwaitableGetAzureCloudCostConnectorResult(
+        billing_export_spec2s=pulumi.get(__ret__, 'billing_export_spec2s'),
         billing_export_specs=pulumi.get(__ret__, 'billing_export_specs'),
         description=pulumi.get(__ret__, 'description'),
         features_enableds=pulumi.get(__ret__, 'features_enableds'),
@@ -244,6 +254,7 @@ def get_azure_cloud_cost_connector_output(identifier: Optional[pulumi.Input[_bui
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getAzureCloudCostConnector:getAzureCloudCostConnector', __args__, opts=opts, typ=GetAzureCloudCostConnectorResult)
     return __ret__.apply(lambda __response__: GetAzureCloudCostConnectorResult(
+        billing_export_spec2s=pulumi.get(__response__, 'billing_export_spec2s'),
         billing_export_specs=pulumi.get(__response__, 'billing_export_specs'),
         description=pulumi.get(__response__, 'description'),
         features_enableds=pulumi.get(__response__, 'features_enableds'),

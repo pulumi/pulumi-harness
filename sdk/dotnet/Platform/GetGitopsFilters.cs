@@ -34,25 +34,25 @@ namespace Pulumi.Harness.Platform
     public sealed class GetGitopsFiltersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Unique identifier of the GitOps filter to retrieve.
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Organization identifier for the GitOps filter.
+        /// Organization Identifier for the Entity.
         /// </summary>
         [Input("orgId", required: true)]
         public string OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Project identifier for the GitOps filter.
+        /// Project Identifier for the Entity.
         /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Type of GitOps filter. Currently, only "APPLICATION" is supported.
+        /// Type of filter.
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
@@ -66,25 +66,25 @@ namespace Pulumi.Harness.Platform
     public sealed class GetGitopsFiltersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Unique identifier of the GitOps filter to retrieve.
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Organization identifier for the GitOps filter.
+        /// Organization Identifier for the Entity.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Project identifier for the GitOps filter.
+        /// Project Identifier for the Entity.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Type of GitOps filter. Currently, only "APPLICATION" is supported.
+        /// Type of filter.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -100,21 +100,36 @@ namespace Pulumi.Harness.Platform
     public sealed class GetGitopsFiltersResult
     {
         /// <summary>
-        /// Properties of the filter entity defined in Harness as a JSON string. This contains filter criteria such as health status, sync status, agent identifiers, clusters, namespaces, and repositories.
+        /// Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
         /// </summary>
         public readonly string FilterProperties;
+        /// <summary>
+        /// This indicates visibility of filters, by default it is Everyone.
+        /// </summary>
         public readonly string FilterVisibility;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         public readonly string Identifier;
         /// <summary>
-        /// Name of the GitOps filter.
+        /// Name of the Filter.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Organization Identifier for the Entity.
+        /// </summary>
         public readonly string OrgId;
+        /// <summary>
+        /// Project Identifier for the Entity.
+        /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// Type of filter.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

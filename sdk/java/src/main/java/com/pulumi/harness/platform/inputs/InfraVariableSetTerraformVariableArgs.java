@@ -15,14 +15,14 @@ public final class InfraVariableSetTerraformVariableArgs extends com.pulumi.reso
     public static final InfraVariableSetTerraformVariableArgs Empty = new InfraVariableSetTerraformVariableArgs();
 
     /**
-     * Key is the identifier for the variable. Must be unique within the variable set.
+     * Key is the identifier for the variable. Must be unique within the Variable Set.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Key is the identifier for the variable. Must be unique within the variable set.
+     * @return Key is the identifier for the variable. Must be unique within the Variable Set.
      * 
      */
     public Output<String> key() {
@@ -86,7 +86,7 @@ public final class InfraVariableSetTerraformVariableArgs extends com.pulumi.reso
         }
 
         /**
-         * @param key Key is the identifier for the variable. Must be unique within the variable set.
+         * @param key Key is the identifier for the variable. Must be unique within the Variable Set.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class InfraVariableSetTerraformVariableArgs extends com.pulumi.reso
         }
 
         /**
-         * @param key Key is the identifier for the variable. Must be unique within the variable set.
+         * @param key Key is the identifier for the variable. Must be unique within the Variable Set.
          * 
          * @return builder
          * 

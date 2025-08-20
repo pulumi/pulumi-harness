@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
+// Resource for creating an AWS Secret Manager connector.
 //
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // # Import account level aws secret manager connector
 //
@@ -56,7 +58,7 @@ type AwsSecretManagerConnector struct {
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// recovery duration in days in AWS Secrets Manager.
+	// Recovery duration in days in AWS Secrets Manager.
 	RecoveryWindowInDays pulumi.IntPtrOutput `pulumi:"recoveryWindowInDays"`
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -127,7 +129,7 @@ type awsSecretManagerConnectorState struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// recovery duration in days in AWS Secrets Manager.
+	// Recovery duration in days in AWS Secrets Manager.
 	RecoveryWindowInDays *int `pulumi:"recoveryWindowInDays"`
 	// The AWS region where the AWS Secret Manager is.
 	Region *string `pulumi:"region"`
@@ -160,7 +162,7 @@ type AwsSecretManagerConnectorState struct {
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// recovery duration in days in AWS Secrets Manager.
+	// Recovery duration in days in AWS Secrets Manager.
 	RecoveryWindowInDays pulumi.IntPtrInput
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringPtrInput
@@ -197,7 +199,7 @@ type awsSecretManagerConnectorArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// recovery duration in days in AWS Secrets Manager.
+	// Recovery duration in days in AWS Secrets Manager.
 	RecoveryWindowInDays *int `pulumi:"recoveryWindowInDays"`
 	// The AWS region where the AWS Secret Manager is.
 	Region string `pulumi:"region"`
@@ -231,7 +233,7 @@ type AwsSecretManagerConnectorArgs struct {
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// recovery duration in days in AWS Secrets Manager.
+	// Recovery duration in days in AWS Secrets Manager.
 	RecoveryWindowInDays pulumi.IntPtrInput
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringInput
@@ -380,7 +382,7 @@ func (o AwsSecretManagerConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// recovery duration in days in AWS Secrets Manager.
+// Recovery duration in days in AWS Secrets Manager.
 func (o AwsSecretManagerConnectorOutput) RecoveryWindowInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.IntPtrOutput { return v.RecoveryWindowInDays }).(pulumi.IntPtrOutput)
 }

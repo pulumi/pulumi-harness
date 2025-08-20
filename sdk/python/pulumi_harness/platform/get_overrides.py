@@ -66,16 +66,25 @@ class GetOverridesResult:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> _builtins.str:
+        """
+        The cluster ID to which the override entity is associated.
+        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property
     @pulumi.getter(name="envId")
     def env_id(self) -> _builtins.str:
+        """
+        The environment ID to which the override entity is associated.
+        """
         return pulumi.get(self, "env_id")
 
     @_builtins.property
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> 'outputs.GetOverridesGitDetailsResult':
+        """
+        Contains parameters related to Git Experience for remote overrides
+        """
         return pulumi.get(self, "git_details")
 
     @_builtins.property
@@ -89,36 +98,57 @@ class GetOverridesResult:
     @_builtins.property
     @pulumi.getter
     def identifier(self) -> _builtins.str:
+        """
+        The identifier of the override entity.
+        """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter(name="infraId")
     def infra_id(self) -> _builtins.str:
+        """
+        The infrastructure ID to which the override entity is associated.
+        """
         return pulumi.get(self, "infra_id")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the organization.
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the project.
+        """
         return pulumi.get(self, "project_id")
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> _builtins.str:
+        """
+        The service ID to which the override entity is associated.
+        """
         return pulumi.get(self, "service_id")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        The type of the override entity.
+        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def yaml(self) -> _builtins.str:
+        """
+        The yaml of the override entity.
+        """
         return pulumi.get(self, "yaml")
 
 
@@ -147,7 +177,24 @@ def get_overrides(git_details: Optional[Union['GetOverridesGitDetailsArgs', 'Get
                   project_id: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOverridesResult:
     """
-    Use this data source to access information about an existing resource.
+    Data source for Harness Overrides V2.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    test = harness.platform.get_overrides(identifier="identifier",
+        org_id="orgIdentifier",
+        project_id="projectIdentifier")
+    ```
+
+
+    :param Union['GetOverridesGitDetailsArgs', 'GetOverridesGitDetailsArgsDict'] git_details: Contains parameters related to Git Experience for remote overrides
+    :param _builtins.str identifier: The identifier of the override entity.
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['gitDetails'] = git_details
@@ -175,7 +222,24 @@ def get_overrides_output(git_details: Optional[pulumi.Input[Optional[Union['GetO
                          project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOverridesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Data source for Harness Overrides V2.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    test = harness.platform.get_overrides(identifier="identifier",
+        org_id="orgIdentifier",
+        project_id="projectIdentifier")
+    ```
+
+
+    :param Union['GetOverridesGitDetailsArgs', 'GetOverridesGitDetailsArgsDict'] git_details: Contains parameters related to Git Experience for remote overrides
+    :param _builtins.str identifier: The identifier of the override entity.
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['gitDetails'] = git_details

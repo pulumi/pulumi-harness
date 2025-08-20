@@ -62,6 +62,7 @@ type LookupAzureCloudCostConnectorArgs struct {
 
 // A collection of values returned by getAzureCloudCostConnector.
 type LookupAzureCloudCostConnectorResult struct {
+	BillingExportSpec2s []GetAzureCloudCostConnectorBillingExportSpec2 `pulumi:"billingExportSpec2s"`
 	// Returns billing details for the Azure account.
 	BillingExportSpecs []GetAzureCloudCostConnectorBillingExportSpec `pulumi:"billingExportSpecs"`
 	// Description of the resource.
@@ -124,6 +125,12 @@ func (o LookupAzureCloudCostConnectorResultOutput) ToLookupAzureCloudCostConnect
 
 func (o LookupAzureCloudCostConnectorResultOutput) ToLookupAzureCloudCostConnectorResultOutputWithContext(ctx context.Context) LookupAzureCloudCostConnectorResultOutput {
 	return o
+}
+
+func (o LookupAzureCloudCostConnectorResultOutput) BillingExportSpec2s() GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput {
+	return o.ApplyT(func(v LookupAzureCloudCostConnectorResult) []GetAzureCloudCostConnectorBillingExportSpec2 {
+		return v.BillingExportSpec2s
+	}).(GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput)
 }
 
 // Returns billing details for the Azure account.

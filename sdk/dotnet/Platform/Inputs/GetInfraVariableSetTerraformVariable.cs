@@ -13,19 +13,19 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GetInfraVariableSetTerraformVariableArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Key is the identifier for the variable`
+        /// Key is the identifier for the variable. Must be unique within the Variable Set.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
 
         /// <summary>
-        /// value is the value of the variable
+        /// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
         /// </summary>
         [Input("value", required: true)]
         public string Value { get; set; } = null!;
 
         /// <summary>
-        /// Value type indicates the value type of the variable, text or secret
+        /// Value type indicates the value type of the variable. Currently we support string and secret.
         /// </summary>
         [Input("valueType", required: true)]
         public string ValueType { get; set; } = null!;

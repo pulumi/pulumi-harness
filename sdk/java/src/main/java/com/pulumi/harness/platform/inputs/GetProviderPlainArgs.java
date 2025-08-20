@@ -13,9 +13,17 @@ public final class GetProviderPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetProviderPlainArgs Empty = new GetProviderPlainArgs();
 
+    /**
+     * The identifier of the provider entity.
+     * 
+     */
     @Import(name="identifier", required=true)
     private String identifier;
 
+    /**
+     * @return The identifier of the provider entity.
+     * 
+     */
     public String identifier() {
         return this.identifier;
     }
@@ -44,6 +52,12 @@ public final class GetProviderPlainArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetProviderPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param identifier The identifier of the provider entity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(String identifier) {
             $.identifier = identifier;
             return this;

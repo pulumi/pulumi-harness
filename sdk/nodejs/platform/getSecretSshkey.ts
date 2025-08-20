@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Resource for looking up an SSH Key type secret.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -96,6 +98,8 @@ export interface GetSecretSshkeyResult {
     readonly tags: string[];
 }
 /**
+ * Resource for looking up an SSH Key type secret.
+ *
  * ## Example Usage
  *
  * ```typescript

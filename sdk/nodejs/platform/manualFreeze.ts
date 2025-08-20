@@ -8,86 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for Manual Deployment Freeze Window.
- * ## Example to create Manual Freeze at different levels (Org, Project, Account)
  *
- * ### Account Level
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = new harness.platform.ManualFreeze("example", {
- *     identifier: "identifier",
- *     orgId: "orgIdentifier",
- *     projectId: "projectIdentifier",
- *     accountId: "accountIdentifier",
- *     yaml: `freeze:
- *   name: freezeName
- *   identifier: identifier
- *   entityConfigs:
- *     - name: r1
- *       entities:
- *         - filterType: All
- *           type: Org
- *         - filterType: All
- *           type: Project
- *         - filterType: All
- *           type: Service
- *         - filterType: All
- *           type: EnvType
- *   status: Disabled
- *   description: hi
- *   windows:
- *   - timeZone: Asia/Calcutta
- *     startTime: 2023-05-03 04:16 PM
- *     duration: 30m
- *     recurrence:
- *       type: Daily
- *   notificationRules: []
- *   tags: {}
- * `,
- * });
- * ```
- *
- * ### Org Level
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = new harness.platform.ManualFreeze("example", {
- *     identifier: "identifier",
- *     orgId: "orgIdentifier",
- *     accountId: "accountIdentifier",
- *     yaml: `freeze:
- *   name: freezeName
- *   identifier: identifier
- *   entityConfigs:
- *     - name: r1
- *       entities:
- *         - filterType: All
- *           type: Org
- *         - filterType: All
- *           type: Project
- *         - filterType: All
- *           type: Service
- *         - filterType: All
- *           type: EnvType
- *   status: Disabled
- *   description: hi
- *   windows:
- *   - timeZone: Asia/Calcutta
- *     startTime: 2023-05-03 04:16 PM
- *     duration: 30m
- *     recurrence:
- *       type: Daily
- *   notificationRules: []
- *   tags: {}
- * `,
- * });
- * ```
- *
- * ### Project Level
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -127,6 +49,8 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import an account level freeze
  *

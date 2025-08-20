@@ -30,22 +30,30 @@ public final class GetDashboardFoldersPlainArgs extends com.pulumi.resources.Inv
         return this.id;
     }
 
+    /**
+     * Unique identifier of the resource.
+     * 
+     */
     @Import(name="identifier")
     private @Nullable String identifier;
 
+    /**
+     * @return Unique identifier of the resource.
+     * 
+     */
     public Optional<String> identifier() {
         return Optional.ofNullable(this.identifier);
     }
 
     /**
-     * Name of the folder.
+     * Name of the resource.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return Name of the folder.
+     * @return Name of the resource.
      * 
      */
     public Optional<String> name() {
@@ -89,13 +97,19 @@ public final class GetDashboardFoldersPlainArgs extends com.pulumi.resources.Inv
             return this;
         }
 
+        /**
+         * @param identifier Unique identifier of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(@Nullable String identifier) {
             $.identifier = identifier;
             return this;
         }
 
         /**
-         * @param name Name of the folder.
+         * @param name Name of the resource.
          * 
          * @return builder
          * 

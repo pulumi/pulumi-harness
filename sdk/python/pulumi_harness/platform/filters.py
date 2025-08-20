@@ -270,6 +270,8 @@ class Filters(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Resource for creating a Harness Filter. This resource support filters of types {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
+
         ## Example Usage
 
         ```python
@@ -290,6 +292,8 @@ class Filters(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level filter
 
@@ -326,6 +330,8 @@ class Filters(pulumi.CustomResource):
                  args: FiltersArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource for creating a Harness Filter. This resource support filters of types {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
+
         ## Example Usage
 
         ```python
@@ -346,6 +352,8 @@ class Filters(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level filter
 

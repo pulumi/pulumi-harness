@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for retrieving an SLO.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getSlo({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
  */
 export function getSlo(args: GetSloArgs, opts?: pulumi.InvokeOptions): Promise<GetSloResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,6 +70,19 @@ export interface GetSloResult {
 }
 /**
  * Data source for retrieving an SLO.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getSlo({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
  */
 export function getSloOutput(args: GetSloOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSloResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

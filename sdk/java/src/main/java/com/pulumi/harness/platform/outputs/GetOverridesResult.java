@@ -13,29 +13,81 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOverridesResult {
+    /**
+     * @return The cluster ID to which the override entity is associated.
+     * 
+     */
     private String clusterId;
+    /**
+     * @return The environment ID to which the override entity is associated.
+     * 
+     */
     private String envId;
+    /**
+     * @return Contains parameters related to Git Experience for remote overrides
+     * 
+     */
     private GetOverridesGitDetails gitDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The identifier of the override entity.
+     * 
+     */
     private String identifier;
+    /**
+     * @return The infrastructure ID to which the override entity is associated.
+     * 
+     */
     private String infraId;
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     private @Nullable String orgId;
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     private @Nullable String projectId;
+    /**
+     * @return The service ID to which the override entity is associated.
+     * 
+     */
     private String serviceId;
+    /**
+     * @return The type of the override entity.
+     * 
+     */
     private String type;
+    /**
+     * @return The yaml of the override entity.
+     * 
+     */
     private String yaml;
 
     private GetOverridesResult() {}
+    /**
+     * @return The cluster ID to which the override entity is associated.
+     * 
+     */
     public String clusterId() {
         return this.clusterId;
     }
+    /**
+     * @return The environment ID to which the override entity is associated.
+     * 
+     */
     public String envId() {
         return this.envId;
     }
+    /**
+     * @return Contains parameters related to Git Experience for remote overrides
+     * 
+     */
     public GetOverridesGitDetails gitDetails() {
         return this.gitDetails;
     }
@@ -46,24 +98,52 @@ public final class GetOverridesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The identifier of the override entity.
+     * 
+     */
     public String identifier() {
         return this.identifier;
     }
+    /**
+     * @return The infrastructure ID to which the override entity is associated.
+     * 
+     */
     public String infraId() {
         return this.infraId;
     }
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
+    /**
+     * @return The service ID to which the override entity is associated.
+     * 
+     */
     public String serviceId() {
         return this.serviceId;
     }
+    /**
+     * @return The type of the override entity.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The yaml of the override entity.
+     * 
+     */
     public String yaml() {
         return this.yaml;
     }

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.AzureCloudCostConnectorArgs;
 import com.pulumi.harness.platform.inputs.AzureCloudCostConnectorState;
+import com.pulumi.harness.platform.outputs.AzureCloudCostConnectorBillingExportSpec2;
 import com.pulumi.harness.platform.outputs.AzureCloudCostConnectorBillingExportSpec;
 import java.lang.String;
 import java.util.List;
@@ -74,6 +75,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * Import account level azure cloud cost connector
  * 
  * ```sh
@@ -108,6 +111,20 @@ public class AzureCloudCostConnector extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<AzureCloudCostConnectorBillingExportSpec>> billingExportSpec() {
         return Codegen.optional(this.billingExportSpec);
+    }
+    /**
+     * Returns billing details for the Azure account.
+     * 
+     */
+    @Export(name="billingExportSpec2", refs={AzureCloudCostConnectorBillingExportSpec2.class}, tree="[0]")
+    private Output</* @Nullable */ AzureCloudCostConnectorBillingExportSpec2> billingExportSpec2;
+
+    /**
+     * @return Returns billing details for the Azure account.
+     * 
+     */
+    public Output<Optional<AzureCloudCostConnectorBillingExportSpec2>> billingExportSpec2() {
+        return Codegen.optional(this.billingExportSpec2);
     }
     /**
      * Description of the resource.

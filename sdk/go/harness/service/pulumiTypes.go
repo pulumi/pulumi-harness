@@ -243,6 +243,1999 @@ func (o CodedeployVariableArrayOutput) Index(i pulumi.IntInput) CodedeployVariab
 	}).(CodedeployVariableOutput)
 }
 
+type DiscoveryAgentConfig struct {
+	// Docker image for the collector.
+	CollectorImage *string `pulumi:"collectorImage"`
+	// Data collection configuration.
+	Datas []DiscoveryAgentConfigData `pulumi:"datas"`
+	// List of image pull secrets.
+	ImagePullSecrets []string `pulumi:"imagePullSecrets"`
+	// Kubernetes-specific configuration.
+	Kubernetes []DiscoveryAgentConfigKubernete `pulumi:"kubernetes"`
+	// Docker image for the log watcher.
+	LogWatcherImage *string `pulumi:"logWatcherImage"`
+	// mTLS configuration.
+	Mtls []DiscoveryAgentConfigMtl `pulumi:"mtls"`
+	// Proxy configuration.
+	Proxies []DiscoveryAgentConfigProxy `pulumi:"proxies"`
+	// Whether to skip TLS verification.
+	SkipSecureVerify *bool `pulumi:"skipSecureVerify"`
+}
+
+// DiscoveryAgentConfigInput is an input type that accepts DiscoveryAgentConfigArgs and DiscoveryAgentConfigOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigInput` via:
+//
+//	DiscoveryAgentConfigArgs{...}
+type DiscoveryAgentConfigInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigOutput() DiscoveryAgentConfigOutput
+	ToDiscoveryAgentConfigOutputWithContext(context.Context) DiscoveryAgentConfigOutput
+}
+
+type DiscoveryAgentConfigArgs struct {
+	// Docker image for the collector.
+	CollectorImage pulumi.StringPtrInput `pulumi:"collectorImage"`
+	// Data collection configuration.
+	Datas DiscoveryAgentConfigDataArrayInput `pulumi:"datas"`
+	// List of image pull secrets.
+	ImagePullSecrets pulumi.StringArrayInput `pulumi:"imagePullSecrets"`
+	// Kubernetes-specific configuration.
+	Kubernetes DiscoveryAgentConfigKuberneteArrayInput `pulumi:"kubernetes"`
+	// Docker image for the log watcher.
+	LogWatcherImage pulumi.StringPtrInput `pulumi:"logWatcherImage"`
+	// mTLS configuration.
+	Mtls DiscoveryAgentConfigMtlArrayInput `pulumi:"mtls"`
+	// Proxy configuration.
+	Proxies DiscoveryAgentConfigProxyArrayInput `pulumi:"proxies"`
+	// Whether to skip TLS verification.
+	SkipSecureVerify pulumi.BoolPtrInput `pulumi:"skipSecureVerify"`
+}
+
+func (DiscoveryAgentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfig)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigArgs) ToDiscoveryAgentConfigOutput() DiscoveryAgentConfigOutput {
+	return i.ToDiscoveryAgentConfigOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigArgs) ToDiscoveryAgentConfigOutputWithContext(ctx context.Context) DiscoveryAgentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigOutput)
+}
+
+// DiscoveryAgentConfigArrayInput is an input type that accepts DiscoveryAgentConfigArray and DiscoveryAgentConfigArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigArrayInput` via:
+//
+//	DiscoveryAgentConfigArray{ DiscoveryAgentConfigArgs{...} }
+type DiscoveryAgentConfigArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigArrayOutput() DiscoveryAgentConfigArrayOutput
+	ToDiscoveryAgentConfigArrayOutputWithContext(context.Context) DiscoveryAgentConfigArrayOutput
+}
+
+type DiscoveryAgentConfigArray []DiscoveryAgentConfigInput
+
+func (DiscoveryAgentConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfig)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigArray) ToDiscoveryAgentConfigArrayOutput() DiscoveryAgentConfigArrayOutput {
+	return i.ToDiscoveryAgentConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigArray) ToDiscoveryAgentConfigArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigArrayOutput)
+}
+
+type DiscoveryAgentConfigOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfig)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigOutput) ToDiscoveryAgentConfigOutput() DiscoveryAgentConfigOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigOutput) ToDiscoveryAgentConfigOutputWithContext(ctx context.Context) DiscoveryAgentConfigOutput {
+	return o
+}
+
+// Docker image for the collector.
+func (o DiscoveryAgentConfigOutput) CollectorImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfig) *string { return v.CollectorImage }).(pulumi.StringPtrOutput)
+}
+
+// Data collection configuration.
+func (o DiscoveryAgentConfigOutput) Datas() DiscoveryAgentConfigDataArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfig) []DiscoveryAgentConfigData { return v.Datas }).(DiscoveryAgentConfigDataArrayOutput)
+}
+
+// List of image pull secrets.
+func (o DiscoveryAgentConfigOutput) ImagePullSecrets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfig) []string { return v.ImagePullSecrets }).(pulumi.StringArrayOutput)
+}
+
+// Kubernetes-specific configuration.
+func (o DiscoveryAgentConfigOutput) Kubernetes() DiscoveryAgentConfigKuberneteArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfig) []DiscoveryAgentConfigKubernete { return v.Kubernetes }).(DiscoveryAgentConfigKuberneteArrayOutput)
+}
+
+// Docker image for the log watcher.
+func (o DiscoveryAgentConfigOutput) LogWatcherImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfig) *string { return v.LogWatcherImage }).(pulumi.StringPtrOutput)
+}
+
+// mTLS configuration.
+func (o DiscoveryAgentConfigOutput) Mtls() DiscoveryAgentConfigMtlArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfig) []DiscoveryAgentConfigMtl { return v.Mtls }).(DiscoveryAgentConfigMtlArrayOutput)
+}
+
+// Proxy configuration.
+func (o DiscoveryAgentConfigOutput) Proxies() DiscoveryAgentConfigProxyArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfig) []DiscoveryAgentConfigProxy { return v.Proxies }).(DiscoveryAgentConfigProxyArrayOutput)
+}
+
+// Whether to skip TLS verification.
+func (o DiscoveryAgentConfigOutput) SkipSecureVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfig) *bool { return v.SkipSecureVerify }).(pulumi.BoolPtrOutput)
+}
+
+type DiscoveryAgentConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfig)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigArrayOutput) ToDiscoveryAgentConfigArrayOutput() DiscoveryAgentConfigArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigArrayOutput) ToDiscoveryAgentConfigArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentConfig {
+		return vs[0].([]DiscoveryAgentConfig)[vs[1].(int)]
+	}).(DiscoveryAgentConfigOutput)
+}
+
+type DiscoveryAgentConfigData struct {
+	// List of namespaces to exclude from discovery.
+	BlacklistedNamespaces []string `pulumi:"blacklistedNamespaces"`
+	// Collection window in minutes.
+	CollectionWindowInMin *int `pulumi:"collectionWindowInMin"`
+	// Cron schedule for data collection.
+	Crons []DiscoveryAgentConfigDataCron `pulumi:"crons"`
+	// Whether to enable batch resources.
+	EnableBatchResources *bool `pulumi:"enableBatchResources"`
+	// Whether to enable node agent.
+	EnableNodeAgent *bool `pulumi:"enableNodeAgent"`
+	// Whether to enable orphaned pod detection.
+	EnableOrphanedPod *bool `pulumi:"enableOrphanedPod"`
+	// Namespace selector for the agent.
+	NamespaceSelector *string `pulumi:"namespaceSelector"`
+	// Node selector for the node agent.
+	NodeAgentSelector *string `pulumi:"nodeAgentSelector"`
+	// List of namespaces to observe.
+	ObservedNamespaces []string `pulumi:"observedNamespaces"`
+}
+
+// DiscoveryAgentConfigDataInput is an input type that accepts DiscoveryAgentConfigDataArgs and DiscoveryAgentConfigDataOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigDataInput` via:
+//
+//	DiscoveryAgentConfigDataArgs{...}
+type DiscoveryAgentConfigDataInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigDataOutput() DiscoveryAgentConfigDataOutput
+	ToDiscoveryAgentConfigDataOutputWithContext(context.Context) DiscoveryAgentConfigDataOutput
+}
+
+type DiscoveryAgentConfigDataArgs struct {
+	// List of namespaces to exclude from discovery.
+	BlacklistedNamespaces pulumi.StringArrayInput `pulumi:"blacklistedNamespaces"`
+	// Collection window in minutes.
+	CollectionWindowInMin pulumi.IntPtrInput `pulumi:"collectionWindowInMin"`
+	// Cron schedule for data collection.
+	Crons DiscoveryAgentConfigDataCronArrayInput `pulumi:"crons"`
+	// Whether to enable batch resources.
+	EnableBatchResources pulumi.BoolPtrInput `pulumi:"enableBatchResources"`
+	// Whether to enable node agent.
+	EnableNodeAgent pulumi.BoolPtrInput `pulumi:"enableNodeAgent"`
+	// Whether to enable orphaned pod detection.
+	EnableOrphanedPod pulumi.BoolPtrInput `pulumi:"enableOrphanedPod"`
+	// Namespace selector for the agent.
+	NamespaceSelector pulumi.StringPtrInput `pulumi:"namespaceSelector"`
+	// Node selector for the node agent.
+	NodeAgentSelector pulumi.StringPtrInput `pulumi:"nodeAgentSelector"`
+	// List of namespaces to observe.
+	ObservedNamespaces pulumi.StringArrayInput `pulumi:"observedNamespaces"`
+}
+
+func (DiscoveryAgentConfigDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigData)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigDataArgs) ToDiscoveryAgentConfigDataOutput() DiscoveryAgentConfigDataOutput {
+	return i.ToDiscoveryAgentConfigDataOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigDataArgs) ToDiscoveryAgentConfigDataOutputWithContext(ctx context.Context) DiscoveryAgentConfigDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigDataOutput)
+}
+
+// DiscoveryAgentConfigDataArrayInput is an input type that accepts DiscoveryAgentConfigDataArray and DiscoveryAgentConfigDataArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigDataArrayInput` via:
+//
+//	DiscoveryAgentConfigDataArray{ DiscoveryAgentConfigDataArgs{...} }
+type DiscoveryAgentConfigDataArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigDataArrayOutput() DiscoveryAgentConfigDataArrayOutput
+	ToDiscoveryAgentConfigDataArrayOutputWithContext(context.Context) DiscoveryAgentConfigDataArrayOutput
+}
+
+type DiscoveryAgentConfigDataArray []DiscoveryAgentConfigDataInput
+
+func (DiscoveryAgentConfigDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigData)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigDataArray) ToDiscoveryAgentConfigDataArrayOutput() DiscoveryAgentConfigDataArrayOutput {
+	return i.ToDiscoveryAgentConfigDataArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigDataArray) ToDiscoveryAgentConfigDataArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigDataArrayOutput)
+}
+
+type DiscoveryAgentConfigDataOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigData)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigDataOutput) ToDiscoveryAgentConfigDataOutput() DiscoveryAgentConfigDataOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigDataOutput) ToDiscoveryAgentConfigDataOutputWithContext(ctx context.Context) DiscoveryAgentConfigDataOutput {
+	return o
+}
+
+// List of namespaces to exclude from discovery.
+func (o DiscoveryAgentConfigDataOutput) BlacklistedNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigData) []string { return v.BlacklistedNamespaces }).(pulumi.StringArrayOutput)
+}
+
+// Collection window in minutes.
+func (o DiscoveryAgentConfigDataOutput) CollectionWindowInMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigData) *int { return v.CollectionWindowInMin }).(pulumi.IntPtrOutput)
+}
+
+// Cron schedule for data collection.
+func (o DiscoveryAgentConfigDataOutput) Crons() DiscoveryAgentConfigDataCronArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigData) []DiscoveryAgentConfigDataCron { return v.Crons }).(DiscoveryAgentConfigDataCronArrayOutput)
+}
+
+// Whether to enable batch resources.
+func (o DiscoveryAgentConfigDataOutput) EnableBatchResources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigData) *bool { return v.EnableBatchResources }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable node agent.
+func (o DiscoveryAgentConfigDataOutput) EnableNodeAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigData) *bool { return v.EnableNodeAgent }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable orphaned pod detection.
+func (o DiscoveryAgentConfigDataOutput) EnableOrphanedPod() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigData) *bool { return v.EnableOrphanedPod }).(pulumi.BoolPtrOutput)
+}
+
+// Namespace selector for the agent.
+func (o DiscoveryAgentConfigDataOutput) NamespaceSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigData) *string { return v.NamespaceSelector }).(pulumi.StringPtrOutput)
+}
+
+// Node selector for the node agent.
+func (o DiscoveryAgentConfigDataOutput) NodeAgentSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigData) *string { return v.NodeAgentSelector }).(pulumi.StringPtrOutput)
+}
+
+// List of namespaces to observe.
+func (o DiscoveryAgentConfigDataOutput) ObservedNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigData) []string { return v.ObservedNamespaces }).(pulumi.StringArrayOutput)
+}
+
+type DiscoveryAgentConfigDataArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigData)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigDataArrayOutput) ToDiscoveryAgentConfigDataArrayOutput() DiscoveryAgentConfigDataArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigDataArrayOutput) ToDiscoveryAgentConfigDataArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigDataArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigDataArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentConfigDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentConfigData {
+		return vs[0].([]DiscoveryAgentConfigData)[vs[1].(int)]
+	}).(DiscoveryAgentConfigDataOutput)
+}
+
+type DiscoveryAgentConfigDataCron struct {
+	// Cron expression for scheduling.
+	Expression *string `pulumi:"expression"`
+}
+
+// DiscoveryAgentConfigDataCronInput is an input type that accepts DiscoveryAgentConfigDataCronArgs and DiscoveryAgentConfigDataCronOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigDataCronInput` via:
+//
+//	DiscoveryAgentConfigDataCronArgs{...}
+type DiscoveryAgentConfigDataCronInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigDataCronOutput() DiscoveryAgentConfigDataCronOutput
+	ToDiscoveryAgentConfigDataCronOutputWithContext(context.Context) DiscoveryAgentConfigDataCronOutput
+}
+
+type DiscoveryAgentConfigDataCronArgs struct {
+	// Cron expression for scheduling.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+}
+
+func (DiscoveryAgentConfigDataCronArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigDataCron)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigDataCronArgs) ToDiscoveryAgentConfigDataCronOutput() DiscoveryAgentConfigDataCronOutput {
+	return i.ToDiscoveryAgentConfigDataCronOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigDataCronArgs) ToDiscoveryAgentConfigDataCronOutputWithContext(ctx context.Context) DiscoveryAgentConfigDataCronOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigDataCronOutput)
+}
+
+// DiscoveryAgentConfigDataCronArrayInput is an input type that accepts DiscoveryAgentConfigDataCronArray and DiscoveryAgentConfigDataCronArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigDataCronArrayInput` via:
+//
+//	DiscoveryAgentConfigDataCronArray{ DiscoveryAgentConfigDataCronArgs{...} }
+type DiscoveryAgentConfigDataCronArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigDataCronArrayOutput() DiscoveryAgentConfigDataCronArrayOutput
+	ToDiscoveryAgentConfigDataCronArrayOutputWithContext(context.Context) DiscoveryAgentConfigDataCronArrayOutput
+}
+
+type DiscoveryAgentConfigDataCronArray []DiscoveryAgentConfigDataCronInput
+
+func (DiscoveryAgentConfigDataCronArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigDataCron)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigDataCronArray) ToDiscoveryAgentConfigDataCronArrayOutput() DiscoveryAgentConfigDataCronArrayOutput {
+	return i.ToDiscoveryAgentConfigDataCronArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigDataCronArray) ToDiscoveryAgentConfigDataCronArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigDataCronArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigDataCronArrayOutput)
+}
+
+type DiscoveryAgentConfigDataCronOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigDataCronOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigDataCron)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigDataCronOutput) ToDiscoveryAgentConfigDataCronOutput() DiscoveryAgentConfigDataCronOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigDataCronOutput) ToDiscoveryAgentConfigDataCronOutputWithContext(ctx context.Context) DiscoveryAgentConfigDataCronOutput {
+	return o
+}
+
+// Cron expression for scheduling.
+func (o DiscoveryAgentConfigDataCronOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigDataCron) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+type DiscoveryAgentConfigDataCronArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigDataCronArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigDataCron)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigDataCronArrayOutput) ToDiscoveryAgentConfigDataCronArrayOutput() DiscoveryAgentConfigDataCronArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigDataCronArrayOutput) ToDiscoveryAgentConfigDataCronArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigDataCronArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigDataCronArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentConfigDataCronOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentConfigDataCron {
+		return vs[0].([]DiscoveryAgentConfigDataCron)[vs[1].(int)]
+	}).(DiscoveryAgentConfigDataCronOutput)
+}
+
+type DiscoveryAgentConfigKubernete struct {
+	// Annotations to add to all resources.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Whether to disable namespace creation.
+	DisableNamespaceCreation *bool `pulumi:"disableNamespaceCreation"`
+	// The image pull policy.
+	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
+	// Labels to add to all resources.
+	Labels map[string]string `pulumi:"labels"`
+	// Kubernetes namespace to use
+	Namespace string `pulumi:"namespace"`
+	// Whether the agent is namespaced.
+	Namespaced *bool `pulumi:"namespaced"`
+	// Node selector labels.
+	NodeSelector map[string]string `pulumi:"nodeSelector"`
+	// Compute resource requirements for the agent container.
+	Resources []DiscoveryAgentConfigKuberneteResource `pulumi:"resources"`
+	// The group ID to run as.
+	RunAsGroup *int `pulumi:"runAsGroup"`
+	// The user ID to run as.
+	RunAsUser *int `pulumi:"runAsUser"`
+	// Service account to use
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Tolerations for pod assignment.
+	Tolerations []DiscoveryAgentConfigKuberneteToleration `pulumi:"tolerations"`
+}
+
+// DiscoveryAgentConfigKuberneteInput is an input type that accepts DiscoveryAgentConfigKuberneteArgs and DiscoveryAgentConfigKuberneteOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigKuberneteInput` via:
+//
+//	DiscoveryAgentConfigKuberneteArgs{...}
+type DiscoveryAgentConfigKuberneteInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigKuberneteOutput() DiscoveryAgentConfigKuberneteOutput
+	ToDiscoveryAgentConfigKuberneteOutputWithContext(context.Context) DiscoveryAgentConfigKuberneteOutput
+}
+
+type DiscoveryAgentConfigKuberneteArgs struct {
+	// Annotations to add to all resources.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Whether to disable namespace creation.
+	DisableNamespaceCreation pulumi.BoolPtrInput `pulumi:"disableNamespaceCreation"`
+	// The image pull policy.
+	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
+	// Labels to add to all resources.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Kubernetes namespace to use
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Whether the agent is namespaced.
+	Namespaced pulumi.BoolPtrInput `pulumi:"namespaced"`
+	// Node selector labels.
+	NodeSelector pulumi.StringMapInput `pulumi:"nodeSelector"`
+	// Compute resource requirements for the agent container.
+	Resources DiscoveryAgentConfigKuberneteResourceArrayInput `pulumi:"resources"`
+	// The group ID to run as.
+	RunAsGroup pulumi.IntPtrInput `pulumi:"runAsGroup"`
+	// The user ID to run as.
+	RunAsUser pulumi.IntPtrInput `pulumi:"runAsUser"`
+	// Service account to use
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Tolerations for pod assignment.
+	Tolerations DiscoveryAgentConfigKuberneteTolerationArrayInput `pulumi:"tolerations"`
+}
+
+func (DiscoveryAgentConfigKuberneteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigKubernete)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigKuberneteArgs) ToDiscoveryAgentConfigKuberneteOutput() DiscoveryAgentConfigKuberneteOutput {
+	return i.ToDiscoveryAgentConfigKuberneteOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigKuberneteArgs) ToDiscoveryAgentConfigKuberneteOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigKuberneteOutput)
+}
+
+// DiscoveryAgentConfigKuberneteArrayInput is an input type that accepts DiscoveryAgentConfigKuberneteArray and DiscoveryAgentConfigKuberneteArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigKuberneteArrayInput` via:
+//
+//	DiscoveryAgentConfigKuberneteArray{ DiscoveryAgentConfigKuberneteArgs{...} }
+type DiscoveryAgentConfigKuberneteArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigKuberneteArrayOutput() DiscoveryAgentConfigKuberneteArrayOutput
+	ToDiscoveryAgentConfigKuberneteArrayOutputWithContext(context.Context) DiscoveryAgentConfigKuberneteArrayOutput
+}
+
+type DiscoveryAgentConfigKuberneteArray []DiscoveryAgentConfigKuberneteInput
+
+func (DiscoveryAgentConfigKuberneteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigKubernete)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigKuberneteArray) ToDiscoveryAgentConfigKuberneteArrayOutput() DiscoveryAgentConfigKuberneteArrayOutput {
+	return i.ToDiscoveryAgentConfigKuberneteArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigKuberneteArray) ToDiscoveryAgentConfigKuberneteArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigKuberneteArrayOutput)
+}
+
+type DiscoveryAgentConfigKuberneteOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigKuberneteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigKubernete)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigKuberneteOutput) ToDiscoveryAgentConfigKuberneteOutput() DiscoveryAgentConfigKuberneteOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteOutput) ToDiscoveryAgentConfigKuberneteOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteOutput {
+	return o
+}
+
+// Annotations to add to all resources.
+func (o DiscoveryAgentConfigKuberneteOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKubernete) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Whether to disable namespace creation.
+func (o DiscoveryAgentConfigKuberneteOutput) DisableNamespaceCreation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKubernete) *bool { return v.DisableNamespaceCreation }).(pulumi.BoolPtrOutput)
+}
+
+// The image pull policy.
+func (o DiscoveryAgentConfigKuberneteOutput) ImagePullPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKubernete) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Labels to add to all resources.
+func (o DiscoveryAgentConfigKuberneteOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKubernete) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Kubernetes namespace to use
+func (o DiscoveryAgentConfigKuberneteOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKubernete) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Whether the agent is namespaced.
+func (o DiscoveryAgentConfigKuberneteOutput) Namespaced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKubernete) *bool { return v.Namespaced }).(pulumi.BoolPtrOutput)
+}
+
+// Node selector labels.
+func (o DiscoveryAgentConfigKuberneteOutput) NodeSelector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKubernete) map[string]string { return v.NodeSelector }).(pulumi.StringMapOutput)
+}
+
+// Compute resource requirements for the agent container.
+func (o DiscoveryAgentConfigKuberneteOutput) Resources() DiscoveryAgentConfigKuberneteResourceArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKubernete) []DiscoveryAgentConfigKuberneteResource { return v.Resources }).(DiscoveryAgentConfigKuberneteResourceArrayOutput)
+}
+
+// The group ID to run as.
+func (o DiscoveryAgentConfigKuberneteOutput) RunAsGroup() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKubernete) *int { return v.RunAsGroup }).(pulumi.IntPtrOutput)
+}
+
+// The user ID to run as.
+func (o DiscoveryAgentConfigKuberneteOutput) RunAsUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKubernete) *int { return v.RunAsUser }).(pulumi.IntPtrOutput)
+}
+
+// Service account to use
+func (o DiscoveryAgentConfigKuberneteOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKubernete) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Tolerations for pod assignment.
+func (o DiscoveryAgentConfigKuberneteOutput) Tolerations() DiscoveryAgentConfigKuberneteTolerationArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKubernete) []DiscoveryAgentConfigKuberneteToleration { return v.Tolerations }).(DiscoveryAgentConfigKuberneteTolerationArrayOutput)
+}
+
+type DiscoveryAgentConfigKuberneteArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigKuberneteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigKubernete)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigKuberneteArrayOutput) ToDiscoveryAgentConfigKuberneteArrayOutput() DiscoveryAgentConfigKuberneteArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteArrayOutput) ToDiscoveryAgentConfigKuberneteArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentConfigKuberneteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentConfigKubernete {
+		return vs[0].([]DiscoveryAgentConfigKubernete)[vs[1].(int)]
+	}).(DiscoveryAgentConfigKuberneteOutput)
+}
+
+type DiscoveryAgentConfigKuberneteResource struct {
+	// Maximum amount of compute resources allowed.
+	Limits []DiscoveryAgentConfigKuberneteResourceLimit `pulumi:"limits"`
+	// Minimum amount of compute resources required.
+	Requests []DiscoveryAgentConfigKuberneteResourceRequest `pulumi:"requests"`
+}
+
+// DiscoveryAgentConfigKuberneteResourceInput is an input type that accepts DiscoveryAgentConfigKuberneteResourceArgs and DiscoveryAgentConfigKuberneteResourceOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigKuberneteResourceInput` via:
+//
+//	DiscoveryAgentConfigKuberneteResourceArgs{...}
+type DiscoveryAgentConfigKuberneteResourceInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigKuberneteResourceOutput() DiscoveryAgentConfigKuberneteResourceOutput
+	ToDiscoveryAgentConfigKuberneteResourceOutputWithContext(context.Context) DiscoveryAgentConfigKuberneteResourceOutput
+}
+
+type DiscoveryAgentConfigKuberneteResourceArgs struct {
+	// Maximum amount of compute resources allowed.
+	Limits DiscoveryAgentConfigKuberneteResourceLimitArrayInput `pulumi:"limits"`
+	// Minimum amount of compute resources required.
+	Requests DiscoveryAgentConfigKuberneteResourceRequestArrayInput `pulumi:"requests"`
+}
+
+func (DiscoveryAgentConfigKuberneteResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigKuberneteResource)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigKuberneteResourceArgs) ToDiscoveryAgentConfigKuberneteResourceOutput() DiscoveryAgentConfigKuberneteResourceOutput {
+	return i.ToDiscoveryAgentConfigKuberneteResourceOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigKuberneteResourceArgs) ToDiscoveryAgentConfigKuberneteResourceOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigKuberneteResourceOutput)
+}
+
+// DiscoveryAgentConfigKuberneteResourceArrayInput is an input type that accepts DiscoveryAgentConfigKuberneteResourceArray and DiscoveryAgentConfigKuberneteResourceArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigKuberneteResourceArrayInput` via:
+//
+//	DiscoveryAgentConfigKuberneteResourceArray{ DiscoveryAgentConfigKuberneteResourceArgs{...} }
+type DiscoveryAgentConfigKuberneteResourceArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigKuberneteResourceArrayOutput() DiscoveryAgentConfigKuberneteResourceArrayOutput
+	ToDiscoveryAgentConfigKuberneteResourceArrayOutputWithContext(context.Context) DiscoveryAgentConfigKuberneteResourceArrayOutput
+}
+
+type DiscoveryAgentConfigKuberneteResourceArray []DiscoveryAgentConfigKuberneteResourceInput
+
+func (DiscoveryAgentConfigKuberneteResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigKuberneteResource)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigKuberneteResourceArray) ToDiscoveryAgentConfigKuberneteResourceArrayOutput() DiscoveryAgentConfigKuberneteResourceArrayOutput {
+	return i.ToDiscoveryAgentConfigKuberneteResourceArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigKuberneteResourceArray) ToDiscoveryAgentConfigKuberneteResourceArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigKuberneteResourceArrayOutput)
+}
+
+type DiscoveryAgentConfigKuberneteResourceOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigKuberneteResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigKuberneteResource)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceOutput) ToDiscoveryAgentConfigKuberneteResourceOutput() DiscoveryAgentConfigKuberneteResourceOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceOutput) ToDiscoveryAgentConfigKuberneteResourceOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteResourceOutput {
+	return o
+}
+
+// Maximum amount of compute resources allowed.
+func (o DiscoveryAgentConfigKuberneteResourceOutput) Limits() DiscoveryAgentConfigKuberneteResourceLimitArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKuberneteResource) []DiscoveryAgentConfigKuberneteResourceLimit {
+		return v.Limits
+	}).(DiscoveryAgentConfigKuberneteResourceLimitArrayOutput)
+}
+
+// Minimum amount of compute resources required.
+func (o DiscoveryAgentConfigKuberneteResourceOutput) Requests() DiscoveryAgentConfigKuberneteResourceRequestArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKuberneteResource) []DiscoveryAgentConfigKuberneteResourceRequest {
+		return v.Requests
+	}).(DiscoveryAgentConfigKuberneteResourceRequestArrayOutput)
+}
+
+type DiscoveryAgentConfigKuberneteResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigKuberneteResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigKuberneteResource)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceArrayOutput) ToDiscoveryAgentConfigKuberneteResourceArrayOutput() DiscoveryAgentConfigKuberneteResourceArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceArrayOutput) ToDiscoveryAgentConfigKuberneteResourceArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteResourceArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentConfigKuberneteResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentConfigKuberneteResource {
+		return vs[0].([]DiscoveryAgentConfigKuberneteResource)[vs[1].(int)]
+	}).(DiscoveryAgentConfigKuberneteResourceOutput)
+}
+
+type DiscoveryAgentConfigKuberneteResourceLimit struct {
+	// CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+	Cpu *string `pulumi:"cpu"`
+	// Memory limit in bytes (e.g., 128Mi, 1Gi).
+	Memory *string `pulumi:"memory"`
+}
+
+// DiscoveryAgentConfigKuberneteResourceLimitInput is an input type that accepts DiscoveryAgentConfigKuberneteResourceLimitArgs and DiscoveryAgentConfigKuberneteResourceLimitOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigKuberneteResourceLimitInput` via:
+//
+//	DiscoveryAgentConfigKuberneteResourceLimitArgs{...}
+type DiscoveryAgentConfigKuberneteResourceLimitInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigKuberneteResourceLimitOutput() DiscoveryAgentConfigKuberneteResourceLimitOutput
+	ToDiscoveryAgentConfigKuberneteResourceLimitOutputWithContext(context.Context) DiscoveryAgentConfigKuberneteResourceLimitOutput
+}
+
+type DiscoveryAgentConfigKuberneteResourceLimitArgs struct {
+	// CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory limit in bytes (e.g., 128Mi, 1Gi).
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (DiscoveryAgentConfigKuberneteResourceLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigKuberneteResourceLimit)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigKuberneteResourceLimitArgs) ToDiscoveryAgentConfigKuberneteResourceLimitOutput() DiscoveryAgentConfigKuberneteResourceLimitOutput {
+	return i.ToDiscoveryAgentConfigKuberneteResourceLimitOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigKuberneteResourceLimitArgs) ToDiscoveryAgentConfigKuberneteResourceLimitOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteResourceLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigKuberneteResourceLimitOutput)
+}
+
+// DiscoveryAgentConfigKuberneteResourceLimitArrayInput is an input type that accepts DiscoveryAgentConfigKuberneteResourceLimitArray and DiscoveryAgentConfigKuberneteResourceLimitArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigKuberneteResourceLimitArrayInput` via:
+//
+//	DiscoveryAgentConfigKuberneteResourceLimitArray{ DiscoveryAgentConfigKuberneteResourceLimitArgs{...} }
+type DiscoveryAgentConfigKuberneteResourceLimitArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigKuberneteResourceLimitArrayOutput() DiscoveryAgentConfigKuberneteResourceLimitArrayOutput
+	ToDiscoveryAgentConfigKuberneteResourceLimitArrayOutputWithContext(context.Context) DiscoveryAgentConfigKuberneteResourceLimitArrayOutput
+}
+
+type DiscoveryAgentConfigKuberneteResourceLimitArray []DiscoveryAgentConfigKuberneteResourceLimitInput
+
+func (DiscoveryAgentConfigKuberneteResourceLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigKuberneteResourceLimit)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigKuberneteResourceLimitArray) ToDiscoveryAgentConfigKuberneteResourceLimitArrayOutput() DiscoveryAgentConfigKuberneteResourceLimitArrayOutput {
+	return i.ToDiscoveryAgentConfigKuberneteResourceLimitArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigKuberneteResourceLimitArray) ToDiscoveryAgentConfigKuberneteResourceLimitArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteResourceLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigKuberneteResourceLimitArrayOutput)
+}
+
+type DiscoveryAgentConfigKuberneteResourceLimitOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigKuberneteResourceLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigKuberneteResourceLimit)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceLimitOutput) ToDiscoveryAgentConfigKuberneteResourceLimitOutput() DiscoveryAgentConfigKuberneteResourceLimitOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceLimitOutput) ToDiscoveryAgentConfigKuberneteResourceLimitOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteResourceLimitOutput {
+	return o
+}
+
+// CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+func (o DiscoveryAgentConfigKuberneteResourceLimitOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKuberneteResourceLimit) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory limit in bytes (e.g., 128Mi, 1Gi).
+func (o DiscoveryAgentConfigKuberneteResourceLimitOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKuberneteResourceLimit) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type DiscoveryAgentConfigKuberneteResourceLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigKuberneteResourceLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigKuberneteResourceLimit)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceLimitArrayOutput) ToDiscoveryAgentConfigKuberneteResourceLimitArrayOutput() DiscoveryAgentConfigKuberneteResourceLimitArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceLimitArrayOutput) ToDiscoveryAgentConfigKuberneteResourceLimitArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteResourceLimitArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceLimitArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentConfigKuberneteResourceLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentConfigKuberneteResourceLimit {
+		return vs[0].([]DiscoveryAgentConfigKuberneteResourceLimit)[vs[1].(int)]
+	}).(DiscoveryAgentConfigKuberneteResourceLimitOutput)
+}
+
+type DiscoveryAgentConfigKuberneteResourceRequest struct {
+	// CPU request in CPU units (e.g., 100m = 0.1 CPU).
+	Cpu *string `pulumi:"cpu"`
+	// Memory request in bytes (e.g., 128Mi, 1Gi).
+	Memory *string `pulumi:"memory"`
+}
+
+// DiscoveryAgentConfigKuberneteResourceRequestInput is an input type that accepts DiscoveryAgentConfigKuberneteResourceRequestArgs and DiscoveryAgentConfigKuberneteResourceRequestOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigKuberneteResourceRequestInput` via:
+//
+//	DiscoveryAgentConfigKuberneteResourceRequestArgs{...}
+type DiscoveryAgentConfigKuberneteResourceRequestInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigKuberneteResourceRequestOutput() DiscoveryAgentConfigKuberneteResourceRequestOutput
+	ToDiscoveryAgentConfigKuberneteResourceRequestOutputWithContext(context.Context) DiscoveryAgentConfigKuberneteResourceRequestOutput
+}
+
+type DiscoveryAgentConfigKuberneteResourceRequestArgs struct {
+	// CPU request in CPU units (e.g., 100m = 0.1 CPU).
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory request in bytes (e.g., 128Mi, 1Gi).
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (DiscoveryAgentConfigKuberneteResourceRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigKuberneteResourceRequest)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigKuberneteResourceRequestArgs) ToDiscoveryAgentConfigKuberneteResourceRequestOutput() DiscoveryAgentConfigKuberneteResourceRequestOutput {
+	return i.ToDiscoveryAgentConfigKuberneteResourceRequestOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigKuberneteResourceRequestArgs) ToDiscoveryAgentConfigKuberneteResourceRequestOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteResourceRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigKuberneteResourceRequestOutput)
+}
+
+// DiscoveryAgentConfigKuberneteResourceRequestArrayInput is an input type that accepts DiscoveryAgentConfigKuberneteResourceRequestArray and DiscoveryAgentConfigKuberneteResourceRequestArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigKuberneteResourceRequestArrayInput` via:
+//
+//	DiscoveryAgentConfigKuberneteResourceRequestArray{ DiscoveryAgentConfigKuberneteResourceRequestArgs{...} }
+type DiscoveryAgentConfigKuberneteResourceRequestArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigKuberneteResourceRequestArrayOutput() DiscoveryAgentConfigKuberneteResourceRequestArrayOutput
+	ToDiscoveryAgentConfigKuberneteResourceRequestArrayOutputWithContext(context.Context) DiscoveryAgentConfigKuberneteResourceRequestArrayOutput
+}
+
+type DiscoveryAgentConfigKuberneteResourceRequestArray []DiscoveryAgentConfigKuberneteResourceRequestInput
+
+func (DiscoveryAgentConfigKuberneteResourceRequestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigKuberneteResourceRequest)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigKuberneteResourceRequestArray) ToDiscoveryAgentConfigKuberneteResourceRequestArrayOutput() DiscoveryAgentConfigKuberneteResourceRequestArrayOutput {
+	return i.ToDiscoveryAgentConfigKuberneteResourceRequestArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigKuberneteResourceRequestArray) ToDiscoveryAgentConfigKuberneteResourceRequestArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteResourceRequestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigKuberneteResourceRequestArrayOutput)
+}
+
+type DiscoveryAgentConfigKuberneteResourceRequestOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigKuberneteResourceRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigKuberneteResourceRequest)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceRequestOutput) ToDiscoveryAgentConfigKuberneteResourceRequestOutput() DiscoveryAgentConfigKuberneteResourceRequestOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceRequestOutput) ToDiscoveryAgentConfigKuberneteResourceRequestOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteResourceRequestOutput {
+	return o
+}
+
+// CPU request in CPU units (e.g., 100m = 0.1 CPU).
+func (o DiscoveryAgentConfigKuberneteResourceRequestOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKuberneteResourceRequest) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory request in bytes (e.g., 128Mi, 1Gi).
+func (o DiscoveryAgentConfigKuberneteResourceRequestOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKuberneteResourceRequest) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type DiscoveryAgentConfigKuberneteResourceRequestArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigKuberneteResourceRequestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigKuberneteResourceRequest)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceRequestArrayOutput) ToDiscoveryAgentConfigKuberneteResourceRequestArrayOutput() DiscoveryAgentConfigKuberneteResourceRequestArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceRequestArrayOutput) ToDiscoveryAgentConfigKuberneteResourceRequestArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteResourceRequestArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteResourceRequestArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentConfigKuberneteResourceRequestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentConfigKuberneteResourceRequest {
+		return vs[0].([]DiscoveryAgentConfigKuberneteResourceRequest)[vs[1].(int)]
+	}).(DiscoveryAgentConfigKuberneteResourceRequestOutput)
+}
+
+type DiscoveryAgentConfigKuberneteToleration struct {
+	// Effect indicates the taint effect to match.
+	Effect string `pulumi:"effect"`
+	// The taint key that the toleration applies to.
+	Key string `pulumi:"key"`
+	// Operator represents a key's relationship to the value.
+	Operator string `pulumi:"operator"`
+	// TolerationSeconds represents the period of time the toleration tolerates the taint.
+	TolerationSeconds *int `pulumi:"tolerationSeconds"`
+	// The taint value the toleration matches to.
+	Value *string `pulumi:"value"`
+}
+
+// DiscoveryAgentConfigKuberneteTolerationInput is an input type that accepts DiscoveryAgentConfigKuberneteTolerationArgs and DiscoveryAgentConfigKuberneteTolerationOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigKuberneteTolerationInput` via:
+//
+//	DiscoveryAgentConfigKuberneteTolerationArgs{...}
+type DiscoveryAgentConfigKuberneteTolerationInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigKuberneteTolerationOutput() DiscoveryAgentConfigKuberneteTolerationOutput
+	ToDiscoveryAgentConfigKuberneteTolerationOutputWithContext(context.Context) DiscoveryAgentConfigKuberneteTolerationOutput
+}
+
+type DiscoveryAgentConfigKuberneteTolerationArgs struct {
+	// Effect indicates the taint effect to match.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// The taint key that the toleration applies to.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Operator represents a key's relationship to the value.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// TolerationSeconds represents the period of time the toleration tolerates the taint.
+	TolerationSeconds pulumi.IntPtrInput `pulumi:"tolerationSeconds"`
+	// The taint value the toleration matches to.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DiscoveryAgentConfigKuberneteTolerationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigKuberneteToleration)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigKuberneteTolerationArgs) ToDiscoveryAgentConfigKuberneteTolerationOutput() DiscoveryAgentConfigKuberneteTolerationOutput {
+	return i.ToDiscoveryAgentConfigKuberneteTolerationOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigKuberneteTolerationArgs) ToDiscoveryAgentConfigKuberneteTolerationOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteTolerationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigKuberneteTolerationOutput)
+}
+
+// DiscoveryAgentConfigKuberneteTolerationArrayInput is an input type that accepts DiscoveryAgentConfigKuberneteTolerationArray and DiscoveryAgentConfigKuberneteTolerationArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigKuberneteTolerationArrayInput` via:
+//
+//	DiscoveryAgentConfigKuberneteTolerationArray{ DiscoveryAgentConfigKuberneteTolerationArgs{...} }
+type DiscoveryAgentConfigKuberneteTolerationArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigKuberneteTolerationArrayOutput() DiscoveryAgentConfigKuberneteTolerationArrayOutput
+	ToDiscoveryAgentConfigKuberneteTolerationArrayOutputWithContext(context.Context) DiscoveryAgentConfigKuberneteTolerationArrayOutput
+}
+
+type DiscoveryAgentConfigKuberneteTolerationArray []DiscoveryAgentConfigKuberneteTolerationInput
+
+func (DiscoveryAgentConfigKuberneteTolerationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigKuberneteToleration)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigKuberneteTolerationArray) ToDiscoveryAgentConfigKuberneteTolerationArrayOutput() DiscoveryAgentConfigKuberneteTolerationArrayOutput {
+	return i.ToDiscoveryAgentConfigKuberneteTolerationArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigKuberneteTolerationArray) ToDiscoveryAgentConfigKuberneteTolerationArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteTolerationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigKuberneteTolerationArrayOutput)
+}
+
+type DiscoveryAgentConfigKuberneteTolerationOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigKuberneteTolerationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigKuberneteToleration)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigKuberneteTolerationOutput) ToDiscoveryAgentConfigKuberneteTolerationOutput() DiscoveryAgentConfigKuberneteTolerationOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteTolerationOutput) ToDiscoveryAgentConfigKuberneteTolerationOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteTolerationOutput {
+	return o
+}
+
+// Effect indicates the taint effect to match.
+func (o DiscoveryAgentConfigKuberneteTolerationOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKuberneteToleration) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// The taint key that the toleration applies to.
+func (o DiscoveryAgentConfigKuberneteTolerationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKuberneteToleration) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Operator represents a key's relationship to the value.
+func (o DiscoveryAgentConfigKuberneteTolerationOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKuberneteToleration) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// TolerationSeconds represents the period of time the toleration tolerates the taint.
+func (o DiscoveryAgentConfigKuberneteTolerationOutput) TolerationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKuberneteToleration) *int { return v.TolerationSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The taint value the toleration matches to.
+func (o DiscoveryAgentConfigKuberneteTolerationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigKuberneteToleration) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DiscoveryAgentConfigKuberneteTolerationArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigKuberneteTolerationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigKuberneteToleration)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigKuberneteTolerationArrayOutput) ToDiscoveryAgentConfigKuberneteTolerationArrayOutput() DiscoveryAgentConfigKuberneteTolerationArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteTolerationArrayOutput) ToDiscoveryAgentConfigKuberneteTolerationArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigKuberneteTolerationArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigKuberneteTolerationArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentConfigKuberneteTolerationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentConfigKuberneteToleration {
+		return vs[0].([]DiscoveryAgentConfigKuberneteToleration)[vs[1].(int)]
+	}).(DiscoveryAgentConfigKuberneteTolerationOutput)
+}
+
+type DiscoveryAgentConfigMtl struct {
+	// Path to the certificate file.
+	CertPath *string `pulumi:"certPath"`
+	// Path to the key file.
+	KeyPath *string `pulumi:"keyPath"`
+	// Name of the Kubernetes secret containing the certificate and key.
+	SecretName *string `pulumi:"secretName"`
+	// URL of the mTLS server.
+	Url *string `pulumi:"url"`
+}
+
+// DiscoveryAgentConfigMtlInput is an input type that accepts DiscoveryAgentConfigMtlArgs and DiscoveryAgentConfigMtlOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigMtlInput` via:
+//
+//	DiscoveryAgentConfigMtlArgs{...}
+type DiscoveryAgentConfigMtlInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigMtlOutput() DiscoveryAgentConfigMtlOutput
+	ToDiscoveryAgentConfigMtlOutputWithContext(context.Context) DiscoveryAgentConfigMtlOutput
+}
+
+type DiscoveryAgentConfigMtlArgs struct {
+	// Path to the certificate file.
+	CertPath pulumi.StringPtrInput `pulumi:"certPath"`
+	// Path to the key file.
+	KeyPath pulumi.StringPtrInput `pulumi:"keyPath"`
+	// Name of the Kubernetes secret containing the certificate and key.
+	SecretName pulumi.StringPtrInput `pulumi:"secretName"`
+	// URL of the mTLS server.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (DiscoveryAgentConfigMtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigMtl)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigMtlArgs) ToDiscoveryAgentConfigMtlOutput() DiscoveryAgentConfigMtlOutput {
+	return i.ToDiscoveryAgentConfigMtlOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigMtlArgs) ToDiscoveryAgentConfigMtlOutputWithContext(ctx context.Context) DiscoveryAgentConfigMtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigMtlOutput)
+}
+
+// DiscoveryAgentConfigMtlArrayInput is an input type that accepts DiscoveryAgentConfigMtlArray and DiscoveryAgentConfigMtlArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigMtlArrayInput` via:
+//
+//	DiscoveryAgentConfigMtlArray{ DiscoveryAgentConfigMtlArgs{...} }
+type DiscoveryAgentConfigMtlArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigMtlArrayOutput() DiscoveryAgentConfigMtlArrayOutput
+	ToDiscoveryAgentConfigMtlArrayOutputWithContext(context.Context) DiscoveryAgentConfigMtlArrayOutput
+}
+
+type DiscoveryAgentConfigMtlArray []DiscoveryAgentConfigMtlInput
+
+func (DiscoveryAgentConfigMtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigMtl)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigMtlArray) ToDiscoveryAgentConfigMtlArrayOutput() DiscoveryAgentConfigMtlArrayOutput {
+	return i.ToDiscoveryAgentConfigMtlArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigMtlArray) ToDiscoveryAgentConfigMtlArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigMtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigMtlArrayOutput)
+}
+
+type DiscoveryAgentConfigMtlOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigMtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigMtl)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigMtlOutput) ToDiscoveryAgentConfigMtlOutput() DiscoveryAgentConfigMtlOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigMtlOutput) ToDiscoveryAgentConfigMtlOutputWithContext(ctx context.Context) DiscoveryAgentConfigMtlOutput {
+	return o
+}
+
+// Path to the certificate file.
+func (o DiscoveryAgentConfigMtlOutput) CertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigMtl) *string { return v.CertPath }).(pulumi.StringPtrOutput)
+}
+
+// Path to the key file.
+func (o DiscoveryAgentConfigMtlOutput) KeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigMtl) *string { return v.KeyPath }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Kubernetes secret containing the certificate and key.
+func (o DiscoveryAgentConfigMtlOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigMtl) *string { return v.SecretName }).(pulumi.StringPtrOutput)
+}
+
+// URL of the mTLS server.
+func (o DiscoveryAgentConfigMtlOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigMtl) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type DiscoveryAgentConfigMtlArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigMtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigMtl)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigMtlArrayOutput) ToDiscoveryAgentConfigMtlArrayOutput() DiscoveryAgentConfigMtlArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigMtlArrayOutput) ToDiscoveryAgentConfigMtlArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigMtlArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigMtlArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentConfigMtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentConfigMtl {
+		return vs[0].([]DiscoveryAgentConfigMtl)[vs[1].(int)]
+	}).(DiscoveryAgentConfigMtlOutput)
+}
+
+type DiscoveryAgentConfigProxy struct {
+	// HTTP proxy URL.
+	HttpProxy *string `pulumi:"httpProxy"`
+	// HTTPS proxy URL.
+	HttpsProxy *string `pulumi:"httpsProxy"`
+	// Comma-separated list of hosts that should not use the proxy.
+	NoProxy *string `pulumi:"noProxy"`
+	// Proxy server URL.
+	Url *string `pulumi:"url"`
+}
+
+// DiscoveryAgentConfigProxyInput is an input type that accepts DiscoveryAgentConfigProxyArgs and DiscoveryAgentConfigProxyOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigProxyInput` via:
+//
+//	DiscoveryAgentConfigProxyArgs{...}
+type DiscoveryAgentConfigProxyInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigProxyOutput() DiscoveryAgentConfigProxyOutput
+	ToDiscoveryAgentConfigProxyOutputWithContext(context.Context) DiscoveryAgentConfigProxyOutput
+}
+
+type DiscoveryAgentConfigProxyArgs struct {
+	// HTTP proxy URL.
+	HttpProxy pulumi.StringPtrInput `pulumi:"httpProxy"`
+	// HTTPS proxy URL.
+	HttpsProxy pulumi.StringPtrInput `pulumi:"httpsProxy"`
+	// Comma-separated list of hosts that should not use the proxy.
+	NoProxy pulumi.StringPtrInput `pulumi:"noProxy"`
+	// Proxy server URL.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (DiscoveryAgentConfigProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigProxy)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigProxyArgs) ToDiscoveryAgentConfigProxyOutput() DiscoveryAgentConfigProxyOutput {
+	return i.ToDiscoveryAgentConfigProxyOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigProxyArgs) ToDiscoveryAgentConfigProxyOutputWithContext(ctx context.Context) DiscoveryAgentConfigProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigProxyOutput)
+}
+
+// DiscoveryAgentConfigProxyArrayInput is an input type that accepts DiscoveryAgentConfigProxyArray and DiscoveryAgentConfigProxyArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentConfigProxyArrayInput` via:
+//
+//	DiscoveryAgentConfigProxyArray{ DiscoveryAgentConfigProxyArgs{...} }
+type DiscoveryAgentConfigProxyArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentConfigProxyArrayOutput() DiscoveryAgentConfigProxyArrayOutput
+	ToDiscoveryAgentConfigProxyArrayOutputWithContext(context.Context) DiscoveryAgentConfigProxyArrayOutput
+}
+
+type DiscoveryAgentConfigProxyArray []DiscoveryAgentConfigProxyInput
+
+func (DiscoveryAgentConfigProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigProxy)(nil)).Elem()
+}
+
+func (i DiscoveryAgentConfigProxyArray) ToDiscoveryAgentConfigProxyArrayOutput() DiscoveryAgentConfigProxyArrayOutput {
+	return i.ToDiscoveryAgentConfigProxyArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentConfigProxyArray) ToDiscoveryAgentConfigProxyArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentConfigProxyArrayOutput)
+}
+
+type DiscoveryAgentConfigProxyOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentConfigProxy)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigProxyOutput) ToDiscoveryAgentConfigProxyOutput() DiscoveryAgentConfigProxyOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigProxyOutput) ToDiscoveryAgentConfigProxyOutputWithContext(ctx context.Context) DiscoveryAgentConfigProxyOutput {
+	return o
+}
+
+// HTTP proxy URL.
+func (o DiscoveryAgentConfigProxyOutput) HttpProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigProxy) *string { return v.HttpProxy }).(pulumi.StringPtrOutput)
+}
+
+// HTTPS proxy URL.
+func (o DiscoveryAgentConfigProxyOutput) HttpsProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigProxy) *string { return v.HttpsProxy }).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of hosts that should not use the proxy.
+func (o DiscoveryAgentConfigProxyOutput) NoProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigProxy) *string { return v.NoProxy }).(pulumi.StringPtrOutput)
+}
+
+// Proxy server URL.
+func (o DiscoveryAgentConfigProxyOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentConfigProxy) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type DiscoveryAgentConfigProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentConfigProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentConfigProxy)(nil)).Elem()
+}
+
+func (o DiscoveryAgentConfigProxyArrayOutput) ToDiscoveryAgentConfigProxyArrayOutput() DiscoveryAgentConfigProxyArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigProxyArrayOutput) ToDiscoveryAgentConfigProxyArrayOutputWithContext(ctx context.Context) DiscoveryAgentConfigProxyArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentConfigProxyArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentConfigProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentConfigProxy {
+		return vs[0].([]DiscoveryAgentConfigProxy)[vs[1].(int)]
+	}).(DiscoveryAgentConfigProxyOutput)
+}
+
+type DiscoveryAgentInstallationDetail struct {
+	// The account identifier for the installation.
+	AccountIdentifier *string `pulumi:"accountIdentifier"`
+	// Details about the installed agent.
+	AgentDetails []DiscoveryAgentInstallationDetailAgentDetail `pulumi:"agentDetails"`
+	// The ID of the installed agent.
+	AgentId *string `pulumi:"agentId"`
+	// The timestamp when the installation was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// The user who created the installation.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The ID of the delegate used for installation.
+	DelegateId *string `pulumi:"delegateId"`
+	// The ID of the delegate task for the installation.
+	DelegateTaskId *string `pulumi:"delegateTaskId"`
+	// The status of the delegate task (e.g., 'SUCCESS').
+	DelegateTaskStatus *string `pulumi:"delegateTaskStatus"`
+	// The environment identifier for the installation.
+	EnvironmentIdentifier *string `pulumi:"environmentIdentifier"`
+	// The unique identifier of the installation.
+	Id *string `pulumi:"id"`
+	// Whether the installation was triggered by a cron job.
+	IsCronTriggered *bool `pulumi:"isCronTriggered"`
+	// The timestamp when the log stream was created.
+	LogStreamCreatedAt *string `pulumi:"logStreamCreatedAt"`
+	// The ID of the log stream for the installation.
+	LogStreamId *string `pulumi:"logStreamId"`
+	// The organization identifier for the installation.
+	OrganizationIdentifier *string `pulumi:"organizationIdentifier"`
+	// The project identifier for the installation.
+	ProjectIdentifier *string `pulumi:"projectIdentifier"`
+	// Whether the installation has been removed.
+	Removed *bool `pulumi:"removed"`
+	// Whether the installation has been stopped.
+	Stopped *bool `pulumi:"stopped"`
+	// The timestamp when the installation was last updated.
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// The user who last updated the installation.
+	UpdatedBy *string `pulumi:"updatedBy"`
+}
+
+// DiscoveryAgentInstallationDetailInput is an input type that accepts DiscoveryAgentInstallationDetailArgs and DiscoveryAgentInstallationDetailOutput values.
+// You can construct a concrete instance of `DiscoveryAgentInstallationDetailInput` via:
+//
+//	DiscoveryAgentInstallationDetailArgs{...}
+type DiscoveryAgentInstallationDetailInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentInstallationDetailOutput() DiscoveryAgentInstallationDetailOutput
+	ToDiscoveryAgentInstallationDetailOutputWithContext(context.Context) DiscoveryAgentInstallationDetailOutput
+}
+
+type DiscoveryAgentInstallationDetailArgs struct {
+	// The account identifier for the installation.
+	AccountIdentifier pulumi.StringPtrInput `pulumi:"accountIdentifier"`
+	// Details about the installed agent.
+	AgentDetails DiscoveryAgentInstallationDetailAgentDetailArrayInput `pulumi:"agentDetails"`
+	// The ID of the installed agent.
+	AgentId pulumi.StringPtrInput `pulumi:"agentId"`
+	// The timestamp when the installation was created.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// The user who created the installation.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// The ID of the delegate used for installation.
+	DelegateId pulumi.StringPtrInput `pulumi:"delegateId"`
+	// The ID of the delegate task for the installation.
+	DelegateTaskId pulumi.StringPtrInput `pulumi:"delegateTaskId"`
+	// The status of the delegate task (e.g., 'SUCCESS').
+	DelegateTaskStatus pulumi.StringPtrInput `pulumi:"delegateTaskStatus"`
+	// The environment identifier for the installation.
+	EnvironmentIdentifier pulumi.StringPtrInput `pulumi:"environmentIdentifier"`
+	// The unique identifier of the installation.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Whether the installation was triggered by a cron job.
+	IsCronTriggered pulumi.BoolPtrInput `pulumi:"isCronTriggered"`
+	// The timestamp when the log stream was created.
+	LogStreamCreatedAt pulumi.StringPtrInput `pulumi:"logStreamCreatedAt"`
+	// The ID of the log stream for the installation.
+	LogStreamId pulumi.StringPtrInput `pulumi:"logStreamId"`
+	// The organization identifier for the installation.
+	OrganizationIdentifier pulumi.StringPtrInput `pulumi:"organizationIdentifier"`
+	// The project identifier for the installation.
+	ProjectIdentifier pulumi.StringPtrInput `pulumi:"projectIdentifier"`
+	// Whether the installation has been removed.
+	Removed pulumi.BoolPtrInput `pulumi:"removed"`
+	// Whether the installation has been stopped.
+	Stopped pulumi.BoolPtrInput `pulumi:"stopped"`
+	// The timestamp when the installation was last updated.
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// The user who last updated the installation.
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+}
+
+func (DiscoveryAgentInstallationDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentInstallationDetail)(nil)).Elem()
+}
+
+func (i DiscoveryAgentInstallationDetailArgs) ToDiscoveryAgentInstallationDetailOutput() DiscoveryAgentInstallationDetailOutput {
+	return i.ToDiscoveryAgentInstallationDetailOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentInstallationDetailArgs) ToDiscoveryAgentInstallationDetailOutputWithContext(ctx context.Context) DiscoveryAgentInstallationDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentInstallationDetailOutput)
+}
+
+// DiscoveryAgentInstallationDetailArrayInput is an input type that accepts DiscoveryAgentInstallationDetailArray and DiscoveryAgentInstallationDetailArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentInstallationDetailArrayInput` via:
+//
+//	DiscoveryAgentInstallationDetailArray{ DiscoveryAgentInstallationDetailArgs{...} }
+type DiscoveryAgentInstallationDetailArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentInstallationDetailArrayOutput() DiscoveryAgentInstallationDetailArrayOutput
+	ToDiscoveryAgentInstallationDetailArrayOutputWithContext(context.Context) DiscoveryAgentInstallationDetailArrayOutput
+}
+
+type DiscoveryAgentInstallationDetailArray []DiscoveryAgentInstallationDetailInput
+
+func (DiscoveryAgentInstallationDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentInstallationDetail)(nil)).Elem()
+}
+
+func (i DiscoveryAgentInstallationDetailArray) ToDiscoveryAgentInstallationDetailArrayOutput() DiscoveryAgentInstallationDetailArrayOutput {
+	return i.ToDiscoveryAgentInstallationDetailArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentInstallationDetailArray) ToDiscoveryAgentInstallationDetailArrayOutputWithContext(ctx context.Context) DiscoveryAgentInstallationDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentInstallationDetailArrayOutput)
+}
+
+type DiscoveryAgentInstallationDetailOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentInstallationDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentInstallationDetail)(nil)).Elem()
+}
+
+func (o DiscoveryAgentInstallationDetailOutput) ToDiscoveryAgentInstallationDetailOutput() DiscoveryAgentInstallationDetailOutput {
+	return o
+}
+
+func (o DiscoveryAgentInstallationDetailOutput) ToDiscoveryAgentInstallationDetailOutputWithContext(ctx context.Context) DiscoveryAgentInstallationDetailOutput {
+	return o
+}
+
+// The account identifier for the installation.
+func (o DiscoveryAgentInstallationDetailOutput) AccountIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.AccountIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// Details about the installed agent.
+func (o DiscoveryAgentInstallationDetailOutput) AgentDetails() DiscoveryAgentInstallationDetailAgentDetailArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) []DiscoveryAgentInstallationDetailAgentDetail {
+		return v.AgentDetails
+	}).(DiscoveryAgentInstallationDetailAgentDetailArrayOutput)
+}
+
+// The ID of the installed agent.
+func (o DiscoveryAgentInstallationDetailOutput) AgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.AgentId }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp when the installation was created.
+func (o DiscoveryAgentInstallationDetailOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The user who created the installation.
+func (o DiscoveryAgentInstallationDetailOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the delegate used for installation.
+func (o DiscoveryAgentInstallationDetailOutput) DelegateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.DelegateId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the delegate task for the installation.
+func (o DiscoveryAgentInstallationDetailOutput) DelegateTaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.DelegateTaskId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the delegate task (e.g., 'SUCCESS').
+func (o DiscoveryAgentInstallationDetailOutput) DelegateTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.DelegateTaskStatus }).(pulumi.StringPtrOutput)
+}
+
+// The environment identifier for the installation.
+func (o DiscoveryAgentInstallationDetailOutput) EnvironmentIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.EnvironmentIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the installation.
+func (o DiscoveryAgentInstallationDetailOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Whether the installation was triggered by a cron job.
+func (o DiscoveryAgentInstallationDetailOutput) IsCronTriggered() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *bool { return v.IsCronTriggered }).(pulumi.BoolPtrOutput)
+}
+
+// The timestamp when the log stream was created.
+func (o DiscoveryAgentInstallationDetailOutput) LogStreamCreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.LogStreamCreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the log stream for the installation.
+func (o DiscoveryAgentInstallationDetailOutput) LogStreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.LogStreamId }).(pulumi.StringPtrOutput)
+}
+
+// The organization identifier for the installation.
+func (o DiscoveryAgentInstallationDetailOutput) OrganizationIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.OrganizationIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// The project identifier for the installation.
+func (o DiscoveryAgentInstallationDetailOutput) ProjectIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.ProjectIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// Whether the installation has been removed.
+func (o DiscoveryAgentInstallationDetailOutput) Removed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *bool { return v.Removed }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the installation has been stopped.
+func (o DiscoveryAgentInstallationDetailOutput) Stopped() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *bool { return v.Stopped }).(pulumi.BoolPtrOutput)
+}
+
+// The timestamp when the installation was last updated.
+func (o DiscoveryAgentInstallationDetailOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The user who last updated the installation.
+func (o DiscoveryAgentInstallationDetailOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetail) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+type DiscoveryAgentInstallationDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentInstallationDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentInstallationDetail)(nil)).Elem()
+}
+
+func (o DiscoveryAgentInstallationDetailArrayOutput) ToDiscoveryAgentInstallationDetailArrayOutput() DiscoveryAgentInstallationDetailArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentInstallationDetailArrayOutput) ToDiscoveryAgentInstallationDetailArrayOutputWithContext(ctx context.Context) DiscoveryAgentInstallationDetailArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentInstallationDetailArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentInstallationDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentInstallationDetail {
+		return vs[0].([]DiscoveryAgentInstallationDetail)[vs[1].(int)]
+	}).(DiscoveryAgentInstallationDetailOutput)
+}
+
+type DiscoveryAgentInstallationDetailAgentDetail struct {
+	// Details about the cluster where the agent is installed.
+	Clusters []DiscoveryAgentInstallationDetailAgentDetailCluster `pulumi:"clusters"`
+	// The status of the agent installation.
+	Status *string `pulumi:"status"`
+}
+
+// DiscoveryAgentInstallationDetailAgentDetailInput is an input type that accepts DiscoveryAgentInstallationDetailAgentDetailArgs and DiscoveryAgentInstallationDetailAgentDetailOutput values.
+// You can construct a concrete instance of `DiscoveryAgentInstallationDetailAgentDetailInput` via:
+//
+//	DiscoveryAgentInstallationDetailAgentDetailArgs{...}
+type DiscoveryAgentInstallationDetailAgentDetailInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentInstallationDetailAgentDetailOutput() DiscoveryAgentInstallationDetailAgentDetailOutput
+	ToDiscoveryAgentInstallationDetailAgentDetailOutputWithContext(context.Context) DiscoveryAgentInstallationDetailAgentDetailOutput
+}
+
+type DiscoveryAgentInstallationDetailAgentDetailArgs struct {
+	// Details about the cluster where the agent is installed.
+	Clusters DiscoveryAgentInstallationDetailAgentDetailClusterArrayInput `pulumi:"clusters"`
+	// The status of the agent installation.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (DiscoveryAgentInstallationDetailAgentDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentInstallationDetailAgentDetail)(nil)).Elem()
+}
+
+func (i DiscoveryAgentInstallationDetailAgentDetailArgs) ToDiscoveryAgentInstallationDetailAgentDetailOutput() DiscoveryAgentInstallationDetailAgentDetailOutput {
+	return i.ToDiscoveryAgentInstallationDetailAgentDetailOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentInstallationDetailAgentDetailArgs) ToDiscoveryAgentInstallationDetailAgentDetailOutputWithContext(ctx context.Context) DiscoveryAgentInstallationDetailAgentDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentInstallationDetailAgentDetailOutput)
+}
+
+// DiscoveryAgentInstallationDetailAgentDetailArrayInput is an input type that accepts DiscoveryAgentInstallationDetailAgentDetailArray and DiscoveryAgentInstallationDetailAgentDetailArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentInstallationDetailAgentDetailArrayInput` via:
+//
+//	DiscoveryAgentInstallationDetailAgentDetailArray{ DiscoveryAgentInstallationDetailAgentDetailArgs{...} }
+type DiscoveryAgentInstallationDetailAgentDetailArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentInstallationDetailAgentDetailArrayOutput() DiscoveryAgentInstallationDetailAgentDetailArrayOutput
+	ToDiscoveryAgentInstallationDetailAgentDetailArrayOutputWithContext(context.Context) DiscoveryAgentInstallationDetailAgentDetailArrayOutput
+}
+
+type DiscoveryAgentInstallationDetailAgentDetailArray []DiscoveryAgentInstallationDetailAgentDetailInput
+
+func (DiscoveryAgentInstallationDetailAgentDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentInstallationDetailAgentDetail)(nil)).Elem()
+}
+
+func (i DiscoveryAgentInstallationDetailAgentDetailArray) ToDiscoveryAgentInstallationDetailAgentDetailArrayOutput() DiscoveryAgentInstallationDetailAgentDetailArrayOutput {
+	return i.ToDiscoveryAgentInstallationDetailAgentDetailArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentInstallationDetailAgentDetailArray) ToDiscoveryAgentInstallationDetailAgentDetailArrayOutputWithContext(ctx context.Context) DiscoveryAgentInstallationDetailAgentDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentInstallationDetailAgentDetailArrayOutput)
+}
+
+type DiscoveryAgentInstallationDetailAgentDetailOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentInstallationDetailAgentDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentInstallationDetailAgentDetail)(nil)).Elem()
+}
+
+func (o DiscoveryAgentInstallationDetailAgentDetailOutput) ToDiscoveryAgentInstallationDetailAgentDetailOutput() DiscoveryAgentInstallationDetailAgentDetailOutput {
+	return o
+}
+
+func (o DiscoveryAgentInstallationDetailAgentDetailOutput) ToDiscoveryAgentInstallationDetailAgentDetailOutputWithContext(ctx context.Context) DiscoveryAgentInstallationDetailAgentDetailOutput {
+	return o
+}
+
+// Details about the cluster where the agent is installed.
+func (o DiscoveryAgentInstallationDetailAgentDetailOutput) Clusters() DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetailAgentDetail) []DiscoveryAgentInstallationDetailAgentDetailCluster {
+		return v.Clusters
+	}).(DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput)
+}
+
+// The status of the agent installation.
+func (o DiscoveryAgentInstallationDetailAgentDetailOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetailAgentDetail) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type DiscoveryAgentInstallationDetailAgentDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentInstallationDetailAgentDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentInstallationDetailAgentDetail)(nil)).Elem()
+}
+
+func (o DiscoveryAgentInstallationDetailAgentDetailArrayOutput) ToDiscoveryAgentInstallationDetailAgentDetailArrayOutput() DiscoveryAgentInstallationDetailAgentDetailArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentInstallationDetailAgentDetailArrayOutput) ToDiscoveryAgentInstallationDetailAgentDetailArrayOutputWithContext(ctx context.Context) DiscoveryAgentInstallationDetailAgentDetailArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentInstallationDetailAgentDetailArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentInstallationDetailAgentDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentInstallationDetailAgentDetail {
+		return vs[0].([]DiscoveryAgentInstallationDetailAgentDetail)[vs[1].(int)]
+	}).(DiscoveryAgentInstallationDetailAgentDetailOutput)
+}
+
+type DiscoveryAgentInstallationDetailAgentDetailCluster struct {
+	// The name of the cluster.
+	Name *string `pulumi:"name"`
+	// The namespace where the agent is installed.
+	Namespace *string `pulumi:"namespace"`
+	// The status of the cluster (e.g., 'Succeeded').
+	Status *string `pulumi:"status"`
+	// The UID of the cluster.
+	Uid *string `pulumi:"uid"`
+}
+
+// DiscoveryAgentInstallationDetailAgentDetailClusterInput is an input type that accepts DiscoveryAgentInstallationDetailAgentDetailClusterArgs and DiscoveryAgentInstallationDetailAgentDetailClusterOutput values.
+// You can construct a concrete instance of `DiscoveryAgentInstallationDetailAgentDetailClusterInput` via:
+//
+//	DiscoveryAgentInstallationDetailAgentDetailClusterArgs{...}
+type DiscoveryAgentInstallationDetailAgentDetailClusterInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentInstallationDetailAgentDetailClusterOutput() DiscoveryAgentInstallationDetailAgentDetailClusterOutput
+	ToDiscoveryAgentInstallationDetailAgentDetailClusterOutputWithContext(context.Context) DiscoveryAgentInstallationDetailAgentDetailClusterOutput
+}
+
+type DiscoveryAgentInstallationDetailAgentDetailClusterArgs struct {
+	// The name of the cluster.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The namespace where the agent is installed.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The status of the cluster (e.g., 'Succeeded').
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The UID of the cluster.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+}
+
+func (DiscoveryAgentInstallationDetailAgentDetailClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentInstallationDetailAgentDetailCluster)(nil)).Elem()
+}
+
+func (i DiscoveryAgentInstallationDetailAgentDetailClusterArgs) ToDiscoveryAgentInstallationDetailAgentDetailClusterOutput() DiscoveryAgentInstallationDetailAgentDetailClusterOutput {
+	return i.ToDiscoveryAgentInstallationDetailAgentDetailClusterOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentInstallationDetailAgentDetailClusterArgs) ToDiscoveryAgentInstallationDetailAgentDetailClusterOutputWithContext(ctx context.Context) DiscoveryAgentInstallationDetailAgentDetailClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentInstallationDetailAgentDetailClusterOutput)
+}
+
+// DiscoveryAgentInstallationDetailAgentDetailClusterArrayInput is an input type that accepts DiscoveryAgentInstallationDetailAgentDetailClusterArray and DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput values.
+// You can construct a concrete instance of `DiscoveryAgentInstallationDetailAgentDetailClusterArrayInput` via:
+//
+//	DiscoveryAgentInstallationDetailAgentDetailClusterArray{ DiscoveryAgentInstallationDetailAgentDetailClusterArgs{...} }
+type DiscoveryAgentInstallationDetailAgentDetailClusterArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput() DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput
+	ToDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutputWithContext(context.Context) DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput
+}
+
+type DiscoveryAgentInstallationDetailAgentDetailClusterArray []DiscoveryAgentInstallationDetailAgentDetailClusterInput
+
+func (DiscoveryAgentInstallationDetailAgentDetailClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentInstallationDetailAgentDetailCluster)(nil)).Elem()
+}
+
+func (i DiscoveryAgentInstallationDetailAgentDetailClusterArray) ToDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput() DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput {
+	return i.ToDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryAgentInstallationDetailAgentDetailClusterArray) ToDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutputWithContext(ctx context.Context) DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput)
+}
+
+type DiscoveryAgentInstallationDetailAgentDetailClusterOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentInstallationDetailAgentDetailClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryAgentInstallationDetailAgentDetailCluster)(nil)).Elem()
+}
+
+func (o DiscoveryAgentInstallationDetailAgentDetailClusterOutput) ToDiscoveryAgentInstallationDetailAgentDetailClusterOutput() DiscoveryAgentInstallationDetailAgentDetailClusterOutput {
+	return o
+}
+
+func (o DiscoveryAgentInstallationDetailAgentDetailClusterOutput) ToDiscoveryAgentInstallationDetailAgentDetailClusterOutputWithContext(ctx context.Context) DiscoveryAgentInstallationDetailAgentDetailClusterOutput {
+	return o
+}
+
+// The name of the cluster.
+func (o DiscoveryAgentInstallationDetailAgentDetailClusterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetailAgentDetailCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The namespace where the agent is installed.
+func (o DiscoveryAgentInstallationDetailAgentDetailClusterOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetailAgentDetailCluster) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The status of the cluster (e.g., 'Succeeded').
+func (o DiscoveryAgentInstallationDetailAgentDetailClusterOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetailAgentDetailCluster) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The UID of the cluster.
+func (o DiscoveryAgentInstallationDetailAgentDetailClusterOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryAgentInstallationDetailAgentDetailCluster) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryAgentInstallationDetailAgentDetailCluster)(nil)).Elem()
+}
+
+func (o DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput) ToDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput() DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput) ToDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutputWithContext(ctx context.Context) DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput {
+	return o
+}
+
+func (o DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput) Index(i pulumi.IntInput) DiscoveryAgentInstallationDetailAgentDetailClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryAgentInstallationDetailAgentDetailCluster {
+		return vs[0].([]DiscoveryAgentInstallationDetailAgentDetailCluster)[vs[1].(int)]
+	}).(DiscoveryAgentInstallationDetailAgentDetailClusterOutput)
+}
+
+type DiscoverySettingImageRegistry struct {
+	// The account name for the image registry.
+	Account string `pulumi:"account"`
+	// List of secrets for the image registry.
+	Secrets []string `pulumi:"secrets"`
+	// The server URL for the image registry.
+	Server string `pulumi:"server"`
+}
+
+// DiscoverySettingImageRegistryInput is an input type that accepts DiscoverySettingImageRegistryArgs and DiscoverySettingImageRegistryOutput values.
+// You can construct a concrete instance of `DiscoverySettingImageRegistryInput` via:
+//
+//	DiscoverySettingImageRegistryArgs{...}
+type DiscoverySettingImageRegistryInput interface {
+	pulumi.Input
+
+	ToDiscoverySettingImageRegistryOutput() DiscoverySettingImageRegistryOutput
+	ToDiscoverySettingImageRegistryOutputWithContext(context.Context) DiscoverySettingImageRegistryOutput
+}
+
+type DiscoverySettingImageRegistryArgs struct {
+	// The account name for the image registry.
+	Account pulumi.StringInput `pulumi:"account"`
+	// List of secrets for the image registry.
+	Secrets pulumi.StringArrayInput `pulumi:"secrets"`
+	// The server URL for the image registry.
+	Server pulumi.StringInput `pulumi:"server"`
+}
+
+func (DiscoverySettingImageRegistryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoverySettingImageRegistry)(nil)).Elem()
+}
+
+func (i DiscoverySettingImageRegistryArgs) ToDiscoverySettingImageRegistryOutput() DiscoverySettingImageRegistryOutput {
+	return i.ToDiscoverySettingImageRegistryOutputWithContext(context.Background())
+}
+
+func (i DiscoverySettingImageRegistryArgs) ToDiscoverySettingImageRegistryOutputWithContext(ctx context.Context) DiscoverySettingImageRegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoverySettingImageRegistryOutput)
+}
+
+func (i DiscoverySettingImageRegistryArgs) ToDiscoverySettingImageRegistryPtrOutput() DiscoverySettingImageRegistryPtrOutput {
+	return i.ToDiscoverySettingImageRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i DiscoverySettingImageRegistryArgs) ToDiscoverySettingImageRegistryPtrOutputWithContext(ctx context.Context) DiscoverySettingImageRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoverySettingImageRegistryOutput).ToDiscoverySettingImageRegistryPtrOutputWithContext(ctx)
+}
+
+// DiscoverySettingImageRegistryPtrInput is an input type that accepts DiscoverySettingImageRegistryArgs, DiscoverySettingImageRegistryPtr and DiscoverySettingImageRegistryPtrOutput values.
+// You can construct a concrete instance of `DiscoverySettingImageRegistryPtrInput` via:
+//
+//	        DiscoverySettingImageRegistryArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiscoverySettingImageRegistryPtrInput interface {
+	pulumi.Input
+
+	ToDiscoverySettingImageRegistryPtrOutput() DiscoverySettingImageRegistryPtrOutput
+	ToDiscoverySettingImageRegistryPtrOutputWithContext(context.Context) DiscoverySettingImageRegistryPtrOutput
+}
+
+type discoverySettingImageRegistryPtrType DiscoverySettingImageRegistryArgs
+
+func DiscoverySettingImageRegistryPtr(v *DiscoverySettingImageRegistryArgs) DiscoverySettingImageRegistryPtrInput {
+	return (*discoverySettingImageRegistryPtrType)(v)
+}
+
+func (*discoverySettingImageRegistryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoverySettingImageRegistry)(nil)).Elem()
+}
+
+func (i *discoverySettingImageRegistryPtrType) ToDiscoverySettingImageRegistryPtrOutput() DiscoverySettingImageRegistryPtrOutput {
+	return i.ToDiscoverySettingImageRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i *discoverySettingImageRegistryPtrType) ToDiscoverySettingImageRegistryPtrOutputWithContext(ctx context.Context) DiscoverySettingImageRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoverySettingImageRegistryPtrOutput)
+}
+
+type DiscoverySettingImageRegistryOutput struct{ *pulumi.OutputState }
+
+func (DiscoverySettingImageRegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoverySettingImageRegistry)(nil)).Elem()
+}
+
+func (o DiscoverySettingImageRegistryOutput) ToDiscoverySettingImageRegistryOutput() DiscoverySettingImageRegistryOutput {
+	return o
+}
+
+func (o DiscoverySettingImageRegistryOutput) ToDiscoverySettingImageRegistryOutputWithContext(ctx context.Context) DiscoverySettingImageRegistryOutput {
+	return o
+}
+
+func (o DiscoverySettingImageRegistryOutput) ToDiscoverySettingImageRegistryPtrOutput() DiscoverySettingImageRegistryPtrOutput {
+	return o.ToDiscoverySettingImageRegistryPtrOutputWithContext(context.Background())
+}
+
+func (o DiscoverySettingImageRegistryOutput) ToDiscoverySettingImageRegistryPtrOutputWithContext(ctx context.Context) DiscoverySettingImageRegistryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscoverySettingImageRegistry) *DiscoverySettingImageRegistry {
+		return &v
+	}).(DiscoverySettingImageRegistryPtrOutput)
+}
+
+// The account name for the image registry.
+func (o DiscoverySettingImageRegistryOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoverySettingImageRegistry) string { return v.Account }).(pulumi.StringOutput)
+}
+
+// List of secrets for the image registry.
+func (o DiscoverySettingImageRegistryOutput) Secrets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiscoverySettingImageRegistry) []string { return v.Secrets }).(pulumi.StringArrayOutput)
+}
+
+// The server URL for the image registry.
+func (o DiscoverySettingImageRegistryOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoverySettingImageRegistry) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type DiscoverySettingImageRegistryPtrOutput struct{ *pulumi.OutputState }
+
+func (DiscoverySettingImageRegistryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoverySettingImageRegistry)(nil)).Elem()
+}
+
+func (o DiscoverySettingImageRegistryPtrOutput) ToDiscoverySettingImageRegistryPtrOutput() DiscoverySettingImageRegistryPtrOutput {
+	return o
+}
+
+func (o DiscoverySettingImageRegistryPtrOutput) ToDiscoverySettingImageRegistryPtrOutputWithContext(ctx context.Context) DiscoverySettingImageRegistryPtrOutput {
+	return o
+}
+
+func (o DiscoverySettingImageRegistryPtrOutput) Elem() DiscoverySettingImageRegistryOutput {
+	return o.ApplyT(func(v *DiscoverySettingImageRegistry) DiscoverySettingImageRegistry {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoverySettingImageRegistry
+		return ret
+	}).(DiscoverySettingImageRegistryOutput)
+}
+
+// The account name for the image registry.
+func (o DiscoverySettingImageRegistryPtrOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscoverySettingImageRegistry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Account
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of secrets for the image registry.
+func (o DiscoverySettingImageRegistryPtrOutput) Secrets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DiscoverySettingImageRegistry) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Secrets
+	}).(pulumi.StringArrayOutput)
+}
+
+// The server URL for the image registry.
+func (o DiscoverySettingImageRegistryPtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscoverySettingImageRegistry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Server
+	}).(pulumi.StringPtrOutput)
+}
+
 type EcsVariable struct {
 	// Name of the variable
 	Name string `pulumi:"name"`
@@ -1048,11 +3041,2120 @@ func (o WinrmVariableArrayOutput) Index(i pulumi.IntInput) WinrmVariableOutput {
 	}).(WinrmVariableOutput)
 }
 
+type GetDiscoveryAgentConfig struct {
+	// Docker image for the collector.
+	CollectorImage string `pulumi:"collectorImage"`
+	// Data collection configuration.
+	Datas []GetDiscoveryAgentConfigData `pulumi:"datas"`
+	// List of image pull secrets.
+	ImagePullSecrets []string `pulumi:"imagePullSecrets"`
+	// Kubernetes-specific configuration.
+	Kubernetes []GetDiscoveryAgentConfigKubernete `pulumi:"kubernetes"`
+	// Docker image for the log watcher.
+	LogWatcherImage string `pulumi:"logWatcherImage"`
+	// mTLS configuration.
+	Mtls []GetDiscoveryAgentConfigMtl `pulumi:"mtls"`
+	// Proxy configuration.
+	Proxies []GetDiscoveryAgentConfigProxy `pulumi:"proxies"`
+	// Whether to skip TLS verification.
+	SkipSecureVerify bool `pulumi:"skipSecureVerify"`
+}
+
+// GetDiscoveryAgentConfigInput is an input type that accepts GetDiscoveryAgentConfigArgs and GetDiscoveryAgentConfigOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigInput` via:
+//
+//	GetDiscoveryAgentConfigArgs{...}
+type GetDiscoveryAgentConfigInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigOutput() GetDiscoveryAgentConfigOutput
+	ToGetDiscoveryAgentConfigOutputWithContext(context.Context) GetDiscoveryAgentConfigOutput
+}
+
+type GetDiscoveryAgentConfigArgs struct {
+	// Docker image for the collector.
+	CollectorImage pulumi.StringInput `pulumi:"collectorImage"`
+	// Data collection configuration.
+	Datas GetDiscoveryAgentConfigDataArrayInput `pulumi:"datas"`
+	// List of image pull secrets.
+	ImagePullSecrets pulumi.StringArrayInput `pulumi:"imagePullSecrets"`
+	// Kubernetes-specific configuration.
+	Kubernetes GetDiscoveryAgentConfigKuberneteArrayInput `pulumi:"kubernetes"`
+	// Docker image for the log watcher.
+	LogWatcherImage pulumi.StringInput `pulumi:"logWatcherImage"`
+	// mTLS configuration.
+	Mtls GetDiscoveryAgentConfigMtlArrayInput `pulumi:"mtls"`
+	// Proxy configuration.
+	Proxies GetDiscoveryAgentConfigProxyArrayInput `pulumi:"proxies"`
+	// Whether to skip TLS verification.
+	SkipSecureVerify pulumi.BoolInput `pulumi:"skipSecureVerify"`
+}
+
+func (GetDiscoveryAgentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfig)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigArgs) ToGetDiscoveryAgentConfigOutput() GetDiscoveryAgentConfigOutput {
+	return i.ToGetDiscoveryAgentConfigOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigArgs) ToGetDiscoveryAgentConfigOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigOutput)
+}
+
+// GetDiscoveryAgentConfigArrayInput is an input type that accepts GetDiscoveryAgentConfigArray and GetDiscoveryAgentConfigArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigArrayInput` via:
+//
+//	GetDiscoveryAgentConfigArray{ GetDiscoveryAgentConfigArgs{...} }
+type GetDiscoveryAgentConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigArrayOutput() GetDiscoveryAgentConfigArrayOutput
+	ToGetDiscoveryAgentConfigArrayOutputWithContext(context.Context) GetDiscoveryAgentConfigArrayOutput
+}
+
+type GetDiscoveryAgentConfigArray []GetDiscoveryAgentConfigInput
+
+func (GetDiscoveryAgentConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfig)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigArray) ToGetDiscoveryAgentConfigArrayOutput() GetDiscoveryAgentConfigArrayOutput {
+	return i.ToGetDiscoveryAgentConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigArray) ToGetDiscoveryAgentConfigArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigArrayOutput)
+}
+
+type GetDiscoveryAgentConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfig)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigOutput) ToGetDiscoveryAgentConfigOutput() GetDiscoveryAgentConfigOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigOutput) ToGetDiscoveryAgentConfigOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigOutput {
+	return o
+}
+
+// Docker image for the collector.
+func (o GetDiscoveryAgentConfigOutput) CollectorImage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfig) string { return v.CollectorImage }).(pulumi.StringOutput)
+}
+
+// Data collection configuration.
+func (o GetDiscoveryAgentConfigOutput) Datas() GetDiscoveryAgentConfigDataArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfig) []GetDiscoveryAgentConfigData { return v.Datas }).(GetDiscoveryAgentConfigDataArrayOutput)
+}
+
+// List of image pull secrets.
+func (o GetDiscoveryAgentConfigOutput) ImagePullSecrets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfig) []string { return v.ImagePullSecrets }).(pulumi.StringArrayOutput)
+}
+
+// Kubernetes-specific configuration.
+func (o GetDiscoveryAgentConfigOutput) Kubernetes() GetDiscoveryAgentConfigKuberneteArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfig) []GetDiscoveryAgentConfigKubernete { return v.Kubernetes }).(GetDiscoveryAgentConfigKuberneteArrayOutput)
+}
+
+// Docker image for the log watcher.
+func (o GetDiscoveryAgentConfigOutput) LogWatcherImage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfig) string { return v.LogWatcherImage }).(pulumi.StringOutput)
+}
+
+// mTLS configuration.
+func (o GetDiscoveryAgentConfigOutput) Mtls() GetDiscoveryAgentConfigMtlArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfig) []GetDiscoveryAgentConfigMtl { return v.Mtls }).(GetDiscoveryAgentConfigMtlArrayOutput)
+}
+
+// Proxy configuration.
+func (o GetDiscoveryAgentConfigOutput) Proxies() GetDiscoveryAgentConfigProxyArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfig) []GetDiscoveryAgentConfigProxy { return v.Proxies }).(GetDiscoveryAgentConfigProxyArrayOutput)
+}
+
+// Whether to skip TLS verification.
+func (o GetDiscoveryAgentConfigOutput) SkipSecureVerify() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfig) bool { return v.SkipSecureVerify }).(pulumi.BoolOutput)
+}
+
+type GetDiscoveryAgentConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfig)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigArrayOutput) ToGetDiscoveryAgentConfigArrayOutput() GetDiscoveryAgentConfigArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigArrayOutput) ToGetDiscoveryAgentConfigArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentConfig {
+		return vs[0].([]GetDiscoveryAgentConfig)[vs[1].(int)]
+	}).(GetDiscoveryAgentConfigOutput)
+}
+
+type GetDiscoveryAgentConfigData struct {
+	// List of namespaces to exclude from discovery.
+	BlacklistedNamespaces []string `pulumi:"blacklistedNamespaces"`
+	// Collection window in minutes.
+	CollectionWindowInMin int `pulumi:"collectionWindowInMin"`
+	// Cron schedule for data collection.
+	Crons []GetDiscoveryAgentConfigDataCron `pulumi:"crons"`
+	// Whether to enable batch resources.
+	EnableBatchResources bool `pulumi:"enableBatchResources"`
+	// Whether to enable node agent.
+	EnableNodeAgent bool `pulumi:"enableNodeAgent"`
+	// Whether to enable orphaned pod detection.
+	EnableOrphanedPod bool `pulumi:"enableOrphanedPod"`
+	// Namespace selector for the agent.
+	NamespaceSelector string `pulumi:"namespaceSelector"`
+	// Node selector for the node agent.
+	NodeAgentSelector string `pulumi:"nodeAgentSelector"`
+	// List of namespaces to observe.
+	ObservedNamespaces []string `pulumi:"observedNamespaces"`
+}
+
+// GetDiscoveryAgentConfigDataInput is an input type that accepts GetDiscoveryAgentConfigDataArgs and GetDiscoveryAgentConfigDataOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigDataInput` via:
+//
+//	GetDiscoveryAgentConfigDataArgs{...}
+type GetDiscoveryAgentConfigDataInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigDataOutput() GetDiscoveryAgentConfigDataOutput
+	ToGetDiscoveryAgentConfigDataOutputWithContext(context.Context) GetDiscoveryAgentConfigDataOutput
+}
+
+type GetDiscoveryAgentConfigDataArgs struct {
+	// List of namespaces to exclude from discovery.
+	BlacklistedNamespaces pulumi.StringArrayInput `pulumi:"blacklistedNamespaces"`
+	// Collection window in minutes.
+	CollectionWindowInMin pulumi.IntInput `pulumi:"collectionWindowInMin"`
+	// Cron schedule for data collection.
+	Crons GetDiscoveryAgentConfigDataCronArrayInput `pulumi:"crons"`
+	// Whether to enable batch resources.
+	EnableBatchResources pulumi.BoolInput `pulumi:"enableBatchResources"`
+	// Whether to enable node agent.
+	EnableNodeAgent pulumi.BoolInput `pulumi:"enableNodeAgent"`
+	// Whether to enable orphaned pod detection.
+	EnableOrphanedPod pulumi.BoolInput `pulumi:"enableOrphanedPod"`
+	// Namespace selector for the agent.
+	NamespaceSelector pulumi.StringInput `pulumi:"namespaceSelector"`
+	// Node selector for the node agent.
+	NodeAgentSelector pulumi.StringInput `pulumi:"nodeAgentSelector"`
+	// List of namespaces to observe.
+	ObservedNamespaces pulumi.StringArrayInput `pulumi:"observedNamespaces"`
+}
+
+func (GetDiscoveryAgentConfigDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigData)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigDataArgs) ToGetDiscoveryAgentConfigDataOutput() GetDiscoveryAgentConfigDataOutput {
+	return i.ToGetDiscoveryAgentConfigDataOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigDataArgs) ToGetDiscoveryAgentConfigDataOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigDataOutput)
+}
+
+// GetDiscoveryAgentConfigDataArrayInput is an input type that accepts GetDiscoveryAgentConfigDataArray and GetDiscoveryAgentConfigDataArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigDataArrayInput` via:
+//
+//	GetDiscoveryAgentConfigDataArray{ GetDiscoveryAgentConfigDataArgs{...} }
+type GetDiscoveryAgentConfigDataArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigDataArrayOutput() GetDiscoveryAgentConfigDataArrayOutput
+	ToGetDiscoveryAgentConfigDataArrayOutputWithContext(context.Context) GetDiscoveryAgentConfigDataArrayOutput
+}
+
+type GetDiscoveryAgentConfigDataArray []GetDiscoveryAgentConfigDataInput
+
+func (GetDiscoveryAgentConfigDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigData)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigDataArray) ToGetDiscoveryAgentConfigDataArrayOutput() GetDiscoveryAgentConfigDataArrayOutput {
+	return i.ToGetDiscoveryAgentConfigDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigDataArray) ToGetDiscoveryAgentConfigDataArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigDataArrayOutput)
+}
+
+type GetDiscoveryAgentConfigDataOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigData)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigDataOutput) ToGetDiscoveryAgentConfigDataOutput() GetDiscoveryAgentConfigDataOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigDataOutput) ToGetDiscoveryAgentConfigDataOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigDataOutput {
+	return o
+}
+
+// List of namespaces to exclude from discovery.
+func (o GetDiscoveryAgentConfigDataOutput) BlacklistedNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigData) []string { return v.BlacklistedNamespaces }).(pulumi.StringArrayOutput)
+}
+
+// Collection window in minutes.
+func (o GetDiscoveryAgentConfigDataOutput) CollectionWindowInMin() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigData) int { return v.CollectionWindowInMin }).(pulumi.IntOutput)
+}
+
+// Cron schedule for data collection.
+func (o GetDiscoveryAgentConfigDataOutput) Crons() GetDiscoveryAgentConfigDataCronArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigData) []GetDiscoveryAgentConfigDataCron { return v.Crons }).(GetDiscoveryAgentConfigDataCronArrayOutput)
+}
+
+// Whether to enable batch resources.
+func (o GetDiscoveryAgentConfigDataOutput) EnableBatchResources() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigData) bool { return v.EnableBatchResources }).(pulumi.BoolOutput)
+}
+
+// Whether to enable node agent.
+func (o GetDiscoveryAgentConfigDataOutput) EnableNodeAgent() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigData) bool { return v.EnableNodeAgent }).(pulumi.BoolOutput)
+}
+
+// Whether to enable orphaned pod detection.
+func (o GetDiscoveryAgentConfigDataOutput) EnableOrphanedPod() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigData) bool { return v.EnableOrphanedPod }).(pulumi.BoolOutput)
+}
+
+// Namespace selector for the agent.
+func (o GetDiscoveryAgentConfigDataOutput) NamespaceSelector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigData) string { return v.NamespaceSelector }).(pulumi.StringOutput)
+}
+
+// Node selector for the node agent.
+func (o GetDiscoveryAgentConfigDataOutput) NodeAgentSelector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigData) string { return v.NodeAgentSelector }).(pulumi.StringOutput)
+}
+
+// List of namespaces to observe.
+func (o GetDiscoveryAgentConfigDataOutput) ObservedNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigData) []string { return v.ObservedNamespaces }).(pulumi.StringArrayOutput)
+}
+
+type GetDiscoveryAgentConfigDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigData)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigDataArrayOutput) ToGetDiscoveryAgentConfigDataArrayOutput() GetDiscoveryAgentConfigDataArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigDataArrayOutput) ToGetDiscoveryAgentConfigDataArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigDataArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigDataArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentConfigDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentConfigData {
+		return vs[0].([]GetDiscoveryAgentConfigData)[vs[1].(int)]
+	}).(GetDiscoveryAgentConfigDataOutput)
+}
+
+type GetDiscoveryAgentConfigDataCron struct {
+	// Cron expression for scheduling.
+	Expression string `pulumi:"expression"`
+}
+
+// GetDiscoveryAgentConfigDataCronInput is an input type that accepts GetDiscoveryAgentConfigDataCronArgs and GetDiscoveryAgentConfigDataCronOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigDataCronInput` via:
+//
+//	GetDiscoveryAgentConfigDataCronArgs{...}
+type GetDiscoveryAgentConfigDataCronInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigDataCronOutput() GetDiscoveryAgentConfigDataCronOutput
+	ToGetDiscoveryAgentConfigDataCronOutputWithContext(context.Context) GetDiscoveryAgentConfigDataCronOutput
+}
+
+type GetDiscoveryAgentConfigDataCronArgs struct {
+	// Cron expression for scheduling.
+	Expression pulumi.StringInput `pulumi:"expression"`
+}
+
+func (GetDiscoveryAgentConfigDataCronArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigDataCron)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigDataCronArgs) ToGetDiscoveryAgentConfigDataCronOutput() GetDiscoveryAgentConfigDataCronOutput {
+	return i.ToGetDiscoveryAgentConfigDataCronOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigDataCronArgs) ToGetDiscoveryAgentConfigDataCronOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigDataCronOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigDataCronOutput)
+}
+
+// GetDiscoveryAgentConfigDataCronArrayInput is an input type that accepts GetDiscoveryAgentConfigDataCronArray and GetDiscoveryAgentConfigDataCronArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigDataCronArrayInput` via:
+//
+//	GetDiscoveryAgentConfigDataCronArray{ GetDiscoveryAgentConfigDataCronArgs{...} }
+type GetDiscoveryAgentConfigDataCronArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigDataCronArrayOutput() GetDiscoveryAgentConfigDataCronArrayOutput
+	ToGetDiscoveryAgentConfigDataCronArrayOutputWithContext(context.Context) GetDiscoveryAgentConfigDataCronArrayOutput
+}
+
+type GetDiscoveryAgentConfigDataCronArray []GetDiscoveryAgentConfigDataCronInput
+
+func (GetDiscoveryAgentConfigDataCronArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigDataCron)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigDataCronArray) ToGetDiscoveryAgentConfigDataCronArrayOutput() GetDiscoveryAgentConfigDataCronArrayOutput {
+	return i.ToGetDiscoveryAgentConfigDataCronArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigDataCronArray) ToGetDiscoveryAgentConfigDataCronArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigDataCronArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigDataCronArrayOutput)
+}
+
+type GetDiscoveryAgentConfigDataCronOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigDataCronOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigDataCron)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigDataCronOutput) ToGetDiscoveryAgentConfigDataCronOutput() GetDiscoveryAgentConfigDataCronOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigDataCronOutput) ToGetDiscoveryAgentConfigDataCronOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigDataCronOutput {
+	return o
+}
+
+// Cron expression for scheduling.
+func (o GetDiscoveryAgentConfigDataCronOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigDataCron) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+type GetDiscoveryAgentConfigDataCronArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigDataCronArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigDataCron)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigDataCronArrayOutput) ToGetDiscoveryAgentConfigDataCronArrayOutput() GetDiscoveryAgentConfigDataCronArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigDataCronArrayOutput) ToGetDiscoveryAgentConfigDataCronArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigDataCronArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigDataCronArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentConfigDataCronOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentConfigDataCron {
+		return vs[0].([]GetDiscoveryAgentConfigDataCron)[vs[1].(int)]
+	}).(GetDiscoveryAgentConfigDataCronOutput)
+}
+
+type GetDiscoveryAgentConfigKubernete struct {
+	// Annotations to add to all resources.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Whether to disable namespace creation.
+	DisableNamespaceCreation bool `pulumi:"disableNamespaceCreation"`
+	// The image pull policy.
+	ImagePullPolicy string `pulumi:"imagePullPolicy"`
+	// Labels to add to all resources.
+	Labels map[string]string `pulumi:"labels"`
+	// Kubernetes namespace to use
+	Namespace string `pulumi:"namespace"`
+	// Whether the agent is namespaced.
+	Namespaced bool `pulumi:"namespaced"`
+	// Node selector labels.
+	NodeSelector map[string]string `pulumi:"nodeSelector"`
+	// Compute resource requirements for the agent container.
+	Resources []GetDiscoveryAgentConfigKuberneteResource `pulumi:"resources"`
+	// The group ID to run as.
+	RunAsGroup int `pulumi:"runAsGroup"`
+	// The user ID to run as.
+	RunAsUser int `pulumi:"runAsUser"`
+	// Service account to use
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// Tolerations for pod assignment.
+	Tolerations []GetDiscoveryAgentConfigKuberneteToleration `pulumi:"tolerations"`
+}
+
+// GetDiscoveryAgentConfigKuberneteInput is an input type that accepts GetDiscoveryAgentConfigKuberneteArgs and GetDiscoveryAgentConfigKuberneteOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigKuberneteInput` via:
+//
+//	GetDiscoveryAgentConfigKuberneteArgs{...}
+type GetDiscoveryAgentConfigKuberneteInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigKuberneteOutput() GetDiscoveryAgentConfigKuberneteOutput
+	ToGetDiscoveryAgentConfigKuberneteOutputWithContext(context.Context) GetDiscoveryAgentConfigKuberneteOutput
+}
+
+type GetDiscoveryAgentConfigKuberneteArgs struct {
+	// Annotations to add to all resources.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Whether to disable namespace creation.
+	DisableNamespaceCreation pulumi.BoolInput `pulumi:"disableNamespaceCreation"`
+	// The image pull policy.
+	ImagePullPolicy pulumi.StringInput `pulumi:"imagePullPolicy"`
+	// Labels to add to all resources.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Kubernetes namespace to use
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Whether the agent is namespaced.
+	Namespaced pulumi.BoolInput `pulumi:"namespaced"`
+	// Node selector labels.
+	NodeSelector pulumi.StringMapInput `pulumi:"nodeSelector"`
+	// Compute resource requirements for the agent container.
+	Resources GetDiscoveryAgentConfigKuberneteResourceArrayInput `pulumi:"resources"`
+	// The group ID to run as.
+	RunAsGroup pulumi.IntInput `pulumi:"runAsGroup"`
+	// The user ID to run as.
+	RunAsUser pulumi.IntInput `pulumi:"runAsUser"`
+	// Service account to use
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	// Tolerations for pod assignment.
+	Tolerations GetDiscoveryAgentConfigKuberneteTolerationArrayInput `pulumi:"tolerations"`
+}
+
+func (GetDiscoveryAgentConfigKuberneteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigKubernete)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigKuberneteArgs) ToGetDiscoveryAgentConfigKuberneteOutput() GetDiscoveryAgentConfigKuberneteOutput {
+	return i.ToGetDiscoveryAgentConfigKuberneteOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigKuberneteArgs) ToGetDiscoveryAgentConfigKuberneteOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigKuberneteOutput)
+}
+
+// GetDiscoveryAgentConfigKuberneteArrayInput is an input type that accepts GetDiscoveryAgentConfigKuberneteArray and GetDiscoveryAgentConfigKuberneteArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigKuberneteArrayInput` via:
+//
+//	GetDiscoveryAgentConfigKuberneteArray{ GetDiscoveryAgentConfigKuberneteArgs{...} }
+type GetDiscoveryAgentConfigKuberneteArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigKuberneteArrayOutput() GetDiscoveryAgentConfigKuberneteArrayOutput
+	ToGetDiscoveryAgentConfigKuberneteArrayOutputWithContext(context.Context) GetDiscoveryAgentConfigKuberneteArrayOutput
+}
+
+type GetDiscoveryAgentConfigKuberneteArray []GetDiscoveryAgentConfigKuberneteInput
+
+func (GetDiscoveryAgentConfigKuberneteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigKubernete)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigKuberneteArray) ToGetDiscoveryAgentConfigKuberneteArrayOutput() GetDiscoveryAgentConfigKuberneteArrayOutput {
+	return i.ToGetDiscoveryAgentConfigKuberneteArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigKuberneteArray) ToGetDiscoveryAgentConfigKuberneteArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigKuberneteArrayOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigKuberneteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigKubernete)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigKuberneteOutput) ToGetDiscoveryAgentConfigKuberneteOutput() GetDiscoveryAgentConfigKuberneteOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteOutput) ToGetDiscoveryAgentConfigKuberneteOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteOutput {
+	return o
+}
+
+// Annotations to add to all resources.
+func (o GetDiscoveryAgentConfigKuberneteOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKubernete) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Whether to disable namespace creation.
+func (o GetDiscoveryAgentConfigKuberneteOutput) DisableNamespaceCreation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKubernete) bool { return v.DisableNamespaceCreation }).(pulumi.BoolOutput)
+}
+
+// The image pull policy.
+func (o GetDiscoveryAgentConfigKuberneteOutput) ImagePullPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKubernete) string { return v.ImagePullPolicy }).(pulumi.StringOutput)
+}
+
+// Labels to add to all resources.
+func (o GetDiscoveryAgentConfigKuberneteOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKubernete) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Kubernetes namespace to use
+func (o GetDiscoveryAgentConfigKuberneteOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKubernete) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Whether the agent is namespaced.
+func (o GetDiscoveryAgentConfigKuberneteOutput) Namespaced() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKubernete) bool { return v.Namespaced }).(pulumi.BoolOutput)
+}
+
+// Node selector labels.
+func (o GetDiscoveryAgentConfigKuberneteOutput) NodeSelector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKubernete) map[string]string { return v.NodeSelector }).(pulumi.StringMapOutput)
+}
+
+// Compute resource requirements for the agent container.
+func (o GetDiscoveryAgentConfigKuberneteOutput) Resources() GetDiscoveryAgentConfigKuberneteResourceArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKubernete) []GetDiscoveryAgentConfigKuberneteResource {
+		return v.Resources
+	}).(GetDiscoveryAgentConfigKuberneteResourceArrayOutput)
+}
+
+// The group ID to run as.
+func (o GetDiscoveryAgentConfigKuberneteOutput) RunAsGroup() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKubernete) int { return v.RunAsGroup }).(pulumi.IntOutput)
+}
+
+// The user ID to run as.
+func (o GetDiscoveryAgentConfigKuberneteOutput) RunAsUser() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKubernete) int { return v.RunAsUser }).(pulumi.IntOutput)
+}
+
+// Service account to use
+func (o GetDiscoveryAgentConfigKuberneteOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKubernete) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Tolerations for pod assignment.
+func (o GetDiscoveryAgentConfigKuberneteOutput) Tolerations() GetDiscoveryAgentConfigKuberneteTolerationArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKubernete) []GetDiscoveryAgentConfigKuberneteToleration {
+		return v.Tolerations
+	}).(GetDiscoveryAgentConfigKuberneteTolerationArrayOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigKuberneteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigKubernete)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigKuberneteArrayOutput) ToGetDiscoveryAgentConfigKuberneteArrayOutput() GetDiscoveryAgentConfigKuberneteArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteArrayOutput) ToGetDiscoveryAgentConfigKuberneteArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentConfigKuberneteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentConfigKubernete {
+		return vs[0].([]GetDiscoveryAgentConfigKubernete)[vs[1].(int)]
+	}).(GetDiscoveryAgentConfigKuberneteOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteResource struct {
+	// Maximum amount of compute resources allowed.
+	Limits []GetDiscoveryAgentConfigKuberneteResourceLimit `pulumi:"limits"`
+	// Minimum amount of compute resources required.
+	Requests []GetDiscoveryAgentConfigKuberneteResourceRequest `pulumi:"requests"`
+}
+
+// GetDiscoveryAgentConfigKuberneteResourceInput is an input type that accepts GetDiscoveryAgentConfigKuberneteResourceArgs and GetDiscoveryAgentConfigKuberneteResourceOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigKuberneteResourceInput` via:
+//
+//	GetDiscoveryAgentConfigKuberneteResourceArgs{...}
+type GetDiscoveryAgentConfigKuberneteResourceInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigKuberneteResourceOutput() GetDiscoveryAgentConfigKuberneteResourceOutput
+	ToGetDiscoveryAgentConfigKuberneteResourceOutputWithContext(context.Context) GetDiscoveryAgentConfigKuberneteResourceOutput
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceArgs struct {
+	// Maximum amount of compute resources allowed.
+	Limits GetDiscoveryAgentConfigKuberneteResourceLimitArrayInput `pulumi:"limits"`
+	// Minimum amount of compute resources required.
+	Requests GetDiscoveryAgentConfigKuberneteResourceRequestArrayInput `pulumi:"requests"`
+}
+
+func (GetDiscoveryAgentConfigKuberneteResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteResource)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigKuberneteResourceArgs) ToGetDiscoveryAgentConfigKuberneteResourceOutput() GetDiscoveryAgentConfigKuberneteResourceOutput {
+	return i.ToGetDiscoveryAgentConfigKuberneteResourceOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigKuberneteResourceArgs) ToGetDiscoveryAgentConfigKuberneteResourceOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigKuberneteResourceOutput)
+}
+
+// GetDiscoveryAgentConfigKuberneteResourceArrayInput is an input type that accepts GetDiscoveryAgentConfigKuberneteResourceArray and GetDiscoveryAgentConfigKuberneteResourceArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigKuberneteResourceArrayInput` via:
+//
+//	GetDiscoveryAgentConfigKuberneteResourceArray{ GetDiscoveryAgentConfigKuberneteResourceArgs{...} }
+type GetDiscoveryAgentConfigKuberneteResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigKuberneteResourceArrayOutput() GetDiscoveryAgentConfigKuberneteResourceArrayOutput
+	ToGetDiscoveryAgentConfigKuberneteResourceArrayOutputWithContext(context.Context) GetDiscoveryAgentConfigKuberneteResourceArrayOutput
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceArray []GetDiscoveryAgentConfigKuberneteResourceInput
+
+func (GetDiscoveryAgentConfigKuberneteResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigKuberneteResource)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigKuberneteResourceArray) ToGetDiscoveryAgentConfigKuberneteResourceArrayOutput() GetDiscoveryAgentConfigKuberneteResourceArrayOutput {
+	return i.ToGetDiscoveryAgentConfigKuberneteResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigKuberneteResourceArray) ToGetDiscoveryAgentConfigKuberneteResourceArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigKuberneteResourceArrayOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigKuberneteResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteResource)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceOutput) ToGetDiscoveryAgentConfigKuberneteResourceOutput() GetDiscoveryAgentConfigKuberneteResourceOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceOutput) ToGetDiscoveryAgentConfigKuberneteResourceOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteResourceOutput {
+	return o
+}
+
+// Maximum amount of compute resources allowed.
+func (o GetDiscoveryAgentConfigKuberneteResourceOutput) Limits() GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKuberneteResource) []GetDiscoveryAgentConfigKuberneteResourceLimit {
+		return v.Limits
+	}).(GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput)
+}
+
+// Minimum amount of compute resources required.
+func (o GetDiscoveryAgentConfigKuberneteResourceOutput) Requests() GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKuberneteResource) []GetDiscoveryAgentConfigKuberneteResourceRequest {
+		return v.Requests
+	}).(GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigKuberneteResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigKuberneteResource)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceArrayOutput) ToGetDiscoveryAgentConfigKuberneteResourceArrayOutput() GetDiscoveryAgentConfigKuberneteResourceArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceArrayOutput) ToGetDiscoveryAgentConfigKuberneteResourceArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteResourceArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentConfigKuberneteResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentConfigKuberneteResource {
+		return vs[0].([]GetDiscoveryAgentConfigKuberneteResource)[vs[1].(int)]
+	}).(GetDiscoveryAgentConfigKuberneteResourceOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceLimit struct {
+	// CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+	Cpu string `pulumi:"cpu"`
+	// Memory limit in bytes (e.g., 128Mi, 1Gi).
+	Memory string `pulumi:"memory"`
+}
+
+// GetDiscoveryAgentConfigKuberneteResourceLimitInput is an input type that accepts GetDiscoveryAgentConfigKuberneteResourceLimitArgs and GetDiscoveryAgentConfigKuberneteResourceLimitOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigKuberneteResourceLimitInput` via:
+//
+//	GetDiscoveryAgentConfigKuberneteResourceLimitArgs{...}
+type GetDiscoveryAgentConfigKuberneteResourceLimitInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigKuberneteResourceLimitOutput() GetDiscoveryAgentConfigKuberneteResourceLimitOutput
+	ToGetDiscoveryAgentConfigKuberneteResourceLimitOutputWithContext(context.Context) GetDiscoveryAgentConfigKuberneteResourceLimitOutput
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceLimitArgs struct {
+	// CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+	Cpu pulumi.StringInput `pulumi:"cpu"`
+	// Memory limit in bytes (e.g., 128Mi, 1Gi).
+	Memory pulumi.StringInput `pulumi:"memory"`
+}
+
+func (GetDiscoveryAgentConfigKuberneteResourceLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteResourceLimit)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigKuberneteResourceLimitArgs) ToGetDiscoveryAgentConfigKuberneteResourceLimitOutput() GetDiscoveryAgentConfigKuberneteResourceLimitOutput {
+	return i.ToGetDiscoveryAgentConfigKuberneteResourceLimitOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigKuberneteResourceLimitArgs) ToGetDiscoveryAgentConfigKuberneteResourceLimitOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteResourceLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigKuberneteResourceLimitOutput)
+}
+
+// GetDiscoveryAgentConfigKuberneteResourceLimitArrayInput is an input type that accepts GetDiscoveryAgentConfigKuberneteResourceLimitArray and GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigKuberneteResourceLimitArrayInput` via:
+//
+//	GetDiscoveryAgentConfigKuberneteResourceLimitArray{ GetDiscoveryAgentConfigKuberneteResourceLimitArgs{...} }
+type GetDiscoveryAgentConfigKuberneteResourceLimitArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput() GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput
+	ToGetDiscoveryAgentConfigKuberneteResourceLimitArrayOutputWithContext(context.Context) GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceLimitArray []GetDiscoveryAgentConfigKuberneteResourceLimitInput
+
+func (GetDiscoveryAgentConfigKuberneteResourceLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigKuberneteResourceLimit)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigKuberneteResourceLimitArray) ToGetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput() GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput {
+	return i.ToGetDiscoveryAgentConfigKuberneteResourceLimitArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigKuberneteResourceLimitArray) ToGetDiscoveryAgentConfigKuberneteResourceLimitArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceLimitOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigKuberneteResourceLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteResourceLimit)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceLimitOutput) ToGetDiscoveryAgentConfigKuberneteResourceLimitOutput() GetDiscoveryAgentConfigKuberneteResourceLimitOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceLimitOutput) ToGetDiscoveryAgentConfigKuberneteResourceLimitOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteResourceLimitOutput {
+	return o
+}
+
+// CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+func (o GetDiscoveryAgentConfigKuberneteResourceLimitOutput) Cpu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKuberneteResourceLimit) string { return v.Cpu }).(pulumi.StringOutput)
+}
+
+// Memory limit in bytes (e.g., 128Mi, 1Gi).
+func (o GetDiscoveryAgentConfigKuberneteResourceLimitOutput) Memory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKuberneteResourceLimit) string { return v.Memory }).(pulumi.StringOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigKuberneteResourceLimit)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput) ToGetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput() GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput) ToGetDiscoveryAgentConfigKuberneteResourceLimitArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentConfigKuberneteResourceLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentConfigKuberneteResourceLimit {
+		return vs[0].([]GetDiscoveryAgentConfigKuberneteResourceLimit)[vs[1].(int)]
+	}).(GetDiscoveryAgentConfigKuberneteResourceLimitOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceRequest struct {
+	// CPU request in CPU units (e.g., 100m = 0.1 CPU).
+	Cpu string `pulumi:"cpu"`
+	// Memory request in bytes (e.g., 128Mi, 1Gi).
+	Memory string `pulumi:"memory"`
+}
+
+// GetDiscoveryAgentConfigKuberneteResourceRequestInput is an input type that accepts GetDiscoveryAgentConfigKuberneteResourceRequestArgs and GetDiscoveryAgentConfigKuberneteResourceRequestOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigKuberneteResourceRequestInput` via:
+//
+//	GetDiscoveryAgentConfigKuberneteResourceRequestArgs{...}
+type GetDiscoveryAgentConfigKuberneteResourceRequestInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigKuberneteResourceRequestOutput() GetDiscoveryAgentConfigKuberneteResourceRequestOutput
+	ToGetDiscoveryAgentConfigKuberneteResourceRequestOutputWithContext(context.Context) GetDiscoveryAgentConfigKuberneteResourceRequestOutput
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceRequestArgs struct {
+	// CPU request in CPU units (e.g., 100m = 0.1 CPU).
+	Cpu pulumi.StringInput `pulumi:"cpu"`
+	// Memory request in bytes (e.g., 128Mi, 1Gi).
+	Memory pulumi.StringInput `pulumi:"memory"`
+}
+
+func (GetDiscoveryAgentConfigKuberneteResourceRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteResourceRequest)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigKuberneteResourceRequestArgs) ToGetDiscoveryAgentConfigKuberneteResourceRequestOutput() GetDiscoveryAgentConfigKuberneteResourceRequestOutput {
+	return i.ToGetDiscoveryAgentConfigKuberneteResourceRequestOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigKuberneteResourceRequestArgs) ToGetDiscoveryAgentConfigKuberneteResourceRequestOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteResourceRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigKuberneteResourceRequestOutput)
+}
+
+// GetDiscoveryAgentConfigKuberneteResourceRequestArrayInput is an input type that accepts GetDiscoveryAgentConfigKuberneteResourceRequestArray and GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigKuberneteResourceRequestArrayInput` via:
+//
+//	GetDiscoveryAgentConfigKuberneteResourceRequestArray{ GetDiscoveryAgentConfigKuberneteResourceRequestArgs{...} }
+type GetDiscoveryAgentConfigKuberneteResourceRequestArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput() GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput
+	ToGetDiscoveryAgentConfigKuberneteResourceRequestArrayOutputWithContext(context.Context) GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceRequestArray []GetDiscoveryAgentConfigKuberneteResourceRequestInput
+
+func (GetDiscoveryAgentConfigKuberneteResourceRequestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigKuberneteResourceRequest)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigKuberneteResourceRequestArray) ToGetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput() GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput {
+	return i.ToGetDiscoveryAgentConfigKuberneteResourceRequestArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigKuberneteResourceRequestArray) ToGetDiscoveryAgentConfigKuberneteResourceRequestArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceRequestOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigKuberneteResourceRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteResourceRequest)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceRequestOutput) ToGetDiscoveryAgentConfigKuberneteResourceRequestOutput() GetDiscoveryAgentConfigKuberneteResourceRequestOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceRequestOutput) ToGetDiscoveryAgentConfigKuberneteResourceRequestOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteResourceRequestOutput {
+	return o
+}
+
+// CPU request in CPU units (e.g., 100m = 0.1 CPU).
+func (o GetDiscoveryAgentConfigKuberneteResourceRequestOutput) Cpu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKuberneteResourceRequest) string { return v.Cpu }).(pulumi.StringOutput)
+}
+
+// Memory request in bytes (e.g., 128Mi, 1Gi).
+func (o GetDiscoveryAgentConfigKuberneteResourceRequestOutput) Memory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKuberneteResourceRequest) string { return v.Memory }).(pulumi.StringOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigKuberneteResourceRequest)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput) ToGetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput() GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput) ToGetDiscoveryAgentConfigKuberneteResourceRequestArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentConfigKuberneteResourceRequestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentConfigKuberneteResourceRequest {
+		return vs[0].([]GetDiscoveryAgentConfigKuberneteResourceRequest)[vs[1].(int)]
+	}).(GetDiscoveryAgentConfigKuberneteResourceRequestOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteToleration struct {
+	// Effect indicates the taint effect to match.
+	Effect string `pulumi:"effect"`
+	// The taint key that the toleration applies to.
+	Key string `pulumi:"key"`
+	// Operator represents a key's relationship to the value.
+	Operator string `pulumi:"operator"`
+	// TolerationSeconds represents the period of time the toleration tolerates the taint.
+	TolerationSeconds int `pulumi:"tolerationSeconds"`
+	// The taint value the toleration matches to.
+	Value string `pulumi:"value"`
+}
+
+// GetDiscoveryAgentConfigKuberneteTolerationInput is an input type that accepts GetDiscoveryAgentConfigKuberneteTolerationArgs and GetDiscoveryAgentConfigKuberneteTolerationOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigKuberneteTolerationInput` via:
+//
+//	GetDiscoveryAgentConfigKuberneteTolerationArgs{...}
+type GetDiscoveryAgentConfigKuberneteTolerationInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigKuberneteTolerationOutput() GetDiscoveryAgentConfigKuberneteTolerationOutput
+	ToGetDiscoveryAgentConfigKuberneteTolerationOutputWithContext(context.Context) GetDiscoveryAgentConfigKuberneteTolerationOutput
+}
+
+type GetDiscoveryAgentConfigKuberneteTolerationArgs struct {
+	// Effect indicates the taint effect to match.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// The taint key that the toleration applies to.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Operator represents a key's relationship to the value.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// TolerationSeconds represents the period of time the toleration tolerates the taint.
+	TolerationSeconds pulumi.IntInput `pulumi:"tolerationSeconds"`
+	// The taint value the toleration matches to.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetDiscoveryAgentConfigKuberneteTolerationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteToleration)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigKuberneteTolerationArgs) ToGetDiscoveryAgentConfigKuberneteTolerationOutput() GetDiscoveryAgentConfigKuberneteTolerationOutput {
+	return i.ToGetDiscoveryAgentConfigKuberneteTolerationOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigKuberneteTolerationArgs) ToGetDiscoveryAgentConfigKuberneteTolerationOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteTolerationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigKuberneteTolerationOutput)
+}
+
+// GetDiscoveryAgentConfigKuberneteTolerationArrayInput is an input type that accepts GetDiscoveryAgentConfigKuberneteTolerationArray and GetDiscoveryAgentConfigKuberneteTolerationArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigKuberneteTolerationArrayInput` via:
+//
+//	GetDiscoveryAgentConfigKuberneteTolerationArray{ GetDiscoveryAgentConfigKuberneteTolerationArgs{...} }
+type GetDiscoveryAgentConfigKuberneteTolerationArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigKuberneteTolerationArrayOutput() GetDiscoveryAgentConfigKuberneteTolerationArrayOutput
+	ToGetDiscoveryAgentConfigKuberneteTolerationArrayOutputWithContext(context.Context) GetDiscoveryAgentConfigKuberneteTolerationArrayOutput
+}
+
+type GetDiscoveryAgentConfigKuberneteTolerationArray []GetDiscoveryAgentConfigKuberneteTolerationInput
+
+func (GetDiscoveryAgentConfigKuberneteTolerationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigKuberneteToleration)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigKuberneteTolerationArray) ToGetDiscoveryAgentConfigKuberneteTolerationArrayOutput() GetDiscoveryAgentConfigKuberneteTolerationArrayOutput {
+	return i.ToGetDiscoveryAgentConfigKuberneteTolerationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigKuberneteTolerationArray) ToGetDiscoveryAgentConfigKuberneteTolerationArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteTolerationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigKuberneteTolerationArrayOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteTolerationOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigKuberneteTolerationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteToleration)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigKuberneteTolerationOutput) ToGetDiscoveryAgentConfigKuberneteTolerationOutput() GetDiscoveryAgentConfigKuberneteTolerationOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteTolerationOutput) ToGetDiscoveryAgentConfigKuberneteTolerationOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteTolerationOutput {
+	return o
+}
+
+// Effect indicates the taint effect to match.
+func (o GetDiscoveryAgentConfigKuberneteTolerationOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKuberneteToleration) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// The taint key that the toleration applies to.
+func (o GetDiscoveryAgentConfigKuberneteTolerationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKuberneteToleration) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Operator represents a key's relationship to the value.
+func (o GetDiscoveryAgentConfigKuberneteTolerationOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKuberneteToleration) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// TolerationSeconds represents the period of time the toleration tolerates the taint.
+func (o GetDiscoveryAgentConfigKuberneteTolerationOutput) TolerationSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKuberneteToleration) int { return v.TolerationSeconds }).(pulumi.IntOutput)
+}
+
+// The taint value the toleration matches to.
+func (o GetDiscoveryAgentConfigKuberneteTolerationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigKuberneteToleration) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetDiscoveryAgentConfigKuberneteTolerationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigKuberneteTolerationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigKuberneteToleration)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigKuberneteTolerationArrayOutput) ToGetDiscoveryAgentConfigKuberneteTolerationArrayOutput() GetDiscoveryAgentConfigKuberneteTolerationArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteTolerationArrayOutput) ToGetDiscoveryAgentConfigKuberneteTolerationArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigKuberneteTolerationArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigKuberneteTolerationArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentConfigKuberneteTolerationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentConfigKuberneteToleration {
+		return vs[0].([]GetDiscoveryAgentConfigKuberneteToleration)[vs[1].(int)]
+	}).(GetDiscoveryAgentConfigKuberneteTolerationOutput)
+}
+
+type GetDiscoveryAgentConfigMtl struct {
+	// Path to the certificate file.
+	CertPath string `pulumi:"certPath"`
+	// Path to the key file.
+	KeyPath string `pulumi:"keyPath"`
+	// Name of the Kubernetes secret containing the certificate and key.
+	SecretName string `pulumi:"secretName"`
+	// URL of the mTLS server.
+	Url string `pulumi:"url"`
+}
+
+// GetDiscoveryAgentConfigMtlInput is an input type that accepts GetDiscoveryAgentConfigMtlArgs and GetDiscoveryAgentConfigMtlOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigMtlInput` via:
+//
+//	GetDiscoveryAgentConfigMtlArgs{...}
+type GetDiscoveryAgentConfigMtlInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigMtlOutput() GetDiscoveryAgentConfigMtlOutput
+	ToGetDiscoveryAgentConfigMtlOutputWithContext(context.Context) GetDiscoveryAgentConfigMtlOutput
+}
+
+type GetDiscoveryAgentConfigMtlArgs struct {
+	// Path to the certificate file.
+	CertPath pulumi.StringInput `pulumi:"certPath"`
+	// Path to the key file.
+	KeyPath pulumi.StringInput `pulumi:"keyPath"`
+	// Name of the Kubernetes secret containing the certificate and key.
+	SecretName pulumi.StringInput `pulumi:"secretName"`
+	// URL of the mTLS server.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetDiscoveryAgentConfigMtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigMtl)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigMtlArgs) ToGetDiscoveryAgentConfigMtlOutput() GetDiscoveryAgentConfigMtlOutput {
+	return i.ToGetDiscoveryAgentConfigMtlOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigMtlArgs) ToGetDiscoveryAgentConfigMtlOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigMtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigMtlOutput)
+}
+
+// GetDiscoveryAgentConfigMtlArrayInput is an input type that accepts GetDiscoveryAgentConfigMtlArray and GetDiscoveryAgentConfigMtlArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigMtlArrayInput` via:
+//
+//	GetDiscoveryAgentConfigMtlArray{ GetDiscoveryAgentConfigMtlArgs{...} }
+type GetDiscoveryAgentConfigMtlArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigMtlArrayOutput() GetDiscoveryAgentConfigMtlArrayOutput
+	ToGetDiscoveryAgentConfigMtlArrayOutputWithContext(context.Context) GetDiscoveryAgentConfigMtlArrayOutput
+}
+
+type GetDiscoveryAgentConfigMtlArray []GetDiscoveryAgentConfigMtlInput
+
+func (GetDiscoveryAgentConfigMtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigMtl)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigMtlArray) ToGetDiscoveryAgentConfigMtlArrayOutput() GetDiscoveryAgentConfigMtlArrayOutput {
+	return i.ToGetDiscoveryAgentConfigMtlArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigMtlArray) ToGetDiscoveryAgentConfigMtlArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigMtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigMtlArrayOutput)
+}
+
+type GetDiscoveryAgentConfigMtlOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigMtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigMtl)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigMtlOutput) ToGetDiscoveryAgentConfigMtlOutput() GetDiscoveryAgentConfigMtlOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigMtlOutput) ToGetDiscoveryAgentConfigMtlOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigMtlOutput {
+	return o
+}
+
+// Path to the certificate file.
+func (o GetDiscoveryAgentConfigMtlOutput) CertPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigMtl) string { return v.CertPath }).(pulumi.StringOutput)
+}
+
+// Path to the key file.
+func (o GetDiscoveryAgentConfigMtlOutput) KeyPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigMtl) string { return v.KeyPath }).(pulumi.StringOutput)
+}
+
+// Name of the Kubernetes secret containing the certificate and key.
+func (o GetDiscoveryAgentConfigMtlOutput) SecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigMtl) string { return v.SecretName }).(pulumi.StringOutput)
+}
+
+// URL of the mTLS server.
+func (o GetDiscoveryAgentConfigMtlOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigMtl) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetDiscoveryAgentConfigMtlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigMtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigMtl)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigMtlArrayOutput) ToGetDiscoveryAgentConfigMtlArrayOutput() GetDiscoveryAgentConfigMtlArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigMtlArrayOutput) ToGetDiscoveryAgentConfigMtlArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigMtlArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigMtlArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentConfigMtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentConfigMtl {
+		return vs[0].([]GetDiscoveryAgentConfigMtl)[vs[1].(int)]
+	}).(GetDiscoveryAgentConfigMtlOutput)
+}
+
+type GetDiscoveryAgentConfigProxy struct {
+	// HTTP proxy URL.
+	HttpProxy string `pulumi:"httpProxy"`
+	// HTTPS proxy URL.
+	HttpsProxy string `pulumi:"httpsProxy"`
+	// Comma-separated list of hosts that should not use the proxy.
+	NoProxy string `pulumi:"noProxy"`
+	// Proxy server URL.
+	Url string `pulumi:"url"`
+}
+
+// GetDiscoveryAgentConfigProxyInput is an input type that accepts GetDiscoveryAgentConfigProxyArgs and GetDiscoveryAgentConfigProxyOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigProxyInput` via:
+//
+//	GetDiscoveryAgentConfigProxyArgs{...}
+type GetDiscoveryAgentConfigProxyInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigProxyOutput() GetDiscoveryAgentConfigProxyOutput
+	ToGetDiscoveryAgentConfigProxyOutputWithContext(context.Context) GetDiscoveryAgentConfigProxyOutput
+}
+
+type GetDiscoveryAgentConfigProxyArgs struct {
+	// HTTP proxy URL.
+	HttpProxy pulumi.StringInput `pulumi:"httpProxy"`
+	// HTTPS proxy URL.
+	HttpsProxy pulumi.StringInput `pulumi:"httpsProxy"`
+	// Comma-separated list of hosts that should not use the proxy.
+	NoProxy pulumi.StringInput `pulumi:"noProxy"`
+	// Proxy server URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetDiscoveryAgentConfigProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigProxy)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigProxyArgs) ToGetDiscoveryAgentConfigProxyOutput() GetDiscoveryAgentConfigProxyOutput {
+	return i.ToGetDiscoveryAgentConfigProxyOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigProxyArgs) ToGetDiscoveryAgentConfigProxyOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigProxyOutput)
+}
+
+// GetDiscoveryAgentConfigProxyArrayInput is an input type that accepts GetDiscoveryAgentConfigProxyArray and GetDiscoveryAgentConfigProxyArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentConfigProxyArrayInput` via:
+//
+//	GetDiscoveryAgentConfigProxyArray{ GetDiscoveryAgentConfigProxyArgs{...} }
+type GetDiscoveryAgentConfigProxyArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentConfigProxyArrayOutput() GetDiscoveryAgentConfigProxyArrayOutput
+	ToGetDiscoveryAgentConfigProxyArrayOutputWithContext(context.Context) GetDiscoveryAgentConfigProxyArrayOutput
+}
+
+type GetDiscoveryAgentConfigProxyArray []GetDiscoveryAgentConfigProxyInput
+
+func (GetDiscoveryAgentConfigProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigProxy)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentConfigProxyArray) ToGetDiscoveryAgentConfigProxyArrayOutput() GetDiscoveryAgentConfigProxyArrayOutput {
+	return i.ToGetDiscoveryAgentConfigProxyArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentConfigProxyArray) ToGetDiscoveryAgentConfigProxyArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentConfigProxyArrayOutput)
+}
+
+type GetDiscoveryAgentConfigProxyOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentConfigProxy)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigProxyOutput) ToGetDiscoveryAgentConfigProxyOutput() GetDiscoveryAgentConfigProxyOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigProxyOutput) ToGetDiscoveryAgentConfigProxyOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigProxyOutput {
+	return o
+}
+
+// HTTP proxy URL.
+func (o GetDiscoveryAgentConfigProxyOutput) HttpProxy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigProxy) string { return v.HttpProxy }).(pulumi.StringOutput)
+}
+
+// HTTPS proxy URL.
+func (o GetDiscoveryAgentConfigProxyOutput) HttpsProxy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigProxy) string { return v.HttpsProxy }).(pulumi.StringOutput)
+}
+
+// Comma-separated list of hosts that should not use the proxy.
+func (o GetDiscoveryAgentConfigProxyOutput) NoProxy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigProxy) string { return v.NoProxy }).(pulumi.StringOutput)
+}
+
+// Proxy server URL.
+func (o GetDiscoveryAgentConfigProxyOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentConfigProxy) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetDiscoveryAgentConfigProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentConfigProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentConfigProxy)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentConfigProxyArrayOutput) ToGetDiscoveryAgentConfigProxyArrayOutput() GetDiscoveryAgentConfigProxyArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigProxyArrayOutput) ToGetDiscoveryAgentConfigProxyArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentConfigProxyArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentConfigProxyArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentConfigProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentConfigProxy {
+		return vs[0].([]GetDiscoveryAgentConfigProxy)[vs[1].(int)]
+	}).(GetDiscoveryAgentConfigProxyOutput)
+}
+
+type GetDiscoveryAgentInstallationDetail struct {
+	// Account identifier of the installation.
+	AccountIdentifier string `pulumi:"accountIdentifier"`
+	// Details about the agent installation.
+	AgentDetails []GetDiscoveryAgentInstallationDetailAgentDetail `pulumi:"agentDetails"`
+	// ID of the agent.
+	AgentId string `pulumi:"agentId"`
+	// When the installation was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Who created the installation.
+	CreatedBy string `pulumi:"createdBy"`
+	// ID of the delegate.
+	DelegateId string `pulumi:"delegateId"`
+	// ID of the delegate task.
+	DelegateTaskId string `pulumi:"delegateTaskId"`
+	// Status of the delegate task.
+	DelegateTaskStatus string `pulumi:"delegateTaskStatus"`
+	// Environment identifier of the installation.
+	EnvironmentIdentifier string `pulumi:"environmentIdentifier"`
+	// Installation ID.
+	Id string `pulumi:"id"`
+	// Whether the installation was triggered by a cron job.
+	IsCronTriggered bool `pulumi:"isCronTriggered"`
+	// When the log stream was created.
+	LogStreamCreatedAt string `pulumi:"logStreamCreatedAt"`
+	// ID of the log stream.
+	LogStreamId string `pulumi:"logStreamId"`
+	// Organization identifier of the installation.
+	OrgIdentifier string `pulumi:"orgIdentifier"`
+	// Project identifier of the installation.
+	ProjectIdentifier string `pulumi:"projectIdentifier"`
+	// Whether the installation has been removed.
+	Removed bool `pulumi:"removed"`
+	// When the installation was removed.
+	RemovedAt string `pulumi:"removedAt"`
+	// Whether the installation has been stopped.
+	Stopped bool `pulumi:"stopped"`
+	// When the installation was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Who last updated the installation.
+	UpdatedBy string `pulumi:"updatedBy"`
+}
+
+// GetDiscoveryAgentInstallationDetailInput is an input type that accepts GetDiscoveryAgentInstallationDetailArgs and GetDiscoveryAgentInstallationDetailOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentInstallationDetailInput` via:
+//
+//	GetDiscoveryAgentInstallationDetailArgs{...}
+type GetDiscoveryAgentInstallationDetailInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentInstallationDetailOutput() GetDiscoveryAgentInstallationDetailOutput
+	ToGetDiscoveryAgentInstallationDetailOutputWithContext(context.Context) GetDiscoveryAgentInstallationDetailOutput
+}
+
+type GetDiscoveryAgentInstallationDetailArgs struct {
+	// Account identifier of the installation.
+	AccountIdentifier pulumi.StringInput `pulumi:"accountIdentifier"`
+	// Details about the agent installation.
+	AgentDetails GetDiscoveryAgentInstallationDetailAgentDetailArrayInput `pulumi:"agentDetails"`
+	// ID of the agent.
+	AgentId pulumi.StringInput `pulumi:"agentId"`
+	// When the installation was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Who created the installation.
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// ID of the delegate.
+	DelegateId pulumi.StringInput `pulumi:"delegateId"`
+	// ID of the delegate task.
+	DelegateTaskId pulumi.StringInput `pulumi:"delegateTaskId"`
+	// Status of the delegate task.
+	DelegateTaskStatus pulumi.StringInput `pulumi:"delegateTaskStatus"`
+	// Environment identifier of the installation.
+	EnvironmentIdentifier pulumi.StringInput `pulumi:"environmentIdentifier"`
+	// Installation ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether the installation was triggered by a cron job.
+	IsCronTriggered pulumi.BoolInput `pulumi:"isCronTriggered"`
+	// When the log stream was created.
+	LogStreamCreatedAt pulumi.StringInput `pulumi:"logStreamCreatedAt"`
+	// ID of the log stream.
+	LogStreamId pulumi.StringInput `pulumi:"logStreamId"`
+	// Organization identifier of the installation.
+	OrgIdentifier pulumi.StringInput `pulumi:"orgIdentifier"`
+	// Project identifier of the installation.
+	ProjectIdentifier pulumi.StringInput `pulumi:"projectIdentifier"`
+	// Whether the installation has been removed.
+	Removed pulumi.BoolInput `pulumi:"removed"`
+	// When the installation was removed.
+	RemovedAt pulumi.StringInput `pulumi:"removedAt"`
+	// Whether the installation has been stopped.
+	Stopped pulumi.BoolInput `pulumi:"stopped"`
+	// When the installation was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Who last updated the installation.
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+}
+
+func (GetDiscoveryAgentInstallationDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentInstallationDetail)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentInstallationDetailArgs) ToGetDiscoveryAgentInstallationDetailOutput() GetDiscoveryAgentInstallationDetailOutput {
+	return i.ToGetDiscoveryAgentInstallationDetailOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentInstallationDetailArgs) ToGetDiscoveryAgentInstallationDetailOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentInstallationDetailOutput)
+}
+
+// GetDiscoveryAgentInstallationDetailArrayInput is an input type that accepts GetDiscoveryAgentInstallationDetailArray and GetDiscoveryAgentInstallationDetailArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentInstallationDetailArrayInput` via:
+//
+//	GetDiscoveryAgentInstallationDetailArray{ GetDiscoveryAgentInstallationDetailArgs{...} }
+type GetDiscoveryAgentInstallationDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentInstallationDetailArrayOutput() GetDiscoveryAgentInstallationDetailArrayOutput
+	ToGetDiscoveryAgentInstallationDetailArrayOutputWithContext(context.Context) GetDiscoveryAgentInstallationDetailArrayOutput
+}
+
+type GetDiscoveryAgentInstallationDetailArray []GetDiscoveryAgentInstallationDetailInput
+
+func (GetDiscoveryAgentInstallationDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentInstallationDetail)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentInstallationDetailArray) ToGetDiscoveryAgentInstallationDetailArrayOutput() GetDiscoveryAgentInstallationDetailArrayOutput {
+	return i.ToGetDiscoveryAgentInstallationDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentInstallationDetailArray) ToGetDiscoveryAgentInstallationDetailArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentInstallationDetailArrayOutput)
+}
+
+type GetDiscoveryAgentInstallationDetailOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentInstallationDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentInstallationDetail)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentInstallationDetailOutput) ToGetDiscoveryAgentInstallationDetailOutput() GetDiscoveryAgentInstallationDetailOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentInstallationDetailOutput) ToGetDiscoveryAgentInstallationDetailOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailOutput {
+	return o
+}
+
+// Account identifier of the installation.
+func (o GetDiscoveryAgentInstallationDetailOutput) AccountIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.AccountIdentifier }).(pulumi.StringOutput)
+}
+
+// Details about the agent installation.
+func (o GetDiscoveryAgentInstallationDetailOutput) AgentDetails() GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) []GetDiscoveryAgentInstallationDetailAgentDetail {
+		return v.AgentDetails
+	}).(GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput)
+}
+
+// ID of the agent.
+func (o GetDiscoveryAgentInstallationDetailOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.AgentId }).(pulumi.StringOutput)
+}
+
+// When the installation was created.
+func (o GetDiscoveryAgentInstallationDetailOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Who created the installation.
+func (o GetDiscoveryAgentInstallationDetailOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// ID of the delegate.
+func (o GetDiscoveryAgentInstallationDetailOutput) DelegateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.DelegateId }).(pulumi.StringOutput)
+}
+
+// ID of the delegate task.
+func (o GetDiscoveryAgentInstallationDetailOutput) DelegateTaskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.DelegateTaskId }).(pulumi.StringOutput)
+}
+
+// Status of the delegate task.
+func (o GetDiscoveryAgentInstallationDetailOutput) DelegateTaskStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.DelegateTaskStatus }).(pulumi.StringOutput)
+}
+
+// Environment identifier of the installation.
+func (o GetDiscoveryAgentInstallationDetailOutput) EnvironmentIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.EnvironmentIdentifier }).(pulumi.StringOutput)
+}
+
+// Installation ID.
+func (o GetDiscoveryAgentInstallationDetailOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the installation was triggered by a cron job.
+func (o GetDiscoveryAgentInstallationDetailOutput) IsCronTriggered() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) bool { return v.IsCronTriggered }).(pulumi.BoolOutput)
+}
+
+// When the log stream was created.
+func (o GetDiscoveryAgentInstallationDetailOutput) LogStreamCreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.LogStreamCreatedAt }).(pulumi.StringOutput)
+}
+
+// ID of the log stream.
+func (o GetDiscoveryAgentInstallationDetailOutput) LogStreamId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.LogStreamId }).(pulumi.StringOutput)
+}
+
+// Organization identifier of the installation.
+func (o GetDiscoveryAgentInstallationDetailOutput) OrgIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.OrgIdentifier }).(pulumi.StringOutput)
+}
+
+// Project identifier of the installation.
+func (o GetDiscoveryAgentInstallationDetailOutput) ProjectIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.ProjectIdentifier }).(pulumi.StringOutput)
+}
+
+// Whether the installation has been removed.
+func (o GetDiscoveryAgentInstallationDetailOutput) Removed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) bool { return v.Removed }).(pulumi.BoolOutput)
+}
+
+// When the installation was removed.
+func (o GetDiscoveryAgentInstallationDetailOutput) RemovedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.RemovedAt }).(pulumi.StringOutput)
+}
+
+// Whether the installation has been stopped.
+func (o GetDiscoveryAgentInstallationDetailOutput) Stopped() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) bool { return v.Stopped }).(pulumi.BoolOutput)
+}
+
+// When the installation was last updated.
+func (o GetDiscoveryAgentInstallationDetailOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Who last updated the installation.
+func (o GetDiscoveryAgentInstallationDetailOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetail) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+type GetDiscoveryAgentInstallationDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentInstallationDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentInstallationDetail)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentInstallationDetailArrayOutput) ToGetDiscoveryAgentInstallationDetailArrayOutput() GetDiscoveryAgentInstallationDetailArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentInstallationDetailArrayOutput) ToGetDiscoveryAgentInstallationDetailArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentInstallationDetailArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentInstallationDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentInstallationDetail {
+		return vs[0].([]GetDiscoveryAgentInstallationDetail)[vs[1].(int)]
+	}).(GetDiscoveryAgentInstallationDetailOutput)
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetail struct {
+	// Cluster information.
+	Clusters []GetDiscoveryAgentInstallationDetailAgentDetailCluster `pulumi:"clusters"`
+	// List of nodes in the cluster.
+	Nodes []GetDiscoveryAgentInstallationDetailAgentDetailNode `pulumi:"nodes"`
+	// Status of the agent.
+	Status string `pulumi:"status"`
+}
+
+// GetDiscoveryAgentInstallationDetailAgentDetailInput is an input type that accepts GetDiscoveryAgentInstallationDetailAgentDetailArgs and GetDiscoveryAgentInstallationDetailAgentDetailOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentInstallationDetailAgentDetailInput` via:
+//
+//	GetDiscoveryAgentInstallationDetailAgentDetailArgs{...}
+type GetDiscoveryAgentInstallationDetailAgentDetailInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentInstallationDetailAgentDetailOutput() GetDiscoveryAgentInstallationDetailAgentDetailOutput
+	ToGetDiscoveryAgentInstallationDetailAgentDetailOutputWithContext(context.Context) GetDiscoveryAgentInstallationDetailAgentDetailOutput
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailArgs struct {
+	// Cluster information.
+	Clusters GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayInput `pulumi:"clusters"`
+	// List of nodes in the cluster.
+	Nodes GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayInput `pulumi:"nodes"`
+	// Status of the agent.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetDiscoveryAgentInstallationDetailAgentDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentInstallationDetailAgentDetail)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentInstallationDetailAgentDetailArgs) ToGetDiscoveryAgentInstallationDetailAgentDetailOutput() GetDiscoveryAgentInstallationDetailAgentDetailOutput {
+	return i.ToGetDiscoveryAgentInstallationDetailAgentDetailOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentInstallationDetailAgentDetailArgs) ToGetDiscoveryAgentInstallationDetailAgentDetailOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailAgentDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentInstallationDetailAgentDetailOutput)
+}
+
+// GetDiscoveryAgentInstallationDetailAgentDetailArrayInput is an input type that accepts GetDiscoveryAgentInstallationDetailAgentDetailArray and GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentInstallationDetailAgentDetailArrayInput` via:
+//
+//	GetDiscoveryAgentInstallationDetailAgentDetailArray{ GetDiscoveryAgentInstallationDetailAgentDetailArgs{...} }
+type GetDiscoveryAgentInstallationDetailAgentDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentInstallationDetailAgentDetailArrayOutput() GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput
+	ToGetDiscoveryAgentInstallationDetailAgentDetailArrayOutputWithContext(context.Context) GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailArray []GetDiscoveryAgentInstallationDetailAgentDetailInput
+
+func (GetDiscoveryAgentInstallationDetailAgentDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentInstallationDetailAgentDetail)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentInstallationDetailAgentDetailArray) ToGetDiscoveryAgentInstallationDetailAgentDetailArrayOutput() GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput {
+	return i.ToGetDiscoveryAgentInstallationDetailAgentDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentInstallationDetailAgentDetailArray) ToGetDiscoveryAgentInstallationDetailAgentDetailArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput)
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentInstallationDetailAgentDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentInstallationDetailAgentDetail)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailOutput) ToGetDiscoveryAgentInstallationDetailAgentDetailOutput() GetDiscoveryAgentInstallationDetailAgentDetailOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailOutput) ToGetDiscoveryAgentInstallationDetailAgentDetailOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailAgentDetailOutput {
+	return o
+}
+
+// Cluster information.
+func (o GetDiscoveryAgentInstallationDetailAgentDetailOutput) Clusters() GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetailAgentDetail) []GetDiscoveryAgentInstallationDetailAgentDetailCluster {
+		return v.Clusters
+	}).(GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput)
+}
+
+// List of nodes in the cluster.
+func (o GetDiscoveryAgentInstallationDetailAgentDetailOutput) Nodes() GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetailAgentDetail) []GetDiscoveryAgentInstallationDetailAgentDetailNode {
+		return v.Nodes
+	}).(GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput)
+}
+
+// Status of the agent.
+func (o GetDiscoveryAgentInstallationDetailAgentDetailOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetailAgentDetail) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentInstallationDetailAgentDetail)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput) ToGetDiscoveryAgentInstallationDetailAgentDetailArrayOutput() GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput) ToGetDiscoveryAgentInstallationDetailAgentDetailArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentInstallationDetailAgentDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentInstallationDetailAgentDetail {
+		return vs[0].([]GetDiscoveryAgentInstallationDetailAgentDetail)[vs[1].(int)]
+	}).(GetDiscoveryAgentInstallationDetailAgentDetailOutput)
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailCluster struct {
+	// Name of the cluster.
+	Name string `pulumi:"name"`
+	// Namespace of the cluster.
+	Namespace string `pulumi:"namespace"`
+	// Status of the cluster.
+	Status string `pulumi:"status"`
+	// UID of the cluster.
+	Uid string `pulumi:"uid"`
+}
+
+// GetDiscoveryAgentInstallationDetailAgentDetailClusterInput is an input type that accepts GetDiscoveryAgentInstallationDetailAgentDetailClusterArgs and GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentInstallationDetailAgentDetailClusterInput` via:
+//
+//	GetDiscoveryAgentInstallationDetailAgentDetailClusterArgs{...}
+type GetDiscoveryAgentInstallationDetailAgentDetailClusterInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentInstallationDetailAgentDetailClusterOutput() GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput
+	ToGetDiscoveryAgentInstallationDetailAgentDetailClusterOutputWithContext(context.Context) GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailClusterArgs struct {
+	// Name of the cluster.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespace of the cluster.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Status of the cluster.
+	Status pulumi.StringInput `pulumi:"status"`
+	// UID of the cluster.
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (GetDiscoveryAgentInstallationDetailAgentDetailClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentInstallationDetailAgentDetailCluster)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentInstallationDetailAgentDetailClusterArgs) ToGetDiscoveryAgentInstallationDetailAgentDetailClusterOutput() GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput {
+	return i.ToGetDiscoveryAgentInstallationDetailAgentDetailClusterOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentInstallationDetailAgentDetailClusterArgs) ToGetDiscoveryAgentInstallationDetailAgentDetailClusterOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput)
+}
+
+// GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayInput is an input type that accepts GetDiscoveryAgentInstallationDetailAgentDetailClusterArray and GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayInput` via:
+//
+//	GetDiscoveryAgentInstallationDetailAgentDetailClusterArray{ GetDiscoveryAgentInstallationDetailAgentDetailClusterArgs{...} }
+type GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput() GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput
+	ToGetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutputWithContext(context.Context) GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailClusterArray []GetDiscoveryAgentInstallationDetailAgentDetailClusterInput
+
+func (GetDiscoveryAgentInstallationDetailAgentDetailClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentInstallationDetailAgentDetailCluster)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentInstallationDetailAgentDetailClusterArray) ToGetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput() GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput {
+	return i.ToGetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentInstallationDetailAgentDetailClusterArray) ToGetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput)
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentInstallationDetailAgentDetailCluster)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput) ToGetDiscoveryAgentInstallationDetailAgentDetailClusterOutput() GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput) ToGetDiscoveryAgentInstallationDetailAgentDetailClusterOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput {
+	return o
+}
+
+// Name of the cluster.
+func (o GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetailAgentDetailCluster) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace of the cluster.
+func (o GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetailAgentDetailCluster) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Status of the cluster.
+func (o GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetailAgentDetailCluster) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// UID of the cluster.
+func (o GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetailAgentDetailCluster) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentInstallationDetailAgentDetailCluster)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput) ToGetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput() GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput) ToGetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentInstallationDetailAgentDetailCluster {
+		return vs[0].([]GetDiscoveryAgentInstallationDetailAgentDetailCluster)[vs[1].(int)]
+	}).(GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput)
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailNode struct {
+	// Name of the node.
+	Name string `pulumi:"name"`
+	// Namespace of the node.
+	Namespace string `pulumi:"namespace"`
+	// Status of the node.
+	Status string `pulumi:"status"`
+	// UID of the node.
+	Uid string `pulumi:"uid"`
+}
+
+// GetDiscoveryAgentInstallationDetailAgentDetailNodeInput is an input type that accepts GetDiscoveryAgentInstallationDetailAgentDetailNodeArgs and GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentInstallationDetailAgentDetailNodeInput` via:
+//
+//	GetDiscoveryAgentInstallationDetailAgentDetailNodeArgs{...}
+type GetDiscoveryAgentInstallationDetailAgentDetailNodeInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentInstallationDetailAgentDetailNodeOutput() GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput
+	ToGetDiscoveryAgentInstallationDetailAgentDetailNodeOutputWithContext(context.Context) GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailNodeArgs struct {
+	// Name of the node.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespace of the node.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Status of the node.
+	Status pulumi.StringInput `pulumi:"status"`
+	// UID of the node.
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (GetDiscoveryAgentInstallationDetailAgentDetailNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentInstallationDetailAgentDetailNode)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentInstallationDetailAgentDetailNodeArgs) ToGetDiscoveryAgentInstallationDetailAgentDetailNodeOutput() GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput {
+	return i.ToGetDiscoveryAgentInstallationDetailAgentDetailNodeOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentInstallationDetailAgentDetailNodeArgs) ToGetDiscoveryAgentInstallationDetailAgentDetailNodeOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput)
+}
+
+// GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayInput is an input type that accepts GetDiscoveryAgentInstallationDetailAgentDetailNodeArray and GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput values.
+// You can construct a concrete instance of `GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayInput` via:
+//
+//	GetDiscoveryAgentInstallationDetailAgentDetailNodeArray{ GetDiscoveryAgentInstallationDetailAgentDetailNodeArgs{...} }
+type GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput() GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput
+	ToGetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutputWithContext(context.Context) GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailNodeArray []GetDiscoveryAgentInstallationDetailAgentDetailNodeInput
+
+func (GetDiscoveryAgentInstallationDetailAgentDetailNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentInstallationDetailAgentDetailNode)(nil)).Elem()
+}
+
+func (i GetDiscoveryAgentInstallationDetailAgentDetailNodeArray) ToGetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput() GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput {
+	return i.ToGetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoveryAgentInstallationDetailAgentDetailNodeArray) ToGetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput)
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoveryAgentInstallationDetailAgentDetailNode)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput) ToGetDiscoveryAgentInstallationDetailAgentDetailNodeOutput() GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput) ToGetDiscoveryAgentInstallationDetailAgentDetailNodeOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput {
+	return o
+}
+
+// Name of the node.
+func (o GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetailAgentDetailNode) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace of the node.
+func (o GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetailAgentDetailNode) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Status of the node.
+func (o GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetailAgentDetailNode) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// UID of the node.
+func (o GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoveryAgentInstallationDetailAgentDetailNode) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+type GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoveryAgentInstallationDetailAgentDetailNode)(nil)).Elem()
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput) ToGetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput() GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput) ToGetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutputWithContext(ctx context.Context) GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput {
+	return o
+}
+
+func (o GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput) Index(i pulumi.IntInput) GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoveryAgentInstallationDetailAgentDetailNode {
+		return vs[0].([]GetDiscoveryAgentInstallationDetailAgentDetailNode)[vs[1].(int)]
+	}).(GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput)
+}
+
+type GetDiscoverySettingImageRegistry struct {
+	// The account name for the image registry.
+	Account string `pulumi:"account"`
+	// List of secrets for the image registry.
+	Secrets []string `pulumi:"secrets"`
+	// The server URL for the image registry.
+	Server string `pulumi:"server"`
+}
+
+// GetDiscoverySettingImageRegistryInput is an input type that accepts GetDiscoverySettingImageRegistryArgs and GetDiscoverySettingImageRegistryOutput values.
+// You can construct a concrete instance of `GetDiscoverySettingImageRegistryInput` via:
+//
+//	GetDiscoverySettingImageRegistryArgs{...}
+type GetDiscoverySettingImageRegistryInput interface {
+	pulumi.Input
+
+	ToGetDiscoverySettingImageRegistryOutput() GetDiscoverySettingImageRegistryOutput
+	ToGetDiscoverySettingImageRegistryOutputWithContext(context.Context) GetDiscoverySettingImageRegistryOutput
+}
+
+type GetDiscoverySettingImageRegistryArgs struct {
+	// The account name for the image registry.
+	Account pulumi.StringInput `pulumi:"account"`
+	// List of secrets for the image registry.
+	Secrets pulumi.StringArrayInput `pulumi:"secrets"`
+	// The server URL for the image registry.
+	Server pulumi.StringInput `pulumi:"server"`
+}
+
+func (GetDiscoverySettingImageRegistryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoverySettingImageRegistry)(nil)).Elem()
+}
+
+func (i GetDiscoverySettingImageRegistryArgs) ToGetDiscoverySettingImageRegistryOutput() GetDiscoverySettingImageRegistryOutput {
+	return i.ToGetDiscoverySettingImageRegistryOutputWithContext(context.Background())
+}
+
+func (i GetDiscoverySettingImageRegistryArgs) ToGetDiscoverySettingImageRegistryOutputWithContext(ctx context.Context) GetDiscoverySettingImageRegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoverySettingImageRegistryOutput)
+}
+
+// GetDiscoverySettingImageRegistryArrayInput is an input type that accepts GetDiscoverySettingImageRegistryArray and GetDiscoverySettingImageRegistryArrayOutput values.
+// You can construct a concrete instance of `GetDiscoverySettingImageRegistryArrayInput` via:
+//
+//	GetDiscoverySettingImageRegistryArray{ GetDiscoverySettingImageRegistryArgs{...} }
+type GetDiscoverySettingImageRegistryArrayInput interface {
+	pulumi.Input
+
+	ToGetDiscoverySettingImageRegistryArrayOutput() GetDiscoverySettingImageRegistryArrayOutput
+	ToGetDiscoverySettingImageRegistryArrayOutputWithContext(context.Context) GetDiscoverySettingImageRegistryArrayOutput
+}
+
+type GetDiscoverySettingImageRegistryArray []GetDiscoverySettingImageRegistryInput
+
+func (GetDiscoverySettingImageRegistryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoverySettingImageRegistry)(nil)).Elem()
+}
+
+func (i GetDiscoverySettingImageRegistryArray) ToGetDiscoverySettingImageRegistryArrayOutput() GetDiscoverySettingImageRegistryArrayOutput {
+	return i.ToGetDiscoverySettingImageRegistryArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiscoverySettingImageRegistryArray) ToGetDiscoverySettingImageRegistryArrayOutputWithContext(ctx context.Context) GetDiscoverySettingImageRegistryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiscoverySettingImageRegistryArrayOutput)
+}
+
+type GetDiscoverySettingImageRegistryOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoverySettingImageRegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiscoverySettingImageRegistry)(nil)).Elem()
+}
+
+func (o GetDiscoverySettingImageRegistryOutput) ToGetDiscoverySettingImageRegistryOutput() GetDiscoverySettingImageRegistryOutput {
+	return o
+}
+
+func (o GetDiscoverySettingImageRegistryOutput) ToGetDiscoverySettingImageRegistryOutputWithContext(ctx context.Context) GetDiscoverySettingImageRegistryOutput {
+	return o
+}
+
+// The account name for the image registry.
+func (o GetDiscoverySettingImageRegistryOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoverySettingImageRegistry) string { return v.Account }).(pulumi.StringOutput)
+}
+
+// List of secrets for the image registry.
+func (o GetDiscoverySettingImageRegistryOutput) Secrets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDiscoverySettingImageRegistry) []string { return v.Secrets }).(pulumi.StringArrayOutput)
+}
+
+// The server URL for the image registry.
+func (o GetDiscoverySettingImageRegistryOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiscoverySettingImageRegistry) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type GetDiscoverySettingImageRegistryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiscoverySettingImageRegistryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiscoverySettingImageRegistry)(nil)).Elem()
+}
+
+func (o GetDiscoverySettingImageRegistryArrayOutput) ToGetDiscoverySettingImageRegistryArrayOutput() GetDiscoverySettingImageRegistryArrayOutput {
+	return o
+}
+
+func (o GetDiscoverySettingImageRegistryArrayOutput) ToGetDiscoverySettingImageRegistryArrayOutputWithContext(ctx context.Context) GetDiscoverySettingImageRegistryArrayOutput {
+	return o
+}
+
+func (o GetDiscoverySettingImageRegistryArrayOutput) Index(i pulumi.IntInput) GetDiscoverySettingImageRegistryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiscoverySettingImageRegistry {
+		return vs[0].([]GetDiscoverySettingImageRegistry)[vs[1].(int)]
+	}).(GetDiscoverySettingImageRegistryOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AmiVariableInput)(nil)).Elem(), AmiVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AmiVariableArrayInput)(nil)).Elem(), AmiVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CodedeployVariableInput)(nil)).Elem(), CodedeployVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CodedeployVariableArrayInput)(nil)).Elem(), CodedeployVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigInput)(nil)).Elem(), DiscoveryAgentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigArrayInput)(nil)).Elem(), DiscoveryAgentConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigDataInput)(nil)).Elem(), DiscoveryAgentConfigDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigDataArrayInput)(nil)).Elem(), DiscoveryAgentConfigDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigDataCronInput)(nil)).Elem(), DiscoveryAgentConfigDataCronArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigDataCronArrayInput)(nil)).Elem(), DiscoveryAgentConfigDataCronArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigKuberneteInput)(nil)).Elem(), DiscoveryAgentConfigKuberneteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigKuberneteArrayInput)(nil)).Elem(), DiscoveryAgentConfigKuberneteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigKuberneteResourceInput)(nil)).Elem(), DiscoveryAgentConfigKuberneteResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigKuberneteResourceArrayInput)(nil)).Elem(), DiscoveryAgentConfigKuberneteResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigKuberneteResourceLimitInput)(nil)).Elem(), DiscoveryAgentConfigKuberneteResourceLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigKuberneteResourceLimitArrayInput)(nil)).Elem(), DiscoveryAgentConfigKuberneteResourceLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigKuberneteResourceRequestInput)(nil)).Elem(), DiscoveryAgentConfigKuberneteResourceRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigKuberneteResourceRequestArrayInput)(nil)).Elem(), DiscoveryAgentConfigKuberneteResourceRequestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigKuberneteTolerationInput)(nil)).Elem(), DiscoveryAgentConfigKuberneteTolerationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigKuberneteTolerationArrayInput)(nil)).Elem(), DiscoveryAgentConfigKuberneteTolerationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigMtlInput)(nil)).Elem(), DiscoveryAgentConfigMtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigMtlArrayInput)(nil)).Elem(), DiscoveryAgentConfigMtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigProxyInput)(nil)).Elem(), DiscoveryAgentConfigProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentConfigProxyArrayInput)(nil)).Elem(), DiscoveryAgentConfigProxyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentInstallationDetailInput)(nil)).Elem(), DiscoveryAgentInstallationDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentInstallationDetailArrayInput)(nil)).Elem(), DiscoveryAgentInstallationDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentInstallationDetailAgentDetailInput)(nil)).Elem(), DiscoveryAgentInstallationDetailAgentDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentInstallationDetailAgentDetailArrayInput)(nil)).Elem(), DiscoveryAgentInstallationDetailAgentDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentInstallationDetailAgentDetailClusterInput)(nil)).Elem(), DiscoveryAgentInstallationDetailAgentDetailClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryAgentInstallationDetailAgentDetailClusterArrayInput)(nil)).Elem(), DiscoveryAgentInstallationDetailAgentDetailClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoverySettingImageRegistryInput)(nil)).Elem(), DiscoverySettingImageRegistryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoverySettingImageRegistryPtrInput)(nil)).Elem(), DiscoverySettingImageRegistryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsVariableInput)(nil)).Elem(), EcsVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsVariableArrayInput)(nil)).Elem(), EcsVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmVariableInput)(nil)).Elem(), HelmVariableArgs{})
@@ -1067,10 +5169,68 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TanzuVariableArrayInput)(nil)).Elem(), TanzuVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WinrmVariableInput)(nil)).Elem(), WinrmVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WinrmVariableArrayInput)(nil)).Elem(), WinrmVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigInput)(nil)).Elem(), GetDiscoveryAgentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigArrayInput)(nil)).Elem(), GetDiscoveryAgentConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigDataInput)(nil)).Elem(), GetDiscoveryAgentConfigDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigDataArrayInput)(nil)).Elem(), GetDiscoveryAgentConfigDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigDataCronInput)(nil)).Elem(), GetDiscoveryAgentConfigDataCronArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigDataCronArrayInput)(nil)).Elem(), GetDiscoveryAgentConfigDataCronArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteInput)(nil)).Elem(), GetDiscoveryAgentConfigKuberneteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteArrayInput)(nil)).Elem(), GetDiscoveryAgentConfigKuberneteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteResourceInput)(nil)).Elem(), GetDiscoveryAgentConfigKuberneteResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteResourceArrayInput)(nil)).Elem(), GetDiscoveryAgentConfigKuberneteResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteResourceLimitInput)(nil)).Elem(), GetDiscoveryAgentConfigKuberneteResourceLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteResourceLimitArrayInput)(nil)).Elem(), GetDiscoveryAgentConfigKuberneteResourceLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteResourceRequestInput)(nil)).Elem(), GetDiscoveryAgentConfigKuberneteResourceRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteResourceRequestArrayInput)(nil)).Elem(), GetDiscoveryAgentConfigKuberneteResourceRequestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteTolerationInput)(nil)).Elem(), GetDiscoveryAgentConfigKuberneteTolerationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigKuberneteTolerationArrayInput)(nil)).Elem(), GetDiscoveryAgentConfigKuberneteTolerationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigMtlInput)(nil)).Elem(), GetDiscoveryAgentConfigMtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigMtlArrayInput)(nil)).Elem(), GetDiscoveryAgentConfigMtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigProxyInput)(nil)).Elem(), GetDiscoveryAgentConfigProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentConfigProxyArrayInput)(nil)).Elem(), GetDiscoveryAgentConfigProxyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentInstallationDetailInput)(nil)).Elem(), GetDiscoveryAgentInstallationDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentInstallationDetailArrayInput)(nil)).Elem(), GetDiscoveryAgentInstallationDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentInstallationDetailAgentDetailInput)(nil)).Elem(), GetDiscoveryAgentInstallationDetailAgentDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentInstallationDetailAgentDetailArrayInput)(nil)).Elem(), GetDiscoveryAgentInstallationDetailAgentDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentInstallationDetailAgentDetailClusterInput)(nil)).Elem(), GetDiscoveryAgentInstallationDetailAgentDetailClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayInput)(nil)).Elem(), GetDiscoveryAgentInstallationDetailAgentDetailClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentInstallationDetailAgentDetailNodeInput)(nil)).Elem(), GetDiscoveryAgentInstallationDetailAgentDetailNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayInput)(nil)).Elem(), GetDiscoveryAgentInstallationDetailAgentDetailNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoverySettingImageRegistryInput)(nil)).Elem(), GetDiscoverySettingImageRegistryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoverySettingImageRegistryArrayInput)(nil)).Elem(), GetDiscoverySettingImageRegistryArray{})
 	pulumi.RegisterOutputType(AmiVariableOutput{})
 	pulumi.RegisterOutputType(AmiVariableArrayOutput{})
 	pulumi.RegisterOutputType(CodedeployVariableOutput{})
 	pulumi.RegisterOutputType(CodedeployVariableArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigDataOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigDataArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigDataCronOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigDataCronArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigKuberneteOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigKuberneteArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigKuberneteResourceOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigKuberneteResourceArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigKuberneteResourceLimitOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigKuberneteResourceLimitArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigKuberneteResourceRequestOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigKuberneteResourceRequestArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigKuberneteTolerationOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigKuberneteTolerationArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigMtlOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigMtlArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigProxyOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentConfigProxyArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentInstallationDetailOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentInstallationDetailArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentInstallationDetailAgentDetailOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentInstallationDetailAgentDetailArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentInstallationDetailAgentDetailClusterOutput{})
+	pulumi.RegisterOutputType(DiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput{})
+	pulumi.RegisterOutputType(DiscoverySettingImageRegistryOutput{})
+	pulumi.RegisterOutputType(DiscoverySettingImageRegistryPtrOutput{})
 	pulumi.RegisterOutputType(EcsVariableOutput{})
 	pulumi.RegisterOutputType(EcsVariableArrayOutput{})
 	pulumi.RegisterOutputType(HelmVariableOutput{})
@@ -1085,4 +5245,34 @@ func init() {
 	pulumi.RegisterOutputType(TanzuVariableArrayOutput{})
 	pulumi.RegisterOutputType(WinrmVariableOutput{})
 	pulumi.RegisterOutputType(WinrmVariableArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigDataOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigDataArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigDataCronOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigDataCronArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigKuberneteOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigKuberneteArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigKuberneteResourceOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigKuberneteResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigKuberneteResourceLimitOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigKuberneteResourceLimitArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigKuberneteResourceRequestOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigKuberneteResourceRequestArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigKuberneteTolerationOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigKuberneteTolerationArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigMtlOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigMtlArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigProxyOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentConfigProxyArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentInstallationDetailOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentInstallationDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentInstallationDetailAgentDetailOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentInstallationDetailAgentDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentInstallationDetailAgentDetailClusterOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentInstallationDetailAgentDetailClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentInstallationDetailAgentDetailNodeOutput{})
+	pulumi.RegisterOutputType(GetDiscoveryAgentInstallationDetailAgentDetailNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetDiscoverySettingImageRegistryOutput{})
+	pulumi.RegisterOutputType(GetDiscoverySettingImageRegistryArrayOutput{})
 }

@@ -293,6 +293,8 @@ class TemplateFilters(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level template filter
 
         ```sh
@@ -350,6 +352,8 @@ class TemplateFilters(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level template filter
 

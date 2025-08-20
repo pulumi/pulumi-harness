@@ -19,14 +19,29 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
     public static final GetHarRegistryConfigArgs Empty = new GetHarRegistryConfigArgs();
 
     /**
-     * Authentication configuration for UPSTREAM type
+     * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+     * 
+     */
+    @Import(name="authType")
+    private @Nullable Output<String> authType;
+
+    /**
+     * @return Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+     * 
+     */
+    public Optional<Output<String>> authType() {
+        return Optional.ofNullable(this.authType);
+    }
+
+    /**
+     * Authentication configuration for UPSTREAM registry type
      * 
      */
     @Import(name="auths")
     private @Nullable Output<List<GetHarRegistryConfigAuthArgs>> auths;
 
     /**
-     * @return Authentication configuration for UPSTREAM type
+     * @return Authentication configuration for UPSTREAM registry type
      * 
      */
     public Optional<Output<List<GetHarRegistryConfigAuthArgs>>> auths() {
@@ -34,14 +49,14 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Source of the upstream
+     * Upstream source
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return Source of the upstream
+     * @return Upstream source
      * 
      */
     public Optional<Output<String>> source() {
@@ -49,14 +64,14 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Type of registry (VIRTUAL, UPSTREAM)
+     * Type of registry (VIRTUAL or UPSTREAM)
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of registry (VIRTUAL, UPSTREAM)
+     * @return Type of registry (VIRTUAL or UPSTREAM)
      * 
      */
     public Output<String> type() {
@@ -64,14 +79,29 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * URL of the upstream
+     * List of upstream proxies for VIRTUAL registry type
+     * 
+     */
+    @Import(name="upstreamProxies")
+    private @Nullable Output<List<String>> upstreamProxies;
+
+    /**
+     * @return List of upstream proxies for VIRTUAL registry type
+     * 
+     */
+    public Optional<Output<List<String>>> upstreamProxies() {
+        return Optional.ofNullable(this.upstreamProxies);
+    }
+
+    /**
+     * URL of the upstream (required if type=UPSTREAM &amp; package_type=HELM)
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return URL of the upstream
+     * @return URL of the upstream (required if type=UPSTREAM &amp; package_type=HELM)
      * 
      */
     public Optional<Output<String>> url() {
@@ -81,9 +111,11 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
     private GetHarRegistryConfigArgs() {}
 
     private GetHarRegistryConfigArgs(GetHarRegistryConfigArgs $) {
+        this.authType = $.authType;
         this.auths = $.auths;
         this.source = $.source;
         this.type = $.type;
+        this.upstreamProxies = $.upstreamProxies;
         this.url = $.url;
     }
 
@@ -106,7 +138,28 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param auths Authentication configuration for UPSTREAM type
+         * @param authType Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authType(@Nullable Output<String> authType) {
+            $.authType = authType;
+            return this;
+        }
+
+        /**
+         * @param authType Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authType(String authType) {
+            return authType(Output.of(authType));
+        }
+
+        /**
+         * @param auths Authentication configuration for UPSTREAM registry type
          * 
          * @return builder
          * 
@@ -117,7 +170,7 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param auths Authentication configuration for UPSTREAM type
+         * @param auths Authentication configuration for UPSTREAM registry type
          * 
          * @return builder
          * 
@@ -127,7 +180,7 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param auths Authentication configuration for UPSTREAM type
+         * @param auths Authentication configuration for UPSTREAM registry type
          * 
          * @return builder
          * 
@@ -137,7 +190,7 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param source Source of the upstream
+         * @param source Upstream source
          * 
          * @return builder
          * 
@@ -148,7 +201,7 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param source Source of the upstream
+         * @param source Upstream source
          * 
          * @return builder
          * 
@@ -158,7 +211,7 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type Type of registry (VIRTUAL, UPSTREAM)
+         * @param type Type of registry (VIRTUAL or UPSTREAM)
          * 
          * @return builder
          * 
@@ -169,7 +222,7 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type Type of registry (VIRTUAL, UPSTREAM)
+         * @param type Type of registry (VIRTUAL or UPSTREAM)
          * 
          * @return builder
          * 
@@ -179,7 +232,38 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param url URL of the upstream
+         * @param upstreamProxies List of upstream proxies for VIRTUAL registry type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upstreamProxies(@Nullable Output<List<String>> upstreamProxies) {
+            $.upstreamProxies = upstreamProxies;
+            return this;
+        }
+
+        /**
+         * @param upstreamProxies List of upstream proxies for VIRTUAL registry type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upstreamProxies(List<String> upstreamProxies) {
+            return upstreamProxies(Output.of(upstreamProxies));
+        }
+
+        /**
+         * @param upstreamProxies List of upstream proxies for VIRTUAL registry type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upstreamProxies(String... upstreamProxies) {
+            return upstreamProxies(List.of(upstreamProxies));
+        }
+
+        /**
+         * @param url URL of the upstream (required if type=UPSTREAM &amp; package_type=HELM)
          * 
          * @return builder
          * 
@@ -190,7 +274,7 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param url URL of the upstream
+         * @param url URL of the upstream (required if type=UPSTREAM &amp; package_type=HELM)
          * 
          * @return builder
          * 

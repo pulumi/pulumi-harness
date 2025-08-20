@@ -57,6 +57,9 @@ class GetDashboardFoldersResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Description of the resource.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -70,19 +73,25 @@ class GetDashboardFoldersResult:
     @_builtins.property
     @pulumi.getter
     def identifier(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the resource.
+        """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Name of the folder.
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
+        """
+        Tags to associate with the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -113,12 +122,13 @@ def get_dashboard_folders(id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.platform.get_dashboard_folders(id="your_folder_id")
+    folder = harness.platform.get_dashboard_folders(id="id")
     ```
 
 
     :param _builtins.str id: Identifier of the folder.
-    :param _builtins.str name: Name of the folder.
+    :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str name: Name of the resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -147,12 +157,13 @@ def get_dashboard_folders_output(id: Optional[pulumi.Input[_builtins.str]] = Non
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.platform.get_dashboard_folders(id="your_folder_id")
+    folder = harness.platform.get_dashboard_folders(id="id")
     ```
 
 
     :param _builtins.str id: Identifier of the folder.
-    :param _builtins.str name: Name of the folder.
+    :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str name: Name of the resource.
     """
     __args__ = dict()
     __args__['id'] = id

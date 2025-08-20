@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .name("name")
  *             .description("test")
  *             .tags("foo:bar")
- *             .url("https://elasticsearch.com/")
+ *             .url("http://elk6.dev.harness.io:9200/")
  *             .delegateSelectors("harness-delegate")
  *             .apiToken(ElasticsearchConnectorApiTokenArgs.builder()
  *                 .clientId("client_id")
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .name("name")
  *             .description("test")
  *             .tags("foo:bar")
- *             .url("https://elasticsearch.com/")
+ *             .url("http://elk6.dev.harness.io:9200/")
  *             .delegateSelectors("harness-delegate")
  *             .usernamePassword(ElasticsearchConnectorUsernamePasswordArgs.builder()
  *                 .username("username")
@@ -76,13 +76,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         // Authentication mechanism as username and password
+ *         // Authentication mechanism without authentication
  *         var noAuthentication = new ElasticsearchConnector("noAuthentication", ElasticsearchConnectorArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
  *             .tags("foo:bar")
- *             .url("https://elasticsearch.com/")
+ *             .url("http://elk6.dev.harness.io:9200/")
  *             .delegateSelectors("harness-delegate")
  *             .build());
  * 
@@ -93,6 +93,8 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level elasticsearch connector
  * 
@@ -242,14 +244,14 @@ public class ElasticsearchConnector extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.tags);
     }
     /**
-     * URL of the ElasticSearch controller.
+     * URL of the elasticsearch
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return URL of the ElasticSearch controller.
+     * @return URL of the elasticsearch
      * 
      */
     public Output<String> url() {

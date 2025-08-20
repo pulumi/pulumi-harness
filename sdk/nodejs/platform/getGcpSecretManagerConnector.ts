@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Datasource for looking up GCP Secret Manager connector.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -108,6 +110,8 @@ export interface GetGcpSecretManagerConnectorResult {
     readonly tags: string[];
 }
 /**
+ * Datasource for looking up GCP Secret Manager connector.
+ *
  * ## Example Usage
  *
  * ```typescript

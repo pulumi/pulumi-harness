@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import account level github connector
  *
  * ```sh
@@ -82,7 +84,7 @@ export class GithubConnector extends pulumi.CustomResource {
      */
     public readonly executeOnDelegate!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable this flag for force deletion of github connector
+     * Enable this flag for force deletion of service
      */
     public readonly forceDelete!: pulumi.Output<boolean>;
     /**
@@ -204,7 +206,7 @@ export interface GithubConnectorState {
      */
     executeOnDelegate?: pulumi.Input<boolean>;
     /**
-     * Enable this flag for force deletion of github connector
+     * Enable this flag for force deletion of service
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
@@ -266,7 +268,7 @@ export interface GithubConnectorArgs {
      */
     executeOnDelegate?: pulumi.Input<boolean>;
     /**
-     * Enable this flag for force deletion of github connector
+     * Enable this flag for force deletion of service
      */
     forceDelete?: pulumi.Input<boolean>;
     /**

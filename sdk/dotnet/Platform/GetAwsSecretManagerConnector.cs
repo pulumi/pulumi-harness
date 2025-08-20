@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetAwsSecretManagerConnector
     {
         /// <summary>
+        /// Datasource for looking up an AWS Secret Manager connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +36,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsSecretManagerConnectorResult>("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args ?? new GetAwsSecretManagerConnectorArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Datasource for looking up an AWS Secret Manager connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +60,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsSecretManagerConnectorResult>("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args ?? new GetAwsSecretManagerConnectorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Datasource for looking up an AWS Secret Manager connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -112,7 +118,7 @@ namespace Pulumi.Harness.Platform
         public string? ProjectId { get; set; }
 
         /// <summary>
-        /// recovery duration in days in AWS Secrets Manager.
+        /// Recovery duration in days in AWS Secrets Manager.
         /// </summary>
         [Input("recoveryWindowInDays")]
         public int? RecoveryWindowInDays { get; set; }
@@ -156,7 +162,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// recovery duration in days in AWS Secrets Manager.
+        /// Recovery duration in days in AWS Secrets Manager.
         /// </summary>
         [Input("recoveryWindowInDays")]
         public Input<int>? RecoveryWindowInDays { get; set; }
@@ -216,7 +222,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// recovery duration in days in AWS Secrets Manager.
+        /// Recovery duration in days in AWS Secrets Manager.
         /// </summary>
         public readonly int? RecoveryWindowInDays;
         /// <summary>

@@ -223,6 +223,8 @@ class Winrm(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import using the Harness application id and service id
 
         ```sh
@@ -261,6 +263,8 @@ class Winrm(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import using the Harness application id and service id
 

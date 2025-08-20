@@ -49,14 +49,14 @@ public final class HarRegistryConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Source of the upstream (only for UPSTREAM type)
+     * Upstream source
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return Source of the upstream (only for UPSTREAM type)
+     * @return Upstream source
      * 
      */
     public Optional<Output<String>> source() {
@@ -190,7 +190,7 @@ public final class HarRegistryConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param source Source of the upstream (only for UPSTREAM type)
+         * @param source Upstream source
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class HarRegistryConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param source Source of the upstream (only for UPSTREAM type)
+         * @param source Upstream source
          * 
          * @return builder
          * 

@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Resource for creating a HashiCorp Vault Secret Manager connector.
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -195,6 +197,8 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level vault connector
  * 
@@ -666,14 +670,14 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vaultAwsIamRole);
     }
     /**
-     * Custom path at with JWT auth in enabled for Vault.
+     * Custom path at with JWT auth in enabled for Vault
      * 
      */
     @Export(name="vaultJwtAuthPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vaultJwtAuthPath;
 
     /**
-     * @return Custom path at with JWT auth in enabled for Vault.
+     * @return Custom path at with JWT auth in enabled for Vault
      * 
      */
     public Output<Optional<String>> vaultJwtAuthPath() {

@@ -410,7 +410,7 @@ class GetVaultConnectorResult:
     @pulumi.getter(name="vaultJwtAuthPath")
     def vault_jwt_auth_path(self) -> _builtins.str:
         """
-        Custom path at with JWT auth in enabled for Vault.
+        Custom path at with JWT auth in enabled for Vault
         """
         return pulumi.get(self, "vault_jwt_auth_path")
 
@@ -499,6 +499,8 @@ def get_vault_connector(identifier: Optional[_builtins.str] = None,
                         project_id: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVaultConnectorResult:
     """
+    DataSource for looking up a Vault connector in Harness.
+
     ## Example Usage
 
     ```python
@@ -567,6 +569,8 @@ def get_vault_connector_output(identifier: Optional[pulumi.Input[_builtins.str]]
                                project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVaultConnectorResult]:
     """
+    DataSource for looking up a Vault connector in Harness.
+
     ## Example Usage
 
     ```python

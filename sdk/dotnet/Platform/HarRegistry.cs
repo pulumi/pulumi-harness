@@ -80,13 +80,13 @@ namespace Pulumi.Harness.Platform
     public partial class HarRegistry : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Allowed pattern for the registry
+        /// Allowed artifact patterns
         /// </summary>
         [Output("allowedPatterns")]
         public Output<ImmutableArray<string>> AllowedPatterns { get; private set; } = null!;
 
         /// <summary>
-        /// Blocked pattern for the registry
+        /// Blocked artifact patterns
         /// </summary>
         [Output("blockedPatterns")]
         public Output<ImmutableArray<string>> BlockedPatterns { get; private set; } = null!;
@@ -98,7 +98,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<Outputs.HarRegistryConfig>> Configs { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp when the registry was created
+        /// Creation timestamp
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, etc.)
+        /// Type of package (DOCKER, HELM, MAVEN, etc.)
         /// </summary>
         [Output("packageType")]
         public Output<string> PackageType { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _allowedPatterns;
 
         /// <summary>
-        /// Allowed pattern for the registry
+        /// Allowed artifact patterns
         /// </summary>
         public InputList<string> AllowedPatterns
         {
@@ -202,7 +202,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _blockedPatterns;
 
         /// <summary>
-        /// Blocked pattern for the registry
+        /// Blocked artifact patterns
         /// </summary>
         public InputList<string> BlockedPatterns
         {
@@ -210,7 +210,7 @@ namespace Pulumi.Harness.Platform
             set => _blockedPatterns = value;
         }
 
-        [Input("configs", required: true)]
+        [Input("configs")]
         private InputList<Inputs.HarRegistryConfigArgs>? _configs;
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, etc.)
+        /// Type of package (DOCKER, HELM, MAVEN, etc.)
         /// </summary>
         [Input("packageType", required: true)]
         public Input<string> PackageType { get; set; } = null!;
@@ -264,7 +264,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _allowedPatterns;
 
         /// <summary>
-        /// Allowed pattern for the registry
+        /// Allowed artifact patterns
         /// </summary>
         public InputList<string> AllowedPatterns
         {
@@ -276,7 +276,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _blockedPatterns;
 
         /// <summary>
-        /// Blocked pattern for the registry
+        /// Blocked artifact patterns
         /// </summary>
         public InputList<string> BlockedPatterns
         {
@@ -297,7 +297,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Timestamp when the registry was created
+        /// Creation timestamp
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -315,7 +315,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, etc.)
+        /// Type of package (DOCKER, HELM, MAVEN, etc.)
         /// </summary>
         [Input("packageType")]
         public Input<string>? PackageType { get; set; }

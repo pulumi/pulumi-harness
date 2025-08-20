@@ -15,14 +15,14 @@ public final class ElasticsearchConnectorApiTokenArgs extends com.pulumi.resourc
     public static final ElasticsearchConnectorApiTokenArgs Empty = new ElasticsearchConnectorApiTokenArgs();
 
     /**
-     * The client id used for connecting to ElasticSearch.
+     * The API Key id used for connecting to ElasticSearch.
      * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
-     * @return The client id used for connecting to ElasticSearch.
+     * @return The API Key id used for connecting to ElasticSearch.
      * 
      */
     public Output<String> clientId() {
@@ -70,7 +70,7 @@ public final class ElasticsearchConnectorApiTokenArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param clientId The client id used for connecting to ElasticSearch.
+         * @param clientId The API Key id used for connecting to ElasticSearch.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ElasticsearchConnectorApiTokenArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param clientId The client id used for connecting to ElasticSearch.
+         * @param clientId The API Key id used for connecting to ElasticSearch.
          * 
          * @return builder
          * 

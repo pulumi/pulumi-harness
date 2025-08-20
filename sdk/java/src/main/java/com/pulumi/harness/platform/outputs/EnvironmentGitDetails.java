@@ -23,12 +23,12 @@ public final class EnvironmentGitDetails {
      */
     private @Nullable String branch;
     /**
-     * @return message for the commit in Git Repo.
+     * @return Commit message used for the merge commit.
      * 
      */
     private @Nullable String commitMessage;
     /**
-     * @return Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String connectorRef;
@@ -38,12 +38,12 @@ public final class EnvironmentGitDetails {
      */
     private @Nullable String filePath;
     /**
-     * @return Flag to set if importing from Git
+     * @return import environment from git
      * 
      */
     private @Nullable Boolean importFromGit;
     /**
-     * @return Flag to set if force importing from Git
+     * @return force import environment from remote even if same file path already exist
      * 
      */
     private @Nullable Boolean isForceImport;
@@ -58,12 +58,12 @@ public final class EnvironmentGitDetails {
      */
     private @Nullable Boolean isNewBranch;
     /**
-     * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+     * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
      * 
      */
     private @Nullable String lastCommitId;
     /**
-     * @return Last object identifier (for Github). To be provided only when updating Environment.
+     * @return Last object identifier (for Github). To be provided only when updating Pipeline.
      * 
      */
     private @Nullable String lastObjectId;
@@ -73,7 +73,7 @@ public final class EnvironmentGitDetails {
      */
     private @Nullable String loadFromCache;
     /**
-     * @return Whether the file has to be get from fallback_branch.
+     * @return If the Entity is to be fetched from fallbackBranch
      * 
      */
     private @Nullable Boolean loadFromFallbackBranch;
@@ -93,7 +93,7 @@ public final class EnvironmentGitDetails {
      */
     private @Nullable String repoName;
     /**
-     * @return store type of the entity.
+     * @return Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
      * 
      */
     private @Nullable String storeType;
@@ -114,14 +114,14 @@ public final class EnvironmentGitDetails {
         return Optional.ofNullable(this.branch);
     }
     /**
-     * @return message for the commit in Git Repo.
+     * @return Commit message used for the merge commit.
      * 
      */
     public Optional<String> commitMessage() {
         return Optional.ofNullable(this.commitMessage);
     }
     /**
-     * @return Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> connectorRef() {
@@ -135,14 +135,14 @@ public final class EnvironmentGitDetails {
         return Optional.ofNullable(this.filePath);
     }
     /**
-     * @return Flag to set if importing from Git
+     * @return import environment from git
      * 
      */
     public Optional<Boolean> importFromGit() {
         return Optional.ofNullable(this.importFromGit);
     }
     /**
-     * @return Flag to set if force importing from Git
+     * @return force import environment from remote even if same file path already exist
      * 
      */
     public Optional<Boolean> isForceImport() {
@@ -163,14 +163,14 @@ public final class EnvironmentGitDetails {
         return Optional.ofNullable(this.isNewBranch);
     }
     /**
-     * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+     * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
      * 
      */
     public Optional<String> lastCommitId() {
         return Optional.ofNullable(this.lastCommitId);
     }
     /**
-     * @return Last object identifier (for Github). To be provided only when updating Environment.
+     * @return Last object identifier (for Github). To be provided only when updating Pipeline.
      * 
      */
     public Optional<String> lastObjectId() {
@@ -184,7 +184,7 @@ public final class EnvironmentGitDetails {
         return Optional.ofNullable(this.loadFromCache);
     }
     /**
-     * @return Whether the file has to be get from fallback_branch.
+     * @return If the Entity is to be fetched from fallbackBranch
      * 
      */
     public Optional<Boolean> loadFromFallbackBranch() {
@@ -212,7 +212,7 @@ public final class EnvironmentGitDetails {
         return Optional.ofNullable(this.repoName);
     }
     /**
-     * @return store type of the entity.
+     * @return Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
      * 
      */
     public Optional<String> storeType() {

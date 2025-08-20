@@ -97,7 +97,7 @@ class DashboardFolders(pulumi.CustomResource):
         import pulumi
         import pulumi_harness as harness
 
-        example = harness.platform.DashboardFolders("example", name="Example Folder")
+        folder = harness.platform.DashboardFolders("folder", name="name")
         ```
 
         :param str resource_name: The name of the resource.
@@ -119,7 +119,7 @@ class DashboardFolders(pulumi.CustomResource):
         import pulumi
         import pulumi_harness as harness
 
-        example = harness.platform.DashboardFolders("example", name="Example Folder")
+        folder = harness.platform.DashboardFolders("folder", name="name")
         ```
 
         :param str resource_name: The name of the resource.

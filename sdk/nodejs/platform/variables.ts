@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Resource for creating a Harness Variables.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -27,6 +29,8 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level variables
  *

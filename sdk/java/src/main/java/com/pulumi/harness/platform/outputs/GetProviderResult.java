@@ -15,6 +15,10 @@ public final class GetProviderResult {
      * 
      */
     private String id;
+    /**
+     * @return The identifier of the provider entity.
+     * 
+     */
     private String identifier;
 
     private GetProviderResult() {}
@@ -25,6 +29,10 @@ public final class GetProviderResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The identifier of the provider entity.
+     * 
+     */
     public String identifier() {
         return this.identifier;
     }

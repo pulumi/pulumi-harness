@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     name: "name",
  *     description: "test",
  *     tags: ["foo:bar"],
- *     url: "https://elasticsearch.com/",
+ *     url: "http://elk6.dev.harness.io:9200/",
  *     delegateSelectors: ["harness-delegate"],
  *     apiToken: {
  *         clientId: "client_id",
@@ -34,25 +34,27 @@ import * as utilities from "../utilities";
  *     name: "name",
  *     description: "test",
  *     tags: ["foo:bar"],
- *     url: "https://elasticsearch.com/",
+ *     url: "http://elk6.dev.harness.io:9200/",
  *     delegateSelectors: ["harness-delegate"],
  *     usernamePassword: {
  *         username: "username",
  *         passwordRef: "account.secret_id",
  *     },
  * });
- * // Authentication mechanism as username and password
+ * // Authentication mechanism without authentication
  * const noAuthentication = new harness.platform.ElasticsearchConnector("no_authentication", {
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
  *     tags: ["foo:bar"],
- *     url: "https://elasticsearch.com/",
+ *     url: "http://elk6.dev.harness.io:9200/",
  *     delegateSelectors: ["harness-delegate"],
  * });
  * ```
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level elasticsearch connector
  *
@@ -137,7 +139,7 @@ export class ElasticsearchConnector extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * URL of the ElasticSearch controller.
+     * URL of the elasticsearch
      */
     public readonly url!: pulumi.Output<string>;
     /**
@@ -235,7 +237,7 @@ export interface ElasticsearchConnectorState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * URL of the ElasticSearch controller.
+     * URL of the elasticsearch
      */
     url?: pulumi.Input<string>;
     /**
@@ -285,7 +287,7 @@ export interface ElasticsearchConnectorArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * URL of the ElasticSearch controller.
+     * URL of the elasticsearch
      */
     url: pulumi.Input<string>;
     /**

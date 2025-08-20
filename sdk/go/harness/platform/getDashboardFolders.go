@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupDashboardFolders(ctx, &platform.LookupDashboardFoldersArgs{
-//				Id: "your_folder_id",
+//				Id: "id",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,22 +51,26 @@ func LookupDashboardFolders(ctx *pulumi.Context, args *LookupDashboardFoldersArg
 // A collection of arguments for invoking getDashboardFolders.
 type LookupDashboardFoldersArgs struct {
 	// Identifier of the folder.
-	Id         string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// Name of the folder.
+	// Name of the resource.
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getDashboardFolders.
 type LookupDashboardFoldersResult struct {
 	// Created DateTime of the folder.
-	CreatedAt   string `pulumi:"createdAt"`
+	CreatedAt string `pulumi:"createdAt"`
+	// Description of the resource.
 	Description string `pulumi:"description"`
 	// Identifier of the folder.
-	Id         string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// Name of the folder.
-	Name *string  `pulumi:"name"`
+	// Name of the resource.
+	Name *string `pulumi:"name"`
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -82,9 +86,10 @@ func LookupDashboardFoldersOutput(ctx *pulumi.Context, args LookupDashboardFolde
 // A collection of arguments for invoking getDashboardFolders.
 type LookupDashboardFoldersOutputArgs struct {
 	// Identifier of the folder.
-	Id         pulumi.StringInput    `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
-	// Name of the folder.
+	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -112,6 +117,7 @@ func (o LookupDashboardFoldersResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardFoldersResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Description of the resource.
 func (o LookupDashboardFoldersResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardFoldersResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -121,15 +127,17 @@ func (o LookupDashboardFoldersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardFoldersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the resource.
 func (o LookupDashboardFoldersResultOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDashboardFoldersResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
 }
 
-// Name of the folder.
+// Name of the resource.
 func (o LookupDashboardFoldersResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDashboardFoldersResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Tags to associate with the resource.
 func (o LookupDashboardFoldersResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDashboardFoldersResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

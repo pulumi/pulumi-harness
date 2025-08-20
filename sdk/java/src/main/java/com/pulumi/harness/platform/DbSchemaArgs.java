@@ -20,14 +20,14 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
     public static final DbSchemaArgs Empty = new DbSchemaArgs();
 
     /**
-     * Changelog script details
+     * Configuration to clone changeSets using script
      * 
      */
     @Import(name="changelogScript")
     private @Nullable Output<DbSchemaChangelogScriptArgs> changelogScript;
 
     /**
-     * @return Changelog script details
+     * @return Configuration to clone changeSets using script
      * 
      */
     public Optional<Output<DbSchemaChangelogScriptArgs>> changelogScript() {
@@ -125,14 +125,14 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The service associated with schema.
+     * The service associated with schema
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return The service associated with schema.
+     * @return The service associated with schema
      * 
      */
     public Optional<Output<String>> service() {
@@ -155,14 +155,14 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the database schema (repository/script).
+     * Type of the database schema. Valid values are: SCRIPT, REPOSITORY
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the database schema (repository/script).
+     * @return Type of the database schema. Valid values are: SCRIPT, REPOSITORY
      * 
      */
     public Optional<Output<String>> type() {
@@ -203,7 +203,7 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param changelogScript Changelog script details
+         * @param changelogScript Configuration to clone changeSets using script
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param changelogScript Changelog script details
+         * @param changelogScript Configuration to clone changeSets using script
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service The service associated with schema.
+         * @param service The service associated with schema
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service The service associated with schema.
+         * @param service The service associated with schema
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the database schema (repository/script).
+         * @param type Type of the database schema. Valid values are: SCRIPT, REPOSITORY
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the database schema (repository/script).
+         * @param type Type of the database schema. Valid values are: SCRIPT, REPOSITORY
          * 
          * @return builder
          * 

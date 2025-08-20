@@ -170,10 +170,18 @@ import (
 //
 // ## Import
 //
-// # Import pipeline
+// The `pulumi import` command can be used, for example:
+//
+// # Import pipeline from default branch
 //
 // ```sh
 // $ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>
+// ```
+//
+// # Import pipeline from non default branch
+//
+// ```sh
+// $ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>/<branch>
 // ```
 type Pipeline struct {
 	pulumi.CustomResourceState

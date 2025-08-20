@@ -18,6 +18,36 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Resource for creating a Harness User Group. Linking SSO providers with User Groups:
+ * 
+ *         The following fields need to be populated for LDAP SSO Providers:
+ *     	
+ *         - linked_sso_id
+ *     	
+ *         - linked_sso_display_name
+ *     	
+ *         - sso_group_id
+ *     	
+ *         - sso_group_name
+ *     	
+ *         - linked_sso_type
+ *     	
+ *         - sso_linked
+ *     	
+ *         The following fields need to be populated for SAML SSO Providers:
+ *     	
+ *         - linked_sso_id
+ *     	
+ *         - linked_sso_display_name
+ *     	
+ *         - sso_group_name
+ *     	
+ *         - sso_group_id // same as sso_group_name
+ *     	
+ *         - linked_sso_type
+ *     	
+ *         - sso_linked
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -151,6 +181,8 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level user group
  * 
@@ -384,14 +416,14 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.userEmails);
     }
     /**
-     * List of users in the UserGroup. Either provide list of users or list of user emails.
+     * List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
      * 
      */
     @Export(name="users", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> users;
 
     /**
-     * @return List of users in the UserGroup. Either provide list of users or list of user emails.
+     * @return List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
      * 
      */
     public Output<Optional<List<String>>> users() {

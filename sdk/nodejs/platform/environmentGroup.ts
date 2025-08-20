@@ -7,45 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Harness environment group.
  *
- * ## Example to create Environment Group at different levels (Org, Project, Account)
+ * ## Example Usage
  *
- * ### Account Level
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = new harness.platform.EnvironmentGroup("example", {
- *     identifier: "identifier",
- *     color: "#0063F7",
- *     yaml: `environmentGroup:
- *   name: "name"
- *   identifier: "identifier"
- *   description: "temp"
- *   envIdentifiers: []
- * `,
- * });
- * ```
- *
- * ### Org Level
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = new harness.platform.EnvironmentGroup("example", {
- *     identifier: "identifier",
- *     orgId: "orgIdentifer",
- *     color: "#0063F7",
- *     yaml: `environmentGroup:
- *   name: "name"
- *   identifier: "identifier"
- *   description: "temp"
- *   orgIdentifier: "orgIdentifer"
- *   envIdentifiers: []
- * `,
- * });
- * ```
- *
- * ### Project Level
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
@@ -67,6 +30,8 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level environment group.
  *
@@ -135,10 +100,7 @@ export class EnvironmentGroup extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-     * org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-     * For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-     * connectorRef: org.connectorId.
+     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     public readonly yaml!: pulumi.Output<string>;
 
@@ -206,10 +168,7 @@ export interface EnvironmentGroupState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-     * org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-     * For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-     * connectorRef: org.connectorId.
+     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml?: pulumi.Input<string>;
 }
@@ -239,10 +198,7 @@ export interface EnvironmentGroupArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-     * org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-     * For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-     * connectorRef: org.connectorId.
+     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml: pulumi.Input<string>;
 }

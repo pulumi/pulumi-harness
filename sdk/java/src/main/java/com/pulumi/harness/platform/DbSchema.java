@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * Import project level db schema
  * 
  * ```sh
@@ -32,14 +34,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/dbSchema:DbSchema")
 public class DbSchema extends com.pulumi.resources.CustomResource {
     /**
-     * Changelog script details
+     * Configuration to clone changeSets using script
      * 
      */
     @Export(name="changelogScript", refs={DbSchemaChangelogScript.class}, tree="[0]")
     private Output</* @Nullable */ DbSchemaChangelogScript> changelogScript;
 
     /**
-     * @return Changelog script details
+     * @return Configuration to clone changeSets using script
      * 
      */
     public Output<Optional<DbSchemaChangelogScript>> changelogScript() {
@@ -130,14 +132,14 @@ public class DbSchema extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.schemaSource);
     }
     /**
-     * The service associated with schema.
+     * The service associated with schema
      * 
      */
     @Export(name="service", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> service;
 
     /**
-     * @return The service associated with schema.
+     * @return The service associated with schema
      * 
      */
     public Output<Optional<String>> service() {
@@ -158,14 +160,14 @@ public class DbSchema extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Type of the database schema (repository/script).
+     * Type of the database schema. Valid values are: SCRIPT, REPOSITORY
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return Type of the database schema (repository/script).
+     * @return Type of the database schema. Valid values are: SCRIPT, REPOSITORY
      * 
      */
     public Output<Optional<String>> type() {

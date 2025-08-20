@@ -12,187 +12,19 @@ namespace Pulumi.Harness.Platform
     public static class GetEnvironmentList
     {
         /// <summary>
-        /// Data source for retrieving Harness environment list.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ### Project Level Environment List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetEnvironmentList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// 
-        /// ### Organisation Level Environment List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetEnvironmentList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// 
-        /// ### Account Level Environment List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetEnvironmentList.Invoke();
-        /// 
-        /// });
-        /// ```
+        /// Data source for retrieving a Harness environment List.
         /// </summary>
         public static Task<GetEnvironmentListResult> InvokeAsync(GetEnvironmentListArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentListResult>("harness:platform/getEnvironmentList:getEnvironmentList", args ?? new GetEnvironmentListArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving Harness environment list.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ### Project Level Environment List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetEnvironmentList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// 
-        /// ### Organisation Level Environment List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetEnvironmentList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// 
-        /// ### Account Level Environment List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetEnvironmentList.Invoke();
-        /// 
-        /// });
-        /// ```
+        /// Data source for retrieving a Harness environment List.
         /// </summary>
         public static Output<GetEnvironmentListResult> Invoke(GetEnvironmentListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentListResult>("harness:platform/getEnvironmentList:getEnvironmentList", args ?? new GetEnvironmentListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving Harness environment list.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ### Project Level Environment List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetEnvironmentList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// 
-        /// ### Organisation Level Environment List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetEnvironmentList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// 
-        /// ### Account Level Environment List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetEnvironmentList.Invoke();
-        /// 
-        /// });
-        /// ```
+        /// Data source for retrieving a Harness environment List.
         /// </summary>
         public static Output<GetEnvironmentListResult> Invoke(GetEnvironmentListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentListResult>("harness:platform/getEnvironmentList:getEnvironmentList", args ?? new GetEnvironmentListInvokeArgs(), options.WithDefaults());
@@ -201,9 +33,15 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetEnvironmentListArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
@@ -215,9 +53,15 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetEnvironmentListInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
@@ -236,7 +80,13 @@ namespace Pulumi.Harness.Platform
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         public readonly string? OrgId;
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         public readonly string? ProjectId;
 
         [OutputConstructor]

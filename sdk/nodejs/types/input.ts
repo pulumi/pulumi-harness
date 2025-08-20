@@ -1707,6 +1707,726 @@ export namespace autostopping {
     }
 }
 
+export namespace chaos {
+    export interface GetInfrastructureV2ImageRegistry {
+        /**
+         * Timestamp when the registry was created.
+         */
+        createdAt?: string;
+        /**
+         * Custom image configurations. Required when use*custom*images is true.
+         */
+        customImages?: inputs.chaos.GetInfrastructureV2ImageRegistryCustomImage[];
+        /**
+         * Scoped identifiers for the registry.
+         */
+        identifiers?: inputs.chaos.GetInfrastructureV2ImageRegistryIdentifier[];
+        /**
+         * ID of the infrastructure.
+         */
+        infraId?: string;
+        /**
+         * Whether this is the default registry.
+         */
+        isDefault?: boolean;
+        /**
+         * Whether override is allowed for this registry.
+         */
+        isOverrideAllowed?: boolean;
+        /**
+         * Whether the registry is private.
+         */
+        isPrivate?: boolean;
+        /**
+         * The account name for the container registry.
+         */
+        registryAccount?: string;
+        /**
+         * The container image registry server URL (e.g., docker.io, gcr.io).
+         */
+        registryServer?: string;
+        /**
+         * Name of the Kubernetes secret containing registry credentials.
+         */
+        secretName?: string;
+        /**
+         * Timestamp when the registry was last updated.
+         */
+        updatedAt?: string;
+        /**
+         * Whether to use custom images instead of default ones.
+         */
+        useCustomImages?: boolean;
+    }
+
+    export interface GetInfrastructureV2ImageRegistryArgs {
+        /**
+         * Timestamp when the registry was created.
+         */
+        createdAt?: pulumi.Input<string>;
+        /**
+         * Custom image configurations. Required when use*custom*images is true.
+         */
+        customImages?: pulumi.Input<pulumi.Input<inputs.chaos.GetInfrastructureV2ImageRegistryCustomImageArgs>[]>;
+        /**
+         * Scoped identifiers for the registry.
+         */
+        identifiers?: pulumi.Input<pulumi.Input<inputs.chaos.GetInfrastructureV2ImageRegistryIdentifierArgs>[]>;
+        /**
+         * ID of the infrastructure.
+         */
+        infraId?: pulumi.Input<string>;
+        /**
+         * Whether this is the default registry.
+         */
+        isDefault?: pulumi.Input<boolean>;
+        /**
+         * Whether override is allowed for this registry.
+         */
+        isOverrideAllowed?: pulumi.Input<boolean>;
+        /**
+         * Whether the registry is private.
+         */
+        isPrivate?: pulumi.Input<boolean>;
+        /**
+         * The account name for the container registry.
+         */
+        registryAccount?: pulumi.Input<string>;
+        /**
+         * The container image registry server URL (e.g., docker.io, gcr.io).
+         */
+        registryServer?: pulumi.Input<string>;
+        /**
+         * Name of the Kubernetes secret containing registry credentials.
+         */
+        secretName?: pulumi.Input<string>;
+        /**
+         * Timestamp when the registry was last updated.
+         */
+        updatedAt?: pulumi.Input<string>;
+        /**
+         * Whether to use custom images instead of default ones.
+         */
+        useCustomImages?: pulumi.Input<boolean>;
+    }
+
+    export interface GetInfrastructureV2ImageRegistryCustomImage {
+        /**
+         * Custom image for ddcr.
+         */
+        ddcr?: string;
+        /**
+         * Custom image for ddcr-fault.
+         */
+        ddcrFault?: string;
+        /**
+         * Custom image for ddcr-lib.
+         */
+        ddcrLib?: string;
+        /**
+         * Custom image for log-watcher.
+         */
+        logWatcher?: string;
+    }
+
+    export interface GetInfrastructureV2ImageRegistryCustomImageArgs {
+        /**
+         * Custom image for ddcr.
+         */
+        ddcr?: pulumi.Input<string>;
+        /**
+         * Custom image for ddcr-fault.
+         */
+        ddcrFault?: pulumi.Input<string>;
+        /**
+         * Custom image for ddcr-lib.
+         */
+        ddcrLib?: pulumi.Input<string>;
+        /**
+         * Custom image for log-watcher.
+         */
+        logWatcher?: pulumi.Input<string>;
+    }
+
+    export interface GetInfrastructureV2ImageRegistryIdentifier {
+        /**
+         * Harness account identifier.
+         */
+        accountIdentifier?: string;
+        /**
+         * Harness organization identifier.
+         */
+        orgIdentifier?: string;
+        /**
+         * Harness project identifier.
+         */
+        projectIdentifier?: string;
+    }
+
+    export interface GetInfrastructureV2ImageRegistryIdentifierArgs {
+        /**
+         * Harness account identifier.
+         */
+        accountIdentifier?: pulumi.Input<string>;
+        /**
+         * Harness organization identifier.
+         */
+        orgIdentifier?: pulumi.Input<string>;
+        /**
+         * Harness project identifier.
+         */
+        projectIdentifier?: pulumi.Input<string>;
+    }
+
+    export interface GetInfrastructureV2Mtls {
+        /**
+         * Path to the certificate file for mTLS
+         */
+        certPath?: string;
+        /**
+         * Path to the private key file for mTLS
+         */
+        keyPath?: string;
+        /**
+         * Name of the Kubernetes secret containing mTLS certificates
+         */
+        secretName?: string;
+        /**
+         * URL for the mTLS endpoint
+         */
+        url?: string;
+    }
+
+    export interface GetInfrastructureV2MtlsArgs {
+        /**
+         * Path to the certificate file for mTLS
+         */
+        certPath?: pulumi.Input<string>;
+        /**
+         * Path to the private key file for mTLS
+         */
+        keyPath?: pulumi.Input<string>;
+        /**
+         * Name of the Kubernetes secret containing mTLS certificates
+         */
+        secretName?: pulumi.Input<string>;
+        /**
+         * URL for the mTLS endpoint
+         */
+        url?: pulumi.Input<string>;
+    }
+
+    export interface GetInfrastructureV2Proxy {
+        /**
+         * HTTP proxy URL.
+         */
+        httpProxy?: string;
+        /**
+         * HTTPS proxy URL.
+         */
+        httpsProxy?: string;
+        /**
+         * List of hosts that should not use proxy.
+         */
+        noProxy?: string;
+        /**
+         * Proxy URL.
+         */
+        url: string;
+    }
+
+    export interface GetInfrastructureV2ProxyArgs {
+        /**
+         * HTTP proxy URL.
+         */
+        httpProxy?: pulumi.Input<string>;
+        /**
+         * HTTPS proxy URL.
+         */
+        httpsProxy?: pulumi.Input<string>;
+        /**
+         * List of hosts that should not use proxy.
+         */
+        noProxy?: pulumi.Input<string>;
+        /**
+         * Proxy URL.
+         */
+        url: pulumi.Input<string>;
+    }
+
+    export interface GetInfrastructureV2Toleration {
+        /**
+         * Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+         */
+        effect: string;
+        /**
+         * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists.
+         */
+        key: string;
+        /**
+         * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal.
+         */
+        operator: string;
+        /**
+         * TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+         */
+        tolerationSeconds?: number;
+        /**
+         * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+         */
+        value?: string;
+    }
+
+    export interface GetInfrastructureV2TolerationArgs {
+        /**
+         * Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+         */
+        effect: pulumi.Input<string>;
+        /**
+         * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal.
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+         */
+        tolerationSeconds?: pulumi.Input<number>;
+        /**
+         * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GetInfrastructureV2Volume {
+        /**
+         * Name of the volume. Must be a DNS_LABEL and unique within the pod.
+         */
+        name: string;
+        /**
+         * Size limit of the volume. Example: '10Gi', '100Mi'
+         */
+        sizeLimit?: string;
+    }
+
+    export interface GetInfrastructureV2VolumeArgs {
+        /**
+         * Name of the volume. Must be a DNS_LABEL and unique within the pod.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Size limit of the volume. Example: '10Gi', '100Mi'
+         */
+        sizeLimit?: pulumi.Input<string>;
+    }
+
+    export interface GetInfrastructureV2VolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'.
+         */
+        mountPath: string;
+        /**
+         * Determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used.
+         */
+        mountPropagation?: string;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: string;
+        /**
+         * Mounted read-only if true, read-write otherwise.
+         */
+        readOnly?: boolean;
+        /**
+         * Path within the volume from which the container's volume should be mounted. Mutually exclusive with sub*path*expr.
+         */
+        subPath?: string;
+        /**
+         * Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
+         */
+        subPathExpr?: string;
+    }
+
+    export interface GetInfrastructureV2VolumeMountArgs {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'.
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * Determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used.
+         */
+        mountPropagation?: pulumi.Input<string>;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Mounted read-only if true, read-write otherwise.
+         */
+        readOnly?: pulumi.Input<boolean>;
+        /**
+         * Path within the volume from which the container's volume should be mounted. Mutually exclusive with sub*path*expr.
+         */
+        subPath?: pulumi.Input<string>;
+        /**
+         * Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
+         */
+        subPathExpr?: pulumi.Input<string>;
+    }
+
+    export interface ImageRegistryCustomImage {
+        ddcr?: pulumi.Input<string>;
+        ddcrFault?: pulumi.Input<string>;
+        ddcrLib?: pulumi.Input<string>;
+        logWatcher?: pulumi.Input<string>;
+    }
+
+    export interface InfrastructureV2Env {
+        /**
+         * Variable name from a ConfigMap or Secret. Required when valueFrom is configMapKeyRef or secretKeyRef.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Variable references $(VAR*NAME) are expanded using the container's environment. If the variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+         */
+        value?: pulumi.Input<string>;
+        /**
+         * Source for the environment variable's value. Cannot be used if value is not empty.
+         */
+        valueFrom?: pulumi.Input<string>;
+    }
+
+    export interface InfrastructureV2Identifier {
+        /**
+         * Account identifier.
+         */
+        accountIdentifier?: pulumi.Input<string>;
+        /**
+         * Organization identifier.
+         */
+        orgIdentifier?: pulumi.Input<string>;
+        /**
+         * Project identifier.
+         */
+        projectIdentifier?: pulumi.Input<string>;
+    }
+
+    export interface InfrastructureV2ImageRegistry {
+        /**
+         * Timestamp when the registry was created.
+         */
+        createdAt?: pulumi.Input<string>;
+        /**
+         * Custom image configurations. Required when use*custom*images is true.
+         */
+        customImages?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2ImageRegistryCustomImage>[]>;
+        /**
+         * Scoped identifiers for the registry.
+         */
+        identifiers?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2ImageRegistryIdentifier>[]>;
+        /**
+         * ID of the infrastructure.
+         */
+        infraId?: pulumi.Input<string>;
+        /**
+         * Whether this is the default registry.
+         */
+        isDefault?: pulumi.Input<boolean>;
+        /**
+         * Whether override is allowed for this registry.
+         */
+        isOverrideAllowed?: pulumi.Input<boolean>;
+        /**
+         * Whether the registry is private.
+         */
+        isPrivate?: pulumi.Input<boolean>;
+        /**
+         * The account name for the container registry.
+         */
+        registryAccount?: pulumi.Input<string>;
+        /**
+         * The container image registry server URL (e.g., docker.io, gcr.io).
+         */
+        registryServer?: pulumi.Input<string>;
+        /**
+         * Name of the Kubernetes secret containing registry credentials.
+         */
+        secretName?: pulumi.Input<string>;
+        /**
+         * Timestamp when the registry was last updated.
+         */
+        updatedAt?: pulumi.Input<string>;
+        /**
+         * Whether to use custom images instead of default ones.
+         */
+        useCustomImages?: pulumi.Input<boolean>;
+    }
+
+    export interface InfrastructureV2ImageRegistryCustomImage {
+        /**
+         * Custom image for ddcr.
+         */
+        ddcr?: pulumi.Input<string>;
+        /**
+         * Custom image for ddcr-fault.
+         */
+        ddcrFault?: pulumi.Input<string>;
+        /**
+         * Custom image for ddcr-lib.
+         */
+        ddcrLib?: pulumi.Input<string>;
+        /**
+         * Custom image for log-watcher.
+         */
+        logWatcher?: pulumi.Input<string>;
+    }
+
+    export interface InfrastructureV2ImageRegistryIdentifier {
+        /**
+         * Harness account identifier.
+         */
+        accountIdentifier?: pulumi.Input<string>;
+        /**
+         * Harness organization identifier.
+         */
+        orgIdentifier?: pulumi.Input<string>;
+        /**
+         * Harness project identifier.
+         */
+        projectIdentifier?: pulumi.Input<string>;
+    }
+
+    export interface InfrastructureV2Mtls {
+        /**
+         * Path to the certificate file for mTLS
+         */
+        certPath?: pulumi.Input<string>;
+        /**
+         * Path to the private key file for mTLS
+         */
+        keyPath?: pulumi.Input<string>;
+        /**
+         * Name of the Kubernetes secret containing mTLS certificates
+         */
+        secretName?: pulumi.Input<string>;
+        /**
+         * URL for the mTLS endpoint
+         */
+        url?: pulumi.Input<string>;
+    }
+
+    export interface InfrastructureV2Proxy {
+        /**
+         * HTTP proxy URL.
+         */
+        httpProxy?: pulumi.Input<string>;
+        /**
+         * HTTPS proxy URL.
+         */
+        httpsProxy?: pulumi.Input<string>;
+        /**
+         * List of hosts that should not use proxy.
+         */
+        noProxy?: pulumi.Input<string>;
+        /**
+         * Proxy URL.
+         */
+        url: pulumi.Input<string>;
+    }
+
+    export interface InfrastructureV2Toleration {
+        /**
+         * Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+         */
+        effect: pulumi.Input<string>;
+        /**
+         * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal.
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+         */
+        tolerationSeconds?: pulumi.Input<number>;
+        /**
+         * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface InfrastructureV2Volume {
+        /**
+         * Name of the volume. Must be a DNS_LABEL and unique within the pod.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Size limit of the volume. Example: '10Gi', '100Mi'
+         */
+        sizeLimit?: pulumi.Input<string>;
+    }
+
+    export interface InfrastructureV2VolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'.
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * Determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used.
+         */
+        mountPropagation?: pulumi.Input<string>;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Mounted read-only if true, read-write otherwise.
+         */
+        readOnly?: pulumi.Input<boolean>;
+        /**
+         * Path within the volume from which the container's volume should be mounted. Mutually exclusive with sub*path*expr.
+         */
+        subPath?: pulumi.Input<string>;
+        /**
+         * Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
+         */
+        subPathExpr?: pulumi.Input<string>;
+    }
+
+    export interface SecurityGovernanceConditionFaultSpec {
+        /**
+         * List of fault specifications
+         */
+        faults: pulumi.Input<pulumi.Input<inputs.chaos.SecurityGovernanceConditionFaultSpecFault>[]>;
+        /**
+         * Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: pulumi.Input<string>;
+    }
+
+    export interface SecurityGovernanceConditionFaultSpecFault {
+        /**
+         * Type of the fault (FAULT or FAULT_GROUP)
+         */
+        faultType: pulumi.Input<string>;
+        /**
+         * Name of the fault
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface SecurityGovernanceConditionK8sSpec {
+        /**
+         * Application specification
+         */
+        applicationSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionK8sSpecApplicationSpec>;
+        /**
+         * Chaos service account specification
+         */
+        chaosServiceAccountSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionK8sSpecChaosServiceAccountSpec>;
+        /**
+         * Infrastructure specification
+         */
+        infraSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionK8sSpecInfraSpec>;
+    }
+
+    export interface SecurityGovernanceConditionK8sSpecApplicationSpec {
+        /**
+         * Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * List of workloads to include/exclude
+         */
+        workloads?: pulumi.Input<pulumi.Input<inputs.chaos.SecurityGovernanceConditionK8sSpecApplicationSpecWorkload>[]>;
+    }
+
+    export interface SecurityGovernanceConditionK8sSpecApplicationSpecWorkload {
+        /**
+         * ID for the application map
+         */
+        applicationMapId?: pulumi.Input<string>;
+        /**
+         * Kind of the workload (e.g., deployment, statefulset)
+         */
+        kind?: pulumi.Input<string>;
+        /**
+         * Label selector for the workload
+         */
+        label?: pulumi.Input<string>;
+        /**
+         * Namespace of the workload
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * List of services associated with the workload
+         */
+        services?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SecurityGovernanceConditionK8sSpecChaosServiceAccountSpec {
+        /**
+         * Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * List of service accounts to include/exclude
+         */
+        serviceAccounts: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SecurityGovernanceConditionK8sSpecInfraSpec {
+        /**
+         * List of infrastructure IDs to apply the condition to
+         */
+        infraIds: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: pulumi.Input<string>;
+    }
+
+    export interface SecurityGovernanceConditionMachineSpec {
+        /**
+         * Infrastructure specification
+         */
+        infraSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionMachineSpecInfraSpec>;
+    }
+
+    export interface SecurityGovernanceConditionMachineSpecInfraSpec {
+        /**
+         * List of infrastructure IDs to apply the condition to
+         */
+        infraIds: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: pulumi.Input<string>;
+    }
+
+    export interface SecurityGovernanceRuleTimeWindow {
+        duration?: pulumi.Input<string>;
+        endTime?: pulumi.Input<number>;
+        recurrence?: pulumi.Input<inputs.chaos.SecurityGovernanceRuleTimeWindowRecurrence>;
+        startTime: pulumi.Input<number>;
+        timeZone: pulumi.Input<string>;
+    }
+
+    export interface SecurityGovernanceRuleTimeWindowRecurrence {
+        type: pulumi.Input<string>;
+        until: pulumi.Input<number>;
+        value?: pulumi.Input<number>;
+    }
+}
+
 export namespace cloudprovider {
     export interface AwsAssumeCrossAccountRole {
         /**
@@ -2005,6 +2725,28 @@ export namespace cluster {
         memory: pulumi.Input<number>;
     }
 
+    export interface GetOrchestratorConfigCommitmentIntegration {
+        /**
+         * Flag to enable Commitment Integration
+         */
+        enabled: boolean;
+        /**
+         * Master AWS account id for commitment integration
+         */
+        masterAccountId: string;
+    }
+
+    export interface GetOrchestratorConfigCommitmentIntegrationArgs {
+        /**
+         * Flag to enable Commitment Integration
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * Master AWS account id for commitment integration
+         */
+        masterAccountId: pulumi.Input<string>;
+    }
+
     export interface GetOrchestratorConfigDistribution {
         /**
          * Number of minimum ondemand replicas required for workloads
@@ -2063,6 +2805,82 @@ export namespace cluster {
          * TTL for nodes
          */
         ttl?: pulumi.Input<string>;
+    }
+
+    export interface GetOrchestratorConfigReplacementSchedule {
+        /**
+         * Defines the scope of the replacement schedule
+         */
+        appliesTo: inputs.cluster.GetOrchestratorConfigReplacementScheduleAppliesTo;
+        windowDetails?: inputs.cluster.GetOrchestratorConfigReplacementScheduleWindowDetails;
+        /**
+         * Window type for replacement schedule
+         */
+        windowType: string;
+    }
+
+    export interface GetOrchestratorConfigReplacementScheduleArgs {
+        /**
+         * Defines the scope of the replacement schedule
+         */
+        appliesTo: pulumi.Input<inputs.cluster.GetOrchestratorConfigReplacementScheduleAppliesToArgs>;
+        windowDetails?: pulumi.Input<inputs.cluster.GetOrchestratorConfigReplacementScheduleWindowDetailsArgs>;
+        /**
+         * Window type for replacement schedule
+         */
+        windowType: pulumi.Input<string>;
+    }
+
+    export interface GetOrchestratorConfigReplacementScheduleAppliesTo {
+        consolidation: boolean;
+        harnessPodEviction: boolean;
+        reverseFallback: boolean;
+    }
+
+    export interface GetOrchestratorConfigReplacementScheduleAppliesToArgs {
+        consolidation: pulumi.Input<boolean>;
+        harnessPodEviction: pulumi.Input<boolean>;
+        reverseFallback: pulumi.Input<boolean>;
+    }
+
+    export interface GetOrchestratorConfigReplacementScheduleWindowDetails {
+        allDay?: boolean;
+        /**
+         * List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+         */
+        days: string[];
+        /**
+         * End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+         */
+        endTime?: string;
+        /**
+         * Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+         */
+        startTime?: string;
+        /**
+         * Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+         */
+        timeZone: string;
+    }
+
+    export interface GetOrchestratorConfigReplacementScheduleWindowDetailsArgs {
+        allDay?: pulumi.Input<boolean>;
+        /**
+         * List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+         */
+        days: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+         */
+        endTime?: pulumi.Input<string>;
+        /**
+         * Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+         */
+        startTime?: pulumi.Input<string>;
+        /**
+         * Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+         */
+        timeZone: pulumi.Input<string>;
     }
 
     export interface OrchestratorConfigBinpacking {
@@ -2135,6 +2953,17 @@ export namespace cluster {
         memory: pulumi.Input<number>;
     }
 
+    export interface OrchestratorConfigCommitmentIntegration {
+        /**
+         * Flag to enable Commitment Integration
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * Master AWS account id for commitment integration
+         */
+        masterAccountId: pulumi.Input<string>;
+    }
+
     export interface OrchestratorConfigDistribution {
         /**
          * Number of minimum ondemand replicas required for workloads
@@ -2163,6 +2992,44 @@ export namespace cluster {
          * TTL for nodes
          */
         ttl?: pulumi.Input<string>;
+    }
+
+    export interface OrchestratorConfigReplacementSchedule {
+        /**
+         * Defines the scope of the replacement schedule
+         */
+        appliesTo: pulumi.Input<inputs.cluster.OrchestratorConfigReplacementScheduleAppliesTo>;
+        windowDetails?: pulumi.Input<inputs.cluster.OrchestratorConfigReplacementScheduleWindowDetails>;
+        /**
+         * Window type for replacement schedule
+         */
+        windowType: pulumi.Input<string>;
+    }
+
+    export interface OrchestratorConfigReplacementScheduleAppliesTo {
+        consolidation: pulumi.Input<boolean>;
+        harnessPodEviction: pulumi.Input<boolean>;
+        reverseFallback: pulumi.Input<boolean>;
+    }
+
+    export interface OrchestratorConfigReplacementScheduleWindowDetails {
+        allDay?: pulumi.Input<boolean>;
+        /**
+         * List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+         */
+        days: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+         */
+        endTime?: pulumi.Input<string>;
+        /**
+         * Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+         */
+        startTime?: pulumi.Input<string>;
+        /**
+         * Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+         */
+        timeZone: pulumi.Input<string>;
     }
 }
 
@@ -2273,7 +3140,7 @@ export namespace platform {
          */
         delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Test Region to perform Connection test of AWS Connector.
+         * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: pulumi.Input<string>;
     }
@@ -2284,7 +3151,7 @@ export namespace platform {
          */
         delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Test Region to perform Connection test of AWS Connector.
+         * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: pulumi.Input<string>;
     }
@@ -2303,7 +3170,7 @@ export namespace platform {
          */
         delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Test Region to perform Connection test of AWS Connector.
+         * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: pulumi.Input<string>;
         /**
@@ -2311,7 +3178,7 @@ export namespace platform {
          */
         secretKeyRef: pulumi.Input<string>;
         /**
-         * Reference to the Harness secret containing the aws session token.
+         * Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         sessionTokenRef?: pulumi.Input<string>;
     }
@@ -2326,7 +3193,7 @@ export namespace platform {
          */
         iamRoleArn: pulumi.Input<string>;
         /**
-         * AWS Region to perform Connection test of Connector.
+         * Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: pulumi.Input<string>;
     }
@@ -2419,7 +3286,7 @@ export namespace platform {
 
     export interface AwsSecretManagerConnectorCredentialsManual {
         /**
-         * The plain text AWS access key. This is required if the access*key*ref is not provided.
+         * The plain text AWS access key.
          */
         accessKeyPlainText?: pulumi.Input<string>;
         /**
@@ -2441,6 +3308,10 @@ export namespace platform {
 
     export interface AzureCloudCostConnectorBillingExportSpec {
         /**
+         * Billing type.
+         */
+        billingType: pulumi.Input<string>;
+        /**
          * Name of the container.
          */
         containerName: pulumi.Input<string>;
@@ -2458,6 +3329,33 @@ export namespace platform {
         storageAccountName: pulumi.Input<string>;
         /**
          * Subsription Id.
+         */
+        subscriptionId: pulumi.Input<string>;
+    }
+
+    export interface AzureCloudCostConnectorBillingExportSpec2 {
+        /**
+         * Billing type.
+         */
+        billingType: pulumi.Input<string>;
+        /**
+         * Name of the container.
+         */
+        containerName: pulumi.Input<string>;
+        /**
+         * Name of the directory.
+         */
+        directoryName: pulumi.Input<string>;
+        /**
+         * Name of the report.
+         */
+        reportName: pulumi.Input<string>;
+        /**
+         * Name of the storage account.
+         */
+        storageAccountName: pulumi.Input<string>;
+        /**
+         * Subsription id.
          */
         subscriptionId: pulumi.Input<string>;
     }
@@ -2694,13 +3592,7 @@ export namespace platform {
 
     export interface ConnectorCustomSecretManagerTemplateInputEnvironmentVariable {
         default?: pulumi.Input<boolean>;
-        /**
-         * : Name of the resource.
-         */
         name: pulumi.Input<string>;
-        /**
-         * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-         */
         type: pulumi.Input<string>;
         value: pulumi.Input<string>;
     }
@@ -2828,11 +3720,11 @@ export namespace platform {
 
     export interface ConnectorPdcHost {
         /**
-         * Host attributes with values. e.g. type, region, name, ip, etc.
+         * attributes for current host
          */
         attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Hostname e.g. 87.23.66.11:80
+         * hostname
          */
         hostname: pulumi.Input<string>;
     }
@@ -2884,7 +3776,7 @@ export namespace platform {
 
     export interface DockerConnectorCredentials {
         /**
-         * The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
+         * The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef: pulumi.Input<string>;
         /**
@@ -2899,7 +3791,7 @@ export namespace platform {
 
     export interface ElasticsearchConnectorApiToken {
         /**
-         * The client id used for connecting to ElasticSearch.
+         * The API Key id used for connecting to ElasticSearch.
          */
         clientId: pulumi.Input<string>;
         /**
@@ -2951,11 +3843,11 @@ export namespace platform {
          */
         branch?: pulumi.Input<string>;
         /**
-         * message for the commit in Git Repo.
+         * Commit message used for the merge commit.
          */
         commitMessage?: pulumi.Input<string>;
         /**
-         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         connectorRef?: pulumi.Input<string>;
         /**
@@ -2963,11 +3855,11 @@ export namespace platform {
          */
         filePath?: pulumi.Input<string>;
         /**
-         * Flag to set if importing from Git
+         * import environment from git
          */
         importFromGit?: pulumi.Input<boolean>;
         /**
-         * Flag to set if force importing from Git
+         * force import environment from remote even if same file path already exist
          */
         isForceImport?: pulumi.Input<boolean>;
         /**
@@ -2979,11 +3871,11 @@ export namespace platform {
          */
         isNewBranch?: pulumi.Input<boolean>;
         /**
-         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
          */
         lastCommitId?: pulumi.Input<string>;
         /**
-         * Last object identifier (for Github). To be provided only when updating Environment.
+         * Last object identifier (for Github). To be provided only when updating Pipeline.
          */
         lastObjectId?: pulumi.Input<string>;
         /**
@@ -2991,7 +3883,7 @@ export namespace platform {
          */
         loadFromCache?: pulumi.Input<string>;
         /**
-         * Whether the file has to be get from fallback_branch.
+         * If the Entity is to be fetched from fallbackBranch
          */
         loadFromFallbackBranch?: pulumi.Input<boolean>;
         /**
@@ -3007,7 +3899,7 @@ export namespace platform {
          */
         repoName?: pulumi.Input<string>;
         /**
-         * store type of the entity.
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
         storeType?: pulumi.Input<string>;
     }
@@ -3037,11 +3929,11 @@ export namespace platform {
 
     export interface FeatureFlagEnvironmentAddTargetRule {
         /**
-         * The targets of the rule
+         * The targets that should be served this variation
          */
         targets?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The identifier of the variation. Valid values are `enabled`, `disabled`
+         * The identifier of the variation
          */
         variation?: pulumi.Input<string>;
     }
@@ -3059,7 +3951,7 @@ export namespace platform {
          */
         attribute: pulumi.Input<string>;
         /**
-         * The ID of this resource.
+         * The rule ID. Gets auto-generated by the system
          */
         id?: pulumi.Input<string>;
         /**
@@ -3419,82 +4311,6 @@ export namespace platform {
         rancherUrl: pulumi.Input<string>;
     }
 
-    export interface GetDbSchemaChangelogScript {
-        /**
-         * Script to clone changeSets
-         */
-        command?: string;
-        /**
-         * The fully-qualified name (FQN) of the image
-         */
-        image?: string;
-        /**
-         * Path to changeLog file
-         */
-        location?: string;
-        /**
-         * Type of the shell. For example Sh or Bash
-         */
-        shell?: string;
-    }
-
-    export interface GetDbSchemaChangelogScriptArgs {
-        /**
-         * Script to clone changeSets
-         */
-        command?: pulumi.Input<string>;
-        /**
-         * The fully-qualified name (FQN) of the image
-         */
-        image?: pulumi.Input<string>;
-        /**
-         * Path to changeLog file
-         */
-        location?: pulumi.Input<string>;
-        /**
-         * Type of the shell. For example Sh or Bash
-         */
-        shell?: pulumi.Input<string>;
-    }
-
-    export interface GetDbSchemaSchemaSource {
-        /**
-         * If connector type is artifactory, path to the archive file which contains the changeLog
-         */
-        archivePath?: string;
-        /**
-         * Connector to repository at which to find details about the database schema
-         */
-        connector?: string;
-        /**
-         * The path within the specified repository at which to find details about the database schema
-         */
-        location?: string;
-        /**
-         * If connector url is of account, which repository to connect to using the connector
-         */
-        repo?: string;
-    }
-
-    export interface GetDbSchemaSchemaSourceArgs {
-        /**
-         * If connector type is artifactory, path to the archive file which contains the changeLog
-         */
-        archivePath?: pulumi.Input<string>;
-        /**
-         * Connector to repository at which to find details about the database schema
-         */
-        connector?: pulumi.Input<string>;
-        /**
-         * The path within the specified repository at which to find details about the database schema
-         */
-        location?: pulumi.Input<string>;
-        /**
-         * If connector url is of account, which repository to connect to using the connector
-         */
-        repo?: pulumi.Input<string>;
-    }
-
     export interface GetEnvironmentClustersMappingCluster {
         /**
          * agent identifier of the cluster (include scope prefix)
@@ -3833,180 +4649,184 @@ export namespace platform {
 
     export interface GetHarRegistryConfig {
         /**
-         * Authentication configuration for UPSTREAM type
+         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         */
+        authType?: string;
+        /**
+         * Authentication configuration for UPSTREAM registry type
          */
         auths?: inputs.platform.GetHarRegistryConfigAuth[];
         /**
-         * Source of the upstream
+         * Upstream source
          */
         source?: string;
         /**
-         * Type of registry (VIRTUAL, UPSTREAM)
+         * Type of registry (VIRTUAL or UPSTREAM)
          */
         type: string;
         /**
-         * URL of the upstream
+         * List of upstream proxies for VIRTUAL registry type
+         */
+        upstreamProxies?: string[];
+        /**
+         * URL of the upstream (required if type=UPSTREAM & package_type=HELM)
          */
         url?: string;
     }
 
     export interface GetHarRegistryConfigArgs {
         /**
-         * Authentication configuration for UPSTREAM type
+         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         */
+        authType?: pulumi.Input<string>;
+        /**
+         * Authentication configuration for UPSTREAM registry type
          */
         auths?: pulumi.Input<pulumi.Input<inputs.platform.GetHarRegistryConfigAuthArgs>[]>;
         /**
-         * Source of the upstream
+         * Upstream source
          */
         source?: pulumi.Input<string>;
         /**
-         * Type of registry (VIRTUAL, UPSTREAM)
+         * Type of registry (VIRTUAL or UPSTREAM)
          */
         type: pulumi.Input<string>;
         /**
-         * URL of the upstream
+         * List of upstream proxies for VIRTUAL registry type
+         */
+        upstreamProxies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * URL of the upstream (required if type=UPSTREAM & package_type=HELM)
          */
         url?: pulumi.Input<string>;
     }
 
     export interface GetHarRegistryConfigAuth {
+        accessKey?: string;
+        accessKeyIdentifier?: string;
+        accessKeySecretPath?: string;
         /**
          * Type of authentication (UserPassword, Anonymous)
          */
         authType: string;
         /**
-         * User password authentication details
+         * Secret identifier for UserPassword auth type
          */
-        userPassword?: inputs.platform.GetHarRegistryConfigAuthUserPassword;
+        secretIdentifier?: string;
+        secretKeyIdentifier?: string;
+        secretKeySecretPath?: string;
+        /**
+         * Secret space path for UserPassword auth type
+         */
+        secretSpacePath?: string;
+        /**
+         * User name for UserPassword auth type
+         */
+        userName?: string;
     }
 
     export interface GetHarRegistryConfigAuthArgs {
+        accessKey?: pulumi.Input<string>;
+        accessKeyIdentifier?: pulumi.Input<string>;
+        accessKeySecretPath?: pulumi.Input<string>;
         /**
          * Type of authentication (UserPassword, Anonymous)
          */
         authType: pulumi.Input<string>;
         /**
-         * User password authentication details
-         */
-        userPassword?: pulumi.Input<inputs.platform.GetHarRegistryConfigAuthUserPasswordArgs>;
-    }
-
-    export interface GetHarRegistryConfigAuthUserPassword {
-        /**
-         * Secret identifier
-         */
-        secretIdentifier?: string;
-        /**
-         * Secret space ID
-         */
-        secretSpaceId?: number;
-        /**
-         * Secret space path
-         */
-        secretSpacePath?: string;
-        /**
-         * User name
-         */
-        userName: string;
-    }
-
-    export interface GetHarRegistryConfigAuthUserPasswordArgs {
-        /**
-         * Secret identifier
+         * Secret identifier for UserPassword auth type
          */
         secretIdentifier?: pulumi.Input<string>;
+        secretKeyIdentifier?: pulumi.Input<string>;
+        secretKeySecretPath?: pulumi.Input<string>;
         /**
-         * Secret space ID
-         */
-        secretSpaceId?: pulumi.Input<number>;
-        /**
-         * Secret space path
+         * Secret space path for UserPassword auth type
          */
         secretSpacePath?: pulumi.Input<string>;
         /**
-         * User name
+         * User name for UserPassword auth type
          */
-        userName: pulumi.Input<string>;
+        userName?: pulumi.Input<string>;
     }
 
     export interface GetInfraVariableSetConnector {
         /**
-         * Unique identifier of the connector.
+         * Connector Ref is the reference to the connector
          */
         connectorRef: string;
         /**
-         * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * Type is the connector type of the connector. Supported types: aws, azure, gcp
          */
         type: string;
     }
 
     export interface GetInfraVariableSetConnectorArgs {
         /**
-         * Unique identifier of the connector.
+         * Connector Ref is the reference to the connector
          */
         connectorRef: pulumi.Input<string>;
         /**
-         * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * Type is the connector type of the connector. Supported types: aws, azure, gcp
          */
         type: pulumi.Input<string>;
     }
 
     export interface GetInfraVariableSetEnvironmentVariable {
         /**
-         * Key is the identifier for the variable`
+         * Key is the identifier for the variable. Must be unique within the Variable Set.
          */
         key: string;
         /**
-         * value is the value of the variable
+         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
          */
         value: string;
         /**
-         * Value type indicates the value type of the variable, text or secret
+         * Value type indicates the value type of the variable. Currently we support string and secret.
          */
         valueType: string;
     }
 
     export interface GetInfraVariableSetEnvironmentVariableArgs {
         /**
-         * Key is the identifier for the variable`
+         * Key is the identifier for the variable. Must be unique within the Variable Set.
          */
         key: pulumi.Input<string>;
         /**
-         * value is the value of the variable
+         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
          */
         value: pulumi.Input<string>;
         /**
-         * Value type indicates the value type of the variable, text or secret
+         * Value type indicates the value type of the variable. Currently we support string and secret.
          */
         valueType: pulumi.Input<string>;
     }
 
     export interface GetInfraVariableSetTerraformVariable {
         /**
-         * Key is the identifier for the variable`
+         * Key is the identifier for the variable. Must be unique within the Variable Set.
          */
         key: string;
         /**
-         * value is the value of the variable
+         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
          */
         value: string;
         /**
-         * Value type indicates the value type of the variable, text or secret
+         * Value type indicates the value type of the variable. Currently we support string and secret.
          */
         valueType: string;
     }
 
     export interface GetInfraVariableSetTerraformVariableArgs {
         /**
-         * Key is the identifier for the variable`
+         * Key is the identifier for the variable. Must be unique within the Variable Set.
          */
         key: pulumi.Input<string>;
         /**
-         * value is the value of the variable
+         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
          */
         value: pulumi.Input<string>;
         /**
-         * Value type indicates the value type of the variable, text or secret
+         * Value type indicates the value type of the variable. Currently we support string and secret.
          */
         valueType: pulumi.Input<string>;
     }
@@ -4033,7 +4853,7 @@ export namespace platform {
          */
         repositoryPath?: string;
         /**
-         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          */
         repositorySha?: string;
     }
@@ -4060,7 +4880,7 @@ export namespace platform {
          */
         repositoryPath?: pulumi.Input<string>;
         /**
-         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          */
         repositorySha?: pulumi.Input<string>;
     }
@@ -4729,22 +5549,22 @@ export namespace platform {
 
     export interface GetWorkspaceConnector {
         /**
-         * Unique identifier of the connector.
+         * Connector Ref is the reference to the connector
          */
         connectorRef: string;
         /**
-         * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * Type is the connector type of the connector. Supported types: aws, azure, gcp
          */
         type: string;
     }
 
     export interface GetWorkspaceConnectorArgs {
         /**
-         * Unique identifier of the connector.
+         * Connector Ref is the reference to the connector
          */
         connectorRef: pulumi.Input<string>;
         /**
-         * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * Type is the connector type of the connector. Supported types: aws, azure, gcp
          */
         type: pulumi.Input<string>;
     }
@@ -5963,7 +6783,7 @@ export namespace platform {
 
     export interface GithubConnectorCredentialsHttp {
         /**
-         * Configuration for using the http anonymous github for interacting with the github api.
+         * Configuration for using the github http anonymous for interacting with the github api.
          */
         anonymouses?: pulumi.Input<pulumi.Input<inputs.platform.GithubConnectorCredentialsHttpAnonymouse>[]>;
         /**
@@ -31182,7 +32002,7 @@ export namespace platform {
          */
         auths?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfigAuth>[]>;
         /**
-         * Source of the upstream (only for UPSTREAM type)
+         * Upstream source
          */
         source?: pulumi.Input<string>;
         /**
@@ -31200,6 +32020,9 @@ export namespace platform {
     }
 
     export interface HarRegistryConfigAuth {
+        accessKey?: pulumi.Input<string>;
+        accessKeyIdentifier?: pulumi.Input<string>;
+        accessKeySecretPath?: pulumi.Input<string>;
         /**
          * Type of authentication (UserPassword, Anonymous)
          */
@@ -31208,6 +32031,8 @@ export namespace platform {
          * Secret identifier for UserPassword auth type
          */
         secretIdentifier?: pulumi.Input<string>;
+        secretKeyIdentifier?: pulumi.Input<string>;
+        secretKeySecretPath?: pulumi.Input<string>;
         /**
          * Secret space path for UserPassword auth type
          */
@@ -31235,18 +32060,18 @@ export namespace platform {
 
     export interface InfraVariableSetConnector {
         /**
-         * Unique identifier of the connector.
+         * Connector Ref is the reference to the connector
          */
         connectorRef: pulumi.Input<string>;
         /**
-         * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * Type is the connector type of the connector. Supported types: aws, azure, gcp
          */
         type: pulumi.Input<string>;
     }
 
     export interface InfraVariableSetEnvironmentVariable {
         /**
-         * Key is the identifier for the variable. Must be unique within the variable set.
+         * Key is the identifier for the variable. Must be unique within the Variable Set.
          */
         key: pulumi.Input<string>;
         /**
@@ -31261,7 +32086,7 @@ export namespace platform {
 
     export interface InfraVariableSetTerraformVariable {
         /**
-         * Key is the identifier for the variable. Must be unique within the variable set.
+         * Key is the identifier for the variable. Must be unique within the Variable Set.
          */
         key: pulumi.Input<string>;
         /**
@@ -31296,7 +32121,7 @@ export namespace platform {
          */
         repositoryPath?: pulumi.Input<string>;
         /**
-         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          */
         repositorySha?: pulumi.Input<string>;
     }
@@ -31311,11 +32136,11 @@ export namespace platform {
          */
         branch?: pulumi.Input<string>;
         /**
-         * message for the commit in Git Repo.
+         * Commit message used for the merge commit.
          */
         commitMessage?: pulumi.Input<string>;
         /**
-         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         connectorRef?: pulumi.Input<string>;
         /**
@@ -31323,11 +32148,11 @@ export namespace platform {
          */
         filePath?: pulumi.Input<string>;
         /**
-         * Flag to set if importing from Git
+         * import infrastructure from git
          */
         importFromGit?: pulumi.Input<boolean>;
         /**
-         * Flag to set if force importing from Git
+         * force import infrastructure from remote even if same file path already exist
          */
         isForceImport?: pulumi.Input<boolean>;
         /**
@@ -31339,11 +32164,11 @@ export namespace platform {
          */
         isNewBranch?: pulumi.Input<boolean>;
         /**
-         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Infrastructures.
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating infrastructure.
          */
         lastCommitId?: pulumi.Input<string>;
         /**
-         * Last object identifier (for Github). To be provided only when updating Infrastructures.
+         * Last object identifier (for Github). To be provided only when updating infrastructure.
          */
         lastObjectId?: pulumi.Input<string>;
         /**
@@ -31351,7 +32176,7 @@ export namespace platform {
          */
         loadFromCache?: pulumi.Input<string>;
         /**
-         * Whether the file has to be get from fallback_branch.
+         * If the Entity is to be fetched from fallbackBranch
          */
         loadFromFallbackBranch?: pulumi.Input<boolean>;
         /**
@@ -31367,7 +32192,7 @@ export namespace platform {
          */
         repoName?: pulumi.Input<string>;
         /**
-         * store type of the entity.
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
         storeType?: pulumi.Input<string>;
     }
@@ -31478,7 +32303,7 @@ export namespace platform {
 
     export interface JenkinsConnectorAuthJenkinsUserNamePassword {
         /**
-         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef: pulumi.Input<string>;
         /**
@@ -31633,22 +32458,22 @@ export namespace platform {
 
     export interface ManualFreezeCurrentOrUpcomingWindow {
         /**
-         * End time of the freeze
+         * End time of the freeze window
          */
         endTime?: pulumi.Input<number>;
         /**
-         * Start time of the freeze
+         * Start time of the freeze window
          */
         startTime?: pulumi.Input<number>;
     }
 
     export interface ManualFreezeFreezeWindow {
         /**
-         * Duration of the freeze
+         * Duration of the freeze window
          */
         duration?: pulumi.Input<string>;
         /**
-         * End time of the freeze
+         * End Time of the freeze window
          */
         endTime?: pulumi.Input<string>;
         /**
@@ -31656,11 +32481,11 @@ export namespace platform {
          */
         recurrences?: pulumi.Input<pulumi.Input<inputs.platform.ManualFreezeFreezeWindowRecurrence>[]>;
         /**
-         * Start time of the freeze
+         * Start Time of the freeze window
          */
         startTime?: pulumi.Input<string>;
         /**
-         * Timezone
+         * Time zone of the freeze window
          */
         timeZone?: pulumi.Input<string>;
     }
@@ -31671,18 +32496,18 @@ export namespace platform {
          */
         recurrenceSpecs?: pulumi.Input<pulumi.Input<inputs.platform.ManualFreezeFreezeWindowRecurrenceRecurrenceSpec>[]>;
         /**
-         * Recurrence type(Daily, Weekly, Monthly, Yearly)
+         * Type of the recurrence
          */
         type?: pulumi.Input<string>;
     }
 
     export interface ManualFreezeFreezeWindowRecurrenceRecurrenceSpec {
         /**
-         * Recurrence until timestamp
+         * Time till which freeze window recurrs
          */
         until?: pulumi.Input<string>;
         /**
-         * Value of n, for n months recurrence
+         * Every n months recurrence
          */
         value?: pulumi.Input<number>;
     }
@@ -31826,7 +32651,7 @@ export namespace platform {
 
     export interface NexusConnectorCredentials {
         /**
-         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef: pulumi.Input<string>;
         /**
@@ -32769,7 +33594,7 @@ export namespace platform {
          */
         passwordRef: pulumi.Input<string>;
         /**
-         * Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
+         * Reference token for authentication.
          */
         referenceToken?: pulumi.Input<string>;
         /**
@@ -32944,11 +33769,11 @@ export namespace platform {
 
     export interface WorkspaceConnector {
         /**
-         * Unique identifier of the connector.
+         * Connector Ref is the reference to the connector
          */
         connectorRef: pulumi.Input<string>;
         /**
-         * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * Type is the connector type of the connector. Supported types: aws, azure, gcp
          */
         type: pulumi.Input<string>;
     }
@@ -33040,6 +33865,356 @@ export namespace service {
          * Value of the variable
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface DiscoveryAgentConfig {
+        /**
+         * Docker image for the collector.
+         */
+        collectorImage?: pulumi.Input<string>;
+        /**
+         * Data collection configuration.
+         */
+        datas?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentConfigData>[]>;
+        /**
+         * List of image pull secrets.
+         */
+        imagePullSecrets?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Kubernetes-specific configuration.
+         */
+        kubernetes: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentConfigKubernete>[]>;
+        /**
+         * Docker image for the log watcher.
+         */
+        logWatcherImage?: pulumi.Input<string>;
+        /**
+         * mTLS configuration.
+         */
+        mtls?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentConfigMtl>[]>;
+        /**
+         * Proxy configuration.
+         */
+        proxies?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentConfigProxy>[]>;
+        /**
+         * Whether to skip TLS verification.
+         */
+        skipSecureVerify?: pulumi.Input<boolean>;
+    }
+
+    export interface DiscoveryAgentConfigData {
+        /**
+         * List of namespaces to exclude from discovery.
+         */
+        blacklistedNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Collection window in minutes.
+         */
+        collectionWindowInMin?: pulumi.Input<number>;
+        /**
+         * Cron schedule for data collection.
+         */
+        crons?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentConfigDataCron>[]>;
+        /**
+         * Whether to enable batch resources.
+         */
+        enableBatchResources?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable node agent.
+         */
+        enableNodeAgent?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable orphaned pod detection.
+         */
+        enableOrphanedPod?: pulumi.Input<boolean>;
+        /**
+         * Namespace selector for the agent.
+         */
+        namespaceSelector?: pulumi.Input<string>;
+        /**
+         * Node selector for the node agent.
+         */
+        nodeAgentSelector?: pulumi.Input<string>;
+        /**
+         * List of namespaces to observe.
+         */
+        observedNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface DiscoveryAgentConfigDataCron {
+        /**
+         * Cron expression for scheduling.
+         */
+        expression?: pulumi.Input<string>;
+    }
+
+    export interface DiscoveryAgentConfigKubernete {
+        /**
+         * Annotations to add to all resources.
+         */
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Whether to disable namespace creation.
+         */
+        disableNamespaceCreation?: pulumi.Input<boolean>;
+        /**
+         * The image pull policy.
+         */
+        imagePullPolicy?: pulumi.Input<string>;
+        /**
+         * Labels to add to all resources.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Kubernetes namespace to use
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * Whether the agent is namespaced.
+         */
+        namespaced?: pulumi.Input<boolean>;
+        /**
+         * Node selector labels.
+         */
+        nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Compute resource requirements for the agent container.
+         */
+        resources?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentConfigKuberneteResource>[]>;
+        /**
+         * The group ID to run as.
+         */
+        runAsGroup?: pulumi.Input<number>;
+        /**
+         * The user ID to run as.
+         */
+        runAsUser?: pulumi.Input<number>;
+        /**
+         * Service account to use
+         */
+        serviceAccount?: pulumi.Input<string>;
+        /**
+         * Tolerations for pod assignment.
+         */
+        tolerations?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentConfigKuberneteToleration>[]>;
+    }
+
+    export interface DiscoveryAgentConfigKuberneteResource {
+        /**
+         * Maximum amount of compute resources allowed.
+         */
+        limits?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentConfigKuberneteResourceLimit>[]>;
+        /**
+         * Minimum amount of compute resources required.
+         */
+        requests?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentConfigKuberneteResourceRequest>[]>;
+    }
+
+    export interface DiscoveryAgentConfigKuberneteResourceLimit {
+        /**
+         * CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory limit in bytes (e.g., 128Mi, 1Gi).
+         */
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface DiscoveryAgentConfigKuberneteResourceRequest {
+        /**
+         * CPU request in CPU units (e.g., 100m = 0.1 CPU).
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory request in bytes (e.g., 128Mi, 1Gi).
+         */
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface DiscoveryAgentConfigKuberneteToleration {
+        /**
+         * Effect indicates the taint effect to match.
+         */
+        effect: pulumi.Input<string>;
+        /**
+         * The taint key that the toleration applies to.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Operator represents a key's relationship to the value.
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * TolerationSeconds represents the period of time the toleration tolerates the taint.
+         */
+        tolerationSeconds?: pulumi.Input<number>;
+        /**
+         * The taint value the toleration matches to.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface DiscoveryAgentConfigMtl {
+        /**
+         * Path to the certificate file.
+         */
+        certPath?: pulumi.Input<string>;
+        /**
+         * Path to the key file.
+         */
+        keyPath?: pulumi.Input<string>;
+        /**
+         * Name of the Kubernetes secret containing the certificate and key.
+         */
+        secretName?: pulumi.Input<string>;
+        /**
+         * URL of the mTLS server.
+         */
+        url?: pulumi.Input<string>;
+    }
+
+    export interface DiscoveryAgentConfigProxy {
+        /**
+         * HTTP proxy URL.
+         */
+        httpProxy?: pulumi.Input<string>;
+        /**
+         * HTTPS proxy URL.
+         */
+        httpsProxy?: pulumi.Input<string>;
+        /**
+         * Comma-separated list of hosts that should not use the proxy.
+         */
+        noProxy?: pulumi.Input<string>;
+        /**
+         * Proxy server URL.
+         */
+        url?: pulumi.Input<string>;
+    }
+
+    export interface DiscoveryAgentInstallationDetail {
+        /**
+         * The account identifier for the installation.
+         */
+        accountIdentifier?: pulumi.Input<string>;
+        /**
+         * Details about the installed agent.
+         */
+        agentDetails?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentInstallationDetailAgentDetail>[]>;
+        /**
+         * The ID of the installed agent.
+         */
+        agentId?: pulumi.Input<string>;
+        /**
+         * The timestamp when the installation was created.
+         */
+        createdAt?: pulumi.Input<string>;
+        /**
+         * The user who created the installation.
+         */
+        createdBy?: pulumi.Input<string>;
+        /**
+         * The ID of the delegate used for installation.
+         */
+        delegateId?: pulumi.Input<string>;
+        /**
+         * The ID of the delegate task for the installation.
+         */
+        delegateTaskId?: pulumi.Input<string>;
+        /**
+         * The status of the delegate task (e.g., 'SUCCESS').
+         */
+        delegateTaskStatus?: pulumi.Input<string>;
+        /**
+         * The environment identifier for the installation.
+         */
+        environmentIdentifier?: pulumi.Input<string>;
+        /**
+         * The unique identifier of the installation.
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * Whether the installation was triggered by a cron job.
+         */
+        isCronTriggered?: pulumi.Input<boolean>;
+        /**
+         * The timestamp when the log stream was created.
+         */
+        logStreamCreatedAt?: pulumi.Input<string>;
+        /**
+         * The ID of the log stream for the installation.
+         */
+        logStreamId?: pulumi.Input<string>;
+        /**
+         * The organization identifier for the installation.
+         */
+        organizationIdentifier?: pulumi.Input<string>;
+        /**
+         * The project identifier for the installation.
+         */
+        projectIdentifier?: pulumi.Input<string>;
+        /**
+         * Whether the installation has been removed.
+         */
+        removed?: pulumi.Input<boolean>;
+        /**
+         * Whether the installation has been stopped.
+         */
+        stopped?: pulumi.Input<boolean>;
+        /**
+         * The timestamp when the installation was last updated.
+         */
+        updatedAt?: pulumi.Input<string>;
+        /**
+         * The user who last updated the installation.
+         */
+        updatedBy?: pulumi.Input<string>;
+    }
+
+    export interface DiscoveryAgentInstallationDetailAgentDetail {
+        /**
+         * Details about the cluster where the agent is installed.
+         */
+        clusters?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentInstallationDetailAgentDetailCluster>[]>;
+        /**
+         * The status of the agent installation.
+         */
+        status?: pulumi.Input<string>;
+    }
+
+    export interface DiscoveryAgentInstallationDetailAgentDetailCluster {
+        /**
+         * The name of the cluster.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The namespace where the agent is installed.
+         */
+        namespace?: pulumi.Input<string>;
+        /**
+         * The status of the cluster (e.g., 'Succeeded').
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * The UID of the cluster.
+         */
+        uid?: pulumi.Input<string>;
+    }
+
+    export interface DiscoverySettingImageRegistry {
+        /**
+         * The account name for the image registry.
+         */
+        account: pulumi.Input<string>;
+        /**
+         * List of secrets for the image registry.
+         */
+        secrets?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The server URL for the image registry.
+         */
+        server: pulumi.Input<string>;
     }
 
     export interface EcsVariable {

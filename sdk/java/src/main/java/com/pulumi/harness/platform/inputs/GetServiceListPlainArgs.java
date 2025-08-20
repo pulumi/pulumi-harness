@@ -15,30 +15,62 @@ public final class GetServiceListPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetServiceListPlainArgs Empty = new GetServiceListPlainArgs();
 
+    /**
+     * Unique identifier of the organization.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable String orgId;
 
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Page index of the results to fetch. Default: 0
+     * 
+     */
     @Import(name="page")
     private @Nullable Integer page;
 
+    /**
+     * @return Page index of the results to fetch. Default: 0
+     * 
+     */
     public Optional<Integer> page() {
         return Optional.ofNullable(this.page);
     }
 
+    /**
+     * Unique identifier of the project.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable String projectId;
 
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * Results per page. Default: 100; Max: 1000
+     * 
+     */
     @Import(name="size")
     private @Nullable Integer size;
 
+    /**
+     * @return Results per page. Default: 100; Max: 1000
+     * 
+     */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }
@@ -70,21 +102,45 @@ public final class GetServiceListPlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetServiceListPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param page Page index of the results to fetch. Default: 0
+         * 
+         * @return builder
+         * 
+         */
         public Builder page(@Nullable Integer page) {
             $.page = page;
             return this;
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param size Results per page. Default: 100; Max: 1000
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(@Nullable Integer size) {
             $.size = size;
             return this;

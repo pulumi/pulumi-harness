@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Datasource for looking up an AWS KMS connector.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -54,6 +56,7 @@ export interface GetAwsKmsConnectorArgs {
  * A collection of values returned by getAwsKmsConnector.
  */
 export interface GetAwsKmsConnectorResult {
+    readonly arnPlaintext: string;
     /**
      * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
@@ -108,6 +111,8 @@ export interface GetAwsKmsConnectorResult {
     readonly tags: string[];
 }
 /**
+ * Datasource for looking up an AWS KMS connector.
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for ClusterOrchestrator Config.
+ * Data Source for retrieving Harness CCM ClusterOrchestrator Config.
  *
  * ## Example Usage
  *
@@ -24,9 +24,11 @@ export function getOrchestratorConfig(args: GetOrchestratorConfigArgs, opts?: pu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", {
         "binpacking": args.binpacking,
+        "commitmentIntegration": args.commitmentIntegration,
         "distribution": args.distribution,
         "nodePreferences": args.nodePreferences,
         "orchestratorId": args.orchestratorId,
+        "replacementSchedule": args.replacementSchedule,
     }, opts);
 }
 
@@ -39,6 +41,10 @@ export interface GetOrchestratorConfigArgs {
      */
     binpacking?: inputs.cluster.GetOrchestratorConfigBinpacking;
     /**
+     * Commitment integration configuration for Cluster Orchestrator
+     */
+    commitmentIntegration?: inputs.cluster.GetOrchestratorConfigCommitmentIntegration;
+    /**
      * Spot and Ondemand Distribution Preferences for workload replicas
      */
     distribution?: inputs.cluster.GetOrchestratorConfigDistribution;
@@ -50,6 +56,10 @@ export interface GetOrchestratorConfigArgs {
      * ID of the Cluster Orchestrator Object
      */
     orchestratorId: string;
+    /**
+     * Replacement schedule for Cluster Orchestrator
+     */
+    replacementSchedule?: inputs.cluster.GetOrchestratorConfigReplacementSchedule;
 }
 
 /**
@@ -60,6 +70,10 @@ export interface GetOrchestratorConfigResult {
      * Binpacking preferences for Cluster Orchestrator
      */
     readonly binpacking?: outputs.cluster.GetOrchestratorConfigBinpacking;
+    /**
+     * Commitment integration configuration for Cluster Orchestrator
+     */
+    readonly commitmentIntegration?: outputs.cluster.GetOrchestratorConfigCommitmentIntegration;
     /**
      * Spot and Ondemand Distribution Preferences for workload replicas
      */
@@ -76,9 +90,13 @@ export interface GetOrchestratorConfigResult {
      * ID of the Cluster Orchestrator Object
      */
     readonly orchestratorId: string;
+    /**
+     * Replacement schedule for Cluster Orchestrator
+     */
+    readonly replacementSchedule?: outputs.cluster.GetOrchestratorConfigReplacementSchedule;
 }
 /**
- * Resource for ClusterOrchestrator Config.
+ * Data Source for retrieving Harness CCM ClusterOrchestrator Config.
  *
  * ## Example Usage
  *
@@ -95,9 +113,11 @@ export function getOrchestratorConfigOutput(args: GetOrchestratorConfigOutputArg
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", {
         "binpacking": args.binpacking,
+        "commitmentIntegration": args.commitmentIntegration,
         "distribution": args.distribution,
         "nodePreferences": args.nodePreferences,
         "orchestratorId": args.orchestratorId,
+        "replacementSchedule": args.replacementSchedule,
     }, opts);
 }
 
@@ -110,6 +130,10 @@ export interface GetOrchestratorConfigOutputArgs {
      */
     binpacking?: pulumi.Input<inputs.cluster.GetOrchestratorConfigBinpackingArgs>;
     /**
+     * Commitment integration configuration for Cluster Orchestrator
+     */
+    commitmentIntegration?: pulumi.Input<inputs.cluster.GetOrchestratorConfigCommitmentIntegrationArgs>;
+    /**
      * Spot and Ondemand Distribution Preferences for workload replicas
      */
     distribution?: pulumi.Input<inputs.cluster.GetOrchestratorConfigDistributionArgs>;
@@ -121,4 +145,8 @@ export interface GetOrchestratorConfigOutputArgs {
      * ID of the Cluster Orchestrator Object
      */
     orchestratorId: pulumi.Input<string>;
+    /**
+     * Replacement schedule for Cluster Orchestrator
+     */
+    replacementSchedule?: pulumi.Input<inputs.cluster.GetOrchestratorConfigReplacementScheduleArgs>;
 }

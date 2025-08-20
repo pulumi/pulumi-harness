@@ -11,65 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving a Harness pipeline list.
-//
-// ## Example Usage
-//
-// ### Without the Pagination
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetPipelineList(ctx, &platform.GetPipelineListArgs{
-//				OrgId:     "org_id",
-//				ProjectId: "project_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### With Pagination Logic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetPipelineList(ctx, &platform.GetPipelineListArgs{
-//				OrgId:     "org_id",
-//				ProjectId: "project_id",
-//				Page:      pulumi.IntRef(1),
-//				Limit:     pulumi.IntRef(4),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// Data source for retieving the Harness pipleine List
 func GetPipelineList(ctx *pulumi.Context, args *GetPipelineListArgs, opts ...pulumi.InvokeOption) (*GetPipelineListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPipelineListResult
@@ -82,36 +24,37 @@ func GetPipelineList(ctx *pulumi.Context, args *GetPipelineListArgs, opts ...pul
 
 // A collection of arguments for invoking getPipelineList.
 type GetPipelineListArgs struct {
+	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// Optional pagination parameter indicating the maximum number of entities to retrieve per page.
-	Limit *int    `pulumi:"limit"`
-	Name  *string `pulumi:"name"`
+	Limit      *int    `pulumi:"limit"`
+	// Name of the resource.
+	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId string `pulumi:"orgId"`
-	// Optional pagination parameter indicating the page number when retrieving entities.
-	Page *int `pulumi:"page"`
+	Page  *int   `pulumi:"page"`
 	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getPipelineList.
 type GetPipelineListResult struct {
+	// Description of the resource.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// Optional pagination parameter indicating the maximum number of entities to retrieve per page.
-	Limit *int    `pulumi:"limit"`
-	Name  *string `pulumi:"name"`
+	Limit      *int    `pulumi:"limit"`
+	// Name of the resource.
+	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
-	OrgId string `pulumi:"orgId"`
-	// Optional pagination parameter indicating the page number when retrieving entities.
-	Page *int `pulumi:"page"`
-	// Containing list of all pipeline with details identifier and name.
+	OrgId     string                    `pulumi:"orgId"`
+	Page      *int                      `pulumi:"page"`
 	Pipelines []GetPipelineListPipeline `pulumi:"pipelines"`
 	// Unique identifier of the project.
-	ProjectId string   `pulumi:"projectId"`
-	Tags      []string `pulumi:"tags"`
+	ProjectId string `pulumi:"projectId"`
+	// Tags to associate with the resource.
+	Tags []string `pulumi:"tags"`
 }
 
 func GetPipelineListOutput(ctx *pulumi.Context, args GetPipelineListOutputArgs, opts ...pulumi.InvokeOption) GetPipelineListResultOutput {
@@ -125,14 +68,14 @@ func GetPipelineListOutput(ctx *pulumi.Context, args GetPipelineListOutputArgs, 
 
 // A collection of arguments for invoking getPipelineList.
 type GetPipelineListOutputArgs struct {
+	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
-	// Optional pagination parameter indicating the maximum number of entities to retrieve per page.
-	Limit pulumi.IntPtrInput    `pulumi:"limit"`
-	Name  pulumi.StringPtrInput `pulumi:"name"`
+	Limit      pulumi.IntPtrInput    `pulumi:"limit"`
+	// Name of the resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId pulumi.StringInput `pulumi:"orgId"`
-	// Optional pagination parameter indicating the page number when retrieving entities.
-	Page pulumi.IntPtrInput `pulumi:"page"`
+	Page  pulumi.IntPtrInput `pulumi:"page"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
@@ -156,6 +99,7 @@ func (o GetPipelineListResultOutput) ToGetPipelineListResultOutputWithContext(ct
 	return o
 }
 
+// Description of the resource.
 func (o GetPipelineListResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineListResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -165,15 +109,16 @@ func (o GetPipelineListResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the resource.
 func (o GetPipelineListResultOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPipelineListResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
 }
 
-// Optional pagination parameter indicating the maximum number of entities to retrieve per page.
 func (o GetPipelineListResultOutput) Limit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPipelineListResult) *int { return v.Limit }).(pulumi.IntPtrOutput)
 }
 
+// Name of the resource.
 func (o GetPipelineListResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPipelineListResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -183,12 +128,10 @@ func (o GetPipelineListResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineListResult) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Optional pagination parameter indicating the page number when retrieving entities.
 func (o GetPipelineListResultOutput) Page() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPipelineListResult) *int { return v.Page }).(pulumi.IntPtrOutput)
 }
 
-// Containing list of all pipeline with details identifier and name.
 func (o GetPipelineListResultOutput) Pipelines() GetPipelineListPipelineArrayOutput {
 	return o.ApplyT(func(v GetPipelineListResult) []GetPipelineListPipeline { return v.Pipelines }).(GetPipelineListPipelineArrayOutput)
 }
@@ -198,6 +141,7 @@ func (o GetPipelineListResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineListResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// Tags to associate with the resource.
 func (o GetPipelineListResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPipelineListResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

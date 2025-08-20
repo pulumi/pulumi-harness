@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class ManualFreezeFreezeWindow
     {
         /// <summary>
-        /// Duration of the freeze
+        /// Duration of the freeze window
         /// </summary>
         public readonly string? Duration;
         /// <summary>
-        /// End time of the freeze
+        /// End Time of the freeze window
         /// </summary>
         public readonly string? EndTime;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ManualFreezeFreezeWindowRecurrence> Recurrences;
         /// <summary>
-        /// Start time of the freeze
+        /// Start Time of the freeze window
         /// </summary>
         public readonly string? StartTime;
         /// <summary>
-        /// Timezone
+        /// Time zone of the freeze window
         /// </summary>
         public readonly string? TimeZone;
 

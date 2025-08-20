@@ -27,8 +27,8 @@ class EnvironmentServiceOverridesArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvironmentServiceOverrides resource.
-        :param pulumi.Input[_builtins.str] env_id: The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
-        :param pulumi.Input[_builtins.str] service_id: The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        :param pulumi.Input[_builtins.str] env_id: The env ID to which the overrides associated.
+        :param pulumi.Input[_builtins.str] service_id: The service ID to which the overrides applies.
         :param pulumi.Input[_builtins.str] yaml: Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[_builtins.str] identifier: identifier of the service overrides.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -48,7 +48,7 @@ class EnvironmentServiceOverridesArgs:
     @pulumi.getter(name="envId")
     def env_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        The env ID to which the overrides associated.
         """
         return pulumi.get(self, "env_id")
 
@@ -60,7 +60,7 @@ class EnvironmentServiceOverridesArgs:
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        The service ID to which the overrides applies.
         """
         return pulumi.get(self, "service_id")
 
@@ -128,11 +128,11 @@ class _EnvironmentServiceOverridesState:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentServiceOverrides resources.
-        :param pulumi.Input[_builtins.str] env_id: The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        :param pulumi.Input[_builtins.str] env_id: The env ID to which the overrides associated.
         :param pulumi.Input[_builtins.str] identifier: identifier of the service overrides.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] service_id: The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        :param pulumi.Input[_builtins.str] service_id: The service ID to which the overrides applies.
         :param pulumi.Input[_builtins.str] yaml: Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         if env_id is not None:
@@ -152,7 +152,7 @@ class _EnvironmentServiceOverridesState:
     @pulumi.getter(name="envId")
     def env_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        The env ID to which the overrides associated.
         """
         return pulumi.get(self, "env_id")
 
@@ -200,7 +200,7 @@ class _EnvironmentServiceOverridesState:
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        The service ID to which the overrides applies.
         """
         return pulumi.get(self, "service_id")
 
@@ -236,94 +236,9 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for creating a Harness environment service overrides.
-        ## Example to create Environment Service Override at different levels (Org, Project, Account)
 
-        ### Account Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
+        ## Example Usage
 
-        example = harness.platform.EnvironmentServiceOverrides("example",
-            env_id="environmentIdentifier",
-            service_id="serviceIdentifier",
-            yaml=\"\"\"serviceOverrides:
-          environmentRef: environmentIdentifier
-          serviceRef: serviceIdentifier
-          variables:
-           - name: asda
-             type: String
-             value: asddad
-          manifests:
-             - manifest:
-                 identifier: manifestEnv
-                 type: Values
-                 spec:
-                   store:
-                     type: Git
-                     spec:
-                       connectorRef: <+input>
-                       gitFetchType: Branch
-                       paths:
-                         - file1
-                       repoName: <+input>
-                       branch: master
-          configFiles:
-             - configFile:
-                 identifier: configFileEnv
-                 spec:
-                   store:
-                     type: Harness
-                     spec:
-                       files:
-                         - account:/Add-ons/svcOverrideTest
-                       secretFiles: []
-        \"\"\")
-        ```
-
-        ### Org Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.EnvironmentServiceOverrides("example",
-            org_id="orgIdentifier",
-            env_id="environmentIdentifier",
-            service_id="serviceIdentifier",
-            yaml=\"\"\"serviceOverrides:
-          environmentRef: environmentIdentifier
-          serviceRef: serviceIdentifier
-          variables:
-           - name: asda
-             type: String
-             value: asddad
-          manifests:
-             - manifest:
-                 identifier: manifestEnv
-                 type: Values
-                 spec:
-                   store:
-                     type: Git
-                     spec:
-                       connectorRef: <+input>
-                       gitFetchType: Branch
-                       paths:
-                         - file1
-                       repoName: <+input>
-                       branch: master
-          configFiles:
-             - configFile:
-                 identifier: configFileEnv
-                 spec:
-                   store:
-                     type: Harness
-                     spec:
-                       files:
-                         - account:/Add-ons/svcOverrideTest
-                       secretFiles: []
-        \"\"\")
-        ```
-
-        ### Project Level
         ```python
         import pulumi
         import pulumi_harness as harness
@@ -368,6 +283,8 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import list of account level service overrides using the env id associated with them
 
@@ -389,11 +306,11 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] env_id: The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        :param pulumi.Input[_builtins.str] env_id: The env ID to which the overrides associated.
         :param pulumi.Input[_builtins.str] identifier: identifier of the service overrides.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] service_id: The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        :param pulumi.Input[_builtins.str] service_id: The service ID to which the overrides applies.
         :param pulumi.Input[_builtins.str] yaml: Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         ...
@@ -404,94 +321,9 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness environment service overrides.
-        ## Example to create Environment Service Override at different levels (Org, Project, Account)
 
-        ### Account Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
+        ## Example Usage
 
-        example = harness.platform.EnvironmentServiceOverrides("example",
-            env_id="environmentIdentifier",
-            service_id="serviceIdentifier",
-            yaml=\"\"\"serviceOverrides:
-          environmentRef: environmentIdentifier
-          serviceRef: serviceIdentifier
-          variables:
-           - name: asda
-             type: String
-             value: asddad
-          manifests:
-             - manifest:
-                 identifier: manifestEnv
-                 type: Values
-                 spec:
-                   store:
-                     type: Git
-                     spec:
-                       connectorRef: <+input>
-                       gitFetchType: Branch
-                       paths:
-                         - file1
-                       repoName: <+input>
-                       branch: master
-          configFiles:
-             - configFile:
-                 identifier: configFileEnv
-                 spec:
-                   store:
-                     type: Harness
-                     spec:
-                       files:
-                         - account:/Add-ons/svcOverrideTest
-                       secretFiles: []
-        \"\"\")
-        ```
-
-        ### Org Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.EnvironmentServiceOverrides("example",
-            org_id="orgIdentifier",
-            env_id="environmentIdentifier",
-            service_id="serviceIdentifier",
-            yaml=\"\"\"serviceOverrides:
-          environmentRef: environmentIdentifier
-          serviceRef: serviceIdentifier
-          variables:
-           - name: asda
-             type: String
-             value: asddad
-          manifests:
-             - manifest:
-                 identifier: manifestEnv
-                 type: Values
-                 spec:
-                   store:
-                     type: Git
-                     spec:
-                       connectorRef: <+input>
-                       gitFetchType: Branch
-                       paths:
-                         - file1
-                       repoName: <+input>
-                       branch: master
-          configFiles:
-             - configFile:
-                 identifier: configFileEnv
-                 spec:
-                   store:
-                     type: Harness
-                     spec:
-                       files:
-                         - account:/Add-ons/svcOverrideTest
-                       secretFiles: []
-        \"\"\")
-        ```
-
-        ### Project Level
         ```python
         import pulumi
         import pulumi_harness as harness
@@ -536,6 +368,8 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import list of account level service overrides using the env id associated with them
 
@@ -620,11 +454,11 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] env_id: The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        :param pulumi.Input[_builtins.str] env_id: The env ID to which the overrides associated.
         :param pulumi.Input[_builtins.str] identifier: identifier of the service overrides.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] service_id: The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        :param pulumi.Input[_builtins.str] service_id: The service ID to which the overrides applies.
         :param pulumi.Input[_builtins.str] yaml: Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -643,7 +477,7 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
     @pulumi.getter(name="envId")
     def env_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        The env ID to which the overrides associated.
         """
         return pulumi.get(self, "env_id")
 
@@ -675,7 +509,7 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        The service ID to which the overrides applies.
         """
         return pulumi.get(self, "service_id")
 

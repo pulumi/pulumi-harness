@@ -12,6 +12,29 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating a Harness Override V2.
+//
+// ## Import
+//
+// The `pulumi import` command can be used, for example:
+//
+// # Import account level override
+//
+// ```sh
+// $ pulumi import harness:platform/overrides:Overrides example <override_id>
+// ```
+//
+// # Import org level override
+//
+// ```sh
+// $ pulumi import harness:platform/overrides:Overrides example <org_id>/<override_id>
+// ```
+//
+// # Import project level override
+//
+// ```sh
+// $ pulumi import harness:platform/overrides:Overrides example <org_id>/<project_id>/<override_id>
+// ```
 type Overrides struct {
 	pulumi.CustomResourceState
 

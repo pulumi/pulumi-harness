@@ -600,10 +600,18 @@ class Pipeline(pulumi.CustomResource):
 
         ## Import
 
-        Import pipeline
+        The `pulumi import` command can be used, for example:
+
+        Import pipeline from default branch
 
         ```sh
         $ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>
+        ```
+
+        Import pipeline from non default branch
+
+        ```sh
+        $ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>/<branch>
         ```
 
         :param str resource_name: The name of the resource.
@@ -761,10 +769,18 @@ class Pipeline(pulumi.CustomResource):
 
         ## Import
 
-        Import pipeline
+        The `pulumi import` command can be used, for example:
+
+        Import pipeline from default branch
 
         ```sh
         $ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>
+        ```
+
+        Import pipeline from non default branch
+
+        ```sh
+        $ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>/<branch>
         ```
 
         :param str resource_name: The name of the resource.

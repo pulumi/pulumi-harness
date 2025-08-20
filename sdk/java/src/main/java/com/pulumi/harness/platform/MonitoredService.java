@@ -69,9 +69,9 @@ import javax.annotation.Nullable;
  *                             jsonProperty("connectorRef", "connectorRef"),
  *                             jsonProperty("queryDefinitions", jsonArray(
  *                                 jsonObject(
- *                                     jsonProperty("name", "error_4xx"),
- *                                     jsonProperty("identifier", "error_4xx_id"),
- *                                     jsonProperty("query", "Bad Request"),
+ *                                     jsonProperty("name", "name"),
+ *                                     jsonProperty("identifier", "infraquery"),
+ *                                     jsonProperty("query", "query"),
  *                                     jsonProperty("index", "index"),
  *                                     jsonProperty("groupName", "Logs_Group"),
  *                                     jsonProperty("queryParams", jsonObject(
@@ -83,9 +83,9 @@ import javax.annotation.Nullable;
  *                                     ))
  *                                 ), 
  *                                 jsonObject(
- *                                     jsonProperty("name", "error_5xx"),
- *                                     jsonProperty("identifier", "error_5xx_id"),
- *                                     jsonProperty("query", "Internal Server Error"),
+ *                                     jsonProperty("name", "name2"),
+ *                                     jsonProperty("identifier", "errorquery"),
+ *                                     jsonProperty("query", "query2"),
  *                                     jsonProperty("index", "index2"),
  *                                     jsonProperty("groupName", "Logs_Group"),
  *                                     jsonProperty("queryParams", jsonObject(
@@ -892,6 +892,8 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level monitored_service
  * 

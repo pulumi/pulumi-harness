@@ -57,11 +57,17 @@ class GetEnvironmentListResult:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the organization.
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the project.
+        """
         return pulumi.get(self, "project_id")
 
 
@@ -81,37 +87,11 @@ def get_environment_list(org_id: Optional[_builtins.str] = None,
                          project_id: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnvironmentListResult:
     """
-    Data source for retrieving Harness environment list.
+    Data source for retrieving a Harness environment List.
 
-    ## Example Usage
 
-    ### Project Level Environment List
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_environment_list(org_id="org_id",
-        project_id="project_id")
-    ```
-
-    ### Organisation Level Environment List
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_environment_list(org_id="org_id")
-    ```
-
-    ### Account Level Environment List
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_environment_list()
-    ```
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['orgId'] = org_id
@@ -128,37 +108,11 @@ def get_environment_list_output(org_id: Optional[pulumi.Input[Optional[_builtins
                                 project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentListResult]:
     """
-    Data source for retrieving Harness environment list.
+    Data source for retrieving a Harness environment List.
 
-    ## Example Usage
 
-    ### Project Level Environment List
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_environment_list(org_id="org_id",
-        project_id="project_id")
-    ```
-
-    ### Organisation Level Environment List
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_environment_list(org_id="org_id")
-    ```
-
-    ### Account Level Environment List
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_environment_list()
-    ```
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['orgId'] = org_id

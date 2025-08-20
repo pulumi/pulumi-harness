@@ -7,41 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving Harness environment list.
- *
- * ## Example Usage
- *
- * ### Project Level Environment List
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getEnvironmentList({
- *     orgId: "org_id",
- *     projectId: "project_id",
- * });
- * ```
- *
- * ### Organisation Level Environment List
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getEnvironmentList({
- *     orgId: "org_id",
- * });
- * ```
- *
- * ### Account Level Environment List
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getEnvironmentList({});
- * ```
+ * Data source for retrieving a Harness environment List.
  */
 export function getEnvironmentList(args?: GetEnvironmentListArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentListResult> {
     args = args || {};
@@ -56,7 +22,13 @@ export function getEnvironmentList(args?: GetEnvironmentListArgs, opts?: pulumi.
  * A collection of arguments for invoking getEnvironmentList.
  */
 export interface GetEnvironmentListArgs {
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: string;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: string;
 }
 
@@ -69,45 +41,17 @@ export interface GetEnvironmentListResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Unique identifier of the organization.
+     */
     readonly orgId?: string;
+    /**
+     * Unique identifier of the project.
+     */
     readonly projectId?: string;
 }
 /**
- * Data source for retrieving Harness environment list.
- *
- * ## Example Usage
- *
- * ### Project Level Environment List
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getEnvironmentList({
- *     orgId: "org_id",
- *     projectId: "project_id",
- * });
- * ```
- *
- * ### Organisation Level Environment List
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getEnvironmentList({
- *     orgId: "org_id",
- * });
- * ```
- *
- * ### Account Level Environment List
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getEnvironmentList({});
- * ```
+ * Data source for retrieving a Harness environment List.
  */
 export function getEnvironmentListOutput(args?: GetEnvironmentListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentListResult> {
     args = args || {};
@@ -122,6 +66,12 @@ export function getEnvironmentListOutput(args?: GetEnvironmentListOutputArgs, op
  * A collection of arguments for invoking getEnvironmentList.
  */
 export interface GetEnvironmentListOutputArgs {
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: pulumi.Input<string>;
 }

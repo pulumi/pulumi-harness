@@ -44,6 +44,10 @@ public final class GetDbInstanceResult {
      * 
      */
     private String identifier;
+    /**
+     * @return The properties to substitute in liquibase changelog
+     * 
+     */
     private @Nullable Map<String,String> liquibaseSubstituteProperties;
     /**
      * @return Name of the resource.
@@ -114,6 +118,10 @@ public final class GetDbInstanceResult {
     public String identifier() {
         return this.identifier;
     }
+    /**
+     * @return The properties to substitute in liquibase changelog
+     * 
+     */
     public Map<String,String> liquibaseSubstituteProperties() {
         return this.liquibaseSubstituteProperties == null ? Map.of() : this.liquibaseSubstituteProperties;
     }

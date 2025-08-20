@@ -18,14 +18,14 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     public static final HarRegistryState Empty = new HarRegistryState();
 
     /**
-     * Allowed pattern for the registry
+     * Allowed artifact patterns
      * 
      */
     @Import(name="allowedPatterns")
     private @Nullable Output<List<String>> allowedPatterns;
 
     /**
-     * @return Allowed pattern for the registry
+     * @return Allowed artifact patterns
      * 
      */
     public Optional<Output<List<String>>> allowedPatterns() {
@@ -33,14 +33,14 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Blocked pattern for the registry
+     * Blocked artifact patterns
      * 
      */
     @Import(name="blockedPatterns")
     private @Nullable Output<List<String>> blockedPatterns;
 
     /**
-     * @return Blocked pattern for the registry
+     * @return Blocked artifact patterns
      * 
      */
     public Optional<Output<List<String>>> blockedPatterns() {
@@ -63,14 +63,14 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timestamp when the registry was created
+     * Creation timestamp
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Timestamp when the registry was created
+     * @return Creation timestamp
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -108,14 +108,14 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of package (DOCKER, HELM, etc.)
+     * Type of package (DOCKER, HELM, MAVEN, etc.)
      * 
      */
     @Import(name="packageType")
     private @Nullable Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, HELM, etc.)
+     * @return Type of package (DOCKER, HELM, MAVEN, etc.)
      * 
      */
     public Optional<Output<String>> packageType() {
@@ -201,7 +201,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedPatterns Allowed pattern for the registry
+         * @param allowedPatterns Allowed artifact patterns
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedPatterns Allowed pattern for the registry
+         * @param allowedPatterns Allowed artifact patterns
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedPatterns Allowed pattern for the registry
+         * @param allowedPatterns Allowed artifact patterns
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedPatterns Blocked pattern for the registry
+         * @param blockedPatterns Blocked artifact patterns
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedPatterns Blocked pattern for the registry
+         * @param blockedPatterns Blocked artifact patterns
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedPatterns Blocked pattern for the registry
+         * @param blockedPatterns Blocked artifact patterns
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt Timestamp when the registry was created
+         * @param createdAt Creation timestamp
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt Timestamp when the registry was created
+         * @param createdAt Creation timestamp
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageType Type of package (DOCKER, HELM, etc.)
+         * @param packageType Type of package (DOCKER, HELM, MAVEN, etc.)
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageType Type of package (DOCKER, HELM, etc.)
+         * @param packageType Type of package (DOCKER, HELM, MAVEN, etc.)
          * 
          * @return builder
          * 

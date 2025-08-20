@@ -140,6 +140,8 @@ def get_filters(identifier: Optional[_builtins.str] = None,
                 type: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFiltersResult:
     """
+    Data source for retrieving a Harness Filter. This data source allows you to fetch filters of the following types: {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
+
     ## Example Usage
 
     ```python
@@ -181,6 +183,8 @@ def get_filters_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
                        type: Optional[pulumi.Input[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFiltersResult]:
     """
+    Data source for retrieving a Harness Filter. This data source allows you to fetch filters of the following types: {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
+
     ## Example Usage
 
     ```python

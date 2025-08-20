@@ -6,7 +6,6 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.inputs.GetHarRegistryConfigAuthUserPasswordArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +15,27 @@ import javax.annotation.Nullable;
 public final class GetHarRegistryConfigAuthArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetHarRegistryConfigAuthArgs Empty = new GetHarRegistryConfigAuthArgs();
+
+    @Import(name="accessKey")
+    private @Nullable Output<String> accessKey;
+
+    public Optional<Output<String>> accessKey() {
+        return Optional.ofNullable(this.accessKey);
+    }
+
+    @Import(name="accessKeyIdentifier")
+    private @Nullable Output<String> accessKeyIdentifier;
+
+    public Optional<Output<String>> accessKeyIdentifier() {
+        return Optional.ofNullable(this.accessKeyIdentifier);
+    }
+
+    @Import(name="accessKeySecretPath")
+    private @Nullable Output<String> accessKeySecretPath;
+
+    public Optional<Output<String>> accessKeySecretPath() {
+        return Optional.ofNullable(this.accessKeySecretPath);
+    }
 
     /**
      * Type of authentication (UserPassword, Anonymous)
@@ -33,25 +53,76 @@ public final class GetHarRegistryConfigAuthArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * User password authentication details
+     * Secret identifier for UserPassword auth type
      * 
      */
-    @Import(name="userPassword")
-    private @Nullable Output<GetHarRegistryConfigAuthUserPasswordArgs> userPassword;
+    @Import(name="secretIdentifier")
+    private @Nullable Output<String> secretIdentifier;
 
     /**
-     * @return User password authentication details
+     * @return Secret identifier for UserPassword auth type
      * 
      */
-    public Optional<Output<GetHarRegistryConfigAuthUserPasswordArgs>> userPassword() {
-        return Optional.ofNullable(this.userPassword);
+    public Optional<Output<String>> secretIdentifier() {
+        return Optional.ofNullable(this.secretIdentifier);
+    }
+
+    @Import(name="secretKeyIdentifier")
+    private @Nullable Output<String> secretKeyIdentifier;
+
+    public Optional<Output<String>> secretKeyIdentifier() {
+        return Optional.ofNullable(this.secretKeyIdentifier);
+    }
+
+    @Import(name="secretKeySecretPath")
+    private @Nullable Output<String> secretKeySecretPath;
+
+    public Optional<Output<String>> secretKeySecretPath() {
+        return Optional.ofNullable(this.secretKeySecretPath);
+    }
+
+    /**
+     * Secret space path for UserPassword auth type
+     * 
+     */
+    @Import(name="secretSpacePath")
+    private @Nullable Output<String> secretSpacePath;
+
+    /**
+     * @return Secret space path for UserPassword auth type
+     * 
+     */
+    public Optional<Output<String>> secretSpacePath() {
+        return Optional.ofNullable(this.secretSpacePath);
+    }
+
+    /**
+     * User name for UserPassword auth type
+     * 
+     */
+    @Import(name="userName")
+    private @Nullable Output<String> userName;
+
+    /**
+     * @return User name for UserPassword auth type
+     * 
+     */
+    public Optional<Output<String>> userName() {
+        return Optional.ofNullable(this.userName);
     }
 
     private GetHarRegistryConfigAuthArgs() {}
 
     private GetHarRegistryConfigAuthArgs(GetHarRegistryConfigAuthArgs $) {
+        this.accessKey = $.accessKey;
+        this.accessKeyIdentifier = $.accessKeyIdentifier;
+        this.accessKeySecretPath = $.accessKeySecretPath;
         this.authType = $.authType;
-        this.userPassword = $.userPassword;
+        this.secretIdentifier = $.secretIdentifier;
+        this.secretKeyIdentifier = $.secretKeyIdentifier;
+        this.secretKeySecretPath = $.secretKeySecretPath;
+        this.secretSpacePath = $.secretSpacePath;
+        this.userName = $.userName;
     }
 
     public static Builder builder() {
@@ -70,6 +141,33 @@ public final class GetHarRegistryConfigAuthArgs extends com.pulumi.resources.Res
 
         public Builder(GetHarRegistryConfigAuthArgs defaults) {
             $ = new GetHarRegistryConfigAuthArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder accessKey(@Nullable Output<String> accessKey) {
+            $.accessKey = accessKey;
+            return this;
+        }
+
+        public Builder accessKey(String accessKey) {
+            return accessKey(Output.of(accessKey));
+        }
+
+        public Builder accessKeyIdentifier(@Nullable Output<String> accessKeyIdentifier) {
+            $.accessKeyIdentifier = accessKeyIdentifier;
+            return this;
+        }
+
+        public Builder accessKeyIdentifier(String accessKeyIdentifier) {
+            return accessKeyIdentifier(Output.of(accessKeyIdentifier));
+        }
+
+        public Builder accessKeySecretPath(@Nullable Output<String> accessKeySecretPath) {
+            $.accessKeySecretPath = accessKeySecretPath;
+            return this;
+        }
+
+        public Builder accessKeySecretPath(String accessKeySecretPath) {
+            return accessKeySecretPath(Output.of(accessKeySecretPath));
         }
 
         /**
@@ -94,24 +192,84 @@ public final class GetHarRegistryConfigAuthArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param userPassword User password authentication details
+         * @param secretIdentifier Secret identifier for UserPassword auth type
          * 
          * @return builder
          * 
          */
-        public Builder userPassword(@Nullable Output<GetHarRegistryConfigAuthUserPasswordArgs> userPassword) {
-            $.userPassword = userPassword;
+        public Builder secretIdentifier(@Nullable Output<String> secretIdentifier) {
+            $.secretIdentifier = secretIdentifier;
             return this;
         }
 
         /**
-         * @param userPassword User password authentication details
+         * @param secretIdentifier Secret identifier for UserPassword auth type
          * 
          * @return builder
          * 
          */
-        public Builder userPassword(GetHarRegistryConfigAuthUserPasswordArgs userPassword) {
-            return userPassword(Output.of(userPassword));
+        public Builder secretIdentifier(String secretIdentifier) {
+            return secretIdentifier(Output.of(secretIdentifier));
+        }
+
+        public Builder secretKeyIdentifier(@Nullable Output<String> secretKeyIdentifier) {
+            $.secretKeyIdentifier = secretKeyIdentifier;
+            return this;
+        }
+
+        public Builder secretKeyIdentifier(String secretKeyIdentifier) {
+            return secretKeyIdentifier(Output.of(secretKeyIdentifier));
+        }
+
+        public Builder secretKeySecretPath(@Nullable Output<String> secretKeySecretPath) {
+            $.secretKeySecretPath = secretKeySecretPath;
+            return this;
+        }
+
+        public Builder secretKeySecretPath(String secretKeySecretPath) {
+            return secretKeySecretPath(Output.of(secretKeySecretPath));
+        }
+
+        /**
+         * @param secretSpacePath Secret space path for UserPassword auth type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretSpacePath(@Nullable Output<String> secretSpacePath) {
+            $.secretSpacePath = secretSpacePath;
+            return this;
+        }
+
+        /**
+         * @param secretSpacePath Secret space path for UserPassword auth type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretSpacePath(String secretSpacePath) {
+            return secretSpacePath(Output.of(secretSpacePath));
+        }
+
+        /**
+         * @param userName User name for UserPassword auth type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userName(@Nullable Output<String> userName) {
+            $.userName = userName;
+            return this;
+        }
+
+        /**
+         * @param userName User name for UserPassword auth type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userName(String userName) {
+            return userName(Output.of(userName));
         }
 
         public GetHarRegistryConfigAuthArgs build() {

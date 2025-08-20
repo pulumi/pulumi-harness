@@ -150,6 +150,8 @@ def get_user(email: Optional[_builtins.str] = None,
              project_id: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
+    Data source for retrieving the user based on the API key.
+
     ## Example Usage
 
     ```python
@@ -188,6 +190,8 @@ def get_user_output(email: Optional[pulumi.Input[_builtins.str]] = None,
                     project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
+    Data source for retrieving the user based on the API key.
+
     ## Example Usage
 
     ```python

@@ -18,95 +18,8 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness environment group.
  * 
- * ## Example to create Environment Group at different levels (Org, Project, Account)
+ * ## Example Usage
  * 
- * ### Account Level
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.EnvironmentGroup;
- * import com.pulumi.harness.platform.EnvironmentGroupArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new EnvironmentGroup("example", EnvironmentGroupArgs.builder()
- *             .identifier("identifier")
- *             .color("#0063F7")
- *             .yaml("""
- * environmentGroup:
- *   name: "name"
- *   identifier: "identifier"
- *   description: "temp"
- *   envIdentifiers: []
- *             """)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Org Level
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.EnvironmentGroup;
- * import com.pulumi.harness.platform.EnvironmentGroupArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new EnvironmentGroup("example", EnvironmentGroupArgs.builder()
- *             .identifier("identifier")
- *             .orgId("orgIdentifer")
- *             .color("#0063F7")
- *             .yaml("""
- * environmentGroup:
- *   name: "name"
- *   identifier: "identifier"
- *   description: "temp"
- *   orgIdentifier: "orgIdentifer"
- *   envIdentifiers: []
- *             """)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Project Level
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -153,6 +66,8 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level environment group.
  * 
@@ -246,20 +161,14 @@ public class EnvironmentGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression:
-     * org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}.
-     * For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as
-     * connectorRef: org.connectorId.
+     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     @Export(name="yaml", refs={String.class}, tree="[0]")
     private Output<String> yaml;
 
     /**
-     * @return Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression:
-     * org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}.
-     * For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as
-     * connectorRef: org.connectorId.
+     * @return Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Output<String> yaml() {

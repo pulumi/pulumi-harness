@@ -25,6 +25,7 @@ class GitOpsClusterArgs:
                  identifier: pulumi.Input[_builtins.str],
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
+                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  requests: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]] = None):
@@ -34,6 +35,7 @@ class GitOpsClusterArgs:
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps cluster.
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
+        :param pulumi.Input[_builtins.bool] force_update: Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps cluster.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]] requests: Cluster create or update request.
@@ -47,6 +49,8 @@ class GitOpsClusterArgs:
             pulumi.set(__self__, "account_id", account_id)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if force_update is not None:
+            pulumi.set(__self__, "force_update", force_update)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
@@ -104,6 +108,18 @@ class GitOpsClusterArgs:
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
+    @pulumi.getter(name="forceUpdate")
+    def force_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+        """
+        return pulumi.get(self, "force_update")
+
+    @force_update.setter
+    def force_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "force_update", value)
+
+    @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -146,6 +162,7 @@ class _GitOpsClusterState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  agent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
+                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -155,6 +172,7 @@ class _GitOpsClusterState:
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps cluster.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
+        :param pulumi.Input[_builtins.bool] force_update: Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps cluster.
@@ -169,6 +187,8 @@ class _GitOpsClusterState:
             pulumi.set(__self__, "agent_id", agent_id)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if force_update is not None:
+            pulumi.set(__self__, "force_update", force_update)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if org_id is not None:
@@ -214,6 +234,18 @@ class _GitOpsClusterState:
     @force_delete.setter
     def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forceUpdate")
+    def force_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+        """
+        return pulumi.get(self, "force_update")
+
+    @force_update.setter
+    def force_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "force_update", value)
 
     @_builtins.property
     @pulumi.getter
@@ -273,6 +305,7 @@ class GitOpsCluster(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  agent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
+                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -282,6 +315,8 @@ class GitOpsCluster(pulumi.CustomResource):
         Resource for managing a Harness Gitops Cluster.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import an Account level Gitops Cluster
 
@@ -306,6 +341,7 @@ class GitOpsCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps cluster.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
+        :param pulumi.Input[_builtins.bool] force_update: Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps cluster.
@@ -321,6 +357,8 @@ class GitOpsCluster(pulumi.CustomResource):
         Resource for managing a Harness Gitops Cluster.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import an Account level Gitops Cluster
 
@@ -358,6 +396,7 @@ class GitOpsCluster(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  agent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
+                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -376,6 +415,7 @@ class GitOpsCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'agent_id'")
             __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["force_delete"] = force_delete
+            __props__.__dict__["force_update"] = force_update
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -395,6 +435,7 @@ class GitOpsCluster(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             agent_id: Optional[pulumi.Input[_builtins.str]] = None,
             force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
+            force_update: Optional[pulumi.Input[_builtins.bool]] = None,
             identifier: Optional[pulumi.Input[_builtins.str]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -409,6 +450,7 @@ class GitOpsCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps cluster.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
+        :param pulumi.Input[_builtins.bool] force_update: Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps cluster.
@@ -421,6 +463,7 @@ class GitOpsCluster(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["agent_id"] = agent_id
         __props__.__dict__["force_delete"] = force_delete
+        __props__.__dict__["force_update"] = force_update
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
@@ -451,6 +494,14 @@ class GitOpsCluster(pulumi.CustomResource):
         Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         """
         return pulumi.get(self, "force_delete")
+
+    @_builtins.property
+    @pulumi.getter(name="forceUpdate")
+    def force_update(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+        """
+        return pulumi.get(self, "force_update")
 
     @_builtins.property
     @pulumi.getter

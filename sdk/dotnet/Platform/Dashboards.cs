@@ -22,14 +22,12 @@ namespace Pulumi.Harness.Platform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Harness.Platform.Dashboards("example", new()
+    ///     var dashboard = new Harness.Platform.Dashboards("dashboard", new()
     ///     {
-    ///         DashboardId = "48507",
-    ///         Description = "Example dashboard description",
-    ///         ResourceIdentifier = "shared",
-    ///         Title = "Example Dashboard",
-    ///         DataSources = new[] {},
-    ///         Models = new[] {},
+    ///         DashboardId = "111",
+    ///         Description = "dashboard_tag",
+    ///         ResourceIdentifier = "999",
+    ///         Title = "Dashboard Title",
     ///     });
     /// 
     /// });

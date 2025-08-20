@@ -13,6 +13,162 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GitopsApplicationsetApplicationsetSpecSyncPolicy struct {
+	// Represents the policy applied on the generated applications. Possible values are create-only, create-update, create-delete, and sync.
+	ApplicationsSync *string `pulumi:"applicationsSync"`
+	// Label selector used to narrow the scope of targeted clusters.
+	PreserveResourcesOnDeletion *bool `pulumi:"preserveResourcesOnDeletion"`
+}
+
+// GitopsApplicationsetApplicationsetSpecSyncPolicyInput is an input type that accepts GitopsApplicationsetApplicationsetSpecSyncPolicyArgs and GitopsApplicationsetApplicationsetSpecSyncPolicyOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecSyncPolicyInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecSyncPolicyArgs{...}
+type GitopsApplicationsetApplicationsetSpecSyncPolicyInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecSyncPolicyOutput() GitopsApplicationsetApplicationsetSpecSyncPolicyOutput
+	ToGitopsApplicationsetApplicationsetSpecSyncPolicyOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecSyncPolicyOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecSyncPolicyArgs struct {
+	// Represents the policy applied on the generated applications. Possible values are create-only, create-update, create-delete, and sync.
+	ApplicationsSync pulumi.StringPtrInput `pulumi:"applicationsSync"`
+	// Label selector used to narrow the scope of targeted clusters.
+	PreserveResourcesOnDeletion pulumi.BoolPtrInput `pulumi:"preserveResourcesOnDeletion"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecSyncPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecSyncPolicy)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecSyncPolicyOutput() GitopsApplicationsetApplicationsetSpecSyncPolicyOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecSyncPolicyOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecSyncPolicyOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecSyncPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecSyncPolicyOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecSyncPolicyOutput).ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecSyncPolicyPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecSyncPolicyArgs, GitopsApplicationsetApplicationsetSpecSyncPolicyPtr and GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecSyncPolicyPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecSyncPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecSyncPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecSyncPolicyPtrType GitopsApplicationsetApplicationsetSpecSyncPolicyArgs
+
+func GitopsApplicationsetApplicationsetSpecSyncPolicyPtr(v *GitopsApplicationsetApplicationsetSpecSyncPolicyArgs) GitopsApplicationsetApplicationsetSpecSyncPolicyPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecSyncPolicyPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecSyncPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecSyncPolicy)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecSyncPolicyPtrType) ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecSyncPolicyPtrType) ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecSyncPolicyOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecSyncPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecSyncPolicy)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecSyncPolicyOutput() GitopsApplicationsetApplicationsetSpecSyncPolicyOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecSyncPolicyOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecSyncPolicyOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecSyncPolicy {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput)
+}
+
+// Represents the policy applied on the generated applications. Possible values are create-only, create-update, create-delete, and sync.
+func (o GitopsApplicationsetApplicationsetSpecSyncPolicyOutput) ApplicationsSync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecSyncPolicy) *string { return v.ApplicationsSync }).(pulumi.StringPtrOutput)
+}
+
+// Label selector used to narrow the scope of targeted clusters.
+func (o GitopsApplicationsetApplicationsetSpecSyncPolicyOutput) PreserveResourcesOnDeletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecSyncPolicy) *bool { return v.PreserveResourcesOnDeletion }).(pulumi.BoolPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecSyncPolicy)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput) ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput) ToGitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecSyncPolicyOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecSyncPolicy) GitopsApplicationsetApplicationsetSpecSyncPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecSyncPolicy
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecSyncPolicyOutput)
+}
+
+// Represents the policy applied on the generated applications. Possible values are create-only, create-update, create-delete, and sync.
+func (o GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput) ApplicationsSync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecSyncPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationsSync
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label selector used to narrow the scope of targeted clusters.
+func (o GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput) PreserveResourcesOnDeletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecSyncPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreserveResourcesOnDeletion
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GitopsApplicationsetApplicationsetSpecTemplate struct {
 	// Kubernetes object metadata for templated Application.
 	Metadata GitopsApplicationsetApplicationsetSpecTemplateMetadata `pulumi:"metadata"`
@@ -3775,7 +3931,7 @@ type HarRegistryConfig struct {
 	AuthType *string `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths []HarRegistryConfigAuth `pulumi:"auths"`
-	// Source of the upstream (only for UPSTREAM type)
+	// Upstream source
 	Source *string `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
 	Type string `pulumi:"type"`
@@ -3801,7 +3957,7 @@ type HarRegistryConfigArgs struct {
 	AuthType pulumi.StringPtrInput `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths HarRegistryConfigAuthArrayInput `pulumi:"auths"`
-	// Source of the upstream (only for UPSTREAM type)
+	// Upstream source
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
 	Type pulumi.StringInput `pulumi:"type"`
@@ -3872,7 +4028,7 @@ func (o HarRegistryConfigOutput) Auths() HarRegistryConfigAuthArrayOutput {
 	return o.ApplyT(func(v HarRegistryConfig) []HarRegistryConfigAuth { return v.Auths }).(HarRegistryConfigAuthArrayOutput)
 }
 
-// Source of the upstream (only for UPSTREAM type)
+// Upstream source
 func (o HarRegistryConfigOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HarRegistryConfig) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -3913,10 +4069,15 @@ func (o HarRegistryConfigArrayOutput) Index(i pulumi.IntInput) HarRegistryConfig
 }
 
 type HarRegistryConfigAuth struct {
+	AccessKey           *string `pulumi:"accessKey"`
+	AccessKeyIdentifier *string `pulumi:"accessKeyIdentifier"`
+	AccessKeySecretPath *string `pulumi:"accessKeySecretPath"`
 	// Type of authentication (UserPassword, Anonymous)
 	AuthType string `pulumi:"authType"`
 	// Secret identifier for UserPassword auth type
-	SecretIdentifier *string `pulumi:"secretIdentifier"`
+	SecretIdentifier    *string `pulumi:"secretIdentifier"`
+	SecretKeyIdentifier *string `pulumi:"secretKeyIdentifier"`
+	SecretKeySecretPath *string `pulumi:"secretKeySecretPath"`
 	// Secret space path for UserPassword auth type
 	SecretSpacePath *string `pulumi:"secretSpacePath"`
 	// User name for UserPassword auth type
@@ -3935,10 +4096,15 @@ type HarRegistryConfigAuthInput interface {
 }
 
 type HarRegistryConfigAuthArgs struct {
+	AccessKey           pulumi.StringPtrInput `pulumi:"accessKey"`
+	AccessKeyIdentifier pulumi.StringPtrInput `pulumi:"accessKeyIdentifier"`
+	AccessKeySecretPath pulumi.StringPtrInput `pulumi:"accessKeySecretPath"`
 	// Type of authentication (UserPassword, Anonymous)
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Secret identifier for UserPassword auth type
-	SecretIdentifier pulumi.StringPtrInput `pulumi:"secretIdentifier"`
+	SecretIdentifier    pulumi.StringPtrInput `pulumi:"secretIdentifier"`
+	SecretKeyIdentifier pulumi.StringPtrInput `pulumi:"secretKeyIdentifier"`
+	SecretKeySecretPath pulumi.StringPtrInput `pulumi:"secretKeySecretPath"`
 	// Secret space path for UserPassword auth type
 	SecretSpacePath pulumi.StringPtrInput `pulumi:"secretSpacePath"`
 	// User name for UserPassword auth type
@@ -3996,6 +4162,18 @@ func (o HarRegistryConfigAuthOutput) ToHarRegistryConfigAuthOutputWithContext(ct
 	return o
 }
 
+func (o HarRegistryConfigAuthOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfigAuth) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+func (o HarRegistryConfigAuthOutput) AccessKeyIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfigAuth) *string { return v.AccessKeyIdentifier }).(pulumi.StringPtrOutput)
+}
+
+func (o HarRegistryConfigAuthOutput) AccessKeySecretPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfigAuth) *string { return v.AccessKeySecretPath }).(pulumi.StringPtrOutput)
+}
+
 // Type of authentication (UserPassword, Anonymous)
 func (o HarRegistryConfigAuthOutput) AuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v HarRegistryConfigAuth) string { return v.AuthType }).(pulumi.StringOutput)
@@ -4004,6 +4182,14 @@ func (o HarRegistryConfigAuthOutput) AuthType() pulumi.StringOutput {
 // Secret identifier for UserPassword auth type
 func (o HarRegistryConfigAuthOutput) SecretIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HarRegistryConfigAuth) *string { return v.SecretIdentifier }).(pulumi.StringPtrOutput)
+}
+
+func (o HarRegistryConfigAuthOutput) SecretKeyIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfigAuth) *string { return v.SecretKeyIdentifier }).(pulumi.StringPtrOutput)
+}
+
+func (o HarRegistryConfigAuthOutput) SecretKeySecretPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfigAuth) *string { return v.SecretKeySecretPath }).(pulumi.StringPtrOutput)
 }
 
 // Secret space path for UserPassword auth type
@@ -4212,9 +4398,9 @@ func (o HelmConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput 
 }
 
 type InfraVariableSetConnector struct {
-	// Unique identifier of the connector.
+	// Connector Ref is the reference to the connector
 	ConnectorRef string `pulumi:"connectorRef"`
-	// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+	// Type is the connector type of the connector. Supported types: aws, azure, gcp
 	Type string `pulumi:"type"`
 }
 
@@ -4230,9 +4416,9 @@ type InfraVariableSetConnectorInput interface {
 }
 
 type InfraVariableSetConnectorArgs struct {
-	// Unique identifier of the connector.
+	// Connector Ref is the reference to the connector
 	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
-	// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+	// Type is the connector type of the connector. Supported types: aws, azure, gcp
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4287,12 +4473,12 @@ func (o InfraVariableSetConnectorOutput) ToInfraVariableSetConnectorOutputWithCo
 	return o
 }
 
-// Unique identifier of the connector.
+// Connector Ref is the reference to the connector
 func (o InfraVariableSetConnectorOutput) ConnectorRef() pulumi.StringOutput {
 	return o.ApplyT(func(v InfraVariableSetConnector) string { return v.ConnectorRef }).(pulumi.StringOutput)
 }
 
-// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+// Type is the connector type of the connector. Supported types: aws, azure, gcp
 func (o InfraVariableSetConnectorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InfraVariableSetConnector) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4318,7 +4504,7 @@ func (o InfraVariableSetConnectorArrayOutput) Index(i pulumi.IntInput) InfraVari
 }
 
 type InfraVariableSetEnvironmentVariable struct {
-	// Key is the identifier for the variable. Must be unique within the variable set.
+	// Key is the identifier for the variable. Must be unique within the Variable Set.
 	Key string `pulumi:"key"`
 	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
 	Value string `pulumi:"value"`
@@ -4338,7 +4524,7 @@ type InfraVariableSetEnvironmentVariableInput interface {
 }
 
 type InfraVariableSetEnvironmentVariableArgs struct {
-	// Key is the identifier for the variable. Must be unique within the variable set.
+	// Key is the identifier for the variable. Must be unique within the Variable Set.
 	Key pulumi.StringInput `pulumi:"key"`
 	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -4397,7 +4583,7 @@ func (o InfraVariableSetEnvironmentVariableOutput) ToInfraVariableSetEnvironment
 	return o
 }
 
-// Key is the identifier for the variable. Must be unique within the variable set.
+// Key is the identifier for the variable. Must be unique within the Variable Set.
 func (o InfraVariableSetEnvironmentVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v InfraVariableSetEnvironmentVariable) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -4433,7 +4619,7 @@ func (o InfraVariableSetEnvironmentVariableArrayOutput) Index(i pulumi.IntInput)
 }
 
 type InfraVariableSetTerraformVariable struct {
-	// Key is the identifier for the variable. Must be unique within the variable set.
+	// Key is the identifier for the variable. Must be unique within the Variable Set.
 	Key string `pulumi:"key"`
 	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
 	Value string `pulumi:"value"`
@@ -4453,7 +4639,7 @@ type InfraVariableSetTerraformVariableInput interface {
 }
 
 type InfraVariableSetTerraformVariableArgs struct {
-	// Key is the identifier for the variable. Must be unique within the variable set.
+	// Key is the identifier for the variable. Must be unique within the Variable Set.
 	Key pulumi.StringInput `pulumi:"key"`
 	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -4512,7 +4698,7 @@ func (o InfraVariableSetTerraformVariableOutput) ToInfraVariableSetTerraformVari
 	return o
 }
 
-// Key is the identifier for the variable. Must be unique within the variable set.
+// Key is the identifier for the variable. Must be unique within the Variable Set.
 func (o InfraVariableSetTerraformVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v InfraVariableSetTerraformVariable) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -4558,7 +4744,7 @@ type InfraVariableSetTerraformVariableFile struct {
 	RepositoryConnector string `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
 	RepositoryPath *string `pulumi:"repositoryPath"`
-	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
 	RepositorySha *string `pulumi:"repositorySha"`
 }
 
@@ -4584,7 +4770,7 @@ type InfraVariableSetTerraformVariableFileArgs struct {
 	RepositoryConnector pulumi.StringInput `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
 	RepositoryPath pulumi.StringPtrInput `pulumi:"repositoryPath"`
-	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringPtrInput `pulumi:"repositorySha"`
 }
 
@@ -4664,7 +4850,7 @@ func (o InfraVariableSetTerraformVariableFileOutput) RepositoryPath() pulumi.Str
 	return o.ApplyT(func(v InfraVariableSetTerraformVariableFile) *string { return v.RepositoryPath }).(pulumi.StringPtrOutput)
 }
 
-// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
 func (o InfraVariableSetTerraformVariableFileOutput) RepositorySha() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfraVariableSetTerraformVariableFile) *string { return v.RepositorySha }).(pulumi.StringPtrOutput)
 }
@@ -4694,27 +4880,27 @@ type InfrastructureGitDetails struct {
 	BaseBranch *string `pulumi:"baseBranch"`
 	// Name of the branch.
 	Branch *string `pulumi:"branch"`
-	// message for the commit in Git Repo.
+	// Commit message used for the merge commit.
 	CommitMessage *string `pulumi:"commitMessage"`
-	// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ConnectorRef *string `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath *string `pulumi:"filePath"`
-	// Flag to set if importing from Git
+	// import infrastructure from git
 	ImportFromGit *bool `pulumi:"importFromGit"`
-	// Flag to set if force importing from Git
+	// force import infrastructure from remote even if same file path already exist
 	IsForceImport *bool `pulumi:"isForceImport"`
 	// If the gitProvider is HarnessCode
 	IsHarnesscodeRepo *bool `pulumi:"isHarnesscodeRepo"`
 	// If a new branch creation is requested.
 	IsNewBranch *bool `pulumi:"isNewBranch"`
-	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Infrastructures.
+	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating infrastructure.
 	LastCommitId *string `pulumi:"lastCommitId"`
-	// Last object identifier (for Github). To be provided only when updating Infrastructures.
+	// Last object identifier (for Github). To be provided only when updating infrastructure.
 	LastObjectId *string `pulumi:"lastObjectId"`
 	// If the Entity is to be fetched from cache
 	LoadFromCache *string `pulumi:"loadFromCache"`
-	// Whether the file has to be get from fallback_branch.
+	// If the Entity is to be fetched from fallbackBranch
 	LoadFromFallbackBranch *bool `pulumi:"loadFromFallbackBranch"`
 	// Identifier of the Harness Connector used for CRUD operations on the Parent Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ParentEntityConnectorRef *string `pulumi:"parentEntityConnectorRef"`
@@ -4722,7 +4908,7 @@ type InfrastructureGitDetails struct {
 	ParentEntityRepoName *string `pulumi:"parentEntityRepoName"`
 	// Name of the repository.
 	RepoName *string `pulumi:"repoName"`
-	// store type of the entity.
+	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
 	StoreType *string `pulumi:"storeType"`
 }
 
@@ -4742,27 +4928,27 @@ type InfrastructureGitDetailsArgs struct {
 	BaseBranch pulumi.StringPtrInput `pulumi:"baseBranch"`
 	// Name of the branch.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
-	// message for the commit in Git Repo.
+	// Commit message used for the merge commit.
 	CommitMessage pulumi.StringPtrInput `pulumi:"commitMessage"`
-	// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ConnectorRef pulumi.StringPtrInput `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
-	// Flag to set if importing from Git
+	// import infrastructure from git
 	ImportFromGit pulumi.BoolPtrInput `pulumi:"importFromGit"`
-	// Flag to set if force importing from Git
+	// force import infrastructure from remote even if same file path already exist
 	IsForceImport pulumi.BoolPtrInput `pulumi:"isForceImport"`
 	// If the gitProvider is HarnessCode
 	IsHarnesscodeRepo pulumi.BoolPtrInput `pulumi:"isHarnesscodeRepo"`
 	// If a new branch creation is requested.
 	IsNewBranch pulumi.BoolPtrInput `pulumi:"isNewBranch"`
-	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Infrastructures.
+	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating infrastructure.
 	LastCommitId pulumi.StringPtrInput `pulumi:"lastCommitId"`
-	// Last object identifier (for Github). To be provided only when updating Infrastructures.
+	// Last object identifier (for Github). To be provided only when updating infrastructure.
 	LastObjectId pulumi.StringPtrInput `pulumi:"lastObjectId"`
 	// If the Entity is to be fetched from cache
 	LoadFromCache pulumi.StringPtrInput `pulumi:"loadFromCache"`
-	// Whether the file has to be get from fallback_branch.
+	// If the Entity is to be fetched from fallbackBranch
 	LoadFromFallbackBranch pulumi.BoolPtrInput `pulumi:"loadFromFallbackBranch"`
 	// Identifier of the Harness Connector used for CRUD operations on the Parent Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ParentEntityConnectorRef pulumi.StringPtrInput `pulumi:"parentEntityConnectorRef"`
@@ -4770,7 +4956,7 @@ type InfrastructureGitDetailsArgs struct {
 	ParentEntityRepoName pulumi.StringPtrInput `pulumi:"parentEntityRepoName"`
 	// Name of the repository.
 	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
-	// store type of the entity.
+	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
 	StoreType pulumi.StringPtrInput `pulumi:"storeType"`
 }
 
@@ -4861,12 +5047,12 @@ func (o InfrastructureGitDetailsOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
-// message for the commit in Git Repo.
+// Commit message used for the merge commit.
 func (o InfrastructureGitDetailsOutput) CommitMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *string { return v.CommitMessage }).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o InfrastructureGitDetailsOutput) ConnectorRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *string { return v.ConnectorRef }).(pulumi.StringPtrOutput)
 }
@@ -4876,12 +5062,12 @@ func (o InfrastructureGitDetailsOutput) FilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *string { return v.FilePath }).(pulumi.StringPtrOutput)
 }
 
-// Flag to set if importing from Git
+// import infrastructure from git
 func (o InfrastructureGitDetailsOutput) ImportFromGit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *bool { return v.ImportFromGit }).(pulumi.BoolPtrOutput)
 }
 
-// Flag to set if force importing from Git
+// force import infrastructure from remote even if same file path already exist
 func (o InfrastructureGitDetailsOutput) IsForceImport() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *bool { return v.IsForceImport }).(pulumi.BoolPtrOutput)
 }
@@ -4896,12 +5082,12 @@ func (o InfrastructureGitDetailsOutput) IsNewBranch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *bool { return v.IsNewBranch }).(pulumi.BoolPtrOutput)
 }
 
-// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Infrastructures.
+// Last commit identifier (for Git Repositories other than Github). To be provided only when updating infrastructure.
 func (o InfrastructureGitDetailsOutput) LastCommitId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *string { return v.LastCommitId }).(pulumi.StringPtrOutput)
 }
 
-// Last object identifier (for Github). To be provided only when updating Infrastructures.
+// Last object identifier (for Github). To be provided only when updating infrastructure.
 func (o InfrastructureGitDetailsOutput) LastObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *string { return v.LastObjectId }).(pulumi.StringPtrOutput)
 }
@@ -4911,7 +5097,7 @@ func (o InfrastructureGitDetailsOutput) LoadFromCache() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *string { return v.LoadFromCache }).(pulumi.StringPtrOutput)
 }
 
-// Whether the file has to be get from fallback_branch.
+// If the Entity is to be fetched from fallbackBranch
 func (o InfrastructureGitDetailsOutput) LoadFromFallbackBranch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *bool { return v.LoadFromFallbackBranch }).(pulumi.BoolPtrOutput)
 }
@@ -4931,7 +5117,7 @@ func (o InfrastructureGitDetailsOutput) RepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *string { return v.RepoName }).(pulumi.StringPtrOutput)
 }
 
-// store type of the entity.
+// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
 func (o InfrastructureGitDetailsOutput) StoreType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfrastructureGitDetails) *string { return v.StoreType }).(pulumi.StringPtrOutput)
 }
@@ -4980,7 +5166,7 @@ func (o InfrastructureGitDetailsPtrOutput) Branch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// message for the commit in Git Repo.
+// Commit message used for the merge commit.
 func (o InfrastructureGitDetailsPtrOutput) CommitMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfrastructureGitDetails) *string {
 		if v == nil {
@@ -4990,7 +5176,7 @@ func (o InfrastructureGitDetailsPtrOutput) CommitMessage() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o InfrastructureGitDetailsPtrOutput) ConnectorRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfrastructureGitDetails) *string {
 		if v == nil {
@@ -5010,7 +5196,7 @@ func (o InfrastructureGitDetailsPtrOutput) FilePath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Flag to set if importing from Git
+// import infrastructure from git
 func (o InfrastructureGitDetailsPtrOutput) ImportFromGit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InfrastructureGitDetails) *bool {
 		if v == nil {
@@ -5020,7 +5206,7 @@ func (o InfrastructureGitDetailsPtrOutput) ImportFromGit() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Flag to set if force importing from Git
+// force import infrastructure from remote even if same file path already exist
 func (o InfrastructureGitDetailsPtrOutput) IsForceImport() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InfrastructureGitDetails) *bool {
 		if v == nil {
@@ -5050,7 +5236,7 @@ func (o InfrastructureGitDetailsPtrOutput) IsNewBranch() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Infrastructures.
+// Last commit identifier (for Git Repositories other than Github). To be provided only when updating infrastructure.
 func (o InfrastructureGitDetailsPtrOutput) LastCommitId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfrastructureGitDetails) *string {
 		if v == nil {
@@ -5060,7 +5246,7 @@ func (o InfrastructureGitDetailsPtrOutput) LastCommitId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Last object identifier (for Github). To be provided only when updating Infrastructures.
+// Last object identifier (for Github). To be provided only when updating infrastructure.
 func (o InfrastructureGitDetailsPtrOutput) LastObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfrastructureGitDetails) *string {
 		if v == nil {
@@ -5080,7 +5266,7 @@ func (o InfrastructureGitDetailsPtrOutput) LoadFromCache() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether the file has to be get from fallback_branch.
+// If the Entity is to be fetched from fallbackBranch
 func (o InfrastructureGitDetailsPtrOutput) LoadFromFallbackBranch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InfrastructureGitDetails) *bool {
 		if v == nil {
@@ -5120,7 +5306,7 @@ func (o InfrastructureGitDetailsPtrOutput) RepoName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// store type of the entity.
+// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
 func (o InfrastructureGitDetailsPtrOutput) StoreType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfrastructureGitDetails) *string {
 		if v == nil {
@@ -6156,7 +6342,7 @@ func (o JenkinsConnectorAuthJenkinsBearerTokenPtrOutput) TokenRef() pulumi.Strin
 }
 
 type JenkinsConnectorAuthJenkinsUserNamePassword struct {
-	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
 	// Username to use for authentication.
 	Username *string `pulumi:"username"`
@@ -6176,7 +6362,7 @@ type JenkinsConnectorAuthJenkinsUserNamePasswordInput interface {
 }
 
 type JenkinsConnectorAuthJenkinsUserNamePasswordArgs struct {
-	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
 	// Username to use for authentication.
 	Username pulumi.StringPtrInput `pulumi:"username"`
@@ -6261,7 +6447,7 @@ func (o JenkinsConnectorAuthJenkinsUserNamePasswordOutput) ToJenkinsConnectorAut
 	}).(JenkinsConnectorAuthJenkinsUserNamePasswordPtrOutput)
 }
 
-// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o JenkinsConnectorAuthJenkinsUserNamePasswordOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v JenkinsConnectorAuthJenkinsUserNamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
@@ -6300,7 +6486,7 @@ func (o JenkinsConnectorAuthJenkinsUserNamePasswordPtrOutput) Elem() JenkinsConn
 	}).(JenkinsConnectorAuthJenkinsUserNamePasswordOutput)
 }
 
-// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o JenkinsConnectorAuthJenkinsUserNamePasswordPtrOutput) PasswordRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JenkinsConnectorAuthJenkinsUserNamePassword) *string {
 		if v == nil {
@@ -7826,9 +8012,9 @@ func (o KubernetesConnectorUsernamePasswordPtrOutput) UsernameRef() pulumi.Strin
 }
 
 type ManualFreezeCurrentOrUpcomingWindow struct {
-	// End time of the freeze
+	// End time of the freeze window
 	EndTime *int `pulumi:"endTime"`
-	// Start time of the freeze
+	// Start time of the freeze window
 	StartTime *int `pulumi:"startTime"`
 }
 
@@ -7844,9 +8030,9 @@ type ManualFreezeCurrentOrUpcomingWindowInput interface {
 }
 
 type ManualFreezeCurrentOrUpcomingWindowArgs struct {
-	// End time of the freeze
+	// End time of the freeze window
 	EndTime pulumi.IntPtrInput `pulumi:"endTime"`
-	// Start time of the freeze
+	// Start time of the freeze window
 	StartTime pulumi.IntPtrInput `pulumi:"startTime"`
 }
 
@@ -7901,12 +8087,12 @@ func (o ManualFreezeCurrentOrUpcomingWindowOutput) ToManualFreezeCurrentOrUpcomi
 	return o
 }
 
-// End time of the freeze
+// End time of the freeze window
 func (o ManualFreezeCurrentOrUpcomingWindowOutput) EndTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManualFreezeCurrentOrUpcomingWindow) *int { return v.EndTime }).(pulumi.IntPtrOutput)
 }
 
-// Start time of the freeze
+// Start time of the freeze window
 func (o ManualFreezeCurrentOrUpcomingWindowOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManualFreezeCurrentOrUpcomingWindow) *int { return v.StartTime }).(pulumi.IntPtrOutput)
 }
@@ -7932,15 +8118,15 @@ func (o ManualFreezeCurrentOrUpcomingWindowArrayOutput) Index(i pulumi.IntInput)
 }
 
 type ManualFreezeFreezeWindow struct {
-	// Duration of the freeze
+	// Duration of the freeze window
 	Duration *string `pulumi:"duration"`
-	// End time of the freeze
+	// End Time of the freeze window
 	EndTime *string `pulumi:"endTime"`
 	// Recurrence of the freeze window
 	Recurrences []ManualFreezeFreezeWindowRecurrence `pulumi:"recurrences"`
-	// Start time of the freeze
+	// Start Time of the freeze window
 	StartTime *string `pulumi:"startTime"`
-	// Timezone
+	// Time zone of the freeze window
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -7956,15 +8142,15 @@ type ManualFreezeFreezeWindowInput interface {
 }
 
 type ManualFreezeFreezeWindowArgs struct {
-	// Duration of the freeze
+	// Duration of the freeze window
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
-	// End time of the freeze
+	// End Time of the freeze window
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// Recurrence of the freeze window
 	Recurrences ManualFreezeFreezeWindowRecurrenceArrayInput `pulumi:"recurrences"`
-	// Start time of the freeze
+	// Start Time of the freeze window
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Timezone
+	// Time zone of the freeze window
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 }
 
@@ -8019,12 +8205,12 @@ func (o ManualFreezeFreezeWindowOutput) ToManualFreezeFreezeWindowOutputWithCont
 	return o
 }
 
-// Duration of the freeze
+// Duration of the freeze window
 func (o ManualFreezeFreezeWindowOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindow) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
-// End time of the freeze
+// End Time of the freeze window
 func (o ManualFreezeFreezeWindowOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindow) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
@@ -8034,12 +8220,12 @@ func (o ManualFreezeFreezeWindowOutput) Recurrences() ManualFreezeFreezeWindowRe
 	return o.ApplyT(func(v ManualFreezeFreezeWindow) []ManualFreezeFreezeWindowRecurrence { return v.Recurrences }).(ManualFreezeFreezeWindowRecurrenceArrayOutput)
 }
 
-// Start time of the freeze
+// Start Time of the freeze window
 func (o ManualFreezeFreezeWindowOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindow) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// Timezone
+// Time zone of the freeze window
 func (o ManualFreezeFreezeWindowOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindow) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
@@ -8067,7 +8253,7 @@ func (o ManualFreezeFreezeWindowArrayOutput) Index(i pulumi.IntInput) ManualFree
 type ManualFreezeFreezeWindowRecurrence struct {
 	// Used to filter resources on their attributes
 	RecurrenceSpecs []ManualFreezeFreezeWindowRecurrenceRecurrenceSpec `pulumi:"recurrenceSpecs"`
-	// Recurrence type(Daily, Weekly, Monthly, Yearly)
+	// Type of the recurrence
 	Type *string `pulumi:"type"`
 }
 
@@ -8085,7 +8271,7 @@ type ManualFreezeFreezeWindowRecurrenceInput interface {
 type ManualFreezeFreezeWindowRecurrenceArgs struct {
 	// Used to filter resources on their attributes
 	RecurrenceSpecs ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArrayInput `pulumi:"recurrenceSpecs"`
-	// Recurrence type(Daily, Weekly, Monthly, Yearly)
+	// Type of the recurrence
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -8147,7 +8333,7 @@ func (o ManualFreezeFreezeWindowRecurrenceOutput) RecurrenceSpecs() ManualFreeze
 	}).(ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArrayOutput)
 }
 
-// Recurrence type(Daily, Weekly, Monthly, Yearly)
+// Type of the recurrence
 func (o ManualFreezeFreezeWindowRecurrenceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindowRecurrence) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -8173,9 +8359,9 @@ func (o ManualFreezeFreezeWindowRecurrenceArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ManualFreezeFreezeWindowRecurrenceRecurrenceSpec struct {
-	// Recurrence until timestamp
+	// Time till which freeze window recurrs
 	Until *string `pulumi:"until"`
-	// Value of n, for n months recurrence
+	// Every n months recurrence
 	Value *int `pulumi:"value"`
 }
 
@@ -8191,9 +8377,9 @@ type ManualFreezeFreezeWindowRecurrenceRecurrenceSpecInput interface {
 }
 
 type ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs struct {
-	// Recurrence until timestamp
+	// Time till which freeze window recurrs
 	Until pulumi.StringPtrInput `pulumi:"until"`
-	// Value of n, for n months recurrence
+	// Every n months recurrence
 	Value pulumi.IntPtrInput `pulumi:"value"`
 }
 
@@ -8248,12 +8434,12 @@ func (o ManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput) ToManualFreezeFr
 	return o
 }
 
-// Recurrence until timestamp
+// Time till which freeze window recurrs
 func (o ManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput) Until() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindowRecurrenceRecurrenceSpec) *string { return v.Until }).(pulumi.StringPtrOutput)
 }
 
-// Value of n, for n months recurrence
+// Every n months recurrence
 func (o ManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput) Value() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindowRecurrenceRecurrenceSpec) *int { return v.Value }).(pulumi.IntPtrOutput)
 }
@@ -9169,7 +9355,7 @@ func (o MonitoredServiceRequestNotificationRuleRefArrayOutput) Index(i pulumi.In
 }
 
 type NexusConnectorCredentials struct {
-	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
 	// Username to use for authentication.
 	Username *string `pulumi:"username"`
@@ -9189,7 +9375,7 @@ type NexusConnectorCredentialsInput interface {
 }
 
 type NexusConnectorCredentialsArgs struct {
-	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
 	// Username to use for authentication.
 	Username pulumi.StringPtrInput `pulumi:"username"`
@@ -9274,7 +9460,7 @@ func (o NexusConnectorCredentialsOutput) ToNexusConnectorCredentialsPtrOutputWit
 	}).(NexusConnectorCredentialsPtrOutput)
 }
 
-// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o NexusConnectorCredentialsOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v NexusConnectorCredentials) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
@@ -9313,7 +9499,7 @@ func (o NexusConnectorCredentialsPtrOutput) Elem() NexusConnectorCredentialsOutp
 	}).(NexusConnectorCredentialsOutput)
 }
 
-// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o NexusConnectorCredentialsPtrOutput) PasswordRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NexusConnectorCredentials) *string {
 		if v == nil {
@@ -17611,7 +17797,7 @@ type TasConnectorCredentialsTasManualDetails struct {
 	EndpointUrl string `pulumi:"endpointUrl"`
 	// Reference of the secret for the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	// Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
+	// Reference token for authentication.
 	ReferenceToken *string `pulumi:"referenceToken"`
 	// Username to use for authentication.
 	Username *string `pulumi:"username"`
@@ -17635,7 +17821,7 @@ type TasConnectorCredentialsTasManualDetailsArgs struct {
 	EndpointUrl pulumi.StringInput `pulumi:"endpointUrl"`
 	// Reference of the secret for the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	// Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
+	// Reference token for authentication.
 	ReferenceToken pulumi.StringPtrInput `pulumi:"referenceToken"`
 	// Username to use for authentication.
 	Username pulumi.StringPtrInput `pulumi:"username"`
@@ -17730,7 +17916,7 @@ func (o TasConnectorCredentialsTasManualDetailsOutput) PasswordRef() pulumi.Stri
 	return o.ApplyT(func(v TasConnectorCredentialsTasManualDetails) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
-// Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
+// Reference token for authentication.
 func (o TasConnectorCredentialsTasManualDetailsOutput) ReferenceToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TasConnectorCredentialsTasManualDetails) *string { return v.ReferenceToken }).(pulumi.StringPtrOutput)
 }
@@ -17789,7 +17975,7 @@ func (o TasConnectorCredentialsTasManualDetailsPtrOutput) PasswordRef() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
+// Reference token for authentication.
 func (o TasConnectorCredentialsTasManualDetailsPtrOutput) ReferenceToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TasConnectorCredentialsTasManualDetails) *string {
 		if v == nil {
@@ -19356,9 +19542,9 @@ func (o VariablesSpecPtrOutput) ValueType() pulumi.StringPtrOutput {
 }
 
 type WorkspaceConnector struct {
-	// Unique identifier of the connector.
+	// Connector Ref is the reference to the connector
 	ConnectorRef string `pulumi:"connectorRef"`
-	// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+	// Type is the connector type of the connector. Supported types: aws, azure, gcp
 	Type string `pulumi:"type"`
 }
 
@@ -19374,9 +19560,9 @@ type WorkspaceConnectorInput interface {
 }
 
 type WorkspaceConnectorArgs struct {
-	// Unique identifier of the connector.
+	// Connector Ref is the reference to the connector
 	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
-	// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+	// Type is the connector type of the connector. Supported types: aws, azure, gcp
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -19431,12 +19617,12 @@ func (o WorkspaceConnectorOutput) ToWorkspaceConnectorOutputWithContext(ctx cont
 	return o
 }
 
-// Unique identifier of the connector.
+// Connector Ref is the reference to the connector
 func (o WorkspaceConnectorOutput) ConnectorRef() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkspaceConnector) string { return v.ConnectorRef }).(pulumi.StringOutput)
 }
 
-// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+// Type is the connector type of the connector. Supported types: aws, azure, gcp
 func (o WorkspaceConnectorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkspaceConnector) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -22078,7 +22264,151 @@ func (o GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput) Ind
 	}).(GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput)
 }
 
+type GetAzureCloudCostConnectorBillingExportSpec2 struct {
+	// Billing type.
+	BillingType string `pulumi:"billingType"`
+	// Name of the container.
+	ContainerName string `pulumi:"containerName"`
+	// Name of the directory.
+	DirectoryName string `pulumi:"directoryName"`
+	// Name of the report.
+	ReportName string `pulumi:"reportName"`
+	// Name of the storage account.
+	StorageAccountName string `pulumi:"storageAccountName"`
+	// Subsription id.
+	SubscriptionId string `pulumi:"subscriptionId"`
+}
+
+// GetAzureCloudCostConnectorBillingExportSpec2Input is an input type that accepts GetAzureCloudCostConnectorBillingExportSpec2Args and GetAzureCloudCostConnectorBillingExportSpec2Output values.
+// You can construct a concrete instance of `GetAzureCloudCostConnectorBillingExportSpec2Input` via:
+//
+//	GetAzureCloudCostConnectorBillingExportSpec2Args{...}
+type GetAzureCloudCostConnectorBillingExportSpec2Input interface {
+	pulumi.Input
+
+	ToGetAzureCloudCostConnectorBillingExportSpec2Output() GetAzureCloudCostConnectorBillingExportSpec2Output
+	ToGetAzureCloudCostConnectorBillingExportSpec2OutputWithContext(context.Context) GetAzureCloudCostConnectorBillingExportSpec2Output
+}
+
+type GetAzureCloudCostConnectorBillingExportSpec2Args struct {
+	// Billing type.
+	BillingType pulumi.StringInput `pulumi:"billingType"`
+	// Name of the container.
+	ContainerName pulumi.StringInput `pulumi:"containerName"`
+	// Name of the directory.
+	DirectoryName pulumi.StringInput `pulumi:"directoryName"`
+	// Name of the report.
+	ReportName pulumi.StringInput `pulumi:"reportName"`
+	// Name of the storage account.
+	StorageAccountName pulumi.StringInput `pulumi:"storageAccountName"`
+	// Subsription id.
+	SubscriptionId pulumi.StringInput `pulumi:"subscriptionId"`
+}
+
+func (GetAzureCloudCostConnectorBillingExportSpec2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAzureCloudCostConnectorBillingExportSpec2)(nil)).Elem()
+}
+
+func (i GetAzureCloudCostConnectorBillingExportSpec2Args) ToGetAzureCloudCostConnectorBillingExportSpec2Output() GetAzureCloudCostConnectorBillingExportSpec2Output {
+	return i.ToGetAzureCloudCostConnectorBillingExportSpec2OutputWithContext(context.Background())
+}
+
+func (i GetAzureCloudCostConnectorBillingExportSpec2Args) ToGetAzureCloudCostConnectorBillingExportSpec2OutputWithContext(ctx context.Context) GetAzureCloudCostConnectorBillingExportSpec2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAzureCloudCostConnectorBillingExportSpec2Output)
+}
+
+// GetAzureCloudCostConnectorBillingExportSpec2ArrayInput is an input type that accepts GetAzureCloudCostConnectorBillingExportSpec2Array and GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput values.
+// You can construct a concrete instance of `GetAzureCloudCostConnectorBillingExportSpec2ArrayInput` via:
+//
+//	GetAzureCloudCostConnectorBillingExportSpec2Array{ GetAzureCloudCostConnectorBillingExportSpec2Args{...} }
+type GetAzureCloudCostConnectorBillingExportSpec2ArrayInput interface {
+	pulumi.Input
+
+	ToGetAzureCloudCostConnectorBillingExportSpec2ArrayOutput() GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput
+	ToGetAzureCloudCostConnectorBillingExportSpec2ArrayOutputWithContext(context.Context) GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput
+}
+
+type GetAzureCloudCostConnectorBillingExportSpec2Array []GetAzureCloudCostConnectorBillingExportSpec2Input
+
+func (GetAzureCloudCostConnectorBillingExportSpec2Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAzureCloudCostConnectorBillingExportSpec2)(nil)).Elem()
+}
+
+func (i GetAzureCloudCostConnectorBillingExportSpec2Array) ToGetAzureCloudCostConnectorBillingExportSpec2ArrayOutput() GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput {
+	return i.ToGetAzureCloudCostConnectorBillingExportSpec2ArrayOutputWithContext(context.Background())
+}
+
+func (i GetAzureCloudCostConnectorBillingExportSpec2Array) ToGetAzureCloudCostConnectorBillingExportSpec2ArrayOutputWithContext(ctx context.Context) GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput)
+}
+
+type GetAzureCloudCostConnectorBillingExportSpec2Output struct{ *pulumi.OutputState }
+
+func (GetAzureCloudCostConnectorBillingExportSpec2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAzureCloudCostConnectorBillingExportSpec2)(nil)).Elem()
+}
+
+func (o GetAzureCloudCostConnectorBillingExportSpec2Output) ToGetAzureCloudCostConnectorBillingExportSpec2Output() GetAzureCloudCostConnectorBillingExportSpec2Output {
+	return o
+}
+
+func (o GetAzureCloudCostConnectorBillingExportSpec2Output) ToGetAzureCloudCostConnectorBillingExportSpec2OutputWithContext(ctx context.Context) GetAzureCloudCostConnectorBillingExportSpec2Output {
+	return o
+}
+
+// Billing type.
+func (o GetAzureCloudCostConnectorBillingExportSpec2Output) BillingType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec2) string { return v.BillingType }).(pulumi.StringOutput)
+}
+
+// Name of the container.
+func (o GetAzureCloudCostConnectorBillingExportSpec2Output) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec2) string { return v.ContainerName }).(pulumi.StringOutput)
+}
+
+// Name of the directory.
+func (o GetAzureCloudCostConnectorBillingExportSpec2Output) DirectoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec2) string { return v.DirectoryName }).(pulumi.StringOutput)
+}
+
+// Name of the report.
+func (o GetAzureCloudCostConnectorBillingExportSpec2Output) ReportName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec2) string { return v.ReportName }).(pulumi.StringOutput)
+}
+
+// Name of the storage account.
+func (o GetAzureCloudCostConnectorBillingExportSpec2Output) StorageAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec2) string { return v.StorageAccountName }).(pulumi.StringOutput)
+}
+
+// Subsription id.
+func (o GetAzureCloudCostConnectorBillingExportSpec2Output) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec2) string { return v.SubscriptionId }).(pulumi.StringOutput)
+}
+
+type GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAzureCloudCostConnectorBillingExportSpec2)(nil)).Elem()
+}
+
+func (o GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput) ToGetAzureCloudCostConnectorBillingExportSpec2ArrayOutput() GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput {
+	return o
+}
+
+func (o GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput) ToGetAzureCloudCostConnectorBillingExportSpec2ArrayOutputWithContext(ctx context.Context) GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput {
+	return o
+}
+
+func (o GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput) Index(i pulumi.IntInput) GetAzureCloudCostConnectorBillingExportSpec2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAzureCloudCostConnectorBillingExportSpec2 {
+		return vs[0].([]GetAzureCloudCostConnectorBillingExportSpec2)[vs[1].(int)]
+	}).(GetAzureCloudCostConnectorBillingExportSpec2Output)
+}
+
 type GetAzureCloudCostConnectorBillingExportSpec struct {
+	// Billing type.
+	BillingType string `pulumi:"billingType"`
 	// Name of the container.
 	ContainerName string `pulumi:"containerName"`
 	// Name of the directory.
@@ -22103,6 +22433,8 @@ type GetAzureCloudCostConnectorBillingExportSpecInput interface {
 }
 
 type GetAzureCloudCostConnectorBillingExportSpecArgs struct {
+	// Billing type.
+	BillingType pulumi.StringInput `pulumi:"billingType"`
 	// Name of the container.
 	ContainerName pulumi.StringInput `pulumi:"containerName"`
 	// Name of the directory.
@@ -22164,6 +22496,11 @@ func (o GetAzureCloudCostConnectorBillingExportSpecOutput) ToGetAzureCloudCostCo
 
 func (o GetAzureCloudCostConnectorBillingExportSpecOutput) ToGetAzureCloudCostConnectorBillingExportSpecOutputWithContext(ctx context.Context) GetAzureCloudCostConnectorBillingExportSpecOutput {
 	return o
+}
+
+// Billing type.
+func (o GetAzureCloudCostConnectorBillingExportSpecOutput) BillingType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec) string { return v.BillingType }).(pulumi.StringOutput)
 }
 
 // Name of the container.
@@ -25002,12 +25339,10 @@ func (o GetConnectorCustomSecretManagerTemplateInputArrayOutput) Index(i pulumi.
 }
 
 type GetConnectorCustomSecretManagerTemplateInputEnvironmentVariable struct {
-	Default bool `pulumi:"default"`
-	// : Name of the resource.
-	Name string `pulumi:"name"`
-	// : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-	Type  string `pulumi:"type"`
-	Value string `pulumi:"value"`
+	Default bool   `pulumi:"default"`
+	Name    string `pulumi:"name"`
+	Type    string `pulumi:"type"`
+	Value   string `pulumi:"value"`
 }
 
 // GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableInput is an input type that accepts GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgs and GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableOutput values.
@@ -25022,12 +25357,10 @@ type GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableInput interf
 }
 
 type GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgs struct {
-	Default pulumi.BoolInput `pulumi:"default"`
-	// : Name of the resource.
-	Name pulumi.StringInput `pulumi:"name"`
-	// : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-	Type  pulumi.StringInput `pulumi:"type"`
-	Value pulumi.StringInput `pulumi:"value"`
+	Default pulumi.BoolInput   `pulumi:"default"`
+	Name    pulumi.StringInput `pulumi:"name"`
+	Type    pulumi.StringInput `pulumi:"type"`
+	Value   pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgs) ElementType() reflect.Type {
@@ -25085,12 +25418,10 @@ func (o GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableOutput) D
 	return o.ApplyT(func(v GetConnectorCustomSecretManagerTemplateInputEnvironmentVariable) bool { return v.Default }).(pulumi.BoolOutput)
 }
 
-// : Name of the resource.
 func (o GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorCustomSecretManagerTemplateInputEnvironmentVariable) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// : Type of the custom secrets manager, typically set to `CustomSecretManager`.
 func (o GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorCustomSecretManagerTemplateInputEnvironmentVariable) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -25965,9 +26296,9 @@ func (o GetConnectorJdbcCredentialUsernamePasswordArrayOutput) Index(i pulumi.In
 }
 
 type GetConnectorPdcHost struct {
-	// Host attributes with values. e.g. type, region, name, ip, etc.
+	// attributes for current host
 	Attributes map[string]string `pulumi:"attributes"`
-	// Hostname e.g. 87.23.66.11:80
+	// hostname
 	Hostname string `pulumi:"hostname"`
 }
 
@@ -25983,9 +26314,9 @@ type GetConnectorPdcHostInput interface {
 }
 
 type GetConnectorPdcHostArgs struct {
-	// Host attributes with values. e.g. type, region, name, ip, etc.
+	// attributes for current host
 	Attributes pulumi.StringMapInput `pulumi:"attributes"`
-	// Hostname e.g. 87.23.66.11:80
+	// hostname
 	Hostname pulumi.StringInput `pulumi:"hostname"`
 }
 
@@ -26040,12 +26371,12 @@ func (o GetConnectorPdcHostOutput) ToGetConnectorPdcHostOutputWithContext(ctx co
 	return o
 }
 
-// Host attributes with values. e.g. type, region, name, ip, etc.
+// attributes for current host
 func (o GetConnectorPdcHostOutput) Attributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetConnectorPdcHost) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
-// Hostname e.g. 87.23.66.11:80
+// hostname
 func (o GetConnectorPdcHostOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorPdcHost) string { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -26271,47 +26602,6 @@ func (i GetDbSchemaChangelogScriptArgs) ToGetDbSchemaChangelogScriptOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbSchemaChangelogScriptOutput)
 }
 
-func (i GetDbSchemaChangelogScriptArgs) ToGetDbSchemaChangelogScriptPtrOutput() GetDbSchemaChangelogScriptPtrOutput {
-	return i.ToGetDbSchemaChangelogScriptPtrOutputWithContext(context.Background())
-}
-
-func (i GetDbSchemaChangelogScriptArgs) ToGetDbSchemaChangelogScriptPtrOutputWithContext(ctx context.Context) GetDbSchemaChangelogScriptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDbSchemaChangelogScriptOutput).ToGetDbSchemaChangelogScriptPtrOutputWithContext(ctx)
-}
-
-// GetDbSchemaChangelogScriptPtrInput is an input type that accepts GetDbSchemaChangelogScriptArgs, GetDbSchemaChangelogScriptPtr and GetDbSchemaChangelogScriptPtrOutput values.
-// You can construct a concrete instance of `GetDbSchemaChangelogScriptPtrInput` via:
-//
-//	        GetDbSchemaChangelogScriptArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetDbSchemaChangelogScriptPtrInput interface {
-	pulumi.Input
-
-	ToGetDbSchemaChangelogScriptPtrOutput() GetDbSchemaChangelogScriptPtrOutput
-	ToGetDbSchemaChangelogScriptPtrOutputWithContext(context.Context) GetDbSchemaChangelogScriptPtrOutput
-}
-
-type getDbSchemaChangelogScriptPtrType GetDbSchemaChangelogScriptArgs
-
-func GetDbSchemaChangelogScriptPtr(v *GetDbSchemaChangelogScriptArgs) GetDbSchemaChangelogScriptPtrInput {
-	return (*getDbSchemaChangelogScriptPtrType)(v)
-}
-
-func (*getDbSchemaChangelogScriptPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetDbSchemaChangelogScript)(nil)).Elem()
-}
-
-func (i *getDbSchemaChangelogScriptPtrType) ToGetDbSchemaChangelogScriptPtrOutput() GetDbSchemaChangelogScriptPtrOutput {
-	return i.ToGetDbSchemaChangelogScriptPtrOutputWithContext(context.Background())
-}
-
-func (i *getDbSchemaChangelogScriptPtrType) ToGetDbSchemaChangelogScriptPtrOutputWithContext(ctx context.Context) GetDbSchemaChangelogScriptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDbSchemaChangelogScriptPtrOutput)
-}
-
 type GetDbSchemaChangelogScriptOutput struct{ *pulumi.OutputState }
 
 func (GetDbSchemaChangelogScriptOutput) ElementType() reflect.Type {
@@ -26324,16 +26614,6 @@ func (o GetDbSchemaChangelogScriptOutput) ToGetDbSchemaChangelogScriptOutput() G
 
 func (o GetDbSchemaChangelogScriptOutput) ToGetDbSchemaChangelogScriptOutputWithContext(ctx context.Context) GetDbSchemaChangelogScriptOutput {
 	return o
-}
-
-func (o GetDbSchemaChangelogScriptOutput) ToGetDbSchemaChangelogScriptPtrOutput() GetDbSchemaChangelogScriptPtrOutput {
-	return o.ToGetDbSchemaChangelogScriptPtrOutputWithContext(context.Background())
-}
-
-func (o GetDbSchemaChangelogScriptOutput) ToGetDbSchemaChangelogScriptPtrOutputWithContext(ctx context.Context) GetDbSchemaChangelogScriptPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDbSchemaChangelogScript) *GetDbSchemaChangelogScript {
-		return &v
-	}).(GetDbSchemaChangelogScriptPtrOutput)
 }
 
 // Script to clone changeSets
@@ -26354,70 +26634,6 @@ func (o GetDbSchemaChangelogScriptOutput) Location() pulumi.StringOutput {
 // Type of the shell. For example Sh or Bash
 func (o GetDbSchemaChangelogScriptOutput) Shell() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbSchemaChangelogScript) string { return v.Shell }).(pulumi.StringOutput)
-}
-
-type GetDbSchemaChangelogScriptPtrOutput struct{ *pulumi.OutputState }
-
-func (GetDbSchemaChangelogScriptPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetDbSchemaChangelogScript)(nil)).Elem()
-}
-
-func (o GetDbSchemaChangelogScriptPtrOutput) ToGetDbSchemaChangelogScriptPtrOutput() GetDbSchemaChangelogScriptPtrOutput {
-	return o
-}
-
-func (o GetDbSchemaChangelogScriptPtrOutput) ToGetDbSchemaChangelogScriptPtrOutputWithContext(ctx context.Context) GetDbSchemaChangelogScriptPtrOutput {
-	return o
-}
-
-func (o GetDbSchemaChangelogScriptPtrOutput) Elem() GetDbSchemaChangelogScriptOutput {
-	return o.ApplyT(func(v *GetDbSchemaChangelogScript) GetDbSchemaChangelogScript {
-		if v != nil {
-			return *v
-		}
-		var ret GetDbSchemaChangelogScript
-		return ret
-	}).(GetDbSchemaChangelogScriptOutput)
-}
-
-// Script to clone changeSets
-func (o GetDbSchemaChangelogScriptPtrOutput) Command() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetDbSchemaChangelogScript) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Command
-	}).(pulumi.StringPtrOutput)
-}
-
-// The fully-qualified name (FQN) of the image
-func (o GetDbSchemaChangelogScriptPtrOutput) Image() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetDbSchemaChangelogScript) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Image
-	}).(pulumi.StringPtrOutput)
-}
-
-// Path to changeLog file
-func (o GetDbSchemaChangelogScriptPtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetDbSchemaChangelogScript) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of the shell. For example Sh or Bash
-func (o GetDbSchemaChangelogScriptPtrOutput) Shell() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetDbSchemaChangelogScript) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Shell
-	}).(pulumi.StringPtrOutput)
 }
 
 type GetDbSchemaSchemaSource struct {
@@ -35291,13 +35507,17 @@ func (o GetGitopsRepositoryRepoArrayOutput) Index(i pulumi.IntInput) GetGitopsRe
 }
 
 type GetHarRegistryConfig struct {
-	// Authentication configuration for UPSTREAM type
+	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+	AuthType *string `pulumi:"authType"`
+	// Authentication configuration for UPSTREAM registry type
 	Auths []GetHarRegistryConfigAuth `pulumi:"auths"`
-	// Source of the upstream
+	// Upstream source
 	Source *string `pulumi:"source"`
-	// Type of registry (VIRTUAL, UPSTREAM)
+	// Type of registry (VIRTUAL or UPSTREAM)
 	Type string `pulumi:"type"`
-	// URL of the upstream
+	// List of upstream proxies for VIRTUAL registry type
+	UpstreamProxies []string `pulumi:"upstreamProxies"`
+	// URL of the upstream (required if type=UPSTREAM & package_type=HELM)
 	Url *string `pulumi:"url"`
 }
 
@@ -35313,13 +35533,17 @@ type GetHarRegistryConfigInput interface {
 }
 
 type GetHarRegistryConfigArgs struct {
-	// Authentication configuration for UPSTREAM type
+	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
+	// Authentication configuration for UPSTREAM registry type
 	Auths GetHarRegistryConfigAuthArrayInput `pulumi:"auths"`
-	// Source of the upstream
+	// Upstream source
 	Source pulumi.StringPtrInput `pulumi:"source"`
-	// Type of registry (VIRTUAL, UPSTREAM)
+	// Type of registry (VIRTUAL or UPSTREAM)
 	Type pulumi.StringInput `pulumi:"type"`
-	// URL of the upstream
+	// List of upstream proxies for VIRTUAL registry type
+	UpstreamProxies pulumi.StringArrayInput `pulumi:"upstreamProxies"`
+	// URL of the upstream (required if type=UPSTREAM & package_type=HELM)
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
@@ -35374,22 +35598,32 @@ func (o GetHarRegistryConfigOutput) ToGetHarRegistryConfigOutputWithContext(ctx 
 	return o
 }
 
-// Authentication configuration for UPSTREAM type
+// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+func (o GetHarRegistryConfigOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Authentication configuration for UPSTREAM registry type
 func (o GetHarRegistryConfigOutput) Auths() GetHarRegistryConfigAuthArrayOutput {
 	return o.ApplyT(func(v GetHarRegistryConfig) []GetHarRegistryConfigAuth { return v.Auths }).(GetHarRegistryConfigAuthArrayOutput)
 }
 
-// Source of the upstream
+// Upstream source
 func (o GetHarRegistryConfigOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHarRegistryConfig) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Type of registry (VIRTUAL, UPSTREAM)
+// Type of registry (VIRTUAL or UPSTREAM)
 func (o GetHarRegistryConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHarRegistryConfig) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// URL of the upstream
+// List of upstream proxies for VIRTUAL registry type
+func (o GetHarRegistryConfigOutput) UpstreamProxies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHarRegistryConfig) []string { return v.UpstreamProxies }).(pulumi.StringArrayOutput)
+}
+
+// URL of the upstream (required if type=UPSTREAM & package_type=HELM)
 func (o GetHarRegistryConfigOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHarRegistryConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -35415,10 +35649,19 @@ func (o GetHarRegistryConfigArrayOutput) Index(i pulumi.IntInput) GetHarRegistry
 }
 
 type GetHarRegistryConfigAuth struct {
+	AccessKey           *string `pulumi:"accessKey"`
+	AccessKeyIdentifier *string `pulumi:"accessKeyIdentifier"`
+	AccessKeySecretPath *string `pulumi:"accessKeySecretPath"`
 	// Type of authentication (UserPassword, Anonymous)
 	AuthType string `pulumi:"authType"`
-	// User password authentication details
-	UserPassword *GetHarRegistryConfigAuthUserPassword `pulumi:"userPassword"`
+	// Secret identifier for UserPassword auth type
+	SecretIdentifier    *string `pulumi:"secretIdentifier"`
+	SecretKeyIdentifier *string `pulumi:"secretKeyIdentifier"`
+	SecretKeySecretPath *string `pulumi:"secretKeySecretPath"`
+	// Secret space path for UserPassword auth type
+	SecretSpacePath *string `pulumi:"secretSpacePath"`
+	// User name for UserPassword auth type
+	UserName *string `pulumi:"userName"`
 }
 
 // GetHarRegistryConfigAuthInput is an input type that accepts GetHarRegistryConfigAuthArgs and GetHarRegistryConfigAuthOutput values.
@@ -35433,10 +35676,19 @@ type GetHarRegistryConfigAuthInput interface {
 }
 
 type GetHarRegistryConfigAuthArgs struct {
+	AccessKey           pulumi.StringPtrInput `pulumi:"accessKey"`
+	AccessKeyIdentifier pulumi.StringPtrInput `pulumi:"accessKeyIdentifier"`
+	AccessKeySecretPath pulumi.StringPtrInput `pulumi:"accessKeySecretPath"`
 	// Type of authentication (UserPassword, Anonymous)
 	AuthType pulumi.StringInput `pulumi:"authType"`
-	// User password authentication details
-	UserPassword GetHarRegistryConfigAuthUserPasswordPtrInput `pulumi:"userPassword"`
+	// Secret identifier for UserPassword auth type
+	SecretIdentifier    pulumi.StringPtrInput `pulumi:"secretIdentifier"`
+	SecretKeyIdentifier pulumi.StringPtrInput `pulumi:"secretKeyIdentifier"`
+	SecretKeySecretPath pulumi.StringPtrInput `pulumi:"secretKeySecretPath"`
+	// Secret space path for UserPassword auth type
+	SecretSpacePath pulumi.StringPtrInput `pulumi:"secretSpacePath"`
+	// User name for UserPassword auth type
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (GetHarRegistryConfigAuthArgs) ElementType() reflect.Type {
@@ -35490,14 +35742,44 @@ func (o GetHarRegistryConfigAuthOutput) ToGetHarRegistryConfigAuthOutputWithCont
 	return o
 }
 
+func (o GetHarRegistryConfigAuthOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfigAuth) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHarRegistryConfigAuthOutput) AccessKeyIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfigAuth) *string { return v.AccessKeyIdentifier }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHarRegistryConfigAuthOutput) AccessKeySecretPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfigAuth) *string { return v.AccessKeySecretPath }).(pulumi.StringPtrOutput)
+}
+
 // Type of authentication (UserPassword, Anonymous)
 func (o GetHarRegistryConfigAuthOutput) AuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHarRegistryConfigAuth) string { return v.AuthType }).(pulumi.StringOutput)
 }
 
-// User password authentication details
-func (o GetHarRegistryConfigAuthOutput) UserPassword() GetHarRegistryConfigAuthUserPasswordPtrOutput {
-	return o.ApplyT(func(v GetHarRegistryConfigAuth) *GetHarRegistryConfigAuthUserPassword { return v.UserPassword }).(GetHarRegistryConfigAuthUserPasswordPtrOutput)
+// Secret identifier for UserPassword auth type
+func (o GetHarRegistryConfigAuthOutput) SecretIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfigAuth) *string { return v.SecretIdentifier }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHarRegistryConfigAuthOutput) SecretKeyIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfigAuth) *string { return v.SecretKeyIdentifier }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHarRegistryConfigAuthOutput) SecretKeySecretPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfigAuth) *string { return v.SecretKeySecretPath }).(pulumi.StringPtrOutput)
+}
+
+// Secret space path for UserPassword auth type
+func (o GetHarRegistryConfigAuthOutput) SecretSpacePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfigAuth) *string { return v.SecretSpacePath }).(pulumi.StringPtrOutput)
+}
+
+// User name for UserPassword auth type
+func (o GetHarRegistryConfigAuthOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfigAuth) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
 
 type GetHarRegistryConfigAuthArrayOutput struct{ *pulumi.OutputState }
@@ -35518,200 +35800,6 @@ func (o GetHarRegistryConfigAuthArrayOutput) Index(i pulumi.IntInput) GetHarRegi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHarRegistryConfigAuth {
 		return vs[0].([]GetHarRegistryConfigAuth)[vs[1].(int)]
 	}).(GetHarRegistryConfigAuthOutput)
-}
-
-type GetHarRegistryConfigAuthUserPassword struct {
-	// Secret identifier
-	SecretIdentifier *string `pulumi:"secretIdentifier"`
-	// Secret space ID
-	SecretSpaceId *int `pulumi:"secretSpaceId"`
-	// Secret space path
-	SecretSpacePath *string `pulumi:"secretSpacePath"`
-	// User name
-	UserName string `pulumi:"userName"`
-}
-
-// GetHarRegistryConfigAuthUserPasswordInput is an input type that accepts GetHarRegistryConfigAuthUserPasswordArgs and GetHarRegistryConfigAuthUserPasswordOutput values.
-// You can construct a concrete instance of `GetHarRegistryConfigAuthUserPasswordInput` via:
-//
-//	GetHarRegistryConfigAuthUserPasswordArgs{...}
-type GetHarRegistryConfigAuthUserPasswordInput interface {
-	pulumi.Input
-
-	ToGetHarRegistryConfigAuthUserPasswordOutput() GetHarRegistryConfigAuthUserPasswordOutput
-	ToGetHarRegistryConfigAuthUserPasswordOutputWithContext(context.Context) GetHarRegistryConfigAuthUserPasswordOutput
-}
-
-type GetHarRegistryConfigAuthUserPasswordArgs struct {
-	// Secret identifier
-	SecretIdentifier pulumi.StringPtrInput `pulumi:"secretIdentifier"`
-	// Secret space ID
-	SecretSpaceId pulumi.IntPtrInput `pulumi:"secretSpaceId"`
-	// Secret space path
-	SecretSpacePath pulumi.StringPtrInput `pulumi:"secretSpacePath"`
-	// User name
-	UserName pulumi.StringInput `pulumi:"userName"`
-}
-
-func (GetHarRegistryConfigAuthUserPasswordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHarRegistryConfigAuthUserPassword)(nil)).Elem()
-}
-
-func (i GetHarRegistryConfigAuthUserPasswordArgs) ToGetHarRegistryConfigAuthUserPasswordOutput() GetHarRegistryConfigAuthUserPasswordOutput {
-	return i.ToGetHarRegistryConfigAuthUserPasswordOutputWithContext(context.Background())
-}
-
-func (i GetHarRegistryConfigAuthUserPasswordArgs) ToGetHarRegistryConfigAuthUserPasswordOutputWithContext(ctx context.Context) GetHarRegistryConfigAuthUserPasswordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHarRegistryConfigAuthUserPasswordOutput)
-}
-
-func (i GetHarRegistryConfigAuthUserPasswordArgs) ToGetHarRegistryConfigAuthUserPasswordPtrOutput() GetHarRegistryConfigAuthUserPasswordPtrOutput {
-	return i.ToGetHarRegistryConfigAuthUserPasswordPtrOutputWithContext(context.Background())
-}
-
-func (i GetHarRegistryConfigAuthUserPasswordArgs) ToGetHarRegistryConfigAuthUserPasswordPtrOutputWithContext(ctx context.Context) GetHarRegistryConfigAuthUserPasswordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHarRegistryConfigAuthUserPasswordOutput).ToGetHarRegistryConfigAuthUserPasswordPtrOutputWithContext(ctx)
-}
-
-// GetHarRegistryConfigAuthUserPasswordPtrInput is an input type that accepts GetHarRegistryConfigAuthUserPasswordArgs, GetHarRegistryConfigAuthUserPasswordPtr and GetHarRegistryConfigAuthUserPasswordPtrOutput values.
-// You can construct a concrete instance of `GetHarRegistryConfigAuthUserPasswordPtrInput` via:
-//
-//	        GetHarRegistryConfigAuthUserPasswordArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetHarRegistryConfigAuthUserPasswordPtrInput interface {
-	pulumi.Input
-
-	ToGetHarRegistryConfigAuthUserPasswordPtrOutput() GetHarRegistryConfigAuthUserPasswordPtrOutput
-	ToGetHarRegistryConfigAuthUserPasswordPtrOutputWithContext(context.Context) GetHarRegistryConfigAuthUserPasswordPtrOutput
-}
-
-type getHarRegistryConfigAuthUserPasswordPtrType GetHarRegistryConfigAuthUserPasswordArgs
-
-func GetHarRegistryConfigAuthUserPasswordPtr(v *GetHarRegistryConfigAuthUserPasswordArgs) GetHarRegistryConfigAuthUserPasswordPtrInput {
-	return (*getHarRegistryConfigAuthUserPasswordPtrType)(v)
-}
-
-func (*getHarRegistryConfigAuthUserPasswordPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetHarRegistryConfigAuthUserPassword)(nil)).Elem()
-}
-
-func (i *getHarRegistryConfigAuthUserPasswordPtrType) ToGetHarRegistryConfigAuthUserPasswordPtrOutput() GetHarRegistryConfigAuthUserPasswordPtrOutput {
-	return i.ToGetHarRegistryConfigAuthUserPasswordPtrOutputWithContext(context.Background())
-}
-
-func (i *getHarRegistryConfigAuthUserPasswordPtrType) ToGetHarRegistryConfigAuthUserPasswordPtrOutputWithContext(ctx context.Context) GetHarRegistryConfigAuthUserPasswordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHarRegistryConfigAuthUserPasswordPtrOutput)
-}
-
-type GetHarRegistryConfigAuthUserPasswordOutput struct{ *pulumi.OutputState }
-
-func (GetHarRegistryConfigAuthUserPasswordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHarRegistryConfigAuthUserPassword)(nil)).Elem()
-}
-
-func (o GetHarRegistryConfigAuthUserPasswordOutput) ToGetHarRegistryConfigAuthUserPasswordOutput() GetHarRegistryConfigAuthUserPasswordOutput {
-	return o
-}
-
-func (o GetHarRegistryConfigAuthUserPasswordOutput) ToGetHarRegistryConfigAuthUserPasswordOutputWithContext(ctx context.Context) GetHarRegistryConfigAuthUserPasswordOutput {
-	return o
-}
-
-func (o GetHarRegistryConfigAuthUserPasswordOutput) ToGetHarRegistryConfigAuthUserPasswordPtrOutput() GetHarRegistryConfigAuthUserPasswordPtrOutput {
-	return o.ToGetHarRegistryConfigAuthUserPasswordPtrOutputWithContext(context.Background())
-}
-
-func (o GetHarRegistryConfigAuthUserPasswordOutput) ToGetHarRegistryConfigAuthUserPasswordPtrOutputWithContext(ctx context.Context) GetHarRegistryConfigAuthUserPasswordPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetHarRegistryConfigAuthUserPassword) *GetHarRegistryConfigAuthUserPassword {
-		return &v
-	}).(GetHarRegistryConfigAuthUserPasswordPtrOutput)
-}
-
-// Secret identifier
-func (o GetHarRegistryConfigAuthUserPasswordOutput) SecretIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetHarRegistryConfigAuthUserPassword) *string { return v.SecretIdentifier }).(pulumi.StringPtrOutput)
-}
-
-// Secret space ID
-func (o GetHarRegistryConfigAuthUserPasswordOutput) SecretSpaceId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetHarRegistryConfigAuthUserPassword) *int { return v.SecretSpaceId }).(pulumi.IntPtrOutput)
-}
-
-// Secret space path
-func (o GetHarRegistryConfigAuthUserPasswordOutput) SecretSpacePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetHarRegistryConfigAuthUserPassword) *string { return v.SecretSpacePath }).(pulumi.StringPtrOutput)
-}
-
-// User name
-func (o GetHarRegistryConfigAuthUserPasswordOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHarRegistryConfigAuthUserPassword) string { return v.UserName }).(pulumi.StringOutput)
-}
-
-type GetHarRegistryConfigAuthUserPasswordPtrOutput struct{ *pulumi.OutputState }
-
-func (GetHarRegistryConfigAuthUserPasswordPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetHarRegistryConfigAuthUserPassword)(nil)).Elem()
-}
-
-func (o GetHarRegistryConfigAuthUserPasswordPtrOutput) ToGetHarRegistryConfigAuthUserPasswordPtrOutput() GetHarRegistryConfigAuthUserPasswordPtrOutput {
-	return o
-}
-
-func (o GetHarRegistryConfigAuthUserPasswordPtrOutput) ToGetHarRegistryConfigAuthUserPasswordPtrOutputWithContext(ctx context.Context) GetHarRegistryConfigAuthUserPasswordPtrOutput {
-	return o
-}
-
-func (o GetHarRegistryConfigAuthUserPasswordPtrOutput) Elem() GetHarRegistryConfigAuthUserPasswordOutput {
-	return o.ApplyT(func(v *GetHarRegistryConfigAuthUserPassword) GetHarRegistryConfigAuthUserPassword {
-		if v != nil {
-			return *v
-		}
-		var ret GetHarRegistryConfigAuthUserPassword
-		return ret
-	}).(GetHarRegistryConfigAuthUserPasswordOutput)
-}
-
-// Secret identifier
-func (o GetHarRegistryConfigAuthUserPasswordPtrOutput) SecretIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetHarRegistryConfigAuthUserPassword) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretIdentifier
-	}).(pulumi.StringPtrOutput)
-}
-
-// Secret space ID
-func (o GetHarRegistryConfigAuthUserPasswordPtrOutput) SecretSpaceId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetHarRegistryConfigAuthUserPassword) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SecretSpaceId
-	}).(pulumi.IntPtrOutput)
-}
-
-// Secret space path
-func (o GetHarRegistryConfigAuthUserPasswordPtrOutput) SecretSpacePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetHarRegistryConfigAuthUserPassword) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretSpacePath
-	}).(pulumi.StringPtrOutput)
-}
-
-// User name
-func (o GetHarRegistryConfigAuthUserPasswordPtrOutput) UserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetHarRegistryConfigAuthUserPassword) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserName
-	}).(pulumi.StringPtrOutput)
 }
 
 type GetHelmConnectorCredential struct {
@@ -35830,9 +35918,9 @@ func (o GetHelmConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetHelmC
 }
 
 type GetInfraVariableSetConnector struct {
-	// Unique identifier of the connector.
+	// Connector Ref is the reference to the connector
 	ConnectorRef string `pulumi:"connectorRef"`
-	// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+	// Type is the connector type of the connector. Supported types: aws, azure, gcp
 	Type string `pulumi:"type"`
 }
 
@@ -35848,9 +35936,9 @@ type GetInfraVariableSetConnectorInput interface {
 }
 
 type GetInfraVariableSetConnectorArgs struct {
-	// Unique identifier of the connector.
+	// Connector Ref is the reference to the connector
 	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
-	// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+	// Type is the connector type of the connector. Supported types: aws, azure, gcp
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -35905,12 +35993,12 @@ func (o GetInfraVariableSetConnectorOutput) ToGetInfraVariableSetConnectorOutput
 	return o
 }
 
-// Unique identifier of the connector.
+// Connector Ref is the reference to the connector
 func (o GetInfraVariableSetConnectorOutput) ConnectorRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetConnector) string { return v.ConnectorRef }).(pulumi.StringOutput)
 }
 
-// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+// Type is the connector type of the connector. Supported types: aws, azure, gcp
 func (o GetInfraVariableSetConnectorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetConnector) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -35936,11 +36024,11 @@ func (o GetInfraVariableSetConnectorArrayOutput) Index(i pulumi.IntInput) GetInf
 }
 
 type GetInfraVariableSetEnvironmentVariable struct {
-	// Key is the identifier for the variable`
+	// Key is the identifier for the variable. Must be unique within the Variable Set.
 	Key string `pulumi:"key"`
-	// value is the value of the variable
+	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
 	Value string `pulumi:"value"`
-	// Value type indicates the value type of the variable, text or secret
+	// Value type indicates the value type of the variable. Currently we support string and secret.
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -35956,11 +36044,11 @@ type GetInfraVariableSetEnvironmentVariableInput interface {
 }
 
 type GetInfraVariableSetEnvironmentVariableArgs struct {
-	// Key is the identifier for the variable`
+	// Key is the identifier for the variable. Must be unique within the Variable Set.
 	Key pulumi.StringInput `pulumi:"key"`
-	// value is the value of the variable
+	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
 	Value pulumi.StringInput `pulumi:"value"`
-	// Value type indicates the value type of the variable, text or secret
+	// Value type indicates the value type of the variable. Currently we support string and secret.
 	ValueType pulumi.StringInput `pulumi:"valueType"`
 }
 
@@ -36015,17 +36103,17 @@ func (o GetInfraVariableSetEnvironmentVariableOutput) ToGetInfraVariableSetEnvir
 	return o
 }
 
-// Key is the identifier for the variable`
+// Key is the identifier for the variable. Must be unique within the Variable Set.
 func (o GetInfraVariableSetEnvironmentVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetEnvironmentVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// value is the value of the variable
+// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
 func (o GetInfraVariableSetEnvironmentVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetEnvironmentVariable) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// Value type indicates the value type of the variable, text or secret
+// Value type indicates the value type of the variable. Currently we support string and secret.
 func (o GetInfraVariableSetEnvironmentVariableOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetEnvironmentVariable) string { return v.ValueType }).(pulumi.StringOutput)
 }
@@ -36051,11 +36139,11 @@ func (o GetInfraVariableSetEnvironmentVariableArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetInfraVariableSetTerraformVariable struct {
-	// Key is the identifier for the variable`
+	// Key is the identifier for the variable. Must be unique within the Variable Set.
 	Key string `pulumi:"key"`
-	// value is the value of the variable
+	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
 	Value string `pulumi:"value"`
-	// Value type indicates the value type of the variable, text or secret
+	// Value type indicates the value type of the variable. Currently we support string and secret.
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -36071,11 +36159,11 @@ type GetInfraVariableSetTerraformVariableInput interface {
 }
 
 type GetInfraVariableSetTerraformVariableArgs struct {
-	// Key is the identifier for the variable`
+	// Key is the identifier for the variable. Must be unique within the Variable Set.
 	Key pulumi.StringInput `pulumi:"key"`
-	// value is the value of the variable
+	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
 	Value pulumi.StringInput `pulumi:"value"`
-	// Value type indicates the value type of the variable, text or secret
+	// Value type indicates the value type of the variable. Currently we support string and secret.
 	ValueType pulumi.StringInput `pulumi:"valueType"`
 }
 
@@ -36130,17 +36218,17 @@ func (o GetInfraVariableSetTerraformVariableOutput) ToGetInfraVariableSetTerrafo
 	return o
 }
 
-// Key is the identifier for the variable`
+// Key is the identifier for the variable. Must be unique within the Variable Set.
 func (o GetInfraVariableSetTerraformVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetTerraformVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// value is the value of the variable
+// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
 func (o GetInfraVariableSetTerraformVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetTerraformVariable) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// Value type indicates the value type of the variable, text or secret
+// Value type indicates the value type of the variable. Currently we support string and secret.
 func (o GetInfraVariableSetTerraformVariableOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetTerraformVariable) string { return v.ValueType }).(pulumi.StringOutput)
 }
@@ -36176,7 +36264,7 @@ type GetInfraVariableSetTerraformVariableFile struct {
 	RepositoryConnector string `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
 	RepositoryPath *string `pulumi:"repositoryPath"`
-	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
 	RepositorySha *string `pulumi:"repositorySha"`
 }
 
@@ -36202,7 +36290,7 @@ type GetInfraVariableSetTerraformVariableFileArgs struct {
 	RepositoryConnector pulumi.StringInput `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
 	RepositoryPath pulumi.StringPtrInput `pulumi:"repositoryPath"`
-	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringPtrInput `pulumi:"repositorySha"`
 }
 
@@ -36282,7 +36370,7 @@ func (o GetInfraVariableSetTerraformVariableFileOutput) RepositoryPath() pulumi.
 	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) *string { return v.RepositoryPath }).(pulumi.StringPtrOutput)
 }
 
-// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
 func (o GetInfraVariableSetTerraformVariableFileOutput) RepositorySha() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) *string { return v.RepositorySha }).(pulumi.StringPtrOutput)
 }
@@ -38116,9 +38204,9 @@ func (o GetKubernetesConnectorUsernamePasswordArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetManualFreezeCurrentOrUpcomingWindow struct {
-	// End time of the freeze
+	// End time of the freeze window
 	EndTime int `pulumi:"endTime"`
-	// Start time of the freeze
+	// Start time of the freeze window
 	StartTime int `pulumi:"startTime"`
 }
 
@@ -38134,9 +38222,9 @@ type GetManualFreezeCurrentOrUpcomingWindowInput interface {
 }
 
 type GetManualFreezeCurrentOrUpcomingWindowArgs struct {
-	// End time of the freeze
+	// End time of the freeze window
 	EndTime pulumi.IntInput `pulumi:"endTime"`
-	// Start time of the freeze
+	// Start time of the freeze window
 	StartTime pulumi.IntInput `pulumi:"startTime"`
 }
 
@@ -38191,12 +38279,12 @@ func (o GetManualFreezeCurrentOrUpcomingWindowOutput) ToGetManualFreezeCurrentOr
 	return o
 }
 
-// End time of the freeze
+// End time of the freeze window
 func (o GetManualFreezeCurrentOrUpcomingWindowOutput) EndTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetManualFreezeCurrentOrUpcomingWindow) int { return v.EndTime }).(pulumi.IntOutput)
 }
 
-// Start time of the freeze
+// Start time of the freeze window
 func (o GetManualFreezeCurrentOrUpcomingWindowOutput) StartTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetManualFreezeCurrentOrUpcomingWindow) int { return v.StartTime }).(pulumi.IntOutput)
 }
@@ -38222,15 +38310,15 @@ func (o GetManualFreezeCurrentOrUpcomingWindowArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetManualFreezeFreezeWindow struct {
-	// Duration of the freeze
+	// Duration of the freeze window
 	Duration string `pulumi:"duration"`
-	// End time of the freeze
+	// End Time of the freeze window
 	EndTime string `pulumi:"endTime"`
 	// Recurrence of the freeze window
 	Recurrences []GetManualFreezeFreezeWindowRecurrence `pulumi:"recurrences"`
-	// Start time of the freeze
+	// Start Time of the freeze window
 	StartTime string `pulumi:"startTime"`
-	// Timezone
+	// Time zone of the freeze window
 	TimeZone string `pulumi:"timeZone"`
 }
 
@@ -38246,15 +38334,15 @@ type GetManualFreezeFreezeWindowInput interface {
 }
 
 type GetManualFreezeFreezeWindowArgs struct {
-	// Duration of the freeze
+	// Duration of the freeze window
 	Duration pulumi.StringInput `pulumi:"duration"`
-	// End time of the freeze
+	// End Time of the freeze window
 	EndTime pulumi.StringInput `pulumi:"endTime"`
 	// Recurrence of the freeze window
 	Recurrences GetManualFreezeFreezeWindowRecurrenceArrayInput `pulumi:"recurrences"`
-	// Start time of the freeze
+	// Start Time of the freeze window
 	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// Timezone
+	// Time zone of the freeze window
 	TimeZone pulumi.StringInput `pulumi:"timeZone"`
 }
 
@@ -38309,12 +38397,12 @@ func (o GetManualFreezeFreezeWindowOutput) ToGetManualFreezeFreezeWindowOutputWi
 	return o
 }
 
-// Duration of the freeze
+// Duration of the freeze window
 func (o GetManualFreezeFreezeWindowOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindow) string { return v.Duration }).(pulumi.StringOutput)
 }
 
-// End time of the freeze
+// End Time of the freeze window
 func (o GetManualFreezeFreezeWindowOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindow) string { return v.EndTime }).(pulumi.StringOutput)
 }
@@ -38324,12 +38412,12 @@ func (o GetManualFreezeFreezeWindowOutput) Recurrences() GetManualFreezeFreezeWi
 	return o.ApplyT(func(v GetManualFreezeFreezeWindow) []GetManualFreezeFreezeWindowRecurrence { return v.Recurrences }).(GetManualFreezeFreezeWindowRecurrenceArrayOutput)
 }
 
-// Start time of the freeze
+// Start Time of the freeze window
 func (o GetManualFreezeFreezeWindowOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindow) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// Timezone
+// Time zone of the freeze window
 func (o GetManualFreezeFreezeWindowOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindow) string { return v.TimeZone }).(pulumi.StringOutput)
 }
@@ -38357,7 +38445,7 @@ func (o GetManualFreezeFreezeWindowArrayOutput) Index(i pulumi.IntInput) GetManu
 type GetManualFreezeFreezeWindowRecurrence struct {
 	// Used to filter resources on their attributes
 	RecurrenceSpecs []GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec `pulumi:"recurrenceSpecs"`
-	// Recurrence type(Daily, Weekly, Monthly, Yearly)
+	// Type of the recurrence
 	Type string `pulumi:"type"`
 }
 
@@ -38375,7 +38463,7 @@ type GetManualFreezeFreezeWindowRecurrenceInput interface {
 type GetManualFreezeFreezeWindowRecurrenceArgs struct {
 	// Used to filter resources on their attributes
 	RecurrenceSpecs GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecArrayInput `pulumi:"recurrenceSpecs"`
-	// Recurrence type(Daily, Weekly, Monthly, Yearly)
+	// Type of the recurrence
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -38437,7 +38525,7 @@ func (o GetManualFreezeFreezeWindowRecurrenceOutput) RecurrenceSpecs() GetManual
 	}).(GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecArrayOutput)
 }
 
-// Recurrence type(Daily, Weekly, Monthly, Yearly)
+// Type of the recurrence
 func (o GetManualFreezeFreezeWindowRecurrenceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindowRecurrence) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -38463,9 +38551,9 @@ func (o GetManualFreezeFreezeWindowRecurrenceArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec struct {
-	// Recurrence until timestamp
+	// Time till which freeze window recurrs
 	Until string `pulumi:"until"`
-	// Value of n, for n months recurrence
+	// Every n months recurrence
 	Value int `pulumi:"value"`
 }
 
@@ -38481,9 +38569,9 @@ type GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecInput interface {
 }
 
 type GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs struct {
-	// Recurrence until timestamp
+	// Time till which freeze window recurrs
 	Until pulumi.StringInput `pulumi:"until"`
-	// Value of n, for n months recurrence
+	// Every n months recurrence
 	Value pulumi.IntInput `pulumi:"value"`
 }
 
@@ -38538,12 +38626,12 @@ func (o GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput) ToGetManualFr
 	return o
 }
 
-// Recurrence until timestamp
+// Time till which freeze window recurrs
 func (o GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput) Until() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec) string { return v.Until }).(pulumi.StringOutput)
 }
 
-// Value of n, for n months recurrence
+// Every n months recurrence
 func (o GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput) Value() pulumi.IntOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec) int { return v.Value }).(pulumi.IntOutput)
 }
@@ -44617,9 +44705,9 @@ func (o GetVariablesSpecArrayOutput) Index(i pulumi.IntInput) GetVariablesSpecOu
 }
 
 type GetWorkspaceConnector struct {
-	// Unique identifier of the connector.
+	// Connector Ref is the reference to the connector
 	ConnectorRef string `pulumi:"connectorRef"`
-	// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+	// Type is the connector type of the connector. Supported types: aws, azure, gcp
 	Type string `pulumi:"type"`
 }
 
@@ -44635,9 +44723,9 @@ type GetWorkspaceConnectorInput interface {
 }
 
 type GetWorkspaceConnectorArgs struct {
-	// Unique identifier of the connector.
+	// Connector Ref is the reference to the connector
 	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
-	// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+	// Type is the connector type of the connector. Supported types: aws, azure, gcp
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -44692,12 +44780,12 @@ func (o GetWorkspaceConnectorOutput) ToGetWorkspaceConnectorOutputWithContext(ct
 	return o
 }
 
-// Unique identifier of the connector.
+// Connector Ref is the reference to the connector
 func (o GetWorkspaceConnectorOutput) ConnectorRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceConnector) string { return v.ConnectorRef }).(pulumi.StringOutput)
 }
 
-// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+// Type is the connector type of the connector. Supported types: aws, azure, gcp
 func (o GetWorkspaceConnectorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceConnector) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -45210,6 +45298,8 @@ func (o GetWorkspaceTerraformVariableFileArrayOutput) Index(i pulumi.IntInput) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecSyncPolicyInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecSyncPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecSyncPolicyPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecSyncPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplatePtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateMetadataInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs{})
@@ -45478,6 +45568,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialManualArrayInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialManualArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialOidcAuthenticationInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialOidcAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudCostConnectorBillingExportSpec2Input)(nil)).Elem(), GetAzureCloudCostConnectorBillingExportSpec2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudCostConnectorBillingExportSpec2ArrayInput)(nil)).Elem(), GetAzureCloudCostConnectorBillingExportSpec2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudCostConnectorBillingExportSpecInput)(nil)).Elem(), GetAzureCloudCostConnectorBillingExportSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudCostConnectorBillingExportSpecArrayInput)(nil)).Elem(), GetAzureCloudCostConnectorBillingExportSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudProviderConnectorCredentialInput)(nil)).Elem(), GetAzureCloudProviderConnectorCredentialArgs{})
@@ -45551,7 +45643,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorRancherBearerTokenInput)(nil)).Elem(), GetConnectorRancherBearerTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorRancherBearerTokenPtrInput)(nil)).Elem(), GetConnectorRancherBearerTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaChangelogScriptInput)(nil)).Elem(), GetDbSchemaChangelogScriptArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaChangelogScriptPtrInput)(nil)).Elem(), GetDbSchemaChangelogScriptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaSchemaSourceInput)(nil)).Elem(), GetDbSchemaSchemaSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaSchemaSourceArrayInput)(nil)).Elem(), GetDbSchemaSchemaSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerConnectorCredentialInput)(nil)).Elem(), GetDockerConnectorCredentialArgs{})
@@ -45698,8 +45789,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigArrayInput)(nil)).Elem(), GetHarRegistryConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigAuthInput)(nil)).Elem(), GetHarRegistryConfigAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigAuthArrayInput)(nil)).Elem(), GetHarRegistryConfigAuthArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigAuthUserPasswordInput)(nil)).Elem(), GetHarRegistryConfigAuthUserPasswordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigAuthUserPasswordPtrInput)(nil)).Elem(), GetHarRegistryConfigAuthUserPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialInput)(nil)).Elem(), GetHelmConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialArrayInput)(nil)).Elem(), GetHelmConnectorCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetConnectorInput)(nil)).Elem(), GetInfraVariableSetConnectorArgs{})
@@ -45847,6 +45936,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArray{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecSyncPolicyOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplatePtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput{})
@@ -46115,6 +46206,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialManualArrayOutput{})
 	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput{})
 	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetAzureCloudCostConnectorBillingExportSpec2Output{})
+	pulumi.RegisterOutputType(GetAzureCloudCostConnectorBillingExportSpec2ArrayOutput{})
 	pulumi.RegisterOutputType(GetAzureCloudCostConnectorBillingExportSpecOutput{})
 	pulumi.RegisterOutputType(GetAzureCloudCostConnectorBillingExportSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetAzureCloudProviderConnectorCredentialOutput{})
@@ -46188,7 +46281,6 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectorRancherBearerTokenOutput{})
 	pulumi.RegisterOutputType(GetConnectorRancherBearerTokenPtrOutput{})
 	pulumi.RegisterOutputType(GetDbSchemaChangelogScriptOutput{})
-	pulumi.RegisterOutputType(GetDbSchemaChangelogScriptPtrOutput{})
 	pulumi.RegisterOutputType(GetDbSchemaSchemaSourceOutput{})
 	pulumi.RegisterOutputType(GetDbSchemaSchemaSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetDockerConnectorCredentialOutput{})
@@ -46335,8 +46427,6 @@ func init() {
 	pulumi.RegisterOutputType(GetHarRegistryConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetHarRegistryConfigAuthOutput{})
 	pulumi.RegisterOutputType(GetHarRegistryConfigAuthArrayOutput{})
-	pulumi.RegisterOutputType(GetHarRegistryConfigAuthUserPasswordOutput{})
-	pulumi.RegisterOutputType(GetHarRegistryConfigAuthUserPasswordPtrOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetInfraVariableSetConnectorOutput{})

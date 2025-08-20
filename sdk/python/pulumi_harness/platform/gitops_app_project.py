@@ -283,6 +283,8 @@ class GitopsAppProject(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import gitOps project with account level agent
 
         ```sh
@@ -321,6 +323,8 @@ class GitopsAppProject(pulumi.CustomResource):
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import gitOps project with account level agent
 

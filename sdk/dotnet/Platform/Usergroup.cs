@@ -10,6 +10,36 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
+    /// Resource for creating a Harness User Group. Linking SSO providers with User Groups:
+    /// 
+    ///         The following fields need to be populated for LDAP SSO Providers:
+    ///     	
+    ///         - linked_sso_id
+    ///     	
+    ///         - linked_sso_display_name
+    ///     	
+    ///         - sso_group_id
+    ///     	
+    ///         - sso_group_name
+    ///     	
+    ///         - linked_sso_type
+    ///     	
+    ///         - sso_linked
+    ///     	
+    ///         The following fields need to be populated for SAML SSO Providers:
+    ///     	
+    ///         - linked_sso_id
+    ///     	
+    ///         - linked_sso_display_name
+    ///     	
+    ///         - sso_group_name
+    ///     	
+    ///         - sso_group_id // same as sso_group_name
+    ///     	
+    ///         - linked_sso_type
+    ///     	
+    ///         - sso_linked
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -155,6 +185,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import account level user group
     /// 
     /// ```sh
@@ -267,7 +299,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<string>> UserEmails { get; private set; } = null!;
 
         /// <summary>
-        /// List of users in the UserGroup. Either provide list of users or list of user emails.
+        /// List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
         /// </summary>
         [Output("users")]
         public Output<ImmutableArray<string>> Users { get; private set; } = null!;
@@ -431,7 +463,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _users;
 
         /// <summary>
-        /// List of users in the UserGroup. Either provide list of users or list of user emails.
+        /// List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
         /// </summary>
         public InputList<string> Users
         {
@@ -559,7 +591,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _users;
 
         /// <summary>
-        /// List of users in the UserGroup. Either provide list of users or list of user emails.
+        /// List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
         /// </summary>
         public InputList<string> Users
         {

@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating a HashiCorp Vault Secret Manager connector.
+//
 // ## Example Usage
 //
 // ```go
@@ -215,6 +217,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // # Import account level vault connector
 //
 // ```sh
@@ -299,7 +303,7 @@ type VaultConnector struct {
 	UseVaultAgent pulumi.BoolPtrOutput `pulumi:"useVaultAgent"`
 	// The Vault role defined to bind to aws iam account/role being accessed.
 	VaultAwsIamRole pulumi.StringPtrOutput `pulumi:"vaultAwsIamRole"`
-	// Custom path at with JWT auth in enabled for Vault.
+	// Custom path at with JWT auth in enabled for Vault
 	VaultJwtAuthPath pulumi.StringPtrOutput `pulumi:"vaultJwtAuthPath"`
 	// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
 	VaultJwtAuthRole pulumi.StringPtrOutput `pulumi:"vaultJwtAuthRole"`
@@ -414,7 +418,7 @@ type vaultConnectorState struct {
 	UseVaultAgent *bool `pulumi:"useVaultAgent"`
 	// The Vault role defined to bind to aws iam account/role being accessed.
 	VaultAwsIamRole *string `pulumi:"vaultAwsIamRole"`
-	// Custom path at with JWT auth in enabled for Vault.
+	// Custom path at with JWT auth in enabled for Vault
 	VaultJwtAuthPath *string `pulumi:"vaultJwtAuthPath"`
 	// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
 	VaultJwtAuthRole *string `pulumi:"vaultJwtAuthRole"`
@@ -491,7 +495,7 @@ type VaultConnectorState struct {
 	UseVaultAgent pulumi.BoolPtrInput
 	// The Vault role defined to bind to aws iam account/role being accessed.
 	VaultAwsIamRole pulumi.StringPtrInput
-	// Custom path at with JWT auth in enabled for Vault.
+	// Custom path at with JWT auth in enabled for Vault
 	VaultJwtAuthPath pulumi.StringPtrInput
 	// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
 	VaultJwtAuthRole pulumi.StringPtrInput
@@ -572,7 +576,7 @@ type vaultConnectorArgs struct {
 	UseVaultAgent *bool `pulumi:"useVaultAgent"`
 	// The Vault role defined to bind to aws iam account/role being accessed.
 	VaultAwsIamRole *string `pulumi:"vaultAwsIamRole"`
-	// Custom path at with JWT auth in enabled for Vault.
+	// Custom path at with JWT auth in enabled for Vault
 	VaultJwtAuthPath *string `pulumi:"vaultJwtAuthPath"`
 	// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
 	VaultJwtAuthRole *string `pulumi:"vaultJwtAuthRole"`
@@ -650,7 +654,7 @@ type VaultConnectorArgs struct {
 	UseVaultAgent pulumi.BoolPtrInput
 	// The Vault role defined to bind to aws iam account/role being accessed.
 	VaultAwsIamRole pulumi.StringPtrInput
-	// Custom path at with JWT auth in enabled for Vault.
+	// Custom path at with JWT auth in enabled for Vault
 	VaultJwtAuthPath pulumi.StringPtrInput
 	// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
 	VaultJwtAuthRole pulumi.StringPtrInput
@@ -909,7 +913,7 @@ func (o VaultConnectorOutput) VaultAwsIamRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VaultConnector) pulumi.StringPtrOutput { return v.VaultAwsIamRole }).(pulumi.StringPtrOutput)
 }
 
-// Custom path at with JWT auth in enabled for Vault.
+// Custom path at with JWT auth in enabled for Vault
 func (o VaultConnectorOutput) VaultJwtAuthPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VaultConnector) pulumi.StringPtrOutput { return v.VaultJwtAuthPath }).(pulumi.StringPtrOutput)
 }

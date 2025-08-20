@@ -18,8 +18,6 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Kubernetes Cloud Cost connector.
  * 
- * These connectors need to be created at the account level in Harness.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -64,24 +62,38 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * Import account level kubernetes cloud cost connector
  * 
  * ```sh
  * $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example &lt;connector_id&gt;
  * ```
  * 
+ * Import org level kubernetes cloud cost connector
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ * Import project level kubernetes cloud cost connector
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector")
 public class KubernetesCloudCostConnector extends com.pulumi.resources.CustomResource {
     /**
-     * Reference to a Kubernetes connector also at the account level.
+     * Reference of the Connector. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Export(name="connectorRef", refs={String.class}, tree="[0]")
     private Output<String> connectorRef;
 
     /**
-     * @return Reference to a Kubernetes connector also at the account level.
+     * @return Reference of the Connector. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> connectorRef() {

@@ -53,7 +53,7 @@ class GetEnvironmentServiceOverridesResult:
     @pulumi.getter(name="envId")
     def env_id(self) -> _builtins.str:
         """
-        The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        The env ID to which the overrides associated.
         """
         return pulumi.get(self, "env_id")
 
@@ -93,7 +93,7 @@ class GetEnvironmentServiceOverridesResult:
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[_builtins.str]:
         """
-        The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        The service ID to which the overrides applies.
         """
         return pulumi.get(self, "service_id")
 
@@ -143,11 +143,11 @@ def get_environment_service_overrides(env_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str env_id: The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+    :param _builtins.str env_id: The env ID to which the overrides associated.
     :param _builtins.str identifier: identifier of the service overrides.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
-    :param _builtins.str service_id: The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+    :param _builtins.str service_id: The service ID to which the overrides applies.
     """
     __args__ = dict()
     __args__['envId'] = env_id
@@ -188,11 +188,11 @@ def get_environment_service_overrides_output(env_id: Optional[pulumi.Input[_buil
     ```
 
 
-    :param _builtins.str env_id: The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+    :param _builtins.str env_id: The env ID to which the overrides associated.
     :param _builtins.str identifier: identifier of the service overrides.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
-    :param _builtins.str service_id: The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+    :param _builtins.str service_id: The service ID to which the overrides applies.
     """
     __args__ = dict()
     __args__['envId'] = env_id

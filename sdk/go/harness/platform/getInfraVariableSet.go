@@ -29,8 +29,21 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupInfraVariableSet(ctx, &platform.LookupInfraVariableSetArgs{
 //				Identifier: "identifier",
-//				OrgId:      pulumi.StringRef("org_id"),
-//				ProjectId:  pulumi.StringRef("project_id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.LookupInfraVariableSet(ctx, &platform.LookupInfraVariableSetArgs{
+//				Identifier: "identifier",
+//				OrgId:      pulumi.StringRef("someorg"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.LookupInfraVariableSet(ctx, &platform.LookupInfraVariableSetArgs{
+//				Identifier: "identifier",
+//				OrgId:      pulumi.StringRef("someorg"),
+//				ProjectId:  pulumi.StringRef("someproj"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,17 +65,17 @@ func LookupInfraVariableSet(ctx *pulumi.Context, args *LookupInfraVariableSetArg
 
 // A collection of arguments for invoking getInfraVariableSet.
 type LookupInfraVariableSetArgs struct {
-	// Provider connector configured on the variable set
+	// Provider connectors configured on the Variable Set. Only one connector of a type is supported
 	Connectors []GetInfraVariableSetConnector `pulumi:"connectors"`
-	// Environment variables configured on the variable set
+	// Environment variables configured on the Variable Set
 	EnvironmentVariables []GetInfraVariableSetEnvironmentVariable `pulumi:"environmentVariables"`
-	// Identifier of the Variable Set
+	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// Name of the Variable Set
+	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Organization Identifier
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Project Identifier
+	// Unique identifier of the project.
 	ProjectId              *string                                    `pulumi:"projectId"`
 	TerraformVariableFiles []GetInfraVariableSetTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []GetInfraVariableSetTerraformVariable     `pulumi:"terraformVariables"`
@@ -70,22 +83,23 @@ type LookupInfraVariableSetArgs struct {
 
 // A collection of values returned by getInfraVariableSet.
 type LookupInfraVariableSetResult struct {
-	// Provider connector configured on the variable set
+	// Provider connectors configured on the Variable Set. Only one connector of a type is supported
 	Connectors []GetInfraVariableSetConnector `pulumi:"connectors"`
-	// Description of the Variable Set
+	// Description of the resource.
 	Description string `pulumi:"description"`
-	// Environment variables configured on the variable set
+	// Environment variables configured on the Variable Set
 	EnvironmentVariables []GetInfraVariableSetEnvironmentVariable `pulumi:"environmentVariables"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Identifier of the Variable Set
+	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// Name of the Variable Set
+	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Organization Identifier
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Project Identifier
-	ProjectId              *string                                    `pulumi:"projectId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
+	// Tags to associate with the resource.
 	Tags                   []string                                   `pulumi:"tags"`
 	TerraformVariableFiles []GetInfraVariableSetTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []GetInfraVariableSetTerraformVariable     `pulumi:"terraformVariables"`
@@ -102,17 +116,17 @@ func LookupInfraVariableSetOutput(ctx *pulumi.Context, args LookupInfraVariableS
 
 // A collection of arguments for invoking getInfraVariableSet.
 type LookupInfraVariableSetOutputArgs struct {
-	// Provider connector configured on the variable set
+	// Provider connectors configured on the Variable Set. Only one connector of a type is supported
 	Connectors GetInfraVariableSetConnectorArrayInput `pulumi:"connectors"`
-	// Environment variables configured on the variable set
+	// Environment variables configured on the Variable Set
 	EnvironmentVariables GetInfraVariableSetEnvironmentVariableArrayInput `pulumi:"environmentVariables"`
-	// Identifier of the Variable Set
+	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
-	// Name of the Variable Set
+	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Organization Identifier
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Project Identifier
+	// Unique identifier of the project.
 	ProjectId              pulumi.StringPtrInput                              `pulumi:"projectId"`
 	TerraformVariableFiles GetInfraVariableSetTerraformVariableFileArrayInput `pulumi:"terraformVariableFiles"`
 	TerraformVariables     GetInfraVariableSetTerraformVariableArrayInput     `pulumi:"terraformVariables"`
@@ -137,17 +151,17 @@ func (o LookupInfraVariableSetResultOutput) ToLookupInfraVariableSetResultOutput
 	return o
 }
 
-// Provider connector configured on the variable set
+// Provider connectors configured on the Variable Set. Only one connector of a type is supported
 func (o LookupInfraVariableSetResultOutput) Connectors() GetInfraVariableSetConnectorArrayOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) []GetInfraVariableSetConnector { return v.Connectors }).(GetInfraVariableSetConnectorArrayOutput)
 }
 
-// Description of the Variable Set
+// Description of the resource.
 func (o LookupInfraVariableSetResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Environment variables configured on the variable set
+// Environment variables configured on the Variable Set
 func (o LookupInfraVariableSetResultOutput) EnvironmentVariables() GetInfraVariableSetEnvironmentVariableArrayOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) []GetInfraVariableSetEnvironmentVariable {
 		return v.EnvironmentVariables
@@ -159,26 +173,27 @@ func (o LookupInfraVariableSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier of the Variable Set
+// Unique identifier of the resource.
 func (o LookupInfraVariableSetResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Name of the Variable Set
+// Name of the resource.
 func (o LookupInfraVariableSetResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Organization Identifier
+// Unique identifier of the organization.
 func (o LookupInfraVariableSetResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Project Identifier
+// Unique identifier of the project.
 func (o LookupInfraVariableSetResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
+// Tags to associate with the resource.
 func (o LookupInfraVariableSetResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

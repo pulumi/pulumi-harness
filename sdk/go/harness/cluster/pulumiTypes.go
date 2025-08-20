@@ -914,6 +914,162 @@ func (o OrchestratorConfigBinpackingPodEvictionThresholdPtrOutput) Memory() pulu
 	}).(pulumi.Float64PtrOutput)
 }
 
+type OrchestratorConfigCommitmentIntegration struct {
+	// Flag to enable Commitment Integration
+	Enabled bool `pulumi:"enabled"`
+	// Master AWS account id for commitment integration
+	MasterAccountId string `pulumi:"masterAccountId"`
+}
+
+// OrchestratorConfigCommitmentIntegrationInput is an input type that accepts OrchestratorConfigCommitmentIntegrationArgs and OrchestratorConfigCommitmentIntegrationOutput values.
+// You can construct a concrete instance of `OrchestratorConfigCommitmentIntegrationInput` via:
+//
+//	OrchestratorConfigCommitmentIntegrationArgs{...}
+type OrchestratorConfigCommitmentIntegrationInput interface {
+	pulumi.Input
+
+	ToOrchestratorConfigCommitmentIntegrationOutput() OrchestratorConfigCommitmentIntegrationOutput
+	ToOrchestratorConfigCommitmentIntegrationOutputWithContext(context.Context) OrchestratorConfigCommitmentIntegrationOutput
+}
+
+type OrchestratorConfigCommitmentIntegrationArgs struct {
+	// Flag to enable Commitment Integration
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Master AWS account id for commitment integration
+	MasterAccountId pulumi.StringInput `pulumi:"masterAccountId"`
+}
+
+func (OrchestratorConfigCommitmentIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrchestratorConfigCommitmentIntegration)(nil)).Elem()
+}
+
+func (i OrchestratorConfigCommitmentIntegrationArgs) ToOrchestratorConfigCommitmentIntegrationOutput() OrchestratorConfigCommitmentIntegrationOutput {
+	return i.ToOrchestratorConfigCommitmentIntegrationOutputWithContext(context.Background())
+}
+
+func (i OrchestratorConfigCommitmentIntegrationArgs) ToOrchestratorConfigCommitmentIntegrationOutputWithContext(ctx context.Context) OrchestratorConfigCommitmentIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorConfigCommitmentIntegrationOutput)
+}
+
+func (i OrchestratorConfigCommitmentIntegrationArgs) ToOrchestratorConfigCommitmentIntegrationPtrOutput() OrchestratorConfigCommitmentIntegrationPtrOutput {
+	return i.ToOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i OrchestratorConfigCommitmentIntegrationArgs) ToOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(ctx context.Context) OrchestratorConfigCommitmentIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorConfigCommitmentIntegrationOutput).ToOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(ctx)
+}
+
+// OrchestratorConfigCommitmentIntegrationPtrInput is an input type that accepts OrchestratorConfigCommitmentIntegrationArgs, OrchestratorConfigCommitmentIntegrationPtr and OrchestratorConfigCommitmentIntegrationPtrOutput values.
+// You can construct a concrete instance of `OrchestratorConfigCommitmentIntegrationPtrInput` via:
+//
+//	        OrchestratorConfigCommitmentIntegrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrchestratorConfigCommitmentIntegrationPtrInput interface {
+	pulumi.Input
+
+	ToOrchestratorConfigCommitmentIntegrationPtrOutput() OrchestratorConfigCommitmentIntegrationPtrOutput
+	ToOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(context.Context) OrchestratorConfigCommitmentIntegrationPtrOutput
+}
+
+type orchestratorConfigCommitmentIntegrationPtrType OrchestratorConfigCommitmentIntegrationArgs
+
+func OrchestratorConfigCommitmentIntegrationPtr(v *OrchestratorConfigCommitmentIntegrationArgs) OrchestratorConfigCommitmentIntegrationPtrInput {
+	return (*orchestratorConfigCommitmentIntegrationPtrType)(v)
+}
+
+func (*orchestratorConfigCommitmentIntegrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrchestratorConfigCommitmentIntegration)(nil)).Elem()
+}
+
+func (i *orchestratorConfigCommitmentIntegrationPtrType) ToOrchestratorConfigCommitmentIntegrationPtrOutput() OrchestratorConfigCommitmentIntegrationPtrOutput {
+	return i.ToOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *orchestratorConfigCommitmentIntegrationPtrType) ToOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(ctx context.Context) OrchestratorConfigCommitmentIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorConfigCommitmentIntegrationPtrOutput)
+}
+
+type OrchestratorConfigCommitmentIntegrationOutput struct{ *pulumi.OutputState }
+
+func (OrchestratorConfigCommitmentIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrchestratorConfigCommitmentIntegration)(nil)).Elem()
+}
+
+func (o OrchestratorConfigCommitmentIntegrationOutput) ToOrchestratorConfigCommitmentIntegrationOutput() OrchestratorConfigCommitmentIntegrationOutput {
+	return o
+}
+
+func (o OrchestratorConfigCommitmentIntegrationOutput) ToOrchestratorConfigCommitmentIntegrationOutputWithContext(ctx context.Context) OrchestratorConfigCommitmentIntegrationOutput {
+	return o
+}
+
+func (o OrchestratorConfigCommitmentIntegrationOutput) ToOrchestratorConfigCommitmentIntegrationPtrOutput() OrchestratorConfigCommitmentIntegrationPtrOutput {
+	return o.ToOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (o OrchestratorConfigCommitmentIntegrationOutput) ToOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(ctx context.Context) OrchestratorConfigCommitmentIntegrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrchestratorConfigCommitmentIntegration) *OrchestratorConfigCommitmentIntegration {
+		return &v
+	}).(OrchestratorConfigCommitmentIntegrationPtrOutput)
+}
+
+// Flag to enable Commitment Integration
+func (o OrchestratorConfigCommitmentIntegrationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v OrchestratorConfigCommitmentIntegration) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Master AWS account id for commitment integration
+func (o OrchestratorConfigCommitmentIntegrationOutput) MasterAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v OrchestratorConfigCommitmentIntegration) string { return v.MasterAccountId }).(pulumi.StringOutput)
+}
+
+type OrchestratorConfigCommitmentIntegrationPtrOutput struct{ *pulumi.OutputState }
+
+func (OrchestratorConfigCommitmentIntegrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrchestratorConfigCommitmentIntegration)(nil)).Elem()
+}
+
+func (o OrchestratorConfigCommitmentIntegrationPtrOutput) ToOrchestratorConfigCommitmentIntegrationPtrOutput() OrchestratorConfigCommitmentIntegrationPtrOutput {
+	return o
+}
+
+func (o OrchestratorConfigCommitmentIntegrationPtrOutput) ToOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(ctx context.Context) OrchestratorConfigCommitmentIntegrationPtrOutput {
+	return o
+}
+
+func (o OrchestratorConfigCommitmentIntegrationPtrOutput) Elem() OrchestratorConfigCommitmentIntegrationOutput {
+	return o.ApplyT(func(v *OrchestratorConfigCommitmentIntegration) OrchestratorConfigCommitmentIntegration {
+		if v != nil {
+			return *v
+		}
+		var ret OrchestratorConfigCommitmentIntegration
+		return ret
+	}).(OrchestratorConfigCommitmentIntegrationOutput)
+}
+
+// Flag to enable Commitment Integration
+func (o OrchestratorConfigCommitmentIntegrationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfigCommitmentIntegration) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Master AWS account id for commitment integration
+func (o OrchestratorConfigCommitmentIntegrationPtrOutput) MasterAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfigCommitmentIntegration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
 type OrchestratorConfigDistribution struct {
 	// Number of minimum ondemand replicas required for workloads
 	BaseOndemandCapacity *int `pulumi:"baseOndemandCapacity"`
@@ -1261,6 +1417,553 @@ func (o OrchestratorConfigNodePreferencesPtrOutput) Ttl() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.Ttl
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrchestratorConfigReplacementSchedule struct {
+	// Defines the scope of the replacement schedule
+	AppliesTo     OrchestratorConfigReplacementScheduleAppliesTo      `pulumi:"appliesTo"`
+	WindowDetails *OrchestratorConfigReplacementScheduleWindowDetails `pulumi:"windowDetails"`
+	// Window type for replacement schedule
+	WindowType string `pulumi:"windowType"`
+}
+
+// OrchestratorConfigReplacementScheduleInput is an input type that accepts OrchestratorConfigReplacementScheduleArgs and OrchestratorConfigReplacementScheduleOutput values.
+// You can construct a concrete instance of `OrchestratorConfigReplacementScheduleInput` via:
+//
+//	OrchestratorConfigReplacementScheduleArgs{...}
+type OrchestratorConfigReplacementScheduleInput interface {
+	pulumi.Input
+
+	ToOrchestratorConfigReplacementScheduleOutput() OrchestratorConfigReplacementScheduleOutput
+	ToOrchestratorConfigReplacementScheduleOutputWithContext(context.Context) OrchestratorConfigReplacementScheduleOutput
+}
+
+type OrchestratorConfigReplacementScheduleArgs struct {
+	// Defines the scope of the replacement schedule
+	AppliesTo     OrchestratorConfigReplacementScheduleAppliesToInput        `pulumi:"appliesTo"`
+	WindowDetails OrchestratorConfigReplacementScheduleWindowDetailsPtrInput `pulumi:"windowDetails"`
+	// Window type for replacement schedule
+	WindowType pulumi.StringInput `pulumi:"windowType"`
+}
+
+func (OrchestratorConfigReplacementScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrchestratorConfigReplacementSchedule)(nil)).Elem()
+}
+
+func (i OrchestratorConfigReplacementScheduleArgs) ToOrchestratorConfigReplacementScheduleOutput() OrchestratorConfigReplacementScheduleOutput {
+	return i.ToOrchestratorConfigReplacementScheduleOutputWithContext(context.Background())
+}
+
+func (i OrchestratorConfigReplacementScheduleArgs) ToOrchestratorConfigReplacementScheduleOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorConfigReplacementScheduleOutput)
+}
+
+func (i OrchestratorConfigReplacementScheduleArgs) ToOrchestratorConfigReplacementSchedulePtrOutput() OrchestratorConfigReplacementSchedulePtrOutput {
+	return i.ToOrchestratorConfigReplacementSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i OrchestratorConfigReplacementScheduleArgs) ToOrchestratorConfigReplacementSchedulePtrOutputWithContext(ctx context.Context) OrchestratorConfigReplacementSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorConfigReplacementScheduleOutput).ToOrchestratorConfigReplacementSchedulePtrOutputWithContext(ctx)
+}
+
+// OrchestratorConfigReplacementSchedulePtrInput is an input type that accepts OrchestratorConfigReplacementScheduleArgs, OrchestratorConfigReplacementSchedulePtr and OrchestratorConfigReplacementSchedulePtrOutput values.
+// You can construct a concrete instance of `OrchestratorConfigReplacementSchedulePtrInput` via:
+//
+//	        OrchestratorConfigReplacementScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrchestratorConfigReplacementSchedulePtrInput interface {
+	pulumi.Input
+
+	ToOrchestratorConfigReplacementSchedulePtrOutput() OrchestratorConfigReplacementSchedulePtrOutput
+	ToOrchestratorConfigReplacementSchedulePtrOutputWithContext(context.Context) OrchestratorConfigReplacementSchedulePtrOutput
+}
+
+type orchestratorConfigReplacementSchedulePtrType OrchestratorConfigReplacementScheduleArgs
+
+func OrchestratorConfigReplacementSchedulePtr(v *OrchestratorConfigReplacementScheduleArgs) OrchestratorConfigReplacementSchedulePtrInput {
+	return (*orchestratorConfigReplacementSchedulePtrType)(v)
+}
+
+func (*orchestratorConfigReplacementSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrchestratorConfigReplacementSchedule)(nil)).Elem()
+}
+
+func (i *orchestratorConfigReplacementSchedulePtrType) ToOrchestratorConfigReplacementSchedulePtrOutput() OrchestratorConfigReplacementSchedulePtrOutput {
+	return i.ToOrchestratorConfigReplacementSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *orchestratorConfigReplacementSchedulePtrType) ToOrchestratorConfigReplacementSchedulePtrOutputWithContext(ctx context.Context) OrchestratorConfigReplacementSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorConfigReplacementSchedulePtrOutput)
+}
+
+type OrchestratorConfigReplacementScheduleOutput struct{ *pulumi.OutputState }
+
+func (OrchestratorConfigReplacementScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrchestratorConfigReplacementSchedule)(nil)).Elem()
+}
+
+func (o OrchestratorConfigReplacementScheduleOutput) ToOrchestratorConfigReplacementScheduleOutput() OrchestratorConfigReplacementScheduleOutput {
+	return o
+}
+
+func (o OrchestratorConfigReplacementScheduleOutput) ToOrchestratorConfigReplacementScheduleOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleOutput {
+	return o
+}
+
+func (o OrchestratorConfigReplacementScheduleOutput) ToOrchestratorConfigReplacementSchedulePtrOutput() OrchestratorConfigReplacementSchedulePtrOutput {
+	return o.ToOrchestratorConfigReplacementSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o OrchestratorConfigReplacementScheduleOutput) ToOrchestratorConfigReplacementSchedulePtrOutputWithContext(ctx context.Context) OrchestratorConfigReplacementSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrchestratorConfigReplacementSchedule) *OrchestratorConfigReplacementSchedule {
+		return &v
+	}).(OrchestratorConfigReplacementSchedulePtrOutput)
+}
+
+// Defines the scope of the replacement schedule
+func (o OrchestratorConfigReplacementScheduleOutput) AppliesTo() OrchestratorConfigReplacementScheduleAppliesToOutput {
+	return o.ApplyT(func(v OrchestratorConfigReplacementSchedule) OrchestratorConfigReplacementScheduleAppliesTo {
+		return v.AppliesTo
+	}).(OrchestratorConfigReplacementScheduleAppliesToOutput)
+}
+
+func (o OrchestratorConfigReplacementScheduleOutput) WindowDetails() OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return o.ApplyT(func(v OrchestratorConfigReplacementSchedule) *OrchestratorConfigReplacementScheduleWindowDetails {
+		return v.WindowDetails
+	}).(OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput)
+}
+
+// Window type for replacement schedule
+func (o OrchestratorConfigReplacementScheduleOutput) WindowType() pulumi.StringOutput {
+	return o.ApplyT(func(v OrchestratorConfigReplacementSchedule) string { return v.WindowType }).(pulumi.StringOutput)
+}
+
+type OrchestratorConfigReplacementSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (OrchestratorConfigReplacementSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrchestratorConfigReplacementSchedule)(nil)).Elem()
+}
+
+func (o OrchestratorConfigReplacementSchedulePtrOutput) ToOrchestratorConfigReplacementSchedulePtrOutput() OrchestratorConfigReplacementSchedulePtrOutput {
+	return o
+}
+
+func (o OrchestratorConfigReplacementSchedulePtrOutput) ToOrchestratorConfigReplacementSchedulePtrOutputWithContext(ctx context.Context) OrchestratorConfigReplacementSchedulePtrOutput {
+	return o
+}
+
+func (o OrchestratorConfigReplacementSchedulePtrOutput) Elem() OrchestratorConfigReplacementScheduleOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementSchedule) OrchestratorConfigReplacementSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret OrchestratorConfigReplacementSchedule
+		return ret
+	}).(OrchestratorConfigReplacementScheduleOutput)
+}
+
+// Defines the scope of the replacement schedule
+func (o OrchestratorConfigReplacementSchedulePtrOutput) AppliesTo() OrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementSchedule) *OrchestratorConfigReplacementScheduleAppliesTo {
+		if v == nil {
+			return nil
+		}
+		return &v.AppliesTo
+	}).(OrchestratorConfigReplacementScheduleAppliesToPtrOutput)
+}
+
+func (o OrchestratorConfigReplacementSchedulePtrOutput) WindowDetails() OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementSchedule) *OrchestratorConfigReplacementScheduleWindowDetails {
+		if v == nil {
+			return nil
+		}
+		return v.WindowDetails
+	}).(OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput)
+}
+
+// Window type for replacement schedule
+func (o OrchestratorConfigReplacementSchedulePtrOutput) WindowType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WindowType
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrchestratorConfigReplacementScheduleAppliesTo struct {
+	Consolidation      bool `pulumi:"consolidation"`
+	HarnessPodEviction bool `pulumi:"harnessPodEviction"`
+	ReverseFallback    bool `pulumi:"reverseFallback"`
+}
+
+// OrchestratorConfigReplacementScheduleAppliesToInput is an input type that accepts OrchestratorConfigReplacementScheduleAppliesToArgs and OrchestratorConfigReplacementScheduleAppliesToOutput values.
+// You can construct a concrete instance of `OrchestratorConfigReplacementScheduleAppliesToInput` via:
+//
+//	OrchestratorConfigReplacementScheduleAppliesToArgs{...}
+type OrchestratorConfigReplacementScheduleAppliesToInput interface {
+	pulumi.Input
+
+	ToOrchestratorConfigReplacementScheduleAppliesToOutput() OrchestratorConfigReplacementScheduleAppliesToOutput
+	ToOrchestratorConfigReplacementScheduleAppliesToOutputWithContext(context.Context) OrchestratorConfigReplacementScheduleAppliesToOutput
+}
+
+type OrchestratorConfigReplacementScheduleAppliesToArgs struct {
+	Consolidation      pulumi.BoolInput `pulumi:"consolidation"`
+	HarnessPodEviction pulumi.BoolInput `pulumi:"harnessPodEviction"`
+	ReverseFallback    pulumi.BoolInput `pulumi:"reverseFallback"`
+}
+
+func (OrchestratorConfigReplacementScheduleAppliesToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrchestratorConfigReplacementScheduleAppliesTo)(nil)).Elem()
+}
+
+func (i OrchestratorConfigReplacementScheduleAppliesToArgs) ToOrchestratorConfigReplacementScheduleAppliesToOutput() OrchestratorConfigReplacementScheduleAppliesToOutput {
+	return i.ToOrchestratorConfigReplacementScheduleAppliesToOutputWithContext(context.Background())
+}
+
+func (i OrchestratorConfigReplacementScheduleAppliesToArgs) ToOrchestratorConfigReplacementScheduleAppliesToOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleAppliesToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorConfigReplacementScheduleAppliesToOutput)
+}
+
+func (i OrchestratorConfigReplacementScheduleAppliesToArgs) ToOrchestratorConfigReplacementScheduleAppliesToPtrOutput() OrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return i.ToOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(context.Background())
+}
+
+func (i OrchestratorConfigReplacementScheduleAppliesToArgs) ToOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorConfigReplacementScheduleAppliesToOutput).ToOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(ctx)
+}
+
+// OrchestratorConfigReplacementScheduleAppliesToPtrInput is an input type that accepts OrchestratorConfigReplacementScheduleAppliesToArgs, OrchestratorConfigReplacementScheduleAppliesToPtr and OrchestratorConfigReplacementScheduleAppliesToPtrOutput values.
+// You can construct a concrete instance of `OrchestratorConfigReplacementScheduleAppliesToPtrInput` via:
+//
+//	        OrchestratorConfigReplacementScheduleAppliesToArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrchestratorConfigReplacementScheduleAppliesToPtrInput interface {
+	pulumi.Input
+
+	ToOrchestratorConfigReplacementScheduleAppliesToPtrOutput() OrchestratorConfigReplacementScheduleAppliesToPtrOutput
+	ToOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(context.Context) OrchestratorConfigReplacementScheduleAppliesToPtrOutput
+}
+
+type orchestratorConfigReplacementScheduleAppliesToPtrType OrchestratorConfigReplacementScheduleAppliesToArgs
+
+func OrchestratorConfigReplacementScheduleAppliesToPtr(v *OrchestratorConfigReplacementScheduleAppliesToArgs) OrchestratorConfigReplacementScheduleAppliesToPtrInput {
+	return (*orchestratorConfigReplacementScheduleAppliesToPtrType)(v)
+}
+
+func (*orchestratorConfigReplacementScheduleAppliesToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrchestratorConfigReplacementScheduleAppliesTo)(nil)).Elem()
+}
+
+func (i *orchestratorConfigReplacementScheduleAppliesToPtrType) ToOrchestratorConfigReplacementScheduleAppliesToPtrOutput() OrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return i.ToOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(context.Background())
+}
+
+func (i *orchestratorConfigReplacementScheduleAppliesToPtrType) ToOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorConfigReplacementScheduleAppliesToPtrOutput)
+}
+
+type OrchestratorConfigReplacementScheduleAppliesToOutput struct{ *pulumi.OutputState }
+
+func (OrchestratorConfigReplacementScheduleAppliesToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrchestratorConfigReplacementScheduleAppliesTo)(nil)).Elem()
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToOutput) ToOrchestratorConfigReplacementScheduleAppliesToOutput() OrchestratorConfigReplacementScheduleAppliesToOutput {
+	return o
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToOutput) ToOrchestratorConfigReplacementScheduleAppliesToOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleAppliesToOutput {
+	return o
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToOutput) ToOrchestratorConfigReplacementScheduleAppliesToPtrOutput() OrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return o.ToOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(context.Background())
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToOutput) ToOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrchestratorConfigReplacementScheduleAppliesTo) *OrchestratorConfigReplacementScheduleAppliesTo {
+		return &v
+	}).(OrchestratorConfigReplacementScheduleAppliesToPtrOutput)
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToOutput) Consolidation() pulumi.BoolOutput {
+	return o.ApplyT(func(v OrchestratorConfigReplacementScheduleAppliesTo) bool { return v.Consolidation }).(pulumi.BoolOutput)
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToOutput) HarnessPodEviction() pulumi.BoolOutput {
+	return o.ApplyT(func(v OrchestratorConfigReplacementScheduleAppliesTo) bool { return v.HarnessPodEviction }).(pulumi.BoolOutput)
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToOutput) ReverseFallback() pulumi.BoolOutput {
+	return o.ApplyT(func(v OrchestratorConfigReplacementScheduleAppliesTo) bool { return v.ReverseFallback }).(pulumi.BoolOutput)
+}
+
+type OrchestratorConfigReplacementScheduleAppliesToPtrOutput struct{ *pulumi.OutputState }
+
+func (OrchestratorConfigReplacementScheduleAppliesToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrchestratorConfigReplacementScheduleAppliesTo)(nil)).Elem()
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToPtrOutput) ToOrchestratorConfigReplacementScheduleAppliesToPtrOutput() OrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return o
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToPtrOutput) ToOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return o
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToPtrOutput) Elem() OrchestratorConfigReplacementScheduleAppliesToOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementScheduleAppliesTo) OrchestratorConfigReplacementScheduleAppliesTo {
+		if v != nil {
+			return *v
+		}
+		var ret OrchestratorConfigReplacementScheduleAppliesTo
+		return ret
+	}).(OrchestratorConfigReplacementScheduleAppliesToOutput)
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToPtrOutput) Consolidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementScheduleAppliesTo) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Consolidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToPtrOutput) HarnessPodEviction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementScheduleAppliesTo) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.HarnessPodEviction
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OrchestratorConfigReplacementScheduleAppliesToPtrOutput) ReverseFallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementScheduleAppliesTo) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ReverseFallback
+	}).(pulumi.BoolPtrOutput)
+}
+
+type OrchestratorConfigReplacementScheduleWindowDetails struct {
+	AllDay *bool `pulumi:"allDay"`
+	// List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+	Days []string `pulumi:"days"`
+	// End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+	EndTime *string `pulumi:"endTime"`
+	// Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+	StartTime *string `pulumi:"startTime"`
+	// Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// OrchestratorConfigReplacementScheduleWindowDetailsInput is an input type that accepts OrchestratorConfigReplacementScheduleWindowDetailsArgs and OrchestratorConfigReplacementScheduleWindowDetailsOutput values.
+// You can construct a concrete instance of `OrchestratorConfigReplacementScheduleWindowDetailsInput` via:
+//
+//	OrchestratorConfigReplacementScheduleWindowDetailsArgs{...}
+type OrchestratorConfigReplacementScheduleWindowDetailsInput interface {
+	pulumi.Input
+
+	ToOrchestratorConfigReplacementScheduleWindowDetailsOutput() OrchestratorConfigReplacementScheduleWindowDetailsOutput
+	ToOrchestratorConfigReplacementScheduleWindowDetailsOutputWithContext(context.Context) OrchestratorConfigReplacementScheduleWindowDetailsOutput
+}
+
+type OrchestratorConfigReplacementScheduleWindowDetailsArgs struct {
+	AllDay pulumi.BoolPtrInput `pulumi:"allDay"`
+	// List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+	Days pulumi.StringArrayInput `pulumi:"days"`
+	// End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (OrchestratorConfigReplacementScheduleWindowDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrchestratorConfigReplacementScheduleWindowDetails)(nil)).Elem()
+}
+
+func (i OrchestratorConfigReplacementScheduleWindowDetailsArgs) ToOrchestratorConfigReplacementScheduleWindowDetailsOutput() OrchestratorConfigReplacementScheduleWindowDetailsOutput {
+	return i.ToOrchestratorConfigReplacementScheduleWindowDetailsOutputWithContext(context.Background())
+}
+
+func (i OrchestratorConfigReplacementScheduleWindowDetailsArgs) ToOrchestratorConfigReplacementScheduleWindowDetailsOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleWindowDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorConfigReplacementScheduleWindowDetailsOutput)
+}
+
+func (i OrchestratorConfigReplacementScheduleWindowDetailsArgs) ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput() OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return i.ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i OrchestratorConfigReplacementScheduleWindowDetailsArgs) ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorConfigReplacementScheduleWindowDetailsOutput).ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(ctx)
+}
+
+// OrchestratorConfigReplacementScheduleWindowDetailsPtrInput is an input type that accepts OrchestratorConfigReplacementScheduleWindowDetailsArgs, OrchestratorConfigReplacementScheduleWindowDetailsPtr and OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput values.
+// You can construct a concrete instance of `OrchestratorConfigReplacementScheduleWindowDetailsPtrInput` via:
+//
+//	        OrchestratorConfigReplacementScheduleWindowDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrchestratorConfigReplacementScheduleWindowDetailsPtrInput interface {
+	pulumi.Input
+
+	ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput() OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput
+	ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(context.Context) OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput
+}
+
+type orchestratorConfigReplacementScheduleWindowDetailsPtrType OrchestratorConfigReplacementScheduleWindowDetailsArgs
+
+func OrchestratorConfigReplacementScheduleWindowDetailsPtr(v *OrchestratorConfigReplacementScheduleWindowDetailsArgs) OrchestratorConfigReplacementScheduleWindowDetailsPtrInput {
+	return (*orchestratorConfigReplacementScheduleWindowDetailsPtrType)(v)
+}
+
+func (*orchestratorConfigReplacementScheduleWindowDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrchestratorConfigReplacementScheduleWindowDetails)(nil)).Elem()
+}
+
+func (i *orchestratorConfigReplacementScheduleWindowDetailsPtrType) ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput() OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return i.ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *orchestratorConfigReplacementScheduleWindowDetailsPtrType) ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput)
+}
+
+type OrchestratorConfigReplacementScheduleWindowDetailsOutput struct{ *pulumi.OutputState }
+
+func (OrchestratorConfigReplacementScheduleWindowDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrchestratorConfigReplacementScheduleWindowDetails)(nil)).Elem()
+}
+
+func (o OrchestratorConfigReplacementScheduleWindowDetailsOutput) ToOrchestratorConfigReplacementScheduleWindowDetailsOutput() OrchestratorConfigReplacementScheduleWindowDetailsOutput {
+	return o
+}
+
+func (o OrchestratorConfigReplacementScheduleWindowDetailsOutput) ToOrchestratorConfigReplacementScheduleWindowDetailsOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleWindowDetailsOutput {
+	return o
+}
+
+func (o OrchestratorConfigReplacementScheduleWindowDetailsOutput) ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput() OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return o.ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o OrchestratorConfigReplacementScheduleWindowDetailsOutput) ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrchestratorConfigReplacementScheduleWindowDetails) *OrchestratorConfigReplacementScheduleWindowDetails {
+		return &v
+	}).(OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput)
+}
+
+func (o OrchestratorConfigReplacementScheduleWindowDetailsOutput) AllDay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OrchestratorConfigReplacementScheduleWindowDetails) *bool { return v.AllDay }).(pulumi.BoolPtrOutput)
+}
+
+// List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+func (o OrchestratorConfigReplacementScheduleWindowDetailsOutput) Days() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OrchestratorConfigReplacementScheduleWindowDetails) []string { return v.Days }).(pulumi.StringArrayOutput)
+}
+
+// End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+func (o OrchestratorConfigReplacementScheduleWindowDetailsOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrchestratorConfigReplacementScheduleWindowDetails) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+func (o OrchestratorConfigReplacementScheduleWindowDetailsOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrchestratorConfigReplacementScheduleWindowDetails) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+func (o OrchestratorConfigReplacementScheduleWindowDetailsOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v OrchestratorConfigReplacementScheduleWindowDetails) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrchestratorConfigReplacementScheduleWindowDetails)(nil)).Elem()
+}
+
+func (o OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput() OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return o
+}
+
+func (o OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) ToOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(ctx context.Context) OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return o
+}
+
+func (o OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) Elem() OrchestratorConfigReplacementScheduleWindowDetailsOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementScheduleWindowDetails) OrchestratorConfigReplacementScheduleWindowDetails {
+		if v != nil {
+			return *v
+		}
+		var ret OrchestratorConfigReplacementScheduleWindowDetails
+		return ret
+	}).(OrchestratorConfigReplacementScheduleWindowDetailsOutput)
+}
+
+func (o OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) AllDay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementScheduleWindowDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllDay
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+func (o OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) Days() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementScheduleWindowDetails) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Days
+	}).(pulumi.StringArrayOutput)
+}
+
+// End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+func (o OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementScheduleWindowDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+func (o OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementScheduleWindowDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+func (o OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfigReplacementScheduleWindowDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeZone
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2169,6 +2872,162 @@ func (o GetOrchestratorConfigBinpackingPodEvictionThresholdPtrOutput) Memory() p
 	}).(pulumi.Float64PtrOutput)
 }
 
+type GetOrchestratorConfigCommitmentIntegration struct {
+	// Flag to enable Commitment Integration
+	Enabled bool `pulumi:"enabled"`
+	// Master AWS account id for commitment integration
+	MasterAccountId string `pulumi:"masterAccountId"`
+}
+
+// GetOrchestratorConfigCommitmentIntegrationInput is an input type that accepts GetOrchestratorConfigCommitmentIntegrationArgs and GetOrchestratorConfigCommitmentIntegrationOutput values.
+// You can construct a concrete instance of `GetOrchestratorConfigCommitmentIntegrationInput` via:
+//
+//	GetOrchestratorConfigCommitmentIntegrationArgs{...}
+type GetOrchestratorConfigCommitmentIntegrationInput interface {
+	pulumi.Input
+
+	ToGetOrchestratorConfigCommitmentIntegrationOutput() GetOrchestratorConfigCommitmentIntegrationOutput
+	ToGetOrchestratorConfigCommitmentIntegrationOutputWithContext(context.Context) GetOrchestratorConfigCommitmentIntegrationOutput
+}
+
+type GetOrchestratorConfigCommitmentIntegrationArgs struct {
+	// Flag to enable Commitment Integration
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Master AWS account id for commitment integration
+	MasterAccountId pulumi.StringInput `pulumi:"masterAccountId"`
+}
+
+func (GetOrchestratorConfigCommitmentIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrchestratorConfigCommitmentIntegration)(nil)).Elem()
+}
+
+func (i GetOrchestratorConfigCommitmentIntegrationArgs) ToGetOrchestratorConfigCommitmentIntegrationOutput() GetOrchestratorConfigCommitmentIntegrationOutput {
+	return i.ToGetOrchestratorConfigCommitmentIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetOrchestratorConfigCommitmentIntegrationArgs) ToGetOrchestratorConfigCommitmentIntegrationOutputWithContext(ctx context.Context) GetOrchestratorConfigCommitmentIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrchestratorConfigCommitmentIntegrationOutput)
+}
+
+func (i GetOrchestratorConfigCommitmentIntegrationArgs) ToGetOrchestratorConfigCommitmentIntegrationPtrOutput() GetOrchestratorConfigCommitmentIntegrationPtrOutput {
+	return i.ToGetOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrchestratorConfigCommitmentIntegrationArgs) ToGetOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(ctx context.Context) GetOrchestratorConfigCommitmentIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrchestratorConfigCommitmentIntegrationOutput).ToGetOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(ctx)
+}
+
+// GetOrchestratorConfigCommitmentIntegrationPtrInput is an input type that accepts GetOrchestratorConfigCommitmentIntegrationArgs, GetOrchestratorConfigCommitmentIntegrationPtr and GetOrchestratorConfigCommitmentIntegrationPtrOutput values.
+// You can construct a concrete instance of `GetOrchestratorConfigCommitmentIntegrationPtrInput` via:
+//
+//	        GetOrchestratorConfigCommitmentIntegrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrchestratorConfigCommitmentIntegrationPtrInput interface {
+	pulumi.Input
+
+	ToGetOrchestratorConfigCommitmentIntegrationPtrOutput() GetOrchestratorConfigCommitmentIntegrationPtrOutput
+	ToGetOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(context.Context) GetOrchestratorConfigCommitmentIntegrationPtrOutput
+}
+
+type getOrchestratorConfigCommitmentIntegrationPtrType GetOrchestratorConfigCommitmentIntegrationArgs
+
+func GetOrchestratorConfigCommitmentIntegrationPtr(v *GetOrchestratorConfigCommitmentIntegrationArgs) GetOrchestratorConfigCommitmentIntegrationPtrInput {
+	return (*getOrchestratorConfigCommitmentIntegrationPtrType)(v)
+}
+
+func (*getOrchestratorConfigCommitmentIntegrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrchestratorConfigCommitmentIntegration)(nil)).Elem()
+}
+
+func (i *getOrchestratorConfigCommitmentIntegrationPtrType) ToGetOrchestratorConfigCommitmentIntegrationPtrOutput() GetOrchestratorConfigCommitmentIntegrationPtrOutput {
+	return i.ToGetOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrchestratorConfigCommitmentIntegrationPtrType) ToGetOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(ctx context.Context) GetOrchestratorConfigCommitmentIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrchestratorConfigCommitmentIntegrationPtrOutput)
+}
+
+type GetOrchestratorConfigCommitmentIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetOrchestratorConfigCommitmentIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrchestratorConfigCommitmentIntegration)(nil)).Elem()
+}
+
+func (o GetOrchestratorConfigCommitmentIntegrationOutput) ToGetOrchestratorConfigCommitmentIntegrationOutput() GetOrchestratorConfigCommitmentIntegrationOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigCommitmentIntegrationOutput) ToGetOrchestratorConfigCommitmentIntegrationOutputWithContext(ctx context.Context) GetOrchestratorConfigCommitmentIntegrationOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigCommitmentIntegrationOutput) ToGetOrchestratorConfigCommitmentIntegrationPtrOutput() GetOrchestratorConfigCommitmentIntegrationPtrOutput {
+	return o.ToGetOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrchestratorConfigCommitmentIntegrationOutput) ToGetOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(ctx context.Context) GetOrchestratorConfigCommitmentIntegrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrchestratorConfigCommitmentIntegration) *GetOrchestratorConfigCommitmentIntegration {
+		return &v
+	}).(GetOrchestratorConfigCommitmentIntegrationPtrOutput)
+}
+
+// Flag to enable Commitment Integration
+func (o GetOrchestratorConfigCommitmentIntegrationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigCommitmentIntegration) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Master AWS account id for commitment integration
+func (o GetOrchestratorConfigCommitmentIntegrationOutput) MasterAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigCommitmentIntegration) string { return v.MasterAccountId }).(pulumi.StringOutput)
+}
+
+type GetOrchestratorConfigCommitmentIntegrationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrchestratorConfigCommitmentIntegrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrchestratorConfigCommitmentIntegration)(nil)).Elem()
+}
+
+func (o GetOrchestratorConfigCommitmentIntegrationPtrOutput) ToGetOrchestratorConfigCommitmentIntegrationPtrOutput() GetOrchestratorConfigCommitmentIntegrationPtrOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigCommitmentIntegrationPtrOutput) ToGetOrchestratorConfigCommitmentIntegrationPtrOutputWithContext(ctx context.Context) GetOrchestratorConfigCommitmentIntegrationPtrOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigCommitmentIntegrationPtrOutput) Elem() GetOrchestratorConfigCommitmentIntegrationOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigCommitmentIntegration) GetOrchestratorConfigCommitmentIntegration {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrchestratorConfigCommitmentIntegration
+		return ret
+	}).(GetOrchestratorConfigCommitmentIntegrationOutput)
+}
+
+// Flag to enable Commitment Integration
+func (o GetOrchestratorConfigCommitmentIntegrationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigCommitmentIntegration) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Master AWS account id for commitment integration
+func (o GetOrchestratorConfigCommitmentIntegrationPtrOutput) MasterAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigCommitmentIntegration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetOrchestratorConfigDistribution struct {
 	// Number of minimum ondemand replicas required for workloads
 	BaseOndemandCapacity *int `pulumi:"baseOndemandCapacity"`
@@ -2519,6 +3378,553 @@ func (o GetOrchestratorConfigNodePreferencesPtrOutput) Ttl() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetOrchestratorConfigReplacementSchedule struct {
+	// Defines the scope of the replacement schedule
+	AppliesTo     GetOrchestratorConfigReplacementScheduleAppliesTo      `pulumi:"appliesTo"`
+	WindowDetails *GetOrchestratorConfigReplacementScheduleWindowDetails `pulumi:"windowDetails"`
+	// Window type for replacement schedule
+	WindowType string `pulumi:"windowType"`
+}
+
+// GetOrchestratorConfigReplacementScheduleInput is an input type that accepts GetOrchestratorConfigReplacementScheduleArgs and GetOrchestratorConfigReplacementScheduleOutput values.
+// You can construct a concrete instance of `GetOrchestratorConfigReplacementScheduleInput` via:
+//
+//	GetOrchestratorConfigReplacementScheduleArgs{...}
+type GetOrchestratorConfigReplacementScheduleInput interface {
+	pulumi.Input
+
+	ToGetOrchestratorConfigReplacementScheduleOutput() GetOrchestratorConfigReplacementScheduleOutput
+	ToGetOrchestratorConfigReplacementScheduleOutputWithContext(context.Context) GetOrchestratorConfigReplacementScheduleOutput
+}
+
+type GetOrchestratorConfigReplacementScheduleArgs struct {
+	// Defines the scope of the replacement schedule
+	AppliesTo     GetOrchestratorConfigReplacementScheduleAppliesToInput        `pulumi:"appliesTo"`
+	WindowDetails GetOrchestratorConfigReplacementScheduleWindowDetailsPtrInput `pulumi:"windowDetails"`
+	// Window type for replacement schedule
+	WindowType pulumi.StringInput `pulumi:"windowType"`
+}
+
+func (GetOrchestratorConfigReplacementScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrchestratorConfigReplacementSchedule)(nil)).Elem()
+}
+
+func (i GetOrchestratorConfigReplacementScheduleArgs) ToGetOrchestratorConfigReplacementScheduleOutput() GetOrchestratorConfigReplacementScheduleOutput {
+	return i.ToGetOrchestratorConfigReplacementScheduleOutputWithContext(context.Background())
+}
+
+func (i GetOrchestratorConfigReplacementScheduleArgs) ToGetOrchestratorConfigReplacementScheduleOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrchestratorConfigReplacementScheduleOutput)
+}
+
+func (i GetOrchestratorConfigReplacementScheduleArgs) ToGetOrchestratorConfigReplacementSchedulePtrOutput() GetOrchestratorConfigReplacementSchedulePtrOutput {
+	return i.ToGetOrchestratorConfigReplacementSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i GetOrchestratorConfigReplacementScheduleArgs) ToGetOrchestratorConfigReplacementSchedulePtrOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrchestratorConfigReplacementScheduleOutput).ToGetOrchestratorConfigReplacementSchedulePtrOutputWithContext(ctx)
+}
+
+// GetOrchestratorConfigReplacementSchedulePtrInput is an input type that accepts GetOrchestratorConfigReplacementScheduleArgs, GetOrchestratorConfigReplacementSchedulePtr and GetOrchestratorConfigReplacementSchedulePtrOutput values.
+// You can construct a concrete instance of `GetOrchestratorConfigReplacementSchedulePtrInput` via:
+//
+//	        GetOrchestratorConfigReplacementScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrchestratorConfigReplacementSchedulePtrInput interface {
+	pulumi.Input
+
+	ToGetOrchestratorConfigReplacementSchedulePtrOutput() GetOrchestratorConfigReplacementSchedulePtrOutput
+	ToGetOrchestratorConfigReplacementSchedulePtrOutputWithContext(context.Context) GetOrchestratorConfigReplacementSchedulePtrOutput
+}
+
+type getOrchestratorConfigReplacementSchedulePtrType GetOrchestratorConfigReplacementScheduleArgs
+
+func GetOrchestratorConfigReplacementSchedulePtr(v *GetOrchestratorConfigReplacementScheduleArgs) GetOrchestratorConfigReplacementSchedulePtrInput {
+	return (*getOrchestratorConfigReplacementSchedulePtrType)(v)
+}
+
+func (*getOrchestratorConfigReplacementSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrchestratorConfigReplacementSchedule)(nil)).Elem()
+}
+
+func (i *getOrchestratorConfigReplacementSchedulePtrType) ToGetOrchestratorConfigReplacementSchedulePtrOutput() GetOrchestratorConfigReplacementSchedulePtrOutput {
+	return i.ToGetOrchestratorConfigReplacementSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *getOrchestratorConfigReplacementSchedulePtrType) ToGetOrchestratorConfigReplacementSchedulePtrOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrchestratorConfigReplacementSchedulePtrOutput)
+}
+
+type GetOrchestratorConfigReplacementScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetOrchestratorConfigReplacementScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrchestratorConfigReplacementSchedule)(nil)).Elem()
+}
+
+func (o GetOrchestratorConfigReplacementScheduleOutput) ToGetOrchestratorConfigReplacementScheduleOutput() GetOrchestratorConfigReplacementScheduleOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigReplacementScheduleOutput) ToGetOrchestratorConfigReplacementScheduleOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigReplacementScheduleOutput) ToGetOrchestratorConfigReplacementSchedulePtrOutput() GetOrchestratorConfigReplacementSchedulePtrOutput {
+	return o.ToGetOrchestratorConfigReplacementSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o GetOrchestratorConfigReplacementScheduleOutput) ToGetOrchestratorConfigReplacementSchedulePtrOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrchestratorConfigReplacementSchedule) *GetOrchestratorConfigReplacementSchedule {
+		return &v
+	}).(GetOrchestratorConfigReplacementSchedulePtrOutput)
+}
+
+// Defines the scope of the replacement schedule
+func (o GetOrchestratorConfigReplacementScheduleOutput) AppliesTo() GetOrchestratorConfigReplacementScheduleAppliesToOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigReplacementSchedule) GetOrchestratorConfigReplacementScheduleAppliesTo {
+		return v.AppliesTo
+	}).(GetOrchestratorConfigReplacementScheduleAppliesToOutput)
+}
+
+func (o GetOrchestratorConfigReplacementScheduleOutput) WindowDetails() GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigReplacementSchedule) *GetOrchestratorConfigReplacementScheduleWindowDetails {
+		return v.WindowDetails
+	}).(GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput)
+}
+
+// Window type for replacement schedule
+func (o GetOrchestratorConfigReplacementScheduleOutput) WindowType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigReplacementSchedule) string { return v.WindowType }).(pulumi.StringOutput)
+}
+
+type GetOrchestratorConfigReplacementSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrchestratorConfigReplacementSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrchestratorConfigReplacementSchedule)(nil)).Elem()
+}
+
+func (o GetOrchestratorConfigReplacementSchedulePtrOutput) ToGetOrchestratorConfigReplacementSchedulePtrOutput() GetOrchestratorConfigReplacementSchedulePtrOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigReplacementSchedulePtrOutput) ToGetOrchestratorConfigReplacementSchedulePtrOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementSchedulePtrOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigReplacementSchedulePtrOutput) Elem() GetOrchestratorConfigReplacementScheduleOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementSchedule) GetOrchestratorConfigReplacementSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrchestratorConfigReplacementSchedule
+		return ret
+	}).(GetOrchestratorConfigReplacementScheduleOutput)
+}
+
+// Defines the scope of the replacement schedule
+func (o GetOrchestratorConfigReplacementSchedulePtrOutput) AppliesTo() GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementSchedule) *GetOrchestratorConfigReplacementScheduleAppliesTo {
+		if v == nil {
+			return nil
+		}
+		return &v.AppliesTo
+	}).(GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput)
+}
+
+func (o GetOrchestratorConfigReplacementSchedulePtrOutput) WindowDetails() GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementSchedule) *GetOrchestratorConfigReplacementScheduleWindowDetails {
+		if v == nil {
+			return nil
+		}
+		return v.WindowDetails
+	}).(GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput)
+}
+
+// Window type for replacement schedule
+func (o GetOrchestratorConfigReplacementSchedulePtrOutput) WindowType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WindowType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrchestratorConfigReplacementScheduleAppliesTo struct {
+	Consolidation      bool `pulumi:"consolidation"`
+	HarnessPodEviction bool `pulumi:"harnessPodEviction"`
+	ReverseFallback    bool `pulumi:"reverseFallback"`
+}
+
+// GetOrchestratorConfigReplacementScheduleAppliesToInput is an input type that accepts GetOrchestratorConfigReplacementScheduleAppliesToArgs and GetOrchestratorConfigReplacementScheduleAppliesToOutput values.
+// You can construct a concrete instance of `GetOrchestratorConfigReplacementScheduleAppliesToInput` via:
+//
+//	GetOrchestratorConfigReplacementScheduleAppliesToArgs{...}
+type GetOrchestratorConfigReplacementScheduleAppliesToInput interface {
+	pulumi.Input
+
+	ToGetOrchestratorConfigReplacementScheduleAppliesToOutput() GetOrchestratorConfigReplacementScheduleAppliesToOutput
+	ToGetOrchestratorConfigReplacementScheduleAppliesToOutputWithContext(context.Context) GetOrchestratorConfigReplacementScheduleAppliesToOutput
+}
+
+type GetOrchestratorConfigReplacementScheduleAppliesToArgs struct {
+	Consolidation      pulumi.BoolInput `pulumi:"consolidation"`
+	HarnessPodEviction pulumi.BoolInput `pulumi:"harnessPodEviction"`
+	ReverseFallback    pulumi.BoolInput `pulumi:"reverseFallback"`
+}
+
+func (GetOrchestratorConfigReplacementScheduleAppliesToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrchestratorConfigReplacementScheduleAppliesTo)(nil)).Elem()
+}
+
+func (i GetOrchestratorConfigReplacementScheduleAppliesToArgs) ToGetOrchestratorConfigReplacementScheduleAppliesToOutput() GetOrchestratorConfigReplacementScheduleAppliesToOutput {
+	return i.ToGetOrchestratorConfigReplacementScheduleAppliesToOutputWithContext(context.Background())
+}
+
+func (i GetOrchestratorConfigReplacementScheduleAppliesToArgs) ToGetOrchestratorConfigReplacementScheduleAppliesToOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleAppliesToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrchestratorConfigReplacementScheduleAppliesToOutput)
+}
+
+func (i GetOrchestratorConfigReplacementScheduleAppliesToArgs) ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutput() GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return i.ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrchestratorConfigReplacementScheduleAppliesToArgs) ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrchestratorConfigReplacementScheduleAppliesToOutput).ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(ctx)
+}
+
+// GetOrchestratorConfigReplacementScheduleAppliesToPtrInput is an input type that accepts GetOrchestratorConfigReplacementScheduleAppliesToArgs, GetOrchestratorConfigReplacementScheduleAppliesToPtr and GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput values.
+// You can construct a concrete instance of `GetOrchestratorConfigReplacementScheduleAppliesToPtrInput` via:
+//
+//	        GetOrchestratorConfigReplacementScheduleAppliesToArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrchestratorConfigReplacementScheduleAppliesToPtrInput interface {
+	pulumi.Input
+
+	ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutput() GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput
+	ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(context.Context) GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput
+}
+
+type getOrchestratorConfigReplacementScheduleAppliesToPtrType GetOrchestratorConfigReplacementScheduleAppliesToArgs
+
+func GetOrchestratorConfigReplacementScheduleAppliesToPtr(v *GetOrchestratorConfigReplacementScheduleAppliesToArgs) GetOrchestratorConfigReplacementScheduleAppliesToPtrInput {
+	return (*getOrchestratorConfigReplacementScheduleAppliesToPtrType)(v)
+}
+
+func (*getOrchestratorConfigReplacementScheduleAppliesToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrchestratorConfigReplacementScheduleAppliesTo)(nil)).Elem()
+}
+
+func (i *getOrchestratorConfigReplacementScheduleAppliesToPtrType) ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutput() GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return i.ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrchestratorConfigReplacementScheduleAppliesToPtrType) ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput)
+}
+
+type GetOrchestratorConfigReplacementScheduleAppliesToOutput struct{ *pulumi.OutputState }
+
+func (GetOrchestratorConfigReplacementScheduleAppliesToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrchestratorConfigReplacementScheduleAppliesTo)(nil)).Elem()
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToOutput) ToGetOrchestratorConfigReplacementScheduleAppliesToOutput() GetOrchestratorConfigReplacementScheduleAppliesToOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToOutput) ToGetOrchestratorConfigReplacementScheduleAppliesToOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleAppliesToOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToOutput) ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutput() GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return o.ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToOutput) ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrchestratorConfigReplacementScheduleAppliesTo) *GetOrchestratorConfigReplacementScheduleAppliesTo {
+		return &v
+	}).(GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput)
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToOutput) Consolidation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigReplacementScheduleAppliesTo) bool { return v.Consolidation }).(pulumi.BoolOutput)
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToOutput) HarnessPodEviction() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigReplacementScheduleAppliesTo) bool { return v.HarnessPodEviction }).(pulumi.BoolOutput)
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToOutput) ReverseFallback() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigReplacementScheduleAppliesTo) bool { return v.ReverseFallback }).(pulumi.BoolOutput)
+}
+
+type GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrchestratorConfigReplacementScheduleAppliesTo)(nil)).Elem()
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput) ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutput() GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput) ToGetOrchestratorConfigReplacementScheduleAppliesToPtrOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput) Elem() GetOrchestratorConfigReplacementScheduleAppliesToOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementScheduleAppliesTo) GetOrchestratorConfigReplacementScheduleAppliesTo {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrchestratorConfigReplacementScheduleAppliesTo
+		return ret
+	}).(GetOrchestratorConfigReplacementScheduleAppliesToOutput)
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput) Consolidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementScheduleAppliesTo) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Consolidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput) HarnessPodEviction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementScheduleAppliesTo) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.HarnessPodEviction
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput) ReverseFallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementScheduleAppliesTo) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ReverseFallback
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetOrchestratorConfigReplacementScheduleWindowDetails struct {
+	AllDay *bool `pulumi:"allDay"`
+	// List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+	Days []string `pulumi:"days"`
+	// End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+	EndTime *string `pulumi:"endTime"`
+	// Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+	StartTime *string `pulumi:"startTime"`
+	// Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// GetOrchestratorConfigReplacementScheduleWindowDetailsInput is an input type that accepts GetOrchestratorConfigReplacementScheduleWindowDetailsArgs and GetOrchestratorConfigReplacementScheduleWindowDetailsOutput values.
+// You can construct a concrete instance of `GetOrchestratorConfigReplacementScheduleWindowDetailsInput` via:
+//
+//	GetOrchestratorConfigReplacementScheduleWindowDetailsArgs{...}
+type GetOrchestratorConfigReplacementScheduleWindowDetailsInput interface {
+	pulumi.Input
+
+	ToGetOrchestratorConfigReplacementScheduleWindowDetailsOutput() GetOrchestratorConfigReplacementScheduleWindowDetailsOutput
+	ToGetOrchestratorConfigReplacementScheduleWindowDetailsOutputWithContext(context.Context) GetOrchestratorConfigReplacementScheduleWindowDetailsOutput
+}
+
+type GetOrchestratorConfigReplacementScheduleWindowDetailsArgs struct {
+	AllDay pulumi.BoolPtrInput `pulumi:"allDay"`
+	// List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+	Days pulumi.StringArrayInput `pulumi:"days"`
+	// End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (GetOrchestratorConfigReplacementScheduleWindowDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrchestratorConfigReplacementScheduleWindowDetails)(nil)).Elem()
+}
+
+func (i GetOrchestratorConfigReplacementScheduleWindowDetailsArgs) ToGetOrchestratorConfigReplacementScheduleWindowDetailsOutput() GetOrchestratorConfigReplacementScheduleWindowDetailsOutput {
+	return i.ToGetOrchestratorConfigReplacementScheduleWindowDetailsOutputWithContext(context.Background())
+}
+
+func (i GetOrchestratorConfigReplacementScheduleWindowDetailsArgs) ToGetOrchestratorConfigReplacementScheduleWindowDetailsOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleWindowDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrchestratorConfigReplacementScheduleWindowDetailsOutput)
+}
+
+func (i GetOrchestratorConfigReplacementScheduleWindowDetailsArgs) ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput() GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return i.ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrchestratorConfigReplacementScheduleWindowDetailsArgs) ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrchestratorConfigReplacementScheduleWindowDetailsOutput).ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(ctx)
+}
+
+// GetOrchestratorConfigReplacementScheduleWindowDetailsPtrInput is an input type that accepts GetOrchestratorConfigReplacementScheduleWindowDetailsArgs, GetOrchestratorConfigReplacementScheduleWindowDetailsPtr and GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput values.
+// You can construct a concrete instance of `GetOrchestratorConfigReplacementScheduleWindowDetailsPtrInput` via:
+//
+//	        GetOrchestratorConfigReplacementScheduleWindowDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrchestratorConfigReplacementScheduleWindowDetailsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput() GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput
+	ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(context.Context) GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput
+}
+
+type getOrchestratorConfigReplacementScheduleWindowDetailsPtrType GetOrchestratorConfigReplacementScheduleWindowDetailsArgs
+
+func GetOrchestratorConfigReplacementScheduleWindowDetailsPtr(v *GetOrchestratorConfigReplacementScheduleWindowDetailsArgs) GetOrchestratorConfigReplacementScheduleWindowDetailsPtrInput {
+	return (*getOrchestratorConfigReplacementScheduleWindowDetailsPtrType)(v)
+}
+
+func (*getOrchestratorConfigReplacementScheduleWindowDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrchestratorConfigReplacementScheduleWindowDetails)(nil)).Elem()
+}
+
+func (i *getOrchestratorConfigReplacementScheduleWindowDetailsPtrType) ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput() GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return i.ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrchestratorConfigReplacementScheduleWindowDetailsPtrType) ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput)
+}
+
+type GetOrchestratorConfigReplacementScheduleWindowDetailsOutput struct{ *pulumi.OutputState }
+
+func (GetOrchestratorConfigReplacementScheduleWindowDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrchestratorConfigReplacementScheduleWindowDetails)(nil)).Elem()
+}
+
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsOutput) ToGetOrchestratorConfigReplacementScheduleWindowDetailsOutput() GetOrchestratorConfigReplacementScheduleWindowDetailsOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsOutput) ToGetOrchestratorConfigReplacementScheduleWindowDetailsOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleWindowDetailsOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsOutput) ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput() GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return o.ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsOutput) ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrchestratorConfigReplacementScheduleWindowDetails) *GetOrchestratorConfigReplacementScheduleWindowDetails {
+		return &v
+	}).(GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput)
+}
+
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsOutput) AllDay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigReplacementScheduleWindowDetails) *bool { return v.AllDay }).(pulumi.BoolPtrOutput)
+}
+
+// List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsOutput) Days() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigReplacementScheduleWindowDetails) []string { return v.Days }).(pulumi.StringArrayOutput)
+}
+
+// End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigReplacementScheduleWindowDetails) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigReplacementScheduleWindowDetails) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrchestratorConfigReplacementScheduleWindowDetails) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrchestratorConfigReplacementScheduleWindowDetails)(nil)).Elem()
+}
+
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput() GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) ToGetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutputWithContext(ctx context.Context) GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput {
+	return o
+}
+
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) Elem() GetOrchestratorConfigReplacementScheduleWindowDetailsOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementScheduleWindowDetails) GetOrchestratorConfigReplacementScheduleWindowDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrchestratorConfigReplacementScheduleWindowDetails
+		return ret
+	}).(GetOrchestratorConfigReplacementScheduleWindowDetailsOutput)
+}
+
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) AllDay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementScheduleWindowDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllDay
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) Days() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementScheduleWindowDetails) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Days
+	}).(pulumi.StringArrayOutput)
+}
+
+// End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementScheduleWindowDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementScheduleWindowDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+func (o GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrchestratorConfigReplacementScheduleWindowDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigBinpackingInput)(nil)).Elem(), OrchestratorConfigBinpackingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigBinpackingPtrInput)(nil)).Elem(), OrchestratorConfigBinpackingArgs{})
@@ -2532,10 +3938,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigBinpackingPodEvictionPtrInput)(nil)).Elem(), OrchestratorConfigBinpackingPodEvictionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigBinpackingPodEvictionThresholdInput)(nil)).Elem(), OrchestratorConfigBinpackingPodEvictionThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigBinpackingPodEvictionThresholdPtrInput)(nil)).Elem(), OrchestratorConfigBinpackingPodEvictionThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigCommitmentIntegrationInput)(nil)).Elem(), OrchestratorConfigCommitmentIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigCommitmentIntegrationPtrInput)(nil)).Elem(), OrchestratorConfigCommitmentIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigDistributionInput)(nil)).Elem(), OrchestratorConfigDistributionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigDistributionPtrInput)(nil)).Elem(), OrchestratorConfigDistributionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigNodePreferencesInput)(nil)).Elem(), OrchestratorConfigNodePreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigNodePreferencesPtrInput)(nil)).Elem(), OrchestratorConfigNodePreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigReplacementScheduleInput)(nil)).Elem(), OrchestratorConfigReplacementScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigReplacementSchedulePtrInput)(nil)).Elem(), OrchestratorConfigReplacementScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigReplacementScheduleAppliesToInput)(nil)).Elem(), OrchestratorConfigReplacementScheduleAppliesToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigReplacementScheduleAppliesToPtrInput)(nil)).Elem(), OrchestratorConfigReplacementScheduleAppliesToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigReplacementScheduleWindowDetailsInput)(nil)).Elem(), OrchestratorConfigReplacementScheduleWindowDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrchestratorConfigReplacementScheduleWindowDetailsPtrInput)(nil)).Elem(), OrchestratorConfigReplacementScheduleWindowDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigBinpackingInput)(nil)).Elem(), GetOrchestratorConfigBinpackingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigBinpackingPtrInput)(nil)).Elem(), GetOrchestratorConfigBinpackingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigBinpackingDisruptionInput)(nil)).Elem(), GetOrchestratorConfigBinpackingDisruptionArgs{})
@@ -2548,10 +3962,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigBinpackingPodEvictionPtrInput)(nil)).Elem(), GetOrchestratorConfigBinpackingPodEvictionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigBinpackingPodEvictionThresholdInput)(nil)).Elem(), GetOrchestratorConfigBinpackingPodEvictionThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigBinpackingPodEvictionThresholdPtrInput)(nil)).Elem(), GetOrchestratorConfigBinpackingPodEvictionThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigCommitmentIntegrationInput)(nil)).Elem(), GetOrchestratorConfigCommitmentIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigCommitmentIntegrationPtrInput)(nil)).Elem(), GetOrchestratorConfigCommitmentIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigDistributionInput)(nil)).Elem(), GetOrchestratorConfigDistributionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigDistributionPtrInput)(nil)).Elem(), GetOrchestratorConfigDistributionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigNodePreferencesInput)(nil)).Elem(), GetOrchestratorConfigNodePreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigNodePreferencesPtrInput)(nil)).Elem(), GetOrchestratorConfigNodePreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigReplacementScheduleInput)(nil)).Elem(), GetOrchestratorConfigReplacementScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigReplacementSchedulePtrInput)(nil)).Elem(), GetOrchestratorConfigReplacementScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigReplacementScheduleAppliesToInput)(nil)).Elem(), GetOrchestratorConfigReplacementScheduleAppliesToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigReplacementScheduleAppliesToPtrInput)(nil)).Elem(), GetOrchestratorConfigReplacementScheduleAppliesToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigReplacementScheduleWindowDetailsInput)(nil)).Elem(), GetOrchestratorConfigReplacementScheduleWindowDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrchestratorConfigReplacementScheduleWindowDetailsPtrInput)(nil)).Elem(), GetOrchestratorConfigReplacementScheduleWindowDetailsArgs{})
 	pulumi.RegisterOutputType(OrchestratorConfigBinpackingOutput{})
 	pulumi.RegisterOutputType(OrchestratorConfigBinpackingPtrOutput{})
 	pulumi.RegisterOutputType(OrchestratorConfigBinpackingDisruptionOutput{})
@@ -2564,10 +3986,18 @@ func init() {
 	pulumi.RegisterOutputType(OrchestratorConfigBinpackingPodEvictionPtrOutput{})
 	pulumi.RegisterOutputType(OrchestratorConfigBinpackingPodEvictionThresholdOutput{})
 	pulumi.RegisterOutputType(OrchestratorConfigBinpackingPodEvictionThresholdPtrOutput{})
+	pulumi.RegisterOutputType(OrchestratorConfigCommitmentIntegrationOutput{})
+	pulumi.RegisterOutputType(OrchestratorConfigCommitmentIntegrationPtrOutput{})
 	pulumi.RegisterOutputType(OrchestratorConfigDistributionOutput{})
 	pulumi.RegisterOutputType(OrchestratorConfigDistributionPtrOutput{})
 	pulumi.RegisterOutputType(OrchestratorConfigNodePreferencesOutput{})
 	pulumi.RegisterOutputType(OrchestratorConfigNodePreferencesPtrOutput{})
+	pulumi.RegisterOutputType(OrchestratorConfigReplacementScheduleOutput{})
+	pulumi.RegisterOutputType(OrchestratorConfigReplacementSchedulePtrOutput{})
+	pulumi.RegisterOutputType(OrchestratorConfigReplacementScheduleAppliesToOutput{})
+	pulumi.RegisterOutputType(OrchestratorConfigReplacementScheduleAppliesToPtrOutput{})
+	pulumi.RegisterOutputType(OrchestratorConfigReplacementScheduleWindowDetailsOutput{})
+	pulumi.RegisterOutputType(OrchestratorConfigReplacementScheduleWindowDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrchestratorConfigBinpackingOutput{})
 	pulumi.RegisterOutputType(GetOrchestratorConfigBinpackingPtrOutput{})
 	pulumi.RegisterOutputType(GetOrchestratorConfigBinpackingDisruptionOutput{})
@@ -2580,8 +4010,16 @@ func init() {
 	pulumi.RegisterOutputType(GetOrchestratorConfigBinpackingPodEvictionPtrOutput{})
 	pulumi.RegisterOutputType(GetOrchestratorConfigBinpackingPodEvictionThresholdOutput{})
 	pulumi.RegisterOutputType(GetOrchestratorConfigBinpackingPodEvictionThresholdPtrOutput{})
+	pulumi.RegisterOutputType(GetOrchestratorConfigCommitmentIntegrationOutput{})
+	pulumi.RegisterOutputType(GetOrchestratorConfigCommitmentIntegrationPtrOutput{})
 	pulumi.RegisterOutputType(GetOrchestratorConfigDistributionOutput{})
 	pulumi.RegisterOutputType(GetOrchestratorConfigDistributionPtrOutput{})
 	pulumi.RegisterOutputType(GetOrchestratorConfigNodePreferencesOutput{})
 	pulumi.RegisterOutputType(GetOrchestratorConfigNodePreferencesPtrOutput{})
+	pulumi.RegisterOutputType(GetOrchestratorConfigReplacementScheduleOutput{})
+	pulumi.RegisterOutputType(GetOrchestratorConfigReplacementSchedulePtrOutput{})
+	pulumi.RegisterOutputType(GetOrchestratorConfigReplacementScheduleAppliesToOutput{})
+	pulumi.RegisterOutputType(GetOrchestratorConfigReplacementScheduleAppliesToPtrOutput{})
+	pulumi.RegisterOutputType(GetOrchestratorConfigReplacementScheduleWindowDetailsOutput{})
+	pulumi.RegisterOutputType(GetOrchestratorConfigReplacementScheduleWindowDetailsPtrOutput{})
 }

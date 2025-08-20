@@ -16,6 +16,45 @@ import javax.annotation.Nullable;
 /**
  * Resource for managing IAC default pipelines
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.IacmDefaultPipeline;
+ * import com.pulumi.harness.platform.IacmDefaultPipelineArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new IacmDefaultPipeline("example", IacmDefaultPipelineArgs.builder()
+ *             .orgId(test.id())
+ *             .projectId(testHarnessPlatformProject.id())
+ *             .provisionerType("terraform")
+ *             .operation("plan")
+ *             .pipeline("pipeline1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="harness:platform/iacmDefaultPipeline:IacmDefaultPipeline")
 public class IacmDefaultPipeline extends com.pulumi.resources.CustomResource {

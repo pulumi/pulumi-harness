@@ -488,6 +488,8 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level azure cloud provider connector
 
         ```sh
@@ -611,6 +613,8 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level azure cloud provider connector
 

@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating a secret of type secret file in Harness.
+//
 // ## Example Usage
 //
 // ```go
@@ -46,6 +48,8 @@ import (
 // ```
 //
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // # Import account level secret file
 //

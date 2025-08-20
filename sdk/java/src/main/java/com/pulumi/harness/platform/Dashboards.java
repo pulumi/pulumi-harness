@@ -44,13 +44,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Dashboards("example", DashboardsArgs.builder()
- *             .dashboardId("48507")
- *             .description("Example dashboard description")
- *             .resourceIdentifier("shared")
- *             .title("Example Dashboard")
- *             .dataSources()
- *             .models()
+ *         var dashboard = new Dashboards("dashboard", DashboardsArgs.builder()
+ *             .dashboardId("111")
+ *             .description("dashboard_tag")
+ *             .resourceIdentifier("999")
+ *             .title("Dashboard Title")
  *             .build());
  * 
  *     }

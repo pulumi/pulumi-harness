@@ -11,34 +11,58 @@ import java.util.Objects;
 @CustomType
 public final class GetGitopsFiltersResult {
     /**
-     * @return Properties of the filter entity defined in Harness as a JSON string. This contains filter criteria such as health status, sync status, agent identifiers, clusters, namespaces, and repositories.
+     * @return Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})
      * 
      */
     private String filterProperties;
+    /**
+     * @return This indicates visibility of filters, by default it is Everyone.
+     * 
+     */
     private String filterVisibility;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Unique identifier of the resource.
+     * 
+     */
     private String identifier;
     /**
-     * @return Name of the GitOps filter.
+     * @return Name of the Filter.
      * 
      */
     private String name;
+    /**
+     * @return Organization Identifier for the Entity.
+     * 
+     */
     private String orgId;
+    /**
+     * @return Project Identifier for the Entity.
+     * 
+     */
     private String projectId;
+    /**
+     * @return Type of filter.
+     * 
+     */
     private String type;
 
     private GetGitopsFiltersResult() {}
     /**
-     * @return Properties of the filter entity defined in Harness as a JSON string. This contains filter criteria such as health status, sync status, agent identifiers, clusters, namespaces, and repositories.
+     * @return Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})
      * 
      */
     public String filterProperties() {
         return this.filterProperties;
     }
+    /**
+     * @return This indicates visibility of filters, by default it is Everyone.
+     * 
+     */
     public String filterVisibility() {
         return this.filterVisibility;
     }
@@ -49,22 +73,38 @@ public final class GetGitopsFiltersResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Unique identifier of the resource.
+     * 
+     */
     public String identifier() {
         return this.identifier;
     }
     /**
-     * @return Name of the GitOps filter.
+     * @return Name of the Filter.
      * 
      */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Organization Identifier for the Entity.
+     * 
+     */
     public String orgId() {
         return this.orgId;
     }
+    /**
+     * @return Project Identifier for the Entity.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return Type of filter.
+     * 
+     */
     public String type() {
         return this.type;
     }

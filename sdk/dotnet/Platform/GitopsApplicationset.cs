@@ -11,6 +11,82 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for managing a Harness Gitops Applicationset. Please note this resource is in an alpha/experimental state and is subject to change.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testFixed = new Harness.Platform.GitopsApplicationset("test_fixed", new()
+    ///     {
+    ///         OrgId = "default",
+    ///         ProjectId = "projectId",
+    ///         AgentId = "account.agentuseast1",
+    ///         Upsert = true,
+    ///         Applicationset = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetArgs
+    ///         {
+    ///             Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetMetadataArgs
+    ///             {
+    ///                 Name = "tf-appset",
+    ///                 Namespace = "argocd",
+    ///             },
+    ///             Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecArgs
+    ///             {
+    ///                 GoTemplate = true,
+    ///                 Generators = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorArgs
+    ///                     {
+    ///                         Clusters = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorClusterArgs
+    ///                             {
+    ///                                 Enabled = true,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Template = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateArgs
+    ///                 {
+    ///                     Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs
+    ///                     {
+    ///                         Name = "{{.name}}-guestbook",
+    ///                         Labels = 
+    ///                         {
+    ///                             { "env", "dev" },
+    ///                             { "harness.io/serviceRef", "svc1" },
+    ///                         },
+    ///                     },
+    ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
+    ///                     {
+    ///                         Project = "default",
+    ///                         Sources = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs
+    ///                             {
+    ///                                 RepoUrl = "https://github.com/argoproj/argocd-example-apps.git",
+    ///                                 Path = "helm-guestbook",
+    ///                                 TargetRevision = "HEAD",
+    ///                             },
+    ///                         },
+    ///                         Destination = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs
+    ///                         {
+    ///                             Server = "{{.url}}",
+    ///                             Namespace = "app-ns-{{.name}}",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/gitopsApplicationset:GitopsApplicationset")]
     public partial class GitopsApplicationset : global::Pulumi.CustomResource

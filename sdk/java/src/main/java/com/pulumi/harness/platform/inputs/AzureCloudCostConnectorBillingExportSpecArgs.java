@@ -15,6 +15,21 @@ public final class AzureCloudCostConnectorBillingExportSpecArgs extends com.pulu
     public static final AzureCloudCostConnectorBillingExportSpecArgs Empty = new AzureCloudCostConnectorBillingExportSpecArgs();
 
     /**
+     * Billing type.
+     * 
+     */
+    @Import(name="billingType", required=true)
+    private Output<String> billingType;
+
+    /**
+     * @return Billing type.
+     * 
+     */
+    public Output<String> billingType() {
+        return this.billingType;
+    }
+
+    /**
      * Name of the container.
      * 
      */
@@ -92,6 +107,7 @@ public final class AzureCloudCostConnectorBillingExportSpecArgs extends com.pulu
     private AzureCloudCostConnectorBillingExportSpecArgs() {}
 
     private AzureCloudCostConnectorBillingExportSpecArgs(AzureCloudCostConnectorBillingExportSpecArgs $) {
+        this.billingType = $.billingType;
         this.containerName = $.containerName;
         this.directoryName = $.directoryName;
         this.reportName = $.reportName;
@@ -115,6 +131,27 @@ public final class AzureCloudCostConnectorBillingExportSpecArgs extends com.pulu
 
         public Builder(AzureCloudCostConnectorBillingExportSpecArgs defaults) {
             $ = new AzureCloudCostConnectorBillingExportSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param billingType Billing type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingType(Output<String> billingType) {
+            $.billingType = billingType;
+            return this;
+        }
+
+        /**
+         * @param billingType Billing type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingType(String billingType) {
+            return billingType(Output.of(billingType));
         }
 
         /**
@@ -223,6 +260,9 @@ public final class AzureCloudCostConnectorBillingExportSpecArgs extends com.pulu
         }
 
         public AzureCloudCostConnectorBillingExportSpecArgs build() {
+            if ($.billingType == null) {
+                throw new MissingRequiredPropertyException("AzureCloudCostConnectorBillingExportSpecArgs", "billingType");
+            }
             if ($.containerName == null) {
                 throw new MissingRequiredPropertyException("AzureCloudCostConnectorBillingExportSpecArgs", "containerName");
             }

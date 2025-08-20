@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Datasource for looking up an AWS Secret Manager connector.
+//
 // ## Example Usage
 //
 // ```go
@@ -58,7 +60,7 @@ type LookupAwsSecretManagerConnectorArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// recovery duration in days in AWS Secrets Manager.
+	// Recovery duration in days in AWS Secrets Manager.
 	RecoveryWindowInDays *int `pulumi:"recoveryWindowInDays"`
 }
 
@@ -86,7 +88,7 @@ type LookupAwsSecretManagerConnectorResult struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// recovery duration in days in AWS Secrets Manager.
+	// Recovery duration in days in AWS Secrets Manager.
 	RecoveryWindowInDays *int `pulumi:"recoveryWindowInDays"`
 	// The AWS region where the AWS Secret Manager is.
 	Region string `pulumi:"region"`
@@ -119,7 +121,7 @@ type LookupAwsSecretManagerConnectorOutputArgs struct {
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// recovery duration in days in AWS Secrets Manager.
+	// Recovery duration in days in AWS Secrets Manager.
 	RecoveryWindowInDays pulumi.IntPtrInput `pulumi:"recoveryWindowInDays"`
 }
 
@@ -199,7 +201,7 @@ func (o LookupAwsSecretManagerConnectorResultOutput) ProjectId() pulumi.StringPt
 	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// recovery duration in days in AWS Secrets Manager.
+// Recovery duration in days in AWS Secrets Manager.
 func (o LookupAwsSecretManagerConnectorResultOutput) RecoveryWindowInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) *int { return v.RecoveryWindowInDays }).(pulumi.IntPtrOutput)
 }

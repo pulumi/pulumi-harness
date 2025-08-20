@@ -6,96 +6,9 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness environment service overrides.
- * ## Example to create Environment Service Override at different levels (Org, Project, Account)
  *
- * ### Account Level
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * ## Example Usage
  *
- * const example = new harness.platform.EnvironmentServiceOverrides("example", {
- *     envId: "environmentIdentifier",
- *     serviceId: "serviceIdentifier",
- *     yaml: `serviceOverrides:
- *   environmentRef: environmentIdentifier
- *   serviceRef: serviceIdentifier
- *   variables:
- *    - name: asda
- *      type: String
- *      value: asddad
- *   manifests:
- *      - manifest:
- *          identifier: manifestEnv
- *          type: Values
- *          spec:
- *            store:
- *              type: Git
- *              spec:
- *                connectorRef: <+input>
- *                gitFetchType: Branch
- *                paths:
- *                  - file1
- *                repoName: <+input>
- *                branch: master
- *   configFiles:
- *      - configFile:
- *          identifier: configFileEnv
- *          spec:
- *            store:
- *              type: Harness
- *              spec:
- *                files:
- *                  - account:/Add-ons/svcOverrideTest
- *                secretFiles: []
- * `,
- * });
- * ```
- *
- * ### Org Level
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = new harness.platform.EnvironmentServiceOverrides("example", {
- *     orgId: "orgIdentifier",
- *     envId: "environmentIdentifier",
- *     serviceId: "serviceIdentifier",
- *     yaml: `serviceOverrides:
- *   environmentRef: environmentIdentifier
- *   serviceRef: serviceIdentifier
- *   variables:
- *    - name: asda
- *      type: String
- *      value: asddad
- *   manifests:
- *      - manifest:
- *          identifier: manifestEnv
- *          type: Values
- *          spec:
- *            store:
- *              type: Git
- *              spec:
- *                connectorRef: <+input>
- *                gitFetchType: Branch
- *                paths:
- *                  - file1
- *                repoName: <+input>
- *                branch: master
- *   configFiles:
- *      - configFile:
- *          identifier: configFileEnv
- *          spec:
- *            store:
- *              type: Harness
- *              spec:
- *                files:
- *                  - account:/Add-ons/svcOverrideTest
- *                secretFiles: []
- * `,
- * });
- * ```
- *
- * ### Project Level
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
@@ -141,6 +54,8 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import list of account level service overrides using the env id associated with them
  *
@@ -189,7 +104,7 @@ export class EnvironmentServiceOverrides extends pulumi.CustomResource {
     }
 
     /**
-     * The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+     * The env ID to which the overrides associated.
      */
     public readonly envId!: pulumi.Output<string>;
     /**
@@ -205,7 +120,7 @@ export class EnvironmentServiceOverrides extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+     * The service ID to which the overrides applies.
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
@@ -260,7 +175,7 @@ export class EnvironmentServiceOverrides extends pulumi.CustomResource {
  */
 export interface EnvironmentServiceOverridesState {
     /**
-     * The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+     * The env ID to which the overrides associated.
      */
     envId?: pulumi.Input<string>;
     /**
@@ -276,7 +191,7 @@ export interface EnvironmentServiceOverridesState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+     * The service ID to which the overrides applies.
      */
     serviceId?: pulumi.Input<string>;
     /**
@@ -290,7 +205,7 @@ export interface EnvironmentServiceOverridesState {
  */
 export interface EnvironmentServiceOverridesArgs {
     /**
-     * The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+     * The env ID to which the overrides associated.
      */
     envId: pulumi.Input<string>;
     /**
@@ -306,7 +221,7 @@ export interface EnvironmentServiceOverridesArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+     * The service ID to which the overrides applies.
      */
     serviceId: pulumi.Input<string>;
     /**

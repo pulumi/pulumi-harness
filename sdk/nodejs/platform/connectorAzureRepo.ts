@@ -6,6 +6,9 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Resource for creating a Azure Repo connector.
+ */
 export class ConnectorAzureRepo extends pulumi.CustomResource {
     /**
      * Get an existing ConnectorAzureRepo resource's state with the given name, ID, and optional extra
@@ -35,8 +38,7 @@ export class ConnectorAzureRepo extends pulumi.CustomResource {
     }
 
     /**
-     * Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-     * triggers, Webhooks management and updating Git statuses.
+     * Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
      */
     public readonly apiAuthentication!: pulumi.Output<outputs.platform.ConnectorAzureRepoApiAuthentication | undefined>;
     /**
@@ -152,8 +154,7 @@ export class ConnectorAzureRepo extends pulumi.CustomResource {
  */
 export interface ConnectorAzureRepoState {
     /**
-     * Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-     * triggers, Webhooks management and updating Git statuses.
+     * Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
      */
     apiAuthentication?: pulumi.Input<inputs.platform.ConnectorAzureRepoApiAuthentication>;
     /**
@@ -211,8 +212,7 @@ export interface ConnectorAzureRepoState {
  */
 export interface ConnectorAzureRepoArgs {
     /**
-     * Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-     * triggers, Webhooks management and updating Git statuses.
+     * Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
      */
     apiAuthentication?: pulumi.Input<inputs.platform.ConnectorAzureRepoApiAuthentication>;
     /**

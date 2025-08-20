@@ -200,6 +200,8 @@ def get_gcp_secret_manager_connector(identifier: Optional[_builtins.str] = None,
                                      project_id: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGcpSecretManagerConnectorResult:
     """
+    Datasource for looking up GCP Secret Manager connector.
+
     ## Example Usage
 
     ```python
@@ -243,6 +245,8 @@ def get_gcp_secret_manager_connector_output(identifier: Optional[pulumi.Input[_b
                                             project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGcpSecretManagerConnectorResult]:
     """
+    Datasource for looking up GCP Secret Manager connector.
+
     ## Example Usage
 
     ```python

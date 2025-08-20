@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class InfraVariableSetConnector
     {
         /// <summary>
-        /// Unique identifier of the connector.
+        /// Connector Ref is the reference to the connector
         /// </summary>
         public readonly string ConnectorRef;
         /// <summary>
-        /// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+        /// Type is the connector type of the connector. Supported types: aws, azure, gcp
         /// </summary>
         public readonly string Type;
 

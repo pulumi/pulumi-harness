@@ -24,9 +24,50 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Repo;
+ * import com.pulumi.harness.platform.RepoArgs;
+ * import com.pulumi.harness.platform.inputs.RepoSourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Repo("test", RepoArgs.builder()
+ *             .identifier("test_repo_123")
+ *             .orgId("test_org_123")
+ *             .projectId("test_project_123")
+ *             .defaultBranch("main")
+ *             .description("test_description_123")
+ *             .sources(RepoSourceArgs.builder()
+ *                 .repo("octocat/hello-worId")
+ *                 .type("github")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import
  * 

@@ -52,6 +52,7 @@ func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ..
 
 // A collection of arguments for invoking getEnvironment.
 type LookupEnvironmentArgs struct {
+	// Contains parameters related to Git Experience for remote entities
 	GitDetails *GetEnvironmentGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
@@ -68,8 +69,9 @@ type LookupEnvironmentResult struct {
 	// Color of the environment.
 	Color string `pulumi:"color"`
 	// Description of the resource.
-	Description string                   `pulumi:"description"`
-	GitDetails  GetEnvironmentGitDetails `pulumi:"gitDetails"`
+	Description string `pulumi:"description"`
+	// Contains parameters related to Git Experience for remote entities
+	GitDetails GetEnvironmentGitDetails `pulumi:"gitDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
@@ -99,6 +101,7 @@ func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputAr
 
 // A collection of arguments for invoking getEnvironment.
 type LookupEnvironmentOutputArgs struct {
+	// Contains parameters related to Git Experience for remote entities
 	GitDetails GetEnvironmentGitDetailsPtrInput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
@@ -139,6 +142,7 @@ func (o LookupEnvironmentResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Contains parameters related to Git Experience for remote entities
 func (o LookupEnvironmentResultOutput) GitDetails() GetEnvironmentGitDetailsOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) GetEnvironmentGitDetails { return v.GitDetails }).(GetEnvironmentGitDetailsOutput)
 }

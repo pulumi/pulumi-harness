@@ -37,7 +37,7 @@ export function getEnvironmentServiceOverrides(args: GetEnvironmentServiceOverri
  */
 export interface GetEnvironmentServiceOverridesArgs {
     /**
-     * The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+     * The env ID to which the overrides associated.
      */
     envId: string;
     /**
@@ -53,7 +53,7 @@ export interface GetEnvironmentServiceOverridesArgs {
      */
     projectId?: string;
     /**
-     * The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+     * The service ID to which the overrides applies.
      */
     serviceId?: string;
 }
@@ -63,7 +63,7 @@ export interface GetEnvironmentServiceOverridesArgs {
  */
 export interface GetEnvironmentServiceOverridesResult {
     /**
-     * The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+     * The env ID to which the overrides associated.
      */
     readonly envId: string;
     /**
@@ -83,7 +83,7 @@ export interface GetEnvironmentServiceOverridesResult {
      */
     readonly projectId?: string;
     /**
-     * The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+     * The service ID to which the overrides applies.
      */
     readonly serviceId?: string;
     /**
@@ -124,7 +124,7 @@ export function getEnvironmentServiceOverridesOutput(args: GetEnvironmentService
  */
 export interface GetEnvironmentServiceOverridesOutputArgs {
     /**
-     * The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+     * The env ID to which the overrides associated.
      */
     envId: pulumi.Input<string>;
     /**
@@ -140,7 +140,7 @@ export interface GetEnvironmentServiceOverridesOutputArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+     * The service ID to which the overrides applies.
      */
     serviceId?: pulumi.Input<string>;
 }

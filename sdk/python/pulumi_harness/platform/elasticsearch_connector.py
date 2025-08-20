@@ -35,7 +35,7 @@ class ElasticsearchConnectorArgs:
         """
         The set of arguments for constructing a ElasticsearchConnector resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] url: URL of the ElasticSearch controller.
+        :param pulumi.Input[_builtins.str] url: URL of the elasticsearch
         :param pulumi.Input['ElasticsearchConnectorApiTokenArgs'] api_token: Authenticate to ElasticSearch using api token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -83,7 +83,7 @@ class ElasticsearchConnectorArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[_builtins.str]:
         """
-        URL of the ElasticSearch controller.
+        URL of the elasticsearch
         """
         return pulumi.get(self, "url")
 
@@ -225,7 +225,7 @@ class _ElasticsearchConnectorState:
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] url: URL of the ElasticSearch controller.
+        :param pulumi.Input[_builtins.str] url: URL of the elasticsearch
         :param pulumi.Input['ElasticsearchConnectorUsernamePasswordArgs'] username_password: Authenticate to ElasticSearch using username and password.
         """
         if api_token is not None:
@@ -363,7 +363,7 @@ class _ElasticsearchConnectorState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        URL of the ElasticSearch controller.
+        URL of the elasticsearch
         """
         return pulumi.get(self, "url")
 
@@ -417,7 +417,7 @@ class ElasticsearchConnector(pulumi.CustomResource):
             name="name",
             description="test",
             tags=["foo:bar"],
-            url="https://elasticsearch.com/",
+            url="http://elk6.dev.harness.io:9200/",
             delegate_selectors=["harness-delegate"],
             api_token={
                 "client_id": "client_id",
@@ -429,23 +429,25 @@ class ElasticsearchConnector(pulumi.CustomResource):
             name="name",
             description="test",
             tags=["foo:bar"],
-            url="https://elasticsearch.com/",
+            url="http://elk6.dev.harness.io:9200/",
             delegate_selectors=["harness-delegate"],
             username_password={
                 "username": "username",
                 "password_ref": "account.secret_id",
             })
-        # Authentication mechanism as username and password
+        # Authentication mechanism without authentication
         no_authentication = harness.platform.ElasticsearchConnector("no_authentication",
             identifier="identifier",
             name="name",
             description="test",
             tags=["foo:bar"],
-            url="https://elasticsearch.com/",
+            url="http://elk6.dev.harness.io:9200/",
             delegate_selectors=["harness-delegate"])
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level elasticsearch connector
 
@@ -476,7 +478,7 @@ class ElasticsearchConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] url: URL of the ElasticSearch controller.
+        :param pulumi.Input[_builtins.str] url: URL of the elasticsearch
         :param pulumi.Input[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']] username_password: Authenticate to ElasticSearch using username and password.
         """
         ...
@@ -500,7 +502,7 @@ class ElasticsearchConnector(pulumi.CustomResource):
             name="name",
             description="test",
             tags=["foo:bar"],
-            url="https://elasticsearch.com/",
+            url="http://elk6.dev.harness.io:9200/",
             delegate_selectors=["harness-delegate"],
             api_token={
                 "client_id": "client_id",
@@ -512,23 +514,25 @@ class ElasticsearchConnector(pulumi.CustomResource):
             name="name",
             description="test",
             tags=["foo:bar"],
-            url="https://elasticsearch.com/",
+            url="http://elk6.dev.harness.io:9200/",
             delegate_selectors=["harness-delegate"],
             username_password={
                 "username": "username",
                 "password_ref": "account.secret_id",
             })
-        # Authentication mechanism as username and password
+        # Authentication mechanism without authentication
         no_authentication = harness.platform.ElasticsearchConnector("no_authentication",
             identifier="identifier",
             name="name",
             description="test",
             tags=["foo:bar"],
-            url="https://elasticsearch.com/",
+            url="http://elk6.dev.harness.io:9200/",
             delegate_selectors=["harness-delegate"])
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level elasticsearch connector
 
@@ -635,7 +639,7 @@ class ElasticsearchConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] url: URL of the ElasticSearch controller.
+        :param pulumi.Input[_builtins.str] url: URL of the elasticsearch
         :param pulumi.Input[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']] username_password: Authenticate to ElasticSearch using username and password.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -731,7 +735,7 @@ class ElasticsearchConnector(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[_builtins.str]:
         """
-        URL of the ElasticSearch controller.
+        URL of the elasticsearch
         """
         return pulumi.get(self, "url")
 

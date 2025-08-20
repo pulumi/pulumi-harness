@@ -14,10 +14,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHarRegistryResult {
+    /**
+     * @return Allowed artifact patterns
+     * 
+     */
     private @Nullable List<String> allowedPatterns;
+    /**
+     * @return Blocked artifact patterns
+     * 
+     */
     private @Nullable List<String> blockedPatterns;
+    /**
+     * @return Configuration for the registry
+     * 
+     */
     private @Nullable List<GetHarRegistryConfig> configs;
+    /**
+     * @return Creation timestamp
+     * 
+     */
     private String createdAt;
+    /**
+     * @return Description of the registry
+     * 
+     */
     private @Nullable String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,32 +45,64 @@ public final class GetHarRegistryResult {
      */
     private String id;
     /**
-     * @return Unique identifier of the resource.
+     * @return Unique identifier of the registry
      * 
      */
     private String identifier;
-    private @Nullable String packageType;
-    private @Nullable String parentRef;
     /**
-     * @return Reference of the space.
+     * @return Type of package (DOCKER, HELM, MAVEN, etc.)
      * 
      */
-    private String spaceRef;
+    private @Nullable String packageType;
+    /**
+     * @return Parent reference for the registry
+     * 
+     */
+    private @Nullable String parentRef;
+    /**
+     * @return Space reference for the registry
+     * 
+     */
+    private @Nullable String spaceRef;
+    /**
+     * @return URL of the registry
+     * 
+     */
     private String url;
 
     private GetHarRegistryResult() {}
+    /**
+     * @return Allowed artifact patterns
+     * 
+     */
     public List<String> allowedPatterns() {
         return this.allowedPatterns == null ? List.of() : this.allowedPatterns;
     }
+    /**
+     * @return Blocked artifact patterns
+     * 
+     */
     public List<String> blockedPatterns() {
         return this.blockedPatterns == null ? List.of() : this.blockedPatterns;
     }
+    /**
+     * @return Configuration for the registry
+     * 
+     */
     public List<GetHarRegistryConfig> configs() {
         return this.configs == null ? List.of() : this.configs;
     }
+    /**
+     * @return Creation timestamp
+     * 
+     */
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return Description of the registry
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -62,25 +114,37 @@ public final class GetHarRegistryResult {
         return this.id;
     }
     /**
-     * @return Unique identifier of the resource.
+     * @return Unique identifier of the registry
      * 
      */
     public String identifier() {
         return this.identifier;
     }
+    /**
+     * @return Type of package (DOCKER, HELM, MAVEN, etc.)
+     * 
+     */
     public Optional<String> packageType() {
         return Optional.ofNullable(this.packageType);
     }
+    /**
+     * @return Parent reference for the registry
+     * 
+     */
     public Optional<String> parentRef() {
         return Optional.ofNullable(this.parentRef);
     }
     /**
-     * @return Reference of the space.
+     * @return Space reference for the registry
      * 
      */
-    public String spaceRef() {
-        return this.spaceRef;
+    public Optional<String> spaceRef() {
+        return Optional.ofNullable(this.spaceRef);
     }
+    /**
+     * @return URL of the registry
+     * 
+     */
     public String url() {
         return this.url;
     }
@@ -103,7 +167,7 @@ public final class GetHarRegistryResult {
         private String identifier;
         private @Nullable String packageType;
         private @Nullable String parentRef;
-        private String spaceRef;
+        private @Nullable String spaceRef;
         private String url;
         public Builder() {}
         public Builder(GetHarRegistryResult defaults) {
@@ -191,10 +255,8 @@ public final class GetHarRegistryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder spaceRef(String spaceRef) {
-            if (spaceRef == null) {
-              throw new MissingRequiredPropertyException("GetHarRegistryResult", "spaceRef");
-            }
+        public Builder spaceRef(@Nullable String spaceRef) {
+
             this.spaceRef = spaceRef;
             return this;
         }

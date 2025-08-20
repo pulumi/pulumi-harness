@@ -30,6 +30,7 @@ import (
 //			_, err := platform.LookupToken(ctx, &platform.LookupTokenArgs{
 //				Identifier: "test_token",
 //				ParentId:   "apikey_parent_id",
+//				AccountId:  "account_id",
 //				OrgId:      pulumi.StringRef("org_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),
 //				ApikeyId:   "apikey_id",

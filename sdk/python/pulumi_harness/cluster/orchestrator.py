@@ -151,14 +151,6 @@ class Orchestrator(pulumi.CustomResource):
             k8s_connector_id="test")
         ```
 
-        ## Import
-
-        Import using the Harness aws cloud provider id.
-
-        ```sh
-        $ pulumi import harness:cluster/orchestrator:Orchestrator example <provider_id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
@@ -184,14 +176,6 @@ class Orchestrator(pulumi.CustomResource):
             name="name",
             cluster_endpoint="http://test.test.com",
             k8s_connector_id="test")
-        ```
-
-        ## Import
-
-        Import using the Harness aws cloud provider id.
-
-        ```sh
-        $ pulumi import harness:cluster/orchestrator:Orchestrator example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.

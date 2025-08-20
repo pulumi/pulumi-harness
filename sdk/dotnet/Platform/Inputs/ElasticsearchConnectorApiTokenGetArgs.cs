@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class ElasticsearchConnectorApiTokenGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The client id used for connecting to ElasticSearch.
+        /// The API Key id used for connecting to ElasticSearch.
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;

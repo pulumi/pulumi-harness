@@ -74,31 +74,49 @@ class GetConnectorAzureRepoResult:
     @_builtins.property
     @pulumi.getter(name="apiAuthentications")
     def api_authentications(self) -> Sequence['outputs.GetConnectorAzureRepoApiAuthenticationResult']:
+        """
+        Configuration for using the azure repo api. API Access is Computed for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
+        """
         return pulumi.get(self, "api_authentications")
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> _builtins.str:
+        """
+        Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
+        """
         return pulumi.get(self, "connection_type")
 
     @_builtins.property
     @pulumi.getter
     def credentials(self) -> Sequence['outputs.GetConnectorAzureRepoCredentialResult']:
+        """
+        Credentials to use for the connection.
+        """
         return pulumi.get(self, "credentials")
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Sequence[_builtins.str]:
+        """
+        Tags to filter delegates for connection.
+        """
         return pulumi.get(self, "delegate_selectors")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Description of the resource.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
     def execute_on_delegate(self) -> _builtins.bool:
+        """
+        Execute on delegate or not.
+        """
         return pulumi.get(self, "execute_on_delegate")
 
     @_builtins.property
@@ -112,36 +130,57 @@ class GetConnectorAzureRepoResult:
     @_builtins.property
     @pulumi.getter
     def identifier(self) -> _builtins.str:
+        """
+        Unique identifier of the resource.
+        """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the resource.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the organization.
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the project.
+        """
         return pulumi.get(self, "project_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
+        """
+        Tags to associate with the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def url(self) -> _builtins.str:
+        """
+        URL of the azure repo repository or account.
+        """
         return pulumi.get(self, "url")
 
     @_builtins.property
     @pulumi.getter(name="validationRepo")
     def validation_repo(self) -> _builtins.str:
+        """
+        Repository to test the connection with. This is only used when `connection_type` is `Account`.
+        """
         return pulumi.get(self, "validation_repo")
 
 
@@ -173,7 +212,13 @@ def get_connector_azure_repo(identifier: Optional[_builtins.str] = None,
                              project_id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectorAzureRepoResult:
     """
-    Use this data source to access information about an existing resource.
+    Datasource for looking up a Azure Repo connector.
+
+
+    :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str name: Name of the resource.
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -204,7 +249,13 @@ def get_connector_azure_repo_output(identifier: Optional[pulumi.Input[_builtins.
                                     project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorAzureRepoResult]:
     """
-    Use this data source to access information about an existing resource.
+    Datasource for looking up a Azure Repo connector.
+
+
+    :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str name: Name of the resource.
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier

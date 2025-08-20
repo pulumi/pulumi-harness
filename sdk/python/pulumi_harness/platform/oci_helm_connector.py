@@ -374,6 +374,8 @@ class OciHelmConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level helm connector
 
         ```sh
@@ -415,6 +417,8 @@ class OciHelmConnector(pulumi.CustomResource):
         Resource for creating a OCI Helm connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level helm connector
 

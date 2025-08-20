@@ -437,6 +437,8 @@ class GitOpsAgent(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import an Account level Gitops Agent
 
         ```sh
@@ -498,6 +500,8 @@ class GitOpsAgent(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import an Account level Gitops Agent
 

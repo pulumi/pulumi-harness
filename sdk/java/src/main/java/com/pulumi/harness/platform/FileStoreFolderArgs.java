@@ -78,14 +78,14 @@ public final class FileStoreFolderArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Folder parent identifier on Harness File Store. If the file is at the root level, the parent_identifier will be `Root`.
+     * Folder parent identifier on Harness File Store
      * 
      */
     @Import(name="parentIdentifier", required=true)
     private Output<String> parentIdentifier;
 
     /**
-     * @return Folder parent identifier on Harness File Store. If the file is at the root level, the parent_identifier will be `Root`.
+     * @return Folder parent identifier on Harness File Store
      * 
      */
     public Output<String> parentIdentifier() {
@@ -237,7 +237,7 @@ public final class FileStoreFolderArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param parentIdentifier Folder parent identifier on Harness File Store. If the file is at the root level, the parent_identifier will be `Root`.
+         * @param parentIdentifier Folder parent identifier on Harness File Store
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class FileStoreFolderArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param parentIdentifier Folder parent identifier on Harness File Store. If the file is at the root level, the parent_identifier will be `Root`.
+         * @param parentIdentifier Folder parent identifier on Harness File Store
          * 
          * @return builder
          * 

@@ -373,6 +373,8 @@ class PolicySet(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import using the organization id
 
         ```sh
@@ -402,6 +404,8 @@ class PolicySet(pulumi.CustomResource):
         Resource for creating a Harness Policyset.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import using the organization id
 

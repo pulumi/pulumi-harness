@@ -13,12 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetManualFreezeFreezeWindow {
     /**
-     * @return Duration of the freeze
+     * @return Duration of the freeze window
      * 
      */
     private String duration;
     /**
-     * @return End time of the freeze
+     * @return End Time of the freeze window
      * 
      */
     private String endTime;
@@ -28,26 +28,26 @@ public final class GetManualFreezeFreezeWindow {
      */
     private List<GetManualFreezeFreezeWindowRecurrence> recurrences;
     /**
-     * @return Start time of the freeze
+     * @return Start Time of the freeze window
      * 
      */
     private String startTime;
     /**
-     * @return Timezone
+     * @return Time zone of the freeze window
      * 
      */
     private String timeZone;
 
     private GetManualFreezeFreezeWindow() {}
     /**
-     * @return Duration of the freeze
+     * @return Duration of the freeze window
      * 
      */
     public String duration() {
         return this.duration;
     }
     /**
-     * @return End time of the freeze
+     * @return End Time of the freeze window
      * 
      */
     public String endTime() {
@@ -61,14 +61,14 @@ public final class GetManualFreezeFreezeWindow {
         return this.recurrences;
     }
     /**
-     * @return Start time of the freeze
+     * @return Start Time of the freeze window
      * 
      */
     public String startTime() {
         return this.startTime;
     }
     /**
-     * @return Timezone
+     * @return Time zone of the freeze window
      * 
      */
     public String timeZone() {

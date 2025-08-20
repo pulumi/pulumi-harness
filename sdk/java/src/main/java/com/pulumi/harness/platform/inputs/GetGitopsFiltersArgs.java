@@ -15,14 +15,14 @@ public final class GetGitopsFiltersArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetGitopsFiltersArgs Empty = new GetGitopsFiltersArgs();
 
     /**
-     * Unique identifier of the GitOps filter to retrieve.
+     * Unique identifier of the resource.
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return Unique identifier of the GitOps filter to retrieve.
+     * @return Unique identifier of the resource.
      * 
      */
     public Output<String> identifier() {
@@ -30,14 +30,14 @@ public final class GetGitopsFiltersArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Organization identifier for the GitOps filter.
+     * Organization Identifier for the Entity.
      * 
      */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
     /**
-     * @return Organization identifier for the GitOps filter.
+     * @return Organization Identifier for the Entity.
      * 
      */
     public Output<String> orgId() {
@@ -45,14 +45,14 @@ public final class GetGitopsFiltersArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Project identifier for the GitOps filter.
+     * Project Identifier for the Entity.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return Project identifier for the GitOps filter.
+     * @return Project Identifier for the Entity.
      * 
      */
     public Output<String> projectId() {
@@ -60,14 +60,14 @@ public final class GetGitopsFiltersArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Type of GitOps filter. Currently, only &#34;APPLICATION&#34; is supported.
+     * Type of filter.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of GitOps filter. Currently, only &#34;APPLICATION&#34; is supported.
+     * @return Type of filter.
      * 
      */
     public Output<String> type() {
@@ -102,7 +102,7 @@ public final class GetGitopsFiltersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param identifier Unique identifier of the GitOps filter to retrieve.
+         * @param identifier Unique identifier of the resource.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class GetGitopsFiltersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param identifier Unique identifier of the GitOps filter to retrieve.
+         * @param identifier Unique identifier of the resource.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class GetGitopsFiltersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param orgId Organization identifier for the GitOps filter.
+         * @param orgId Organization Identifier for the Entity.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class GetGitopsFiltersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param orgId Organization identifier for the GitOps filter.
+         * @param orgId Organization Identifier for the Entity.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class GetGitopsFiltersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param projectId Project identifier for the GitOps filter.
+         * @param projectId Project Identifier for the Entity.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class GetGitopsFiltersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param projectId Project identifier for the GitOps filter.
+         * @param projectId Project Identifier for the Entity.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class GetGitopsFiltersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param type Type of GitOps filter. Currently, only &#34;APPLICATION&#34; is supported.
+         * @param type Type of filter.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class GetGitopsFiltersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param type Type of GitOps filter. Currently, only &#34;APPLICATION&#34; is supported.
+         * @param type Type of filter.
          * 
          * @return builder
          * 

@@ -340,6 +340,8 @@ class ConnectorJdbc(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level jdbc connector
 
         ```sh
@@ -380,6 +382,8 @@ class ConnectorJdbc(pulumi.CustomResource):
         Resource for creating a JDBC connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level jdbc connector
 

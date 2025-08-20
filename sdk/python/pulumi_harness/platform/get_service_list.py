@@ -58,16 +58,25 @@ class GetServiceListResult:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the organization.
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter
     def page(self) -> Optional[_builtins.int]:
+        """
+        Page index of the results to fetch. Default: 0
+        """
         return pulumi.get(self, "page")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the project.
+        """
         return pulumi.get(self, "project_id")
 
     @_builtins.property
@@ -78,6 +87,9 @@ class GetServiceListResult:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
+        """
+        Results per page. Default: 100; Max: 1000
+        """
         return pulumi.get(self, "size")
 
 
@@ -101,37 +113,13 @@ def get_service_list(org_id: Optional[_builtins.str] = None,
                      size: Optional[_builtins.int] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceListResult:
     """
-    Data source for retrieving Harness service list.
+    Data source for retrieving a Harness service List.
 
-    ## Example Usage
 
-    ### Project Level Service List
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_service_list(org_id="org_id",
-        project_id="project_id")
-    ```
-
-    ### Organisation Level Service List
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_service_list(org_id="org_id")
-    ```
-
-    ### Account Level Service List
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_service_list()
-    ```
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.int page: Page index of the results to fetch. Default: 0
+    :param _builtins.str project_id: Unique identifier of the project.
+    :param _builtins.int size: Results per page. Default: 100; Max: 1000
     """
     __args__ = dict()
     __args__['orgId'] = org_id
@@ -154,37 +142,13 @@ def get_service_list_output(org_id: Optional[pulumi.Input[Optional[_builtins.str
                             size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceListResult]:
     """
-    Data source for retrieving Harness service list.
+    Data source for retrieving a Harness service List.
 
-    ## Example Usage
 
-    ### Project Level Service List
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_service_list(org_id="org_id",
-        project_id="project_id")
-    ```
-
-    ### Organisation Level Service List
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_service_list(org_id="org_id")
-    ```
-
-    ### Account Level Service List
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_service_list()
-    ```
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.int page: Page index of the results to fetch. Default: 0
+    :param _builtins.str project_id: Unique identifier of the project.
+    :param _builtins.int size: Results per page. Default: 100; Max: 1000
     """
     __args__ = dict()
     __args__['orgId'] = org_id

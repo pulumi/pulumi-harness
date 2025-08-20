@@ -16,31 +16,39 @@ public final class GetProjectListPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetProjectListPlainArgs Empty = new GetProjectListPlainArgs();
 
+    /**
+     * Unique identifier of the resource.
+     * 
+     */
     @Import(name="identifier")
     private @Nullable String identifier;
 
+    /**
+     * @return Unique identifier of the resource.
+     * 
+     */
     public Optional<String> identifier() {
         return Optional.ofNullable(this.identifier);
     }
 
-    /**
-     * Optional pagination parameter indicating the maximum number of entities to retrieve per page.
-     * 
-     */
     @Import(name="limit")
     private @Nullable Integer limit;
 
-    /**
-     * @return Optional pagination parameter indicating the maximum number of entities to retrieve per page.
-     * 
-     */
     public Optional<Integer> limit() {
         return Optional.ofNullable(this.limit);
     }
 
+    /**
+     * Name of the resource.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return Name of the resource.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -60,17 +68,9 @@ public final class GetProjectListPlainArgs extends com.pulumi.resources.InvokeAr
         return this.orgId;
     }
 
-    /**
-     * Optional pagination parameter indicating the page number when retrieving entities.
-     * 
-     */
     @Import(name="page")
     private @Nullable Integer page;
 
-    /**
-     * @return Optional pagination parameter indicating the page number when retrieving entities.
-     * 
-     */
     public Optional<Integer> page() {
         return Optional.ofNullable(this.page);
     }
@@ -103,22 +103,28 @@ public final class GetProjectListPlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetProjectListPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param identifier Unique identifier of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(@Nullable String identifier) {
             $.identifier = identifier;
             return this;
         }
 
-        /**
-         * @param limit Optional pagination parameter indicating the maximum number of entities to retrieve per page.
-         * 
-         * @return builder
-         * 
-         */
         public Builder limit(@Nullable Integer limit) {
             $.limit = limit;
             return this;
         }
 
+        /**
+         * @param name Name of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
@@ -135,12 +141,6 @@ public final class GetProjectListPlainArgs extends com.pulumi.resources.InvokeAr
             return this;
         }
 
-        /**
-         * @param page Optional pagination parameter indicating the page number when retrieving entities.
-         * 
-         * @return builder
-         * 
-         */
         public Builder page(@Nullable Integer page) {
             $.page = page;
             return this;

@@ -438,6 +438,8 @@ class BitbucketConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level bitbucket connector
 
         ```sh
@@ -481,6 +483,8 @@ class BitbucketConnector(pulumi.CustomResource):
         Resource for creating a Bitbucket connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level bitbucket connector
 

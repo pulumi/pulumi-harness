@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
+// Resource for creating an AWS KMS connector.
 //
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // # Import account level awskms connector
 //
@@ -36,8 +38,10 @@ import (
 type AwsKmsConnector struct {
 	pulumi.CustomResourceState
 
+	// A reference to the Harness secret containing the ARN of the AWS KMS.
+	ArnPlaintext pulumi.StringPtrOutput `pulumi:"arnPlaintext"`
 	// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ArnRef pulumi.StringOutput `pulumi:"arnRef"`
+	ArnRef pulumi.StringPtrOutput `pulumi:"arnRef"`
 	// Credentials to connect to AWS.
 	Credentials AwsKmsConnectorCredentialsOutput `pulumi:"credentials"`
 	// Set this connector as the default for all the services.
@@ -69,9 +73,6 @@ func NewAwsKmsConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ArnRef == nil {
-		return nil, errors.New("invalid value for required argument 'ArnRef'")
-	}
 	if args.Credentials == nil {
 		return nil, errors.New("invalid value for required argument 'Credentials'")
 	}
@@ -104,6 +105,8 @@ func GetAwsKmsConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AwsKmsConnector resources.
 type awsKmsConnectorState struct {
+	// A reference to the Harness secret containing the ARN of the AWS KMS.
+	ArnPlaintext *string `pulumi:"arnPlaintext"`
 	// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ArnRef *string `pulumi:"arnRef"`
 	// Credentials to connect to AWS.
@@ -131,6 +134,8 @@ type awsKmsConnectorState struct {
 }
 
 type AwsKmsConnectorState struct {
+	// A reference to the Harness secret containing the ARN of the AWS KMS.
+	ArnPlaintext pulumi.StringPtrInput
 	// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ArnRef pulumi.StringPtrInput
 	// Credentials to connect to AWS.
@@ -162,8 +167,10 @@ func (AwsKmsConnectorState) ElementType() reflect.Type {
 }
 
 type awsKmsConnectorArgs struct {
+	// A reference to the Harness secret containing the ARN of the AWS KMS.
+	ArnPlaintext *string `pulumi:"arnPlaintext"`
 	// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ArnRef string `pulumi:"arnRef"`
+	ArnRef *string `pulumi:"arnRef"`
 	// Credentials to connect to AWS.
 	Credentials AwsKmsConnectorCredentials `pulumi:"credentials"`
 	// Set this connector as the default for all the services.
@@ -190,8 +197,10 @@ type awsKmsConnectorArgs struct {
 
 // The set of arguments for constructing a AwsKmsConnector resource.
 type AwsKmsConnectorArgs struct {
+	// A reference to the Harness secret containing the ARN of the AWS KMS.
+	ArnPlaintext pulumi.StringPtrInput
 	// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	ArnRef pulumi.StringInput
+	ArnRef pulumi.StringPtrInput
 	// Credentials to connect to AWS.
 	Credentials AwsKmsConnectorCredentialsInput
 	// Set this connector as the default for all the services.
@@ -303,9 +312,14 @@ func (o AwsKmsConnectorOutput) ToAwsKmsConnectorOutputWithContext(ctx context.Co
 	return o
 }
 
+// A reference to the Harness secret containing the ARN of the AWS KMS.
+func (o AwsKmsConnectorOutput) ArnPlaintext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnector) pulumi.StringPtrOutput { return v.ArnPlaintext }).(pulumi.StringPtrOutput)
+}
+
 // A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o AwsKmsConnectorOutput) ArnRef() pulumi.StringOutput {
-	return o.ApplyT(func(v *AwsKmsConnector) pulumi.StringOutput { return v.ArnRef }).(pulumi.StringOutput)
+func (o AwsKmsConnectorOutput) ArnRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnector) pulumi.StringPtrOutput { return v.ArnRef }).(pulumi.StringPtrOutput)
 }
 
 // Credentials to connect to AWS.

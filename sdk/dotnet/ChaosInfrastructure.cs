@@ -12,7 +12,7 @@ namespace Pulumi.Harness
     /// <summary>
     /// Resource for creating a Chaos Infrastructure.
     /// 
-    /// ## Example to create Chaos Infrastructure
+    /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -22,6 +22,7 @@ namespace Pulumi.Harness
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Sample resource for chaos infrastructure
     ///     var example = new Harness.ChaosInfrastructure("example", new()
     ///     {
     ///         Identifier = "identifier",
@@ -38,7 +39,9 @@ namespace Pulumi.Harness
     /// 
     /// ## Import
     /// 
-    /// Import using the Chaos Infra ID.
+    /// The `pulumi import` command can be used, for example:
+    /// 
+    /// Import using the Harness chaos_infra_id.
     /// 
     /// ```sh
     /// $ pulumi import harness:index/chaosInfrastructure:ChaosInfrastructure example &lt;chaos_infra_id&gt;

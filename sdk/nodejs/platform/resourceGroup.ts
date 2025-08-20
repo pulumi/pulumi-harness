@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Resource for creating a Harness Resource Group
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -38,6 +40,8 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level resource group
  *
@@ -106,7 +110,7 @@ export class ResourceGroup extends pulumi.CustomResource {
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+     * Included scopes; default selected based on resource group scope if not specified.
      */
     public readonly includedScopes!: pulumi.Output<outputs.platform.ResourceGroupIncludedScope[] | undefined>;
     /**
@@ -204,7 +208,7 @@ export interface ResourceGroupState {
      */
     identifier?: pulumi.Input<string>;
     /**
-     * Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+     * Included scopes; default selected based on resource group scope if not specified.
      */
     includedScopes?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupIncludedScope>[]>;
     /**
@@ -254,7 +258,7 @@ export interface ResourceGroupArgs {
      */
     identifier: pulumi.Input<string>;
     /**
-     * Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+     * Included scopes; default selected based on resource group scope if not specified.
      */
     includedScopes?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupIncludedScope>[]>;
     /**

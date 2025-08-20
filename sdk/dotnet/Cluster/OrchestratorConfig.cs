@@ -9,6 +9,110 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness.Cluster
 {
+    /// <summary>
+    /// Resource for ClusterOrchestrator Config.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Cluster.OrchestratorConfig("example", new()
+    ///     {
+    ///         OrchestratorId = "orch-cvifpfl9rbg8neldj97g",
+    ///         Distribution = new Harness.Cluster.Inputs.OrchestratorConfigDistributionArgs
+    ///         {
+    ///             BaseOndemandCapacity = 2,
+    ///             OndemandReplicaPercentage = 50,
+    ///             Selector = "ALL",
+    ///             Strategy = "CostOptimized",
+    ///         },
+    ///         Binpacking = new Harness.Cluster.Inputs.OrchestratorConfigBinpackingArgs
+    ///         {
+    ///             PodEviction = new Harness.Cluster.Inputs.OrchestratorConfigBinpackingPodEvictionArgs
+    ///             {
+    ///                 Threshold = new Harness.Cluster.Inputs.OrchestratorConfigBinpackingPodEvictionThresholdArgs
+    ///                 {
+    ///                     Cpu = 60,
+    ///                     Memory = 80,
+    ///                 },
+    ///             },
+    ///             Disruption = new Harness.Cluster.Inputs.OrchestratorConfigBinpackingDisruptionArgs
+    ///             {
+    ///                 Criteria = "WhenEmpty",
+    ///                 Delay = "10m",
+    ///                 Budgets = new[]
+    ///                 {
+    ///                     new Harness.Cluster.Inputs.OrchestratorConfigBinpackingDisruptionBudgetArgs
+    ///                     {
+    ///                         Reasons = new[]
+    ///                         {
+    ///                             "Drifted",
+    ///                             "Underutilized",
+    ///                             "Empty",
+    ///                         },
+    ///                         Nodes = "20",
+    ///                     },
+    ///                     new Harness.Cluster.Inputs.OrchestratorConfigBinpackingDisruptionBudgetArgs
+    ///                     {
+    ///                         Reasons = new[]
+    ///                         {
+    ///                             "Drifted",
+    ///                             "Empty",
+    ///                         },
+    ///                         Nodes = "1",
+    ///                         Schedule = new Harness.Cluster.Inputs.OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs
+    ///                         {
+    ///                             Frequency = "@monthly",
+    ///                             Duration = "10m",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         NodePreferences = new Harness.Cluster.Inputs.OrchestratorConfigNodePreferencesArgs
+    ///         {
+    ///             Ttl = "Never",
+    ///             ReverseFallbackInterval = "6h",
+    ///         },
+    ///         CommitmentIntegration = new Harness.Cluster.Inputs.OrchestratorConfigCommitmentIntegrationArgs
+    ///         {
+    ///             Enabled = true,
+    ///             MasterAccountId = "dummyAccountId",
+    ///         },
+    ///         ReplacementSchedule = new Harness.Cluster.Inputs.OrchestratorConfigReplacementScheduleArgs
+    ///         {
+    ///             WindowType = "Custom",
+    ///             AppliesTo = new Harness.Cluster.Inputs.OrchestratorConfigReplacementScheduleAppliesToArgs
+    ///             {
+    ///                 Consolidation = true,
+    ///                 HarnessPodEviction = true,
+    ///                 ReverseFallback = true,
+    ///             },
+    ///             WindowDetails = new Harness.Cluster.Inputs.OrchestratorConfigReplacementScheduleWindowDetailsArgs
+    ///             {
+    ///                 Days = new[]
+    ///                 {
+    ///                     "SUN",
+    ///                     "WED",
+    ///                     "SAT",
+    ///                 },
+    ///                 TimeZone = "Asia/Calcutta",
+    ///                 AllDay = false,
+    ///                 StartTime = "10:30",
+    ///                 EndTime = "11:30",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [HarnessResourceType("harness:cluster/orchestratorConfig:OrchestratorConfig")]
     public partial class OrchestratorConfig : global::Pulumi.CustomResource
     {
@@ -17,6 +121,12 @@ namespace Pulumi.Harness.Cluster
         /// </summary>
         [Output("binpacking")]
         public Output<Outputs.OrchestratorConfigBinpacking?> Binpacking { get; private set; } = null!;
+
+        /// <summary>
+        /// Commitment integration configuration for Cluster Orchestrator
+        /// </summary>
+        [Output("commitmentIntegration")]
+        public Output<Outputs.OrchestratorConfigCommitmentIntegration?> CommitmentIntegration { get; private set; } = null!;
 
         /// <summary>
         /// Spot and Ondemand Distribution Preferences for workload replicas
@@ -35,6 +145,12 @@ namespace Pulumi.Harness.Cluster
         /// </summary>
         [Output("orchestratorId")]
         public Output<string> OrchestratorId { get; private set; } = null!;
+
+        /// <summary>
+        /// Replacement schedule for Cluster Orchestrator
+        /// </summary>
+        [Output("replacementSchedule")]
+        public Output<Outputs.OrchestratorConfigReplacementSchedule?> ReplacementSchedule { get; private set; } = null!;
 
 
         /// <summary>
@@ -90,6 +206,12 @@ namespace Pulumi.Harness.Cluster
         public Input<Inputs.OrchestratorConfigBinpackingArgs>? Binpacking { get; set; }
 
         /// <summary>
+        /// Commitment integration configuration for Cluster Orchestrator
+        /// </summary>
+        [Input("commitmentIntegration")]
+        public Input<Inputs.OrchestratorConfigCommitmentIntegrationArgs>? CommitmentIntegration { get; set; }
+
+        /// <summary>
         /// Spot and Ondemand Distribution Preferences for workload replicas
         /// </summary>
         [Input("distribution", required: true)]
@@ -107,6 +229,12 @@ namespace Pulumi.Harness.Cluster
         [Input("orchestratorId", required: true)]
         public Input<string> OrchestratorId { get; set; } = null!;
 
+        /// <summary>
+        /// Replacement schedule for Cluster Orchestrator
+        /// </summary>
+        [Input("replacementSchedule")]
+        public Input<Inputs.OrchestratorConfigReplacementScheduleArgs>? ReplacementSchedule { get; set; }
+
         public OrchestratorConfigArgs()
         {
         }
@@ -120,6 +248,12 @@ namespace Pulumi.Harness.Cluster
         /// </summary>
         [Input("binpacking")]
         public Input<Inputs.OrchestratorConfigBinpackingGetArgs>? Binpacking { get; set; }
+
+        /// <summary>
+        /// Commitment integration configuration for Cluster Orchestrator
+        /// </summary>
+        [Input("commitmentIntegration")]
+        public Input<Inputs.OrchestratorConfigCommitmentIntegrationGetArgs>? CommitmentIntegration { get; set; }
 
         /// <summary>
         /// Spot and Ondemand Distribution Preferences for workload replicas
@@ -138,6 +272,12 @@ namespace Pulumi.Harness.Cluster
         /// </summary>
         [Input("orchestratorId")]
         public Input<string>? OrchestratorId { get; set; }
+
+        /// <summary>
+        /// Replacement schedule for Cluster Orchestrator
+        /// </summary>
+        [Input("replacementSchedule")]
+        public Input<Inputs.OrchestratorConfigReplacementScheduleGetArgs>? ReplacementSchedule { get; set; }
 
         public OrchestratorConfigState()
         {

@@ -20,14 +20,14 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
     public static final RoleAssignmentsArgs Empty = new RoleAssignmentsArgs();
 
     /**
-     * The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity&#39;s permissions and action capabilities. Default value should be `false`.
+     * Disabled or not.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity&#39;s permissions and action capabilities. Default value should be `false`.
+     * @return Disabled or not.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -50,14 +50,14 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
+     * Managed or not.
      * 
      */
     @Import(name="managed")
     private @Nullable Output<Boolean> managed;
 
     /**
-     * @return Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
+     * @return Managed or not.
      * 
      */
     public Optional<Output<Boolean>> managed() {
@@ -171,7 +171,7 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param disabled The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity&#39;s permissions and action capabilities. Default value should be `false`.
+         * @param disabled Disabled or not.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param disabled The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity&#39;s permissions and action capabilities. Default value should be `false`.
+         * @param disabled Disabled or not.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param managed Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
+         * @param managed Managed or not.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param managed Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
+         * @param managed Managed or not.
          * 
          * @return builder
          * 

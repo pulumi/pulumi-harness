@@ -14,14 +14,14 @@ public final class GetInfraVariableSetConnector extends com.pulumi.resources.Inv
     public static final GetInfraVariableSetConnector Empty = new GetInfraVariableSetConnector();
 
     /**
-     * Unique identifier of the connector.
+     * Connector Ref is the reference to the connector
      * 
      */
     @Import(name="connectorRef", required=true)
     private String connectorRef;
 
     /**
-     * @return Unique identifier of the connector.
+     * @return Connector Ref is the reference to the connector
      * 
      */
     public String connectorRef() {
@@ -29,14 +29,14 @@ public final class GetInfraVariableSetConnector extends com.pulumi.resources.Inv
     }
 
     /**
-     * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+     * Type is the connector type of the connector. Supported types: aws, azure, gcp
      * 
      */
     @Import(name="type", required=true)
     private String type;
 
     /**
-     * @return Type indicates the type of the connector. Currently we support aws, azure, gcp.
+     * @return Type is the connector type of the connector. Supported types: aws, azure, gcp
      * 
      */
     public String type() {
@@ -69,7 +69,7 @@ public final class GetInfraVariableSetConnector extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param connectorRef Unique identifier of the connector.
+         * @param connectorRef Connector Ref is the reference to the connector
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class GetInfraVariableSetConnector extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param type Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * @param type Type is the connector type of the connector. Supported types: aws, azure, gcp
          * 
          * @return builder
          * 

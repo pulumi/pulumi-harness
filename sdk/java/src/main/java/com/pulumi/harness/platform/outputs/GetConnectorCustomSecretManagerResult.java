@@ -22,7 +22,7 @@ public final class GetConnectorCustomSecretManagerResult {
      */
     private @Nullable List<String> delegateSelectors;
     /**
-     * @return : A brief description of what the resource does or is used for.
+     * @return Description of the resource.
      * 
      */
     private String description;
@@ -32,60 +32,68 @@ public final class GetConnectorCustomSecretManagerResult {
      */
     private String id;
     /**
-     * @return : Unique identifier of the resource.
+     * @return Unique identifier of the resource.
      * 
      */
     private String identifier;
     /**
-     * @return : Name of the resource.
+     * @return Name of the resource.
      * 
      */
     private @Nullable String name;
     /**
-     * @return : Specifies whether the secrets manager runs on a Harness delegate.
+     * @return Specifies whether the secrets manager runs on a Harness delegate.
      * 
      */
     private Boolean onDelegate;
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     private @Nullable String orgId;
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     private @Nullable String projectId;
     /**
-     * @return : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+     * @return SSH secret reference for the custom secrets manager, Computed if &#39;on_delegate&#39; is false.
      * 
      */
     private String sshSecretRef;
     /**
-     * @return : Tags to associate with the resource.
+     * @return Tags to associate with the resource.
      * 
      */
     private List<String> tags;
     /**
-     * @return : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+     * @return Host where the custom secrets manager is located, Computed if &#39;on_delegate&#39; is false.
      * 
      */
     private String targetHost;
     private List<GetConnectorCustomSecretManagerTemplateInput> templateInputs;
     /**
-     * @return : Reference to the template used for managing secrets.
+     * @return Reference to the template used for managing secrets.
      * 
      */
     private String templateRef;
     /**
-     * @return : Timeout in seconds for secrets management operations.
+     * @return Timeout in seconds for secrets management operations.
      * 
      */
     private Integer timeout;
     /**
-     * @return : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+     * @return Type of the custom secrets manager, typically set to &#39;CustomSecretManager&#39;.
      * 
      */
     private String type;
     /**
-     * @return : Version identifier of the secrets management template.
+     * @return Version identifier of the secrets management template.
      * 
      */
     private String versionLabel;
     /**
-     * @return : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+     * @return The working directory for operations, Computed if &#39;on_delegate&#39; is false.
      * 
      */
     private String workingDirectory;
@@ -99,7 +107,7 @@ public final class GetConnectorCustomSecretManagerResult {
         return this.delegateSelectors == null ? List.of() : this.delegateSelectors;
     }
     /**
-     * @return : A brief description of what the resource does or is used for.
+     * @return Description of the resource.
      * 
      */
     public String description() {
@@ -113,48 +121,56 @@ public final class GetConnectorCustomSecretManagerResult {
         return this.id;
     }
     /**
-     * @return : Unique identifier of the resource.
+     * @return Unique identifier of the resource.
      * 
      */
     public String identifier() {
         return this.identifier;
     }
     /**
-     * @return : Name of the resource.
+     * @return Name of the resource.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return : Specifies whether the secrets manager runs on a Harness delegate.
+     * @return Specifies whether the secrets manager runs on a Harness delegate.
      * 
      */
     public Boolean onDelegate() {
         return this.onDelegate;
     }
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+     * @return SSH secret reference for the custom secrets manager, Computed if &#39;on_delegate&#39; is false.
      * 
      */
     public String sshSecretRef() {
         return this.sshSecretRef;
     }
     /**
-     * @return : Tags to associate with the resource.
+     * @return Tags to associate with the resource.
      * 
      */
     public List<String> tags() {
         return this.tags;
     }
     /**
-     * @return : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+     * @return Host where the custom secrets manager is located, Computed if &#39;on_delegate&#39; is false.
      * 
      */
     public String targetHost() {
@@ -164,35 +180,35 @@ public final class GetConnectorCustomSecretManagerResult {
         return this.templateInputs;
     }
     /**
-     * @return : Reference to the template used for managing secrets.
+     * @return Reference to the template used for managing secrets.
      * 
      */
     public String templateRef() {
         return this.templateRef;
     }
     /**
-     * @return : Timeout in seconds for secrets management operations.
+     * @return Timeout in seconds for secrets management operations.
      * 
      */
     public Integer timeout() {
         return this.timeout;
     }
     /**
-     * @return : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+     * @return Type of the custom secrets manager, typically set to &#39;CustomSecretManager&#39;.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return : Version identifier of the secrets management template.
+     * @return Version identifier of the secrets management template.
      * 
      */
     public String versionLabel() {
         return this.versionLabel;
     }
     /**
-     * @return : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+     * @return The working directory for operations, Computed if &#39;on_delegate&#39; is false.
      * 
      */
     public String workingDirectory() {

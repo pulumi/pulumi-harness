@@ -14,13 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableResult
     {
         public readonly bool Default;
-        /// <summary>
-        /// : Name of the resource.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-        /// </summary>
         public readonly string Type;
         public readonly string Value;
 

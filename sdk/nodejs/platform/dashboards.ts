@@ -13,13 +13,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = new harness.platform.Dashboards("example", {
- *     dashboardId: "48507",
- *     description: "Example dashboard description",
- *     resourceIdentifier: "shared",
- *     title: "Example Dashboard",
- *     dataSources: [],
- *     models: [],
+ * const dashboard = new harness.platform.Dashboards("dashboard", {
+ *     dashboardId: "111",
+ *     description: "dashboard_tag",
+ *     resourceIdentifier: "999",
+ *     title: "Dashboard Title",
  * });
  * ```
  */

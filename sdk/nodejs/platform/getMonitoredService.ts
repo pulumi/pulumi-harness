@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for retrieving a monitored service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getMonitoredService({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
  */
 export function getMonitoredService(args: GetMonitoredServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitoredServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,6 +70,19 @@ export interface GetMonitoredServiceResult {
 }
 /**
  * Data source for retrieving a monitored service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getMonitoredService({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
  */
 export function getMonitoredServiceOutput(args: GetMonitoredServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMonitoredServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

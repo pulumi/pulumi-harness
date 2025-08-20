@@ -62,6 +62,9 @@ class GetPipelineListResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Description of the resource.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -75,19 +78,22 @@ class GetPipelineListResult:
     @_builtins.property
     @pulumi.getter
     def identifier(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the resource.
+        """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter
     def limit(self) -> Optional[_builtins.int]:
-        """
-        Optional pagination parameter indicating the maximum number of entities to retrieve per page.
-        """
         return pulumi.get(self, "limit")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the resource.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -101,17 +107,11 @@ class GetPipelineListResult:
     @_builtins.property
     @pulumi.getter
     def page(self) -> Optional[_builtins.int]:
-        """
-        Optional pagination parameter indicating the page number when retrieving entities.
-        """
         return pulumi.get(self, "page")
 
     @_builtins.property
     @pulumi.getter
     def pipelines(self) -> Sequence['outputs.GetPipelineListPipelineResult']:
-        """
-        Containing list of all pipeline with details identifier and name.
-        """
         return pulumi.get(self, "pipelines")
 
     @_builtins.property
@@ -125,6 +125,9 @@ class GetPipelineListResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
+        """
+        Tags to associate with the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -154,36 +157,12 @@ def get_pipeline_list(identifier: Optional[_builtins.str] = None,
                       project_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPipelineListResult:
     """
-    Data source for retrieving a Harness pipeline list.
-
-    ## Example Usage
-
-    ### Without the Pagination
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_pipeline_list(org_id="org_id",
-        project_id="project_id")
-    ```
-
-    ### With Pagination Logic
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_pipeline_list(org_id="org_id",
-        project_id="project_id",
-        page=1,
-        limit=4)
-    ```
+    Data source for retieving the Harness pipleine List
 
 
-    :param _builtins.int limit: Optional pagination parameter indicating the maximum number of entities to retrieve per page.
+    :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
-    :param _builtins.int page: Optional pagination parameter indicating the page number when retrieving entities.
     :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()
@@ -215,36 +194,12 @@ def get_pipeline_list_output(identifier: Optional[pulumi.Input[Optional[_builtin
                              project_id: Optional[pulumi.Input[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineListResult]:
     """
-    Data source for retrieving a Harness pipeline list.
-
-    ## Example Usage
-
-    ### Without the Pagination
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_pipeline_list(org_id="org_id",
-        project_id="project_id")
-    ```
-
-    ### With Pagination Logic
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_pipeline_list(org_id="org_id",
-        project_id="project_id",
-        page=1,
-        limit=4)
-    ```
+    Data source for retieving the Harness pipleine List
 
 
-    :param _builtins.int limit: Optional pagination parameter indicating the maximum number of entities to retrieve per page.
+    :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
-    :param _builtins.int page: Optional pagination parameter indicating the page number when retrieving entities.
     :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()

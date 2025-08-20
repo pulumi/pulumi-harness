@@ -25,7 +25,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> PasswordRef { get; set; } = null!;
 
         /// <summary>
-        /// Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
+        /// Reference token for authentication.
         /// </summary>
         [Input("referenceToken")]
         public Input<string>? ReferenceToken { get; set; }

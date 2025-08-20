@@ -374,6 +374,8 @@ class ConnectorRancher(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level rancher connector
 
         ```sh
@@ -415,6 +417,8 @@ class ConnectorRancher(pulumi.CustomResource):
         Resource for creating a Rancher connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level rancher connector
 

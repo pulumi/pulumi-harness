@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class AzureCloudCostConnectorBillingExportSpec {
     /**
+     * @return Billing type.
+     * 
+     */
+    private String billingType;
+    /**
      * @return Name of the container.
      * 
      */
@@ -37,6 +42,13 @@ public final class AzureCloudCostConnectorBillingExportSpec {
     private String subscriptionId;
 
     private AzureCloudCostConnectorBillingExportSpec() {}
+    /**
+     * @return Billing type.
+     * 
+     */
+    public String billingType() {
+        return this.billingType;
+    }
     /**
      * @return Name of the container.
      * 
@@ -82,6 +94,7 @@ public final class AzureCloudCostConnectorBillingExportSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String billingType;
         private String containerName;
         private String directoryName;
         private String reportName;
@@ -90,6 +103,7 @@ public final class AzureCloudCostConnectorBillingExportSpec {
         public Builder() {}
         public Builder(AzureCloudCostConnectorBillingExportSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.billingType = defaults.billingType;
     	      this.containerName = defaults.containerName;
     	      this.directoryName = defaults.directoryName;
     	      this.reportName = defaults.reportName;
@@ -97,6 +111,14 @@ public final class AzureCloudCostConnectorBillingExportSpec {
     	      this.subscriptionId = defaults.subscriptionId;
         }
 
+        @CustomType.Setter
+        public Builder billingType(String billingType) {
+            if (billingType == null) {
+              throw new MissingRequiredPropertyException("AzureCloudCostConnectorBillingExportSpec", "billingType");
+            }
+            this.billingType = billingType;
+            return this;
+        }
         @CustomType.Setter
         public Builder containerName(String containerName) {
             if (containerName == null) {
@@ -139,6 +161,7 @@ public final class AzureCloudCostConnectorBillingExportSpec {
         }
         public AzureCloudCostConnectorBillingExportSpec build() {
             final var _resultValue = new AzureCloudCostConnectorBillingExportSpec();
+            _resultValue.billingType = billingType;
             _resultValue.containerName = containerName;
             _resultValue.directoryName = directoryName;
             _resultValue.reportName = reportName;

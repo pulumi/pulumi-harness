@@ -105,6 +105,9 @@ namespace Pulumi.Harness.Platform
         [Input("envId", required: true)]
         public string EnvId { get; set; } = null!;
 
+        /// <summary>
+        /// Contains parameters related to Git Experience for remote entities
+        /// </summary>
         [Input("gitDetails")]
         public Inputs.GetInfrastructureGitDetailsArgs? GitDetails { get; set; }
 
@@ -146,6 +149,9 @@ namespace Pulumi.Harness.Platform
         [Input("envId", required: true)]
         public Input<string> EnvId { get; set; } = null!;
 
+        /// <summary>
+        /// Contains parameters related to Git Experience for remote entities
+        /// </summary>
         [Input("gitDetails")]
         public Input<Inputs.GetInfrastructureGitDetailsInputArgs>? GitDetails { get; set; }
 
@@ -195,6 +201,9 @@ namespace Pulumi.Harness.Platform
         /// environment identifier.
         /// </summary>
         public readonly string EnvId;
+        /// <summary>
+        /// Contains parameters related to Git Experience for remote entities
+        /// </summary>
         public readonly Outputs.GetInfrastructureGitDetailsResult GitDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

@@ -181,6 +181,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // # Import account level Notification Rule
 //
 // ```sh

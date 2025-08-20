@@ -80,19 +80,19 @@ export class HarRegistry extends pulumi.CustomResource {
     }
 
     /**
-     * Allowed pattern for the registry
+     * Allowed artifact patterns
      */
     public readonly allowedPatterns!: pulumi.Output<string[] | undefined>;
     /**
-     * Blocked pattern for the registry
+     * Blocked artifact patterns
      */
     public readonly blockedPatterns!: pulumi.Output<string[] | undefined>;
     /**
      * Configuration for the registry
      */
-    public readonly configs!: pulumi.Output<outputs.platform.HarRegistryConfig[]>;
+    public readonly configs!: pulumi.Output<outputs.platform.HarRegistryConfig[] | undefined>;
     /**
-     * Timestamp when the registry was created
+     * Creation timestamp
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
@@ -104,7 +104,7 @@ export class HarRegistry extends pulumi.CustomResource {
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * Type of package (DOCKER, HELM, etc.)
+     * Type of package (DOCKER, HELM, MAVEN, etc.)
      */
     public readonly packageType!: pulumi.Output<string>;
     /**
@@ -145,9 +145,6 @@ export class HarRegistry extends pulumi.CustomResource {
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as HarRegistryArgs | undefined;
-            if ((!args || args.configs === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'configs'");
-            }
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
@@ -175,11 +172,11 @@ export class HarRegistry extends pulumi.CustomResource {
  */
 export interface HarRegistryState {
     /**
-     * Allowed pattern for the registry
+     * Allowed artifact patterns
      */
     allowedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Blocked pattern for the registry
+     * Blocked artifact patterns
      */
     blockedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -187,7 +184,7 @@ export interface HarRegistryState {
      */
     configs?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfig>[]>;
     /**
-     * Timestamp when the registry was created
+     * Creation timestamp
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -199,7 +196,7 @@ export interface HarRegistryState {
      */
     identifier?: pulumi.Input<string>;
     /**
-     * Type of package (DOCKER, HELM, etc.)
+     * Type of package (DOCKER, HELM, MAVEN, etc.)
      */
     packageType?: pulumi.Input<string>;
     /**
@@ -221,17 +218,17 @@ export interface HarRegistryState {
  */
 export interface HarRegistryArgs {
     /**
-     * Allowed pattern for the registry
+     * Allowed artifact patterns
      */
     allowedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Blocked pattern for the registry
+     * Blocked artifact patterns
      */
     blockedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration for the registry
      */
-    configs: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfig>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfig>[]>;
     /**
      * Description of the registry
      */
@@ -241,7 +238,7 @@ export interface HarRegistryArgs {
      */
     identifier: pulumi.Input<string>;
     /**
-     * Type of package (DOCKER, HELM, etc.)
+     * Type of package (DOCKER, HELM, MAVEN, etc.)
      */
     packageType: pulumi.Input<string>;
     /**

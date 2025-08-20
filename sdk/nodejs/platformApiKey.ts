@@ -5,44 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Resource for creating and managing Harness API Keys. API Keys can be created at the account, organization, or project level.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * // Create API Key at account level
- * const accountLevel = new harness.PlatformApiKey("account_level", {
- *     identifier: "test_apikey",
- *     name: "test_apikey",
- *     parentId: "parent_id",
- *     apikeyType: "USER",
- *     accountId: "account_id",
- * });
- * // Create API Key at organization level
- * const orgLevel = new harness.PlatformApiKey("org_level", {
- *     identifier: "test_apikey",
- *     name: "test_apikey",
- *     parentId: "parent_id",
- *     apikeyType: "USER",
- *     accountId: "account_id",
- *     orgId: "org_id",
- * });
- * // Create API Key at project level
- * const projectLevel = new harness.PlatformApiKey("project_level", {
- *     identifier: "test_apikey",
- *     name: "test_apikey",
- *     parentId: "parent_id",
- *     apikeyType: "USER",
- *     accountId: "account_id",
- *     orgId: "org_id",
- *     projectId: "project_id",
- * });
- * ```
+ * Resource for creating ApiKeys.
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level apikey
  *

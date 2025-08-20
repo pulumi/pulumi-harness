@@ -18,18 +18,30 @@ public final class GetDashboardFoldersResult {
      * 
      */
     private String createdAt;
+    /**
+     * @return Description of the resource.
+     * 
+     */
     private String description;
     /**
      * @return Identifier of the folder.
      * 
      */
     private String id;
+    /**
+     * @return Unique identifier of the resource.
+     * 
+     */
     private @Nullable String identifier;
     /**
-     * @return Name of the folder.
+     * @return Name of the resource.
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     private List<String> tags;
 
     private GetDashboardFoldersResult() {}
@@ -40,6 +52,10 @@ public final class GetDashboardFoldersResult {
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return Description of the resource.
+     * 
+     */
     public String description() {
         return this.description;
     }
@@ -50,16 +66,24 @@ public final class GetDashboardFoldersResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Unique identifier of the resource.
+     * 
+     */
     public Optional<String> identifier() {
         return Optional.ofNullable(this.identifier);
     }
     /**
-     * @return Name of the folder.
+     * @return Name of the resource.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }

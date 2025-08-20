@@ -6,6 +6,22 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Data source for Harness Overrides V2.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.platform.getOverrides({
+ *     identifier: "identifier",
+ *     orgId: "orgIdentifier",
+ *     projectId: "projectIdentifier",
+ * });
+ * ```
+ */
 export function getOverrides(args: GetOverridesArgs, opts?: pulumi.InvokeOptions): Promise<GetOverridesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getOverrides:getOverrides", {
@@ -20,9 +36,21 @@ export function getOverrides(args: GetOverridesArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getOverrides.
  */
 export interface GetOverridesArgs {
+    /**
+     * Contains parameters related to Git Experience for remote overrides
+     */
     gitDetails?: inputs.platform.GetOverridesGitDetails;
+    /**
+     * The identifier of the override entity.
+     */
     identifier: string;
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: string;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: string;
 }
 
@@ -30,21 +58,67 @@ export interface GetOverridesArgs {
  * A collection of values returned by getOverrides.
  */
 export interface GetOverridesResult {
+    /**
+     * The cluster ID to which the override entity is associated.
+     */
     readonly clusterId: string;
+    /**
+     * The environment ID to which the override entity is associated.
+     */
     readonly envId: string;
+    /**
+     * Contains parameters related to Git Experience for remote overrides
+     */
     readonly gitDetails: outputs.platform.GetOverridesGitDetails;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The identifier of the override entity.
+     */
     readonly identifier: string;
+    /**
+     * The infrastructure ID to which the override entity is associated.
+     */
     readonly infraId: string;
+    /**
+     * Unique identifier of the organization.
+     */
     readonly orgId?: string;
+    /**
+     * Unique identifier of the project.
+     */
     readonly projectId?: string;
+    /**
+     * The service ID to which the override entity is associated.
+     */
     readonly serviceId: string;
+    /**
+     * The type of the override entity.
+     */
     readonly type: string;
+    /**
+     * The yaml of the override entity.
+     */
     readonly yaml: string;
 }
+/**
+ * Data source for Harness Overrides V2.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.platform.getOverrides({
+ *     identifier: "identifier",
+ *     orgId: "orgIdentifier",
+ *     projectId: "projectIdentifier",
+ * });
+ * ```
+ */
 export function getOverridesOutput(args: GetOverridesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOverridesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getOverrides:getOverrides", {
@@ -59,8 +133,20 @@ export function getOverridesOutput(args: GetOverridesOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getOverrides.
  */
 export interface GetOverridesOutputArgs {
+    /**
+     * Contains parameters related to Git Experience for remote overrides
+     */
     gitDetails?: pulumi.Input<inputs.platform.GetOverridesGitDetailsArgs>;
+    /**
+     * The identifier of the override entity.
+     */
     identifier: pulumi.Input<string>;
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: pulumi.Input<string>;
 }

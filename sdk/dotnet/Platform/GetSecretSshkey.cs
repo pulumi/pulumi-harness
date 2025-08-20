@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetSecretSshkey
     {
         /// <summary>
+        /// Resource for looking up an SSH Key type secret.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +36,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretSshkeyResult>("harness:platform/getSecretSshkey:getSecretSshkey", args ?? new GetSecretSshkeyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Resource for looking up an SSH Key type secret.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +60,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretSshkeyResult>("harness:platform/getSecretSshkey:getSecretSshkey", args ?? new GetSecretSshkeyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Resource for looking up an SSH Key type secret.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

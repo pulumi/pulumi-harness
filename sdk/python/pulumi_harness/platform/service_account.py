@@ -301,6 +301,8 @@ class ServiceAccount(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Resource for creating service account.
+
         ## Example Usage
 
         ```python
@@ -317,6 +319,8 @@ class ServiceAccount(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level service account
 
@@ -354,6 +358,8 @@ class ServiceAccount(pulumi.CustomResource):
                  args: ServiceAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource for creating service account.
+
         ## Example Usage
 
         ```python
@@ -370,6 +376,8 @@ class ServiceAccount(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level service account
 

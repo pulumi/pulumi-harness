@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data Source for retrieving a Harness Artifact registry
+ * Resource for creating and managing Harness Registries.
  *
  * ## Example Usage
  *
@@ -39,49 +39,91 @@ export function getHarRegistry(args: GetHarRegistryArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getHarRegistry.
  */
 export interface GetHarRegistryArgs {
+    /**
+     * Allowed artifact patterns
+     */
     allowedPatterns?: string[];
+    /**
+     * Blocked artifact patterns
+     */
     blockedPatterns?: string[];
+    /**
+     * Configuration for the registry
+     */
     configs?: inputs.platform.GetHarRegistryConfig[];
+    /**
+     * Description of the registry
+     */
     description?: string;
     /**
-     * Unique identifier of the resource.
+     * Unique identifier of the registry
      */
     identifier: string;
+    /**
+     * Type of package (DOCKER, HELM, MAVEN, etc.)
+     */
     packageType?: string;
+    /**
+     * Parent reference for the registry
+     */
     parentRef?: string;
     /**
-     * Reference of the space.
+     * Space reference for the registry
      */
-    spaceRef: string;
+    spaceRef?: string;
 }
 
 /**
  * A collection of values returned by getHarRegistry.
  */
 export interface GetHarRegistryResult {
+    /**
+     * Allowed artifact patterns
+     */
     readonly allowedPatterns?: string[];
+    /**
+     * Blocked artifact patterns
+     */
     readonly blockedPatterns?: string[];
+    /**
+     * Configuration for the registry
+     */
     readonly configs?: outputs.platform.GetHarRegistryConfig[];
+    /**
+     * Creation timestamp
+     */
     readonly createdAt: string;
+    /**
+     * Description of the registry
+     */
     readonly description?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Unique identifier of the resource.
+     * Unique identifier of the registry
      */
     readonly identifier: string;
+    /**
+     * Type of package (DOCKER, HELM, MAVEN, etc.)
+     */
     readonly packageType?: string;
+    /**
+     * Parent reference for the registry
+     */
     readonly parentRef?: string;
     /**
-     * Reference of the space.
+     * Space reference for the registry
      */
-    readonly spaceRef: string;
+    readonly spaceRef?: string;
+    /**
+     * URL of the registry
+     */
     readonly url: string;
 }
 /**
- * Data Source for retrieving a Harness Artifact registry
+ * Resource for creating and managing Harness Registries.
  *
  * ## Example Usage
  *
@@ -113,18 +155,36 @@ export function getHarRegistryOutput(args: GetHarRegistryOutputArgs, opts?: pulu
  * A collection of arguments for invoking getHarRegistry.
  */
 export interface GetHarRegistryOutputArgs {
+    /**
+     * Allowed artifact patterns
+     */
     allowedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Blocked artifact patterns
+     */
     blockedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configuration for the registry
+     */
     configs?: pulumi.Input<pulumi.Input<inputs.platform.GetHarRegistryConfigArgs>[]>;
+    /**
+     * Description of the registry
+     */
     description?: pulumi.Input<string>;
     /**
-     * Unique identifier of the resource.
+     * Unique identifier of the registry
      */
     identifier: pulumi.Input<string>;
+    /**
+     * Type of package (DOCKER, HELM, MAVEN, etc.)
+     */
     packageType?: pulumi.Input<string>;
+    /**
+     * Parent reference for the registry
+     */
     parentRef?: pulumi.Input<string>;
     /**
-     * Reference of the space.
+     * Space reference for the registry
      */
-    spaceRef: pulumi.Input<string>;
+    spaceRef?: pulumi.Input<string>;
 }

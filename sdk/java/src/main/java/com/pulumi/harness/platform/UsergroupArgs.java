@@ -245,14 +245,14 @@ public final class UsergroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of users in the UserGroup. Either provide list of users or list of user emails.
+     * List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
      * 
      */
     @Import(name="users")
     private @Nullable Output<List<String>> users;
 
     /**
-     * @return List of users in the UserGroup. Either provide list of users or list of user emails.
+     * @return List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
      * 
      */
     public Optional<Output<List<String>>> users() {
@@ -644,7 +644,7 @@ public final class UsergroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param users List of users in the UserGroup. Either provide list of users or list of user emails.
+         * @param users List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
          * 
          * @return builder
          * 
@@ -655,7 +655,7 @@ public final class UsergroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param users List of users in the UserGroup. Either provide list of users or list of user emails.
+         * @param users List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
          * 
          * @return builder
          * 
@@ -665,7 +665,7 @@ public final class UsergroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param users List of users in the UserGroup. Either provide list of users or list of user emails.
+         * @param users List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
          * 
          * @return builder
          * 

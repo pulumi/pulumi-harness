@@ -39,6 +39,8 @@ namespace Pulumi.Harness
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Importing a global config only using the yaml path
     /// 
     /// ```sh

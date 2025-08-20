@@ -20,10 +20,26 @@ public final class GetServiceListResult {
      * 
      */
     private String id;
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     private @Nullable String orgId;
+    /**
+     * @return Page index of the results to fetch. Default: 0
+     * 
+     */
     private @Nullable Integer page;
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     private @Nullable String projectId;
     private List<GetServiceListService> services;
+    /**
+     * @return Results per page. Default: 100; Max: 1000
+     * 
+     */
     private @Nullable Integer size;
 
     private GetServiceListResult() {}
@@ -34,18 +50,34 @@ public final class GetServiceListResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
+    /**
+     * @return Page index of the results to fetch. Default: 0
+     * 
+     */
     public Optional<Integer> page() {
         return Optional.ofNullable(this.page);
     }
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     public List<GetServiceListService> services() {
         return this.services;
     }
+    /**
+     * @return Results per page. Default: 100; Max: 1000
+     * 
+     */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }

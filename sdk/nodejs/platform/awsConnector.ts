@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import account level aws connector
  *
  * ```sh
@@ -106,7 +108,7 @@ export class AwsConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Authentication using Harness OIDC.
+     * Authentication using harness oidc.
      */
     public readonly oidcAuthentication!: pulumi.Output<outputs.platform.AwsConnectorOidcAuthentication | undefined>;
     /**
@@ -231,7 +233,7 @@ export interface AwsConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Authentication using Harness OIDC.
+     * Authentication using harness oidc.
      */
     oidcAuthentication?: pulumi.Input<inputs.platform.AwsConnectorOidcAuthentication>;
     /**
@@ -301,7 +303,7 @@ export interface AwsConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Authentication using Harness OIDC.
+     * Authentication using harness oidc.
      */
     oidcAuthentication?: pulumi.Input<inputs.platform.AwsConnectorOidcAuthentication>;
     /**

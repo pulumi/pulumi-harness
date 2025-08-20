@@ -20,7 +20,15 @@ public final class GetEnvironmentListResult {
      * 
      */
     private String id;
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     private @Nullable String orgId;
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     private @Nullable String projectId;
 
     private GetEnvironmentListResult() {}
@@ -34,9 +42,17 @@ public final class GetEnvironmentListResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }

@@ -30,7 +30,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.FeatureFlagTargetGroup;
  * import com.pulumi.harness.platform.FeatureFlagTargetGroupArgs;
- * import com.pulumi.harness.platform.inputs.FeatureFlagTargetGroupRuleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,8 +54,8 @@ import javax.annotation.Nullable;
  *             .excludeds("target_id_2")
  *             .rules(FeatureFlagTargetGroupRuleArgs.builder()
  *                 .attribute("MY_ATTRIBUTE")
- *                 .op("equal")
- *                 .values("MY_VALUE")
+ *                 .operator("equal")
+ *                 .value("MY_VALUE")
  *                 .build())
  *             .build());
  * 

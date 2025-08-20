@@ -47,14 +47,14 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * message for the commit in Git Repo.
+     * Commit message used for the merge commit.
      * 
      */
     @Import(name="commitMessage")
     private @Nullable Output<String> commitMessage;
 
     /**
-     * @return message for the commit in Git Repo.
+     * @return Commit message used for the merge commit.
      * 
      */
     public Optional<Output<String>> commitMessage() {
@@ -62,14 +62,14 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="connectorRef")
     private @Nullable Output<String> connectorRef;
 
     /**
-     * @return Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> connectorRef() {
@@ -92,14 +92,14 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Flag to set if importing from Git
+     * import environment from git
      * 
      */
     @Import(name="importFromGit")
     private @Nullable Output<Boolean> importFromGit;
 
     /**
-     * @return Flag to set if importing from Git
+     * @return import environment from git
      * 
      */
     public Optional<Output<Boolean>> importFromGit() {
@@ -107,14 +107,14 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Flag to set if force importing from Git
+     * force import environment from remote even if same file path already exist
      * 
      */
     @Import(name="isForceImport")
     private @Nullable Output<Boolean> isForceImport;
 
     /**
-     * @return Flag to set if force importing from Git
+     * @return force import environment from remote even if same file path already exist
      * 
      */
     public Optional<Output<Boolean>> isForceImport() {
@@ -152,14 +152,14 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+     * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
      * 
      */
     @Import(name="lastCommitId")
     private @Nullable Output<String> lastCommitId;
 
     /**
-     * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+     * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
      * 
      */
     public Optional<Output<String>> lastCommitId() {
@@ -167,14 +167,14 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Last object identifier (for Github). To be provided only when updating Environment.
+     * Last object identifier (for Github). To be provided only when updating Pipeline.
      * 
      */
     @Import(name="lastObjectId")
     private @Nullable Output<String> lastObjectId;
 
     /**
-     * @return Last object identifier (for Github). To be provided only when updating Environment.
+     * @return Last object identifier (for Github). To be provided only when updating Pipeline.
      * 
      */
     public Optional<Output<String>> lastObjectId() {
@@ -197,14 +197,14 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether the file has to be get from fallback_branch.
+     * If the Entity is to be fetched from fallbackBranch
      * 
      */
     @Import(name="loadFromFallbackBranch")
     private @Nullable Output<Boolean> loadFromFallbackBranch;
 
     /**
-     * @return Whether the file has to be get from fallback_branch.
+     * @return If the Entity is to be fetched from fallbackBranch
      * 
      */
     public Optional<Output<Boolean>> loadFromFallbackBranch() {
@@ -257,14 +257,14 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * store type of the entity.
+     * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
      * 
      */
     @Import(name="storeType")
     private @Nullable Output<String> storeType;
 
     /**
-     * @return store type of the entity.
+     * @return Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
      * 
      */
     public Optional<Output<String>> storeType() {
@@ -354,7 +354,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param commitMessage message for the commit in Git Repo.
+         * @param commitMessage Commit message used for the merge commit.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param commitMessage message for the commit in Git Repo.
+         * @param commitMessage Commit message used for the merge commit.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param connectorRef Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * @param connectorRef Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param connectorRef Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * @param connectorRef Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param importFromGit Flag to set if importing from Git
+         * @param importFromGit import environment from git
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param importFromGit Flag to set if importing from Git
+         * @param importFromGit import environment from git
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param isForceImport Flag to set if force importing from Git
+         * @param isForceImport force import environment from remote even if same file path already exist
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param isForceImport Flag to set if force importing from Git
+         * @param isForceImport force import environment from remote even if same file path already exist
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param lastCommitId Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+         * @param lastCommitId Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param lastCommitId Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+         * @param lastCommitId Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param lastObjectId Last object identifier (for Github). To be provided only when updating Environment.
+         * @param lastObjectId Last object identifier (for Github). To be provided only when updating Pipeline.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param lastObjectId Last object identifier (for Github). To be provided only when updating Environment.
+         * @param lastObjectId Last object identifier (for Github). To be provided only when updating Pipeline.
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param loadFromFallbackBranch Whether the file has to be get from fallback_branch.
+         * @param loadFromFallbackBranch If the Entity is to be fetched from fallbackBranch
          * 
          * @return builder
          * 
@@ -575,7 +575,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param loadFromFallbackBranch Whether the file has to be get from fallback_branch.
+         * @param loadFromFallbackBranch If the Entity is to be fetched from fallbackBranch
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param storeType store type of the entity.
+         * @param storeType Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          * 
          * @return builder
          * 
@@ -659,7 +659,7 @@ public final class EnvironmentGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param storeType store type of the entity.
+         * @param storeType Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          * 
          * @return builder
          * 

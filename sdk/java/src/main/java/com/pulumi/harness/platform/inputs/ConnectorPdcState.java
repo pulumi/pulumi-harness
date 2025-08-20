@@ -48,14 +48,14 @@ public final class ConnectorPdcState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hosts to be provided.
+     * Host of the Physical data centers.
      * 
      */
     @Import(name="hosts")
     private @Nullable Output<List<ConnectorPdcHostArgs>> hosts;
 
     /**
-     * @return Hosts to be provided.
+     * @return Host of the Physical data centers.
      * 
      */
     public Optional<Output<List<ConnectorPdcHostArgs>>> hosts() {
@@ -221,7 +221,7 @@ public final class ConnectorPdcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hosts Hosts to be provided.
+         * @param hosts Host of the Physical data centers.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ConnectorPdcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hosts Hosts to be provided.
+         * @param hosts Host of the Physical data centers.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ConnectorPdcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hosts Hosts to be provided.
+         * @param hosts Host of the Physical data centers.
          * 
          * @return builder
          * 

@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class InfraVariableSetTerraformVariable {
     /**
-     * @return Key is the identifier for the variable. Must be unique within the variable set.
+     * @return Key is the identifier for the variable. Must be unique within the Variable Set.
      * 
      */
     private String key;
@@ -28,7 +28,7 @@ public final class InfraVariableSetTerraformVariable {
 
     private InfraVariableSetTerraformVariable() {}
     /**
-     * @return Key is the identifier for the variable. Must be unique within the variable set.
+     * @return Key is the identifier for the variable. Must be unique within the Variable Set.
      * 
      */
     public String key() {

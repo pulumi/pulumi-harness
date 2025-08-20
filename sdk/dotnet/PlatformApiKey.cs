@@ -10,55 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness
 {
     /// <summary>
-    /// Resource for creating and managing Harness API Keys. API Keys can be created at the account, organization, or project level.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create API Key at account level
-    ///     var accountLevel = new Harness.PlatformApiKey("account_level", new()
-    ///     {
-    ///         Identifier = "test_apikey",
-    ///         Name = "test_apikey",
-    ///         ParentId = "parent_id",
-    ///         ApikeyType = "USER",
-    ///         AccountId = "account_id",
-    ///     });
-    /// 
-    ///     // Create API Key at organization level
-    ///     var orgLevel = new Harness.PlatformApiKey("org_level", new()
-    ///     {
-    ///         Identifier = "test_apikey",
-    ///         Name = "test_apikey",
-    ///         ParentId = "parent_id",
-    ///         ApikeyType = "USER",
-    ///         AccountId = "account_id",
-    ///         OrgId = "org_id",
-    ///     });
-    /// 
-    ///     // Create API Key at project level
-    ///     var projectLevel = new Harness.PlatformApiKey("project_level", new()
-    ///     {
-    ///         Identifier = "test_apikey",
-    ///         Name = "test_apikey",
-    ///         ParentId = "parent_id",
-    ///         ApikeyType = "USER",
-    ///         AccountId = "account_id",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// Resource for creating ApiKeys.
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level apikey
     /// 

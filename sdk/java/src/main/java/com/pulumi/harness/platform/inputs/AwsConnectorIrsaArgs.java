@@ -33,14 +33,14 @@ public final class AwsConnectorIrsaArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Test Region to perform Connection test of AWS Connector.
+     * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return Test Region to perform Connection test of AWS Connector.
+     * @return Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> region() {
@@ -104,7 +104,7 @@ public final class AwsConnectorIrsaArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region Test Region to perform Connection test of AWS Connector.
+         * @param region Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class AwsConnectorIrsaArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region Test Region to perform Connection test of AWS Connector.
+         * @param region Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

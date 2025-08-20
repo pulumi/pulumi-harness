@@ -31,9 +31,17 @@ public final class GetInfrastructurePlainArgs extends com.pulumi.resources.Invok
         return this.envId;
     }
 
+    /**
+     * Contains parameters related to Git Experience for remote entities
+     * 
+     */
     @Import(name="gitDetails")
     private @Nullable GetInfrastructureGitDetails gitDetails;
 
+    /**
+     * @return Contains parameters related to Git Experience for remote entities
+     * 
+     */
     public Optional<GetInfrastructureGitDetails> gitDetails() {
         return Optional.ofNullable(this.gitDetails);
     }
@@ -138,6 +146,12 @@ public final class GetInfrastructurePlainArgs extends com.pulumi.resources.Invok
             return this;
         }
 
+        /**
+         * @param gitDetails Contains parameters related to Git Experience for remote entities
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitDetails(@Nullable GetInfrastructureGitDetails gitDetails) {
             $.gitDetails = gitDetails;
             return this;

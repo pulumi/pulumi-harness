@@ -151,6 +151,8 @@ def get_pagerduty_connector(identifier: Optional[_builtins.str] = None,
                             project_id: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPagerdutyConnectorResult:
     """
+    Datasource for looking up a PagerDuty connector.
+
     ## Example Usage
 
     ```python
@@ -190,6 +192,8 @@ def get_pagerduty_connector_output(identifier: Optional[pulumi.Input[_builtins.s
                                    project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPagerdutyConnectorResult]:
     """
+    Datasource for looking up a PagerDuty connector.
+
     ## Example Usage
 
     ```python

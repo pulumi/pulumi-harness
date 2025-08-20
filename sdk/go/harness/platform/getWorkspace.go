@@ -52,7 +52,7 @@ func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pul
 
 // A collection of arguments for invoking getWorkspace.
 type LookupWorkspaceArgs struct {
-	// Provider connector configured on the workspace
+	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors []GetWorkspaceConnector `pulumi:"connectors"`
 	// Description of the Workspace
 	Description *string `pulumi:"description"`
@@ -69,7 +69,8 @@ type LookupWorkspaceArgs struct {
 	// Repository Tag in which the code should be accessed
 	RepositoryCommit *string `pulumi:"repositoryCommit"`
 	// Repository Commit SHA in which the code should be accessed
-	RepositorySha          *string                             `pulumi:"repositorySha"`
+	RepositorySha *string `pulumi:"repositorySha"`
+	// Tags to associate with the resource.
 	Tags                   []string                            `pulumi:"tags"`
 	TerraformVariableFiles []GetWorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []GetWorkspaceTerraformVariable     `pulumi:"terraformVariables"`
@@ -79,7 +80,7 @@ type LookupWorkspaceArgs struct {
 
 // A collection of values returned by getWorkspace.
 type LookupWorkspaceResult struct {
-	// Provider connector configured on the workspace
+	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors []GetWorkspaceConnector `pulumi:"connectors"`
 	// If enabled cost estimation operations will be performed in this workspace
 	CostEstimationEnabled bool `pulumi:"costEstimationEnabled"`
@@ -116,7 +117,8 @@ type LookupWorkspaceResult struct {
 	// Repository Path is the path in which the infra code resides
 	RepositoryPath string `pulumi:"repositoryPath"`
 	// Repository Commit SHA in which the code should be accessed
-	RepositorySha          string                              `pulumi:"repositorySha"`
+	RepositorySha string `pulumi:"repositorySha"`
+	// Tags to associate with the resource.
 	Tags                   []string                            `pulumi:"tags"`
 	TerraformVariableFiles []GetWorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []GetWorkspaceTerraformVariable     `pulumi:"terraformVariables"`
@@ -135,7 +137,7 @@ func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, 
 
 // A collection of arguments for invoking getWorkspace.
 type LookupWorkspaceOutputArgs struct {
-	// Provider connector configured on the workspace
+	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors GetWorkspaceConnectorArrayInput `pulumi:"connectors"`
 	// Description of the Workspace
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -152,7 +154,8 @@ type LookupWorkspaceOutputArgs struct {
 	// Repository Tag in which the code should be accessed
 	RepositoryCommit pulumi.StringPtrInput `pulumi:"repositoryCommit"`
 	// Repository Commit SHA in which the code should be accessed
-	RepositorySha          pulumi.StringPtrInput                       `pulumi:"repositorySha"`
+	RepositorySha pulumi.StringPtrInput `pulumi:"repositorySha"`
+	// Tags to associate with the resource.
 	Tags                   pulumi.StringArrayInput                     `pulumi:"tags"`
 	TerraformVariableFiles GetWorkspaceTerraformVariableFileArrayInput `pulumi:"terraformVariableFiles"`
 	TerraformVariables     GetWorkspaceTerraformVariableArrayInput     `pulumi:"terraformVariables"`
@@ -179,7 +182,7 @@ func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ct
 	return o
 }
 
-// Provider connector configured on the workspace
+// Provider connectors configured on the Workspace. Only one connector of a type is supported
 func (o LookupWorkspaceResultOutput) Connectors() GetWorkspaceConnectorArrayOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) []GetWorkspaceConnector { return v.Connectors }).(GetWorkspaceConnectorArrayOutput)
 }
@@ -274,6 +277,7 @@ func (o LookupWorkspaceResultOutput) RepositorySha() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.RepositorySha }).(pulumi.StringOutput)
 }
 
+// Tags to associate with the resource.
 func (o LookupWorkspaceResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

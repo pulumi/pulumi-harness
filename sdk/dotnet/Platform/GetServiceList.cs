@@ -12,187 +12,19 @@ namespace Pulumi.Harness.Platform
     public static class GetServiceList
     {
         /// <summary>
-        /// Data source for retrieving Harness service list.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ### Project Level Service List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetServiceList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// 
-        /// ### Organisation Level Service List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetServiceList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// 
-        /// ### Account Level Service List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetServiceList.Invoke();
-        /// 
-        /// });
-        /// ```
+        /// Data source for retrieving a Harness service List.
         /// </summary>
         public static Task<GetServiceListResult> InvokeAsync(GetServiceListArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceListResult>("harness:platform/getServiceList:getServiceList", args ?? new GetServiceListArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving Harness service list.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ### Project Level Service List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetServiceList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// 
-        /// ### Organisation Level Service List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetServiceList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// 
-        /// ### Account Level Service List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetServiceList.Invoke();
-        /// 
-        /// });
-        /// ```
+        /// Data source for retrieving a Harness service List.
         /// </summary>
         public static Output<GetServiceListResult> Invoke(GetServiceListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceListResult>("harness:platform/getServiceList:getServiceList", args ?? new GetServiceListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving Harness service list.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ### Project Level Service List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetServiceList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// 
-        /// ### Organisation Level Service List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetServiceList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// 
-        /// ### Account Level Service List
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetServiceList.Invoke();
-        /// 
-        /// });
-        /// ```
+        /// Data source for retrieving a Harness service List.
         /// </summary>
         public static Output<GetServiceListResult> Invoke(GetServiceListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceListResult>("harness:platform/getServiceList:getServiceList", args ?? new GetServiceListInvokeArgs(), options.WithDefaults());
@@ -201,15 +33,27 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetServiceListArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
+        /// <summary>
+        /// Page index of the results to fetch. Default: 0
+        /// </summary>
         [Input("page")]
         public int? Page { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
+        /// <summary>
+        /// Results per page. Default: 100; Max: 1000
+        /// </summary>
         [Input("size")]
         public int? Size { get; set; }
 
@@ -221,15 +65,27 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetServiceListInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// Page index of the results to fetch. Default: 0
+        /// </summary>
         [Input("page")]
         public Input<int>? Page { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// Results per page. Default: 100; Max: 1000
+        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
@@ -247,10 +103,22 @@ namespace Pulumi.Harness.Platform
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         public readonly string? OrgId;
+        /// <summary>
+        /// Page index of the results to fetch. Default: 0
+        /// </summary>
         public readonly int? Page;
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         public readonly string? ProjectId;
         public readonly ImmutableArray<Outputs.GetServiceListServiceResult> Services;
+        /// <summary>
+        /// Results per page. Default: 100; Max: 1000
+        /// </summary>
         public readonly int? Size;
 
         [OutputConstructor]

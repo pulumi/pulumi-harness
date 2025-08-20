@@ -38,7 +38,7 @@ public final class InfraVariableSetTerraformVariableFile {
      */
     private @Nullable String repositoryPath;
     /**
-     * @return Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * @return Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
      * 
      */
     private @Nullable String repositorySha;
@@ -80,7 +80,7 @@ public final class InfraVariableSetTerraformVariableFile {
         return Optional.ofNullable(this.repositoryPath);
     }
     /**
-     * @return Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * @return Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
      * 
      */
     public Optional<String> repositorySha() {

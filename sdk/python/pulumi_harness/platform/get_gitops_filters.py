@@ -56,13 +56,16 @@ class GetGitopsFiltersResult:
     @pulumi.getter(name="filterProperties")
     def filter_properties(self) -> _builtins.str:
         """
-        Properties of the filter entity defined in Harness as a JSON string. This contains filter criteria such as health status, sync status, agent identifiers, clusters, namespaces, and repositories.
+        Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
         """
         return pulumi.get(self, "filter_properties")
 
     @_builtins.property
     @pulumi.getter(name="filterVisibility")
     def filter_visibility(self) -> _builtins.str:
+        """
+        This indicates visibility of filters, by default it is Everyone.
+        """
         return pulumi.get(self, "filter_visibility")
 
     @_builtins.property
@@ -76,29 +79,41 @@ class GetGitopsFiltersResult:
     @_builtins.property
     @pulumi.getter
     def identifier(self) -> _builtins.str:
+        """
+        Unique identifier of the resource.
+        """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the GitOps filter.
+        Name of the Filter.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> _builtins.str:
+        """
+        Organization Identifier for the Entity.
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> _builtins.str:
+        """
+        Project Identifier for the Entity.
+        """
         return pulumi.get(self, "project_id")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        Type of filter.
+        """
         return pulumi.get(self, "type")
 
 
@@ -127,10 +142,10 @@ def get_gitops_filters(identifier: Optional[_builtins.str] = None,
     Data source for retrieving a Harness GitOps Filter.
 
 
-    :param _builtins.str identifier: Unique identifier of the GitOps filter to retrieve.
-    :param _builtins.str org_id: Organization identifier for the GitOps filter.
-    :param _builtins.str project_id: Project identifier for the GitOps filter.
-    :param _builtins.str type: Type of GitOps filter. Currently, only "APPLICATION" is supported.
+    :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str org_id: Organization Identifier for the Entity.
+    :param _builtins.str project_id: Project Identifier for the Entity.
+    :param _builtins.str type: Type of filter.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -158,10 +173,10 @@ def get_gitops_filters_output(identifier: Optional[pulumi.Input[_builtins.str]] 
     Data source for retrieving a Harness GitOps Filter.
 
 
-    :param _builtins.str identifier: Unique identifier of the GitOps filter to retrieve.
-    :param _builtins.str org_id: Organization identifier for the GitOps filter.
-    :param _builtins.str project_id: Project identifier for the GitOps filter.
-    :param _builtins.str type: Type of GitOps filter. Currently, only "APPLICATION" is supported.
+    :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str org_id: Organization Identifier for the Entity.
+    :param _builtins.str project_id: Project Identifier for the Entity.
+    :param _builtins.str type: Type of filter.
     """
     __args__ = dict()
     __args__['identifier'] = identifier

@@ -53,14 +53,6 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * Import using the Harness aws cloud provider id.
- * 
- * ```sh
- * $ pulumi import harness:cluster/orchestrator:Orchestrator example &lt;provider_id&gt;
- * ```
- * 
  */
 @ResourceType(type="harness:cluster/orchestrator:Orchestrator")
 public class Orchestrator extends com.pulumi.resources.CustomResource {

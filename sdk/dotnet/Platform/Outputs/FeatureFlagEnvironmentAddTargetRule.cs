@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class FeatureFlagEnvironmentAddTargetRule
     {
         /// <summary>
-        /// The targets of the rule
+        /// The targets that should be served this variation
         /// </summary>
         public readonly ImmutableArray<string> Targets;
         /// <summary>
-        /// The identifier of the variation. Valid values are `enabled`, `disabled`
+        /// The identifier of the variation
         /// </summary>
         public readonly string? Variation;
 

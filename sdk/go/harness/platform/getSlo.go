@@ -12,6 +12,34 @@ import (
 )
 
 // Data source for retrieving an SLO.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupSlo(ctx, &platform.LookupSloArgs{
+//				Identifier: "identifier",
+//				OrgId:      "org_id",
+//				ProjectId:  "project_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupSlo(ctx *pulumi.Context, args *LookupSloArgs, opts ...pulumi.InvokeOption) (*LookupSloResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSloResult

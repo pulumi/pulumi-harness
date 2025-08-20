@@ -10,283 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a Harness service.
-    /// 
-    /// ## Example to create Service at different levels (Org, Project, Account)
-    /// 
-    /// ### Account Level
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Harness.Platform.Service("example", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "test",
-    ///         Yaml = @"service:
-    ///   name: name
-    ///   identifier: identifier
-    ///   serviceDefinition:
-    ///     spec:
-    ///       manifests:
-    ///         - manifest:
-    ///             identifier: manifest1
-    ///             type: K8sManifest
-    ///             spec:
-    ///               store:
-    ///                 type: Github
-    ///                 spec:
-    ///                   connectorRef: &lt;+input&gt;
-    ///                   gitFetchType: Branch
-    ///                   paths:
-    ///                     - files1
-    ///                   repoName: &lt;+input&gt;
-    ///                   branch: master
-    ///               skipResourceVersioning: false
-    ///       configFiles:
-    ///         - configFile:
-    ///             identifier: configFile1
-    ///             spec:
-    ///               store:
-    ///                 type: Harness
-    ///                 spec:
-    ///                   files:
-    ///                     - &lt;+org.description&gt;
-    ///       variables:
-    ///         - name: var1
-    ///           type: String
-    ///           value: val1
-    ///         - name: var2
-    ///           type: String
-    ///           value: val2
-    ///     type: Kubernetes
-    ///   gitOpsEnabled: false
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Org Level
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Harness.Platform.Service("example", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "test",
-    ///         OrgId = "org_id",
-    ///         Yaml = @"service:
-    ///   name: name
-    ///   identifier: identifier
-    ///   serviceDefinition:
-    ///     spec:
-    ///       manifests:
-    ///         - manifest:
-    ///             identifier: manifest1
-    ///             type: K8sManifest
-    ///             spec:
-    ///               store:
-    ///                 type: Github
-    ///                 spec:
-    ///                   connectorRef: &lt;+input&gt;
-    ///                   gitFetchType: Branch
-    ///                   paths:
-    ///                     - files1
-    ///                   repoName: &lt;+input&gt;
-    ///                   branch: master
-    ///               skipResourceVersioning: false
-    ///       configFiles:
-    ///         - configFile:
-    ///             identifier: configFile1
-    ///             spec:
-    ///               store:
-    ///                 type: Harness
-    ///                 spec:
-    ///                   files:
-    ///                     - &lt;+org.description&gt;
-    ///       variables:
-    ///         - name: var1
-    ///           type: String
-    ///           value: val1
-    ///         - name: var2
-    ///           type: String
-    ///           value: val2
-    ///     type: Kubernetes
-    ///   gitOpsEnabled: false
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Project Level
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Harness.Platform.Service("example", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "test",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Yaml = @"service:
-    ///   name: name
-    ///   identifier: identifier
-    ///   serviceDefinition:
-    ///     spec:
-    ///       manifests:
-    ///         - manifest:
-    ///             identifier: manifest1
-    ///             type: K8sManifest
-    ///             spec:
-    ///               store:
-    ///                 type: Github
-    ///                 spec:
-    ///                   connectorRef: &lt;+input&gt;
-    ///                   gitFetchType: Branch
-    ///                   paths:
-    ///                     - files1
-    ///                   repoName: &lt;+input&gt;
-    ///                   branch: master
-    ///               skipResourceVersioning: false
-    ///       configFiles:
-    ///         - configFile:
-    ///             identifier: configFile1
-    ///             spec:
-    ///               store:
-    ///                 type: Harness
-    ///                 spec:
-    ///                   files:
-    ///                     - &lt;+org.description&gt;
-    ///       variables:
-    ///         - name: var1
-    ///           type: String
-    ///           value: val1
-    ///         - name: var2
-    ///           type: String
-    ///           value: val2
-    ///     type: Kubernetes
-    ///   gitOpsEnabled: false
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Creating Remote Service
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Harness.Platform.Service("example", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "test",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         GitDetails = new Harness.Platform.Inputs.ServiceGitDetailsArgs
-    ///         {
-    ///             StoreType = "REMOTE",
-    ///             ConnectorRef = "connector_ref",
-    ///             RepoName = "repo_name",
-    ///             FilePath = "file_path",
-    ///             Branch = "branch",
-    ///         },
-    ///         Yaml = @"service:
-    ///   name: name
-    ///   identifier: identifier
-    ///   serviceDefinition:
-    ///     spec:
-    ///       manifests:
-    ///         - manifest:
-    ///             identifier: manifest1
-    ///             type: K8sManifest
-    ///             spec:
-    ///               store:
-    ///                 type: Github
-    ///                 spec:
-    ///                   connectorRef: &lt;+input&gt;
-    ///                   gitFetchType: Branch
-    ///                   paths:
-    ///                     - files1
-    ///                   repoName: &lt;+input&gt;
-    ///                   branch: master
-    ///               skipResourceVersioning: false
-    ///       configFiles:
-    ///         - configFile:
-    ///             identifier: configFile1
-    ///             spec:
-    ///               store:
-    ///                 type: Harness
-    ///                 spec:
-    ///                   files:
-    ///                     - &lt;+org.description&gt;
-    ///       variables:
-    ///         - name: var1
-    ///           type: String
-    ///           value: val1
-    ///         - name: var2
-    ///           type: String
-    ///           value: val2
-    ///     type: Kubernetes
-    ///   gitOpsEnabled: false
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Importing Service From Git
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Harness.Platform.Service("example", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         ImportFromGit = true,
-    ///         GitDetails = new Harness.Platform.Inputs.ServiceGitDetailsArgs
-    ///         {
-    ///             StoreType = "REMOTE",
-    ///             ConnectorRef = "connector_ref",
-    ///             RepoName = "repo_name",
-    ///             FilePath = "file_path",
-    ///             Branch = "branch",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// Resource for creating a Harness project.
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level service
     /// 
@@ -376,10 +104,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        /// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        /// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        /// connectorRef: org.connectorId.
+        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Output("yaml")]
         public Output<string> Yaml { get; private set; } = null!;
@@ -504,10 +229,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        /// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        /// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        /// connectorRef: org.connectorId.
+        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }
@@ -593,10 +315,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        /// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        /// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        /// connectorRef: org.connectorId.
+        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }

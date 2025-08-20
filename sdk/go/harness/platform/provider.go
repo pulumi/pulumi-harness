@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating a Harness Provider.
 type Provider struct {
 	pulumi.CustomResourceState
 

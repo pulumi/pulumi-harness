@@ -11,9 +11,10 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Service Now connector.
-    /// ## Example to create ServiceNow Connector at different levels (Org, Project, Account)
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level service now connector
     /// 

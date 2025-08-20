@@ -24,20 +24,28 @@ class OrchestratorConfigArgs:
                  distribution: pulumi.Input['OrchestratorConfigDistributionArgs'],
                  orchestrator_id: pulumi.Input[_builtins.str],
                  binpacking: Optional[pulumi.Input['OrchestratorConfigBinpackingArgs']] = None,
-                 node_preferences: Optional[pulumi.Input['OrchestratorConfigNodePreferencesArgs']] = None):
+                 commitment_integration: Optional[pulumi.Input['OrchestratorConfigCommitmentIntegrationArgs']] = None,
+                 node_preferences: Optional[pulumi.Input['OrchestratorConfigNodePreferencesArgs']] = None,
+                 replacement_schedule: Optional[pulumi.Input['OrchestratorConfigReplacementScheduleArgs']] = None):
         """
         The set of arguments for constructing a OrchestratorConfig resource.
         :param pulumi.Input['OrchestratorConfigDistributionArgs'] distribution: Spot and Ondemand Distribution Preferences for workload replicas
         :param pulumi.Input[_builtins.str] orchestrator_id: ID of the Cluster Orchestrator Object
         :param pulumi.Input['OrchestratorConfigBinpackingArgs'] binpacking: Binpacking preferences for Cluster Orchestrator
+        :param pulumi.Input['OrchestratorConfigCommitmentIntegrationArgs'] commitment_integration: Commitment integration configuration for Cluster Orchestrator
         :param pulumi.Input['OrchestratorConfigNodePreferencesArgs'] node_preferences: Node preferences for Cluster Orchestrator
+        :param pulumi.Input['OrchestratorConfigReplacementScheduleArgs'] replacement_schedule: Replacement schedule for Cluster Orchestrator
         """
         pulumi.set(__self__, "distribution", distribution)
         pulumi.set(__self__, "orchestrator_id", orchestrator_id)
         if binpacking is not None:
             pulumi.set(__self__, "binpacking", binpacking)
+        if commitment_integration is not None:
+            pulumi.set(__self__, "commitment_integration", commitment_integration)
         if node_preferences is not None:
             pulumi.set(__self__, "node_preferences", node_preferences)
+        if replacement_schedule is not None:
+            pulumi.set(__self__, "replacement_schedule", replacement_schedule)
 
     @_builtins.property
     @pulumi.getter
@@ -76,6 +84,18 @@ class OrchestratorConfigArgs:
         pulumi.set(self, "binpacking", value)
 
     @_builtins.property
+    @pulumi.getter(name="commitmentIntegration")
+    def commitment_integration(self) -> Optional[pulumi.Input['OrchestratorConfigCommitmentIntegrationArgs']]:
+        """
+        Commitment integration configuration for Cluster Orchestrator
+        """
+        return pulumi.get(self, "commitment_integration")
+
+    @commitment_integration.setter
+    def commitment_integration(self, value: Optional[pulumi.Input['OrchestratorConfigCommitmentIntegrationArgs']]):
+        pulumi.set(self, "commitment_integration", value)
+
+    @_builtins.property
     @pulumi.getter(name="nodePreferences")
     def node_preferences(self) -> Optional[pulumi.Input['OrchestratorConfigNodePreferencesArgs']]:
         """
@@ -87,29 +107,49 @@ class OrchestratorConfigArgs:
     def node_preferences(self, value: Optional[pulumi.Input['OrchestratorConfigNodePreferencesArgs']]):
         pulumi.set(self, "node_preferences", value)
 
+    @_builtins.property
+    @pulumi.getter(name="replacementSchedule")
+    def replacement_schedule(self) -> Optional[pulumi.Input['OrchestratorConfigReplacementScheduleArgs']]:
+        """
+        Replacement schedule for Cluster Orchestrator
+        """
+        return pulumi.get(self, "replacement_schedule")
+
+    @replacement_schedule.setter
+    def replacement_schedule(self, value: Optional[pulumi.Input['OrchestratorConfigReplacementScheduleArgs']]):
+        pulumi.set(self, "replacement_schedule", value)
+
 
 @pulumi.input_type
 class _OrchestratorConfigState:
     def __init__(__self__, *,
                  binpacking: Optional[pulumi.Input['OrchestratorConfigBinpackingArgs']] = None,
+                 commitment_integration: Optional[pulumi.Input['OrchestratorConfigCommitmentIntegrationArgs']] = None,
                  distribution: Optional[pulumi.Input['OrchestratorConfigDistributionArgs']] = None,
                  node_preferences: Optional[pulumi.Input['OrchestratorConfigNodePreferencesArgs']] = None,
-                 orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 replacement_schedule: Optional[pulumi.Input['OrchestratorConfigReplacementScheduleArgs']] = None):
         """
         Input properties used for looking up and filtering OrchestratorConfig resources.
         :param pulumi.Input['OrchestratorConfigBinpackingArgs'] binpacking: Binpacking preferences for Cluster Orchestrator
+        :param pulumi.Input['OrchestratorConfigCommitmentIntegrationArgs'] commitment_integration: Commitment integration configuration for Cluster Orchestrator
         :param pulumi.Input['OrchestratorConfigDistributionArgs'] distribution: Spot and Ondemand Distribution Preferences for workload replicas
         :param pulumi.Input['OrchestratorConfigNodePreferencesArgs'] node_preferences: Node preferences for Cluster Orchestrator
         :param pulumi.Input[_builtins.str] orchestrator_id: ID of the Cluster Orchestrator Object
+        :param pulumi.Input['OrchestratorConfigReplacementScheduleArgs'] replacement_schedule: Replacement schedule for Cluster Orchestrator
         """
         if binpacking is not None:
             pulumi.set(__self__, "binpacking", binpacking)
+        if commitment_integration is not None:
+            pulumi.set(__self__, "commitment_integration", commitment_integration)
         if distribution is not None:
             pulumi.set(__self__, "distribution", distribution)
         if node_preferences is not None:
             pulumi.set(__self__, "node_preferences", node_preferences)
         if orchestrator_id is not None:
             pulumi.set(__self__, "orchestrator_id", orchestrator_id)
+        if replacement_schedule is not None:
+            pulumi.set(__self__, "replacement_schedule", replacement_schedule)
 
     @_builtins.property
     @pulumi.getter
@@ -122,6 +162,18 @@ class _OrchestratorConfigState:
     @binpacking.setter
     def binpacking(self, value: Optional[pulumi.Input['OrchestratorConfigBinpackingArgs']]):
         pulumi.set(self, "binpacking", value)
+
+    @_builtins.property
+    @pulumi.getter(name="commitmentIntegration")
+    def commitment_integration(self) -> Optional[pulumi.Input['OrchestratorConfigCommitmentIntegrationArgs']]:
+        """
+        Commitment integration configuration for Cluster Orchestrator
+        """
+        return pulumi.get(self, "commitment_integration")
+
+    @commitment_integration.setter
+    def commitment_integration(self, value: Optional[pulumi.Input['OrchestratorConfigCommitmentIntegrationArgs']]):
+        pulumi.set(self, "commitment_integration", value)
 
     @_builtins.property
     @pulumi.getter
@@ -159,6 +211,18 @@ class _OrchestratorConfigState:
     def orchestrator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "orchestrator_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="replacementSchedule")
+    def replacement_schedule(self) -> Optional[pulumi.Input['OrchestratorConfigReplacementScheduleArgs']]:
+        """
+        Replacement schedule for Cluster Orchestrator
+        """
+        return pulumi.get(self, "replacement_schedule")
+
+    @replacement_schedule.setter
+    def replacement_schedule(self, value: Optional[pulumi.Input['OrchestratorConfigReplacementScheduleArgs']]):
+        pulumi.set(self, "replacement_schedule", value)
+
 
 @pulumi.type_token("harness:cluster/orchestratorConfig:OrchestratorConfig")
 class OrchestratorConfig(pulumi.CustomResource):
@@ -167,18 +231,99 @@ class OrchestratorConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  binpacking: Optional[pulumi.Input[Union['OrchestratorConfigBinpackingArgs', 'OrchestratorConfigBinpackingArgsDict']]] = None,
+                 commitment_integration: Optional[pulumi.Input[Union['OrchestratorConfigCommitmentIntegrationArgs', 'OrchestratorConfigCommitmentIntegrationArgsDict']]] = None,
                  distribution: Optional[pulumi.Input[Union['OrchestratorConfigDistributionArgs', 'OrchestratorConfigDistributionArgsDict']]] = None,
                  node_preferences: Optional[pulumi.Input[Union['OrchestratorConfigNodePreferencesArgs', 'OrchestratorConfigNodePreferencesArgsDict']]] = None,
                  orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 replacement_schedule: Optional[pulumi.Input[Union['OrchestratorConfigReplacementScheduleArgs', 'OrchestratorConfigReplacementScheduleArgsDict']]] = None,
                  __props__=None):
         """
-        Create a OrchestratorConfig resource with the given unique name, props, and options.
+        Resource for ClusterOrchestrator Config.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.cluster.OrchestratorConfig("example",
+            orchestrator_id="orch-cvifpfl9rbg8neldj97g",
+            distribution={
+                "base_ondemand_capacity": 2,
+                "ondemand_replica_percentage": 50,
+                "selector": "ALL",
+                "strategy": "CostOptimized",
+            },
+            binpacking={
+                "pod_eviction": {
+                    "threshold": {
+                        "cpu": 60,
+                        "memory": 80,
+                    },
+                },
+                "disruption": {
+                    "criteria": "WhenEmpty",
+                    "delay": "10m",
+                    "budgets": [
+                        {
+                            "reasons": [
+                                "Drifted",
+                                "Underutilized",
+                                "Empty",
+                            ],
+                            "nodes": "20",
+                        },
+                        {
+                            "reasons": [
+                                "Drifted",
+                                "Empty",
+                            ],
+                            "nodes": "1",
+                            "schedule": {
+                                "frequency": "@monthly",
+                                "duration": "10m",
+                            },
+                        },
+                    ],
+                },
+            },
+            node_preferences={
+                "ttl": "Never",
+                "reverse_fallback_interval": "6h",
+            },
+            commitment_integration={
+                "enabled": True,
+                "master_account_id": "dummyAccountId",
+            },
+            replacement_schedule={
+                "window_type": "Custom",
+                "applies_to": {
+                    "consolidation": True,
+                    "harness_pod_eviction": True,
+                    "reverse_fallback": True,
+                },
+                "window_details": {
+                    "days": [
+                        "SUN",
+                        "WED",
+                        "SAT",
+                    ],
+                    "time_zone": "Asia/Calcutta",
+                    "all_day": False,
+                    "start_time": "10:30",
+                    "end_time": "11:30",
+                },
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OrchestratorConfigBinpackingArgs', 'OrchestratorConfigBinpackingArgsDict']] binpacking: Binpacking preferences for Cluster Orchestrator
+        :param pulumi.Input[Union['OrchestratorConfigCommitmentIntegrationArgs', 'OrchestratorConfigCommitmentIntegrationArgsDict']] commitment_integration: Commitment integration configuration for Cluster Orchestrator
         :param pulumi.Input[Union['OrchestratorConfigDistributionArgs', 'OrchestratorConfigDistributionArgsDict']] distribution: Spot and Ondemand Distribution Preferences for workload replicas
         :param pulumi.Input[Union['OrchestratorConfigNodePreferencesArgs', 'OrchestratorConfigNodePreferencesArgsDict']] node_preferences: Node preferences for Cluster Orchestrator
         :param pulumi.Input[_builtins.str] orchestrator_id: ID of the Cluster Orchestrator Object
+        :param pulumi.Input[Union['OrchestratorConfigReplacementScheduleArgs', 'OrchestratorConfigReplacementScheduleArgsDict']] replacement_schedule: Replacement schedule for Cluster Orchestrator
         """
         ...
     @overload
@@ -187,7 +332,84 @@ class OrchestratorConfig(pulumi.CustomResource):
                  args: OrchestratorConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a OrchestratorConfig resource with the given unique name, props, and options.
+        Resource for ClusterOrchestrator Config.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.cluster.OrchestratorConfig("example",
+            orchestrator_id="orch-cvifpfl9rbg8neldj97g",
+            distribution={
+                "base_ondemand_capacity": 2,
+                "ondemand_replica_percentage": 50,
+                "selector": "ALL",
+                "strategy": "CostOptimized",
+            },
+            binpacking={
+                "pod_eviction": {
+                    "threshold": {
+                        "cpu": 60,
+                        "memory": 80,
+                    },
+                },
+                "disruption": {
+                    "criteria": "WhenEmpty",
+                    "delay": "10m",
+                    "budgets": [
+                        {
+                            "reasons": [
+                                "Drifted",
+                                "Underutilized",
+                                "Empty",
+                            ],
+                            "nodes": "20",
+                        },
+                        {
+                            "reasons": [
+                                "Drifted",
+                                "Empty",
+                            ],
+                            "nodes": "1",
+                            "schedule": {
+                                "frequency": "@monthly",
+                                "duration": "10m",
+                            },
+                        },
+                    ],
+                },
+            },
+            node_preferences={
+                "ttl": "Never",
+                "reverse_fallback_interval": "6h",
+            },
+            commitment_integration={
+                "enabled": True,
+                "master_account_id": "dummyAccountId",
+            },
+            replacement_schedule={
+                "window_type": "Custom",
+                "applies_to": {
+                    "consolidation": True,
+                    "harness_pod_eviction": True,
+                    "reverse_fallback": True,
+                },
+                "window_details": {
+                    "days": [
+                        "SUN",
+                        "WED",
+                        "SAT",
+                    ],
+                    "time_zone": "Asia/Calcutta",
+                    "all_day": False,
+                    "start_time": "10:30",
+                    "end_time": "11:30",
+                },
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param OrchestratorConfigArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -204,9 +426,11 @@ class OrchestratorConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  binpacking: Optional[pulumi.Input[Union['OrchestratorConfigBinpackingArgs', 'OrchestratorConfigBinpackingArgsDict']]] = None,
+                 commitment_integration: Optional[pulumi.Input[Union['OrchestratorConfigCommitmentIntegrationArgs', 'OrchestratorConfigCommitmentIntegrationArgsDict']]] = None,
                  distribution: Optional[pulumi.Input[Union['OrchestratorConfigDistributionArgs', 'OrchestratorConfigDistributionArgsDict']]] = None,
                  node_preferences: Optional[pulumi.Input[Union['OrchestratorConfigNodePreferencesArgs', 'OrchestratorConfigNodePreferencesArgsDict']]] = None,
                  orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 replacement_schedule: Optional[pulumi.Input[Union['OrchestratorConfigReplacementScheduleArgs', 'OrchestratorConfigReplacementScheduleArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -217,6 +441,7 @@ class OrchestratorConfig(pulumi.CustomResource):
             __props__ = OrchestratorConfigArgs.__new__(OrchestratorConfigArgs)
 
             __props__.__dict__["binpacking"] = binpacking
+            __props__.__dict__["commitment_integration"] = commitment_integration
             if distribution is None and not opts.urn:
                 raise TypeError("Missing required property 'distribution'")
             __props__.__dict__["distribution"] = distribution
@@ -224,6 +449,7 @@ class OrchestratorConfig(pulumi.CustomResource):
             if orchestrator_id is None and not opts.urn:
                 raise TypeError("Missing required property 'orchestrator_id'")
             __props__.__dict__["orchestrator_id"] = orchestrator_id
+            __props__.__dict__["replacement_schedule"] = replacement_schedule
         super(OrchestratorConfig, __self__).__init__(
             'harness:cluster/orchestratorConfig:OrchestratorConfig',
             resource_name,
@@ -235,9 +461,11 @@ class OrchestratorConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             binpacking: Optional[pulumi.Input[Union['OrchestratorConfigBinpackingArgs', 'OrchestratorConfigBinpackingArgsDict']]] = None,
+            commitment_integration: Optional[pulumi.Input[Union['OrchestratorConfigCommitmentIntegrationArgs', 'OrchestratorConfigCommitmentIntegrationArgsDict']]] = None,
             distribution: Optional[pulumi.Input[Union['OrchestratorConfigDistributionArgs', 'OrchestratorConfigDistributionArgsDict']]] = None,
             node_preferences: Optional[pulumi.Input[Union['OrchestratorConfigNodePreferencesArgs', 'OrchestratorConfigNodePreferencesArgsDict']]] = None,
-            orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrchestratorConfig':
+            orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None,
+            replacement_schedule: Optional[pulumi.Input[Union['OrchestratorConfigReplacementScheduleArgs', 'OrchestratorConfigReplacementScheduleArgsDict']]] = None) -> 'OrchestratorConfig':
         """
         Get an existing OrchestratorConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -246,18 +474,22 @@ class OrchestratorConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OrchestratorConfigBinpackingArgs', 'OrchestratorConfigBinpackingArgsDict']] binpacking: Binpacking preferences for Cluster Orchestrator
+        :param pulumi.Input[Union['OrchestratorConfigCommitmentIntegrationArgs', 'OrchestratorConfigCommitmentIntegrationArgsDict']] commitment_integration: Commitment integration configuration for Cluster Orchestrator
         :param pulumi.Input[Union['OrchestratorConfigDistributionArgs', 'OrchestratorConfigDistributionArgsDict']] distribution: Spot and Ondemand Distribution Preferences for workload replicas
         :param pulumi.Input[Union['OrchestratorConfigNodePreferencesArgs', 'OrchestratorConfigNodePreferencesArgsDict']] node_preferences: Node preferences for Cluster Orchestrator
         :param pulumi.Input[_builtins.str] orchestrator_id: ID of the Cluster Orchestrator Object
+        :param pulumi.Input[Union['OrchestratorConfigReplacementScheduleArgs', 'OrchestratorConfigReplacementScheduleArgsDict']] replacement_schedule: Replacement schedule for Cluster Orchestrator
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _OrchestratorConfigState.__new__(_OrchestratorConfigState)
 
         __props__.__dict__["binpacking"] = binpacking
+        __props__.__dict__["commitment_integration"] = commitment_integration
         __props__.__dict__["distribution"] = distribution
         __props__.__dict__["node_preferences"] = node_preferences
         __props__.__dict__["orchestrator_id"] = orchestrator_id
+        __props__.__dict__["replacement_schedule"] = replacement_schedule
         return OrchestratorConfig(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -267,6 +499,14 @@ class OrchestratorConfig(pulumi.CustomResource):
         Binpacking preferences for Cluster Orchestrator
         """
         return pulumi.get(self, "binpacking")
+
+    @_builtins.property
+    @pulumi.getter(name="commitmentIntegration")
+    def commitment_integration(self) -> pulumi.Output[Optional['outputs.OrchestratorConfigCommitmentIntegration']]:
+        """
+        Commitment integration configuration for Cluster Orchestrator
+        """
+        return pulumi.get(self, "commitment_integration")
 
     @_builtins.property
     @pulumi.getter
@@ -291,4 +531,12 @@ class OrchestratorConfig(pulumi.CustomResource):
         ID of the Cluster Orchestrator Object
         """
         return pulumi.get(self, "orchestrator_id")
+
+    @_builtins.property
+    @pulumi.getter(name="replacementSchedule")
+    def replacement_schedule(self) -> pulumi.Output[Optional['outputs.OrchestratorConfigReplacementSchedule']]:
+        """
+        Replacement schedule for Cluster Orchestrator
+        """
+        return pulumi.get(self, "replacement_schedule")
 

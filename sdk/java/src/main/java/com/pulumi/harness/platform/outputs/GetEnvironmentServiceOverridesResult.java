@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEnvironmentServiceOverridesResult {
     /**
-     * @return The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
+     * @return The env ID to which the overrides associated.
      * 
      */
     private String envId;
@@ -38,7 +38,7 @@ public final class GetEnvironmentServiceOverridesResult {
      */
     private @Nullable String projectId;
     /**
-     * @return The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
+     * @return The service ID to which the overrides applies.
      * 
      */
     private @Nullable String serviceId;
@@ -50,7 +50,7 @@ public final class GetEnvironmentServiceOverridesResult {
 
     private GetEnvironmentServiceOverridesResult() {}
     /**
-     * @return The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
+     * @return The env ID to which the overrides associated.
      * 
      */
     public String envId() {
@@ -85,7 +85,7 @@ public final class GetEnvironmentServiceOverridesResult {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
+     * @return The service ID to which the overrides applies.
      * 
      */
     public Optional<String> serviceId() {

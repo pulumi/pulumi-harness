@@ -7,6 +7,36 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Resource for creating a Harness User Group. Linking SSO providers with User Groups:
+ *
+ *         The following fields need to be populated for LDAP SSO Providers:
+ *     	
+ *         - linkedSsoId
+ *     	
+ *         - linkedSsoDisplayName
+ *     	
+ *         - ssoGroupId
+ *     	
+ *         - ssoGroupName
+ *     	
+ *         - linkedSsoType
+ *     	
+ *         - ssoLinked
+ *     	
+ *         The following fields need to be populated for SAML SSO Providers:
+ *     	
+ *         - linkedSsoId
+ *     	
+ *         - linkedSsoDisplayName
+ *     	
+ *         - ssoGroupName
+ *     	
+ *         - ssoGroupId // same as ssoGroupName
+ *     	
+ *         - linkedSsoType
+ *     	
+ *         - ssoLinked
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -117,6 +147,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import account level user group
  *
  * ```sh
@@ -224,7 +256,7 @@ export class Usergroup extends pulumi.CustomResource {
      */
     public readonly userEmails!: pulumi.Output<string[] | undefined>;
     /**
-     * List of users in the UserGroup. Either provide list of users or list of user emails.
+     * List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
      */
     public readonly users!: pulumi.Output<string[] | undefined>;
 
@@ -349,7 +381,7 @@ export interface UsergroupState {
      */
     userEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of users in the UserGroup. Either provide list of users or list of user emails.
+     * List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
      */
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -419,7 +451,7 @@ export interface UsergroupArgs {
      */
     userEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of users in the UserGroup. Either provide list of users or list of user emails.
+     * List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
      */
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }

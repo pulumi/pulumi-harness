@@ -9,7 +9,28 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Harness Repo.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = new harness.platform.Repo("test", {
+ *     identifier: "test_repo_123",
+ *     orgId: "test_org_123",
+ *     projectId: "test_project_123",
+ *     defaultBranch: "main",
+ *     description: "test_description_123",
+ *     sources: [{
+ *         repo: "octocat/hello-worId",
+ *         type: "github",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import
  *

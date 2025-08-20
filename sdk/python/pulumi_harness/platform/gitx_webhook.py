@@ -371,6 +371,8 @@ class GitxWebhook(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import an Account level Webhook
 
         ```sh
@@ -412,6 +414,8 @@ class GitxWebhook(pulumi.CustomResource):
         Resource for creating a Harness pipeline.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import an Account level Webhook
 

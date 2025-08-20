@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Resource for creating a Harness project.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -20,6 +22,8 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import using the organization id and the project id
  *

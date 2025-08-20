@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class AwsSecretManagerConnectorCredentialsManualGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The plain text AWS access key. This is required if the access*key*ref is not provided.
+        /// The plain text AWS access key.
         /// </summary>
         [Input("accessKeyPlainText")]
         public Input<string>? AccessKeyPlainText { get; set; }

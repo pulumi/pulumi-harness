@@ -23,14 +23,14 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     public static final WorkspaceState Empty = new WorkspaceState();
 
     /**
-     * Provider connector configured on the workspace
+     * Provider connectors configured on the Workspace. Only one connector of a type is supported
      * 
      */
     @Import(name="connectors")
     private @Nullable Output<List<WorkspaceConnectorArgs>> connectors;
 
     /**
-     * @return Provider connector configured on the workspace
+     * @return Provider connectors configured on the Workspace. Only one connector of a type is supported
      * 
      */
     public Optional<Output<List<WorkspaceConnectorArgs>>> connectors() {
@@ -366,7 +366,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectors Provider connector configured on the workspace
+         * @param connectors Provider connectors configured on the Workspace. Only one connector of a type is supported
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectors Provider connector configured on the workspace
+         * @param connectors Provider connectors configured on the Workspace. Only one connector of a type is supported
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectors Provider connector configured on the workspace
+         * @param connectors Provider connectors configured on the Workspace. Only one connector of a type is supported
          * 
          * @return builder
          * 

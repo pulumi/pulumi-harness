@@ -13,120 +13,8 @@ import (
 )
 
 // Resource for Manual Deployment Freeze Window.
-// ## Example to create Manual Freeze at different levels (Org, Project, Account)
 //
-// ### Account Level
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewManualFreeze(ctx, "example", &platform.ManualFreezeArgs{
-//				Identifier: pulumi.String("identifier"),
-//				OrgId:      pulumi.String("orgIdentifier"),
-//				ProjectId:  pulumi.String("projectIdentifier"),
-//				AccountId:  pulumi.String("accountIdentifier"),
-//				Yaml: pulumi.String(`freeze:
-//	  name: freezeName
-//	  identifier: identifier
-//	  entityConfigs:
-//	    - name: r1
-//	      entities:
-//	        - filterType: All
-//	          type: Org
-//	        - filterType: All
-//	          type: Project
-//	        - filterType: All
-//	          type: Service
-//	        - filterType: All
-//	          type: EnvType
-//	  status: Disabled
-//	  description: hi
-//	  windows:
-//	  - timeZone: Asia/Calcutta
-//	    startTime: 2023-05-03 04:16 PM
-//	    duration: 30m
-//	    recurrence:
-//	      type: Daily
-//	  notificationRules: []
-//	  tags: {}
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Org Level
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewManualFreeze(ctx, "example", &platform.ManualFreezeArgs{
-//				Identifier: pulumi.String("identifier"),
-//				OrgId:      pulumi.String("orgIdentifier"),
-//				AccountId:  pulumi.String("accountIdentifier"),
-//				Yaml: pulumi.String(`freeze:
-//	  name: freezeName
-//	  identifier: identifier
-//	  entityConfigs:
-//	    - name: r1
-//	      entities:
-//	        - filterType: All
-//	          type: Org
-//	        - filterType: All
-//	          type: Project
-//	        - filterType: All
-//	          type: Service
-//	        - filterType: All
-//	          type: EnvType
-//	  status: Disabled
-//	  description: hi
-//	  windows:
-//	  - timeZone: Asia/Calcutta
-//	    startTime: 2023-05-03 04:16 PM
-//	    duration: 30m
-//	    recurrence:
-//	      type: Daily
-//	  notificationRules: []
-//	  tags: {}
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Project Level
+// ## Example Usage
 //
 // ```go
 // package main
@@ -183,6 +71,8 @@ import (
 // ```
 //
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // # Import an account level freeze
 //

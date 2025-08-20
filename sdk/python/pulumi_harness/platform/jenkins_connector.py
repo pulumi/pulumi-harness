@@ -337,7 +337,11 @@ class JenkinsConnector(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Resource for creating a Jenkins connector.
+
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level jenkins connector
 
@@ -376,7 +380,11 @@ class JenkinsConnector(pulumi.CustomResource):
                  args: JenkinsConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource for creating a Jenkins connector.
+
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level jenkins connector
 

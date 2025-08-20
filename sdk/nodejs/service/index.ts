@@ -15,10 +15,30 @@ export type Codedeploy = import("./codedeploy").Codedeploy;
 export const Codedeploy: typeof import("./codedeploy").Codedeploy = null as any;
 utilities.lazyLoad(exports, ["Codedeploy"], () => require("./codedeploy"));
 
+export { DiscoveryAgentArgs, DiscoveryAgentState } from "./discoveryAgent";
+export type DiscoveryAgent = import("./discoveryAgent").DiscoveryAgent;
+export const DiscoveryAgent: typeof import("./discoveryAgent").DiscoveryAgent = null as any;
+utilities.lazyLoad(exports, ["DiscoveryAgent"], () => require("./discoveryAgent"));
+
+export { DiscoverySettingArgs, DiscoverySettingState } from "./discoverySetting";
+export type DiscoverySetting = import("./discoverySetting").DiscoverySetting;
+export const DiscoverySetting: typeof import("./discoverySetting").DiscoverySetting = null as any;
+utilities.lazyLoad(exports, ["DiscoverySetting"], () => require("./discoverySetting"));
+
 export { EcsArgs, EcsState } from "./ecs";
 export type Ecs = import("./ecs").Ecs;
 export const Ecs: typeof import("./ecs").Ecs = null as any;
 utilities.lazyLoad(exports, ["Ecs"], () => require("./ecs"));
+
+export { GetDiscoveryAgentArgs, GetDiscoveryAgentResult, GetDiscoveryAgentOutputArgs } from "./getDiscoveryAgent";
+export const getDiscoveryAgent: typeof import("./getDiscoveryAgent").getDiscoveryAgent = null as any;
+export const getDiscoveryAgentOutput: typeof import("./getDiscoveryAgent").getDiscoveryAgentOutput = null as any;
+utilities.lazyLoad(exports, ["getDiscoveryAgent","getDiscoveryAgentOutput"], () => require("./getDiscoveryAgent"));
+
+export { GetDiscoverySettingArgs, GetDiscoverySettingResult, GetDiscoverySettingOutputArgs } from "./getDiscoverySetting";
+export const getDiscoverySetting: typeof import("./getDiscoverySetting").getDiscoverySetting = null as any;
+export const getDiscoverySettingOutput: typeof import("./getDiscoverySetting").getDiscoverySettingOutput = null as any;
+utilities.lazyLoad(exports, ["getDiscoverySetting","getDiscoverySettingOutput"], () => require("./getDiscoverySetting"));
 
 export { HelmArgs, HelmState } from "./helm";
 export type Helm = import("./helm").Helm;
@@ -59,6 +79,10 @@ const _module = {
                 return new Ami(name, <any>undefined, { urn })
             case "harness:service/codedeploy:Codedeploy":
                 return new Codedeploy(name, <any>undefined, { urn })
+            case "harness:service/discoveryAgent:DiscoveryAgent":
+                return new DiscoveryAgent(name, <any>undefined, { urn })
+            case "harness:service/discoverySetting:DiscoverySetting":
+                return new DiscoverySetting(name, <any>undefined, { urn })
             case "harness:service/ecs:Ecs":
                 return new Ecs(name, <any>undefined, { urn })
             case "harness:service/helm:Helm":
@@ -80,6 +104,8 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("harness", "service/ami", _module)
 pulumi.runtime.registerResourceModule("harness", "service/codedeploy", _module)
+pulumi.runtime.registerResourceModule("harness", "service/discoveryAgent", _module)
+pulumi.runtime.registerResourceModule("harness", "service/discoverySetting", _module)
 pulumi.runtime.registerResourceModule("harness", "service/ecs", _module)
 pulumi.runtime.registerResourceModule("harness", "service/helm", _module)
 pulumi.runtime.registerResourceModule("harness", "service/kubernetes", _module)

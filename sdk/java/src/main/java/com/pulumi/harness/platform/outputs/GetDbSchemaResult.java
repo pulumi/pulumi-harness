@@ -15,7 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbSchemaResult {
-    private @Nullable GetDbSchemaChangelogScript changelogScript;
+    /**
+     * @return Configuration to clone changeSets using script
+     * 
+     */
+    private GetDbSchemaChangelogScript changelogScript;
     /**
      * @return Description of the resource.
      * 
@@ -50,7 +54,7 @@ public final class GetDbSchemaResult {
      * @return Provides a connector and path at which to find the database schema representation
      * 
      */
-    private @Nullable List<GetDbSchemaSchemaSource> schemaSources;
+    private List<GetDbSchemaSchemaSource> schemaSources;
     /**
      * @return The service associated with schema
      * 
@@ -61,11 +65,19 @@ public final class GetDbSchemaResult {
      * 
      */
     private List<String> tags;
+    /**
+     * @return Type of the database schema. Valid values are: Repository, Script
+     * 
+     */
     private @Nullable String type;
 
     private GetDbSchemaResult() {}
-    public Optional<GetDbSchemaChangelogScript> changelogScript() {
-        return Optional.ofNullable(this.changelogScript);
+    /**
+     * @return Configuration to clone changeSets using script
+     * 
+     */
+    public GetDbSchemaChangelogScript changelogScript() {
+        return this.changelogScript;
     }
     /**
      * @return Description of the resource.
@@ -114,7 +126,7 @@ public final class GetDbSchemaResult {
      * 
      */
     public List<GetDbSchemaSchemaSource> schemaSources() {
-        return this.schemaSources == null ? List.of() : this.schemaSources;
+        return this.schemaSources;
     }
     /**
      * @return The service associated with schema
@@ -130,6 +142,10 @@ public final class GetDbSchemaResult {
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return Type of the database schema. Valid values are: Repository, Script
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
@@ -143,14 +159,14 @@ public final class GetDbSchemaResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable GetDbSchemaChangelogScript changelogScript;
+        private GetDbSchemaChangelogScript changelogScript;
         private String description;
         private String id;
         private String identifier;
         private @Nullable String name;
         private String orgId;
         private String projectId;
-        private @Nullable List<GetDbSchemaSchemaSource> schemaSources;
+        private List<GetDbSchemaSchemaSource> schemaSources;
         private String service;
         private List<String> tags;
         private @Nullable String type;
@@ -171,8 +187,10 @@ public final class GetDbSchemaResult {
         }
 
         @CustomType.Setter
-        public Builder changelogScript(@Nullable GetDbSchemaChangelogScript changelogScript) {
-
+        public Builder changelogScript(GetDbSchemaChangelogScript changelogScript) {
+            if (changelogScript == null) {
+              throw new MissingRequiredPropertyException("GetDbSchemaResult", "changelogScript");
+            }
             this.changelogScript = changelogScript;
             return this;
         }
@@ -223,8 +241,10 @@ public final class GetDbSchemaResult {
             return this;
         }
         @CustomType.Setter
-        public Builder schemaSources(@Nullable List<GetDbSchemaSchemaSource> schemaSources) {
-
+        public Builder schemaSources(List<GetDbSchemaSchemaSource> schemaSources) {
+            if (schemaSources == null) {
+              throw new MissingRequiredPropertyException("GetDbSchemaResult", "schemaSources");
+            }
             this.schemaSources = schemaSources;
             return this;
         }

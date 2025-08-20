@@ -34,9 +34,9 @@ class InfraVariableSetArgs:
         """
         The set of arguments for constructing a InfraVariableSet resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]] connectors: Provider connector configured on the variable set
+        :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the variable set
+        :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the Variable Set
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -78,7 +78,7 @@ class InfraVariableSetArgs:
     @pulumi.getter
     def connectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]]:
         """
-        Provider connector configured on the variable set
+        Provider connectors configured on the Variable Set. Only one connector of a type is supported
         """
         return pulumi.get(self, "connectors")
 
@@ -102,7 +102,7 @@ class InfraVariableSetArgs:
     @pulumi.getter(name="environmentVariables")
     def environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]]:
         """
-        Environment variables configured on the variable set
+        Environment variables configured on the Variable Set
         """
         return pulumi.get(self, "environment_variables")
 
@@ -192,9 +192,9 @@ class _InfraVariableSetState:
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering InfraVariableSet resources.
-        :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]] connectors: Provider connector configured on the variable set
+        :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the variable set
+        :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the Variable Set
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -226,7 +226,7 @@ class _InfraVariableSetState:
     @pulumi.getter
     def connectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]]:
         """
-        Provider connector configured on the variable set
+        Provider connectors configured on the Variable Set. Only one connector of a type is supported
         """
         return pulumi.get(self, "connectors")
 
@@ -250,7 +250,7 @@ class _InfraVariableSetState:
     @pulumi.getter(name="environmentVariables")
     def environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]]:
         """
-        Environment variables configured on the variable set
+        Environment variables configured on the Variable Set
         """
         return pulumi.get(self, "environment_variables")
 
@@ -355,7 +355,7 @@ class InfraVariableSet(pulumi.CustomResource):
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]]] = None,
                  __props__=None):
         """
-        Resource for managing infrastructure Variable Sets
+        Resource for managing Variable Sets
 
         ## Example Usage
 
@@ -421,23 +421,31 @@ class InfraVariableSet(pulumi.CustomResource):
 
         ## Import
 
-        ```sh
-        $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <varset_id>
-        ```
+        The `pulumi import` command can be used, for example:
+
+        Import account level variable set
 
         ```sh
-        $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<varset_id>
+        $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <variable_set_id>
         ```
 
+        Import org level variable set
+
         ```sh
-        $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<project_id>/<varset_id>
+        $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <ord_id>/<variable_set_id>
+        ```
+
+        Import project level variable set
+
+        ```sh
+        $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<project_id>/<variable_set_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]] connectors: Provider connector configured on the variable set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the variable set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the Variable Set
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -451,7 +459,7 @@ class InfraVariableSet(pulumi.CustomResource):
                  args: InfraVariableSetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for managing infrastructure Variable Sets
+        Resource for managing Variable Sets
 
         ## Example Usage
 
@@ -517,16 +525,24 @@ class InfraVariableSet(pulumi.CustomResource):
 
         ## Import
 
-        ```sh
-        $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <varset_id>
-        ```
+        The `pulumi import` command can be used, for example:
+
+        Import account level variable set
 
         ```sh
-        $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<varset_id>
+        $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <variable_set_id>
         ```
 
+        Import org level variable set
+
         ```sh
-        $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<project_id>/<varset_id>
+        $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <ord_id>/<variable_set_id>
+        ```
+
+        Import project level variable set
+
+        ```sh
+        $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<project_id>/<variable_set_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -602,9 +618,9 @@ class InfraVariableSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]] connectors: Provider connector configured on the variable set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the variable set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the Variable Set
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -631,7 +647,7 @@ class InfraVariableSet(pulumi.CustomResource):
     @pulumi.getter
     def connectors(self) -> pulumi.Output[Optional[Sequence['outputs.InfraVariableSetConnector']]]:
         """
-        Provider connector configured on the variable set
+        Provider connectors configured on the Variable Set. Only one connector of a type is supported
         """
         return pulumi.get(self, "connectors")
 
@@ -647,7 +663,7 @@ class InfraVariableSet(pulumi.CustomResource):
     @pulumi.getter(name="environmentVariables")
     def environment_variables(self) -> pulumi.Output[Optional[Sequence['outputs.InfraVariableSetEnvironmentVariable']]]:
         """
-        Environment variables configured on the variable set
+        Environment variables configured on the Variable Set
         """
         return pulumi.get(self, "environment_variables")
 

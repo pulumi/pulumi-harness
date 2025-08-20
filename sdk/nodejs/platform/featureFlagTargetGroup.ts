@@ -24,11 +24,11 @@ import * as utilities from "../utilities";
  *     accountId: "MY_ACCOUNT_ID",
  *     includeds: ["target_id_1"],
  *     excludeds: ["target_id_2"],
- *     rules: [{
+ *     rules: {
  *         attribute: "MY_ATTRIBUTE",
- *         op: "equal",
- *         values: ["MY_VALUE"],
- *     }],
+ *         operator: "equal",
+ *         value: "MY_VALUE",
+ *     },
  * });
  * ```
  */

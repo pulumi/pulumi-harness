@@ -66,26 +66,41 @@ class GetHarRegistryResult:
     @_builtins.property
     @pulumi.getter(name="allowedPatterns")
     def allowed_patterns(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Allowed artifact patterns
+        """
         return pulumi.get(self, "allowed_patterns")
 
     @_builtins.property
     @pulumi.getter(name="blockedPatterns")
     def blocked_patterns(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Blocked artifact patterns
+        """
         return pulumi.get(self, "blocked_patterns")
 
     @_builtins.property
     @pulumi.getter
     def configs(self) -> Optional[Sequence['outputs.GetHarRegistryConfigResult']]:
+        """
+        Configuration for the registry
+        """
         return pulumi.get(self, "configs")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
+        """
+        Creation timestamp
+        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the registry
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -100,31 +115,40 @@ class GetHarRegistryResult:
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Unique identifier of the resource.
+        Unique identifier of the registry
         """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter(name="packageType")
     def package_type(self) -> Optional[_builtins.str]:
+        """
+        Type of package (DOCKER, HELM, MAVEN, etc.)
+        """
         return pulumi.get(self, "package_type")
 
     @_builtins.property
     @pulumi.getter(name="parentRef")
     def parent_ref(self) -> Optional[_builtins.str]:
+        """
+        Parent reference for the registry
+        """
         return pulumi.get(self, "parent_ref")
 
     @_builtins.property
     @pulumi.getter(name="spaceRef")
-    def space_ref(self) -> _builtins.str:
+    def space_ref(self) -> Optional[_builtins.str]:
         """
-        Reference of the space.
+        Space reference for the registry
         """
         return pulumi.get(self, "space_ref")
 
     @_builtins.property
     @pulumi.getter
     def url(self) -> _builtins.str:
+        """
+        URL of the registry
+        """
         return pulumi.get(self, "url")
 
 
@@ -157,7 +181,7 @@ def get_har_registry(allowed_patterns: Optional[Sequence[_builtins.str]] = None,
                      space_ref: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHarRegistryResult:
     """
-    Data Source for retrieving a Harness Artifact registry
+    Resource for creating and managing Harness Registries.
 
     ## Example Usage
 
@@ -170,8 +194,14 @@ def get_har_registry(allowed_patterns: Optional[Sequence[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str identifier: Unique identifier of the resource.
-    :param _builtins.str space_ref: Reference of the space.
+    :param Sequence[_builtins.str] allowed_patterns: Allowed artifact patterns
+    :param Sequence[_builtins.str] blocked_patterns: Blocked artifact patterns
+    :param Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict']] configs: Configuration for the registry
+    :param _builtins.str description: Description of the registry
+    :param _builtins.str identifier: Unique identifier of the registry
+    :param _builtins.str package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
+    :param _builtins.str parent_ref: Parent reference for the registry
+    :param _builtins.str space_ref: Space reference for the registry
     """
     __args__ = dict()
     __args__['allowedPatterns'] = allowed_patterns
@@ -204,10 +234,10 @@ def get_har_registry_output(allowed_patterns: Optional[pulumi.Input[Optional[Seq
                             identifier: Optional[pulumi.Input[_builtins.str]] = None,
                             package_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             parent_ref: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            space_ref: Optional[pulumi.Input[_builtins.str]] = None,
+                            space_ref: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHarRegistryResult]:
     """
-    Data Source for retrieving a Harness Artifact registry
+    Resource for creating and managing Harness Registries.
 
     ## Example Usage
 
@@ -220,8 +250,14 @@ def get_har_registry_output(allowed_patterns: Optional[pulumi.Input[Optional[Seq
     ```
 
 
-    :param _builtins.str identifier: Unique identifier of the resource.
-    :param _builtins.str space_ref: Reference of the space.
+    :param Sequence[_builtins.str] allowed_patterns: Allowed artifact patterns
+    :param Sequence[_builtins.str] blocked_patterns: Blocked artifact patterns
+    :param Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict']] configs: Configuration for the registry
+    :param _builtins.str description: Description of the registry
+    :param _builtins.str identifier: Unique identifier of the registry
+    :param _builtins.str package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
+    :param _builtins.str parent_ref: Parent reference for the registry
+    :param _builtins.str space_ref: Space reference for the registry
     """
     __args__ = dict()
     __args__['allowedPatterns'] = allowed_patterns

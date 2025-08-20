@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for ClusterOrchestrator Config.
+// Data Source for retrieving Harness CCM ClusterOrchestrator Config.
 //
 // ## Example Usage
 //
@@ -52,18 +52,24 @@ func LookupOrchestratorConfig(ctx *pulumi.Context, args *LookupOrchestratorConfi
 type LookupOrchestratorConfigArgs struct {
 	// Binpacking preferences for Cluster Orchestrator
 	Binpacking *GetOrchestratorConfigBinpacking `pulumi:"binpacking"`
+	// Commitment integration configuration for Cluster Orchestrator
+	CommitmentIntegration *GetOrchestratorConfigCommitmentIntegration `pulumi:"commitmentIntegration"`
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution *GetOrchestratorConfigDistribution `pulumi:"distribution"`
 	// Node preferences for Cluster Orchestrator
 	NodePreferences *GetOrchestratorConfigNodePreferences `pulumi:"nodePreferences"`
 	// ID of the Cluster Orchestrator Object
 	OrchestratorId string `pulumi:"orchestratorId"`
+	// Replacement schedule for Cluster Orchestrator
+	ReplacementSchedule *GetOrchestratorConfigReplacementSchedule `pulumi:"replacementSchedule"`
 }
 
 // A collection of values returned by getOrchestratorConfig.
 type LookupOrchestratorConfigResult struct {
 	// Binpacking preferences for Cluster Orchestrator
 	Binpacking *GetOrchestratorConfigBinpacking `pulumi:"binpacking"`
+	// Commitment integration configuration for Cluster Orchestrator
+	CommitmentIntegration *GetOrchestratorConfigCommitmentIntegration `pulumi:"commitmentIntegration"`
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution *GetOrchestratorConfigDistribution `pulumi:"distribution"`
 	// The provider-assigned unique ID for this managed resource.
@@ -72,6 +78,8 @@ type LookupOrchestratorConfigResult struct {
 	NodePreferences *GetOrchestratorConfigNodePreferences `pulumi:"nodePreferences"`
 	// ID of the Cluster Orchestrator Object
 	OrchestratorId string `pulumi:"orchestratorId"`
+	// Replacement schedule for Cluster Orchestrator
+	ReplacementSchedule *GetOrchestratorConfigReplacementSchedule `pulumi:"replacementSchedule"`
 }
 
 func LookupOrchestratorConfigOutput(ctx *pulumi.Context, args LookupOrchestratorConfigOutputArgs, opts ...pulumi.InvokeOption) LookupOrchestratorConfigResultOutput {
@@ -87,12 +95,16 @@ func LookupOrchestratorConfigOutput(ctx *pulumi.Context, args LookupOrchestrator
 type LookupOrchestratorConfigOutputArgs struct {
 	// Binpacking preferences for Cluster Orchestrator
 	Binpacking GetOrchestratorConfigBinpackingPtrInput `pulumi:"binpacking"`
+	// Commitment integration configuration for Cluster Orchestrator
+	CommitmentIntegration GetOrchestratorConfigCommitmentIntegrationPtrInput `pulumi:"commitmentIntegration"`
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution GetOrchestratorConfigDistributionPtrInput `pulumi:"distribution"`
 	// Node preferences for Cluster Orchestrator
 	NodePreferences GetOrchestratorConfigNodePreferencesPtrInput `pulumi:"nodePreferences"`
 	// ID of the Cluster Orchestrator Object
 	OrchestratorId pulumi.StringInput `pulumi:"orchestratorId"`
+	// Replacement schedule for Cluster Orchestrator
+	ReplacementSchedule GetOrchestratorConfigReplacementSchedulePtrInput `pulumi:"replacementSchedule"`
 }
 
 func (LookupOrchestratorConfigOutputArgs) ElementType() reflect.Type {
@@ -119,6 +131,13 @@ func (o LookupOrchestratorConfigResultOutput) Binpacking() GetOrchestratorConfig
 	return o.ApplyT(func(v LookupOrchestratorConfigResult) *GetOrchestratorConfigBinpacking { return v.Binpacking }).(GetOrchestratorConfigBinpackingPtrOutput)
 }
 
+// Commitment integration configuration for Cluster Orchestrator
+func (o LookupOrchestratorConfigResultOutput) CommitmentIntegration() GetOrchestratorConfigCommitmentIntegrationPtrOutput {
+	return o.ApplyT(func(v LookupOrchestratorConfigResult) *GetOrchestratorConfigCommitmentIntegration {
+		return v.CommitmentIntegration
+	}).(GetOrchestratorConfigCommitmentIntegrationPtrOutput)
+}
+
 // Spot and Ondemand Distribution Preferences for workload replicas
 func (o LookupOrchestratorConfigResultOutput) Distribution() GetOrchestratorConfigDistributionPtrOutput {
 	return o.ApplyT(func(v LookupOrchestratorConfigResult) *GetOrchestratorConfigDistribution { return v.Distribution }).(GetOrchestratorConfigDistributionPtrOutput)
@@ -137,6 +156,13 @@ func (o LookupOrchestratorConfigResultOutput) NodePreferences() GetOrchestratorC
 // ID of the Cluster Orchestrator Object
 func (o LookupOrchestratorConfigResultOutput) OrchestratorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrchestratorConfigResult) string { return v.OrchestratorId }).(pulumi.StringOutput)
+}
+
+// Replacement schedule for Cluster Orchestrator
+func (o LookupOrchestratorConfigResultOutput) ReplacementSchedule() GetOrchestratorConfigReplacementSchedulePtrOutput {
+	return o.ApplyT(func(v LookupOrchestratorConfigResult) *GetOrchestratorConfigReplacementSchedule {
+		return v.ReplacementSchedule
+	}).(GetOrchestratorConfigReplacementSchedulePtrOutput)
 }
 
 func init() {

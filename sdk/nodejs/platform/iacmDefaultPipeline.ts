@@ -6,6 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for managing IAC default pipelines
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.IacmDefaultPipeline("example", {
+ *     orgId: test.id,
+ *     projectId: testHarnessPlatformProject.id,
+ *     provisionerType: "terraform",
+ *     operation: "plan",
+ *     pipeline: "pipeline1",
+ * });
+ * ```
  */
 export class IacmDefaultPipeline extends pulumi.CustomResource {
     /**

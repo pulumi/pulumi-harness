@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Physical data center connector.
-//
-// ## Example to create Pdc Connector at different levels (Org, Project, Account)
+// Resource for creating a Pdc connector.
 //
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // # Import account level pdc connector
 //
@@ -42,7 +42,7 @@ type ConnectorPdc struct {
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Hosts to be provided.
+	// Host of the Physical data centers.
 	Hosts ConnectorPdcHostArrayOutput `pulumi:"hosts"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -96,7 +96,7 @@ type connectorPdcState struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Hosts to be provided.
+	// Host of the Physical data centers.
 	Hosts []ConnectorPdcHost `pulumi:"hosts"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
@@ -115,7 +115,7 @@ type ConnectorPdcState struct {
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Hosts to be provided.
+	// Host of the Physical data centers.
 	Hosts ConnectorPdcHostArrayInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
@@ -138,7 +138,7 @@ type connectorPdcArgs struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Hosts to be provided.
+	// Host of the Physical data centers.
 	Hosts []ConnectorPdcHost `pulumi:"hosts"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
@@ -158,7 +158,7 @@ type ConnectorPdcArgs struct {
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Hosts to be provided.
+	// Host of the Physical data centers.
 	Hosts ConnectorPdcHostArrayInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
@@ -269,7 +269,7 @@ func (o ConnectorPdcOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorPdc) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Hosts to be provided.
+// Host of the Physical data centers.
 func (o ConnectorPdcOutput) Hosts() ConnectorPdcHostArrayOutput {
 	return o.ApplyT(func(v *ConnectorPdc) ConnectorPdcHostArrayOutput { return v.Hosts }).(ConnectorPdcHostArrayOutput)
 }

@@ -335,12 +335,13 @@ class ChaosInfrastructure(pulumi.CustomResource):
         """
         Resource for creating a Chaos Infrastructure.
 
-        ## Example to create Chaos Infrastructure
+        ## Example Usage
 
         ```python
         import pulumi
         import pulumi_harness as harness
 
+        # Sample resource for chaos infrastructure
         example = harness.ChaosInfrastructure("example",
             identifier="identifier",
             name="name",
@@ -353,7 +354,9 @@ class ChaosInfrastructure(pulumi.CustomResource):
 
         ## Import
 
-        Import using the Chaos Infra ID.
+        The `pulumi import` command can be used, for example:
+
+        Import using the Harness chaos_infra_id.
 
         ```sh
         $ pulumi import harness:index/chaosInfrastructure:ChaosInfrastructure example <chaos_infra_id>
@@ -380,12 +383,13 @@ class ChaosInfrastructure(pulumi.CustomResource):
         """
         Resource for creating a Chaos Infrastructure.
 
-        ## Example to create Chaos Infrastructure
+        ## Example Usage
 
         ```python
         import pulumi
         import pulumi_harness as harness
 
+        # Sample resource for chaos infrastructure
         example = harness.ChaosInfrastructure("example",
             identifier="identifier",
             name="name",
@@ -398,7 +402,9 @@ class ChaosInfrastructure(pulumi.CustomResource):
 
         ## Import
 
-        Import using the Chaos Infra ID.
+        The `pulumi import` command can be used, for example:
+
+        Import using the Harness chaos_infra_id.
 
         ```sh
         $ pulumi import harness:index/chaosInfrastructure:ChaosInfrastructure example <chaos_infra_id>

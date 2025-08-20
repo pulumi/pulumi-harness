@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
+    /// Resource for creating a Harness Resource Group
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -74,6 +76,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import account level resource group
     /// 
     /// ```sh
@@ -126,7 +130,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+        /// Included scopes; default selected based on resource group scope if not specified.
         /// </summary>
         [Output("includedScopes")]
         public Output<ImmutableArray<Outputs.ResourceGroupIncludedScope>> IncludedScopes { get; private set; } = null!;
@@ -248,7 +252,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.ResourceGroupIncludedScopeArgs>? _includedScopes;
 
         /// <summary>
-        /// Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+        /// Included scopes; default selected based on resource group scope if not specified.
         /// </summary>
         public InputList<Inputs.ResourceGroupIncludedScopeArgs> IncludedScopes
         {
@@ -346,7 +350,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.ResourceGroupIncludedScopeGetArgs>? _includedScopes;
 
         /// <summary>
-        /// Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+        /// Included scopes; default selected based on resource group scope if not specified.
         /// </summary>
         public InputList<Inputs.ResourceGroupIncludedScopeGetArgs> IncludedScopes
         {

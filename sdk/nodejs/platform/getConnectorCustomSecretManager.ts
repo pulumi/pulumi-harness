@@ -7,16 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getConnectorCustomSecretManager({
- *     identifier: "identifier",
- * });
- * ```
+ * Datasource for looking up a Custom Secret Manager connector.
  */
 export function getConnectorCustomSecretManager(args: GetConnectorCustomSecretManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorCustomSecretManagerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,14 +29,20 @@ export interface GetConnectorCustomSecretManagerArgs {
      */
     delegateSelectors?: string[];
     /**
-     * : Unique identifier of the resource.
+     * Unique identifier of the resource.
      */
     identifier: string;
     /**
-     * : Name of the resource.
+     * Name of the resource.
      */
     name?: string;
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: string;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: string;
 }
 
@@ -58,7 +55,7 @@ export interface GetConnectorCustomSecretManagerResult {
      */
     readonly delegateSelectors?: string[];
     /**
-     * : A brief description of what the resource does or is used for.
+     * Description of the resource.
      */
     readonly description: string;
     /**
@@ -66,64 +63,61 @@ export interface GetConnectorCustomSecretManagerResult {
      */
     readonly id: string;
     /**
-     * : Unique identifier of the resource.
+     * Unique identifier of the resource.
      */
     readonly identifier: string;
     /**
-     * : Name of the resource.
+     * Name of the resource.
      */
     readonly name?: string;
     /**
-     * : Specifies whether the secrets manager runs on a Harness delegate.
+     * Specifies whether the secrets manager runs on a Harness delegate.
      */
     readonly onDelegate: boolean;
+    /**
+     * Unique identifier of the organization.
+     */
     readonly orgId?: string;
+    /**
+     * Unique identifier of the project.
+     */
     readonly projectId?: string;
     /**
-     * : Reference to the Harness secret containing SSH credentials for the target host. Required if `onDelegate` is set to false.
+     * SSH secret reference for the custom secrets manager, Computed if 'on_delegate' is false.
      */
     readonly sshSecretRef: string;
     /**
-     * : Tags to associate with the resource.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
-     * : Host address where secrets will be managed. Required if `onDelegate` is set to false.
+     * Host where the custom secrets manager is located, Computed if 'on_delegate' is false.
      */
     readonly targetHost: string;
     readonly templateInputs: outputs.platform.GetConnectorCustomSecretManagerTemplateInput[];
     /**
-     * : Reference to the template used for managing secrets.
+     * Reference to the template used for managing secrets.
      */
     readonly templateRef: string;
     /**
-     * : Timeout in seconds for secrets management operations.
+     * Timeout in seconds for secrets management operations.
      */
     readonly timeout: number;
     /**
-     * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+     * Type of the custom secrets manager, typically set to 'CustomSecretManager'.
      */
     readonly type: string;
     /**
-     * : Version identifier of the secrets management template.
+     * Version identifier of the secrets management template.
      */
     readonly versionLabel: string;
     /**
-     * : Directory path on the target host where secrets management tasks are performed. Required if `onDelegate` is set to false.
+     * The working directory for operations, Computed if 'on_delegate' is false.
      */
     readonly workingDirectory: string;
 }
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getConnectorCustomSecretManager({
- *     identifier: "identifier",
- * });
- * ```
+ * Datasource for looking up a Custom Secret Manager connector.
  */
 export function getConnectorCustomSecretManagerOutput(args: GetConnectorCustomSecretManagerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorCustomSecretManagerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -145,13 +139,19 @@ export interface GetConnectorCustomSecretManagerOutputArgs {
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * : Unique identifier of the resource.
+     * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
     /**
-     * : Name of the resource.
+     * Name of the resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: pulumi.Input<string>;
 }

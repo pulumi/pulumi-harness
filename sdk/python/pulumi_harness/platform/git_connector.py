@@ -438,6 +438,8 @@ class GitConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level git connector
 
         ```sh
@@ -481,6 +483,8 @@ class GitConnector(pulumi.CustomResource):
         Resource for creating a Git connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level git connector
 

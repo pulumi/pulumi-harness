@@ -33,7 +33,7 @@ class PlatformCcmFiltersArgs:
         :param pulumi.Input['PlatformCcmFiltersFilterPropertiesArgs'] filter_properties: Properties of the filters entity defined in Harness.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] type: Type of ccm filters.
-        :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters. By default, everyone can view this filter..
+        :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters, by default it is Everyone.
         :param pulumi.Input[_builtins.str] name: Name of the ccm filters.
         :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the Entity.
         :param pulumi.Input[_builtins.str] project_id: Project Identifier for the Entity.
@@ -90,7 +90,7 @@ class PlatformCcmFiltersArgs:
     @pulumi.getter(name="filterVisibility")
     def filter_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This indicates visibility of filters. By default, everyone can view this filter..
+        This indicates visibility of filters, by default it is Everyone.
         """
         return pulumi.get(self, "filter_visibility")
 
@@ -148,7 +148,7 @@ class _PlatformCcmFiltersState:
         """
         Input properties used for looking up and filtering PlatformCcmFilters resources.
         :param pulumi.Input['PlatformCcmFiltersFilterPropertiesArgs'] filter_properties: Properties of the filters entity defined in Harness.
-        :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters. By default, everyone can view this filter..
+        :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters, by default it is Everyone.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the ccm filters.
         :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the Entity.
@@ -186,7 +186,7 @@ class _PlatformCcmFiltersState:
     @pulumi.getter(name="filterVisibility")
     def filter_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This indicates visibility of filters. By default, everyone can view this filter..
+        This indicates visibility of filters, by default it is Everyone.
         """
         return pulumi.get(self, "filter_visibility")
 
@@ -293,6 +293,8 @@ class PlatformCcmFilters(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level ccm filter
 
         ```sh
@@ -314,7 +316,7 @@ class PlatformCcmFilters(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filters entity defined in Harness.
-        :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters. By default, everyone can view this filter..
+        :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters, by default it is Everyone.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the ccm filters.
         :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the Entity.
@@ -350,6 +352,8 @@ class PlatformCcmFilters(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level ccm filter
 
@@ -438,7 +442,7 @@ class PlatformCcmFilters(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filters entity defined in Harness.
-        :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters. By default, everyone can view this filter..
+        :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters, by default it is Everyone.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the ccm filters.
         :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the Entity.
@@ -470,7 +474,7 @@ class PlatformCcmFilters(pulumi.CustomResource):
     @pulumi.getter(name="filterVisibility")
     def filter_visibility(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        This indicates visibility of filters. By default, everyone can view this filter..
+        This indicates visibility of filters, by default it is Everyone.
         """
         return pulumi.get(self, "filter_visibility")
 

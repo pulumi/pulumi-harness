@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkspaceConnector {
     /**
-     * @return Unique identifier of the connector.
+     * @return Connector Ref is the reference to the connector
      * 
      */
     private String connectorRef;
     /**
-     * @return Type indicates the type of the connector. Currently we support aws, azure, gcp.
+     * @return Type is the connector type of the connector. Supported types: aws, azure, gcp
      * 
      */
     private String type;
 
     private GetWorkspaceConnector() {}
     /**
-     * @return Unique identifier of the connector.
+     * @return Connector Ref is the reference to the connector
      * 
      */
     public String connectorRef() {
         return this.connectorRef;
     }
     /**
-     * @return Type indicates the type of the connector. Currently we support aws, azure, gcp.
+     * @return Type is the connector type of the connector. Supported types: aws, azure, gcp
      * 
      */
     public String type() {

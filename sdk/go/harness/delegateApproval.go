@@ -49,6 +49,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // Import the status of the delegate approval.
 //
 // ```sh

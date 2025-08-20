@@ -18,14 +18,14 @@ public final class ConnectorPdcHostArgs extends com.pulumi.resources.ResourceArg
     public static final ConnectorPdcHostArgs Empty = new ConnectorPdcHostArgs();
 
     /**
-     * Host attributes with values. e.g. type, region, name, ip, etc.
+     * attributes for current host
      * 
      */
     @Import(name="attributes")
     private @Nullable Output<Map<String,String>> attributes;
 
     /**
-     * @return Host attributes with values. e.g. type, region, name, ip, etc.
+     * @return attributes for current host
      * 
      */
     public Optional<Output<Map<String,String>>> attributes() {
@@ -33,14 +33,14 @@ public final class ConnectorPdcHostArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Hostname e.g. 87.23.66.11:80
+     * hostname
      * 
      */
     @Import(name="hostname", required=true)
     private Output<String> hostname;
 
     /**
-     * @return Hostname e.g. 87.23.66.11:80
+     * @return hostname
      * 
      */
     public Output<String> hostname() {
@@ -73,7 +73,7 @@ public final class ConnectorPdcHostArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param attributes Host attributes with values. e.g. type, region, name, ip, etc.
+         * @param attributes attributes for current host
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ConnectorPdcHostArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param attributes Host attributes with values. e.g. type, region, name, ip, etc.
+         * @param attributes attributes for current host
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ConnectorPdcHostArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hostname Hostname e.g. 87.23.66.11:80
+         * @param hostname hostname
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ConnectorPdcHostArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hostname Hostname e.g. 87.23.66.11:80
+         * @param hostname hostname
          * 
          * @return builder
          * 

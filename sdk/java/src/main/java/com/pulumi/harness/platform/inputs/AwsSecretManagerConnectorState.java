@@ -170,14 +170,14 @@ public final class AwsSecretManagerConnectorState extends com.pulumi.resources.R
     }
 
     /**
-     * recovery duration in days in AWS Secrets Manager.
+     * Recovery duration in days in AWS Secrets Manager.
      * 
      */
     @Import(name="recoveryWindowInDays")
     private @Nullable Output<Integer> recoveryWindowInDays;
 
     /**
-     * @return recovery duration in days in AWS Secrets Manager.
+     * @return Recovery duration in days in AWS Secrets Manager.
      * 
      */
     public Optional<Output<Integer>> recoveryWindowInDays() {
@@ -503,7 +503,7 @@ public final class AwsSecretManagerConnectorState extends com.pulumi.resources.R
         }
 
         /**
-         * @param recoveryWindowInDays recovery duration in days in AWS Secrets Manager.
+         * @param recoveryWindowInDays Recovery duration in days in AWS Secrets Manager.
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class AwsSecretManagerConnectorState extends com.pulumi.resources.R
         }
 
         /**
-         * @param recoveryWindowInDays recovery duration in days in AWS Secrets Manager.
+         * @param recoveryWindowInDays Recovery duration in days in AWS Secrets Manager.
          * 
          * @return builder
          * 

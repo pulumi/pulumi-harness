@@ -177,6 +177,8 @@ class Kubernetes(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import using the Harness kubernetes cloud provider id.
 
         ```sh
@@ -200,6 +202,8 @@ class Kubernetes(pulumi.CustomResource):
         Resource for creating a Kubernetes cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import using the Harness kubernetes cloud provider id.
 

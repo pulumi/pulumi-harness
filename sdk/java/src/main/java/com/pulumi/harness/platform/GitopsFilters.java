@@ -15,194 +15,104 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating and managing Harness GitOps Filters.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.GitopsFilters;
- * import com.pulumi.harness.platform.GitopsFiltersArgs;
- * import static com.pulumi.codegen.internal.Serialization.*;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new GitopsFilters("example", GitopsFiltersArgs.builder()
- *             .name("example_filter")
- *             .orgId("your_org_id")
- *             .projectId("your_project_id")
- *             .identifier("example_filter")
- *             .type("APPLICATION")
- *             .filterProperties(serializeJson(
- *                 jsonObject(
- *                     jsonProperty("agentIdentifiers", jsonArray("your_agent_identifier")),
- *                     jsonProperty("clusters", jsonArray("https://your-cluster-url")),
- *                     jsonProperty("healthStatus", jsonArray(
- *                         "Unknown", 
- *                         "Progressing", 
- *                         "Suspended", 
- *                         "Healthy", 
- *                         "Degraded", 
- *                         "Missing"
- *                     )),
- *                     jsonProperty("namespaces", jsonArray("your-namespace")),
- *                     jsonProperty("repositories", jsonArray("your-repo")),
- *                     jsonProperty("syncStatus", jsonArray(
- *                         "OutOfSync", 
- *                         "Synced", 
- *                         "Unknown"
- *                     ))
- *                 )))
- *             .filterVisibility("OnlyCreator")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Filter Properties Reference
- * 
- * The `filter_properties` field supports the following filter types:
- * 
- * &gt; **Note:** The following filter properties are only valid for filter type &#34;APPLICATION&#34;. Different filter types may support different properties.
- * 
- * * `agentIdentifiers` - Array of GitOps agent identifiers to filter by.
- * * `clusters` - Array of cluster URLs to filter by.
- * * `healthStatus` - Array of health status values to filter by. Valid values include: &#34;Unknown&#34;, &#34;Progressing&#34;, &#34;Suspended&#34;, &#34;Healthy&#34;, &#34;Degraded&#34;, &#34;Missing&#34;.
- * * `namespaces` - Array of Kubernetes namespaces to filter by.
- * * `repositories` - Array of Git repository URLs to filter by.
- * * `syncStatus` - Array of sync status values to filter by. Valid values include: &#34;OutOfSync&#34;, &#34;Synced&#34;, &#34;Unknown&#34;.
- * 
- * ## Schema Attributes Reference
- * 
- * * `id` - Identifier of the GitOps filter.
- * 
- * ## Import
- * 
- * GitOps filters can be imported using a composite ID formed of organization ID, project ID, filter ID, and filter type.
- * 
- * bash
- * 
- * Format: &lt;org_id&gt;/&lt;project_id&gt;/&lt;filter_id&gt;/&lt;filter_type&gt;
- * 
- * ```sh
- * $ pulumi import harness:platform/gitopsFilters:GitopsFilters example org_id/project_id/filter_id/APPLICATION
- * ```
+ * Resource for creating Harness GitOps Filters.
  * 
  */
 @ResourceType(type="harness:platform/gitopsFilters:GitopsFilters")
 public class GitopsFilters extends com.pulumi.resources.CustomResource {
     /**
-     * Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})`.
+     * Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})
      * 
      */
     @Export(name="filterProperties", refs={String.class}, tree="[0]")
     private Output<String> filterProperties;
 
     /**
-     * @return Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})`.
+     * @return Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})
      * 
      */
     public Output<String> filterProperties() {
         return this.filterProperties;
     }
     /**
-     * Visibility of the filter. Valid values are &#34;EveryOne&#34; and &#34;OnlyCreator&#34;. Default is &#34;EveryOne&#34;.
+     * This indicates visibility of filters, by default it is Everyone.
      * 
      */
     @Export(name="filterVisibility", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filterVisibility;
 
     /**
-     * @return Visibility of the filter. Valid values are &#34;EveryOne&#34; and &#34;OnlyCreator&#34;. Default is &#34;EveryOne&#34;.
+     * @return This indicates visibility of filters, by default it is Everyone.
      * 
      */
     public Output<Optional<String>> filterVisibility() {
         return Codegen.optional(this.filterVisibility);
     }
     /**
-     * Unique identifier of the GitOps filter.
+     * Unique identifier of the resource.
      * 
      */
     @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return Unique identifier of the GitOps filter.
+     * @return Unique identifier of the resource.
      * 
      */
     public Output<String> identifier() {
         return this.identifier;
     }
     /**
-     * Name of the GitOps filter.
+     * Name of the GitOps filters.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the GitOps filter.
+     * @return Name of the GitOps filters.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Organization identifier for the GitOps filter.
+     * Organization Identifier for the Entity.
      * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
-     * @return Organization identifier for the GitOps filter.
+     * @return Organization Identifier for the Entity.
      * 
      */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Project identifier for the GitOps filter.
+     * Project Identifier for the Entity.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return Project identifier for the GitOps filter.
+     * @return Project Identifier for the Entity.
      * 
      */
     public Output<String> projectId() {
         return this.projectId;
     }
     /**
-     * Type of GitOps filter. Currently, only &#34;APPLICATION&#34; is supported.
+     * Type of GitOps filters.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of GitOps filter. Currently, only &#34;APPLICATION&#34; is supported.
+     * @return Type of GitOps filters.
      * 
      */
     public Output<String> type() {

@@ -93,15 +93,27 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetServiceOverridesV2Args : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Contains parameters related to Git Experience for remote overrides
+        /// </summary>
         [Input("gitDetails")]
         public Inputs.GetServiceOverridesV2GitDetailsArgs? GitDetails { get; set; }
 
+        /// <summary>
+        /// The identifier of the override entity.
+        /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
@@ -113,15 +125,27 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetServiceOverridesV2InvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Contains parameters related to Git Experience for remote overrides
+        /// </summary>
         [Input("gitDetails")]
         public Input<Inputs.GetServiceOverridesV2GitDetailsInputArgs>? GitDetails { get; set; }
 
+        /// <summary>
+        /// The identifier of the override entity.
+        /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
@@ -135,19 +159,49 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetServiceOverridesV2Result
     {
+        /// <summary>
+        /// The cluster ID to which the override entity is associated.
+        /// </summary>
         public readonly string ClusterId;
+        /// <summary>
+        /// The environment ID to which the override entity is associated.
+        /// </summary>
         public readonly string EnvId;
+        /// <summary>
+        /// Contains parameters related to Git Experience for remote overrides
+        /// </summary>
         public readonly Outputs.GetServiceOverridesV2GitDetailsResult GitDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The identifier of the override entity.
+        /// </summary>
         public readonly string Identifier;
+        /// <summary>
+        /// The infrastructure ID to which the override entity is associated.
+        /// </summary>
         public readonly string InfraId;
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         public readonly string? OrgId;
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         public readonly string? ProjectId;
+        /// <summary>
+        /// The service ID to which the override entity is associated.
+        /// </summary>
         public readonly string ServiceId;
+        /// <summary>
+        /// The type of the override entity.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The yaml of the override entity's spec property.
+        /// </summary>
         public readonly string Yaml;
 
         [OutputConstructor]

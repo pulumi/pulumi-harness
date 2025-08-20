@@ -138,6 +138,8 @@ def get_project(identifier: Optional[_builtins.str] = None,
                 org_id: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
+    Data source for retrieving a Harness project.
+
     ## Example Usage
 
     ```python
@@ -176,6 +178,8 @@ def get_project_output(identifier: Optional[pulumi.Input[Optional[_builtins.str]
                        org_id: Optional[pulumi.Input[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
+    Data source for retrieving a Harness project.
+
     ## Example Usage
 
     ```python

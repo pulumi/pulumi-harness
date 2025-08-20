@@ -12,6 +12,35 @@ import (
 )
 
 // Data source for retrieving IACM default pipelines.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupIacmDefaultPipeline(ctx, &platform.LookupIacmDefaultPipelineArgs{
+//				OrgId:           test.Id,
+//				ProjectId:       testHarnessPlatformProject.Id,
+//				ProvisionerType: "terraform",
+//				Operation:       "plan",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupIacmDefaultPipeline(ctx *pulumi.Context, args *LookupIacmDefaultPipelineArgs, opts ...pulumi.InvokeOption) (*LookupIacmDefaultPipelineResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIacmDefaultPipelineResult

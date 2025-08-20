@@ -20,7 +20,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for managing infrastructure Variable Sets
+ * Resource for managing Variable Sets
  * 
  * ## Example Usage
  * 
@@ -111,30 +111,38 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ```sh
- * $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example &lt;varset_id&gt;
- * ```
+ * The `pulumi import` command can be used, for example:
+ * 
+ * Import account level variable set
  * 
  * ```sh
- * $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example &lt;org_id&gt;/&lt;varset_id&gt;
+ * $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example &lt;variable_set_id&gt;
  * ```
  * 
+ * Import org level variable set
+ * 
  * ```sh
- * $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example &lt;org_id&gt;/&lt;project_id&gt;/&lt;varset_id&gt;
+ * $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example &lt;ord_id&gt;/&lt;variable_set_id&gt;
+ * ```
+ * 
+ * Import project level variable set
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example &lt;org_id&gt;/&lt;project_id&gt;/&lt;variable_set_id&gt;
  * ```
  * 
  */
 @ResourceType(type="harness:platform/infraVariableSet:InfraVariableSet")
 public class InfraVariableSet extends com.pulumi.resources.CustomResource {
     /**
-     * Provider connector configured on the variable set
+     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      * 
      */
     @Export(name="connectors", refs={List.class,InfraVariableSetConnector.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InfraVariableSetConnector>> connectors;
 
     /**
-     * @return Provider connector configured on the variable set
+     * @return Provider connectors configured on the Variable Set. Only one connector of a type is supported
      * 
      */
     public Output<Optional<List<InfraVariableSetConnector>>> connectors() {
@@ -155,14 +163,14 @@ public class InfraVariableSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Environment variables configured on the variable set
+     * Environment variables configured on the Variable Set
      * 
      */
     @Export(name="environmentVariables", refs={List.class,InfraVariableSetEnvironmentVariable.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InfraVariableSetEnvironmentVariable>> environmentVariables;
 
     /**
-     * @return Environment variables configured on the variable set
+     * @return Environment variables configured on the Variable Set
      * 
      */
     public Output<Optional<List<InfraVariableSetEnvironmentVariable>>> environmentVariables() {
