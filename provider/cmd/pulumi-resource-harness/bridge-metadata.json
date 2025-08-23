@@ -1743,6 +1743,31 @@
                     }
                 }
             },
+            "harness_platform_default_notification_template_set": {
+                "current": "harness:platform/defaultNotificationTemplateSet:DefaultNotificationTemplateSet",
+                "fields": {
+                    "event_template_configuration_set": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "notification_events": {
+                                    "maxItemsOne": false
+                                },
+                                "template": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "variables": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "harness_platform_delegatetoken": {
                 "current": "harness:platform/delegatetoken:Delegatetoken"
             },
@@ -13619,6 +13644,9 @@
                                                     }
                                                 }
                                             },
+                                            "go_template_options": {
+                                                "maxItemsOne": false
+                                            },
                                             "ignore_application_differences": {
                                                 "maxItemsOne": false,
                                                 "elem": {
@@ -16734,6 +16762,31 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_default_notification_template_set": {
+                "current": "harness:platform/getDefaultNotificationTemplateSet:getDefaultNotificationTemplateSet",
+                "fields": {
+                    "event_template_configuration_set": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "notification_events": {
+                                    "maxItemsOne": false
+                                },
+                                "template": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "variables": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
