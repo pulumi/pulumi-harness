@@ -63,6 +63,8 @@ import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
 import com.pulumi.harness.platform.inputs.GetDbInstancePlainArgs;
 import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
 import com.pulumi.harness.platform.inputs.GetDbSchemaPlainArgs;
+import com.pulumi.harness.platform.inputs.GetDefaultNotificationTemplateSetArgs;
+import com.pulumi.harness.platform.inputs.GetDefaultNotificationTemplateSetPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
 import com.pulumi.harness.platform.inputs.GetDelegatetokenPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDockerConnectorArgs;
@@ -271,6 +273,7 @@ import com.pulumi.harness.platform.outputs.GetDashboardsResult;
 import com.pulumi.harness.platform.outputs.GetDatadogConnectorResult;
 import com.pulumi.harness.platform.outputs.GetDbInstanceResult;
 import com.pulumi.harness.platform.outputs.GetDbSchemaResult;
+import com.pulumi.harness.platform.outputs.GetDefaultNotificationTemplateSetResult;
 import com.pulumi.harness.platform.outputs.GetDelegatetokenResult;
 import com.pulumi.harness.platform.outputs.GetDockerConnectorResult;
 import com.pulumi.harness.platform.outputs.GetDynatraceConnectorResult;
@@ -4811,6 +4814,41 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetDbSchemaResult> getDbSchemaPlain(GetDbSchemaPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getDbSchema:getDbSchema", TypeShape.of(GetDbSchemaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Default Notification Template Set.
+     * 
+     */
+    public static Output<GetDefaultNotificationTemplateSetResult> getDefaultNotificationTemplateSet(GetDefaultNotificationTemplateSetArgs args) {
+        return getDefaultNotificationTemplateSet(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Default Notification Template Set.
+     * 
+     */
+    public static CompletableFuture<GetDefaultNotificationTemplateSetResult> getDefaultNotificationTemplateSetPlain(GetDefaultNotificationTemplateSetPlainArgs args) {
+        return getDefaultNotificationTemplateSetPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Default Notification Template Set.
+     * 
+     */
+    public static Output<GetDefaultNotificationTemplateSetResult> getDefaultNotificationTemplateSet(GetDefaultNotificationTemplateSetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDefaultNotificationTemplateSet:getDefaultNotificationTemplateSet", TypeShape.of(GetDefaultNotificationTemplateSetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Default Notification Template Set.
+     * 
+     */
+    public static Output<GetDefaultNotificationTemplateSetResult> getDefaultNotificationTemplateSet(GetDefaultNotificationTemplateSetArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDefaultNotificationTemplateSet:getDefaultNotificationTemplateSet", TypeShape.of(GetDefaultNotificationTemplateSetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Default Notification Template Set.
+     * 
+     */
+    public static CompletableFuture<GetDefaultNotificationTemplateSetResult> getDefaultNotificationTemplateSetPlain(GetDefaultNotificationTemplateSetPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getDefaultNotificationTemplateSet:getDefaultNotificationTemplateSet", TypeShape.of(GetDefaultNotificationTemplateSetResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness delegate Token.

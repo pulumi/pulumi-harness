@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,36 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
      */
     public Optional<Output<Map<String,String>>> commonLabels() {
         return Optional.ofNullable(this.commonLabels);
+    }
+
+    /**
+     * Indicates if to force applying common annotations to resources for kustomize apps.
+     * 
+     */
+    @Import(name="forceCommonAnnotations")
+    private @Nullable Output<Boolean> forceCommonAnnotations;
+
+    /**
+     * @return Indicates if to force applying common annotations to resources for kustomize apps.
+     * 
+     */
+    public Optional<Output<Boolean>> forceCommonAnnotations() {
+        return Optional.ofNullable(this.forceCommonAnnotations);
+    }
+
+    /**
+     * Indicates if to force apply common labels to resources for kustomize apps.
+     * 
+     */
+    @Import(name="forceCommonLabels")
+    private @Nullable Output<Boolean> forceCommonLabels;
+
+    /**
+     * @return Indicates if to force apply common labels to resources for kustomize apps.
+     * 
+     */
+    public Optional<Output<Boolean>> forceCommonLabels() {
+        return Optional.ofNullable(this.forceCommonLabels);
     }
 
     /**
@@ -112,6 +143,8 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
     private GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorListTemplateSpecSourceKustomizeArgs(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorListTemplateSpecSourceKustomizeArgs $) {
         this.commonAnnotations = $.commonAnnotations;
         this.commonLabels = $.commonLabels;
+        this.forceCommonAnnotations = $.forceCommonAnnotations;
+        this.forceCommonLabels = $.forceCommonLabels;
         this.images = $.images;
         this.namePrefix = $.namePrefix;
         this.nameSuffix = $.nameSuffix;
@@ -176,6 +209,48 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
          */
         public Builder commonLabels(Map<String,String> commonLabels) {
             return commonLabels(Output.of(commonLabels));
+        }
+
+        /**
+         * @param forceCommonAnnotations Indicates if to force applying common annotations to resources for kustomize apps.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceCommonAnnotations(@Nullable Output<Boolean> forceCommonAnnotations) {
+            $.forceCommonAnnotations = forceCommonAnnotations;
+            return this;
+        }
+
+        /**
+         * @param forceCommonAnnotations Indicates if to force applying common annotations to resources for kustomize apps.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceCommonAnnotations(Boolean forceCommonAnnotations) {
+            return forceCommonAnnotations(Output.of(forceCommonAnnotations));
+        }
+
+        /**
+         * @param forceCommonLabels Indicates if to force apply common labels to resources for kustomize apps.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceCommonLabels(@Nullable Output<Boolean> forceCommonLabels) {
+            $.forceCommonLabels = forceCommonLabels;
+            return this;
+        }
+
+        /**
+         * @param forceCommonLabels Indicates if to force apply common labels to resources for kustomize apps.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceCommonLabels(Boolean forceCommonLabels) {
+            return forceCommonLabels(Output.of(forceCommonLabels));
         }
 
         /**

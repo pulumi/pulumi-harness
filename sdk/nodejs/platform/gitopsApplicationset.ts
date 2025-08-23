@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  *         },
  *         spec: {
  *             goTemplate: true,
+ *             goTemplateOptions: ["missingkey=error"],
  *             generators: [{
  *                 clusters: [{
  *                     enabled: true,

@@ -13,6 +13,334 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSync struct {
+	// Configuration used to define which applications to include in each stage of the rolling sync. All Applications in each group must become Healthy before the ApplicationSet controller will proceed to update the next group of Applications.
+	Steps []GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStep `pulumi:"steps"`
+}
+
+// GitopsApplicationsetApplicationsetSpecStrategyRollingSyncInput is an input type that accepts GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArgs and GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecStrategyRollingSyncInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArgs{...}
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput
+	ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArgs struct {
+	// Configuration used to define which applications to include in each stage of the rolling sync. All Applications in each group must become Healthy before the ApplicationSet controller will proceed to update the next group of Applications.
+	Steps GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayInput `pulumi:"steps"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSync)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArgs) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArgs) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArray and GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArray{ GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArgs{...} }
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArray []GitopsApplicationsetApplicationsetSpecStrategyRollingSyncInput
+
+func (GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecStrategyRollingSync)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArray) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArray) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSync)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput {
+	return o
+}
+
+// Configuration used to define which applications to include in each stage of the rolling sync. All Applications in each group must become Healthy before the ApplicationSet controller will proceed to update the next group of Applications.
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput) Steps() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecStrategyRollingSync) []GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStep {
+		return v.Steps
+	}).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecStrategyRollingSync)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecStrategyRollingSync {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecStrategyRollingSync)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStep struct {
+	// A list of label selector requirements. The requirements are ANDed.
+	MatchExpressions []GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpression `pulumi:"matchExpressions"`
+	// Maximum number of simultaneous Application updates in a group. Supports both integer and percentage string values (rounds down, but floored at 1 Application for >0%). Default is 100%, unbounded.
+	MaxUpdate *string `pulumi:"maxUpdate"`
+}
+
+// GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepInput is an input type that accepts GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArgs and GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArgs{...}
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput
+	ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArgs struct {
+	// A list of label selector requirements. The requirements are ANDed.
+	MatchExpressions GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayInput `pulumi:"matchExpressions"`
+	// Maximum number of simultaneous Application updates in a group. Supports both integer and percentage string values (rounds down, but floored at 1 Application for >0%). Default is 100%, unbounded.
+	MaxUpdate pulumi.StringPtrInput `pulumi:"maxUpdate"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStep)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArgs) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArgs) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArray and GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArray{ GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArgs{...} }
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArray []GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepInput
+
+func (GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStep)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArray) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArray) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStep)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput {
+	return o
+}
+
+// A list of label selector requirements. The requirements are ANDed.
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput) MatchExpressions() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStep) []GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpression {
+		return v.MatchExpressions
+	}).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput)
+}
+
+// Maximum number of simultaneous Application updates in a group. Supports both integer and percentage string values (rounds down, but floored at 1 Application for >0%). Default is 100%, unbounded.
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput) MaxUpdate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStep) *string { return v.MaxUpdate }).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStep)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStep {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStep)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpression struct {
+	// The label key that the selector applies to.
+	Key *string `pulumi:"key"`
+	// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+	Operator *string `pulumi:"operator"`
+	// An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+	Values []string `pulumi:"values"`
+}
+
+// GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionInput is an input type that accepts GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArgs and GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArgs{...}
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput
+	ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArgs struct {
+	// The label key that the selector applies to.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpression)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArgs) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArgs) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArray and GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArray{ GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArgs{...} }
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArray []GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionInput
+
+func (GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpression)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArray) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArray) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpression)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput {
+	return o
+}
+
+// The label key that the selector applies to.
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpression) *string {
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// A key's relationship to a set of values. Valid operators ard `In`, `NotIn`, `Exists` and `DoesNotExist`.
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpression) *string {
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of string values. If the operator is `In` or `NotIn`, the values array must be non-empty. If the operator is `Exists` or `DoesNotExist`, the values array must be empty. This array is replaced during a strategic merge patch.
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpression) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpression)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput) ToGitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpression {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpression)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput)
+}
+
 type GitopsApplicationsetApplicationsetSpecSyncPolicy struct {
 	// Represents the policy applied on the generated applications. Possible values are create-only, create-update, create-delete, and sync.
 	ApplicationsSync *string `pulumi:"applicationsSync"`
@@ -2555,6 +2883,10 @@ type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize struct {
 	CommonAnnotations map[string]string `pulumi:"commonAnnotations"`
 	// List of additional labels to add to rendered manifests.
 	CommonLabels map[string]string `pulumi:"commonLabels"`
+	// Indicates if to force applying common annotations to resources for kustomize apps.
+	ForceCommonAnnotations *bool `pulumi:"forceCommonAnnotations"`
+	// Indicates if to force apply common labels to resources for kustomize apps.
+	ForceCommonLabels *bool `pulumi:"forceCommonLabels"`
 	// List of Kustomize image override specifications.
 	Images []string `pulumi:"images"`
 	// Prefix appended to resources for Kustomize apps.
@@ -2581,6 +2913,10 @@ type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizeArgs struc
 	CommonAnnotations pulumi.StringMapInput `pulumi:"commonAnnotations"`
 	// List of additional labels to add to rendered manifests.
 	CommonLabels pulumi.StringMapInput `pulumi:"commonLabels"`
+	// Indicates if to force applying common annotations to resources for kustomize apps.
+	ForceCommonAnnotations pulumi.BoolPtrInput `pulumi:"forceCommonAnnotations"`
+	// Indicates if to force apply common labels to resources for kustomize apps.
+	ForceCommonLabels pulumi.BoolPtrInput `pulumi:"forceCommonLabels"`
 	// List of Kustomize image override specifications.
 	Images pulumi.StringArrayInput `pulumi:"images"`
 	// Prefix appended to resources for Kustomize apps.
@@ -2682,6 +3018,20 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizeOutput)
 	}).(pulumi.StringMapOutput)
 }
 
+// Indicates if to force applying common annotations to resources for kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizeOutput) ForceCommonAnnotations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize) *bool {
+		return v.ForceCommonAnnotations
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to force apply common labels to resources for kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizeOutput) ForceCommonLabels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize) *bool {
+		return v.ForceCommonLabels
+	}).(pulumi.BoolPtrOutput)
+}
+
 // List of Kustomize image override specifications.
 func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizeOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize) []string { return v.Images }).(pulumi.StringArrayOutput)
@@ -2744,6 +3094,26 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizePtrOutp
 		}
 		return v.CommonLabels
 	}).(pulumi.StringMapOutput)
+}
+
+// Indicates if to force applying common annotations to resources for kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizePtrOutput) ForceCommonAnnotations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceCommonAnnotations
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to force apply common labels to resources for kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizePtrOutput) ForceCommonLabels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceCommonLabels
+	}).(pulumi.BoolPtrOutput)
 }
 
 // List of Kustomize image override specifications.
@@ -22275,7 +22645,7 @@ type GetAzureCloudCostConnectorBillingExportSpec2 struct {
 	ReportName string `pulumi:"reportName"`
 	// Name of the storage account.
 	StorageAccountName string `pulumi:"storageAccountName"`
-	// Subsription id.
+	// Subsription Id.
 	SubscriptionId string `pulumi:"subscriptionId"`
 }
 
@@ -22301,7 +22671,7 @@ type GetAzureCloudCostConnectorBillingExportSpec2Args struct {
 	ReportName pulumi.StringInput `pulumi:"reportName"`
 	// Name of the storage account.
 	StorageAccountName pulumi.StringInput `pulumi:"storageAccountName"`
-	// Subsription id.
+	// Subsription Id.
 	SubscriptionId pulumi.StringInput `pulumi:"subscriptionId"`
 }
 
@@ -22381,7 +22751,7 @@ func (o GetAzureCloudCostConnectorBillingExportSpec2Output) StorageAccountName()
 	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec2) string { return v.StorageAccountName }).(pulumi.StringOutput)
 }
 
-// Subsription id.
+// Subsription Id.
 func (o GetAzureCloudCostConnectorBillingExportSpec2Output) SubscriptionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec2) string { return v.SubscriptionId }).(pulumi.StringOutput)
 }
@@ -26758,6 +27128,298 @@ func (o GetDbSchemaSchemaSourceArrayOutput) Index(i pulumi.IntInput) GetDbSchema
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbSchemaSchemaSource {
 		return vs[0].([]GetDbSchemaSchemaSource)[vs[1].(int)]
 	}).(GetDbSchemaSchemaSourceOutput)
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSet struct {
+	// List of notification events like PIPELINE_START
+	NotificationEvents []string `pulumi:"notificationEvents"`
+	// Template reference configuration
+	Template GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate `pulumi:"template"`
+}
+
+// GetDefaultNotificationTemplateSetEventTemplateConfigurationSetInput is an input type that accepts GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs and GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput values.
+// You can construct a concrete instance of `GetDefaultNotificationTemplateSetEventTemplateConfigurationSetInput` via:
+//
+//	GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs{...}
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetInput interface {
+	pulumi.Input
+
+	ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput
+	ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutputWithContext(context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs struct {
+	// List of notification events like PIPELINE_START
+	NotificationEvents pulumi.StringArrayInput `pulumi:"notificationEvents"`
+	// Template reference configuration
+	Template GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateInput `pulumi:"template"`
+}
+
+func (GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSet)(nil)).Elem()
+}
+
+func (i GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput {
+	return i.ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutputWithContext(context.Background())
+}
+
+func (i GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutputWithContext(ctx context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput)
+}
+
+// GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayInput is an input type that accepts GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArray and GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput values.
+// You can construct a concrete instance of `GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayInput` via:
+//
+//	GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArray{ GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs{...} }
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayInput interface {
+	pulumi.Input
+
+	ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput
+	ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutputWithContext(context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArray []GetDefaultNotificationTemplateSetEventTemplateConfigurationSetInput
+
+func (GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefaultNotificationTemplateSetEventTemplateConfigurationSet)(nil)).Elem()
+}
+
+func (i GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArray) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput {
+	return i.ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArray) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutputWithContext(ctx context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput)
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput struct{ *pulumi.OutputState }
+
+func (GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSet)(nil)).Elem()
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput {
+	return o
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutputWithContext(ctx context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput {
+	return o
+}
+
+// List of notification events like PIPELINE_START
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput) NotificationEvents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDefaultNotificationTemplateSetEventTemplateConfigurationSet) []string {
+		return v.NotificationEvents
+	}).(pulumi.StringArrayOutput)
+}
+
+// Template reference configuration
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput) Template() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput {
+	return o.ApplyT(func(v GetDefaultNotificationTemplateSetEventTemplateConfigurationSet) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate {
+		return v.Template
+	}).(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput)
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefaultNotificationTemplateSetEventTemplateConfigurationSet)(nil)).Elem()
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput {
+	return o
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutputWithContext(ctx context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput {
+	return o
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput) Index(i pulumi.IntInput) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefaultNotificationTemplateSetEventTemplateConfigurationSet {
+		return vs[0].([]GetDefaultNotificationTemplateSetEventTemplateConfigurationSet)[vs[1].(int)]
+	}).(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput)
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate struct {
+	TemplateRef string `pulumi:"templateRef"`
+	// List of variables passed to the template
+	Variables    []GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable `pulumi:"variables"`
+	VersionLabel string                                                                           `pulumi:"versionLabel"`
+}
+
+// GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateInput is an input type that accepts GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateArgs and GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput values.
+// You can construct a concrete instance of `GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateInput` via:
+//
+//	GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateArgs{...}
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateInput interface {
+	pulumi.Input
+
+	ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput
+	ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutputWithContext(context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateArgs struct {
+	TemplateRef pulumi.StringInput `pulumi:"templateRef"`
+	// List of variables passed to the template
+	Variables    GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayInput `pulumi:"variables"`
+	VersionLabel pulumi.StringInput                                                                       `pulumi:"versionLabel"`
+}
+
+func (GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate)(nil)).Elem()
+}
+
+func (i GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateArgs) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput {
+	return i.ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutputWithContext(context.Background())
+}
+
+func (i GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateArgs) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutputWithContext(ctx context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput)
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate)(nil)).Elem()
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput {
+	return o
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutputWithContext(ctx context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput {
+	return o
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput) TemplateRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate) string {
+		return v.TemplateRef
+	}).(pulumi.StringOutput)
+}
+
+// List of variables passed to the template
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput) Variables() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput {
+	return o.ApplyT(func(v GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate) []GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable {
+		return v.Variables
+	}).(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput)
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput) VersionLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate) string {
+		return v.VersionLabel
+	}).(pulumi.StringOutput)
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable struct {
+	Name  string `pulumi:"name"`
+	Type  string `pulumi:"type"`
+	Value string `pulumi:"value"`
+}
+
+// GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableInput is an input type that accepts GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArgs and GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput values.
+// You can construct a concrete instance of `GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableInput` via:
+//
+//	GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArgs{...}
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableInput interface {
+	pulumi.Input
+
+	ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput
+	ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutputWithContext(context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArgs struct {
+	Name  pulumi.StringInput `pulumi:"name"`
+	Type  pulumi.StringInput `pulumi:"type"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable)(nil)).Elem()
+}
+
+func (i GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArgs) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput {
+	return i.ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutputWithContext(context.Background())
+}
+
+func (i GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArgs) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutputWithContext(ctx context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput)
+}
+
+// GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayInput is an input type that accepts GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArray and GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput values.
+// You can construct a concrete instance of `GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayInput` via:
+//
+//	GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArray{ GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArgs{...} }
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayInput interface {
+	pulumi.Input
+
+	ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput
+	ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutputWithContext(context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArray []GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableInput
+
+func (GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable)(nil)).Elem()
+}
+
+func (i GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArray) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput {
+	return i.ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArray) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutputWithContext(ctx context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput)
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput struct{ *pulumi.OutputState }
+
+func (GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable)(nil)).Elem()
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput {
+	return o
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutputWithContext(ctx context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput {
+	return o
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable)(nil)).Elem()
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput() GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput {
+	return o
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput) ToGetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutputWithContext(ctx context.Context) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput {
+	return o
+}
+
+func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput) Index(i pulumi.IntInput) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable {
+		return vs[0].([]GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable)[vs[1].(int)]
+	}).(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput)
 }
 
 type GetDockerConnectorCredential struct {
@@ -45298,6 +45960,12 @@ func (o GetWorkspaceTerraformVariableFileArrayOutput) Index(i pulumi.IntInput) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecSyncPolicyInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecSyncPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecSyncPolicyPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecSyncPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateArgs{})
@@ -45645,6 +46313,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaChangelogScriptInput)(nil)).Elem(), GetDbSchemaChangelogScriptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaSchemaSourceInput)(nil)).Elem(), GetDbSchemaSchemaSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaSchemaSourceArrayInput)(nil)).Elem(), GetDbSchemaSchemaSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSetInput)(nil)).Elem(), GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayInput)(nil)).Elem(), GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateInput)(nil)).Elem(), GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableInput)(nil)).Elem(), GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayInput)(nil)).Elem(), GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerConnectorCredentialInput)(nil)).Elem(), GetDockerConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerConnectorCredentialArrayInput)(nil)).Elem(), GetDockerConnectorCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticsearchConnectorApiTokenInput)(nil)).Elem(), GetElasticsearchConnectorApiTokenArgs{})
@@ -45936,6 +46609,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArray{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArrayOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpressionArrayOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecSyncPolicyOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateOutput{})
@@ -46283,6 +46962,11 @@ func init() {
 	pulumi.RegisterOutputType(GetDbSchemaChangelogScriptOutput{})
 	pulumi.RegisterOutputType(GetDbSchemaSchemaSourceOutput{})
 	pulumi.RegisterOutputType(GetDbSchemaSchemaSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetOutput{})
+	pulumi.RegisterOutputType(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArrayOutput{})
+	pulumi.RegisterOutputType(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput{})
+	pulumi.RegisterOutputType(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput{})
+	pulumi.RegisterOutputType(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetDockerConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetDockerConnectorCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetElasticsearchConnectorApiTokenOutput{})

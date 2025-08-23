@@ -36,6 +36,18 @@ namespace Pulumi.Harness.Platform.Inputs
             set => _commonLabels = value;
         }
 
+        /// <summary>
+        /// Indicates if to force applying common annotations to resources for kustomize apps.
+        /// </summary>
+        [Input("forceCommonAnnotations")]
+        public Input<bool>? ForceCommonAnnotations { get; set; }
+
+        /// <summary>
+        /// Indicates if to force apply common labels to resources for kustomize apps.
+        /// </summary>
+        [Input("forceCommonLabels")]
+        public Input<bool>? ForceCommonLabels { get; set; }
+
         [Input("images")]
         private InputList<string>? _images;
 

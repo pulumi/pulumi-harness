@@ -12,6 +12,7 @@ import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpec
 import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecSyncPolicyArgs;
 import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateArgs;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -50,6 +51,21 @@ public final class GitopsApplicationsetApplicationsetSpecArgs extends com.pulumi
      */
     public Optional<Output<Boolean>> goTemplate() {
         return Optional.ofNullable(this.goTemplate);
+    }
+
+    /**
+     * Optional list of go templating options, see https://pkg.go.dev/text/template#Template.Optional. This is only relevant if `goTemplate` is true
+     * 
+     */
+    @Import(name="goTemplateOptions")
+    private @Nullable Output<List<String>> goTemplateOptions;
+
+    /**
+     * @return Optional list of go templating options, see https://pkg.go.dev/text/template#Template.Optional. This is only relevant if `goTemplate` is true
+     * 
+     */
+    public Optional<Output<List<String>>> goTemplateOptions() {
+        return Optional.ofNullable(this.goTemplateOptions);
     }
 
     /**
@@ -117,6 +133,7 @@ public final class GitopsApplicationsetApplicationsetSpecArgs extends com.pulumi
     private GitopsApplicationsetApplicationsetSpecArgs(GitopsApplicationsetApplicationsetSpecArgs $) {
         this.generators = $.generators;
         this.goTemplate = $.goTemplate;
+        this.goTemplateOptions = $.goTemplateOptions;
         this.ignoreApplicationDifferences = $.ignoreApplicationDifferences;
         this.strategy = $.strategy;
         this.syncPolicy = $.syncPolicy;
@@ -191,6 +208,37 @@ public final class GitopsApplicationsetApplicationsetSpecArgs extends com.pulumi
          */
         public Builder goTemplate(Boolean goTemplate) {
             return goTemplate(Output.of(goTemplate));
+        }
+
+        /**
+         * @param goTemplateOptions Optional list of go templating options, see https://pkg.go.dev/text/template#Template.Optional. This is only relevant if `goTemplate` is true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder goTemplateOptions(@Nullable Output<List<String>> goTemplateOptions) {
+            $.goTemplateOptions = goTemplateOptions;
+            return this;
+        }
+
+        /**
+         * @param goTemplateOptions Optional list of go templating options, see https://pkg.go.dev/text/template#Template.Optional. This is only relevant if `goTemplate` is true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder goTemplateOptions(List<String> goTemplateOptions) {
+            return goTemplateOptions(Output.of(goTemplateOptions));
+        }
+
+        /**
+         * @param goTemplateOptions Optional list of go templating options, see https://pkg.go.dev/text/template#Template.Optional. This is only relevant if `goTemplate` is true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder goTemplateOptions(String... goTemplateOptions) {
+            return goTemplateOptions(List.of(goTemplateOptions));
         }
 
         /**

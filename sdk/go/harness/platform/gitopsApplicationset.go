@@ -40,6 +40,9 @@ import (
 //					},
 //					Spec: &platform.GitopsApplicationsetApplicationsetSpecArgs{
 //						GoTemplate: pulumi.Bool(true),
+//						GoTemplateOptions: pulumi.StringArray{
+//							pulumi.String("missingkey=error"),
+//						},
 //						Generators: platform.GitopsApplicationsetApplicationsetSpecGeneratorArray{
 //							&platform.GitopsApplicationsetApplicationsetSpecGeneratorArgs{
 //								Clusters: platform.GitopsApplicationsetApplicationsetSpecGeneratorClusterArray{

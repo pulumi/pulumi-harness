@@ -22,6 +22,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly bool? GoTemplate;
         /// <summary>
+        /// Optional list of go templating options, see https://pkg.go.dev/text/template#Template.Optional. This is only relevant if `goTemplate` is true
+        /// </summary>
+        public readonly ImmutableArray<string> GoTemplateOptions;
+        /// <summary>
         /// Application Set ignoreApplicationDifferences
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsApplicationsetApplicationsetSpecIgnoreApplicationDifference> IgnoreApplicationDifferences;
@@ -44,6 +48,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
             bool? goTemplate,
 
+            ImmutableArray<string> goTemplateOptions,
+
             ImmutableArray<Outputs.GitopsApplicationsetApplicationsetSpecIgnoreApplicationDifference> ignoreApplicationDifferences,
 
             Outputs.GitopsApplicationsetApplicationsetSpecStrategy? strategy,
@@ -54,6 +60,7 @@ namespace Pulumi.Harness.Platform.Outputs
         {
             Generators = generators;
             GoTemplate = goTemplate;
+            GoTemplateOptions = goTemplateOptions;
             IgnoreApplicationDifferences = ignoreApplicationDifferences;
             Strategy = strategy;
             SyncPolicy = syncPolicy;

@@ -11,6 +11,7 @@ import com.pulumi.harness.platform.outputs.GitopsApplicationsetApplicationsetSpe
 import com.pulumi.harness.platform.outputs.GitopsApplicationsetApplicationsetSpecSyncPolicy;
 import com.pulumi.harness.platform.outputs.GitopsApplicationsetApplicationsetSpecTemplate;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,6 +29,11 @@ public final class GitopsApplicationsetApplicationsetSpec {
      * 
      */
     private @Nullable Boolean goTemplate;
+    /**
+     * @return Optional list of go templating options, see https://pkg.go.dev/text/template#Template.Optional. This is only relevant if `goTemplate` is true
+     * 
+     */
+    private @Nullable List<String> goTemplateOptions;
     /**
      * @return Application Set ignoreApplicationDifferences
      * 
@@ -63,6 +69,13 @@ public final class GitopsApplicationsetApplicationsetSpec {
      */
     public Optional<Boolean> goTemplate() {
         return Optional.ofNullable(this.goTemplate);
+    }
+    /**
+     * @return Optional list of go templating options, see https://pkg.go.dev/text/template#Template.Optional. This is only relevant if `goTemplate` is true
+     * 
+     */
+    public List<String> goTemplateOptions() {
+        return this.goTemplateOptions == null ? List.of() : this.goTemplateOptions;
     }
     /**
      * @return Application Set ignoreApplicationDifferences
@@ -104,6 +117,7 @@ public final class GitopsApplicationsetApplicationsetSpec {
     public static final class Builder {
         private List<GitopsApplicationsetApplicationsetSpecGenerator> generators;
         private @Nullable Boolean goTemplate;
+        private @Nullable List<String> goTemplateOptions;
         private @Nullable List<GitopsApplicationsetApplicationsetSpecIgnoreApplicationDifference> ignoreApplicationDifferences;
         private @Nullable GitopsApplicationsetApplicationsetSpecStrategy strategy;
         private @Nullable GitopsApplicationsetApplicationsetSpecSyncPolicy syncPolicy;
@@ -113,6 +127,7 @@ public final class GitopsApplicationsetApplicationsetSpec {
     	      Objects.requireNonNull(defaults);
     	      this.generators = defaults.generators;
     	      this.goTemplate = defaults.goTemplate;
+    	      this.goTemplateOptions = defaults.goTemplateOptions;
     	      this.ignoreApplicationDifferences = defaults.ignoreApplicationDifferences;
     	      this.strategy = defaults.strategy;
     	      this.syncPolicy = defaults.syncPolicy;
@@ -135,6 +150,15 @@ public final class GitopsApplicationsetApplicationsetSpec {
 
             this.goTemplate = goTemplate;
             return this;
+        }
+        @CustomType.Setter
+        public Builder goTemplateOptions(@Nullable List<String> goTemplateOptions) {
+
+            this.goTemplateOptions = goTemplateOptions;
+            return this;
+        }
+        public Builder goTemplateOptions(String... goTemplateOptions) {
+            return goTemplateOptions(List.of(goTemplateOptions));
         }
         @CustomType.Setter
         public Builder ignoreApplicationDifferences(@Nullable List<GitopsApplicationsetApplicationsetSpecIgnoreApplicationDifference> ignoreApplicationDifferences) {
@@ -169,6 +193,7 @@ public final class GitopsApplicationsetApplicationsetSpec {
             final var _resultValue = new GitopsApplicationsetApplicationsetSpec();
             _resultValue.generators = generators;
             _resultValue.goTemplate = goTemplate;
+            _resultValue.goTemplateOptions = goTemplateOptions;
             _resultValue.ignoreApplicationDifferences = ignoreApplicationDifferences;
             _resultValue.strategy = strategy;
             _resultValue.syncPolicy = syncPolicy;

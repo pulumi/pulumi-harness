@@ -71,6 +71,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DbInstance{}
 	case "harness:platform/dbSchema:DbSchema":
 		r = &DbSchema{}
+	case "harness:platform/defaultNotificationTemplateSet:DefaultNotificationTemplateSet":
+		r = &DefaultNotificationTemplateSet{}
 	case "harness:platform/delegatetoken:Delegatetoken":
 		r = &Delegatetoken{}
 	case "harness:platform/dockerConnector:DockerConnector":
@@ -383,6 +385,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/dbSchema",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/defaultNotificationTemplateSet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

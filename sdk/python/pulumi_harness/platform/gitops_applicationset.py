@@ -239,6 +239,7 @@ class GitopsApplicationset(pulumi.CustomResource):
                 },
                 "spec": {
                     "go_template": True,
+                    "go_template_options": ["missingkey=error"],
                     "generators": [{
                         "clusters": [{
                             "enabled": True,
@@ -304,6 +305,7 @@ class GitopsApplicationset(pulumi.CustomResource):
                 },
                 "spec": {
                     "go_template": True,
+                    "go_template_options": ["missingkey=error"],
                     "generators": [{
                         "clusters": [{
                             "enabled": True,

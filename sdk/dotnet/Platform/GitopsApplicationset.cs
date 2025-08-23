@@ -38,6 +38,10 @@ namespace Pulumi.Harness.Platform
     ///             Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecArgs
     ///             {
     ///                 GoTemplate = true,
+    ///                 GoTemplateOptions = new[]
+    ///                 {
+    ///                     "missingkey=error",
+    ///                 },
     ///                 Generators = new[]
     ///                 {
     ///                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorArgs

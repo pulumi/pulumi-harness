@@ -49,6 +49,15 @@ import (
 //					DirectoryName:      pulumi.String("directory_name"),
 //					ReportName:         pulumi.String("report_name"),
 //					SubscriptionId:     pulumi.String("subscription_id"),
+//					BillingType:        pulumi.String("billing_type"),
+//				},
+//				BillingExportSpec2: &platform.AzureCloudCostConnectorBillingExportSpec2Args{
+//					StorageAccountName: pulumi.String("storage_account_name"),
+//					ContainerName:      pulumi.String("container_name"),
+//					DirectoryName:      pulumi.String("directory_name"),
+//					ReportName:         pulumi.String("report_name"),
+//					SubscriptionId:     pulumi.String("subscription_id"),
+//					BillingType:        pulumi.String("billing_type"),
 //				},
 //			})
 //			if err != nil {
