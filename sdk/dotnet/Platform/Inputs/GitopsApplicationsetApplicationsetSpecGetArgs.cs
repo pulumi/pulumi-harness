@@ -30,6 +30,18 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("goTemplate")]
         public Input<bool>? GoTemplate { get; set; }
 
+        [Input("goTemplateOptions")]
+        private InputList<string>? _goTemplateOptions;
+
+        /// <summary>
+        /// Optional list of go templating options, see https://pkg.go.dev/text/template#Template.Optional. This is only relevant if `goTemplate` is true
+        /// </summary>
+        public InputList<string> GoTemplateOptions
+        {
+            get => _goTemplateOptions ?? (_goTemplateOptions = new InputList<string>());
+            set => _goTemplateOptions = value;
+        }
+
         [Input("ignoreApplicationDifferences")]
         private InputList<Inputs.GitopsApplicationsetApplicationsetSpecIgnoreApplicationDifferenceGetArgs>? _ignoreApplicationDifferences;
 

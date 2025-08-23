@@ -47,6 +47,16 @@ namespace Pulumi.Harness.Platform
     ///             DirectoryName = "directory_name",
     ///             ReportName = "report_name",
     ///             SubscriptionId = "subscription_id",
+    ///             BillingType = "billing_type",
+    ///         },
+    ///         BillingExportSpec2 = new Harness.Platform.Inputs.AzureCloudCostConnectorBillingExportSpec2Args
+    ///         {
+    ///             StorageAccountName = "storage_account_name",
+    ///             ContainerName = "container_name",
+    ///             DirectoryName = "directory_name",
+    ///             ReportName = "report_name",
+    ///             SubscriptionId = "subscription_id",
+    ///             BillingType = "billing_type",
     ///         },
     ///     });
     /// 

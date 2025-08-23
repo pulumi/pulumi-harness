@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.AzureCloudCostConnector;
  * import com.pulumi.harness.platform.AzureCloudCostConnectorArgs;
  * import com.pulumi.harness.platform.inputs.AzureCloudCostConnectorBillingExportSpecArgs;
+ * import com.pulumi.harness.platform.inputs.AzureCloudCostConnectorBillingExportSpec2Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -64,6 +65,15 @@ import javax.annotation.Nullable;
  *                 .directoryName("directory_name")
  *                 .reportName("report_name")
  *                 .subscriptionId("subscription_id")
+ *                 .billingType("billing_type")
+ *                 .build())
+ *             .billingExportSpec2(AzureCloudCostConnectorBillingExportSpec2Args.builder()
+ *                 .storageAccountName("storage_account_name")
+ *                 .containerName("container_name")
+ *                 .directoryName("directory_name")
+ *                 .reportName("report_name")
+ *                 .subscriptionId("subscription_id")
+ *                 .billingType("billing_type")
  *                 .build())
  *             .build());
  * 

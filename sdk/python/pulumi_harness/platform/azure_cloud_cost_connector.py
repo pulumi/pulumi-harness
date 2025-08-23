@@ -428,6 +428,15 @@ class AzureCloudCostConnector(pulumi.CustomResource):
                 "directory_name": "directory_name",
                 "report_name": "report_name",
                 "subscription_id": "subscription_id",
+                "billing_type": "billing_type",
+            },
+            billing_export_spec2={
+                "storage_account_name": "storage_account_name",
+                "container_name": "container_name",
+                "directory_name": "directory_name",
+                "report_name": "report_name",
+                "subscription_id": "subscription_id",
+                "billing_type": "billing_type",
             })
         ```
 
@@ -501,6 +510,15 @@ class AzureCloudCostConnector(pulumi.CustomResource):
                 "directory_name": "directory_name",
                 "report_name": "report_name",
                 "subscription_id": "subscription_id",
+                "billing_type": "billing_type",
+            },
+            billing_export_spec2={
+                "storage_account_name": "storage_account_name",
+                "container_name": "container_name",
+                "directory_name": "directory_name",
+                "report_name": "report_name",
+                "subscription_id": "subscription_id",
+                "billing_type": "billing_type",
             })
         ```
 

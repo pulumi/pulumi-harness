@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAzureCloudCostConnectorResult {
+    /**
+     * @return Returns billing details for the Azure account.
+     * 
+     */
     private List<GetAzureCloudCostConnectorBillingExportSpec2> billingExportSpec2s;
     /**
      * @return Returns billing details for the Azure account.
@@ -73,6 +77,10 @@ public final class GetAzureCloudCostConnectorResult {
     private String tenantId;
 
     private GetAzureCloudCostConnectorResult() {}
+    /**
+     * @return Returns billing details for the Azure account.
+     * 
+     */
     public List<GetAzureCloudCostConnectorBillingExportSpec2> billingExportSpec2s() {
         return this.billingExportSpec2s;
     }

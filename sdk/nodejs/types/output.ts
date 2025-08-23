@@ -2871,7 +2871,7 @@ export namespace platform {
          */
         storageAccountName: string;
         /**
-         * Subsription id.
+         * Subsription Id.
          */
         subscriptionId: string;
     }
@@ -3288,6 +3288,32 @@ export namespace platform {
          * If connector url is of account, which repository to connect to using the connector
          */
         repo?: string;
+    }
+
+    export interface DefaultNotificationTemplateSetEventTemplateConfigurationSet {
+        /**
+         * List of notification events like PIPELINE_START
+         */
+        notificationEvents: string[];
+        /**
+         * Template reference configuration
+         */
+        template: outputs.platform.DefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate;
+    }
+
+    export interface DefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate {
+        templateRef: string;
+        /**
+         * List of variables passed to the template
+         */
+        variables?: outputs.platform.DefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable[];
+        versionLabel: string;
+    }
+
+    export interface DefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable {
+        name: string;
+        type: string;
+        value: string;
     }
 
     export interface DockerConnectorCredentials {
@@ -3950,7 +3976,7 @@ export namespace platform {
          */
         storageAccountName: string;
         /**
-         * Subsription id.
+         * Subsription Id.
          */
         subscriptionId: string;
     }
@@ -4416,6 +4442,32 @@ export namespace platform {
          * If connector url is of account, which repository to connect to using the connector
          */
         repo: string;
+    }
+
+    export interface GetDefaultNotificationTemplateSetEventTemplateConfigurationSet {
+        /**
+         * List of notification events like PIPELINE_START
+         */
+        notificationEvents: string[];
+        /**
+         * Template reference configuration
+         */
+        template: outputs.platform.GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate;
+    }
+
+    export interface GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate {
+        templateRef: string;
+        /**
+         * List of variables passed to the template
+         */
+        variables?: outputs.platform.GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable[];
+        versionLabel: string;
+    }
+
+    export interface GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable {
+        name: string;
+        type: string;
+        value: string;
     }
 
     export interface GetDockerConnectorCredential {
@@ -8564,6 +8616,10 @@ export namespace platform {
          */
         goTemplate?: boolean;
         /**
+         * Optional list of go templating options, see https://pkg.go.dev/text/template#Template.Optional. This is only relevant if `goTemplate` is true
+         */
+        goTemplateOptions?: string[];
+        /**
          * Application Set ignoreApplicationDifferences
          */
         ignoreApplicationDifferences?: outputs.platform.GitopsApplicationsetApplicationsetSpecIgnoreApplicationDifference[];
@@ -8987,6 +9043,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -9419,6 +9483,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -9871,6 +9943,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -10287,6 +10367,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -10816,6 +10904,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -11247,6 +11343,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -11699,6 +11803,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -12115,6 +12227,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -12636,6 +12756,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -13067,6 +13195,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -13519,6 +13655,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -13935,6 +14079,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -14526,6 +14678,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -15206,6 +15366,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -15637,6 +15805,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -16162,6 +16338,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -16593,6 +16777,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -17045,6 +17237,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -17461,6 +17661,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -18052,6 +18260,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -18732,6 +18948,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -19163,6 +19387,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -19754,6 +19986,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -20434,6 +20674,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -20865,6 +21113,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -21398,6 +21654,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -21829,6 +22093,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -22281,6 +22553,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -22697,6 +22977,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -23218,6 +23506,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -23649,6 +23945,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -24101,6 +24405,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -24517,6 +24829,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -25108,6 +25428,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -25788,6 +26116,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -26219,6 +26555,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -26744,6 +27088,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -27175,6 +27527,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -27627,6 +27987,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -28043,6 +28411,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -28634,6 +29010,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -29314,6 +29698,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -29745,6 +30137,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -30336,6 +30736,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -31016,6 +31424,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -31447,6 +31863,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -32038,6 +32462,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */
@@ -32718,6 +33150,14 @@ export namespace platform {
          */
         commonLabels?: {[key: string]: string};
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: string[];
@@ -33219,6 +33659,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: {[key: string]: string};
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: boolean;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: boolean;
         /**
          * List of Kustomize image override specifications.
          */

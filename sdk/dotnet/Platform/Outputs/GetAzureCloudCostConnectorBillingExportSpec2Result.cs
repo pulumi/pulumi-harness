@@ -34,7 +34,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string StorageAccountName;
         /// <summary>
-        /// Subsription id.
+        /// Subsription Id.
         /// </summary>
         public readonly string SubscriptionId;
 

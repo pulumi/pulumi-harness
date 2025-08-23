@@ -36,7 +36,7 @@ public final class AzureCloudCostConnectorBillingExportSpec2 {
      */
     private String storageAccountName;
     /**
-     * @return Subsription id.
+     * @return Subsription Id.
      * 
      */
     private String subscriptionId;
@@ -78,7 +78,7 @@ public final class AzureCloudCostConnectorBillingExportSpec2 {
         return this.storageAccountName;
     }
     /**
-     * @return Subsription id.
+     * @return Subsription Id.
      * 
      */
     public String subscriptionId() {

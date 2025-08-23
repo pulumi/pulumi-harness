@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,16 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
      * 
      */
     private @Nullable Map<String,String> commonLabels;
+    /**
+     * @return Indicates if to force applying common annotations to resources for kustomize apps.
+     * 
+     */
+    private @Nullable Boolean forceCommonAnnotations;
+    /**
+     * @return Indicates if to force apply common labels to resources for kustomize apps.
+     * 
+     */
+    private @Nullable Boolean forceCommonLabels;
     /**
      * @return List of Kustomize image override specifications.
      * 
@@ -58,6 +69,20 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
      */
     public Map<String,String> commonLabels() {
         return this.commonLabels == null ? Map.of() : this.commonLabels;
+    }
+    /**
+     * @return Indicates if to force applying common annotations to resources for kustomize apps.
+     * 
+     */
+    public Optional<Boolean> forceCommonAnnotations() {
+        return Optional.ofNullable(this.forceCommonAnnotations);
+    }
+    /**
+     * @return Indicates if to force apply common labels to resources for kustomize apps.
+     * 
+     */
+    public Optional<Boolean> forceCommonLabels() {
+        return Optional.ofNullable(this.forceCommonLabels);
     }
     /**
      * @return List of Kustomize image override specifications.
@@ -99,6 +124,8 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
     public static final class Builder {
         private @Nullable Map<String,String> commonAnnotations;
         private @Nullable Map<String,String> commonLabels;
+        private @Nullable Boolean forceCommonAnnotations;
+        private @Nullable Boolean forceCommonLabels;
         private @Nullable List<String> images;
         private @Nullable String namePrefix;
         private @Nullable String nameSuffix;
@@ -108,6 +135,8 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
     	      Objects.requireNonNull(defaults);
     	      this.commonAnnotations = defaults.commonAnnotations;
     	      this.commonLabels = defaults.commonLabels;
+    	      this.forceCommonAnnotations = defaults.forceCommonAnnotations;
+    	      this.forceCommonLabels = defaults.forceCommonLabels;
     	      this.images = defaults.images;
     	      this.namePrefix = defaults.namePrefix;
     	      this.nameSuffix = defaults.nameSuffix;
@@ -124,6 +153,18 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
         public Builder commonLabels(@Nullable Map<String,String> commonLabels) {
 
             this.commonLabels = commonLabels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forceCommonAnnotations(@Nullable Boolean forceCommonAnnotations) {
+
+            this.forceCommonAnnotations = forceCommonAnnotations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forceCommonLabels(@Nullable Boolean forceCommonLabels) {
+
+            this.forceCommonLabels = forceCommonLabels;
             return this;
         }
         @CustomType.Setter
@@ -157,6 +198,8 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
             final var _resultValue = new GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorGitTemplateSpecSourceKustomize();
             _resultValue.commonAnnotations = commonAnnotations;
             _resultValue.commonLabels = commonLabels;
+            _resultValue.forceCommonAnnotations = forceCommonAnnotations;
+            _resultValue.forceCommonLabels = forceCommonLabels;
             _resultValue.images = images;
             _resultValue.namePrefix = namePrefix;
             _resultValue.nameSuffix = nameSuffix;

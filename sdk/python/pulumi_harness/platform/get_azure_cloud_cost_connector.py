@@ -68,6 +68,9 @@ class GetAzureCloudCostConnectorResult:
     @_builtins.property
     @pulumi.getter(name="billingExportSpec2s")
     def billing_export_spec2s(self) -> Sequence['outputs.GetAzureCloudCostConnectorBillingExportSpec2Result']:
+        """
+        Returns billing details for the Azure account.
+        """
         return pulumi.get(self, "billing_export_spec2s")
 
     @_builtins.property

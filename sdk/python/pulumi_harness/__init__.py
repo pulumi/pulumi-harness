@@ -618,6 +618,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/defaultNotificationTemplateSet",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/defaultNotificationTemplateSet:DefaultNotificationTemplateSet": "DefaultNotificationTemplateSet"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/delegatetoken",
   "fqn": "pulumi_harness.platform",
   "classes": {

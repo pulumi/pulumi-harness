@@ -43,7 +43,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> StorageAccountName { get; set; } = null!;
 
         /// <summary>
-        /// Subsription id.
+        /// Subsription Id.
         /// </summary>
         [Input("subscriptionId", required: true)]
         public Input<string> SubscriptionId { get; set; } = null!;

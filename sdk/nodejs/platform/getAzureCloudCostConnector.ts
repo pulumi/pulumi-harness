@@ -56,6 +56,9 @@ export interface GetAzureCloudCostConnectorArgs {
  * A collection of values returned by getAzureCloudCostConnector.
  */
 export interface GetAzureCloudCostConnectorResult {
+    /**
+     * Returns billing details for the Azure account.
+     */
     readonly billingExportSpec2s: outputs.platform.GetAzureCloudCostConnectorBillingExportSpec2[];
     /**
      * Returns billing details for the Azure account.

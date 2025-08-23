@@ -34,6 +34,15 @@ import * as utilities from "../utilities";
  *         directoryName: "directory_name",
  *         reportName: "report_name",
  *         subscriptionId: "subscription_id",
+ *         billingType: "billing_type",
+ *     },
+ *     billingExportSpec2: {
+ *         storageAccountName: "storage_account_name",
+ *         containerName: "container_name",
+ *         directoryName: "directory_name",
+ *         reportName: "report_name",
+ *         subscriptionId: "subscription_id",
+ *         billingType: "billing_type",
  *     },
  * });
  * ```

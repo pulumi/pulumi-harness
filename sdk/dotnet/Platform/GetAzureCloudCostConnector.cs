@@ -153,6 +153,9 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetAzureCloudCostConnectorResult
     {
+        /// <summary>
+        /// Returns billing details for the Azure account.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAzureCloudCostConnectorBillingExportSpec2Result> BillingExportSpec2s;
         /// <summary>
         /// Returns billing details for the Azure account.

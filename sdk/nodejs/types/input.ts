@@ -3355,7 +3355,7 @@ export namespace platform {
          */
         storageAccountName: pulumi.Input<string>;
         /**
-         * Subsription id.
+         * Subsription Id.
          */
         subscriptionId: pulumi.Input<string>;
     }
@@ -3772,6 +3772,32 @@ export namespace platform {
          * If connector url is of account, which repository to connect to using the connector
          */
         repo?: pulumi.Input<string>;
+    }
+
+    export interface DefaultNotificationTemplateSetEventTemplateConfigurationSet {
+        /**
+         * List of notification events like PIPELINE_START
+         */
+        notificationEvents: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Template reference configuration
+         */
+        template: pulumi.Input<inputs.platform.DefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate>;
+    }
+
+    export interface DefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate {
+        templateRef: pulumi.Input<string>;
+        /**
+         * List of variables passed to the template
+         */
+        variables?: pulumi.Input<pulumi.Input<inputs.platform.DefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable>[]>;
+        versionLabel: pulumi.Input<string>;
+    }
+
+    export interface DefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable {
+        name: pulumi.Input<string>;
+        type: pulumi.Input<string>;
+        value: pulumi.Input<string>;
     }
 
     export interface DockerConnectorCredentials {
@@ -4309,6 +4335,58 @@ export namespace platform {
          * The URL of the Rancher cluster.
          */
         rancherUrl: pulumi.Input<string>;
+    }
+
+    export interface GetDefaultNotificationTemplateSetEventTemplateConfigurationSet {
+        /**
+         * List of notification events like PIPELINE_START
+         */
+        notificationEvents: string[];
+        /**
+         * Template reference configuration
+         */
+        template: inputs.platform.GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate;
+    }
+
+    export interface GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs {
+        /**
+         * List of notification events like PIPELINE_START
+         */
+        notificationEvents: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Template reference configuration
+         */
+        template: pulumi.Input<inputs.platform.GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateArgs>;
+    }
+
+    export interface GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplate {
+        templateRef: string;
+        /**
+         * List of variables passed to the template
+         */
+        variables?: inputs.platform.GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable[];
+        versionLabel: string;
+    }
+
+    export interface GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateArgs {
+        templateRef: pulumi.Input<string>;
+        /**
+         * List of variables passed to the template
+         */
+        variables?: pulumi.Input<pulumi.Input<inputs.platform.GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArgs>[]>;
+        versionLabel: pulumi.Input<string>;
+    }
+
+    export interface GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariable {
+        name: string;
+        type: string;
+        value: string;
+    }
+
+    export interface GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArgs {
+        name: pulumi.Input<string>;
+        type: pulumi.Input<string>;
+        value: pulumi.Input<string>;
     }
 
     export interface GetEnvironmentClustersMappingCluster {
@@ -7226,6 +7304,10 @@ export namespace platform {
          */
         goTemplate?: pulumi.Input<boolean>;
         /**
+         * Optional list of go templating options, see https://pkg.go.dev/text/template#Template.Optional. This is only relevant if `goTemplate` is true
+         */
+        goTemplateOptions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Application Set ignoreApplicationDifferences
          */
         ignoreApplicationDifferences?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecIgnoreApplicationDifference>[]>;
@@ -7649,6 +7731,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -8081,6 +8171,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -8533,6 +8631,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -8949,6 +9055,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -9478,6 +9592,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -9909,6 +10031,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -10361,6 +10491,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -10777,6 +10915,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -11298,6 +11444,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -11729,6 +11883,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -12181,6 +12343,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -12597,6 +12767,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -13188,6 +13366,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -13868,6 +14054,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -14299,6 +14493,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -14824,6 +15026,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -15255,6 +15465,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -15707,6 +15925,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -16123,6 +16349,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -16714,6 +16948,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -17394,6 +17636,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -17825,6 +18075,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -18416,6 +18674,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -19096,6 +19362,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -19527,6 +19801,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -20060,6 +20342,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -20491,6 +20781,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -20943,6 +21241,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -21359,6 +21665,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -21880,6 +22194,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -22311,6 +22633,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -22763,6 +23093,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -23179,6 +23517,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -23770,6 +24116,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -24450,6 +24804,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -24881,6 +25243,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -25406,6 +25776,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -25837,6 +26215,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -26289,6 +26675,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -26705,6 +27099,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -27296,6 +27698,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -27976,6 +28386,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -28407,6 +28825,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -28998,6 +29424,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -29678,6 +30112,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -30109,6 +30551,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -30700,6 +31150,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */
@@ -31380,6 +31838,14 @@ export namespace platform {
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
+        /**
          * List of Kustomize image override specifications.
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
@@ -31881,6 +32347,14 @@ export namespace platform {
          * List of additional labels to add to rendered manifests.
          */
         commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Indicates if to force applying common annotations to resources for kustomize apps.
+         */
+        forceCommonAnnotations?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to force apply common labels to resources for kustomize apps.
+         */
+        forceCommonLabels?: pulumi.Input<boolean>;
         /**
          * List of Kustomize image override specifications.
          */

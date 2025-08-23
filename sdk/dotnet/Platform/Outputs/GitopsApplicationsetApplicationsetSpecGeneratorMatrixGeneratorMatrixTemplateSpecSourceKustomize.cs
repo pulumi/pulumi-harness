@@ -22,6 +22,14 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CommonLabels;
         /// <summary>
+        /// Indicates if to force applying common annotations to resources for kustomize apps.
+        /// </summary>
+        public readonly bool? ForceCommonAnnotations;
+        /// <summary>
+        /// Indicates if to force apply common labels to resources for kustomize apps.
+        /// </summary>
+        public readonly bool? ForceCommonLabels;
+        /// <summary>
         /// List of Kustomize image override specifications.
         /// </summary>
         public readonly ImmutableArray<string> Images;
@@ -44,6 +52,10 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableDictionary<string, string>? commonLabels,
 
+            bool? forceCommonAnnotations,
+
+            bool? forceCommonLabels,
+
             ImmutableArray<string> images,
 
             string? namePrefix,
@@ -54,6 +66,8 @@ namespace Pulumi.Harness.Platform.Outputs
         {
             CommonAnnotations = commonAnnotations;
             CommonLabels = commonLabels;
+            ForceCommonAnnotations = forceCommonAnnotations;
+            ForceCommonLabels = forceCommonLabels;
             Images = images;
             NamePrefix = namePrefix;
             NameSuffix = nameSuffix;

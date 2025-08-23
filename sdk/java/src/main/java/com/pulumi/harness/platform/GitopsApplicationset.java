@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .spec(GitopsApplicationsetApplicationsetSpecArgs.builder()
  *                     .goTemplate(true)
+ *                     .goTemplateOptions("missingkey=error")
  *                     .generators(GitopsApplicationsetApplicationsetSpecGeneratorArgs.builder()
  *                         .clusters(GitopsApplicationsetApplicationsetSpecGeneratorClusterArgs.builder()
  *                             .enabled(true)

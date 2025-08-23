@@ -90,14 +90,14 @@ public final class AzureCloudCostConnectorBillingExportSpec2Args extends com.pul
     }
 
     /**
-     * Subsription id.
+     * Subsription Id.
      * 
      */
     @Import(name="subscriptionId", required=true)
     private Output<String> subscriptionId;
 
     /**
-     * @return Subsription id.
+     * @return Subsription Id.
      * 
      */
     public Output<String> subscriptionId() {
@@ -239,7 +239,7 @@ public final class AzureCloudCostConnectorBillingExportSpec2Args extends com.pul
         }
 
         /**
-         * @param subscriptionId Subsription id.
+         * @param subscriptionId Subsription Id.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class AzureCloudCostConnectorBillingExportSpec2Args extends com.pul
         }
 
         /**
-         * @param subscriptionId Subsription id.
+         * @param subscriptionId Subsription Id.
          * 
          * @return builder
          * 
