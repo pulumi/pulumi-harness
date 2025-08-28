@@ -51,15 +51,15 @@ export class Orchestrator extends pulumi.CustomResource {
     /**
      * Endpoint of the k8s cluster being onboarded under the orchestrator
      */
-    public readonly clusterEndpoint!: pulumi.Output<string>;
+    declare public readonly clusterEndpoint: pulumi.Output<string>;
     /**
      * ID of the Harness Kubernetes Connector Being used
      */
-    public readonly k8sConnectorId!: pulumi.Output<string>;
+    declare public readonly k8sConnectorId: pulumi.Output<string>;
     /**
      * Name of the Orchestrator
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Orchestrator resource with the given unique name, arguments, and options.
@@ -74,20 +74,20 @@ export class Orchestrator extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrchestratorState | undefined;
-            resourceInputs["clusterEndpoint"] = state ? state.clusterEndpoint : undefined;
-            resourceInputs["k8sConnectorId"] = state ? state.k8sConnectorId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["clusterEndpoint"] = state?.clusterEndpoint;
+            resourceInputs["k8sConnectorId"] = state?.k8sConnectorId;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as OrchestratorArgs | undefined;
-            if ((!args || args.clusterEndpoint === undefined) && !opts.urn) {
+            if (args?.clusterEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterEndpoint'");
             }
-            if ((!args || args.k8sConnectorId === undefined) && !opts.urn) {
+            if (args?.k8sConnectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'k8sConnectorId'");
             }
-            resourceInputs["clusterEndpoint"] = args ? args.clusterEndpoint : undefined;
-            resourceInputs["k8sConnectorId"] = args ? args.k8sConnectorId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["clusterEndpoint"] = args?.clusterEndpoint;
+            resourceInputs["k8sConnectorId"] = args?.k8sConnectorId;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Orchestrator.__pulumiType, name, resourceInputs, opts);

@@ -82,27 +82,27 @@ export class GitOpsGnupg extends pulumi.CustomResource {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Agent identifier for the GnuPG Key.
      */
-    public readonly agentId!: pulumi.Output<string>;
+    declare public readonly agentId: pulumi.Output<string>;
     /**
      * Identifier for the GnuPG Key.
      */
-    public /*out*/ readonly identifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly identifier: pulumi.Output<string>;
     /**
      * Organization Identifier for the GnuPG Key.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Project Identifier for the GnuPG Key.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * GnuPGPublicKey is a representation of a GnuPG public key
      */
-    public readonly requests!: pulumi.Output<outputs.platform.GitOpsGnupgRequest[]>;
+    declare public readonly requests: pulumi.Output<outputs.platform.GitOpsGnupgRequest[]>;
 
     /**
      * Create a GitOpsGnupg resource with the given unique name, arguments, and options.
@@ -117,25 +117,25 @@ export class GitOpsGnupg extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GitOpsGnupgState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["agentId"] = state ? state.agentId : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["requests"] = state ? state.requests : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["agentId"] = state?.agentId;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["requests"] = state?.requests;
         } else {
             const args = argsOrState as GitOpsGnupgArgs | undefined;
-            if ((!args || args.agentId === undefined) && !opts.urn) {
+            if (args?.agentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.requests === undefined) && !opts.urn) {
+            if (args?.requests === undefined && !opts.urn) {
                 throw new Error("Missing required property 'requests'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["agentId"] = args ? args.agentId : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["requests"] = args ? args.requests : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["agentId"] = args?.agentId;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["requests"] = args?.requests;
             resourceInputs["identifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

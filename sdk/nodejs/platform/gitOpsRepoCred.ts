@@ -89,31 +89,31 @@ export class GitOpsRepoCred extends pulumi.CustomResource {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Agent identifier of the Repository Credentials.
      */
-    public readonly agentId!: pulumi.Output<string>;
+    declare public readonly agentId: pulumi.Output<string>;
     /**
      * credential details.
      */
-    public readonly creds!: pulumi.Output<outputs.platform.GitOpsRepoCredCred[]>;
+    declare public readonly creds: pulumi.Output<outputs.platform.GitOpsRepoCredCred[]>;
     /**
      * Identifier of the Repository Credentials.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Organization identifier of the Repository Credentials.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Project identifier of the Repository Credentials.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Indicates if the GitOps repository credential should be updated if existing and inserted if not.
      */
-    public readonly upsert!: pulumi.Output<boolean | undefined>;
+    declare public readonly upsert: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a GitOpsRepoCred resource with the given unique name, arguments, and options.
@@ -128,28 +128,28 @@ export class GitOpsRepoCred extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GitOpsRepoCredState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["agentId"] = state ? state.agentId : undefined;
-            resourceInputs["creds"] = state ? state.creds : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["upsert"] = state ? state.upsert : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["agentId"] = state?.agentId;
+            resourceInputs["creds"] = state?.creds;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["upsert"] = state?.upsert;
         } else {
             const args = argsOrState as GitOpsRepoCredArgs | undefined;
-            if ((!args || args.agentId === undefined) && !opts.urn) {
+            if (args?.agentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["agentId"] = args ? args.agentId : undefined;
-            resourceInputs["creds"] = args ? args.creds : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["upsert"] = args ? args.upsert : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["agentId"] = args?.agentId;
+            resourceInputs["creds"] = args?.creds;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["upsert"] = args?.upsert;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GitOpsRepoCred.__pulumiType, name, resourceInputs, opts);

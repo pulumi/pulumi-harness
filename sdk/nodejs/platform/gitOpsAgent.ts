@@ -84,52 +84,52 @@ export class GitOpsAgent extends pulumi.CustomResource {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Agent token to be used for authentication of the agent with Harness.
      */
-    public /*out*/ readonly agentToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly agentToken: pulumi.Output<string>;
     /**
      * Description of the GitOps agent.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Identifier of the GitOps agent.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Metadata of the agent.
      */
-    public readonly metadatas!: pulumi.Output<outputs.platform.GitOpsAgentMetadata[] | undefined>;
+    declare public readonly metadatas: pulumi.Output<outputs.platform.GitOpsAgentMetadata[] | undefined>;
     /**
      * Name of the GitOps agent.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
      */
-    public readonly operator!: pulumi.Output<string | undefined>;
+    declare public readonly operator: pulumi.Output<string | undefined>;
     /**
      * Organization identifier of the GitOps agent.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
      */
-    public /*out*/ readonly prefixedIdentifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly prefixedIdentifier: pulumi.Output<string>;
     /**
      * Project identifier of the GitOps agent.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Default: "AGENT*TYPE*UNSET"
      * Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a GitOpsAgent resource with the given unique name, arguments, and options.
@@ -144,36 +144,36 @@ export class GitOpsAgent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GitOpsAgentState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["agentToken"] = state ? state.agentToken : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["metadatas"] = state ? state.metadatas : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["operator"] = state ? state.operator : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["prefixedIdentifier"] = state ? state.prefixedIdentifier : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["agentToken"] = state?.agentToken;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["metadatas"] = state?.metadatas;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["operator"] = state?.operator;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["prefixedIdentifier"] = state?.prefixedIdentifier;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as GitOpsAgentArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["metadatas"] = args ? args.metadatas : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["operator"] = args ? args.operator : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["metadatas"] = args?.metadatas;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["operator"] = args?.operator;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
             resourceInputs["agentToken"] = undefined /*out*/;
             resourceInputs["prefixedIdentifier"] = undefined /*out*/;
         }

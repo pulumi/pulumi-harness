@@ -38,23 +38,23 @@ export class RuleSet extends pulumi.CustomResource {
     /**
      * The cloud provider for the rule set. It should be either AWS, AZURE or GCP.
      */
-    public readonly cloudProvider!: pulumi.Output<string>;
+    declare public readonly cloudProvider: pulumi.Output<string>;
     /**
      * Description for rule set.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the rule set.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * List of rule IDs
      */
-    public readonly ruleIds!: pulumi.Output<string[]>;
+    declare public readonly ruleIds: pulumi.Output<string[]>;
     /**
      * Id of the rule.
      */
-    public /*out*/ readonly ruleSetId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ruleSetId: pulumi.Output<string>;
 
     /**
      * Create a RuleSet resource with the given unique name, arguments, and options.
@@ -69,23 +69,23 @@ export class RuleSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleSetState | undefined;
-            resourceInputs["cloudProvider"] = state ? state.cloudProvider : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ruleIds"] = state ? state.ruleIds : undefined;
-            resourceInputs["ruleSetId"] = state ? state.ruleSetId : undefined;
+            resourceInputs["cloudProvider"] = state?.cloudProvider;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ruleIds"] = state?.ruleIds;
+            resourceInputs["ruleSetId"] = state?.ruleSetId;
         } else {
             const args = argsOrState as RuleSetArgs | undefined;
-            if ((!args || args.cloudProvider === undefined) && !opts.urn) {
+            if (args?.cloudProvider === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudProvider'");
             }
-            if ((!args || args.ruleIds === undefined) && !opts.urn) {
+            if (args?.ruleIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleIds'");
             }
-            resourceInputs["cloudProvider"] = args ? args.cloudProvider : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["ruleIds"] = args ? args.ruleIds : undefined;
+            resourceInputs["cloudProvider"] = args?.cloudProvider;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["ruleIds"] = args?.ruleIds;
             resourceInputs["ruleSetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

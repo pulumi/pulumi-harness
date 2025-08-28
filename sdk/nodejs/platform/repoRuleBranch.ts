@@ -40,55 +40,55 @@ export class RepoRuleBranch extends pulumi.CustomResource {
     /**
      * List of users who can bypass this rule.
      */
-    public readonly bypasses!: pulumi.Output<outputs.platform.RepoRuleBranchBypass[]>;
+    declare public readonly bypasses: pulumi.Output<outputs.platform.RepoRuleBranchBypass[]>;
     /**
      * Timestamp when the rule was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<number>;
+    declare public /*out*/ readonly created: pulumi.Output<number>;
     /**
      * ID of the user who created the rule.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<number>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<number>;
     /**
      * Description of the rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Identifier of the rule.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Pattern of branch to which rule will apply.
      */
-    public readonly patterns!: pulumi.Output<outputs.platform.RepoRuleBranchPattern[] | undefined>;
+    declare public readonly patterns: pulumi.Output<outputs.platform.RepoRuleBranchPattern[] | undefined>;
     /**
      * Policies to be applied for this rule.
      */
-    public readonly policies!: pulumi.Output<outputs.platform.RepoRuleBranchPolicy[]>;
+    declare public readonly policies: pulumi.Output<outputs.platform.RepoRuleBranchPolicy[]>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Repo identifier of the repository.
      */
-    public readonly repoIdentifier!: pulumi.Output<string>;
+    declare public readonly repoIdentifier: pulumi.Output<string>;
     /**
      * State of the rule (active, disable, monitor).
      */
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * Timestamp when the rule was updated.
      */
-    public /*out*/ readonly updated!: pulumi.Output<number>;
+    declare public /*out*/ readonly updated: pulumi.Output<number>;
     /**
      * ID of the user who updated the rule.
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<number>;
+    declare public /*out*/ readonly updatedBy: pulumi.Output<number>;
 
     /**
      * Create a RepoRuleBranch resource with the given unique name, arguments, and options.
@@ -103,45 +103,45 @@ export class RepoRuleBranch extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepoRuleBranchState | undefined;
-            resourceInputs["bypasses"] = state ? state.bypasses : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["patterns"] = state ? state.patterns : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["repoIdentifier"] = state ? state.repoIdentifier : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
-            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
+            resourceInputs["bypasses"] = state?.bypasses;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["patterns"] = state?.patterns;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["repoIdentifier"] = state?.repoIdentifier;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updated"] = state?.updated;
+            resourceInputs["updatedBy"] = state?.updatedBy;
         } else {
             const args = argsOrState as RepoRuleBranchArgs | undefined;
-            if ((!args || args.bypasses === undefined) && !opts.urn) {
+            if (args?.bypasses === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bypasses'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.policies === undefined) && !opts.urn) {
+            if (args?.policies === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policies'");
             }
-            if ((!args || args.repoIdentifier === undefined) && !opts.urn) {
+            if (args?.repoIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repoIdentifier'");
             }
-            if ((!args || args.state === undefined) && !opts.urn) {
+            if (args?.state === undefined && !opts.urn) {
                 throw new Error("Missing required property 'state'");
             }
-            resourceInputs["bypasses"] = args ? args.bypasses : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["patterns"] = args ? args.patterns : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["repoIdentifier"] = args ? args.repoIdentifier : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["bypasses"] = args?.bypasses;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["patterns"] = args?.patterns;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["repoIdentifier"] = args?.repoIdentifier;
+            resourceInputs["state"] = args?.state;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;

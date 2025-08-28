@@ -38,55 +38,55 @@ export class RepoWebhook extends pulumi.CustomResource {
     /**
      * Timestamp when the webhook was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<number>;
+    declare public /*out*/ readonly created: pulumi.Output<number>;
     /**
      * ID of the user who created the webhook.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<number>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<number>;
     /**
      * Description of the webhook.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Webhook enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Created webhook has secret encoding.
      */
-    public /*out*/ readonly hasSecret!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly hasSecret: pulumi.Output<boolean>;
     /**
      * Identifier of the webhook.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Allow insecure connections for provided webhook URL.
      */
-    public readonly insecure!: pulumi.Output<boolean>;
+    declare public readonly insecure: pulumi.Output<boolean>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Identifier of the repository.
      */
-    public readonly repoIdentifier!: pulumi.Output<string>;
+    declare public readonly repoIdentifier: pulumi.Output<string>;
     /**
      * Webhook secret which will be used to sign the webhook payload.
      */
-    public readonly secret!: pulumi.Output<string | undefined>;
+    declare public readonly secret: pulumi.Output<string | undefined>;
     /**
      * List of triggers of the webhook (keep empty for all triggers).
      */
-    public readonly triggers!: pulumi.Output<string[] | undefined>;
+    declare public readonly triggers: pulumi.Output<string[] | undefined>;
     /**
      * URL that's called by the webhook.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a RepoWebhook resource with the given unique name, arguments, and options.
@@ -101,46 +101,46 @@ export class RepoWebhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepoWebhookState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["hasSecret"] = state ? state.hasSecret : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["insecure"] = state ? state.insecure : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["repoIdentifier"] = state ? state.repoIdentifier : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["triggers"] = state ? state.triggers : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["hasSecret"] = state?.hasSecret;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["insecure"] = state?.insecure;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["repoIdentifier"] = state?.repoIdentifier;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["triggers"] = state?.triggers;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as RepoWebhookArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.insecure === undefined) && !opts.urn) {
+            if (args?.insecure === undefined && !opts.urn) {
                 throw new Error("Missing required property 'insecure'");
             }
-            if ((!args || args.repoIdentifier === undefined) && !opts.urn) {
+            if (args?.repoIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repoIdentifier'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["insecure"] = args ? args.insecure : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["repoIdentifier"] = args ? args.repoIdentifier : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["insecure"] = args?.insecure;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["repoIdentifier"] = args?.repoIdentifier;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
-            resourceInputs["triggers"] = args ? args.triggers : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["triggers"] = args?.triggers;
+            resourceInputs["url"] = args?.url;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["hasSecret"] = undefined /*out*/;

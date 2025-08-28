@@ -120,19 +120,19 @@ export class Slo extends pulumi.CustomResource {
     /**
      * Identifier of the SLO.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Identifier of the organization in which the SLO is configured.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Identifier of the project in which the SLO is configured.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Request for creating or updating SLO.
      */
-    public readonly request!: pulumi.Output<outputs.platform.SloRequest | undefined>;
+    declare public readonly request: pulumi.Output<outputs.platform.SloRequest | undefined>;
 
     /**
      * Create a Slo resource with the given unique name, arguments, and options.
@@ -147,25 +147,25 @@ export class Slo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SloState | undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["request"] = state ? state.request : undefined;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["request"] = state?.request;
         } else {
             const args = argsOrState as SloArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["request"] = args ? args.request : undefined;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["request"] = args?.request;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Slo.__pulumiType, name, resourceInputs, opts);

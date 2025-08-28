@@ -64,62 +64,62 @@ export class GitOpsRepository extends pulumi.CustomResource {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Agent identifier of the GitOps repository.
      */
-    public readonly agentId!: pulumi.Output<string>;
+    declare public readonly agentId: pulumi.Output<string>;
     /**
      * Indicates if to operate on credential set instead of repository.
      */
-    public readonly credsOnly!: pulumi.Output<boolean | undefined>;
+    declare public readonly credsOnly: pulumi.Output<boolean | undefined>;
     /**
      * ECR access token generator specific configuration.
      */
-    public readonly ecrGen!: pulumi.Output<outputs.platform.GitOpsRepositoryEcrGen | undefined>;
+    declare public readonly ecrGen: pulumi.Output<outputs.platform.GitOpsRepositoryEcrGen | undefined>;
     /**
      * Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
      */
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
      * GCR access token generator specific configuration.
      */
-    public readonly gcrGen!: pulumi.Output<outputs.platform.GitOpsRepositoryGcrGen | undefined>;
+    declare public readonly gcrGen: pulumi.Output<outputs.platform.GitOpsRepositoryGcrGen | undefined>;
     /**
      * Default: "UNSET"
      * Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
      */
-    public readonly genType!: pulumi.Output<string | undefined>;
+    declare public readonly genType: pulumi.Output<string | undefined>;
     /**
      * Identifier of the GitOps repository.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Organization identifier of the GitOps repository.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Project identifier of the GitOps repository.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * For OCI repos, this is the interval to refresh the token to access the registry.
      */
-    public readonly refreshInterval!: pulumi.Output<string | undefined>;
+    declare public readonly refreshInterval: pulumi.Output<string | undefined>;
     /**
      * Repo details holding application configurations.
      */
-    public readonly repos!: pulumi.Output<outputs.platform.GitOpsRepositoryRepo[]>;
+    declare public readonly repos: pulumi.Output<outputs.platform.GitOpsRepositoryRepo[]>;
     /**
      * Update mask of the repository.
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    public readonly updateMasks!: pulumi.Output<outputs.platform.GitOpsRepositoryUpdateMask[] | undefined>;
+    declare public readonly updateMasks: pulumi.Output<outputs.platform.GitOpsRepositoryUpdateMask[] | undefined>;
     /**
      * Indicates if the GitOps repository should be updated if existing and inserted if not.
      */
-    public readonly upsert!: pulumi.Output<boolean | undefined>;
+    declare public readonly upsert: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a GitOpsRepository resource with the given unique name, arguments, and options.
@@ -134,45 +134,45 @@ export class GitOpsRepository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GitOpsRepositoryState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["agentId"] = state ? state.agentId : undefined;
-            resourceInputs["credsOnly"] = state ? state.credsOnly : undefined;
-            resourceInputs["ecrGen"] = state ? state.ecrGen : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["gcrGen"] = state ? state.gcrGen : undefined;
-            resourceInputs["genType"] = state ? state.genType : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
-            resourceInputs["repos"] = state ? state.repos : undefined;
-            resourceInputs["updateMasks"] = state ? state.updateMasks : undefined;
-            resourceInputs["upsert"] = state ? state.upsert : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["agentId"] = state?.agentId;
+            resourceInputs["credsOnly"] = state?.credsOnly;
+            resourceInputs["ecrGen"] = state?.ecrGen;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["gcrGen"] = state?.gcrGen;
+            resourceInputs["genType"] = state?.genType;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["refreshInterval"] = state?.refreshInterval;
+            resourceInputs["repos"] = state?.repos;
+            resourceInputs["updateMasks"] = state?.updateMasks;
+            resourceInputs["upsert"] = state?.upsert;
         } else {
             const args = argsOrState as GitOpsRepositoryArgs | undefined;
-            if ((!args || args.agentId === undefined) && !opts.urn) {
+            if (args?.agentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.repos === undefined) && !opts.urn) {
+            if (args?.repos === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repos'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["agentId"] = args ? args.agentId : undefined;
-            resourceInputs["credsOnly"] = args ? args.credsOnly : undefined;
-            resourceInputs["ecrGen"] = args ? args.ecrGen : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["gcrGen"] = args ? args.gcrGen : undefined;
-            resourceInputs["genType"] = args ? args.genType : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
-            resourceInputs["repos"] = args ? args.repos : undefined;
-            resourceInputs["updateMasks"] = args ? args.updateMasks : undefined;
-            resourceInputs["upsert"] = args ? args.upsert : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["agentId"] = args?.agentId;
+            resourceInputs["credsOnly"] = args?.credsOnly;
+            resourceInputs["ecrGen"] = args?.ecrGen;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["gcrGen"] = args?.gcrGen;
+            resourceInputs["genType"] = args?.genType;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["refreshInterval"] = args?.refreshInterval;
+            resourceInputs["repos"] = args?.repos;
+            resourceInputs["updateMasks"] = args?.updateMasks;
+            resourceInputs["upsert"] = args?.upsert;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GitOpsRepository.__pulumiType, name, resourceInputs, opts);

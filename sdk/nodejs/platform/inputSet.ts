@@ -50,51 +50,51 @@ export class InputSet extends pulumi.CustomResource {
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    public readonly gitDetails!: pulumi.Output<outputs.platform.InputSetGitDetails>;
+    declare public readonly gitDetails: pulumi.Output<outputs.platform.InputSetGitDetails>;
     /**
      * Contains Git Information for importing entities from Git
      */
-    public readonly gitImportInfo!: pulumi.Output<outputs.platform.InputSetGitImportInfo | undefined>;
+    declare public readonly gitImportInfo: pulumi.Output<outputs.platform.InputSetGitImportInfo | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Flag to set if importing from Git
      */
-    public readonly importFromGit!: pulumi.Output<boolean | undefined>;
+    declare public readonly importFromGit: pulumi.Output<boolean | undefined>;
     /**
      * Contains parameters for importing a input set
      */
-    public readonly inputSetImportRequest!: pulumi.Output<outputs.platform.InputSetInputSetImportRequest | undefined>;
+    declare public readonly inputSetImportRequest: pulumi.Output<outputs.platform.InputSetInputSetImportRequest | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Identifier of the pipeline
      */
-    public readonly pipelineId!: pulumi.Output<string>;
+    declare public readonly pipelineId: pulumi.Output<string>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Input Set YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    public readonly yaml!: pulumi.Output<string>;
+    declare public readonly yaml: pulumi.Output<string>;
 
     /**
      * Create a InputSet resource with the given unique name, arguments, and options.
@@ -109,44 +109,44 @@ export class InputSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InputSetState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["gitDetails"] = state ? state.gitDetails : undefined;
-            resourceInputs["gitImportInfo"] = state ? state.gitImportInfo : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["importFromGit"] = state ? state.importFromGit : undefined;
-            resourceInputs["inputSetImportRequest"] = state ? state.inputSetImportRequest : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["pipelineId"] = state ? state.pipelineId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["yaml"] = state ? state.yaml : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["gitDetails"] = state?.gitDetails;
+            resourceInputs["gitImportInfo"] = state?.gitImportInfo;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["importFromGit"] = state?.importFromGit;
+            resourceInputs["inputSetImportRequest"] = state?.inputSetImportRequest;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["pipelineId"] = state?.pipelineId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["yaml"] = state?.yaml;
         } else {
             const args = argsOrState as InputSetArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.pipelineId === undefined) && !opts.urn) {
+            if (args?.pipelineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pipelineId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["gitDetails"] = args ? args.gitDetails : undefined;
-            resourceInputs["gitImportInfo"] = args ? args.gitImportInfo : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["importFromGit"] = args ? args.importFromGit : undefined;
-            resourceInputs["inputSetImportRequest"] = args ? args.inputSetImportRequest : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["pipelineId"] = args ? args.pipelineId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["yaml"] = args ? args.yaml : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["gitDetails"] = args?.gitDetails;
+            resourceInputs["gitImportInfo"] = args?.gitImportInfo;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["importFromGit"] = args?.importFromGit;
+            resourceInputs["inputSetImportRequest"] = args?.inputSetImportRequest;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["pipelineId"] = args?.pipelineId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["yaml"] = args?.yaml;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InputSet.__pulumiType, name, resourceInputs, opts);

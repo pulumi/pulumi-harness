@@ -87,55 +87,55 @@ export class ConnectorCustomhealthsource extends pulumi.CustomResource {
     /**
      * Tags to filter delegates for connection.
      */
-    public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly delegateSelectors: pulumi.Output<string[] | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Headers.
      */
-    public readonly headers!: pulumi.Output<outputs.platform.ConnectorCustomhealthsourceHeader[] | undefined>;
+    declare public readonly headers: pulumi.Output<outputs.platform.ConnectorCustomhealthsourceHeader[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * HTTP Verb Method for the API Call
      */
-    public readonly method!: pulumi.Output<string>;
+    declare public readonly method: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Parameters
      */
-    public readonly params!: pulumi.Output<outputs.platform.ConnectorCustomhealthsourceParam[] | undefined>;
+    declare public readonly params: pulumi.Output<outputs.platform.ConnectorCustomhealthsourceParam[] | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * URL of the Custom Healthsource controller.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * Body to be sent with the API Call
      */
-    public readonly validationBody!: pulumi.Output<string | undefined>;
+    declare public readonly validationBody: pulumi.Output<string | undefined>;
     /**
      * Path to be added to the base URL for the API Call
      */
-    public readonly validationPath!: pulumi.Output<string | undefined>;
+    declare public readonly validationPath: pulumi.Output<string | undefined>;
 
     /**
      * Create a ConnectorCustomhealthsource resource with the given unique name, arguments, and options.
@@ -150,43 +150,43 @@ export class ConnectorCustomhealthsource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorCustomhealthsourceState | undefined;
-            resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["headers"] = state ? state.headers : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["method"] = state ? state.method : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["validationBody"] = state ? state.validationBody : undefined;
-            resourceInputs["validationPath"] = state ? state.validationPath : undefined;
+            resourceInputs["delegateSelectors"] = state?.delegateSelectors;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["headers"] = state?.headers;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["method"] = state?.method;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["params"] = state?.params;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["validationBody"] = state?.validationBody;
+            resourceInputs["validationPath"] = state?.validationPath;
         } else {
             const args = argsOrState as ConnectorCustomhealthsourceArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.method === undefined) && !opts.urn) {
+            if (args?.method === undefined && !opts.urn) {
                 throw new Error("Missing required property 'method'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["headers"] = args ? args.headers : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["method"] = args ? args.method : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["validationBody"] = args ? args.validationBody : undefined;
-            resourceInputs["validationPath"] = args ? args.validationPath : undefined;
+            resourceInputs["delegateSelectors"] = args?.delegateSelectors;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["headers"] = args?.headers;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["method"] = args?.method;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["params"] = args?.params;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["validationBody"] = args?.validationBody;
+            resourceInputs["validationPath"] = args?.validationPath;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectorCustomhealthsource.__pulumiType, name, resourceInputs, opts);

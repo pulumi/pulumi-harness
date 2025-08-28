@@ -65,27 +65,27 @@ export class GitopsAppProjectMapping extends pulumi.CustomResource {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Agent identifier for which the ArgoCD and Harness project mapping is to be created.
      */
-    public readonly agentId!: pulumi.Output<string>;
+    declare public readonly agentId: pulumi.Output<string>;
     /**
      * ArgoCD Project name which is to be mapped to the Harness project.
      */
-    public readonly argoProjectName!: pulumi.Output<string>;
+    declare public readonly argoProjectName: pulumi.Output<string>;
     /**
      * Identifier of the GitOps Application Project.
      */
-    public /*out*/ readonly identifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly identifier: pulumi.Output<string>;
     /**
      * Organization identifier of the GitOps agent's Application Project.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Project identifier of the GitOps agent's Application Project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
 
     /**
      * Create a GitopsAppProjectMapping resource with the given unique name, arguments, and options.
@@ -100,31 +100,31 @@ export class GitopsAppProjectMapping extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GitopsAppProjectMappingState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["agentId"] = state ? state.agentId : undefined;
-            resourceInputs["argoProjectName"] = state ? state.argoProjectName : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["agentId"] = state?.agentId;
+            resourceInputs["argoProjectName"] = state?.argoProjectName;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
         } else {
             const args = argsOrState as GitopsAppProjectMappingArgs | undefined;
-            if ((!args || args.agentId === undefined) && !opts.urn) {
+            if (args?.agentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.argoProjectName === undefined) && !opts.urn) {
+            if (args?.argoProjectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'argoProjectName'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["agentId"] = args ? args.agentId : undefined;
-            resourceInputs["argoProjectName"] = args ? args.argoProjectName : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["agentId"] = args?.agentId;
+            resourceInputs["argoProjectName"] = args?.argoProjectName;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["identifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

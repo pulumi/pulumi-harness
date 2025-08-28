@@ -100,47 +100,47 @@ export class AzureCloudCostConnector extends pulumi.CustomResource {
     /**
      * Returns billing details for the Azure account.
      */
-    public readonly billingExportSpec!: pulumi.Output<outputs.platform.AzureCloudCostConnectorBillingExportSpec | undefined>;
+    declare public readonly billingExportSpec: pulumi.Output<outputs.platform.AzureCloudCostConnectorBillingExportSpec | undefined>;
     /**
      * Returns billing details for the Azure account.
      */
-    public readonly billingExportSpec2!: pulumi.Output<outputs.platform.AzureCloudCostConnectorBillingExportSpec2 | undefined>;
+    declare public readonly billingExportSpec2: pulumi.Output<outputs.platform.AzureCloudCostConnectorBillingExportSpec2 | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      */
-    public readonly featuresEnableds!: pulumi.Output<string[]>;
+    declare public readonly featuresEnableds: pulumi.Output<string[]>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Subsription id.
      */
-    public readonly subscriptionId!: pulumi.Output<string>;
+    declare public readonly subscriptionId: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Tenant id.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
 
     /**
      * Create a AzureCloudCostConnector resource with the given unique name, arguments, and options.
@@ -155,42 +155,42 @@ export class AzureCloudCostConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureCloudCostConnectorState | undefined;
-            resourceInputs["billingExportSpec"] = state ? state.billingExportSpec : undefined;
-            resourceInputs["billingExportSpec2"] = state ? state.billingExportSpec2 : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["featuresEnableds"] = state ? state.featuresEnableds : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["subscriptionId"] = state ? state.subscriptionId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["billingExportSpec"] = state?.billingExportSpec;
+            resourceInputs["billingExportSpec2"] = state?.billingExportSpec2;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["featuresEnableds"] = state?.featuresEnableds;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["subscriptionId"] = state?.subscriptionId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenantId"] = state?.tenantId;
         } else {
             const args = argsOrState as AzureCloudCostConnectorArgs | undefined;
-            if ((!args || args.featuresEnableds === undefined) && !opts.urn) {
+            if (args?.featuresEnableds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'featuresEnableds'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.subscriptionId === undefined) && !opts.urn) {
+            if (args?.subscriptionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subscriptionId'");
             }
-            if ((!args || args.tenantId === undefined) && !opts.urn) {
+            if (args?.tenantId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            resourceInputs["billingExportSpec"] = args ? args.billingExportSpec : undefined;
-            resourceInputs["billingExportSpec2"] = args ? args.billingExportSpec2 : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["featuresEnableds"] = args ? args.featuresEnableds : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["subscriptionId"] = args ? args.subscriptionId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["billingExportSpec"] = args?.billingExportSpec;
+            resourceInputs["billingExportSpec2"] = args?.billingExportSpec2;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["featuresEnableds"] = args?.featuresEnableds;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["subscriptionId"] = args?.subscriptionId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenantId"] = args?.tenantId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AzureCloudCostConnector.__pulumiType, name, resourceInputs, opts);

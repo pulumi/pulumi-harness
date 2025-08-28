@@ -178,35 +178,35 @@ export class UserGroup extends pulumi.CustomResource {
     /**
      * The description of the user group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the user group was imported by SCIM.
      */
-    public /*out*/ readonly importedByScim!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly importedByScim: pulumi.Output<boolean>;
     /**
      * Indicates whether the user group is linked to an SSO provider.
      */
-    public /*out*/ readonly isSsoLinked!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isSsoLinked: pulumi.Output<boolean>;
     /**
      * The LDAP settings for the user group.
      */
-    public readonly ldapSettings!: pulumi.Output<outputs.UserGroupLdapSettings | undefined>;
+    declare public readonly ldapSettings: pulumi.Output<outputs.UserGroupLdapSettings | undefined>;
     /**
      * The name of the user group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The notification settings of the user group.
      */
-    public readonly notificationSettings!: pulumi.Output<outputs.UserGroupNotificationSettings | undefined>;
+    declare public readonly notificationSettings: pulumi.Output<outputs.UserGroupNotificationSettings | undefined>;
     /**
      * The permissions of the user group.
      */
-    public readonly permissions!: pulumi.Output<outputs.UserGroupPermissions | undefined>;
+    declare public readonly permissions: pulumi.Output<outputs.UserGroupPermissions | undefined>;
     /**
      * The SAML settings for the user group.
      */
-    public readonly samlSettings!: pulumi.Output<outputs.UserGroupSamlSettings | undefined>;
+    declare public readonly samlSettings: pulumi.Output<outputs.UserGroupSamlSettings | undefined>;
 
     /**
      * Create a UserGroup resource with the given unique name, arguments, and options.
@@ -221,22 +221,22 @@ export class UserGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserGroupState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["importedByScim"] = state ? state.importedByScim : undefined;
-            resourceInputs["isSsoLinked"] = state ? state.isSsoLinked : undefined;
-            resourceInputs["ldapSettings"] = state ? state.ldapSettings : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationSettings"] = state ? state.notificationSettings : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["samlSettings"] = state ? state.samlSettings : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["importedByScim"] = state?.importedByScim;
+            resourceInputs["isSsoLinked"] = state?.isSsoLinked;
+            resourceInputs["ldapSettings"] = state?.ldapSettings;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationSettings"] = state?.notificationSettings;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["samlSettings"] = state?.samlSettings;
         } else {
             const args = argsOrState as UserGroupArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ldapSettings"] = args ? args.ldapSettings : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationSettings"] = args ? args.notificationSettings : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["samlSettings"] = args ? args.samlSettings : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ldapSettings"] = args?.ldapSettings;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationSettings"] = args?.notificationSettings;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["samlSettings"] = args?.samlSettings;
             resourceInputs["importedByScim"] = undefined /*out*/;
             resourceInputs["isSsoLinked"] = undefined /*out*/;
         }

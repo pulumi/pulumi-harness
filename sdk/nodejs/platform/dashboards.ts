@@ -52,55 +52,55 @@ export class Dashboards extends pulumi.CustomResource {
     /**
      * Created at timestamp of the Dashboard.
      */
-    public readonly createdAt!: pulumi.Output<string>;
+    declare public readonly createdAt: pulumi.Output<string>;
     /**
      * Unique identifier of the Template Dashboard to create from.
      */
-    public readonly dashboardId!: pulumi.Output<string>;
+    declare public readonly dashboardId: pulumi.Output<string>;
     /**
      * Data Sources within the Dashboard.
      */
-    public readonly dataSources!: pulumi.Output<string[]>;
+    declare public readonly dataSources: pulumi.Output<string[]>;
     /**
      * Description of the Dashboard.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Favorite count of the dashboard.
      */
-    public /*out*/ readonly favoriteCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly favoriteCount: pulumi.Output<number>;
     /**
      * The Folder ID that the Dashboard belongs to.
      */
-    public readonly folderId!: pulumi.Output<string | undefined>;
+    declare public readonly folderId: pulumi.Output<string | undefined>;
     /**
      * Last accessed at timestamp of the Dashboard.
      */
-    public /*out*/ readonly lastAccessedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastAccessedAt: pulumi.Output<string>;
     /**
      * Data Models within the Dashboard.
      */
-    public readonly models!: pulumi.Output<string[]>;
+    declare public readonly models: pulumi.Output<string[]>;
     /**
      * Name of the Dashboard.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Folder ID that the Dashboard belongs to.
      */
-    public readonly resourceIdentifier!: pulumi.Output<string>;
+    declare public readonly resourceIdentifier: pulumi.Output<string>;
     /**
      * Title of the Dashboard.
      */
-    public readonly title!: pulumi.Output<string | undefined>;
+    declare public readonly title: pulumi.Output<string | undefined>;
     /**
      * Type of the dashboard.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * View count of the dashboard.
      */
-    public readonly viewCount!: pulumi.Output<number>;
+    declare public readonly viewCount: pulumi.Output<number>;
 
     /**
      * Create a Dashboards resource with the given unique name, arguments, and options.
@@ -115,38 +115,38 @@ export class Dashboards extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardsState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dashboardId"] = state ? state.dashboardId : undefined;
-            resourceInputs["dataSources"] = state ? state.dataSources : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["favoriteCount"] = state ? state.favoriteCount : undefined;
-            resourceInputs["folderId"] = state ? state.folderId : undefined;
-            resourceInputs["lastAccessedAt"] = state ? state.lastAccessedAt : undefined;
-            resourceInputs["models"] = state ? state.models : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["resourceIdentifier"] = state ? state.resourceIdentifier : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["viewCount"] = state ? state.viewCount : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dashboardId"] = state?.dashboardId;
+            resourceInputs["dataSources"] = state?.dataSources;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["favoriteCount"] = state?.favoriteCount;
+            resourceInputs["folderId"] = state?.folderId;
+            resourceInputs["lastAccessedAt"] = state?.lastAccessedAt;
+            resourceInputs["models"] = state?.models;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["resourceIdentifier"] = state?.resourceIdentifier;
+            resourceInputs["title"] = state?.title;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["viewCount"] = state?.viewCount;
         } else {
             const args = argsOrState as DashboardsArgs | undefined;
-            if ((!args || args.dashboardId === undefined) && !opts.urn) {
+            if (args?.dashboardId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dashboardId'");
             }
-            if ((!args || args.resourceIdentifier === undefined) && !opts.urn) {
+            if (args?.resourceIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceIdentifier'");
             }
-            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
-            resourceInputs["dashboardId"] = args ? args.dashboardId : undefined;
-            resourceInputs["dataSources"] = args ? args.dataSources : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["folderId"] = args ? args.folderId : undefined;
-            resourceInputs["models"] = args ? args.models : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceIdentifier"] = args ? args.resourceIdentifier : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["viewCount"] = args ? args.viewCount : undefined;
+            resourceInputs["createdAt"] = args?.createdAt;
+            resourceInputs["dashboardId"] = args?.dashboardId;
+            resourceInputs["dataSources"] = args?.dataSources;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["folderId"] = args?.folderId;
+            resourceInputs["models"] = args?.models;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceIdentifier"] = args?.resourceIdentifier;
+            resourceInputs["title"] = args?.title;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["viewCount"] = args?.viewCount;
             resourceInputs["favoriteCount"] = undefined /*out*/;
             resourceInputs["lastAccessedAt"] = undefined /*out*/;
         }

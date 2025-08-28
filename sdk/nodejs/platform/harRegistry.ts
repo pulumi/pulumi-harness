@@ -82,43 +82,43 @@ export class HarRegistry extends pulumi.CustomResource {
     /**
      * Allowed artifact patterns
      */
-    public readonly allowedPatterns!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedPatterns: pulumi.Output<string[] | undefined>;
     /**
      * Blocked artifact patterns
      */
-    public readonly blockedPatterns!: pulumi.Output<string[] | undefined>;
+    declare public readonly blockedPatterns: pulumi.Output<string[] | undefined>;
     /**
      * Configuration for the registry
      */
-    public readonly configs!: pulumi.Output<outputs.platform.HarRegistryConfig[] | undefined>;
+    declare public readonly configs: pulumi.Output<outputs.platform.HarRegistryConfig[] | undefined>;
     /**
      * Creation timestamp
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Description of the registry
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the registry
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Type of package (DOCKER, HELM, MAVEN, etc.)
      */
-    public readonly packageType!: pulumi.Output<string>;
+    declare public readonly packageType: pulumi.Output<string>;
     /**
      * Parent reference for the registry
      */
-    public readonly parentRef!: pulumi.Output<string | undefined>;
+    declare public readonly parentRef: pulumi.Output<string | undefined>;
     /**
      * Space reference for the registry
      */
-    public readonly spaceRef!: pulumi.Output<string | undefined>;
+    declare public readonly spaceRef: pulumi.Output<string | undefined>;
     /**
      * URL of the registry
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a HarRegistry resource with the given unique name, arguments, and options.
@@ -133,32 +133,32 @@ export class HarRegistry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HarRegistryState | undefined;
-            resourceInputs["allowedPatterns"] = state ? state.allowedPatterns : undefined;
-            resourceInputs["blockedPatterns"] = state ? state.blockedPatterns : undefined;
-            resourceInputs["configs"] = state ? state.configs : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["packageType"] = state ? state.packageType : undefined;
-            resourceInputs["parentRef"] = state ? state.parentRef : undefined;
-            resourceInputs["spaceRef"] = state ? state.spaceRef : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["allowedPatterns"] = state?.allowedPatterns;
+            resourceInputs["blockedPatterns"] = state?.blockedPatterns;
+            resourceInputs["configs"] = state?.configs;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["packageType"] = state?.packageType;
+            resourceInputs["parentRef"] = state?.parentRef;
+            resourceInputs["spaceRef"] = state?.spaceRef;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as HarRegistryArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.packageType === undefined) && !opts.urn) {
+            if (args?.packageType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'packageType'");
             }
-            resourceInputs["allowedPatterns"] = args ? args.allowedPatterns : undefined;
-            resourceInputs["blockedPatterns"] = args ? args.blockedPatterns : undefined;
-            resourceInputs["configs"] = args ? args.configs : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["packageType"] = args ? args.packageType : undefined;
-            resourceInputs["parentRef"] = args ? args.parentRef : undefined;
-            resourceInputs["spaceRef"] = args ? args.spaceRef : undefined;
+            resourceInputs["allowedPatterns"] = args?.allowedPatterns;
+            resourceInputs["blockedPatterns"] = args?.blockedPatterns;
+            resourceInputs["configs"] = args?.configs;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["packageType"] = args?.packageType;
+            resourceInputs["parentRef"] = args?.parentRef;
+            resourceInputs["spaceRef"] = args?.spaceRef;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }

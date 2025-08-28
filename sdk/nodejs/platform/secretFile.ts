@@ -76,35 +76,35 @@ export class SecretFile extends pulumi.CustomResource {
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Path of the file containing secret value
      */
-    public readonly filePath!: pulumi.Output<string>;
+    declare public readonly filePath: pulumi.Output<string>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Identifier of the Secret Manager used to manage the secret.
      */
-    public readonly secretManagerIdentifier!: pulumi.Output<string>;
+    declare public readonly secretManagerIdentifier: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a SecretFile resource with the given unique name, arguments, and options.
@@ -119,33 +119,33 @@ export class SecretFile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretFileState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["filePath"] = state ? state.filePath : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["secretManagerIdentifier"] = state ? state.secretManagerIdentifier : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["filePath"] = state?.filePath;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["secretManagerIdentifier"] = state?.secretManagerIdentifier;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as SecretFileArgs | undefined;
-            if ((!args || args.filePath === undefined) && !opts.urn) {
+            if (args?.filePath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filePath'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.secretManagerIdentifier === undefined) && !opts.urn) {
+            if (args?.secretManagerIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretManagerIdentifier'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["filePath"] = args ? args.filePath : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["secretManagerIdentifier"] = args ? args.secretManagerIdentifier : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["filePath"] = args?.filePath;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["secretManagerIdentifier"] = args?.secretManagerIdentifier;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretFile.__pulumiType, name, resourceInputs, opts);

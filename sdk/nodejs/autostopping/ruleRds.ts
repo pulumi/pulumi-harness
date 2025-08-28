@@ -64,32 +64,32 @@ export class RuleRds extends pulumi.CustomResource {
     /**
      * Id of the cloud connector
      */
-    public readonly cloudConnectorId!: pulumi.Output<string>;
-    public readonly database!: pulumi.Output<outputs.autostopping.RuleRdsDatabase>;
+    declare public readonly cloudConnectorId: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<outputs.autostopping.RuleRdsDatabase>;
     /**
      * Dependent rules
      */
-    public readonly depends!: pulumi.Output<outputs.autostopping.RuleRdsDepend[] | undefined>;
+    declare public readonly depends: pulumi.Output<outputs.autostopping.RuleRdsDepend[] | undefined>;
     /**
      * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier of the resource
      */
-    public /*out*/ readonly identifier!: pulumi.Output<number>;
+    declare public /*out*/ readonly identifier: pulumi.Output<number>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    public readonly idleTimeMins!: pulumi.Output<number | undefined>;
+    declare public readonly idleTimeMins: pulumi.Output<number | undefined>;
     /**
      * Name of the rule
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * TCP routing configuration
      */
-    public readonly tcps!: pulumi.Output<outputs.autostopping.RuleRdsTcp[] | undefined>;
+    declare public readonly tcps: pulumi.Output<outputs.autostopping.RuleRdsTcp[] | undefined>;
 
     /**
      * Create a RuleRds resource with the given unique name, arguments, and options.
@@ -104,29 +104,29 @@ export class RuleRds extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleRdsState | undefined;
-            resourceInputs["cloudConnectorId"] = state ? state.cloudConnectorId : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["depends"] = state ? state.depends : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["idleTimeMins"] = state ? state.idleTimeMins : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tcps"] = state ? state.tcps : undefined;
+            resourceInputs["cloudConnectorId"] = state?.cloudConnectorId;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["depends"] = state?.depends;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["idleTimeMins"] = state?.idleTimeMins;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tcps"] = state?.tcps;
         } else {
             const args = argsOrState as RuleRdsArgs | undefined;
-            if ((!args || args.cloudConnectorId === undefined) && !opts.urn) {
+            if (args?.cloudConnectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudConnectorId'");
             }
-            if ((!args || args.database === undefined) && !opts.urn) {
+            if (args?.database === undefined && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
-            resourceInputs["cloudConnectorId"] = args ? args.cloudConnectorId : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["depends"] = args ? args.depends : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["idleTimeMins"] = args ? args.idleTimeMins : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tcps"] = args ? args.tcps : undefined;
+            resourceInputs["cloudConnectorId"] = args?.cloudConnectorId;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["depends"] = args?.depends;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["idleTimeMins"] = args?.idleTimeMins;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tcps"] = args?.tcps;
             resourceInputs["identifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -136,55 +136,55 @@ export class KubernetesConnector extends pulumi.CustomResource {
     /**
      * Client key and certificate config for the connector.
      */
-    public readonly clientKeyCert!: pulumi.Output<outputs.platform.KubernetesConnectorClientKeyCert | undefined>;
+    declare public readonly clientKeyCert: pulumi.Output<outputs.platform.KubernetesConnectorClientKeyCert | undefined>;
     /**
      * Selectors to use for the delegate.
      */
-    public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly delegateSelectors: pulumi.Output<string[] | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Enable this flag for force deletion of connector
      */
-    public readonly forceDelete!: pulumi.Output<boolean>;
+    declare public readonly forceDelete: pulumi.Output<boolean>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Credentials are inherited from the delegate.
      */
-    public readonly inheritFromDelegate!: pulumi.Output<outputs.platform.KubernetesConnectorInheritFromDelegate | undefined>;
+    declare public readonly inheritFromDelegate: pulumi.Output<outputs.platform.KubernetesConnectorInheritFromDelegate | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * OpenID configuration for the connector.
      */
-    public readonly openidConnect!: pulumi.Output<outputs.platform.KubernetesConnectorOpenidConnect | undefined>;
+    declare public readonly openidConnect: pulumi.Output<outputs.platform.KubernetesConnectorOpenidConnect | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Service account for the connector.
      */
-    public readonly serviceAccount!: pulumi.Output<outputs.platform.KubernetesConnectorServiceAccount | undefined>;
+    declare public readonly serviceAccount: pulumi.Output<outputs.platform.KubernetesConnectorServiceAccount | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Username and password for the connector.
      */
-    public readonly usernamePassword!: pulumi.Output<outputs.platform.KubernetesConnectorUsernamePassword | undefined>;
+    declare public readonly usernamePassword: pulumi.Output<outputs.platform.KubernetesConnectorUsernamePassword | undefined>;
 
     /**
      * Create a KubernetesConnector resource with the given unique name, arguments, and options.
@@ -199,37 +199,37 @@ export class KubernetesConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesConnectorState | undefined;
-            resourceInputs["clientKeyCert"] = state ? state.clientKeyCert : undefined;
-            resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["inheritFromDelegate"] = state ? state.inheritFromDelegate : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["openidConnect"] = state ? state.openidConnect : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["usernamePassword"] = state ? state.usernamePassword : undefined;
+            resourceInputs["clientKeyCert"] = state?.clientKeyCert;
+            resourceInputs["delegateSelectors"] = state?.delegateSelectors;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["inheritFromDelegate"] = state?.inheritFromDelegate;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["openidConnect"] = state?.openidConnect;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["usernamePassword"] = state?.usernamePassword;
         } else {
             const args = argsOrState as KubernetesConnectorArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["clientKeyCert"] = args ? args.clientKeyCert : undefined;
-            resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["inheritFromDelegate"] = args ? args.inheritFromDelegate : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["openidConnect"] = args ? args.openidConnect : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["usernamePassword"] = args ? args.usernamePassword : undefined;
+            resourceInputs["clientKeyCert"] = args?.clientKeyCert;
+            resourceInputs["delegateSelectors"] = args?.delegateSelectors;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["inheritFromDelegate"] = args?.inheritFromDelegate;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["openidConnect"] = args?.openidConnect;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["usernamePassword"] = args?.usernamePassword;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KubernetesConnector.__pulumiType, name, resourceInputs, opts);

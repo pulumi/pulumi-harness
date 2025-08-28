@@ -82,27 +82,27 @@ export class EnvironmentGroup extends pulumi.CustomResource {
     /**
      * Color of the environment group.
      */
-    public readonly color!: pulumi.Output<string>;
+    declare public readonly color: pulumi.Output<string>;
     /**
      * Enable this flag for force deletion of environment group
      */
-    public readonly forceDelete!: pulumi.Output<boolean>;
+    declare public readonly forceDelete: pulumi.Output<boolean>;
     /**
      * identifier of the environment group.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * org_id of the environment group.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * project_id of the environment group.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    public readonly yaml!: pulumi.Output<string>;
+    declare public readonly yaml: pulumi.Output<string>;
 
     /**
      * Create a EnvironmentGroup resource with the given unique name, arguments, and options.
@@ -117,26 +117,26 @@ export class EnvironmentGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentGroupState | undefined;
-            resourceInputs["color"] = state ? state.color : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["yaml"] = state ? state.yaml : undefined;
+            resourceInputs["color"] = state?.color;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["yaml"] = state?.yaml;
         } else {
             const args = argsOrState as EnvironmentGroupArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.yaml === undefined) && !opts.urn) {
+            if (args?.yaml === undefined && !opts.urn) {
                 throw new Error("Missing required property 'yaml'");
             }
-            resourceInputs["color"] = args ? args.color : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["yaml"] = args ? args.yaml : undefined;
+            resourceInputs["color"] = args?.color;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["yaml"] = args?.yaml;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EnvironmentGroup.__pulumiType, name, resourceInputs, opts);

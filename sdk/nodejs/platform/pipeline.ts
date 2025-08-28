@@ -187,55 +187,55 @@ export class Pipeline extends pulumi.CustomResource {
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    public readonly gitDetails!: pulumi.Output<outputs.platform.PipelineGitDetails>;
+    declare public readonly gitDetails: pulumi.Output<outputs.platform.PipelineGitDetails>;
     /**
      * Contains Git Information for importing entities from Git
      */
-    public readonly gitImportInfo!: pulumi.Output<outputs.platform.PipelineGitImportInfo | undefined>;
+    declare public readonly gitImportInfo: pulumi.Output<outputs.platform.PipelineGitImportInfo | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Flag to set if importing from Git
      */
-    public readonly importFromGit!: pulumi.Output<boolean | undefined>;
+    declare public readonly importFromGit: pulumi.Output<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Contains parameters for importing a pipeline
      */
-    public readonly pipelineImportRequest!: pulumi.Output<outputs.platform.PipelinePipelineImportRequest | undefined>;
+    declare public readonly pipelineImportRequest: pulumi.Output<outputs.platform.PipelinePipelineImportRequest | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * If true, returns Pipeline YAML with Templates applied on it.
      */
-    public readonly templateApplied!: pulumi.Output<boolean | undefined>;
+    declare public readonly templateApplied: pulumi.Output<boolean | undefined>;
     /**
      * Pipeline YAML after resolving Templates (returned as a String).
      */
-    public readonly templateAppliedPipelineYaml!: pulumi.Output<string | undefined>;
+    declare public readonly templateAppliedPipelineYaml: pulumi.Output<string | undefined>;
     /**
      * YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    public readonly yaml!: pulumi.Output<string>;
+    declare public readonly yaml: pulumi.Output<string>;
 
     /**
      * Create a Pipeline resource with the given unique name, arguments, and options.
@@ -250,43 +250,43 @@ export class Pipeline extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PipelineState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["gitDetails"] = state ? state.gitDetails : undefined;
-            resourceInputs["gitImportInfo"] = state ? state.gitImportInfo : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["importFromGit"] = state ? state.importFromGit : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["pipelineImportRequest"] = state ? state.pipelineImportRequest : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["templateApplied"] = state ? state.templateApplied : undefined;
-            resourceInputs["templateAppliedPipelineYaml"] = state ? state.templateAppliedPipelineYaml : undefined;
-            resourceInputs["yaml"] = state ? state.yaml : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["gitDetails"] = state?.gitDetails;
+            resourceInputs["gitImportInfo"] = state?.gitImportInfo;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["importFromGit"] = state?.importFromGit;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["pipelineImportRequest"] = state?.pipelineImportRequest;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["templateApplied"] = state?.templateApplied;
+            resourceInputs["templateAppliedPipelineYaml"] = state?.templateAppliedPipelineYaml;
+            resourceInputs["yaml"] = state?.yaml;
         } else {
             const args = argsOrState as PipelineArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["gitDetails"] = args ? args.gitDetails : undefined;
-            resourceInputs["gitImportInfo"] = args ? args.gitImportInfo : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["importFromGit"] = args ? args.importFromGit : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["pipelineImportRequest"] = args ? args.pipelineImportRequest : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["templateApplied"] = args ? args.templateApplied : undefined;
-            resourceInputs["templateAppliedPipelineYaml"] = args ? args.templateAppliedPipelineYaml : undefined;
-            resourceInputs["yaml"] = args ? args.yaml : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["gitDetails"] = args?.gitDetails;
+            resourceInputs["gitImportInfo"] = args?.gitImportInfo;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["importFromGit"] = args?.importFromGit;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["pipelineImportRequest"] = args?.pipelineImportRequest;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["templateApplied"] = args?.templateApplied;
+            resourceInputs["templateAppliedPipelineYaml"] = args?.templateAppliedPipelineYaml;
+            resourceInputs["yaml"] = args?.yaml;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Pipeline.__pulumiType, name, resourceInputs, opts);

@@ -38,31 +38,31 @@ export class GitopsFilters extends pulumi.CustomResource {
     /**
      * Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
      */
-    public readonly filterProperties!: pulumi.Output<string>;
+    declare public readonly filterProperties: pulumi.Output<string>;
     /**
      * This indicates visibility of filters, by default it is Everyone.
      */
-    public readonly filterVisibility!: pulumi.Output<string | undefined>;
+    declare public readonly filterVisibility: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the GitOps filters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Organization Identifier for the Entity.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Project Identifier for the Entity.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Type of GitOps filters.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a GitopsFilters resource with the given unique name, arguments, and options.
@@ -77,37 +77,37 @@ export class GitopsFilters extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GitopsFiltersState | undefined;
-            resourceInputs["filterProperties"] = state ? state.filterProperties : undefined;
-            resourceInputs["filterVisibility"] = state ? state.filterVisibility : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["filterProperties"] = state?.filterProperties;
+            resourceInputs["filterVisibility"] = state?.filterVisibility;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as GitopsFiltersArgs | undefined;
-            if ((!args || args.filterProperties === undefined) && !opts.urn) {
+            if (args?.filterProperties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filterProperties'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["filterProperties"] = args ? args.filterProperties : undefined;
-            resourceInputs["filterVisibility"] = args ? args.filterVisibility : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["filterProperties"] = args?.filterProperties;
+            resourceInputs["filterVisibility"] = args?.filterVisibility;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GitopsFilters.__pulumiType, name, resourceInputs, opts);

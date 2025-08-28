@@ -101,55 +101,55 @@ export class ManualFreeze extends pulumi.CustomResource {
     /**
      * Account Identifier of the freeze
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Current or upcoming windows
      */
-    public /*out*/ readonly currentOrUpcomingWindows!: pulumi.Output<outputs.platform.ManualFreezeCurrentOrUpcomingWindow[]>;
+    declare public /*out*/ readonly currentOrUpcomingWindows: pulumi.Output<outputs.platform.ManualFreezeCurrentOrUpcomingWindow[]>;
     /**
      * Description of the freeze
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * Freeze windows in the freeze response
      */
-    public /*out*/ readonly freezeWindows!: pulumi.Output<outputs.platform.ManualFreezeFreezeWindow[]>;
+    declare public /*out*/ readonly freezeWindows: pulumi.Output<outputs.platform.ManualFreezeFreezeWindow[]>;
     /**
      * Identifier of the freeze
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the freeze
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Organization identifier of the freeze
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Project identifier of the freeze
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Scope of the freeze
      */
-    public /*out*/ readonly scope!: pulumi.Output<string>;
+    declare public /*out*/ readonly scope: pulumi.Output<string>;
     /**
      * Status of the freeze
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Tags associated with the freeze
      */
-    public /*out*/ readonly tags!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly tags: pulumi.Output<string[]>;
     /**
      * Type of freeze
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Yaml of the freeze
      */
-    public readonly yaml!: pulumi.Output<string>;
+    declare public readonly yaml: pulumi.Output<string>;
 
     /**
      * Create a ManualFreeze resource with the given unique name, arguments, and options.
@@ -164,35 +164,35 @@ export class ManualFreeze extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManualFreezeState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["currentOrUpcomingWindows"] = state ? state.currentOrUpcomingWindows : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["freezeWindows"] = state ? state.freezeWindows : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["yaml"] = state ? state.yaml : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["currentOrUpcomingWindows"] = state?.currentOrUpcomingWindows;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["freezeWindows"] = state?.freezeWindows;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["yaml"] = state?.yaml;
         } else {
             const args = argsOrState as ManualFreezeArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.yaml === undefined) && !opts.urn) {
+            if (args?.yaml === undefined && !opts.urn) {
                 throw new Error("Missing required property 'yaml'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["yaml"] = args ? args.yaml : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["yaml"] = args?.yaml;
             resourceInputs["currentOrUpcomingWindows"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["freezeWindows"] = undefined /*out*/;

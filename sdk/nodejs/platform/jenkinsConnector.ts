@@ -62,39 +62,39 @@ export class JenkinsConnector extends pulumi.CustomResource {
     /**
      * This entity contains the details for Jenkins Authentication.
      */
-    public readonly auth!: pulumi.Output<outputs.platform.JenkinsConnectorAuth | undefined>;
+    declare public readonly auth: pulumi.Output<outputs.platform.JenkinsConnectorAuth | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly delegateSelectors: pulumi.Output<string[] | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Jenkins Url.
      */
-    public readonly jenkinsUrl!: pulumi.Output<string>;
+    declare public readonly jenkinsUrl: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a JenkinsConnector resource with the given unique name, arguments, and options.
@@ -109,32 +109,32 @@ export class JenkinsConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JenkinsConnectorState | undefined;
-            resourceInputs["auth"] = state ? state.auth : undefined;
-            resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["jenkinsUrl"] = state ? state.jenkinsUrl : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["auth"] = state?.auth;
+            resourceInputs["delegateSelectors"] = state?.delegateSelectors;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["jenkinsUrl"] = state?.jenkinsUrl;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as JenkinsConnectorArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.jenkinsUrl === undefined) && !opts.urn) {
+            if (args?.jenkinsUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jenkinsUrl'");
             }
-            resourceInputs["auth"] = args ? args.auth : undefined;
-            resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["jenkinsUrl"] = args ? args.jenkinsUrl : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["auth"] = args?.auth;
+            resourceInputs["delegateSelectors"] = args?.delegateSelectors;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["jenkinsUrl"] = args?.jenkinsUrl;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(JenkinsConnector.__pulumiType, name, resourceInputs, opts);

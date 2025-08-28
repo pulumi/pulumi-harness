@@ -44,8 +44,7 @@ namespace Pulumi.Harness
 
         private static readonly __Value<string?> _apiKey = new __Value<string?>(() => __config.Get("apiKey") ?? Utilities.GetEnv("HARNESS_API_KEY"));
         /// <summary>
-        /// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-        /// create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+        /// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
         /// </summary>
         public static string? ApiKey
         {
@@ -55,8 +54,7 @@ namespace Pulumi.Harness
 
         private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint") ?? Utilities.GetEnv("HARNESS_ENDPOINT"));
         /// <summary>
-        /// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-        /// `HARNESS_ENDPOINT` environment variable.
+        /// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
         /// </summary>
         public static string? Endpoint
         {
@@ -66,9 +64,7 @@ namespace Pulumi.Harness
 
         private static readonly __Value<string?> _platformApiKey = new __Value<string?>(() => __config.Get("platformApiKey") ?? Utilities.GetEnv("HARNESS_PLATFORM_API_KEY"));
         /// <summary>
-        /// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-        /// variable. For more information to create an API key in NextGen, see
-        /// https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+        /// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
         /// </summary>
         public static string? PlatformApiKey
         {

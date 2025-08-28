@@ -88,43 +88,43 @@ export class GcpCloudCostConnector extends pulumi.CustomResource {
     /**
      * Returns billing details.
      */
-    public readonly billingExportSpec!: pulumi.Output<outputs.platform.GcpCloudCostConnectorBillingExportSpec | undefined>;
+    declare public readonly billingExportSpec: pulumi.Output<outputs.platform.GcpCloudCostConnectorBillingExportSpec | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Indicates which features to enable among Billing, Optimization, Visibility and Governance.
      */
-    public readonly featuresEnableds!: pulumi.Output<string[]>;
+    declare public readonly featuresEnableds: pulumi.Output<string[]>;
     /**
      * GCP Project Id.
      */
-    public readonly gcpProjectId!: pulumi.Output<string>;
+    declare public readonly gcpProjectId: pulumi.Output<string>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Email corresponding to the Service Account.
      */
-    public readonly serviceAccountEmail!: pulumi.Output<string>;
+    declare public readonly serviceAccountEmail: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a GcpCloudCostConnector resource with the given unique name, arguments, and options.
@@ -139,40 +139,40 @@ export class GcpCloudCostConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GcpCloudCostConnectorState | undefined;
-            resourceInputs["billingExportSpec"] = state ? state.billingExportSpec : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["featuresEnableds"] = state ? state.featuresEnableds : undefined;
-            resourceInputs["gcpProjectId"] = state ? state.gcpProjectId : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["billingExportSpec"] = state?.billingExportSpec;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["featuresEnableds"] = state?.featuresEnableds;
+            resourceInputs["gcpProjectId"] = state?.gcpProjectId;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["serviceAccountEmail"] = state?.serviceAccountEmail;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as GcpCloudCostConnectorArgs | undefined;
-            if ((!args || args.featuresEnableds === undefined) && !opts.urn) {
+            if (args?.featuresEnableds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'featuresEnableds'");
             }
-            if ((!args || args.gcpProjectId === undefined) && !opts.urn) {
+            if (args?.gcpProjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gcpProjectId'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.serviceAccountEmail === undefined) && !opts.urn) {
+            if (args?.serviceAccountEmail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
-            resourceInputs["billingExportSpec"] = args ? args.billingExportSpec : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["featuresEnableds"] = args ? args.featuresEnableds : undefined;
-            resourceInputs["gcpProjectId"] = args ? args.gcpProjectId : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["billingExportSpec"] = args?.billingExportSpec;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["featuresEnableds"] = args?.featuresEnableds;
+            resourceInputs["gcpProjectId"] = args?.gcpProjectId;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["serviceAccountEmail"] = args?.serviceAccountEmail;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GcpCloudCostConnector.__pulumiType, name, resourceInputs, opts);

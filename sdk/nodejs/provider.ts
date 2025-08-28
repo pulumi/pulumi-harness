@@ -28,23 +28,19 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
-     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-     * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
      */
-    public readonly apiKey!: pulumi.Output<string | undefined>;
+    declare public readonly apiKey: pulumi.Output<string | undefined>;
     /**
-     * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-     * `HARNESS_ENDPOINT` environment variable.
+     * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
      */
-    public readonly endpoint!: pulumi.Output<string | undefined>;
+    declare public readonly endpoint: pulumi.Output<string | undefined>;
     /**
-     * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-     * variable. For more information to create an API key in NextGen, see
-     * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+     * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      */
-    public readonly platformApiKey!: pulumi.Output<string | undefined>;
+    declare public readonly platformApiKey: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -57,10 +53,10 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["accountId"] = (args ? args.accountId : undefined) ?? utilities.getEnv("HARNESS_ACCOUNT_ID");
-            resourceInputs["apiKey"] = (args ? args.apiKey : undefined) ?? utilities.getEnv("HARNESS_API_KEY");
-            resourceInputs["endpoint"] = (args ? args.endpoint : undefined) ?? utilities.getEnv("HARNESS_ENDPOINT");
-            resourceInputs["platformApiKey"] = (args ? args.platformApiKey : undefined) ?? utilities.getEnv("HARNESS_PLATFORM_API_KEY");
+            resourceInputs["accountId"] = (args?.accountId) ?? utilities.getEnv("HARNESS_ACCOUNT_ID");
+            resourceInputs["apiKey"] = (args?.apiKey) ?? utilities.getEnv("HARNESS_API_KEY");
+            resourceInputs["endpoint"] = (args?.endpoint) ?? utilities.getEnv("HARNESS_ENDPOINT");
+            resourceInputs["platformApiKey"] = (args?.platformApiKey) ?? utilities.getEnv("HARNESS_PLATFORM_API_KEY");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -85,19 +81,15 @@ export interface ProviderArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-     * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
      */
     apiKey?: pulumi.Input<string>;
     /**
-     * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-     * `HARNESS_ENDPOINT` environment variable.
+     * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-     * variable. For more information to create an API key in NextGen, see
-     * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+     * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      */
     platformApiKey?: pulumi.Input<string>;
 }
