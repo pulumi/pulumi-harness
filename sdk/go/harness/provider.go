@@ -20,15 +20,11 @@ type Provider struct {
 
 	// The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-	// create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+	// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
 	ApiKey pulumi.StringPtrOutput `pulumi:"apiKey"`
-	// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-	// `HARNESS_ENDPOINT` environment variable.
+	// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
 	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
-	// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-	// variable. For more information to create an API key in NextGen, see
-	// https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+	// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
 	PlatformApiKey pulumi.StringPtrOutput `pulumi:"platformApiKey"`
 }
 
@@ -71,15 +67,11 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
 	AccountId *string `pulumi:"accountId"`
-	// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-	// create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+	// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
 	ApiKey *string `pulumi:"apiKey"`
-	// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-	// `HARNESS_ENDPOINT` environment variable.
+	// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
 	Endpoint *string `pulumi:"endpoint"`
-	// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-	// variable. For more information to create an API key in NextGen, see
-	// https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+	// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
 	PlatformApiKey *string `pulumi:"platformApiKey"`
 }
 
@@ -87,15 +79,11 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
 	AccountId pulumi.StringPtrInput
-	// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-	// create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+	// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
 	ApiKey pulumi.StringPtrInput
-	// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-	// `HARNESS_ENDPOINT` environment variable.
+	// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
 	Endpoint pulumi.StringPtrInput
-	// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-	// variable. For more information to create an API key in NextGen, see
-	// https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+	// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
 	PlatformApiKey pulumi.StringPtrInput
 }
 
@@ -164,21 +152,17 @@ func (o ProviderOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-// create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
 func (o ProviderOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
-// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-// `HARNESS_ENDPOINT` environment variable.
+// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
 func (o ProviderOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-// variable. For more information to create an API key in NextGen, see
-// https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
 func (o ProviderOutput) PlatformApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.PlatformApiKey }).(pulumi.StringPtrOutput)
 }

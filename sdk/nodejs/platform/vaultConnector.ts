@@ -207,151 +207,151 @@ export class VaultConnector extends pulumi.CustomResource {
     /**
      * Access type.
      */
-    public readonly accessType!: pulumi.Output<string | undefined>;
+    declare public readonly accessType: pulumi.Output<string | undefined>;
     /**
      * ID of App Role.
      */
-    public readonly appRoleId!: pulumi.Output<string | undefined>;
+    declare public readonly appRoleId: pulumi.Output<string | undefined>;
     /**
      * Authentication token for Vault.
      */
-    public readonly authToken!: pulumi.Output<string>;
+    declare public readonly authToken: pulumi.Output<string>;
     /**
      * AWS region where the AWS IAM authentication will happen.
      */
-    public readonly awsRegion!: pulumi.Output<string | undefined>;
+    declare public readonly awsRegion: pulumi.Output<string | undefined>;
     /**
      * Location of the Vault directory where the secret will be stored.
      */
-    public readonly basePath!: pulumi.Output<string | undefined>;
+    declare public readonly basePath: pulumi.Output<string | undefined>;
     /**
      * Is default or not.
      */
-    public readonly default!: pulumi.Output<boolean | undefined>;
+    declare public readonly default: pulumi.Output<boolean | undefined>;
     /**
      * List of Delegate Selectors that belong to the same Delegate and are used to connect to the Secret Manager.
      */
-    public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly delegateSelectors: pulumi.Output<string[] | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Execute on delegate or not.
      */
-    public readonly executeOnDelegate!: pulumi.Output<boolean | undefined>;
+    declare public readonly executeOnDelegate: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Is default or not.
      */
-    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
     /**
      * Read only or not.
      */
-    public readonly isReadOnly!: pulumi.Output<boolean | undefined>;
+    declare public readonly isReadOnly: pulumi.Output<boolean | undefined>;
     /**
      * The path where Kubernetes Auth is enabled in Vault.
      */
-    public readonly k8sAuthEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly k8sAuthEndpoint: pulumi.Output<string | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Vault namespace where the Secret will be created.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Read only.
      */
-    public readonly readOnly!: pulumi.Output<boolean | undefined>;
+    declare public readonly readOnly: pulumi.Output<boolean | undefined>;
     /**
      * Boolean value to indicate if AppRole token renewal is enabled or not.
      */
-    public readonly renewAppRoleToken!: pulumi.Output<boolean>;
+    declare public readonly renewAppRoleToken: pulumi.Output<boolean>;
     /**
      * The time interval for the token renewal.
      */
-    public readonly renewalIntervalMinutes!: pulumi.Output<number>;
+    declare public readonly renewalIntervalMinutes: pulumi.Output<number>;
     /**
      * Manually entered Secret Engine.
      */
-    public readonly secretEngineManuallyConfigured!: pulumi.Output<boolean | undefined>;
+    declare public readonly secretEngineManuallyConfigured: pulumi.Output<boolean | undefined>;
     /**
      * Name of the Secret Engine.
      */
-    public readonly secretEngineName!: pulumi.Output<string | undefined>;
+    declare public readonly secretEngineName: pulumi.Output<string | undefined>;
     /**
      * Version of Secret Engine.
      */
-    public readonly secretEngineVersion!: pulumi.Output<number | undefined>;
+    declare public readonly secretEngineVersion: pulumi.Output<number | undefined>;
     /**
      * ID of the Secret.
      */
-    public readonly secretId!: pulumi.Output<string | undefined>;
+    declare public readonly secretId: pulumi.Output<string | undefined>;
     /**
      * The Service Account token path in the K8s pod where the token is mounted.
      */
-    public readonly serviceAccountTokenPath!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccountTokenPath: pulumi.Output<string | undefined>;
     /**
      * The location from which the authentication token should be read.
      */
-    public readonly sinkPath!: pulumi.Output<string | undefined>;
+    declare public readonly sinkPath: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Boolean value to indicate if AWS IAM is used for authentication.
      */
-    public readonly useAwsIam!: pulumi.Output<boolean | undefined>;
+    declare public readonly useAwsIam: pulumi.Output<boolean | undefined>;
     /**
      * Boolean value to indicate if JWT is used for authentication.
      */
-    public readonly useJwtAuth!: pulumi.Output<boolean | undefined>;
+    declare public readonly useJwtAuth: pulumi.Output<boolean | undefined>;
     /**
      * Boolean value to indicate if K8s Auth is used for authentication.
      */
-    public readonly useK8sAuth!: pulumi.Output<boolean | undefined>;
+    declare public readonly useK8sAuth: pulumi.Output<boolean | undefined>;
     /**
      * Boolean value to indicate if Vault Agent is used for authentication.
      */
-    public readonly useVaultAgent!: pulumi.Output<boolean | undefined>;
+    declare public readonly useVaultAgent: pulumi.Output<boolean | undefined>;
     /**
      * The Vault role defined to bind to aws iam account/role being accessed.
      */
-    public readonly vaultAwsIamRole!: pulumi.Output<string | undefined>;
+    declare public readonly vaultAwsIamRole: pulumi.Output<string | undefined>;
     /**
      * Custom path at with JWT auth in enabled for Vault
      */
-    public readonly vaultJwtAuthPath!: pulumi.Output<string | undefined>;
+    declare public readonly vaultJwtAuthPath: pulumi.Output<string | undefined>;
     /**
      * The Vault role defined with JWT auth type for accessing Vault as per policies binded.
      */
-    public readonly vaultJwtAuthRole!: pulumi.Output<string | undefined>;
+    declare public readonly vaultJwtAuthRole: pulumi.Output<string | undefined>;
     /**
      * The role where K8s Auth will happen.
      */
-    public readonly vaultK8sAuthRole!: pulumi.Output<string | undefined>;
+    declare public readonly vaultK8sAuthRole: pulumi.Output<string | undefined>;
     /**
      * URL of the HashiCorp Vault.
      */
-    public readonly vaultUrl!: pulumi.Output<string>;
+    declare public readonly vaultUrl: pulumi.Output<string>;
     /**
      * The AWS IAM Header Server ID that has been configured for this AWS IAM instance.
      */
-    public readonly xvaultAwsIamServerId!: pulumi.Output<string | undefined>;
+    declare public readonly xvaultAwsIamServerId: pulumi.Output<string | undefined>;
 
     /**
      * Create a VaultConnector resource with the given unique name, arguments, and options.
@@ -366,91 +366,91 @@ export class VaultConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VaultConnectorState | undefined;
-            resourceInputs["accessType"] = state ? state.accessType : undefined;
-            resourceInputs["appRoleId"] = state ? state.appRoleId : undefined;
-            resourceInputs["authToken"] = state ? state.authToken : undefined;
-            resourceInputs["awsRegion"] = state ? state.awsRegion : undefined;
-            resourceInputs["basePath"] = state ? state.basePath : undefined;
-            resourceInputs["default"] = state ? state.default : undefined;
-            resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["isReadOnly"] = state ? state.isReadOnly : undefined;
-            resourceInputs["k8sAuthEndpoint"] = state ? state.k8sAuthEndpoint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["readOnly"] = state ? state.readOnly : undefined;
-            resourceInputs["renewAppRoleToken"] = state ? state.renewAppRoleToken : undefined;
-            resourceInputs["renewalIntervalMinutes"] = state ? state.renewalIntervalMinutes : undefined;
-            resourceInputs["secretEngineManuallyConfigured"] = state ? state.secretEngineManuallyConfigured : undefined;
-            resourceInputs["secretEngineName"] = state ? state.secretEngineName : undefined;
-            resourceInputs["secretEngineVersion"] = state ? state.secretEngineVersion : undefined;
-            resourceInputs["secretId"] = state ? state.secretId : undefined;
-            resourceInputs["serviceAccountTokenPath"] = state ? state.serviceAccountTokenPath : undefined;
-            resourceInputs["sinkPath"] = state ? state.sinkPath : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["useAwsIam"] = state ? state.useAwsIam : undefined;
-            resourceInputs["useJwtAuth"] = state ? state.useJwtAuth : undefined;
-            resourceInputs["useK8sAuth"] = state ? state.useK8sAuth : undefined;
-            resourceInputs["useVaultAgent"] = state ? state.useVaultAgent : undefined;
-            resourceInputs["vaultAwsIamRole"] = state ? state.vaultAwsIamRole : undefined;
-            resourceInputs["vaultJwtAuthPath"] = state ? state.vaultJwtAuthPath : undefined;
-            resourceInputs["vaultJwtAuthRole"] = state ? state.vaultJwtAuthRole : undefined;
-            resourceInputs["vaultK8sAuthRole"] = state ? state.vaultK8sAuthRole : undefined;
-            resourceInputs["vaultUrl"] = state ? state.vaultUrl : undefined;
-            resourceInputs["xvaultAwsIamServerId"] = state ? state.xvaultAwsIamServerId : undefined;
+            resourceInputs["accessType"] = state?.accessType;
+            resourceInputs["appRoleId"] = state?.appRoleId;
+            resourceInputs["authToken"] = state?.authToken;
+            resourceInputs["awsRegion"] = state?.awsRegion;
+            resourceInputs["basePath"] = state?.basePath;
+            resourceInputs["default"] = state?.default;
+            resourceInputs["delegateSelectors"] = state?.delegateSelectors;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["executeOnDelegate"] = state?.executeOnDelegate;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["isReadOnly"] = state?.isReadOnly;
+            resourceInputs["k8sAuthEndpoint"] = state?.k8sAuthEndpoint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["readOnly"] = state?.readOnly;
+            resourceInputs["renewAppRoleToken"] = state?.renewAppRoleToken;
+            resourceInputs["renewalIntervalMinutes"] = state?.renewalIntervalMinutes;
+            resourceInputs["secretEngineManuallyConfigured"] = state?.secretEngineManuallyConfigured;
+            resourceInputs["secretEngineName"] = state?.secretEngineName;
+            resourceInputs["secretEngineVersion"] = state?.secretEngineVersion;
+            resourceInputs["secretId"] = state?.secretId;
+            resourceInputs["serviceAccountTokenPath"] = state?.serviceAccountTokenPath;
+            resourceInputs["sinkPath"] = state?.sinkPath;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["useAwsIam"] = state?.useAwsIam;
+            resourceInputs["useJwtAuth"] = state?.useJwtAuth;
+            resourceInputs["useK8sAuth"] = state?.useK8sAuth;
+            resourceInputs["useVaultAgent"] = state?.useVaultAgent;
+            resourceInputs["vaultAwsIamRole"] = state?.vaultAwsIamRole;
+            resourceInputs["vaultJwtAuthPath"] = state?.vaultJwtAuthPath;
+            resourceInputs["vaultJwtAuthRole"] = state?.vaultJwtAuthRole;
+            resourceInputs["vaultK8sAuthRole"] = state?.vaultK8sAuthRole;
+            resourceInputs["vaultUrl"] = state?.vaultUrl;
+            resourceInputs["xvaultAwsIamServerId"] = state?.xvaultAwsIamServerId;
         } else {
             const args = argsOrState as VaultConnectorArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.renewalIntervalMinutes === undefined) && !opts.urn) {
+            if (args?.renewalIntervalMinutes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'renewalIntervalMinutes'");
             }
-            if ((!args || args.vaultUrl === undefined) && !opts.urn) {
+            if (args?.vaultUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultUrl'");
             }
-            resourceInputs["accessType"] = args ? args.accessType : undefined;
-            resourceInputs["appRoleId"] = args ? args.appRoleId : undefined;
-            resourceInputs["authToken"] = args ? args.authToken : undefined;
-            resourceInputs["awsRegion"] = args ? args.awsRegion : undefined;
-            resourceInputs["basePath"] = args ? args.basePath : undefined;
-            resourceInputs["default"] = args ? args.default : undefined;
-            resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["isReadOnly"] = args ? args.isReadOnly : undefined;
-            resourceInputs["k8sAuthEndpoint"] = args ? args.k8sAuthEndpoint : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["readOnly"] = args ? args.readOnly : undefined;
-            resourceInputs["renewAppRoleToken"] = args ? args.renewAppRoleToken : undefined;
-            resourceInputs["renewalIntervalMinutes"] = args ? args.renewalIntervalMinutes : undefined;
-            resourceInputs["secretEngineManuallyConfigured"] = args ? args.secretEngineManuallyConfigured : undefined;
-            resourceInputs["secretEngineName"] = args ? args.secretEngineName : undefined;
-            resourceInputs["secretEngineVersion"] = args ? args.secretEngineVersion : undefined;
-            resourceInputs["secretId"] = args ? args.secretId : undefined;
-            resourceInputs["serviceAccountTokenPath"] = args ? args.serviceAccountTokenPath : undefined;
-            resourceInputs["sinkPath"] = args ? args.sinkPath : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["useAwsIam"] = args ? args.useAwsIam : undefined;
-            resourceInputs["useJwtAuth"] = args ? args.useJwtAuth : undefined;
-            resourceInputs["useK8sAuth"] = args ? args.useK8sAuth : undefined;
-            resourceInputs["useVaultAgent"] = args ? args.useVaultAgent : undefined;
-            resourceInputs["vaultAwsIamRole"] = args ? args.vaultAwsIamRole : undefined;
-            resourceInputs["vaultJwtAuthPath"] = args ? args.vaultJwtAuthPath : undefined;
-            resourceInputs["vaultJwtAuthRole"] = args ? args.vaultJwtAuthRole : undefined;
-            resourceInputs["vaultK8sAuthRole"] = args ? args.vaultK8sAuthRole : undefined;
-            resourceInputs["vaultUrl"] = args ? args.vaultUrl : undefined;
-            resourceInputs["xvaultAwsIamServerId"] = args ? args.xvaultAwsIamServerId : undefined;
+            resourceInputs["accessType"] = args?.accessType;
+            resourceInputs["appRoleId"] = args?.appRoleId;
+            resourceInputs["authToken"] = args?.authToken;
+            resourceInputs["awsRegion"] = args?.awsRegion;
+            resourceInputs["basePath"] = args?.basePath;
+            resourceInputs["default"] = args?.default;
+            resourceInputs["delegateSelectors"] = args?.delegateSelectors;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["executeOnDelegate"] = args?.executeOnDelegate;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["isReadOnly"] = args?.isReadOnly;
+            resourceInputs["k8sAuthEndpoint"] = args?.k8sAuthEndpoint;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["readOnly"] = args?.readOnly;
+            resourceInputs["renewAppRoleToken"] = args?.renewAppRoleToken;
+            resourceInputs["renewalIntervalMinutes"] = args?.renewalIntervalMinutes;
+            resourceInputs["secretEngineManuallyConfigured"] = args?.secretEngineManuallyConfigured;
+            resourceInputs["secretEngineName"] = args?.secretEngineName;
+            resourceInputs["secretEngineVersion"] = args?.secretEngineVersion;
+            resourceInputs["secretId"] = args?.secretId;
+            resourceInputs["serviceAccountTokenPath"] = args?.serviceAccountTokenPath;
+            resourceInputs["sinkPath"] = args?.sinkPath;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["useAwsIam"] = args?.useAwsIam;
+            resourceInputs["useJwtAuth"] = args?.useJwtAuth;
+            resourceInputs["useK8sAuth"] = args?.useK8sAuth;
+            resourceInputs["useVaultAgent"] = args?.useVaultAgent;
+            resourceInputs["vaultAwsIamRole"] = args?.vaultAwsIamRole;
+            resourceInputs["vaultJwtAuthPath"] = args?.vaultJwtAuthPath;
+            resourceInputs["vaultJwtAuthRole"] = args?.vaultJwtAuthRole;
+            resourceInputs["vaultK8sAuthRole"] = args?.vaultK8sAuthRole;
+            resourceInputs["vaultUrl"] = args?.vaultUrl;
+            resourceInputs["xvaultAwsIamServerId"] = args?.xvaultAwsIamServerId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VaultConnector.__pulumiType, name, resourceInputs, opts);

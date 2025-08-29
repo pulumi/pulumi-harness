@@ -71,27 +71,27 @@ export class Tanzu extends pulumi.CustomResource {
     /**
      * The url of the Tanzu platform.
      */
-    public readonly endpoint!: pulumi.Output<string>;
+    declare public readonly endpoint: pulumi.Output<string>;
     /**
      * The name of the cloud provider.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the Harness secret containing the password to use to authenticate to Tanzu.
      */
-    public readonly passwordSecretName!: pulumi.Output<string>;
+    declare public readonly passwordSecretName: pulumi.Output<string>;
     /**
      * Skip validation of Tanzu configuration.
      */
-    public readonly skipValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipValidation: pulumi.Output<boolean | undefined>;
     /**
      * The username to use to authenticate to Tanzu.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
     /**
      * The name of the Harness secret containing the username to authenticate to Tanzu with.
      */
-    public readonly usernameSecretName!: pulumi.Output<string | undefined>;
+    declare public readonly usernameSecretName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Tanzu resource with the given unique name, arguments, and options.
@@ -106,26 +106,26 @@ export class Tanzu extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TanzuState | undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["passwordSecretName"] = state ? state.passwordSecretName : undefined;
-            resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["usernameSecretName"] = state ? state.usernameSecretName : undefined;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["passwordSecretName"] = state?.passwordSecretName;
+            resourceInputs["skipValidation"] = state?.skipValidation;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["usernameSecretName"] = state?.usernameSecretName;
         } else {
             const args = argsOrState as TanzuArgs | undefined;
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
+            if (args?.endpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.passwordSecretName === undefined) && !opts.urn) {
+            if (args?.passwordSecretName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'passwordSecretName'");
             }
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["passwordSecretName"] = args ? args.passwordSecretName : undefined;
-            resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
-            resourceInputs["usernameSecretName"] = args ? args.usernameSecretName : undefined;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["passwordSecretName"] = args?.passwordSecretName;
+            resourceInputs["skipValidation"] = args?.skipValidation;
+            resourceInputs["username"] = args?.username;
+            resourceInputs["usernameSecretName"] = args?.usernameSecretName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Tanzu.__pulumiType, name, resourceInputs, opts);

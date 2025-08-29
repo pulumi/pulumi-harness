@@ -70,41 +70,41 @@ export class AwsAlb extends pulumi.CustomResource {
     /**
      * Arn of AWS ALB to be imported. Required only for importing existing ALB
      */
-    public readonly albArn!: pulumi.Output<string | undefined>;
-    public readonly certificateId!: pulumi.Output<string | undefined>;
+    declare public readonly albArn: pulumi.Output<string | undefined>;
+    declare public readonly certificateId: pulumi.Output<string | undefined>;
     /**
      * Id of the cloud connector
      */
-    public readonly cloudConnectorId!: pulumi.Output<string>;
-    public readonly deleteCloudResourcesOnDestroy!: pulumi.Output<boolean>;
+    declare public readonly cloudConnectorId: pulumi.Output<string>;
+    declare public readonly deleteCloudResourcesOnDestroy: pulumi.Output<boolean>;
     /**
      * Hostname for the proxy
      */
-    public readonly hostName!: pulumi.Output<string>;
+    declare public readonly hostName: pulumi.Output<string>;
     /**
      * Unique identifier of the resource
      */
-    public /*out*/ readonly identifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly identifier: pulumi.Output<string>;
     /**
      * Name of the proxy
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Region in which cloud resources are hosted
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Route 53 hosted zone id
      */
-    public readonly route53HostedZoneId!: pulumi.Output<string | undefined>;
+    declare public readonly route53HostedZoneId: pulumi.Output<string | undefined>;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
-    public readonly securityGroups!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroups: pulumi.Output<string[] | undefined>;
     /**
      * VPC in which cloud resources are hosted
      */
-    public readonly vpc!: pulumi.Output<string>;
+    declare public readonly vpc: pulumi.Output<string>;
 
     /**
      * Create a AwsAlb resource with the given unique name, arguments, and options.
@@ -119,44 +119,44 @@ export class AwsAlb extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AwsAlbState | undefined;
-            resourceInputs["albArn"] = state ? state.albArn : undefined;
-            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
-            resourceInputs["cloudConnectorId"] = state ? state.cloudConnectorId : undefined;
-            resourceInputs["deleteCloudResourcesOnDestroy"] = state ? state.deleteCloudResourcesOnDestroy : undefined;
-            resourceInputs["hostName"] = state ? state.hostName : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["route53HostedZoneId"] = state ? state.route53HostedZoneId : undefined;
-            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
-            resourceInputs["vpc"] = state ? state.vpc : undefined;
+            resourceInputs["albArn"] = state?.albArn;
+            resourceInputs["certificateId"] = state?.certificateId;
+            resourceInputs["cloudConnectorId"] = state?.cloudConnectorId;
+            resourceInputs["deleteCloudResourcesOnDestroy"] = state?.deleteCloudResourcesOnDestroy;
+            resourceInputs["hostName"] = state?.hostName;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["route53HostedZoneId"] = state?.route53HostedZoneId;
+            resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["vpc"] = state?.vpc;
         } else {
             const args = argsOrState as AwsAlbArgs | undefined;
-            if ((!args || args.cloudConnectorId === undefined) && !opts.urn) {
+            if (args?.cloudConnectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudConnectorId'");
             }
-            if ((!args || args.deleteCloudResourcesOnDestroy === undefined) && !opts.urn) {
+            if (args?.deleteCloudResourcesOnDestroy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deleteCloudResourcesOnDestroy'");
             }
-            if ((!args || args.hostName === undefined) && !opts.urn) {
+            if (args?.hostName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostName'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.vpc === undefined) && !opts.urn) {
+            if (args?.vpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpc'");
             }
-            resourceInputs["albArn"] = args ? args.albArn : undefined;
-            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
-            resourceInputs["cloudConnectorId"] = args ? args.cloudConnectorId : undefined;
-            resourceInputs["deleteCloudResourcesOnDestroy"] = args ? args.deleteCloudResourcesOnDestroy : undefined;
-            resourceInputs["hostName"] = args ? args.hostName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["route53HostedZoneId"] = args ? args.route53HostedZoneId : undefined;
-            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
-            resourceInputs["vpc"] = args ? args.vpc : undefined;
+            resourceInputs["albArn"] = args?.albArn;
+            resourceInputs["certificateId"] = args?.certificateId;
+            resourceInputs["cloudConnectorId"] = args?.cloudConnectorId;
+            resourceInputs["deleteCloudResourcesOnDestroy"] = args?.deleteCloudResourcesOnDestroy;
+            resourceInputs["hostName"] = args?.hostName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["route53HostedZoneId"] = args?.route53HostedZoneId;
+            resourceInputs["securityGroups"] = args?.securityGroups;
+            resourceInputs["vpc"] = args?.vpc;
             resourceInputs["identifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

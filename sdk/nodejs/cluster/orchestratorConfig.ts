@@ -117,27 +117,27 @@ export class OrchestratorConfig extends pulumi.CustomResource {
     /**
      * Binpacking preferences for Cluster Orchestrator
      */
-    public readonly binpacking!: pulumi.Output<outputs.cluster.OrchestratorConfigBinpacking | undefined>;
+    declare public readonly binpacking: pulumi.Output<outputs.cluster.OrchestratorConfigBinpacking | undefined>;
     /**
      * Commitment integration configuration for Cluster Orchestrator
      */
-    public readonly commitmentIntegration!: pulumi.Output<outputs.cluster.OrchestratorConfigCommitmentIntegration | undefined>;
+    declare public readonly commitmentIntegration: pulumi.Output<outputs.cluster.OrchestratorConfigCommitmentIntegration | undefined>;
     /**
      * Spot and Ondemand Distribution Preferences for workload replicas
      */
-    public readonly distribution!: pulumi.Output<outputs.cluster.OrchestratorConfigDistribution>;
+    declare public readonly distribution: pulumi.Output<outputs.cluster.OrchestratorConfigDistribution>;
     /**
      * Node preferences for Cluster Orchestrator
      */
-    public readonly nodePreferences!: pulumi.Output<outputs.cluster.OrchestratorConfigNodePreferences | undefined>;
+    declare public readonly nodePreferences: pulumi.Output<outputs.cluster.OrchestratorConfigNodePreferences | undefined>;
     /**
      * ID of the Cluster Orchestrator Object
      */
-    public readonly orchestratorId!: pulumi.Output<string>;
+    declare public readonly orchestratorId: pulumi.Output<string>;
     /**
      * Replacement schedule for Cluster Orchestrator
      */
-    public readonly replacementSchedule!: pulumi.Output<outputs.cluster.OrchestratorConfigReplacementSchedule | undefined>;
+    declare public readonly replacementSchedule: pulumi.Output<outputs.cluster.OrchestratorConfigReplacementSchedule | undefined>;
 
     /**
      * Create a OrchestratorConfig resource with the given unique name, arguments, and options.
@@ -152,26 +152,26 @@ export class OrchestratorConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrchestratorConfigState | undefined;
-            resourceInputs["binpacking"] = state ? state.binpacking : undefined;
-            resourceInputs["commitmentIntegration"] = state ? state.commitmentIntegration : undefined;
-            resourceInputs["distribution"] = state ? state.distribution : undefined;
-            resourceInputs["nodePreferences"] = state ? state.nodePreferences : undefined;
-            resourceInputs["orchestratorId"] = state ? state.orchestratorId : undefined;
-            resourceInputs["replacementSchedule"] = state ? state.replacementSchedule : undefined;
+            resourceInputs["binpacking"] = state?.binpacking;
+            resourceInputs["commitmentIntegration"] = state?.commitmentIntegration;
+            resourceInputs["distribution"] = state?.distribution;
+            resourceInputs["nodePreferences"] = state?.nodePreferences;
+            resourceInputs["orchestratorId"] = state?.orchestratorId;
+            resourceInputs["replacementSchedule"] = state?.replacementSchedule;
         } else {
             const args = argsOrState as OrchestratorConfigArgs | undefined;
-            if ((!args || args.distribution === undefined) && !opts.urn) {
+            if (args?.distribution === undefined && !opts.urn) {
                 throw new Error("Missing required property 'distribution'");
             }
-            if ((!args || args.orchestratorId === undefined) && !opts.urn) {
+            if (args?.orchestratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orchestratorId'");
             }
-            resourceInputs["binpacking"] = args ? args.binpacking : undefined;
-            resourceInputs["commitmentIntegration"] = args ? args.commitmentIntegration : undefined;
-            resourceInputs["distribution"] = args ? args.distribution : undefined;
-            resourceInputs["nodePreferences"] = args ? args.nodePreferences : undefined;
-            resourceInputs["orchestratorId"] = args ? args.orchestratorId : undefined;
-            resourceInputs["replacementSchedule"] = args ? args.replacementSchedule : undefined;
+            resourceInputs["binpacking"] = args?.binpacking;
+            resourceInputs["commitmentIntegration"] = args?.commitmentIntegration;
+            resourceInputs["distribution"] = args?.distribution;
+            resourceInputs["nodePreferences"] = args?.nodePreferences;
+            resourceInputs["orchestratorId"] = args?.orchestratorId;
+            resourceInputs["replacementSchedule"] = args?.replacementSchedule;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrchestratorConfig.__pulumiType, name, resourceInputs, opts);

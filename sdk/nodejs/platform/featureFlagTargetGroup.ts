@@ -63,39 +63,39 @@ export class FeatureFlagTargetGroup extends pulumi.CustomResource {
     /**
      * Account Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Environment Identifier
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * A list of targets to exclude from the target group
      */
-    public readonly excludeds!: pulumi.Output<string[]>;
+    declare public readonly excludeds: pulumi.Output<string[]>;
     /**
      * The unique identifier of the feature flag target group.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * A list of targets to include in the target group
      */
-    public readonly includeds!: pulumi.Output<string[]>;
+    declare public readonly includeds: pulumi.Output<string[]>;
     /**
      * The name of the feature flag target group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Organization Identifier
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Project Identifier
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The list of rules used to include targets in the target group.
      */
-    public readonly rules!: pulumi.Output<outputs.platform.FeatureFlagTargetGroupRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.platform.FeatureFlagTargetGroupRule[]>;
 
     /**
      * Create a FeatureFlagTargetGroup resource with the given unique name, arguments, and options.
@@ -110,41 +110,41 @@ export class FeatureFlagTargetGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureFlagTargetGroupState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["excludeds"] = state ? state.excludeds : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["includeds"] = state ? state.includeds : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["excludeds"] = state?.excludeds;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["includeds"] = state?.includeds;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["rules"] = state?.rules;
         } else {
             const args = argsOrState as FeatureFlagTargetGroupArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["excludeds"] = args ? args.excludeds : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["includeds"] = args ? args.includeds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["excludeds"] = args?.excludeds;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["includeds"] = args?.includeds;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["rules"] = args?.rules;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FeatureFlagTargetGroup.__pulumiType, name, resourceInputs, opts);

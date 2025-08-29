@@ -40,22 +40,22 @@ export class CentralNotificationChannel extends pulumi.CustomResource {
     /**
      * Account identifier associated with this notification channel.
      */
-    public /*out*/ readonly account!: pulumi.Output<string>;
-    public readonly channel!: pulumi.Output<outputs.platform.CentralNotificationChannelChannel>;
+    declare public /*out*/ readonly account: pulumi.Output<string>;
+    declare public readonly channel: pulumi.Output<outputs.platform.CentralNotificationChannelChannel>;
     /**
      * Timestamp when the notification channel was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<number>;
-    public readonly identifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<number>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Timestamp when the notification channel was last modified.
      */
-    public /*out*/ readonly lastModified!: pulumi.Output<number>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly notificationChannelType!: pulumi.Output<string>;
-    public readonly org!: pulumi.Output<string | undefined>;
-    public readonly project!: pulumi.Output<string | undefined>;
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly lastModified: pulumi.Output<number>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly notificationChannelType: pulumi.Output<string>;
+    declare public readonly org: pulumi.Output<string | undefined>;
+    declare public readonly project: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
 
     /**
      * Create a CentralNotificationChannel resource with the given unique name, arguments, and options.
@@ -70,34 +70,34 @@ export class CentralNotificationChannel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CentralNotificationChannelState | undefined;
-            resourceInputs["account"] = state ? state.account : undefined;
-            resourceInputs["channel"] = state ? state.channel : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationChannelType"] = state ? state.notificationChannelType : undefined;
-            resourceInputs["org"] = state ? state.org : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["account"] = state?.account;
+            resourceInputs["channel"] = state?.channel;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationChannelType"] = state?.notificationChannelType;
+            resourceInputs["org"] = state?.org;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as CentralNotificationChannelArgs | undefined;
-            if ((!args || args.channel === undefined) && !opts.urn) {
+            if (args?.channel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'channel'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.notificationChannelType === undefined) && !opts.urn) {
+            if (args?.notificationChannelType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationChannelType'");
             }
-            resourceInputs["channel"] = args ? args.channel : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationChannelType"] = args ? args.notificationChannelType : undefined;
-            resourceInputs["org"] = args ? args.org : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["channel"] = args?.channel;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationChannelType"] = args?.notificationChannelType;
+            resourceInputs["org"] = args?.org;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["status"] = args?.status;
             resourceInputs["account"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;

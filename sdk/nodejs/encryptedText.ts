@@ -76,31 +76,31 @@ export class EncryptedText extends pulumi.CustomResource {
     /**
      * Boolean that indicates whether or not to inherit the usage scopes from the secret manager
      */
-    public readonly inheritScopesFromSecretManager!: pulumi.Output<boolean | undefined>;
+    declare public readonly inheritScopesFromSecretManager: pulumi.Output<boolean | undefined>;
     /**
      * Name of the encrypted text secret
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Boolean that indicates whether or not the secret is scoped to the account
      */
-    public readonly scopedToAccount!: pulumi.Output<boolean | undefined>;
+    declare public readonly scopedToAccount: pulumi.Output<boolean | undefined>;
     /**
      * The id of the secret manager to associate the secret with. Once set, this field cannot be changed.
      */
-    public readonly secretManagerId!: pulumi.Output<string>;
+    declare public readonly secretManagerId: pulumi.Output<string>;
     /**
      * Name of the existing secret. If you already have secrets created in a secrets manager such as HashiCorp Vault or AWS Secrets Manager, you do not need to re-create the existing secrets in Harness.
      */
-    public readonly secretReference!: pulumi.Output<string | undefined>;
+    declare public readonly secretReference: pulumi.Output<string | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    public readonly usageScopes!: pulumi.Output<outputs.EncryptedTextUsageScope[] | undefined>;
+    declare public readonly usageScopes: pulumi.Output<outputs.EncryptedTextUsageScope[] | undefined>;
     /**
      * The value of the secret.
      */
-    public readonly value!: pulumi.Output<string | undefined>;
+    declare public readonly value: pulumi.Output<string | undefined>;
 
     /**
      * Create a EncryptedText resource with the given unique name, arguments, and options.
@@ -115,24 +115,24 @@ export class EncryptedText extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EncryptedTextState | undefined;
-            resourceInputs["inheritScopesFromSecretManager"] = state ? state.inheritScopesFromSecretManager : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["scopedToAccount"] = state ? state.scopedToAccount : undefined;
-            resourceInputs["secretManagerId"] = state ? state.secretManagerId : undefined;
-            resourceInputs["secretReference"] = state ? state.secretReference : undefined;
-            resourceInputs["usageScopes"] = state ? state.usageScopes : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["inheritScopesFromSecretManager"] = state?.inheritScopesFromSecretManager;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["scopedToAccount"] = state?.scopedToAccount;
+            resourceInputs["secretManagerId"] = state?.secretManagerId;
+            resourceInputs["secretReference"] = state?.secretReference;
+            resourceInputs["usageScopes"] = state?.usageScopes;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as EncryptedTextArgs | undefined;
-            if ((!args || args.secretManagerId === undefined) && !opts.urn) {
+            if (args?.secretManagerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretManagerId'");
             }
-            resourceInputs["inheritScopesFromSecretManager"] = args ? args.inheritScopesFromSecretManager : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["scopedToAccount"] = args ? args.scopedToAccount : undefined;
-            resourceInputs["secretManagerId"] = args ? args.secretManagerId : undefined;
-            resourceInputs["secretReference"] = args ? args.secretReference : undefined;
-            resourceInputs["usageScopes"] = args ? args.usageScopes : undefined;
+            resourceInputs["inheritScopesFromSecretManager"] = args?.inheritScopesFromSecretManager;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["scopedToAccount"] = args?.scopedToAccount;
+            resourceInputs["secretManagerId"] = args?.secretManagerId;
+            resourceInputs["secretReference"] = args?.secretReference;
+            resourceInputs["usageScopes"] = args?.usageScopes;
             resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

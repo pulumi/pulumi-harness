@@ -75,55 +75,55 @@ export class GitConnector extends pulumi.CustomResource {
     /**
      * The branch of the git connector to use
      */
-    public readonly branch!: pulumi.Output<string | undefined>;
+    declare public readonly branch: pulumi.Output<string | undefined>;
     /**
      * Custom details to use when making commits using this git connector
      */
-    public readonly commitDetails!: pulumi.Output<outputs.GitConnectorCommitDetails | undefined>;
+    declare public readonly commitDetails: pulumi.Output<outputs.GitConnectorCommitDetails | undefined>;
     /**
      * The time the git connector was created
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Delegate selectors to apply to this git connector.
      */
-    public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly delegateSelectors: pulumi.Output<string[] | undefined>;
     /**
      * Boolean indicating whether or not to generate a webhook url.
      */
-    public readonly generateWebhookUrl!: pulumi.Output<boolean | undefined>;
+    declare public readonly generateWebhookUrl: pulumi.Output<boolean | undefined>;
     /**
      * Name of the git connector.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The id of the secret for connecting to the git repository.
      */
-    public readonly passwordSecretId!: pulumi.Output<string | undefined>;
+    declare public readonly passwordSecretId: pulumi.Output<string | undefined>;
     /**
      * The id of the SSH secret to use
      */
-    public readonly sshSettingId!: pulumi.Output<string | undefined>;
+    declare public readonly sshSettingId: pulumi.Output<string | undefined>;
     /**
      * The URL of the git repository or account/organization
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * The type of git url being used. Options are `ACCOUNT`, and `REPO.`
      */
-    public readonly urlType!: pulumi.Output<string>;
+    declare public readonly urlType: pulumi.Output<string>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    public readonly usageScopes!: pulumi.Output<outputs.GitConnectorUsageScope[] | undefined>;
+    declare public readonly usageScopes: pulumi.Output<outputs.GitConnectorUsageScope[] | undefined>;
     /**
      * The name of the user used to connect to the git repository
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
     /**
      * The generated webhook url
      */
-    public /*out*/ readonly webhookUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly webhookUrl: pulumi.Output<string>;
 
     /**
      * Create a GitConnector resource with the given unique name, arguments, and options.
@@ -138,38 +138,38 @@ export class GitConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GitConnectorState | undefined;
-            resourceInputs["branch"] = state ? state.branch : undefined;
-            resourceInputs["commitDetails"] = state ? state.commitDetails : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
-            resourceInputs["generateWebhookUrl"] = state ? state.generateWebhookUrl : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["passwordSecretId"] = state ? state.passwordSecretId : undefined;
-            resourceInputs["sshSettingId"] = state ? state.sshSettingId : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["urlType"] = state ? state.urlType : undefined;
-            resourceInputs["usageScopes"] = state ? state.usageScopes : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["webhookUrl"] = state ? state.webhookUrl : undefined;
+            resourceInputs["branch"] = state?.branch;
+            resourceInputs["commitDetails"] = state?.commitDetails;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["delegateSelectors"] = state?.delegateSelectors;
+            resourceInputs["generateWebhookUrl"] = state?.generateWebhookUrl;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["passwordSecretId"] = state?.passwordSecretId;
+            resourceInputs["sshSettingId"] = state?.sshSettingId;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["urlType"] = state?.urlType;
+            resourceInputs["usageScopes"] = state?.usageScopes;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["webhookUrl"] = state?.webhookUrl;
         } else {
             const args = argsOrState as GitConnectorArgs | undefined;
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            if ((!args || args.urlType === undefined) && !opts.urn) {
+            if (args?.urlType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'urlType'");
             }
-            resourceInputs["branch"] = args ? args.branch : undefined;
-            resourceInputs["commitDetails"] = args ? args.commitDetails : undefined;
-            resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
-            resourceInputs["generateWebhookUrl"] = args ? args.generateWebhookUrl : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["passwordSecretId"] = args ? args.passwordSecretId : undefined;
-            resourceInputs["sshSettingId"] = args ? args.sshSettingId : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["urlType"] = args ? args.urlType : undefined;
-            resourceInputs["usageScopes"] = args ? args.usageScopes : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["branch"] = args?.branch;
+            resourceInputs["commitDetails"] = args?.commitDetails;
+            resourceInputs["delegateSelectors"] = args?.delegateSelectors;
+            resourceInputs["generateWebhookUrl"] = args?.generateWebhookUrl;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["passwordSecretId"] = args?.passwordSecretId;
+            resourceInputs["sshSettingId"] = args?.sshSettingId;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["urlType"] = args?.urlType;
+            resourceInputs["usageScopes"] = args?.usageScopes;
+            resourceInputs["username"] = args?.username;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["webhookUrl"] = undefined /*out*/;
         }

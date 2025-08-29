@@ -62,43 +62,43 @@ export class User extends pulumi.CustomResource {
     /**
      * Whether or not the user account is disabled.
      */
-    public /*out*/ readonly disabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly disabled: pulumi.Output<boolean>;
     /**
      * The email of the user.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * Whether or not the user account is externally managed.
      */
-    public /*out*/ readonly externallyManaged!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly externallyManaged: pulumi.Output<boolean>;
     /**
      * Unique identifier of the user.
      */
-    public /*out*/ readonly identifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly identifier: pulumi.Output<string>;
     /**
      * Whether or not the user account is locked.
      */
-    public /*out*/ readonly locked!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly locked: pulumi.Output<boolean>;
     /**
      * Name of the user.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Organization identifier of the user.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Project identifier of the user.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Role Bindings of the user. Cannot be updated.
      */
-    public readonly roleBindings!: pulumi.Output<outputs.platform.UserRoleBinding[] | undefined>;
+    declare public readonly roleBindings: pulumi.Output<outputs.platform.UserRoleBinding[] | undefined>;
     /**
      * The user group of the user. Cannot be updated.
      */
-    public readonly userGroups!: pulumi.Output<string[]>;
+    declare public readonly userGroups: pulumi.Output<string[]>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -113,29 +113,29 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["externallyManaged"] = state ? state.externallyManaged : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["locked"] = state ? state.locked : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["roleBindings"] = state ? state.roleBindings : undefined;
-            resourceInputs["userGroups"] = state ? state.userGroups : undefined;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["externallyManaged"] = state?.externallyManaged;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["locked"] = state?.locked;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["roleBindings"] = state?.roleBindings;
+            resourceInputs["userGroups"] = state?.userGroups;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.userGroups === undefined) && !opts.urn) {
+            if (args?.userGroups === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userGroups'");
             }
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["roleBindings"] = args ? args.roleBindings : undefined;
-            resourceInputs["userGroups"] = args ? args.userGroups : undefined;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["roleBindings"] = args?.roleBindings;
+            resourceInputs["userGroups"] = args?.userGroups;
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["externallyManaged"] = undefined /*out*/;
             resourceInputs["identifier"] = undefined /*out*/;

@@ -77,23 +77,23 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * The id of the application the service belongs to
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * Description of th service
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `type` is `KUBERNETES` or `HELM`.
      */
-    public readonly helmVersion!: pulumi.Output<string | undefined>;
+    declare public readonly helmVersion: pulumi.Output<string | undefined>;
     /**
      * Name of the service
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Variables to be used in the service
      */
-    public readonly variables!: pulumi.Output<outputs.service.KubernetesVariable[] | undefined>;
+    declare public readonly variables: pulumi.Output<outputs.service.KubernetesVariable[] | undefined>;
 
     /**
      * Create a Kubernetes resource with the given unique name, arguments, and options.
@@ -108,21 +108,21 @@ export class Kubernetes extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["helmVersion"] = state ? state.helmVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["variables"] = state ? state.variables : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["helmVersion"] = state?.helmVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["variables"] = state?.variables;
         } else {
             const args = argsOrState as KubernetesArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["helmVersion"] = args ? args.helmVersion : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["variables"] = args ? args.variables : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["helmVersion"] = args?.helmVersion;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["variables"] = args?.variables;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Kubernetes.__pulumiType, name, resourceInputs, opts);

@@ -125,37 +125,37 @@ export class InfraVariableSet extends pulumi.CustomResource {
     /**
      * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      */
-    public readonly connectors!: pulumi.Output<outputs.platform.InfraVariableSetConnector[] | undefined>;
+    declare public readonly connectors: pulumi.Output<outputs.platform.InfraVariableSetConnector[] | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Environment variables configured on the Variable Set
      */
-    public readonly environmentVariables!: pulumi.Output<outputs.platform.InfraVariableSetEnvironmentVariable[] | undefined>;
+    declare public readonly environmentVariables: pulumi.Output<outputs.platform.InfraVariableSetEnvironmentVariable[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
-    public readonly terraformVariableFiles!: pulumi.Output<outputs.platform.InfraVariableSetTerraformVariableFile[] | undefined>;
-    public readonly terraformVariables!: pulumi.Output<outputs.platform.InfraVariableSetTerraformVariable[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly terraformVariableFiles: pulumi.Output<outputs.platform.InfraVariableSetTerraformVariableFile[] | undefined>;
+    declare public readonly terraformVariables: pulumi.Output<outputs.platform.InfraVariableSetTerraformVariable[] | undefined>;
 
     /**
      * Create a InfraVariableSet resource with the given unique name, arguments, and options.
@@ -170,31 +170,31 @@ export class InfraVariableSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InfraVariableSetState | undefined;
-            resourceInputs["connectors"] = state ? state.connectors : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["terraformVariableFiles"] = state ? state.terraformVariableFiles : undefined;
-            resourceInputs["terraformVariables"] = state ? state.terraformVariables : undefined;
+            resourceInputs["connectors"] = state?.connectors;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["environmentVariables"] = state?.environmentVariables;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["terraformVariableFiles"] = state?.terraformVariableFiles;
+            resourceInputs["terraformVariables"] = state?.terraformVariables;
         } else {
             const args = argsOrState as InfraVariableSetArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["connectors"] = args ? args.connectors : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["environmentVariables"] = args ? args.environmentVariables : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["terraformVariableFiles"] = args ? args.terraformVariableFiles : undefined;
-            resourceInputs["terraformVariables"] = args ? args.terraformVariables : undefined;
+            resourceInputs["connectors"] = args?.connectors;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["environmentVariables"] = args?.environmentVariables;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["terraformVariableFiles"] = args?.terraformVariableFiles;
+            resourceInputs["terraformVariables"] = args?.terraformVariables;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InfraVariableSet.__pulumiType, name, resourceInputs, opts);

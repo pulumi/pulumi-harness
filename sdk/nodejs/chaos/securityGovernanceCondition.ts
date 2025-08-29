@@ -174,39 +174,39 @@ export class SecurityGovernanceCondition extends pulumi.CustomResource {
     /**
      * Description of the security governance condition
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specification for faults to be included in the condition
      */
-    public readonly faultSpec!: pulumi.Output<outputs.chaos.SecurityGovernanceConditionFaultSpec>;
+    declare public readonly faultSpec: pulumi.Output<outputs.chaos.SecurityGovernanceConditionFaultSpec>;
     /**
      * Type of infrastructure (Kubernetes, KubernetesV2, Linux, Windows, CloudFoundry, Container)
      */
-    public readonly infraType!: pulumi.Output<string>;
+    declare public readonly infraType: pulumi.Output<string>;
     /**
      * Kubernetes specific configuration (required when infra*type is KUBERNETES or KUBERNETESV2)
      */
-    public readonly k8sSpec!: pulumi.Output<outputs.chaos.SecurityGovernanceConditionK8sSpec | undefined>;
+    declare public readonly k8sSpec: pulumi.Output<outputs.chaos.SecurityGovernanceConditionK8sSpec | undefined>;
     /**
      * Machine specific configuration (required when infra*type is LINUX or WINDOWS)
      */
-    public readonly machineSpec!: pulumi.Output<outputs.chaos.SecurityGovernanceConditionMachineSpec | undefined>;
+    declare public readonly machineSpec: pulumi.Output<outputs.chaos.SecurityGovernanceConditionMachineSpec | undefined>;
     /**
      * Name of the security governance condition
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The organization ID of the security governance condition
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * The project ID of the security governance condition
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Tags for the security governance condition
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a SecurityGovernanceCondition resource with the given unique name, arguments, and options.
@@ -221,38 +221,38 @@ export class SecurityGovernanceCondition extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGovernanceConditionState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["faultSpec"] = state ? state.faultSpec : undefined;
-            resourceInputs["infraType"] = state ? state.infraType : undefined;
-            resourceInputs["k8sSpec"] = state ? state.k8sSpec : undefined;
-            resourceInputs["machineSpec"] = state ? state.machineSpec : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["faultSpec"] = state?.faultSpec;
+            resourceInputs["infraType"] = state?.infraType;
+            resourceInputs["k8sSpec"] = state?.k8sSpec;
+            resourceInputs["machineSpec"] = state?.machineSpec;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as SecurityGovernanceConditionArgs | undefined;
-            if ((!args || args.faultSpec === undefined) && !opts.urn) {
+            if (args?.faultSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'faultSpec'");
             }
-            if ((!args || args.infraType === undefined) && !opts.urn) {
+            if (args?.infraType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'infraType'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["faultSpec"] = args ? args.faultSpec : undefined;
-            resourceInputs["infraType"] = args ? args.infraType : undefined;
-            resourceInputs["k8sSpec"] = args ? args.k8sSpec : undefined;
-            resourceInputs["machineSpec"] = args ? args.machineSpec : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["faultSpec"] = args?.faultSpec;
+            resourceInputs["infraType"] = args?.infraType;
+            resourceInputs["k8sSpec"] = args?.k8sSpec;
+            resourceInputs["machineSpec"] = args?.machineSpec;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecurityGovernanceCondition.__pulumiType, name, resourceInputs, opts);

@@ -64,27 +64,27 @@ export class Application extends pulumi.CustomResource {
     /**
      * The application description
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The id of the git sync connector
      */
-    public /*out*/ readonly gitSyncConnectorId!: pulumi.Output<string>;
+    declare public /*out*/ readonly gitSyncConnectorId: pulumi.Output<string>;
     /**
      * True if git sync is enabled on this application
      */
-    public /*out*/ readonly gitSyncEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly gitSyncEnabled: pulumi.Output<boolean>;
     /**
      * When this is set to true, all manual triggers will require API Key authorization
      */
-    public readonly isManualTriggerAuthorized!: pulumi.Output<boolean | undefined>;
+    declare public readonly isManualTriggerAuthorized: pulumi.Output<boolean | undefined>;
     /**
      * The name of the application
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -99,18 +99,18 @@ export class Application extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["gitSyncConnectorId"] = state ? state.gitSyncConnectorId : undefined;
-            resourceInputs["gitSyncEnabled"] = state ? state.gitSyncEnabled : undefined;
-            resourceInputs["isManualTriggerAuthorized"] = state ? state.isManualTriggerAuthorized : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["gitSyncConnectorId"] = state?.gitSyncConnectorId;
+            resourceInputs["gitSyncEnabled"] = state?.gitSyncEnabled;
+            resourceInputs["isManualTriggerAuthorized"] = state?.isManualTriggerAuthorized;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["isManualTriggerAuthorized"] = args ? args.isManualTriggerAuthorized : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["isManualTriggerAuthorized"] = args?.isManualTriggerAuthorized;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["gitSyncConnectorId"] = undefined /*out*/;
             resourceInputs["gitSyncEnabled"] = undefined /*out*/;
         }

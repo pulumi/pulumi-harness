@@ -74,47 +74,47 @@ export class DbInstance extends pulumi.CustomResource {
     /**
      * The branch of changeSet repository
      */
-    public readonly branch!: pulumi.Output<string | undefined>;
+    declare public readonly branch: pulumi.Output<string | undefined>;
     /**
      * The connector to database
      */
-    public readonly connector!: pulumi.Output<string>;
+    declare public readonly connector: pulumi.Output<string>;
     /**
      * The liquibase context
      */
-    public readonly context!: pulumi.Output<string | undefined>;
+    declare public readonly context: pulumi.Output<string | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * The properties to substitute in liquibase changelog
      */
-    public readonly liquibaseSubstituteProperties!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly liquibaseSubstituteProperties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The identifier of the parent database schema
      */
-    public readonly schema!: pulumi.Output<string>;
+    declare public readonly schema: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a DbInstance resource with the given unique name, arguments, and options.
@@ -129,45 +129,45 @@ export class DbInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbInstanceState | undefined;
-            resourceInputs["branch"] = state ? state.branch : undefined;
-            resourceInputs["connector"] = state ? state.connector : undefined;
-            resourceInputs["context"] = state ? state.context : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["liquibaseSubstituteProperties"] = state ? state.liquibaseSubstituteProperties : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["branch"] = state?.branch;
+            resourceInputs["connector"] = state?.connector;
+            resourceInputs["context"] = state?.context;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["liquibaseSubstituteProperties"] = state?.liquibaseSubstituteProperties;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DbInstanceArgs | undefined;
-            if ((!args || args.connector === undefined) && !opts.urn) {
+            if (args?.connector === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connector'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.schema === undefined) && !opts.urn) {
+            if (args?.schema === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schema'");
             }
-            resourceInputs["branch"] = args ? args.branch : undefined;
-            resourceInputs["connector"] = args ? args.connector : undefined;
-            resourceInputs["context"] = args ? args.context : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["liquibaseSubstituteProperties"] = args ? args.liquibaseSubstituteProperties : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["schema"] = args ? args.schema : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["branch"] = args?.branch;
+            resourceInputs["connector"] = args?.connector;
+            resourceInputs["context"] = args?.context;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["liquibaseSubstituteProperties"] = args?.liquibaseSubstituteProperties;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["schema"] = args?.schema;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DbInstance.__pulumiType, name, resourceInputs, opts);

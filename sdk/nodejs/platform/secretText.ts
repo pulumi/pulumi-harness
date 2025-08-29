@@ -102,43 +102,43 @@ export class SecretText extends pulumi.CustomResource {
     /**
      * Additional Metadata for the Secret
      */
-    public readonly additionalMetadatas!: pulumi.Output<outputs.platform.SecretTextAdditionalMetadata[] | undefined>;
+    declare public readonly additionalMetadatas: pulumi.Output<outputs.platform.SecretTextAdditionalMetadata[] | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Identifier of the Secret Manager used to manage the secret.
      */
-    public readonly secretManagerIdentifier!: pulumi.Output<string>;
+    declare public readonly secretManagerIdentifier: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Value of the Secret
      */
-    public readonly value!: pulumi.Output<string | undefined>;
+    declare public readonly value: pulumi.Output<string | undefined>;
     /**
      * This has details to specify if the secret value is Inline or Reference.
      */
-    public readonly valueType!: pulumi.Output<string>;
+    declare public readonly valueType: pulumi.Output<string>;
 
     /**
      * Create a SecretText resource with the given unique name, arguments, and options.
@@ -153,37 +153,37 @@ export class SecretText extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretTextState | undefined;
-            resourceInputs["additionalMetadatas"] = state ? state.additionalMetadatas : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["secretManagerIdentifier"] = state ? state.secretManagerIdentifier : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["valueType"] = state ? state.valueType : undefined;
+            resourceInputs["additionalMetadatas"] = state?.additionalMetadatas;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["secretManagerIdentifier"] = state?.secretManagerIdentifier;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["valueType"] = state?.valueType;
         } else {
             const args = argsOrState as SecretTextArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.secretManagerIdentifier === undefined) && !opts.urn) {
+            if (args?.secretManagerIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretManagerIdentifier'");
             }
-            if ((!args || args.valueType === undefined) && !opts.urn) {
+            if (args?.valueType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'valueType'");
             }
-            resourceInputs["additionalMetadatas"] = args ? args.additionalMetadatas : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["secretManagerIdentifier"] = args ? args.secretManagerIdentifier : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["additionalMetadatas"] = args?.additionalMetadatas;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["secretManagerIdentifier"] = args?.secretManagerIdentifier;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
-            resourceInputs["valueType"] = args ? args.valueType : undefined;
+            resourceInputs["valueType"] = args?.valueType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["value"] };

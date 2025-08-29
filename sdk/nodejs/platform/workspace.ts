@@ -125,79 +125,79 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
-    public readonly connectors!: pulumi.Output<outputs.platform.WorkspaceConnector[] | undefined>;
+    declare public readonly connectors: pulumi.Output<outputs.platform.WorkspaceConnector[] | undefined>;
     /**
      * Cost estimation enabled determines if cost estimation operations are performed.
      */
-    public readonly costEstimationEnabled!: pulumi.Output<boolean>;
+    declare public readonly costEstimationEnabled: pulumi.Output<boolean>;
     /**
      * Default pipelines associated with this workspace
      */
-    public readonly defaultPipelines!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly defaultPipelines: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Environment variables configured on the workspace
      */
-    public readonly environmentVariables!: pulumi.Output<outputs.platform.WorkspaceEnvironmentVariable[] | undefined>;
+    declare public readonly environmentVariables: pulumi.Output<outputs.platform.WorkspaceEnvironmentVariable[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Provider connector is the reference to the connector for the infrastructure provider
      */
-    public readonly providerConnector!: pulumi.Output<string | undefined>;
-    public readonly provisionerType!: pulumi.Output<string>;
-    public readonly provisionerVersion!: pulumi.Output<string>;
+    declare public readonly providerConnector: pulumi.Output<string | undefined>;
+    declare public readonly provisionerType: pulumi.Output<string>;
+    declare public readonly provisionerVersion: pulumi.Output<string>;
     /**
      * Repository is the name of the repository to fetch the code from.
      */
-    public readonly repository!: pulumi.Output<string>;
+    declare public readonly repository: pulumi.Output<string>;
     /**
      * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
      */
-    public readonly repositoryBranch!: pulumi.Output<string | undefined>;
+    declare public readonly repositoryBranch: pulumi.Output<string | undefined>;
     /**
      * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
      */
-    public readonly repositoryCommit!: pulumi.Output<string | undefined>;
+    declare public readonly repositoryCommit: pulumi.Output<string | undefined>;
     /**
      * Repository connector is the reference to the connector used to fetch the code.
      */
-    public readonly repositoryConnector!: pulumi.Output<string>;
+    declare public readonly repositoryConnector: pulumi.Output<string>;
     /**
      * Repository path is the path in which the code resides.
      */
-    public readonly repositoryPath!: pulumi.Output<string>;
+    declare public readonly repositoryPath: pulumi.Output<string>;
     /**
      * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
      */
-    public readonly repositorySha!: pulumi.Output<string | undefined>;
+    declare public readonly repositorySha: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
-    public readonly terraformVariableFiles!: pulumi.Output<outputs.platform.WorkspaceTerraformVariableFile[] | undefined>;
-    public readonly terraformVariables!: pulumi.Output<outputs.platform.WorkspaceTerraformVariable[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly terraformVariableFiles: pulumi.Output<outputs.platform.WorkspaceTerraformVariableFile[] | undefined>;
+    declare public readonly terraformVariables: pulumi.Output<outputs.platform.WorkspaceTerraformVariable[] | undefined>;
     /**
      * Variable sets to use.
      */
-    public readonly variableSets!: pulumi.Output<string[] | undefined>;
+    declare public readonly variableSets: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Workspace resource with the given unique name, arguments, and options.
@@ -212,79 +212,79 @@ export class Workspace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceState | undefined;
-            resourceInputs["connectors"] = state ? state.connectors : undefined;
-            resourceInputs["costEstimationEnabled"] = state ? state.costEstimationEnabled : undefined;
-            resourceInputs["defaultPipelines"] = state ? state.defaultPipelines : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["providerConnector"] = state ? state.providerConnector : undefined;
-            resourceInputs["provisionerType"] = state ? state.provisionerType : undefined;
-            resourceInputs["provisionerVersion"] = state ? state.provisionerVersion : undefined;
-            resourceInputs["repository"] = state ? state.repository : undefined;
-            resourceInputs["repositoryBranch"] = state ? state.repositoryBranch : undefined;
-            resourceInputs["repositoryCommit"] = state ? state.repositoryCommit : undefined;
-            resourceInputs["repositoryConnector"] = state ? state.repositoryConnector : undefined;
-            resourceInputs["repositoryPath"] = state ? state.repositoryPath : undefined;
-            resourceInputs["repositorySha"] = state ? state.repositorySha : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["terraformVariableFiles"] = state ? state.terraformVariableFiles : undefined;
-            resourceInputs["terraformVariables"] = state ? state.terraformVariables : undefined;
-            resourceInputs["variableSets"] = state ? state.variableSets : undefined;
+            resourceInputs["connectors"] = state?.connectors;
+            resourceInputs["costEstimationEnabled"] = state?.costEstimationEnabled;
+            resourceInputs["defaultPipelines"] = state?.defaultPipelines;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["environmentVariables"] = state?.environmentVariables;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["providerConnector"] = state?.providerConnector;
+            resourceInputs["provisionerType"] = state?.provisionerType;
+            resourceInputs["provisionerVersion"] = state?.provisionerVersion;
+            resourceInputs["repository"] = state?.repository;
+            resourceInputs["repositoryBranch"] = state?.repositoryBranch;
+            resourceInputs["repositoryCommit"] = state?.repositoryCommit;
+            resourceInputs["repositoryConnector"] = state?.repositoryConnector;
+            resourceInputs["repositoryPath"] = state?.repositoryPath;
+            resourceInputs["repositorySha"] = state?.repositorySha;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["terraformVariableFiles"] = state?.terraformVariableFiles;
+            resourceInputs["terraformVariables"] = state?.terraformVariables;
+            resourceInputs["variableSets"] = state?.variableSets;
         } else {
             const args = argsOrState as WorkspaceArgs | undefined;
-            if ((!args || args.costEstimationEnabled === undefined) && !opts.urn) {
+            if (args?.costEstimationEnabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'costEstimationEnabled'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.provisionerType === undefined) && !opts.urn) {
+            if (args?.provisionerType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'provisionerType'");
             }
-            if ((!args || args.provisionerVersion === undefined) && !opts.urn) {
+            if (args?.provisionerVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'provisionerVersion'");
             }
-            if ((!args || args.repository === undefined) && !opts.urn) {
+            if (args?.repository === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repository'");
             }
-            if ((!args || args.repositoryConnector === undefined) && !opts.urn) {
+            if (args?.repositoryConnector === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repositoryConnector'");
             }
-            if ((!args || args.repositoryPath === undefined) && !opts.urn) {
+            if (args?.repositoryPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repositoryPath'");
             }
-            resourceInputs["connectors"] = args ? args.connectors : undefined;
-            resourceInputs["costEstimationEnabled"] = args ? args.costEstimationEnabled : undefined;
-            resourceInputs["defaultPipelines"] = args ? args.defaultPipelines : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["environmentVariables"] = args ? args.environmentVariables : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["providerConnector"] = args ? args.providerConnector : undefined;
-            resourceInputs["provisionerType"] = args ? args.provisionerType : undefined;
-            resourceInputs["provisionerVersion"] = args ? args.provisionerVersion : undefined;
-            resourceInputs["repository"] = args ? args.repository : undefined;
-            resourceInputs["repositoryBranch"] = args ? args.repositoryBranch : undefined;
-            resourceInputs["repositoryCommit"] = args ? args.repositoryCommit : undefined;
-            resourceInputs["repositoryConnector"] = args ? args.repositoryConnector : undefined;
-            resourceInputs["repositoryPath"] = args ? args.repositoryPath : undefined;
-            resourceInputs["repositorySha"] = args ? args.repositorySha : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["terraformVariableFiles"] = args ? args.terraformVariableFiles : undefined;
-            resourceInputs["terraformVariables"] = args ? args.terraformVariables : undefined;
-            resourceInputs["variableSets"] = args ? args.variableSets : undefined;
+            resourceInputs["connectors"] = args?.connectors;
+            resourceInputs["costEstimationEnabled"] = args?.costEstimationEnabled;
+            resourceInputs["defaultPipelines"] = args?.defaultPipelines;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["environmentVariables"] = args?.environmentVariables;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["providerConnector"] = args?.providerConnector;
+            resourceInputs["provisionerType"] = args?.provisionerType;
+            resourceInputs["provisionerVersion"] = args?.provisionerVersion;
+            resourceInputs["repository"] = args?.repository;
+            resourceInputs["repositoryBranch"] = args?.repositoryBranch;
+            resourceInputs["repositoryCommit"] = args?.repositoryCommit;
+            resourceInputs["repositoryConnector"] = args?.repositoryConnector;
+            resourceInputs["repositoryPath"] = args?.repositoryPath;
+            resourceInputs["repositorySha"] = args?.repositorySha;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["terraformVariableFiles"] = args?.terraformVariableFiles;
+            resourceInputs["terraformVariables"] = args?.terraformVariables;
+            resourceInputs["variableSets"] = args?.variableSets;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Workspace.__pulumiType, name, resourceInputs, opts);

@@ -60,35 +60,35 @@ export class User extends pulumi.CustomResource {
     /**
      * The email of the user.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignoreChanges = ["groupIds"] }`.
      */
-    public readonly groupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly groupIds: pulumi.Output<string[] | undefined>;
     /**
      * Flag indicating whether or not the users email has been verified.
      */
-    public /*out*/ readonly isEmailVerified!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isEmailVerified: pulumi.Output<boolean>;
     /**
      * Flag indicating whether or not the user was imported from an identity provider.
      */
-    public /*out*/ readonly isImportedFromIdentityProvider!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isImportedFromIdentityProvider: pulumi.Output<boolean>;
     /**
      * Flag indicating whether or not the users password has expired.
      */
-    public /*out*/ readonly isPasswordExpired!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isPasswordExpired: pulumi.Output<boolean>;
     /**
      * Flag indicating whether or not two-factor authentication is enabled for the user.
      */
-    public /*out*/ readonly isTwoFactorAuthEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isTwoFactorAuthEnabled: pulumi.Output<boolean>;
     /**
      * Flag indicating whether or not the user is locked out.
      */
-    public /*out*/ readonly isUserLocked!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isUserLocked: pulumi.Output<boolean>;
     /**
      * The name of the user.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -103,22 +103,22 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["groupIds"] = state ? state.groupIds : undefined;
-            resourceInputs["isEmailVerified"] = state ? state.isEmailVerified : undefined;
-            resourceInputs["isImportedFromIdentityProvider"] = state ? state.isImportedFromIdentityProvider : undefined;
-            resourceInputs["isPasswordExpired"] = state ? state.isPasswordExpired : undefined;
-            resourceInputs["isTwoFactorAuthEnabled"] = state ? state.isTwoFactorAuthEnabled : undefined;
-            resourceInputs["isUserLocked"] = state ? state.isUserLocked : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["groupIds"] = state?.groupIds;
+            resourceInputs["isEmailVerified"] = state?.isEmailVerified;
+            resourceInputs["isImportedFromIdentityProvider"] = state?.isImportedFromIdentityProvider;
+            resourceInputs["isPasswordExpired"] = state?.isPasswordExpired;
+            resourceInputs["isTwoFactorAuthEnabled"] = state?.isTwoFactorAuthEnabled;
+            resourceInputs["isUserLocked"] = state?.isUserLocked;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["groupIds"] = args ? args.groupIds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["groupIds"] = args?.groupIds;
+            resourceInputs["name"] = args?.name;
             resourceInputs["isEmailVerified"] = undefined /*out*/;
             resourceInputs["isImportedFromIdentityProvider"] = undefined /*out*/;
             resourceInputs["isPasswordExpired"] = undefined /*out*/;

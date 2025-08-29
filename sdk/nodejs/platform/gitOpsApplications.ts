@@ -103,77 +103,77 @@ export class GitOpsApplications extends pulumi.CustomResource {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Agent identifier of the GitOps application.
      */
-    public readonly agentId!: pulumi.Output<string>;
+    declare public readonly agentId: pulumi.Output<string>;
     /**
      * Definition of the GitOps application resource.
      */
-    public readonly applications!: pulumi.Output<outputs.platform.GitOpsApplicationsApplication[]>;
+    declare public readonly applications: pulumi.Output<outputs.platform.GitOpsApplicationsApplication[]>;
     /**
      * Cluster identifier of the GitOps application.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * Identifier of the GitOps application.
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    public readonly identifier!: pulumi.Output<string | undefined>;
+    declare public readonly identifier: pulumi.Output<string | undefined>;
     /**
      * Kind of the GitOps application.
      */
-    public readonly kind!: pulumi.Output<string | undefined>;
+    declare public readonly kind: pulumi.Output<string | undefined>;
     /**
      * Name of the GitOps application.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Options to remove existing finalizers to delete the GitOps application.
      */
-    public readonly optionsRemoveExistingFinalizers!: pulumi.Output<boolean | undefined>;
+    declare public readonly optionsRemoveExistingFinalizers: pulumi.Output<boolean | undefined>;
     /**
      * Organization identifier of the GitOps application.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Project identifier of the GitOps application.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
      */
-    public readonly repoId!: pulumi.Output<string | undefined>;
+    declare public readonly repoId: pulumi.Output<string | undefined>;
     /**
      * List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
      */
-    public readonly repoIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly repoIds: pulumi.Output<string[] | undefined>;
     /**
      * Request cascade to delete the GitOps application.
      */
-    public readonly requestCascade!: pulumi.Output<boolean | undefined>;
+    declare public readonly requestCascade: pulumi.Output<boolean | undefined>;
     /**
      * Request propagation policy to delete the GitOps application.
      */
-    public readonly requestPropagationPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly requestPropagationPolicy: pulumi.Output<string | undefined>;
     /**
      * Indicates if the GitOps application should skip validate repository definition exists.
      */
-    public readonly skipRepoValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipRepoValidation: pulumi.Output<boolean | undefined>;
     /**
      * Indicates if the GitOps application should be updated if existing and inserted if not.
      */
-    public readonly upsert!: pulumi.Output<boolean | undefined>;
+    declare public readonly upsert: pulumi.Output<boolean | undefined>;
     /**
      * Indicates if the GitOps application yaml has to be validated.
      */
-    public readonly validate!: pulumi.Output<boolean | undefined>;
+    declare public readonly validate: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a GitOpsApplications resource with the given unique name, arguments, and options.
@@ -188,59 +188,59 @@ export class GitOpsApplications extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GitOpsApplicationsState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["agentId"] = state ? state.agentId : undefined;
-            resourceInputs["applications"] = state ? state.applications : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["optionsRemoveExistingFinalizers"] = state ? state.optionsRemoveExistingFinalizers : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["repoId"] = state ? state.repoId : undefined;
-            resourceInputs["repoIds"] = state ? state.repoIds : undefined;
-            resourceInputs["requestCascade"] = state ? state.requestCascade : undefined;
-            resourceInputs["requestPropagationPolicy"] = state ? state.requestPropagationPolicy : undefined;
-            resourceInputs["skipRepoValidation"] = state ? state.skipRepoValidation : undefined;
-            resourceInputs["upsert"] = state ? state.upsert : undefined;
-            resourceInputs["validate"] = state ? state.validate : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["agentId"] = state?.agentId;
+            resourceInputs["applications"] = state?.applications;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["optionsRemoveExistingFinalizers"] = state?.optionsRemoveExistingFinalizers;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["repoId"] = state?.repoId;
+            resourceInputs["repoIds"] = state?.repoIds;
+            resourceInputs["requestCascade"] = state?.requestCascade;
+            resourceInputs["requestPropagationPolicy"] = state?.requestPropagationPolicy;
+            resourceInputs["skipRepoValidation"] = state?.skipRepoValidation;
+            resourceInputs["upsert"] = state?.upsert;
+            resourceInputs["validate"] = state?.validate;
         } else {
             const args = argsOrState as GitOpsApplicationsArgs | undefined;
-            if ((!args || args.agentId === undefined) && !opts.urn) {
+            if (args?.agentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.applications === undefined) && !opts.urn) {
+            if (args?.applications === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applications'");
             }
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["agentId"] = args ? args.agentId : undefined;
-            resourceInputs["applications"] = args ? args.applications : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["optionsRemoveExistingFinalizers"] = args ? args.optionsRemoveExistingFinalizers : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["repoId"] = args ? args.repoId : undefined;
-            resourceInputs["repoIds"] = args ? args.repoIds : undefined;
-            resourceInputs["requestCascade"] = args ? args.requestCascade : undefined;
-            resourceInputs["requestPropagationPolicy"] = args ? args.requestPropagationPolicy : undefined;
-            resourceInputs["skipRepoValidation"] = args ? args.skipRepoValidation : undefined;
-            resourceInputs["upsert"] = args ? args.upsert : undefined;
-            resourceInputs["validate"] = args ? args.validate : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["agentId"] = args?.agentId;
+            resourceInputs["applications"] = args?.applications;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["optionsRemoveExistingFinalizers"] = args?.optionsRemoveExistingFinalizers;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["repoId"] = args?.repoId;
+            resourceInputs["repoIds"] = args?.repoIds;
+            resourceInputs["requestCascade"] = args?.requestCascade;
+            resourceInputs["requestPropagationPolicy"] = args?.requestPropagationPolicy;
+            resourceInputs["skipRepoValidation"] = args?.skipRepoValidation;
+            resourceInputs["upsert"] = args?.upsert;
+            resourceInputs["validate"] = args?.validate;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GitOpsApplications.__pulumiType, name, resourceInputs, opts);

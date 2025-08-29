@@ -127,36 +127,36 @@ export class SecurityGovernanceRule extends pulumi.CustomResource {
     /**
      * List of condition IDs associated with this rule
      */
-    public readonly conditionIds!: pulumi.Output<string[]>;
+    declare public readonly conditionIds: pulumi.Output<string[]>;
     /**
      * Description of the security governance rule
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the rule is enabled
      */
-    public readonly isEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly isEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Name of the security governance rule
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The organization ID of the security governance rule
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * The project ID of the security governance rule
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Tags for the security governance rule
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
-    public readonly timeWindows!: pulumi.Output<outputs.chaos.SecurityGovernanceRuleTimeWindow[]>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly timeWindows: pulumi.Output<outputs.chaos.SecurityGovernanceRuleTimeWindow[]>;
     /**
      * List of user group IDs associated with this rule
      */
-    public readonly userGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly userGroupIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a SecurityGovernanceRule resource with the given unique name, arguments, and options.
@@ -171,38 +171,38 @@ export class SecurityGovernanceRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGovernanceRuleState | undefined;
-            resourceInputs["conditionIds"] = state ? state.conditionIds : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["isEnabled"] = state ? state.isEnabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeWindows"] = state ? state.timeWindows : undefined;
-            resourceInputs["userGroupIds"] = state ? state.userGroupIds : undefined;
+            resourceInputs["conditionIds"] = state?.conditionIds;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["isEnabled"] = state?.isEnabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeWindows"] = state?.timeWindows;
+            resourceInputs["userGroupIds"] = state?.userGroupIds;
         } else {
             const args = argsOrState as SecurityGovernanceRuleArgs | undefined;
-            if ((!args || args.conditionIds === undefined) && !opts.urn) {
+            if (args?.conditionIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'conditionIds'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.timeWindows === undefined) && !opts.urn) {
+            if (args?.timeWindows === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeWindows'");
             }
-            resourceInputs["conditionIds"] = args ? args.conditionIds : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["isEnabled"] = args ? args.isEnabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeWindows"] = args ? args.timeWindows : undefined;
-            resourceInputs["userGroupIds"] = args ? args.userGroupIds : undefined;
+            resourceInputs["conditionIds"] = args?.conditionIds;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["isEnabled"] = args?.isEnabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeWindows"] = args?.timeWindows;
+            resourceInputs["userGroupIds"] = args?.userGroupIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecurityGovernanceRule.__pulumiType, name, resourceInputs, opts);

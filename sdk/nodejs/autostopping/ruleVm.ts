@@ -101,44 +101,44 @@ export class RuleVm extends pulumi.CustomResource {
     /**
      * Id of the cloud connector
      */
-    public readonly cloudConnectorId!: pulumi.Output<string>;
+    declare public readonly cloudConnectorId: pulumi.Output<string>;
     /**
      * Custom URLs used to access the instances
      */
-    public readonly customDomains!: pulumi.Output<string[] | undefined>;
+    declare public readonly customDomains: pulumi.Output<string[] | undefined>;
     /**
      * Dependent rules
      */
-    public readonly depends!: pulumi.Output<outputs.autostopping.RuleVmDepend[] | undefined>;
+    declare public readonly depends: pulumi.Output<outputs.autostopping.RuleVmDepend[] | undefined>;
     /**
      * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
-    public readonly filter!: pulumi.Output<outputs.autostopping.RuleVmFilter>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
+    declare public readonly filter: pulumi.Output<outputs.autostopping.RuleVmFilter>;
     /**
      * Http routing configuration
      */
-    public readonly https!: pulumi.Output<outputs.autostopping.RuleVmHttp[] | undefined>;
+    declare public readonly https: pulumi.Output<outputs.autostopping.RuleVmHttp[] | undefined>;
     /**
      * Unique identifier of the resource
      */
-    public /*out*/ readonly identifier!: pulumi.Output<number>;
+    declare public /*out*/ readonly identifier: pulumi.Output<number>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    public readonly idleTimeMins!: pulumi.Output<number | undefined>;
+    declare public readonly idleTimeMins: pulumi.Output<number | undefined>;
     /**
      * Name of the rule
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * TCP routing configuration
      */
-    public readonly tcps!: pulumi.Output<outputs.autostopping.RuleVmTcp[] | undefined>;
+    declare public readonly tcps: pulumi.Output<outputs.autostopping.RuleVmTcp[] | undefined>;
     /**
      * Boolean that indicates whether the selected instances should be converted to spot vm
      */
-    public readonly useSpot!: pulumi.Output<boolean | undefined>;
+    declare public readonly useSpot: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a RuleVm resource with the given unique name, arguments, and options.
@@ -153,35 +153,35 @@ export class RuleVm extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleVmState | undefined;
-            resourceInputs["cloudConnectorId"] = state ? state.cloudConnectorId : undefined;
-            resourceInputs["customDomains"] = state ? state.customDomains : undefined;
-            resourceInputs["depends"] = state ? state.depends : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["https"] = state ? state.https : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["idleTimeMins"] = state ? state.idleTimeMins : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tcps"] = state ? state.tcps : undefined;
-            resourceInputs["useSpot"] = state ? state.useSpot : undefined;
+            resourceInputs["cloudConnectorId"] = state?.cloudConnectorId;
+            resourceInputs["customDomains"] = state?.customDomains;
+            resourceInputs["depends"] = state?.depends;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["https"] = state?.https;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["idleTimeMins"] = state?.idleTimeMins;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tcps"] = state?.tcps;
+            resourceInputs["useSpot"] = state?.useSpot;
         } else {
             const args = argsOrState as RuleVmArgs | undefined;
-            if ((!args || args.cloudConnectorId === undefined) && !opts.urn) {
+            if (args?.cloudConnectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudConnectorId'");
             }
-            if ((!args || args.filter === undefined) && !opts.urn) {
+            if (args?.filter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            resourceInputs["cloudConnectorId"] = args ? args.cloudConnectorId : undefined;
-            resourceInputs["customDomains"] = args ? args.customDomains : undefined;
-            resourceInputs["depends"] = args ? args.depends : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["https"] = args ? args.https : undefined;
-            resourceInputs["idleTimeMins"] = args ? args.idleTimeMins : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tcps"] = args ? args.tcps : undefined;
-            resourceInputs["useSpot"] = args ? args.useSpot : undefined;
+            resourceInputs["cloudConnectorId"] = args?.cloudConnectorId;
+            resourceInputs["customDomains"] = args?.customDomains;
+            resourceInputs["depends"] = args?.depends;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["https"] = args?.https;
+            resourceInputs["idleTimeMins"] = args?.idleTimeMins;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tcps"] = args?.tcps;
+            resourceInputs["useSpot"] = args?.useSpot;
             resourceInputs["identifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

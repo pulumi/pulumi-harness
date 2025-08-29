@@ -50,19 +50,19 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * Authentication configuration for the Kubernetes cluster
      */
-    public readonly authentication!: pulumi.Output<outputs.cloudprovider.KubernetesAuthentication>;
+    declare public readonly authentication: pulumi.Output<outputs.cloudprovider.KubernetesAuthentication>;
     /**
      * The name of the cloud provider.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Skip validation of Kubernetes configuration.
      */
-    public readonly skipValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipValidation: pulumi.Output<boolean | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    public readonly usageScopes!: pulumi.Output<outputs.cloudprovider.KubernetesUsageScope[] | undefined>;
+    declare public readonly usageScopes: pulumi.Output<outputs.cloudprovider.KubernetesUsageScope[] | undefined>;
 
     /**
      * Create a Kubernetes resource with the given unique name, arguments, and options.
@@ -77,19 +77,19 @@ export class Kubernetes extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesState | undefined;
-            resourceInputs["authentication"] = state ? state.authentication : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
-            resourceInputs["usageScopes"] = state ? state.usageScopes : undefined;
+            resourceInputs["authentication"] = state?.authentication;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["skipValidation"] = state?.skipValidation;
+            resourceInputs["usageScopes"] = state?.usageScopes;
         } else {
             const args = argsOrState as KubernetesArgs | undefined;
-            if ((!args || args.authentication === undefined) && !opts.urn) {
+            if (args?.authentication === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authentication'");
             }
-            resourceInputs["authentication"] = args ? args.authentication : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
-            resourceInputs["usageScopes"] = args ? args.usageScopes : undefined;
+            resourceInputs["authentication"] = args?.authentication;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["skipValidation"] = args?.skipValidation;
+            resourceInputs["usageScopes"] = args?.usageScopes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Kubernetes.__pulumiType, name, resourceInputs, opts);

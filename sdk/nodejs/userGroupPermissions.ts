@@ -40,15 +40,15 @@ export class UserGroupPermissions extends pulumi.CustomResource {
     /**
      * The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
      */
-    public readonly accountPermissions!: pulumi.Output<string[] | undefined>;
+    declare public readonly accountPermissions: pulumi.Output<string[] | undefined>;
     /**
      * Application specific permissions
      */
-    public readonly appPermissions!: pulumi.Output<outputs.UserGroupPermissionsAppPermissions | undefined>;
+    declare public readonly appPermissions: pulumi.Output<outputs.UserGroupPermissionsAppPermissions | undefined>;
     /**
      * Unique identifier of the user group.
      */
-    public readonly userGroupId!: pulumi.Output<string>;
+    declare public readonly userGroupId: pulumi.Output<string>;
 
     /**
      * Create a UserGroupPermissions resource with the given unique name, arguments, and options.
@@ -63,17 +63,17 @@ export class UserGroupPermissions extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserGroupPermissionsState | undefined;
-            resourceInputs["accountPermissions"] = state ? state.accountPermissions : undefined;
-            resourceInputs["appPermissions"] = state ? state.appPermissions : undefined;
-            resourceInputs["userGroupId"] = state ? state.userGroupId : undefined;
+            resourceInputs["accountPermissions"] = state?.accountPermissions;
+            resourceInputs["appPermissions"] = state?.appPermissions;
+            resourceInputs["userGroupId"] = state?.userGroupId;
         } else {
             const args = argsOrState as UserGroupPermissionsArgs | undefined;
-            if ((!args || args.userGroupId === undefined) && !opts.urn) {
+            if (args?.userGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userGroupId'");
             }
-            resourceInputs["accountPermissions"] = args ? args.accountPermissions : undefined;
-            resourceInputs["appPermissions"] = args ? args.appPermissions : undefined;
-            resourceInputs["userGroupId"] = args ? args.userGroupId : undefined;
+            resourceInputs["accountPermissions"] = args?.accountPermissions;
+            resourceInputs["appPermissions"] = args?.appPermissions;
+            resourceInputs["userGroupId"] = args?.userGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserGroupPermissions.__pulumiType, name, resourceInputs, opts);

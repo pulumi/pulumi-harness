@@ -90,27 +90,27 @@ export class GitopsApplicationset extends pulumi.CustomResource {
     /**
      * Agent identifier of the GitOps applicationset.
      */
-    public readonly agentId!: pulumi.Output<string>;
+    declare public readonly agentId: pulumi.Output<string>;
     /**
      * Definition of the GitOps applicationset resource.
      */
-    public readonly applicationset!: pulumi.Output<outputs.platform.GitopsApplicationsetApplicationset>;
+    declare public readonly applicationset: pulumi.Output<outputs.platform.GitopsApplicationsetApplicationset>;
     /**
      * Identifier of the GitOps applicationset. This is a unique identifier for the applicationset generated automatically.
      */
-    public /*out*/ readonly identifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly identifier: pulumi.Output<string>;
     /**
      * Organization identifier of the GitOps applicationset.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Project identifier of the GitOps applicationset.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Indicates if the GitOps application should be updated if existing and inserted if not.
      */
-    public readonly upsert!: pulumi.Output<boolean | undefined>;
+    declare public readonly upsert: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a GitopsApplicationset resource with the given unique name, arguments, and options.
@@ -125,31 +125,31 @@ export class GitopsApplicationset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GitopsApplicationsetState | undefined;
-            resourceInputs["agentId"] = state ? state.agentId : undefined;
-            resourceInputs["applicationset"] = state ? state.applicationset : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["upsert"] = state ? state.upsert : undefined;
+            resourceInputs["agentId"] = state?.agentId;
+            resourceInputs["applicationset"] = state?.applicationset;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["upsert"] = state?.upsert;
         } else {
             const args = argsOrState as GitopsApplicationsetArgs | undefined;
-            if ((!args || args.agentId === undefined) && !opts.urn) {
+            if (args?.agentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.applicationset === undefined) && !opts.urn) {
+            if (args?.applicationset === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationset'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["agentId"] = args ? args.agentId : undefined;
-            resourceInputs["applicationset"] = args ? args.applicationset : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["upsert"] = args ? args.upsert : undefined;
+            resourceInputs["agentId"] = args?.agentId;
+            resourceInputs["applicationset"] = args?.applicationset;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["upsert"] = args?.upsert;
             resourceInputs["identifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

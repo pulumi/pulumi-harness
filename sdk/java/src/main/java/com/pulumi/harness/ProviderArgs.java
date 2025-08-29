@@ -32,16 +32,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-     * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
      * 
      */
     @Import(name="apiKey")
     private @Nullable Output<String> apiKey;
 
     /**
-     * @return The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-     * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+     * @return The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
      * 
      */
     public Optional<Output<String>> apiKey() {
@@ -49,16 +47,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-     * `HARNESS_ENDPOINT` environment variable.
+     * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
      * 
      */
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
     /**
-     * @return The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-     * `HARNESS_ENDPOINT` environment variable.
+     * @return The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
      * 
      */
     public Optional<Output<String>> endpoint() {
@@ -66,18 +62,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-     * variable. For more information to create an API key in NextGen, see
-     * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+     * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      * 
      */
     @Import(name="platformApiKey")
     private @Nullable Output<String> platformApiKey;
 
     /**
-     * @return The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-     * variable. For more information to create an API key in NextGen, see
-     * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+     * @return The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      * 
      */
     public Optional<Output<String>> platformApiKey() {
@@ -133,8 +125,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiKey The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-         * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+         * @param apiKey The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
          * 
          * @return builder
          * 
@@ -145,8 +136,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiKey The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-         * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+         * @param apiKey The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
          * 
          * @return builder
          * 
@@ -156,8 +146,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpoint The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-         * `HARNESS_ENDPOINT` environment variable.
+         * @param endpoint The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
          * 
          * @return builder
          * 
@@ -168,8 +157,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpoint The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-         * `HARNESS_ENDPOINT` environment variable.
+         * @param endpoint The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
          * 
          * @return builder
          * 
@@ -179,9 +167,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param platformApiKey The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-         * variable. For more information to create an API key in NextGen, see
-         * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+         * @param platformApiKey The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
          * 
          * @return builder
          * 
@@ -192,9 +178,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param platformApiKey The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-         * variable. For more information to create an API key in NextGen, see
-         * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+         * @param platformApiKey The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
          * 
          * @return builder
          * 

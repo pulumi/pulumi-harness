@@ -60,75 +60,75 @@ export class Token extends pulumi.CustomResource {
     /**
      * Account Identifier for the Entity
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Identifier of the API Key
      */
-    public readonly apikeyId!: pulumi.Output<string>;
+    declare public readonly apikeyId: pulumi.Output<string>;
     /**
      * Type of the API Key
      */
-    public readonly apikeyType!: pulumi.Output<string>;
+    declare public readonly apikeyType: pulumi.Output<string>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Email Id of the user who created the Token
      */
-    public readonly email!: pulumi.Output<string | undefined>;
+    declare public readonly email: pulumi.Output<string | undefined>;
     /**
      * Encoded password of the Token
      */
-    public readonly encodedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly encodedPassword: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Parent Entity Identifier of the API Key
      */
-    public readonly parentId!: pulumi.Output<string>;
+    declare public readonly parentId: pulumi.Output<string>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Scheduled expiry time in milliseconds
      */
-    public readonly scheduledExpireTime!: pulumi.Output<number>;
+    declare public readonly scheduledExpireTime: pulumi.Output<number>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Name of the user who created the Token
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
     /**
      * Boolean value to indicate if Token is valid or not.
      */
-    public readonly valid!: pulumi.Output<boolean>;
+    declare public readonly valid: pulumi.Output<boolean>;
     /**
      * This is the time from which the Token is valid. The time is in milliseconds
      */
-    public readonly validFrom!: pulumi.Output<number>;
+    declare public readonly validFrom: pulumi.Output<number>;
     /**
      * This is the time till which the Token is valid. The time is in milliseconds
      */
-    public readonly validTo!: pulumi.Output<number>;
+    declare public readonly validTo: pulumi.Output<number>;
     /**
      * Value of the Token
      */
-    public /*out*/ readonly value!: pulumi.Output<string>;
+    declare public /*out*/ readonly value: pulumi.Output<string>;
 
     /**
      * Create a Token resource with the given unique name, arguments, and options.
@@ -143,58 +143,58 @@ export class Token extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TokenState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["apikeyId"] = state ? state.apikeyId : undefined;
-            resourceInputs["apikeyType"] = state ? state.apikeyType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["encodedPassword"] = state ? state.encodedPassword : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["parentId"] = state ? state.parentId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["scheduledExpireTime"] = state ? state.scheduledExpireTime : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["valid"] = state ? state.valid : undefined;
-            resourceInputs["validFrom"] = state ? state.validFrom : undefined;
-            resourceInputs["validTo"] = state ? state.validTo : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["apikeyId"] = state?.apikeyId;
+            resourceInputs["apikeyType"] = state?.apikeyType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["encodedPassword"] = state?.encodedPassword;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["parentId"] = state?.parentId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["scheduledExpireTime"] = state?.scheduledExpireTime;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["valid"] = state?.valid;
+            resourceInputs["validFrom"] = state?.validFrom;
+            resourceInputs["validTo"] = state?.validTo;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as TokenArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.apikeyId === undefined) && !opts.urn) {
+            if (args?.apikeyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apikeyId'");
             }
-            if ((!args || args.apikeyType === undefined) && !opts.urn) {
+            if (args?.apikeyType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apikeyType'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.parentId === undefined) && !opts.urn) {
+            if (args?.parentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parentId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["apikeyId"] = args ? args.apikeyId : undefined;
-            resourceInputs["apikeyType"] = args ? args.apikeyType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["encodedPassword"] = args ? args.encodedPassword : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["parentId"] = args ? args.parentId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["scheduledExpireTime"] = args ? args.scheduledExpireTime : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
-            resourceInputs["valid"] = args ? args.valid : undefined;
-            resourceInputs["validFrom"] = args ? args.validFrom : undefined;
-            resourceInputs["validTo"] = args ? args.validTo : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["apikeyId"] = args?.apikeyId;
+            resourceInputs["apikeyType"] = args?.apikeyType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["encodedPassword"] = args?.encodedPassword;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["parentId"] = args?.parentId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["scheduledExpireTime"] = args?.scheduledExpireTime;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["username"] = args?.username;
+            resourceInputs["valid"] = args?.valid;
+            resourceInputs["validFrom"] = args?.validFrom;
+            resourceInputs["validTo"] = args?.validTo;
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

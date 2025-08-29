@@ -40,59 +40,59 @@ export class FeatureFlag extends pulumi.CustomResource {
     /**
      * Whether or not the flag is archived.
      */
-    public readonly archived!: pulumi.Output<boolean | undefined>;
+    declare public readonly archived: pulumi.Output<boolean | undefined>;
     /**
      * Which of the variations to use when the flag is toggled to off state
      */
-    public readonly defaultOffVariation!: pulumi.Output<string>;
+    declare public readonly defaultOffVariation: pulumi.Output<string>;
     /**
      * Which of the variations to use when the flag is toggled to on state
      */
-    public readonly defaultOnVariation!: pulumi.Output<string>;
+    declare public readonly defaultOnVariation: pulumi.Output<string>;
     /**
      * Description of the Feature Flag
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Environment Identifier
      */
-    public readonly environments!: pulumi.Output<outputs.platform.FeatureFlagEnvironment[] | undefined>;
+    declare public readonly environments: pulumi.Output<outputs.platform.FeatureFlagEnvironment[] | undefined>;
     /**
      * Identifier of the Feature Flag
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
      */
-    public readonly kind!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * Name of the Feature Flag
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Organization Identifier
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * The owner of the flag
      */
-    public readonly owner!: pulumi.Output<string | undefined>;
+    declare public readonly owner: pulumi.Output<string | undefined>;
     /**
      * Whether or not the flag is permanent. If it is, it will never be flagged as stale
      */
-    public readonly permanent!: pulumi.Output<boolean>;
+    declare public readonly permanent: pulumi.Output<boolean>;
     /**
      * Project Identifier
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The tags for the flag
      */
-    public readonly tags!: pulumi.Output<outputs.platform.FeatureFlagTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.platform.FeatureFlagTag[] | undefined>;
     /**
      * The options available for your flag
      */
-    public readonly variations!: pulumi.Output<outputs.platform.FeatureFlagVariation[]>;
+    declare public readonly variations: pulumi.Output<outputs.platform.FeatureFlagVariation[]>;
 
     /**
      * Create a FeatureFlag resource with the given unique name, arguments, and options.
@@ -107,60 +107,60 @@ export class FeatureFlag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureFlagState | undefined;
-            resourceInputs["archived"] = state ? state.archived : undefined;
-            resourceInputs["defaultOffVariation"] = state ? state.defaultOffVariation : undefined;
-            resourceInputs["defaultOnVariation"] = state ? state.defaultOnVariation : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["environments"] = state ? state.environments : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["permanent"] = state ? state.permanent : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["variations"] = state ? state.variations : undefined;
+            resourceInputs["archived"] = state?.archived;
+            resourceInputs["defaultOffVariation"] = state?.defaultOffVariation;
+            resourceInputs["defaultOnVariation"] = state?.defaultOnVariation;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["environments"] = state?.environments;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["permanent"] = state?.permanent;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["variations"] = state?.variations;
         } else {
             const args = argsOrState as FeatureFlagArgs | undefined;
-            if ((!args || args.defaultOffVariation === undefined) && !opts.urn) {
+            if (args?.defaultOffVariation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultOffVariation'");
             }
-            if ((!args || args.defaultOnVariation === undefined) && !opts.urn) {
+            if (args?.defaultOnVariation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultOnVariation'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.permanent === undefined) && !opts.urn) {
+            if (args?.permanent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permanent'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.variations === undefined) && !opts.urn) {
+            if (args?.variations === undefined && !opts.urn) {
                 throw new Error("Missing required property 'variations'");
             }
-            resourceInputs["archived"] = args ? args.archived : undefined;
-            resourceInputs["defaultOffVariation"] = args ? args.defaultOffVariation : undefined;
-            resourceInputs["defaultOnVariation"] = args ? args.defaultOnVariation : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["environments"] = args ? args.environments : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["permanent"] = args ? args.permanent : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["variations"] = args ? args.variations : undefined;
+            resourceInputs["archived"] = args?.archived;
+            resourceInputs["defaultOffVariation"] = args?.defaultOffVariation;
+            resourceInputs["defaultOnVariation"] = args?.defaultOnVariation;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["environments"] = args?.environments;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["permanent"] = args?.permanent;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["variations"] = args?.variations;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FeatureFlag.__pulumiType, name, resourceInputs, opts);

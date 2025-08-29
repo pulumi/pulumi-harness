@@ -64,19 +64,19 @@ export class Ecs extends pulumi.CustomResource {
     /**
      * The id of the application the service belongs to
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * Description of th service
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the service
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Variables to be used in the service
      */
-    public readonly variables!: pulumi.Output<outputs.service.EcsVariable[] | undefined>;
+    declare public readonly variables: pulumi.Output<outputs.service.EcsVariable[] | undefined>;
 
     /**
      * Create a Ecs resource with the given unique name, arguments, and options.
@@ -91,19 +91,19 @@ export class Ecs extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["variables"] = state ? state.variables : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["variables"] = state?.variables;
         } else {
             const args = argsOrState as EcsArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["variables"] = args ? args.variables : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["variables"] = args?.variables;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Ecs.__pulumiType, name, resourceInputs, opts);

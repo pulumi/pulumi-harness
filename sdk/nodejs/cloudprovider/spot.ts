@@ -69,15 +69,15 @@ export class Spot extends pulumi.CustomResource {
     /**
      * The Spot account ID
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The name of the cloud provider.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the Harness secret containing the spot account token
      */
-    public readonly tokenSecretName!: pulumi.Output<string>;
+    declare public readonly tokenSecretName: pulumi.Output<string>;
 
     /**
      * Create a Spot resource with the given unique name, arguments, and options.
@@ -92,20 +92,20 @@ export class Spot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SpotState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tokenSecretName"] = state ? state.tokenSecretName : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tokenSecretName"] = state?.tokenSecretName;
         } else {
             const args = argsOrState as SpotArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.tokenSecretName === undefined) && !opts.urn) {
+            if (args?.tokenSecretName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tokenSecretName'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tokenSecretName"] = args ? args.tokenSecretName : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tokenSecretName"] = args?.tokenSecretName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Spot.__pulumiType, name, resourceInputs, opts);

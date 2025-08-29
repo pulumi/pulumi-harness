@@ -82,31 +82,31 @@ export class PlatformCcmFilters extends pulumi.CustomResource {
     /**
      * Properties of the filters entity defined in Harness.
      */
-    public readonly filterProperties!: pulumi.Output<outputs.PlatformCcmFiltersFilterProperties>;
+    declare public readonly filterProperties: pulumi.Output<outputs.PlatformCcmFiltersFilterProperties>;
     /**
      * This indicates visibility of filters, by default it is Everyone.
      */
-    public readonly filterVisibility!: pulumi.Output<string | undefined>;
+    declare public readonly filterVisibility: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the ccm filters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Organization Identifier for the Entity.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Project Identifier for the Entity.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Type of ccm filters.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a PlatformCcmFilters resource with the given unique name, arguments, and options.
@@ -121,31 +121,31 @@ export class PlatformCcmFilters extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PlatformCcmFiltersState | undefined;
-            resourceInputs["filterProperties"] = state ? state.filterProperties : undefined;
-            resourceInputs["filterVisibility"] = state ? state.filterVisibility : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["filterProperties"] = state?.filterProperties;
+            resourceInputs["filterVisibility"] = state?.filterVisibility;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as PlatformCcmFiltersArgs | undefined;
-            if ((!args || args.filterProperties === undefined) && !opts.urn) {
+            if (args?.filterProperties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filterProperties'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["filterProperties"] = args ? args.filterProperties : undefined;
-            resourceInputs["filterVisibility"] = args ? args.filterVisibility : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["filterProperties"] = args?.filterProperties;
+            resourceInputs["filterVisibility"] = args?.filterVisibility;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PlatformCcmFilters.__pulumiType, name, resourceInputs, opts);

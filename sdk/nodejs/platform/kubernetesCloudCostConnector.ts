@@ -79,35 +79,35 @@ export class KubernetesCloudCostConnector extends pulumi.CustomResource {
     /**
      * Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
-    public readonly connectorRef!: pulumi.Output<string>;
+    declare public readonly connectorRef: pulumi.Output<string>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Indicates which feature to enable among Billing, Optimization, and Visibility.
      */
-    public readonly featuresEnableds!: pulumi.Output<string[]>;
+    declare public readonly featuresEnableds: pulumi.Output<string[]>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a KubernetesCloudCostConnector resource with the given unique name, arguments, and options.
@@ -122,33 +122,33 @@ export class KubernetesCloudCostConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesCloudCostConnectorState | undefined;
-            resourceInputs["connectorRef"] = state ? state.connectorRef : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["featuresEnableds"] = state ? state.featuresEnableds : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["connectorRef"] = state?.connectorRef;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["featuresEnableds"] = state?.featuresEnableds;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as KubernetesCloudCostConnectorArgs | undefined;
-            if ((!args || args.connectorRef === undefined) && !opts.urn) {
+            if (args?.connectorRef === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectorRef'");
             }
-            if ((!args || args.featuresEnableds === undefined) && !opts.urn) {
+            if (args?.featuresEnableds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'featuresEnableds'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["connectorRef"] = args ? args.connectorRef : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["featuresEnableds"] = args ? args.featuresEnableds : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["connectorRef"] = args?.connectorRef;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["featuresEnableds"] = args?.featuresEnableds;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KubernetesCloudCostConnector.__pulumiType, name, resourceInputs, opts);

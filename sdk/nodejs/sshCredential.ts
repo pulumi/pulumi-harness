@@ -81,19 +81,19 @@ export class SshCredential extends pulumi.CustomResource {
     /**
      * Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
      */
-    public readonly kerberosAuthentication!: pulumi.Output<outputs.SshCredentialKerberosAuthentication | undefined>;
+    declare public readonly kerberosAuthentication: pulumi.Output<outputs.SshCredentialKerberosAuthentication | undefined>;
     /**
      * Name of the encrypted text secret
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inlineSsh`, `serverPassword`, or `sshKeyFile` should be set
      */
-    public readonly sshAuthentication!: pulumi.Output<outputs.SshCredentialSshAuthentication | undefined>;
+    declare public readonly sshAuthentication: pulumi.Output<outputs.SshCredentialSshAuthentication | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    public readonly usageScopes!: pulumi.Output<outputs.SshCredentialUsageScope[] | undefined>;
+    declare public readonly usageScopes: pulumi.Output<outputs.SshCredentialUsageScope[] | undefined>;
 
     /**
      * Create a SshCredential resource with the given unique name, arguments, and options.
@@ -108,16 +108,16 @@ export class SshCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SshCredentialState | undefined;
-            resourceInputs["kerberosAuthentication"] = state ? state.kerberosAuthentication : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["sshAuthentication"] = state ? state.sshAuthentication : undefined;
-            resourceInputs["usageScopes"] = state ? state.usageScopes : undefined;
+            resourceInputs["kerberosAuthentication"] = state?.kerberosAuthentication;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["sshAuthentication"] = state?.sshAuthentication;
+            resourceInputs["usageScopes"] = state?.usageScopes;
         } else {
             const args = argsOrState as SshCredentialArgs | undefined;
-            resourceInputs["kerberosAuthentication"] = args ? args.kerberosAuthentication : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["sshAuthentication"] = args ? args.sshAuthentication : undefined;
-            resourceInputs["usageScopes"] = args ? args.usageScopes : undefined;
+            resourceInputs["kerberosAuthentication"] = args?.kerberosAuthentication;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["sshAuthentication"] = args?.sshAuthentication;
+            resourceInputs["usageScopes"] = args?.usageScopes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SshCredential.__pulumiType, name, resourceInputs, opts);

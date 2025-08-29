@@ -192,91 +192,91 @@ export class DiscoveryAgent extends pulumi.CustomResource {
     /**
      * Configuration for the agent. This is a required field.
      */
-    public readonly configs!: pulumi.Output<outputs.service.DiscoveryAgentConfig[]>;
+    declare public readonly configs: pulumi.Output<outputs.service.DiscoveryAgentConfig[]>;
     /**
      * Correlation ID for the agent.
      */
-    public readonly correlationId!: pulumi.Output<string>;
+    declare public readonly correlationId: pulumi.Output<string>;
     /**
      * Timestamp when the agent was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * User who created the agent.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * Description of the agent.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * The environment identifier of the agent. This is a required field.
      */
-    public readonly environmentIdentifier!: pulumi.Output<string>;
+    declare public readonly environmentIdentifier: pulumi.Output<string>;
     /**
      * The unique identity of the agent.
      */
-    public /*out*/ readonly identity!: pulumi.Output<string>;
+    declare public /*out*/ readonly identity: pulumi.Output<string>;
     /**
      * The infrastructure identifier of the agent. This is a required field.
      */
-    public readonly infraIdentifier!: pulumi.Output<string>;
+    declare public readonly infraIdentifier: pulumi.Output<string>;
     /**
      * Installation details of the agent.
      */
-    public /*out*/ readonly installationDetails!: pulumi.Output<outputs.service.DiscoveryAgentInstallationDetail[]>;
+    declare public /*out*/ readonly installationDetails: pulumi.Output<outputs.service.DiscoveryAgentInstallationDetail[]>;
     /**
      * Type of installation for the agent.
      */
-    public readonly installationType!: pulumi.Output<string | undefined>;
+    declare public readonly installationType: pulumi.Output<string | undefined>;
     /**
      * The name of the agent. This is a required field.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Number of network maps associated with this agent.
      */
-    public /*out*/ readonly networkMapCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly networkMapCount: pulumi.Output<number>;
     /**
      * The organization identifier of the agent. Must be 1-64 characters and contain only alphanumeric characters, hyphens, or underscores.
      */
-    public readonly orgIdentifier!: pulumi.Output<string | undefined>;
+    declare public readonly orgIdentifier: pulumi.Output<string | undefined>;
     /**
      * Whether this is a permanent installation.
      */
-    public readonly permanentInstallation!: pulumi.Output<boolean | undefined>;
+    declare public readonly permanentInstallation: pulumi.Output<boolean | undefined>;
     /**
      * The project identifier of the agent. Must be 1-64 characters and contain only alphanumeric characters, hyphens, or underscores.
      */
-    public readonly projectIdentifier!: pulumi.Output<string | undefined>;
+    declare public readonly projectIdentifier: pulumi.Output<string | undefined>;
     /**
      * Whether the agent has been removed.
      */
-    public /*out*/ readonly removed!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly removed: pulumi.Output<boolean>;
     /**
      * Timestamp when the agent was removed.
      */
-    public /*out*/ readonly removedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly removedAt: pulumi.Output<string>;
     /**
      * Number of services managed by this agent.
      */
-    public /*out*/ readonly serviceCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly serviceCount: pulumi.Output<number>;
     /**
      * List of resource tags for the agent.
      */
-    public /*out*/ readonly tags!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly tags: pulumi.Output<string[]>;
     /**
      * Timestamp when the agent was last updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * User who last updated the agent.
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
     /**
      * Webhook URL for the agent.
      */
-    public readonly webhookUrl!: pulumi.Output<string | undefined>;
+    declare public readonly webhookUrl: pulumi.Output<string | undefined>;
 
     /**
      * Create a DiscoveryAgent resource with the given unique name, arguments, and options.
@@ -291,49 +291,49 @@ export class DiscoveryAgent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiscoveryAgentState | undefined;
-            resourceInputs["configs"] = state ? state.configs : undefined;
-            resourceInputs["correlationId"] = state ? state.correlationId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["environmentIdentifier"] = state ? state.environmentIdentifier : undefined;
-            resourceInputs["identity"] = state ? state.identity : undefined;
-            resourceInputs["infraIdentifier"] = state ? state.infraIdentifier : undefined;
-            resourceInputs["installationDetails"] = state ? state.installationDetails : undefined;
-            resourceInputs["installationType"] = state ? state.installationType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkMapCount"] = state ? state.networkMapCount : undefined;
-            resourceInputs["orgIdentifier"] = state ? state.orgIdentifier : undefined;
-            resourceInputs["permanentInstallation"] = state ? state.permanentInstallation : undefined;
-            resourceInputs["projectIdentifier"] = state ? state.projectIdentifier : undefined;
-            resourceInputs["removed"] = state ? state.removed : undefined;
-            resourceInputs["removedAt"] = state ? state.removedAt : undefined;
-            resourceInputs["serviceCount"] = state ? state.serviceCount : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
-            resourceInputs["webhookUrl"] = state ? state.webhookUrl : undefined;
+            resourceInputs["configs"] = state?.configs;
+            resourceInputs["correlationId"] = state?.correlationId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["environmentIdentifier"] = state?.environmentIdentifier;
+            resourceInputs["identity"] = state?.identity;
+            resourceInputs["infraIdentifier"] = state?.infraIdentifier;
+            resourceInputs["installationDetails"] = state?.installationDetails;
+            resourceInputs["installationType"] = state?.installationType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkMapCount"] = state?.networkMapCount;
+            resourceInputs["orgIdentifier"] = state?.orgIdentifier;
+            resourceInputs["permanentInstallation"] = state?.permanentInstallation;
+            resourceInputs["projectIdentifier"] = state?.projectIdentifier;
+            resourceInputs["removed"] = state?.removed;
+            resourceInputs["removedAt"] = state?.removedAt;
+            resourceInputs["serviceCount"] = state?.serviceCount;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["updatedBy"] = state?.updatedBy;
+            resourceInputs["webhookUrl"] = state?.webhookUrl;
         } else {
             const args = argsOrState as DiscoveryAgentArgs | undefined;
-            if ((!args || args.configs === undefined) && !opts.urn) {
+            if (args?.configs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configs'");
             }
-            if ((!args || args.environmentIdentifier === undefined) && !opts.urn) {
+            if (args?.environmentIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentIdentifier'");
             }
-            if ((!args || args.infraIdentifier === undefined) && !opts.urn) {
+            if (args?.infraIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'infraIdentifier'");
             }
-            resourceInputs["configs"] = args ? args.configs : undefined;
-            resourceInputs["correlationId"] = args ? args.correlationId : undefined;
-            resourceInputs["environmentIdentifier"] = args ? args.environmentIdentifier : undefined;
-            resourceInputs["infraIdentifier"] = args ? args.infraIdentifier : undefined;
-            resourceInputs["installationType"] = args ? args.installationType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgIdentifier"] = args ? args.orgIdentifier : undefined;
-            resourceInputs["permanentInstallation"] = args ? args.permanentInstallation : undefined;
-            resourceInputs["projectIdentifier"] = args ? args.projectIdentifier : undefined;
-            resourceInputs["webhookUrl"] = args ? args.webhookUrl : undefined;
+            resourceInputs["configs"] = args?.configs;
+            resourceInputs["correlationId"] = args?.correlationId;
+            resourceInputs["environmentIdentifier"] = args?.environmentIdentifier;
+            resourceInputs["infraIdentifier"] = args?.infraIdentifier;
+            resourceInputs["installationType"] = args?.installationType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgIdentifier"] = args?.orgIdentifier;
+            resourceInputs["permanentInstallation"] = args?.permanentInstallation;
+            resourceInputs["projectIdentifier"] = args?.projectIdentifier;
+            resourceInputs["webhookUrl"] = args?.webhookUrl;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
