@@ -40,49 +40,49 @@ export class ConnectorCustomSecretManager extends pulumi.CustomResource {
     /**
      * Tags to filter delegates for connection.
      */
-    public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly delegateSelectors: pulumi.Output<string[] | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly onDelegate!: pulumi.Output<boolean | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly onDelegate: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
      */
-    public readonly sshSecretRef!: pulumi.Output<string | undefined>;
+    declare public readonly sshSecretRef: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Host where the custom secrets manager is located, required if 'on_delegate' is false.
      */
-    public readonly targetHost!: pulumi.Output<string | undefined>;
-    public readonly templateInputs!: pulumi.Output<outputs.platform.ConnectorCustomSecretManagerTemplateInput[] | undefined>;
-    public readonly templateRef!: pulumi.Output<string>;
-    public readonly timeout!: pulumi.Output<number | undefined>;
-    public readonly type!: pulumi.Output<string | undefined>;
-    public readonly versionLabel!: pulumi.Output<string>;
+    declare public readonly targetHost: pulumi.Output<string | undefined>;
+    declare public readonly templateInputs: pulumi.Output<outputs.platform.ConnectorCustomSecretManagerTemplateInput[] | undefined>;
+    declare public readonly templateRef: pulumi.Output<string>;
+    declare public readonly timeout: pulumi.Output<number | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
+    declare public readonly versionLabel: pulumi.Output<string>;
     /**
      * The working directory for operations, required if 'on_delegate' is false.
      */
-    public readonly workingDirectory!: pulumi.Output<string | undefined>;
+    declare public readonly workingDirectory: pulumi.Output<string | undefined>;
 
     /**
      * Create a ConnectorCustomSecretManager resource with the given unique name, arguments, and options.
@@ -97,49 +97,49 @@ export class ConnectorCustomSecretManager extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorCustomSecretManagerState | undefined;
-            resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["onDelegate"] = state ? state.onDelegate : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["sshSecretRef"] = state ? state.sshSecretRef : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["targetHost"] = state ? state.targetHost : undefined;
-            resourceInputs["templateInputs"] = state ? state.templateInputs : undefined;
-            resourceInputs["templateRef"] = state ? state.templateRef : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["versionLabel"] = state ? state.versionLabel : undefined;
-            resourceInputs["workingDirectory"] = state ? state.workingDirectory : undefined;
+            resourceInputs["delegateSelectors"] = state?.delegateSelectors;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["onDelegate"] = state?.onDelegate;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["sshSecretRef"] = state?.sshSecretRef;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targetHost"] = state?.targetHost;
+            resourceInputs["templateInputs"] = state?.templateInputs;
+            resourceInputs["templateRef"] = state?.templateRef;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["versionLabel"] = state?.versionLabel;
+            resourceInputs["workingDirectory"] = state?.workingDirectory;
         } else {
             const args = argsOrState as ConnectorCustomSecretManagerArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.templateRef === undefined) && !opts.urn) {
+            if (args?.templateRef === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateRef'");
             }
-            if ((!args || args.versionLabel === undefined) && !opts.urn) {
+            if (args?.versionLabel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'versionLabel'");
             }
-            resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["onDelegate"] = args ? args.onDelegate : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["sshSecretRef"] = args ? args.sshSecretRef : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targetHost"] = args ? args.targetHost : undefined;
-            resourceInputs["templateInputs"] = args ? args.templateInputs : undefined;
-            resourceInputs["templateRef"] = args ? args.templateRef : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["versionLabel"] = args ? args.versionLabel : undefined;
-            resourceInputs["workingDirectory"] = args ? args.workingDirectory : undefined;
+            resourceInputs["delegateSelectors"] = args?.delegateSelectors;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["onDelegate"] = args?.onDelegate;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["sshSecretRef"] = args?.sshSecretRef;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targetHost"] = args?.targetHost;
+            resourceInputs["templateInputs"] = args?.templateInputs;
+            resourceInputs["templateRef"] = args?.templateRef;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["versionLabel"] = args?.versionLabel;
+            resourceInputs["workingDirectory"] = args?.workingDirectory;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectorCustomSecretManager.__pulumiType, name, resourceInputs, opts);

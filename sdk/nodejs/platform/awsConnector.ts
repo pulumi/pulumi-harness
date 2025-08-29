@@ -62,67 +62,67 @@ export class AwsConnector extends pulumi.CustomResource {
     /**
      * Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
      */
-    public readonly crossAccountAccess!: pulumi.Output<outputs.platform.AwsConnectorCrossAccountAccess | undefined>;
+    declare public readonly crossAccountAccess: pulumi.Output<outputs.platform.AwsConnectorCrossAccountAccess | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Equal Jitter BackOff Strategy.
      */
-    public readonly equalJitterBackoffStrategy!: pulumi.Output<outputs.platform.AwsConnectorEqualJitterBackoffStrategy | undefined>;
+    declare public readonly equalJitterBackoffStrategy: pulumi.Output<outputs.platform.AwsConnectorEqualJitterBackoffStrategy | undefined>;
     /**
      * Enable this flag to execute on Delegate
      */
-    public readonly executeOnDelegate!: pulumi.Output<boolean | undefined>;
+    declare public readonly executeOnDelegate: pulumi.Output<boolean | undefined>;
     /**
      * Fixed Delay BackOff Strategy.
      */
-    public readonly fixedDelayBackoffStrategy!: pulumi.Output<outputs.platform.AwsConnectorFixedDelayBackoffStrategy | undefined>;
+    declare public readonly fixedDelayBackoffStrategy: pulumi.Output<outputs.platform.AwsConnectorFixedDelayBackoffStrategy | undefined>;
     /**
      * Enable this flag for force deletion of connector
      */
-    public readonly forceDelete!: pulumi.Output<boolean>;
+    declare public readonly forceDelete: pulumi.Output<boolean>;
     /**
      * Full Jitter BackOff Strategy.
      */
-    public readonly fullJitterBackoffStrategy!: pulumi.Output<outputs.platform.AwsConnectorFullJitterBackoffStrategy | undefined>;
+    declare public readonly fullJitterBackoffStrategy: pulumi.Output<outputs.platform.AwsConnectorFullJitterBackoffStrategy | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Inherit credentials from the delegate.
      */
-    public readonly inheritFromDelegate!: pulumi.Output<outputs.platform.AwsConnectorInheritFromDelegate | undefined>;
+    declare public readonly inheritFromDelegate: pulumi.Output<outputs.platform.AwsConnectorInheritFromDelegate | undefined>;
     /**
      * Use IAM role for service accounts.
      */
-    public readonly irsa!: pulumi.Output<outputs.platform.AwsConnectorIrsa | undefined>;
+    declare public readonly irsa: pulumi.Output<outputs.platform.AwsConnectorIrsa | undefined>;
     /**
      * Use IAM role for service accounts.
      */
-    public readonly manual!: pulumi.Output<outputs.platform.AwsConnectorManual | undefined>;
+    declare public readonly manual: pulumi.Output<outputs.platform.AwsConnectorManual | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Authentication using harness oidc.
      */
-    public readonly oidcAuthentication!: pulumi.Output<outputs.platform.AwsConnectorOidcAuthentication | undefined>;
+    declare public readonly oidcAuthentication: pulumi.Output<outputs.platform.AwsConnectorOidcAuthentication | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a AwsConnector resource with the given unique name, arguments, and options.
@@ -137,43 +137,43 @@ export class AwsConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AwsConnectorState | undefined;
-            resourceInputs["crossAccountAccess"] = state ? state.crossAccountAccess : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["equalJitterBackoffStrategy"] = state ? state.equalJitterBackoffStrategy : undefined;
-            resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
-            resourceInputs["fixedDelayBackoffStrategy"] = state ? state.fixedDelayBackoffStrategy : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["fullJitterBackoffStrategy"] = state ? state.fullJitterBackoffStrategy : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["inheritFromDelegate"] = state ? state.inheritFromDelegate : undefined;
-            resourceInputs["irsa"] = state ? state.irsa : undefined;
-            resourceInputs["manual"] = state ? state.manual : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oidcAuthentication"] = state ? state.oidcAuthentication : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["crossAccountAccess"] = state?.crossAccountAccess;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["equalJitterBackoffStrategy"] = state?.equalJitterBackoffStrategy;
+            resourceInputs["executeOnDelegate"] = state?.executeOnDelegate;
+            resourceInputs["fixedDelayBackoffStrategy"] = state?.fixedDelayBackoffStrategy;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["fullJitterBackoffStrategy"] = state?.fullJitterBackoffStrategy;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["inheritFromDelegate"] = state?.inheritFromDelegate;
+            resourceInputs["irsa"] = state?.irsa;
+            resourceInputs["manual"] = state?.manual;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oidcAuthentication"] = state?.oidcAuthentication;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as AwsConnectorArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["crossAccountAccess"] = args ? args.crossAccountAccess : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["equalJitterBackoffStrategy"] = args ? args.equalJitterBackoffStrategy : undefined;
-            resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
-            resourceInputs["fixedDelayBackoffStrategy"] = args ? args.fixedDelayBackoffStrategy : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["fullJitterBackoffStrategy"] = args ? args.fullJitterBackoffStrategy : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["inheritFromDelegate"] = args ? args.inheritFromDelegate : undefined;
-            resourceInputs["irsa"] = args ? args.irsa : undefined;
-            resourceInputs["manual"] = args ? args.manual : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["oidcAuthentication"] = args ? args.oidcAuthentication : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["crossAccountAccess"] = args?.crossAccountAccess;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["equalJitterBackoffStrategy"] = args?.equalJitterBackoffStrategy;
+            resourceInputs["executeOnDelegate"] = args?.executeOnDelegate;
+            resourceInputs["fixedDelayBackoffStrategy"] = args?.fixedDelayBackoffStrategy;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["fullJitterBackoffStrategy"] = args?.fullJitterBackoffStrategy;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["inheritFromDelegate"] = args?.inheritFromDelegate;
+            resourceInputs["irsa"] = args?.irsa;
+            resourceInputs["manual"] = args?.manual;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["oidcAuthentication"] = args?.oidcAuthentication;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AwsConnector.__pulumiType, name, resourceInputs, opts);

@@ -65,55 +65,55 @@ export class ImageRegistry extends pulumi.CustomResource {
     /**
      * Creation timestamp
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Custom images configuration
      */
-    public readonly customImages!: pulumi.Output<outputs.chaos.ImageRegistryCustomImage[]>;
+    declare public readonly customImages: pulumi.Output<outputs.chaos.ImageRegistryCustomImage[]>;
     /**
      * The infrastructure ID to set up the image registry
      */
-    public readonly infraId!: pulumi.Output<string | undefined>;
+    declare public readonly infraId: pulumi.Output<string | undefined>;
     /**
      * Whether this is the default registry
      */
-    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
     /**
      * Whether override is allowed for this registry
      */
-    public readonly isOverrideAllowed!: pulumi.Output<boolean | undefined>;
+    declare public readonly isOverrideAllowed: pulumi.Output<boolean | undefined>;
     /**
      * Whether the registry is private
      */
-    public readonly isPrivate!: pulumi.Output<boolean>;
+    declare public readonly isPrivate: pulumi.Output<boolean>;
     /**
      * The organization ID of the image registry
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * The project ID of the image registry
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * The registry account name
      */
-    public readonly registryAccount!: pulumi.Output<string>;
+    declare public readonly registryAccount: pulumi.Output<string>;
     /**
      * The registry server URL
      */
-    public readonly registryServer!: pulumi.Output<string>;
+    declare public readonly registryServer: pulumi.Output<string>;
     /**
      * The name of the secret for authentication
      */
-    public readonly secretName!: pulumi.Output<string | undefined>;
+    declare public readonly secretName: pulumi.Output<string | undefined>;
     /**
      * Last update timestamp
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * Whether to use custom images
      */
-    public readonly useCustomImages!: pulumi.Output<boolean | undefined>;
+    declare public readonly useCustomImages: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ImageRegistry resource with the given unique name, arguments, and options.
@@ -128,41 +128,41 @@ export class ImageRegistry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageRegistryState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["customImages"] = state ? state.customImages : undefined;
-            resourceInputs["infraId"] = state ? state.infraId : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["isOverrideAllowed"] = state ? state.isOverrideAllowed : undefined;
-            resourceInputs["isPrivate"] = state ? state.isPrivate : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["registryAccount"] = state ? state.registryAccount : undefined;
-            resourceInputs["registryServer"] = state ? state.registryServer : undefined;
-            resourceInputs["secretName"] = state ? state.secretName : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["useCustomImages"] = state ? state.useCustomImages : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["customImages"] = state?.customImages;
+            resourceInputs["infraId"] = state?.infraId;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["isOverrideAllowed"] = state?.isOverrideAllowed;
+            resourceInputs["isPrivate"] = state?.isPrivate;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["registryAccount"] = state?.registryAccount;
+            resourceInputs["registryServer"] = state?.registryServer;
+            resourceInputs["secretName"] = state?.secretName;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["useCustomImages"] = state?.useCustomImages;
         } else {
             const args = argsOrState as ImageRegistryArgs | undefined;
-            if ((!args || args.isPrivate === undefined) && !opts.urn) {
+            if (args?.isPrivate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'isPrivate'");
             }
-            if ((!args || args.registryAccount === undefined) && !opts.urn) {
+            if (args?.registryAccount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'registryAccount'");
             }
-            if ((!args || args.registryServer === undefined) && !opts.urn) {
+            if (args?.registryServer === undefined && !opts.urn) {
                 throw new Error("Missing required property 'registryServer'");
             }
-            resourceInputs["customImages"] = args ? args.customImages : undefined;
-            resourceInputs["infraId"] = args ? args.infraId : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["isOverrideAllowed"] = args ? args.isOverrideAllowed : undefined;
-            resourceInputs["isPrivate"] = args ? args.isPrivate : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["registryAccount"] = args ? args.registryAccount : undefined;
-            resourceInputs["registryServer"] = args ? args.registryServer : undefined;
-            resourceInputs["secretName"] = args ? args.secretName : undefined;
-            resourceInputs["useCustomImages"] = args ? args.useCustomImages : undefined;
+            resourceInputs["customImages"] = args?.customImages;
+            resourceInputs["infraId"] = args?.infraId;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["isOverrideAllowed"] = args?.isOverrideAllowed;
+            resourceInputs["isPrivate"] = args?.isPrivate;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["registryAccount"] = args?.registryAccount;
+            resourceInputs["registryServer"] = args?.registryServer;
+            resourceInputs["secretName"] = args?.secretName;
+            resourceInputs["useCustomImages"] = args?.useCustomImages;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

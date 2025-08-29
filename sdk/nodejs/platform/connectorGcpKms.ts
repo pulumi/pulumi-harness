@@ -145,59 +145,59 @@ export class ConnectorGcpKms extends pulumi.CustomResource {
     /**
      * Set this flag to set this secret manager as default secret manager.
      */
-    public readonly default!: pulumi.Output<boolean | undefined>;
+    declare public readonly default: pulumi.Output<boolean | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Enable this flag to execute on Delegate.
      */
-    public readonly executeOnDelegate!: pulumi.Output<boolean | undefined>;
+    declare public readonly executeOnDelegate: pulumi.Output<boolean | undefined>;
     /**
      * The project ID of the GCP KMS.
      */
-    public readonly gcpProjectId!: pulumi.Output<string>;
+    declare public readonly gcpProjectId: pulumi.Output<string>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * The key name of the GCP KMS.
      */
-    public readonly keyName!: pulumi.Output<string>;
+    declare public readonly keyName: pulumi.Output<string>;
     /**
      * The key ring of the GCP KMS.
      */
-    public readonly keyRing!: pulumi.Output<string>;
+    declare public readonly keyRing: pulumi.Output<string>;
     /**
      * Manual credential configuration.
      */
-    public readonly manual!: pulumi.Output<outputs.platform.ConnectorGcpKmsManual | undefined>;
+    declare public readonly manual: pulumi.Output<outputs.platform.ConnectorGcpKmsManual | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Authentication using harness oidc.
      */
-    public readonly oidcAuthentications!: pulumi.Output<outputs.platform.ConnectorGcpKmsOidcAuthentication[] | undefined>;
+    declare public readonly oidcAuthentications: pulumi.Output<outputs.platform.ConnectorGcpKmsOidcAuthentication[] | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * The region of the GCP KMS.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ConnectorGcpKms resource with the given unique name, arguments, and options.
@@ -212,51 +212,51 @@ export class ConnectorGcpKms extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorGcpKmsState | undefined;
-            resourceInputs["default"] = state ? state.default : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
-            resourceInputs["gcpProjectId"] = state ? state.gcpProjectId : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["keyName"] = state ? state.keyName : undefined;
-            resourceInputs["keyRing"] = state ? state.keyRing : undefined;
-            resourceInputs["manual"] = state ? state.manual : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oidcAuthentications"] = state ? state.oidcAuthentications : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["default"] = state?.default;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["executeOnDelegate"] = state?.executeOnDelegate;
+            resourceInputs["gcpProjectId"] = state?.gcpProjectId;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["keyName"] = state?.keyName;
+            resourceInputs["keyRing"] = state?.keyRing;
+            resourceInputs["manual"] = state?.manual;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oidcAuthentications"] = state?.oidcAuthentications;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ConnectorGcpKmsArgs | undefined;
-            if ((!args || args.gcpProjectId === undefined) && !opts.urn) {
+            if (args?.gcpProjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gcpProjectId'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.keyName === undefined) && !opts.urn) {
+            if (args?.keyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyName'");
             }
-            if ((!args || args.keyRing === undefined) && !opts.urn) {
+            if (args?.keyRing === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyRing'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["default"] = args ? args.default : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
-            resourceInputs["gcpProjectId"] = args ? args.gcpProjectId : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["keyName"] = args ? args.keyName : undefined;
-            resourceInputs["keyRing"] = args ? args.keyRing : undefined;
-            resourceInputs["manual"] = args ? args.manual : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["oidcAuthentications"] = args ? args.oidcAuthentications : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["default"] = args?.default;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["executeOnDelegate"] = args?.executeOnDelegate;
+            resourceInputs["gcpProjectId"] = args?.gcpProjectId;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["keyName"] = args?.keyName;
+            resourceInputs["keyRing"] = args?.keyRing;
+            resourceInputs["manual"] = args?.manual;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["oidcAuthentications"] = args?.oidcAuthentications;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectorGcpKms.__pulumiType, name, resourceInputs, opts);

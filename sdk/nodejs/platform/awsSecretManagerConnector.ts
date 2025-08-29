@@ -62,63 +62,63 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
     /**
      * Credentials to connect to AWS.
      */
-    public readonly credentials!: pulumi.Output<outputs.platform.AwsSecretManagerConnectorCredentials>;
+    declare public readonly credentials: pulumi.Output<outputs.platform.AwsSecretManagerConnectorCredentials>;
     /**
      * Use as Default Secrets Manager.
      */
-    public readonly default!: pulumi.Output<boolean | undefined>;
+    declare public readonly default: pulumi.Output<boolean | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly delegateSelectors: pulumi.Output<string[] | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Run the operation on the delegate or harness platform.
      */
-    public readonly executeOnDelegate!: pulumi.Output<boolean | undefined>;
+    declare public readonly executeOnDelegate: pulumi.Output<boolean | undefined>;
     /**
      * Whether to force delete secret value or not.
      */
-    public readonly forceDeleteWithoutRecovery!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDeleteWithoutRecovery: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Recovery duration in days in AWS Secrets Manager.
      */
-    public readonly recoveryWindowInDays!: pulumi.Output<number | undefined>;
+    declare public readonly recoveryWindowInDays: pulumi.Output<number | undefined>;
     /**
      * The AWS region where the AWS Secret Manager is.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A prefix to be added to all secrets.
      */
-    public readonly secretNamePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly secretNamePrefix: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Whether to update secret value using putSecretValue action.
      */
-    public readonly usePutSecret!: pulumi.Output<boolean | undefined>;
+    declare public readonly usePutSecret: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a AwsSecretManagerConnector resource with the given unique name, arguments, and options.
@@ -133,47 +133,47 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AwsSecretManagerConnectorState | undefined;
-            resourceInputs["credentials"] = state ? state.credentials : undefined;
-            resourceInputs["default"] = state ? state.default : undefined;
-            resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
-            resourceInputs["forceDeleteWithoutRecovery"] = state ? state.forceDeleteWithoutRecovery : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["recoveryWindowInDays"] = state ? state.recoveryWindowInDays : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["secretNamePrefix"] = state ? state.secretNamePrefix : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["usePutSecret"] = state ? state.usePutSecret : undefined;
+            resourceInputs["credentials"] = state?.credentials;
+            resourceInputs["default"] = state?.default;
+            resourceInputs["delegateSelectors"] = state?.delegateSelectors;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["executeOnDelegate"] = state?.executeOnDelegate;
+            resourceInputs["forceDeleteWithoutRecovery"] = state?.forceDeleteWithoutRecovery;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["recoveryWindowInDays"] = state?.recoveryWindowInDays;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["secretNamePrefix"] = state?.secretNamePrefix;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["usePutSecret"] = state?.usePutSecret;
         } else {
             const args = argsOrState as AwsSecretManagerConnectorArgs | undefined;
-            if ((!args || args.credentials === undefined) && !opts.urn) {
+            if (args?.credentials === undefined && !opts.urn) {
                 throw new Error("Missing required property 'credentials'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["credentials"] = args ? args.credentials : undefined;
-            resourceInputs["default"] = args ? args.default : undefined;
-            resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
-            resourceInputs["forceDeleteWithoutRecovery"] = args ? args.forceDeleteWithoutRecovery : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["recoveryWindowInDays"] = args ? args.recoveryWindowInDays : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["secretNamePrefix"] = args ? args.secretNamePrefix : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["usePutSecret"] = args ? args.usePutSecret : undefined;
+            resourceInputs["credentials"] = args?.credentials;
+            resourceInputs["default"] = args?.default;
+            resourceInputs["delegateSelectors"] = args?.delegateSelectors;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["executeOnDelegate"] = args?.executeOnDelegate;
+            resourceInputs["forceDeleteWithoutRecovery"] = args?.forceDeleteWithoutRecovery;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["recoveryWindowInDays"] = args?.recoveryWindowInDays;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["secretNamePrefix"] = args?.secretNamePrefix;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["usePutSecret"] = args?.usePutSecret;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AwsSecretManagerConnector.__pulumiType, name, resourceInputs, opts);

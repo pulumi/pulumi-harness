@@ -96,23 +96,23 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The id of the application.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The description of the environment.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the environment.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The type of the environment. Valid values are `PROD` and `NON_PROD`
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Override for a service variable
      */
-    public readonly variableOverrides!: pulumi.Output<outputs.EnvironmentVariableOverride[] | undefined>;
+    declare public readonly variableOverrides: pulumi.Output<outputs.EnvironmentVariableOverride[] | undefined>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -127,24 +127,24 @@ export class Environment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["variableOverrides"] = state ? state.variableOverrides : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["variableOverrides"] = state?.variableOverrides;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["variableOverrides"] = args ? args.variableOverrides : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["variableOverrides"] = args?.variableOverrides;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Environment.__pulumiType, name, resourceInputs, opts);

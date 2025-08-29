@@ -106,27 +106,27 @@ export class EnvironmentServiceOverrides extends pulumi.CustomResource {
     /**
      * The env ID to which the overrides associated.
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
     /**
      * identifier of the service overrides.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * The service ID to which the overrides applies.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
     /**
      * Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    public readonly yaml!: pulumi.Output<string>;
+    declare public readonly yaml: pulumi.Output<string>;
 
     /**
      * Create a EnvironmentServiceOverrides resource with the given unique name, arguments, and options.
@@ -141,29 +141,29 @@ export class EnvironmentServiceOverrides extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentServiceOverridesState | undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["yaml"] = state ? state.yaml : undefined;
+            resourceInputs["envId"] = state?.envId;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["yaml"] = state?.yaml;
         } else {
             const args = argsOrState as EnvironmentServiceOverridesArgs | undefined;
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
+            if (args?.serviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            if ((!args || args.yaml === undefined) && !opts.urn) {
+            if (args?.yaml === undefined && !opts.urn) {
                 throw new Error("Missing required property 'yaml'");
             }
-            resourceInputs["envId"] = args ? args.envId : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
-            resourceInputs["yaml"] = args ? args.yaml : undefined;
+            resourceInputs["envId"] = args?.envId;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["serviceId"] = args?.serviceId;
+            resourceInputs["yaml"] = args?.yaml;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EnvironmentServiceOverrides.__pulumiType, name, resourceInputs, opts);

@@ -83,47 +83,47 @@ export class FileStoreFolder extends pulumi.CustomResource {
     /**
      * Created by
      */
-    public /*out*/ readonly createdBies!: pulumi.Output<outputs.platform.FileStoreFolderCreatedBy[]>;
+    declare public /*out*/ readonly createdBies: pulumi.Output<outputs.platform.FileStoreFolderCreatedBy[]>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Last modified at
      */
-    public /*out*/ readonly lastModifiedAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly lastModifiedAt: pulumi.Output<number>;
     /**
      * Last modified by
      */
-    public /*out*/ readonly lastModifiedBies!: pulumi.Output<outputs.platform.FileStoreFolderLastModifiedBy[]>;
+    declare public /*out*/ readonly lastModifiedBies: pulumi.Output<outputs.platform.FileStoreFolderLastModifiedBy[]>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Folder parent identifier on Harness File Store
      */
-    public readonly parentIdentifier!: pulumi.Output<string>;
+    declare public readonly parentIdentifier: pulumi.Output<string>;
     /**
      * Harness File Store folder path
      */
-    public /*out*/ readonly path!: pulumi.Output<string>;
+    declare public /*out*/ readonly path: pulumi.Output<string>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a FileStoreFolder resource with the given unique name, arguments, and options.
@@ -138,32 +138,32 @@ export class FileStoreFolder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileStoreFolderState | undefined;
-            resourceInputs["createdBies"] = state ? state.createdBies : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["lastModifiedAt"] = state ? state.lastModifiedAt : undefined;
-            resourceInputs["lastModifiedBies"] = state ? state.lastModifiedBies : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["parentIdentifier"] = state ? state.parentIdentifier : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["createdBies"] = state?.createdBies;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["lastModifiedAt"] = state?.lastModifiedAt;
+            resourceInputs["lastModifiedBies"] = state?.lastModifiedBies;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["parentIdentifier"] = state?.parentIdentifier;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as FileStoreFolderArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.parentIdentifier === undefined) && !opts.urn) {
+            if (args?.parentIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parentIdentifier'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["parentIdentifier"] = args ? args.parentIdentifier : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["parentIdentifier"] = args?.parentIdentifier;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createdBies"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["lastModifiedBies"] = undefined /*out*/;

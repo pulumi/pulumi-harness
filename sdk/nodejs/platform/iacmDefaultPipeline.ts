@@ -53,23 +53,23 @@ export class IacmDefaultPipeline extends pulumi.CustomResource {
     /**
      * The operation associated with this default.
      */
-    public readonly operation!: pulumi.Output<string>;
+    declare public readonly operation: pulumi.Output<string>;
     /**
      * Organization identifier of the organization the default pipelines resides in.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * The pipeline associated with this default.
      */
-    public readonly pipeline!: pulumi.Output<string>;
+    declare public readonly pipeline: pulumi.Output<string>;
     /**
      * Project identifier of the project the default pipelines resides in.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The provisioner associated with this default.
      */
-    public readonly provisionerType!: pulumi.Output<string>;
+    declare public readonly provisionerType: pulumi.Output<string>;
 
     /**
      * Create a IacmDefaultPipeline resource with the given unique name, arguments, and options.
@@ -84,33 +84,33 @@ export class IacmDefaultPipeline extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IacmDefaultPipelineState | undefined;
-            resourceInputs["operation"] = state ? state.operation : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["pipeline"] = state ? state.pipeline : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["provisionerType"] = state ? state.provisionerType : undefined;
+            resourceInputs["operation"] = state?.operation;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["pipeline"] = state?.pipeline;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["provisionerType"] = state?.provisionerType;
         } else {
             const args = argsOrState as IacmDefaultPipelineArgs | undefined;
-            if ((!args || args.operation === undefined) && !opts.urn) {
+            if (args?.operation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'operation'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.pipeline === undefined) && !opts.urn) {
+            if (args?.pipeline === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pipeline'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.provisionerType === undefined) && !opts.urn) {
+            if (args?.provisionerType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'provisionerType'");
             }
-            resourceInputs["operation"] = args ? args.operation : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["pipeline"] = args ? args.pipeline : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["provisionerType"] = args ? args.provisionerType : undefined;
+            resourceInputs["operation"] = args?.operation;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["pipeline"] = args?.pipeline;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["provisionerType"] = args?.provisionerType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IacmDefaultPipeline.__pulumiType, name, resourceInputs, opts);

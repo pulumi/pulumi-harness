@@ -122,87 +122,87 @@ export class InfrastructureDefinition extends pulumi.CustomResource {
     /**
      * The id of the application the infrastructure definition belongs to.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The configuration details for Aws AMI deployments.
      */
-    public readonly awsAmi!: pulumi.Output<outputs.InfrastructureDefinitionAwsAmi | undefined>;
+    declare public readonly awsAmi: pulumi.Output<outputs.InfrastructureDefinitionAwsAmi | undefined>;
     /**
      * The configuration details for Aws AMI deployments.
      */
-    public readonly awsEcs!: pulumi.Output<outputs.InfrastructureDefinitionAwsEcs | undefined>;
+    declare public readonly awsEcs: pulumi.Output<outputs.InfrastructureDefinitionAwsEcs | undefined>;
     /**
      * The configuration details for Aws Lambda deployments.
      */
-    public readonly awsLambda!: pulumi.Output<outputs.InfrastructureDefinitionAwsLambda | undefined>;
+    declare public readonly awsLambda: pulumi.Output<outputs.InfrastructureDefinitionAwsLambda | undefined>;
     /**
      * The configuration details for AWS SSH deployments.
      */
-    public readonly awsSsh!: pulumi.Output<outputs.InfrastructureDefinitionAwsSsh | undefined>;
+    declare public readonly awsSsh: pulumi.Output<outputs.InfrastructureDefinitionAwsSsh | undefined>;
     /**
      * The configuration details for AWS WinRM deployments.
      */
-    public readonly awsWinrm!: pulumi.Output<outputs.InfrastructureDefinitionAwsWinrm | undefined>;
+    declare public readonly awsWinrm: pulumi.Output<outputs.InfrastructureDefinitionAwsWinrm | undefined>;
     /**
      * The configuration details for Azure VMSS deployments.
      */
-    public readonly azureVmss!: pulumi.Output<outputs.InfrastructureDefinitionAzureVmss | undefined>;
+    declare public readonly azureVmss: pulumi.Output<outputs.InfrastructureDefinitionAzureVmss | undefined>;
     /**
      * The configuration details for Azure WebApp deployments.
      */
-    public readonly azureWebapp!: pulumi.Output<outputs.InfrastructureDefinitionAzureWebapp | undefined>;
+    declare public readonly azureWebapp: pulumi.Output<outputs.InfrastructureDefinitionAzureWebapp | undefined>;
     /**
      * The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
      */
-    public readonly cloudProviderType!: pulumi.Output<string>;
+    declare public readonly cloudProviderType: pulumi.Output<string>;
     /**
      * The configuration details for Custom deployments.
      */
-    public readonly custom!: pulumi.Output<outputs.InfrastructureDefinitionCustom | undefined>;
+    declare public readonly custom: pulumi.Output<outputs.InfrastructureDefinitionCustom | undefined>;
     /**
      * The configuration details for SSH datacenter deployments.
      */
-    public readonly datacenterSsh!: pulumi.Output<outputs.InfrastructureDefinitionDatacenterSsh | undefined>;
+    declare public readonly datacenterSsh: pulumi.Output<outputs.InfrastructureDefinitionDatacenterSsh | undefined>;
     /**
      * The configuration details for WinRM datacenter deployments.
      */
-    public readonly datacenterWinrm!: pulumi.Output<outputs.InfrastructureDefinitionDatacenterWinrm | undefined>;
+    declare public readonly datacenterWinrm: pulumi.Output<outputs.InfrastructureDefinitionDatacenterWinrm | undefined>;
     /**
      * The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
      */
-    public readonly deploymentTemplateUri!: pulumi.Output<string | undefined>;
+    declare public readonly deploymentTemplateUri: pulumi.Output<string | undefined>;
     /**
      * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
      */
-    public readonly deploymentType!: pulumi.Output<string>;
+    declare public readonly deploymentType: pulumi.Output<string>;
     /**
      * The id of the environment the infrastructure definition belongs to.
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
     /**
      * The configuration details for Kubernetes deployments.
      */
-    public readonly kubernetes!: pulumi.Output<outputs.InfrastructureDefinitionKubernetes | undefined>;
+    declare public readonly kubernetes: pulumi.Output<outputs.InfrastructureDefinitionKubernetes | undefined>;
     /**
      * The configuration details for Kubernetes on GCP deployments.
      */
-    public readonly kubernetesGcp!: pulumi.Output<outputs.InfrastructureDefinitionKubernetesGcp | undefined>;
+    declare public readonly kubernetesGcp: pulumi.Output<outputs.InfrastructureDefinitionKubernetesGcp | undefined>;
     /**
      * The name of the infrastructure definition
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the infrastructure provisioner to use.
      */
-    public readonly provisionerName!: pulumi.Output<string | undefined>;
+    declare public readonly provisionerName: pulumi.Output<string | undefined>;
     /**
      * The list of service names to scope this infrastructure definition to.
      */
-    public readonly scopedServices!: pulumi.Output<string[] | undefined>;
+    declare public readonly scopedServices: pulumi.Output<string[] | undefined>;
     /**
      * The configuration details for PCF deployments.
      */
-    public readonly tanzu!: pulumi.Output<outputs.InfrastructureDefinitionTanzu | undefined>;
+    declare public readonly tanzu: pulumi.Output<outputs.InfrastructureDefinitionTanzu | undefined>;
 
     /**
      * Create a InfrastructureDefinition resource with the given unique name, arguments, and options.
@@ -217,62 +217,62 @@ export class InfrastructureDefinition extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InfrastructureDefinitionState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["awsAmi"] = state ? state.awsAmi : undefined;
-            resourceInputs["awsEcs"] = state ? state.awsEcs : undefined;
-            resourceInputs["awsLambda"] = state ? state.awsLambda : undefined;
-            resourceInputs["awsSsh"] = state ? state.awsSsh : undefined;
-            resourceInputs["awsWinrm"] = state ? state.awsWinrm : undefined;
-            resourceInputs["azureVmss"] = state ? state.azureVmss : undefined;
-            resourceInputs["azureWebapp"] = state ? state.azureWebapp : undefined;
-            resourceInputs["cloudProviderType"] = state ? state.cloudProviderType : undefined;
-            resourceInputs["custom"] = state ? state.custom : undefined;
-            resourceInputs["datacenterSsh"] = state ? state.datacenterSsh : undefined;
-            resourceInputs["datacenterWinrm"] = state ? state.datacenterWinrm : undefined;
-            resourceInputs["deploymentTemplateUri"] = state ? state.deploymentTemplateUri : undefined;
-            resourceInputs["deploymentType"] = state ? state.deploymentType : undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
-            resourceInputs["kubernetes"] = state ? state.kubernetes : undefined;
-            resourceInputs["kubernetesGcp"] = state ? state.kubernetesGcp : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["provisionerName"] = state ? state.provisionerName : undefined;
-            resourceInputs["scopedServices"] = state ? state.scopedServices : undefined;
-            resourceInputs["tanzu"] = state ? state.tanzu : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["awsAmi"] = state?.awsAmi;
+            resourceInputs["awsEcs"] = state?.awsEcs;
+            resourceInputs["awsLambda"] = state?.awsLambda;
+            resourceInputs["awsSsh"] = state?.awsSsh;
+            resourceInputs["awsWinrm"] = state?.awsWinrm;
+            resourceInputs["azureVmss"] = state?.azureVmss;
+            resourceInputs["azureWebapp"] = state?.azureWebapp;
+            resourceInputs["cloudProviderType"] = state?.cloudProviderType;
+            resourceInputs["custom"] = state?.custom;
+            resourceInputs["datacenterSsh"] = state?.datacenterSsh;
+            resourceInputs["datacenterWinrm"] = state?.datacenterWinrm;
+            resourceInputs["deploymentTemplateUri"] = state?.deploymentTemplateUri;
+            resourceInputs["deploymentType"] = state?.deploymentType;
+            resourceInputs["envId"] = state?.envId;
+            resourceInputs["kubernetes"] = state?.kubernetes;
+            resourceInputs["kubernetesGcp"] = state?.kubernetesGcp;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["provisionerName"] = state?.provisionerName;
+            resourceInputs["scopedServices"] = state?.scopedServices;
+            resourceInputs["tanzu"] = state?.tanzu;
         } else {
             const args = argsOrState as InfrastructureDefinitionArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.cloudProviderType === undefined) && !opts.urn) {
+            if (args?.cloudProviderType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudProviderType'");
             }
-            if ((!args || args.deploymentType === undefined) && !opts.urn) {
+            if (args?.deploymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deploymentType'");
             }
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["awsAmi"] = args ? args.awsAmi : undefined;
-            resourceInputs["awsEcs"] = args ? args.awsEcs : undefined;
-            resourceInputs["awsLambda"] = args ? args.awsLambda : undefined;
-            resourceInputs["awsSsh"] = args ? args.awsSsh : undefined;
-            resourceInputs["awsWinrm"] = args ? args.awsWinrm : undefined;
-            resourceInputs["azureVmss"] = args ? args.azureVmss : undefined;
-            resourceInputs["azureWebapp"] = args ? args.azureWebapp : undefined;
-            resourceInputs["cloudProviderType"] = args ? args.cloudProviderType : undefined;
-            resourceInputs["custom"] = args ? args.custom : undefined;
-            resourceInputs["datacenterSsh"] = args ? args.datacenterSsh : undefined;
-            resourceInputs["datacenterWinrm"] = args ? args.datacenterWinrm : undefined;
-            resourceInputs["deploymentTemplateUri"] = args ? args.deploymentTemplateUri : undefined;
-            resourceInputs["deploymentType"] = args ? args.deploymentType : undefined;
-            resourceInputs["envId"] = args ? args.envId : undefined;
-            resourceInputs["kubernetes"] = args ? args.kubernetes : undefined;
-            resourceInputs["kubernetesGcp"] = args ? args.kubernetesGcp : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["provisionerName"] = args ? args.provisionerName : undefined;
-            resourceInputs["scopedServices"] = args ? args.scopedServices : undefined;
-            resourceInputs["tanzu"] = args ? args.tanzu : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["awsAmi"] = args?.awsAmi;
+            resourceInputs["awsEcs"] = args?.awsEcs;
+            resourceInputs["awsLambda"] = args?.awsLambda;
+            resourceInputs["awsSsh"] = args?.awsSsh;
+            resourceInputs["awsWinrm"] = args?.awsWinrm;
+            resourceInputs["azureVmss"] = args?.azureVmss;
+            resourceInputs["azureWebapp"] = args?.azureWebapp;
+            resourceInputs["cloudProviderType"] = args?.cloudProviderType;
+            resourceInputs["custom"] = args?.custom;
+            resourceInputs["datacenterSsh"] = args?.datacenterSsh;
+            resourceInputs["datacenterWinrm"] = args?.datacenterWinrm;
+            resourceInputs["deploymentTemplateUri"] = args?.deploymentTemplateUri;
+            resourceInputs["deploymentType"] = args?.deploymentType;
+            resourceInputs["envId"] = args?.envId;
+            resourceInputs["kubernetes"] = args?.kubernetes;
+            resourceInputs["kubernetesGcp"] = args?.kubernetesGcp;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["provisionerName"] = args?.provisionerName;
+            resourceInputs["scopedServices"] = args?.scopedServices;
+            resourceInputs["tanzu"] = args?.tanzu;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InfrastructureDefinition.__pulumiType, name, resourceInputs, opts);

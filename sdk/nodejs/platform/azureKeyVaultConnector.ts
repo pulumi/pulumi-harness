@@ -81,59 +81,59 @@ export class AzureKeyVaultConnector extends pulumi.CustomResource {
     /**
      * Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
      */
-    public readonly azureEnvironmentType!: pulumi.Output<string>;
+    declare public readonly azureEnvironmentType: pulumi.Output<string>;
     /**
      * Application ID of the Azure App.
      */
-    public readonly clientId!: pulumi.Output<string>;
+    declare public readonly clientId: pulumi.Output<string>;
     /**
      * Tags to filter delegates for connection.
      */
-    public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly delegateSelectors: pulumi.Output<string[] | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Specifies whether or not is the default value.
      */
-    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * The Harness text secret with the Azure authentication key as its value.
      */
-    public readonly secretKey!: pulumi.Output<string>;
+    declare public readonly secretKey: pulumi.Output<string>;
     /**
      * Azure subscription ID.
      */
-    public readonly subscription!: pulumi.Output<string>;
+    declare public readonly subscription: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The Azure Active Directory (Azure AD) directory ID where you created your application.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * Name of the vault.
      */
-    public readonly vaultName!: pulumi.Output<string>;
+    declare public readonly vaultName: pulumi.Output<string>;
 
     /**
      * Create a AzureKeyVaultConnector resource with the given unique name, arguments, and options.
@@ -148,54 +148,54 @@ export class AzureKeyVaultConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureKeyVaultConnectorState | undefined;
-            resourceInputs["azureEnvironmentType"] = state ? state.azureEnvironmentType : undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
-            resourceInputs["subscription"] = state ? state.subscription : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["vaultName"] = state ? state.vaultName : undefined;
+            resourceInputs["azureEnvironmentType"] = state?.azureEnvironmentType;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["delegateSelectors"] = state?.delegateSelectors;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["secretKey"] = state?.secretKey;
+            resourceInputs["subscription"] = state?.subscription;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["vaultName"] = state?.vaultName;
         } else {
             const args = argsOrState as AzureKeyVaultConnectorArgs | undefined;
-            if ((!args || args.clientId === undefined) && !opts.urn) {
+            if (args?.clientId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.secretKey === undefined) && !opts.urn) {
+            if (args?.secretKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretKey'");
             }
-            if ((!args || args.subscription === undefined) && !opts.urn) {
+            if (args?.subscription === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subscription'");
             }
-            if ((!args || args.tenantId === undefined) && !opts.urn) {
+            if (args?.tenantId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            if ((!args || args.vaultName === undefined) && !opts.urn) {
+            if (args?.vaultName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultName'");
             }
-            resourceInputs["azureEnvironmentType"] = args ? args.azureEnvironmentType : undefined;
-            resourceInputs["clientId"] = args ? args.clientId : undefined;
-            resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
-            resourceInputs["subscription"] = args ? args.subscription : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["vaultName"] = args ? args.vaultName : undefined;
+            resourceInputs["azureEnvironmentType"] = args?.azureEnvironmentType;
+            resourceInputs["clientId"] = args?.clientId;
+            resourceInputs["delegateSelectors"] = args?.delegateSelectors;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["secretKey"] = args?.secretKey;
+            resourceInputs["subscription"] = args?.subscription;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["vaultName"] = args?.vaultName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AzureKeyVaultConnector.__pulumiType, name, resourceInputs, opts);

@@ -40,39 +40,39 @@ export class DefaultNotificationTemplateSet extends pulumi.CustomResource {
     /**
      * Timestamp when the default notification template set was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<number>;
+    declare public /*out*/ readonly created: pulumi.Output<number>;
     /**
      * Description for Default Notification Template Set
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Set of event-template configurations
      */
-    public readonly eventTemplateConfigurationSets!: pulumi.Output<outputs.platform.DefaultNotificationTemplateSetEventTemplateConfigurationSet[]>;
+    declare public readonly eventTemplateConfigurationSets: pulumi.Output<outputs.platform.DefaultNotificationTemplateSetEventTemplateConfigurationSet[]>;
     /**
      * Identifier of Default Notification Template Set
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Timestamp when the default notification template set was last modified.
      */
-    public /*out*/ readonly lastModified!: pulumi.Output<number>;
+    declare public /*out*/ readonly lastModified: pulumi.Output<number>;
     /**
      * Name of Default Notification Template Set
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Type of channel (e.g. SLACK, EMAIL, etc.)
      */
-    public readonly notificationChannelType!: pulumi.Output<string>;
+    declare public readonly notificationChannelType: pulumi.Output<string>;
     /**
      * Type of the entity (e.g. PIPELINE, SERVICE, etc.)
      */
-    public readonly notificationEntity!: pulumi.Output<string>;
+    declare public readonly notificationEntity: pulumi.Output<string>;
     /**
      * Key-value tags
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a DefaultNotificationTemplateSet resource with the given unique name, arguments, and options.
@@ -87,36 +87,36 @@ export class DefaultNotificationTemplateSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DefaultNotificationTemplateSetState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["eventTemplateConfigurationSets"] = state ? state.eventTemplateConfigurationSets : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationChannelType"] = state ? state.notificationChannelType : undefined;
-            resourceInputs["notificationEntity"] = state ? state.notificationEntity : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["eventTemplateConfigurationSets"] = state?.eventTemplateConfigurationSets;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationChannelType"] = state?.notificationChannelType;
+            resourceInputs["notificationEntity"] = state?.notificationEntity;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DefaultNotificationTemplateSetArgs | undefined;
-            if ((!args || args.eventTemplateConfigurationSets === undefined) && !opts.urn) {
+            if (args?.eventTemplateConfigurationSets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventTemplateConfigurationSets'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.notificationChannelType === undefined) && !opts.urn) {
+            if (args?.notificationChannelType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationChannelType'");
             }
-            if ((!args || args.notificationEntity === undefined) && !opts.urn) {
+            if (args?.notificationEntity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationEntity'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["eventTemplateConfigurationSets"] = args ? args.eventTemplateConfigurationSets : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationChannelType"] = args ? args.notificationChannelType : undefined;
-            resourceInputs["notificationEntity"] = args ? args.notificationEntity : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["eventTemplateConfigurationSets"] = args?.eventTemplateConfigurationSets;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationChannelType"] = args?.notificationChannelType;
+            resourceInputs["notificationEntity"] = args?.notificationEntity;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
         }

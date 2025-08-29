@@ -50,147 +50,147 @@ export class InfrastructureV2 extends pulumi.CustomResource {
     /**
      * Enable AI features for the infrastructure.
      */
-    public readonly aiEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly aiEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Annotations to apply to the infrastructure pods.
      */
-    public readonly annotation!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotation: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Container configurations.
      */
-    public readonly containers!: pulumi.Output<string | undefined>;
+    declare public readonly containers: pulumi.Output<string | undefined>;
     /**
      * Correlation ID for the request.
      */
-    public readonly correlationId!: pulumi.Output<string>;
+    declare public readonly correlationId: pulumi.Output<string>;
     /**
      * Creation timestamp.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Description of the infrastructure.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * ID of the discovery agent to use.
      */
-    public readonly discoveryAgentId!: pulumi.Output<string | undefined>;
+    declare public readonly discoveryAgentId: pulumi.Output<string | undefined>;
     /**
      * The ID of the environment.
      */
-    public readonly environmentId!: pulumi.Output<string>;
+    declare public readonly environmentId: pulumi.Output<string>;
     /**
      * List of environment variables to set in the container.
      */
-    public readonly envs!: pulumi.Output<outputs.chaos.InfrastructureV2Env[] | undefined>;
+    declare public readonly envs: pulumi.Output<outputs.chaos.InfrastructureV2Env[] | undefined>;
     /**
      * Identifier for the infrastructure.
      */
-    public /*out*/ readonly identifiers!: pulumi.Output<outputs.chaos.InfrastructureV2Identifier[]>;
+    declare public /*out*/ readonly identifiers: pulumi.Output<outputs.chaos.InfrastructureV2Identifier[]>;
     /**
      * Identity for the infrastructure.
      */
-    public /*out*/ readonly identity!: pulumi.Output<string>;
+    declare public /*out*/ readonly identity: pulumi.Output<string>;
     /**
      * Configuration for the container image registry.
      */
-    public readonly imageRegistries!: pulumi.Output<outputs.chaos.InfrastructureV2ImageRegistry[]>;
+    declare public readonly imageRegistries: pulumi.Output<outputs.chaos.InfrastructureV2ImageRegistry[]>;
     /**
      * ID of the infrastructure.
      */
-    public readonly infraId!: pulumi.Output<string>;
+    declare public readonly infraId: pulumi.Output<string>;
     /**
      * Namespace where the infrastructure is installed.
      */
-    public /*out*/ readonly infraNamespace!: pulumi.Output<string>;
+    declare public /*out*/ readonly infraNamespace: pulumi.Output<string>;
     /**
      * Scope of the infrastructure. Valid values: NAMESPACE, CLUSTER
      */
-    public readonly infraScope!: pulumi.Output<string>;
+    declare public readonly infraScope: pulumi.Output<string>;
     /**
      * Type of the infrastructure. Valid values: KUBERNETES, KUBERNETESV2
      */
-    public readonly infraType!: pulumi.Output<string | undefined>;
+    declare public readonly infraType: pulumi.Output<string | undefined>;
     /**
      * Skip TLS verification for the infrastructure.
      */
-    public readonly insecureSkipVerify!: pulumi.Output<boolean | undefined>;
+    declare public readonly insecureSkipVerify: pulumi.Output<boolean | undefined>;
     /**
      * Installation command for the infrastructure.
      */
-    public /*out*/ readonly installCommand!: pulumi.Output<string>;
+    declare public /*out*/ readonly installCommand: pulumi.Output<string>;
     /**
      * Kubernetes connector identifier.
      */
-    public /*out*/ readonly k8sConnectorId!: pulumi.Output<string>;
+    declare public /*out*/ readonly k8sConnectorId: pulumi.Output<string>;
     /**
      * Labels to apply to the infrastructure pods.
      */
-    public readonly label!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly label: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * mTLS configuration for the infrastructure.
      */
-    public readonly mtls!: pulumi.Output<outputs.chaos.InfrastructureV2Mtls | undefined>;
+    declare public readonly mtls: pulumi.Output<outputs.chaos.InfrastructureV2Mtls | undefined>;
     /**
      * Name of the infrastructure.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Kubernetes namespace where the infrastructure will be installed. Maps to the infrastructure namespace.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * Node selector for the infrastructure pods.
      */
-    public readonly nodeSelector!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly nodeSelector: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the organization.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * The ID of the project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Proxy configuration for the infrastructure.
      */
-    public readonly proxy!: pulumi.Output<outputs.chaos.InfrastructureV2Proxy | undefined>;
+    declare public readonly proxy: pulumi.Output<outputs.chaos.InfrastructureV2Proxy | undefined>;
     /**
      * Group ID to run the infrastructure as.
      */
-    public readonly runAsGroup!: pulumi.Output<number | undefined>;
+    declare public readonly runAsGroup: pulumi.Output<number | undefined>;
     /**
      * User ID to run the infrastructure as.
      */
-    public readonly runAsUser!: pulumi.Output<number | undefined>;
+    declare public readonly runAsUser: pulumi.Output<number | undefined>;
     /**
      * Service account used by the infrastructure.
      */
-    public readonly serviceAccount!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccount: pulumi.Output<string | undefined>;
     /**
      * Status of the infrastructure.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Tags for the infrastructure.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * If specified, the pod's tolerations.
      */
-    public readonly tolerations!: pulumi.Output<outputs.chaos.InfrastructureV2Toleration[] | undefined>;
+    declare public readonly tolerations: pulumi.Output<outputs.chaos.InfrastructureV2Toleration[] | undefined>;
     /**
      * Last update timestamp.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * Volume mounts for the container.
      */
-    public readonly volumeMounts!: pulumi.Output<outputs.chaos.InfrastructureV2VolumeMount[] | undefined>;
+    declare public readonly volumeMounts: pulumi.Output<outputs.chaos.InfrastructureV2VolumeMount[] | undefined>;
     /**
      * Volumes to be created in the infrastructure.
      */
-    public readonly volumes!: pulumi.Output<outputs.chaos.InfrastructureV2Volume[] | undefined>;
+    declare public readonly volumes: pulumi.Output<outputs.chaos.InfrastructureV2Volume[] | undefined>;
 
     /**
      * Create a InfrastructureV2 resource with the given unique name, arguments, and options.
@@ -205,84 +205,84 @@ export class InfrastructureV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InfrastructureV2State | undefined;
-            resourceInputs["aiEnabled"] = state ? state.aiEnabled : undefined;
-            resourceInputs["annotation"] = state ? state.annotation : undefined;
-            resourceInputs["containers"] = state ? state.containers : undefined;
-            resourceInputs["correlationId"] = state ? state.correlationId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["discoveryAgentId"] = state ? state.discoveryAgentId : undefined;
-            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
-            resourceInputs["envs"] = state ? state.envs : undefined;
-            resourceInputs["identifiers"] = state ? state.identifiers : undefined;
-            resourceInputs["identity"] = state ? state.identity : undefined;
-            resourceInputs["imageRegistries"] = state ? state.imageRegistries : undefined;
-            resourceInputs["infraId"] = state ? state.infraId : undefined;
-            resourceInputs["infraNamespace"] = state ? state.infraNamespace : undefined;
-            resourceInputs["infraScope"] = state ? state.infraScope : undefined;
-            resourceInputs["infraType"] = state ? state.infraType : undefined;
-            resourceInputs["insecureSkipVerify"] = state ? state.insecureSkipVerify : undefined;
-            resourceInputs["installCommand"] = state ? state.installCommand : undefined;
-            resourceInputs["k8sConnectorId"] = state ? state.k8sConnectorId : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["mtls"] = state ? state.mtls : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["nodeSelector"] = state ? state.nodeSelector : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["proxy"] = state ? state.proxy : undefined;
-            resourceInputs["runAsGroup"] = state ? state.runAsGroup : undefined;
-            resourceInputs["runAsUser"] = state ? state.runAsUser : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tolerations"] = state ? state.tolerations : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["volumeMounts"] = state ? state.volumeMounts : undefined;
-            resourceInputs["volumes"] = state ? state.volumes : undefined;
+            resourceInputs["aiEnabled"] = state?.aiEnabled;
+            resourceInputs["annotation"] = state?.annotation;
+            resourceInputs["containers"] = state?.containers;
+            resourceInputs["correlationId"] = state?.correlationId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["discoveryAgentId"] = state?.discoveryAgentId;
+            resourceInputs["environmentId"] = state?.environmentId;
+            resourceInputs["envs"] = state?.envs;
+            resourceInputs["identifiers"] = state?.identifiers;
+            resourceInputs["identity"] = state?.identity;
+            resourceInputs["imageRegistries"] = state?.imageRegistries;
+            resourceInputs["infraId"] = state?.infraId;
+            resourceInputs["infraNamespace"] = state?.infraNamespace;
+            resourceInputs["infraScope"] = state?.infraScope;
+            resourceInputs["infraType"] = state?.infraType;
+            resourceInputs["insecureSkipVerify"] = state?.insecureSkipVerify;
+            resourceInputs["installCommand"] = state?.installCommand;
+            resourceInputs["k8sConnectorId"] = state?.k8sConnectorId;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["mtls"] = state?.mtls;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["nodeSelector"] = state?.nodeSelector;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["proxy"] = state?.proxy;
+            resourceInputs["runAsGroup"] = state?.runAsGroup;
+            resourceInputs["runAsUser"] = state?.runAsUser;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tolerations"] = state?.tolerations;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["volumeMounts"] = state?.volumeMounts;
+            resourceInputs["volumes"] = state?.volumes;
         } else {
             const args = argsOrState as InfrastructureV2Args | undefined;
-            if ((!args || args.environmentId === undefined) && !opts.urn) {
+            if (args?.environmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.infraId === undefined) && !opts.urn) {
+            if (args?.infraId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'infraId'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["aiEnabled"] = args ? args.aiEnabled : undefined;
-            resourceInputs["annotation"] = args ? args.annotation : undefined;
-            resourceInputs["containers"] = args ? args.containers : undefined;
-            resourceInputs["correlationId"] = args ? args.correlationId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["discoveryAgentId"] = args ? args.discoveryAgentId : undefined;
-            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
-            resourceInputs["envs"] = args ? args.envs : undefined;
-            resourceInputs["imageRegistries"] = args ? args.imageRegistries : undefined;
-            resourceInputs["infraId"] = args ? args.infraId : undefined;
-            resourceInputs["infraScope"] = args ? args.infraScope : undefined;
-            resourceInputs["infraType"] = args ? args.infraType : undefined;
-            resourceInputs["insecureSkipVerify"] = args ? args.insecureSkipVerify : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["mtls"] = args ? args.mtls : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["nodeSelector"] = args ? args.nodeSelector : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["proxy"] = args ? args.proxy : undefined;
-            resourceInputs["runAsGroup"] = args ? args.runAsGroup : undefined;
-            resourceInputs["runAsUser"] = args ? args.runAsUser : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tolerations"] = args ? args.tolerations : undefined;
-            resourceInputs["volumeMounts"] = args ? args.volumeMounts : undefined;
-            resourceInputs["volumes"] = args ? args.volumes : undefined;
+            resourceInputs["aiEnabled"] = args?.aiEnabled;
+            resourceInputs["annotation"] = args?.annotation;
+            resourceInputs["containers"] = args?.containers;
+            resourceInputs["correlationId"] = args?.correlationId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["discoveryAgentId"] = args?.discoveryAgentId;
+            resourceInputs["environmentId"] = args?.environmentId;
+            resourceInputs["envs"] = args?.envs;
+            resourceInputs["imageRegistries"] = args?.imageRegistries;
+            resourceInputs["infraId"] = args?.infraId;
+            resourceInputs["infraScope"] = args?.infraScope;
+            resourceInputs["infraType"] = args?.infraType;
+            resourceInputs["insecureSkipVerify"] = args?.insecureSkipVerify;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["mtls"] = args?.mtls;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["nodeSelector"] = args?.nodeSelector;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["proxy"] = args?.proxy;
+            resourceInputs["runAsGroup"] = args?.runAsGroup;
+            resourceInputs["runAsUser"] = args?.runAsUser;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tolerations"] = args?.tolerations;
+            resourceInputs["volumeMounts"] = args?.volumeMounts;
+            resourceInputs["volumes"] = args?.volumes;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["identifiers"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;

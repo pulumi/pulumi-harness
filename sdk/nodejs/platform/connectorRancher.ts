@@ -62,43 +62,43 @@ export class ConnectorRancher extends pulumi.CustomResource {
     /**
      * Bearer token information for the rancher cluster.
      */
-    public readonly bearerToken!: pulumi.Output<outputs.platform.ConnectorRancherBearerToken | undefined>;
+    declare public readonly bearerToken: pulumi.Output<outputs.platform.ConnectorRancherBearerToken | undefined>;
     /**
      * Selectors to use for the delegate.
      */
-    public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly delegateSelectors: pulumi.Output<string[] | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Enable this flag for force deletion of connector
      */
-    public readonly forceDelete!: pulumi.Output<boolean>;
+    declare public readonly forceDelete: pulumi.Output<boolean>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * The URL of the Rancher cluster.
      */
-    public readonly rancherUrl!: pulumi.Output<string>;
+    declare public readonly rancherUrl: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ConnectorRancher resource with the given unique name, arguments, and options.
@@ -113,34 +113,34 @@ export class ConnectorRancher extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorRancherState | undefined;
-            resourceInputs["bearerToken"] = state ? state.bearerToken : undefined;
-            resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["rancherUrl"] = state ? state.rancherUrl : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["bearerToken"] = state?.bearerToken;
+            resourceInputs["delegateSelectors"] = state?.delegateSelectors;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["rancherUrl"] = state?.rancherUrl;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ConnectorRancherArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.rancherUrl === undefined) && !opts.urn) {
+            if (args?.rancherUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rancherUrl'");
             }
-            resourceInputs["bearerToken"] = args ? args.bearerToken : undefined;
-            resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["rancherUrl"] = args ? args.rancherUrl : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["bearerToken"] = args?.bearerToken;
+            resourceInputs["delegateSelectors"] = args?.delegateSelectors;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["rancherUrl"] = args?.rancherUrl;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectorRancher.__pulumiType, name, resourceInputs, opts);

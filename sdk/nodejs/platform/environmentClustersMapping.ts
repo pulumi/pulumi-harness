@@ -84,27 +84,27 @@ export class EnvironmentClustersMapping extends pulumi.CustomResource {
     /**
      * list of cluster identifiers and names
      */
-    public readonly clusters!: pulumi.Output<outputs.platform.EnvironmentClustersMappingCluster[] | undefined>;
+    declare public readonly clusters: pulumi.Output<outputs.platform.EnvironmentClustersMappingCluster[] | undefined>;
     /**
      * environment identifier.
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
     /**
      * identifier for the cluster mapping(can be given any value).
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * org_id of the environment.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * project_id of the environment.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * scope at which the environment exists in harness.
      */
-    public /*out*/ readonly scope!: pulumi.Output<string>;
+    declare public /*out*/ readonly scope: pulumi.Output<string>;
 
     /**
      * Create a EnvironmentClustersMapping resource with the given unique name, arguments, and options.
@@ -119,25 +119,25 @@ export class EnvironmentClustersMapping extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentClustersMappingState | undefined;
-            resourceInputs["clusters"] = state ? state.clusters : undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
+            resourceInputs["clusters"] = state?.clusters;
+            resourceInputs["envId"] = state?.envId;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["scope"] = state?.scope;
         } else {
             const args = argsOrState as EnvironmentClustersMappingArgs | undefined;
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["clusters"] = args ? args.clusters : undefined;
-            resourceInputs["envId"] = args ? args.envId : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["clusters"] = args?.clusters;
+            resourceInputs["envId"] = args?.envId;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["scope"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -76,39 +76,39 @@ export class Aws extends pulumi.CustomResource {
     /**
      * The plain text AWS access key id.
      */
-    public readonly accessKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly accessKeyId: pulumi.Output<string | undefined>;
     /**
      * The name of the Harness secret containing the AWS access key id
      */
-    public readonly accessKeyIdSecretName!: pulumi.Output<string | undefined>;
+    declare public readonly accessKeyIdSecretName: pulumi.Output<string | undefined>;
     /**
      * Configuration for assuming a cross account role.
      */
-    public readonly assumeCrossAccountRole!: pulumi.Output<outputs.cloudprovider.AwsAssumeCrossAccountRole | undefined>;
+    declare public readonly assumeCrossAccountRole: pulumi.Output<outputs.cloudprovider.AwsAssumeCrossAccountRole | undefined>;
     /**
      * Select the Delegate to use via one of its Selectors.
      */
-    public readonly delegateSelector!: pulumi.Output<string | undefined>;
+    declare public readonly delegateSelector: pulumi.Output<string | undefined>;
     /**
      * The name of the cloud provider.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the Harness secret containing the AWS secret access key.
      */
-    public readonly secretAccessKeySecretName!: pulumi.Output<string | undefined>;
+    declare public readonly secretAccessKeySecretName: pulumi.Output<string | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    public readonly usageScopes!: pulumi.Output<outputs.cloudprovider.AwsUsageScope[] | undefined>;
+    declare public readonly usageScopes: pulumi.Output<outputs.cloudprovider.AwsUsageScope[] | undefined>;
     /**
      * Use the EC2 Instance Profile for Service Accounts.
      */
-    public readonly useEc2IamCredentials!: pulumi.Output<boolean | undefined>;
+    declare public readonly useEc2IamCredentials: pulumi.Output<boolean | undefined>;
     /**
      * Use the AWS IAM Role for Service Accounts.
      */
-    public readonly useIrsa!: pulumi.Output<boolean | undefined>;
+    declare public readonly useIrsa: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Aws resource with the given unique name, arguments, and options.
@@ -123,26 +123,26 @@ export class Aws extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AwsState | undefined;
-            resourceInputs["accessKeyId"] = state ? state.accessKeyId : undefined;
-            resourceInputs["accessKeyIdSecretName"] = state ? state.accessKeyIdSecretName : undefined;
-            resourceInputs["assumeCrossAccountRole"] = state ? state.assumeCrossAccountRole : undefined;
-            resourceInputs["delegateSelector"] = state ? state.delegateSelector : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secretAccessKeySecretName"] = state ? state.secretAccessKeySecretName : undefined;
-            resourceInputs["usageScopes"] = state ? state.usageScopes : undefined;
-            resourceInputs["useEc2IamCredentials"] = state ? state.useEc2IamCredentials : undefined;
-            resourceInputs["useIrsa"] = state ? state.useIrsa : undefined;
+            resourceInputs["accessKeyId"] = state?.accessKeyId;
+            resourceInputs["accessKeyIdSecretName"] = state?.accessKeyIdSecretName;
+            resourceInputs["assumeCrossAccountRole"] = state?.assumeCrossAccountRole;
+            resourceInputs["delegateSelector"] = state?.delegateSelector;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secretAccessKeySecretName"] = state?.secretAccessKeySecretName;
+            resourceInputs["usageScopes"] = state?.usageScopes;
+            resourceInputs["useEc2IamCredentials"] = state?.useEc2IamCredentials;
+            resourceInputs["useIrsa"] = state?.useIrsa;
         } else {
             const args = argsOrState as AwsArgs | undefined;
-            resourceInputs["accessKeyId"] = args ? args.accessKeyId : undefined;
-            resourceInputs["accessKeyIdSecretName"] = args ? args.accessKeyIdSecretName : undefined;
-            resourceInputs["assumeCrossAccountRole"] = args ? args.assumeCrossAccountRole : undefined;
-            resourceInputs["delegateSelector"] = args ? args.delegateSelector : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["secretAccessKeySecretName"] = args ? args.secretAccessKeySecretName : undefined;
-            resourceInputs["usageScopes"] = args ? args.usageScopes : undefined;
-            resourceInputs["useEc2IamCredentials"] = args ? args.useEc2IamCredentials : undefined;
-            resourceInputs["useIrsa"] = args ? args.useIrsa : undefined;
+            resourceInputs["accessKeyId"] = args?.accessKeyId;
+            resourceInputs["accessKeyIdSecretName"] = args?.accessKeyIdSecretName;
+            resourceInputs["assumeCrossAccountRole"] = args?.assumeCrossAccountRole;
+            resourceInputs["delegateSelector"] = args?.delegateSelector;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["secretAccessKeySecretName"] = args?.secretAccessKeySecretName;
+            resourceInputs["usageScopes"] = args?.usageScopes;
+            resourceInputs["useEc2IamCredentials"] = args?.useEc2IamCredentials;
+            resourceInputs["useIrsa"] = args?.useIrsa;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Aws.__pulumiType, name, resourceInputs, opts);

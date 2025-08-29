@@ -59,11 +59,11 @@ export class Datacenter extends pulumi.CustomResource {
     /**
      * The name of the cloud provider.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    public readonly usageScopes!: pulumi.Output<outputs.cloudprovider.DatacenterUsageScope[] | undefined>;
+    declare public readonly usageScopes: pulumi.Output<outputs.cloudprovider.DatacenterUsageScope[] | undefined>;
 
     /**
      * Create a Datacenter resource with the given unique name, arguments, and options.
@@ -78,12 +78,12 @@ export class Datacenter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatacenterState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["usageScopes"] = state ? state.usageScopes : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["usageScopes"] = state?.usageScopes;
         } else {
             const args = argsOrState as DatacenterArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["usageScopes"] = args ? args.usageScopes : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["usageScopes"] = args?.usageScopes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Datacenter.__pulumiType, name, resourceInputs, opts);

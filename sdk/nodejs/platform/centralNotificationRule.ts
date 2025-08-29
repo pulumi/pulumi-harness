@@ -40,23 +40,23 @@ export class CentralNotificationRule extends pulumi.CustomResource {
     /**
      * Account identifier associated with this notification channel.
      */
-    public /*out*/ readonly account!: pulumi.Output<string>;
+    declare public /*out*/ readonly account: pulumi.Output<string>;
     /**
      * Timestamp when the notification rule was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<number>;
-    public readonly customNotificationTemplateRef!: pulumi.Output<outputs.platform.CentralNotificationRuleCustomNotificationTemplateRef | undefined>;
-    public readonly identifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<number>;
+    declare public readonly customNotificationTemplateRef: pulumi.Output<outputs.platform.CentralNotificationRuleCustomNotificationTemplateRef | undefined>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Timestamp when the notification rule was last modified.
      */
-    public /*out*/ readonly lastModified!: pulumi.Output<number>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly notificationChannelRefs!: pulumi.Output<string[]>;
-    public readonly notificationConditions!: pulumi.Output<outputs.platform.CentralNotificationRuleNotificationCondition[]>;
-    public readonly org!: pulumi.Output<string | undefined>;
-    public readonly project!: pulumi.Output<string>;
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly lastModified: pulumi.Output<number>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly notificationChannelRefs: pulumi.Output<string[]>;
+    declare public readonly notificationConditions: pulumi.Output<outputs.platform.CentralNotificationRuleNotificationCondition[]>;
+    declare public readonly org: pulumi.Output<string | undefined>;
+    declare public readonly project: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string | undefined>;
 
     /**
      * Create a CentralNotificationRule resource with the given unique name, arguments, and options.
@@ -71,39 +71,39 @@ export class CentralNotificationRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CentralNotificationRuleState | undefined;
-            resourceInputs["account"] = state ? state.account : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["customNotificationTemplateRef"] = state ? state.customNotificationTemplateRef : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationChannelRefs"] = state ? state.notificationChannelRefs : undefined;
-            resourceInputs["notificationConditions"] = state ? state.notificationConditions : undefined;
-            resourceInputs["org"] = state ? state.org : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["account"] = state?.account;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["customNotificationTemplateRef"] = state?.customNotificationTemplateRef;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationChannelRefs"] = state?.notificationChannelRefs;
+            resourceInputs["notificationConditions"] = state?.notificationConditions;
+            resourceInputs["org"] = state?.org;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as CentralNotificationRuleArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.notificationChannelRefs === undefined) && !opts.urn) {
+            if (args?.notificationChannelRefs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationChannelRefs'");
             }
-            if ((!args || args.notificationConditions === undefined) && !opts.urn) {
+            if (args?.notificationConditions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationConditions'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["customNotificationTemplateRef"] = args ? args.customNotificationTemplateRef : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationChannelRefs"] = args ? args.notificationChannelRefs : undefined;
-            resourceInputs["notificationConditions"] = args ? args.notificationConditions : undefined;
-            resourceInputs["org"] = args ? args.org : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["customNotificationTemplateRef"] = args?.customNotificationTemplateRef;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationChannelRefs"] = args?.notificationChannelRefs;
+            resourceInputs["notificationConditions"] = args?.notificationConditions;
+            resourceInputs["org"] = args?.org;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["status"] = args?.status;
             resourceInputs["account"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;

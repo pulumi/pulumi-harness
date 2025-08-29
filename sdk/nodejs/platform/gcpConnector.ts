@@ -62,47 +62,47 @@ export class GcpConnector extends pulumi.CustomResource {
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Enable this flag to execute on Delegate
      */
-    public readonly executeOnDelegate!: pulumi.Output<boolean>;
+    declare public readonly executeOnDelegate: pulumi.Output<boolean>;
     /**
      * Enable this flag for force deletion of connector
      */
-    public readonly forceDelete!: pulumi.Output<boolean>;
+    declare public readonly forceDelete: pulumi.Output<boolean>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Inherit configuration from delegate.
      */
-    public readonly inheritFromDelegates!: pulumi.Output<outputs.platform.GcpConnectorInheritFromDelegate[] | undefined>;
+    declare public readonly inheritFromDelegates: pulumi.Output<outputs.platform.GcpConnectorInheritFromDelegate[] | undefined>;
     /**
      * Manual credential configuration.
      */
-    public readonly manual!: pulumi.Output<outputs.platform.GcpConnectorManual | undefined>;
+    declare public readonly manual: pulumi.Output<outputs.platform.GcpConnectorManual | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Authentication using harness oidc.
      */
-    public readonly oidcAuthentications!: pulumi.Output<outputs.platform.GcpConnectorOidcAuthentication[] | undefined>;
+    declare public readonly oidcAuthentications: pulumi.Output<outputs.platform.GcpConnectorOidcAuthentication[] | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a GcpConnector resource with the given unique name, arguments, and options.
@@ -117,33 +117,33 @@ export class GcpConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GcpConnectorState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["inheritFromDelegates"] = state ? state.inheritFromDelegates : undefined;
-            resourceInputs["manual"] = state ? state.manual : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oidcAuthentications"] = state ? state.oidcAuthentications : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["executeOnDelegate"] = state?.executeOnDelegate;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["inheritFromDelegates"] = state?.inheritFromDelegates;
+            resourceInputs["manual"] = state?.manual;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oidcAuthentications"] = state?.oidcAuthentications;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as GcpConnectorArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["inheritFromDelegates"] = args ? args.inheritFromDelegates : undefined;
-            resourceInputs["manual"] = args ? args.manual : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["oidcAuthentications"] = args ? args.oidcAuthentications : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["executeOnDelegate"] = args?.executeOnDelegate;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["inheritFromDelegates"] = args?.inheritFromDelegates;
+            resourceInputs["manual"] = args?.manual;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["oidcAuthentications"] = args?.oidcAuthentications;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GcpConnector.__pulumiType, name, resourceInputs, opts);

@@ -63,15 +63,15 @@ export class DelegateApproval extends pulumi.CustomResource {
     /**
      * Whether or not to approve the delegate.
      */
-    public readonly approve!: pulumi.Output<boolean>;
+    declare public readonly approve: pulumi.Output<boolean>;
     /**
      * The id of the delegate.
      */
-    public readonly delegateId!: pulumi.Output<string>;
+    declare public readonly delegateId: pulumi.Output<string>;
     /**
      * The status of the delegate.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a DelegateApproval resource with the given unique name, arguments, and options.
@@ -86,19 +86,19 @@ export class DelegateApproval extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DelegateApprovalState | undefined;
-            resourceInputs["approve"] = state ? state.approve : undefined;
-            resourceInputs["delegateId"] = state ? state.delegateId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["approve"] = state?.approve;
+            resourceInputs["delegateId"] = state?.delegateId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as DelegateApprovalArgs | undefined;
-            if ((!args || args.approve === undefined) && !opts.urn) {
+            if (args?.approve === undefined && !opts.urn) {
                 throw new Error("Missing required property 'approve'");
             }
-            if ((!args || args.delegateId === undefined) && !opts.urn) {
+            if (args?.delegateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'delegateId'");
             }
-            resourceInputs["approve"] = args ? args.approve : undefined;
-            resourceInputs["delegateId"] = args ? args.delegateId : undefined;
+            resourceInputs["approve"] = args?.approve;
+            resourceInputs["delegateId"] = args?.delegateId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -62,51 +62,51 @@ export class BitbucketConnector extends pulumi.CustomResource {
     /**
      * Configuration for using the BitBucket api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
      */
-    public readonly apiAuthentication!: pulumi.Output<outputs.platform.BitbucketConnectorApiAuthentication | undefined>;
+    declare public readonly apiAuthentication: pulumi.Output<outputs.platform.BitbucketConnectorApiAuthentication | undefined>;
     /**
      * Whether the connection we're making is to a BitBucket repository or a BitBucket account. Valid values are Account, Repo.
      */
-    public readonly connectionType!: pulumi.Output<string>;
+    declare public readonly connectionType: pulumi.Output<string>;
     /**
      * Credentials to use for the connection.
      */
-    public readonly credentials!: pulumi.Output<outputs.platform.BitbucketConnectorCredentials>;
+    declare public readonly credentials: pulumi.Output<outputs.platform.BitbucketConnectorCredentials>;
     /**
      * Tags to filter delegates for connection.
      */
-    public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly delegateSelectors: pulumi.Output<string[] | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * URL of the BitBucket repository or account.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * Repository to test the connection with. This is only used when `connectionType` is `Account`.
      */
-    public readonly validationRepo!: pulumi.Output<string | undefined>;
+    declare public readonly validationRepo: pulumi.Output<string | undefined>;
 
     /**
      * Create a BitbucketConnector resource with the given unique name, arguments, and options.
@@ -121,44 +121,44 @@ export class BitbucketConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BitbucketConnectorState | undefined;
-            resourceInputs["apiAuthentication"] = state ? state.apiAuthentication : undefined;
-            resourceInputs["connectionType"] = state ? state.connectionType : undefined;
-            resourceInputs["credentials"] = state ? state.credentials : undefined;
-            resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["validationRepo"] = state ? state.validationRepo : undefined;
+            resourceInputs["apiAuthentication"] = state?.apiAuthentication;
+            resourceInputs["connectionType"] = state?.connectionType;
+            resourceInputs["credentials"] = state?.credentials;
+            resourceInputs["delegateSelectors"] = state?.delegateSelectors;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["validationRepo"] = state?.validationRepo;
         } else {
             const args = argsOrState as BitbucketConnectorArgs | undefined;
-            if ((!args || args.connectionType === undefined) && !opts.urn) {
+            if (args?.connectionType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionType'");
             }
-            if ((!args || args.credentials === undefined) && !opts.urn) {
+            if (args?.credentials === undefined && !opts.urn) {
                 throw new Error("Missing required property 'credentials'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["apiAuthentication"] = args ? args.apiAuthentication : undefined;
-            resourceInputs["connectionType"] = args ? args.connectionType : undefined;
-            resourceInputs["credentials"] = args ? args.credentials : undefined;
-            resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["validationRepo"] = args ? args.validationRepo : undefined;
+            resourceInputs["apiAuthentication"] = args?.apiAuthentication;
+            resourceInputs["connectionType"] = args?.connectionType;
+            resourceInputs["credentials"] = args?.credentials;
+            resourceInputs["delegateSelectors"] = args?.delegateSelectors;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["validationRepo"] = args?.validationRepo;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BitbucketConnector.__pulumiType, name, resourceInputs, opts);

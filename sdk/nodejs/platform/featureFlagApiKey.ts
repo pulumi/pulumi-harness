@@ -57,39 +57,39 @@ export class FeatureFlagApiKey extends pulumi.CustomResource {
     /**
      * The value of the SDK API Key
      */
-    public /*out*/ readonly apiKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly apiKey: pulumi.Output<string>;
     /**
      * Description of the SDK API Key
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Environment Identifier
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
     /**
      * Expiration datetime of the SDK API Key
      */
-    public readonly expiredAt!: pulumi.Output<number | undefined>;
+    declare public readonly expiredAt: pulumi.Output<number | undefined>;
     /**
      * Identifier of the SDK API Key
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the SDK API Key
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Organization Identifier
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Project Identifier
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Type of SDK. Valid values are `Server` or `Client`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a FeatureFlagApiKey resource with the given unique name, arguments, and options.
@@ -104,40 +104,40 @@ export class FeatureFlagApiKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureFlagApiKeyState | undefined;
-            resourceInputs["apiKey"] = state ? state.apiKey : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
-            resourceInputs["expiredAt"] = state ? state.expiredAt : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["apiKey"] = state?.apiKey;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["envId"] = state?.envId;
+            resourceInputs["expiredAt"] = state?.expiredAt;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as FeatureFlagApiKeyArgs | undefined;
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["envId"] = args ? args.envId : undefined;
-            resourceInputs["expiredAt"] = args ? args.expiredAt : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["envId"] = args?.envId;
+            resourceInputs["expiredAt"] = args?.expiredAt;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["type"] = args?.type;
             resourceInputs["apiKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

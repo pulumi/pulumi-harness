@@ -61,55 +61,55 @@ export class InfraModule extends pulumi.CustomResource {
     /**
      * Timestamp when the module was created.
      */
-    public readonly created!: pulumi.Output<number>;
+    declare public readonly created: pulumi.Output<number>;
     /**
      * Description of the module.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the module.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * For account connectors, the repository where the module can be found
      */
-    public readonly repository!: pulumi.Output<string | undefined>;
+    declare public readonly repository: pulumi.Output<string | undefined>;
     /**
      * Name of the branch to fetch the code from. This cannot be set if repository commit is set.
      */
-    public readonly repositoryBranch!: pulumi.Output<string | undefined>;
+    declare public readonly repositoryBranch: pulumi.Output<string | undefined>;
     /**
      * Tag to fetch the code from. This cannot be set if repository branch is set.
      */
-    public readonly repositoryCommit!: pulumi.Output<string | undefined>;
+    declare public readonly repositoryCommit: pulumi.Output<string | undefined>;
     /**
      * Reference to the connector to be used to fetch the code.
      */
-    public readonly repositoryConnector!: pulumi.Output<string | undefined>;
+    declare public readonly repositoryConnector: pulumi.Output<string | undefined>;
     /**
      * Path to the module within the repository.
      */
-    public readonly repositoryPath!: pulumi.Output<string | undefined>;
+    declare public readonly repositoryPath: pulumi.Output<string | undefined>;
     /**
      * URL of the repository where the module is stored.
      */
-    public readonly repositoryUrl!: pulumi.Output<string>;
+    declare public readonly repositoryUrl: pulumi.Output<string>;
     /**
      * Timestamp when the module was last synced.
      */
-    public readonly synced!: pulumi.Output<number>;
+    declare public readonly synced: pulumi.Output<number>;
     /**
      * Provider of the module.
      */
-    public readonly system!: pulumi.Output<string>;
+    declare public readonly system: pulumi.Output<string>;
     /**
      * Git tags associated with the module.
      */
-    public readonly tags!: pulumi.Output<string>;
+    declare public readonly tags: pulumi.Output<string>;
     /**
      * List of versions of the module.
      */
-    public readonly versions!: pulumi.Output<string[]>;
+    declare public readonly versions: pulumi.Output<string[]>;
 
     /**
      * Create a InfraModule resource with the given unique name, arguments, and options.
@@ -124,37 +124,37 @@ export class InfraModule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InfraModuleState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["repository"] = state ? state.repository : undefined;
-            resourceInputs["repositoryBranch"] = state ? state.repositoryBranch : undefined;
-            resourceInputs["repositoryCommit"] = state ? state.repositoryCommit : undefined;
-            resourceInputs["repositoryConnector"] = state ? state.repositoryConnector : undefined;
-            resourceInputs["repositoryPath"] = state ? state.repositoryPath : undefined;
-            resourceInputs["repositoryUrl"] = state ? state.repositoryUrl : undefined;
-            resourceInputs["synced"] = state ? state.synced : undefined;
-            resourceInputs["system"] = state ? state.system : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["versions"] = state ? state.versions : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["repository"] = state?.repository;
+            resourceInputs["repositoryBranch"] = state?.repositoryBranch;
+            resourceInputs["repositoryCommit"] = state?.repositoryCommit;
+            resourceInputs["repositoryConnector"] = state?.repositoryConnector;
+            resourceInputs["repositoryPath"] = state?.repositoryPath;
+            resourceInputs["repositoryUrl"] = state?.repositoryUrl;
+            resourceInputs["synced"] = state?.synced;
+            resourceInputs["system"] = state?.system;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["versions"] = state?.versions;
         } else {
             const args = argsOrState as InfraModuleArgs | undefined;
-            if ((!args || args.system === undefined) && !opts.urn) {
+            if (args?.system === undefined && !opts.urn) {
                 throw new Error("Missing required property 'system'");
             }
-            resourceInputs["created"] = args ? args.created : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["repository"] = args ? args.repository : undefined;
-            resourceInputs["repositoryBranch"] = args ? args.repositoryBranch : undefined;
-            resourceInputs["repositoryCommit"] = args ? args.repositoryCommit : undefined;
-            resourceInputs["repositoryConnector"] = args ? args.repositoryConnector : undefined;
-            resourceInputs["repositoryPath"] = args ? args.repositoryPath : undefined;
-            resourceInputs["repositoryUrl"] = args ? args.repositoryUrl : undefined;
-            resourceInputs["synced"] = args ? args.synced : undefined;
-            resourceInputs["system"] = args ? args.system : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["versions"] = args ? args.versions : undefined;
+            resourceInputs["created"] = args?.created;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["repository"] = args?.repository;
+            resourceInputs["repositoryBranch"] = args?.repositoryBranch;
+            resourceInputs["repositoryCommit"] = args?.repositoryCommit;
+            resourceInputs["repositoryConnector"] = args?.repositoryConnector;
+            resourceInputs["repositoryPath"] = args?.repositoryPath;
+            resourceInputs["repositoryUrl"] = args?.repositoryUrl;
+            resourceInputs["synced"] = args?.synced;
+            resourceInputs["system"] = args?.system;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["versions"] = args?.versions;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InfraModule.__pulumiType, name, resourceInputs, opts);

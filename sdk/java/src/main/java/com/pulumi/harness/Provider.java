@@ -37,50 +37,42 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.accountId);
     }
     /**
-     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-     * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
      * 
      */
     @Export(name="apiKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiKey;
 
     /**
-     * @return The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
-     * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+     * @return The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
      * 
      */
     public Output<Optional<String>> apiKey() {
         return Codegen.optional(this.apiKey);
     }
     /**
-     * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-     * `HARNESS_ENDPOINT` environment variable.
+     * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
      * 
      */
     @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpoint;
 
     /**
-     * @return The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-     * `HARNESS_ENDPOINT` environment variable.
+     * @return The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
      * 
      */
     public Output<Optional<String>> endpoint() {
         return Codegen.optional(this.endpoint);
     }
     /**
-     * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-     * variable. For more information to create an API key in NextGen, see
-     * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+     * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      * 
      */
     @Export(name="platformApiKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> platformApiKey;
 
     /**
-     * @return The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-     * variable. For more information to create an API key in NextGen, see
-     * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+     * @return The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      * 
      */
     public Output<Optional<String>> platformApiKey() {

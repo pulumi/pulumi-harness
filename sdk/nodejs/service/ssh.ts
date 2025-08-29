@@ -65,23 +65,23 @@ export class Ssh extends pulumi.CustomResource {
     /**
      * The id of the application the service belongs to
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The type of artifact to deploy.
      */
-    public readonly artifactType!: pulumi.Output<string>;
+    declare public readonly artifactType: pulumi.Output<string>;
     /**
      * Description of th service
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the service
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Variables to be used in the service
      */
-    public readonly variables!: pulumi.Output<outputs.service.SshVariable[] | undefined>;
+    declare public readonly variables: pulumi.Output<outputs.service.SshVariable[] | undefined>;
 
     /**
      * Create a Ssh resource with the given unique name, arguments, and options.
@@ -96,24 +96,24 @@ export class Ssh extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SshState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["artifactType"] = state ? state.artifactType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["variables"] = state ? state.variables : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["artifactType"] = state?.artifactType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["variables"] = state?.variables;
         } else {
             const args = argsOrState as SshArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.artifactType === undefined) && !opts.urn) {
+            if (args?.artifactType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'artifactType'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["artifactType"] = args ? args.artifactType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["variables"] = args ? args.variables : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["artifactType"] = args?.artifactType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["variables"] = args?.variables;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Ssh.__pulumiType, name, resourceInputs, opts);

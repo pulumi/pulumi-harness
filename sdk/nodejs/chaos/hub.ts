@@ -70,67 +70,67 @@ export class Hub extends pulumi.CustomResource {
     /**
      * ID of the Git connector
      */
-    public readonly connectorId!: pulumi.Output<string>;
+    declare public readonly connectorId: pulumi.Output<string>;
     /**
      * Scope of the Git connector (PROJECT, ORGANISATION, or ACCOUNT)
      */
-    public readonly connectorScope!: pulumi.Output<string | undefined>;
+    declare public readonly connectorScope: pulumi.Output<string | undefined>;
     /**
      * Creation timestamp
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Description of the chaos hub
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the chaos hub is available
      */
-    public /*out*/ readonly isAvailable!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isAvailable: pulumi.Output<boolean>;
     /**
      * Whether this is the default chaos hub
      */
-    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
     /**
      * Timestamp of the last sync
      */
-    public /*out*/ readonly lastSyncedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastSyncedAt: pulumi.Output<string>;
     /**
      * Name of the chaos hub
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The organization ID of the chaos hub
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * The project ID of the chaos hub
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Git repository branch
      */
-    public readonly repoBranch!: pulumi.Output<string>;
+    declare public readonly repoBranch: pulumi.Output<string>;
     /**
      * Name of the Git repository (required for account-level connectors)
      */
-    public readonly repoName!: pulumi.Output<string | undefined>;
+    declare public readonly repoName: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the chaos hub
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Total number of experiments in the hub
      */
-    public /*out*/ readonly totalExperiments!: pulumi.Output<number>;
+    declare public /*out*/ readonly totalExperiments: pulumi.Output<number>;
     /**
      * Total number of faults in the hub
      */
-    public /*out*/ readonly totalFaults!: pulumi.Output<number>;
+    declare public /*out*/ readonly totalFaults: pulumi.Output<number>;
     /**
      * Last update timestamp
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a Hub resource with the given unique name, arguments, and options.
@@ -145,40 +145,40 @@ export class Hub extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HubState | undefined;
-            resourceInputs["connectorId"] = state ? state.connectorId : undefined;
-            resourceInputs["connectorScope"] = state ? state.connectorScope : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["isAvailable"] = state ? state.isAvailable : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["lastSyncedAt"] = state ? state.lastSyncedAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["repoBranch"] = state ? state.repoBranch : undefined;
-            resourceInputs["repoName"] = state ? state.repoName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["totalExperiments"] = state ? state.totalExperiments : undefined;
-            resourceInputs["totalFaults"] = state ? state.totalFaults : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["connectorId"] = state?.connectorId;
+            resourceInputs["connectorScope"] = state?.connectorScope;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["isAvailable"] = state?.isAvailable;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["lastSyncedAt"] = state?.lastSyncedAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["repoBranch"] = state?.repoBranch;
+            resourceInputs["repoName"] = state?.repoName;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["totalExperiments"] = state?.totalExperiments;
+            resourceInputs["totalFaults"] = state?.totalFaults;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as HubArgs | undefined;
-            if ((!args || args.connectorId === undefined) && !opts.urn) {
+            if (args?.connectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
             }
-            if ((!args || args.repoBranch === undefined) && !opts.urn) {
+            if (args?.repoBranch === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repoBranch'");
             }
-            resourceInputs["connectorId"] = args ? args.connectorId : undefined;
-            resourceInputs["connectorScope"] = args ? args.connectorScope : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["repoBranch"] = args ? args.repoBranch : undefined;
-            resourceInputs["repoName"] = args ? args.repoName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["connectorId"] = args?.connectorId;
+            resourceInputs["connectorScope"] = args?.connectorScope;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["repoBranch"] = args?.repoBranch;
+            resourceInputs["repoName"] = args?.repoName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["isAvailable"] = undefined /*out*/;
             resourceInputs["lastSyncedAt"] = undefined /*out*/;

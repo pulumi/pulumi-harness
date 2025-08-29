@@ -18,25 +18,21 @@ public final class Config {
         return Codegen.stringProp("accountId").config(config).env("HARNESS_ACCOUNT_ID").get();
     }
 /**
- * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
- * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
+ * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
  * 
  */
     public Optional<String> apiKey() {
         return Codegen.stringProp("apiKey").config(config).env("HARNESS_API_KEY").get();
     }
 /**
- * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
- * `HARNESS_ENDPOINT` environment variable.
+ * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
  * 
  */
     public Optional<String> endpoint() {
         return Codegen.stringProp("endpoint").config(config).env("HARNESS_ENDPOINT").get();
     }
 /**
- * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
- * variable. For more information to create an API key in NextGen, see
- * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
+ * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
  * 
  */
     public Optional<String> platformApiKey() {

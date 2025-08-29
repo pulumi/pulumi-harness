@@ -51,13 +51,13 @@ export class HubSync extends pulumi.CustomResource {
     /**
      * The ID of the Chaos Hub to sync
      */
-    public readonly hubId!: pulumi.Output<string>;
+    declare public readonly hubId: pulumi.Output<string>;
     /**
      * Timestamp of the last sync
      */
-    public /*out*/ readonly lastSyncedAt!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
-    public readonly projectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastSyncedAt: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
 
     /**
      * Create a HubSync resource with the given unique name, arguments, and options.
@@ -72,24 +72,24 @@ export class HubSync extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HubSyncState | undefined;
-            resourceInputs["hubId"] = state ? state.hubId : undefined;
-            resourceInputs["lastSyncedAt"] = state ? state.lastSyncedAt : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["hubId"] = state?.hubId;
+            resourceInputs["lastSyncedAt"] = state?.lastSyncedAt;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
         } else {
             const args = argsOrState as HubSyncArgs | undefined;
-            if ((!args || args.hubId === undefined) && !opts.urn) {
+            if (args?.hubId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hubId'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["hubId"] = args ? args.hubId : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["hubId"] = args?.hubId;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["lastSyncedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

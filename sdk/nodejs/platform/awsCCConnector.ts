@@ -88,47 +88,47 @@ export class AwsCCConnector extends pulumi.CustomResource {
     /**
      * The AWS account id.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy to access the cost and usage reports and resources for the sole purpose of cost analysis and cost optimization.
      */
-    public readonly crossAccountAccess!: pulumi.Output<outputs.platform.AwsCCConnectorCrossAccountAccess>;
+    declare public readonly crossAccountAccess: pulumi.Output<outputs.platform.AwsCCConnectorCrossAccountAccess>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      */
-    public readonly featuresEnableds!: pulumi.Output<string[]>;
+    declare public readonly featuresEnableds: pulumi.Output<string[]>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      */
-    public readonly reportName!: pulumi.Output<string | undefined>;
+    declare public readonly reportName: pulumi.Output<string | undefined>;
     /**
      * The name of s3 bucket.
      */
-    public readonly s3Bucket!: pulumi.Output<string | undefined>;
+    declare public readonly s3Bucket: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a AwsCCConnector resource with the given unique name, arguments, and options.
@@ -143,42 +143,42 @@ export class AwsCCConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AwsCCConnectorState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["crossAccountAccess"] = state ? state.crossAccountAccess : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["featuresEnableds"] = state ? state.featuresEnableds : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["reportName"] = state ? state.reportName : undefined;
-            resourceInputs["s3Bucket"] = state ? state.s3Bucket : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["crossAccountAccess"] = state?.crossAccountAccess;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["featuresEnableds"] = state?.featuresEnableds;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["reportName"] = state?.reportName;
+            resourceInputs["s3Bucket"] = state?.s3Bucket;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as AwsCCConnectorArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.crossAccountAccess === undefined) && !opts.urn) {
+            if (args?.crossAccountAccess === undefined && !opts.urn) {
                 throw new Error("Missing required property 'crossAccountAccess'");
             }
-            if ((!args || args.featuresEnableds === undefined) && !opts.urn) {
+            if (args?.featuresEnableds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'featuresEnableds'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["crossAccountAccess"] = args ? args.crossAccountAccess : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["featuresEnableds"] = args ? args.featuresEnableds : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["reportName"] = args ? args.reportName : undefined;
-            resourceInputs["s3Bucket"] = args ? args.s3Bucket : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["crossAccountAccess"] = args?.crossAccountAccess;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["featuresEnableds"] = args?.featuresEnableds;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["reportName"] = args?.reportName;
+            resourceInputs["s3Bucket"] = args?.s3Bucket;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AwsCCConnector.__pulumiType, name, resourceInputs, opts);

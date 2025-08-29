@@ -48,23 +48,23 @@ export class Rule extends pulumi.CustomResource {
     /**
      * The cloud provider for the rule. It should be either AWS, AZURE or GCP.
      */
-    public readonly cloudProvider!: pulumi.Output<string>;
+    declare public readonly cloudProvider: pulumi.Output<string>;
     /**
      * Description for rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the rule.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Id of the rule.
      */
-    public /*out*/ readonly ruleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ruleId: pulumi.Output<string>;
     /**
      * The policy YAML of the rule
      */
-    public readonly rulesYaml!: pulumi.Output<string>;
+    declare public readonly rulesYaml: pulumi.Output<string>;
 
     /**
      * Create a Rule resource with the given unique name, arguments, and options.
@@ -79,23 +79,23 @@ export class Rule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            resourceInputs["cloudProvider"] = state ? state.cloudProvider : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
-            resourceInputs["rulesYaml"] = state ? state.rulesYaml : undefined;
+            resourceInputs["cloudProvider"] = state?.cloudProvider;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ruleId"] = state?.ruleId;
+            resourceInputs["rulesYaml"] = state?.rulesYaml;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.cloudProvider === undefined) && !opts.urn) {
+            if (args?.cloudProvider === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudProvider'");
             }
-            if ((!args || args.rulesYaml === undefined) && !opts.urn) {
+            if (args?.rulesYaml === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rulesYaml'");
             }
-            resourceInputs["cloudProvider"] = args ? args.cloudProvider : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["rulesYaml"] = args ? args.rulesYaml : undefined;
+            resourceInputs["cloudProvider"] = args?.cloudProvider;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["rulesYaml"] = args?.rulesYaml;
             resourceInputs["ruleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

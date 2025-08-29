@@ -48,71 +48,71 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Base branch for the new git branch.
      */
-    public readonly gitBaseBranch!: pulumi.Output<string | undefined>;
+    declare public readonly gitBaseBranch: pulumi.Output<string | undefined>;
     /**
      * Git branch for the policy.
      */
-    public readonly gitBranch!: pulumi.Output<string | undefined>;
+    declare public readonly gitBranch: pulumi.Output<string | undefined>;
     /**
      * Git commit message for the policy.
      */
-    public readonly gitCommitMsg!: pulumi.Output<string | undefined>;
+    declare public readonly gitCommitMsg: pulumi.Output<string | undefined>;
     /**
      * The existing commit sha of the file being updated
      */
-    public readonly gitCommitSha!: pulumi.Output<string>;
+    declare public readonly gitCommitSha: pulumi.Output<string>;
     /**
      * Git connector reference for the policy.
      */
-    public readonly gitConnectorRef!: pulumi.Output<string | undefined>;
+    declare public readonly gitConnectorRef: pulumi.Output<string | undefined>;
     /**
      * The existing file id of the file being updated, not required for bitbucket files
      */
-    public readonly gitFileId!: pulumi.Output<string>;
+    declare public readonly gitFileId: pulumi.Output<string>;
     /**
      * Flag to import the policy from git.
      */
-    public readonly gitImport!: pulumi.Output<boolean | undefined>;
+    declare public readonly gitImport: pulumi.Output<boolean | undefined>;
     /**
      * Flag to create a new branch for the policy.
      */
-    public readonly gitIsNewBranch!: pulumi.Output<boolean | undefined>;
+    declare public readonly gitIsNewBranch: pulumi.Output<boolean | undefined>;
     /**
      * Git path for the policy.
      */
-    public readonly gitPath!: pulumi.Output<string | undefined>;
+    declare public readonly gitPath: pulumi.Output<string | undefined>;
     /**
      * Git repository for the policy.
      */
-    public readonly gitRepo!: pulumi.Output<string | undefined>;
+    declare public readonly gitRepo: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Rego code for the policy.
      */
-    public readonly rego!: pulumi.Output<string>;
+    declare public readonly rego: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -127,48 +127,48 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["gitBaseBranch"] = state ? state.gitBaseBranch : undefined;
-            resourceInputs["gitBranch"] = state ? state.gitBranch : undefined;
-            resourceInputs["gitCommitMsg"] = state ? state.gitCommitMsg : undefined;
-            resourceInputs["gitCommitSha"] = state ? state.gitCommitSha : undefined;
-            resourceInputs["gitConnectorRef"] = state ? state.gitConnectorRef : undefined;
-            resourceInputs["gitFileId"] = state ? state.gitFileId : undefined;
-            resourceInputs["gitImport"] = state ? state.gitImport : undefined;
-            resourceInputs["gitIsNewBranch"] = state ? state.gitIsNewBranch : undefined;
-            resourceInputs["gitPath"] = state ? state.gitPath : undefined;
-            resourceInputs["gitRepo"] = state ? state.gitRepo : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["rego"] = state ? state.rego : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["gitBaseBranch"] = state?.gitBaseBranch;
+            resourceInputs["gitBranch"] = state?.gitBranch;
+            resourceInputs["gitCommitMsg"] = state?.gitCommitMsg;
+            resourceInputs["gitCommitSha"] = state?.gitCommitSha;
+            resourceInputs["gitConnectorRef"] = state?.gitConnectorRef;
+            resourceInputs["gitFileId"] = state?.gitFileId;
+            resourceInputs["gitImport"] = state?.gitImport;
+            resourceInputs["gitIsNewBranch"] = state?.gitIsNewBranch;
+            resourceInputs["gitPath"] = state?.gitPath;
+            resourceInputs["gitRepo"] = state?.gitRepo;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["rego"] = state?.rego;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.rego === undefined) && !opts.urn) {
+            if (args?.rego === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rego'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["gitBaseBranch"] = args ? args.gitBaseBranch : undefined;
-            resourceInputs["gitBranch"] = args ? args.gitBranch : undefined;
-            resourceInputs["gitCommitMsg"] = args ? args.gitCommitMsg : undefined;
-            resourceInputs["gitCommitSha"] = args ? args.gitCommitSha : undefined;
-            resourceInputs["gitConnectorRef"] = args ? args.gitConnectorRef : undefined;
-            resourceInputs["gitFileId"] = args ? args.gitFileId : undefined;
-            resourceInputs["gitImport"] = args ? args.gitImport : undefined;
-            resourceInputs["gitIsNewBranch"] = args ? args.gitIsNewBranch : undefined;
-            resourceInputs["gitPath"] = args ? args.gitPath : undefined;
-            resourceInputs["gitRepo"] = args ? args.gitRepo : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["rego"] = args ? args.rego : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["gitBaseBranch"] = args?.gitBaseBranch;
+            resourceInputs["gitBranch"] = args?.gitBranch;
+            resourceInputs["gitCommitMsg"] = args?.gitCommitMsg;
+            resourceInputs["gitCommitSha"] = args?.gitCommitSha;
+            resourceInputs["gitConnectorRef"] = args?.gitConnectorRef;
+            resourceInputs["gitFileId"] = args?.gitFileId;
+            resourceInputs["gitImport"] = args?.gitImport;
+            resourceInputs["gitIsNewBranch"] = args?.gitIsNewBranch;
+            resourceInputs["gitPath"] = args?.gitPath;
+            resourceInputs["gitRepo"] = args?.gitRepo;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["rego"] = args?.rego;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Policy.__pulumiType, name, resourceInputs, opts);

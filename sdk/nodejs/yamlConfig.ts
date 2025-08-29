@@ -72,19 +72,19 @@ export class YamlConfig extends pulumi.CustomResource {
     /**
      * The id of the application. This is required for all resources except global ones.
      */
-    public readonly appId!: pulumi.Output<string | undefined>;
+    declare public readonly appId: pulumi.Output<string | undefined>;
     /**
      * The raw YAML configuration.
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * The name of the resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The path of the resource.
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
 
     /**
      * Create a YamlConfig resource with the given unique name, arguments, and options.
@@ -99,21 +99,21 @@ export class YamlConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as YamlConfigState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["path"] = state?.path;
         } else {
             const args = argsOrState as YamlConfigArgs | undefined;
-            if ((!args || args.content === undefined) && !opts.urn) {
+            if (args?.content === undefined && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["path"] = args?.path;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

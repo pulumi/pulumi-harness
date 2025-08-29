@@ -62,35 +62,35 @@ export class RoleAssignments extends pulumi.CustomResource {
     /**
      * Disabled or not.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * Identifier for role assignment.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Managed or not.
      */
-    public readonly managed!: pulumi.Output<boolean | undefined>;
+    declare public readonly managed: pulumi.Output<boolean | undefined>;
     /**
      * Org identifier.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Principal.
      */
-    public readonly principals!: pulumi.Output<outputs.platform.RoleAssignmentsPrincipal[]>;
+    declare public readonly principals: pulumi.Output<outputs.platform.RoleAssignmentsPrincipal[]>;
     /**
      * Project Identifier
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Resource group identifier.
      */
-    public readonly resourceGroupIdentifier!: pulumi.Output<string>;
+    declare public readonly resourceGroupIdentifier: pulumi.Output<string>;
     /**
      * Role identifier.
      */
-    public readonly roleIdentifier!: pulumi.Output<string>;
+    declare public readonly roleIdentifier: pulumi.Output<string>;
 
     /**
      * Create a RoleAssignments resource with the given unique name, arguments, and options.
@@ -105,33 +105,33 @@ export class RoleAssignments extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleAssignmentsState | undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["managed"] = state ? state.managed : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["principals"] = state ? state.principals : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["resourceGroupIdentifier"] = state ? state.resourceGroupIdentifier : undefined;
-            resourceInputs["roleIdentifier"] = state ? state.roleIdentifier : undefined;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["managed"] = state?.managed;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["principals"] = state?.principals;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["resourceGroupIdentifier"] = state?.resourceGroupIdentifier;
+            resourceInputs["roleIdentifier"] = state?.roleIdentifier;
         } else {
             const args = argsOrState as RoleAssignmentsArgs | undefined;
-            if ((!args || args.principals === undefined) && !opts.urn) {
+            if (args?.principals === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principals'");
             }
-            if ((!args || args.resourceGroupIdentifier === undefined) && !opts.urn) {
+            if (args?.resourceGroupIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupIdentifier'");
             }
-            if ((!args || args.roleIdentifier === undefined) && !opts.urn) {
+            if (args?.roleIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleIdentifier'");
             }
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["managed"] = args ? args.managed : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["principals"] = args ? args.principals : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["resourceGroupIdentifier"] = args ? args.resourceGroupIdentifier : undefined;
-            resourceInputs["roleIdentifier"] = args ? args.roleIdentifier : undefined;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["managed"] = args?.managed;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["principals"] = args?.principals;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["resourceGroupIdentifier"] = args?.resourceGroupIdentifier;
+            resourceInputs["roleIdentifier"] = args?.roleIdentifier;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RoleAssignments.__pulumiType, name, resourceInputs, opts);

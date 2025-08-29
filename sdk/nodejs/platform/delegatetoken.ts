@@ -68,39 +68,39 @@ export class Delegatetoken extends pulumi.CustomResource {
     /**
      * Account Identifier for the Entity
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Time when the delegate token is created. This is an epoch timestamp.
      */
-    public readonly createdAt!: pulumi.Output<number>;
+    declare public readonly createdAt: pulumi.Output<number>;
     /**
      * created by details
      */
-    public readonly createdBy!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly createdBy: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the delegate token
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Org Identifier for the Entity
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Project Identifier for the Entity
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
      */
-    public readonly revokeAfter!: pulumi.Output<number | undefined>;
+    declare public readonly revokeAfter: pulumi.Output<number | undefined>;
     /**
      * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      */
-    public readonly tokenStatus!: pulumi.Output<string>;
+    declare public readonly tokenStatus: pulumi.Output<string>;
     /**
      * Value of the delegate token. Encoded in base64.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a Delegatetoken resource with the given unique name, arguments, and options.
@@ -115,29 +115,29 @@ export class Delegatetoken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DelegatetokenState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["revokeAfter"] = state ? state.revokeAfter : undefined;
-            resourceInputs["tokenStatus"] = state ? state.tokenStatus : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["revokeAfter"] = state?.revokeAfter;
+            resourceInputs["tokenStatus"] = state?.tokenStatus;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as DelegatetokenArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
-            resourceInputs["createdBy"] = args ? args.createdBy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["revokeAfter"] = args ? args.revokeAfter : undefined;
-            resourceInputs["tokenStatus"] = args ? args.tokenStatus : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["createdAt"] = args?.createdAt;
+            resourceInputs["createdBy"] = args?.createdBy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["revokeAfter"] = args?.revokeAfter;
+            resourceInputs["tokenStatus"] = args?.tokenStatus;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Delegatetoken.__pulumiType, name, resourceInputs, opts);

@@ -62,51 +62,51 @@ export class ServiceOverridesV2 extends pulumi.CustomResource {
     /**
      * The cluster ID to which the overrides are associated.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The environment ID to which the overrides are associated.
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    public readonly gitDetails!: pulumi.Output<outputs.platform.ServiceOverridesV2GitDetails>;
+    declare public readonly gitDetails: pulumi.Output<outputs.platform.ServiceOverridesV2GitDetails>;
     /**
      * The identifier of the override entity.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * import override from git
      */
-    public readonly importFromGit!: pulumi.Output<boolean>;
+    declare public readonly importFromGit: pulumi.Output<boolean>;
     /**
      * The infrastructure ID to which the overrides are associated.
      */
-    public readonly infraId!: pulumi.Output<string>;
+    declare public readonly infraId: pulumi.Output<string>;
     /**
      * force import override from remote even if same file path already exist
      */
-    public readonly isForceImport!: pulumi.Output<boolean>;
+    declare public readonly isForceImport: pulumi.Output<boolean>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * The service ID to which the overrides applies.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
     /**
      * The type of the overrides.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The yaml of the overrides spec object.
      */
-    public readonly yaml!: pulumi.Output<string>;
+    declare public readonly yaml: pulumi.Output<string>;
 
     /**
      * Create a ServiceOverridesV2 resource with the given unique name, arguments, and options.
@@ -121,38 +121,38 @@ export class ServiceOverridesV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceOverridesV2State | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
-            resourceInputs["gitDetails"] = state ? state.gitDetails : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["importFromGit"] = state ? state.importFromGit : undefined;
-            resourceInputs["infraId"] = state ? state.infraId : undefined;
-            resourceInputs["isForceImport"] = state ? state.isForceImport : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["yaml"] = state ? state.yaml : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["envId"] = state?.envId;
+            resourceInputs["gitDetails"] = state?.gitDetails;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["importFromGit"] = state?.importFromGit;
+            resourceInputs["infraId"] = state?.infraId;
+            resourceInputs["isForceImport"] = state?.isForceImport;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["yaml"] = state?.yaml;
         } else {
             const args = argsOrState as ServiceOverridesV2Args | undefined;
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["envId"] = args ? args.envId : undefined;
-            resourceInputs["gitDetails"] = args ? args.gitDetails : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["importFromGit"] = args ? args.importFromGit : undefined;
-            resourceInputs["infraId"] = args ? args.infraId : undefined;
-            resourceInputs["isForceImport"] = args ? args.isForceImport : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["yaml"] = args ? args.yaml : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["envId"] = args?.envId;
+            resourceInputs["gitDetails"] = args?.gitDetails;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["importFromGit"] = args?.importFromGit;
+            resourceInputs["infraId"] = args?.infraId;
+            resourceInputs["isForceImport"] = args?.isForceImport;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["serviceId"] = args?.serviceId;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["yaml"] = args?.yaml;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceOverridesV2.__pulumiType, name, resourceInputs, opts);

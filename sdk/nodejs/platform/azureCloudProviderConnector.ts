@@ -147,47 +147,47 @@ export class AzureCloudProviderConnector extends pulumi.CustomResource {
     /**
      * Specifies the Azure Environment type, which is AZURE by default. Can either be AZURE or AZURE*US*GOVERNMENT
      */
-    public readonly azureEnvironmentType!: pulumi.Output<string>;
+    declare public readonly azureEnvironmentType: pulumi.Output<string>;
     /**
      * Contains Azure connector credentials.
      */
-    public readonly credentials!: pulumi.Output<outputs.platform.AzureCloudProviderConnectorCredentials>;
+    declare public readonly credentials: pulumi.Output<outputs.platform.AzureCloudProviderConnectorCredentials>;
     /**
      * Tags to filter delegates for connection.
      */
-    public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly delegateSelectors: pulumi.Output<string[] | undefined>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Execute on delegate or not.
      */
-    public readonly executeOnDelegate!: pulumi.Output<boolean | undefined>;
+    declare public readonly executeOnDelegate: pulumi.Output<boolean | undefined>;
     /**
      * Enable this flag for force deletion of connector
      */
-    public readonly forceDelete!: pulumi.Output<boolean>;
+    declare public readonly forceDelete: pulumi.Output<boolean>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a AzureCloudProviderConnector resource with the given unique name, arguments, and options.
@@ -202,36 +202,36 @@ export class AzureCloudProviderConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureCloudProviderConnectorState | undefined;
-            resourceInputs["azureEnvironmentType"] = state ? state.azureEnvironmentType : undefined;
-            resourceInputs["credentials"] = state ? state.credentials : undefined;
-            resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["azureEnvironmentType"] = state?.azureEnvironmentType;
+            resourceInputs["credentials"] = state?.credentials;
+            resourceInputs["delegateSelectors"] = state?.delegateSelectors;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["executeOnDelegate"] = state?.executeOnDelegate;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as AzureCloudProviderConnectorArgs | undefined;
-            if ((!args || args.credentials === undefined) && !opts.urn) {
+            if (args?.credentials === undefined && !opts.urn) {
                 throw new Error("Missing required property 'credentials'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["azureEnvironmentType"] = args ? args.azureEnvironmentType : undefined;
-            resourceInputs["credentials"] = args ? args.credentials : undefined;
-            resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureEnvironmentType"] = args?.azureEnvironmentType;
+            resourceInputs["credentials"] = args?.credentials;
+            resourceInputs["delegateSelectors"] = args?.delegateSelectors;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["executeOnDelegate"] = args?.executeOnDelegate;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AzureCloudProviderConnector.__pulumiType, name, resourceInputs, opts);

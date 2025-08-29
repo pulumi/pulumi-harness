@@ -81,63 +81,63 @@ export class Repo extends pulumi.CustomResource {
     /**
      * Timestamp when the repository was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<number>;
+    declare public /*out*/ readonly created: pulumi.Output<number>;
     /**
      * ID of the user who created the repository.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<number>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<number>;
     /**
      * Default branch of the repository (Applicate only for create).
      */
-    public readonly defaultBranch!: pulumi.Output<string | undefined>;
+    declare public readonly defaultBranch: pulumi.Output<string | undefined>;
     /**
      * Description of the repository.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Repository should be created with specified predefined gitignore file.
      */
-    public readonly gitIgnore!: pulumi.Output<string | undefined>;
+    declare public readonly gitIgnore: pulumi.Output<string | undefined>;
     /**
      * Git URL of the repository.
      */
-    public /*out*/ readonly gitUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly gitUrl: pulumi.Output<string>;
     /**
      * Identifier of the repository.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Repository should be created with specified predefined license file.
      */
-    public readonly license!: pulumi.Output<string | undefined>;
+    declare public readonly license: pulumi.Output<string | undefined>;
     /**
      * Name of the repository.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Path of the repository.
      */
-    public /*out*/ readonly path!: pulumi.Output<string>;
+    declare public /*out*/ readonly path: pulumi.Output<string>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Repository should be created with readme file.
      */
-    public readonly readme!: pulumi.Output<boolean | undefined>;
+    declare public readonly readme: pulumi.Output<boolean | undefined>;
     /**
      * Configuration for importing an existing repository from SCM provider.
      */
-    public readonly sources!: pulumi.Output<outputs.platform.RepoSource[] | undefined>;
+    declare public readonly sources: pulumi.Output<outputs.platform.RepoSource[] | undefined>;
     /**
      * Timestamp when the repository was last updated.
      */
-    public /*out*/ readonly updated!: pulumi.Output<number>;
+    declare public /*out*/ readonly updated: pulumi.Output<number>;
 
     /**
      * Create a Repo resource with the given unique name, arguments, and options.
@@ -152,35 +152,35 @@ export class Repo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepoState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["defaultBranch"] = state ? state.defaultBranch : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["gitIgnore"] = state ? state.gitIgnore : undefined;
-            resourceInputs["gitUrl"] = state ? state.gitUrl : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["license"] = state ? state.license : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["readme"] = state ? state.readme : undefined;
-            resourceInputs["sources"] = state ? state.sources : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["defaultBranch"] = state?.defaultBranch;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["gitIgnore"] = state?.gitIgnore;
+            resourceInputs["gitUrl"] = state?.gitUrl;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["license"] = state?.license;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["readme"] = state?.readme;
+            resourceInputs["sources"] = state?.sources;
+            resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as RepoArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["defaultBranch"] = args ? args.defaultBranch : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["gitIgnore"] = args ? args.gitIgnore : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["license"] = args ? args.license : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["readme"] = args ? args.readme : undefined;
-            resourceInputs["sources"] = args ? args.sources : undefined;
+            resourceInputs["defaultBranch"] = args?.defaultBranch;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["gitIgnore"] = args?.gitIgnore;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["license"] = args?.license;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["readme"] = args?.readme;
+            resourceInputs["sources"] = args?.sources;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["gitUrl"] = undefined /*out*/;

@@ -60,43 +60,43 @@ export class GitxWebhook extends pulumi.CustomResource {
     /**
      * ConnectorRef to be used to create Gitx webhook.
      */
-    public readonly connectorRef!: pulumi.Output<string>;
+    declare public readonly connectorRef: pulumi.Output<string>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Folder Paths
      */
-    public readonly folderPaths!: pulumi.Output<string[] | undefined>;
+    declare public readonly folderPaths: pulumi.Output<string[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Flag to enable the webhook
      */
-    public readonly isEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly isEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Repo Identifier for Gitx webhook.
      */
-    public readonly repoName!: pulumi.Output<string>;
+    declare public readonly repoName: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a GitxWebhook resource with the given unique name, arguments, and options.
@@ -111,37 +111,37 @@ export class GitxWebhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GitxWebhookState | undefined;
-            resourceInputs["connectorRef"] = state ? state.connectorRef : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["folderPaths"] = state ? state.folderPaths : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["isEnabled"] = state ? state.isEnabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["repoName"] = state ? state.repoName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["connectorRef"] = state?.connectorRef;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["folderPaths"] = state?.folderPaths;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["isEnabled"] = state?.isEnabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["repoName"] = state?.repoName;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as GitxWebhookArgs | undefined;
-            if ((!args || args.connectorRef === undefined) && !opts.urn) {
+            if (args?.connectorRef === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectorRef'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.repoName === undefined) && !opts.urn) {
+            if (args?.repoName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repoName'");
             }
-            resourceInputs["connectorRef"] = args ? args.connectorRef : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["folderPaths"] = args ? args.folderPaths : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["isEnabled"] = args ? args.isEnabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["repoName"] = args ? args.repoName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["connectorRef"] = args?.connectorRef;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["folderPaths"] = args?.folderPaths;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["isEnabled"] = args?.isEnabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["repoName"] = args?.repoName;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GitxWebhook.__pulumiType, name, resourceInputs, opts);

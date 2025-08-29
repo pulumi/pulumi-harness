@@ -58,27 +58,27 @@ export class DiscoverySetting extends pulumi.CustomResource {
     /**
      * Correlation ID for the request.
      */
-    public readonly correlationId!: pulumi.Output<string | undefined>;
+    declare public readonly correlationId: pulumi.Output<string | undefined>;
     /**
      * Timestamp when the setting was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Image registry configuration.
      */
-    public readonly imageRegistry!: pulumi.Output<outputs.service.DiscoverySettingImageRegistry | undefined>;
+    declare public readonly imageRegistry: pulumi.Output<outputs.service.DiscoverySettingImageRegistry | undefined>;
     /**
      * The organization identifier.
      */
-    public readonly orgIdentifier!: pulumi.Output<string | undefined>;
+    declare public readonly orgIdentifier: pulumi.Output<string | undefined>;
     /**
      * The project identifier.
      */
-    public readonly projectIdentifier!: pulumi.Output<string | undefined>;
+    declare public readonly projectIdentifier: pulumi.Output<string | undefined>;
     /**
      * Timestamp when the setting was last updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a DiscoverySetting resource with the given unique name, arguments, and options.
@@ -93,18 +93,18 @@ export class DiscoverySetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiscoverySettingState | undefined;
-            resourceInputs["correlationId"] = state ? state.correlationId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["imageRegistry"] = state ? state.imageRegistry : undefined;
-            resourceInputs["orgIdentifier"] = state ? state.orgIdentifier : undefined;
-            resourceInputs["projectIdentifier"] = state ? state.projectIdentifier : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["correlationId"] = state?.correlationId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["imageRegistry"] = state?.imageRegistry;
+            resourceInputs["orgIdentifier"] = state?.orgIdentifier;
+            resourceInputs["projectIdentifier"] = state?.projectIdentifier;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as DiscoverySettingArgs | undefined;
-            resourceInputs["correlationId"] = args ? args.correlationId : undefined;
-            resourceInputs["imageRegistry"] = args ? args.imageRegistry : undefined;
-            resourceInputs["orgIdentifier"] = args ? args.orgIdentifier : undefined;
-            resourceInputs["projectIdentifier"] = args ? args.projectIdentifier : undefined;
+            resourceInputs["correlationId"] = args?.correlationId;
+            resourceInputs["imageRegistry"] = args?.imageRegistry;
+            resourceInputs["orgIdentifier"] = args?.orgIdentifier;
+            resourceInputs["projectIdentifier"] = args?.projectIdentifier;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

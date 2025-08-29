@@ -80,23 +80,23 @@ export class ApplicationGitSync extends pulumi.CustomResource {
     /**
      * The id of the application.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The branch of the git repository to sync to.
      */
-    public readonly branch!: pulumi.Output<string>;
+    declare public readonly branch: pulumi.Output<string>;
     /**
      * The id of the git connector to use.
      */
-    public readonly connectorId!: pulumi.Output<string>;
+    declare public readonly connectorId: pulumi.Output<string>;
     /**
      * Whether or not to enable git sync.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The name of the git repository to sync to. This is only used if the git connector is for an account and not an individual repository.
      */
-    public readonly repositoryName!: pulumi.Output<string | undefined>;
+    declare public readonly repositoryName: pulumi.Output<string | undefined>;
 
     /**
      * Create a ApplicationGitSync resource with the given unique name, arguments, and options.
@@ -111,27 +111,27 @@ export class ApplicationGitSync extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationGitSyncState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["branch"] = state ? state.branch : undefined;
-            resourceInputs["connectorId"] = state ? state.connectorId : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["repositoryName"] = state ? state.repositoryName : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["branch"] = state?.branch;
+            resourceInputs["connectorId"] = state?.connectorId;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["repositoryName"] = state?.repositoryName;
         } else {
             const args = argsOrState as ApplicationGitSyncArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.branch === undefined) && !opts.urn) {
+            if (args?.branch === undefined && !opts.urn) {
                 throw new Error("Missing required property 'branch'");
             }
-            if ((!args || args.connectorId === undefined) && !opts.urn) {
+            if (args?.connectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["branch"] = args ? args.branch : undefined;
-            resourceInputs["connectorId"] = args ? args.connectorId : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["repositoryName"] = args ? args.repositoryName : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["branch"] = args?.branch;
+            resourceInputs["connectorId"] = args?.connectorId;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["repositoryName"] = args?.repositoryName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationGitSync.__pulumiType, name, resourceInputs, opts);

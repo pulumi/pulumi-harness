@@ -48,51 +48,51 @@ export class RuleEnforcement extends pulumi.CustomResource {
     /**
      * The cloud provider for the rule enforcement. It should be either AWS, AZURE or GCP.
      */
-    public readonly cloudProvider!: pulumi.Output<string>;
+    declare public readonly cloudProvider: pulumi.Output<string>;
     /**
      * Description for rule enforcement.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Id of the rule enforcement.
      */
-    public /*out*/ readonly enforcementId!: pulumi.Output<string>;
+    declare public /*out*/ readonly enforcementId: pulumi.Output<string>;
     /**
      * Execution schedule in cron format.
      */
-    public readonly executionSchedule!: pulumi.Output<string>;
+    declare public readonly executionSchedule: pulumi.Output<string>;
     /**
      * Timezone for the execution schedule.
      */
-    public readonly executionTimezone!: pulumi.Output<string>;
+    declare public readonly executionTimezone: pulumi.Output<string>;
     /**
      * Indicates if the rule enforcement is a dry run. This by default is set to false.
      */
-    public readonly isDryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDryRun: pulumi.Output<boolean | undefined>;
     /**
      * Indicates if the rule enforcement is enabled. This by default is set to true.
      */
-    public readonly isEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly isEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Name of the rule enforcement.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * List of rule IDs. Either rule*ids or rule*set_ids should be provided.
      */
-    public readonly ruleIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly ruleIds: pulumi.Output<string[] | undefined>;
     /**
      * List of rule set IDs. Either rule*ids or rule*set_ids should be provided.
      */
-    public readonly ruleSetIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly ruleSetIds: pulumi.Output<string[] | undefined>;
     /**
      * List of target account which can be either AWS Account Ids or Azure Subscription Ids or Gcp Project Ids.
      */
-    public readonly targetAccounts!: pulumi.Output<string[]>;
+    declare public readonly targetAccounts: pulumi.Output<string[]>;
     /**
      * List of target regions. For GCP it should be left empty but is required in case of AWS or Azure.
      */
-    public readonly targetRegions!: pulumi.Output<string[] | undefined>;
+    declare public readonly targetRegions: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a RuleEnforcement resource with the given unique name, arguments, and options.
@@ -107,43 +107,43 @@ export class RuleEnforcement extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleEnforcementState | undefined;
-            resourceInputs["cloudProvider"] = state ? state.cloudProvider : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enforcementId"] = state ? state.enforcementId : undefined;
-            resourceInputs["executionSchedule"] = state ? state.executionSchedule : undefined;
-            resourceInputs["executionTimezone"] = state ? state.executionTimezone : undefined;
-            resourceInputs["isDryRun"] = state ? state.isDryRun : undefined;
-            resourceInputs["isEnabled"] = state ? state.isEnabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ruleIds"] = state ? state.ruleIds : undefined;
-            resourceInputs["ruleSetIds"] = state ? state.ruleSetIds : undefined;
-            resourceInputs["targetAccounts"] = state ? state.targetAccounts : undefined;
-            resourceInputs["targetRegions"] = state ? state.targetRegions : undefined;
+            resourceInputs["cloudProvider"] = state?.cloudProvider;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enforcementId"] = state?.enforcementId;
+            resourceInputs["executionSchedule"] = state?.executionSchedule;
+            resourceInputs["executionTimezone"] = state?.executionTimezone;
+            resourceInputs["isDryRun"] = state?.isDryRun;
+            resourceInputs["isEnabled"] = state?.isEnabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ruleIds"] = state?.ruleIds;
+            resourceInputs["ruleSetIds"] = state?.ruleSetIds;
+            resourceInputs["targetAccounts"] = state?.targetAccounts;
+            resourceInputs["targetRegions"] = state?.targetRegions;
         } else {
             const args = argsOrState as RuleEnforcementArgs | undefined;
-            if ((!args || args.cloudProvider === undefined) && !opts.urn) {
+            if (args?.cloudProvider === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudProvider'");
             }
-            if ((!args || args.executionSchedule === undefined) && !opts.urn) {
+            if (args?.executionSchedule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'executionSchedule'");
             }
-            if ((!args || args.executionTimezone === undefined) && !opts.urn) {
+            if (args?.executionTimezone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'executionTimezone'");
             }
-            if ((!args || args.targetAccounts === undefined) && !opts.urn) {
+            if (args?.targetAccounts === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetAccounts'");
             }
-            resourceInputs["cloudProvider"] = args ? args.cloudProvider : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["executionSchedule"] = args ? args.executionSchedule : undefined;
-            resourceInputs["executionTimezone"] = args ? args.executionTimezone : undefined;
-            resourceInputs["isDryRun"] = args ? args.isDryRun : undefined;
-            resourceInputs["isEnabled"] = args ? args.isEnabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["ruleIds"] = args ? args.ruleIds : undefined;
-            resourceInputs["ruleSetIds"] = args ? args.ruleSetIds : undefined;
-            resourceInputs["targetAccounts"] = args ? args.targetAccounts : undefined;
-            resourceInputs["targetRegions"] = args ? args.targetRegions : undefined;
+            resourceInputs["cloudProvider"] = args?.cloudProvider;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["executionSchedule"] = args?.executionSchedule;
+            resourceInputs["executionTimezone"] = args?.executionTimezone;
+            resourceInputs["isDryRun"] = args?.isDryRun;
+            resourceInputs["isEnabled"] = args?.isEnabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["ruleIds"] = args?.ruleIds;
+            resourceInputs["ruleSetIds"] = args?.ruleSetIds;
+            resourceInputs["targetAccounts"] = args?.targetAccounts;
+            resourceInputs["targetRegions"] = args?.targetRegions;
             resourceInputs["enforcementId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

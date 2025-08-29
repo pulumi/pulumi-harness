@@ -62,65 +62,65 @@ export class Template extends pulumi.CustomResource {
     /**
      * Specify comment with respect to changes.
      */
-    public readonly comments!: pulumi.Output<string | undefined>;
+    declare public readonly comments: pulumi.Output<string | undefined>;
     /**
      * Description of the entity. Description field is deprecated
      *
      * @deprecated description field is deprecated
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      */
-    public readonly forceDelete!: pulumi.Output<boolean>;
+    declare public readonly forceDelete: pulumi.Output<boolean>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    public readonly gitDetails!: pulumi.Output<outputs.platform.TemplateGitDetails>;
+    declare public readonly gitDetails: pulumi.Output<outputs.platform.TemplateGitDetails>;
     /**
      * Contains Git Information for importing entities from Git
      */
-    public readonly gitImportDetails!: pulumi.Output<outputs.platform.TemplateGitImportDetails | undefined>;
+    declare public readonly gitImportDetails: pulumi.Output<outputs.platform.TemplateGitImportDetails | undefined>;
     /**
      * Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Flag to set if importing from Git
      */
-    public readonly importFromGit!: pulumi.Output<boolean | undefined>;
+    declare public readonly importFromGit: pulumi.Output<boolean | undefined>;
     /**
      * True if given version for template to be set as stable.
      */
-    public readonly isStable!: pulumi.Output<boolean>;
+    declare public readonly isStable: pulumi.Output<boolean>;
     /**
      * Name of the Variable
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Organization Identifier for the Entity
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Project Identifier for the Entity
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Contains parameters for importing template.
      */
-    public readonly templateImportRequest!: pulumi.Output<outputs.platform.TemplateTemplateImportRequest | undefined>;
+    declare public readonly templateImportRequest: pulumi.Output<outputs.platform.TemplateTemplateImportRequest | undefined>;
     /**
      * Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    public readonly templateYaml!: pulumi.Output<string>;
+    declare public readonly templateYaml: pulumi.Output<string>;
     /**
      * Version Label for Template.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a Template resource with the given unique name, arguments, and options.
@@ -135,44 +135,44 @@ export class Template extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TemplateState | undefined;
-            resourceInputs["comments"] = state ? state.comments : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["gitDetails"] = state ? state.gitDetails : undefined;
-            resourceInputs["gitImportDetails"] = state ? state.gitImportDetails : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["importFromGit"] = state ? state.importFromGit : undefined;
-            resourceInputs["isStable"] = state ? state.isStable : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["templateImportRequest"] = state ? state.templateImportRequest : undefined;
-            resourceInputs["templateYaml"] = state ? state.templateYaml : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["comments"] = state?.comments;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["gitDetails"] = state?.gitDetails;
+            resourceInputs["gitImportDetails"] = state?.gitImportDetails;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["importFromGit"] = state?.importFromGit;
+            resourceInputs["isStable"] = state?.isStable;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["templateImportRequest"] = state?.templateImportRequest;
+            resourceInputs["templateYaml"] = state?.templateYaml;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as TemplateArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
+            if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            resourceInputs["comments"] = args ? args.comments : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["gitDetails"] = args ? args.gitDetails : undefined;
-            resourceInputs["gitImportDetails"] = args ? args.gitImportDetails : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["importFromGit"] = args ? args.importFromGit : undefined;
-            resourceInputs["isStable"] = args ? args.isStable : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["templateImportRequest"] = args ? args.templateImportRequest : undefined;
-            resourceInputs["templateYaml"] = args ? args.templateYaml : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["comments"] = args?.comments;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["gitDetails"] = args?.gitDetails;
+            resourceInputs["gitImportDetails"] = args?.gitImportDetails;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["importFromGit"] = args?.importFromGit;
+            resourceInputs["isStable"] = args?.isStable;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["templateImportRequest"] = args?.templateImportRequest;
+            resourceInputs["templateYaml"] = args?.templateYaml;
+            resourceInputs["version"] = args?.version;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Template.__pulumiType, name, resourceInputs, opts);

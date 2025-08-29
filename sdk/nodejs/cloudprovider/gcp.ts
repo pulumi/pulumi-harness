@@ -40,23 +40,23 @@ export class Gcp extends pulumi.CustomResource {
     /**
      * Delegate selectors to use for this provider.
      */
-    public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly delegateSelectors: pulumi.Output<string[] | undefined>;
     /**
      * The name of the cloud provider.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The id of the secret containing the GCP credentials
      */
-    public readonly secretFileId!: pulumi.Output<string | undefined>;
+    declare public readonly secretFileId: pulumi.Output<string | undefined>;
     /**
      * Skip validation of GCP configuration.
      */
-    public readonly skipValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipValidation: pulumi.Output<boolean | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    public readonly usageScopes!: pulumi.Output<outputs.cloudprovider.GcpUsageScope[] | undefined>;
+    declare public readonly usageScopes: pulumi.Output<outputs.cloudprovider.GcpUsageScope[] | undefined>;
 
     /**
      * Create a Gcp resource with the given unique name, arguments, and options.
@@ -71,18 +71,18 @@ export class Gcp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GcpState | undefined;
-            resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secretFileId"] = state ? state.secretFileId : undefined;
-            resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
-            resourceInputs["usageScopes"] = state ? state.usageScopes : undefined;
+            resourceInputs["delegateSelectors"] = state?.delegateSelectors;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secretFileId"] = state?.secretFileId;
+            resourceInputs["skipValidation"] = state?.skipValidation;
+            resourceInputs["usageScopes"] = state?.usageScopes;
         } else {
             const args = argsOrState as GcpArgs | undefined;
-            resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["secretFileId"] = args ? args.secretFileId : undefined;
-            resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
-            resourceInputs["usageScopes"] = args ? args.usageScopes : undefined;
+            resourceInputs["delegateSelectors"] = args?.delegateSelectors;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["secretFileId"] = args?.secretFileId;
+            resourceInputs["skipValidation"] = args?.skipValidation;
+            resourceInputs["usageScopes"] = args?.usageScopes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Gcp.__pulumiType, name, resourceInputs, opts);

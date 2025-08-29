@@ -40,27 +40,27 @@ export class Provider extends pulumi.CustomResource {
     /**
      * The description of the provider entity.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The identifier of the provider entity.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * The last modified time of the provider entity.
      */
-    public /*out*/ readonly lastModifiedAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly lastModifiedAt: pulumi.Output<number>;
     /**
      * The name of the provider entity.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Contains parameters related to the provider entity.
      */
-    public readonly spec!: pulumi.Output<outputs.platform.ProviderSpec>;
+    declare public readonly spec: pulumi.Output<outputs.platform.ProviderSpec>;
     /**
      * The type of the provider entity.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -75,24 +75,24 @@ export class Provider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProviderState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["lastModifiedAt"] = state ? state.lastModifiedAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["lastModifiedAt"] = state?.lastModifiedAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["spec"] = state?.spec;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ProviderArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.spec === undefined) && !opts.urn) {
+            if (args?.spec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["spec"] = args?.spec;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }

@@ -40,35 +40,35 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
      */
-    public readonly endingOn!: pulumi.Output<string | undefined>;
+    declare public readonly endingOn: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the schedule
      */
-    public /*out*/ readonly identifier!: pulumi.Output<number>;
+    declare public /*out*/ readonly identifier: pulumi.Output<number>;
     /**
      * Name of the schedule
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
      */
-    public readonly repeats!: pulumi.Output<outputs.autostopping.ScheduleRepeat[] | undefined>;
+    declare public readonly repeats: pulumi.Output<outputs.autostopping.ScheduleRepeat[] | undefined>;
     /**
      * ID of AutoStopping rules on which the schedule applies
      */
-    public readonly rules!: pulumi.Output<number[]>;
+    declare public readonly rules: pulumi.Output<number[]>;
     /**
      * Type of the schedule. Valid values are `uptime` and `downtime`
      */
-    public readonly scheduleType!: pulumi.Output<string>;
+    declare public readonly scheduleType: pulumi.Output<string>;
     /**
      * Time from which schedule will be active. Schedule will take immediate effect if startingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
      */
-    public readonly startingFrom!: pulumi.Output<string | undefined>;
+    declare public readonly startingFrom: pulumi.Output<string | undefined>;
     /**
      * Time zone in which schedule needs to be executed
      */
-    public readonly timeZone!: pulumi.Output<string>;
+    declare public readonly timeZone: pulumi.Output<string>;
 
     /**
      * Create a Schedule resource with the given unique name, arguments, and options.
@@ -83,32 +83,32 @@ export class Schedule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScheduleState | undefined;
-            resourceInputs["endingOn"] = state ? state.endingOn : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["repeats"] = state ? state.repeats : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["scheduleType"] = state ? state.scheduleType : undefined;
-            resourceInputs["startingFrom"] = state ? state.startingFrom : undefined;
-            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["endingOn"] = state?.endingOn;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["repeats"] = state?.repeats;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["scheduleType"] = state?.scheduleType;
+            resourceInputs["startingFrom"] = state?.startingFrom;
+            resourceInputs["timeZone"] = state?.timeZone;
         } else {
             const args = argsOrState as ScheduleArgs | undefined;
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            if ((!args || args.scheduleType === undefined) && !opts.urn) {
+            if (args?.scheduleType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scheduleType'");
             }
-            if ((!args || args.timeZone === undefined) && !opts.urn) {
+            if (args?.timeZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
-            resourceInputs["endingOn"] = args ? args.endingOn : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["repeats"] = args ? args.repeats : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["scheduleType"] = args ? args.scheduleType : undefined;
-            resourceInputs["startingFrom"] = args ? args.startingFrom : undefined;
-            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["endingOn"] = args?.endingOn;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["repeats"] = args?.repeats;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["scheduleType"] = args?.scheduleType;
+            resourceInputs["startingFrom"] = args?.startingFrom;
+            resourceInputs["timeZone"] = args?.timeZone;
             resourceInputs["identifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

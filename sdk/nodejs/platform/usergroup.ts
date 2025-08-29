@@ -198,67 +198,67 @@ export class Usergroup extends pulumi.CustomResource {
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the user group is externally managed.
      */
-    public readonly externallyManaged!: pulumi.Output<boolean | undefined>;
+    declare public readonly externallyManaged: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Name of the linked SSO.
      */
-    public readonly linkedSsoDisplayName!: pulumi.Output<string | undefined>;
+    declare public readonly linkedSsoDisplayName: pulumi.Output<string | undefined>;
     /**
      * The SSO account ID that the user group is linked to.
      */
-    public readonly linkedSsoId!: pulumi.Output<string | undefined>;
+    declare public readonly linkedSsoId: pulumi.Output<string | undefined>;
     /**
      * Type of linked SSO.
      */
-    public readonly linkedSsoType!: pulumi.Output<string | undefined>;
+    declare public readonly linkedSsoType: pulumi.Output<string | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * List of notification settings.
      */
-    public readonly notificationConfigs!: pulumi.Output<outputs.platform.UsergroupNotificationConfig[] | undefined>;
+    declare public readonly notificationConfigs: pulumi.Output<outputs.platform.UsergroupNotificationConfig[] | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Identifier of the userGroup in SSO.
      */
-    public readonly ssoGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly ssoGroupId: pulumi.Output<string | undefined>;
     /**
      * Name of the SSO userGroup.
      */
-    public readonly ssoGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly ssoGroupName: pulumi.Output<string | undefined>;
     /**
      * Whether sso is linked or not.
      */
-    public readonly ssoLinked!: pulumi.Output<boolean>;
+    declare public readonly ssoLinked: pulumi.Output<boolean>;
     /**
      * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * List of user emails in the UserGroup. Either provide list of users or list of user emails.
      */
-    public readonly userEmails!: pulumi.Output<string[] | undefined>;
+    declare public readonly userEmails: pulumi.Output<string[] | undefined>;
     /**
      * List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
      */
-    public readonly users!: pulumi.Output<string[] | undefined>;
+    declare public readonly users: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Usergroup resource with the given unique name, arguments, and options.
@@ -273,43 +273,43 @@ export class Usergroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UsergroupState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["externallyManaged"] = state ? state.externallyManaged : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["linkedSsoDisplayName"] = state ? state.linkedSsoDisplayName : undefined;
-            resourceInputs["linkedSsoId"] = state ? state.linkedSsoId : undefined;
-            resourceInputs["linkedSsoType"] = state ? state.linkedSsoType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationConfigs"] = state ? state.notificationConfigs : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["ssoGroupId"] = state ? state.ssoGroupId : undefined;
-            resourceInputs["ssoGroupName"] = state ? state.ssoGroupName : undefined;
-            resourceInputs["ssoLinked"] = state ? state.ssoLinked : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["userEmails"] = state ? state.userEmails : undefined;
-            resourceInputs["users"] = state ? state.users : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["externallyManaged"] = state?.externallyManaged;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["linkedSsoDisplayName"] = state?.linkedSsoDisplayName;
+            resourceInputs["linkedSsoId"] = state?.linkedSsoId;
+            resourceInputs["linkedSsoType"] = state?.linkedSsoType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationConfigs"] = state?.notificationConfigs;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["ssoGroupId"] = state?.ssoGroupId;
+            resourceInputs["ssoGroupName"] = state?.ssoGroupName;
+            resourceInputs["ssoLinked"] = state?.ssoLinked;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["userEmails"] = state?.userEmails;
+            resourceInputs["users"] = state?.users;
         } else {
             const args = argsOrState as UsergroupArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["externallyManaged"] = args ? args.externallyManaged : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["linkedSsoDisplayName"] = args ? args.linkedSsoDisplayName : undefined;
-            resourceInputs["linkedSsoId"] = args ? args.linkedSsoId : undefined;
-            resourceInputs["linkedSsoType"] = args ? args.linkedSsoType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["ssoGroupId"] = args ? args.ssoGroupId : undefined;
-            resourceInputs["ssoGroupName"] = args ? args.ssoGroupName : undefined;
-            resourceInputs["ssoLinked"] = args ? args.ssoLinked : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["userEmails"] = args ? args.userEmails : undefined;
-            resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["externallyManaged"] = args?.externallyManaged;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["linkedSsoDisplayName"] = args?.linkedSsoDisplayName;
+            resourceInputs["linkedSsoId"] = args?.linkedSsoId;
+            resourceInputs["linkedSsoType"] = args?.linkedSsoType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationConfigs"] = args?.notificationConfigs;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["ssoGroupId"] = args?.ssoGroupId;
+            resourceInputs["ssoGroupName"] = args?.ssoGroupName;
+            resourceInputs["ssoLinked"] = args?.ssoLinked;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["userEmails"] = args?.userEmails;
+            resourceInputs["users"] = args?.users;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Usergroup.__pulumiType, name, resourceInputs, opts);

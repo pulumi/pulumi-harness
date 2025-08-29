@@ -71,56 +71,56 @@ export class AzureGateway extends pulumi.CustomResource {
     /**
      * ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
      */
-    public readonly appGatewayId!: pulumi.Output<string | undefined>;
+    declare public readonly appGatewayId: pulumi.Output<string | undefined>;
     /**
      * Region in which azure cloud function will be provisioned
      */
-    public readonly azureFuncRegion!: pulumi.Output<string>;
+    declare public readonly azureFuncRegion: pulumi.Output<string>;
     /**
      * ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
      */
-    public readonly certificateId!: pulumi.Output<string | undefined>;
+    declare public readonly certificateId: pulumi.Output<string | undefined>;
     /**
      * Id of the cloud connector
      */
-    public readonly cloudConnectorId!: pulumi.Output<string>;
-    public readonly deleteCloudResourcesOnDestroy!: pulumi.Output<boolean>;
+    declare public readonly cloudConnectorId: pulumi.Output<string>;
+    declare public readonly deleteCloudResourcesOnDestroy: pulumi.Output<boolean>;
     /**
      * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
      */
-    public readonly frontendIp!: pulumi.Output<string | undefined>;
+    declare public readonly frontendIp: pulumi.Output<string | undefined>;
     /**
      * Hostname for the proxy
      */
-    public readonly hostName!: pulumi.Output<string>;
+    declare public readonly hostName: pulumi.Output<string>;
     /**
      * Unique identifier of the resource
      */
-    public /*out*/ readonly identifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly identifier: pulumi.Output<string>;
     /**
      * Name of the proxy
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Region in which cloud resources are hosted
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Resource group in which cloud resources are hosted
      */
-    public readonly resourceGroup!: pulumi.Output<string>;
+    declare public readonly resourceGroup: pulumi.Output<string>;
     /**
      * Size of machine used for the gateway. Required only for creating new AppGateway
      */
-    public readonly skuSize!: pulumi.Output<string | undefined>;
+    declare public readonly skuSize: pulumi.Output<string | undefined>;
     /**
      * Subnet in which cloud resources are hosted. Required only for creating new AppGateway
      */
-    public readonly subnetId!: pulumi.Output<string | undefined>;
+    declare public readonly subnetId: pulumi.Output<string | undefined>;
     /**
      * VNet in which cloud resources are hosted. Required only for creating new AppGateway
      */
-    public readonly vpc!: pulumi.Output<string>;
+    declare public readonly vpc: pulumi.Output<string>;
 
     /**
      * Create a AzureGateway resource with the given unique name, arguments, and options.
@@ -135,56 +135,56 @@ export class AzureGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureGatewayState | undefined;
-            resourceInputs["appGatewayId"] = state ? state.appGatewayId : undefined;
-            resourceInputs["azureFuncRegion"] = state ? state.azureFuncRegion : undefined;
-            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
-            resourceInputs["cloudConnectorId"] = state ? state.cloudConnectorId : undefined;
-            resourceInputs["deleteCloudResourcesOnDestroy"] = state ? state.deleteCloudResourcesOnDestroy : undefined;
-            resourceInputs["frontendIp"] = state ? state.frontendIp : undefined;
-            resourceInputs["hostName"] = state ? state.hostName : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resourceGroup"] = state ? state.resourceGroup : undefined;
-            resourceInputs["skuSize"] = state ? state.skuSize : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["vpc"] = state ? state.vpc : undefined;
+            resourceInputs["appGatewayId"] = state?.appGatewayId;
+            resourceInputs["azureFuncRegion"] = state?.azureFuncRegion;
+            resourceInputs["certificateId"] = state?.certificateId;
+            resourceInputs["cloudConnectorId"] = state?.cloudConnectorId;
+            resourceInputs["deleteCloudResourcesOnDestroy"] = state?.deleteCloudResourcesOnDestroy;
+            resourceInputs["frontendIp"] = state?.frontendIp;
+            resourceInputs["hostName"] = state?.hostName;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resourceGroup"] = state?.resourceGroup;
+            resourceInputs["skuSize"] = state?.skuSize;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["vpc"] = state?.vpc;
         } else {
             const args = argsOrState as AzureGatewayArgs | undefined;
-            if ((!args || args.azureFuncRegion === undefined) && !opts.urn) {
+            if (args?.azureFuncRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'azureFuncRegion'");
             }
-            if ((!args || args.cloudConnectorId === undefined) && !opts.urn) {
+            if (args?.cloudConnectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudConnectorId'");
             }
-            if ((!args || args.deleteCloudResourcesOnDestroy === undefined) && !opts.urn) {
+            if (args?.deleteCloudResourcesOnDestroy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deleteCloudResourcesOnDestroy'");
             }
-            if ((!args || args.hostName === undefined) && !opts.urn) {
+            if (args?.hostName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostName'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.resourceGroup === undefined) && !opts.urn) {
+            if (args?.resourceGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroup'");
             }
-            if ((!args || args.vpc === undefined) && !opts.urn) {
+            if (args?.vpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpc'");
             }
-            resourceInputs["appGatewayId"] = args ? args.appGatewayId : undefined;
-            resourceInputs["azureFuncRegion"] = args ? args.azureFuncRegion : undefined;
-            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
-            resourceInputs["cloudConnectorId"] = args ? args.cloudConnectorId : undefined;
-            resourceInputs["deleteCloudResourcesOnDestroy"] = args ? args.deleteCloudResourcesOnDestroy : undefined;
-            resourceInputs["frontendIp"] = args ? args.frontendIp : undefined;
-            resourceInputs["hostName"] = args ? args.hostName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["resourceGroup"] = args ? args.resourceGroup : undefined;
-            resourceInputs["skuSize"] = args ? args.skuSize : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["vpc"] = args ? args.vpc : undefined;
+            resourceInputs["appGatewayId"] = args?.appGatewayId;
+            resourceInputs["azureFuncRegion"] = args?.azureFuncRegion;
+            resourceInputs["certificateId"] = args?.certificateId;
+            resourceInputs["cloudConnectorId"] = args?.cloudConnectorId;
+            resourceInputs["deleteCloudResourcesOnDestroy"] = args?.deleteCloudResourcesOnDestroy;
+            resourceInputs["frontendIp"] = args?.frontendIp;
+            resourceInputs["hostName"] = args?.hostName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["resourceGroup"] = args?.resourceGroup;
+            resourceInputs["skuSize"] = args?.skuSize;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["vpc"] = args?.vpc;
             resourceInputs["identifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
