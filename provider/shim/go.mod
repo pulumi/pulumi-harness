@@ -1,8 +1,6 @@
 module github.com/harness/terraform-provider-harness/shim
 
-go 1.23.0
-
-toolchain go1.23.4
+go 1.23.11
 
 require (
 	github.com/harness/terraform-provider-harness v0.38.6
