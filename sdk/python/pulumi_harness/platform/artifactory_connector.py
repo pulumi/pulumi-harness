@@ -26,6 +26,7 @@ class ArtifactoryConnectorArgs:
                  credentials: Optional[pulumi.Input['ArtifactoryConnectorCredentialsArgs']] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -37,6 +38,7 @@ class ArtifactoryConnectorArgs:
         :param pulumi.Input['ArtifactoryConnectorCredentialsArgs'] credentials: Credentials to use for authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -50,6 +52,8 @@ class ArtifactoryConnectorArgs:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -120,6 +124,18 @@ class ArtifactoryConnectorArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -174,6 +190,7 @@ class _ArtifactoryConnectorState:
                  credentials: Optional[pulumi.Input['ArtifactoryConnectorCredentialsArgs']] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -185,6 +202,7 @@ class _ArtifactoryConnectorState:
         :param pulumi.Input['ArtifactoryConnectorCredentialsArgs'] credentials: Credentials to use for authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -198,6 +216,8 @@ class _ArtifactoryConnectorState:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
@@ -246,6 +266,18 @@ class _ArtifactoryConnectorState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter
@@ -329,6 +361,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
                  credentials: Optional[pulumi.Input[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -455,6 +488,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
         :param pulumi.Input[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict']] credentials: Credentials to use for authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -600,6 +634,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
                  credentials: Optional[pulumi.Input[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -618,6 +653,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
             __props__.__dict__["credentials"] = credentials
             __props__.__dict__["delegate_selectors"] = delegate_selectors
             __props__.__dict__["description"] = description
+            __props__.__dict__["execute_on_delegate"] = execute_on_delegate
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -641,6 +677,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
             credentials: Optional[pulumi.Input[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict']]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
             identifier: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -657,6 +694,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
         :param pulumi.Input[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict']] credentials: Credentials to use for authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -671,6 +709,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
         __props__.__dict__["credentials"] = credentials
         __props__.__dict__["delegate_selectors"] = delegate_selectors
         __props__.__dict__["description"] = description
+        __props__.__dict__["execute_on_delegate"] = execute_on_delegate
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
@@ -702,6 +741,14 @@ class ArtifactoryConnector(pulumi.CustomResource):
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
 
     @_builtins.property
     @pulumi.getter

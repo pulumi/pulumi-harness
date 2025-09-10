@@ -6428,6 +6428,17 @@ export namespace platform {
         severity: string;
     }
 
+    export interface GetPolicySetPolicyReference {
+        /**
+         * Unique identifier of the resource.
+         */
+        identifier: string;
+        /**
+         * Policy failure response - 'warning' for continuation, 'error' for exit
+         */
+        severity: string;
+    }
+
     export interface GetProjectListProject {
         identifier: string;
         name: string;
@@ -34759,6 +34770,17 @@ export namespace platform {
     export interface PolicySetPolicy {
         /**
          * Account Identifier of the account
+         */
+        identifier: string;
+        /**
+         * Policy failure response - 'warning' for continuation, 'error' for exit
+         */
+        severity: string;
+    }
+
+    export interface PolicySetPolicyReference {
+        /**
+         * Unique identifier of the resource.
          */
         identifier: string;
         /**

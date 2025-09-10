@@ -40,6 +40,8 @@ type PolicySet struct {
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// List of policy identifiers / severity for the policyset.
 	Policies PolicySetPolicyArrayOutput `pulumi:"policies"`
+	// Set of policy identifiers / severity for the policyset. Order is not significant.
+	PolicyReferences PolicySetPolicyReferenceArrayOutput `pulumi:"policyReferences"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource.
@@ -101,6 +103,8 @@ type policySetState struct {
 	OrgId *string `pulumi:"orgId"`
 	// List of policy identifiers / severity for the policyset.
 	Policies []PolicySetPolicy `pulumi:"policies"`
+	// Set of policy identifiers / severity for the policyset. Order is not significant.
+	PolicyReferences []PolicySetPolicyReference `pulumi:"policyReferences"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
@@ -124,6 +128,8 @@ type PolicySetState struct {
 	OrgId pulumi.StringPtrInput
 	// List of policy identifiers / severity for the policyset.
 	Policies PolicySetPolicyArrayInput
+	// Set of policy identifiers / severity for the policyset. Order is not significant.
+	PolicyReferences PolicySetPolicyReferenceArrayInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
@@ -151,6 +157,8 @@ type policySetArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// List of policy identifiers / severity for the policyset.
 	Policies []PolicySetPolicy `pulumi:"policies"`
+	// Set of policy identifiers / severity for the policyset. Order is not significant.
+	PolicyReferences []PolicySetPolicyReference `pulumi:"policyReferences"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
@@ -175,6 +183,8 @@ type PolicySetArgs struct {
 	OrgId pulumi.StringPtrInput
 	// List of policy identifiers / severity for the policyset.
 	Policies PolicySetPolicyArrayInput
+	// Set of policy identifiers / severity for the policyset. Order is not significant.
+	PolicyReferences PolicySetPolicyReferenceArrayInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
@@ -303,6 +313,11 @@ func (o PolicySetOutput) OrgId() pulumi.StringPtrOutput {
 // List of policy identifiers / severity for the policyset.
 func (o PolicySetOutput) Policies() PolicySetPolicyArrayOutput {
 	return o.ApplyT(func(v *PolicySet) PolicySetPolicyArrayOutput { return v.Policies }).(PolicySetPolicyArrayOutput)
+}
+
+// Set of policy identifiers / severity for the policyset. Order is not significant.
+func (o PolicySetOutput) PolicyReferences() PolicySetPolicyReferenceArrayOutput {
+	return o.ApplyT(func(v *PolicySet) PolicySetPolicyReferenceArrayOutput { return v.PolicyReferences }).(PolicySetPolicyReferenceArrayOutput)
 }
 
 // Unique identifier of the project.

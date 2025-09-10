@@ -68,6 +68,12 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<Outputs.PolicySetPolicy>> Policies { get; private set; } = null!;
 
         /// <summary>
+        /// Set of policy identifiers / severity for the policyset. Order is not significant.
+        /// </summary>
+        [Output("policyReferences")]
+        public Output<ImmutableArray<Outputs.PolicySetPolicyReference>> PolicyReferences { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
@@ -180,6 +186,18 @@ namespace Pulumi.Harness.Platform
             set => _policies = value;
         }
 
+        [Input("policyReferences")]
+        private InputList<Inputs.PolicySetPolicyReferenceArgs>? _policyReferences;
+
+        /// <summary>
+        /// Set of policy identifiers / severity for the policyset. Order is not significant.
+        /// </summary>
+        public InputList<Inputs.PolicySetPolicyReferenceArgs> PolicyReferences
+        {
+            get => _policyReferences ?? (_policyReferences = new InputList<Inputs.PolicySetPolicyReferenceArgs>());
+            set => _policyReferences = value;
+        }
+
         /// <summary>
         /// Unique identifier of the project.
         /// </summary>
@@ -258,6 +276,18 @@ namespace Pulumi.Harness.Platform
         {
             get => _policies ?? (_policies = new InputList<Inputs.PolicySetPolicyGetArgs>());
             set => _policies = value;
+        }
+
+        [Input("policyReferences")]
+        private InputList<Inputs.PolicySetPolicyReferenceGetArgs>? _policyReferences;
+
+        /// <summary>
+        /// Set of policy identifiers / severity for the policyset. Order is not significant.
+        /// </summary>
+        public InputList<Inputs.PolicySetPolicyReferenceGetArgs> PolicyReferences
+        {
+            get => _policyReferences ?? (_policyReferences = new InputList<Inputs.PolicySetPolicyReferenceGetArgs>());
+            set => _policyReferences = value;
         }
 
         /// <summary>

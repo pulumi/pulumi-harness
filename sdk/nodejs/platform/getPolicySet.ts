@@ -37,6 +37,7 @@ export function getPolicySet(args: GetPolicySetArgs, opts?: pulumi.InvokeOptions
         "name": args.name,
         "orgId": args.orgId,
         "policies": args.policies,
+        "policyReferences": args.policyReferences,
         "projectId": args.projectId,
         "type": args.type,
     }, opts);
@@ -68,8 +69,11 @@ export interface GetPolicySetArgs {
     orgId?: string;
     /**
      * List of policy identifiers / severity for the policyset.
+     *
+     * @deprecated Use 'policy_references' instead. This field will be removed in a future version.
      */
     policies?: inputs.platform.GetPolicySetPolicy[];
+    policyReferences?: inputs.platform.GetPolicySetPolicyReference[];
     /**
      * Unique identifier of the project.
      */
@@ -114,8 +118,11 @@ export interface GetPolicySetResult {
     readonly orgId?: string;
     /**
      * List of policy identifiers / severity for the policyset.
+     *
+     * @deprecated Use 'policy_references' instead. This field will be removed in a future version.
      */
-    readonly policies?: outputs.platform.GetPolicySetPolicy[];
+    readonly policies: outputs.platform.GetPolicySetPolicy[];
+    readonly policyReferences: outputs.platform.GetPolicySetPolicyReference[];
     /**
      * Unique identifier of the project.
      */
@@ -160,6 +167,7 @@ export function getPolicySetOutput(args: GetPolicySetOutputArgs, opts?: pulumi.I
         "name": args.name,
         "orgId": args.orgId,
         "policies": args.policies,
+        "policyReferences": args.policyReferences,
         "projectId": args.projectId,
         "type": args.type,
     }, opts);
@@ -191,8 +199,11 @@ export interface GetPolicySetOutputArgs {
     orgId?: pulumi.Input<string>;
     /**
      * List of policy identifiers / severity for the policyset.
+     *
+     * @deprecated Use 'policy_references' instead. This field will be removed in a future version.
      */
     policies?: pulumi.Input<pulumi.Input<inputs.platform.GetPolicySetPolicyArgs>[]>;
+    policyReferences?: pulumi.Input<pulumi.Input<inputs.platform.GetPolicySetPolicyReferenceArgs>[]>;
     /**
      * Unique identifier of the project.
      */

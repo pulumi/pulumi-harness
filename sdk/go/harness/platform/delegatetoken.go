@@ -12,6 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating delegate tokens. Delegate tokens can be created and revoked. Revoked tokens immediately stop functioning and are only purged after 30 days, meaning you cannot recreate a token with the same name within that period.
+// To revoke a token, set tokenStatus field to "REVOKED".
+//
 // ## Example Usage
 //
 // ```go

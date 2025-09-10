@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.GetPolicySetPolicyArgs;
+import com.pulumi.harness.platform.inputs.GetPolicySetPolicyReferenceArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -97,16 +98,31 @@ public final class GetPolicySetArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * List of policy identifiers / severity for the policyset.
      * 
+     * @deprecated
+     * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * 
      */
+    @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
     @Import(name="policies")
     private @Nullable Output<List<GetPolicySetPolicyArgs>> policies;
 
     /**
      * @return List of policy identifiers / severity for the policyset.
      * 
+     * @deprecated
+     * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * 
      */
+    @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
     public Optional<Output<List<GetPolicySetPolicyArgs>>> policies() {
         return Optional.ofNullable(this.policies);
+    }
+
+    @Import(name="policyReferences")
+    private @Nullable Output<List<GetPolicySetPolicyReferenceArgs>> policyReferences;
+
+    public Optional<Output<List<GetPolicySetPolicyReferenceArgs>>> policyReferences() {
+        return Optional.ofNullable(this.policyReferences);
     }
 
     /**
@@ -148,6 +164,7 @@ public final class GetPolicySetArgs extends com.pulumi.resources.InvokeArgs {
         this.name = $.name;
         this.orgId = $.orgId;
         this.policies = $.policies;
+        this.policyReferences = $.policyReferences;
         this.projectId = $.projectId;
         this.type = $.type;
     }
@@ -280,7 +297,11 @@ public final class GetPolicySetArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * 
          */
+        @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
         public Builder policies(@Nullable Output<List<GetPolicySetPolicyArgs>> policies) {
             $.policies = policies;
             return this;
@@ -291,7 +312,11 @@ public final class GetPolicySetArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * 
          */
+        @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
         public Builder policies(List<GetPolicySetPolicyArgs> policies) {
             return policies(Output.of(policies));
         }
@@ -301,9 +326,26 @@ public final class GetPolicySetArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * 
          */
+        @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
         public Builder policies(GetPolicySetPolicyArgs... policies) {
             return policies(List.of(policies));
+        }
+
+        public Builder policyReferences(@Nullable Output<List<GetPolicySetPolicyReferenceArgs>> policyReferences) {
+            $.policyReferences = policyReferences;
+            return this;
+        }
+
+        public Builder policyReferences(List<GetPolicySetPolicyReferenceArgs> policyReferences) {
+            return policyReferences(Output.of(policyReferences));
+        }
+
+        public Builder policyReferences(GetPolicySetPolicyReferenceArgs... policyReferences) {
+            return policyReferences(List.of(policyReferences));
         }
 
         /**

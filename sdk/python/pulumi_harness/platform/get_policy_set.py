@@ -28,7 +28,7 @@ class GetPolicySetResult:
     """
     A collection of values returned by getPolicySet.
     """
-    def __init__(__self__, action=None, description=None, enabled=None, id=None, identifier=None, name=None, org_id=None, policies=None, project_id=None, tags=None, type=None):
+    def __init__(__self__, action=None, description=None, enabled=None, id=None, identifier=None, name=None, org_id=None, policies=None, policy_references=None, project_id=None, tags=None, type=None):
         if action and not isinstance(action, str):
             raise TypeError("Expected argument 'action' to be a str")
         pulumi.set(__self__, "action", action)
@@ -53,6 +53,9 @@ class GetPolicySetResult:
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         pulumi.set(__self__, "policies", policies)
+        if policy_references and not isinstance(policy_references, list):
+            raise TypeError("Expected argument 'policy_references' to be a list")
+        pulumi.set(__self__, "policy_references", policy_references)
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
@@ -121,11 +124,17 @@ class GetPolicySetResult:
 
     @_builtins.property
     @pulumi.getter
-    def policies(self) -> Optional[Sequence['outputs.GetPolicySetPolicyResult']]:
+    @_utilities.deprecated("""Use 'policy_references' instead. This field will be removed in a future version.""")
+    def policies(self) -> Sequence['outputs.GetPolicySetPolicyResult']:
         """
         List of policy identifiers / severity for the policyset.
         """
         return pulumi.get(self, "policies")
+
+    @_builtins.property
+    @pulumi.getter(name="policyReferences")
+    def policy_references(self) -> Sequence['outputs.GetPolicySetPolicyReferenceResult']:
+        return pulumi.get(self, "policy_references")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -166,6 +175,7 @@ class AwaitableGetPolicySetResult(GetPolicySetResult):
             name=self.name,
             org_id=self.org_id,
             policies=self.policies,
+            policy_references=self.policy_references,
             project_id=self.project_id,
             tags=self.tags,
             type=self.type)
@@ -177,6 +187,7 @@ def get_policy_set(action: Optional[_builtins.str] = None,
                    name: Optional[_builtins.str] = None,
                    org_id: Optional[_builtins.str] = None,
                    policies: Optional[Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']]] = None,
+                   policy_references: Optional[Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict']]] = None,
                    project_id: Optional[_builtins.str] = None,
                    type: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicySetResult:
@@ -217,6 +228,7 @@ def get_policy_set(action: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['policies'] = policies
+    __args__['policyReferences'] = policy_references
     __args__['projectId'] = project_id
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -231,6 +243,7 @@ def get_policy_set(action: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         policies=pulumi.get(__ret__, 'policies'),
+        policy_references=pulumi.get(__ret__, 'policy_references'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
@@ -240,6 +253,7 @@ def get_policy_set_output(action: Optional[pulumi.Input[_builtins.str]] = None,
                           name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           policies: Optional[pulumi.Input[Optional[Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']]]]] = None,
+                          policy_references: Optional[pulumi.Input[Optional[Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict']]]]] = None,
                           project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           type: Optional[pulumi.Input[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicySetResult]:
@@ -280,6 +294,7 @@ def get_policy_set_output(action: Optional[pulumi.Input[_builtins.str]] = None,
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['policies'] = policies
+    __args__['policyReferences'] = policy_references
     __args__['projectId'] = project_id
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -293,6 +308,7 @@ def get_policy_set_output(action: Optional[pulumi.Input[_builtins.str]] = None,
         name=pulumi.get(__response__, 'name'),
         org_id=pulumi.get(__response__, 'org_id'),
         policies=pulumi.get(__response__, 'policies'),
+        policy_references=pulumi.get(__response__, 'policy_references'),
         project_id=pulumi.get(__response__, 'project_id'),
         tags=pulumi.get(__response__, 'tags'),
         type=pulumi.get(__response__, 'type')))

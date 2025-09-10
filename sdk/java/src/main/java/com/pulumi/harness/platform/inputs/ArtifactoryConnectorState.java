@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.ArtifactoryConnectorCredentialsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -60,6 +61,21 @@ public final class ArtifactoryConnectorState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Execute on delegate or not.
+     * 
+     */
+    @Import(name="executeOnDelegate")
+    private @Nullable Output<Boolean> executeOnDelegate;
+
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    public Optional<Output<Boolean>> executeOnDelegate() {
+        return Optional.ofNullable(this.executeOnDelegate);
     }
 
     /**
@@ -158,6 +174,7 @@ public final class ArtifactoryConnectorState extends com.pulumi.resources.Resour
         this.credentials = $.credentials;
         this.delegateSelectors = $.delegateSelectors;
         this.description = $.description;
+        this.executeOnDelegate = $.executeOnDelegate;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -255,6 +272,27 @@ public final class ArtifactoryConnectorState extends com.pulumi.resources.Resour
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param executeOnDelegate Execute on delegate or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(@Nullable Output<Boolean> executeOnDelegate) {
+            $.executeOnDelegate = executeOnDelegate;
+            return this;
+        }
+
+        /**
+         * @param executeOnDelegate Execute on delegate or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            return executeOnDelegate(Output.of(executeOnDelegate));
         }
 
         /**

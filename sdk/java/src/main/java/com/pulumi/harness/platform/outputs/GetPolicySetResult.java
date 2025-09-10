@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetPolicySetPolicy;
+import com.pulumi.harness.platform.outputs.GetPolicySetPolicyReference;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -53,8 +54,13 @@ public final class GetPolicySetResult {
     /**
      * @return List of policy identifiers / severity for the policyset.
      * 
+     * @deprecated
+     * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * 
      */
-    private @Nullable List<GetPolicySetPolicy> policies;
+    @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
+    private List<GetPolicySetPolicy> policies;
+    private List<GetPolicySetPolicyReference> policyReferences;
     /**
      * @return Unique identifier of the project.
      * 
@@ -124,9 +130,16 @@ public final class GetPolicySetResult {
     /**
      * @return List of policy identifiers / severity for the policyset.
      * 
+     * @deprecated
+     * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * 
      */
+    @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
     public List<GetPolicySetPolicy> policies() {
-        return this.policies == null ? List.of() : this.policies;
+        return this.policies;
+    }
+    public List<GetPolicySetPolicyReference> policyReferences() {
+        return this.policyReferences;
     }
     /**
      * @return Unique identifier of the project.
@@ -166,7 +179,8 @@ public final class GetPolicySetResult {
         private String identifier;
         private @Nullable String name;
         private @Nullable String orgId;
-        private @Nullable List<GetPolicySetPolicy> policies;
+        private List<GetPolicySetPolicy> policies;
+        private List<GetPolicySetPolicyReference> policyReferences;
         private @Nullable String projectId;
         private List<String> tags;
         private String type;
@@ -181,6 +195,7 @@ public final class GetPolicySetResult {
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.policies = defaults.policies;
+    	      this.policyReferences = defaults.policyReferences;
     	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
     	      this.type = defaults.type;
@@ -237,13 +252,26 @@ public final class GetPolicySetResult {
             return this;
         }
         @CustomType.Setter
-        public Builder policies(@Nullable List<GetPolicySetPolicy> policies) {
-
+        public Builder policies(List<GetPolicySetPolicy> policies) {
+            if (policies == null) {
+              throw new MissingRequiredPropertyException("GetPolicySetResult", "policies");
+            }
             this.policies = policies;
             return this;
         }
         public Builder policies(GetPolicySetPolicy... policies) {
             return policies(List.of(policies));
+        }
+        @CustomType.Setter
+        public Builder policyReferences(List<GetPolicySetPolicyReference> policyReferences) {
+            if (policyReferences == null) {
+              throw new MissingRequiredPropertyException("GetPolicySetResult", "policyReferences");
+            }
+            this.policyReferences = policyReferences;
+            return this;
+        }
+        public Builder policyReferences(GetPolicySetPolicyReference... policyReferences) {
+            return policyReferences(List.of(policyReferences));
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
@@ -280,6 +308,7 @@ public final class GetPolicySetResult {
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.policies = policies;
+            _resultValue.policyReferences = policyReferences;
             _resultValue.projectId = projectId;
             _resultValue.tags = tags;
             _resultValue.type = type;

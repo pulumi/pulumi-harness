@@ -76,6 +76,10 @@ export class PolicySet extends pulumi.CustomResource {
      */
     declare public readonly policies: pulumi.Output<outputs.platform.PolicySetPolicy[]>;
     /**
+     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     */
+    declare public readonly policyReferences: pulumi.Output<outputs.platform.PolicySetPolicyReference[]>;
+    /**
      * Unique identifier of the project.
      */
     declare public readonly projectId: pulumi.Output<string | undefined>;
@@ -108,6 +112,7 @@ export class PolicySet extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["policies"] = state?.policies;
+            resourceInputs["policyReferences"] = state?.policyReferences;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["type"] = state?.type;
@@ -129,6 +134,7 @@ export class PolicySet extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["policies"] = args?.policies;
+            resourceInputs["policyReferences"] = args?.policyReferences;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["type"] = args?.type;
@@ -170,6 +176,10 @@ export interface PolicySetState {
      * List of policy identifiers / severity for the policyset.
      */
     policies?: pulumi.Input<pulumi.Input<inputs.platform.PolicySetPolicy>[]>;
+    /**
+     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     */
+    policyReferences?: pulumi.Input<pulumi.Input<inputs.platform.PolicySetPolicyReference>[]>;
     /**
      * Unique identifier of the project.
      */
@@ -216,6 +226,10 @@ export interface PolicySetArgs {
      * List of policy identifiers / severity for the policyset.
      */
     policies?: pulumi.Input<pulumi.Input<inputs.platform.PolicySetPolicy>[]>;
+    /**
+     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     */
+    policyReferences?: pulumi.Input<pulumi.Input<inputs.platform.PolicySetPolicyReference>[]>;
     /**
      * Unique identifier of the project.
      */

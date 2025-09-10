@@ -159,10 +159,19 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// List of policy identifiers / severity for the policyset.
         /// </summary>
+        [Obsolete(@"Use 'policy_references' instead. This field will be removed in a future version.")]
         public List<Inputs.GetPolicySetPolicyArgs> Policies
         {
             get => _policies ?? (_policies = new List<Inputs.GetPolicySetPolicyArgs>());
             set => _policies = value;
+        }
+
+        [Input("policyReferences")]
+        private List<Inputs.GetPolicySetPolicyReferenceArgs>? _policyReferences;
+        public List<Inputs.GetPolicySetPolicyReferenceArgs> PolicyReferences
+        {
+            get => _policyReferences ?? (_policyReferences = new List<Inputs.GetPolicySetPolicyReferenceArgs>());
+            set => _policyReferences = value;
         }
 
         /// <summary>
@@ -221,10 +230,19 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// List of policy identifiers / severity for the policyset.
         /// </summary>
+        [Obsolete(@"Use 'policy_references' instead. This field will be removed in a future version.")]
         public InputList<Inputs.GetPolicySetPolicyInputArgs> Policies
         {
             get => _policies ?? (_policies = new InputList<Inputs.GetPolicySetPolicyInputArgs>());
             set => _policies = value;
+        }
+
+        [Input("policyReferences")]
+        private InputList<Inputs.GetPolicySetPolicyReferenceInputArgs>? _policyReferences;
+        public InputList<Inputs.GetPolicySetPolicyReferenceInputArgs> PolicyReferences
+        {
+            get => _policyReferences ?? (_policyReferences = new InputList<Inputs.GetPolicySetPolicyReferenceInputArgs>());
+            set => _policyReferences = value;
         }
 
         /// <summary>
@@ -281,6 +299,7 @@ namespace Pulumi.Harness.Platform
         /// List of policy identifiers / severity for the policyset.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicySetPolicyResult> Policies;
+        public readonly ImmutableArray<Outputs.GetPolicySetPolicyReferenceResult> PolicyReferences;
         /// <summary>
         /// Unique identifier of the project.
         /// </summary>
@@ -312,6 +331,8 @@ namespace Pulumi.Harness.Platform
 
             ImmutableArray<Outputs.GetPolicySetPolicyResult> policies,
 
+            ImmutableArray<Outputs.GetPolicySetPolicyReferenceResult> policyReferences,
+
             string? projectId,
 
             ImmutableArray<string> tags,
@@ -326,6 +347,7 @@ namespace Pulumi.Harness.Platform
             Name = name;
             OrgId = orgId;
             Policies = policies;
+            PolicyReferences = policyReferences;
             ProjectId = projectId;
             Tags = tags;
             Type = type;
