@@ -14374,6 +14374,9 @@
                     "policies": {
                         "maxItemsOne": false
                     },
+                    "policy_references": {
+                        "maxItemsOne": false
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -17469,6 +17472,9 @@
                 "current": "harness:platform/getPolicySet:getPolicySet",
                 "fields": {
                     "policies": {
+                        "maxItemsOne": false
+                    },
+                    "policy_references": {
                         "maxItemsOne": false
                     },
                     "tags": {
