@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.GetPolicySetPolicy;
+import com.pulumi.harness.platform.inputs.GetPolicySetPolicyReference;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -96,16 +97,31 @@ public final class GetPolicySetPlainArgs extends com.pulumi.resources.InvokeArgs
     /**
      * List of policy identifiers / severity for the policyset.
      * 
+     * @deprecated
+     * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * 
      */
+    @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
     @Import(name="policies")
     private @Nullable List<GetPolicySetPolicy> policies;
 
     /**
      * @return List of policy identifiers / severity for the policyset.
      * 
+     * @deprecated
+     * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * 
      */
+    @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
     public Optional<List<GetPolicySetPolicy>> policies() {
         return Optional.ofNullable(this.policies);
+    }
+
+    @Import(name="policyReferences")
+    private @Nullable List<GetPolicySetPolicyReference> policyReferences;
+
+    public Optional<List<GetPolicySetPolicyReference>> policyReferences() {
+        return Optional.ofNullable(this.policyReferences);
     }
 
     /**
@@ -147,6 +163,7 @@ public final class GetPolicySetPlainArgs extends com.pulumi.resources.InvokeArgs
         this.name = $.name;
         this.orgId = $.orgId;
         this.policies = $.policies;
+        this.policyReferences = $.policyReferences;
         this.projectId = $.projectId;
         this.type = $.type;
     }
@@ -229,7 +246,11 @@ public final class GetPolicySetPlainArgs extends com.pulumi.resources.InvokeArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * 
          */
+        @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
         public Builder policies(@Nullable List<GetPolicySetPolicy> policies) {
             $.policies = policies;
             return this;
@@ -240,9 +261,22 @@ public final class GetPolicySetPlainArgs extends com.pulumi.resources.InvokeArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * 
          */
+        @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
         public Builder policies(GetPolicySetPolicy... policies) {
             return policies(List.of(policies));
+        }
+
+        public Builder policyReferences(@Nullable List<GetPolicySetPolicyReference> policyReferences) {
+            $.policyReferences = policyReferences;
+            return this;
+        }
+
+        public Builder policyReferences(GetPolicySetPolicyReference... policyReferences) {
+            return policyReferences(List.of(policyReferences));
         }
 
         /**

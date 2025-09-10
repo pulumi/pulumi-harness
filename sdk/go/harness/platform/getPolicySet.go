@@ -71,7 +71,10 @@ type LookupPolicySetArgs struct {
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// List of policy identifiers / severity for the policyset.
-	Policies []GetPolicySetPolicy `pulumi:"policies"`
+	//
+	// Deprecated: Use 'policy_references' instead. This field will be removed in a future version.
+	Policies         []GetPolicySetPolicy          `pulumi:"policies"`
+	PolicyReferences []GetPolicySetPolicyReference `pulumi:"policyReferences"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Type of the policyset.
@@ -95,7 +98,10 @@ type LookupPolicySetResult struct {
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// List of policy identifiers / severity for the policyset.
-	Policies []GetPolicySetPolicy `pulumi:"policies"`
+	//
+	// Deprecated: Use 'policy_references' instead. This field will be removed in a future version.
+	Policies         []GetPolicySetPolicy          `pulumi:"policies"`
+	PolicyReferences []GetPolicySetPolicyReference `pulumi:"policyReferences"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
@@ -126,7 +132,10 @@ type LookupPolicySetOutputArgs struct {
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// List of policy identifiers / severity for the policyset.
-	Policies GetPolicySetPolicyArrayInput `pulumi:"policies"`
+	//
+	// Deprecated: Use 'policy_references' instead. This field will be removed in a future version.
+	Policies         GetPolicySetPolicyArrayInput          `pulumi:"policies"`
+	PolicyReferences GetPolicySetPolicyReferenceArrayInput `pulumi:"policyReferences"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Type of the policyset.
@@ -188,8 +197,14 @@ func (o LookupPolicySetResultOutput) OrgId() pulumi.StringPtrOutput {
 }
 
 // List of policy identifiers / severity for the policyset.
+//
+// Deprecated: Use 'policy_references' instead. This field will be removed in a future version.
 func (o LookupPolicySetResultOutput) Policies() GetPolicySetPolicyArrayOutput {
 	return o.ApplyT(func(v LookupPolicySetResult) []GetPolicySetPolicy { return v.Policies }).(GetPolicySetPolicyArrayOutput)
+}
+
+func (o LookupPolicySetResultOutput) PolicyReferences() GetPolicySetPolicyReferenceArrayOutput {
+	return o.ApplyT(func(v LookupPolicySetResult) []GetPolicySetPolicyReference { return v.PolicyReferences }).(GetPolicySetPolicyReferenceArrayOutput)
 }
 
 // Unique identifier of the project.

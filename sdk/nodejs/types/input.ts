@@ -5233,6 +5233,28 @@ export namespace platform {
         severity: pulumi.Input<string>;
     }
 
+    export interface GetPolicySetPolicyReference {
+        /**
+         * Unique identifier of the resource.
+         */
+        identifier: string;
+        /**
+         * Policy failure response - 'warning' for continuation, 'error' for exit
+         */
+        severity: string;
+    }
+
+    export interface GetPolicySetPolicyReferenceArgs {
+        /**
+         * Unique identifier of the resource.
+         */
+        identifier: pulumi.Input<string>;
+        /**
+         * Policy failure response - 'warning' for continuation, 'error' for exit
+         */
+        severity: pulumi.Input<string>;
+    }
+
     export interface GetRepoRuleBranchBypass {
         /**
          * Allow users with repository edit permission to bypass.
@@ -33447,6 +33469,17 @@ export namespace platform {
     export interface PolicySetPolicy {
         /**
          * Account Identifier of the account
+         */
+        identifier: pulumi.Input<string>;
+        /**
+         * Policy failure response - 'warning' for continuation, 'error' for exit
+         */
+        severity: pulumi.Input<string>;
+    }
+
+    export interface PolicySetPolicyReference {
+        /**
+         * Unique identifier of the resource.
          */
         identifier: pulumi.Input<string>;
         /**

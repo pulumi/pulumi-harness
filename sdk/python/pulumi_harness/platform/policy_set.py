@@ -29,6 +29,7 @@ class PolicySetArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyArgs']]]] = None,
+                 policy_references: Optional[pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
@@ -41,6 +42,7 @@ class PolicySetArgs:
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyArgs']]] policies: List of policy identifiers / severity for the policyset.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
@@ -57,6 +59,8 @@ class PolicySetArgs:
             pulumi.set(__self__, "org_id", org_id)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
+        if policy_references is not None:
+            pulumi.set(__self__, "policy_references", policy_references)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
@@ -159,6 +163,18 @@ class PolicySetArgs:
         pulumi.set(self, "policies", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyReferences")
+    def policy_references(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]]]:
+        """
+        Set of policy identifiers / severity for the policyset. Order is not significant.
+        """
+        return pulumi.get(self, "policy_references")
+
+    @policy_references.setter
+    def policy_references(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]]]):
+        pulumi.set(self, "policy_references", value)
+
+    @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -193,6 +209,7 @@ class _PolicySetState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyArgs']]]] = None,
+                 policy_references: Optional[pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
@@ -205,6 +222,7 @@ class _PolicySetState:
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyArgs']]] policies: List of policy identifiers / severity for the policyset.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type for the policyset.
@@ -223,6 +241,8 @@ class _PolicySetState:
             pulumi.set(__self__, "org_id", org_id)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
+        if policy_references is not None:
+            pulumi.set(__self__, "policy_references", policy_references)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
@@ -315,6 +335,18 @@ class _PolicySetState:
         pulumi.set(self, "policies", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyReferences")
+    def policy_references(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]]]:
+        """
+        Set of policy identifiers / severity for the policyset. Order is not significant.
+        """
+        return pulumi.get(self, "policy_references")
+
+    @policy_references.setter
+    def policy_references(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]]]):
+        pulumi.set(self, "policy_references", value)
+
+    @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -364,6 +396,7 @@ class PolicySet(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]]] = None,
+                 policy_references: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyReferenceArgs', 'PolicySetPolicyReferenceArgsDict']]]]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -390,6 +423,7 @@ class PolicySet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]] policies: List of policy identifiers / severity for the policyset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyReferenceArgs', 'PolicySetPolicyReferenceArgsDict']]]] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type for the policyset.
@@ -435,6 +469,7 @@ class PolicySet(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]]] = None,
+                 policy_references: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyReferenceArgs', 'PolicySetPolicyReferenceArgsDict']]]]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -458,6 +493,7 @@ class PolicySet(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["policies"] = policies
+            __props__.__dict__["policy_references"] = policy_references
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
             if type is None and not opts.urn:
@@ -480,6 +516,7 @@ class PolicySet(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]]] = None,
+            policy_references: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyReferenceArgs', 'PolicySetPolicyReferenceArgsDict']]]]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None) -> 'PolicySet':
@@ -497,6 +534,7 @@ class PolicySet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]] policies: List of policy identifiers / severity for the policyset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyReferenceArgs', 'PolicySetPolicyReferenceArgsDict']]]] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type for the policyset.
@@ -512,6 +550,7 @@ class PolicySet(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["policies"] = policies
+        __props__.__dict__["policy_references"] = policy_references
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
@@ -572,6 +611,14 @@ class PolicySet(pulumi.CustomResource):
         List of policy identifiers / severity for the policyset.
         """
         return pulumi.get(self, "policies")
+
+    @_builtins.property
+    @pulumi.getter(name="policyReferences")
+    def policy_references(self) -> pulumi.Output[Sequence['outputs.PolicySetPolicyReference']]:
+        """
+        Set of policy identifiers / severity for the policyset. Order is not significant.
+        """
+        return pulumi.get(self, "policy_references")
 
     @_builtins.property
     @pulumi.getter(name="projectId")

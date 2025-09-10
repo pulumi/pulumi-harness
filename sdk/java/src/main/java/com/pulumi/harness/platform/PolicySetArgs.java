@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.PolicySetPolicyArgs;
+import com.pulumi.harness.platform.inputs.PolicySetPolicyReferenceArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -125,6 +126,21 @@ public final class PolicySetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     * 
+     */
+    @Import(name="policyReferences")
+    private @Nullable Output<List<PolicySetPolicyReferenceArgs>> policyReferences;
+
+    /**
+     * @return Set of policy identifiers / severity for the policyset. Order is not significant.
+     * 
+     */
+    public Optional<Output<List<PolicySetPolicyReferenceArgs>>> policyReferences() {
+        return Optional.ofNullable(this.policyReferences);
+    }
+
+    /**
      * Unique identifier of the project.
      * 
      */
@@ -179,6 +195,7 @@ public final class PolicySetArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.orgId = $.orgId;
         this.policies = $.policies;
+        this.policyReferences = $.policyReferences;
         this.projectId = $.projectId;
         this.tags = $.tags;
         this.type = $.type;
@@ -357,6 +374,37 @@ public final class PolicySetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder policies(PolicySetPolicyArgs... policies) {
             return policies(List.of(policies));
+        }
+
+        /**
+         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyReferences(@Nullable Output<List<PolicySetPolicyReferenceArgs>> policyReferences) {
+            $.policyReferences = policyReferences;
+            return this;
+        }
+
+        /**
+         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyReferences(List<PolicySetPolicyReferenceArgs> policyReferences) {
+            return policyReferences(Output.of(policyReferences));
+        }
+
+        /**
+         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyReferences(PolicySetPolicyReferenceArgs... policyReferences) {
+            return policyReferences(List.of(policyReferences));
         }
 
         /**

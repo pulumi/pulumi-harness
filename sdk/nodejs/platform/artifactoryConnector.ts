@@ -167,6 +167,10 @@ export class ArtifactoryConnector extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * Execute on delegate or not.
+     */
+    declare public readonly executeOnDelegate: pulumi.Output<boolean | undefined>;
+    /**
      * Unique identifier of the resource.
      */
     declare public readonly identifier: pulumi.Output<string>;
@@ -207,6 +211,7 @@ export class ArtifactoryConnector extends pulumi.CustomResource {
             resourceInputs["credentials"] = state?.credentials;
             resourceInputs["delegateSelectors"] = state?.delegateSelectors;
             resourceInputs["description"] = state?.description;
+            resourceInputs["executeOnDelegate"] = state?.executeOnDelegate;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
@@ -224,6 +229,7 @@ export class ArtifactoryConnector extends pulumi.CustomResource {
             resourceInputs["credentials"] = args?.credentials;
             resourceInputs["delegateSelectors"] = args?.delegateSelectors;
             resourceInputs["description"] = args?.description;
+            resourceInputs["executeOnDelegate"] = args?.executeOnDelegate;
             resourceInputs["identifier"] = args?.identifier;
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
@@ -252,6 +258,10 @@ export interface ArtifactoryConnectorState {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Execute on delegate or not.
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */
@@ -294,6 +304,10 @@ export interface ArtifactoryConnectorArgs {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Execute on delegate or not.
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */

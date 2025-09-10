@@ -12875,6 +12875,112 @@ func (o PolicySetPolicyArrayOutput) Index(i pulumi.IntInput) PolicySetPolicyOutp
 	}).(PolicySetPolicyOutput)
 }
 
+type PolicySetPolicyReference struct {
+	// Unique identifier of the resource.
+	Identifier string `pulumi:"identifier"`
+	// Policy failure response - 'warning' for continuation, 'error' for exit
+	Severity string `pulumi:"severity"`
+}
+
+// PolicySetPolicyReferenceInput is an input type that accepts PolicySetPolicyReferenceArgs and PolicySetPolicyReferenceOutput values.
+// You can construct a concrete instance of `PolicySetPolicyReferenceInput` via:
+//
+//	PolicySetPolicyReferenceArgs{...}
+type PolicySetPolicyReferenceInput interface {
+	pulumi.Input
+
+	ToPolicySetPolicyReferenceOutput() PolicySetPolicyReferenceOutput
+	ToPolicySetPolicyReferenceOutputWithContext(context.Context) PolicySetPolicyReferenceOutput
+}
+
+type PolicySetPolicyReferenceArgs struct {
+	// Unique identifier of the resource.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Policy failure response - 'warning' for continuation, 'error' for exit
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (PolicySetPolicyReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySetPolicyReference)(nil)).Elem()
+}
+
+func (i PolicySetPolicyReferenceArgs) ToPolicySetPolicyReferenceOutput() PolicySetPolicyReferenceOutput {
+	return i.ToPolicySetPolicyReferenceOutputWithContext(context.Background())
+}
+
+func (i PolicySetPolicyReferenceArgs) ToPolicySetPolicyReferenceOutputWithContext(ctx context.Context) PolicySetPolicyReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicySetPolicyReferenceOutput)
+}
+
+// PolicySetPolicyReferenceArrayInput is an input type that accepts PolicySetPolicyReferenceArray and PolicySetPolicyReferenceArrayOutput values.
+// You can construct a concrete instance of `PolicySetPolicyReferenceArrayInput` via:
+//
+//	PolicySetPolicyReferenceArray{ PolicySetPolicyReferenceArgs{...} }
+type PolicySetPolicyReferenceArrayInput interface {
+	pulumi.Input
+
+	ToPolicySetPolicyReferenceArrayOutput() PolicySetPolicyReferenceArrayOutput
+	ToPolicySetPolicyReferenceArrayOutputWithContext(context.Context) PolicySetPolicyReferenceArrayOutput
+}
+
+type PolicySetPolicyReferenceArray []PolicySetPolicyReferenceInput
+
+func (PolicySetPolicyReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicySetPolicyReference)(nil)).Elem()
+}
+
+func (i PolicySetPolicyReferenceArray) ToPolicySetPolicyReferenceArrayOutput() PolicySetPolicyReferenceArrayOutput {
+	return i.ToPolicySetPolicyReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i PolicySetPolicyReferenceArray) ToPolicySetPolicyReferenceArrayOutputWithContext(ctx context.Context) PolicySetPolicyReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicySetPolicyReferenceArrayOutput)
+}
+
+type PolicySetPolicyReferenceOutput struct{ *pulumi.OutputState }
+
+func (PolicySetPolicyReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySetPolicyReference)(nil)).Elem()
+}
+
+func (o PolicySetPolicyReferenceOutput) ToPolicySetPolicyReferenceOutput() PolicySetPolicyReferenceOutput {
+	return o
+}
+
+func (o PolicySetPolicyReferenceOutput) ToPolicySetPolicyReferenceOutputWithContext(ctx context.Context) PolicySetPolicyReferenceOutput {
+	return o
+}
+
+// Unique identifier of the resource.
+func (o PolicySetPolicyReferenceOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicySetPolicyReference) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Policy failure response - 'warning' for continuation, 'error' for exit
+func (o PolicySetPolicyReferenceOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicySetPolicyReference) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type PolicySetPolicyReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicySetPolicyReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicySetPolicyReference)(nil)).Elem()
+}
+
+func (o PolicySetPolicyReferenceArrayOutput) ToPolicySetPolicyReferenceArrayOutput() PolicySetPolicyReferenceArrayOutput {
+	return o
+}
+
+func (o PolicySetPolicyReferenceArrayOutput) ToPolicySetPolicyReferenceArrayOutputWithContext(ctx context.Context) PolicySetPolicyReferenceArrayOutput {
+	return o
+}
+
+func (o PolicySetPolicyReferenceArrayOutput) Index(i pulumi.IntInput) PolicySetPolicyReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicySetPolicyReference {
+		return vs[0].([]PolicySetPolicyReference)[vs[1].(int)]
+	}).(PolicySetPolicyReferenceOutput)
+}
+
 type PrometheusConnectorHeader struct {
 	// Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	EncryptedValueRef *string `pulumi:"encryptedValueRef"`
@@ -40912,6 +41018,112 @@ func (o GetPolicySetPolicyArrayOutput) Index(i pulumi.IntInput) GetPolicySetPoli
 	}).(GetPolicySetPolicyOutput)
 }
 
+type GetPolicySetPolicyReference struct {
+	// Unique identifier of the resource.
+	Identifier string `pulumi:"identifier"`
+	// Policy failure response - 'warning' for continuation, 'error' for exit
+	Severity string `pulumi:"severity"`
+}
+
+// GetPolicySetPolicyReferenceInput is an input type that accepts GetPolicySetPolicyReferenceArgs and GetPolicySetPolicyReferenceOutput values.
+// You can construct a concrete instance of `GetPolicySetPolicyReferenceInput` via:
+//
+//	GetPolicySetPolicyReferenceArgs{...}
+type GetPolicySetPolicyReferenceInput interface {
+	pulumi.Input
+
+	ToGetPolicySetPolicyReferenceOutput() GetPolicySetPolicyReferenceOutput
+	ToGetPolicySetPolicyReferenceOutputWithContext(context.Context) GetPolicySetPolicyReferenceOutput
+}
+
+type GetPolicySetPolicyReferenceArgs struct {
+	// Unique identifier of the resource.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Policy failure response - 'warning' for continuation, 'error' for exit
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (GetPolicySetPolicyReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicySetPolicyReference)(nil)).Elem()
+}
+
+func (i GetPolicySetPolicyReferenceArgs) ToGetPolicySetPolicyReferenceOutput() GetPolicySetPolicyReferenceOutput {
+	return i.ToGetPolicySetPolicyReferenceOutputWithContext(context.Background())
+}
+
+func (i GetPolicySetPolicyReferenceArgs) ToGetPolicySetPolicyReferenceOutputWithContext(ctx context.Context) GetPolicySetPolicyReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicySetPolicyReferenceOutput)
+}
+
+// GetPolicySetPolicyReferenceArrayInput is an input type that accepts GetPolicySetPolicyReferenceArray and GetPolicySetPolicyReferenceArrayOutput values.
+// You can construct a concrete instance of `GetPolicySetPolicyReferenceArrayInput` via:
+//
+//	GetPolicySetPolicyReferenceArray{ GetPolicySetPolicyReferenceArgs{...} }
+type GetPolicySetPolicyReferenceArrayInput interface {
+	pulumi.Input
+
+	ToGetPolicySetPolicyReferenceArrayOutput() GetPolicySetPolicyReferenceArrayOutput
+	ToGetPolicySetPolicyReferenceArrayOutputWithContext(context.Context) GetPolicySetPolicyReferenceArrayOutput
+}
+
+type GetPolicySetPolicyReferenceArray []GetPolicySetPolicyReferenceInput
+
+func (GetPolicySetPolicyReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicySetPolicyReference)(nil)).Elem()
+}
+
+func (i GetPolicySetPolicyReferenceArray) ToGetPolicySetPolicyReferenceArrayOutput() GetPolicySetPolicyReferenceArrayOutput {
+	return i.ToGetPolicySetPolicyReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolicySetPolicyReferenceArray) ToGetPolicySetPolicyReferenceArrayOutputWithContext(ctx context.Context) GetPolicySetPolicyReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicySetPolicyReferenceArrayOutput)
+}
+
+type GetPolicySetPolicyReferenceOutput struct{ *pulumi.OutputState }
+
+func (GetPolicySetPolicyReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicySetPolicyReference)(nil)).Elem()
+}
+
+func (o GetPolicySetPolicyReferenceOutput) ToGetPolicySetPolicyReferenceOutput() GetPolicySetPolicyReferenceOutput {
+	return o
+}
+
+func (o GetPolicySetPolicyReferenceOutput) ToGetPolicySetPolicyReferenceOutputWithContext(ctx context.Context) GetPolicySetPolicyReferenceOutput {
+	return o
+}
+
+// Unique identifier of the resource.
+func (o GetPolicySetPolicyReferenceOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicySetPolicyReference) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Policy failure response - 'warning' for continuation, 'error' for exit
+func (o GetPolicySetPolicyReferenceOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicySetPolicyReference) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type GetPolicySetPolicyReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolicySetPolicyReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicySetPolicyReference)(nil)).Elem()
+}
+
+func (o GetPolicySetPolicyReferenceArrayOutput) ToGetPolicySetPolicyReferenceArrayOutput() GetPolicySetPolicyReferenceArrayOutput {
+	return o
+}
+
+func (o GetPolicySetPolicyReferenceArrayOutput) ToGetPolicySetPolicyReferenceArrayOutputWithContext(ctx context.Context) GetPolicySetPolicyReferenceArrayOutput {
+	return o
+}
+
+func (o GetPolicySetPolicyReferenceArrayOutput) Index(i pulumi.IntInput) GetPolicySetPolicyReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicySetPolicyReference {
+		return vs[0].([]GetPolicySetPolicyReference)[vs[1].(int)]
+	}).(GetPolicySetPolicyReferenceOutput)
+}
+
 type GetProjectListProject struct {
 	Identifier string `pulumi:"identifier"`
 	Name       string `pulumi:"name"`
@@ -46106,6 +46318,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelinePipelineImportRequestPtrInput)(nil)).Elem(), PipelinePipelineImportRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicySetPolicyInput)(nil)).Elem(), PolicySetPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicySetPolicyArrayInput)(nil)).Elem(), PolicySetPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicySetPolicyReferenceInput)(nil)).Elem(), PolicySetPolicyReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicySetPolicyReferenceArrayInput)(nil)).Elem(), PolicySetPolicyReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusConnectorHeaderInput)(nil)).Elem(), PrometheusConnectorHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusConnectorHeaderArrayInput)(nil)).Elem(), PrometheusConnectorHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSpecInput)(nil)).Elem(), ProviderSpecArgs{})
@@ -46527,6 +46741,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineListPipelineArrayInput)(nil)).Elem(), GetPipelineListPipelineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicySetPolicyInput)(nil)).Elem(), GetPolicySetPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicySetPolicyArrayInput)(nil)).Elem(), GetPolicySetPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicySetPolicyReferenceInput)(nil)).Elem(), GetPolicySetPolicyReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicySetPolicyReferenceArrayInput)(nil)).Elem(), GetPolicySetPolicyReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectListProjectInput)(nil)).Elem(), GetProjectListProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectListProjectArrayInput)(nil)).Elem(), GetProjectListProjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusConnectorHeaderInput)(nil)).Elem(), GetPrometheusConnectorHeaderArgs{})
@@ -46755,6 +46971,8 @@ func init() {
 	pulumi.RegisterOutputType(PipelinePipelineImportRequestPtrOutput{})
 	pulumi.RegisterOutputType(PolicySetPolicyOutput{})
 	pulumi.RegisterOutputType(PolicySetPolicyArrayOutput{})
+	pulumi.RegisterOutputType(PolicySetPolicyReferenceOutput{})
+	pulumi.RegisterOutputType(PolicySetPolicyReferenceArrayOutput{})
 	pulumi.RegisterOutputType(PrometheusConnectorHeaderOutput{})
 	pulumi.RegisterOutputType(PrometheusConnectorHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ProviderSpecOutput{})
@@ -47176,6 +47394,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPipelineListPipelineArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicySetPolicyOutput{})
 	pulumi.RegisterOutputType(GetPolicySetPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicySetPolicyReferenceOutput{})
+	pulumi.RegisterOutputType(GetPolicySetPolicyReferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectListProjectOutput{})
 	pulumi.RegisterOutputType(GetProjectListProjectArrayOutput{})
 	pulumi.RegisterOutputType(GetPrometheusConnectorHeaderOutput{})

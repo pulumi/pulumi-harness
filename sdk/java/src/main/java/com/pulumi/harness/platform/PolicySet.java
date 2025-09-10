@@ -11,6 +11,7 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.PolicySetArgs;
 import com.pulumi.harness.platform.inputs.PolicySetState;
 import com.pulumi.harness.platform.outputs.PolicySetPolicy;
+import com.pulumi.harness.platform.outputs.PolicySetPolicyReference;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -130,6 +131,20 @@ public class PolicySet extends com.pulumi.resources.CustomResource {
      */
     public Output<List<PolicySetPolicy>> policies() {
         return this.policies;
+    }
+    /**
+     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     * 
+     */
+    @Export(name="policyReferences", refs={List.class,PolicySetPolicyReference.class}, tree="[0,1]")
+    private Output<List<PolicySetPolicyReference>> policyReferences;
+
+    /**
+     * @return Set of policy identifiers / severity for the policyset. Order is not significant.
+     * 
+     */
+    public Output<List<PolicySetPolicyReference>> policyReferences() {
+        return this.policyReferences;
     }
     /**
      * Unique identifier of the project.
