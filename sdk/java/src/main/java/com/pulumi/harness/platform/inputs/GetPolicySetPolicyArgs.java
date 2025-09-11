@@ -15,14 +15,14 @@ public final class GetPolicySetPolicyArgs extends com.pulumi.resources.ResourceA
     public static final GetPolicySetPolicyArgs Empty = new GetPolicySetPolicyArgs();
 
     /**
-     * Account Identifier of the account
+     * Unique identifier of the policy
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return Account Identifier of the account
+     * @return Unique identifier of the policy
      * 
      */
     public Output<String> identifier() {
@@ -70,7 +70,7 @@ public final class GetPolicySetPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param identifier Account Identifier of the account
+         * @param identifier Unique identifier of the policy
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetPolicySetPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param identifier Account Identifier of the account
+         * @param identifier Unique identifier of the policy
          * 
          * @return builder
          * 

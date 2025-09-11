@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     action: "onrun",
  *     type: "pipeline",
  *     enabled: true,
- *     policies: [{
+ *     policyReferences: [{
  *         identifier: "always_run",
  *         severity: "warning",
  *     }],
@@ -68,11 +68,14 @@ export interface GetPolicySetArgs {
      */
     orgId?: string;
     /**
-     * List of policy identifiers / severity for the policyset.
+     * List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
      *
      * @deprecated Use 'policy_references' instead. This field will be removed in a future version.
      */
     policies?: inputs.platform.GetPolicySetPolicy[];
+    /**
+     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     */
     policyReferences?: inputs.platform.GetPolicySetPolicyReference[];
     /**
      * Unique identifier of the project.
@@ -117,11 +120,14 @@ export interface GetPolicySetResult {
      */
     readonly orgId?: string;
     /**
-     * List of policy identifiers / severity for the policyset.
+     * List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
      *
      * @deprecated Use 'policy_references' instead. This field will be removed in a future version.
      */
     readonly policies: outputs.platform.GetPolicySetPolicy[];
+    /**
+     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     */
     readonly policyReferences: outputs.platform.GetPolicySetPolicyReference[];
     /**
      * Unique identifier of the project.
@@ -151,7 +157,7 @@ export interface GetPolicySetResult {
  *     action: "onrun",
  *     type: "pipeline",
  *     enabled: true,
- *     policies: [{
+ *     policyReferences: [{
  *         identifier: "always_run",
  *         severity: "warning",
  *     }],
@@ -198,11 +204,14 @@ export interface GetPolicySetOutputArgs {
      */
     orgId?: pulumi.Input<string>;
     /**
-     * List of policy identifiers / severity for the policyset.
+     * List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
      *
      * @deprecated Use 'policy_references' instead. This field will be removed in a future version.
      */
     policies?: pulumi.Input<pulumi.Input<inputs.platform.GetPolicySetPolicyArgs>[]>;
+    /**
+     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     */
     policyReferences?: pulumi.Input<pulumi.Input<inputs.platform.GetPolicySetPolicyReferenceArgs>[]>;
     /**
      * Unique identifier of the project.

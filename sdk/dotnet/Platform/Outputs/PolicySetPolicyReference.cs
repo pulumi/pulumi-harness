@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class PolicySetPolicyReference
     {
         /// <summary>
-        /// Unique identifier of the resource.
+        /// Unique identifier of the policy
         /// </summary>
         public readonly string Identifier;
         /// <summary>

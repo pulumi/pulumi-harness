@@ -127,13 +127,16 @@ class GetPolicySetResult:
     @_utilities.deprecated("""Use 'policy_references' instead. This field will be removed in a future version.""")
     def policies(self) -> Sequence['outputs.GetPolicySetPolicyResult']:
         """
-        List of policy identifiers / severity for the policyset.
+        List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
         """
         return pulumi.get(self, "policies")
 
     @_builtins.property
     @pulumi.getter(name="policyReferences")
     def policy_references(self) -> Sequence['outputs.GetPolicySetPolicyReferenceResult']:
+        """
+        Set of policy identifiers / severity for the policyset. Order is not significant.
+        """
         return pulumi.get(self, "policy_references")
 
     @_builtins.property
@@ -205,7 +208,7 @@ def get_policy_set(action: Optional[_builtins.str] = None,
         action="onrun",
         type="pipeline",
         enabled=True,
-        policies=[{
+        policy_references=[{
             "identifier": "always_run",
             "severity": "warning",
         }])
@@ -217,7 +220,8 @@ def get_policy_set(action: Optional[_builtins.str] = None,
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
-    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']] policies: List of policy identifiers / severity for the policyset.
+    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']] policies: List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
+    :param Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict']] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str type: Type of the policyset.
     """
@@ -271,7 +275,7 @@ def get_policy_set_output(action: Optional[pulumi.Input[_builtins.str]] = None,
         action="onrun",
         type="pipeline",
         enabled=True,
-        policies=[{
+        policy_references=[{
             "identifier": "always_run",
             "severity": "warning",
         }])
@@ -283,7 +287,8 @@ def get_policy_set_output(action: Optional[pulumi.Input[_builtins.str]] = None,
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
-    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']] policies: List of policy identifiers / severity for the policyset.
+    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']] policies: List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
+    :param Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict']] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str type: Type of the policyset.
     """

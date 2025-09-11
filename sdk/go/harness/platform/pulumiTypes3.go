@@ -12876,7 +12876,7 @@ func (o PolicySetPolicyArrayOutput) Index(i pulumi.IntInput) PolicySetPolicyOutp
 }
 
 type PolicySetPolicyReference struct {
-	// Unique identifier of the resource.
+	// Unique identifier of the policy
 	Identifier string `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity string `pulumi:"severity"`
@@ -12894,7 +12894,7 @@ type PolicySetPolicyReferenceInput interface {
 }
 
 type PolicySetPolicyReferenceArgs struct {
-	// Unique identifier of the resource.
+	// Unique identifier of the policy
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity pulumi.StringInput `pulumi:"severity"`
@@ -12951,7 +12951,7 @@ func (o PolicySetPolicyReferenceOutput) ToPolicySetPolicyReferenceOutputWithCont
 	return o
 }
 
-// Unique identifier of the resource.
+// Unique identifier of the policy
 func (o PolicySetPolicyReferenceOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicySetPolicyReference) string { return v.Identifier }).(pulumi.StringOutput)
 }
@@ -40913,7 +40913,7 @@ func (o GetPipelineListPipelineArrayOutput) Index(i pulumi.IntInput) GetPipeline
 }
 
 type GetPolicySetPolicy struct {
-	// Account Identifier of the account
+	// Unique identifier of the policy
 	Identifier string `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity string `pulumi:"severity"`
@@ -40931,7 +40931,7 @@ type GetPolicySetPolicyInput interface {
 }
 
 type GetPolicySetPolicyArgs struct {
-	// Account Identifier of the account
+	// Unique identifier of the policy
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity pulumi.StringInput `pulumi:"severity"`
@@ -40988,7 +40988,7 @@ func (o GetPolicySetPolicyOutput) ToGetPolicySetPolicyOutputWithContext(ctx cont
 	return o
 }
 
-// Account Identifier of the account
+// Unique identifier of the policy
 func (o GetPolicySetPolicyOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicySetPolicy) string { return v.Identifier }).(pulumi.StringOutput)
 }
@@ -41019,7 +41019,7 @@ func (o GetPolicySetPolicyArrayOutput) Index(i pulumi.IntInput) GetPolicySetPoli
 }
 
 type GetPolicySetPolicyReference struct {
-	// Unique identifier of the resource.
+	// Unique identifier of the policy
 	Identifier string `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity string `pulumi:"severity"`
@@ -41037,7 +41037,7 @@ type GetPolicySetPolicyReferenceInput interface {
 }
 
 type GetPolicySetPolicyReferenceArgs struct {
-	// Unique identifier of the resource.
+	// Unique identifier of the policy
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity pulumi.StringInput `pulumi:"severity"`
@@ -41094,7 +41094,7 @@ func (o GetPolicySetPolicyReferenceOutput) ToGetPolicySetPolicyReferenceOutputWi
 	return o
 }
 
-// Unique identifier of the resource.
+// Unique identifier of the policy
 func (o GetPolicySetPolicyReferenceOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicySetPolicyReference) string { return v.Identifier }).(pulumi.StringOutput)
 }

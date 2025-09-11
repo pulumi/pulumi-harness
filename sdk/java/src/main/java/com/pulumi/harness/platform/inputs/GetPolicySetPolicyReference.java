@@ -14,14 +14,14 @@ public final class GetPolicySetPolicyReference extends com.pulumi.resources.Invo
     public static final GetPolicySetPolicyReference Empty = new GetPolicySetPolicyReference();
 
     /**
-     * Unique identifier of the resource.
+     * Unique identifier of the policy
      * 
      */
     @Import(name="identifier", required=true)
     private String identifier;
 
     /**
-     * @return Unique identifier of the resource.
+     * @return Unique identifier of the policy
      * 
      */
     public String identifier() {
@@ -69,7 +69,7 @@ public final class GetPolicySetPolicyReference extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param identifier Unique identifier of the resource.
+         * @param identifier Unique identifier of the policy
          * 
          * @return builder
          * 

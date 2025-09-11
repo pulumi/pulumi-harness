@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GetPolicySetPolicyInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Identifier of the account
+        /// Unique identifier of the policy
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
