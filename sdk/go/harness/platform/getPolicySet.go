@@ -33,7 +33,7 @@ import (
 //				Action:     "onrun",
 //				Type:       "pipeline",
 //				Enabled:    pulumi.BoolRef(true),
-//				Policies: []platform.GetPolicySetPolicy{
+//				PolicyReferences: []platform.GetPolicySetPolicyReference{
 //					{
 //						Identifier: "always_run",
 //						Severity:   "warning",
@@ -70,10 +70,11 @@ type LookupPolicySetArgs struct {
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// List of policy identifiers / severity for the policyset.
+	// List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
 	//
 	// Deprecated: Use 'policy_references' instead. This field will be removed in a future version.
-	Policies         []GetPolicySetPolicy          `pulumi:"policies"`
+	Policies []GetPolicySetPolicy `pulumi:"policies"`
+	// Set of policy identifiers / severity for the policyset. Order is not significant.
 	PolicyReferences []GetPolicySetPolicyReference `pulumi:"policyReferences"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
@@ -97,10 +98,11 @@ type LookupPolicySetResult struct {
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// List of policy identifiers / severity for the policyset.
+	// List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
 	//
 	// Deprecated: Use 'policy_references' instead. This field will be removed in a future version.
-	Policies         []GetPolicySetPolicy          `pulumi:"policies"`
+	Policies []GetPolicySetPolicy `pulumi:"policies"`
+	// Set of policy identifiers / severity for the policyset. Order is not significant.
 	PolicyReferences []GetPolicySetPolicyReference `pulumi:"policyReferences"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
@@ -131,10 +133,11 @@ type LookupPolicySetOutputArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// List of policy identifiers / severity for the policyset.
+	// List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
 	//
 	// Deprecated: Use 'policy_references' instead. This field will be removed in a future version.
-	Policies         GetPolicySetPolicyArrayInput          `pulumi:"policies"`
+	Policies GetPolicySetPolicyArrayInput `pulumi:"policies"`
+	// Set of policy identifiers / severity for the policyset. Order is not significant.
 	PolicyReferences GetPolicySetPolicyReferenceArrayInput `pulumi:"policyReferences"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
@@ -196,13 +199,14 @@ func (o LookupPolicySetResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicySetResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// List of policy identifiers / severity for the policyset.
+// List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
 //
 // Deprecated: Use 'policy_references' instead. This field will be removed in a future version.
 func (o LookupPolicySetResultOutput) Policies() GetPolicySetPolicyArrayOutput {
 	return o.ApplyT(func(v LookupPolicySetResult) []GetPolicySetPolicy { return v.Policies }).(GetPolicySetPolicyArrayOutput)
 }
 
+// Set of policy identifiers / severity for the policyset. Order is not significant.
 func (o LookupPolicySetResultOutput) PolicyReferences() GetPolicySetPolicyReferenceArrayOutput {
 	return o.ApplyT(func(v LookupPolicySetResult) []GetPolicySetPolicyReference { return v.PolicyReferences }).(GetPolicySetPolicyReferenceArrayOutput)
 }

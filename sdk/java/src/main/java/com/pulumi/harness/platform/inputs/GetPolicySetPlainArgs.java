@@ -95,7 +95,7 @@ public final class GetPolicySetPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * List of policy identifiers / severity for the policyset.
+     * List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
      * 
      * @deprecated
      * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
@@ -106,7 +106,7 @@ public final class GetPolicySetPlainArgs extends com.pulumi.resources.InvokeArgs
     private @Nullable List<GetPolicySetPolicy> policies;
 
     /**
-     * @return List of policy identifiers / severity for the policyset.
+     * @return List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
      * 
      * @deprecated
      * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
@@ -117,9 +117,17 @@ public final class GetPolicySetPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.policies);
     }
 
+    /**
+     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     * 
+     */
     @Import(name="policyReferences")
     private @Nullable List<GetPolicySetPolicyReference> policyReferences;
 
+    /**
+     * @return Set of policy identifiers / severity for the policyset. Order is not significant.
+     * 
+     */
     public Optional<List<GetPolicySetPolicyReference>> policyReferences() {
         return Optional.ofNullable(this.policyReferences);
     }
@@ -242,7 +250,7 @@ public final class GetPolicySetPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param policies List of policy identifiers / severity for the policyset.
+         * @param policies List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
          * 
          * @return builder
          * 
@@ -257,7 +265,7 @@ public final class GetPolicySetPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param policies List of policy identifiers / severity for the policyset.
+         * @param policies List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
          * 
          * @return builder
          * 
@@ -270,11 +278,23 @@ public final class GetPolicySetPlainArgs extends com.pulumi.resources.InvokeArgs
             return policies(List.of(policies));
         }
 
+        /**
+         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant.
+         * 
+         * @return builder
+         * 
+         */
         public Builder policyReferences(@Nullable List<GetPolicySetPolicyReference> policyReferences) {
             $.policyReferences = policyReferences;
             return this;
         }
 
+        /**
+         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant.
+         * 
+         * @return builder
+         * 
+         */
         public Builder policyReferences(GetPolicySetPolicyReference... policyReferences) {
             return policyReferences(List.of(policyReferences));
         }

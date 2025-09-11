@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPolicySetPolicyReference {
     /**
-     * @return Unique identifier of the resource.
+     * @return Unique identifier of the policy
      * 
      */
     private String identifier;
@@ -23,7 +23,7 @@ public final class GetPolicySetPolicyReference {
 
     private GetPolicySetPolicyReference() {}
     /**
-     * @return Unique identifier of the resource.
+     * @return Unique identifier of the policy
      * 
      */
     public String identifier() {

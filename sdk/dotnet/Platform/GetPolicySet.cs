@@ -31,9 +31,9 @@ namespace Pulumi.Harness.Platform
         ///         Action = "onrun",
         ///         Type = "pipeline",
         ///         Enabled = true,
-        ///         Policies = new[]
+        ///         PolicyReferences = new[]
         ///         {
-        ///             new Harness.Platform.Inputs.GetPolicySetPolicyInputArgs
+        ///             new Harness.Platform.Inputs.GetPolicySetPolicyReferenceInputArgs
         ///             {
         ///                 Identifier = "always_run",
         ///                 Severity = "warning",
@@ -67,9 +67,9 @@ namespace Pulumi.Harness.Platform
         ///         Action = "onrun",
         ///         Type = "pipeline",
         ///         Enabled = true,
-        ///         Policies = new[]
+        ///         PolicyReferences = new[]
         ///         {
-        ///             new Harness.Platform.Inputs.GetPolicySetPolicyInputArgs
+        ///             new Harness.Platform.Inputs.GetPolicySetPolicyReferenceInputArgs
         ///             {
         ///                 Identifier = "always_run",
         ///                 Severity = "warning",
@@ -103,9 +103,9 @@ namespace Pulumi.Harness.Platform
         ///         Action = "onrun",
         ///         Type = "pipeline",
         ///         Enabled = true,
-        ///         Policies = new[]
+        ///         PolicyReferences = new[]
         ///         {
-        ///             new Harness.Platform.Inputs.GetPolicySetPolicyInputArgs
+        ///             new Harness.Platform.Inputs.GetPolicySetPolicyReferenceInputArgs
         ///             {
         ///                 Identifier = "always_run",
         ///                 Severity = "warning",
@@ -157,7 +157,7 @@ namespace Pulumi.Harness.Platform
         private List<Inputs.GetPolicySetPolicyArgs>? _policies;
 
         /// <summary>
-        /// List of policy identifiers / severity for the policyset.
+        /// List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
         /// </summary>
         [Obsolete(@"Use 'policy_references' instead. This field will be removed in a future version.")]
         public List<Inputs.GetPolicySetPolicyArgs> Policies
@@ -168,6 +168,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("policyReferences")]
         private List<Inputs.GetPolicySetPolicyReferenceArgs>? _policyReferences;
+
+        /// <summary>
+        /// Set of policy identifiers / severity for the policyset. Order is not significant.
+        /// </summary>
         public List<Inputs.GetPolicySetPolicyReferenceArgs> PolicyReferences
         {
             get => _policyReferences ?? (_policyReferences = new List<Inputs.GetPolicySetPolicyReferenceArgs>());
@@ -228,7 +232,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.GetPolicySetPolicyInputArgs>? _policies;
 
         /// <summary>
-        /// List of policy identifiers / severity for the policyset.
+        /// List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
         /// </summary>
         [Obsolete(@"Use 'policy_references' instead. This field will be removed in a future version.")]
         public InputList<Inputs.GetPolicySetPolicyInputArgs> Policies
@@ -239,6 +243,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("policyReferences")]
         private InputList<Inputs.GetPolicySetPolicyReferenceInputArgs>? _policyReferences;
+
+        /// <summary>
+        /// Set of policy identifiers / severity for the policyset. Order is not significant.
+        /// </summary>
         public InputList<Inputs.GetPolicySetPolicyReferenceInputArgs> PolicyReferences
         {
             get => _policyReferences ?? (_policyReferences = new InputList<Inputs.GetPolicySetPolicyReferenceInputArgs>());
@@ -296,9 +304,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// List of policy identifiers / severity for the policyset.
+        /// List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicySetPolicyResult> Policies;
+        /// <summary>
+        /// Set of policy identifiers / severity for the policyset. Order is not significant.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicySetPolicyReferenceResult> PolicyReferences;
         /// <summary>
         /// Unique identifier of the project.

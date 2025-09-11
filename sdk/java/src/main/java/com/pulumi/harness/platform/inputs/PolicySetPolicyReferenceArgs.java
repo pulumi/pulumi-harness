@@ -15,14 +15,14 @@ public final class PolicySetPolicyReferenceArgs extends com.pulumi.resources.Res
     public static final PolicySetPolicyReferenceArgs Empty = new PolicySetPolicyReferenceArgs();
 
     /**
-     * Unique identifier of the resource.
+     * Unique identifier of the policy
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return Unique identifier of the resource.
+     * @return Unique identifier of the policy
      * 
      */
     public Output<String> identifier() {
@@ -70,7 +70,7 @@ public final class PolicySetPolicyReferenceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param identifier Unique identifier of the resource.
+         * @param identifier Unique identifier of the policy
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class PolicySetPolicyReferenceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param identifier Unique identifier of the resource.
+         * @param identifier Unique identifier of the policy
          * 
          * @return builder
          * 

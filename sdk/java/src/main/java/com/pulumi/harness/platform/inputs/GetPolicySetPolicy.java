@@ -14,14 +14,14 @@ public final class GetPolicySetPolicy extends com.pulumi.resources.InvokeArgs {
     public static final GetPolicySetPolicy Empty = new GetPolicySetPolicy();
 
     /**
-     * Account Identifier of the account
+     * Unique identifier of the policy
      * 
      */
     @Import(name="identifier", required=true)
     private String identifier;
 
     /**
-     * @return Account Identifier of the account
+     * @return Unique identifier of the policy
      * 
      */
     public String identifier() {
@@ -69,7 +69,7 @@ public final class GetPolicySetPolicy extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param identifier Account Identifier of the account
+         * @param identifier Unique identifier of the policy
          * 
          * @return builder
          * 

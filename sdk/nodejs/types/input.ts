@@ -5213,7 +5213,7 @@ export namespace platform {
 
     export interface GetPolicySetPolicy {
         /**
-         * Account Identifier of the account
+         * Unique identifier of the policy
          */
         identifier: string;
         /**
@@ -5224,7 +5224,7 @@ export namespace platform {
 
     export interface GetPolicySetPolicyArgs {
         /**
-         * Account Identifier of the account
+         * Unique identifier of the policy
          */
         identifier: pulumi.Input<string>;
         /**
@@ -5235,7 +5235,7 @@ export namespace platform {
 
     export interface GetPolicySetPolicyReference {
         /**
-         * Unique identifier of the resource.
+         * Unique identifier of the policy
          */
         identifier: string;
         /**
@@ -5246,7 +5246,7 @@ export namespace platform {
 
     export interface GetPolicySetPolicyReferenceArgs {
         /**
-         * Unique identifier of the resource.
+         * Unique identifier of the policy
          */
         identifier: pulumi.Input<string>;
         /**
@@ -33479,7 +33479,7 @@ export namespace platform {
 
     export interface PolicySetPolicyReference {
         /**
-         * Unique identifier of the resource.
+         * Unique identifier of the policy
          */
         identifier: pulumi.Input<string>;
         /**

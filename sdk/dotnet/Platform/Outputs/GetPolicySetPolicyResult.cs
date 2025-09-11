@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetPolicySetPolicyResult
     {
         /// <summary>
-        /// Account Identifier of the account
+        /// Unique identifier of the policy
         /// </summary>
         public readonly string Identifier;
         /// <summary>

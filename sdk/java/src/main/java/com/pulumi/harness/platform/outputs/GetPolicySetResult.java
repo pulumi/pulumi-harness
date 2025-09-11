@@ -52,7 +52,7 @@ public final class GetPolicySetResult {
      */
     private @Nullable String orgId;
     /**
-     * @return List of policy identifiers / severity for the policyset.
+     * @return List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
      * 
      * @deprecated
      * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
@@ -60,6 +60,10 @@ public final class GetPolicySetResult {
      */
     @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
     private List<GetPolicySetPolicy> policies;
+    /**
+     * @return Set of policy identifiers / severity for the policyset. Order is not significant.
+     * 
+     */
     private List<GetPolicySetPolicyReference> policyReferences;
     /**
      * @return Unique identifier of the project.
@@ -128,7 +132,7 @@ public final class GetPolicySetResult {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return List of policy identifiers / severity for the policyset.
+     * @return List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
      * 
      * @deprecated
      * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
@@ -138,6 +142,10 @@ public final class GetPolicySetResult {
     public List<GetPolicySetPolicy> policies() {
         return this.policies;
     }
+    /**
+     * @return Set of policy identifiers / severity for the policyset. Order is not significant.
+     * 
+     */
     public List<GetPolicySetPolicyReference> policyReferences() {
         return this.policyReferences;
     }

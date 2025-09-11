@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPolicySetPolicy {
     /**
-     * @return Account Identifier of the account
+     * @return Unique identifier of the policy
      * 
      */
     private String identifier;
@@ -23,7 +23,7 @@ public final class GetPolicySetPolicy {
 
     private GetPolicySetPolicy() {}
     /**
-     * @return Account Identifier of the account
+     * @return Unique identifier of the policy
      * 
      */
     public String identifier() {
