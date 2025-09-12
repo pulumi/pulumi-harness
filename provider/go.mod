@@ -11,7 +11,7 @@ replace (
 
 require (
 	github.com/harness/terraform-provider-harness/shim v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.113.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.114.0
 	github.com/pulumi/pulumi/sdk/v3 v3.190.0
 )
 
