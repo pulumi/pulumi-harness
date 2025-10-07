@@ -12,6 +12,8 @@ import (
 )
 
 // Data source for AWS Autostopping proxy
+//
+// ## Example Usage
 func LookupAwsProxy(ctx *pulumi.Context, args *LookupAwsProxyArgs, opts ...pulumi.InvokeOption) (*LookupAwsProxyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAwsProxyResult

@@ -9,6 +9,48 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Harness Infrastructure.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Infrastructure("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: "orgIdentifer",
+ *     projectId: "projectIdentifier",
+ *     envId: "environmentIdentifier",
+ *     type: "KubernetesDirect",
+ *     deploymentType: "Kubernetes",
+ *     gitDetails: {
+ *         branchName: "branchName",
+ *         commitMessage: "commitMessage",
+ *         filePath: "filePath",
+ *         connectorRef: "connectorRef",
+ *         storeType: "REMOTE",
+ *         repoName: "repoName",
+ *     },
+ *     yaml: `infrastructureDefinition:
+ *  name: name
+ *  identifier: identifier
+ *  description: ""
+ *  tags:
+ *    asda: ""
+ *  orgIdentifier: orgIdentifer
+ *  projectIdentifier: projectIdentifier
+ *  environmentRef: environmentIdentifier
+ *  deploymentType: Kubernetes
+ *  type: KubernetesDirect
+ *  spec:
+ *   connectorRef: account.gfgf
+ *   namespace: asdasdsa
+ *   releaseName: release-<+INFRA_KEY>
+ *   allowSimultaneousDeployments: false
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * The `pulumi import` command can be used, for example:

@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the target cluster. Can be used instead of `server`.
+        /// Name of the target cluster. Can be used instead of `Server`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

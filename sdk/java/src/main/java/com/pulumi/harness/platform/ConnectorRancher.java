@@ -20,6 +20,45 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Rancher connector.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.KubernetesConnector;
+ * import com.pulumi.harness.platform.KubernetesConnectorArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bearerToken = new KubernetesConnector("bearerToken", KubernetesConnectorArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("description")
+ *             .tags("foo:bar")
+ *             .delegateSelectors("harness-delegate")
+ *             .rancherUrl("https://rancher.cluster.example")
+ *             .bearerToken(List.of(Map.of("bearerTokenRef", "account.test_rancher_bearer_token")))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * The `pulumi import` command can be used, for example:

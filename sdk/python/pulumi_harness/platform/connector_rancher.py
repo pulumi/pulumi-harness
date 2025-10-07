@@ -372,6 +372,24 @@ class ConnectorRancher(pulumi.CustomResource):
         """
         Resource for creating a Rancher connector.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        bearer_token = harness.platform.KubernetesConnector("bearer_token",
+            identifier="identifier",
+            name="name",
+            description="description",
+            tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"],
+            rancher_url="https://rancher.cluster.example",
+            bearer_token=[{
+                "bearerTokenRef": "account.test_rancher_bearer_token",
+            }])
+        ```
+
         ## Import
 
         The `pulumi import` command can be used, for example:
@@ -415,6 +433,24 @@ class ConnectorRancher(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Rancher connector.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        bearer_token = harness.platform.KubernetesConnector("bearer_token",
+            identifier="identifier",
+            name="name",
+            description="description",
+            tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"],
+            rancher_url="https://rancher.cluster.example",
+            bearer_token=[{
+                "bearerTokenRef": "account.test_rancher_bearer_token",
+            }])
+        ```
 
         ## Import
 

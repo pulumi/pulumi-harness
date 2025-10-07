@@ -230,6 +230,8 @@ def get_gcp_proxy(allocate_static_ip: Optional[_builtins.bool] = None,
     """
     Data source for GCP Autostopping proxy
 
+    ## Example Usage
+
 
     :param _builtins.bool allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
     :param _builtins.str api_key: Harness NG API key
@@ -292,6 +294,8 @@ def get_gcp_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[_bui
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGcpProxyResult]:
     """
     Data source for GCP Autostopping proxy
+
+    ## Example Usage
 
 
     :param _builtins.bool allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP

@@ -8,6 +8,36 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness Variables.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = new harness.autostopping.RuleEcs("test", {
+ *     name: "name",
+ *     cloudConnectorId: "cloud_connector_id",
+ *     idleTimeMins: 10,
+ *     dryRun: true,
+ *     container: {
+ *         cluster: "cluster",
+ *         service: "service",
+ *         region: "us-east-1",
+ *         taskCount: 1,
+ *     },
+ *     tcp: [{
+ *         proxyId: "proxy_id",
+ *         forwardRule: [{
+ *             port: 2233,
+ *         }],
+ *     }],
+ *     depends: [{
+ *         ruleId: 24576,
+ *         delayInSec: 5,
+ *     }],
+ * });
+ * ```
  */
 export class RuleEcs extends pulumi.CustomResource {
     /**

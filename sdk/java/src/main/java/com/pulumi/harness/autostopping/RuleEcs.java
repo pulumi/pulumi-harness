@@ -24,6 +24,58 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness Variables.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.autostopping.RuleEcs;
+ * import com.pulumi.harness.autostopping.RuleEcsArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleEcsContainerArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleEcsDependArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new RuleEcs("test", RuleEcsArgs.builder()
+ *             .name("name")
+ *             .cloudConnectorId("cloud_connector_id")
+ *             .idleTimeMins(10)
+ *             .dryRun(true)
+ *             .container(RuleEcsContainerArgs.builder()
+ *                 .cluster("cluster")
+ *                 .service("service")
+ *                 .region("us-east-1")
+ *                 .taskCount(1)
+ *                 .build())
+ *             .tcp(List.of(Map.ofEntries(
+ *                 Map.entry("proxyId", "proxy_id"),
+ *                 Map.entry("forwardRule", List.of(Map.of("port", 2233)))
+ *             )))
+ *             .depends(RuleEcsDependArgs.builder()
+ *                 .ruleId(24576)
+ *                 .delayInSec(5)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="harness:autostopping/ruleEcs:RuleEcs")
 public class RuleEcs extends com.pulumi.resources.CustomResource {

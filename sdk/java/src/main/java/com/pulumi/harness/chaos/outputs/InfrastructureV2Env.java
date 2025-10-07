@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InfrastructureV2Env {
     /**
-     * @return Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
+     * @return Variable name from a ConfigMap or Secret. Required when valueFrom is configMapKeyRef or secretKeyRef.
      * 
      */
     private @Nullable String key;
@@ -35,7 +35,7 @@ public final class InfrastructureV2Env {
 
     private InfrastructureV2Env() {}
     /**
-     * @return Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
+     * @return Variable name from a ConfigMap or Secret. Required when valueFrom is configMapKeyRef or secretKeyRef.
      * 
      */
     public Optional<String> key() {

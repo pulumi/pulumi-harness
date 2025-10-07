@@ -35,14 +35,14 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
     }
 
     /**
-     * Prevents &#39;helm template&#39; from failing when value_files do not exist locally.
+     * Prevents &#39;helm template&#39; from failing when valueFiles do not exist locally.
      * 
      */
     @Import(name="ignoreMissingValueFiles")
     private @Nullable Output<Boolean> ignoreMissingValueFiles;
 
     /**
-     * @return Prevents &#39;helm template&#39; from failing when value_files do not exist locally.
+     * @return Prevents &#39;helm template&#39; from failing when valueFiles do not exist locally.
      * 
      */
     public Optional<Output<Boolean>> ignoreMissingValueFiles() {
@@ -250,7 +250,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when value_files do not exist locally.
+         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when valueFiles do not exist locally.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when value_files do not exist locally.
+         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when valueFiles do not exist locally.
          * 
          * @return builder
          * 

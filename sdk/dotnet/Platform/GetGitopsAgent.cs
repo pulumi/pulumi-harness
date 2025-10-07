@@ -58,7 +58,7 @@ namespace Pulumi.Harness.Platform
         public string? ProjectId { get; set; }
 
         /// <summary>
-        /// Specify whether to retrieve the gitops agent's token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+        /// Specify whether to retrieve the gitops agent's token. (The field AgentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
         /// </summary>
         [Input("withCredentials")]
         public bool? WithCredentials { get; set; }
@@ -96,7 +96,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Specify whether to retrieve the gitops agent's token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+        /// Specify whether to retrieve the gitops agent's token. (The field AgentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
         /// </summary>
         [Input("withCredentials")]
         public Input<bool>? WithCredentials { get; set; }
@@ -132,7 +132,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Identifier;
         /// <summary>
-        /// This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet with_credentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+        /// This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet WithCredentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
         /// </summary>
         public readonly bool IsAuthenticated;
         /// <summary>
@@ -169,7 +169,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Specify whether to retrieve the gitops agent's token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+        /// Specify whether to retrieve the gitops agent's token. (The field AgentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
         /// </summary>
         public readonly bool? WithCredentials;
 

@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Chaos.Inputs
     public sealed class InfrastructureV2EnvGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
+        /// Variable name from a ConfigMap or Secret. Required when ValueFrom is configMapKeyRef or secretKeyRef.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

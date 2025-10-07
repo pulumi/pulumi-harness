@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for fetching a Harness GitOps Application.
+ *
+ * ## Example Usage
  */
 export function getGitopsApplications(args: GetGitopsApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsApplicationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -142,6 +144,8 @@ export interface GetGitopsApplicationsResult {
 }
 /**
  * Datasource for fetching a Harness GitOps Application.
+ *
+ * ## Example Usage
  */
 export function getGitopsApplicationsOutput(args: GetGitopsApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsApplicationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

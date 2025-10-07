@@ -12,6 +12,8 @@ import (
 )
 
 // Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+//
+// ## Example Usage
 func GetGitopsAgentOperatorYaml(ctx *pulumi.Context, args *GetGitopsAgentOperatorYamlArgs, opts ...pulumi.InvokeOption) (*GetGitopsAgentOperatorYamlResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGitopsAgentOperatorYamlResult

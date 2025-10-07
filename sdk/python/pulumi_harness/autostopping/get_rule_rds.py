@@ -142,6 +142,8 @@ def get_rule_rds(cloud_connector_id: Optional[_builtins.str] = None,
     """
     Data source for retrieving a Harness Variable.
 
+    ## Example Usage
+
 
     :param _builtins.str cloud_connector_id: Id of the cloud connector
     :param Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict']] depends: Dependent rules
@@ -177,6 +179,8 @@ def get_rule_rds_output(cloud_connector_id: Optional[pulumi.Input[_builtins.str]
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleRdsResult]:
     """
     Data source for retrieving a Harness Variable.
+
+    ## Example Usage
 
 
     :param _builtins.str cloud_connector_id: Id of the cloud connector

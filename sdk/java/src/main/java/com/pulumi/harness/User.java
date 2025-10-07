@@ -81,14 +81,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.email;
     }
     /**
-     * The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = [&#34;group_ids&#34;] }`.
+     * The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignoreChanges = [&#34;groupIds&#34;] }`.
      * 
      */
     @Export(name="groupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupIds;
 
     /**
-     * @return The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = [&#34;group_ids&#34;] }`.
+     * @return The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignoreChanges = [&#34;groupIds&#34;] }`.
      * 
      */
     public Output<Optional<List<String>>> groupIds() {
