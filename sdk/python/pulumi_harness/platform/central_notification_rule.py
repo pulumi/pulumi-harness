@@ -24,10 +24,10 @@ class CentralNotificationRuleArgs:
                  identifier: pulumi.Input[_builtins.str],
                  notification_channel_refs: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  notification_conditions: pulumi.Input[Sequence[pulumi.Input['CentralNotificationRuleNotificationConditionArgs']]],
-                 project: pulumi.Input[_builtins.str],
                  custom_notification_template_ref: Optional[pulumi.Input['CentralNotificationRuleCustomNotificationTemplateRefArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org: Optional[pulumi.Input[_builtins.str]] = None,
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CentralNotificationRule resource.
@@ -35,13 +35,14 @@ class CentralNotificationRuleArgs:
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "notification_channel_refs", notification_channel_refs)
         pulumi.set(__self__, "notification_conditions", notification_conditions)
-        pulumi.set(__self__, "project", project)
         if custom_notification_template_ref is not None:
             pulumi.set(__self__, "custom_notification_template_ref", custom_notification_template_ref)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org is not None:
             pulumi.set(__self__, "org", org)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -73,15 +74,6 @@ class CentralNotificationRuleArgs:
         pulumi.set(self, "notification_conditions", value)
 
     @_builtins.property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "project", value)
-
-    @_builtins.property
     @pulumi.getter(name="customNotificationTemplateRef")
     def custom_notification_template_ref(self) -> Optional[pulumi.Input['CentralNotificationRuleCustomNotificationTemplateRefArgs']]:
         return pulumi.get(self, "custom_notification_template_ref")
@@ -107,6 +99,15 @@ class CentralNotificationRuleArgs:
     @org.setter
     def org(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "org", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
@@ -286,6 +287,8 @@ class CentralNotificationRule(pulumi.CustomResource):
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > Deprecated: Please migrate to `platform.PipelineCentralNotificationRule`. See the pipeline-specific resource docs.
+
         Resource for creating a Harness Notification Rule
 
         :param str resource_name: The name of the resource.
@@ -298,6 +301,8 @@ class CentralNotificationRule(pulumi.CustomResource):
                  args: CentralNotificationRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > Deprecated: Please migrate to `platform.PipelineCentralNotificationRule`. See the pipeline-specific resource docs.
+
         Resource for creating a Harness Notification Rule
 
         :param str resource_name: The name of the resource.
@@ -344,8 +349,6 @@ class CentralNotificationRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'notification_conditions'")
             __props__.__dict__["notification_conditions"] = notification_conditions
             __props__.__dict__["org"] = org
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["status"] = status
             __props__.__dict__["account"] = None
@@ -456,7 +459,7 @@ class CentralNotificationRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> pulumi.Output[_builtins.str]:
+    def project(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "project")
 
     @_builtins.property

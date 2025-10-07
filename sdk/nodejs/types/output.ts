@@ -2886,7 +2886,11 @@ export namespace platform {
          */
         azureManualDetails?: outputs.platform.AzureCloudProviderConnectorCredentialsAzureManualDetails;
         /**
-         * Type can either be InheritFromDelegate or ManualConfig.
+         * Authenticate to Azure Cloud Provider using OIDC.
+         */
+        azureOidcSpec?: outputs.platform.AzureCloudProviderConnectorCredentialsAzureOidcSpec;
+        /**
+         * Type can be InheritFromDelegate, ManualConfig or OidcAuthentication
          */
         type: string;
     }
@@ -2958,6 +2962,21 @@ export namespace platform {
          * Reference of the secret for the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         secretRef?: string;
+    }
+
+    export interface AzureCloudProviderConnectorCredentialsAzureOidcSpec {
+        /**
+         * Application ID of the Azure App.
+         */
+        applicationId?: string;
+        /**
+         * The Azure Audience.
+         */
+        audience?: string;
+        /**
+         * The Azure Active Directory (AAD) directory ID where you created your application.
+         */
+        tenantId?: string;
     }
 
     export interface BitbucketConnectorApiAuthentication {
@@ -3991,7 +4010,11 @@ export namespace platform {
          */
         azureManualDetails: outputs.platform.GetAzureCloudProviderConnectorCredentialAzureManualDetail[];
         /**
-         * Type can either be InheritFromDelegate or ManualConfig.
+         * Authenticate to Azure Cloud Provider using OIDC Authentication.
+         */
+        azureOidcSpecs: outputs.platform.GetAzureCloudProviderConnectorCredentialAzureOidcSpec[];
+        /**
+         * Type can be InheritFromDelegate, ManualConfig or OidcAuthentication.
          */
         type: string;
     }
@@ -4063,6 +4086,21 @@ export namespace platform {
          * Reference of the secret for the secret key.
          */
         secretRef: string;
+    }
+
+    export interface GetAzureCloudProviderConnectorCredentialAzureOidcSpec {
+        /**
+         * Application ID of the Azure App.
+         */
+        applicationId: string;
+        /**
+         * The Azure Audience.
+         */
+        audience: string;
+        /**
+         * The Azure Active Directory (AAD) directory ID where you created your application.
+         */
+        tenantId: string;
     }
 
     export interface GetBitbucketConnectorApiAuthentication {
@@ -6261,6 +6299,34 @@ export namespace platform {
          * Status of the permission
          */
         status: string;
+    }
+
+    export interface GetPipelineCentralNotificationRuleCustomNotificationTemplateRef {
+        templateRef: string;
+        variables?: outputs.platform.GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable[];
+        versionLabel: string;
+    }
+
+    export interface GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable {
+        name: string;
+        type?: string;
+        value: string;
+    }
+
+    export interface GetPipelineCentralNotificationRuleNotificationCondition {
+        conditionName: string;
+        notificationEventConfigs: outputs.platform.GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig[];
+    }
+
+    export interface GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
+        notificationEntity: string;
+        notificationEvent: string;
+        notificationEventDatas?: outputs.platform.GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData[];
+    }
+
+    export interface GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData {
+        scopeIdentifiers?: string[];
+        type?: string;
     }
 
     export interface GetPipelineFiltersFilterProperty {
@@ -34570,6 +34636,35 @@ export namespace platform {
          * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
         storeType: string;
+    }
+
+    export interface PipelineCentralNotificationRuleCustomNotificationTemplateRef {
+        templateRef: string;
+        variables?: outputs.platform.PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable[];
+        versionLabel: string;
+    }
+
+    export interface PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable {
+        name: string;
+        type?: string;
+        value: string;
+    }
+
+    export interface PipelineCentralNotificationRuleNotificationCondition {
+        conditionName: string;
+        notificationEventConfigs: outputs.platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig[];
+    }
+
+    export interface PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
+        entityIdentifiers?: string[];
+        notificationEntity: string;
+        notificationEvent: string;
+        notificationEventDatas?: outputs.platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData[];
+    }
+
+    export interface PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData {
+        scopeIdentifiers?: string[];
+        type?: string;
     }
 
     export interface PipelineFiltersFilterProperties {

@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > Deprecated: Please migrate to `harness.platform.PipelineCentralNotificationRule`. See the pipeline-specific resource docs.
+ *
  * Resource for creating a Harness Notification Rule
  */
 export class CentralNotificationRule extends pulumi.CustomResource {
@@ -55,7 +57,7 @@ export class CentralNotificationRule extends pulumi.CustomResource {
     declare public readonly notificationChannelRefs: pulumi.Output<string[]>;
     declare public readonly notificationConditions: pulumi.Output<outputs.platform.CentralNotificationRuleNotificationCondition[]>;
     declare public readonly org: pulumi.Output<string | undefined>;
-    declare public readonly project: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string | undefined>;
     declare public readonly status: pulumi.Output<string | undefined>;
 
     /**
@@ -92,9 +94,6 @@ export class CentralNotificationRule extends pulumi.CustomResource {
             }
             if (args?.notificationConditions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationConditions'");
-            }
-            if (args?.project === undefined && !opts.urn) {
-                throw new Error("Missing required property 'project'");
             }
             resourceInputs["customNotificationTemplateRef"] = args?.customNotificationTemplateRef;
             resourceInputs["identifier"] = args?.identifier;
@@ -149,6 +148,6 @@ export interface CentralNotificationRuleArgs {
     notificationChannelRefs: pulumi.Input<pulumi.Input<string>[]>;
     notificationConditions: pulumi.Input<pulumi.Input<inputs.platform.CentralNotificationRuleNotificationCondition>[]>;
     org?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
 }

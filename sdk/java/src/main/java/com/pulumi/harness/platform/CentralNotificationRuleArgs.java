@@ -61,11 +61,11 @@ public final class CentralNotificationRuleArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.org);
     }
 
-    @Import(name="project", required=true)
-    private Output<String> project;
+    @Import(name="project")
+    private @Nullable Output<String> project;
 
-    public Output<String> project() {
-        return this.project;
+    public Optional<Output<String>> project() {
+        return Optional.ofNullable(this.project);
     }
 
     @Import(name="status")
@@ -168,7 +168,7 @@ public final class CentralNotificationRuleArgs extends com.pulumi.resources.Reso
             return org(Output.of(org));
         }
 
-        public Builder project(Output<String> project) {
+        public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
@@ -195,9 +195,6 @@ public final class CentralNotificationRuleArgs extends com.pulumi.resources.Reso
             }
             if ($.notificationConditions == null) {
                 throw new MissingRequiredPropertyException("CentralNotificationRuleArgs", "notificationConditions");
-            }
-            if ($.project == null) {
-                throw new MissingRequiredPropertyException("CentralNotificationRuleArgs", "project");
             }
             return $;
         }

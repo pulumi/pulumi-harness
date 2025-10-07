@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.inputs.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgs;
  * import com.pulumi.harness.platform.inputs.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs;
  * import com.pulumi.harness.platform.inputs.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgs;
+ * import com.pulumi.harness.platform.inputs.AzureCloudProviderConnectorCredentialsAzureOidcSpecArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -127,6 +128,23 @@ import javax.annotation.Nullable;
  *                     .auth(AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs.builder()
  *                         .type("SystemAssignedManagedIdentity")
  *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .azureEnvironmentType("AZURE")
+ *             .delegateSelectors("harness-delegate")
+ *             .build());
+ * 
+ *         var oidcAuthentication = new AzureCloudProviderConnector("oidcAuthentication", AzureCloudProviderConnectorArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("example")
+ *             .tags("foo:bar")
+ *             .credentials(AzureCloudProviderConnectorCredentialsArgs.builder()
+ *                 .type("OidcAuthentication")
+ *                 .azureOidcSpec(AzureCloudProviderConnectorCredentialsAzureOidcSpecArgs.builder()
+ *                     .applicationId("application_id")
+ *                     .tenantId("tenant_id")
+ *                     .audience("audience")
  *                     .build())
  *                 .build())
  *             .azureEnvironmentType("AZURE")

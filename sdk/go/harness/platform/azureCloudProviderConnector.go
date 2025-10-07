@@ -135,6 +135,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = platform.NewAzureCloudProviderConnector(ctx, "oidc_authentication", &platform.AzureCloudProviderConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Credentials: &platform.AzureCloudProviderConnectorCredentialsArgs{
+//					Type: pulumi.String("OidcAuthentication"),
+//					AzureOidcSpec: &platform.AzureCloudProviderConnectorCredentialsAzureOidcSpecArgs{
+//						ApplicationId: pulumi.String("application_id"),
+//						TenantId:      pulumi.String("tenant_id"),
+//						Audience:      pulumi.String("audience"),
+//					},
+//				},
+//				AzureEnvironmentType: pulumi.String("AZURE"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

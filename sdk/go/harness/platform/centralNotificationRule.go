@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > Deprecated: Please migrate to `platform.PipelineCentralNotificationRule`. See the pipeline-specific resource docs.
+//
 // Resource for creating a Harness Notification Rule
 type CentralNotificationRule struct {
 	pulumi.CustomResourceState
@@ -28,7 +30,7 @@ type CentralNotificationRule struct {
 	NotificationChannelRefs pulumi.StringArrayOutput                                `pulumi:"notificationChannelRefs"`
 	NotificationConditions  CentralNotificationRuleNotificationConditionArrayOutput `pulumi:"notificationConditions"`
 	Org                     pulumi.StringPtrOutput                                  `pulumi:"org"`
-	Project                 pulumi.StringOutput                                     `pulumi:"project"`
+	Project                 pulumi.StringPtrOutput                                  `pulumi:"project"`
 	Status                  pulumi.StringPtrOutput                                  `pulumi:"status"`
 }
 
@@ -47,9 +49,6 @@ func NewCentralNotificationRule(ctx *pulumi.Context,
 	}
 	if args.NotificationConditions == nil {
 		return nil, errors.New("invalid value for required argument 'NotificationConditions'")
-	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CentralNotificationRule
@@ -118,7 +117,7 @@ type centralNotificationRuleArgs struct {
 	NotificationChannelRefs       []string                                              `pulumi:"notificationChannelRefs"`
 	NotificationConditions        []CentralNotificationRuleNotificationCondition        `pulumi:"notificationConditions"`
 	Org                           *string                                               `pulumi:"org"`
-	Project                       string                                                `pulumi:"project"`
+	Project                       *string                                               `pulumi:"project"`
 	Status                        *string                                               `pulumi:"status"`
 }
 
@@ -130,7 +129,7 @@ type CentralNotificationRuleArgs struct {
 	NotificationChannelRefs       pulumi.StringArrayInput
 	NotificationConditions        CentralNotificationRuleNotificationConditionArrayInput
 	Org                           pulumi.StringPtrInput
-	Project                       pulumi.StringInput
+	Project                       pulumi.StringPtrInput
 	Status                        pulumi.StringPtrInput
 }
 
@@ -264,8 +263,8 @@ func (o CentralNotificationRuleOutput) Org() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CentralNotificationRule) pulumi.StringPtrOutput { return v.Org }).(pulumi.StringPtrOutput)
 }
 
-func (o CentralNotificationRuleOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *CentralNotificationRule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o CentralNotificationRuleOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CentralNotificationRule) pulumi.StringPtrOutput { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 func (o CentralNotificationRuleOutput) Status() pulumi.StringPtrOutput {

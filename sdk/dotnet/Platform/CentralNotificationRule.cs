@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
+    /// &gt; Deprecated: Please migrate to `harness.platform.PipelineCentralNotificationRule`. See the pipeline-specific resource docs.
+    /// 
     /// Resource for creating a Harness Notification Rule
     /// </summary>
     [HarnessResourceType("harness:platform/centralNotificationRule:CentralNotificationRule")]
@@ -52,7 +54,7 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Org { get; private set; } = null!;
 
         [Output("project")]
-        public Output<string> Project { get; private set; } = null!;
+        public Output<string?> Project { get; private set; } = null!;
 
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
@@ -132,8 +134,8 @@ namespace Pulumi.Harness.Platform
         [Input("org")]
         public Input<string>? Org { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("status")]
         public Input<string>? Status { get; set; }

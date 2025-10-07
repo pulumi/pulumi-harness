@@ -83,6 +83,20 @@ import * as utilities from "../utilities";
  *         plan: "plan_pipeline_id",
  *         apply: "apply_pipeline_id",
  *     },
+ *     connectors: [
+ *         {
+ *             connectorRef: "awsconnector",
+ *             type: "aws",
+ *         },
+ *         {
+ *             connectorRef: "gcpconnector",
+ *             type: "gcp",
+ *         },
+ *         {
+ *             connectorRef: "azureconnector",
+ *             type: "azure",
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -159,7 +173,7 @@ export class Workspace extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
-     * Provider connector is the reference to the connector for the infrastructure provider
+     * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
      */
     declare public readonly providerConnector: pulumi.Output<string | undefined>;
     declare public readonly provisionerType: pulumi.Output<string>;
@@ -332,7 +346,7 @@ export interface WorkspaceState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Provider connector is the reference to the connector for the infrastructure provider
+     * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
      */
     providerConnector?: pulumi.Input<string>;
     provisionerType?: pulumi.Input<string>;
@@ -414,7 +428,7 @@ export interface WorkspaceArgs {
      */
     projectId: pulumi.Input<string>;
     /**
-     * Provider connector is the reference to the connector for the infrastructure provider
+     * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
      */
     providerConnector?: pulumi.Input<string>;
     provisionerType: pulumi.Input<string>;

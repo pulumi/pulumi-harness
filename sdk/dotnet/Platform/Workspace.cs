@@ -106,6 +106,24 @@ namespace Pulumi.Harness.Platform
     ///             { "plan", "plan_pipeline_id" },
     ///             { "apply", "apply_pipeline_id" },
     ///         },
+    ///         Connectors = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.WorkspaceConnectorArgs
+    ///             {
+    ///                 ConnectorRef = "awsconnector",
+    ///                 Type = "aws",
+    ///             },
+    ///             new Harness.Platform.Inputs.WorkspaceConnectorArgs
+    ///             {
+    ///                 ConnectorRef = "gcpconnector",
+    ///                 Type = "gcp",
+    ///             },
+    ///             new Harness.Platform.Inputs.WorkspaceConnectorArgs
+    ///             {
+    ///                 ConnectorRef = "azureconnector",
+    ///                 Type = "azure",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -177,7 +195,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Provider connector is the reference to the connector for the infrastructure provider
+        /// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
         /// </summary>
         [Output("providerConnector")]
         public Output<string?> ProviderConnector { get; private set; } = null!;
@@ -362,7 +380,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Provider connector is the reference to the connector for the infrastructure provider
+        /// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
         /// </summary>
         [Input("providerConnector")]
         public Input<string>? ProviderConnector { get; set; }
@@ -530,7 +548,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Provider connector is the reference to the connector for the infrastructure provider
+        /// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
         /// </summary>
         [Input("providerConnector")]
         public Input<string>? ProviderConnector { get; set; }

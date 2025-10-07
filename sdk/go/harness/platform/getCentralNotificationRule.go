@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+//
 // Data source for retrieving a Notification Rule.
 func LookupCentralNotificationRule(ctx *pulumi.Context, args *LookupCentralNotificationRuleArgs, opts ...pulumi.InvokeOption) (*LookupCentralNotificationRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

@@ -13,6 +13,164 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GitopsApplicationsetApplicationsetSpecStrategy struct {
+	// Strategy allowing you to group Applications by labels present on the generated Application resources. When the ApplicationSet changes, the changes will be applied to each group of Application resources sequentially.
+	RollingSyncs []GitopsApplicationsetApplicationsetSpecStrategyRollingSync `pulumi:"rollingSyncs"`
+	// Type of progressive sync.
+	Type string `pulumi:"type"`
+}
+
+// GitopsApplicationsetApplicationsetSpecStrategyInput is an input type that accepts GitopsApplicationsetApplicationsetSpecStrategyArgs and GitopsApplicationsetApplicationsetSpecStrategyOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecStrategyInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecStrategyArgs{...}
+type GitopsApplicationsetApplicationsetSpecStrategyInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecStrategyOutput() GitopsApplicationsetApplicationsetSpecStrategyOutput
+	ToGitopsApplicationsetApplicationsetSpecStrategyOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecStrategyOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyArgs struct {
+	// Strategy allowing you to group Applications by labels present on the generated Application resources. When the ApplicationSet changes, the changes will be applied to each group of Application resources sequentially.
+	RollingSyncs GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayInput `pulumi:"rollingSyncs"`
+	// Type of progressive sync.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategy)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyArgs) ToGitopsApplicationsetApplicationsetSpecStrategyOutput() GitopsApplicationsetApplicationsetSpecStrategyOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecStrategyOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyArgs) ToGitopsApplicationsetApplicationsetSpecStrategyOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecStrategyOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyArgs) ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutput() GitopsApplicationsetApplicationsetSpecStrategyPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecStrategyArgs) ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecStrategyOutput).ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecStrategyPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecStrategyArgs, GitopsApplicationsetApplicationsetSpecStrategyPtr and GitopsApplicationsetApplicationsetSpecStrategyPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecStrategyPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecStrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecStrategyPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutput() GitopsApplicationsetApplicationsetSpecStrategyPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecStrategyPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecStrategyPtrType GitopsApplicationsetApplicationsetSpecStrategyArgs
+
+func GitopsApplicationsetApplicationsetSpecStrategyPtr(v *GitopsApplicationsetApplicationsetSpecStrategyArgs) GitopsApplicationsetApplicationsetSpecStrategyPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecStrategyPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecStrategy)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecStrategyPtrType) ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutput() GitopsApplicationsetApplicationsetSpecStrategyPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecStrategyPtrType) ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecStrategyPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategy)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyOutput) ToGitopsApplicationsetApplicationsetSpecStrategyOutput() GitopsApplicationsetApplicationsetSpecStrategyOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyOutput) ToGitopsApplicationsetApplicationsetSpecStrategyOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyOutput) ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutput() GitopsApplicationsetApplicationsetSpecStrategyPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyOutput) ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecStrategy) *GitopsApplicationsetApplicationsetSpecStrategy {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecStrategyPtrOutput)
+}
+
+// Strategy allowing you to group Applications by labels present on the generated Application resources. When the ApplicationSet changes, the changes will be applied to each group of Application resources sequentially.
+func (o GitopsApplicationsetApplicationsetSpecStrategyOutput) RollingSyncs() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecStrategy) []GitopsApplicationsetApplicationsetSpecStrategyRollingSync {
+		return v.RollingSyncs
+	}).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput)
+}
+
+// Type of progressive sync.
+func (o GitopsApplicationsetApplicationsetSpecStrategyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecStrategy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecStrategy)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyPtrOutput) ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutput() GitopsApplicationsetApplicationsetSpecStrategyPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyPtrOutput) ToGitopsApplicationsetApplicationsetSpecStrategyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecStrategyPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecStrategyPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecStrategyOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecStrategy) GitopsApplicationsetApplicationsetSpecStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecStrategy
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecStrategyOutput)
+}
+
+// Strategy allowing you to group Applications by labels present on the generated Application resources. When the ApplicationSet changes, the changes will be applied to each group of Application resources sequentially.
+func (o GitopsApplicationsetApplicationsetSpecStrategyPtrOutput) RollingSyncs() GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecStrategy) []GitopsApplicationsetApplicationsetSpecStrategyRollingSync {
+		if v == nil {
+			return nil
+		}
+		return v.RollingSyncs
+	}).(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput)
+}
+
+// Type of progressive sync.
+func (o GitopsApplicationsetApplicationsetSpecStrategyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type GitopsApplicationsetApplicationsetSpecStrategyRollingSync struct {
 	// Configuration used to define which applications to include in each stage of the rolling sync. All Applications in each group must become Healthy before the ApplicationSet controller will proceed to update the next group of Applications.
 	Steps []GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStep `pulumi:"steps"`
@@ -10893,6 +11051,603 @@ func (o OverridesGitDetailsPtrOutput) StoreType() pulumi.StringPtrOutput {
 		}
 		return v.StoreType
 	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineCentralNotificationRuleCustomNotificationTemplateRef struct {
+	TemplateRef  string                                                                 `pulumi:"templateRef"`
+	Variables    []PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable `pulumi:"variables"`
+	VersionLabel string                                                                 `pulumi:"versionLabel"`
+}
+
+// PipelineCentralNotificationRuleCustomNotificationTemplateRefInput is an input type that accepts PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs and PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput values.
+// You can construct a concrete instance of `PipelineCentralNotificationRuleCustomNotificationTemplateRefInput` via:
+//
+//	PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs{...}
+type PipelineCentralNotificationRuleCustomNotificationTemplateRefInput interface {
+	pulumi.Input
+
+	ToPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput
+	ToPipelineCentralNotificationRuleCustomNotificationTemplateRefOutputWithContext(context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput
+}
+
+type PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs struct {
+	TemplateRef  pulumi.StringInput                                                             `pulumi:"templateRef"`
+	Variables    PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput `pulumi:"variables"`
+	VersionLabel pulumi.StringInput                                                             `pulumi:"versionLabel"`
+}
+
+func (PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineCentralNotificationRuleCustomNotificationTemplateRef)(nil)).Elem()
+}
+
+func (i PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return i.ToPipelineCentralNotificationRuleCustomNotificationTemplateRefOutputWithContext(context.Background())
+}
+
+func (i PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput)
+}
+
+func (i PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return i.ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput).ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx)
+}
+
+// PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrInput is an input type that accepts PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs, PipelineCentralNotificationRuleCustomNotificationTemplateRefPtr and PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput values.
+// You can construct a concrete instance of `PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrInput` via:
+//
+//	        PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrInput interface {
+	pulumi.Input
+
+	ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput
+	ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput
+}
+
+type pipelineCentralNotificationRuleCustomNotificationTemplateRefPtrType PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs
+
+func PipelineCentralNotificationRuleCustomNotificationTemplateRefPtr(v *PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs) PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrInput {
+	return (*pipelineCentralNotificationRuleCustomNotificationTemplateRefPtrType)(v)
+}
+
+func (*pipelineCentralNotificationRuleCustomNotificationTemplateRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineCentralNotificationRuleCustomNotificationTemplateRef)(nil)).Elem()
+}
+
+func (i *pipelineCentralNotificationRuleCustomNotificationTemplateRefPtrType) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return i.ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineCentralNotificationRuleCustomNotificationTemplateRefPtrType) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput)
+}
+
+type PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput struct{ *pulumi.OutputState }
+
+func (PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineCentralNotificationRuleCustomNotificationTemplateRef)(nil)).Elem()
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return o.ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineCentralNotificationRuleCustomNotificationTemplateRef) *PipelineCentralNotificationRuleCustomNotificationTemplateRef {
+		return &v
+	}).(PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput)
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) TemplateRef() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleCustomNotificationTemplateRef) string { return v.TemplateRef }).(pulumi.StringOutput)
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) Variables() PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleCustomNotificationTemplateRef) []PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable {
+		return v.Variables
+	}).(PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput)
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) VersionLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleCustomNotificationTemplateRef) string { return v.VersionLabel }).(pulumi.StringOutput)
+}
+
+type PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineCentralNotificationRuleCustomNotificationTemplateRef)(nil)).Elem()
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) Elem() PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return o.ApplyT(func(v *PipelineCentralNotificationRuleCustomNotificationTemplateRef) PipelineCentralNotificationRuleCustomNotificationTemplateRef {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineCentralNotificationRuleCustomNotificationTemplateRef
+		return ret
+	}).(PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput)
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) TemplateRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineCentralNotificationRuleCustomNotificationTemplateRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TemplateRef
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) Variables() PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return o.ApplyT(func(v *PipelineCentralNotificationRuleCustomNotificationTemplateRef) []PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable {
+		if v == nil {
+			return nil
+		}
+		return v.Variables
+	}).(PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput)
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) VersionLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineCentralNotificationRuleCustomNotificationTemplateRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VersionLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable struct {
+	Name  string  `pulumi:"name"`
+	Type  *string `pulumi:"type"`
+	Value string  `pulumi:"value"`
+}
+
+// PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableInput is an input type that accepts PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs and PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput values.
+// You can construct a concrete instance of `PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableInput` via:
+//
+//	PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs{...}
+type PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableInput interface {
+	pulumi.Input
+
+	ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput
+	ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutputWithContext(context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput
+}
+
+type PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs struct {
+	Name  pulumi.StringInput    `pulumi:"name"`
+	Type  pulumi.StringPtrInput `pulumi:"type"`
+	Value pulumi.StringInput    `pulumi:"value"`
+}
+
+func (PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable)(nil)).Elem()
+}
+
+func (i PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return i.ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutputWithContext(context.Background())
+}
+
+func (i PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput)
+}
+
+// PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput is an input type that accepts PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray and PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput values.
+// You can construct a concrete instance of `PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput` via:
+//
+//	PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray{ PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs{...} }
+type PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput interface {
+	pulumi.Input
+
+	ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput
+	ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutputWithContext(context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput
+}
+
+type PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray []PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableInput
+
+func (PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable)(nil)).Elem()
+}
+
+func (i PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return i.ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput)
+}
+
+type PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput struct{ *pulumi.OutputState }
+
+func (PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable)(nil)).Elem()
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable)(nil)).Elem()
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput() PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput) ToPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput) Index(i pulumi.IntInput) PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable {
+		return vs[0].([]PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable)[vs[1].(int)]
+	}).(PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput)
+}
+
+type PipelineCentralNotificationRuleNotificationCondition struct {
+	ConditionName            string                                                                        `pulumi:"conditionName"`
+	NotificationEventConfigs []PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig `pulumi:"notificationEventConfigs"`
+}
+
+// PipelineCentralNotificationRuleNotificationConditionInput is an input type that accepts PipelineCentralNotificationRuleNotificationConditionArgs and PipelineCentralNotificationRuleNotificationConditionOutput values.
+// You can construct a concrete instance of `PipelineCentralNotificationRuleNotificationConditionInput` via:
+//
+//	PipelineCentralNotificationRuleNotificationConditionArgs{...}
+type PipelineCentralNotificationRuleNotificationConditionInput interface {
+	pulumi.Input
+
+	ToPipelineCentralNotificationRuleNotificationConditionOutput() PipelineCentralNotificationRuleNotificationConditionOutput
+	ToPipelineCentralNotificationRuleNotificationConditionOutputWithContext(context.Context) PipelineCentralNotificationRuleNotificationConditionOutput
+}
+
+type PipelineCentralNotificationRuleNotificationConditionArgs struct {
+	ConditionName            pulumi.StringInput                                                                    `pulumi:"conditionName"`
+	NotificationEventConfigs PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput `pulumi:"notificationEventConfigs"`
+}
+
+func (PipelineCentralNotificationRuleNotificationConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineCentralNotificationRuleNotificationCondition)(nil)).Elem()
+}
+
+func (i PipelineCentralNotificationRuleNotificationConditionArgs) ToPipelineCentralNotificationRuleNotificationConditionOutput() PipelineCentralNotificationRuleNotificationConditionOutput {
+	return i.ToPipelineCentralNotificationRuleNotificationConditionOutputWithContext(context.Background())
+}
+
+func (i PipelineCentralNotificationRuleNotificationConditionArgs) ToPipelineCentralNotificationRuleNotificationConditionOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleNotificationConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineCentralNotificationRuleNotificationConditionOutput)
+}
+
+// PipelineCentralNotificationRuleNotificationConditionArrayInput is an input type that accepts PipelineCentralNotificationRuleNotificationConditionArray and PipelineCentralNotificationRuleNotificationConditionArrayOutput values.
+// You can construct a concrete instance of `PipelineCentralNotificationRuleNotificationConditionArrayInput` via:
+//
+//	PipelineCentralNotificationRuleNotificationConditionArray{ PipelineCentralNotificationRuleNotificationConditionArgs{...} }
+type PipelineCentralNotificationRuleNotificationConditionArrayInput interface {
+	pulumi.Input
+
+	ToPipelineCentralNotificationRuleNotificationConditionArrayOutput() PipelineCentralNotificationRuleNotificationConditionArrayOutput
+	ToPipelineCentralNotificationRuleNotificationConditionArrayOutputWithContext(context.Context) PipelineCentralNotificationRuleNotificationConditionArrayOutput
+}
+
+type PipelineCentralNotificationRuleNotificationConditionArray []PipelineCentralNotificationRuleNotificationConditionInput
+
+func (PipelineCentralNotificationRuleNotificationConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineCentralNotificationRuleNotificationCondition)(nil)).Elem()
+}
+
+func (i PipelineCentralNotificationRuleNotificationConditionArray) ToPipelineCentralNotificationRuleNotificationConditionArrayOutput() PipelineCentralNotificationRuleNotificationConditionArrayOutput {
+	return i.ToPipelineCentralNotificationRuleNotificationConditionArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineCentralNotificationRuleNotificationConditionArray) ToPipelineCentralNotificationRuleNotificationConditionArrayOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleNotificationConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineCentralNotificationRuleNotificationConditionArrayOutput)
+}
+
+type PipelineCentralNotificationRuleNotificationConditionOutput struct{ *pulumi.OutputState }
+
+func (PipelineCentralNotificationRuleNotificationConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineCentralNotificationRuleNotificationCondition)(nil)).Elem()
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionOutput) ToPipelineCentralNotificationRuleNotificationConditionOutput() PipelineCentralNotificationRuleNotificationConditionOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionOutput) ToPipelineCentralNotificationRuleNotificationConditionOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleNotificationConditionOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionOutput) ConditionName() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleNotificationCondition) string { return v.ConditionName }).(pulumi.StringOutput)
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionOutput) NotificationEventConfigs() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleNotificationCondition) []PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
+		return v.NotificationEventConfigs
+	}).(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput)
+}
+
+type PipelineCentralNotificationRuleNotificationConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineCentralNotificationRuleNotificationConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineCentralNotificationRuleNotificationCondition)(nil)).Elem()
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionArrayOutput) ToPipelineCentralNotificationRuleNotificationConditionArrayOutput() PipelineCentralNotificationRuleNotificationConditionArrayOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionArrayOutput) ToPipelineCentralNotificationRuleNotificationConditionArrayOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleNotificationConditionArrayOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionArrayOutput) Index(i pulumi.IntInput) PipelineCentralNotificationRuleNotificationConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineCentralNotificationRuleNotificationCondition {
+		return vs[0].([]PipelineCentralNotificationRuleNotificationCondition)[vs[1].(int)]
+	}).(PipelineCentralNotificationRuleNotificationConditionOutput)
+}
+
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig struct {
+	EntityIdentifiers      []string                                                                                           `pulumi:"entityIdentifiers"`
+	NotificationEntity     string                                                                                             `pulumi:"notificationEntity"`
+	NotificationEvent      string                                                                                             `pulumi:"notificationEvent"`
+	NotificationEventDatas []PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData `pulumi:"notificationEventDatas"`
+}
+
+// PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigInput is an input type that accepts PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs and PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput values.
+// You can construct a concrete instance of `PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigInput` via:
+//
+//	PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{...}
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigInput interface {
+	pulumi.Input
+
+	ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput
+	ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutputWithContext(context.Context) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput
+}
+
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs struct {
+	EntityIdentifiers      pulumi.StringArrayInput                                                                                    `pulumi:"entityIdentifiers"`
+	NotificationEntity     pulumi.StringInput                                                                                         `pulumi:"notificationEntity"`
+	NotificationEvent      pulumi.StringInput                                                                                         `pulumi:"notificationEvent"`
+	NotificationEventDatas PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayInput `pulumi:"notificationEventDatas"`
+}
+
+func (PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig)(nil)).Elem()
+}
+
+func (i PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return i.ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutputWithContext(context.Background())
+}
+
+func (i PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput)
+}
+
+// PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput is an input type that accepts PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray and PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput values.
+// You can construct a concrete instance of `PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput` via:
+//
+//	PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray{ PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{...} }
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput interface {
+	pulumi.Input
+
+	ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput
+	ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutputWithContext(context.Context) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput
+}
+
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray []PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigInput
+
+func (PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig)(nil)).Elem()
+}
+
+func (i PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return i.ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput)
+}
+
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput struct{ *pulumi.OutputState }
+
+func (PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig)(nil)).Elem()
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) EntityIdentifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig) []string {
+		return v.EntityIdentifiers
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) NotificationEntity() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig) string {
+		return v.NotificationEntity
+	}).(pulumi.StringOutput)
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) NotificationEvent() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig) string {
+		return v.NotificationEvent
+	}).(pulumi.StringOutput)
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) NotificationEventDatas() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig) []PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData {
+		return v.NotificationEventDatas
+	}).(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput)
+}
+
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig)(nil)).Elem()
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput) Index(i pulumi.IntInput) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
+		return vs[0].([]PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig)[vs[1].(int)]
+	}).(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput)
+}
+
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData struct {
+	ScopeIdentifiers []string `pulumi:"scopeIdentifiers"`
+	Type             *string  `pulumi:"type"`
+}
+
+// PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataInput is an input type that accepts PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs and PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput values.
+// You can construct a concrete instance of `PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataInput` via:
+//
+//	PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{...}
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataInput interface {
+	pulumi.Input
+
+	ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput
+	ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutputWithContext(context.Context) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput
+}
+
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs struct {
+	ScopeIdentifiers pulumi.StringArrayInput `pulumi:"scopeIdentifiers"`
+	Type             pulumi.StringPtrInput   `pulumi:"type"`
+}
+
+func (PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData)(nil)).Elem()
+}
+
+func (i PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput {
+	return i.ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutputWithContext(context.Background())
+}
+
+func (i PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput)
+}
+
+// PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayInput is an input type that accepts PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray and PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput values.
+// You can construct a concrete instance of `PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayInput` via:
+//
+//	PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray{ PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{...} }
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayInput interface {
+	pulumi.Input
+
+	ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput
+	ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutputWithContext(context.Context) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput
+}
+
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray []PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataInput
+
+func (PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData)(nil)).Elem()
+}
+
+func (i PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput {
+	return i.ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput)
+}
+
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput struct{ *pulumi.OutputState }
+
+func (PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData)(nil)).Elem()
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput) ScopeIdentifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData) []string {
+		return v.ScopeIdentifiers
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData)(nil)).Elem()
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput() PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput) ToPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutputWithContext(ctx context.Context) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput {
+	return o
+}
+
+func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput) Index(i pulumi.IntInput) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData {
+		return vs[0].([]PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData)[vs[1].(int)]
+	}).(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput)
 }
 
 type PipelineFiltersFilterProperties struct {
@@ -23029,7 +23784,9 @@ type GetAzureCloudProviderConnectorCredential struct {
 	AzureInheritFromDelegateDetails []GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetail `pulumi:"azureInheritFromDelegateDetails"`
 	// Authenticate to Azure Cloud Provider using manual details.
 	AzureManualDetails []GetAzureCloudProviderConnectorCredentialAzureManualDetail `pulumi:"azureManualDetails"`
-	// Type can either be InheritFromDelegate or ManualConfig.
+	// Authenticate to Azure Cloud Provider using OIDC Authentication.
+	AzureOidcSpecs []GetAzureCloudProviderConnectorCredentialAzureOidcSpec `pulumi:"azureOidcSpecs"`
+	// Type can be InheritFromDelegate, ManualConfig or OidcAuthentication.
 	Type string `pulumi:"type"`
 }
 
@@ -23049,7 +23806,9 @@ type GetAzureCloudProviderConnectorCredentialArgs struct {
 	AzureInheritFromDelegateDetails GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailArrayInput `pulumi:"azureInheritFromDelegateDetails"`
 	// Authenticate to Azure Cloud Provider using manual details.
 	AzureManualDetails GetAzureCloudProviderConnectorCredentialAzureManualDetailArrayInput `pulumi:"azureManualDetails"`
-	// Type can either be InheritFromDelegate or ManualConfig.
+	// Authenticate to Azure Cloud Provider using OIDC Authentication.
+	AzureOidcSpecs GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayInput `pulumi:"azureOidcSpecs"`
+	// Type can be InheritFromDelegate, ManualConfig or OidcAuthentication.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -23118,7 +23877,14 @@ func (o GetAzureCloudProviderConnectorCredentialOutput) AzureManualDetails() Get
 	}).(GetAzureCloudProviderConnectorCredentialAzureManualDetailArrayOutput)
 }
 
-// Type can either be InheritFromDelegate or ManualConfig.
+// Authenticate to Azure Cloud Provider using OIDC Authentication.
+func (o GetAzureCloudProviderConnectorCredentialOutput) AzureOidcSpecs() GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput {
+	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredential) []GetAzureCloudProviderConnectorCredentialAzureOidcSpec {
+		return v.AzureOidcSpecs
+	}).(GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput)
+}
+
+// Type can be InheritFromDelegate, ManualConfig or OidcAuthentication.
 func (o GetAzureCloudProviderConnectorCredentialOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredential) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -23883,6 +24649,121 @@ func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClient
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKey {
 		return vs[0].([]GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKey)[vs[1].(int)]
 	}).(GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKeyOutput)
+}
+
+type GetAzureCloudProviderConnectorCredentialAzureOidcSpec struct {
+	// Application ID of the Azure App.
+	ApplicationId string `pulumi:"applicationId"`
+	// The Azure Audience.
+	Audience string `pulumi:"audience"`
+	// The Azure Active Directory (AAD) directory ID where you created your application.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// GetAzureCloudProviderConnectorCredentialAzureOidcSpecInput is an input type that accepts GetAzureCloudProviderConnectorCredentialAzureOidcSpecArgs and GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput values.
+// You can construct a concrete instance of `GetAzureCloudProviderConnectorCredentialAzureOidcSpecInput` via:
+//
+//	GetAzureCloudProviderConnectorCredentialAzureOidcSpecArgs{...}
+type GetAzureCloudProviderConnectorCredentialAzureOidcSpecInput interface {
+	pulumi.Input
+
+	ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput() GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput
+	ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecOutputWithContext(context.Context) GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput
+}
+
+type GetAzureCloudProviderConnectorCredentialAzureOidcSpecArgs struct {
+	// Application ID of the Azure App.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// The Azure Audience.
+	Audience pulumi.StringInput `pulumi:"audience"`
+	// The Azure Active Directory (AAD) directory ID where you created your application.
+	TenantId pulumi.StringInput `pulumi:"tenantId"`
+}
+
+func (GetAzureCloudProviderConnectorCredentialAzureOidcSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAzureCloudProviderConnectorCredentialAzureOidcSpec)(nil)).Elem()
+}
+
+func (i GetAzureCloudProviderConnectorCredentialAzureOidcSpecArgs) ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput() GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput {
+	return i.ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecOutputWithContext(context.Background())
+}
+
+func (i GetAzureCloudProviderConnectorCredentialAzureOidcSpecArgs) ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecOutputWithContext(ctx context.Context) GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput)
+}
+
+// GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayInput is an input type that accepts GetAzureCloudProviderConnectorCredentialAzureOidcSpecArray and GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput values.
+// You can construct a concrete instance of `GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayInput` via:
+//
+//	GetAzureCloudProviderConnectorCredentialAzureOidcSpecArray{ GetAzureCloudProviderConnectorCredentialAzureOidcSpecArgs{...} }
+type GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput() GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput
+	ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutputWithContext(context.Context) GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput
+}
+
+type GetAzureCloudProviderConnectorCredentialAzureOidcSpecArray []GetAzureCloudProviderConnectorCredentialAzureOidcSpecInput
+
+func (GetAzureCloudProviderConnectorCredentialAzureOidcSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAzureCloudProviderConnectorCredentialAzureOidcSpec)(nil)).Elem()
+}
+
+func (i GetAzureCloudProviderConnectorCredentialAzureOidcSpecArray) ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput() GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput {
+	return i.ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetAzureCloudProviderConnectorCredentialAzureOidcSpecArray) ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutputWithContext(ctx context.Context) GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput)
+}
+
+type GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput struct{ *pulumi.OutputState }
+
+func (GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAzureCloudProviderConnectorCredentialAzureOidcSpec)(nil)).Elem()
+}
+
+func (o GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput) ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput() GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput {
+	return o
+}
+
+func (o GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput) ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecOutputWithContext(ctx context.Context) GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput {
+	return o
+}
+
+// Application ID of the Azure App.
+func (o GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureOidcSpec) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The Azure Audience.
+func (o GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureOidcSpec) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+// The Azure Active Directory (AAD) directory ID where you created your application.
+func (o GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureOidcSpec) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+type GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAzureCloudProviderConnectorCredentialAzureOidcSpec)(nil)).Elem()
+}
+
+func (o GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput) ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput() GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput {
+	return o
+}
+
+func (o GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput) ToGetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutputWithContext(ctx context.Context) GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput {
+	return o
+}
+
+func (o GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput) Index(i pulumi.IntInput) GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAzureCloudProviderConnectorCredentialAzureOidcSpec {
+		return vs[0].([]GetAzureCloudProviderConnectorCredentialAzureOidcSpec)[vs[1].(int)]
+	}).(GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput)
 }
 
 type GetBitbucketConnectorApiAuthentication struct {
@@ -39999,6 +40880,595 @@ func (o GetPermissionsPermissionArrayOutput) Index(i pulumi.IntInput) GetPermiss
 	}).(GetPermissionsPermissionOutput)
 }
 
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRef struct {
+	TemplateRef  string                                                                    `pulumi:"templateRef"`
+	Variables    []GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable `pulumi:"variables"`
+	VersionLabel string                                                                    `pulumi:"versionLabel"`
+}
+
+// GetPipelineCentralNotificationRuleCustomNotificationTemplateRefInput is an input type that accepts GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs and GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput values.
+// You can construct a concrete instance of `GetPipelineCentralNotificationRuleCustomNotificationTemplateRefInput` via:
+//
+//	GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs{...}
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRefInput interface {
+	pulumi.Input
+
+	ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput
+	ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutputWithContext(context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput
+}
+
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs struct {
+	TemplateRef  pulumi.StringInput                                                                `pulumi:"templateRef"`
+	Variables    GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput `pulumi:"variables"`
+	VersionLabel pulumi.StringInput                                                                `pulumi:"versionLabel"`
+}
+
+func (GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineCentralNotificationRuleCustomNotificationTemplateRef)(nil)).Elem()
+}
+
+func (i GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return i.ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutputWithContext(context.Background())
+}
+
+func (i GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput)
+}
+
+func (i GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return i.ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(context.Background())
+}
+
+func (i GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput).ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx)
+}
+
+// GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrInput is an input type that accepts GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs, GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtr and GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput values.
+// You can construct a concrete instance of `GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrInput` via:
+//
+//	        GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrInput interface {
+	pulumi.Input
+
+	ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput
+	ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput
+}
+
+type getPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrType GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs
+
+func GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtr(v *GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrInput {
+	return (*getPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrType)(v)
+}
+
+func (*getPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPipelineCentralNotificationRuleCustomNotificationTemplateRef)(nil)).Elem()
+}
+
+func (i *getPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrType) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return i.ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(context.Background())
+}
+
+func (i *getPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrType) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput)
+}
+
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineCentralNotificationRuleCustomNotificationTemplateRef)(nil)).Elem()
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return o.ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(context.Background())
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPipelineCentralNotificationRuleCustomNotificationTemplateRef) *GetPipelineCentralNotificationRuleCustomNotificationTemplateRef {
+		return &v
+	}).(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput)
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) TemplateRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleCustomNotificationTemplateRef) string { return v.TemplateRef }).(pulumi.StringOutput)
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) Variables() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleCustomNotificationTemplateRef) []GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable {
+		return v.Variables
+	}).(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput)
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput) VersionLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleCustomNotificationTemplateRef) string { return v.VersionLabel }).(pulumi.StringOutput)
+}
+
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPipelineCentralNotificationRuleCustomNotificationTemplateRef)(nil)).Elem()
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) Elem() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return o.ApplyT(func(v *GetPipelineCentralNotificationRuleCustomNotificationTemplateRef) GetPipelineCentralNotificationRuleCustomNotificationTemplateRef {
+		if v != nil {
+			return *v
+		}
+		var ret GetPipelineCentralNotificationRuleCustomNotificationTemplateRef
+		return ret
+	}).(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput)
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) TemplateRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPipelineCentralNotificationRuleCustomNotificationTemplateRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TemplateRef
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) Variables() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return o.ApplyT(func(v *GetPipelineCentralNotificationRuleCustomNotificationTemplateRef) []GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable {
+		if v == nil {
+			return nil
+		}
+		return v.Variables
+	}).(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput)
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) VersionLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPipelineCentralNotificationRuleCustomNotificationTemplateRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VersionLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable struct {
+	Name  string  `pulumi:"name"`
+	Type  *string `pulumi:"type"`
+	Value string  `pulumi:"value"`
+}
+
+// GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableInput is an input type that accepts GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs and GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput values.
+// You can construct a concrete instance of `GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableInput` via:
+//
+//	GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs{...}
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableInput interface {
+	pulumi.Input
+
+	ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput
+	ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutputWithContext(context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput
+}
+
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs struct {
+	Name  pulumi.StringInput    `pulumi:"name"`
+	Type  pulumi.StringPtrInput `pulumi:"type"`
+	Value pulumi.StringInput    `pulumi:"value"`
+}
+
+func (GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable)(nil)).Elem()
+}
+
+func (i GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return i.ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutputWithContext(context.Background())
+}
+
+func (i GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput)
+}
+
+// GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput is an input type that accepts GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray and GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput values.
+// You can construct a concrete instance of `GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput` via:
+//
+//	GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray{ GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs{...} }
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput
+	ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutputWithContext(context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput
+}
+
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray []GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableInput
+
+func (GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable)(nil)).Elem()
+}
+
+func (i GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return i.ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput)
+}
+
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable)(nil)).Elem()
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable)(nil)).Elem()
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput() GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput) ToGetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput) Index(i pulumi.IntInput) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable {
+		return vs[0].([]GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable)[vs[1].(int)]
+	}).(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput)
+}
+
+type GetPipelineCentralNotificationRuleNotificationCondition struct {
+	ConditionName            string                                                                           `pulumi:"conditionName"`
+	NotificationEventConfigs []GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig `pulumi:"notificationEventConfigs"`
+}
+
+// GetPipelineCentralNotificationRuleNotificationConditionInput is an input type that accepts GetPipelineCentralNotificationRuleNotificationConditionArgs and GetPipelineCentralNotificationRuleNotificationConditionOutput values.
+// You can construct a concrete instance of `GetPipelineCentralNotificationRuleNotificationConditionInput` via:
+//
+//	GetPipelineCentralNotificationRuleNotificationConditionArgs{...}
+type GetPipelineCentralNotificationRuleNotificationConditionInput interface {
+	pulumi.Input
+
+	ToGetPipelineCentralNotificationRuleNotificationConditionOutput() GetPipelineCentralNotificationRuleNotificationConditionOutput
+	ToGetPipelineCentralNotificationRuleNotificationConditionOutputWithContext(context.Context) GetPipelineCentralNotificationRuleNotificationConditionOutput
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionArgs struct {
+	ConditionName            pulumi.StringInput                                                                       `pulumi:"conditionName"`
+	NotificationEventConfigs GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput `pulumi:"notificationEventConfigs"`
+}
+
+func (GetPipelineCentralNotificationRuleNotificationConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineCentralNotificationRuleNotificationCondition)(nil)).Elem()
+}
+
+func (i GetPipelineCentralNotificationRuleNotificationConditionArgs) ToGetPipelineCentralNotificationRuleNotificationConditionOutput() GetPipelineCentralNotificationRuleNotificationConditionOutput {
+	return i.ToGetPipelineCentralNotificationRuleNotificationConditionOutputWithContext(context.Background())
+}
+
+func (i GetPipelineCentralNotificationRuleNotificationConditionArgs) ToGetPipelineCentralNotificationRuleNotificationConditionOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleNotificationConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineCentralNotificationRuleNotificationConditionOutput)
+}
+
+// GetPipelineCentralNotificationRuleNotificationConditionArrayInput is an input type that accepts GetPipelineCentralNotificationRuleNotificationConditionArray and GetPipelineCentralNotificationRuleNotificationConditionArrayOutput values.
+// You can construct a concrete instance of `GetPipelineCentralNotificationRuleNotificationConditionArrayInput` via:
+//
+//	GetPipelineCentralNotificationRuleNotificationConditionArray{ GetPipelineCentralNotificationRuleNotificationConditionArgs{...} }
+type GetPipelineCentralNotificationRuleNotificationConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineCentralNotificationRuleNotificationConditionArrayOutput() GetPipelineCentralNotificationRuleNotificationConditionArrayOutput
+	ToGetPipelineCentralNotificationRuleNotificationConditionArrayOutputWithContext(context.Context) GetPipelineCentralNotificationRuleNotificationConditionArrayOutput
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionArray []GetPipelineCentralNotificationRuleNotificationConditionInput
+
+func (GetPipelineCentralNotificationRuleNotificationConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineCentralNotificationRuleNotificationCondition)(nil)).Elem()
+}
+
+func (i GetPipelineCentralNotificationRuleNotificationConditionArray) ToGetPipelineCentralNotificationRuleNotificationConditionArrayOutput() GetPipelineCentralNotificationRuleNotificationConditionArrayOutput {
+	return i.ToGetPipelineCentralNotificationRuleNotificationConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineCentralNotificationRuleNotificationConditionArray) ToGetPipelineCentralNotificationRuleNotificationConditionArrayOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleNotificationConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineCentralNotificationRuleNotificationConditionArrayOutput)
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineCentralNotificationRuleNotificationConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineCentralNotificationRuleNotificationCondition)(nil)).Elem()
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionOutput) ToGetPipelineCentralNotificationRuleNotificationConditionOutput() GetPipelineCentralNotificationRuleNotificationConditionOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionOutput) ToGetPipelineCentralNotificationRuleNotificationConditionOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleNotificationConditionOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionOutput) ConditionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleNotificationCondition) string { return v.ConditionName }).(pulumi.StringOutput)
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionOutput) NotificationEventConfigs() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleNotificationCondition) []GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
+		return v.NotificationEventConfigs
+	}).(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput)
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineCentralNotificationRuleNotificationConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineCentralNotificationRuleNotificationCondition)(nil)).Elem()
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionArrayOutput) ToGetPipelineCentralNotificationRuleNotificationConditionArrayOutput() GetPipelineCentralNotificationRuleNotificationConditionArrayOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionArrayOutput) ToGetPipelineCentralNotificationRuleNotificationConditionArrayOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleNotificationConditionArrayOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionArrayOutput) Index(i pulumi.IntInput) GetPipelineCentralNotificationRuleNotificationConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineCentralNotificationRuleNotificationCondition {
+		return vs[0].([]GetPipelineCentralNotificationRuleNotificationCondition)[vs[1].(int)]
+	}).(GetPipelineCentralNotificationRuleNotificationConditionOutput)
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig struct {
+	NotificationEntity     string                                                                                                `pulumi:"notificationEntity"`
+	NotificationEvent      string                                                                                                `pulumi:"notificationEvent"`
+	NotificationEventDatas []GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData `pulumi:"notificationEventDatas"`
+}
+
+// GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigInput is an input type that accepts GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs and GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput values.
+// You can construct a concrete instance of `GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigInput` via:
+//
+//	GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{...}
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigInput interface {
+	pulumi.Input
+
+	ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput
+	ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutputWithContext(context.Context) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs struct {
+	NotificationEntity     pulumi.StringInput                                                                                            `pulumi:"notificationEntity"`
+	NotificationEvent      pulumi.StringInput                                                                                            `pulumi:"notificationEvent"`
+	NotificationEventDatas GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayInput `pulumi:"notificationEventDatas"`
+}
+
+func (GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig)(nil)).Elem()
+}
+
+func (i GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return i.ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutputWithContext(context.Background())
+}
+
+func (i GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput)
+}
+
+// GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput is an input type that accepts GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray and GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput values.
+// You can construct a concrete instance of `GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput` via:
+//
+//	GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray{ GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{...} }
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput
+	ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutputWithContext(context.Context) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray []GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigInput
+
+func (GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig)(nil)).Elem()
+}
+
+func (i GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return i.ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput)
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig)(nil)).Elem()
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) NotificationEntity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig) string {
+		return v.NotificationEntity
+	}).(pulumi.StringOutput)
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) NotificationEvent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig) string {
+		return v.NotificationEvent
+	}).(pulumi.StringOutput)
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) NotificationEventDatas() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig) []GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData {
+		return v.NotificationEventDatas
+	}).(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput)
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig)(nil)).Elem()
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput) Index(i pulumi.IntInput) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
+		return vs[0].([]GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig)[vs[1].(int)]
+	}).(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput)
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData struct {
+	ScopeIdentifiers []string `pulumi:"scopeIdentifiers"`
+	Type             *string  `pulumi:"type"`
+}
+
+// GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataInput is an input type that accepts GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs and GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput values.
+// You can construct a concrete instance of `GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataInput` via:
+//
+//	GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{...}
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataInput interface {
+	pulumi.Input
+
+	ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput
+	ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutputWithContext(context.Context) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs struct {
+	ScopeIdentifiers pulumi.StringArrayInput `pulumi:"scopeIdentifiers"`
+	Type             pulumi.StringPtrInput   `pulumi:"type"`
+}
+
+func (GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData)(nil)).Elem()
+}
+
+func (i GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput {
+	return i.ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutputWithContext(context.Background())
+}
+
+func (i GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput)
+}
+
+// GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayInput is an input type that accepts GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray and GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput values.
+// You can construct a concrete instance of `GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayInput` via:
+//
+//	GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray{ GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{...} }
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput
+	ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutputWithContext(context.Context) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray []GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataInput
+
+func (GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData)(nil)).Elem()
+}
+
+func (i GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput {
+	return i.ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput)
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData)(nil)).Elem()
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput) ScopeIdentifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData) []string {
+		return v.ScopeIdentifiers
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData)(nil)).Elem()
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput() GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput) ToGetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutputWithContext(ctx context.Context) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput {
+	return o
+}
+
+func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput) Index(i pulumi.IntInput) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData {
+		return vs[0].([]GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData)[vs[1].(int)]
+	}).(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput)
+}
+
 type GetPipelineFiltersFilterProperty struct {
 	// description of the pipline filter.
 	Description string `pulumi:"description"`
@@ -46172,6 +47642,8 @@ func (o GetWorkspaceTerraformVariableFileArrayOutput) Index(i pulumi.IntInput) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepArgs{})
@@ -46298,6 +47770,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OciHelmConnectorCredentialsPtrInput)(nil)).Elem(), OciHelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OverridesGitDetailsInput)(nil)).Elem(), OverridesGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OverridesGitDetailsPtrInput)(nil)).Elem(), OverridesGitDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineCentralNotificationRuleCustomNotificationTemplateRefInput)(nil)).Elem(), PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrInput)(nil)).Elem(), PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableInput)(nil)).Elem(), PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput)(nil)).Elem(), PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineCentralNotificationRuleNotificationConditionInput)(nil)).Elem(), PipelineCentralNotificationRuleNotificationConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineCentralNotificationRuleNotificationConditionArrayInput)(nil)).Elem(), PipelineCentralNotificationRuleNotificationConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigInput)(nil)).Elem(), PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput)(nil)).Elem(), PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataInput)(nil)).Elem(), PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayInput)(nil)).Elem(), PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineFiltersFilterPropertiesInput)(nil)).Elem(), PipelineFiltersFilterPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineFiltersFilterPropertiesPtrInput)(nil)).Elem(), PipelineFiltersFilterPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineFiltersFilterPropertiesModulePropertiesInput)(nil)).Elem(), PipelineFiltersFilterPropertiesModulePropertiesArgs{})
@@ -46470,6 +47952,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCertArrayInput)(nil)).Elem(), GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKeyInput)(nil)).Elem(), GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKeyArrayInput)(nil)).Elem(), GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudProviderConnectorCredentialAzureOidcSpecInput)(nil)).Elem(), GetAzureCloudProviderConnectorCredentialAzureOidcSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayInput)(nil)).Elem(), GetAzureCloudProviderConnectorCredentialAzureOidcSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorApiAuthenticationInput)(nil)).Elem(), GetBitbucketConnectorApiAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorApiAuthenticationArrayInput)(nil)).Elem(), GetBitbucketConnectorApiAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorCredentialInput)(nil)).Elem(), GetBitbucketConnectorCredentialArgs{})
@@ -46728,6 +48212,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOverridesGitDetailsPtrInput)(nil)).Elem(), GetOverridesGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPermissionsPermissionInput)(nil)).Elem(), GetPermissionsPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPermissionsPermissionArrayInput)(nil)).Elem(), GetPermissionsPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineCentralNotificationRuleCustomNotificationTemplateRefInput)(nil)).Elem(), GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrInput)(nil)).Elem(), GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableInput)(nil)).Elem(), GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput)(nil)).Elem(), GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineCentralNotificationRuleNotificationConditionInput)(nil)).Elem(), GetPipelineCentralNotificationRuleNotificationConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineCentralNotificationRuleNotificationConditionArrayInput)(nil)).Elem(), GetPipelineCentralNotificationRuleNotificationConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigInput)(nil)).Elem(), GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput)(nil)).Elem(), GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataInput)(nil)).Elem(), GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayInput)(nil)).Elem(), GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineFiltersFilterPropertyInput)(nil)).Elem(), GetPipelineFiltersFilterPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineFiltersFilterPropertyArrayInput)(nil)).Elem(), GetPipelineFiltersFilterPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineFiltersFilterPropertyModulePropertiesInput)(nil)).Elem(), GetPipelineFiltersFilterPropertyModulePropertiesArgs{})
@@ -46825,6 +48319,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArray{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecStrategyOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecStrategyPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncArrayOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepOutput{})
@@ -46951,6 +48447,16 @@ func init() {
 	pulumi.RegisterOutputType(OciHelmConnectorCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(OverridesGitDetailsOutput{})
 	pulumi.RegisterOutputType(OverridesGitDetailsPtrOutput{})
+	pulumi.RegisterOutputType(PipelineCentralNotificationRuleCustomNotificationTemplateRefOutput{})
+	pulumi.RegisterOutputType(PipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput{})
+	pulumi.RegisterOutputType(PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput{})
+	pulumi.RegisterOutputType(PipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput{})
+	pulumi.RegisterOutputType(PipelineCentralNotificationRuleNotificationConditionOutput{})
+	pulumi.RegisterOutputType(PipelineCentralNotificationRuleNotificationConditionArrayOutput{})
+	pulumi.RegisterOutputType(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput{})
+	pulumi.RegisterOutputType(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput{})
+	pulumi.RegisterOutputType(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput{})
+	pulumi.RegisterOutputType(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput{})
 	pulumi.RegisterOutputType(PipelineFiltersFilterPropertiesOutput{})
 	pulumi.RegisterOutputType(PipelineFiltersFilterPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(PipelineFiltersFilterPropertiesModulePropertiesOutput{})
@@ -47123,6 +48629,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCertArrayOutput{})
 	pulumi.RegisterOutputType(GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKeyOutput{})
 	pulumi.RegisterOutputType(GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetAzureCloudProviderConnectorCredentialAzureOidcSpecOutput{})
+	pulumi.RegisterOutputType(GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetBitbucketConnectorApiAuthenticationOutput{})
 	pulumi.RegisterOutputType(GetBitbucketConnectorApiAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetBitbucketConnectorCredentialOutput{})
@@ -47381,6 +48889,16 @@ func init() {
 	pulumi.RegisterOutputType(GetOverridesGitDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GetPermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(GetPermissionsPermissionArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefOutput{})
+	pulumi.RegisterOutputType(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrOutput{})
+	pulumi.RegisterOutputType(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableOutput{})
+	pulumi.RegisterOutputType(GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineCentralNotificationRuleNotificationConditionOutput{})
+	pulumi.RegisterOutputType(GetPipelineCentralNotificationRuleNotificationConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput{})
+	pulumi.RegisterOutputType(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataOutput{})
+	pulumi.RegisterOutputType(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayOutput{})
 	pulumi.RegisterOutputType(GetPipelineFiltersFilterPropertyOutput{})
 	pulumi.RegisterOutputType(GetPipelineFiltersFilterPropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetPipelineFiltersFilterPropertyModulePropertiesOutput{})

@@ -22,7 +22,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly Outputs.AzureCloudProviderConnectorCredentialsAzureManualDetails? AzureManualDetails;
         /// <summary>
-        /// Type can either be InheritFromDelegate or ManualConfig.
+        /// Authenticate to Azure Cloud Provider using OIDC.
+        /// </summary>
+        public readonly Outputs.AzureCloudProviderConnectorCredentialsAzureOidcSpec? AzureOidcSpec;
+        /// <summary>
+        /// Type can be InheritFromDelegate, ManualConfig or OidcAuthentication
         /// </summary>
         public readonly string Type;
 
@@ -32,10 +36,13 @@ namespace Pulumi.Harness.Platform.Outputs
 
             Outputs.AzureCloudProviderConnectorCredentialsAzureManualDetails? azureManualDetails,
 
+            Outputs.AzureCloudProviderConnectorCredentialsAzureOidcSpec? azureOidcSpec,
+
             string type)
         {
             AzureInheritFromDelegateDetails = azureInheritFromDelegateDetails;
             AzureManualDetails = azureManualDetails;
+            AzureOidcSpec = azureOidcSpec;
             Type = type;
         }
     }

@@ -146,6 +146,32 @@ namespace Pulumi.Harness.Platform
     ///         },
     ///     });
     /// 
+    ///     var oidcAuthentication = new Harness.Platform.AzureCloudProviderConnector("oidc_authentication", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Credentials = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsArgs
+    ///         {
+    ///             Type = "OidcAuthentication",
+    ///             AzureOidcSpec = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureOidcSpecArgs
+    ///             {
+    ///                 ApplicationId = "application_id",
+    ///                 TenantId = "tenant_id",
+    ///                 Audience = "audience",
+    ///             },
+    ///         },
+    ///         AzureEnvironmentType = "AZURE",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 

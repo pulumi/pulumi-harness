@@ -168,6 +168,8 @@ import com.pulumi.harness.platform.inputs.GetPagerdutyConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
 import com.pulumi.harness.platform.inputs.GetPermissionsPlainArgs;
 import com.pulumi.harness.platform.inputs.GetPipelineArgs;
+import com.pulumi.harness.platform.inputs.GetPipelineCentralNotificationRuleArgs;
+import com.pulumi.harness.platform.inputs.GetPipelineCentralNotificationRulePlainArgs;
 import com.pulumi.harness.platform.inputs.GetPipelineFiltersArgs;
 import com.pulumi.harness.platform.inputs.GetPipelineFiltersPlainArgs;
 import com.pulumi.harness.platform.inputs.GetPipelineListArgs;
@@ -325,6 +327,7 @@ import com.pulumi.harness.platform.outputs.GetOrganizationResult;
 import com.pulumi.harness.platform.outputs.GetOverridesResult;
 import com.pulumi.harness.platform.outputs.GetPagerdutyConnectorResult;
 import com.pulumi.harness.platform.outputs.GetPermissionsResult;
+import com.pulumi.harness.platform.outputs.GetPipelineCentralNotificationRuleResult;
 import com.pulumi.harness.platform.outputs.GetPipelineFiltersResult;
 import com.pulumi.harness.platform.outputs.GetPipelineListResult;
 import com.pulumi.harness.platform.outputs.GetPipelineResult;
@@ -2724,6 +2727,8 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invokeAsync("harness:platform/getCentralNotificationChannel:getCentralNotificationChannel", TypeShape.of(GetCentralNotificationChannelResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+     * 
      * Data source for retrieving a Notification Rule.
      * 
      */
@@ -2731,6 +2736,8 @@ public final class PlatformFunctions {
         return getCentralNotificationRule(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+     * 
      * Data source for retrieving a Notification Rule.
      * 
      */
@@ -2738,6 +2745,8 @@ public final class PlatformFunctions {
         return getCentralNotificationRulePlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+     * 
      * Data source for retrieving a Notification Rule.
      * 
      */
@@ -2745,6 +2754,8 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invoke("harness:platform/getCentralNotificationRule:getCentralNotificationRule", TypeShape.of(GetCentralNotificationRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+     * 
      * Data source for retrieving a Notification Rule.
      * 
      */
@@ -2752,6 +2763,8 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invoke("harness:platform/getCentralNotificationRule:getCentralNotificationRule", TypeShape.of(GetCentralNotificationRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+     * 
      * Data source for retrieving a Notification Rule.
      * 
      */
@@ -13921,6 +13934,41 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetPipelineResult> getPipelinePlain(GetPipelinePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getPipeline:getPipeline", TypeShape.of(GetPipelineResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     */
+    public static Output<GetPipelineCentralNotificationRuleResult> getPipelineCentralNotificationRule(GetPipelineCentralNotificationRuleArgs args) {
+        return getPipelineCentralNotificationRule(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     */
+    public static CompletableFuture<GetPipelineCentralNotificationRuleResult> getPipelineCentralNotificationRulePlain(GetPipelineCentralNotificationRulePlainArgs args) {
+        return getPipelineCentralNotificationRulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     */
+    public static Output<GetPipelineCentralNotificationRuleResult> getPipelineCentralNotificationRule(GetPipelineCentralNotificationRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getPipelineCentralNotificationRule:getPipelineCentralNotificationRule", TypeShape.of(GetPipelineCentralNotificationRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     */
+    public static Output<GetPipelineCentralNotificationRuleResult> getPipelineCentralNotificationRule(GetPipelineCentralNotificationRuleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getPipelineCentralNotificationRule:getPipelineCentralNotificationRule", TypeShape.of(GetPipelineCentralNotificationRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     */
+    public static CompletableFuture<GetPipelineCentralNotificationRuleResult> getPipelineCentralNotificationRulePlain(GetPipelineCentralNotificationRulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getPipelineCentralNotificationRule:getPipelineCentralNotificationRule", TypeShape.of(GetPipelineCentralNotificationRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness Pipeline Filter.

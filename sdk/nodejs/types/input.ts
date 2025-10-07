@@ -3370,7 +3370,11 @@ export namespace platform {
          */
         azureManualDetails?: pulumi.Input<inputs.platform.AzureCloudProviderConnectorCredentialsAzureManualDetails>;
         /**
-         * Type can either be InheritFromDelegate or ManualConfig.
+         * Authenticate to Azure Cloud Provider using OIDC.
+         */
+        azureOidcSpec?: pulumi.Input<inputs.platform.AzureCloudProviderConnectorCredentialsAzureOidcSpec>;
+        /**
+         * Type can be InheritFromDelegate, ManualConfig or OidcAuthentication
          */
         type: pulumi.Input<string>;
     }
@@ -3442,6 +3446,21 @@ export namespace platform {
          * Reference of the secret for the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         secretRef?: pulumi.Input<string>;
+    }
+
+    export interface AzureCloudProviderConnectorCredentialsAzureOidcSpec {
+        /**
+         * Application ID of the Azure App.
+         */
+        applicationId?: pulumi.Input<string>;
+        /**
+         * The Azure Audience.
+         */
+        audience?: pulumi.Input<string>;
+        /**
+         * The Azure Active Directory (AAD) directory ID where you created your application.
+         */
+        tenantId?: pulumi.Input<string>;
     }
 
     export interface BitbucketConnectorApiAuthentication {
@@ -5131,6 +5150,62 @@ export namespace platform {
          * Repo name of remote service override
          */
         repoName?: pulumi.Input<string>;
+    }
+
+    export interface GetPipelineCentralNotificationRuleCustomNotificationTemplateRef {
+        templateRef: string;
+        variables?: inputs.platform.GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable[];
+        versionLabel: string;
+    }
+
+    export interface GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs {
+        templateRef: pulumi.Input<string>;
+        variables?: pulumi.Input<pulumi.Input<inputs.platform.GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs>[]>;
+        versionLabel: pulumi.Input<string>;
+    }
+
+    export interface GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariable {
+        name: string;
+        type?: string;
+        value: string;
+    }
+
+    export interface GetPipelineCentralNotificationRuleCustomNotificationTemplateRefVariableArgs {
+        name: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface GetPipelineCentralNotificationRuleNotificationCondition {
+        conditionName: string;
+        notificationEventConfigs: inputs.platform.GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig[];
+    }
+
+    export interface GetPipelineCentralNotificationRuleNotificationConditionArgs {
+        conditionName: pulumi.Input<string>;
+        notificationEventConfigs: pulumi.Input<pulumi.Input<inputs.platform.GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs>[]>;
+    }
+
+    export interface GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
+        notificationEntity: string;
+        notificationEvent: string;
+        notificationEventDatas?: inputs.platform.GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData[];
+    }
+
+    export interface GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs {
+        notificationEntity: pulumi.Input<string>;
+        notificationEvent: pulumi.Input<string>;
+        notificationEventDatas?: pulumi.Input<pulumi.Input<inputs.platform.GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs>[]>;
+    }
+
+    export interface GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData {
+        scopeIdentifiers?: string[];
+        type?: string;
+    }
+
+    export interface GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs {
+        scopeIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
+        type?: pulumi.Input<string>;
     }
 
     export interface GetPipelineGitDetails {
@@ -33269,6 +33344,35 @@ export namespace platform {
          * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
         storeType?: pulumi.Input<string>;
+    }
+
+    export interface PipelineCentralNotificationRuleCustomNotificationTemplateRef {
+        templateRef: pulumi.Input<string>;
+        variables?: pulumi.Input<pulumi.Input<inputs.platform.PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable>[]>;
+        versionLabel: pulumi.Input<string>;
+    }
+
+    export interface PipelineCentralNotificationRuleCustomNotificationTemplateRefVariable {
+        name: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface PipelineCentralNotificationRuleNotificationCondition {
+        conditionName: pulumi.Input<string>;
+        notificationEventConfigs: pulumi.Input<pulumi.Input<inputs.platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig>[]>;
+    }
+
+    export interface PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
+        entityIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
+        notificationEntity: pulumi.Input<string>;
+        notificationEvent: pulumi.Input<string>;
+        notificationEventDatas?: pulumi.Input<pulumi.Input<inputs.platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData>[]>;
+    }
+
+    export interface PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData {
+        scopeIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
+        type?: pulumi.Input<string>;
     }
 
     export interface PipelineFiltersFilterProperties {

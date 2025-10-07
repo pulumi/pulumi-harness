@@ -57,7 +57,7 @@ class WorkspaceArgs:
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
+        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
         :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
@@ -266,7 +266,7 @@ class WorkspaceArgs:
     @pulumi.getter(name="providerConnector")
     def provider_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Provider connector is the reference to the connector for the infrastructure provider
+        Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
         """
         return pulumi.get(self, "provider_connector")
 
@@ -389,7 +389,7 @@ class _WorkspaceState:
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
+        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
         :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
@@ -556,7 +556,7 @@ class _WorkspaceState:
     @pulumi.getter(name="providerConnector")
     def provider_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Provider connector is the reference to the connector for the infrastructure provider
+        Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
         """
         return pulumi.get(self, "provider_connector")
 
@@ -802,7 +802,21 @@ class Workspace(pulumi.CustomResource):
                 "drift": "drift_pipeline_id",
                 "plan": "plan_pipeline_id",
                 "apply": "apply_pipeline_id",
-            })
+            },
+            connectors=[
+                {
+                    "connector_ref": "awsconnector",
+                    "type": "aws",
+                },
+                {
+                    "connector_ref": "gcpconnector",
+                    "type": "gcp",
+                },
+                {
+                    "connector_ref": "azureconnector",
+                    "type": "azure",
+                },
+            ])
         ```
 
         ## Import
@@ -824,7 +838,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
+        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
         :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
@@ -916,7 +930,21 @@ class Workspace(pulumi.CustomResource):
                 "drift": "drift_pipeline_id",
                 "plan": "plan_pipeline_id",
                 "apply": "apply_pipeline_id",
-            })
+            },
+            connectors=[
+                {
+                    "connector_ref": "awsconnector",
+                    "type": "aws",
+                },
+                {
+                    "connector_ref": "gcpconnector",
+                    "type": "gcp",
+                },
+                {
+                    "connector_ref": "azureconnector",
+                    "type": "azure",
+                },
+            ])
         ```
 
         ## Import
@@ -1061,7 +1089,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
+        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
         :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
@@ -1175,7 +1203,7 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter(name="providerConnector")
     def provider_connector(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Provider connector is the reference to the connector for the infrastructure provider
+        Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
         """
         return pulumi.get(self, "provider_connector")
 

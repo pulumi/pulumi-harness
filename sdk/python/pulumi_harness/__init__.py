@@ -1058,6 +1058,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/pipelineCentralNotificationRule",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule": "PipelineCentralNotificationRule"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/pipelineFilters",
   "fqn": "pulumi_harness.platform",
   "classes": {

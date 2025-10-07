@@ -92,6 +92,22 @@ import * as utilities from "../utilities";
  *     azureEnvironmentType: "AZURE",
  *     delegateSelectors: ["harness-delegate"],
  * });
+ * const oidcAuthentication = new harness.platform.AzureCloudProviderConnector("oidc_authentication", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "example",
+ *     tags: ["foo:bar"],
+ *     credentials: {
+ *         type: "OidcAuthentication",
+ *         azureOidcSpec: {
+ *             applicationId: "application_id",
+ *             tenantId: "tenant_id",
+ *             audience: "audience",
+ *         },
+ *     },
+ *     azureEnvironmentType: "AZURE",
+ *     delegateSelectors: ["harness-delegate"],
+ * });
  * ```
  *
  * ## Import

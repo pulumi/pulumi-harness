@@ -25,7 +25,13 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsGetArgs>? AzureManualDetails { get; set; }
 
         /// <summary>
-        /// Type can either be InheritFromDelegate or ManualConfig.
+        /// Authenticate to Azure Cloud Provider using OIDC.
+        /// </summary>
+        [Input("azureOidcSpec")]
+        public Input<Inputs.AzureCloudProviderConnectorCredentialsAzureOidcSpecGetArgs>? AzureOidcSpec { get; set; }
+
+        /// <summary>
+        /// Type can be InheritFromDelegate, ManualConfig or OidcAuthentication
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

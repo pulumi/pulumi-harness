@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;
  * import com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;
  * import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;
+ * import com.pulumi.harness.platform.inputs.WorkspaceConnectorArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -115,6 +116,19 @@ import javax.annotation.Nullable;
  *                 Map.entry("plan", "plan_pipeline_id"),
  *                 Map.entry("apply", "apply_pipeline_id")
  *             ))
+ *             .connectors(            
+ *                 WorkspaceConnectorArgs.builder()
+ *                     .connectorRef("awsconnector")
+ *                     .type("aws")
+ *                     .build(),
+ *                 WorkspaceConnectorArgs.builder()
+ *                     .connectorRef("gcpconnector")
+ *                     .type("gcp")
+ *                     .build(),
+ *                 WorkspaceConnectorArgs.builder()
+ *                     .connectorRef("azureconnector")
+ *                     .type("azure")
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -260,14 +274,14 @@ public class Workspace extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * Provider connector is the reference to the connector for the infrastructure provider
+     * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
      * 
      */
     @Export(name="providerConnector", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> providerConnector;
 
     /**
-     * @return Provider connector is the reference to the connector for the infrastructure provider
+     * @return Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
      * 
      */
     public Output<Optional<String>> providerConnector() {

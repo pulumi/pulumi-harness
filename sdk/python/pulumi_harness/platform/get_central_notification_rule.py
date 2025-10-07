@@ -178,6 +178,8 @@ def get_central_notification_rule(custom_notification_template_ref: Optional[Uni
                                   status: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCentralNotificationRuleResult:
     """
+    > Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+
     Data source for retrieving a Notification Rule.
 
 
@@ -220,6 +222,8 @@ def get_central_notification_rule_output(custom_notification_template_ref: Optio
                                          status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCentralNotificationRuleResult]:
     """
+    > Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+
     Data source for retrieving a Notification Rule.
 
 
