@@ -19,6 +19,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; Deprecated: Please migrate to `harness.platform.PipelineCentralNotificationRule`. See the pipeline-specific resource docs.
+ * 
  * Resource for creating a Harness Notification Rule
  * 
  */
@@ -103,10 +105,10 @@ public class CentralNotificationRule extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.org);
     }
     @Export(name="project", refs={String.class}, tree="[0]")
-    private Output<String> project;
+    private Output</* @Nullable */ String> project;
 
-    public Output<String> project() {
-        return this.project;
+    public Output<Optional<String>> project() {
+        return Codegen.optional(this.project);
     }
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;

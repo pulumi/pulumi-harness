@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetail;
 import com.pulumi.harness.platform.outputs.GetAzureCloudProviderConnectorCredentialAzureManualDetail;
+import com.pulumi.harness.platform.outputs.GetAzureCloudProviderConnectorCredentialAzureOidcSpec;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +25,12 @@ public final class GetAzureCloudProviderConnectorCredential {
      */
     private List<GetAzureCloudProviderConnectorCredentialAzureManualDetail> azureManualDetails;
     /**
-     * @return Type can either be InheritFromDelegate or ManualConfig.
+     * @return Authenticate to Azure Cloud Provider using OIDC Authentication.
+     * 
+     */
+    private List<GetAzureCloudProviderConnectorCredentialAzureOidcSpec> azureOidcSpecs;
+    /**
+     * @return Type can be InheritFromDelegate, ManualConfig or OidcAuthentication.
      * 
      */
     private String type;
@@ -45,7 +51,14 @@ public final class GetAzureCloudProviderConnectorCredential {
         return this.azureManualDetails;
     }
     /**
-     * @return Type can either be InheritFromDelegate or ManualConfig.
+     * @return Authenticate to Azure Cloud Provider using OIDC Authentication.
+     * 
+     */
+    public List<GetAzureCloudProviderConnectorCredentialAzureOidcSpec> azureOidcSpecs() {
+        return this.azureOidcSpecs;
+    }
+    /**
+     * @return Type can be InheritFromDelegate, ManualConfig or OidcAuthentication.
      * 
      */
     public String type() {
@@ -63,12 +76,14 @@ public final class GetAzureCloudProviderConnectorCredential {
     public static final class Builder {
         private List<GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetail> azureInheritFromDelegateDetails;
         private List<GetAzureCloudProviderConnectorCredentialAzureManualDetail> azureManualDetails;
+        private List<GetAzureCloudProviderConnectorCredentialAzureOidcSpec> azureOidcSpecs;
         private String type;
         public Builder() {}
         public Builder(GetAzureCloudProviderConnectorCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.azureInheritFromDelegateDetails = defaults.azureInheritFromDelegateDetails;
     	      this.azureManualDetails = defaults.azureManualDetails;
+    	      this.azureOidcSpecs = defaults.azureOidcSpecs;
     	      this.type = defaults.type;
         }
 
@@ -95,6 +110,17 @@ public final class GetAzureCloudProviderConnectorCredential {
             return azureManualDetails(List.of(azureManualDetails));
         }
         @CustomType.Setter
+        public Builder azureOidcSpecs(List<GetAzureCloudProviderConnectorCredentialAzureOidcSpec> azureOidcSpecs) {
+            if (azureOidcSpecs == null) {
+              throw new MissingRequiredPropertyException("GetAzureCloudProviderConnectorCredential", "azureOidcSpecs");
+            }
+            this.azureOidcSpecs = azureOidcSpecs;
+            return this;
+        }
+        public Builder azureOidcSpecs(GetAzureCloudProviderConnectorCredentialAzureOidcSpec... azureOidcSpecs) {
+            return azureOidcSpecs(List.of(azureOidcSpecs));
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetAzureCloudProviderConnectorCredential", "type");
@@ -106,6 +132,7 @@ public final class GetAzureCloudProviderConnectorCredential {
             final var _resultValue = new GetAzureCloudProviderConnectorCredential();
             _resultValue.azureInheritFromDelegateDetails = azureInheritFromDelegateDetails;
             _resultValue.azureManualDetails = azureManualDetails;
+            _resultValue.azureOidcSpecs = azureOidcSpecs;
             _resultValue.type = type;
             return _resultValue;
         }

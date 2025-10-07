@@ -998,6 +998,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "azure_oidc_spec": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -14293,6 +14296,51 @@
                     }
                 }
             },
+            "harness_platform_pipeline_central_notification_rule": {
+                "current": "harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule",
+                "fields": {
+                    "custom_notification_template_ref": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "variables": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "notification_channel_refs": {
+                        "maxItemsOne": false
+                    },
+                    "notification_conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "notification_event_configs": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entity_identifiers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "notification_event_data": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "scope_identifiers": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "harness_platform_pipeline_filters": {
                 "current": "harness:platform/pipelineFilters:PipelineFilters",
                 "fields": {
@@ -16023,6 +16071,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "azure_oidc_spec": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -17382,6 +17433,48 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_pipeline_central_notification_rule": {
+                "current": "harness:platform/getPipelineCentralNotificationRule:getPipelineCentralNotificationRule",
+                "fields": {
+                    "custom_notification_template_ref": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "variables": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "notification_channel_refs": {
+                        "maxItemsOne": false
+                    },
+                    "notification_conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "notification_event_configs": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "notification_event_data": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "scope_identifiers": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },

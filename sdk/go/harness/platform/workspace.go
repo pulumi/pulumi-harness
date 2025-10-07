@@ -98,6 +98,20 @@ import (
 //					"plan":    pulumi.String("plan_pipeline_id"),
 //					"apply":   pulumi.String("apply_pipeline_id"),
 //				},
+//				Connectors: platform.WorkspaceConnectorArray{
+//					&platform.WorkspaceConnectorArgs{
+//						ConnectorRef: pulumi.String("awsconnector"),
+//						Type:         pulumi.String("aws"),
+//					},
+//					&platform.WorkspaceConnectorArgs{
+//						ConnectorRef: pulumi.String("gcpconnector"),
+//						Type:         pulumi.String("gcp"),
+//					},
+//					&platform.WorkspaceConnectorArgs{
+//						ConnectorRef: pulumi.String("azureconnector"),
+//						Type:         pulumi.String("azure"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -136,7 +150,7 @@ type Workspace struct {
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Provider connector is the reference to the connector for the infrastructure provider
+	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
 	ProviderConnector  pulumi.StringPtrOutput `pulumi:"providerConnector"`
 	ProvisionerType    pulumi.StringOutput    `pulumi:"provisionerType"`
 	ProvisionerVersion pulumi.StringOutput    `pulumi:"provisionerVersion"`
@@ -235,7 +249,7 @@ type workspaceState struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Provider connector is the reference to the connector for the infrastructure provider
+	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
 	ProviderConnector  *string `pulumi:"providerConnector"`
 	ProvisionerType    *string `pulumi:"provisionerType"`
 	ProvisionerVersion *string `pulumi:"provisionerVersion"`
@@ -278,7 +292,7 @@ type WorkspaceState struct {
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Provider connector is the reference to the connector for the infrastructure provider
+	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
 	ProviderConnector  pulumi.StringPtrInput
 	ProvisionerType    pulumi.StringPtrInput
 	ProvisionerVersion pulumi.StringPtrInput
@@ -325,7 +339,7 @@ type workspaceArgs struct {
 	OrgId string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
-	// Provider connector is the reference to the connector for the infrastructure provider
+	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
 	ProviderConnector  *string `pulumi:"providerConnector"`
 	ProvisionerType    string  `pulumi:"provisionerType"`
 	ProvisionerVersion string  `pulumi:"provisionerVersion"`
@@ -369,7 +383,7 @@ type WorkspaceArgs struct {
 	OrgId pulumi.StringInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringInput
-	// Provider connector is the reference to the connector for the infrastructure provider
+	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
 	ProviderConnector  pulumi.StringPtrInput
 	ProvisionerType    pulumi.StringInput
 	ProvisionerVersion pulumi.StringInput
@@ -525,7 +539,7 @@ func (o WorkspaceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Provider connector is the reference to the connector for the infrastructure provider
+// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
 func (o WorkspaceOutput) ProviderConnector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.ProviderConnector }).(pulumi.StringPtrOutput)
 }

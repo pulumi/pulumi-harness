@@ -22,7 +22,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAzureCloudProviderConnectorCredentialAzureManualDetailResult> AzureManualDetails;
         /// <summary>
-        /// Type can either be InheritFromDelegate or ManualConfig.
+        /// Authenticate to Azure Cloud Provider using OIDC Authentication.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAzureCloudProviderConnectorCredentialAzureOidcSpecResult> AzureOidcSpecs;
+        /// <summary>
+        /// Type can be InheritFromDelegate, ManualConfig or OidcAuthentication.
         /// </summary>
         public readonly string Type;
 
@@ -32,10 +36,13 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableArray<Outputs.GetAzureCloudProviderConnectorCredentialAzureManualDetailResult> azureManualDetails,
 
+            ImmutableArray<Outputs.GetAzureCloudProviderConnectorCredentialAzureOidcSpecResult> azureOidcSpecs,
+
             string type)
         {
             AzureInheritFromDelegateDetails = azureInheritFromDelegateDetails;
             AzureManualDetails = azureManualDetails;
+            AzureOidcSpecs = azureOidcSpecs;
             Type = type;
         }
     }

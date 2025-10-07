@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+ *
  * Data source for retrieving a Notification Rule.
  */
 export function getCentralNotificationRule(args: GetCentralNotificationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetCentralNotificationRuleResult> {
@@ -85,6 +87,8 @@ export interface GetCentralNotificationRuleResult {
     readonly status?: string;
 }
 /**
+ * > Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+ *
  * Data source for retrieving a Notification Rule.
  */
 export function getCentralNotificationRuleOutput(args: GetCentralNotificationRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCentralNotificationRuleResult> {

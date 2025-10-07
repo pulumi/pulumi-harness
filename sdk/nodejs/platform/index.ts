@@ -630,6 +630,11 @@ export const getPipeline: typeof import("./getPipeline").getPipeline = null as a
 export const getPipelineOutput: typeof import("./getPipeline").getPipelineOutput = null as any;
 utilities.lazyLoad(exports, ["getPipeline","getPipelineOutput"], () => require("./getPipeline"));
 
+export { GetPipelineCentralNotificationRuleArgs, GetPipelineCentralNotificationRuleResult, GetPipelineCentralNotificationRuleOutputArgs } from "./getPipelineCentralNotificationRule";
+export const getPipelineCentralNotificationRule: typeof import("./getPipelineCentralNotificationRule").getPipelineCentralNotificationRule = null as any;
+export const getPipelineCentralNotificationRuleOutput: typeof import("./getPipelineCentralNotificationRule").getPipelineCentralNotificationRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getPipelineCentralNotificationRule","getPipelineCentralNotificationRuleOutput"], () => require("./getPipelineCentralNotificationRule"));
+
 export { GetPipelineFiltersArgs, GetPipelineFiltersResult, GetPipelineFiltersOutputArgs } from "./getPipelineFilters";
 export const getPipelineFilters: typeof import("./getPipelineFilters").getPipelineFilters = null as any;
 export const getPipelineFiltersOutput: typeof import("./getPipelineFilters").getPipelineFiltersOutput = null as any;
@@ -1000,6 +1005,11 @@ export type Pipeline = import("./pipeline").Pipeline;
 export const Pipeline: typeof import("./pipeline").Pipeline = null as any;
 utilities.lazyLoad(exports, ["Pipeline"], () => require("./pipeline"));
 
+export { PipelineCentralNotificationRuleArgs, PipelineCentralNotificationRuleState } from "./pipelineCentralNotificationRule";
+export type PipelineCentralNotificationRule = import("./pipelineCentralNotificationRule").PipelineCentralNotificationRule;
+export const PipelineCentralNotificationRule: typeof import("./pipelineCentralNotificationRule").PipelineCentralNotificationRule = null as any;
+utilities.lazyLoad(exports, ["PipelineCentralNotificationRule"], () => require("./pipelineCentralNotificationRule"));
+
 export { PipelineFiltersArgs, PipelineFiltersState } from "./pipelineFilters";
 export type PipelineFilters = import("./pipelineFilters").PipelineFilters;
 export const PipelineFilters: typeof import("./pipelineFilters").PipelineFilters = null as any;
@@ -1335,6 +1345,8 @@ const _module = {
                 return new PagerdutyConnector(name, <any>undefined, { urn })
             case "harness:platform/pipeline:Pipeline":
                 return new Pipeline(name, <any>undefined, { urn })
+            case "harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule":
+                return new PipelineCentralNotificationRule(name, <any>undefined, { urn })
             case "harness:platform/pipelineFilters:PipelineFilters":
                 return new PipelineFilters(name, <any>undefined, { urn })
             case "harness:platform/policy:Policy":
@@ -1488,6 +1500,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/organization", _modul
 pulumi.runtime.registerResourceModule("harness", "platform/overrides", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/pagerdutyConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/pipeline", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/pipelineCentralNotificationRule", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/pipelineFilters", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/policy", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/policySet", _module)

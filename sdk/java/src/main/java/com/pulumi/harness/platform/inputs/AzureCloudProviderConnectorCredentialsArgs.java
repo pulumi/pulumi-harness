@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgs;
 import com.pulumi.harness.platform.inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs;
+import com.pulumi.harness.platform.inputs.AzureCloudProviderConnectorCredentialsAzureOidcSpecArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -49,14 +50,29 @@ public final class AzureCloudProviderConnectorCredentialsArgs extends com.pulumi
     }
 
     /**
-     * Type can either be InheritFromDelegate or ManualConfig.
+     * Authenticate to Azure Cloud Provider using OIDC.
+     * 
+     */
+    @Import(name="azureOidcSpec")
+    private @Nullable Output<AzureCloudProviderConnectorCredentialsAzureOidcSpecArgs> azureOidcSpec;
+
+    /**
+     * @return Authenticate to Azure Cloud Provider using OIDC.
+     * 
+     */
+    public Optional<Output<AzureCloudProviderConnectorCredentialsAzureOidcSpecArgs>> azureOidcSpec() {
+        return Optional.ofNullable(this.azureOidcSpec);
+    }
+
+    /**
+     * Type can be InheritFromDelegate, ManualConfig or OidcAuthentication
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type can either be InheritFromDelegate or ManualConfig.
+     * @return Type can be InheritFromDelegate, ManualConfig or OidcAuthentication
      * 
      */
     public Output<String> type() {
@@ -68,6 +84,7 @@ public final class AzureCloudProviderConnectorCredentialsArgs extends com.pulumi
     private AzureCloudProviderConnectorCredentialsArgs(AzureCloudProviderConnectorCredentialsArgs $) {
         this.azureInheritFromDelegateDetails = $.azureInheritFromDelegateDetails;
         this.azureManualDetails = $.azureManualDetails;
+        this.azureOidcSpec = $.azureOidcSpec;
         this.type = $.type;
     }
 
@@ -132,7 +149,28 @@ public final class AzureCloudProviderConnectorCredentialsArgs extends com.pulumi
         }
 
         /**
-         * @param type Type can either be InheritFromDelegate or ManualConfig.
+         * @param azureOidcSpec Authenticate to Azure Cloud Provider using OIDC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureOidcSpec(@Nullable Output<AzureCloudProviderConnectorCredentialsAzureOidcSpecArgs> azureOidcSpec) {
+            $.azureOidcSpec = azureOidcSpec;
+            return this;
+        }
+
+        /**
+         * @param azureOidcSpec Authenticate to Azure Cloud Provider using OIDC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureOidcSpec(AzureCloudProviderConnectorCredentialsAzureOidcSpecArgs azureOidcSpec) {
+            return azureOidcSpec(Output.of(azureOidcSpec));
+        }
+
+        /**
+         * @param type Type can be InheritFromDelegate, ManualConfig or OidcAuthentication
          * 
          * @return builder
          * 
@@ -143,7 +181,7 @@ public final class AzureCloudProviderConnectorCredentialsArgs extends com.pulumi
         }
 
         /**
-         * @param type Type can either be InheritFromDelegate or ManualConfig.
+         * @param type Type can be InheritFromDelegate, ManualConfig or OidcAuthentication
          * 
          * @return builder
          * 

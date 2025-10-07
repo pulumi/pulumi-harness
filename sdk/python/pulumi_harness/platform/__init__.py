@@ -131,6 +131,7 @@ from .get_overrides import *
 from .get_pagerduty_connector import *
 from .get_permissions import *
 from .get_pipeline import *
+from .get_pipeline_central_notification_rule import *
 from .get_pipeline_filters import *
 from .get_pipeline_list import *
 from .get_policy import *
@@ -205,6 +206,7 @@ from .organization import *
 from .overrides import *
 from .pagerduty_connector import *
 from .pipeline import *
+from .pipeline_central_notification_rule import *
 from .pipeline_filters import *
 from .policy import *
 from .policy_set import *

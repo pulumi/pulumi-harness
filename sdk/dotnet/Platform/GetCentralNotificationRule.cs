@@ -12,18 +12,24 @@ namespace Pulumi.Harness.Platform
     public static class GetCentralNotificationRule
     {
         /// <summary>
+        /// &gt; Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+        /// 
         /// Data source for retrieving a Notification Rule.
         /// </summary>
         public static Task<GetCentralNotificationRuleResult> InvokeAsync(GetCentralNotificationRuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCentralNotificationRuleResult>("harness:platform/getCentralNotificationRule:getCentralNotificationRule", args ?? new GetCentralNotificationRuleArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+        /// 
         /// Data source for retrieving a Notification Rule.
         /// </summary>
         public static Output<GetCentralNotificationRuleResult> Invoke(GetCentralNotificationRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCentralNotificationRuleResult>("harness:platform/getCentralNotificationRule:getCentralNotificationRule", args ?? new GetCentralNotificationRuleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; Deprecated: Please use `data.harness_platform_pipeline_central_notification_rule`. See the pipeline-specific data source docs.
+        /// 
         /// Data source for retrieving a Notification Rule.
         /// </summary>
         public static Output<GetCentralNotificationRuleResult> Invoke(GetCentralNotificationRuleInvokeArgs args, InvokeOutputOptions options)

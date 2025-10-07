@@ -181,6 +181,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PagerdutyConnector{}
 	case "harness:platform/pipeline:Pipeline":
 		r = &Pipeline{}
+	case "harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule":
+		r = &PipelineCentralNotificationRule{}
 	case "harness:platform/pipelineFilters:PipelineFilters":
 		r = &PipelineFilters{}
 	case "harness:platform/policy:Policy":
@@ -660,6 +662,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/pipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/pipelineCentralNotificationRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

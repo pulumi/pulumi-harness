@@ -158,14 +158,14 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provider connector is the reference to the connector for the infrastructure provider
+     * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
      * 
      */
     @Import(name="providerConnector")
     private @Nullable Output<String> providerConnector;
 
     /**
-     * @return Provider connector is the reference to the connector for the infrastructure provider
+     * @return Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
      * 
      */
     public Optional<Output<String>> providerConnector() {
@@ -575,7 +575,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param providerConnector Provider connector is the reference to the connector for the infrastructure provider
+         * @param providerConnector Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
          * 
          * @return builder
          * 
@@ -586,7 +586,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param providerConnector Provider connector is the reference to the connector for the infrastructure provider
+         * @param providerConnector Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
          * 
          * @return builder
          * 
