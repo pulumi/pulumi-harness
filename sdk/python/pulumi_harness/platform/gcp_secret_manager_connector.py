@@ -439,6 +439,53 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         """
         Resource for creating a GCP Secret Manager connector.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        gcp_sm_manual = harness.platform.GcpSecretManagerConnector("gcp_sm_manual",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"],
+            credentials_ref=f"account.{test['id']}")
+        gcp_sm_inherit = harness.platform.GcpSecretManagerConnector("gcp_sm_inherit",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"],
+            inherit_from_delegate=True)
+        gcp_sm_oidc_platform = harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_platform",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            execute_on_delegate=False,
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+            }])
+        gcp_sm_oidc_delegate = harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_delegate",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            default=True,
+            delegate_selectors=["harness-delegate"],
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+            }])
+        ```
+
         ## Import
 
         The `pulumi import` command can be used, for example:
@@ -484,6 +531,53 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a GCP Secret Manager connector.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        gcp_sm_manual = harness.platform.GcpSecretManagerConnector("gcp_sm_manual",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"],
+            credentials_ref=f"account.{test['id']}")
+        gcp_sm_inherit = harness.platform.GcpSecretManagerConnector("gcp_sm_inherit",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"],
+            inherit_from_delegate=True)
+        gcp_sm_oidc_platform = harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_platform",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            execute_on_delegate=False,
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+            }])
+        gcp_sm_oidc_delegate = harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_delegate",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            default=True,
+            delegate_selectors=["harness-delegate"],
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+            }])
+        ```
 
         ## Import
 

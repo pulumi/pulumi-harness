@@ -20,6 +20,108 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness project.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Service;
+ * import com.pulumi.harness.platform.ServiceArgs;
+ * import com.pulumi.harness.platform.inputs.ServiceGitDetailsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Service("example", ServiceArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .gitDetails(ServiceGitDetailsArgs.builder()
+ *                 .branchName("branchName")
+ *                 .commitMessage("commitMessage")
+ *                 .filePath("filePath")
+ *                 .connectorRef("connectorRef")
+ *                 .storeType("REMOTE")
+ *                 .repoName("repoName")
+ *                 .build())
+ *             .yaml("""
+ * service:
+ *   name: name
+ *   identifier: identifier
+ *   serviceDefinition:
+ *     spec:
+ *       manifests:
+ *         - manifest:
+ *             identifier: manifest1
+ *             type: K8sManifest
+ *             spec:
+ *               store:
+ *                 type: Github
+ *                 spec:
+ *                   connectorRef: <+input>
+ *                   gitFetchType: Branch
+ *                   paths:
+ *                     - files1
+ *                   repoName: <+input>
+ *                   branch: master
+ *               skipResourceVersioning: false
+ *       configFiles:
+ *         - configFile:
+ *             identifier: configFile1
+ *             spec:
+ *               store:
+ *                 type: Harness
+ *                 spec:
+ *                   files:
+ *                     - <+org.description>
+ *       variables:
+ *         - name: var1
+ *           type: String
+ *           value: val1
+ *         - name: var2
+ *           type: String
+ *           value: val2
+ *     type: Kubernetes
+ *   gitOpsEnabled: false
+ *             """)
+ *             .build());
+ * 
+ *         //## Importing Service from Git
+ *         var test = new Service("test", ServiceArgs.builder()
+ *             .identifier("id")
+ *             .name("name")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .importFromGit(true)
+ *             .gitDetails(ServiceGitDetailsArgs.builder()
+ *                 .storeType("REMOTE")
+ *                 .connectorRef("account.DoNotDeleteGitX")
+ *                 .repoName("pcf_practice")
+ *                 .filePath(".harness/accountService.yaml")
+ *                 .branch("main")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * The `pulumi import` command can be used, for example:

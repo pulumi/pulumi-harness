@@ -12,6 +12,8 @@ import (
 )
 
 // DataSource for deployment freeze in harness.
+//
+// ## Example Usage
 func LookupManualFreeze(ctx *pulumi.Context, args *LookupManualFreezeArgs, opts ...pulumi.InvokeOption) (*LookupManualFreezeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupManualFreezeResult

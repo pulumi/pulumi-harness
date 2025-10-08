@@ -11,6 +11,56 @@ namespace Pulumi.Harness.Autostopping
 {
     /// <summary>
     /// Resource for creating a Harness Variables.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Harness.Autostopping.RuleEcs("test", new()
+    ///     {
+    ///         Name = "name",
+    ///         CloudConnectorId = "cloud_connector_id",
+    ///         IdleTimeMins = 10,
+    ///         DryRun = true,
+    ///         Container = new Harness.Autostopping.Inputs.RuleEcsContainerArgs
+    ///         {
+    ///             Cluster = "cluster",
+    ///             Service = "service",
+    ///             Region = "us-east-1",
+    ///             TaskCount = 1,
+    ///         },
+    ///         Tcp = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "proxyId", "proxy_id" },
+    ///                 { "forwardRule", new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "port", 2233 },
+    ///                     },
+    ///                 } },
+    ///             },
+    ///         },
+    ///         Depends = new[]
+    ///         {
+    ///             new Harness.Autostopping.Inputs.RuleEcsDependArgs
+    ///             {
+    ///                 RuleId = 24576,
+    ///                 DelayInSec = 5,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:autostopping/ruleEcs:RuleEcs")]
     public partial class RuleEcs : global::Pulumi.CustomResource

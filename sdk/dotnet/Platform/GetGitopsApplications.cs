@@ -13,18 +13,24 @@ namespace Pulumi.Harness.Platform
     {
         /// <summary>
         /// Datasource for fetching a Harness GitOps Application.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetGitopsApplicationsResult> InvokeAsync(GetGitopsApplicationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsApplicationsResult>("harness:platform/getGitopsApplications:getGitopsApplications", args ?? new GetGitopsApplicationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for fetching a Harness GitOps Application.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetGitopsApplicationsResult> Invoke(GetGitopsApplicationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsApplicationsResult>("harness:platform/getGitopsApplications:getGitopsApplications", args ?? new GetGitopsApplicationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for fetching a Harness GitOps Application.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetGitopsApplicationsResult> Invoke(GetGitopsApplicationsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsApplicationsResult>("harness:platform/getGitopsApplications:getGitopsApplications", args ?? new GetGitopsApplicationsInvokeArgs(), options.WithDefaults());

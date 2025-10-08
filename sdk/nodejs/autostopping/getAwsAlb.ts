@@ -6,6 +6,8 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for AWS Autostopping proxy
+ *
+ * ## Example Usage
  */
 export function getAwsAlb(args: GetAwsAlbArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsAlbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -112,6 +114,8 @@ export interface GetAwsAlbResult {
 }
 /**
  * Data source for AWS Autostopping proxy
+ *
+ * ## Example Usage
  */
 export function getAwsAlbOutput(args: GetAwsAlbOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsAlbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

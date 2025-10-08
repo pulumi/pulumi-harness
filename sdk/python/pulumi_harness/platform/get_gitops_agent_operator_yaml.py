@@ -171,6 +171,8 @@ def get_gitops_agent_operator_yaml(ca_data: Optional[_builtins.str] = None,
     """
     Datasource for fetching a Harness Gitops Agent operator manifest YAML.
 
+    ## Example Usage
+
 
     :param _builtins.str ca_data: CA data of the GitOps agent, base64 encoded content of ca chain.
     :param _builtins.str identifier: Identifier of the GitOps agent.
@@ -215,6 +217,8 @@ def get_gitops_agent_operator_yaml_output(ca_data: Optional[pulumi.Input[Optiona
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsAgentOperatorYamlResult]:
     """
     Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+
+    ## Example Usage
 
 
     :param _builtins.str ca_data: CA data of the GitOps agent, base64 encoded content of ca chain.

@@ -12,6 +12,8 @@ import (
 )
 
 // Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
+//
+// ## Example Usage
 func GetGitopsRepoCert(ctx *pulumi.Context, args *GetGitopsRepoCertArgs, opts ...pulumi.InvokeOption) (*GetGitopsRepoCertResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGitopsRepoCertResult

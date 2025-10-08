@@ -12,6 +12,8 @@ import (
 )
 
 // Data source for retrieving modules from the module registry.
+//
+// ## Example Usage
 func LookupInfraModule(ctx *pulumi.Context, args *LookupInfraModuleArgs, opts ...pulumi.InvokeOption) (*LookupInfraModuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInfraModuleResult

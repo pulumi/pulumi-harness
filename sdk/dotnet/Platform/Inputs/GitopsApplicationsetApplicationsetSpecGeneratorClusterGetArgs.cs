@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GitopsApplicationsetApplicationsetSpecGeneratorClusterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean value defaulting to `true` to indicate that this block has been added thereby allowing all other attributes to be optional.
+        /// Boolean value defaulting to `True` to indicate that this block has been added thereby allowing all other attributes to be optional.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

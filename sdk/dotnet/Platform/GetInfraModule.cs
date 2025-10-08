@@ -13,18 +13,24 @@ namespace Pulumi.Harness.Platform
     {
         /// <summary>
         /// Data source for retrieving modules from the module registry.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetInfraModuleResult> InvokeAsync(GetInfraModuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInfraModuleResult>("harness:platform/getInfraModule:getInfraModule", args ?? new GetInfraModuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving modules from the module registry.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetInfraModuleResult> Invoke(GetInfraModuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInfraModuleResult>("harness:platform/getInfraModule:getInfraModule", args ?? new GetInfraModuleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving modules from the module registry.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetInfraModuleResult> Invoke(GetInfraModuleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInfraModuleResult>("harness:platform/getInfraModule:getInfraModule", args ?? new GetInfraModuleInvokeArgs(), options.WithDefaults());

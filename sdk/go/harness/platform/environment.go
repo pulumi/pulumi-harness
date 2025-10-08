@@ -14,6 +14,111 @@ import (
 
 // Resource for creating a Harness environment.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewEnvironment(ctx, "example", &platform.EnvironmentArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
+//				Type: pulumi.String("PreProduction"),
+//				GitDetails: &platform.EnvironmentGitDetailsArgs{
+//					BranchName:    "branchName",
+//					CommitMessage: pulumi.String("commitMessage"),
+//					FilePath:      pulumi.String("filePath"),
+//					ConnectorRef:  pulumi.String("connectorRef"),
+//					StoreType:     pulumi.String("REMOTE"),
+//					RepoName:      pulumi.String("repoName"),
+//				},
+//				Yaml: pulumi.String(`environment:
+//	   name: name
+//	   identifier: identifier
+//	   orgIdentifier: org_id
+//	   projectIdentifier: project_id
+//	   type: PreProduction
+//	   tags:
+//	     foo: bar
+//	     bar: foo
+//	   variables:
+//	     - name: envVar1
+//	       type: String
+//	       value: v1
+//	       description: ""
+//	     - name: envVar2
+//	       type: String
+//	       value: v2
+//	       description: ""
+//	   overrides:
+//	     manifests:
+//	       - manifest:
+//	           identifier: manifestEnv
+//	           type: Values
+//	           spec:
+//	             store:
+//	               type: Git
+//	               spec:
+//	                 connectorRef: <+input>
+//	                 gitFetchType: Branch
+//	                 paths:
+//	                   - file1
+//	                 repoName: <+input>
+//	                 branch: master
+//	     configFiles:
+//	       - configFile:
+//	           identifier: configFileEnv
+//	           spec:
+//	             store:
+//	               type: Harness
+//	               spec:
+//	                 files:
+//	                   - account:/Add-ons/svcOverrideTest
+//	                 secretFiles: []
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// ## Importing Environment from Git
+//			_, err = platform.NewEnvironment(ctx, "test", &platform.EnvironmentArgs{
+//				Identifier: pulumi.String("accEnv"),
+//				Name:       pulumi.String("accEnv"),
+//				Type:       pulumi.String("PreProduction"),
+//				GitDetails: &platform.EnvironmentGitDetailsArgs{
+//					StoreType:     pulumi.String("REMOTE"),
+//					ConnectorRef:  pulumi.String("account.DoNotDeleteGitX"),
+//					RepoName:      pulumi.String("pcf_practice"),
+//					FilePath:      pulumi.String(".harness/accountEnvironment.yaml"),
+//					Branch:        pulumi.String("main"),
+//					ImportFromGit: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The `pulumi import` command can be used, for example:

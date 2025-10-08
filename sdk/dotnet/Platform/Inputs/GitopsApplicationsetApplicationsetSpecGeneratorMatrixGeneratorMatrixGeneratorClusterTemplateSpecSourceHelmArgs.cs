@@ -25,7 +25,7 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
-        /// Prevents 'helm template' from failing when `value_files` do not exist locally by not appending them to 'helm template --values'.
+        /// Prevents 'helm template' from failing when `ValueFiles` do not exist locally by not appending them to 'helm template --values'.
         /// </summary>
         [Input("ignoreMissingValueFiles")]
         public Input<bool>? IgnoreMissingValueFiles { get; set; }

@@ -19,7 +19,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterSelecto
      */
     private @Nullable List<GitopsApplicationsetApplicationsetSpecGeneratorClusterSelectorMatchExpression> matchExpressions;
     /**
-     * @return A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is &#34;key&#34;, the operator is &#34;In&#34;, and the values array contains only &#34;value&#34;. The requirements are ANDed.
+     * @return A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is &#34;key&#34;, the operator is &#34;In&#34;, and the values array contains only &#34;value&#34;. The requirements are ANDed.
      * 
      */
     private @Nullable Map<String,String> matchLabels;
@@ -33,7 +33,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterSelecto
         return this.matchExpressions == null ? List.of() : this.matchExpressions;
     }
     /**
-     * @return A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is &#34;key&#34;, the operator is &#34;In&#34;, and the values array contains only &#34;value&#34;. The requirements are ANDed.
+     * @return A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is &#34;key&#34;, the operator is &#34;In&#34;, and the values array contains only &#34;value&#34;. The requirements are ANDed.
      * 
      */
     public Map<String,String> matchLabels() {

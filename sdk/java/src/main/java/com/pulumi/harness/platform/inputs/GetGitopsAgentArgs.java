@@ -86,14 +86,14 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * Specify whether to retrieve the gitops agent&#39;s token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
      * 
      */
     @Import(name="withCredentials")
     private @Nullable Output<Boolean> withCredentials;
 
     /**
-     * @return Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * @return Specify whether to retrieve the gitops agent&#39;s token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
      * 
      */
     public Optional<Output<Boolean>> withCredentials() {
@@ -221,7 +221,7 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param withCredentials Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+         * @param withCredentials Specify whether to retrieve the gitops agent&#39;s token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param withCredentials Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+         * @param withCredentials Specify whether to retrieve the gitops agent&#39;s token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
          * 
          * @return builder
          * 

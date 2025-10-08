@@ -6,6 +6,8 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for retrieving a Harness ClusterOrchestrator.
+ *
+ * ## Example Usage
  */
 export function getOrchestrator(args: GetOrchestratorArgs, opts?: pulumi.InvokeOptions): Promise<GetOrchestratorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,6 +59,8 @@ export interface GetOrchestratorResult {
 }
 /**
  * Data source for retrieving a Harness ClusterOrchestrator.
+ *
+ * ## Example Usage
  */
 export function getOrchestratorOutput(args: GetOrchestratorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrchestratorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
