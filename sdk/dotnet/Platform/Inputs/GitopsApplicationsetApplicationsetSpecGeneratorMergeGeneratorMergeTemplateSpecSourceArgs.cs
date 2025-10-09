@@ -49,7 +49,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<Inputs.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeTemplateSpecSourcePluginArgs>? Plugin { get; set; }
 
         /// <summary>
-        /// Reference to another `source` within defined sources. See associated documentation on [Helm value files from external Git repository](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/#helm-value-files-from-external-git-repository) regarding combining `ref` with `path` and/or `chart`.
+        /// Reference to another `Source` within defined sources. See associated documentation on [Helm value files from external Git repository](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/#helm-value-files-from-external-git-repository) regarding combining `Ref` with `Path` and/or `Chart`.
         /// </summary>
         [Input("ref")]
         public Input<string>? Ref { get; set; }

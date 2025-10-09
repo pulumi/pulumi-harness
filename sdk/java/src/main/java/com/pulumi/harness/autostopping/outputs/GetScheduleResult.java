@@ -49,7 +49,7 @@ public final class GetScheduleResult {
      */
     private String scheduleType;
     /**
-     * @return Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
+     * @return Time from which schedule will be active. Schedule will take immediate effect if startingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
      * 
      */
     private String startingFrom;
@@ -110,7 +110,7 @@ public final class GetScheduleResult {
         return this.scheduleType;
     }
     /**
-     * @return Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
+     * @return Time from which schedule will be active. Schedule will take immediate effect if startingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
      * 
      */
     public String startingFrom() {

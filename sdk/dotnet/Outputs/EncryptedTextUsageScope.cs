@@ -18,11 +18,11 @@ namespace Pulumi.Harness.Outputs
         /// </summary>
         public readonly string? ApplicationId;
         /// <summary>
-        /// Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+        /// Type of environment filter applied. Cannot be used with `EnvironmentId`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
         /// </summary>
         public readonly string? EnvironmentFilterType;
         /// <summary>
-        /// Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+        /// Id of the id of the specific environment to scope to. Cannot be used with `EnvironmentFilterType`.
         /// </summary>
         public readonly string? EnvironmentId;
 

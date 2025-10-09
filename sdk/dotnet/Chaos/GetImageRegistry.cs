@@ -220,7 +220,7 @@ namespace Pulumi.Harness.Chaos
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Indicates if override is blocked by scope (only populated if check_override is true)
+        /// Indicates if override is blocked by scope (only populated if CheckOverride is true)
         /// </summary>
         public readonly string OverrideBlockedByScope;
         /// <summary>

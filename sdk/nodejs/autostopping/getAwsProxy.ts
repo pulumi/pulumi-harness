@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for AWS Autostopping proxy
+ *
+ * ## Example Usage
  */
 export function getAwsProxy(args: GetAwsProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -135,6 +137,8 @@ export interface GetAwsProxyResult {
 }
 /**
  * Data source for AWS Autostopping proxy
+ *
+ * ## Example Usage
  */
 export function getAwsProxyOutput(args: GetAwsProxyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -50,14 +50,14 @@ public final class SshCredentialState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
+     * Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inlineSsh`, `serverPassword`, or `sshKeyFile` should be set
      * 
      */
     @Import(name="sshAuthentication")
     private @Nullable Output<SshCredentialSshAuthenticationArgs> sshAuthentication;
 
     /**
-     * @return Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
+     * @return Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inlineSsh`, `serverPassword`, or `sshKeyFile` should be set
      * 
      */
     public Optional<Output<SshCredentialSshAuthenticationArgs>> sshAuthentication() {
@@ -149,7 +149,7 @@ public final class SshCredentialState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sshAuthentication Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
+         * @param sshAuthentication Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inlineSsh`, `serverPassword`, or `sshKeyFile` should be set
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class SshCredentialState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sshAuthentication Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
+         * @param sshAuthentication Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inlineSsh`, `serverPassword`, or `sshKeyFile` should be set
          * 
          * @return builder
          * 
