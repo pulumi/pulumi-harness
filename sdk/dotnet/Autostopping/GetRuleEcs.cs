@@ -13,18 +13,24 @@ namespace Pulumi.Harness.Autostopping
     {
         /// <summary>
         /// Data source for retrieving a Harness Variable.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetRuleEcsResult> InvokeAsync(GetRuleEcsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRuleEcsResult>("harness:autostopping/getRuleEcs:getRuleEcs", args ?? new GetRuleEcsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness Variable.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetRuleEcsResult> Invoke(GetRuleEcsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleEcsResult>("harness:autostopping/getRuleEcs:getRuleEcs", args ?? new GetRuleEcsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness Variable.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetRuleEcsResult> Invoke(GetRuleEcsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleEcsResult>("harness:autostopping/getRuleEcs:getRuleEcs", args ?? new GetRuleEcsInvokeArgs(), options.WithDefaults());

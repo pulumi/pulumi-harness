@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness environment.
  * 
+ * ## Example Usage
+ * 
  * ## Import
  * 
  * The `pulumi import` command can be used, for example:

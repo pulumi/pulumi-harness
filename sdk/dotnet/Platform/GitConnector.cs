@@ -104,7 +104,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// Repository to test the connection with. This is only used when `connection_type` is `Account`.
+        /// Repository to test the connection with. This is only used when `ConnectionType` is `Account`.
         /// </summary>
         [Output("validationRepo")]
         public Output<string?> ValidationRepo { get; private set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> Url { get; set; } = null!;
 
         /// <summary>
-        /// Repository to test the connection with. This is only used when `connection_type` is `Account`.
+        /// Repository to test the connection with. This is only used when `ConnectionType` is `Account`.
         /// </summary>
         [Input("validationRepo")]
         public Input<string>? ValidationRepo { get; set; }
@@ -327,7 +327,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// Repository to test the connection with. This is only used when `connection_type` is `Account`.
+        /// Repository to test the connection with. This is only used when `ConnectionType` is `Account`.
         /// </summary>
         [Input("validationRepo")]
         public Input<string>? ValidationRepo { get; set; }

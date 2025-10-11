@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for retrieving a Harness Variable.
+ *
+ * ## Example Usage
  */
 export function getRuleEcs(args: GetRuleEcsArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleEcsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -93,6 +95,8 @@ export interface GetRuleEcsResult {
 }
 /**
  * Data source for retrieving a Harness Variable.
+ *
+ * ## Example Usage
  */
 export function getRuleEcsOutput(args: GetRuleEcsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleEcsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

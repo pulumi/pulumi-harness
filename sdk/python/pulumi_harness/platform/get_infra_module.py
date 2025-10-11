@@ -210,6 +210,8 @@ def get_infra_module(created: Optional[_builtins.int] = None,
     """
     Data source for retrieving modules from the module registry.
 
+    ## Example Usage
+
 
     :param _builtins.int created: Timestamp when the module was created
     :param _builtins.str description: Description of the module
@@ -272,6 +274,8 @@ def get_infra_module_output(created: Optional[pulumi.Input[Optional[_builtins.in
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfraModuleResult]:
     """
     Data source for retrieving modules from the module registry.
+
+    ## Example Usage
 
 
     :param _builtins.int created: Timestamp when the module was created

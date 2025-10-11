@@ -19,13 +19,13 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> ConfigMapRef { get; set; } = null!;
 
         /// <summary>
-        /// Label selector used to find the resource defined in the `config_map_ref`. Alternative to `name`.
+        /// Label selector used to find the resource defined in the `ConfigMapRef`. Alternative to `Name`.
         /// </summary>
         [Input("labelSelector")]
         public Input<Inputs.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterDecisionResourceLabelSelectorGetArgs>? LabelSelector { get; set; }
 
         /// <summary>
-        /// Resource name of the kind, group and version, defined in the `config_map_ref`.
+        /// Resource name of the kind, group and version, defined in the `ConfigMapRef`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

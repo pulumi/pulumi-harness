@@ -18,11 +18,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string ConfigMapRef;
         /// <summary>
-        /// Label selector used to find the resource defined in the `config_map_ref`. Alternative to `name`.
+        /// Label selector used to find the resource defined in the `ConfigMapRef`. Alternative to `Name`.
         /// </summary>
         public readonly Outputs.GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisionResourceLabelSelector? LabelSelector;
         /// <summary>
-        /// Resource name of the kind, group and version, defined in the `config_map_ref`.
+        /// Resource name of the kind, group and version, defined in the `ConfigMapRef`.
         /// </summary>
         public readonly string? Name;
         /// <summary>

@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorCluster
     {
         /// <summary>
-        /// Boolean value defaulting to `true` to indicate that this block has been added thereby allowing all other attributes to be optional.
+        /// Boolean value defaulting to `True` to indicate that this block has been added thereby allowing all other attributes to be optional.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
