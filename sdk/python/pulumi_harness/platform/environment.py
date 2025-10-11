@@ -405,6 +405,8 @@ class Environment(pulumi.CustomResource):
         """
         Resource for creating a Harness environment.
 
+        ## Example Usage
+
         ## Import
 
         The `pulumi import` command can be used, for example:
@@ -449,6 +451,8 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness environment.
+
+        ## Example Usage
 
         ## Import
 

@@ -108,14 +108,14 @@ public class Schedule extends com.pulumi.resources.CustomResource {
         return this.scheduleType;
     }
     /**
-     * Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
+     * Time from which schedule will be active. Schedule will take immediate effect if startingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
      * 
      */
     @Export(name="startingFrom", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> startingFrom;
 
     /**
-     * @return Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
+     * @return Time from which schedule will be active. Schedule will take immediate effect if startingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
      * 
      */
     public Output<Optional<String>> startingFrom() {

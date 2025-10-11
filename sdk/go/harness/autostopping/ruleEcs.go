@@ -13,6 +13,8 @@ import (
 )
 
 // Resource for creating a Harness Variables.
+//
+// ## Example Usage
 type RuleEcs struct {
 	pulumi.CustomResourceState
 

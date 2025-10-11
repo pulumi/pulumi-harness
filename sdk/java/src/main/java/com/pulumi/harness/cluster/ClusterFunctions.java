@@ -21,12 +21,16 @@ public final class ClusterFunctions {
     /**
      * Data source for retrieving a Harness ClusterOrchestrator.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetOrchestratorResult> getOrchestrator(GetOrchestratorArgs args) {
         return getOrchestrator(args, InvokeOptions.Empty);
     }
     /**
      * Data source for retrieving a Harness ClusterOrchestrator.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetOrchestratorResult> getOrchestratorPlain(GetOrchestratorPlainArgs args) {
@@ -35,6 +39,8 @@ public final class ClusterFunctions {
     /**
      * Data source for retrieving a Harness ClusterOrchestrator.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetOrchestratorResult> getOrchestrator(GetOrchestratorArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:cluster/getOrchestrator:getOrchestrator", TypeShape.of(GetOrchestratorResult.class), args, Utilities.withVersion(options));
@@ -42,12 +48,16 @@ public final class ClusterFunctions {
     /**
      * Data source for retrieving a Harness ClusterOrchestrator.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetOrchestratorResult> getOrchestrator(GetOrchestratorArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:cluster/getOrchestrator:getOrchestrator", TypeShape.of(GetOrchestratorResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness ClusterOrchestrator.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetOrchestratorResult> getOrchestratorPlain(GetOrchestratorPlainArgs args, InvokeOptions options) {

@@ -14,6 +14,8 @@ import (
 
 // Resource for creating a Rancher connector.
 //
+// ## Example Usage
+//
 // ## Import
 //
 // The `pulumi import` command can be used, for example:

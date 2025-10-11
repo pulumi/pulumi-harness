@@ -14,31 +14,31 @@ namespace Pulumi.Harness.Platform
     /// 
     ///         The following fields need to be populated for LDAP SSO Providers:
     ///     	
-    ///         - linked_sso_id
+    ///         - LinkedSsoId
     ///     	
-    ///         - linked_sso_display_name
+    ///         - LinkedSsoDisplayName
     ///     	
-    ///         - sso_group_id
+    ///         - SsoGroupId
     ///     	
-    ///         - sso_group_name
+    ///         - SsoGroupName
     ///     	
-    ///         - linked_sso_type
+    ///         - LinkedSsoType
     ///     	
-    ///         - sso_linked
+    ///         - SsoLinked
     ///     	
     ///         The following fields need to be populated for SAML SSO Providers:
     ///     	
-    ///         - linked_sso_id
+    ///         - LinkedSsoId
     ///     	
-    ///         - linked_sso_display_name
+    ///         - LinkedSsoDisplayName
     ///     	
-    ///         - sso_group_name
+    ///         - SsoGroupName
     ///     	
-    ///         - sso_group_id // same as sso_group_name
+    ///         - SsoGroupId // same as SsoGroupName
     ///     	
-    ///         - linked_sso_type
+    ///         - LinkedSsoType
     ///     	
-    ///         - sso_linked
+    ///         - SsoLinked
     /// 
     /// ## Example Usage
     /// 

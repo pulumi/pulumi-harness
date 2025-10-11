@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorListTemplateSpecSourceDirectoryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation. This takes precedence over the `include` field. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{config.yaml,env-use2/*}'
+        /// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation. This takes precedence over the `Include` field. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{config.yaml,env-use2/*}'
         /// </summary>
         [Input("exclude")]
         public Input<string>? Exclude { get; set; }

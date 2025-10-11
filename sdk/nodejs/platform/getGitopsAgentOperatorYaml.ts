@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+ *
+ * ## Example Usage
  */
 export function getGitopsAgentOperatorYaml(args: GetGitopsAgentOperatorYamlArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsAgentOperatorYamlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -108,6 +110,8 @@ export interface GetGitopsAgentOperatorYamlResult {
 }
 /**
  * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+ *
+ * ## Example Usage
  */
 export function getGitopsAgentOperatorYamlOutput(args: GetGitopsAgentOperatorYamlOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsAgentOperatorYamlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

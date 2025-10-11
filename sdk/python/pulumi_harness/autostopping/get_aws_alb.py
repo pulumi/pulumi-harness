@@ -189,6 +189,8 @@ def get_aws_alb(alb_arn: Optional[_builtins.str] = None,
     """
     Data source for AWS Autostopping proxy
 
+    ## Example Usage
+
 
     :param _builtins.str alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
     :param _builtins.str cloud_connector_id: Id of the cloud connector
@@ -239,6 +241,8 @@ def get_aws_alb_output(alb_arn: Optional[pulumi.Input[Optional[_builtins.str]]] 
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsAlbResult]:
     """
     Data source for AWS Autostopping proxy
+
+    ## Example Usage
 
 
     :param _builtins.str alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB

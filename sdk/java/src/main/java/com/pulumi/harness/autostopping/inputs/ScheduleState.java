@@ -109,14 +109,14 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
+     * Time from which schedule will be active. Schedule will take immediate effect if startingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
      * 
      */
     @Import(name="startingFrom")
     private @Nullable Output<String> startingFrom;
 
     /**
-     * @return Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
+     * @return Time from which schedule will be active. Schedule will take immediate effect if startingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
      * 
      */
     public Optional<Output<String>> startingFrom() {
@@ -316,7 +316,7 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startingFrom Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
+         * @param startingFrom Time from which schedule will be active. Schedule will take immediate effect if startingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startingFrom Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
+         * @param startingFrom Time from which schedule will be active. Schedule will take immediate effect if startingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
          * 
          * @return builder
          * 

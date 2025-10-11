@@ -13,18 +13,24 @@ namespace Pulumi.Harness.Platform
     {
         /// <summary>
         /// DataSource for deployment freeze in harness.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetManualFreezeResult> InvokeAsync(GetManualFreezeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetManualFreezeResult>("harness:platform/getManualFreeze:getManualFreeze", args ?? new GetManualFreezeArgs(), options.WithDefaults());
 
         /// <summary>
         /// DataSource for deployment freeze in harness.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetManualFreezeResult> Invoke(GetManualFreezeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetManualFreezeResult>("harness:platform/getManualFreeze:getManualFreeze", args ?? new GetManualFreezeInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// DataSource for deployment freeze in harness.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetManualFreezeResult> Invoke(GetManualFreezeInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetManualFreezeResult>("harness:platform/getManualFreeze:getManualFreeze", args ?? new GetManualFreezeInvokeArgs(), options.WithDefaults());

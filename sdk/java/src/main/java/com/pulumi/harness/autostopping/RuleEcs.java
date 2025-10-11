@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness Variables.
  * 
+ * ## Example Usage
+ * 
  */
 @ResourceType(type="harness:autostopping/ruleEcs:RuleEcs")
 public class RuleEcs extends com.pulumi.resources.CustomResource {

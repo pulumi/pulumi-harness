@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorGitTemplateSpecSourceHelmFileParameter> FileParameters;
         /// <summary>
-        /// Prevents 'helm template' from failing when `value_files` do not exist locally by not appending them to 'helm template --values'.
+        /// Prevents 'helm template' from failing when `ValueFiles` do not exist locally by not appending them to 'helm template --values'.
         /// </summary>
         public readonly bool? IgnoreMissingValueFiles;
         /// <summary>

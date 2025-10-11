@@ -21,7 +21,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
      */
     private @Nullable List<GitOpsApplicationsApplicationSpecSourceHelmFileParameter> fileParameters;
     /**
-     * @return Prevents &#39;helm template&#39; from failing when value_files do not exist locally.
+     * @return Prevents &#39;helm template&#39; from failing when valueFiles do not exist locally.
      * 
      */
     private @Nullable Boolean ignoreMissingValueFiles;
@@ -80,7 +80,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
         return this.fileParameters == null ? List.of() : this.fileParameters;
     }
     /**
-     * @return Prevents &#39;helm template&#39; from failing when value_files do not exist locally.
+     * @return Prevents &#39;helm template&#39; from failing when valueFiles do not exist locally.
      * 
      */
     public Optional<Boolean> ignoreMissingValueFiles() {

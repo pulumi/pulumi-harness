@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness
 {
     /// <summary>
-    /// Resource for creating a raw YAML configuration in Harness. Note: This works for all objects EXCEPT application objects. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
+    /// Resource for creating a raw YAML configuration in Harness. Note: This works for all objects EXCEPT application objects. This resource uses the config-as-code API's. When updating the `Name` or `Path` of this resource you should typically also set the `CreateBeforeDestroy = true` lifecycle setting.
     /// 
     /// ## Example Usage
     /// 

@@ -30,14 +30,14 @@ public final class GetSshCredentialUsageScope extends com.pulumi.resources.Invok
     }
 
     /**
-     * Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+     * Type of environment filter applied. Cannot be used with `environmentId`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
      * 
      */
     @Import(name="environmentFilterType")
     private @Nullable String environmentFilterType;
 
     /**
-     * @return Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+     * @return Type of environment filter applied. Cannot be used with `environmentId`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
      * 
      */
     public Optional<String> environmentFilterType() {
@@ -45,14 +45,14 @@ public final class GetSshCredentialUsageScope extends com.pulumi.resources.Invok
     }
 
     /**
-     * Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+     * Id of the id of the specific environment to scope to. Cannot be used with `environmentFilterType`.
      * 
      */
     @Import(name="environmentId")
     private @Nullable String environmentId;
 
     /**
-     * @return Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+     * @return Id of the id of the specific environment to scope to. Cannot be used with `environmentFilterType`.
      * 
      */
     public Optional<String> environmentId() {
@@ -97,7 +97,7 @@ public final class GetSshCredentialUsageScope extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param environmentFilterType Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+         * @param environmentFilterType Type of environment filter applied. Cannot be used with `environmentId`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class GetSshCredentialUsageScope extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param environmentId Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+         * @param environmentId Id of the id of the specific environment to scope to. Cannot be used with `environmentFilterType`.
          * 
          * @return builder
          * 

@@ -35,14 +35,14 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeTemplateS
     }
 
     /**
-     * Prevents &#39;helm template&#39; from failing when `value_files` do not exist locally by not appending them to &#39;helm template --values&#39;.
+     * Prevents &#39;helm template&#39; from failing when `valueFiles` do not exist locally by not appending them to &#39;helm template --values&#39;.
      * 
      */
     @Import(name="ignoreMissingValueFiles")
     private @Nullable Output<Boolean> ignoreMissingValueFiles;
 
     /**
-     * @return Prevents &#39;helm template&#39; from failing when `value_files` do not exist locally by not appending them to &#39;helm template --values&#39;.
+     * @return Prevents &#39;helm template&#39; from failing when `valueFiles` do not exist locally by not appending them to &#39;helm template --values&#39;.
      * 
      */
     public Optional<Output<Boolean>> ignoreMissingValueFiles() {
@@ -202,7 +202,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeTemplateS
         }
 
         /**
-         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when `value_files` do not exist locally by not appending them to &#39;helm template --values&#39;.
+         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when `valueFiles` do not exist locally by not appending them to &#39;helm template --values&#39;.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeTemplateS
         }
 
         /**
-         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when `value_files` do not exist locally by not appending them to &#39;helm template --values&#39;.
+         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when `valueFiles` do not exist locally by not appending them to &#39;helm template --values&#39;.
          * 
          * @return builder
          * 

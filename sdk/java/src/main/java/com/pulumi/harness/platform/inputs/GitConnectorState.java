@@ -184,14 +184,14 @@ public final class GitConnectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Repository to test the connection with. This is only used when `connection_type` is `Account`.
+     * Repository to test the connection with. This is only used when `connectionType` is `Account`.
      * 
      */
     @Import(name="validationRepo")
     private @Nullable Output<String> validationRepo;
 
     /**
-     * @return Repository to test the connection with. This is only used when `connection_type` is `Account`.
+     * @return Repository to test the connection with. This is only used when `connectionType` is `Account`.
      * 
      */
     public Optional<Output<String>> validationRepo() {
@@ -485,7 +485,7 @@ public final class GitConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param validationRepo Repository to test the connection with. This is only used when `connection_type` is `Account`.
+         * @param validationRepo Repository to test the connection with. This is only used when `connectionType` is `Account`.
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class GitConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param validationRepo Repository to test the connection with. This is only used when `connection_type` is `Account`.
+         * @param validationRepo Repository to test the connection with. This is only used when `connectionType` is `Account`.
          * 
          * @return builder
          * 

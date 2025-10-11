@@ -31,7 +31,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> Group { get; set; } = null!;
 
         /// <summary>
-        /// Recurse through subgroups (true) or scan only the base group (false). Defaults to `false`.
+        /// Recurse through subgroups (true) or scan only the base group (false). Defaults to `False`.
         /// </summary>
         [Input("includeSubgroups")]
         public Input<bool>? IncludeSubgroups { get; set; }

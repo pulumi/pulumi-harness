@@ -12,6 +12,8 @@ import (
 )
 
 // Resource for managing the Harness GitOps Application Project Mappings.
+//
+// ## Example Usage
 func LookupGitopsAppProjectMapping(ctx *pulumi.Context, args *LookupGitopsAppProjectMappingArgs, opts ...pulumi.InvokeOption) (*LookupGitopsAppProjectMappingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGitopsAppProjectMappingResult

@@ -126,14 +126,14 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
+     * Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inlineSsh`, `serverPassword`, or `sshKeyFile` should be set
      * 
      */
     @Export(name="sshAuthentication", refs={SshCredentialSshAuthentication.class}, tree="[0]")
     private Output</* @Nullable */ SshCredentialSshAuthentication> sshAuthentication;
 
     /**
-     * @return Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
+     * @return Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inlineSsh`, `serverPassword`, or `sshKeyFile` should be set
      * 
      */
     public Output<Optional<SshCredentialSshAuthentication>> sshAuthentication() {

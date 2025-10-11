@@ -22,31 +22,31 @@ import javax.annotation.Nullable;
  * 
  *         The following fields need to be populated for LDAP SSO Providers:
  *     	
- *         - linked_sso_id
+ *         - linkedSsoId
  *     	
- *         - linked_sso_display_name
+ *         - linkedSsoDisplayName
  *     	
- *         - sso_group_id
+ *         - ssoGroupId
  *     	
- *         - sso_group_name
+ *         - ssoGroupName
  *     	
- *         - linked_sso_type
+ *         - linkedSsoType
  *     	
- *         - sso_linked
+ *         - ssoLinked
  *     	
  *         The following fields need to be populated for SAML SSO Providers:
  *     	
- *         - linked_sso_id
+ *         - linkedSsoId
  *     	
- *         - linked_sso_display_name
+ *         - linkedSsoDisplayName
  *     	
- *         - sso_group_name
+ *         - ssoGroupName
  *     	
- *         - sso_group_id // same as sso_group_name
+ *         - ssoGroupId // same as ssoGroupName
  *     	
- *         - linked_sso_type
+ *         - linkedSsoType
  *     	
- *         - sso_linked
+ *         - ssoLinked
  * 
  * ## Example Usage
  * 

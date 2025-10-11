@@ -92,6 +92,8 @@ def get_orchestrator(cluster_endpoint: Optional[_builtins.str] = None,
     """
     Data source for retrieving a Harness ClusterOrchestrator.
 
+    ## Example Usage
+
 
     :param _builtins.str cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
     :param _builtins.str k8s_connector_id: ID of the Harness Kubernetes Connector Being used
@@ -115,6 +117,8 @@ def get_orchestrator_output(cluster_endpoint: Optional[pulumi.Input[_builtins.st
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrchestratorResult]:
     """
     Data source for retrieving a Harness ClusterOrchestrator.
+
+    ## Example Usage
 
 
     :param _builtins.str cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator

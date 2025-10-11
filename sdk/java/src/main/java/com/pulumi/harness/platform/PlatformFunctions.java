@@ -8656,12 +8656,16 @@ public final class PlatformFunctions {
     /**
      * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGitopsAgentOperatorYamlResult> getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs args) {
         return getGitopsAgentOperatorYaml(args, InvokeOptions.Empty);
     }
     /**
      * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGitopsAgentOperatorYamlResult> getGitopsAgentOperatorYamlPlain(GetGitopsAgentOperatorYamlPlainArgs args) {
@@ -8670,6 +8674,8 @@ public final class PlatformFunctions {
     /**
      * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGitopsAgentOperatorYamlResult> getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getGitopsAgentOperatorYaml:getGitopsAgentOperatorYaml", TypeShape.of(GetGitopsAgentOperatorYamlResult.class), args, Utilities.withVersion(options));
@@ -8677,12 +8683,16 @@ public final class PlatformFunctions {
     /**
      * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGitopsAgentOperatorYamlResult> getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getGitopsAgentOperatorYaml:getGitopsAgentOperatorYaml", TypeShape.of(GetGitopsAgentOperatorYamlResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGitopsAgentOperatorYamlResult> getGitopsAgentOperatorYamlPlain(GetGitopsAgentOperatorYamlPlainArgs args, InvokeOptions options) {
@@ -8886,12 +8896,16 @@ public final class PlatformFunctions {
     /**
      * Resource for managing the Harness GitOps Application Project Mappings.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGitopsAppProjectMappingResult> getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs args) {
         return getGitopsAppProjectMapping(args, InvokeOptions.Empty);
     }
     /**
      * Resource for managing the Harness GitOps Application Project Mappings.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGitopsAppProjectMappingResult> getGitopsAppProjectMappingPlain(GetGitopsAppProjectMappingPlainArgs args) {
@@ -8900,12 +8914,16 @@ public final class PlatformFunctions {
     /**
      * Resource for managing the Harness GitOps Application Project Mappings.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGitopsAppProjectMappingResult> getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", TypeShape.of(GetGitopsAppProjectMappingResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Resource for managing the Harness GitOps Application Project Mappings.
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetGitopsAppProjectMappingResult> getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs args, InvokeOutputOptions options) {
@@ -8914,12 +8932,16 @@ public final class PlatformFunctions {
     /**
      * Resource for managing the Harness GitOps Application Project Mappings.
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetGitopsAppProjectMappingResult> getGitopsAppProjectMappingPlain(GetGitopsAppProjectMappingPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", TypeShape.of(GetGitopsAppProjectMappingResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Datasource for fetching a Harness GitOps Application.
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetGitopsApplicationsResult> getGitopsApplications(GetGitopsApplicationsArgs args) {
@@ -8928,12 +8950,16 @@ public final class PlatformFunctions {
     /**
      * Datasource for fetching a Harness GitOps Application.
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetGitopsApplicationsResult> getGitopsApplicationsPlain(GetGitopsApplicationsPlainArgs args) {
         return getGitopsApplicationsPlain(args, InvokeOptions.Empty);
     }
     /**
      * Datasource for fetching a Harness GitOps Application.
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetGitopsApplicationsResult> getGitopsApplications(GetGitopsApplicationsArgs args, InvokeOptions options) {
@@ -8942,12 +8968,16 @@ public final class PlatformFunctions {
     /**
      * Datasource for fetching a Harness GitOps Application.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGitopsApplicationsResult> getGitopsApplications(GetGitopsApplicationsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getGitopsApplications:getGitopsApplications", TypeShape.of(GetGitopsApplicationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Datasource for fetching a Harness GitOps Application.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGitopsApplicationsResult> getGitopsApplicationsPlain(GetGitopsApplicationsPlainArgs args, InvokeOptions options) {
@@ -9421,12 +9451,16 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGitopsRepoCertResult> getGitopsRepoCert(GetGitopsRepoCertArgs args) {
         return getGitopsRepoCert(args, InvokeOptions.Empty);
     }
     /**
      * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGitopsRepoCertResult> getGitopsRepoCertPlain(GetGitopsRepoCertPlainArgs args) {
@@ -9435,6 +9469,8 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGitopsRepoCertResult> getGitopsRepoCert(GetGitopsRepoCertArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getGitopsRepoCert:getGitopsRepoCert", TypeShape.of(GetGitopsRepoCertResult.class), args, Utilities.withVersion(options));
@@ -9442,12 +9478,16 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGitopsRepoCertResult> getGitopsRepoCert(GetGitopsRepoCertArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getGitopsRepoCert:getGitopsRepoCert", TypeShape.of(GetGitopsRepoCertResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGitopsRepoCertResult> getGitopsRepoCertPlain(GetGitopsRepoCertPlainArgs args, InvokeOptions options) {
@@ -10551,12 +10591,16 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving modules from the module registry.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetInfraModuleResult> getInfraModule(GetInfraModuleArgs args) {
         return getInfraModule(args, InvokeOptions.Empty);
     }
     /**
      * Data source for retrieving modules from the module registry.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetInfraModuleResult> getInfraModulePlain(GetInfraModulePlainArgs args) {
@@ -10565,6 +10609,8 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving modules from the module registry.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetInfraModuleResult> getInfraModule(GetInfraModuleArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getInfraModule:getInfraModule", TypeShape.of(GetInfraModuleResult.class), args, Utilities.withVersion(options));
@@ -10572,12 +10618,16 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving modules from the module registry.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetInfraModuleResult> getInfraModule(GetInfraModuleArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getInfraModule:getInfraModule", TypeShape.of(GetInfraModuleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving modules from the module registry.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetInfraModuleResult> getInfraModulePlain(GetInfraModulePlainArgs args, InvokeOptions options) {
@@ -11896,12 +11946,16 @@ public final class PlatformFunctions {
     /**
      * DataSource for deployment freeze in harness.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetManualFreezeResult> getManualFreeze(GetManualFreezeArgs args) {
         return getManualFreeze(args, InvokeOptions.Empty);
     }
     /**
      * DataSource for deployment freeze in harness.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetManualFreezeResult> getManualFreezePlain(GetManualFreezePlainArgs args) {
@@ -11910,6 +11964,8 @@ public final class PlatformFunctions {
     /**
      * DataSource for deployment freeze in harness.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetManualFreezeResult> getManualFreeze(GetManualFreezeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getManualFreeze:getManualFreeze", TypeShape.of(GetManualFreezeResult.class), args, Utilities.withVersion(options));
@@ -11917,12 +11973,16 @@ public final class PlatformFunctions {
     /**
      * DataSource for deployment freeze in harness.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetManualFreezeResult> getManualFreeze(GetManualFreezeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getManualFreeze:getManualFreeze", TypeShape.of(GetManualFreezeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * DataSource for deployment freeze in harness.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetManualFreezeResult> getManualFreezePlain(GetManualFreezePlainArgs args, InvokeOptions options) {

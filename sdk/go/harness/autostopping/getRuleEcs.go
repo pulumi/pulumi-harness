@@ -12,6 +12,8 @@ import (
 )
 
 // Data source for retrieving a Harness Variable.
+//
+// ## Example Usage
 func LookupRuleEcs(ctx *pulumi.Context, args *LookupRuleEcsArgs, opts ...pulumi.InvokeOption) (*LookupRuleEcsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleEcsResult

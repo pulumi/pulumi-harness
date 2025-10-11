@@ -33,14 +33,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = [&#34;group_ids&#34;] }`.
+     * The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignoreChanges = [&#34;groupIds&#34;] }`.
      * 
      */
     @Import(name="groupIds")
     private @Nullable Output<List<String>> groupIds;
 
     /**
-     * @return The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = [&#34;group_ids&#34;] }`.
+     * @return The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignoreChanges = [&#34;groupIds&#34;] }`.
      * 
      */
     public Optional<Output<List<String>>> groupIds() {
@@ -190,7 +190,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupIds The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = [&#34;group_ids&#34;] }`.
+         * @param groupIds The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignoreChanges = [&#34;groupIds&#34;] }`.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupIds The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = [&#34;group_ids&#34;] }`.
+         * @param groupIds The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignoreChanges = [&#34;groupIds&#34;] }`.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupIds The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = [&#34;group_ids&#34;] }`.
+         * @param groupIds The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignoreChanges = [&#34;groupIds&#34;] }`.
          * 
          * @return builder
          * 

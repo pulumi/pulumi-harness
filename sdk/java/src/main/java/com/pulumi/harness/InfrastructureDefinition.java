@@ -29,7 +29,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating am infrastructure definition. This resource uses the config-as-code API&#39;s. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
+ * Resource for creating am infrastructure definition. This resource uses the config-as-code API&#39;s. When updating the `name` or `path` of this resource you should typically also set the `createBeforeDestroy = true` lifecycle setting.
  * 
  * ## Example Usage
  * 
@@ -325,14 +325,14 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.datacenterWinrm);
     }
     /**
-     * The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
+     * The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
      * 
      */
     @Export(name="deploymentTemplateUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentTemplateUri;
 
     /**
-     * @return The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
+     * @return The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
      * 
      */
     public Output<Optional<String>> deploymentTemplateUri() {

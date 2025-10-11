@@ -438,6 +438,8 @@ class Infrastructure(pulumi.CustomResource):
         """
         Resource for creating a Harness Infrastructure.
 
+        ## Example Usage
+
         ## Import
 
         The `pulumi import` command can be used, for example:
@@ -483,6 +485,8 @@ class Infrastructure(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness Infrastructure.
+
+        ## Example Usage
 
         ## Import
 

@@ -19,13 +19,13 @@ namespace Pulumi.Harness.Cloudprovider.Inputs
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+        /// Type of environment filter applied. Cannot be used with `EnvironmentId`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
         /// </summary>
         [Input("environmentFilterType")]
         public Input<string>? EnvironmentFilterType { get; set; }
 
         /// <summary>
-        /// Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+        /// Id of the id of the specific environment to scope to. Cannot be used with `EnvironmentFilterType`.
         /// </summary>
         [Input("environmentId")]
         public Input<string>? EnvironmentId { get; set; }

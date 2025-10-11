@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SshCredentialSshAuthentication {
     /**
-     * @return Inline SSH authentication configuration. Only ond of `passphrase_secret_id` or `ssh_key_file_id` should be used
+     * @return Inline SSH authentication configuration. Only ond of `passphraseSecretId` or `sshKeyFileId` should be used
      * 
      */
     private @Nullable SshCredentialSshAuthenticationInlineSsh inlineSsh;
@@ -44,7 +44,7 @@ public final class SshCredentialSshAuthentication {
 
     private SshCredentialSshAuthentication() {}
     /**
-     * @return Inline SSH authentication configuration. Only ond of `passphrase_secret_id` or `ssh_key_file_id` should be used
+     * @return Inline SSH authentication configuration. Only ond of `passphraseSecretId` or `sshKeyFileId` should be used
      * 
      */
     public Optional<SshCredentialSshAuthenticationInlineSsh> inlineSsh() {

@@ -193,14 +193,14 @@ public class ConnectorAzureRepo extends com.pulumi.resources.CustomResource {
         return this.url;
     }
     /**
-     * Repository to test the connection with. This is only used when `connection_type` is `Account`.
+     * Repository to test the connection with. This is only used when `connectionType` is `Account`.
      * 
      */
     @Export(name="validationRepo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> validationRepo;
 
     /**
-     * @return Repository to test the connection with. This is only used when `connection_type` is `Account`.
+     * @return Repository to test the connection with. This is only used when `connectionType` is `Account`.
      * 
      */
     public Output<Optional<String>> validationRepo() {

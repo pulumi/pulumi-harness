@@ -31,14 +31,14 @@ public final class GetEncryptedTextUsageScopeArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+     * Type of environment filter applied. Cannot be used with `environmentId`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
      * 
      */
     @Import(name="environmentFilterType")
     private @Nullable Output<String> environmentFilterType;
 
     /**
-     * @return Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+     * @return Type of environment filter applied. Cannot be used with `environmentId`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
      * 
      */
     public Optional<Output<String>> environmentFilterType() {
@@ -46,14 +46,14 @@ public final class GetEncryptedTextUsageScopeArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+     * Id of the id of the specific environment to scope to. Cannot be used with `environmentFilterType`.
      * 
      */
     @Import(name="environmentId")
     private @Nullable Output<String> environmentId;
 
     /**
-     * @return Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+     * @return Id of the id of the specific environment to scope to. Cannot be used with `environmentFilterType`.
      * 
      */
     public Optional<Output<String>> environmentId() {
@@ -108,7 +108,7 @@ public final class GetEncryptedTextUsageScopeArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param environmentFilterType Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+         * @param environmentFilterType Type of environment filter applied. Cannot be used with `environmentId`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class GetEncryptedTextUsageScopeArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param environmentFilterType Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+         * @param environmentFilterType Type of environment filter applied. Cannot be used with `environmentId`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class GetEncryptedTextUsageScopeArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param environmentId Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+         * @param environmentId Id of the id of the specific environment to scope to. Cannot be used with `environmentFilterType`.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GetEncryptedTextUsageScopeArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param environmentId Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+         * @param environmentId Id of the id of the specific environment to scope to. Cannot be used with `environmentFilterType`.
          * 
          * @return builder
          * 

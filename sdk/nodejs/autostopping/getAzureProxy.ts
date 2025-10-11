@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for Azure Autostopping proxy
+ *
+ * ## Example Usage
  */
 export function getAzureProxy(args: GetAzureProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -153,6 +155,8 @@ export interface GetAzureProxyResult {
 }
 /**
  * Data source for Azure Autostopping proxy
+ *
+ * ## Example Usage
  */
 export function getAzureProxyOutput(args: GetAzureProxyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

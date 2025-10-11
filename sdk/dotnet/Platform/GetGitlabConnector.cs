@@ -206,7 +206,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Url;
         /// <summary>
-        /// Repository to test the connection with. This is only used when `connection_type` is `Account`.
+        /// Repository to test the connection with. This is only used when `ConnectionType` is `Account`.
         /// </summary>
         public readonly string ValidationRepo;
 

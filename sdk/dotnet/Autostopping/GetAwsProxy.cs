@@ -13,18 +13,24 @@ namespace Pulumi.Harness.Autostopping
     {
         /// <summary>
         /// Data source for AWS Autostopping proxy
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetAwsProxyResult> InvokeAsync(GetAwsProxyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsProxyResult>("harness:autostopping/getAwsProxy:getAwsProxy", args ?? new GetAwsProxyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for AWS Autostopping proxy
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetAwsProxyResult> Invoke(GetAwsProxyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsProxyResult>("harness:autostopping/getAwsProxy:getAwsProxy", args ?? new GetAwsProxyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for AWS Autostopping proxy
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetAwsProxyResult> Invoke(GetAwsProxyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsProxyResult>("harness:autostopping/getAwsProxy:getAwsProxy", args ?? new GetAwsProxyInvokeArgs(), options.WithDefaults());

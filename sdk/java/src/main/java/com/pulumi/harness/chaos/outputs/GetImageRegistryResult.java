@@ -61,7 +61,7 @@ public final class GetImageRegistryResult {
      */
     private @Nullable String orgId;
     /**
-     * @return Indicates if override is blocked by scope (only populated if check_override is true)
+     * @return Indicates if override is blocked by scope (only populated if checkOverride is true)
      * 
      */
     private String overrideBlockedByScope;
@@ -161,7 +161,7 @@ public final class GetImageRegistryResult {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Indicates if override is blocked by scope (only populated if check_override is true)
+     * @return Indicates if override is blocked by scope (only populated if checkOverride is true)
      * 
      */
     public String overrideBlockedByScope() {

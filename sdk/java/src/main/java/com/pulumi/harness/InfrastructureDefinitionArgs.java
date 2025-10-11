@@ -211,14 +211,14 @@ public final class InfrastructureDefinitionArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
+     * The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
      * 
      */
     @Import(name="deploymentTemplateUri")
     private @Nullable Output<String> deploymentTemplateUri;
 
     /**
-     * @return The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
+     * @return The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
      * 
      */
     public Optional<Output<String>> deploymentTemplateUri() {
@@ -642,7 +642,7 @@ public final class InfrastructureDefinitionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param deploymentTemplateUri The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
+         * @param deploymentTemplateUri The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
          * 
          * @return builder
          * 
@@ -653,7 +653,7 @@ public final class InfrastructureDefinitionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param deploymentTemplateUri The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
+         * @param deploymentTemplateUri The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
          * 
          * @return builder
          * 

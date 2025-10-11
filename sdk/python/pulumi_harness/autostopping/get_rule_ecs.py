@@ -155,6 +155,8 @@ def get_rule_ecs(cloud_connector_id: Optional[_builtins.str] = None,
     """
     Data source for retrieving a Harness Variable.
 
+    ## Example Usage
+
 
     :param _builtins.str cloud_connector_id: Id of the cloud connector
     :param Sequence[_builtins.str] custom_domains: Custom URLs used to access the instances
@@ -194,6 +196,8 @@ def get_rule_ecs_output(cloud_connector_id: Optional[pulumi.Input[_builtins.str]
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleEcsResult]:
     """
     Data source for retrieving a Harness Variable.
+
+    ## Example Usage
 
 
     :param _builtins.str cloud_connector_id: Id of the cloud connector

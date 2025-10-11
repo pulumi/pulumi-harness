@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness
 {
     /// <summary>
-    /// Resource for creating am infrastructure definition. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
+    /// Resource for creating am infrastructure definition. This resource uses the config-as-code API's. When updating the `Name` or `Path` of this resource you should typically also set the `CreateBeforeDestroy = true` lifecycle setting.
     /// 
     /// ## Example Usage
     /// 
@@ -198,7 +198,7 @@ namespace Pulumi.Harness
         public Output<Outputs.InfrastructureDefinitionDatacenterWinrm?> DatacenterWinrm { get; private set; } = null!;
 
         /// <summary>
-        /// The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
+        /// The URI of the deployment template to use. Only used if DeploymentType is `CUSTOM`.
         /// </summary>
         [Output("deploymentTemplateUri")]
         public Output<string?> DeploymentTemplateUri { get; private set; } = null!;
@@ -371,7 +371,7 @@ namespace Pulumi.Harness
         public Input<Inputs.InfrastructureDefinitionDatacenterWinrmArgs>? DatacenterWinrm { get; set; }
 
         /// <summary>
-        /// The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
+        /// The URI of the deployment template to use. Only used if DeploymentType is `CUSTOM`.
         /// </summary>
         [Input("deploymentTemplateUri")]
         public Input<string>? DeploymentTemplateUri { get; set; }
@@ -511,7 +511,7 @@ namespace Pulumi.Harness
         public Input<Inputs.InfrastructureDefinitionDatacenterWinrmGetArgs>? DatacenterWinrm { get; set; }
 
         /// <summary>
-        /// The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
+        /// The URI of the deployment template to use. Only used if DeploymentType is `CUSTOM`.
         /// </summary>
         [Input("deploymentTemplateUri")]
         public Input<string>? DeploymentTemplateUri { get; set; }

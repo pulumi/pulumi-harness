@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Service
 {
     /// <summary>
-    /// Resource for creating a Kubernetes service. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
+    /// Resource for creating a Kubernetes service. This resource uses the config-as-code API's. When updating the `Name` or `Path` of this resource you should typically also set the `CreateBeforeDestroy = true` lifecycle setting.
     /// 
     /// ## Example Usage
     /// 
@@ -79,7 +79,7 @@ namespace Pulumi.Harness.Service
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `type` is `KUBERNETES` or `HELM`.
+        /// The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `Type` is `KUBERNETES` or `HELM`.
         /// </summary>
         [Output("helmVersion")]
         public Output<string?> HelmVersion { get; private set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.Harness.Service
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `type` is `KUBERNETES` or `HELM`.
+        /// The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `Type` is `KUBERNETES` or `HELM`.
         /// </summary>
         [Input("helmVersion")]
         public Input<string>? HelmVersion { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.Harness.Service
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `type` is `KUBERNETES` or `HELM`.
+        /// The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `Type` is `KUBERNETES` or `HELM`.
         /// </summary>
         [Input("helmVersion")]
         public Input<string>? HelmVersion { get; set; }

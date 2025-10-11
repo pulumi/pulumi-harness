@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Chaos.Outputs
     public sealed class InfrastructureV2Env
     {
         /// <summary>
-        /// Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
+        /// Variable name from a ConfigMap or Secret. Required when ValueFrom is configMapKeyRef or secretKeyRef.
         /// </summary>
         public readonly string? Key;
         /// <summary>

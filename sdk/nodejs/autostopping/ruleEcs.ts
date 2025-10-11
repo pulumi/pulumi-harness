@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness Variables.
+ *
+ * ## Example Usage
  */
 export class RuleEcs extends pulumi.CustomResource {
     /**

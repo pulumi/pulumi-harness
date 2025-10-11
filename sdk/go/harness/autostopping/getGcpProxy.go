@@ -12,6 +12,8 @@ import (
 )
 
 // Data source for GCP Autostopping proxy
+//
+// ## Example Usage
 func LookupGcpProxy(ctx *pulumi.Context, args *LookupGcpProxyArgs, opts ...pulumi.InvokeOption) (*LookupGcpProxyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGcpProxyResult

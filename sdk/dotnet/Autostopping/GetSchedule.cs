@@ -34,7 +34,7 @@ namespace Pulumi.Harness.Autostopping
     public sealed class GetScheduleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Type of the schedule. Valid values are `uptime` and `downtime`
+        /// Type of the schedule. Valid values are `Uptime` and `Downtime`
         /// </summary>
         [Input("scheduleType", required: true)]
         public string ScheduleType { get; set; } = null!;
@@ -48,7 +48,7 @@ namespace Pulumi.Harness.Autostopping
     public sealed class GetScheduleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Type of the schedule. Valid values are `uptime` and `downtime`
+        /// Type of the schedule. Valid values are `Uptime` and `Downtime`
         /// </summary>
         [Input("scheduleType", required: true)]
         public Input<string> ScheduleType { get; set; } = null!;
@@ -88,11 +88,11 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public readonly ImmutableArray<double> Rules;
         /// <summary>
-        /// Type of the schedule. Valid values are `uptime` and `downtime`
+        /// Type of the schedule. Valid values are `Uptime` and `Downtime`
         /// </summary>
         public readonly string ScheduleType;
         /// <summary>
-        /// Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
+        /// Time from which schedule will be active. Schedule will take immediate effect if StartingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         /// </summary>
         public readonly string StartingFrom;
         /// <summary>

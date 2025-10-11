@@ -136,13 +136,13 @@ namespace Pulumi.Harness.Chaos
     public sealed class GetSecurityGovernanceConditionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the security governance condition. Either `id` or `name` must be specified.
+        /// The ID of the security governance condition. Either `Id` or `Name` must be specified.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The name of the security governance condition. Either `id` or `name` must be specified.
+        /// The name of the security governance condition. Either `Id` or `Name` must be specified.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -168,13 +168,13 @@ namespace Pulumi.Harness.Chaos
     public sealed class GetSecurityGovernanceConditionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the security governance condition. Either `id` or `name` must be specified.
+        /// The ID of the security governance condition. Either `Id` or `Name` must be specified.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The name of the security governance condition. Either `id` or `name` must be specified.
+        /// The name of the security governance condition. Either `Id` or `Name` must be specified.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.Harness.Chaos
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecurityGovernanceConditionFaultSpecResult> FaultSpecs;
         /// <summary>
-        /// The ID of the security governance condition. Either `id` or `name` must be specified.
+        /// The ID of the security governance condition. Either `Id` or `Name` must be specified.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -226,7 +226,7 @@ namespace Pulumi.Harness.Chaos
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecurityGovernanceConditionMachineSpecResult> MachineSpecs;
         /// <summary>
-        /// The name of the security governance condition. Either `id` or `name` must be specified.
+        /// The name of the security governance condition. Either `Id` or `Name` must be specified.
         /// </summary>
         public readonly string Name;
         /// <summary>

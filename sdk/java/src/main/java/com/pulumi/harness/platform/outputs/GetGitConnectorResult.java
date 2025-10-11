@@ -70,7 +70,7 @@ public final class GetGitConnectorResult {
      */
     private String url;
     /**
-     * @return Repository to test the connection with. This is only used when `connection_type` is `Account`.
+     * @return Repository to test the connection with. This is only used when `connectionType` is `Account`.
      * 
      */
     private String validationRepo;
@@ -154,7 +154,7 @@ public final class GetGitConnectorResult {
         return this.url;
     }
     /**
-     * @return Repository to test the connection with. This is only used when `connection_type` is `Account`.
+     * @return Repository to test the connection with. This is only used when `connectionType` is `Account`.
      * 
      */
     public String validationRepo() {

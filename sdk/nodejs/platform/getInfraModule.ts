@@ -6,6 +6,8 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for retrieving modules from the module registry.
+ *
+ * ## Example Usage
  */
 export function getInfraModule(args: GetInfraModuleArgs, opts?: pulumi.InvokeOptions): Promise<GetInfraModuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -143,6 +145,8 @@ export interface GetInfraModuleResult {
 }
 /**
  * Data source for retrieving modules from the module registry.
+ *
+ * ## Example Usage
  */
 export function getInfraModuleOutput(args: GetInfraModuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInfraModuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

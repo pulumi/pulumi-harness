@@ -17,12 +17,12 @@ public final class GetSshCredentialUsageScope {
      */
     private @Nullable String applicationId;
     /**
-     * @return Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+     * @return Type of environment filter applied. Cannot be used with `environmentId`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
      * 
      */
     private @Nullable String environmentFilterType;
     /**
-     * @return Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+     * @return Id of the id of the specific environment to scope to. Cannot be used with `environmentFilterType`.
      * 
      */
     private @Nullable String environmentId;
@@ -36,14 +36,14 @@ public final class GetSshCredentialUsageScope {
         return Optional.ofNullable(this.applicationId);
     }
     /**
-     * @return Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+     * @return Type of environment filter applied. Cannot be used with `environmentId`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
      * 
      */
     public Optional<String> environmentFilterType() {
         return Optional.ofNullable(this.environmentFilterType);
     }
     /**
-     * @return Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+     * @return Id of the id of the specific environment to scope to. Cannot be used with `environmentFilterType`.
      * 
      */
     public Optional<String> environmentId() {

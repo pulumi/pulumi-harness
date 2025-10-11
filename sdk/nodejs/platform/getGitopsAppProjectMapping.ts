@@ -6,6 +6,8 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for managing the Harness GitOps Application Project Mappings.
+ *
+ * ## Example Usage
  */
 export function getGitopsAppProjectMapping(args: GetGitopsAppProjectMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsAppProjectMappingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -83,6 +85,8 @@ export interface GetGitopsAppProjectMappingResult {
 }
 /**
  * Resource for managing the Harness GitOps Application Project Mappings.
+ *
+ * ## Example Usage
  */
 export function getGitopsAppProjectMappingOutput(args: GetGitopsAppProjectMappingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsAppProjectMappingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

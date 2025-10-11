@@ -12,6 +12,8 @@ import (
 )
 
 // Data source for retrieving a Harness ClusterOrchestrator.
+//
+// ## Example Usage
 func LookupOrchestrator(ctx *pulumi.Context, args *LookupOrchestratorArgs, opts ...pulumi.InvokeOption) (*LookupOrchestratorResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrchestratorResult

@@ -51,7 +51,7 @@ namespace Pulumi.Harness
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = ["group_ids"] }`.
+        /// The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { IgnoreChanges = ["GroupIds"] }`.
         /// </summary>
         [Output("groupIds")]
         public Output<ImmutableArray<string>> GroupIds { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.Harness
         private InputList<string>? _groupIds;
 
         /// <summary>
-        /// The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = ["group_ids"] }`.
+        /// The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { IgnoreChanges = ["GroupIds"] }`.
         /// </summary>
         public InputList<string> GroupIds
         {
@@ -181,7 +181,7 @@ namespace Pulumi.Harness
         private InputList<string>? _groupIds;
 
         /// <summary>
-        /// The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = ["group_ids"] }`.
+        /// The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { IgnoreChanges = ["GroupIds"] }`.
         /// </summary>
         public InputList<string> GroupIds
         {

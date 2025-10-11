@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Cloudprovider
 {
     /// <summary>
-    /// Resource for creating a physical data center cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
+    /// Resource for creating a physical data center cloud provider. This resource uses the config-as-code API's. When updating the `Name` or `Path` of this resource you should typically also set the `CreateBeforeDestroy = true` lifecycle setting.
     /// 
     /// ## Example Usage
     /// 

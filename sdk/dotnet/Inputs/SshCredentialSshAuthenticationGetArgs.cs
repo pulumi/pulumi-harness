@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Inputs
     public sealed class SshCredentialSshAuthenticationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Inline SSH authentication configuration. Only ond of `passphrase_secret_id` or `ssh_key_file_id` should be used
+        /// Inline SSH authentication configuration. Only ond of `PassphraseSecretId` or `SshKeyFileId` should be used
         /// </summary>
         [Input("inlineSsh")]
         public Input<Inputs.SshCredentialSshAuthenticationInlineSshGetArgs>? InlineSsh { get; set; }

@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for GCP Autostopping proxy
+ *
+ * ## Example Usage
  */
 export function getGcpProxy(args: GetGcpProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -141,6 +143,8 @@ export interface GetGcpProxyResult {
 }
 /**
  * Data source for GCP Autostopping proxy
+ *
+ * ## Example Usage
  */
 export function getGcpProxyOutput(args: GetGcpProxyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGcpProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * DataSource for deployment freeze in harness.
+ *
+ * ## Example Usage
  */
 export function getManualFreeze(args: GetManualFreezeArgs, opts?: pulumi.InvokeOptions): Promise<GetManualFreezeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -104,6 +106,8 @@ export interface GetManualFreezeResult {
 }
 /**
  * DataSource for deployment freeze in harness.
+ *
+ * ## Example Usage
  */
 export function getManualFreezeOutput(args: GetManualFreezeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManualFreezeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

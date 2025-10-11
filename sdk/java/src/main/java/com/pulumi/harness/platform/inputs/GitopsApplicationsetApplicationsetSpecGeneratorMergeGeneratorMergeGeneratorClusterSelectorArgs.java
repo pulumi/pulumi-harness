@@ -34,14 +34,14 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
     }
 
     /**
-     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is &#34;key&#34;, the operator is &#34;In&#34;, and the values array contains only &#34;value&#34;. The requirements are ANDed.
+     * A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is &#34;key&#34;, the operator is &#34;In&#34;, and the values array contains only &#34;value&#34;. The requirements are ANDed.
      * 
      */
     @Import(name="matchLabels")
     private @Nullable Output<Map<String,String>> matchLabels;
 
     /**
-     * @return A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is &#34;key&#34;, the operator is &#34;In&#34;, and the values array contains only &#34;value&#34;. The requirements are ANDed.
+     * @return A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is &#34;key&#34;, the operator is &#34;In&#34;, and the values array contains only &#34;value&#34;. The requirements are ANDed.
      * 
      */
     public Optional<Output<Map<String,String>>> matchLabels() {
@@ -105,7 +105,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
         }
 
         /**
-         * @param matchLabels A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is &#34;key&#34;, the operator is &#34;In&#34;, and the values array contains only &#34;value&#34;. The requirements are ANDed.
+         * @param matchLabels A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is &#34;key&#34;, the operator is &#34;In&#34;, and the values array contains only &#34;value&#34;. The requirements are ANDed.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
         }
 
         /**
-         * @param matchLabels A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `match_expressions`, whose key field is &#34;key&#34;, the operator is &#34;In&#34;, and the values array contains only &#34;value&#34;. The requirements are ANDed.
+         * @param matchLabels A map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`, whose key field is &#34;key&#34;, the operator is &#34;In&#34;, and the values array contains only &#34;value&#34;. The requirements are ANDed.
          * 
          * @return builder
          * 

@@ -231,6 +231,8 @@ def get_azure_gateway(app_gateway_id: Optional[_builtins.str] = None,
     """
     Data source for AWS Autostopping proxy
 
+    ## Example Usage
+
 
     :param _builtins.str app_gateway_id: ID of Azure AppGateway for importing
     :param _builtins.str azure_func_region: Region in which azure cloud function will be provisioned
@@ -294,6 +296,8 @@ def get_azure_gateway_output(app_gateway_id: Optional[pulumi.Input[Optional[_bui
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAzureGatewayResult]:
     """
     Data source for AWS Autostopping proxy
+
+    ## Example Usage
 
 
     :param _builtins.str app_gateway_id: ID of Azure AppGateway for importing

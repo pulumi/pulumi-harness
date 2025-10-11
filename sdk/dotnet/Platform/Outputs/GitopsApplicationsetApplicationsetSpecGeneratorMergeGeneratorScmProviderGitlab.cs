@@ -26,7 +26,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string Group;
         /// <summary>
-        /// Recurse through subgroups (true) or scan only the base group (false). Defaults to `false`.
+        /// Recurse through subgroups (true) or scan only the base group (false). Defaults to `False`.
         /// </summary>
         public readonly bool? IncludeSubgroups;
         /// <summary>
