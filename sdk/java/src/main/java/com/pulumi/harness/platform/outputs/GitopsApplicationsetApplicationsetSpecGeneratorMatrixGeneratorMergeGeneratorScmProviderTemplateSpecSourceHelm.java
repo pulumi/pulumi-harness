@@ -21,7 +21,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
      */
     private @Nullable List<GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderTemplateSpecSourceHelmFileParameter> fileParameters;
     /**
-     * @return Prevents &#39;helm template&#39; from failing when `value_files` do not exist locally by not appending them to &#39;helm template --values&#39;.
+     * @return Prevents &#39;helm template&#39; from failing when `valueFiles` do not exist locally by not appending them to &#39;helm template --values&#39;.
      * 
      */
     private @Nullable Boolean ignoreMissingValueFiles;
@@ -65,7 +65,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
         return this.fileParameters == null ? List.of() : this.fileParameters;
     }
     /**
-     * @return Prevents &#39;helm template&#39; from failing when `value_files` do not exist locally by not appending them to &#39;helm template --values&#39;.
+     * @return Prevents &#39;helm template&#39; from failing when `valueFiles` do not exist locally by not appending them to &#39;helm template --values&#39;.
      * 
      */
     public Optional<Boolean> ignoreMissingValueFiles() {

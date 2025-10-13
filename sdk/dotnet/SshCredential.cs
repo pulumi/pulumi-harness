@@ -84,7 +84,7 @@ namespace Pulumi.Harness
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
+        /// Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `InlineSsh`, `ServerPassword`, or `SshKeyFile` should be set
         /// </summary>
         [Output("sshAuthentication")]
         public Output<Outputs.SshCredentialSshAuthentication?> SshAuthentication { get; private set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.Harness
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
+        /// Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `InlineSsh`, `ServerPassword`, or `SshKeyFile` should be set
         /// </summary>
         [Input("sshAuthentication")]
         public Input<Inputs.SshCredentialSshAuthenticationArgs>? SshAuthentication { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.Harness
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
+        /// Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `InlineSsh`, `ServerPassword`, or `SshKeyFile` should be set
         /// </summary>
         [Input("sshAuthentication")]
         public Input<Inputs.SshCredentialSshAuthenticationGetArgs>? SshAuthentication { get; set; }

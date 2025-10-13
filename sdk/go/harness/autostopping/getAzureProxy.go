@@ -12,6 +12,8 @@ import (
 )
 
 // Data source for Azure Autostopping proxy
+//
+// ## Example Usage
 func LookupAzureProxy(ctx *pulumi.Context, args *LookupAzureProxyArgs, opts ...pulumi.InvokeOption) (*LookupAzureProxyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureProxyResult

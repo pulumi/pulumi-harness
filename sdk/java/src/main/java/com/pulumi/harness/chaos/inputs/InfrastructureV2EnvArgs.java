@@ -17,14 +17,14 @@ public final class InfrastructureV2EnvArgs extends com.pulumi.resources.Resource
     public static final InfrastructureV2EnvArgs Empty = new InfrastructureV2EnvArgs();
 
     /**
-     * Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
+     * Variable name from a ConfigMap or Secret. Required when valueFrom is configMapKeyRef or secretKeyRef.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
+     * @return Variable name from a ConfigMap or Secret. Required when valueFrom is configMapKeyRef or secretKeyRef.
      * 
      */
     public Optional<Output<String>> key() {
@@ -104,7 +104,7 @@ public final class InfrastructureV2EnvArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param key Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
+         * @param key Variable name from a ConfigMap or Secret. Required when valueFrom is configMapKeyRef or secretKeyRef.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class InfrastructureV2EnvArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param key Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
+         * @param key Variable name from a ConfigMap or Secret. Required when valueFrom is configMapKeyRef or secretKeyRef.
          * 
          * @return builder
          * 

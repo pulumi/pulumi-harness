@@ -46,13 +46,13 @@ namespace Pulumi.Harness.Autostopping
         public Output<ImmutableArray<double>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the schedule. Valid values are `uptime` and `downtime`
+        /// Type of the schedule. Valid values are `Uptime` and `Downtime`
         /// </summary>
         [Output("scheduleType")]
         public Output<string> ScheduleType { get; private set; } = null!;
 
         /// <summary>
-        /// Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
+        /// Time from which schedule will be active. Schedule will take immediate effect if StartingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         /// </summary>
         [Output("startingFrom")]
         public Output<string?> StartingFrom { get; private set; } = null!;
@@ -147,13 +147,13 @@ namespace Pulumi.Harness.Autostopping
         }
 
         /// <summary>
-        /// Type of the schedule. Valid values are `uptime` and `downtime`
+        /// Type of the schedule. Valid values are `Uptime` and `Downtime`
         /// </summary>
         [Input("scheduleType", required: true)]
         public Input<string> ScheduleType { get; set; } = null!;
 
         /// <summary>
-        /// Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
+        /// Time from which schedule will be active. Schedule will take immediate effect if StartingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         /// </summary>
         [Input("startingFrom")]
         public Input<string>? StartingFrom { get; set; }
@@ -215,13 +215,13 @@ namespace Pulumi.Harness.Autostopping
         }
 
         /// <summary>
-        /// Type of the schedule. Valid values are `uptime` and `downtime`
+        /// Type of the schedule. Valid values are `Uptime` and `Downtime`
         /// </summary>
         [Input("scheduleType")]
         public Input<string>? ScheduleType { get; set; }
 
         /// <summary>
-        /// Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
+        /// Time from which schedule will be active. Schedule will take immediate effect if StartingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         /// </summary>
         [Input("startingFrom")]
         public Input<string>? StartingFrom { get; set; }

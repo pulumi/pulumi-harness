@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class ResourceGroupResourceFilterResourceAttributeFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the attribute. Valid values are `category`, `type`, `labels`, `tag` or `tags`.
+        /// Name of the attribute. Valid values are `Category`, `Type`, `Labels`, `Tag` or `Tags`.
         /// </summary>
         [Input("attributeName")]
         public Input<string>? AttributeName { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<string>? _attributeValues;
 
         /// <summary>
-        /// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
+        /// Value of the attributes.Valid values for `Category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `Type` are [Production,PreProduction], for `Labels`, it can be using the syntax 'label:value', for `Tag` or `Tags` it can be any string.
         /// </summary>
         public InputList<string> AttributeValues
         {

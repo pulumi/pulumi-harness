@@ -42,12 +42,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for AWS Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAwsAlbResult> getAwsAlb(GetAwsAlbArgs args) {
         return getAwsAlb(args, InvokeOptions.Empty);
     }
     /**
      * Data source for AWS Autostopping proxy
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAwsAlbResult> getAwsAlbPlain(GetAwsAlbPlainArgs args) {
@@ -56,12 +60,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for AWS Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAwsAlbResult> getAwsAlb(GetAwsAlbArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getAwsAlb:getAwsAlb", TypeShape.of(GetAwsAlbResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for AWS Autostopping proxy
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetAwsAlbResult> getAwsAlb(GetAwsAlbArgs args, InvokeOutputOptions options) {
@@ -70,12 +78,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for AWS Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetAwsAlbResult> getAwsAlbPlain(GetAwsAlbPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getAwsAlb:getAwsAlb", TypeShape.of(GetAwsAlbResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for AWS Autostopping proxy
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetAwsProxyResult> getAwsProxy(GetAwsProxyArgs args) {
@@ -84,12 +96,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for AWS Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetAwsProxyResult> getAwsProxyPlain(GetAwsProxyPlainArgs args) {
         return getAwsProxyPlain(args, InvokeOptions.Empty);
     }
     /**
      * Data source for AWS Autostopping proxy
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetAwsProxyResult> getAwsProxy(GetAwsProxyArgs args, InvokeOptions options) {
@@ -98,12 +114,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for AWS Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAwsProxyResult> getAwsProxy(GetAwsProxyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getAwsProxy:getAwsProxy", TypeShape.of(GetAwsProxyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for AWS Autostopping proxy
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAwsProxyResult> getAwsProxyPlain(GetAwsProxyPlainArgs args, InvokeOptions options) {
@@ -112,12 +132,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for AWS Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAzureGatewayResult> getAzureGateway(GetAzureGatewayArgs args) {
         return getAzureGateway(args, InvokeOptions.Empty);
     }
     /**
      * Data source for AWS Autostopping proxy
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAzureGatewayResult> getAzureGatewayPlain(GetAzureGatewayPlainArgs args) {
@@ -126,12 +150,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for AWS Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAzureGatewayResult> getAzureGateway(GetAzureGatewayArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getAzureGateway:getAzureGateway", TypeShape.of(GetAzureGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for AWS Autostopping proxy
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetAzureGatewayResult> getAzureGateway(GetAzureGatewayArgs args, InvokeOutputOptions options) {
@@ -140,12 +168,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for AWS Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetAzureGatewayResult> getAzureGatewayPlain(GetAzureGatewayPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getAzureGateway:getAzureGateway", TypeShape.of(GetAzureGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for Azure Autostopping proxy
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetAzureProxyResult> getAzureProxy(GetAzureProxyArgs args) {
@@ -154,12 +186,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for Azure Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetAzureProxyResult> getAzureProxyPlain(GetAzureProxyPlainArgs args) {
         return getAzureProxyPlain(args, InvokeOptions.Empty);
     }
     /**
      * Data source for Azure Autostopping proxy
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetAzureProxyResult> getAzureProxy(GetAzureProxyArgs args, InvokeOptions options) {
@@ -168,12 +204,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for Azure Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAzureProxyResult> getAzureProxy(GetAzureProxyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getAzureProxy:getAzureProxy", TypeShape.of(GetAzureProxyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for Azure Autostopping proxy
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAzureProxyResult> getAzureProxyPlain(GetAzureProxyPlainArgs args, InvokeOptions options) {
@@ -182,12 +222,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for GCP Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGcpProxyResult> getGcpProxy(GetGcpProxyArgs args) {
         return getGcpProxy(args, InvokeOptions.Empty);
     }
     /**
      * Data source for GCP Autostopping proxy
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGcpProxyResult> getGcpProxyPlain(GetGcpProxyPlainArgs args) {
@@ -196,12 +240,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for GCP Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGcpProxyResult> getGcpProxy(GetGcpProxyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getGcpProxy:getGcpProxy", TypeShape.of(GetGcpProxyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for GCP Autostopping proxy
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetGcpProxyResult> getGcpProxy(GetGcpProxyArgs args, InvokeOutputOptions options) {
@@ -210,12 +258,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for GCP Autostopping proxy
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetGcpProxyResult> getGcpProxyPlain(GetGcpProxyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getGcpProxy:getGcpProxy", TypeShape.of(GetGcpProxyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetRuleEcsResult> getRuleEcs(GetRuleEcsArgs args) {
@@ -224,12 +276,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for retrieving a Harness Variable.
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetRuleEcsResult> getRuleEcsPlain(GetRuleEcsPlainArgs args) {
         return getRuleEcsPlain(args, InvokeOptions.Empty);
     }
     /**
      * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetRuleEcsResult> getRuleEcs(GetRuleEcsArgs args, InvokeOptions options) {
@@ -238,12 +294,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for retrieving a Harness Variable.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetRuleEcsResult> getRuleEcs(GetRuleEcsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleEcs:getRuleEcs", TypeShape.of(GetRuleEcsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetRuleEcsResult> getRuleEcsPlain(GetRuleEcsPlainArgs args, InvokeOptions options) {
@@ -252,12 +312,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for retrieving a Harness Variable.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetRuleRdsResult> getRuleRds(GetRuleRdsArgs args) {
         return getRuleRds(args, InvokeOptions.Empty);
     }
     /**
      * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetRuleRdsResult> getRuleRdsPlain(GetRuleRdsPlainArgs args) {
@@ -266,12 +330,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for retrieving a Harness Variable.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetRuleRdsResult> getRuleRds(GetRuleRdsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleRds:getRuleRds", TypeShape.of(GetRuleRdsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetRuleRdsResult> getRuleRds(GetRuleRdsArgs args, InvokeOutputOptions options) {
@@ -280,12 +348,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for retrieving a Harness Variable.
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetRuleRdsResult> getRuleRdsPlain(GetRuleRdsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleRds:getRuleRds", TypeShape.of(GetRuleRdsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetRuleVmResult> getRuleVm(GetRuleVmArgs args) {
@@ -294,12 +366,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for retrieving a Harness Variable.
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetRuleVmResult> getRuleVmPlain(GetRuleVmPlainArgs args) {
         return getRuleVmPlain(args, InvokeOptions.Empty);
     }
     /**
      * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetRuleVmResult> getRuleVm(GetRuleVmArgs args, InvokeOptions options) {
@@ -308,12 +384,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for retrieving a Harness Variable.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetRuleVmResult> getRuleVm(GetRuleVmArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleVm:getRuleVm", TypeShape.of(GetRuleVmResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetRuleVmResult> getRuleVmPlain(GetRuleVmPlainArgs args, InvokeOptions options) {

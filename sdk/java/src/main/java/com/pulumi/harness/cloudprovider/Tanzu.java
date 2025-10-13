@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Tanzu cloud provider. This resource uses the config-as-code API&#39;s. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
+ * Resource for creating a Tanzu cloud provider. This resource uses the config-as-code API&#39;s. When updating the `name` or `path` of this resource you should typically also set the `createBeforeDestroy = true` lifecycle setting.
  * 
  * ## Example Usage
  * 

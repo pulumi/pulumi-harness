@@ -106,6 +106,8 @@ def get_gitops_repo_cert(account_id: Optional[_builtins.str] = None,
     """
     Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
 
+    ## Example Usage
+
 
     :param _builtins.str account_id: Account identifier of the GitOps repository certificate.
     :param _builtins.str agent_id: Agent identifier of the GitOps repository certificate.
@@ -133,6 +135,8 @@ def get_gitops_repo_cert_output(account_id: Optional[pulumi.Input[Optional[_buil
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsRepoCertResult]:
     """
     Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
+
+    ## Example Usage
 
 
     :param _builtins.str account_id: Account identifier of the GitOps repository certificate.

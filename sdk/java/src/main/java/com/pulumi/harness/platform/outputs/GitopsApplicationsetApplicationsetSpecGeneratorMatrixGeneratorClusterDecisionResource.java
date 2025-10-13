@@ -21,12 +21,12 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
      */
     private String configMapRef;
     /**
-     * @return Label selector used to find the resource defined in the `config_map_ref`. Alternative to `name`.
+     * @return Label selector used to find the resource defined in the `configMapRef`. Alternative to `name`.
      * 
      */
     private @Nullable GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterDecisionResourceLabelSelector labelSelector;
     /**
-     * @return Resource name of the kind, group and version, defined in the `config_map_ref`.
+     * @return Resource name of the kind, group and version, defined in the `configMapRef`.
      * 
      */
     private @Nullable String name;
@@ -55,14 +55,14 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
         return this.configMapRef;
     }
     /**
-     * @return Label selector used to find the resource defined in the `config_map_ref`. Alternative to `name`.
+     * @return Label selector used to find the resource defined in the `configMapRef`. Alternative to `name`.
      * 
      */
     public Optional<GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterDecisionResourceLabelSelector> labelSelector() {
         return Optional.ofNullable(this.labelSelector);
     }
     /**
-     * @return Resource name of the kind, group and version, defined in the `config_map_ref`.
+     * @return Resource name of the kind, group and version, defined in the `configMapRef`.
      * 
      */
     public Optional<String> name() {

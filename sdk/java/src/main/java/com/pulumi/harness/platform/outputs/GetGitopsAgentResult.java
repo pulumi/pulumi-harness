@@ -46,7 +46,7 @@ public final class GetGitopsAgentResult {
      */
     private String identifier;
     /**
-     * @return This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet with_credentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * @return This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet withCredentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
      * 
      */
     private Boolean isAuthenticated;
@@ -92,7 +92,7 @@ public final class GetGitopsAgentResult {
      */
     private String type;
     /**
-     * @return Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * @return Specify whether to retrieve the gitops agent&#39;s token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
      * 
      */
     private @Nullable Boolean withCredentials;
@@ -138,7 +138,7 @@ public final class GetGitopsAgentResult {
         return this.identifier;
     }
     /**
-     * @return This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet with_credentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * @return This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet withCredentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
      * 
      */
     public Boolean isAuthenticated() {
@@ -202,7 +202,7 @@ public final class GetGitopsAgentResult {
         return this.type;
     }
     /**
-     * @return Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * @return Specify whether to retrieve the gitops agent&#39;s token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
      * 
      */
     public Optional<Boolean> withCredentials() {

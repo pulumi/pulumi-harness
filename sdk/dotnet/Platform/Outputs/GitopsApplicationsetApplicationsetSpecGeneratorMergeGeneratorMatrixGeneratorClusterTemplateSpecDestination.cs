@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecDestination
     {
         /// <summary>
-        /// Name of the target cluster. Can be used instead of `server`.
+        /// Name of the target cluster. Can be used instead of `Server`.
         /// </summary>
         public readonly string? Name;
         /// <summary>

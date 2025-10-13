@@ -16,7 +16,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<string>? _audiences;
 
         /// <summary>
-        /// Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        /// Audience specifies the `Aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
         /// </summary>
         public InputList<string> Audiences
         {
