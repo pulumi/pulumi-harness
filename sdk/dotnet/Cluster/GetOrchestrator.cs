@@ -13,18 +13,24 @@ namespace Pulumi.Harness.Cluster
     {
         /// <summary>
         /// Data source for retrieving a Harness ClusterOrchestrator.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetOrchestratorResult> InvokeAsync(GetOrchestratorArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrchestratorResult>("harness:cluster/getOrchestrator:getOrchestrator", args ?? new GetOrchestratorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness ClusterOrchestrator.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetOrchestratorResult> Invoke(GetOrchestratorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrchestratorResult>("harness:cluster/getOrchestrator:getOrchestrator", args ?? new GetOrchestratorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness ClusterOrchestrator.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetOrchestratorResult> Invoke(GetOrchestratorInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrchestratorResult>("harness:cluster/getOrchestrator:getOrchestrator", args ?? new GetOrchestratorInvokeArgs(), options.WithDefaults());

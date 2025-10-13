@@ -35,14 +35,14 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
     }
 
     /**
-     * Label selector used to find the resource defined in the `config_map_ref`. Alternative to `name`.
+     * Label selector used to find the resource defined in the `configMapRef`. Alternative to `name`.
      * 
      */
     @Import(name="labelSelector")
     private @Nullable Output<GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterDecisionResourceLabelSelectorArgs> labelSelector;
 
     /**
-     * @return Label selector used to find the resource defined in the `config_map_ref`. Alternative to `name`.
+     * @return Label selector used to find the resource defined in the `configMapRef`. Alternative to `name`.
      * 
      */
     public Optional<Output<GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterDecisionResourceLabelSelectorArgs>> labelSelector() {
@@ -50,14 +50,14 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
     }
 
     /**
-     * Resource name of the kind, group and version, defined in the `config_map_ref`.
+     * Resource name of the kind, group and version, defined in the `configMapRef`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Resource name of the kind, group and version, defined in the `config_map_ref`.
+     * @return Resource name of the kind, group and version, defined in the `configMapRef`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -160,7 +160,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
         }
 
         /**
-         * @param labelSelector Label selector used to find the resource defined in the `config_map_ref`. Alternative to `name`.
+         * @param labelSelector Label selector used to find the resource defined in the `configMapRef`. Alternative to `name`.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
         }
 
         /**
-         * @param labelSelector Label selector used to find the resource defined in the `config_map_ref`. Alternative to `name`.
+         * @param labelSelector Label selector used to find the resource defined in the `configMapRef`. Alternative to `name`.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
         }
 
         /**
-         * @param name Resource name of the kind, group and version, defined in the `config_map_ref`.
+         * @param name Resource name of the kind, group and version, defined in the `configMapRef`.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
         }
 
         /**
-         * @param name Resource name of the kind, group and version, defined in the `config_map_ref`.
+         * @param name Resource name of the kind, group and version, defined in the `configMapRef`.
          * 
          * @return builder
          * 

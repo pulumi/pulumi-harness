@@ -13,18 +13,24 @@ namespace Pulumi.Harness.Autostopping
     {
         /// <summary>
         /// Data source for Azure Autostopping proxy
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetAzureProxyResult> InvokeAsync(GetAzureProxyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureProxyResult>("harness:autostopping/getAzureProxy:getAzureProxy", args ?? new GetAzureProxyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for Azure Autostopping proxy
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetAzureProxyResult> Invoke(GetAzureProxyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureProxyResult>("harness:autostopping/getAzureProxy:getAzureProxy", args ?? new GetAzureProxyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for Azure Autostopping proxy
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetAzureProxyResult> Invoke(GetAzureProxyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureProxyResult>("harness:autostopping/getAzureProxy:getAzureProxy", args ?? new GetAzureProxyInvokeArgs(), options.WithDefaults());

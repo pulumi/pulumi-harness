@@ -12,6 +12,8 @@ import (
 )
 
 // Datasource for fetching a Harness GitOps Application.
+//
+// ## Example Usage
 func GetGitopsApplications(ctx *pulumi.Context, args *GetGitopsApplicationsArgs, opts ...pulumi.InvokeOption) (*GetGitopsApplicationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGitopsApplicationsResult

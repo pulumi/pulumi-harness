@@ -315,6 +315,8 @@ class RuleEcs(pulumi.CustomResource):
         """
         Resource for creating a Harness Variables.
 
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
@@ -333,6 +335,8 @@ class RuleEcs(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness Variables.
+
+        ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param RuleEcsArgs args: The arguments to use to populate this resource's properties.

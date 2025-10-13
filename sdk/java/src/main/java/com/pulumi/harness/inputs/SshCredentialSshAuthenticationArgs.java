@@ -21,14 +21,14 @@ public final class SshCredentialSshAuthenticationArgs extends com.pulumi.resourc
     public static final SshCredentialSshAuthenticationArgs Empty = new SshCredentialSshAuthenticationArgs();
 
     /**
-     * Inline SSH authentication configuration. Only ond of `passphrase_secret_id` or `ssh_key_file_id` should be used
+     * Inline SSH authentication configuration. Only ond of `passphraseSecretId` or `sshKeyFileId` should be used
      * 
      */
     @Import(name="inlineSsh")
     private @Nullable Output<SshCredentialSshAuthenticationInlineSshArgs> inlineSsh;
 
     /**
-     * @return Inline SSH authentication configuration. Only ond of `passphrase_secret_id` or `ssh_key_file_id` should be used
+     * @return Inline SSH authentication configuration. Only ond of `passphraseSecretId` or `sshKeyFileId` should be used
      * 
      */
     public Optional<Output<SshCredentialSshAuthenticationInlineSshArgs>> inlineSsh() {
@@ -124,7 +124,7 @@ public final class SshCredentialSshAuthenticationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param inlineSsh Inline SSH authentication configuration. Only ond of `passphrase_secret_id` or `ssh_key_file_id` should be used
+         * @param inlineSsh Inline SSH authentication configuration. Only ond of `passphraseSecretId` or `sshKeyFileId` should be used
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class SshCredentialSshAuthenticationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param inlineSsh Inline SSH authentication configuration. Only ond of `passphrase_secret_id` or `ssh_key_file_id` should be used
+         * @param inlineSsh Inline SSH authentication configuration. Only ond of `passphraseSecretId` or `sshKeyFileId` should be used
          * 
          * @return builder
          * 

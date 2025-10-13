@@ -13,18 +13,24 @@ namespace Pulumi.Harness.Platform
     {
         /// <summary>
         /// Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetGitopsAgentOperatorYamlResult> InvokeAsync(GetGitopsAgentOperatorYamlArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsAgentOperatorYamlResult>("harness:platform/getGitopsAgentOperatorYaml:getGitopsAgentOperatorYaml", args ?? new GetGitopsAgentOperatorYamlArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetGitopsAgentOperatorYamlResult> Invoke(GetGitopsAgentOperatorYamlInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAgentOperatorYamlResult>("harness:platform/getGitopsAgentOperatorYaml:getGitopsAgentOperatorYaml", args ?? new GetGitopsAgentOperatorYamlInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetGitopsAgentOperatorYamlResult> Invoke(GetGitopsAgentOperatorYamlInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAgentOperatorYamlResult>("harness:platform/getGitopsAgentOperatorYaml:getGitopsAgentOperatorYaml", args ?? new GetGitopsAgentOperatorYamlInvokeArgs(), options.WithDefaults());

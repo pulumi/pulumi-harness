@@ -131,6 +131,8 @@ def get_gitops_app_project_mapping(account_id: Optional[_builtins.str] = None,
     """
     Resource for managing the Harness GitOps Application Project Mappings.
 
+    ## Example Usage
+
 
     :param _builtins.str account_id: Account identifier of the GitOps agent's Application Project.
     :param _builtins.str agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
@@ -163,6 +165,8 @@ def get_gitops_app_project_mapping_output(account_id: Optional[pulumi.Input[Opti
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsAppProjectMappingResult]:
     """
     Resource for managing the Harness GitOps Application Project Mappings.
+
+    ## Example Usage
 
 
     :param _builtins.str account_id: Account identifier of the GitOps agent's Application Project.

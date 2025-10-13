@@ -52,7 +52,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
+        /// The type of data the flag represents. Valid values are `Boolean`, `Int`, `String`, `Json`
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
+        /// The type of data the flag represents. Valid values are `Boolean`, `Int`, `String`, `Json`
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -299,7 +299,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
+        /// The type of data the flag represents. Valid values are `Boolean`, `Int`, `String`, `Json`
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

@@ -11,6 +11,8 @@ namespace Pulumi.Harness.Autostopping
 {
     /// <summary>
     /// Resource for creating a Harness Variables.
+    /// 
+    /// ## Example Usage
     /// </summary>
     [HarnessResourceType("harness:autostopping/ruleEcs:RuleEcs")]
     public partial class RuleEcs : global::Pulumi.CustomResource

@@ -85,14 +85,14 @@ public final class GetGitopsAgentPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * Specify whether to retrieve the gitops agent&#39;s token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
      * 
      */
     @Import(name="withCredentials")
     private @Nullable Boolean withCredentials;
 
     /**
-     * @return Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * @return Specify whether to retrieve the gitops agent&#39;s token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
      * 
      */
     public Optional<Boolean> withCredentials() {
@@ -176,7 +176,7 @@ public final class GetGitopsAgentPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param withCredentials Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+         * @param withCredentials Specify whether to retrieve the gitops agent&#39;s token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
          * 
          * @return builder
          * 
