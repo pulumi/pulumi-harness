@@ -55,8 +55,6 @@ func LookupDbInstance(ctx *pulumi.Context, args *LookupDbInstanceArgs, opts ...p
 type LookupDbInstanceArgs struct {
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// The properties to substitute in liquibase changelog
-	LiquibaseSubstituteProperties map[string]string `pulumi:"liquibaseSubstituteProperties"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -65,6 +63,8 @@ type LookupDbInstanceArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// The identifier of the parent database schema
 	Schema string `pulumi:"schema"`
+	// The properties to substitute in changelog/migration script
+	SubstituteProperties map[string]string `pulumi:"substituteProperties"`
 }
 
 // A collection of values returned by getDbInstance.
@@ -81,8 +81,6 @@ type LookupDbInstanceResult struct {
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// The properties to substitute in liquibase changelog
-	LiquibaseSubstituteProperties map[string]string `pulumi:"liquibaseSubstituteProperties"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -91,6 +89,8 @@ type LookupDbInstanceResult struct {
 	ProjectId string `pulumi:"projectId"`
 	// The identifier of the parent database schema
 	Schema string `pulumi:"schema"`
+	// The properties to substitute in changelog/migration script
+	SubstituteProperties map[string]string `pulumi:"substituteProperties"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
@@ -108,8 +108,6 @@ func LookupDbInstanceOutput(ctx *pulumi.Context, args LookupDbInstanceOutputArgs
 type LookupDbInstanceOutputArgs struct {
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
-	// The properties to substitute in liquibase changelog
-	LiquibaseSubstituteProperties pulumi.StringMapInput `pulumi:"liquibaseSubstituteProperties"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -118,6 +116,8 @@ type LookupDbInstanceOutputArgs struct {
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// The identifier of the parent database schema
 	Schema pulumi.StringInput `pulumi:"schema"`
+	// The properties to substitute in changelog/migration script
+	SubstituteProperties pulumi.StringMapInput `pulumi:"substituteProperties"`
 }
 
 func (LookupDbInstanceOutputArgs) ElementType() reflect.Type {
@@ -169,11 +169,6 @@ func (o LookupDbInstanceResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbInstanceResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// The properties to substitute in liquibase changelog
-func (o LookupDbInstanceResultOutput) LiquibaseSubstituteProperties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupDbInstanceResult) map[string]string { return v.LiquibaseSubstituteProperties }).(pulumi.StringMapOutput)
-}
-
 // Name of the resource.
 func (o LookupDbInstanceResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDbInstanceResult) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -192,6 +187,11 @@ func (o LookupDbInstanceResultOutput) ProjectId() pulumi.StringOutput {
 // The identifier of the parent database schema
 func (o LookupDbInstanceResultOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbInstanceResult) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The properties to substitute in changelog/migration script
+func (o LookupDbInstanceResultOutput) SubstituteProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDbInstanceResult) map[string]string { return v.SubstituteProperties }).(pulumi.StringMapOutput)
 }
 
 // Tags to associate with the resource.

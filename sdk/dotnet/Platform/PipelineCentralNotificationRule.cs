@@ -54,6 +54,9 @@ namespace Pulumi.Harness.Platform
         [Output("project")]
         public Output<string?> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
+        /// </summary>
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
 
@@ -135,6 +138,9 @@ namespace Pulumi.Harness.Platform
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -195,6 +201,9 @@ namespace Pulumi.Harness.Platform
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

@@ -29,7 +29,8 @@ type PipelineCentralNotificationRule struct {
 	NotificationConditions  PipelineCentralNotificationRuleNotificationConditionArrayOutput `pulumi:"notificationConditions"`
 	Org                     pulumi.StringPtrOutput                                          `pulumi:"org"`
 	Project                 pulumi.StringPtrOutput                                          `pulumi:"project"`
-	Status                  pulumi.StringPtrOutput                                          `pulumi:"status"`
+	// Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
+	Status pulumi.StringPtrOutput `pulumi:"status"`
 }
 
 // NewPipelineCentralNotificationRule registers a new resource with the given unique name, arguments, and options.
@@ -84,7 +85,8 @@ type pipelineCentralNotificationRuleState struct {
 	NotificationConditions  []PipelineCentralNotificationRuleNotificationCondition `pulumi:"notificationConditions"`
 	Org                     *string                                                `pulumi:"org"`
 	Project                 *string                                                `pulumi:"project"`
-	Status                  *string                                                `pulumi:"status"`
+	// Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
+	Status *string `pulumi:"status"`
 }
 
 type PipelineCentralNotificationRuleState struct {
@@ -101,7 +103,8 @@ type PipelineCentralNotificationRuleState struct {
 	NotificationConditions  PipelineCentralNotificationRuleNotificationConditionArrayInput
 	Org                     pulumi.StringPtrInput
 	Project                 pulumi.StringPtrInput
-	Status                  pulumi.StringPtrInput
+	// Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
+	Status pulumi.StringPtrInput
 }
 
 func (PipelineCentralNotificationRuleState) ElementType() reflect.Type {
@@ -116,7 +119,8 @@ type pipelineCentralNotificationRuleArgs struct {
 	NotificationConditions        []PipelineCentralNotificationRuleNotificationCondition        `pulumi:"notificationConditions"`
 	Org                           *string                                                       `pulumi:"org"`
 	Project                       *string                                                       `pulumi:"project"`
-	Status                        *string                                                       `pulumi:"status"`
+	// Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
+	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a PipelineCentralNotificationRule resource.
@@ -128,7 +132,8 @@ type PipelineCentralNotificationRuleArgs struct {
 	NotificationConditions        PipelineCentralNotificationRuleNotificationConditionArrayInput
 	Org                           pulumi.StringPtrInput
 	Project                       pulumi.StringPtrInput
-	Status                        pulumi.StringPtrInput
+	// Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
+	Status pulumi.StringPtrInput
 }
 
 func (PipelineCentralNotificationRuleArgs) ElementType() reflect.Type {
@@ -265,6 +270,7 @@ func (o PipelineCentralNotificationRuleOutput) Project() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *PipelineCentralNotificationRule) pulumi.StringPtrOutput { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+// Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
 func (o PipelineCentralNotificationRuleOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PipelineCentralNotificationRule) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }

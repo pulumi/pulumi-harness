@@ -545,6 +545,16 @@ export const getInfraModule: typeof import("./getInfraModule").getInfraModule = 
 export const getInfraModuleOutput: typeof import("./getInfraModule").getInfraModuleOutput = null as any;
 utilities.lazyLoad(exports, ["getInfraModule","getInfraModuleOutput"], () => require("./getInfraModule"));
 
+export { GetInfraModuleTestingArgs, GetInfraModuleTestingResult, GetInfraModuleTestingOutputArgs } from "./getInfraModuleTesting";
+export const getInfraModuleTesting: typeof import("./getInfraModuleTesting").getInfraModuleTesting = null as any;
+export const getInfraModuleTestingOutput: typeof import("./getInfraModuleTesting").getInfraModuleTestingOutput = null as any;
+utilities.lazyLoad(exports, ["getInfraModuleTesting","getInfraModuleTestingOutput"], () => require("./getInfraModuleTesting"));
+
+export { GetInfraModulesResult } from "./getInfraModules";
+export const getInfraModules: typeof import("./getInfraModules").getInfraModules = null as any;
+export const getInfraModulesOutput: typeof import("./getInfraModules").getInfraModulesOutput = null as any;
+utilities.lazyLoad(exports, ["getInfraModules","getInfraModulesOutput"], () => require("./getInfraModules"));
+
 export { GetInfraVariableSetArgs, GetInfraVariableSetResult, GetInfraVariableSetOutputArgs } from "./getInfraVariableSet";
 export const getInfraVariableSet: typeof import("./getInfraVariableSet").getInfraVariableSet = null as any;
 export const getInfraVariableSetOutput: typeof import("./getInfraVariableSet").getInfraVariableSetOutput = null as any;
@@ -919,6 +929,11 @@ export { InfraModuleArgs, InfraModuleState } from "./infraModule";
 export type InfraModule = import("./infraModule").InfraModule;
 export const InfraModule: typeof import("./infraModule").InfraModule = null as any;
 utilities.lazyLoad(exports, ["InfraModule"], () => require("./infraModule"));
+
+export { InfraModuleTestingArgs, InfraModuleTestingState } from "./infraModuleTesting";
+export type InfraModuleTesting = import("./infraModuleTesting").InfraModuleTesting;
+export const InfraModuleTesting: typeof import("./infraModuleTesting").InfraModuleTesting = null as any;
+utilities.lazyLoad(exports, ["InfraModuleTesting"], () => require("./infraModuleTesting"));
 
 export { InfraVariableSetArgs, InfraVariableSetState } from "./infraVariableSet";
 export type InfraVariableSet = import("./infraVariableSet").InfraVariableSet;
@@ -1311,6 +1326,8 @@ const _module = {
                 return new IacmDefaultPipeline(name, <any>undefined, { urn })
             case "harness:platform/infraModule:InfraModule":
                 return new InfraModule(name, <any>undefined, { urn })
+            case "harness:platform/infraModuleTesting:InfraModuleTesting":
+                return new InfraModuleTesting(name, <any>undefined, { urn })
             case "harness:platform/infraVariableSet:InfraVariableSet":
                 return new InfraVariableSet(name, <any>undefined, { urn })
             case "harness:platform/infrastructure:Infrastructure":
@@ -1483,6 +1500,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/harRegistry", _module
 pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/iacmDefaultPipeline", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraModule", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/infraModuleTesting", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraVariableSet", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infrastructure", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/inputSet", _module)

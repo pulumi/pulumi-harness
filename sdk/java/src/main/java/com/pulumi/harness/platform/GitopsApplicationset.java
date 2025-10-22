@@ -37,6 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs;
  * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs;
  * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs;
+ * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyArgs;
+ * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyAutomatedArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,20 +46,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
- *         var testFixed = new GitopsApplicationset("testFixed", GitopsApplicationsetArgs.builder()
+ *     public static void stack(Context ctx) }{{@code
+ *         // Example 1: Cluster Generator
+ *         var clusterGenerator = new GitopsApplicationset("clusterGenerator", GitopsApplicationsetArgs.builder()
  *             .orgId("default")
  *             .projectId("projectId")
  *             .agentId("account.agentuseast1")
  *             .upsert(true)
  *             .applicationset(GitopsApplicationsetApplicationsetArgs.builder()
  *                 .metadata(GitopsApplicationsetApplicationsetMetadataArgs.builder()
- *                     .name("tf-appset")
+ *                     .name("cluster-appset")
  *                     .namespace("argocd")
  *                     .build())
  *                 .spec(GitopsApplicationsetApplicationsetSpecArgs.builder()
@@ -70,11 +73,8 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .template(GitopsApplicationsetApplicationsetSpecTemplateArgs.builder()
  *                         .metadata(GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs.builder()
- *                             .name("{{.name}}-guestbook")
- *                             .labels(Map.ofEntries(
- *                                 Map.entry("env", "dev"),
- *                                 Map.entry("harness.io/serviceRef", "svc1")
- *                             ))
+ *                             .name("}{{{@code .name}}}{@code -guestbook")
+ *                             .labels(Map.of("env", "dev"))
  *                             .build())
  *                         .spec(GitopsApplicationsetApplicationsetSpecTemplateSpecArgs.builder()
  *                             .project("default")
@@ -84,8 +84,8 @@ import javax.annotation.Nullable;
  *                                 .targetRevision("HEAD")
  *                                 .build())
  *                             .destination(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs.builder()
- *                                 .server("{{.url}}")
- *                                 .namespace("app-ns-{{.name}}")
+ *                                 .server("}{{{@code .url}}}{@code ")
+ *                                 .namespace("app-ns-}{{{@code .name}}}{@code ")
  *                                 .build())
  *                             .build())
  *                         .build())
@@ -93,10 +93,166 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *         // Example 2: List Generator
+ *         var listGenerator = new GitopsApplicationset("listGenerator", GitopsApplicationsetArgs.builder()
+ *             .orgId("default")
+ *             .projectId("projectId")
+ *             .agentId("account.agentuseast1")
+ *             .upsert(true)
+ *             .applicationset(GitopsApplicationsetApplicationsetArgs.builder()
+ *                 .metadata(GitopsApplicationsetApplicationsetMetadataArgs.builder()
+ *                     .name("list-appset")
+ *                     .build())
+ *                 .spec(GitopsApplicationsetApplicationsetSpecArgs.builder()
+ *                     .goTemplate(true)
+ *                     .goTemplateOptions("missingkey=error")
+ *                     .generators(GitopsApplicationsetApplicationsetSpecGeneratorArgs.builder()
+ *                         .lists(GitopsApplicationsetApplicationsetSpecGeneratorListArgs.builder()
+ *                             .elements(                            
+ *                                 Map.ofEntries(
+ *                                     Map.entry("cluster", "engineering-dev"),
+ *                                     Map.entry("url", "https://kubernetes.default.svc")
+ *                                 ),
+ *                                 Map.ofEntries(
+ *                                     Map.entry("cluster", "engineering-prod"),
+ *                                     Map.entry("url", "https://kubernetes.prod.svc")
+ *                                 ))
+ *                             .build())
+ *                         .build())
+ *                     .template(GitopsApplicationsetApplicationsetSpecTemplateArgs.builder()
+ *                         .metadata(GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs.builder()
+ *                             .name("}{{{@code .cluster}}}{@code -guestbook")
+ *                             .build())
+ *                         .spec(GitopsApplicationsetApplicationsetSpecTemplateSpecArgs.builder()
+ *                             .project("default")
+ *                             .sources(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs.builder()
+ *                                 .repoUrl("https://github.com/argoproj/argocd-example-apps.git")
+ *                                 .path("helm-guestbook")
+ *                                 .targetRevision("HEAD")
+ *                                 .build())
+ *                             .destination(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs.builder()
+ *                                 .server("}{{{@code .url}}}{@code ")
+ *                                 .namespace("default")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example 3: Git Generator with Files
+ *         var gitFiles = new GitopsApplicationset("gitFiles", GitopsApplicationsetArgs.builder()
+ *             .orgId("default")
+ *             .projectId("projectId")
+ *             .agentId("account.agentuseast1")
+ *             .upsert(true)
+ *             .applicationset(GitopsApplicationsetApplicationsetArgs.builder()
+ *                 .metadata(GitopsApplicationsetApplicationsetMetadataArgs.builder()
+ *                     .name("git-files-appset")
+ *                     .build())
+ *                 .spec(GitopsApplicationsetApplicationsetSpecArgs.builder()
+ *                     .generators(GitopsApplicationsetApplicationsetSpecGeneratorArgs.builder()
+ *                         .gits(GitopsApplicationsetApplicationsetSpecGeneratorGitArgs.builder()
+ *                             .repoUrl("https://github.com/example/config-repo")
+ *                             .revision("main")
+ *                             .files(GitopsApplicationsetApplicationsetSpecGeneratorGitFileArgs.builder()
+ *                                 .path("apps/*}&#47;{@code config.json")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .template(GitopsApplicationsetApplicationsetSpecTemplateArgs.builder()
+ *                         .metadata(GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs.builder()
+ *                             .name("}{{{@code .path.basename}}}{@code -app")
+ *                             .build())
+ *                         .spec(GitopsApplicationsetApplicationsetSpecTemplateSpecArgs.builder()
+ *                             .project("default")
+ *                             .sources(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs.builder()
+ *                                 .repoUrl("https://github.com/example/app-repo")
+ *                                 .path("}{{{@code .path.path}}}{@code ")
+ *                                 .targetRevision("main")
+ *                                 .build())
+ *                             .destination(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs.builder()
+ *                                 .server("https://kubernetes.default.svc")
+ *                                 .namespace("}{{{@code .path.basename}}}{@code ")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example 4: Git Generator with Directories
+ *         var gitDirectories = new GitopsApplicationset("gitDirectories", GitopsApplicationsetArgs.builder()
+ *             .orgId("default")
+ *             .projectId("projectId")
+ *             .agentId("account.agentuseast1")
+ *             .upsert(true)
+ *             .applicationset(GitopsApplicationsetApplicationsetArgs.builder()
+ *                 .metadata(GitopsApplicationsetApplicationsetMetadataArgs.builder()
+ *                     .name("git-directories-appset")
+ *                     .build())
+ *                 .spec(GitopsApplicationsetApplicationsetSpecArgs.builder()
+ *                     .generators(GitopsApplicationsetApplicationsetSpecGeneratorArgs.builder()
+ *                         .gits(GitopsApplicationsetApplicationsetSpecGeneratorGitArgs.builder()
+ *                             .repoUrl("https://github.com/argoproj/argo-cd.git")
+ *                             .revision("HEAD")
+ *                             .directories(GitopsApplicationsetApplicationsetSpecGeneratorGitDirectoryArgs.builder()
+ *                                 .path("applicationset/examples/git-generator-directory/cluster-addons/*")
+ *                                 .exclude(false)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .template(GitopsApplicationsetApplicationsetSpecTemplateArgs.builder()
+ *                         .metadata(GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs.builder()
+ *                             .name("}{{{@code .path.basename}}}{@code -addon")
+ *                             .build())
+ *                         .spec(GitopsApplicationsetApplicationsetSpecTemplateSpecArgs.builder()
+ *                             .project("default")
+ *                             .sources(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs.builder()
+ *                                 .repoUrl("https://github.com/argoproj/argo-cd.git")
+ *                                 .path("}{{{@code .path.path}}}{@code ")
+ *                                 .targetRevision("HEAD")
+ *                                 .build())
+ *                             .destination(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs.builder()
+ *                                 .server("https://kubernetes.default.svc")
+ *                                 .namespace("}{{{@code .path.basename}}}{@code ")
+ *                                 .build())
+ *                             .syncPolicy(GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyArgs.builder()
+ *                                 .automated(GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyAutomatedArgs.builder()
+ *                                     .prune(true)
+ *                                     .selfHeal(true)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
+ * 
+ * ## Import
+ * 
+ * Import gitOps applicationset with account level agent, agent id has account prefix #
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;identifier&gt;
+ * ```
+ * 
+ * Import gitOps applicationset with org level agent, agent id has org prefix #
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;identifier&gt;
+ * ```
+ * 
+ * Import gitOps applicationset with project level agent #
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;identifier&gt;
+ * ```
  * 
  */
 @ResourceType(type="harness:platform/gitopsApplicationset:GitopsApplicationset")

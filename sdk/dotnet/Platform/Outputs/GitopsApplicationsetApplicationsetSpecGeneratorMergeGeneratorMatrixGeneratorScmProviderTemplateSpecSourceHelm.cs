@@ -38,6 +38,14 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly bool? SkipCrds;
         /// <summary>
+        /// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+        /// </summary>
+        public readonly bool? SkipSchemaValidation;
+        /// <summary>
+        /// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+        /// </summary>
+        public readonly bool? SkipTests;
+        /// <summary>
         /// List of Helm value files to use when generating a template.
         /// </summary>
         public readonly ImmutableArray<string> ValueFiles;
@@ -45,6 +53,14 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Helm values to be passed to 'helm template', typically defined as a block.
         /// </summary>
         public readonly string? Values;
+        /// <summary>
+        /// Helm values to be passed to 'helm template', typically defined as a block.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? ValuesObject;
+        /// <summary>
+        /// Helm version to use for templating (either "2" or "3").
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
         private GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderTemplateSpecSourceHelm(
@@ -60,9 +76,17 @@ namespace Pulumi.Harness.Platform.Outputs
 
             bool? skipCrds,
 
+            bool? skipSchemaValidation,
+
+            bool? skipTests,
+
             ImmutableArray<string> valueFiles,
 
-            string? values)
+            string? values,
+
+            ImmutableDictionary<string, string>? valuesObject,
+
+            string? version)
         {
             FileParameters = fileParameters;
             IgnoreMissingValueFiles = ignoreMissingValueFiles;
@@ -70,8 +94,12 @@ namespace Pulumi.Harness.Platform.Outputs
             PassCredentials = passCredentials;
             ReleaseName = releaseName;
             SkipCrds = skipCrds;
+            SkipSchemaValidation = skipSchemaValidation;
+            SkipTests = skipTests;
             ValueFiles = valueFiles;
             Values = values;
+            ValuesObject = valuesObject;
+            Version = version;
         }
     }
 }

@@ -4846,6 +4846,146 @@ export namespace platform {
         userName?: pulumi.Input<string>;
     }
 
+    export interface GetInfraModuleTestingMetadata {
+        /**
+         * Account is the internal customer account ID
+         */
+        account?: string;
+        /**
+         * Organization identifier
+         */
+        org?: string;
+        /**
+         * Pipelines where the testing is enabled
+         */
+        pipelines?: string[];
+        /**
+         * Project identifier
+         */
+        project?: string;
+        /**
+         * Provider connector for testing purposes
+         */
+        providerConnector?: string;
+        /**
+         * Provisioner type for testing purposes
+         */
+        provisionerType?: string;
+        /**
+         * Provisioner version for testing purposes
+         */
+        provisionerVersion?: string;
+        /**
+         * Release pipeline
+         */
+        releasePipeline?: string;
+    }
+
+    export interface GetInfraModuleTestingMetadataArgs {
+        /**
+         * Account is the internal customer account ID
+         */
+        account?: pulumi.Input<string>;
+        /**
+         * Organization identifier
+         */
+        org?: pulumi.Input<string>;
+        /**
+         * Pipelines where the testing is enabled
+         */
+        pipelines?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Project identifier
+         */
+        project?: pulumi.Input<string>;
+        /**
+         * Provider connector for testing purposes
+         */
+        providerConnector?: pulumi.Input<string>;
+        /**
+         * Provisioner type for testing purposes
+         */
+        provisionerType?: pulumi.Input<string>;
+        /**
+         * Provisioner version for testing purposes
+         */
+        provisionerVersion?: pulumi.Input<string>;
+        /**
+         * Release pipeline
+         */
+        releasePipeline?: pulumi.Input<string>;
+    }
+
+    export interface GetInfraModuleTestingTestingMetadata {
+        /**
+         * Account is the internal customer account ID
+         */
+        account?: string;
+        /**
+         * Organization identifier
+         */
+        org?: string;
+        /**
+         * Pipelines where the testing is enabled
+         */
+        pipelines?: string[];
+        /**
+         * Project identifier
+         */
+        project?: string;
+        /**
+         * Provider connector for testing purposes
+         */
+        providerConnector?: string;
+        /**
+         * Provisioner type for testing purposes
+         */
+        provisionerType?: string;
+        /**
+         * Provisioner version for testing purposes
+         */
+        provisionerVersion?: string;
+        /**
+         * Release pipeline
+         */
+        releasePipeline?: string;
+    }
+
+    export interface GetInfraModuleTestingTestingMetadataArgs {
+        /**
+         * Account is the internal customer account ID
+         */
+        account?: pulumi.Input<string>;
+        /**
+         * Organization identifier
+         */
+        org?: pulumi.Input<string>;
+        /**
+         * Pipelines where the testing is enabled
+         */
+        pipelines?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Project identifier
+         */
+        project?: pulumi.Input<string>;
+        /**
+         * Provider connector for testing purposes
+         */
+        providerConnector?: pulumi.Input<string>;
+        /**
+         * Provisioner type for testing purposes
+         */
+        provisionerType?: pulumi.Input<string>;
+        /**
+         * Provisioner version for testing purposes
+         */
+        provisionerVersion?: pulumi.Input<string>;
+        /**
+         * Release pipeline
+         */
+        releasePipeline?: pulumi.Input<string>;
+    }
+
     export interface GetInfraVariableSetConnector {
         /**
          * Connector Ref is the reference to the connector
@@ -5997,6 +6137,10 @@ export namespace platform {
          */
         project?: pulumi.Input<string>;
         /**
+         * Revision history limit for the application.
+         */
+        revisionHistoryLimit?: pulumi.Input<string>;
+        /**
          * Contains all information about the source of the GitOps application.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecSource>[]>;
@@ -6035,7 +6179,7 @@ export namespace platform {
          */
         directories?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecSourceDirectory>[]>;
         /**
-         * Holds helm specific options.
+         * Helm specific options.
          */
         helms?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecSourceHelm>[]>;
         /**
@@ -6046,6 +6190,10 @@ export namespace platform {
          * Options specific to a GitOps application source specific to Kustomize.
          */
         kustomizes?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecSourceKustomize>[]>;
+        /**
+         * Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
+         */
+        name?: pulumi.Input<string>;
         /**
          * Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
          */
@@ -6134,27 +6282,27 @@ export namespace platform {
 
     export interface GitOpsApplicationsApplicationSpecSourceHelm {
         /**
-         * File parameters to the helm template.
+         * File parameters for the helm template.
          */
         fileParameters?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecSourceHelmFileParameter>[]>;
         /**
-         * Prevents 'helm template' from failing when valueFiles do not exist locally.
+         * Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
          */
         ignoreMissingValueFiles?: pulumi.Input<boolean>;
         /**
-         * List of helm parameters which are passed to the helm template command upon manifest generation.
+         * Helm parameters which are passed to the helm template command upon manifest generation.
          */
         parameters?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecSourceHelmParameter>[]>;
         /**
-         * Indicates if to pass credentials to all domains (helm's --pass-credentials)
+         * If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
          */
         passCredentials?: pulumi.Input<boolean>;
         /**
-         * Helm release name to use. If omitted it will use the GitOps application name.
+         * Helm release name. If omitted it will use the application name.
          */
         releaseName?: pulumi.Input<string>;
         /**
-         * Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+         * Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
@@ -6166,37 +6314,41 @@ export namespace platform {
          */
         skipTests?: pulumi.Input<boolean>;
         /**
-         * List of helm value files to use when generating a template.
+         * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Helm values to be passed to helm template, typically defined as a block.
+         * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
         /**
-         * Helm version to use for templating (either "2" or "3")
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
          */
         version?: pulumi.Input<string>;
     }
 
     export interface GitOpsApplicationsApplicationSpecSourceHelmFileParameter {
         /**
-         * Name of the helm parameter.
+         * Name of the Helm parameter.
          */
-        name?: pulumi.Input<string>;
+        name: pulumi.Input<string>;
         /**
-         * Path to the file containing the values of the helm parameter.
+         * Path to the file containing the values for the Helm parameter.
          */
-        path?: pulumi.Input<string>;
+        path: pulumi.Input<string>;
     }
 
     export interface GitOpsApplicationsApplicationSpecSourceHelmParameter {
         /**
-         * Indicates if helm should interpret booleans and numbers as strings.
+         * Determines whether to tell Helm to interpret booleans and numbers as strings.
          */
         forceString?: pulumi.Input<boolean>;
         /**
-         * Name of the helm parameter.
+         * Name of the Helm parameter.
          */
         name?: pulumi.Input<string>;
         /**
@@ -7587,7 +7739,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -7784,6 +7936,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -7791,6 +7951,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -8027,7 +8195,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -8224,6 +8392,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -8231,6 +8407,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -8486,7 +8670,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -8683,6 +8867,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -8690,6 +8882,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -8848,7 +9048,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
@@ -8911,7 +9111,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -9108,6 +9308,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -9115,6 +9323,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -9447,7 +9663,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -9644,6 +9860,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -9651,6 +9875,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -9887,7 +10119,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -10084,6 +10316,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -10091,6 +10331,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -10346,7 +10594,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -10543,6 +10791,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -10550,6 +10806,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -10708,7 +10972,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
@@ -10771,7 +11035,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -10968,6 +11232,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -10975,6 +11247,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -11299,7 +11579,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -11496,6 +11776,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -11503,6 +11791,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -11739,7 +12035,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -11936,6 +12232,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -11943,6 +12247,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -12198,7 +12510,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -12395,6 +12707,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -12402,6 +12722,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -12560,7 +12888,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
@@ -12623,7 +12951,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -12820,6 +13148,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -12827,6 +13163,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -13222,7 +13566,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -13419,6 +13763,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -13426,6 +13778,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -13909,7 +14269,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -14106,6 +14466,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -14113,6 +14481,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -14349,7 +14725,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -14546,6 +14922,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -14553,6 +14937,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecSourceHelmFileParameter {
@@ -14881,7 +15273,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -15078,6 +15470,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -15085,6 +15485,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -15321,7 +15729,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -15518,6 +15926,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -15525,6 +15941,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -15780,7 +16204,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -15977,6 +16401,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -15984,6 +16416,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -16142,7 +16582,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
@@ -16205,7 +16645,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -16402,6 +16842,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -16409,6 +16857,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -16804,7 +17260,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -17001,6 +17457,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -17008,6 +17472,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -17491,7 +17963,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -17688,6 +18160,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -17695,6 +18175,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -17931,7 +18419,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -18128,6 +18616,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -18135,6 +18631,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeTemplateSpecSourceHelmFileParameter {
@@ -18530,7 +19034,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -18727,6 +19231,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -18734,6 +19246,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -19217,7 +19737,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -19414,6 +19934,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -19421,6 +19949,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -19657,7 +20193,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -19854,6 +20390,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -19861,6 +20405,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixTemplateSpecSourceHelmFileParameter {
@@ -20197,7 +20749,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -20394,6 +20946,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -20401,6 +20961,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -20637,7 +21205,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -20834,6 +21402,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -20841,6 +21417,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -21096,7 +21680,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -21293,6 +21877,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -21300,6 +21892,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -21458,7 +22058,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
@@ -21521,7 +22121,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -21718,6 +22318,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -21725,6 +22333,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -22049,7 +22665,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -22246,6 +22862,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -22253,6 +22877,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -22489,7 +23121,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -22686,6 +23318,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -22693,6 +23333,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -22948,7 +23596,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -23145,6 +23793,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -23152,6 +23808,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -23310,7 +23974,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
@@ -23373,7 +24037,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -23570,6 +24234,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -23577,6 +24249,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -23972,7 +24652,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -24169,6 +24849,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -24176,6 +24864,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -24659,7 +25355,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -24856,6 +25552,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -24863,6 +25567,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -25099,7 +25811,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -25296,6 +26008,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -25303,6 +26023,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixTemplateSpecSourceHelmFileParameter {
@@ -25631,7 +26359,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -25828,6 +26556,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -25835,6 +26571,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -26071,7 +26815,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -26268,6 +27012,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -26275,6 +27027,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -26530,7 +27290,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -26727,6 +27487,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -26734,6 +27502,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -26892,7 +27668,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
@@ -26955,7 +27731,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -27152,6 +27928,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -27159,6 +27943,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -27554,7 +28346,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -27751,6 +28543,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -27758,6 +28558,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -28241,7 +29049,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -28438,6 +29246,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -28445,6 +29261,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -28681,7 +29505,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -28878,6 +29702,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -28885,6 +29717,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeTemplateSpecSourceHelmFileParameter {
@@ -29280,7 +30120,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -29477,6 +30317,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -29484,6 +30332,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -29967,7 +30823,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -30164,6 +31020,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -30171,6 +31035,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -30407,7 +31279,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -30604,6 +31476,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -30611,6 +31491,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeTemplateSpecSourceHelmFileParameter {
@@ -31006,7 +31894,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -31203,6 +32091,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -31210,6 +32106,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -31693,7 +32597,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -31890,6 +32794,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -31897,6 +32809,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -32203,7 +33123,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: pulumi.Input<number>;
+        revisionHistoryLimit?: pulumi.Input<string>;
         /**
          * Location of the application's manifests or chart.
          */
@@ -32400,6 +33320,14 @@ export namespace platform {
          */
         skipCrds?: pulumi.Input<boolean>;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: pulumi.Input<boolean>;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: pulumi.Input<boolean>;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -32407,6 +33335,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: pulumi.Input<string>;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmFileParameter {
@@ -32627,6 +33563,41 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface InfraModuleTestingTestingMetadata {
+        /**
+         * Account is the internal customer account ID
+         */
+        account?: pulumi.Input<string>;
+        /**
+         * Organization identifier
+         */
+        org?: pulumi.Input<string>;
+        /**
+         * Pipelines where the testing is enabled
+         */
+        pipelines?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Project identifier
+         */
+        project?: pulumi.Input<string>;
+        /**
+         * Provider connector for testing purposes
+         */
+        providerConnector?: pulumi.Input<string>;
+        /**
+         * Provisioner type for testing purposes
+         */
+        provisionerType?: pulumi.Input<string>;
+        /**
+         * Provisioner version for testing purposes
+         */
+        provisionerVersion?: pulumi.Input<string>;
+        /**
+         * Release pipeline
+         */
+        releasePipeline?: pulumi.Input<string>;
     }
 
     export interface InfraVariableSetConnector {
@@ -33366,6 +34337,9 @@ export namespace platform {
     export interface PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
         entityIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
         notificationEntity: pulumi.Input<string>;
+        /**
+         * The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+         */
         notificationEvent: pulumi.Input<string>;
         notificationEventDatas?: pulumi.Input<pulumi.Input<inputs.platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData>[]>;
     }

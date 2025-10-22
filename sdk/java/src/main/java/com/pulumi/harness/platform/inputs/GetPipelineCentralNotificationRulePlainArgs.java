@@ -25,17 +25,9 @@ public final class GetPipelineCentralNotificationRulePlainArgs extends com.pulum
         return Optional.ofNullable(this.customNotificationTemplateRef);
     }
 
-    /**
-     * Identifier of the Notification Rule.
-     * 
-     */
     @Import(name="identifier", required=true)
     private String identifier;
 
-    /**
-     * @return Identifier of the Notification Rule.
-     * 
-     */
     public String identifier() {
         return this.identifier;
     }
@@ -61,32 +53,16 @@ public final class GetPipelineCentralNotificationRulePlainArgs extends com.pulum
         return Optional.ofNullable(this.notificationConditions);
     }
 
-    /**
-     * Identifier of the organization in which the Notification Rule is configured.
-     * 
-     */
     @Import(name="org")
     private @Nullable String org;
 
-    /**
-     * @return Identifier of the organization in which the Notification Rule is configured.
-     * 
-     */
     public Optional<String> org() {
         return Optional.ofNullable(this.org);
     }
 
-    /**
-     * Identifier of the project in which the Notification Rule is configured.
-     * 
-     */
     @Import(name="project")
     private @Nullable String project;
 
-    /**
-     * @return Identifier of the project in which the Notification Rule is configured.
-     * 
-     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -134,12 +110,6 @@ public final class GetPipelineCentralNotificationRulePlainArgs extends com.pulum
             return this;
         }
 
-        /**
-         * @param identifier Identifier of the Notification Rule.
-         * 
-         * @return builder
-         * 
-         */
         public Builder identifier(String identifier) {
             $.identifier = identifier;
             return this;
@@ -168,23 +138,11 @@ public final class GetPipelineCentralNotificationRulePlainArgs extends com.pulum
             return notificationConditions(List.of(notificationConditions));
         }
 
-        /**
-         * @param org Identifier of the organization in which the Notification Rule is configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder org(@Nullable String org) {
             $.org = org;
             return this;
         }
 
-        /**
-         * @param project Identifier of the project in which the Notification Rule is configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;

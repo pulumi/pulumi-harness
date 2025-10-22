@@ -135,6 +135,8 @@ import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelineArgs;
 import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelinePlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModulePlainArgs;
+import com.pulumi.harness.platform.inputs.GetInfraModuleTestingArgs;
+import com.pulumi.harness.platform.inputs.GetInfraModuleTestingPlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
 import com.pulumi.harness.platform.inputs.GetInfraVariableSetPlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
@@ -311,6 +313,8 @@ import com.pulumi.harness.platform.outputs.GetHarRegistryResult;
 import com.pulumi.harness.platform.outputs.GetHelmConnectorResult;
 import com.pulumi.harness.platform.outputs.GetIacmDefaultPipelineResult;
 import com.pulumi.harness.platform.outputs.GetInfraModuleResult;
+import com.pulumi.harness.platform.outputs.GetInfraModuleTestingResult;
+import com.pulumi.harness.platform.outputs.GetInfraModulesResult;
 import com.pulumi.harness.platform.outputs.GetInfraVariableSetResult;
 import com.pulumi.harness.platform.outputs.GetInfrastructureResult;
 import com.pulumi.harness.platform.outputs.GetInputSetResult;
@@ -10632,6 +10636,300 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetInfraModuleResult> getInfraModulePlain(GetInfraModulePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getInfraModule:getInfraModule", TypeShape.of(GetInfraModuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving modules testing metadata from the module registry.
+     * 
+     */
+    public static Output<GetInfraModuleTestingResult> getInfraModuleTesting(GetInfraModuleTestingArgs args) {
+        return getInfraModuleTesting(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving modules testing metadata from the module registry.
+     * 
+     */
+    public static CompletableFuture<GetInfraModuleTestingResult> getInfraModuleTestingPlain(GetInfraModuleTestingPlainArgs args) {
+        return getInfraModuleTestingPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving modules testing metadata from the module registry.
+     * 
+     */
+    public static Output<GetInfraModuleTestingResult> getInfraModuleTesting(GetInfraModuleTestingArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraModuleTesting:getInfraModuleTesting", TypeShape.of(GetInfraModuleTestingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving modules testing metadata from the module registry.
+     * 
+     */
+    public static Output<GetInfraModuleTestingResult> getInfraModuleTesting(GetInfraModuleTestingArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraModuleTesting:getInfraModuleTesting", TypeShape.of(GetInfraModuleTestingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving modules testing metadata from the module registry.
+     * 
+     */
+    public static CompletableFuture<GetInfraModuleTestingResult> getInfraModuleTestingPlain(GetInfraModuleTestingPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getInfraModuleTesting:getInfraModuleTesting", TypeShape.of(GetInfraModuleTestingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a list of modules from the module registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraModulesResult> getInfraModules() {
+        return getInfraModules(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a list of modules from the module registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInfraModulesResult> getInfraModulesPlain() {
+        return getInfraModulesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a list of modules from the module registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraModulesResult> getInfraModules(InvokeArgs args) {
+        return getInfraModules(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a list of modules from the module registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInfraModulesResult> getInfraModulesPlain(InvokeArgs args) {
+        return getInfraModulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a list of modules from the module registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraModulesResult> getInfraModules(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraModules:getInfraModules", TypeShape.of(GetInfraModulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a list of modules from the module registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraModulesResult> getInfraModules(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraModules:getInfraModules", TypeShape.of(GetInfraModulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a list of modules from the module registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInfraModulesResult> getInfraModulesPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getInfraModules:getInfraModules", TypeShape.of(GetInfraModulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving Variable Sets.

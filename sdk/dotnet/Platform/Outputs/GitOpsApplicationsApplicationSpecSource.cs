@@ -22,7 +22,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSourceDirectory> Directories;
         /// <summary>
-        /// Holds helm specific options.
+        /// Helm specific options.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSourceHelm> Helms;
         /// <summary>
@@ -33,6 +33,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Options specific to a GitOps application source specific to Kustomize.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSourceKustomize> Kustomizes;
+        /// <summary>
+        /// Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
+        /// </summary>
+        public readonly string? Name;
         /// <summary>
         /// Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
         /// </summary>
@@ -66,6 +70,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSourceKustomize> kustomizes,
 
+            string? name,
+
             string? path,
 
             ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSourcePlugin> plugins,
@@ -81,6 +87,7 @@ namespace Pulumi.Harness.Platform.Outputs
             Helms = helms;
             Ksonnets = ksonnets;
             Kustomizes = kustomizes;
+            Name = name;
             Path = path;
             Plugins = plugins;
             Ref = @ref;

@@ -22,6 +22,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Project;
         /// <summary>
+        /// Revision history limit for the application.
+        /// </summary>
+        public readonly string? RevisionHistoryLimit;
+        /// <summary>
         /// Contains all information about the source of the GitOps application.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSource> Source;
@@ -40,6 +44,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? project,
 
+            string? revisionHistoryLimit,
+
             ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSource> source,
 
             ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSource> sources,
@@ -48,6 +54,7 @@ namespace Pulumi.Harness.Platform.Outputs
         {
             Destinations = destinations;
             Project = project;
+            RevisionHistoryLimit = revisionHistoryLimit;
             Source = source;
             Sources = sources;
             SyncPolicies = syncPolicies;

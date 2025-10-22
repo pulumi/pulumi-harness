@@ -108,9 +108,17 @@ public class PipelineCentralNotificationRule extends com.pulumi.resources.Custom
     public Output<Optional<String>> project() {
         return Codegen.optional(this.project);
     }
+    /**
+     * Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
+    /**
+     * @return Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
+     * 
+     */
     public Output<Optional<String>> status() {
         return Codegen.optional(this.status);
     }

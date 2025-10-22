@@ -227,14 +227,15 @@ class GitopsApplicationset(pulumi.CustomResource):
         import pulumi
         import pulumi_harness as harness
 
-        test_fixed = harness.platform.GitopsApplicationset("test_fixed",
+        # Example 1: Cluster Generator
+        cluster_generator = harness.platform.GitopsApplicationset("cluster_generator",
             org_id="default",
             project_id="projectId",
             agent_id="account.agentuseast1",
             upsert=True,
             applicationset={
                 "metadata": {
-                    "name": "tf-appset",
+                    "name": "cluster-appset",
                     "namespace": "argocd",
                 },
                 "spec": {
@@ -250,7 +251,6 @@ class GitopsApplicationset(pulumi.CustomResource):
                             "name": "{{.name}}-guestbook",
                             "labels": {
                                 "env": "dev",
-                                "harness.io/serviceRef": "svc1",
                             },
                         },
                         "spec": {
@@ -268,6 +268,157 @@ class GitopsApplicationset(pulumi.CustomResource):
                     },
                 },
             })
+        # Example 2: List Generator
+        list_generator = harness.platform.GitopsApplicationset("list_generator",
+            org_id="default",
+            project_id="projectId",
+            agent_id="account.agentuseast1",
+            upsert=True,
+            applicationset={
+                "metadata": {
+                    "name": "list-appset",
+                },
+                "spec": {
+                    "go_template": True,
+                    "go_template_options": ["missingkey=error"],
+                    "generators": [{
+                        "lists": [{
+                            "elements": [
+                                {
+                                    "cluster": "engineering-dev",
+                                    "url": "https://kubernetes.default.svc",
+                                },
+                                {
+                                    "cluster": "engineering-prod",
+                                    "url": "https://kubernetes.prod.svc",
+                                },
+                            ],
+                        }],
+                    }],
+                    "template": {
+                        "metadata": {
+                            "name": "{{.cluster}}-guestbook",
+                        },
+                        "spec": {
+                            "project": "default",
+                            "sources": [{
+                                "repo_url": "https://github.com/argoproj/argocd-example-apps.git",
+                                "path": "helm-guestbook",
+                                "target_revision": "HEAD",
+                            }],
+                            "destination": {
+                                "server": "{{.url}}",
+                                "namespace": "default",
+                            },
+                        },
+                    },
+                },
+            })
+        # Example 3: Git Generator with Files
+        git_files = harness.platform.GitopsApplicationset("git_files",
+            org_id="default",
+            project_id="projectId",
+            agent_id="account.agentuseast1",
+            upsert=True,
+            applicationset={
+                "metadata": {
+                    "name": "git-files-appset",
+                },
+                "spec": {
+                    "generators": [{
+                        "gits": [{
+                            "repo_url": "https://github.com/example/config-repo",
+                            "revision": "main",
+                            "files": [{
+                                "path": "apps/*/config.json",
+                            }],
+                        }],
+                    }],
+                    "template": {
+                        "metadata": {
+                            "name": "{{.path.basename}}-app",
+                        },
+                        "spec": {
+                            "project": "default",
+                            "sources": [{
+                                "repo_url": "https://github.com/example/app-repo",
+                                "path": "{{.path.path}}",
+                                "target_revision": "main",
+                            }],
+                            "destination": {
+                                "server": "https://kubernetes.default.svc",
+                                "namespace": "{{.path.basename}}",
+                            },
+                        },
+                    },
+                },
+            })
+        # Example 4: Git Generator with Directories
+        git_directories = harness.platform.GitopsApplicationset("git_directories",
+            org_id="default",
+            project_id="projectId",
+            agent_id="account.agentuseast1",
+            upsert=True,
+            applicationset={
+                "metadata": {
+                    "name": "git-directories-appset",
+                },
+                "spec": {
+                    "generators": [{
+                        "gits": [{
+                            "repo_url": "https://github.com/argoproj/argo-cd.git",
+                            "revision": "HEAD",
+                            "directories": [{
+                                "path": "applicationset/examples/git-generator-directory/cluster-addons/*",
+                                "exclude": False,
+                            }],
+                        }],
+                    }],
+                    "template": {
+                        "metadata": {
+                            "name": "{{.path.basename}}-addon",
+                        },
+                        "spec": {
+                            "project": "default",
+                            "sources": [{
+                                "repo_url": "https://github.com/argoproj/argo-cd.git",
+                                "path": "{{.path.path}}",
+                                "target_revision": "HEAD",
+                            }],
+                            "destination": {
+                                "server": "https://kubernetes.default.svc",
+                                "namespace": "{{.path.basename}}",
+                            },
+                            "sync_policy": {
+                                "automated": {
+                                    "prune": True,
+                                    "self_heal": True,
+                                },
+                            },
+                        },
+                    },
+                },
+            })
+        ```
+
+        ## Import
+
+        Import gitOps applicationset with account level agent, agent id has account prefix #
+
+        ```sh
+        $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example <organization_id>/<project_id>/<agent_id>/<identifier>
+        ```
+
+        Import gitOps applicationset with org level agent, agent id has org prefix #
+
+        ```sh
+        $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example <organization_id>/<project_id>/<agent_id>/<identifier>
+        ```
+
+        Import gitOps applicationset with project level agent #
+
+        ```sh
+        $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example <organization_id>/<project_id>/<agent_id>/<identifier>
         ```
 
         :param str resource_name: The name of the resource.
@@ -293,14 +444,15 @@ class GitopsApplicationset(pulumi.CustomResource):
         import pulumi
         import pulumi_harness as harness
 
-        test_fixed = harness.platform.GitopsApplicationset("test_fixed",
+        # Example 1: Cluster Generator
+        cluster_generator = harness.platform.GitopsApplicationset("cluster_generator",
             org_id="default",
             project_id="projectId",
             agent_id="account.agentuseast1",
             upsert=True,
             applicationset={
                 "metadata": {
-                    "name": "tf-appset",
+                    "name": "cluster-appset",
                     "namespace": "argocd",
                 },
                 "spec": {
@@ -316,7 +468,6 @@ class GitopsApplicationset(pulumi.CustomResource):
                             "name": "{{.name}}-guestbook",
                             "labels": {
                                 "env": "dev",
-                                "harness.io/serviceRef": "svc1",
                             },
                         },
                         "spec": {
@@ -334,6 +485,157 @@ class GitopsApplicationset(pulumi.CustomResource):
                     },
                 },
             })
+        # Example 2: List Generator
+        list_generator = harness.platform.GitopsApplicationset("list_generator",
+            org_id="default",
+            project_id="projectId",
+            agent_id="account.agentuseast1",
+            upsert=True,
+            applicationset={
+                "metadata": {
+                    "name": "list-appset",
+                },
+                "spec": {
+                    "go_template": True,
+                    "go_template_options": ["missingkey=error"],
+                    "generators": [{
+                        "lists": [{
+                            "elements": [
+                                {
+                                    "cluster": "engineering-dev",
+                                    "url": "https://kubernetes.default.svc",
+                                },
+                                {
+                                    "cluster": "engineering-prod",
+                                    "url": "https://kubernetes.prod.svc",
+                                },
+                            ],
+                        }],
+                    }],
+                    "template": {
+                        "metadata": {
+                            "name": "{{.cluster}}-guestbook",
+                        },
+                        "spec": {
+                            "project": "default",
+                            "sources": [{
+                                "repo_url": "https://github.com/argoproj/argocd-example-apps.git",
+                                "path": "helm-guestbook",
+                                "target_revision": "HEAD",
+                            }],
+                            "destination": {
+                                "server": "{{.url}}",
+                                "namespace": "default",
+                            },
+                        },
+                    },
+                },
+            })
+        # Example 3: Git Generator with Files
+        git_files = harness.platform.GitopsApplicationset("git_files",
+            org_id="default",
+            project_id="projectId",
+            agent_id="account.agentuseast1",
+            upsert=True,
+            applicationset={
+                "metadata": {
+                    "name": "git-files-appset",
+                },
+                "spec": {
+                    "generators": [{
+                        "gits": [{
+                            "repo_url": "https://github.com/example/config-repo",
+                            "revision": "main",
+                            "files": [{
+                                "path": "apps/*/config.json",
+                            }],
+                        }],
+                    }],
+                    "template": {
+                        "metadata": {
+                            "name": "{{.path.basename}}-app",
+                        },
+                        "spec": {
+                            "project": "default",
+                            "sources": [{
+                                "repo_url": "https://github.com/example/app-repo",
+                                "path": "{{.path.path}}",
+                                "target_revision": "main",
+                            }],
+                            "destination": {
+                                "server": "https://kubernetes.default.svc",
+                                "namespace": "{{.path.basename}}",
+                            },
+                        },
+                    },
+                },
+            })
+        # Example 4: Git Generator with Directories
+        git_directories = harness.platform.GitopsApplicationset("git_directories",
+            org_id="default",
+            project_id="projectId",
+            agent_id="account.agentuseast1",
+            upsert=True,
+            applicationset={
+                "metadata": {
+                    "name": "git-directories-appset",
+                },
+                "spec": {
+                    "generators": [{
+                        "gits": [{
+                            "repo_url": "https://github.com/argoproj/argo-cd.git",
+                            "revision": "HEAD",
+                            "directories": [{
+                                "path": "applicationset/examples/git-generator-directory/cluster-addons/*",
+                                "exclude": False,
+                            }],
+                        }],
+                    }],
+                    "template": {
+                        "metadata": {
+                            "name": "{{.path.basename}}-addon",
+                        },
+                        "spec": {
+                            "project": "default",
+                            "sources": [{
+                                "repo_url": "https://github.com/argoproj/argo-cd.git",
+                                "path": "{{.path.path}}",
+                                "target_revision": "HEAD",
+                            }],
+                            "destination": {
+                                "server": "https://kubernetes.default.svc",
+                                "namespace": "{{.path.basename}}",
+                            },
+                            "sync_policy": {
+                                "automated": {
+                                    "prune": True,
+                                    "self_heal": True,
+                                },
+                            },
+                        },
+                    },
+                },
+            })
+        ```
+
+        ## Import
+
+        Import gitOps applicationset with account level agent, agent id has account prefix #
+
+        ```sh
+        $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example <organization_id>/<project_id>/<agent_id>/<identifier>
+        ```
+
+        Import gitOps applicationset with org level agent, agent id has org prefix #
+
+        ```sh
+        $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example <organization_id>/<project_id>/<agent_id>/<identifier>
+        ```
+
+        Import gitOps applicationset with project level agent #
+
+        ```sh
+        $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example <organization_id>/<project_id>/<agent_id>/<identifier>
         ```
 
         :param str resource_name: The name of the resource.

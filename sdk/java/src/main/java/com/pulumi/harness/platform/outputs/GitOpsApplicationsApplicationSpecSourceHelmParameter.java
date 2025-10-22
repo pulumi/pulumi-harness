@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GitOpsApplicationsApplicationSpecSourceHelmParameter {
     /**
-     * @return Indicates if helm should interpret booleans and numbers as strings.
+     * @return Determines whether to tell Helm to interpret booleans and numbers as strings.
      * 
      */
     private @Nullable Boolean forceString;
     /**
-     * @return Name of the helm parameter.
+     * @return Name of the Helm parameter.
      * 
      */
     private @Nullable String name;
@@ -30,14 +30,14 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmParameter {
 
     private GitOpsApplicationsApplicationSpecSourceHelmParameter() {}
     /**
-     * @return Indicates if helm should interpret booleans and numbers as strings.
+     * @return Determines whether to tell Helm to interpret booleans and numbers as strings.
      * 
      */
     public Optional<Boolean> forceString() {
         return Optional.ofNullable(this.forceString);
     }
     /**
-     * @return Name of the helm parameter.
+     * @return Name of the Helm parameter.
      * 
      */
     public Optional<String> name() {

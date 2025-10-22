@@ -102,18 +102,6 @@ namespace Pulumi.Harness.Platform
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
-        [Input("liquibaseSubstituteProperties")]
-        private Dictionary<string, string>? _liquibaseSubstituteProperties;
-
-        /// <summary>
-        /// The properties to substitute in liquibase changelog
-        /// </summary>
-        public Dictionary<string, string> LiquibaseSubstituteProperties
-        {
-            get => _liquibaseSubstituteProperties ?? (_liquibaseSubstituteProperties = new Dictionary<string, string>());
-            set => _liquibaseSubstituteProperties = value;
-        }
-
         /// <summary>
         /// Name of the resource.
         /// </summary>
@@ -138,6 +126,18 @@ namespace Pulumi.Harness.Platform
         [Input("schema", required: true)]
         public string Schema { get; set; } = null!;
 
+        [Input("substituteProperties")]
+        private Dictionary<string, string>? _substituteProperties;
+
+        /// <summary>
+        /// The properties to substitute in changelog/migration script
+        /// </summary>
+        public Dictionary<string, string> SubstituteProperties
+        {
+            get => _substituteProperties ?? (_substituteProperties = new Dictionary<string, string>());
+            set => _substituteProperties = value;
+        }
+
         public GetDbInstanceArgs()
         {
         }
@@ -151,18 +151,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
-
-        [Input("liquibaseSubstituteProperties")]
-        private InputMap<string>? _liquibaseSubstituteProperties;
-
-        /// <summary>
-        /// The properties to substitute in liquibase changelog
-        /// </summary>
-        public InputMap<string> LiquibaseSubstituteProperties
-        {
-            get => _liquibaseSubstituteProperties ?? (_liquibaseSubstituteProperties = new InputMap<string>());
-            set => _liquibaseSubstituteProperties = value;
-        }
 
         /// <summary>
         /// Name of the resource.
@@ -187,6 +175,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("schema", required: true)]
         public Input<string> Schema { get; set; } = null!;
+
+        [Input("substituteProperties")]
+        private InputMap<string>? _substituteProperties;
+
+        /// <summary>
+        /// The properties to substitute in changelog/migration script
+        /// </summary>
+        public InputMap<string> SubstituteProperties
+        {
+            get => _substituteProperties ?? (_substituteProperties = new InputMap<string>());
+            set => _substituteProperties = value;
+        }
 
         public GetDbInstanceInvokeArgs()
         {
@@ -223,10 +223,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Identifier;
         /// <summary>
-        /// The properties to substitute in liquibase changelog
-        /// </summary>
-        public readonly ImmutableDictionary<string, string>? LiquibaseSubstituteProperties;
-        /// <summary>
         /// Name of the resource.
         /// </summary>
         public readonly string? Name;
@@ -242,6 +238,10 @@ namespace Pulumi.Harness.Platform
         /// The identifier of the parent database schema
         /// </summary>
         public readonly string Schema;
+        /// <summary>
+        /// The properties to substitute in changelog/migration script
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? SubstituteProperties;
         /// <summary>
         /// Tags to associate with the resource.
         /// </summary>
@@ -261,8 +261,6 @@ namespace Pulumi.Harness.Platform
 
             string identifier,
 
-            ImmutableDictionary<string, string>? liquibaseSubstituteProperties,
-
             string? name,
 
             string orgId,
@@ -270,6 +268,8 @@ namespace Pulumi.Harness.Platform
             string projectId,
 
             string schema,
+
+            ImmutableDictionary<string, string>? substituteProperties,
 
             ImmutableArray<string> tags)
         {
@@ -279,11 +279,11 @@ namespace Pulumi.Harness.Platform
             Description = description;
             Id = id;
             Identifier = identifier;
-            LiquibaseSubstituteProperties = liquibaseSubstituteProperties;
             Name = name;
             OrgId = orgId;
             ProjectId = projectId;
             Schema = schema;
+            SubstituteProperties = substituteProperties;
             Tags = tags;
         }
     }

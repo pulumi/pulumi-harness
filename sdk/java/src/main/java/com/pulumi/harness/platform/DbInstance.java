@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .branch("main")
  *             .connector("jdbcConnector")
  *             .context("ctx")
- *             .liquibaseSubstituteProperties(Map.ofEntries(
+ *             .substituteProperties(Map.ofEntries(
  *                 Map.entry("key1", "value1"),
  *                 Map.entry("key2", "value2")
  *             ))
@@ -150,20 +150,6 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return this.identifier;
     }
     /**
-     * The properties to substitute in liquibase changelog
-     * 
-     */
-    @Export(name="liquibaseSubstituteProperties", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> liquibaseSubstituteProperties;
-
-    /**
-     * @return The properties to substitute in liquibase changelog
-     * 
-     */
-    public Output<Optional<Map<String,String>>> liquibaseSubstituteProperties() {
-        return Codegen.optional(this.liquibaseSubstituteProperties);
-    }
-    /**
      * Name of the resource.
      * 
      */
@@ -218,6 +204,20 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> schema() {
         return this.schema;
+    }
+    /**
+     * The properties to substitute in changelog/migration script
+     * 
+     */
+    @Export(name="substituteProperties", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> substituteProperties;
+
+    /**
+     * @return The properties to substitute in changelog/migration script
+     * 
+     */
+    public Output<Optional<Map<String,String>>> substituteProperties() {
+        return Codegen.optional(this.substituteProperties);
     }
     /**
      * Tags to associate with the resource.

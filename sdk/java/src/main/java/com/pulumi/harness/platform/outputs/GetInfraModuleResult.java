@@ -5,12 +5,20 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetInfraModuleTestingMetadata;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetInfraModuleResult {
+    /**
+     * @return Account that owns the module
+     * 
+     */
+    private String account;
     /**
      * @return Timestamp when the module was created
      * 
@@ -22,15 +30,35 @@ public final class GetInfraModuleResult {
      */
     private String description;
     /**
+     * @return Git Tag Style
+     * 
+     */
+    private String gitTagStyle;
+    /**
      * @return Identifier of the module
      * 
      */
     private String id;
     /**
+     * @return Error while retrieving the module
+     * 
+     */
+    private String moduleError;
+    /**
      * @return Name of the module
      * 
      */
     private String name;
+    /**
+     * @return Organization that owns the module
+     * 
+     */
+    private String org;
+    /**
+     * @return Project that owns the module
+     * 
+     */
+    private String project;
     /**
      * @return For account connectors, the repository where the module is stored
      * 
@@ -76,8 +104,35 @@ public final class GetInfraModuleResult {
      * 
      */
     private String tags;
+    /**
+     * @return Whether testing is enabled for the module
+     * 
+     */
+    private Boolean testingEnabled;
+    /**
+     * @return Testing metadata for the module
+     * 
+     */
+    private GetInfraModuleTestingMetadata testingMetadata;
+    /**
+     * @return Timestamp when the module was last modified
+     * 
+     */
+    private Integer updated;
+    /**
+     * @return Versions of the module
+     * 
+     */
+    private List<String> versions;
 
     private GetInfraModuleResult() {}
+    /**
+     * @return Account that owns the module
+     * 
+     */
+    public String account() {
+        return this.account;
+    }
     /**
      * @return Timestamp when the module was created
      * 
@@ -93,6 +148,13 @@ public final class GetInfraModuleResult {
         return this.description;
     }
     /**
+     * @return Git Tag Style
+     * 
+     */
+    public String gitTagStyle() {
+        return this.gitTagStyle;
+    }
+    /**
      * @return Identifier of the module
      * 
      */
@@ -100,11 +162,32 @@ public final class GetInfraModuleResult {
         return this.id;
     }
     /**
+     * @return Error while retrieving the module
+     * 
+     */
+    public String moduleError() {
+        return this.moduleError;
+    }
+    /**
      * @return Name of the module
      * 
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return Organization that owns the module
+     * 
+     */
+    public String org() {
+        return this.org;
+    }
+    /**
+     * @return Project that owns the module
+     * 
+     */
+    public String project() {
+        return this.project;
     }
     /**
      * @return For account connectors, the repository where the module is stored
@@ -169,6 +252,34 @@ public final class GetInfraModuleResult {
     public String tags() {
         return this.tags;
     }
+    /**
+     * @return Whether testing is enabled for the module
+     * 
+     */
+    public Boolean testingEnabled() {
+        return this.testingEnabled;
+    }
+    /**
+     * @return Testing metadata for the module
+     * 
+     */
+    public GetInfraModuleTestingMetadata testingMetadata() {
+        return this.testingMetadata;
+    }
+    /**
+     * @return Timestamp when the module was last modified
+     * 
+     */
+    public Integer updated() {
+        return this.updated;
+    }
+    /**
+     * @return Versions of the module
+     * 
+     */
+    public List<String> versions() {
+        return this.versions;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -179,10 +290,15 @@ public final class GetInfraModuleResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String account;
         private Integer created;
         private String description;
+        private String gitTagStyle;
         private String id;
+        private String moduleError;
         private String name;
+        private String org;
+        private String project;
         private String repository;
         private String repositoryBranch;
         private String repositoryCommit;
@@ -192,13 +308,22 @@ public final class GetInfraModuleResult {
         private Integer synced;
         private String system;
         private String tags;
+        private Boolean testingEnabled;
+        private GetInfraModuleTestingMetadata testingMetadata;
+        private Integer updated;
+        private List<String> versions;
         public Builder() {}
         public Builder(GetInfraModuleResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.account = defaults.account;
     	      this.created = defaults.created;
     	      this.description = defaults.description;
+    	      this.gitTagStyle = defaults.gitTagStyle;
     	      this.id = defaults.id;
+    	      this.moduleError = defaults.moduleError;
     	      this.name = defaults.name;
+    	      this.org = defaults.org;
+    	      this.project = defaults.project;
     	      this.repository = defaults.repository;
     	      this.repositoryBranch = defaults.repositoryBranch;
     	      this.repositoryCommit = defaults.repositoryCommit;
@@ -208,8 +333,20 @@ public final class GetInfraModuleResult {
     	      this.synced = defaults.synced;
     	      this.system = defaults.system;
     	      this.tags = defaults.tags;
+    	      this.testingEnabled = defaults.testingEnabled;
+    	      this.testingMetadata = defaults.testingMetadata;
+    	      this.updated = defaults.updated;
+    	      this.versions = defaults.versions;
         }
 
+        @CustomType.Setter
+        public Builder account(String account) {
+            if (account == null) {
+              throw new MissingRequiredPropertyException("GetInfraModuleResult", "account");
+            }
+            this.account = account;
+            return this;
+        }
         @CustomType.Setter
         public Builder created(Integer created) {
             if (created == null) {
@@ -227,6 +364,14 @@ public final class GetInfraModuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder gitTagStyle(String gitTagStyle) {
+            if (gitTagStyle == null) {
+              throw new MissingRequiredPropertyException("GetInfraModuleResult", "gitTagStyle");
+            }
+            this.gitTagStyle = gitTagStyle;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetInfraModuleResult", "id");
@@ -235,11 +380,35 @@ public final class GetInfraModuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder moduleError(String moduleError) {
+            if (moduleError == null) {
+              throw new MissingRequiredPropertyException("GetInfraModuleResult", "moduleError");
+            }
+            this.moduleError = moduleError;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetInfraModuleResult", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder org(String org) {
+            if (org == null) {
+              throw new MissingRequiredPropertyException("GetInfraModuleResult", "org");
+            }
+            this.org = org;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder project(String project) {
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetInfraModuleResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
@@ -314,12 +483,52 @@ public final class GetInfraModuleResult {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
+        public Builder testingEnabled(Boolean testingEnabled) {
+            if (testingEnabled == null) {
+              throw new MissingRequiredPropertyException("GetInfraModuleResult", "testingEnabled");
+            }
+            this.testingEnabled = testingEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder testingMetadata(GetInfraModuleTestingMetadata testingMetadata) {
+            if (testingMetadata == null) {
+              throw new MissingRequiredPropertyException("GetInfraModuleResult", "testingMetadata");
+            }
+            this.testingMetadata = testingMetadata;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder updated(Integer updated) {
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetInfraModuleResult", "updated");
+            }
+            this.updated = updated;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder versions(List<String> versions) {
+            if (versions == null) {
+              throw new MissingRequiredPropertyException("GetInfraModuleResult", "versions");
+            }
+            this.versions = versions;
+            return this;
+        }
+        public Builder versions(String... versions) {
+            return versions(List.of(versions));
+        }
         public GetInfraModuleResult build() {
             final var _resultValue = new GetInfraModuleResult();
+            _resultValue.account = account;
             _resultValue.created = created;
             _resultValue.description = description;
+            _resultValue.gitTagStyle = gitTagStyle;
             _resultValue.id = id;
+            _resultValue.moduleError = moduleError;
             _resultValue.name = name;
+            _resultValue.org = org;
+            _resultValue.project = project;
             _resultValue.repository = repository;
             _resultValue.repositoryBranch = repositoryBranch;
             _resultValue.repositoryCommit = repositoryCommit;
@@ -329,6 +538,10 @@ public final class GetInfraModuleResult {
             _resultValue.synced = synced;
             _resultValue.system = system;
             _resultValue.tags = tags;
+            _resultValue.testingEnabled = testingEnabled;
+            _resultValue.testingMetadata = testingMetadata;
+            _resultValue.updated = updated;
+            _resultValue.versions = versions;
             return _resultValue;
         }
     }

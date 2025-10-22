@@ -22,7 +22,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testFixed = new Harness.Platform.GitopsApplicationset("test_fixed", new()
+    ///     // Example 1: Cluster Generator
+    ///     var clusterGenerator = new Harness.Platform.GitopsApplicationset("cluster_generator", new()
     ///     {
     ///         OrgId = "default",
     ///         ProjectId = "projectId",
@@ -32,7 +33,7 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetMetadataArgs
     ///             {
-    ///                 Name = "tf-appset",
+    ///                 Name = "cluster-appset",
     ///                 Namespace = "argocd",
     ///             },
     ///             Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecArgs
@@ -63,7 +64,6 @@ namespace Pulumi.Harness.Platform
     ///                         Labels = 
     ///                         {
     ///                             { "env", "dev" },
-    ///                             { "harness.io/serviceRef", "svc1" },
     ///                         },
     ///                     },
     ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
@@ -89,7 +89,240 @@ namespace Pulumi.Harness.Platform
     ///         },
     ///     });
     /// 
+    ///     // Example 2: List Generator
+    ///     var listGenerator = new Harness.Platform.GitopsApplicationset("list_generator", new()
+    ///     {
+    ///         OrgId = "default",
+    ///         ProjectId = "projectId",
+    ///         AgentId = "account.agentuseast1",
+    ///         Upsert = true,
+    ///         Applicationset = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetArgs
+    ///         {
+    ///             Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetMetadataArgs
+    ///             {
+    ///                 Name = "list-appset",
+    ///             },
+    ///             Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecArgs
+    ///             {
+    ///                 GoTemplate = true,
+    ///                 GoTemplateOptions = new[]
+    ///                 {
+    ///                     "missingkey=error",
+    ///                 },
+    ///                 Generators = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorArgs
+    ///                     {
+    ///                         Lists = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorListArgs
+    ///                             {
+    ///                                 Elements = new[]
+    ///                                 {
+    ///                                     
+    ///                                     {
+    ///                                         { "cluster", "engineering-dev" },
+    ///                                         { "url", "https://kubernetes.default.svc" },
+    ///                                     },
+    ///                                     
+    ///                                     {
+    ///                                         { "cluster", "engineering-prod" },
+    ///                                         { "url", "https://kubernetes.prod.svc" },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Template = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateArgs
+    ///                 {
+    ///                     Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs
+    ///                     {
+    ///                         Name = "{{.cluster}}-guestbook",
+    ///                     },
+    ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
+    ///                     {
+    ///                         Project = "default",
+    ///                         Sources = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs
+    ///                             {
+    ///                                 RepoUrl = "https://github.com/argoproj/argocd-example-apps.git",
+    ///                                 Path = "helm-guestbook",
+    ///                                 TargetRevision = "HEAD",
+    ///                             },
+    ///                         },
+    ///                         Destination = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs
+    ///                         {
+    ///                             Server = "{{.url}}",
+    ///                             Namespace = "default",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Example 3: Git Generator with Files
+    ///     var gitFiles = new Harness.Platform.GitopsApplicationset("git_files", new()
+    ///     {
+    ///         OrgId = "default",
+    ///         ProjectId = "projectId",
+    ///         AgentId = "account.agentuseast1",
+    ///         Upsert = true,
+    ///         Applicationset = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetArgs
+    ///         {
+    ///             Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetMetadataArgs
+    ///             {
+    ///                 Name = "git-files-appset",
+    ///             },
+    ///             Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecArgs
+    ///             {
+    ///                 Generators = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorArgs
+    ///                     {
+    ///                         Gits = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorGitArgs
+    ///                             {
+    ///                                 RepoUrl = "https://github.com/example/config-repo",
+    ///                                 Revision = "main",
+    ///                                 Files = new[]
+    ///                                 {
+    ///                                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorGitFileArgs
+    ///                                     {
+    ///                                         Path = "apps/*/config.json",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Template = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateArgs
+    ///                 {
+    ///                     Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs
+    ///                     {
+    ///                         Name = "{{.path.basename}}-app",
+    ///                     },
+    ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
+    ///                     {
+    ///                         Project = "default",
+    ///                         Sources = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs
+    ///                             {
+    ///                                 RepoUrl = "https://github.com/example/app-repo",
+    ///                                 Path = "{{.path.path}}",
+    ///                                 TargetRevision = "main",
+    ///                             },
+    ///                         },
+    ///                         Destination = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs
+    ///                         {
+    ///                             Server = "https://kubernetes.default.svc",
+    ///                             Namespace = "{{.path.basename}}",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Example 4: Git Generator with Directories
+    ///     var gitDirectories = new Harness.Platform.GitopsApplicationset("git_directories", new()
+    ///     {
+    ///         OrgId = "default",
+    ///         ProjectId = "projectId",
+    ///         AgentId = "account.agentuseast1",
+    ///         Upsert = true,
+    ///         Applicationset = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetArgs
+    ///         {
+    ///             Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetMetadataArgs
+    ///             {
+    ///                 Name = "git-directories-appset",
+    ///             },
+    ///             Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecArgs
+    ///             {
+    ///                 Generators = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorArgs
+    ///                     {
+    ///                         Gits = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorGitArgs
+    ///                             {
+    ///                                 RepoUrl = "https://github.com/argoproj/argo-cd.git",
+    ///                                 Revision = "HEAD",
+    ///                                 Directories = new[]
+    ///                                 {
+    ///                                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorGitDirectoryArgs
+    ///                                     {
+    ///                                         Path = "applicationset/examples/git-generator-directory/cluster-addons/*",
+    ///                                         Exclude = false,
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Template = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateArgs
+    ///                 {
+    ///                     Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs
+    ///                     {
+    ///                         Name = "{{.path.basename}}-addon",
+    ///                     },
+    ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
+    ///                     {
+    ///                         Project = "default",
+    ///                         Sources = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs
+    ///                             {
+    ///                                 RepoUrl = "https://github.com/argoproj/argo-cd.git",
+    ///                                 Path = "{{.path.path}}",
+    ///                                 TargetRevision = "HEAD",
+    ///                             },
+    ///                         },
+    ///                         Destination = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs
+    ///                         {
+    ///                             Server = "https://kubernetes.default.svc",
+    ///                             Namespace = "{{.path.basename}}",
+    ///                         },
+    ///                         SyncPolicy = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyArgs
+    ///                         {
+    ///                             Automated = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyAutomatedArgs
+    ///                             {
+    ///                                 Prune = true,
+    ///                                 SelfHeal = true,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import gitOps applicationset with account level agent, agent id has account prefix #
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;identifier&gt;
+    /// ```
+    /// 
+    /// Import gitOps applicationset with org level agent, agent id has org prefix #
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;identifier&gt;
+    /// ```
+    /// 
+    /// Import gitOps applicationset with project level agent #
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;identifier&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/gitopsApplicationset:GitopsApplicationset")]

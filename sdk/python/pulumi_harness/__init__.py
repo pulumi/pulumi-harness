@@ -922,6 +922,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/infraModuleTesting",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/infraModuleTesting:InfraModuleTesting": "InfraModuleTesting"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/infraVariableSet",
   "fqn": "pulumi_harness.platform",
   "classes": {

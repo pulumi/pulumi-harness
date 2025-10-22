@@ -10,6 +10,7 @@ import com.pulumi.harness.cluster.inputs.OrchestratorConfigCommitmentIntegration
 import com.pulumi.harness.cluster.inputs.OrchestratorConfigDistributionArgs;
 import com.pulumi.harness.cluster.inputs.OrchestratorConfigNodePreferencesArgs;
 import com.pulumi.harness.cluster.inputs.OrchestratorConfigReplacementScheduleArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,6 +49,21 @@ public final class OrchestratorConfigState extends com.pulumi.resources.Resource
      */
     public Optional<Output<OrchestratorConfigCommitmentIntegrationArgs>> commitmentIntegration() {
         return Optional.ofNullable(this.commitmentIntegration);
+    }
+
+    /**
+     * Whether the cluster orchestrator is disabled
+     * 
+     */
+    @Import(name="disabled")
+    private @Nullable Output<Boolean> disabled;
+
+    /**
+     * @return Whether the cluster orchestrator is disabled
+     * 
+     */
+    public Optional<Output<Boolean>> disabled() {
+        return Optional.ofNullable(this.disabled);
     }
 
     /**
@@ -115,6 +131,7 @@ public final class OrchestratorConfigState extends com.pulumi.resources.Resource
     private OrchestratorConfigState(OrchestratorConfigState $) {
         this.binpacking = $.binpacking;
         this.commitmentIntegration = $.commitmentIntegration;
+        this.disabled = $.disabled;
         this.distribution = $.distribution;
         this.nodePreferences = $.nodePreferences;
         this.orchestratorId = $.orchestratorId;
@@ -179,6 +196,27 @@ public final class OrchestratorConfigState extends com.pulumi.resources.Resource
          */
         public Builder commitmentIntegration(OrchestratorConfigCommitmentIntegrationArgs commitmentIntegration) {
             return commitmentIntegration(Output.of(commitmentIntegration));
+        }
+
+        /**
+         * @param disabled Whether the cluster orchestrator is disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(@Nullable Output<Boolean> disabled) {
+            $.disabled = disabled;
+            return this;
+        }
+
+        /**
+         * @param disabled Whether the cluster orchestrator is disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(Boolean disabled) {
+            return disabled(Output.of(disabled));
         }
 
         /**

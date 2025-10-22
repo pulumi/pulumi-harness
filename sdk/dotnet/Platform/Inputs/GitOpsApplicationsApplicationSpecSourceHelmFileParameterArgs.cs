@@ -13,16 +13,16 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the helm parameter.
+        /// Name of the Helm parameter.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Path to the file containing the values of the helm parameter.
+        /// Path to the file containing the values for the Helm parameter.
         /// </summary>
-        [Input("path")]
-        public Input<string>? Path { get; set; }
+        [Input("path", required: true)]
+        public Input<string> Path { get; set; } = null!;
 
         public GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs()
         {

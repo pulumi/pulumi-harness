@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GitopsApplicationsetApplicationsetSpecGeneratorList {
     /**
-     * @return List of key/value pairs to pass as parameters into the template
+     * @return List of key/value pairs to pass as parameters into the template.
      * 
      */
     private List<Map<String,String>> elements;
@@ -28,7 +28,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorList {
 
     private GitopsApplicationsetApplicationsetSpecGeneratorList() {}
     /**
-     * @return List of key/value pairs to pass as parameters into the template
+     * @return List of key/value pairs to pass as parameters into the template.
      * 
      */
     public List<Map<String,String>> elements() {

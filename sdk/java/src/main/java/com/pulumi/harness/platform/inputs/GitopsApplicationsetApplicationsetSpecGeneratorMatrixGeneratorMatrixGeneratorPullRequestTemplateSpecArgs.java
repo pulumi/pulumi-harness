@@ -10,7 +10,6 @@ import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpec
 import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecInfoArgs;
 import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceArgs;
 import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -87,13 +86,13 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
      * 
      */
     @Import(name="revisionHistoryLimit")
-    private @Nullable Output<Integer> revisionHistoryLimit;
+    private @Nullable Output<String> revisionHistoryLimit;
 
     /**
      * @return Limits the number of items kept in the application&#39;s revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
      * 
      */
-    public Optional<Output<Integer>> revisionHistoryLimit() {
+    public Optional<Output<String>> revisionHistoryLimit() {
         return Optional.ofNullable(this.revisionHistoryLimit);
     }
 
@@ -283,7 +282,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
          * @return builder
          * 
          */
-        public Builder revisionHistoryLimit(@Nullable Output<Integer> revisionHistoryLimit) {
+        public Builder revisionHistoryLimit(@Nullable Output<String> revisionHistoryLimit) {
             $.revisionHistoryLimit = revisionHistoryLimit;
             return this;
         }
@@ -294,7 +293,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
          * @return builder
          * 
          */
-        public Builder revisionHistoryLimit(Integer revisionHistoryLimit) {
+        public Builder revisionHistoryLimit(String revisionHistoryLimit) {
             return revisionHistoryLimit(Output.of(revisionHistoryLimit));
         }
 

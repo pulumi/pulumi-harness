@@ -25,39 +25,30 @@ func LookupPipelineCentralNotificationRule(ctx *pulumi.Context, args *LookupPipe
 // A collection of arguments for invoking getPipelineCentralNotificationRule.
 type LookupPipelineCentralNotificationRuleArgs struct {
 	CustomNotificationTemplateRef *GetPipelineCentralNotificationRuleCustomNotificationTemplateRef `pulumi:"customNotificationTemplateRef"`
-	// Identifier of the Notification Rule.
-	Identifier              string                                                    `pulumi:"identifier"`
-	Name                    string                                                    `pulumi:"name"`
-	NotificationChannelRefs []string                                                  `pulumi:"notificationChannelRefs"`
-	NotificationConditions  []GetPipelineCentralNotificationRuleNotificationCondition `pulumi:"notificationConditions"`
-	// Identifier of the organization in which the Notification Rule is configured.
-	Org *string `pulumi:"org"`
-	// Identifier of the project in which the Notification Rule is configured.
-	Project *string `pulumi:"project"`
-	Status  *string `pulumi:"status"`
+	Identifier                    string                                                           `pulumi:"identifier"`
+	Name                          string                                                           `pulumi:"name"`
+	NotificationChannelRefs       []string                                                         `pulumi:"notificationChannelRefs"`
+	NotificationConditions        []GetPipelineCentralNotificationRuleNotificationCondition        `pulumi:"notificationConditions"`
+	Org                           *string                                                          `pulumi:"org"`
+	Project                       *string                                                          `pulumi:"project"`
+	Status                        *string                                                          `pulumi:"status"`
 }
 
 // A collection of values returned by getPipelineCentralNotificationRule.
 type LookupPipelineCentralNotificationRuleResult struct {
-	// Account identifier associated with this notification channel.
-	Account string `pulumi:"account"`
-	// Timestamp when the notification rule was created.
+	Account                       string                                                           `pulumi:"account"`
 	Created                       int                                                              `pulumi:"created"`
 	CustomNotificationTemplateRef *GetPipelineCentralNotificationRuleCustomNotificationTemplateRef `pulumi:"customNotificationTemplateRef"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Identifier of the Notification Rule.
-	Identifier string `pulumi:"identifier"`
-	// Timestamp when the notification rule was last modified.
+	Id                      string                                                    `pulumi:"id"`
+	Identifier              string                                                    `pulumi:"identifier"`
 	LastModified            int                                                       `pulumi:"lastModified"`
 	Name                    string                                                    `pulumi:"name"`
 	NotificationChannelRefs []string                                                  `pulumi:"notificationChannelRefs"`
 	NotificationConditions  []GetPipelineCentralNotificationRuleNotificationCondition `pulumi:"notificationConditions"`
-	// Identifier of the organization in which the Notification Rule is configured.
-	Org *string `pulumi:"org"`
-	// Identifier of the project in which the Notification Rule is configured.
-	Project *string `pulumi:"project"`
-	Status  *string `pulumi:"status"`
+	Org                     *string                                                   `pulumi:"org"`
+	Project                 *string                                                   `pulumi:"project"`
+	Status                  *string                                                   `pulumi:"status"`
 }
 
 func LookupPipelineCentralNotificationRuleOutput(ctx *pulumi.Context, args LookupPipelineCentralNotificationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineCentralNotificationRuleResultOutput {
@@ -72,16 +63,13 @@ func LookupPipelineCentralNotificationRuleOutput(ctx *pulumi.Context, args Looku
 // A collection of arguments for invoking getPipelineCentralNotificationRule.
 type LookupPipelineCentralNotificationRuleOutputArgs struct {
 	CustomNotificationTemplateRef GetPipelineCentralNotificationRuleCustomNotificationTemplateRefPtrInput `pulumi:"customNotificationTemplateRef"`
-	// Identifier of the Notification Rule.
-	Identifier              pulumi.StringInput                                                `pulumi:"identifier"`
-	Name                    pulumi.StringInput                                                `pulumi:"name"`
-	NotificationChannelRefs pulumi.StringArrayInput                                           `pulumi:"notificationChannelRefs"`
-	NotificationConditions  GetPipelineCentralNotificationRuleNotificationConditionArrayInput `pulumi:"notificationConditions"`
-	// Identifier of the organization in which the Notification Rule is configured.
-	Org pulumi.StringPtrInput `pulumi:"org"`
-	// Identifier of the project in which the Notification Rule is configured.
-	Project pulumi.StringPtrInput `pulumi:"project"`
-	Status  pulumi.StringPtrInput `pulumi:"status"`
+	Identifier                    pulumi.StringInput                                                      `pulumi:"identifier"`
+	Name                          pulumi.StringInput                                                      `pulumi:"name"`
+	NotificationChannelRefs       pulumi.StringArrayInput                                                 `pulumi:"notificationChannelRefs"`
+	NotificationConditions        GetPipelineCentralNotificationRuleNotificationConditionArrayInput       `pulumi:"notificationConditions"`
+	Org                           pulumi.StringPtrInput                                                   `pulumi:"org"`
+	Project                       pulumi.StringPtrInput                                                   `pulumi:"project"`
+	Status                        pulumi.StringPtrInput                                                   `pulumi:"status"`
 }
 
 func (LookupPipelineCentralNotificationRuleOutputArgs) ElementType() reflect.Type {
@@ -103,12 +91,10 @@ func (o LookupPipelineCentralNotificationRuleResultOutput) ToLookupPipelineCentr
 	return o
 }
 
-// Account identifier associated with this notification channel.
 func (o LookupPipelineCentralNotificationRuleResultOutput) Account() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineCentralNotificationRuleResult) string { return v.Account }).(pulumi.StringOutput)
 }
 
-// Timestamp when the notification rule was created.
 func (o LookupPipelineCentralNotificationRuleResultOutput) Created() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPipelineCentralNotificationRuleResult) int { return v.Created }).(pulumi.IntOutput)
 }
@@ -124,12 +110,10 @@ func (o LookupPipelineCentralNotificationRuleResultOutput) Id() pulumi.StringOut
 	return o.ApplyT(func(v LookupPipelineCentralNotificationRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier of the Notification Rule.
 func (o LookupPipelineCentralNotificationRuleResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineCentralNotificationRuleResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Timestamp when the notification rule was last modified.
 func (o LookupPipelineCentralNotificationRuleResultOutput) LastModified() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPipelineCentralNotificationRuleResult) int { return v.LastModified }).(pulumi.IntOutput)
 }
@@ -148,12 +132,10 @@ func (o LookupPipelineCentralNotificationRuleResultOutput) NotificationCondition
 	}).(GetPipelineCentralNotificationRuleNotificationConditionArrayOutput)
 }
 
-// Identifier of the organization in which the Notification Rule is configured.
 func (o LookupPipelineCentralNotificationRuleResultOutput) Org() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPipelineCentralNotificationRuleResult) *string { return v.Org }).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the project in which the Notification Rule is configured.
 func (o LookupPipelineCentralNotificationRuleResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPipelineCentralNotificationRuleResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }

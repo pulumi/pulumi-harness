@@ -10,6 +10,7 @@ import com.pulumi.harness.cluster.outputs.GetOrchestratorConfigCommitmentIntegra
 import com.pulumi.harness.cluster.outputs.GetOrchestratorConfigDistribution;
 import com.pulumi.harness.cluster.outputs.GetOrchestratorConfigNodePreferences;
 import com.pulumi.harness.cluster.outputs.GetOrchestratorConfigReplacementSchedule;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,6 +28,11 @@ public final class GetOrchestratorConfigResult {
      * 
      */
     private @Nullable GetOrchestratorConfigCommitmentIntegration commitmentIntegration;
+    /**
+     * @return Whether the cluster orchestrator is disabled
+     * 
+     */
+    private @Nullable Boolean disabled;
     /**
      * @return Spot and Ondemand Distribution Preferences for workload replicas
      * 
@@ -67,6 +73,13 @@ public final class GetOrchestratorConfigResult {
      */
     public Optional<GetOrchestratorConfigCommitmentIntegration> commitmentIntegration() {
         return Optional.ofNullable(this.commitmentIntegration);
+    }
+    /**
+     * @return Whether the cluster orchestrator is disabled
+     * 
+     */
+    public Optional<Boolean> disabled() {
+        return Optional.ofNullable(this.disabled);
     }
     /**
      * @return Spot and Ondemand Distribution Preferences for workload replicas
@@ -115,6 +128,7 @@ public final class GetOrchestratorConfigResult {
     public static final class Builder {
         private @Nullable GetOrchestratorConfigBinpacking binpacking;
         private @Nullable GetOrchestratorConfigCommitmentIntegration commitmentIntegration;
+        private @Nullable Boolean disabled;
         private @Nullable GetOrchestratorConfigDistribution distribution;
         private String id;
         private @Nullable GetOrchestratorConfigNodePreferences nodePreferences;
@@ -125,6 +139,7 @@ public final class GetOrchestratorConfigResult {
     	      Objects.requireNonNull(defaults);
     	      this.binpacking = defaults.binpacking;
     	      this.commitmentIntegration = defaults.commitmentIntegration;
+    	      this.disabled = defaults.disabled;
     	      this.distribution = defaults.distribution;
     	      this.id = defaults.id;
     	      this.nodePreferences = defaults.nodePreferences;
@@ -142,6 +157,12 @@ public final class GetOrchestratorConfigResult {
         public Builder commitmentIntegration(@Nullable GetOrchestratorConfigCommitmentIntegration commitmentIntegration) {
 
             this.commitmentIntegration = commitmentIntegration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disabled(@Nullable Boolean disabled) {
+
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
@@ -182,6 +203,7 @@ public final class GetOrchestratorConfigResult {
             final var _resultValue = new GetOrchestratorConfigResult();
             _resultValue.binpacking = binpacking;
             _resultValue.commitmentIntegration = commitmentIntegration;
+            _resultValue.disabled = disabled;
             _resultValue.distribution = distribution;
             _resultValue.id = id;
             _resultValue.nodePreferences = nodePreferences;

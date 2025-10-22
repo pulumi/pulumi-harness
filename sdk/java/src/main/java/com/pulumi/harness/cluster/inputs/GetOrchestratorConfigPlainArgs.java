@@ -10,6 +10,7 @@ import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigCommitmentIntegrat
 import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigDistribution;
 import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigNodePreferences;
 import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigReplacementSchedule;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,6 +49,21 @@ public final class GetOrchestratorConfigPlainArgs extends com.pulumi.resources.I
      */
     public Optional<GetOrchestratorConfigCommitmentIntegration> commitmentIntegration() {
         return Optional.ofNullable(this.commitmentIntegration);
+    }
+
+    /**
+     * Whether the cluster orchestrator is disabled
+     * 
+     */
+    @Import(name="disabled")
+    private @Nullable Boolean disabled;
+
+    /**
+     * @return Whether the cluster orchestrator is disabled
+     * 
+     */
+    public Optional<Boolean> disabled() {
+        return Optional.ofNullable(this.disabled);
     }
 
     /**
@@ -115,6 +131,7 @@ public final class GetOrchestratorConfigPlainArgs extends com.pulumi.resources.I
     private GetOrchestratorConfigPlainArgs(GetOrchestratorConfigPlainArgs $) {
         this.binpacking = $.binpacking;
         this.commitmentIntegration = $.commitmentIntegration;
+        this.disabled = $.disabled;
         this.distribution = $.distribution;
         this.nodePreferences = $.nodePreferences;
         this.orchestratorId = $.orchestratorId;
@@ -158,6 +175,17 @@ public final class GetOrchestratorConfigPlainArgs extends com.pulumi.resources.I
          */
         public Builder commitmentIntegration(@Nullable GetOrchestratorConfigCommitmentIntegration commitmentIntegration) {
             $.commitmentIntegration = commitmentIntegration;
+            return this;
+        }
+
+        /**
+         * @param disabled Whether the cluster orchestrator is disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(@Nullable Boolean disabled) {
+            $.disabled = disabled;
             return this;
         }
 

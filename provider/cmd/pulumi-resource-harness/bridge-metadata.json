@@ -14139,6 +14139,27 @@
                     }
                 }
             },
+            "harness_platform_infra_module_testing": {
+                "current": "harness:platform/infraModuleTesting:InfraModuleTesting",
+                "fields": {
+                    "pipelines": {
+                        "maxItemsOne": false
+                    },
+                    "testing_metadata": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "pipelines": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_infra_variable_set": {
                 "current": "harness:platform/infraVariableSet:InfraVariableSet",
                 "fields": {
@@ -17316,7 +17337,51 @@
                 "current": "harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline"
             },
             "harness_platform_infra_module": {
-                "current": "harness:platform/getInfraModule:getInfraModule"
+                "current": "harness:platform/getInfraModule:getInfraModule",
+                "fields": {
+                    "testing_metadata": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "pipelines": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_infra_module_testing": {
+                "current": "harness:platform/getInfraModuleTesting:getInfraModuleTesting",
+                "fields": {
+                    "pipelines": {
+                        "maxItemsOne": false
+                    },
+                    "testing_metadata": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "pipelines": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_infra_modules": {
+                "current": "harness:platform/getInfraModules:getInfraModules",
+                "fields": {
+                    "modules": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_platform_infra_variable_set": {
                 "current": "harness:platform/getInfraVariableSet:getInfraVariableSet",
@@ -18092,6 +18157,7 @@
                     "application.$.metadata": false,
                     "application.$.spec": false,
                     "application.$.spec.$.source": false,
+                    "application.$.spec.$.sources.$.helm": false,
                     "application.$.spec.$.sync_policy": false,
                     "application.$.spec.$.sync_policy.$.automated": false,
                     "application.$.spec.$.sync_policy.$.retry": false,

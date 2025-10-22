@@ -9,6 +9,7 @@ import com.pulumi.harness.platform.outputs.GitopsApplicationsetApplicationsetSpe
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -46,6 +47,16 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplat
      */
     private @Nullable Boolean skipCrds;
     /**
+     * @return Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+     * 
+     */
+    private @Nullable Boolean skipSchemaValidation;
+    /**
+     * @return Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+     * 
+     */
+    private @Nullable Boolean skipTests;
+    /**
      * @return List of Helm value files to use when generating a template.
      * 
      */
@@ -55,6 +66,16 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplat
      * 
      */
     private @Nullable String values;
+    /**
+     * @return Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
+     * 
+     */
+    private @Nullable Map<String,String> valuesObject;
+    /**
+     * @return Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;).
+     * 
+     */
+    private @Nullable String version;
 
     private GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplateSpecSourceHelm() {}
     /**
@@ -100,6 +121,20 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplat
         return Optional.ofNullable(this.skipCrds);
     }
     /**
+     * @return Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+     * 
+     */
+    public Optional<Boolean> skipSchemaValidation() {
+        return Optional.ofNullable(this.skipSchemaValidation);
+    }
+    /**
+     * @return Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+     * 
+     */
+    public Optional<Boolean> skipTests() {
+        return Optional.ofNullable(this.skipTests);
+    }
+    /**
      * @return List of Helm value files to use when generating a template.
      * 
      */
@@ -112,6 +147,20 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplat
      */
     public Optional<String> values() {
         return Optional.ofNullable(this.values);
+    }
+    /**
+     * @return Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
+     * 
+     */
+    public Map<String,String> valuesObject() {
+        return this.valuesObject == null ? Map.of() : this.valuesObject;
+    }
+    /**
+     * @return Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;).
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
     }
 
     public static Builder builder() {
@@ -129,8 +178,12 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplat
         private @Nullable Boolean passCredentials;
         private @Nullable String releaseName;
         private @Nullable Boolean skipCrds;
+        private @Nullable Boolean skipSchemaValidation;
+        private @Nullable Boolean skipTests;
         private @Nullable List<String> valueFiles;
         private @Nullable String values;
+        private @Nullable Map<String,String> valuesObject;
+        private @Nullable String version;
         public Builder() {}
         public Builder(GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplateSpecSourceHelm defaults) {
     	      Objects.requireNonNull(defaults);
@@ -140,8 +193,12 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplat
     	      this.passCredentials = defaults.passCredentials;
     	      this.releaseName = defaults.releaseName;
     	      this.skipCrds = defaults.skipCrds;
+    	      this.skipSchemaValidation = defaults.skipSchemaValidation;
+    	      this.skipTests = defaults.skipTests;
     	      this.valueFiles = defaults.valueFiles;
     	      this.values = defaults.values;
+    	      this.valuesObject = defaults.valuesObject;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -187,6 +244,18 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplat
             return this;
         }
         @CustomType.Setter
+        public Builder skipSchemaValidation(@Nullable Boolean skipSchemaValidation) {
+
+            this.skipSchemaValidation = skipSchemaValidation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder skipTests(@Nullable Boolean skipTests) {
+
+            this.skipTests = skipTests;
+            return this;
+        }
+        @CustomType.Setter
         public Builder valueFiles(@Nullable List<String> valueFiles) {
 
             this.valueFiles = valueFiles;
@@ -201,6 +270,18 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplat
             this.values = values;
             return this;
         }
+        @CustomType.Setter
+        public Builder valuesObject(@Nullable Map<String,String> valuesObject) {
+
+            this.valuesObject = valuesObject;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+
+            this.version = version;
+            return this;
+        }
         public GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplateSpecSourceHelm build() {
             final var _resultValue = new GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplateSpecSourceHelm();
             _resultValue.fileParameters = fileParameters;
@@ -209,8 +290,12 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplat
             _resultValue.passCredentials = passCredentials;
             _resultValue.releaseName = releaseName;
             _resultValue.skipCrds = skipCrds;
+            _resultValue.skipSchemaValidation = skipSchemaValidation;
+            _resultValue.skipTests = skipTests;
             _resultValue.valueFiles = valueFiles;
             _resultValue.values = values;
+            _resultValue.valuesObject = valuesObject;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

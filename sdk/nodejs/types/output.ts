@@ -5858,6 +5858,151 @@ export namespace platform {
         usernameRef: string;
     }
 
+    export interface GetInfraModuleTestingMetadata {
+        /**
+         * Account is the internal customer account ID
+         */
+        account: string;
+        /**
+         * Organization identifier
+         */
+        org: string;
+        /**
+         * Pipelines where the testing is enabled
+         */
+        pipelines: string[];
+        /**
+         * Project identifier
+         */
+        project: string;
+        /**
+         * Provider connector for testing purposes
+         */
+        providerConnector: string;
+        /**
+         * Provisioner type for testing purposes
+         */
+        provisionerType: string;
+        /**
+         * Provisioner version for testing purposes
+         */
+        provisionerVersion: string;
+        /**
+         * Release pipeline
+         */
+        releasePipeline: string;
+    }
+
+    export interface GetInfraModuleTestingTestingMetadata {
+        /**
+         * Account is the internal customer account ID
+         */
+        account: string;
+        /**
+         * Organization identifier
+         */
+        org: string;
+        /**
+         * Pipelines where the testing is enabled
+         */
+        pipelines: string[];
+        /**
+         * Project identifier
+         */
+        project: string;
+        /**
+         * Provider connector for testing purposes
+         */
+        providerConnector: string;
+        /**
+         * Provisioner type for testing purposes
+         */
+        provisionerType: string;
+        /**
+         * Provisioner version for testing purposes
+         */
+        provisionerVersion: string;
+        /**
+         * Release pipeline
+         */
+        releasePipeline: string;
+    }
+
+    export interface GetInfraModulesModule {
+        /**
+         * Account that owns the module
+         */
+        account: string;
+        /**
+         * Timestamp when the module was created
+         */
+        created: number;
+        /**
+         * Description of the module
+         */
+        description: string;
+        /**
+         * Identifier of the module
+         */
+        id: string;
+        /**
+         * Name of the module
+         */
+        name: string;
+        /**
+         * Organization that owns the module
+         */
+        org: string;
+        /**
+         * Project that owns the module
+         */
+        project: string;
+        /**
+         * Repository where the module is stored
+         */
+        repository: string;
+        /**
+         * Repository branch
+         */
+        repositoryBranch: string;
+        /**
+         * Repository commit
+         */
+        repositoryCommit: string;
+        /**
+         * Repository connector reference
+         */
+        repositoryConnector: string;
+        /**
+         * Path within repository
+         */
+        repositoryPath: string;
+        /**
+         * Repository URL
+         */
+        repositoryUrl: string;
+        /**
+         * Timestamp when the module was last synced
+         */
+        synced: number;
+        /**
+         * Provider of the module
+         */
+        system: string;
+        /**
+         * Tags associated with the module
+         */
+        tags: string;
+        /**
+         * Whether testing is enabled for the module
+         */
+        testingEnabled: boolean;
+        /**
+         * Timestamp when the module was last modified
+         */
+        updated: number;
+    }
+
     export interface GetInfraVariableSetConnector {
         /**
          * Connector Ref is the reference to the connector
@@ -7289,6 +7434,10 @@ export namespace platform {
          */
         project: string;
         /**
+         * Revision history limit for the application.
+         */
+        revisionHistoryLimit?: string;
+        /**
          * Contains all information about the source of the GitOps application.
          */
         source?: outputs.platform.GitOpsApplicationsApplicationSpecSource[];
@@ -7306,7 +7455,7 @@ export namespace platform {
         /**
          * URL of the target cluster and must be set to the kubernetes control plane API.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -7327,7 +7476,7 @@ export namespace platform {
          */
         directories?: outputs.platform.GitOpsApplicationsApplicationSpecSourceDirectory[];
         /**
-         * Holds helm specific options.
+         * Helm specific options.
          */
         helms?: outputs.platform.GitOpsApplicationsApplicationSpecSourceHelm[];
         /**
@@ -7338,6 +7487,10 @@ export namespace platform {
          * Options specific to a GitOps application source specific to Kustomize.
          */
         kustomizes?: outputs.platform.GitOpsApplicationsApplicationSpecSourceKustomize[];
+        /**
+         * Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
+         */
+        name?: string;
         /**
          * Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
          */
@@ -7426,27 +7579,27 @@ export namespace platform {
 
     export interface GitOpsApplicationsApplicationSpecSourceHelm {
         /**
-         * File parameters to the helm template.
+         * File parameters for the helm template.
          */
         fileParameters?: outputs.platform.GitOpsApplicationsApplicationSpecSourceHelmFileParameter[];
         /**
-         * Prevents 'helm template' from failing when valueFiles do not exist locally.
+         * Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
          */
         ignoreMissingValueFiles?: boolean;
         /**
-         * List of helm parameters which are passed to the helm template command upon manifest generation.
+         * Helm parameters which are passed to the helm template command upon manifest generation.
          */
         parameters?: outputs.platform.GitOpsApplicationsApplicationSpecSourceHelmParameter[];
         /**
-         * Indicates if to pass credentials to all domains (helm's --pass-credentials)
+         * If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
          */
         passCredentials?: boolean;
         /**
-         * Helm release name to use. If omitted it will use the GitOps application name.
+         * Helm release name. If omitted it will use the application name.
          */
         releaseName?: string;
         /**
-         * Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+         * Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
          */
         skipCrds?: boolean;
         /**
@@ -7458,37 +7611,41 @@ export namespace platform {
          */
         skipTests?: boolean;
         /**
-         * List of helm value files to use when generating a template.
+         * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
         /**
-         * Helm values to be passed to helm template, typically defined as a block.
+         * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
         /**
-         * Helm version to use for templating (either "2" or "3")
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
          */
         version?: string;
     }
 
     export interface GitOpsApplicationsApplicationSpecSourceHelmFileParameter {
         /**
-         * Name of the helm parameter.
+         * Name of the Helm parameter.
          */
-        name?: string;
+        name: string;
         /**
-         * Path to the file containing the values of the helm parameter.
+         * Path to the file containing the values for the Helm parameter.
          */
-        path?: string;
+        path: string;
     }
 
     export interface GitOpsApplicationsApplicationSpecSourceHelmParameter {
         /**
-         * Indicates if helm should interpret booleans and numbers as strings.
+         * Determines whether to tell Helm to interpret booleans and numbers as strings.
          */
         forceString?: boolean;
         /**
-         * Name of the helm parameter.
+         * Name of the Helm parameter.
          */
         name?: string;
         /**
@@ -8879,7 +9036,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -8898,7 +9055,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -9076,6 +9233,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -9083,6 +9248,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -9319,7 +9492,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -9338,7 +9511,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -9516,6 +9689,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -9523,6 +9704,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -9778,7 +9967,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -9797,7 +9986,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -9975,6 +10164,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -9982,6 +10179,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -10140,7 +10345,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: {[key: string]: string}[];
         /**
@@ -10203,7 +10408,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -10222,7 +10427,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -10400,6 +10605,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -10407,6 +10620,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -10739,7 +10960,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -10758,7 +10979,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -10936,6 +11157,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -10943,6 +11172,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -11179,7 +11416,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -11198,7 +11435,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -11376,6 +11613,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -11383,6 +11628,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -11638,7 +11891,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -11657,7 +11910,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -11835,6 +12088,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -11842,6 +12103,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -12000,7 +12269,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: {[key: string]: string}[];
         /**
@@ -12063,7 +12332,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -12082,7 +12351,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -12260,6 +12529,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -12267,6 +12544,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -12591,7 +12876,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -12610,7 +12895,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -12788,6 +13073,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -12795,6 +13088,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -13031,7 +13332,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -13050,7 +13351,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -13228,6 +13529,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -13235,6 +13544,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -13490,7 +13807,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -13509,7 +13826,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -13687,6 +14004,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -13694,6 +14019,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -13852,7 +14185,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: {[key: string]: string}[];
         /**
@@ -13915,7 +14248,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -13934,7 +14267,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -14112,6 +14445,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -14119,6 +14460,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -14514,7 +14863,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -14533,7 +14882,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -14711,6 +15060,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -14718,6 +15075,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -15201,7 +15566,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -15220,7 +15585,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -15398,6 +15763,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -15405,6 +15778,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -15641,7 +16022,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -15660,7 +16041,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -15838,6 +16219,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -15845,6 +16234,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecSourceHelmFileParameter {
@@ -16173,7 +16570,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -16192,7 +16589,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -16370,6 +16767,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -16377,6 +16782,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -16613,7 +17026,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -16632,7 +17045,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -16810,6 +17223,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -16817,6 +17238,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -17072,7 +17501,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -17091,7 +17520,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -17269,6 +17698,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -17276,6 +17713,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -17434,7 +17879,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: {[key: string]: string}[];
         /**
@@ -17497,7 +17942,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -17516,7 +17961,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -17694,6 +18139,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -17701,6 +18154,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -18096,7 +18557,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -18115,7 +18576,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -18293,6 +18754,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -18300,6 +18769,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -18783,7 +19260,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -18802,7 +19279,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -18980,6 +19457,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -18987,6 +19472,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -19223,7 +19716,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -19242,7 +19735,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -19420,6 +19913,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -19427,6 +19928,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeTemplateSpecSourceHelmFileParameter {
@@ -19822,7 +20331,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -19841,7 +20350,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -20019,6 +20528,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -20026,6 +20543,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -20509,7 +21034,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -20528,7 +21053,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -20706,6 +21231,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -20713,6 +21246,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -20949,7 +21490,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -20968,7 +21509,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -21146,6 +21687,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -21153,6 +21702,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixTemplateSpecSourceHelmFileParameter {
@@ -21489,7 +22046,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -21508,7 +22065,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -21686,6 +22243,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -21693,6 +22258,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -21929,7 +22502,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -21948,7 +22521,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -22126,6 +22699,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -22133,6 +22714,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -22388,7 +22977,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -22407,7 +22996,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -22585,6 +23174,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -22592,6 +23189,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -22750,7 +23355,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: {[key: string]: string}[];
         /**
@@ -22813,7 +23418,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -22832,7 +23437,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -23010,6 +23615,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -23017,6 +23630,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -23341,7 +23962,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -23360,7 +23981,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -23538,6 +24159,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -23545,6 +24174,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -23781,7 +24418,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -23800,7 +24437,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -23978,6 +24615,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -23985,6 +24630,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -24240,7 +24893,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -24259,7 +24912,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -24437,6 +25090,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -24444,6 +25105,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -24602,7 +25271,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: {[key: string]: string}[];
         /**
@@ -24665,7 +25334,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -24684,7 +25353,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -24862,6 +25531,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -24869,6 +25546,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -25264,7 +25949,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -25283,7 +25968,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -25461,6 +26146,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -25468,6 +26161,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -25951,7 +26652,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -25970,7 +26671,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -26148,6 +26849,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -26155,6 +26864,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -26391,7 +27108,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -26410,7 +27127,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -26588,6 +27305,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -26595,6 +27320,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixTemplateSpecSourceHelmFileParameter {
@@ -26923,7 +27656,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -26942,7 +27675,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -27120,6 +27853,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -27127,6 +27868,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSourceHelmFileParameter {
@@ -27363,7 +28112,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -27382,7 +28131,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -27560,6 +28309,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -27567,6 +28324,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorClusterTemplateSpecSourceHelmFileParameter {
@@ -27822,7 +28587,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -27841,7 +28606,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -28019,6 +28784,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -28026,6 +28799,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorGitTemplateSpecSourceHelmFileParameter {
@@ -28184,7 +28965,7 @@ export namespace platform {
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorList {
         /**
-         * List of key/value pairs to pass as parameters into the template
+         * List of key/value pairs to pass as parameters into the template.
          */
         elements: {[key: string]: string}[];
         /**
@@ -28247,7 +29028,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -28266,7 +29047,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -28444,6 +29225,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -28451,6 +29240,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorListTemplateSpecSourceHelmFileParameter {
@@ -28846,7 +29643,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -28865,7 +29662,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -29043,6 +29840,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -29050,6 +29855,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -29533,7 +30346,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -29552,7 +30365,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -29730,6 +30543,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -29737,6 +30558,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -29973,7 +30802,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -29992,7 +30821,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -30170,6 +30999,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -30177,6 +31014,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeTemplateSpecSourceHelmFileParameter {
@@ -30572,7 +31417,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -30591,7 +31436,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -30769,6 +31614,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -30776,6 +31629,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -31259,7 +32120,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -31278,7 +32139,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -31456,6 +32317,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -31463,6 +32332,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -31699,7 +32576,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -31718,7 +32595,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -31896,6 +32773,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -31903,6 +32788,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeTemplateSpecSourceHelmFileParameter {
@@ -32298,7 +33191,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -32317,7 +33210,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -32495,6 +33388,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -32502,6 +33403,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorPullRequestTemplateSpecSourceHelmFileParameter {
@@ -32985,7 +33894,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -33004,7 +33913,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -33182,6 +34091,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -33189,6 +34106,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
@@ -33495,7 +34420,7 @@ export namespace platform {
         /**
          * Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
          */
-        revisionHistoryLimit?: number;
+        revisionHistoryLimit: string;
         /**
          * Location of the application's manifests or chart.
          */
@@ -33514,7 +34439,7 @@ export namespace platform {
         /**
          * Name of the target cluster. Can be used instead of `server`.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
@@ -33692,6 +34617,14 @@ export namespace platform {
          */
         skipCrds?: boolean;
         /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
+        /**
          * List of Helm value files to use when generating a template.
          */
         valueFiles?: string[];
@@ -33699,6 +34632,14 @@ export namespace platform {
          * Helm values to be passed to 'helm template', typically defined as a block.
          */
         values?: string;
+        /**
+         * Helm values to be passed to 'helm template', typically defined as a block.
+         */
+        valuesObject?: {[key: string]: string};
+        /**
+         * Helm version to use for templating (either "2" or "3").
+         */
+        version?: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmFileParameter {
@@ -33919,6 +34860,41 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: string;
+    }
+
+    export interface InfraModuleTestingTestingMetadata {
+        /**
+         * Account is the internal customer account ID
+         */
+        account: string;
+        /**
+         * Organization identifier
+         */
+        org: string;
+        /**
+         * Pipelines where the testing is enabled
+         */
+        pipelines: string[];
+        /**
+         * Project identifier
+         */
+        project: string;
+        /**
+         * Provider connector for testing purposes
+         */
+        providerConnector: string;
+        /**
+         * Provisioner type for testing purposes
+         */
+        provisionerType: string;
+        /**
+         * Provisioner version for testing purposes
+         */
+        provisionerVersion: string;
+        /**
+         * Release pipeline
+         */
+        releasePipeline: string;
     }
 
     export interface InfraVariableSetConnector {
@@ -34658,6 +35634,9 @@ export namespace platform {
     export interface PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
         entityIdentifiers?: string[];
         notificationEntity: string;
+        /**
+         * The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+         */
         notificationEvent: string;
         notificationEventDatas?: outputs.platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData[];
     }

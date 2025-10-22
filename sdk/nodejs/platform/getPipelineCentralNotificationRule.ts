@@ -28,20 +28,11 @@ export function getPipelineCentralNotificationRule(args: GetPipelineCentralNotif
  */
 export interface GetPipelineCentralNotificationRuleArgs {
     customNotificationTemplateRef?: inputs.platform.GetPipelineCentralNotificationRuleCustomNotificationTemplateRef;
-    /**
-     * Identifier of the Notification Rule.
-     */
     identifier: string;
     name: string;
     notificationChannelRefs?: string[];
     notificationConditions?: inputs.platform.GetPipelineCentralNotificationRuleNotificationCondition[];
-    /**
-     * Identifier of the organization in which the Notification Rule is configured.
-     */
     org?: string;
-    /**
-     * Identifier of the project in which the Notification Rule is configured.
-     */
     project?: string;
     status?: string;
 }
@@ -50,37 +41,19 @@ export interface GetPipelineCentralNotificationRuleArgs {
  * A collection of values returned by getPipelineCentralNotificationRule.
  */
 export interface GetPipelineCentralNotificationRuleResult {
-    /**
-     * Account identifier associated with this notification channel.
-     */
     readonly account: string;
-    /**
-     * Timestamp when the notification rule was created.
-     */
     readonly created: number;
     readonly customNotificationTemplateRef?: outputs.platform.GetPipelineCentralNotificationRuleCustomNotificationTemplateRef;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Identifier of the Notification Rule.
-     */
     readonly identifier: string;
-    /**
-     * Timestamp when the notification rule was last modified.
-     */
     readonly lastModified: number;
     readonly name: string;
     readonly notificationChannelRefs?: string[];
     readonly notificationConditions?: outputs.platform.GetPipelineCentralNotificationRuleNotificationCondition[];
-    /**
-     * Identifier of the organization in which the Notification Rule is configured.
-     */
     readonly org?: string;
-    /**
-     * Identifier of the project in which the Notification Rule is configured.
-     */
     readonly project?: string;
     readonly status?: string;
 }
@@ -106,20 +79,11 @@ export function getPipelineCentralNotificationRuleOutput(args: GetPipelineCentra
  */
 export interface GetPipelineCentralNotificationRuleOutputArgs {
     customNotificationTemplateRef?: pulumi.Input<inputs.platform.GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs>;
-    /**
-     * Identifier of the Notification Rule.
-     */
     identifier: pulumi.Input<string>;
     name: pulumi.Input<string>;
     notificationChannelRefs?: pulumi.Input<pulumi.Input<string>[]>;
     notificationConditions?: pulumi.Input<pulumi.Input<inputs.platform.GetPipelineCentralNotificationRuleNotificationConditionArgs>[]>;
-    /**
-     * Identifier of the organization in which the Notification Rule is configured.
-     */
     org?: pulumi.Input<string>;
-    /**
-     * Identifier of the project in which the Notification Rule is configured.
-     */
     project?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
 }

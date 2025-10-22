@@ -100,6 +100,12 @@ namespace Pulumi.Harness.Cluster
         public Inputs.GetOrchestratorConfigCommitmentIntegrationArgs? CommitmentIntegration { get; set; }
 
         /// <summary>
+        /// Whether the cluster orchestrator is disabled
+        /// </summary>
+        [Input("disabled")]
+        public bool? Disabled { get; set; }
+
+        /// <summary>
         /// Spot and Ondemand Distribution Preferences for workload replicas
         /// </summary>
         [Input("distribution")]
@@ -144,6 +150,12 @@ namespace Pulumi.Harness.Cluster
         public Input<Inputs.GetOrchestratorConfigCommitmentIntegrationInputArgs>? CommitmentIntegration { get; set; }
 
         /// <summary>
+        /// Whether the cluster orchestrator is disabled
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
         /// Spot and Ondemand Distribution Preferences for workload replicas
         /// </summary>
         [Input("distribution")]
@@ -186,6 +198,10 @@ namespace Pulumi.Harness.Cluster
         /// </summary>
         public readonly Outputs.GetOrchestratorConfigCommitmentIntegrationResult? CommitmentIntegration;
         /// <summary>
+        /// Whether the cluster orchestrator is disabled
+        /// </summary>
+        public readonly bool? Disabled;
+        /// <summary>
         /// Spot and Ondemand Distribution Preferences for workload replicas
         /// </summary>
         public readonly Outputs.GetOrchestratorConfigDistributionResult? Distribution;
@@ -212,6 +228,8 @@ namespace Pulumi.Harness.Cluster
 
             Outputs.GetOrchestratorConfigCommitmentIntegrationResult? commitmentIntegration,
 
+            bool? disabled,
+
             Outputs.GetOrchestratorConfigDistributionResult? distribution,
 
             string id,
@@ -224,6 +242,7 @@ namespace Pulumi.Harness.Cluster
         {
             Binpacking = binpacking;
             CommitmentIntegration = commitmentIntegration;
+            Disabled = disabled;
             Distribution = distribution;
             Id = id;
             NodePreferences = nodePreferences;

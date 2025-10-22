@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GitOpsApplicationsApplicationSpecSourceHelmParameter
     {
         /// <summary>
-        /// Indicates if helm should interpret booleans and numbers as strings.
+        /// Determines whether to tell Helm to interpret booleans and numbers as strings.
         /// </summary>
         public readonly bool? ForceString;
         /// <summary>
-        /// Name of the helm parameter.
+        /// Name of the Helm parameter.
         /// </summary>
         public readonly string? Name;
         /// <summary>

@@ -26,6 +26,11 @@ public final class GitOpsApplicationsApplicationSpec {
      */
     private @Nullable String project;
     /**
+     * @return Revision history limit for the application.
+     * 
+     */
+    private @Nullable String revisionHistoryLimit;
+    /**
      * @return Contains all information about the source of the GitOps application.
      * 
      */
@@ -55,6 +60,13 @@ public final class GitOpsApplicationsApplicationSpec {
      */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    /**
+     * @return Revision history limit for the application.
+     * 
+     */
+    public Optional<String> revisionHistoryLimit() {
+        return Optional.ofNullable(this.revisionHistoryLimit);
     }
     /**
      * @return Contains all information about the source of the GitOps application.
@@ -89,6 +101,7 @@ public final class GitOpsApplicationsApplicationSpec {
     public static final class Builder {
         private @Nullable List<GitOpsApplicationsApplicationSpecDestination> destinations;
         private @Nullable String project;
+        private @Nullable String revisionHistoryLimit;
         private @Nullable List<GitOpsApplicationsApplicationSpecSource> source;
         private @Nullable List<GitOpsApplicationsApplicationSpecSource> sources;
         private @Nullable List<GitOpsApplicationsApplicationSpecSyncPolicy> syncPolicies;
@@ -97,6 +110,7 @@ public final class GitOpsApplicationsApplicationSpec {
     	      Objects.requireNonNull(defaults);
     	      this.destinations = defaults.destinations;
     	      this.project = defaults.project;
+    	      this.revisionHistoryLimit = defaults.revisionHistoryLimit;
     	      this.source = defaults.source;
     	      this.sources = defaults.sources;
     	      this.syncPolicies = defaults.syncPolicies;
@@ -115,6 +129,12 @@ public final class GitOpsApplicationsApplicationSpec {
         public Builder project(@Nullable String project) {
 
             this.project = project;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder revisionHistoryLimit(@Nullable String revisionHistoryLimit) {
+
+            this.revisionHistoryLimit = revisionHistoryLimit;
             return this;
         }
         @CustomType.Setter
@@ -148,6 +168,7 @@ public final class GitOpsApplicationsApplicationSpec {
             final var _resultValue = new GitOpsApplicationsApplicationSpec();
             _resultValue.destinations = destinations;
             _resultValue.project = project;
+            _resultValue.revisionHistoryLimit = revisionHistoryLimit;
             _resultValue.source = source;
             _resultValue.sources = sources;
             _resultValue.syncPolicies = syncPolicies;

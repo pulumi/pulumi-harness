@@ -25,6 +25,7 @@ export function getOrchestratorConfig(args: GetOrchestratorConfigArgs, opts?: pu
     return pulumi.runtime.invoke("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", {
         "binpacking": args.binpacking,
         "commitmentIntegration": args.commitmentIntegration,
+        "disabled": args.disabled,
         "distribution": args.distribution,
         "nodePreferences": args.nodePreferences,
         "orchestratorId": args.orchestratorId,
@@ -44,6 +45,10 @@ export interface GetOrchestratorConfigArgs {
      * Commitment integration configuration for Cluster Orchestrator
      */
     commitmentIntegration?: inputs.cluster.GetOrchestratorConfigCommitmentIntegration;
+    /**
+     * Whether the cluster orchestrator is disabled
+     */
+    disabled?: boolean;
     /**
      * Spot and Ondemand Distribution Preferences for workload replicas
      */
@@ -74,6 +79,10 @@ export interface GetOrchestratorConfigResult {
      * Commitment integration configuration for Cluster Orchestrator
      */
     readonly commitmentIntegration?: outputs.cluster.GetOrchestratorConfigCommitmentIntegration;
+    /**
+     * Whether the cluster orchestrator is disabled
+     */
+    readonly disabled?: boolean;
     /**
      * Spot and Ondemand Distribution Preferences for workload replicas
      */
@@ -114,6 +123,7 @@ export function getOrchestratorConfigOutput(args: GetOrchestratorConfigOutputArg
     return pulumi.runtime.invokeOutput("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", {
         "binpacking": args.binpacking,
         "commitmentIntegration": args.commitmentIntegration,
+        "disabled": args.disabled,
         "distribution": args.distribution,
         "nodePreferences": args.nodePreferences,
         "orchestratorId": args.orchestratorId,
@@ -133,6 +143,10 @@ export interface GetOrchestratorConfigOutputArgs {
      * Commitment integration configuration for Cluster Orchestrator
      */
     commitmentIntegration?: pulumi.Input<inputs.cluster.GetOrchestratorConfigCommitmentIntegrationArgs>;
+    /**
+     * Whether the cluster orchestrator is disabled
+     */
+    disabled?: pulumi.Input<boolean>;
     /**
      * Spot and Ondemand Distribution Preferences for workload replicas
      */

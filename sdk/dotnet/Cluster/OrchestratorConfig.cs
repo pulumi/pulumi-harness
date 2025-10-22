@@ -25,6 +25,7 @@ namespace Pulumi.Harness.Cluster
     ///     var example = new Harness.Cluster.OrchestratorConfig("example", new()
     ///     {
     ///         OrchestratorId = "orch-cvifpfl9rbg8neldj97g",
+    ///         Disabled = false,
     ///         Distribution = new Harness.Cluster.Inputs.OrchestratorConfigDistributionArgs
     ///         {
     ///             BaseOndemandCapacity = 2,
@@ -129,6 +130,12 @@ namespace Pulumi.Harness.Cluster
         public Output<Outputs.OrchestratorConfigCommitmentIntegration?> CommitmentIntegration { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the cluster orchestrator is disabled
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool?> Disabled { get; private set; } = null!;
+
+        /// <summary>
         /// Spot and Ondemand Distribution Preferences for workload replicas
         /// </summary>
         [Output("distribution")]
@@ -212,6 +219,12 @@ namespace Pulumi.Harness.Cluster
         public Input<Inputs.OrchestratorConfigCommitmentIntegrationArgs>? CommitmentIntegration { get; set; }
 
         /// <summary>
+        /// Whether the cluster orchestrator is disabled
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
         /// Spot and Ondemand Distribution Preferences for workload replicas
         /// </summary>
         [Input("distribution", required: true)]
@@ -254,6 +267,12 @@ namespace Pulumi.Harness.Cluster
         /// </summary>
         [Input("commitmentIntegration")]
         public Input<Inputs.OrchestratorConfigCommitmentIntegrationGetArgs>? CommitmentIntegration { get; set; }
+
+        /// <summary>
+        /// Whether the cluster orchestrator is disabled
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
 
         /// <summary>
         /// Spot and Ondemand Distribution Preferences for workload replicas

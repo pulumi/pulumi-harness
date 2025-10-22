@@ -36,9 +36,6 @@ namespace Pulumi.Harness.Platform
         [Input("customNotificationTemplateRef")]
         public Inputs.GetPipelineCentralNotificationRuleCustomNotificationTemplateRefArgs? CustomNotificationTemplateRef { get; set; }
 
-        /// <summary>
-        /// Identifier of the Notification Rule.
-        /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
@@ -61,15 +58,9 @@ namespace Pulumi.Harness.Platform
             set => _notificationConditions = value;
         }
 
-        /// <summary>
-        /// Identifier of the organization in which the Notification Rule is configured.
-        /// </summary>
         [Input("org")]
         public string? Org { get; set; }
 
-        /// <summary>
-        /// Identifier of the project in which the Notification Rule is configured.
-        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
@@ -87,9 +78,6 @@ namespace Pulumi.Harness.Platform
         [Input("customNotificationTemplateRef")]
         public Input<Inputs.GetPipelineCentralNotificationRuleCustomNotificationTemplateRefInputArgs>? CustomNotificationTemplateRef { get; set; }
 
-        /// <summary>
-        /// Identifier of the Notification Rule.
-        /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
@@ -112,15 +100,9 @@ namespace Pulumi.Harness.Platform
             set => _notificationConditions = value;
         }
 
-        /// <summary>
-        /// Identifier of the organization in which the Notification Rule is configured.
-        /// </summary>
         [Input("org")]
         public Input<string>? Org { get; set; }
 
-        /// <summary>
-        /// Identifier of the project in which the Notification Rule is configured.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -137,37 +119,19 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetPipelineCentralNotificationRuleResult
     {
-        /// <summary>
-        /// Account identifier associated with this notification channel.
-        /// </summary>
         public readonly string Account;
-        /// <summary>
-        /// Timestamp when the notification rule was created.
-        /// </summary>
         public readonly int Created;
         public readonly Outputs.GetPipelineCentralNotificationRuleCustomNotificationTemplateRefResult? CustomNotificationTemplateRef;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Identifier of the Notification Rule.
-        /// </summary>
         public readonly string Identifier;
-        /// <summary>
-        /// Timestamp when the notification rule was last modified.
-        /// </summary>
         public readonly int LastModified;
         public readonly string Name;
         public readonly ImmutableArray<string> NotificationChannelRefs;
         public readonly ImmutableArray<Outputs.GetPipelineCentralNotificationRuleNotificationConditionResult> NotificationConditions;
-        /// <summary>
-        /// Identifier of the organization in which the Notification Rule is configured.
-        /// </summary>
         public readonly string? Org;
-        /// <summary>
-        /// Identifier of the project in which the Notification Rule is configured.
-        /// </summary>
         public readonly string? Project;
         public readonly string? Status;
 

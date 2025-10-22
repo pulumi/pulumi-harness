@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetInfraModuleResult',
@@ -26,19 +28,34 @@ class GetInfraModuleResult:
     """
     A collection of values returned by getInfraModule.
     """
-    def __init__(__self__, created=None, description=None, id=None, name=None, repository=None, repository_branch=None, repository_commit=None, repository_connector=None, repository_path=None, repository_url=None, synced=None, system=None, tags=None):
+    def __init__(__self__, account=None, created=None, description=None, git_tag_style=None, id=None, module_error=None, name=None, org=None, project=None, repository=None, repository_branch=None, repository_commit=None, repository_connector=None, repository_path=None, repository_url=None, synced=None, system=None, tags=None, testing_enabled=None, testing_metadata=None, updated=None, versions=None):
+        if account and not isinstance(account, str):
+            raise TypeError("Expected argument 'account' to be a str")
+        pulumi.set(__self__, "account", account)
         if created and not isinstance(created, int):
             raise TypeError("Expected argument 'created' to be a int")
         pulumi.set(__self__, "created", created)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if git_tag_style and not isinstance(git_tag_style, str):
+            raise TypeError("Expected argument 'git_tag_style' to be a str")
+        pulumi.set(__self__, "git_tag_style", git_tag_style)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if module_error and not isinstance(module_error, str):
+            raise TypeError("Expected argument 'module_error' to be a str")
+        pulumi.set(__self__, "module_error", module_error)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if org and not isinstance(org, str):
+            raise TypeError("Expected argument 'org' to be a str")
+        pulumi.set(__self__, "org", org)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
         if repository and not isinstance(repository, str):
             raise TypeError("Expected argument 'repository' to be a str")
         pulumi.set(__self__, "repository", repository)
@@ -66,6 +83,26 @@ class GetInfraModuleResult:
         if tags and not isinstance(tags, str):
             raise TypeError("Expected argument 'tags' to be a str")
         pulumi.set(__self__, "tags", tags)
+        if testing_enabled and not isinstance(testing_enabled, bool):
+            raise TypeError("Expected argument 'testing_enabled' to be a bool")
+        pulumi.set(__self__, "testing_enabled", testing_enabled)
+        if testing_metadata and not isinstance(testing_metadata, dict):
+            raise TypeError("Expected argument 'testing_metadata' to be a dict")
+        pulumi.set(__self__, "testing_metadata", testing_metadata)
+        if updated and not isinstance(updated, int):
+            raise TypeError("Expected argument 'updated' to be a int")
+        pulumi.set(__self__, "updated", updated)
+        if versions and not isinstance(versions, list):
+            raise TypeError("Expected argument 'versions' to be a list")
+        pulumi.set(__self__, "versions", versions)
+
+    @_builtins.property
+    @pulumi.getter
+    def account(self) -> _builtins.str:
+        """
+        Account that owns the module
+        """
+        return pulumi.get(self, "account")
 
     @_builtins.property
     @pulumi.getter
@@ -84,6 +121,14 @@ class GetInfraModuleResult:
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="gitTagStyle")
+    def git_tag_style(self) -> _builtins.str:
+        """
+        Git Tag Style
+        """
+        return pulumi.get(self, "git_tag_style")
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
@@ -92,12 +137,36 @@ class GetInfraModuleResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="moduleError")
+    def module_error(self) -> _builtins.str:
+        """
+        Error while retrieving the module
+        """
+        return pulumi.get(self, "module_error")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
         Name of the module
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def org(self) -> _builtins.str:
+        """
+        Organization that owns the module
+        """
+        return pulumi.get(self, "org")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> _builtins.str:
+        """
+        Project that owns the module
+        """
+        return pulumi.get(self, "project")
 
     @_builtins.property
     @pulumi.getter
@@ -171,6 +240,38 @@ class GetInfraModuleResult:
         """
         return pulumi.get(self, "tags")
 
+    @_builtins.property
+    @pulumi.getter(name="testingEnabled")
+    def testing_enabled(self) -> _builtins.bool:
+        """
+        Whether testing is enabled for the module
+        """
+        return pulumi.get(self, "testing_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="testingMetadata")
+    def testing_metadata(self) -> 'outputs.GetInfraModuleTestingMetadataResult':
+        """
+        Testing metadata for the module
+        """
+        return pulumi.get(self, "testing_metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def updated(self) -> _builtins.int:
+        """
+        Timestamp when the module was last modified
+        """
+        return pulumi.get(self, "updated")
+
+    @_builtins.property
+    @pulumi.getter
+    def versions(self) -> Sequence[_builtins.str]:
+        """
+        Versions of the module
+        """
+        return pulumi.get(self, "versions")
+
 
 class AwaitableGetInfraModuleResult(GetInfraModuleResult):
     # pylint: disable=using-constant-test
@@ -178,10 +279,15 @@ class AwaitableGetInfraModuleResult(GetInfraModuleResult):
         if False:
             yield self
         return GetInfraModuleResult(
+            account=self.account,
             created=self.created,
             description=self.description,
+            git_tag_style=self.git_tag_style,
             id=self.id,
+            module_error=self.module_error,
             name=self.name,
+            org=self.org,
+            project=self.project,
             repository=self.repository,
             repository_branch=self.repository_branch,
             repository_commit=self.repository_commit,
@@ -190,13 +296,22 @@ class AwaitableGetInfraModuleResult(GetInfraModuleResult):
             repository_url=self.repository_url,
             synced=self.synced,
             system=self.system,
-            tags=self.tags)
+            tags=self.tags,
+            testing_enabled=self.testing_enabled,
+            testing_metadata=self.testing_metadata,
+            updated=self.updated,
+            versions=self.versions)
 
 
-def get_infra_module(created: Optional[_builtins.int] = None,
+def get_infra_module(account: Optional[_builtins.str] = None,
+                     created: Optional[_builtins.int] = None,
                      description: Optional[_builtins.str] = None,
+                     git_tag_style: Optional[_builtins.str] = None,
                      id: Optional[_builtins.str] = None,
+                     module_error: Optional[_builtins.str] = None,
                      name: Optional[_builtins.str] = None,
+                     org: Optional[_builtins.str] = None,
+                     project: Optional[_builtins.str] = None,
                      repository: Optional[_builtins.str] = None,
                      repository_branch: Optional[_builtins.str] = None,
                      repository_commit: Optional[_builtins.str] = None,
@@ -206,6 +321,10 @@ def get_infra_module(created: Optional[_builtins.int] = None,
                      synced: Optional[_builtins.int] = None,
                      system: Optional[_builtins.str] = None,
                      tags: Optional[_builtins.str] = None,
+                     testing_enabled: Optional[_builtins.bool] = None,
+                     testing_metadata: Optional[Union['GetInfraModuleTestingMetadataArgs', 'GetInfraModuleTestingMetadataArgsDict']] = None,
+                     updated: Optional[_builtins.int] = None,
+                     versions: Optional[Sequence[_builtins.str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInfraModuleResult:
     """
     Data source for retrieving modules from the module registry.
@@ -213,10 +332,15 @@ def get_infra_module(created: Optional[_builtins.int] = None,
     ## Example Usage
 
 
+    :param _builtins.str account: Account that owns the module
     :param _builtins.int created: Timestamp when the module was created
     :param _builtins.str description: Description of the module
+    :param _builtins.str git_tag_style: Git Tag Style
     :param _builtins.str id: Identifier of the module
+    :param _builtins.str module_error: Error while retrieving the module
     :param _builtins.str name: Name of the module
+    :param _builtins.str org: Organization that owns the module
+    :param _builtins.str project: Project that owns the module
     :param _builtins.str repository: For account connectors, the repository where the module is stored
     :param _builtins.str repository_branch: Repository Branch in which the module should be accessed
     :param _builtins.str repository_commit: Repository Commit in which the module should be accessed
@@ -226,12 +350,21 @@ def get_infra_module(created: Optional[_builtins.int] = None,
     :param _builtins.int synced: Timestamp when the module was last synced
     :param _builtins.str system: Provider of the module
     :param _builtins.str tags: Tags associated with the module
+    :param _builtins.bool testing_enabled: Whether testing is enabled for the module
+    :param Union['GetInfraModuleTestingMetadataArgs', 'GetInfraModuleTestingMetadataArgsDict'] testing_metadata: Testing metadata for the module
+    :param _builtins.int updated: Timestamp when the module was last modified
+    :param Sequence[_builtins.str] versions: Versions of the module
     """
     __args__ = dict()
+    __args__['account'] = account
     __args__['created'] = created
     __args__['description'] = description
+    __args__['gitTagStyle'] = git_tag_style
     __args__['id'] = id
+    __args__['moduleError'] = module_error
     __args__['name'] = name
+    __args__['org'] = org
+    __args__['project'] = project
     __args__['repository'] = repository
     __args__['repositoryBranch'] = repository_branch
     __args__['repositoryCommit'] = repository_commit
@@ -241,14 +374,23 @@ def get_infra_module(created: Optional[_builtins.int] = None,
     __args__['synced'] = synced
     __args__['system'] = system
     __args__['tags'] = tags
+    __args__['testingEnabled'] = testing_enabled
+    __args__['testingMetadata'] = testing_metadata
+    __args__['updated'] = updated
+    __args__['versions'] = versions
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getInfraModule:getInfraModule', __args__, opts=opts, typ=GetInfraModuleResult).value
 
     return AwaitableGetInfraModuleResult(
+        account=pulumi.get(__ret__, 'account'),
         created=pulumi.get(__ret__, 'created'),
         description=pulumi.get(__ret__, 'description'),
+        git_tag_style=pulumi.get(__ret__, 'git_tag_style'),
         id=pulumi.get(__ret__, 'id'),
+        module_error=pulumi.get(__ret__, 'module_error'),
         name=pulumi.get(__ret__, 'name'),
+        org=pulumi.get(__ret__, 'org'),
+        project=pulumi.get(__ret__, 'project'),
         repository=pulumi.get(__ret__, 'repository'),
         repository_branch=pulumi.get(__ret__, 'repository_branch'),
         repository_commit=pulumi.get(__ret__, 'repository_commit'),
@@ -257,11 +399,20 @@ def get_infra_module(created: Optional[_builtins.int] = None,
         repository_url=pulumi.get(__ret__, 'repository_url'),
         synced=pulumi.get(__ret__, 'synced'),
         system=pulumi.get(__ret__, 'system'),
-        tags=pulumi.get(__ret__, 'tags'))
-def get_infra_module_output(created: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+        tags=pulumi.get(__ret__, 'tags'),
+        testing_enabled=pulumi.get(__ret__, 'testing_enabled'),
+        testing_metadata=pulumi.get(__ret__, 'testing_metadata'),
+        updated=pulumi.get(__ret__, 'updated'),
+        versions=pulumi.get(__ret__, 'versions'))
+def get_infra_module_output(account: Optional[pulumi.Input[_builtins.str]] = None,
+                            created: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                             description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                            git_tag_style: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             id: Optional[pulumi.Input[_builtins.str]] = None,
+                            module_error: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             name: Optional[pulumi.Input[_builtins.str]] = None,
+                            org: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                            project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             repository: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             repository_branch: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             repository_commit: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -271,6 +422,10 @@ def get_infra_module_output(created: Optional[pulumi.Input[Optional[_builtins.in
                             synced: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                             system: Optional[pulumi.Input[_builtins.str]] = None,
                             tags: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                            testing_enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                            testing_metadata: Optional[pulumi.Input[Optional[Union['GetInfraModuleTestingMetadataArgs', 'GetInfraModuleTestingMetadataArgsDict']]]] = None,
+                            updated: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                            versions: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfraModuleResult]:
     """
     Data source for retrieving modules from the module registry.
@@ -278,10 +433,15 @@ def get_infra_module_output(created: Optional[pulumi.Input[Optional[_builtins.in
     ## Example Usage
 
 
+    :param _builtins.str account: Account that owns the module
     :param _builtins.int created: Timestamp when the module was created
     :param _builtins.str description: Description of the module
+    :param _builtins.str git_tag_style: Git Tag Style
     :param _builtins.str id: Identifier of the module
+    :param _builtins.str module_error: Error while retrieving the module
     :param _builtins.str name: Name of the module
+    :param _builtins.str org: Organization that owns the module
+    :param _builtins.str project: Project that owns the module
     :param _builtins.str repository: For account connectors, the repository where the module is stored
     :param _builtins.str repository_branch: Repository Branch in which the module should be accessed
     :param _builtins.str repository_commit: Repository Commit in which the module should be accessed
@@ -291,12 +451,21 @@ def get_infra_module_output(created: Optional[pulumi.Input[Optional[_builtins.in
     :param _builtins.int synced: Timestamp when the module was last synced
     :param _builtins.str system: Provider of the module
     :param _builtins.str tags: Tags associated with the module
+    :param _builtins.bool testing_enabled: Whether testing is enabled for the module
+    :param Union['GetInfraModuleTestingMetadataArgs', 'GetInfraModuleTestingMetadataArgsDict'] testing_metadata: Testing metadata for the module
+    :param _builtins.int updated: Timestamp when the module was last modified
+    :param Sequence[_builtins.str] versions: Versions of the module
     """
     __args__ = dict()
+    __args__['account'] = account
     __args__['created'] = created
     __args__['description'] = description
+    __args__['gitTagStyle'] = git_tag_style
     __args__['id'] = id
+    __args__['moduleError'] = module_error
     __args__['name'] = name
+    __args__['org'] = org
+    __args__['project'] = project
     __args__['repository'] = repository
     __args__['repositoryBranch'] = repository_branch
     __args__['repositoryCommit'] = repository_commit
@@ -306,13 +475,22 @@ def get_infra_module_output(created: Optional[pulumi.Input[Optional[_builtins.in
     __args__['synced'] = synced
     __args__['system'] = system
     __args__['tags'] = tags
+    __args__['testingEnabled'] = testing_enabled
+    __args__['testingMetadata'] = testing_metadata
+    __args__['updated'] = updated
+    __args__['versions'] = versions
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getInfraModule:getInfraModule', __args__, opts=opts, typ=GetInfraModuleResult)
     return __ret__.apply(lambda __response__: GetInfraModuleResult(
+        account=pulumi.get(__response__, 'account'),
         created=pulumi.get(__response__, 'created'),
         description=pulumi.get(__response__, 'description'),
+        git_tag_style=pulumi.get(__response__, 'git_tag_style'),
         id=pulumi.get(__response__, 'id'),
+        module_error=pulumi.get(__response__, 'module_error'),
         name=pulumi.get(__response__, 'name'),
+        org=pulumi.get(__response__, 'org'),
+        project=pulumi.get(__response__, 'project'),
         repository=pulumi.get(__response__, 'repository'),
         repository_branch=pulumi.get(__response__, 'repository_branch'),
         repository_commit=pulumi.get(__response__, 'repository_commit'),
@@ -321,4 +499,8 @@ def get_infra_module_output(created: Optional[pulumi.Input[Optional[_builtins.in
         repository_url=pulumi.get(__response__, 'repository_url'),
         synced=pulumi.get(__response__, 'synced'),
         system=pulumi.get(__response__, 'system'),
-        tags=pulumi.get(__response__, 'tags')))
+        tags=pulumi.get(__response__, 'tags'),
+        testing_enabled=pulumi.get(__response__, 'testing_enabled'),
+        testing_metadata=pulumi.get(__response__, 'testing_metadata'),
+        updated=pulumi.get(__response__, 'updated'),
+        versions=pulumi.get(__response__, 'versions')))

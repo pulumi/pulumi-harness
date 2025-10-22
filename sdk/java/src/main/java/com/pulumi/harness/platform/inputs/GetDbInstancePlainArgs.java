@@ -32,21 +32,6 @@ public final class GetDbInstancePlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The properties to substitute in liquibase changelog
-     * 
-     */
-    @Import(name="liquibaseSubstituteProperties")
-    private @Nullable Map<String,String> liquibaseSubstituteProperties;
-
-    /**
-     * @return The properties to substitute in liquibase changelog
-     * 
-     */
-    public Optional<Map<String,String>> liquibaseSubstituteProperties() {
-        return Optional.ofNullable(this.liquibaseSubstituteProperties);
-    }
-
-    /**
      * Name of the resource.
      * 
      */
@@ -106,15 +91,30 @@ public final class GetDbInstancePlainArgs extends com.pulumi.resources.InvokeArg
         return this.schema;
     }
 
+    /**
+     * The properties to substitute in changelog/migration script
+     * 
+     */
+    @Import(name="substituteProperties")
+    private @Nullable Map<String,String> substituteProperties;
+
+    /**
+     * @return The properties to substitute in changelog/migration script
+     * 
+     */
+    public Optional<Map<String,String>> substituteProperties() {
+        return Optional.ofNullable(this.substituteProperties);
+    }
+
     private GetDbInstancePlainArgs() {}
 
     private GetDbInstancePlainArgs(GetDbInstancePlainArgs $) {
         this.identifier = $.identifier;
-        this.liquibaseSubstituteProperties = $.liquibaseSubstituteProperties;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.schema = $.schema;
+        this.substituteProperties = $.substituteProperties;
     }
 
     public static Builder builder() {
@@ -143,17 +143,6 @@ public final class GetDbInstancePlainArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder identifier(String identifier) {
             $.identifier = identifier;
-            return this;
-        }
-
-        /**
-         * @param liquibaseSubstituteProperties The properties to substitute in liquibase changelog
-         * 
-         * @return builder
-         * 
-         */
-        public Builder liquibaseSubstituteProperties(@Nullable Map<String,String> liquibaseSubstituteProperties) {
-            $.liquibaseSubstituteProperties = liquibaseSubstituteProperties;
             return this;
         }
 
@@ -198,6 +187,17 @@ public final class GetDbInstancePlainArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder schema(String schema) {
             $.schema = schema;
+            return this;
+        }
+
+        /**
+         * @param substituteProperties The properties to substitute in changelog/migration script
+         * 
+         * @return builder
+         * 
+         */
+        public Builder substituteProperties(@Nullable Map<String,String> substituteProperties) {
+            $.substituteProperties = substituteProperties;
             return this;
         }
 

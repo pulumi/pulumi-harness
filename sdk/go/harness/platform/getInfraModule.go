@@ -26,14 +26,24 @@ func LookupInfraModule(ctx *pulumi.Context, args *LookupInfraModuleArgs, opts ..
 
 // A collection of arguments for invoking getInfraModule.
 type LookupInfraModuleArgs struct {
+	// Account that owns the module
+	Account string `pulumi:"account"`
 	// Timestamp when the module was created
 	Created *int `pulumi:"created"`
 	// Description of the module
 	Description *string `pulumi:"description"`
+	// Git Tag Style
+	GitTagStyle *string `pulumi:"gitTagStyle"`
 	// Identifier of the module
 	Id string `pulumi:"id"`
+	// Error while retrieving the module
+	ModuleError *string `pulumi:"moduleError"`
 	// Name of the module
 	Name string `pulumi:"name"`
+	// Organization that owns the module
+	Org *string `pulumi:"org"`
+	// Project that owns the module
+	Project *string `pulumi:"project"`
 	// For account connectors, the repository where the module is stored
 	Repository *string `pulumi:"repository"`
 	// Repository Branch in which the module should be accessed
@@ -52,18 +62,36 @@ type LookupInfraModuleArgs struct {
 	System string `pulumi:"system"`
 	// Tags associated with the module
 	Tags *string `pulumi:"tags"`
+	// Whether testing is enabled for the module
+	TestingEnabled *bool `pulumi:"testingEnabled"`
+	// Testing metadata for the module
+	TestingMetadata *GetInfraModuleTestingMetadata `pulumi:"testingMetadata"`
+	// Timestamp when the module was last modified
+	Updated *int `pulumi:"updated"`
+	// Versions of the module
+	Versions []string `pulumi:"versions"`
 }
 
 // A collection of values returned by getInfraModule.
 type LookupInfraModuleResult struct {
+	// Account that owns the module
+	Account string `pulumi:"account"`
 	// Timestamp when the module was created
 	Created int `pulumi:"created"`
 	// Description of the module
 	Description string `pulumi:"description"`
+	// Git Tag Style
+	GitTagStyle string `pulumi:"gitTagStyle"`
 	// Identifier of the module
 	Id string `pulumi:"id"`
+	// Error while retrieving the module
+	ModuleError string `pulumi:"moduleError"`
 	// Name of the module
 	Name string `pulumi:"name"`
+	// Organization that owns the module
+	Org string `pulumi:"org"`
+	// Project that owns the module
+	Project string `pulumi:"project"`
 	// For account connectors, the repository where the module is stored
 	Repository string `pulumi:"repository"`
 	// Repository Branch in which the module should be accessed
@@ -82,6 +110,14 @@ type LookupInfraModuleResult struct {
 	System string `pulumi:"system"`
 	// Tags associated with the module
 	Tags string `pulumi:"tags"`
+	// Whether testing is enabled for the module
+	TestingEnabled bool `pulumi:"testingEnabled"`
+	// Testing metadata for the module
+	TestingMetadata GetInfraModuleTestingMetadata `pulumi:"testingMetadata"`
+	// Timestamp when the module was last modified
+	Updated int `pulumi:"updated"`
+	// Versions of the module
+	Versions []string `pulumi:"versions"`
 }
 
 func LookupInfraModuleOutput(ctx *pulumi.Context, args LookupInfraModuleOutputArgs, opts ...pulumi.InvokeOption) LookupInfraModuleResultOutput {
@@ -95,14 +131,24 @@ func LookupInfraModuleOutput(ctx *pulumi.Context, args LookupInfraModuleOutputAr
 
 // A collection of arguments for invoking getInfraModule.
 type LookupInfraModuleOutputArgs struct {
+	// Account that owns the module
+	Account pulumi.StringInput `pulumi:"account"`
 	// Timestamp when the module was created
 	Created pulumi.IntPtrInput `pulumi:"created"`
 	// Description of the module
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Git Tag Style
+	GitTagStyle pulumi.StringPtrInput `pulumi:"gitTagStyle"`
 	// Identifier of the module
 	Id pulumi.StringInput `pulumi:"id"`
+	// Error while retrieving the module
+	ModuleError pulumi.StringPtrInput `pulumi:"moduleError"`
 	// Name of the module
 	Name pulumi.StringInput `pulumi:"name"`
+	// Organization that owns the module
+	Org pulumi.StringPtrInput `pulumi:"org"`
+	// Project that owns the module
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// For account connectors, the repository where the module is stored
 	Repository pulumi.StringPtrInput `pulumi:"repository"`
 	// Repository Branch in which the module should be accessed
@@ -121,6 +167,14 @@ type LookupInfraModuleOutputArgs struct {
 	System pulumi.StringInput `pulumi:"system"`
 	// Tags associated with the module
 	Tags pulumi.StringPtrInput `pulumi:"tags"`
+	// Whether testing is enabled for the module
+	TestingEnabled pulumi.BoolPtrInput `pulumi:"testingEnabled"`
+	// Testing metadata for the module
+	TestingMetadata GetInfraModuleTestingMetadataPtrInput `pulumi:"testingMetadata"`
+	// Timestamp when the module was last modified
+	Updated pulumi.IntPtrInput `pulumi:"updated"`
+	// Versions of the module
+	Versions pulumi.StringArrayInput `pulumi:"versions"`
 }
 
 func (LookupInfraModuleOutputArgs) ElementType() reflect.Type {
@@ -142,6 +196,11 @@ func (o LookupInfraModuleResultOutput) ToLookupInfraModuleResultOutputWithContex
 	return o
 }
 
+// Account that owns the module
+func (o LookupInfraModuleResultOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInfraModuleResult) string { return v.Account }).(pulumi.StringOutput)
+}
+
 // Timestamp when the module was created
 func (o LookupInfraModuleResultOutput) Created() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInfraModuleResult) int { return v.Created }).(pulumi.IntOutput)
@@ -152,14 +211,34 @@ func (o LookupInfraModuleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfraModuleResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Git Tag Style
+func (o LookupInfraModuleResultOutput) GitTagStyle() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInfraModuleResult) string { return v.GitTagStyle }).(pulumi.StringOutput)
+}
+
 // Identifier of the module
 func (o LookupInfraModuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfraModuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Error while retrieving the module
+func (o LookupInfraModuleResultOutput) ModuleError() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInfraModuleResult) string { return v.ModuleError }).(pulumi.StringOutput)
+}
+
 // Name of the module
 func (o LookupInfraModuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfraModuleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Organization that owns the module
+func (o LookupInfraModuleResultOutput) Org() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInfraModuleResult) string { return v.Org }).(pulumi.StringOutput)
+}
+
+// Project that owns the module
+func (o LookupInfraModuleResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInfraModuleResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // For account connectors, the repository where the module is stored
@@ -205,6 +284,26 @@ func (o LookupInfraModuleResultOutput) System() pulumi.StringOutput {
 // Tags associated with the module
 func (o LookupInfraModuleResultOutput) Tags() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfraModuleResult) string { return v.Tags }).(pulumi.StringOutput)
+}
+
+// Whether testing is enabled for the module
+func (o LookupInfraModuleResultOutput) TestingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInfraModuleResult) bool { return v.TestingEnabled }).(pulumi.BoolOutput)
+}
+
+// Testing metadata for the module
+func (o LookupInfraModuleResultOutput) TestingMetadata() GetInfraModuleTestingMetadataOutput {
+	return o.ApplyT(func(v LookupInfraModuleResult) GetInfraModuleTestingMetadata { return v.TestingMetadata }).(GetInfraModuleTestingMetadataOutput)
+}
+
+// Timestamp when the module was last modified
+func (o LookupInfraModuleResultOutput) Updated() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInfraModuleResult) int { return v.Updated }).(pulumi.IntOutput)
+}
+
+// Versions of the module
+func (o LookupInfraModuleResultOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInfraModuleResult) []string { return v.Versions }).(pulumi.StringArrayOutput)
 }
 
 func init() {

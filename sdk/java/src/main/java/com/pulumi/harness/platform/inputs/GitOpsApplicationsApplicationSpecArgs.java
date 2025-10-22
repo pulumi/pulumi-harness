@@ -50,6 +50,21 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
     }
 
     /**
+     * Revision history limit for the application.
+     * 
+     */
+    @Import(name="revisionHistoryLimit")
+    private @Nullable Output<String> revisionHistoryLimit;
+
+    /**
+     * @return Revision history limit for the application.
+     * 
+     */
+    public Optional<Output<String>> revisionHistoryLimit() {
+        return Optional.ofNullable(this.revisionHistoryLimit);
+    }
+
+    /**
      * Contains all information about the source of the GitOps application.
      * 
      */
@@ -99,6 +114,7 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
     private GitOpsApplicationsApplicationSpecArgs(GitOpsApplicationsApplicationSpecArgs $) {
         this.destinations = $.destinations;
         this.project = $.project;
+        this.revisionHistoryLimit = $.revisionHistoryLimit;
         this.source = $.source;
         this.sources = $.sources;
         this.syncPolicies = $.syncPolicies;
@@ -172,6 +188,27 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param revisionHistoryLimit Revision history limit for the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder revisionHistoryLimit(@Nullable Output<String> revisionHistoryLimit) {
+            $.revisionHistoryLimit = revisionHistoryLimit;
+            return this;
+        }
+
+        /**
+         * @param revisionHistoryLimit Revision history limit for the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder revisionHistoryLimit(String revisionHistoryLimit) {
+            return revisionHistoryLimit(Output.of(revisionHistoryLimit));
         }
 
         /**

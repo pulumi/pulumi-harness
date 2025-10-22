@@ -60,6 +60,18 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("skipCrds")]
         public Input<bool>? SkipCrds { get; set; }
 
+        /// <summary>
+        /// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+        /// </summary>
+        [Input("skipSchemaValidation")]
+        public Input<bool>? SkipSchemaValidation { get; set; }
+
+        /// <summary>
+        /// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+        /// </summary>
+        [Input("skipTests")]
+        public Input<bool>? SkipTests { get; set; }
+
         [Input("valueFiles")]
         private InputList<string>? _valueFiles;
 
@@ -77,6 +89,24 @@ namespace Pulumi.Harness.Platform.Inputs
         /// </summary>
         [Input("values")]
         public Input<string>? Values { get; set; }
+
+        [Input("valuesObject")]
+        private InputMap<string>? _valuesObject;
+
+        /// <summary>
+        /// Helm values to be passed to 'helm template', typically defined as a block.
+        /// </summary>
+        public InputMap<string> ValuesObject
+        {
+            get => _valuesObject ?? (_valuesObject = new InputMap<string>());
+            set => _valuesObject = value;
+        }
+
+        /// <summary>
+        /// Helm version to use for templating (either "2" or "3").
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeTemplateSpecSourceHelmGetArgs()
         {

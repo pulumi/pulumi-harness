@@ -17,14 +17,14 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmParameterArgs exte
     public static final GitOpsApplicationsApplicationSpecSourceHelmParameterArgs Empty = new GitOpsApplicationsApplicationSpecSourceHelmParameterArgs();
 
     /**
-     * Indicates if helm should interpret booleans and numbers as strings.
+     * Determines whether to tell Helm to interpret booleans and numbers as strings.
      * 
      */
     @Import(name="forceString")
     private @Nullable Output<Boolean> forceString;
 
     /**
-     * @return Indicates if helm should interpret booleans and numbers as strings.
+     * @return Determines whether to tell Helm to interpret booleans and numbers as strings.
      * 
      */
     public Optional<Output<Boolean>> forceString() {
@@ -32,14 +32,14 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmParameterArgs exte
     }
 
     /**
-     * Name of the helm parameter.
+     * Name of the Helm parameter.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the helm parameter.
+     * @return Name of the Helm parameter.
      * 
      */
     public Optional<Output<String>> name() {
@@ -88,7 +88,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmParameterArgs exte
         }
 
         /**
-         * @param forceString Indicates if helm should interpret booleans and numbers as strings.
+         * @param forceString Determines whether to tell Helm to interpret booleans and numbers as strings.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmParameterArgs exte
         }
 
         /**
-         * @param forceString Indicates if helm should interpret booleans and numbers as strings.
+         * @param forceString Determines whether to tell Helm to interpret booleans and numbers as strings.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmParameterArgs exte
         }
 
         /**
-         * @param name Name of the helm parameter.
+         * @param name Name of the Helm parameter.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmParameterArgs exte
         }
 
         /**
-         * @param name Name of the helm parameter.
+         * @param name Name of the Helm parameter.
          * 
          * @return builder
          * 
