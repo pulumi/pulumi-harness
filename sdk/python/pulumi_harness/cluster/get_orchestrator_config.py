@@ -28,13 +28,16 @@ class GetOrchestratorConfigResult:
     """
     A collection of values returned by getOrchestratorConfig.
     """
-    def __init__(__self__, binpacking=None, commitment_integration=None, distribution=None, id=None, node_preferences=None, orchestrator_id=None, replacement_schedule=None):
+    def __init__(__self__, binpacking=None, commitment_integration=None, disabled=None, distribution=None, id=None, node_preferences=None, orchestrator_id=None, replacement_schedule=None):
         if binpacking and not isinstance(binpacking, dict):
             raise TypeError("Expected argument 'binpacking' to be a dict")
         pulumi.set(__self__, "binpacking", binpacking)
         if commitment_integration and not isinstance(commitment_integration, dict):
             raise TypeError("Expected argument 'commitment_integration' to be a dict")
         pulumi.set(__self__, "commitment_integration", commitment_integration)
+        if disabled and not isinstance(disabled, bool):
+            raise TypeError("Expected argument 'disabled' to be a bool")
+        pulumi.set(__self__, "disabled", disabled)
         if distribution and not isinstance(distribution, dict):
             raise TypeError("Expected argument 'distribution' to be a dict")
         pulumi.set(__self__, "distribution", distribution)
@@ -66,6 +69,14 @@ class GetOrchestratorConfigResult:
         Commitment integration configuration for Cluster Orchestrator
         """
         return pulumi.get(self, "commitment_integration")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the cluster orchestrator is disabled
+        """
+        return pulumi.get(self, "disabled")
 
     @_builtins.property
     @pulumi.getter
@@ -116,6 +127,7 @@ class AwaitableGetOrchestratorConfigResult(GetOrchestratorConfigResult):
         return GetOrchestratorConfigResult(
             binpacking=self.binpacking,
             commitment_integration=self.commitment_integration,
+            disabled=self.disabled,
             distribution=self.distribution,
             id=self.id,
             node_preferences=self.node_preferences,
@@ -125,6 +137,7 @@ class AwaitableGetOrchestratorConfigResult(GetOrchestratorConfigResult):
 
 def get_orchestrator_config(binpacking: Optional[Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict']] = None,
                             commitment_integration: Optional[Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict']] = None,
+                            disabled: Optional[_builtins.bool] = None,
                             distribution: Optional[Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict']] = None,
                             node_preferences: Optional[Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict']] = None,
                             orchestrator_id: Optional[_builtins.str] = None,
@@ -145,6 +158,7 @@ def get_orchestrator_config(binpacking: Optional[Union['GetOrchestratorConfigBin
 
     :param Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict'] binpacking: Binpacking preferences for Cluster Orchestrator
     :param Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict'] commitment_integration: Commitment integration configuration for Cluster Orchestrator
+    :param _builtins.bool disabled: Whether the cluster orchestrator is disabled
     :param Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict'] distribution: Spot and Ondemand Distribution Preferences for workload replicas
     :param Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict'] node_preferences: Node preferences for Cluster Orchestrator
     :param _builtins.str orchestrator_id: ID of the Cluster Orchestrator Object
@@ -153,6 +167,7 @@ def get_orchestrator_config(binpacking: Optional[Union['GetOrchestratorConfigBin
     __args__ = dict()
     __args__['binpacking'] = binpacking
     __args__['commitmentIntegration'] = commitment_integration
+    __args__['disabled'] = disabled
     __args__['distribution'] = distribution
     __args__['nodePreferences'] = node_preferences
     __args__['orchestratorId'] = orchestrator_id
@@ -163,6 +178,7 @@ def get_orchestrator_config(binpacking: Optional[Union['GetOrchestratorConfigBin
     return AwaitableGetOrchestratorConfigResult(
         binpacking=pulumi.get(__ret__, 'binpacking'),
         commitment_integration=pulumi.get(__ret__, 'commitment_integration'),
+        disabled=pulumi.get(__ret__, 'disabled'),
         distribution=pulumi.get(__ret__, 'distribution'),
         id=pulumi.get(__ret__, 'id'),
         node_preferences=pulumi.get(__ret__, 'node_preferences'),
@@ -170,6 +186,7 @@ def get_orchestrator_config(binpacking: Optional[Union['GetOrchestratorConfigBin
         replacement_schedule=pulumi.get(__ret__, 'replacement_schedule'))
 def get_orchestrator_config_output(binpacking: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict']]]] = None,
                                    commitment_integration: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict']]]] = None,
+                                   disabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                    distribution: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict']]]] = None,
                                    node_preferences: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict']]]] = None,
                                    orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -190,6 +207,7 @@ def get_orchestrator_config_output(binpacking: Optional[pulumi.Input[Optional[Un
 
     :param Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict'] binpacking: Binpacking preferences for Cluster Orchestrator
     :param Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict'] commitment_integration: Commitment integration configuration for Cluster Orchestrator
+    :param _builtins.bool disabled: Whether the cluster orchestrator is disabled
     :param Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict'] distribution: Spot and Ondemand Distribution Preferences for workload replicas
     :param Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict'] node_preferences: Node preferences for Cluster Orchestrator
     :param _builtins.str orchestrator_id: ID of the Cluster Orchestrator Object
@@ -198,6 +216,7 @@ def get_orchestrator_config_output(binpacking: Optional[pulumi.Input[Optional[Un
     __args__ = dict()
     __args__['binpacking'] = binpacking
     __args__['commitmentIntegration'] = commitment_integration
+    __args__['disabled'] = disabled
     __args__['distribution'] = distribution
     __args__['nodePreferences'] = node_preferences
     __args__['orchestratorId'] = orchestrator_id
@@ -207,6 +226,7 @@ def get_orchestrator_config_output(binpacking: Optional[pulumi.Input[Optional[Un
     return __ret__.apply(lambda __response__: GetOrchestratorConfigResult(
         binpacking=pulumi.get(__response__, 'binpacking'),
         commitment_integration=pulumi.get(__response__, 'commitment_integration'),
+        disabled=pulumi.get(__response__, 'disabled'),
         distribution=pulumi.get(__response__, 'distribution'),
         id=pulumi.get(__response__, 'id'),
         node_preferences=pulumi.get(__response__, 'node_preferences'),

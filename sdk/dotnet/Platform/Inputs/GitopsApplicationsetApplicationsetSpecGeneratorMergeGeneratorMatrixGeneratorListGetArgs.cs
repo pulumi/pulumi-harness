@@ -16,7 +16,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<ImmutableDictionary<string, string>>? _elements;
 
         /// <summary>
-        /// List of key/value pairs to pass as parameters into the template
+        /// List of key/value pairs to pass as parameters into the template.
         /// </summary>
         public InputList<ImmutableDictionary<string, string>> Elements
         {

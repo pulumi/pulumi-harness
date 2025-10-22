@@ -34,7 +34,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<Inputs.GitOpsApplicationsApplicationSpecSourceHelmArgs>? _helms;
 
         /// <summary>
-        /// Holds helm specific options.
+        /// Helm specific options.
         /// </summary>
         public InputList<Inputs.GitOpsApplicationsApplicationSpecSourceHelmArgs> Helms
         {
@@ -65,6 +65,12 @@ namespace Pulumi.Harness.Platform.Inputs
             get => _kustomizes ?? (_kustomizes = new InputList<Inputs.GitOpsApplicationsApplicationSpecSourceKustomizeArgs>());
             set => _kustomizes = value;
         }
+
+        /// <summary>
+        /// Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Directory path within the git repository, and is only valid for the GitOps applications sourced from git.

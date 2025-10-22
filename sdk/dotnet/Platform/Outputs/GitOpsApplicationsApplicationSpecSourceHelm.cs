@@ -14,27 +14,27 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GitOpsApplicationsApplicationSpecSourceHelm
     {
         /// <summary>
-        /// File parameters to the helm template.
+        /// File parameters for the helm template.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSourceHelmFileParameter> FileParameters;
         /// <summary>
-        /// Prevents 'helm template' from failing when ValueFiles do not exist locally.
+        /// Prevents 'helm template' from failing when `ValueFiles` do not exist locally by not appending them to 'helm template --values'.
         /// </summary>
         public readonly bool? IgnoreMissingValueFiles;
         /// <summary>
-        /// List of helm parameters which are passed to the helm template command upon manifest generation.
+        /// Helm parameters which are passed to the helm template command upon manifest generation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSourceHelmParameter> Parameters;
         /// <summary>
-        /// Indicates if to pass credentials to all domains (helm's --pass-credentials)
+        /// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
         /// </summary>
         public readonly bool? PassCredentials;
         /// <summary>
-        /// Helm release name to use. If omitted it will use the GitOps application name.
+        /// Helm release name. If omitted it will use the application name.
         /// </summary>
         public readonly string? ReleaseName;
         /// <summary>
-        /// Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+        /// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
         /// </summary>
         public readonly bool? SkipCrds;
         /// <summary>
@@ -46,15 +46,19 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly bool? SkipTests;
         /// <summary>
-        /// List of helm value files to use when generating a template.
+        /// List of Helm value files to use when generating a template.
         /// </summary>
         public readonly ImmutableArray<string> ValueFiles;
         /// <summary>
-        /// Helm values to be passed to helm template, typically defined as a block.
+        /// Helm values to be passed to 'helm template', typically defined as a block.
         /// </summary>
         public readonly string? Values;
         /// <summary>
-        /// Helm version to use for templating (either "2" or "3")
+        /// Helm values to be passed to 'helm template', typically defined as a block.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? ValuesObject;
+        /// <summary>
+        /// Helm version to use for templating (either "2" or "3").
         /// </summary>
         public readonly string? Version;
 
@@ -80,6 +84,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? values,
 
+            ImmutableDictionary<string, string>? valuesObject,
+
             string? version)
         {
             FileParameters = fileParameters;
@@ -92,6 +98,7 @@ namespace Pulumi.Harness.Platform.Outputs
             SkipTests = skipTests;
             ValueFiles = valueFiles;
             Values = values;
+            ValuesObject = valuesObject;
             Version = version;
         }
     }

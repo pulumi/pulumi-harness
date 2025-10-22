@@ -13,13 +13,13 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GitOpsApplicationsApplicationSpecSourceHelmParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates if helm should interpret booleans and numbers as strings.
+        /// Determines whether to tell Helm to interpret booleans and numbers as strings.
         /// </summary>
         [Input("forceString")]
         public Input<bool>? ForceString { get; set; }
 
         /// <summary>
-        /// Name of the helm parameter.
+        /// Name of the Helm parameter.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

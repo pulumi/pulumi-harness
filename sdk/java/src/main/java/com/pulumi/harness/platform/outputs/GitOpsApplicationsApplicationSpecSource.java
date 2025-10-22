@@ -29,7 +29,7 @@ public final class GitOpsApplicationsApplicationSpecSource {
      */
     private @Nullable List<GitOpsApplicationsApplicationSpecSourceDirectory> directories;
     /**
-     * @return Holds helm specific options.
+     * @return Helm specific options.
      * 
      */
     private @Nullable List<GitOpsApplicationsApplicationSpecSourceHelm> helms;
@@ -43,6 +43,11 @@ public final class GitOpsApplicationsApplicationSpecSource {
      * 
      */
     private @Nullable List<GitOpsApplicationsApplicationSpecSourceKustomize> kustomizes;
+    /**
+     * @return Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
+     * 
+     */
+    private @Nullable String name;
     /**
      * @return Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
      * 
@@ -85,7 +90,7 @@ public final class GitOpsApplicationsApplicationSpecSource {
         return this.directories == null ? List.of() : this.directories;
     }
     /**
-     * @return Holds helm specific options.
+     * @return Helm specific options.
      * 
      */
     public List<GitOpsApplicationsApplicationSpecSourceHelm> helms() {
@@ -104,6 +109,13 @@ public final class GitOpsApplicationsApplicationSpecSource {
      */
     public List<GitOpsApplicationsApplicationSpecSourceKustomize> kustomizes() {
         return this.kustomizes == null ? List.of() : this.kustomizes;
+    }
+    /**
+     * @return Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
@@ -155,6 +167,7 @@ public final class GitOpsApplicationsApplicationSpecSource {
         private @Nullable List<GitOpsApplicationsApplicationSpecSourceHelm> helms;
         private @Nullable List<GitOpsApplicationsApplicationSpecSourceKsonnet> ksonnets;
         private @Nullable List<GitOpsApplicationsApplicationSpecSourceKustomize> kustomizes;
+        private @Nullable String name;
         private @Nullable String path;
         private @Nullable List<GitOpsApplicationsApplicationSpecSourcePlugin> plugins;
         private @Nullable String ref;
@@ -168,6 +181,7 @@ public final class GitOpsApplicationsApplicationSpecSource {
     	      this.helms = defaults.helms;
     	      this.ksonnets = defaults.ksonnets;
     	      this.kustomizes = defaults.kustomizes;
+    	      this.name = defaults.name;
     	      this.path = defaults.path;
     	      this.plugins = defaults.plugins;
     	      this.ref = defaults.ref;
@@ -218,6 +232,12 @@ public final class GitOpsApplicationsApplicationSpecSource {
             return kustomizes(List.of(kustomizes));
         }
         @CustomType.Setter
+        public Builder name(@Nullable String name) {
+
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
 
             this.path = path;
@@ -261,6 +281,7 @@ public final class GitOpsApplicationsApplicationSpecSource {
             _resultValue.helms = helms;
             _resultValue.ksonnets = ksonnets;
             _resultValue.kustomizes = kustomizes;
+            _resultValue.name = name;
             _resultValue.path = path;
             _resultValue.plugins = plugins;
             _resultValue.ref = ref;

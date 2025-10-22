@@ -30,6 +30,12 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Revision history limit for the application.
+        /// </summary>
+        [Input("revisionHistoryLimit")]
+        public Input<string>? RevisionHistoryLimit { get; set; }
+
         [Input("source")]
         private InputList<Inputs.GitOpsApplicationsApplicationSpecSourceGetArgs>? _source;
 

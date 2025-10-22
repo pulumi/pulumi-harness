@@ -15,6 +15,7 @@ import com.pulumi.harness.cluster.outputs.OrchestratorConfigCommitmentIntegratio
 import com.pulumi.harness.cluster.outputs.OrchestratorConfigDistribution;
 import com.pulumi.harness.cluster.outputs.OrchestratorConfigNodePreferences;
 import com.pulumi.harness.cluster.outputs.OrchestratorConfigReplacementSchedule;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -58,6 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var example = new OrchestratorConfig("example", OrchestratorConfigArgs.builder()
  *             .orchestratorId("orch-cvifpfl9rbg8neldj97g")
+ *             .disabled(false)
  *             .distribution(OrchestratorConfigDistributionArgs.builder()
  *                 .baseOndemandCapacity(2)
  *                 .ondemandReplicaPercentage(50.0)
@@ -157,6 +159,20 @@ public class OrchestratorConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<OrchestratorConfigCommitmentIntegration>> commitmentIntegration() {
         return Codegen.optional(this.commitmentIntegration);
+    }
+    /**
+     * Whether the cluster orchestrator is disabled
+     * 
+     */
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> disabled;
+
+    /**
+     * @return Whether the cluster orchestrator is disabled
+     * 
+     */
+    public Output<Optional<Boolean>> disabled() {
+        return Codegen.optional(this.disabled);
     }
     /**
      * Spot and Ondemand Distribution Preferences for workload replicas

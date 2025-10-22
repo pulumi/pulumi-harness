@@ -16,15 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPipelineCentralNotificationRuleResult {
-    /**
-     * @return Account identifier associated with this notification channel.
-     * 
-     */
     private String account;
-    /**
-     * @return Timestamp when the notification rule was created.
-     * 
-     */
     private Integer created;
     private @Nullable GetPipelineCentralNotificationRuleCustomNotificationTemplateRef customNotificationTemplateRef;
     /**
@@ -32,43 +24,19 @@ public final class GetPipelineCentralNotificationRuleResult {
      * 
      */
     private String id;
-    /**
-     * @return Identifier of the Notification Rule.
-     * 
-     */
     private String identifier;
-    /**
-     * @return Timestamp when the notification rule was last modified.
-     * 
-     */
     private Integer lastModified;
     private String name;
     private @Nullable List<String> notificationChannelRefs;
     private @Nullable List<GetPipelineCentralNotificationRuleNotificationCondition> notificationConditions;
-    /**
-     * @return Identifier of the organization in which the Notification Rule is configured.
-     * 
-     */
     private @Nullable String org;
-    /**
-     * @return Identifier of the project in which the Notification Rule is configured.
-     * 
-     */
     private @Nullable String project;
     private @Nullable String status;
 
     private GetPipelineCentralNotificationRuleResult() {}
-    /**
-     * @return Account identifier associated with this notification channel.
-     * 
-     */
     public String account() {
         return this.account;
     }
-    /**
-     * @return Timestamp when the notification rule was created.
-     * 
-     */
     public Integer created() {
         return this.created;
     }
@@ -82,17 +50,9 @@ public final class GetPipelineCentralNotificationRuleResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return Identifier of the Notification Rule.
-     * 
-     */
     public String identifier() {
         return this.identifier;
     }
-    /**
-     * @return Timestamp when the notification rule was last modified.
-     * 
-     */
     public Integer lastModified() {
         return this.lastModified;
     }
@@ -105,17 +65,9 @@ public final class GetPipelineCentralNotificationRuleResult {
     public List<GetPipelineCentralNotificationRuleNotificationCondition> notificationConditions() {
         return this.notificationConditions == null ? List.of() : this.notificationConditions;
     }
-    /**
-     * @return Identifier of the organization in which the Notification Rule is configured.
-     * 
-     */
     public Optional<String> org() {
         return Optional.ofNullable(this.org);
     }
-    /**
-     * @return Identifier of the project in which the Notification Rule is configured.
-     * 
-     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }

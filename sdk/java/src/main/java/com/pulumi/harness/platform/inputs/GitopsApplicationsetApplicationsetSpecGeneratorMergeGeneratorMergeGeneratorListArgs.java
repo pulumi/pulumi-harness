@@ -20,14 +20,14 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
     public static final GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorListArgs Empty = new GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorListArgs();
 
     /**
-     * List of key/value pairs to pass as parameters into the template
+     * List of key/value pairs to pass as parameters into the template.
      * 
      */
     @Import(name="elements", required=true)
     private Output<List<Map<String,String>>> elements;
 
     /**
-     * @return List of key/value pairs to pass as parameters into the template
+     * @return List of key/value pairs to pass as parameters into the template.
      * 
      */
     public Output<List<Map<String,String>>> elements() {
@@ -75,7 +75,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
         }
 
         /**
-         * @param elements List of key/value pairs to pass as parameters into the template
+         * @param elements List of key/value pairs to pass as parameters into the template.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
         }
 
         /**
-         * @param elements List of key/value pairs to pass as parameters into the template
+         * @param elements List of key/value pairs to pass as parameters into the template.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
         }
 
         /**
-         * @param elements List of key/value pairs to pass as parameters into the template
+         * @param elements List of key/value pairs to pass as parameters into the template.
          * 
          * @return builder
          * 

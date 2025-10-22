@@ -9,6 +9,7 @@ import com.pulumi.harness.platform.outputs.GitOpsApplicationsApplicationSpecSour
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,32 +17,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GitOpsApplicationsApplicationSpecSourceHelm {
     /**
-     * @return File parameters to the helm template.
+     * @return File parameters for the helm template.
      * 
      */
     private @Nullable List<GitOpsApplicationsApplicationSpecSourceHelmFileParameter> fileParameters;
     /**
-     * @return Prevents &#39;helm template&#39; from failing when valueFiles do not exist locally.
+     * @return Prevents &#39;helm template&#39; from failing when `valueFiles` do not exist locally by not appending them to &#39;helm template --values&#39;.
      * 
      */
     private @Nullable Boolean ignoreMissingValueFiles;
     /**
-     * @return List of helm parameters which are passed to the helm template command upon manifest generation.
+     * @return Helm parameters which are passed to the helm template command upon manifest generation.
      * 
      */
     private @Nullable List<GitOpsApplicationsApplicationSpecSourceHelmParameter> parameters;
     /**
-     * @return Indicates if to pass credentials to all domains (helm&#39;s --pass-credentials)
+     * @return If true then adds &#39;--pass-credentials&#39; to Helm commands to pass credentials to all domains.
      * 
      */
     private @Nullable Boolean passCredentials;
     /**
-     * @return Helm release name to use. If omitted it will use the GitOps application name.
+     * @return Helm release name. If omitted it will use the application name.
      * 
      */
     private @Nullable String releaseName;
     /**
-     * @return Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+     * @return Whether to skip custom resource definition installation step (Helm&#39;s [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
      * 
      */
     private @Nullable Boolean skipCrds;
@@ -56,59 +57,64 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
      */
     private @Nullable Boolean skipTests;
     /**
-     * @return List of helm value files to use when generating a template.
+     * @return List of Helm value files to use when generating a template.
      * 
      */
     private @Nullable List<String> valueFiles;
     /**
-     * @return Helm values to be passed to helm template, typically defined as a block.
+     * @return Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
      * 
      */
     private @Nullable String values;
     /**
-     * @return Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;)
+     * @return Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
+     * 
+     */
+    private @Nullable Map<String,String> valuesObject;
+    /**
+     * @return Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;).
      * 
      */
     private @Nullable String version;
 
     private GitOpsApplicationsApplicationSpecSourceHelm() {}
     /**
-     * @return File parameters to the helm template.
+     * @return File parameters for the helm template.
      * 
      */
     public List<GitOpsApplicationsApplicationSpecSourceHelmFileParameter> fileParameters() {
         return this.fileParameters == null ? List.of() : this.fileParameters;
     }
     /**
-     * @return Prevents &#39;helm template&#39; from failing when valueFiles do not exist locally.
+     * @return Prevents &#39;helm template&#39; from failing when `valueFiles` do not exist locally by not appending them to &#39;helm template --values&#39;.
      * 
      */
     public Optional<Boolean> ignoreMissingValueFiles() {
         return Optional.ofNullable(this.ignoreMissingValueFiles);
     }
     /**
-     * @return List of helm parameters which are passed to the helm template command upon manifest generation.
+     * @return Helm parameters which are passed to the helm template command upon manifest generation.
      * 
      */
     public List<GitOpsApplicationsApplicationSpecSourceHelmParameter> parameters() {
         return this.parameters == null ? List.of() : this.parameters;
     }
     /**
-     * @return Indicates if to pass credentials to all domains (helm&#39;s --pass-credentials)
+     * @return If true then adds &#39;--pass-credentials&#39; to Helm commands to pass credentials to all domains.
      * 
      */
     public Optional<Boolean> passCredentials() {
         return Optional.ofNullable(this.passCredentials);
     }
     /**
-     * @return Helm release name to use. If omitted it will use the GitOps application name.
+     * @return Helm release name. If omitted it will use the application name.
      * 
      */
     public Optional<String> releaseName() {
         return Optional.ofNullable(this.releaseName);
     }
     /**
-     * @return Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+     * @return Whether to skip custom resource definition installation step (Helm&#39;s [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
      * 
      */
     public Optional<Boolean> skipCrds() {
@@ -129,21 +135,28 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
         return Optional.ofNullable(this.skipTests);
     }
     /**
-     * @return List of helm value files to use when generating a template.
+     * @return List of Helm value files to use when generating a template.
      * 
      */
     public List<String> valueFiles() {
         return this.valueFiles == null ? List.of() : this.valueFiles;
     }
     /**
-     * @return Helm values to be passed to helm template, typically defined as a block.
+     * @return Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
      * 
      */
     public Optional<String> values() {
         return Optional.ofNullable(this.values);
     }
     /**
-     * @return Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;)
+     * @return Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
+     * 
+     */
+    public Map<String,String> valuesObject() {
+        return this.valuesObject == null ? Map.of() : this.valuesObject;
+    }
+    /**
+     * @return Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;).
      * 
      */
     public Optional<String> version() {
@@ -169,6 +182,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
         private @Nullable Boolean skipTests;
         private @Nullable List<String> valueFiles;
         private @Nullable String values;
+        private @Nullable Map<String,String> valuesObject;
         private @Nullable String version;
         public Builder() {}
         public Builder(GitOpsApplicationsApplicationSpecSourceHelm defaults) {
@@ -183,6 +197,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
     	      this.skipTests = defaults.skipTests;
     	      this.valueFiles = defaults.valueFiles;
     	      this.values = defaults.values;
+    	      this.valuesObject = defaults.valuesObject;
     	      this.version = defaults.version;
         }
 
@@ -256,6 +271,12 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
             return this;
         }
         @CustomType.Setter
+        public Builder valuesObject(@Nullable Map<String,String> valuesObject) {
+
+            this.valuesObject = valuesObject;
+            return this;
+        }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
 
             this.version = version;
@@ -273,6 +294,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
             _resultValue.skipTests = skipTests;
             _resultValue.valueFiles = valueFiles;
             _resultValue.values = values;
+            _resultValue.valuesObject = valuesObject;
             _resultValue.version = version;
             return _resultValue;
         }

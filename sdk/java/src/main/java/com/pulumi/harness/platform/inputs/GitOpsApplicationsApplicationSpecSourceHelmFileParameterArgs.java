@@ -5,10 +5,9 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,33 +15,33 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs 
     public static final GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs Empty = new GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs();
 
     /**
-     * Name of the helm parameter.
+     * Name of the Helm parameter.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
-     * @return Name of the helm parameter.
+     * @return Name of the Helm parameter.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
-     * Path to the file containing the values of the helm parameter.
+     * Path to the file containing the values for the Helm parameter.
      * 
      */
-    @Import(name="path")
-    private @Nullable Output<String> path;
+    @Import(name="path", required=true)
+    private Output<String> path;
 
     /**
-     * @return Path to the file containing the values of the helm parameter.
+     * @return Path to the file containing the values for the Helm parameter.
      * 
      */
-    public Optional<Output<String>> path() {
-        return Optional.ofNullable(this.path);
+    public Output<String> path() {
+        return this.path;
     }
 
     private GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs() {}
@@ -71,18 +70,18 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs 
         }
 
         /**
-         * @param name Name of the helm parameter.
+         * @param name Name of the Helm parameter.
          * 
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the helm parameter.
+         * @param name Name of the Helm parameter.
          * 
          * @return builder
          * 
@@ -92,18 +91,18 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs 
         }
 
         /**
-         * @param path Path to the file containing the values of the helm parameter.
+         * @param path Path to the file containing the values for the Helm parameter.
          * 
          * @return builder
          * 
          */
-        public Builder path(@Nullable Output<String> path) {
+        public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
         /**
-         * @param path Path to the file containing the values of the helm parameter.
+         * @param path Path to the file containing the values for the Helm parameter.
          * 
          * @return builder
          * 
@@ -113,6 +112,12 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs 
         }
 
         public GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs build() {
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs", "name");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs", "path");
+            }
             return $;
         }
     }

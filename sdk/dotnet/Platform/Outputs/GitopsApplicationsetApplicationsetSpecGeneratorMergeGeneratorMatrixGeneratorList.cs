@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorList
     {
         /// <summary>
-        /// List of key/value pairs to pass as parameters into the template
+        /// List of key/value pairs to pass as parameters into the template.
         /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Elements;
         /// <summary>

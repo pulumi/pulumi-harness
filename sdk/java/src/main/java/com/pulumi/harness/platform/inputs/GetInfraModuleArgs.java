@@ -6,8 +6,11 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetInfraModuleTestingMetadataArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +19,21 @@ import javax.annotation.Nullable;
 public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetInfraModuleArgs Empty = new GetInfraModuleArgs();
+
+    /**
+     * Account that owns the module
+     * 
+     */
+    @Import(name="account", required=true)
+    private Output<String> account;
+
+    /**
+     * @return Account that owns the module
+     * 
+     */
+    public Output<String> account() {
+        return this.account;
+    }
 
     /**
      * Timestamp when the module was created
@@ -48,6 +66,21 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Git Tag Style
+     * 
+     */
+    @Import(name="gitTagStyle")
+    private @Nullable Output<String> gitTagStyle;
+
+    /**
+     * @return Git Tag Style
+     * 
+     */
+    public Optional<Output<String>> gitTagStyle() {
+        return Optional.ofNullable(this.gitTagStyle);
+    }
+
+    /**
      * Identifier of the module
      * 
      */
@@ -63,6 +96,21 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Error while retrieving the module
+     * 
+     */
+    @Import(name="moduleError")
+    private @Nullable Output<String> moduleError;
+
+    /**
+     * @return Error while retrieving the module
+     * 
+     */
+    public Optional<Output<String>> moduleError() {
+        return Optional.ofNullable(this.moduleError);
+    }
+
+    /**
      * Name of the module
      * 
      */
@@ -75,6 +123,36 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Output<String> name() {
         return this.name;
+    }
+
+    /**
+     * Organization that owns the module
+     * 
+     */
+    @Import(name="org")
+    private @Nullable Output<String> org;
+
+    /**
+     * @return Organization that owns the module
+     * 
+     */
+    public Optional<Output<String>> org() {
+        return Optional.ofNullable(this.org);
+    }
+
+    /**
+     * Project that owns the module
+     * 
+     */
+    @Import(name="project")
+    private @Nullable Output<String> project;
+
+    /**
+     * @return Project that owns the module
+     * 
+     */
+    public Optional<Output<String>> project() {
+        return Optional.ofNullable(this.project);
     }
 
     /**
@@ -212,13 +290,78 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Whether testing is enabled for the module
+     * 
+     */
+    @Import(name="testingEnabled")
+    private @Nullable Output<Boolean> testingEnabled;
+
+    /**
+     * @return Whether testing is enabled for the module
+     * 
+     */
+    public Optional<Output<Boolean>> testingEnabled() {
+        return Optional.ofNullable(this.testingEnabled);
+    }
+
+    /**
+     * Testing metadata for the module
+     * 
+     */
+    @Import(name="testingMetadata")
+    private @Nullable Output<GetInfraModuleTestingMetadataArgs> testingMetadata;
+
+    /**
+     * @return Testing metadata for the module
+     * 
+     */
+    public Optional<Output<GetInfraModuleTestingMetadataArgs>> testingMetadata() {
+        return Optional.ofNullable(this.testingMetadata);
+    }
+
+    /**
+     * Timestamp when the module was last modified
+     * 
+     */
+    @Import(name="updated")
+    private @Nullable Output<Integer> updated;
+
+    /**
+     * @return Timestamp when the module was last modified
+     * 
+     */
+    public Optional<Output<Integer>> updated() {
+        return Optional.ofNullable(this.updated);
+    }
+
+    /**
+     * Versions of the module
+     * 
+     */
+    @Import(name="versions")
+    private @Nullable Output<List<String>> versions;
+
+    /**
+     * @return Versions of the module
+     * 
+     */
+    public Optional<Output<List<String>>> versions() {
+        return Optional.ofNullable(this.versions);
+    }
+
     private GetInfraModuleArgs() {}
 
     private GetInfraModuleArgs(GetInfraModuleArgs $) {
+        this.account = $.account;
         this.created = $.created;
         this.description = $.description;
+        this.gitTagStyle = $.gitTagStyle;
         this.id = $.id;
+        this.moduleError = $.moduleError;
         this.name = $.name;
+        this.org = $.org;
+        this.project = $.project;
         this.repository = $.repository;
         this.repositoryBranch = $.repositoryBranch;
         this.repositoryCommit = $.repositoryCommit;
@@ -228,6 +371,10 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
         this.synced = $.synced;
         this.system = $.system;
         this.tags = $.tags;
+        this.testingEnabled = $.testingEnabled;
+        this.testingMetadata = $.testingMetadata;
+        this.updated = $.updated;
+        this.versions = $.versions;
     }
 
     public static Builder builder() {
@@ -246,6 +393,27 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetInfraModuleArgs defaults) {
             $ = new GetInfraModuleArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param account Account that owns the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder account(Output<String> account) {
+            $.account = account;
+            return this;
+        }
+
+        /**
+         * @param account Account that owns the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder account(String account) {
+            return account(Output.of(account));
         }
 
         /**
@@ -291,6 +459,27 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param gitTagStyle Git Tag Style
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitTagStyle(@Nullable Output<String> gitTagStyle) {
+            $.gitTagStyle = gitTagStyle;
+            return this;
+        }
+
+        /**
+         * @param gitTagStyle Git Tag Style
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitTagStyle(String gitTagStyle) {
+            return gitTagStyle(Output.of(gitTagStyle));
+        }
+
+        /**
          * @param id Identifier of the module
          * 
          * @return builder
@@ -312,6 +501,27 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param moduleError Error while retrieving the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder moduleError(@Nullable Output<String> moduleError) {
+            $.moduleError = moduleError;
+            return this;
+        }
+
+        /**
+         * @param moduleError Error while retrieving the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder moduleError(String moduleError) {
+            return moduleError(Output.of(moduleError));
+        }
+
+        /**
          * @param name Name of the module
          * 
          * @return builder
@@ -330,6 +540,48 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param org Organization that owns the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder org(@Nullable Output<String> org) {
+            $.org = org;
+            return this;
+        }
+
+        /**
+         * @param org Organization that owns the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder org(String org) {
+            return org(Output.of(org));
+        }
+
+        /**
+         * @param project Project that owns the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(@Nullable Output<String> project) {
+            $.project = project;
+            return this;
+        }
+
+        /**
+         * @param project Project that owns the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(String project) {
+            return project(Output.of(project));
         }
 
         /**
@@ -521,7 +773,104 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param testingEnabled Whether testing is enabled for the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder testingEnabled(@Nullable Output<Boolean> testingEnabled) {
+            $.testingEnabled = testingEnabled;
+            return this;
+        }
+
+        /**
+         * @param testingEnabled Whether testing is enabled for the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder testingEnabled(Boolean testingEnabled) {
+            return testingEnabled(Output.of(testingEnabled));
+        }
+
+        /**
+         * @param testingMetadata Testing metadata for the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder testingMetadata(@Nullable Output<GetInfraModuleTestingMetadataArgs> testingMetadata) {
+            $.testingMetadata = testingMetadata;
+            return this;
+        }
+
+        /**
+         * @param testingMetadata Testing metadata for the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder testingMetadata(GetInfraModuleTestingMetadataArgs testingMetadata) {
+            return testingMetadata(Output.of(testingMetadata));
+        }
+
+        /**
+         * @param updated Timestamp when the module was last modified
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updated(@Nullable Output<Integer> updated) {
+            $.updated = updated;
+            return this;
+        }
+
+        /**
+         * @param updated Timestamp when the module was last modified
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updated(Integer updated) {
+            return updated(Output.of(updated));
+        }
+
+        /**
+         * @param versions Versions of the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versions(@Nullable Output<List<String>> versions) {
+            $.versions = versions;
+            return this;
+        }
+
+        /**
+         * @param versions Versions of the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versions(List<String> versions) {
+            return versions(Output.of(versions));
+        }
+
+        /**
+         * @param versions Versions of the module
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versions(String... versions) {
+            return versions(List.of(versions));
+        }
+
         public GetInfraModuleArgs build() {
+            if ($.account == null) {
+                throw new MissingRequiredPropertyException("GetInfraModuleArgs", "account");
+            }
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("GetInfraModuleArgs", "id");
             }

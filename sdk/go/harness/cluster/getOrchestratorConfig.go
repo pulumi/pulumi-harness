@@ -54,6 +54,8 @@ type LookupOrchestratorConfigArgs struct {
 	Binpacking *GetOrchestratorConfigBinpacking `pulumi:"binpacking"`
 	// Commitment integration configuration for Cluster Orchestrator
 	CommitmentIntegration *GetOrchestratorConfigCommitmentIntegration `pulumi:"commitmentIntegration"`
+	// Whether the cluster orchestrator is disabled
+	Disabled *bool `pulumi:"disabled"`
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution *GetOrchestratorConfigDistribution `pulumi:"distribution"`
 	// Node preferences for Cluster Orchestrator
@@ -70,6 +72,8 @@ type LookupOrchestratorConfigResult struct {
 	Binpacking *GetOrchestratorConfigBinpacking `pulumi:"binpacking"`
 	// Commitment integration configuration for Cluster Orchestrator
 	CommitmentIntegration *GetOrchestratorConfigCommitmentIntegration `pulumi:"commitmentIntegration"`
+	// Whether the cluster orchestrator is disabled
+	Disabled *bool `pulumi:"disabled"`
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution *GetOrchestratorConfigDistribution `pulumi:"distribution"`
 	// The provider-assigned unique ID for this managed resource.
@@ -97,6 +101,8 @@ type LookupOrchestratorConfigOutputArgs struct {
 	Binpacking GetOrchestratorConfigBinpackingPtrInput `pulumi:"binpacking"`
 	// Commitment integration configuration for Cluster Orchestrator
 	CommitmentIntegration GetOrchestratorConfigCommitmentIntegrationPtrInput `pulumi:"commitmentIntegration"`
+	// Whether the cluster orchestrator is disabled
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution GetOrchestratorConfigDistributionPtrInput `pulumi:"distribution"`
 	// Node preferences for Cluster Orchestrator
@@ -136,6 +142,11 @@ func (o LookupOrchestratorConfigResultOutput) CommitmentIntegration() GetOrchest
 	return o.ApplyT(func(v LookupOrchestratorConfigResult) *GetOrchestratorConfigCommitmentIntegration {
 		return v.CommitmentIntegration
 	}).(GetOrchestratorConfigCommitmentIntegrationPtrOutput)
+}
+
+// Whether the cluster orchestrator is disabled
+func (o LookupOrchestratorConfigResultOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupOrchestratorConfigResult) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // Spot and Ondemand Distribution Preferences for workload replicas

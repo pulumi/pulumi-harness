@@ -14,19 +14,19 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GitOpsApplicationsApplicationSpecSourceHelmFileParameter
     {
         /// <summary>
-        /// Name of the helm parameter.
+        /// Name of the Helm parameter.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
-        /// Path to the file containing the values of the helm parameter.
+        /// Path to the file containing the values for the Helm parameter.
         /// </summary>
-        public readonly string? Path;
+        public readonly string Path;
 
         [OutputConstructor]
         private GitOpsApplicationsApplicationSpecSourceHelmFileParameter(
-            string? name,
+            string name,
 
-            string? path)
+            string path)
         {
             Name = name;
             Path = path;

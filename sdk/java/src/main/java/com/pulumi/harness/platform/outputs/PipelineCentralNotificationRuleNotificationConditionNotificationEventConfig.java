@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 public final class PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
     private @Nullable List<String> entityIdentifiers;
     private String notificationEntity;
+    /**
+     * @return The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+     * 
+     */
     private String notificationEvent;
     private @Nullable List<PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData> notificationEventDatas;
 
@@ -25,6 +29,10 @@ public final class PipelineCentralNotificationRuleNotificationConditionNotificat
     public String notificationEntity() {
         return this.notificationEntity;
     }
+    /**
+     * @return The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+     * 
+     */
     public String notificationEvent() {
         return this.notificationEvent;
     }

@@ -10,6 +10,7 @@ import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpec
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -110,6 +111,36 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpe
     }
 
     /**
+     * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+     * 
+     */
+    @Import(name="skipSchemaValidation")
+    private @Nullable Output<Boolean> skipSchemaValidation;
+
+    /**
+     * @return Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+     * 
+     */
+    public Optional<Output<Boolean>> skipSchemaValidation() {
+        return Optional.ofNullable(this.skipSchemaValidation);
+    }
+
+    /**
+     * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+     * 
+     */
+    @Import(name="skipTests")
+    private @Nullable Output<Boolean> skipTests;
+
+    /**
+     * @return Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+     * 
+     */
+    public Optional<Output<Boolean>> skipTests() {
+        return Optional.ofNullable(this.skipTests);
+    }
+
+    /**
      * List of Helm value files to use when generating a template.
      * 
      */
@@ -139,6 +170,36 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpe
         return Optional.ofNullable(this.values);
     }
 
+    /**
+     * Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
+     * 
+     */
+    @Import(name="valuesObject")
+    private @Nullable Output<Map<String,String>> valuesObject;
+
+    /**
+     * @return Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> valuesObject() {
+        return Optional.ofNullable(this.valuesObject);
+    }
+
+    /**
+     * Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;).
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;).
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpecSourceHelmArgs() {}
 
     private GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpecSourceHelmArgs(GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpecSourceHelmArgs $) {
@@ -148,8 +209,12 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpe
         this.passCredentials = $.passCredentials;
         this.releaseName = $.releaseName;
         this.skipCrds = $.skipCrds;
+        this.skipSchemaValidation = $.skipSchemaValidation;
+        this.skipTests = $.skipTests;
         this.valueFiles = $.valueFiles;
         this.values = $.values;
+        this.valuesObject = $.valuesObject;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -317,6 +382,48 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpe
         }
 
         /**
+         * @param skipSchemaValidation Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipSchemaValidation(@Nullable Output<Boolean> skipSchemaValidation) {
+            $.skipSchemaValidation = skipSchemaValidation;
+            return this;
+        }
+
+        /**
+         * @param skipSchemaValidation Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipSchemaValidation(Boolean skipSchemaValidation) {
+            return skipSchemaValidation(Output.of(skipSchemaValidation));
+        }
+
+        /**
+         * @param skipTests Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipTests(@Nullable Output<Boolean> skipTests) {
+            $.skipTests = skipTests;
+            return this;
+        }
+
+        /**
+         * @param skipTests Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipTests(Boolean skipTests) {
+            return skipTests(Output.of(skipTests));
+        }
+
+        /**
          * @param valueFiles List of Helm value files to use when generating a template.
          * 
          * @return builder
@@ -366,6 +473,48 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpe
          */
         public Builder values(String values) {
             return values(Output.of(values));
+        }
+
+        /**
+         * @param valuesObject Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valuesObject(@Nullable Output<Map<String,String>> valuesObject) {
+            $.valuesObject = valuesObject;
+            return this;
+        }
+
+        /**
+         * @param valuesObject Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valuesObject(Map<String,String> valuesObject) {
+            return valuesObject(Output.of(valuesObject));
+        }
+
+        /**
+         * @param version Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpecSourceHelmArgs build() {

@@ -15,6 +15,9 @@ namespace Pulumi.Harness.Platform.Outputs
     {
         public readonly ImmutableArray<string> EntityIdentifiers;
         public readonly string NotificationEntity;
+        /// <summary>
+        /// The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+        /// </summary>
         public readonly string NotificationEvent;
         public readonly ImmutableArray<Outputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData> NotificationEventDatas;
 

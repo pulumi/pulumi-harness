@@ -9,7 +9,6 @@ import com.pulumi.harness.platform.outputs.GitopsApplicationsetApplicationsetSpe
 import com.pulumi.harness.platform.outputs.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecInfo;
 import com.pulumi.harness.platform.outputs.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecSource;
 import com.pulumi.harness.platform.outputs.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecSyncPolicy;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -42,7 +41,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
      * @return Limits the number of items kept in the application&#39;s revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
      * 
      */
-    private @Nullable Integer revisionHistoryLimit;
+    private @Nullable String revisionHistoryLimit;
     /**
      * @return Location of the application&#39;s manifests or chart.
      * 
@@ -92,7 +91,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
      * @return Limits the number of items kept in the application&#39;s revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
      * 
      */
-    public Optional<Integer> revisionHistoryLimit() {
+    public Optional<String> revisionHistoryLimit() {
         return Optional.ofNullable(this.revisionHistoryLimit);
     }
     /**
@@ -130,7 +129,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
         private @Nullable List<GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecIgnoreDifference> ignoreDifferences;
         private @Nullable List<GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecInfo> infos;
         private @Nullable String project;
-        private @Nullable Integer revisionHistoryLimit;
+        private @Nullable String revisionHistoryLimit;
         private @Nullable List<GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecSource> source;
         private @Nullable List<GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecSource> sources;
         private @Nullable GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecSyncPolicy syncPolicy;
@@ -178,7 +177,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
             return this;
         }
         @CustomType.Setter
-        public Builder revisionHistoryLimit(@Nullable Integer revisionHistoryLimit) {
+        public Builder revisionHistoryLimit(@Nullable String revisionHistoryLimit) {
 
             this.revisionHistoryLimit = revisionHistoryLimit;
             return this;

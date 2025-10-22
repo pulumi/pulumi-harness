@@ -37,7 +37,7 @@ namespace Pulumi.Harness.Platform
     ///         Branch = "main",
     ///         Connector = "jdbcConnector",
     ///         Context = "ctx",
-    ///         LiquibaseSubstituteProperties = 
+    ///         SubstituteProperties = 
     ///         {
     ///             { "key1", "value1" },
     ///             { "key2", "value2" },
@@ -91,12 +91,6 @@ namespace Pulumi.Harness.Platform
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// The properties to substitute in liquibase changelog
-        /// </summary>
-        [Output("liquibaseSubstituteProperties")]
-        public Output<ImmutableDictionary<string, string>?> LiquibaseSubstituteProperties { get; private set; } = null!;
-
-        /// <summary>
         /// Name of the resource.
         /// </summary>
         [Output("name")]
@@ -119,6 +113,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("schema")]
         public Output<string> Schema { get; private set; } = null!;
+
+        /// <summary>
+        /// The properties to substitute in changelog/migration script
+        /// </summary>
+        [Output("substituteProperties")]
+        public Output<ImmutableDictionary<string, string>?> SubstituteProperties { get; private set; } = null!;
 
         /// <summary>
         /// Tags to associate with the resource.
@@ -203,18 +203,6 @@ namespace Pulumi.Harness.Platform
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
-        [Input("liquibaseSubstituteProperties")]
-        private InputMap<string>? _liquibaseSubstituteProperties;
-
-        /// <summary>
-        /// The properties to substitute in liquibase changelog
-        /// </summary>
-        public InputMap<string> LiquibaseSubstituteProperties
-        {
-            get => _liquibaseSubstituteProperties ?? (_liquibaseSubstituteProperties = new InputMap<string>());
-            set => _liquibaseSubstituteProperties = value;
-        }
-
         /// <summary>
         /// Name of the resource.
         /// </summary>
@@ -238,6 +226,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("schema", required: true)]
         public Input<string> Schema { get; set; } = null!;
+
+        [Input("substituteProperties")]
+        private InputMap<string>? _substituteProperties;
+
+        /// <summary>
+        /// The properties to substitute in changelog/migration script
+        /// </summary>
+        public InputMap<string> SubstituteProperties
+        {
+            get => _substituteProperties ?? (_substituteProperties = new InputMap<string>());
+            set => _substituteProperties = value;
+        }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -289,18 +289,6 @@ namespace Pulumi.Harness.Platform
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
-        [Input("liquibaseSubstituteProperties")]
-        private InputMap<string>? _liquibaseSubstituteProperties;
-
-        /// <summary>
-        /// The properties to substitute in liquibase changelog
-        /// </summary>
-        public InputMap<string> LiquibaseSubstituteProperties
-        {
-            get => _liquibaseSubstituteProperties ?? (_liquibaseSubstituteProperties = new InputMap<string>());
-            set => _liquibaseSubstituteProperties = value;
-        }
-
         /// <summary>
         /// Name of the resource.
         /// </summary>
@@ -324,6 +312,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        [Input("substituteProperties")]
+        private InputMap<string>? _substituteProperties;
+
+        /// <summary>
+        /// The properties to substitute in changelog/migration script
+        /// </summary>
+        public InputMap<string> SubstituteProperties
+        {
+            get => _substituteProperties ?? (_substituteProperties = new InputMap<string>());
+            set => _substituteProperties = value;
+        }
 
         [Input("tags")]
         private InputList<string>? _tags;

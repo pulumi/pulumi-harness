@@ -41,7 +41,7 @@ import (
 //				Branch:    pulumi.String("main"),
 //				Connector: pulumi.String("jdbcConnector"),
 //				Context:   pulumi.String("ctx"),
-//				LiquibaseSubstituteProperties: pulumi.StringMap{
+//				SubstituteProperties: pulumi.StringMap{
 //					"key1": pulumi.String("value1"),
 //					"key2": pulumi.String("value2"),
 //				},
@@ -77,8 +77,6 @@ type DbInstance struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// The properties to substitute in liquibase changelog
-	LiquibaseSubstituteProperties pulumi.StringMapOutput `pulumi:"liquibaseSubstituteProperties"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -87,6 +85,8 @@ type DbInstance struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The identifier of the parent database schema
 	Schema pulumi.StringOutput `pulumi:"schema"`
+	// The properties to substitute in changelog/migration script
+	SubstituteProperties pulumi.StringMapOutput `pulumi:"substituteProperties"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
@@ -146,8 +146,6 @@ type dbInstanceState struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// The properties to substitute in liquibase changelog
-	LiquibaseSubstituteProperties map[string]string `pulumi:"liquibaseSubstituteProperties"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -156,6 +154,8 @@ type dbInstanceState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The identifier of the parent database schema
 	Schema *string `pulumi:"schema"`
+	// The properties to substitute in changelog/migration script
+	SubstituteProperties map[string]string `pulumi:"substituteProperties"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
@@ -171,8 +171,6 @@ type DbInstanceState struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
-	// The properties to substitute in liquibase changelog
-	LiquibaseSubstituteProperties pulumi.StringMapInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -181,6 +179,8 @@ type DbInstanceState struct {
 	ProjectId pulumi.StringPtrInput
 	// The identifier of the parent database schema
 	Schema pulumi.StringPtrInput
+	// The properties to substitute in changelog/migration script
+	SubstituteProperties pulumi.StringMapInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
@@ -200,8 +200,6 @@ type dbInstanceArgs struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// The properties to substitute in liquibase changelog
-	LiquibaseSubstituteProperties map[string]string `pulumi:"liquibaseSubstituteProperties"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -210,6 +208,8 @@ type dbInstanceArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// The identifier of the parent database schema
 	Schema string `pulumi:"schema"`
+	// The properties to substitute in changelog/migration script
+	SubstituteProperties map[string]string `pulumi:"substituteProperties"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
@@ -226,8 +226,6 @@ type DbInstanceArgs struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
-	// The properties to substitute in liquibase changelog
-	LiquibaseSubstituteProperties pulumi.StringMapInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -236,6 +234,8 @@ type DbInstanceArgs struct {
 	ProjectId pulumi.StringInput
 	// The identifier of the parent database schema
 	Schema pulumi.StringInput
+	// The properties to substitute in changelog/migration script
+	SubstituteProperties pulumi.StringMapInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
@@ -352,11 +352,6 @@ func (o DbInstanceOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// The properties to substitute in liquibase changelog
-func (o DbInstanceOutput) LiquibaseSubstituteProperties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DbInstance) pulumi.StringMapOutput { return v.LiquibaseSubstituteProperties }).(pulumi.StringMapOutput)
-}
-
 // Name of the resource.
 func (o DbInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -375,6 +370,11 @@ func (o DbInstanceOutput) ProjectId() pulumi.StringOutput {
 // The identifier of the parent database schema
 func (o DbInstanceOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The properties to substitute in changelog/migration script
+func (o DbInstanceOutput) SubstituteProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringMapOutput { return v.SubstituteProperties }).(pulumi.StringMapOutput)
 }
 
 // Tags to associate with the resource.

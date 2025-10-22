@@ -10,6 +10,7 @@ import com.pulumi.harness.platform.inputs.GitOpsApplicationsApplicationSpecSourc
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,14 +21,14 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
     public static final GitOpsApplicationsApplicationSpecSourceHelmArgs Empty = new GitOpsApplicationsApplicationSpecSourceHelmArgs();
 
     /**
-     * File parameters to the helm template.
+     * File parameters for the helm template.
      * 
      */
     @Import(name="fileParameters")
     private @Nullable Output<List<GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs>> fileParameters;
 
     /**
-     * @return File parameters to the helm template.
+     * @return File parameters for the helm template.
      * 
      */
     public Optional<Output<List<GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs>>> fileParameters() {
@@ -35,14 +36,14 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
     }
 
     /**
-     * Prevents &#39;helm template&#39; from failing when valueFiles do not exist locally.
+     * Prevents &#39;helm template&#39; from failing when `valueFiles` do not exist locally by not appending them to &#39;helm template --values&#39;.
      * 
      */
     @Import(name="ignoreMissingValueFiles")
     private @Nullable Output<Boolean> ignoreMissingValueFiles;
 
     /**
-     * @return Prevents &#39;helm template&#39; from failing when valueFiles do not exist locally.
+     * @return Prevents &#39;helm template&#39; from failing when `valueFiles` do not exist locally by not appending them to &#39;helm template --values&#39;.
      * 
      */
     public Optional<Output<Boolean>> ignoreMissingValueFiles() {
@@ -50,14 +51,14 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
     }
 
     /**
-     * List of helm parameters which are passed to the helm template command upon manifest generation.
+     * Helm parameters which are passed to the helm template command upon manifest generation.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<GitOpsApplicationsApplicationSpecSourceHelmParameterArgs>> parameters;
 
     /**
-     * @return List of helm parameters which are passed to the helm template command upon manifest generation.
+     * @return Helm parameters which are passed to the helm template command upon manifest generation.
      * 
      */
     public Optional<Output<List<GitOpsApplicationsApplicationSpecSourceHelmParameterArgs>>> parameters() {
@@ -65,14 +66,14 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
     }
 
     /**
-     * Indicates if to pass credentials to all domains (helm&#39;s --pass-credentials)
+     * If true then adds &#39;--pass-credentials&#39; to Helm commands to pass credentials to all domains.
      * 
      */
     @Import(name="passCredentials")
     private @Nullable Output<Boolean> passCredentials;
 
     /**
-     * @return Indicates if to pass credentials to all domains (helm&#39;s --pass-credentials)
+     * @return If true then adds &#39;--pass-credentials&#39; to Helm commands to pass credentials to all domains.
      * 
      */
     public Optional<Output<Boolean>> passCredentials() {
@@ -80,14 +81,14 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
     }
 
     /**
-     * Helm release name to use. If omitted it will use the GitOps application name.
+     * Helm release name. If omitted it will use the application name.
      * 
      */
     @Import(name="releaseName")
     private @Nullable Output<String> releaseName;
 
     /**
-     * @return Helm release name to use. If omitted it will use the GitOps application name.
+     * @return Helm release name. If omitted it will use the application name.
      * 
      */
     public Optional<Output<String>> releaseName() {
@@ -95,14 +96,14 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
     }
 
     /**
-     * Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+     * Whether to skip custom resource definition installation step (Helm&#39;s [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
      * 
      */
     @Import(name="skipCrds")
     private @Nullable Output<Boolean> skipCrds;
 
     /**
-     * @return Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+     * @return Whether to skip custom resource definition installation step (Helm&#39;s [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
      * 
      */
     public Optional<Output<Boolean>> skipCrds() {
@@ -140,14 +141,14 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
     }
 
     /**
-     * List of helm value files to use when generating a template.
+     * List of Helm value files to use when generating a template.
      * 
      */
     @Import(name="valueFiles")
     private @Nullable Output<List<String>> valueFiles;
 
     /**
-     * @return List of helm value files to use when generating a template.
+     * @return List of Helm value files to use when generating a template.
      * 
      */
     public Optional<Output<List<String>>> valueFiles() {
@@ -155,14 +156,14 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
     }
 
     /**
-     * Helm values to be passed to helm template, typically defined as a block.
+     * Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
      * 
      */
     @Import(name="values")
     private @Nullable Output<String> values;
 
     /**
-     * @return Helm values to be passed to helm template, typically defined as a block.
+     * @return Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
      * 
      */
     public Optional<Output<String>> values() {
@@ -170,14 +171,29 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
     }
 
     /**
-     * Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;)
+     * Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
+     * 
+     */
+    @Import(name="valuesObject")
+    private @Nullable Output<Map<String,String>> valuesObject;
+
+    /**
+     * @return Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> valuesObject() {
+        return Optional.ofNullable(this.valuesObject);
+    }
+
+    /**
+     * Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;).
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;)
+     * @return Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;).
      * 
      */
     public Optional<Output<String>> version() {
@@ -197,6 +213,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         this.skipTests = $.skipTests;
         this.valueFiles = $.valueFiles;
         this.values = $.values;
+        this.valuesObject = $.valuesObject;
         this.version = $.version;
     }
 
@@ -219,7 +236,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param fileParameters File parameters to the helm template.
+         * @param fileParameters File parameters for the helm template.
          * 
          * @return builder
          * 
@@ -230,7 +247,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param fileParameters File parameters to the helm template.
+         * @param fileParameters File parameters for the helm template.
          * 
          * @return builder
          * 
@@ -240,7 +257,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param fileParameters File parameters to the helm template.
+         * @param fileParameters File parameters for the helm template.
          * 
          * @return builder
          * 
@@ -250,7 +267,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when valueFiles do not exist locally.
+         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when `valueFiles` do not exist locally by not appending them to &#39;helm template --values&#39;.
          * 
          * @return builder
          * 
@@ -261,7 +278,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when valueFiles do not exist locally.
+         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when `valueFiles` do not exist locally by not appending them to &#39;helm template --values&#39;.
          * 
          * @return builder
          * 
@@ -271,7 +288,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param parameters List of helm parameters which are passed to the helm template command upon manifest generation.
+         * @param parameters Helm parameters which are passed to the helm template command upon manifest generation.
          * 
          * @return builder
          * 
@@ -282,7 +299,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param parameters List of helm parameters which are passed to the helm template command upon manifest generation.
+         * @param parameters Helm parameters which are passed to the helm template command upon manifest generation.
          * 
          * @return builder
          * 
@@ -292,7 +309,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param parameters List of helm parameters which are passed to the helm template command upon manifest generation.
+         * @param parameters Helm parameters which are passed to the helm template command upon manifest generation.
          * 
          * @return builder
          * 
@@ -302,7 +319,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param passCredentials Indicates if to pass credentials to all domains (helm&#39;s --pass-credentials)
+         * @param passCredentials If true then adds &#39;--pass-credentials&#39; to Helm commands to pass credentials to all domains.
          * 
          * @return builder
          * 
@@ -313,7 +330,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param passCredentials Indicates if to pass credentials to all domains (helm&#39;s --pass-credentials)
+         * @param passCredentials If true then adds &#39;--pass-credentials&#39; to Helm commands to pass credentials to all domains.
          * 
          * @return builder
          * 
@@ -323,7 +340,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param releaseName Helm release name to use. If omitted it will use the GitOps application name.
+         * @param releaseName Helm release name. If omitted it will use the application name.
          * 
          * @return builder
          * 
@@ -334,7 +351,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param releaseName Helm release name to use. If omitted it will use the GitOps application name.
+         * @param releaseName Helm release name. If omitted it will use the application name.
          * 
          * @return builder
          * 
@@ -344,7 +361,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param skipCrds Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+         * @param skipCrds Whether to skip custom resource definition installation step (Helm&#39;s [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
          * 
          * @return builder
          * 
@@ -355,7 +372,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param skipCrds Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+         * @param skipCrds Whether to skip custom resource definition installation step (Helm&#39;s [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
          * 
          * @return builder
          * 
@@ -407,7 +424,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param valueFiles List of helm value files to use when generating a template.
+         * @param valueFiles List of Helm value files to use when generating a template.
          * 
          * @return builder
          * 
@@ -418,7 +435,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param valueFiles List of helm value files to use when generating a template.
+         * @param valueFiles List of Helm value files to use when generating a template.
          * 
          * @return builder
          * 
@@ -428,7 +445,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param valueFiles List of helm value files to use when generating a template.
+         * @param valueFiles List of Helm value files to use when generating a template.
          * 
          * @return builder
          * 
@@ -438,7 +455,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param values Helm values to be passed to helm template, typically defined as a block.
+         * @param values Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
          * 
          * @return builder
          * 
@@ -449,7 +466,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param values Helm values to be passed to helm template, typically defined as a block.
+         * @param values Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
          * 
          * @return builder
          * 
@@ -459,7 +476,28 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param version Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;)
+         * @param valuesObject Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valuesObject(@Nullable Output<Map<String,String>> valuesObject) {
+            $.valuesObject = valuesObject;
+            return this;
+        }
+
+        /**
+         * @param valuesObject Helm values to be passed to &#39;helm template&#39;, typically defined as a block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valuesObject(Map<String,String> valuesObject) {
+            return valuesObject(Output.of(valuesObject));
+        }
+
+        /**
+         * @param version Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;).
          * 
          * @return builder
          * 
@@ -470,7 +508,7 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
         }
 
         /**
-         * @param version Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;)
+         * @param version Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;).
          * 
          * @return builder
          * 

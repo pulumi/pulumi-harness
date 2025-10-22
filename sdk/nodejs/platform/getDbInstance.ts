@@ -25,11 +25,11 @@ export function getDbInstance(args: GetDbInstanceArgs, opts?: pulumi.InvokeOptio
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDbInstance:getDbInstance", {
         "identifier": args.identifier,
-        "liquibaseSubstituteProperties": args.liquibaseSubstituteProperties,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
         "schema": args.schema,
+        "substituteProperties": args.substituteProperties,
     }, opts);
 }
 
@@ -41,10 +41,6 @@ export interface GetDbInstanceArgs {
      * Unique identifier of the resource.
      */
     identifier: string;
-    /**
-     * The properties to substitute in liquibase changelog
-     */
-    liquibaseSubstituteProperties?: {[key: string]: string};
     /**
      * Name of the resource.
      */
@@ -61,6 +57,10 @@ export interface GetDbInstanceArgs {
      * The identifier of the parent database schema
      */
     schema: string;
+    /**
+     * The properties to substitute in changelog/migration script
+     */
+    substituteProperties?: {[key: string]: string};
 }
 
 /**
@@ -92,10 +92,6 @@ export interface GetDbInstanceResult {
      */
     readonly identifier: string;
     /**
-     * The properties to substitute in liquibase changelog
-     */
-    readonly liquibaseSubstituteProperties?: {[key: string]: string};
-    /**
      * Name of the resource.
      */
     readonly name?: string;
@@ -111,6 +107,10 @@ export interface GetDbInstanceResult {
      * The identifier of the parent database schema
      */
     readonly schema: string;
+    /**
+     * The properties to substitute in changelog/migration script
+     */
+    readonly substituteProperties?: {[key: string]: string};
     /**
      * Tags to associate with the resource.
      */
@@ -137,11 +137,11 @@ export function getDbInstanceOutput(args: GetDbInstanceOutputArgs, opts?: pulumi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getDbInstance:getDbInstance", {
         "identifier": args.identifier,
-        "liquibaseSubstituteProperties": args.liquibaseSubstituteProperties,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
         "schema": args.schema,
+        "substituteProperties": args.substituteProperties,
     }, opts);
 }
 
@@ -153,10 +153,6 @@ export interface GetDbInstanceOutputArgs {
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
-    /**
-     * The properties to substitute in liquibase changelog
-     */
-    liquibaseSubstituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the resource.
      */
@@ -173,4 +169,8 @@ export interface GetDbInstanceOutputArgs {
      * The identifier of the parent database schema
      */
     schema: pulumi.Input<string>;
+    /**
+     * The properties to substitute in changelog/migration script
+     */
+    substituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

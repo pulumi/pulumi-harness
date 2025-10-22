@@ -30,6 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cluster.NewOrchestratorConfig(ctx, "example", &cluster.OrchestratorConfigArgs{
 //				OrchestratorId: pulumi.String("orch-cvifpfl9rbg8neldj97g"),
+//				Disabled:       pulumi.Bool(false),
 //				Distribution: &cluster.OrchestratorConfigDistributionArgs{
 //					BaseOndemandCapacity:      pulumi.Int(2),
 //					OndemandReplicaPercentage: pulumi.Float64(50),
@@ -112,6 +113,8 @@ type OrchestratorConfig struct {
 	Binpacking OrchestratorConfigBinpackingPtrOutput `pulumi:"binpacking"`
 	// Commitment integration configuration for Cluster Orchestrator
 	CommitmentIntegration OrchestratorConfigCommitmentIntegrationPtrOutput `pulumi:"commitmentIntegration"`
+	// Whether the cluster orchestrator is disabled
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution OrchestratorConfigDistributionOutput `pulumi:"distribution"`
 	// Node preferences for Cluster Orchestrator
@@ -162,6 +165,8 @@ type orchestratorConfigState struct {
 	Binpacking *OrchestratorConfigBinpacking `pulumi:"binpacking"`
 	// Commitment integration configuration for Cluster Orchestrator
 	CommitmentIntegration *OrchestratorConfigCommitmentIntegration `pulumi:"commitmentIntegration"`
+	// Whether the cluster orchestrator is disabled
+	Disabled *bool `pulumi:"disabled"`
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution *OrchestratorConfigDistribution `pulumi:"distribution"`
 	// Node preferences for Cluster Orchestrator
@@ -177,6 +182,8 @@ type OrchestratorConfigState struct {
 	Binpacking OrchestratorConfigBinpackingPtrInput
 	// Commitment integration configuration for Cluster Orchestrator
 	CommitmentIntegration OrchestratorConfigCommitmentIntegrationPtrInput
+	// Whether the cluster orchestrator is disabled
+	Disabled pulumi.BoolPtrInput
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution OrchestratorConfigDistributionPtrInput
 	// Node preferences for Cluster Orchestrator
@@ -196,6 +203,8 @@ type orchestratorConfigArgs struct {
 	Binpacking *OrchestratorConfigBinpacking `pulumi:"binpacking"`
 	// Commitment integration configuration for Cluster Orchestrator
 	CommitmentIntegration *OrchestratorConfigCommitmentIntegration `pulumi:"commitmentIntegration"`
+	// Whether the cluster orchestrator is disabled
+	Disabled *bool `pulumi:"disabled"`
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution OrchestratorConfigDistribution `pulumi:"distribution"`
 	// Node preferences for Cluster Orchestrator
@@ -212,6 +221,8 @@ type OrchestratorConfigArgs struct {
 	Binpacking OrchestratorConfigBinpackingPtrInput
 	// Commitment integration configuration for Cluster Orchestrator
 	CommitmentIntegration OrchestratorConfigCommitmentIntegrationPtrInput
+	// Whether the cluster orchestrator is disabled
+	Disabled pulumi.BoolPtrInput
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution OrchestratorConfigDistributionInput
 	// Node preferences for Cluster Orchestrator
@@ -319,6 +330,11 @@ func (o OrchestratorConfigOutput) CommitmentIntegration() OrchestratorConfigComm
 	return o.ApplyT(func(v *OrchestratorConfig) OrchestratorConfigCommitmentIntegrationPtrOutput {
 		return v.CommitmentIntegration
 	}).(OrchestratorConfigCommitmentIntegrationPtrOutput)
+}
+
+// Whether the cluster orchestrator is disabled
+func (o OrchestratorConfigOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfig) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // Spot and Ondemand Distribution Preferences for workload replicas

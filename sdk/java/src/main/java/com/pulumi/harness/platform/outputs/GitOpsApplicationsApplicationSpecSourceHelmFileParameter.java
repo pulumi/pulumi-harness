@@ -4,38 +4,37 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GitOpsApplicationsApplicationSpecSourceHelmFileParameter {
     /**
-     * @return Name of the helm parameter.
+     * @return Name of the Helm parameter.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
-     * @return Path to the file containing the values of the helm parameter.
+     * @return Path to the file containing the values for the Helm parameter.
      * 
      */
-    private @Nullable String path;
+    private String path;
 
     private GitOpsApplicationsApplicationSpecSourceHelmFileParameter() {}
     /**
-     * @return Name of the helm parameter.
+     * @return Name of the Helm parameter.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
-     * @return Path to the file containing the values of the helm parameter.
+     * @return Path to the file containing the values for the Helm parameter.
      * 
      */
-    public Optional<String> path() {
-        return Optional.ofNullable(this.path);
+    public String path() {
+        return this.path;
     }
 
     public static Builder builder() {
@@ -47,8 +46,8 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmFileParameter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String name;
-        private @Nullable String path;
+        private String name;
+        private String path;
         public Builder() {}
         public Builder(GitOpsApplicationsApplicationSpecSourceHelmFileParameter defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,14 +56,18 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmFileParameter {
         }
 
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GitOpsApplicationsApplicationSpecSourceHelmFileParameter", "name");
+            }
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder path(@Nullable String path) {
-
+        public Builder path(String path) {
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GitOpsApplicationsApplicationSpecSourceHelmFileParameter", "path");
+            }
             this.path = path;
             return this;
         }

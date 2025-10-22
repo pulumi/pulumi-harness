@@ -45,11 +45,6 @@ public final class GetDbInstanceResult {
      */
     private String identifier;
     /**
-     * @return The properties to substitute in liquibase changelog
-     * 
-     */
-    private @Nullable Map<String,String> liquibaseSubstituteProperties;
-    /**
      * @return Name of the resource.
      * 
      */
@@ -69,6 +64,11 @@ public final class GetDbInstanceResult {
      * 
      */
     private String schema;
+    /**
+     * @return The properties to substitute in changelog/migration script
+     * 
+     */
+    private @Nullable Map<String,String> substituteProperties;
     /**
      * @return Tags to associate with the resource.
      * 
@@ -119,13 +119,6 @@ public final class GetDbInstanceResult {
         return this.identifier;
     }
     /**
-     * @return The properties to substitute in liquibase changelog
-     * 
-     */
-    public Map<String,String> liquibaseSubstituteProperties() {
-        return this.liquibaseSubstituteProperties == null ? Map.of() : this.liquibaseSubstituteProperties;
-    }
-    /**
      * @return Name of the resource.
      * 
      */
@@ -154,6 +147,13 @@ public final class GetDbInstanceResult {
         return this.schema;
     }
     /**
+     * @return The properties to substitute in changelog/migration script
+     * 
+     */
+    public Map<String,String> substituteProperties() {
+        return this.substituteProperties == null ? Map.of() : this.substituteProperties;
+    }
+    /**
      * @return Tags to associate with the resource.
      * 
      */
@@ -176,11 +176,11 @@ public final class GetDbInstanceResult {
         private String description;
         private String id;
         private String identifier;
-        private @Nullable Map<String,String> liquibaseSubstituteProperties;
         private @Nullable String name;
         private String orgId;
         private String projectId;
         private String schema;
+        private @Nullable Map<String,String> substituteProperties;
         private List<String> tags;
         public Builder() {}
         public Builder(GetDbInstanceResult defaults) {
@@ -191,11 +191,11 @@ public final class GetDbInstanceResult {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
-    	      this.liquibaseSubstituteProperties = defaults.liquibaseSubstituteProperties;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.schema = defaults.schema;
+    	      this.substituteProperties = defaults.substituteProperties;
     	      this.tags = defaults.tags;
         }
 
@@ -248,12 +248,6 @@ public final class GetDbInstanceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder liquibaseSubstituteProperties(@Nullable Map<String,String> liquibaseSubstituteProperties) {
-
-            this.liquibaseSubstituteProperties = liquibaseSubstituteProperties;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
@@ -284,6 +278,12 @@ public final class GetDbInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder substituteProperties(@Nullable Map<String,String> substituteProperties) {
+
+            this.substituteProperties = substituteProperties;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetDbInstanceResult", "tags");
@@ -302,11 +302,11 @@ public final class GetDbInstanceResult {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
-            _resultValue.liquibaseSubstituteProperties = liquibaseSubstituteProperties;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
             _resultValue.schema = schema;
+            _resultValue.substituteProperties = substituteProperties;
             _resultValue.tags = tags;
             return _resultValue;
         }

@@ -69,17 +69,11 @@ class GetPipelineCentralNotificationRuleResult:
     @_builtins.property
     @pulumi.getter
     def account(self) -> _builtins.str:
-        """
-        Account identifier associated with this notification channel.
-        """
         return pulumi.get(self, "account")
 
     @_builtins.property
     @pulumi.getter
     def created(self) -> _builtins.int:
-        """
-        Timestamp when the notification rule was created.
-        """
         return pulumi.get(self, "created")
 
     @_builtins.property
@@ -98,17 +92,11 @@ class GetPipelineCentralNotificationRuleResult:
     @_builtins.property
     @pulumi.getter
     def identifier(self) -> _builtins.str:
-        """
-        Identifier of the Notification Rule.
-        """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
     def last_modified(self) -> _builtins.int:
-        """
-        Timestamp when the notification rule was last modified.
-        """
         return pulumi.get(self, "last_modified")
 
     @_builtins.property
@@ -129,17 +117,11 @@ class GetPipelineCentralNotificationRuleResult:
     @_builtins.property
     @pulumi.getter
     def org(self) -> Optional[_builtins.str]:
-        """
-        Identifier of the organization in which the Notification Rule is configured.
-        """
         return pulumi.get(self, "org")
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
-        """
-        Identifier of the project in which the Notification Rule is configured.
-        """
         return pulumi.get(self, "project")
 
     @_builtins.property
@@ -179,11 +161,6 @@ def get_pipeline_central_notification_rule(custom_notification_template_ref: Opt
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPipelineCentralNotificationRuleResult:
     """
     Data source for retrieving a Notification Rule.
-
-
-    :param _builtins.str identifier: Identifier of the Notification Rule.
-    :param _builtins.str org: Identifier of the organization in which the Notification Rule is configured.
-    :param _builtins.str project: Identifier of the project in which the Notification Rule is configured.
     """
     __args__ = dict()
     __args__['customNotificationTemplateRef'] = custom_notification_template_ref
@@ -221,11 +198,6 @@ def get_pipeline_central_notification_rule_output(custom_notification_template_r
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineCentralNotificationRuleResult]:
     """
     Data source for retrieving a Notification Rule.
-
-
-    :param _builtins.str identifier: Identifier of the Notification Rule.
-    :param _builtins.str org: Identifier of the organization in which the Notification Rule is configured.
-    :param _builtins.str project: Identifier of the project in which the Notification Rule is configured.
     """
     __args__ = dict()
     __args__['customNotificationTemplateRef'] = custom_notification_template_ref

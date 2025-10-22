@@ -1038,7 +1038,7 @@ type GitopsApplicationsetApplicationsetSpecTemplateSpec struct {
 	// The project the application belongs to.
 	Project *string `pulumi:"project"`
 	// Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
-	RevisionHistoryLimit *int `pulumi:"revisionHistoryLimit"`
+	RevisionHistoryLimit *string `pulumi:"revisionHistoryLimit"`
 	// Location of the application's manifests or chart.
 	Source []GitopsApplicationsetApplicationsetSpecTemplateSpecSource `pulumi:"source"`
 	// Location of the application's manifests or chart. Use when specifying multiple fields
@@ -1068,7 +1068,7 @@ type GitopsApplicationsetApplicationsetSpecTemplateSpecArgs struct {
 	// The project the application belongs to.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
-	RevisionHistoryLimit pulumi.IntPtrInput `pulumi:"revisionHistoryLimit"`
+	RevisionHistoryLimit pulumi.StringPtrInput `pulumi:"revisionHistoryLimit"`
 	// Location of the application's manifests or chart.
 	Source GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayInput `pulumi:"source"`
 	// Location of the application's manifests or chart. Use when specifying multiple fields
@@ -1181,8 +1181,8 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) Project() pulu
 }
 
 // Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
-func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) RevisionHistoryLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) *int { return v.RevisionHistoryLimit }).(pulumi.IntPtrOutput)
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) RevisionHistoryLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) *string { return v.RevisionHistoryLimit }).(pulumi.StringPtrOutput)
 }
 
 // Location of the application's manifests or chart.
@@ -1271,13 +1271,13 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) Project() p
 }
 
 // Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
-func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) RevisionHistoryLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) *int {
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) RevisionHistoryLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) *string {
 		if v == nil {
 			return nil
 		}
 		return v.RevisionHistoryLimit
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // Location of the application's manifests or chart.
@@ -2546,10 +2546,18 @@ type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm struct {
 	ReleaseName *string `pulumi:"releaseName"`
 	// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
 	SkipCrds *bool `pulumi:"skipCrds"`
+	// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+	SkipSchemaValidation *bool `pulumi:"skipSchemaValidation"`
+	// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+	SkipTests *bool `pulumi:"skipTests"`
 	// List of Helm value files to use when generating a template.
 	ValueFiles []string `pulumi:"valueFiles"`
 	// Helm values to be passed to 'helm template', typically defined as a block.
 	Values *string `pulumi:"values"`
+	// Helm values to be passed to 'helm template', typically defined as a block.
+	ValuesObject map[string]string `pulumi:"valuesObject"`
+	// Helm version to use for templating (either "2" or "3").
+	Version *string `pulumi:"version"`
 }
 
 // GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmArgs and GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmOutput values.
@@ -2576,10 +2584,18 @@ type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmArgs struct {
 	ReleaseName pulumi.StringPtrInput `pulumi:"releaseName"`
 	// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
 	SkipCrds pulumi.BoolPtrInput `pulumi:"skipCrds"`
+	// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+	SkipSchemaValidation pulumi.BoolPtrInput `pulumi:"skipSchemaValidation"`
+	// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+	SkipTests pulumi.BoolPtrInput `pulumi:"skipTests"`
 	// List of Helm value files to use when generating a template.
 	ValueFiles pulumi.StringArrayInput `pulumi:"valueFiles"`
 	// Helm values to be passed to 'helm template', typically defined as a block.
 	Values pulumi.StringPtrInput `pulumi:"values"`
+	// Helm values to be passed to 'helm template', typically defined as a block.
+	ValuesObject pulumi.StringMapInput `pulumi:"valuesObject"`
+	// Helm version to use for templating (either "2" or "3").
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmArgs) ElementType() reflect.Type {
@@ -2695,6 +2711,18 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmOutput) Skip
 	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm) *bool { return v.SkipCrds }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmOutput) SkipSchemaValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm) *bool {
+		return v.SkipSchemaValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmOutput) SkipTests() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm) *bool { return v.SkipTests }).(pulumi.BoolPtrOutput)
+}
+
 // List of Helm value files to use when generating a template.
 func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmOutput) ValueFiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm) []string { return v.ValueFiles }).(pulumi.StringArrayOutput)
@@ -2703,6 +2731,18 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmOutput) Valu
 // Helm values to be passed to 'helm template', typically defined as a block.
 func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmOutput) Values() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm) *string { return v.Values }).(pulumi.StringPtrOutput)
+}
+
+// Helm values to be passed to 'helm template', typically defined as a block.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmOutput) ValuesObject() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm) map[string]string {
+		return v.ValuesObject
+	}).(pulumi.StringMapOutput)
+}
+
+// Helm version to use for templating (either "2" or "3").
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmPtrOutput struct{ *pulumi.OutputState }
@@ -2789,6 +2829,26 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmPtrOutput) S
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmPtrOutput) SkipSchemaValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipSchemaValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmPtrOutput) SkipTests() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipTests
+	}).(pulumi.BoolPtrOutput)
+}
+
 // List of Helm value files to use when generating a template.
 func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmPtrOutput) ValueFiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm) []string {
@@ -2806,6 +2866,26 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmPtrOutput) V
 			return nil
 		}
 		return v.Values
+	}).(pulumi.StringPtrOutput)
+}
+
+// Helm values to be passed to 'helm template', typically defined as a block.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmPtrOutput) ValuesObject() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ValuesObject
+	}).(pulumi.StringMapOutput)
+}
+
+// Helm version to use for templating (either "2" or "3").
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4922,6 +5002,276 @@ func (o HelmConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type InfraModuleTestingTestingMetadata struct {
+	// Account is the internal customer account ID
+	Account *string `pulumi:"account"`
+	// Organization identifier
+	Org *string `pulumi:"org"`
+	// Pipelines where the testing is enabled
+	Pipelines []string `pulumi:"pipelines"`
+	// Project identifier
+	Project *string `pulumi:"project"`
+	// Provider connector for testing purposes
+	ProviderConnector *string `pulumi:"providerConnector"`
+	// Provisioner type for testing purposes
+	ProvisionerType *string `pulumi:"provisionerType"`
+	// Provisioner version for testing purposes
+	ProvisionerVersion *string `pulumi:"provisionerVersion"`
+	// Release pipeline
+	ReleasePipeline *string `pulumi:"releasePipeline"`
+}
+
+// InfraModuleTestingTestingMetadataInput is an input type that accepts InfraModuleTestingTestingMetadataArgs and InfraModuleTestingTestingMetadataOutput values.
+// You can construct a concrete instance of `InfraModuleTestingTestingMetadataInput` via:
+//
+//	InfraModuleTestingTestingMetadataArgs{...}
+type InfraModuleTestingTestingMetadataInput interface {
+	pulumi.Input
+
+	ToInfraModuleTestingTestingMetadataOutput() InfraModuleTestingTestingMetadataOutput
+	ToInfraModuleTestingTestingMetadataOutputWithContext(context.Context) InfraModuleTestingTestingMetadataOutput
+}
+
+type InfraModuleTestingTestingMetadataArgs struct {
+	// Account is the internal customer account ID
+	Account pulumi.StringPtrInput `pulumi:"account"`
+	// Organization identifier
+	Org pulumi.StringPtrInput `pulumi:"org"`
+	// Pipelines where the testing is enabled
+	Pipelines pulumi.StringArrayInput `pulumi:"pipelines"`
+	// Project identifier
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Provider connector for testing purposes
+	ProviderConnector pulumi.StringPtrInput `pulumi:"providerConnector"`
+	// Provisioner type for testing purposes
+	ProvisionerType pulumi.StringPtrInput `pulumi:"provisionerType"`
+	// Provisioner version for testing purposes
+	ProvisionerVersion pulumi.StringPtrInput `pulumi:"provisionerVersion"`
+	// Release pipeline
+	ReleasePipeline pulumi.StringPtrInput `pulumi:"releasePipeline"`
+}
+
+func (InfraModuleTestingTestingMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfraModuleTestingTestingMetadata)(nil)).Elem()
+}
+
+func (i InfraModuleTestingTestingMetadataArgs) ToInfraModuleTestingTestingMetadataOutput() InfraModuleTestingTestingMetadataOutput {
+	return i.ToInfraModuleTestingTestingMetadataOutputWithContext(context.Background())
+}
+
+func (i InfraModuleTestingTestingMetadataArgs) ToInfraModuleTestingTestingMetadataOutputWithContext(ctx context.Context) InfraModuleTestingTestingMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraModuleTestingTestingMetadataOutput)
+}
+
+func (i InfraModuleTestingTestingMetadataArgs) ToInfraModuleTestingTestingMetadataPtrOutput() InfraModuleTestingTestingMetadataPtrOutput {
+	return i.ToInfraModuleTestingTestingMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i InfraModuleTestingTestingMetadataArgs) ToInfraModuleTestingTestingMetadataPtrOutputWithContext(ctx context.Context) InfraModuleTestingTestingMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraModuleTestingTestingMetadataOutput).ToInfraModuleTestingTestingMetadataPtrOutputWithContext(ctx)
+}
+
+// InfraModuleTestingTestingMetadataPtrInput is an input type that accepts InfraModuleTestingTestingMetadataArgs, InfraModuleTestingTestingMetadataPtr and InfraModuleTestingTestingMetadataPtrOutput values.
+// You can construct a concrete instance of `InfraModuleTestingTestingMetadataPtrInput` via:
+//
+//	        InfraModuleTestingTestingMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type InfraModuleTestingTestingMetadataPtrInput interface {
+	pulumi.Input
+
+	ToInfraModuleTestingTestingMetadataPtrOutput() InfraModuleTestingTestingMetadataPtrOutput
+	ToInfraModuleTestingTestingMetadataPtrOutputWithContext(context.Context) InfraModuleTestingTestingMetadataPtrOutput
+}
+
+type infraModuleTestingTestingMetadataPtrType InfraModuleTestingTestingMetadataArgs
+
+func InfraModuleTestingTestingMetadataPtr(v *InfraModuleTestingTestingMetadataArgs) InfraModuleTestingTestingMetadataPtrInput {
+	return (*infraModuleTestingTestingMetadataPtrType)(v)
+}
+
+func (*infraModuleTestingTestingMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfraModuleTestingTestingMetadata)(nil)).Elem()
+}
+
+func (i *infraModuleTestingTestingMetadataPtrType) ToInfraModuleTestingTestingMetadataPtrOutput() InfraModuleTestingTestingMetadataPtrOutput {
+	return i.ToInfraModuleTestingTestingMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *infraModuleTestingTestingMetadataPtrType) ToInfraModuleTestingTestingMetadataPtrOutputWithContext(ctx context.Context) InfraModuleTestingTestingMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraModuleTestingTestingMetadataPtrOutput)
+}
+
+type InfraModuleTestingTestingMetadataOutput struct{ *pulumi.OutputState }
+
+func (InfraModuleTestingTestingMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfraModuleTestingTestingMetadata)(nil)).Elem()
+}
+
+func (o InfraModuleTestingTestingMetadataOutput) ToInfraModuleTestingTestingMetadataOutput() InfraModuleTestingTestingMetadataOutput {
+	return o
+}
+
+func (o InfraModuleTestingTestingMetadataOutput) ToInfraModuleTestingTestingMetadataOutputWithContext(ctx context.Context) InfraModuleTestingTestingMetadataOutput {
+	return o
+}
+
+func (o InfraModuleTestingTestingMetadataOutput) ToInfraModuleTestingTestingMetadataPtrOutput() InfraModuleTestingTestingMetadataPtrOutput {
+	return o.ToInfraModuleTestingTestingMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o InfraModuleTestingTestingMetadataOutput) ToInfraModuleTestingTestingMetadataPtrOutputWithContext(ctx context.Context) InfraModuleTestingTestingMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InfraModuleTestingTestingMetadata) *InfraModuleTestingTestingMetadata {
+		return &v
+	}).(InfraModuleTestingTestingMetadataPtrOutput)
+}
+
+// Account is the internal customer account ID
+func (o InfraModuleTestingTestingMetadataOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfraModuleTestingTestingMetadata) *string { return v.Account }).(pulumi.StringPtrOutput)
+}
+
+// Organization identifier
+func (o InfraModuleTestingTestingMetadataOutput) Org() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfraModuleTestingTestingMetadata) *string { return v.Org }).(pulumi.StringPtrOutput)
+}
+
+// Pipelines where the testing is enabled
+func (o InfraModuleTestingTestingMetadataOutput) Pipelines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InfraModuleTestingTestingMetadata) []string { return v.Pipelines }).(pulumi.StringArrayOutput)
+}
+
+// Project identifier
+func (o InfraModuleTestingTestingMetadataOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfraModuleTestingTestingMetadata) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// Provider connector for testing purposes
+func (o InfraModuleTestingTestingMetadataOutput) ProviderConnector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfraModuleTestingTestingMetadata) *string { return v.ProviderConnector }).(pulumi.StringPtrOutput)
+}
+
+// Provisioner type for testing purposes
+func (o InfraModuleTestingTestingMetadataOutput) ProvisionerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfraModuleTestingTestingMetadata) *string { return v.ProvisionerType }).(pulumi.StringPtrOutput)
+}
+
+// Provisioner version for testing purposes
+func (o InfraModuleTestingTestingMetadataOutput) ProvisionerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfraModuleTestingTestingMetadata) *string { return v.ProvisionerVersion }).(pulumi.StringPtrOutput)
+}
+
+// Release pipeline
+func (o InfraModuleTestingTestingMetadataOutput) ReleasePipeline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfraModuleTestingTestingMetadata) *string { return v.ReleasePipeline }).(pulumi.StringPtrOutput)
+}
+
+type InfraModuleTestingTestingMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (InfraModuleTestingTestingMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfraModuleTestingTestingMetadata)(nil)).Elem()
+}
+
+func (o InfraModuleTestingTestingMetadataPtrOutput) ToInfraModuleTestingTestingMetadataPtrOutput() InfraModuleTestingTestingMetadataPtrOutput {
+	return o
+}
+
+func (o InfraModuleTestingTestingMetadataPtrOutput) ToInfraModuleTestingTestingMetadataPtrOutputWithContext(ctx context.Context) InfraModuleTestingTestingMetadataPtrOutput {
+	return o
+}
+
+func (o InfraModuleTestingTestingMetadataPtrOutput) Elem() InfraModuleTestingTestingMetadataOutput {
+	return o.ApplyT(func(v *InfraModuleTestingTestingMetadata) InfraModuleTestingTestingMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret InfraModuleTestingTestingMetadata
+		return ret
+	}).(InfraModuleTestingTestingMetadataOutput)
+}
+
+// Account is the internal customer account ID
+func (o InfraModuleTestingTestingMetadataPtrOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Account
+	}).(pulumi.StringPtrOutput)
+}
+
+// Organization identifier
+func (o InfraModuleTestingTestingMetadataPtrOutput) Org() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Org
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pipelines where the testing is enabled
+func (o InfraModuleTestingTestingMetadataPtrOutput) Pipelines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InfraModuleTestingTestingMetadata) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Pipelines
+	}).(pulumi.StringArrayOutput)
+}
+
+// Project identifier
+func (o InfraModuleTestingTestingMetadataPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provider connector for testing purposes
+func (o InfraModuleTestingTestingMetadataPtrOutput) ProviderConnector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProviderConnector
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provisioner type for testing purposes
+func (o InfraModuleTestingTestingMetadataPtrOutput) ProvisionerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionerType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provisioner version for testing purposes
+func (o InfraModuleTestingTestingMetadataPtrOutput) ProvisionerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Release pipeline
+func (o InfraModuleTestingTestingMetadataPtrOutput) ReleasePipeline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReleasePipeline
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11427,8 +11777,9 @@ func (o PipelineCentralNotificationRuleNotificationConditionArrayOutput) Index(i
 }
 
 type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig struct {
-	EntityIdentifiers      []string                                                                                           `pulumi:"entityIdentifiers"`
-	NotificationEntity     string                                                                                             `pulumi:"notificationEntity"`
+	EntityIdentifiers  []string `pulumi:"entityIdentifiers"`
+	NotificationEntity string   `pulumi:"notificationEntity"`
+	// The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
 	NotificationEvent      string                                                                                             `pulumi:"notificationEvent"`
 	NotificationEventDatas []PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData `pulumi:"notificationEventDatas"`
 }
@@ -11445,8 +11796,9 @@ type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig
 }
 
 type PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs struct {
-	EntityIdentifiers      pulumi.StringArrayInput                                                                                    `pulumi:"entityIdentifiers"`
-	NotificationEntity     pulumi.StringInput                                                                                         `pulumi:"notificationEntity"`
+	EntityIdentifiers  pulumi.StringArrayInput `pulumi:"entityIdentifiers"`
+	NotificationEntity pulumi.StringInput      `pulumi:"notificationEntity"`
+	// The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
 	NotificationEvent      pulumi.StringInput                                                                                         `pulumi:"notificationEvent"`
 	NotificationEventDatas PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayInput `pulumi:"notificationEventDatas"`
 }
@@ -11514,6 +11866,7 @@ func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventCon
 	}).(pulumi.StringOutput)
 }
 
+// The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
 func (o PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) NotificationEvent() pulumi.StringOutput {
 	return o.ApplyT(func(v PipelineCentralNotificationRuleNotificationConditionNotificationEventConfig) string {
 		return v.NotificationEvent
@@ -37566,6 +37919,796 @@ func (o GetHelmConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetHelmC
 	}).(GetHelmConnectorCredentialOutput)
 }
 
+type GetInfraModuleTestingMetadata struct {
+	// Account is the internal customer account ID
+	Account string `pulumi:"account"`
+	// Organization identifier
+	Org string `pulumi:"org"`
+	// Pipelines where the testing is enabled
+	Pipelines []string `pulumi:"pipelines"`
+	// Project identifier
+	Project string `pulumi:"project"`
+	// Provider connector for testing purposes
+	ProviderConnector string `pulumi:"providerConnector"`
+	// Provisioner type for testing purposes
+	ProvisionerType string `pulumi:"provisionerType"`
+	// Provisioner version for testing purposes
+	ProvisionerVersion string `pulumi:"provisionerVersion"`
+	// Release pipeline
+	ReleasePipeline string `pulumi:"releasePipeline"`
+}
+
+// GetInfraModuleTestingMetadataInput is an input type that accepts GetInfraModuleTestingMetadataArgs and GetInfraModuleTestingMetadataOutput values.
+// You can construct a concrete instance of `GetInfraModuleTestingMetadataInput` via:
+//
+//	GetInfraModuleTestingMetadataArgs{...}
+type GetInfraModuleTestingMetadataInput interface {
+	pulumi.Input
+
+	ToGetInfraModuleTestingMetadataOutput() GetInfraModuleTestingMetadataOutput
+	ToGetInfraModuleTestingMetadataOutputWithContext(context.Context) GetInfraModuleTestingMetadataOutput
+}
+
+type GetInfraModuleTestingMetadataArgs struct {
+	// Account is the internal customer account ID
+	Account pulumi.StringInput `pulumi:"account"`
+	// Organization identifier
+	Org pulumi.StringInput `pulumi:"org"`
+	// Pipelines where the testing is enabled
+	Pipelines pulumi.StringArrayInput `pulumi:"pipelines"`
+	// Project identifier
+	Project pulumi.StringInput `pulumi:"project"`
+	// Provider connector for testing purposes
+	ProviderConnector pulumi.StringInput `pulumi:"providerConnector"`
+	// Provisioner type for testing purposes
+	ProvisionerType pulumi.StringInput `pulumi:"provisionerType"`
+	// Provisioner version for testing purposes
+	ProvisionerVersion pulumi.StringInput `pulumi:"provisionerVersion"`
+	// Release pipeline
+	ReleasePipeline pulumi.StringInput `pulumi:"releasePipeline"`
+}
+
+func (GetInfraModuleTestingMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraModuleTestingMetadata)(nil)).Elem()
+}
+
+func (i GetInfraModuleTestingMetadataArgs) ToGetInfraModuleTestingMetadataOutput() GetInfraModuleTestingMetadataOutput {
+	return i.ToGetInfraModuleTestingMetadataOutputWithContext(context.Background())
+}
+
+func (i GetInfraModuleTestingMetadataArgs) ToGetInfraModuleTestingMetadataOutputWithContext(ctx context.Context) GetInfraModuleTestingMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraModuleTestingMetadataOutput)
+}
+
+func (i GetInfraModuleTestingMetadataArgs) ToGetInfraModuleTestingMetadataPtrOutput() GetInfraModuleTestingMetadataPtrOutput {
+	return i.ToGetInfraModuleTestingMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GetInfraModuleTestingMetadataArgs) ToGetInfraModuleTestingMetadataPtrOutputWithContext(ctx context.Context) GetInfraModuleTestingMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraModuleTestingMetadataOutput).ToGetInfraModuleTestingMetadataPtrOutputWithContext(ctx)
+}
+
+// GetInfraModuleTestingMetadataPtrInput is an input type that accepts GetInfraModuleTestingMetadataArgs, GetInfraModuleTestingMetadataPtr and GetInfraModuleTestingMetadataPtrOutput values.
+// You can construct a concrete instance of `GetInfraModuleTestingMetadataPtrInput` via:
+//
+//	        GetInfraModuleTestingMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInfraModuleTestingMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGetInfraModuleTestingMetadataPtrOutput() GetInfraModuleTestingMetadataPtrOutput
+	ToGetInfraModuleTestingMetadataPtrOutputWithContext(context.Context) GetInfraModuleTestingMetadataPtrOutput
+}
+
+type getInfraModuleTestingMetadataPtrType GetInfraModuleTestingMetadataArgs
+
+func GetInfraModuleTestingMetadataPtr(v *GetInfraModuleTestingMetadataArgs) GetInfraModuleTestingMetadataPtrInput {
+	return (*getInfraModuleTestingMetadataPtrType)(v)
+}
+
+func (*getInfraModuleTestingMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfraModuleTestingMetadata)(nil)).Elem()
+}
+
+func (i *getInfraModuleTestingMetadataPtrType) ToGetInfraModuleTestingMetadataPtrOutput() GetInfraModuleTestingMetadataPtrOutput {
+	return i.ToGetInfraModuleTestingMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *getInfraModuleTestingMetadataPtrType) ToGetInfraModuleTestingMetadataPtrOutputWithContext(ctx context.Context) GetInfraModuleTestingMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraModuleTestingMetadataPtrOutput)
+}
+
+type GetInfraModuleTestingMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetInfraModuleTestingMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraModuleTestingMetadata)(nil)).Elem()
+}
+
+func (o GetInfraModuleTestingMetadataOutput) ToGetInfraModuleTestingMetadataOutput() GetInfraModuleTestingMetadataOutput {
+	return o
+}
+
+func (o GetInfraModuleTestingMetadataOutput) ToGetInfraModuleTestingMetadataOutputWithContext(ctx context.Context) GetInfraModuleTestingMetadataOutput {
+	return o
+}
+
+func (o GetInfraModuleTestingMetadataOutput) ToGetInfraModuleTestingMetadataPtrOutput() GetInfraModuleTestingMetadataPtrOutput {
+	return o.ToGetInfraModuleTestingMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GetInfraModuleTestingMetadataOutput) ToGetInfraModuleTestingMetadataPtrOutputWithContext(ctx context.Context) GetInfraModuleTestingMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInfraModuleTestingMetadata) *GetInfraModuleTestingMetadata {
+		return &v
+	}).(GetInfraModuleTestingMetadataPtrOutput)
+}
+
+// Account is the internal customer account ID
+func (o GetInfraModuleTestingMetadataOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingMetadata) string { return v.Account }).(pulumi.StringOutput)
+}
+
+// Organization identifier
+func (o GetInfraModuleTestingMetadataOutput) Org() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingMetadata) string { return v.Org }).(pulumi.StringOutput)
+}
+
+// Pipelines where the testing is enabled
+func (o GetInfraModuleTestingMetadataOutput) Pipelines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingMetadata) []string { return v.Pipelines }).(pulumi.StringArrayOutput)
+}
+
+// Project identifier
+func (o GetInfraModuleTestingMetadataOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingMetadata) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Provider connector for testing purposes
+func (o GetInfraModuleTestingMetadataOutput) ProviderConnector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingMetadata) string { return v.ProviderConnector }).(pulumi.StringOutput)
+}
+
+// Provisioner type for testing purposes
+func (o GetInfraModuleTestingMetadataOutput) ProvisionerType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingMetadata) string { return v.ProvisionerType }).(pulumi.StringOutput)
+}
+
+// Provisioner version for testing purposes
+func (o GetInfraModuleTestingMetadataOutput) ProvisionerVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingMetadata) string { return v.ProvisionerVersion }).(pulumi.StringOutput)
+}
+
+// Release pipeline
+func (o GetInfraModuleTestingMetadataOutput) ReleasePipeline() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingMetadata) string { return v.ReleasePipeline }).(pulumi.StringOutput)
+}
+
+type GetInfraModuleTestingMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInfraModuleTestingMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfraModuleTestingMetadata)(nil)).Elem()
+}
+
+func (o GetInfraModuleTestingMetadataPtrOutput) ToGetInfraModuleTestingMetadataPtrOutput() GetInfraModuleTestingMetadataPtrOutput {
+	return o
+}
+
+func (o GetInfraModuleTestingMetadataPtrOutput) ToGetInfraModuleTestingMetadataPtrOutputWithContext(ctx context.Context) GetInfraModuleTestingMetadataPtrOutput {
+	return o
+}
+
+func (o GetInfraModuleTestingMetadataPtrOutput) Elem() GetInfraModuleTestingMetadataOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingMetadata) GetInfraModuleTestingMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GetInfraModuleTestingMetadata
+		return ret
+	}).(GetInfraModuleTestingMetadataOutput)
+}
+
+// Account is the internal customer account ID
+func (o GetInfraModuleTestingMetadataPtrOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Account
+	}).(pulumi.StringPtrOutput)
+}
+
+// Organization identifier
+func (o GetInfraModuleTestingMetadataPtrOutput) Org() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Org
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pipelines where the testing is enabled
+func (o GetInfraModuleTestingMetadataPtrOutput) Pipelines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingMetadata) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Pipelines
+	}).(pulumi.StringArrayOutput)
+}
+
+// Project identifier
+func (o GetInfraModuleTestingMetadataPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provider connector for testing purposes
+func (o GetInfraModuleTestingMetadataPtrOutput) ProviderConnector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderConnector
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provisioner type for testing purposes
+func (o GetInfraModuleTestingMetadataPtrOutput) ProvisionerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisionerType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provisioner version for testing purposes
+func (o GetInfraModuleTestingMetadataPtrOutput) ProvisionerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisionerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Release pipeline
+func (o GetInfraModuleTestingMetadataPtrOutput) ReleasePipeline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReleasePipeline
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetInfraModuleTestingTestingMetadata struct {
+	// Account is the internal customer account ID
+	Account string `pulumi:"account"`
+	// Organization identifier
+	Org string `pulumi:"org"`
+	// Pipelines where the testing is enabled
+	Pipelines []string `pulumi:"pipelines"`
+	// Project identifier
+	Project string `pulumi:"project"`
+	// Provider connector for testing purposes
+	ProviderConnector string `pulumi:"providerConnector"`
+	// Provisioner type for testing purposes
+	ProvisionerType string `pulumi:"provisionerType"`
+	// Provisioner version for testing purposes
+	ProvisionerVersion string `pulumi:"provisionerVersion"`
+	// Release pipeline
+	ReleasePipeline string `pulumi:"releasePipeline"`
+}
+
+// GetInfraModuleTestingTestingMetadataInput is an input type that accepts GetInfraModuleTestingTestingMetadataArgs and GetInfraModuleTestingTestingMetadataOutput values.
+// You can construct a concrete instance of `GetInfraModuleTestingTestingMetadataInput` via:
+//
+//	GetInfraModuleTestingTestingMetadataArgs{...}
+type GetInfraModuleTestingTestingMetadataInput interface {
+	pulumi.Input
+
+	ToGetInfraModuleTestingTestingMetadataOutput() GetInfraModuleTestingTestingMetadataOutput
+	ToGetInfraModuleTestingTestingMetadataOutputWithContext(context.Context) GetInfraModuleTestingTestingMetadataOutput
+}
+
+type GetInfraModuleTestingTestingMetadataArgs struct {
+	// Account is the internal customer account ID
+	Account pulumi.StringInput `pulumi:"account"`
+	// Organization identifier
+	Org pulumi.StringInput `pulumi:"org"`
+	// Pipelines where the testing is enabled
+	Pipelines pulumi.StringArrayInput `pulumi:"pipelines"`
+	// Project identifier
+	Project pulumi.StringInput `pulumi:"project"`
+	// Provider connector for testing purposes
+	ProviderConnector pulumi.StringInput `pulumi:"providerConnector"`
+	// Provisioner type for testing purposes
+	ProvisionerType pulumi.StringInput `pulumi:"provisionerType"`
+	// Provisioner version for testing purposes
+	ProvisionerVersion pulumi.StringInput `pulumi:"provisionerVersion"`
+	// Release pipeline
+	ReleasePipeline pulumi.StringInput `pulumi:"releasePipeline"`
+}
+
+func (GetInfraModuleTestingTestingMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraModuleTestingTestingMetadata)(nil)).Elem()
+}
+
+func (i GetInfraModuleTestingTestingMetadataArgs) ToGetInfraModuleTestingTestingMetadataOutput() GetInfraModuleTestingTestingMetadataOutput {
+	return i.ToGetInfraModuleTestingTestingMetadataOutputWithContext(context.Background())
+}
+
+func (i GetInfraModuleTestingTestingMetadataArgs) ToGetInfraModuleTestingTestingMetadataOutputWithContext(ctx context.Context) GetInfraModuleTestingTestingMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraModuleTestingTestingMetadataOutput)
+}
+
+func (i GetInfraModuleTestingTestingMetadataArgs) ToGetInfraModuleTestingTestingMetadataPtrOutput() GetInfraModuleTestingTestingMetadataPtrOutput {
+	return i.ToGetInfraModuleTestingTestingMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GetInfraModuleTestingTestingMetadataArgs) ToGetInfraModuleTestingTestingMetadataPtrOutputWithContext(ctx context.Context) GetInfraModuleTestingTestingMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraModuleTestingTestingMetadataOutput).ToGetInfraModuleTestingTestingMetadataPtrOutputWithContext(ctx)
+}
+
+// GetInfraModuleTestingTestingMetadataPtrInput is an input type that accepts GetInfraModuleTestingTestingMetadataArgs, GetInfraModuleTestingTestingMetadataPtr and GetInfraModuleTestingTestingMetadataPtrOutput values.
+// You can construct a concrete instance of `GetInfraModuleTestingTestingMetadataPtrInput` via:
+//
+//	        GetInfraModuleTestingTestingMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInfraModuleTestingTestingMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGetInfraModuleTestingTestingMetadataPtrOutput() GetInfraModuleTestingTestingMetadataPtrOutput
+	ToGetInfraModuleTestingTestingMetadataPtrOutputWithContext(context.Context) GetInfraModuleTestingTestingMetadataPtrOutput
+}
+
+type getInfraModuleTestingTestingMetadataPtrType GetInfraModuleTestingTestingMetadataArgs
+
+func GetInfraModuleTestingTestingMetadataPtr(v *GetInfraModuleTestingTestingMetadataArgs) GetInfraModuleTestingTestingMetadataPtrInput {
+	return (*getInfraModuleTestingTestingMetadataPtrType)(v)
+}
+
+func (*getInfraModuleTestingTestingMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfraModuleTestingTestingMetadata)(nil)).Elem()
+}
+
+func (i *getInfraModuleTestingTestingMetadataPtrType) ToGetInfraModuleTestingTestingMetadataPtrOutput() GetInfraModuleTestingTestingMetadataPtrOutput {
+	return i.ToGetInfraModuleTestingTestingMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *getInfraModuleTestingTestingMetadataPtrType) ToGetInfraModuleTestingTestingMetadataPtrOutputWithContext(ctx context.Context) GetInfraModuleTestingTestingMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraModuleTestingTestingMetadataPtrOutput)
+}
+
+type GetInfraModuleTestingTestingMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetInfraModuleTestingTestingMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraModuleTestingTestingMetadata)(nil)).Elem()
+}
+
+func (o GetInfraModuleTestingTestingMetadataOutput) ToGetInfraModuleTestingTestingMetadataOutput() GetInfraModuleTestingTestingMetadataOutput {
+	return o
+}
+
+func (o GetInfraModuleTestingTestingMetadataOutput) ToGetInfraModuleTestingTestingMetadataOutputWithContext(ctx context.Context) GetInfraModuleTestingTestingMetadataOutput {
+	return o
+}
+
+func (o GetInfraModuleTestingTestingMetadataOutput) ToGetInfraModuleTestingTestingMetadataPtrOutput() GetInfraModuleTestingTestingMetadataPtrOutput {
+	return o.ToGetInfraModuleTestingTestingMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GetInfraModuleTestingTestingMetadataOutput) ToGetInfraModuleTestingTestingMetadataPtrOutputWithContext(ctx context.Context) GetInfraModuleTestingTestingMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInfraModuleTestingTestingMetadata) *GetInfraModuleTestingTestingMetadata {
+		return &v
+	}).(GetInfraModuleTestingTestingMetadataPtrOutput)
+}
+
+// Account is the internal customer account ID
+func (o GetInfraModuleTestingTestingMetadataOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingTestingMetadata) string { return v.Account }).(pulumi.StringOutput)
+}
+
+// Organization identifier
+func (o GetInfraModuleTestingTestingMetadataOutput) Org() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingTestingMetadata) string { return v.Org }).(pulumi.StringOutput)
+}
+
+// Pipelines where the testing is enabled
+func (o GetInfraModuleTestingTestingMetadataOutput) Pipelines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingTestingMetadata) []string { return v.Pipelines }).(pulumi.StringArrayOutput)
+}
+
+// Project identifier
+func (o GetInfraModuleTestingTestingMetadataOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingTestingMetadata) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Provider connector for testing purposes
+func (o GetInfraModuleTestingTestingMetadataOutput) ProviderConnector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingTestingMetadata) string { return v.ProviderConnector }).(pulumi.StringOutput)
+}
+
+// Provisioner type for testing purposes
+func (o GetInfraModuleTestingTestingMetadataOutput) ProvisionerType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingTestingMetadata) string { return v.ProvisionerType }).(pulumi.StringOutput)
+}
+
+// Provisioner version for testing purposes
+func (o GetInfraModuleTestingTestingMetadataOutput) ProvisionerVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingTestingMetadata) string { return v.ProvisionerVersion }).(pulumi.StringOutput)
+}
+
+// Release pipeline
+func (o GetInfraModuleTestingTestingMetadataOutput) ReleasePipeline() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModuleTestingTestingMetadata) string { return v.ReleasePipeline }).(pulumi.StringOutput)
+}
+
+type GetInfraModuleTestingTestingMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInfraModuleTestingTestingMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfraModuleTestingTestingMetadata)(nil)).Elem()
+}
+
+func (o GetInfraModuleTestingTestingMetadataPtrOutput) ToGetInfraModuleTestingTestingMetadataPtrOutput() GetInfraModuleTestingTestingMetadataPtrOutput {
+	return o
+}
+
+func (o GetInfraModuleTestingTestingMetadataPtrOutput) ToGetInfraModuleTestingTestingMetadataPtrOutputWithContext(ctx context.Context) GetInfraModuleTestingTestingMetadataPtrOutput {
+	return o
+}
+
+func (o GetInfraModuleTestingTestingMetadataPtrOutput) Elem() GetInfraModuleTestingTestingMetadataOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingTestingMetadata) GetInfraModuleTestingTestingMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GetInfraModuleTestingTestingMetadata
+		return ret
+	}).(GetInfraModuleTestingTestingMetadataOutput)
+}
+
+// Account is the internal customer account ID
+func (o GetInfraModuleTestingTestingMetadataPtrOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Account
+	}).(pulumi.StringPtrOutput)
+}
+
+// Organization identifier
+func (o GetInfraModuleTestingTestingMetadataPtrOutput) Org() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Org
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pipelines where the testing is enabled
+func (o GetInfraModuleTestingTestingMetadataPtrOutput) Pipelines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingTestingMetadata) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Pipelines
+	}).(pulumi.StringArrayOutput)
+}
+
+// Project identifier
+func (o GetInfraModuleTestingTestingMetadataPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provider connector for testing purposes
+func (o GetInfraModuleTestingTestingMetadataPtrOutput) ProviderConnector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderConnector
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provisioner type for testing purposes
+func (o GetInfraModuleTestingTestingMetadataPtrOutput) ProvisionerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisionerType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provisioner version for testing purposes
+func (o GetInfraModuleTestingTestingMetadataPtrOutput) ProvisionerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisionerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Release pipeline
+func (o GetInfraModuleTestingTestingMetadataPtrOutput) ReleasePipeline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfraModuleTestingTestingMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReleasePipeline
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetInfraModulesModule struct {
+	// Account that owns the module
+	Account string `pulumi:"account"`
+	// Timestamp when the module was created
+	Created int `pulumi:"created"`
+	// Description of the module
+	Description string `pulumi:"description"`
+	// Identifier of the module
+	Id string `pulumi:"id"`
+	// Name of the module
+	Name string `pulumi:"name"`
+	// Organization that owns the module
+	Org string `pulumi:"org"`
+	// Project that owns the module
+	Project string `pulumi:"project"`
+	// Repository where the module is stored
+	Repository string `pulumi:"repository"`
+	// Repository branch
+	RepositoryBranch string `pulumi:"repositoryBranch"`
+	// Repository commit
+	RepositoryCommit string `pulumi:"repositoryCommit"`
+	// Repository connector reference
+	RepositoryConnector string `pulumi:"repositoryConnector"`
+	// Path within repository
+	RepositoryPath string `pulumi:"repositoryPath"`
+	// Repository URL
+	RepositoryUrl string `pulumi:"repositoryUrl"`
+	// Timestamp when the module was last synced
+	Synced int `pulumi:"synced"`
+	// Provider of the module
+	System string `pulumi:"system"`
+	// Tags associated with the module
+	Tags string `pulumi:"tags"`
+	// Whether testing is enabled for the module
+	TestingEnabled bool `pulumi:"testingEnabled"`
+	// Timestamp when the module was last modified
+	Updated int `pulumi:"updated"`
+}
+
+// GetInfraModulesModuleInput is an input type that accepts GetInfraModulesModuleArgs and GetInfraModulesModuleOutput values.
+// You can construct a concrete instance of `GetInfraModulesModuleInput` via:
+//
+//	GetInfraModulesModuleArgs{...}
+type GetInfraModulesModuleInput interface {
+	pulumi.Input
+
+	ToGetInfraModulesModuleOutput() GetInfraModulesModuleOutput
+	ToGetInfraModulesModuleOutputWithContext(context.Context) GetInfraModulesModuleOutput
+}
+
+type GetInfraModulesModuleArgs struct {
+	// Account that owns the module
+	Account pulumi.StringInput `pulumi:"account"`
+	// Timestamp when the module was created
+	Created pulumi.IntInput `pulumi:"created"`
+	// Description of the module
+	Description pulumi.StringInput `pulumi:"description"`
+	// Identifier of the module
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of the module
+	Name pulumi.StringInput `pulumi:"name"`
+	// Organization that owns the module
+	Org pulumi.StringInput `pulumi:"org"`
+	// Project that owns the module
+	Project pulumi.StringInput `pulumi:"project"`
+	// Repository where the module is stored
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// Repository branch
+	RepositoryBranch pulumi.StringInput `pulumi:"repositoryBranch"`
+	// Repository commit
+	RepositoryCommit pulumi.StringInput `pulumi:"repositoryCommit"`
+	// Repository connector reference
+	RepositoryConnector pulumi.StringInput `pulumi:"repositoryConnector"`
+	// Path within repository
+	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
+	// Repository URL
+	RepositoryUrl pulumi.StringInput `pulumi:"repositoryUrl"`
+	// Timestamp when the module was last synced
+	Synced pulumi.IntInput `pulumi:"synced"`
+	// Provider of the module
+	System pulumi.StringInput `pulumi:"system"`
+	// Tags associated with the module
+	Tags pulumi.StringInput `pulumi:"tags"`
+	// Whether testing is enabled for the module
+	TestingEnabled pulumi.BoolInput `pulumi:"testingEnabled"`
+	// Timestamp when the module was last modified
+	Updated pulumi.IntInput `pulumi:"updated"`
+}
+
+func (GetInfraModulesModuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraModulesModule)(nil)).Elem()
+}
+
+func (i GetInfraModulesModuleArgs) ToGetInfraModulesModuleOutput() GetInfraModulesModuleOutput {
+	return i.ToGetInfraModulesModuleOutputWithContext(context.Background())
+}
+
+func (i GetInfraModulesModuleArgs) ToGetInfraModulesModuleOutputWithContext(ctx context.Context) GetInfraModulesModuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraModulesModuleOutput)
+}
+
+// GetInfraModulesModuleArrayInput is an input type that accepts GetInfraModulesModuleArray and GetInfraModulesModuleArrayOutput values.
+// You can construct a concrete instance of `GetInfraModulesModuleArrayInput` via:
+//
+//	GetInfraModulesModuleArray{ GetInfraModulesModuleArgs{...} }
+type GetInfraModulesModuleArrayInput interface {
+	pulumi.Input
+
+	ToGetInfraModulesModuleArrayOutput() GetInfraModulesModuleArrayOutput
+	ToGetInfraModulesModuleArrayOutputWithContext(context.Context) GetInfraModulesModuleArrayOutput
+}
+
+type GetInfraModulesModuleArray []GetInfraModulesModuleInput
+
+func (GetInfraModulesModuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraModulesModule)(nil)).Elem()
+}
+
+func (i GetInfraModulesModuleArray) ToGetInfraModulesModuleArrayOutput() GetInfraModulesModuleArrayOutput {
+	return i.ToGetInfraModulesModuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfraModulesModuleArray) ToGetInfraModulesModuleArrayOutputWithContext(ctx context.Context) GetInfraModulesModuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraModulesModuleArrayOutput)
+}
+
+type GetInfraModulesModuleOutput struct{ *pulumi.OutputState }
+
+func (GetInfraModulesModuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraModulesModule)(nil)).Elem()
+}
+
+func (o GetInfraModulesModuleOutput) ToGetInfraModulesModuleOutput() GetInfraModulesModuleOutput {
+	return o
+}
+
+func (o GetInfraModulesModuleOutput) ToGetInfraModulesModuleOutputWithContext(ctx context.Context) GetInfraModulesModuleOutput {
+	return o
+}
+
+// Account that owns the module
+func (o GetInfraModulesModuleOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Account }).(pulumi.StringOutput)
+}
+
+// Timestamp when the module was created
+func (o GetInfraModulesModuleOutput) Created() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) int { return v.Created }).(pulumi.IntOutput)
+}
+
+// Description of the module
+func (o GetInfraModulesModuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Identifier of the module
+func (o GetInfraModulesModuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of the module
+func (o GetInfraModulesModuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Organization that owns the module
+func (o GetInfraModulesModuleOutput) Org() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Org }).(pulumi.StringOutput)
+}
+
+// Project that owns the module
+func (o GetInfraModulesModuleOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Repository where the module is stored
+func (o GetInfraModulesModuleOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// Repository branch
+func (o GetInfraModulesModuleOutput) RepositoryBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.RepositoryBranch }).(pulumi.StringOutput)
+}
+
+// Repository commit
+func (o GetInfraModulesModuleOutput) RepositoryCommit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.RepositoryCommit }).(pulumi.StringOutput)
+}
+
+// Repository connector reference
+func (o GetInfraModulesModuleOutput) RepositoryConnector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.RepositoryConnector }).(pulumi.StringOutput)
+}
+
+// Path within repository
+func (o GetInfraModulesModuleOutput) RepositoryPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.RepositoryPath }).(pulumi.StringOutput)
+}
+
+// Repository URL
+func (o GetInfraModulesModuleOutput) RepositoryUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.RepositoryUrl }).(pulumi.StringOutput)
+}
+
+// Timestamp when the module was last synced
+func (o GetInfraModulesModuleOutput) Synced() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) int { return v.Synced }).(pulumi.IntOutput)
+}
+
+// Provider of the module
+func (o GetInfraModulesModuleOutput) System() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.System }).(pulumi.StringOutput)
+}
+
+// Tags associated with the module
+func (o GetInfraModulesModuleOutput) Tags() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Tags }).(pulumi.StringOutput)
+}
+
+// Whether testing is enabled for the module
+func (o GetInfraModulesModuleOutput) TestingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) bool { return v.TestingEnabled }).(pulumi.BoolOutput)
+}
+
+// Timestamp when the module was last modified
+func (o GetInfraModulesModuleOutput) Updated() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) int { return v.Updated }).(pulumi.IntOutput)
+}
+
+type GetInfraModulesModuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfraModulesModuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraModulesModule)(nil)).Elem()
+}
+
+func (o GetInfraModulesModuleArrayOutput) ToGetInfraModulesModuleArrayOutput() GetInfraModulesModuleArrayOutput {
+	return o
+}
+
+func (o GetInfraModulesModuleArrayOutput) ToGetInfraModulesModuleArrayOutputWithContext(ctx context.Context) GetInfraModulesModuleArrayOutput {
+	return o
+}
+
+func (o GetInfraModulesModuleArrayOutput) Index(i pulumi.IntInput) GetInfraModulesModuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfraModulesModule {
+		return vs[0].([]GetInfraModulesModule)[vs[1].(int)]
+	}).(GetInfraModulesModuleOutput)
+}
+
 type GetInfraVariableSetConnector struct {
 	// Connector Ref is the reference to the connector
 	ConnectorRef string `pulumi:"connectorRef"`
@@ -47702,6 +48845,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigAuthArrayInput)(nil)).Elem(), HarRegistryConfigAuthArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsPtrInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfraModuleTestingTestingMetadataInput)(nil)).Elem(), InfraModuleTestingTestingMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfraModuleTestingTestingMetadataPtrInput)(nil)).Elem(), InfraModuleTestingTestingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetConnectorInput)(nil)).Elem(), InfraVariableSetConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetConnectorArrayInput)(nil)).Elem(), InfraVariableSetConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetEnvironmentVariableInput)(nil)).Elem(), InfraVariableSetEnvironmentVariableArgs{})
@@ -48162,6 +49307,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigAuthArrayInput)(nil)).Elem(), GetHarRegistryConfigAuthArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialInput)(nil)).Elem(), GetHelmConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialArrayInput)(nil)).Elem(), GetHelmConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModuleTestingMetadataInput)(nil)).Elem(), GetInfraModuleTestingMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModuleTestingMetadataPtrInput)(nil)).Elem(), GetInfraModuleTestingMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModuleTestingTestingMetadataInput)(nil)).Elem(), GetInfraModuleTestingTestingMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModuleTestingTestingMetadataPtrInput)(nil)).Elem(), GetInfraModuleTestingTestingMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModulesModuleInput)(nil)).Elem(), GetInfraModulesModuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModulesModuleArrayInput)(nil)).Elem(), GetInfraModulesModuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetConnectorInput)(nil)).Elem(), GetInfraVariableSetConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetConnectorArrayInput)(nil)).Elem(), GetInfraVariableSetConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetEnvironmentVariableInput)(nil)).Elem(), GetInfraVariableSetEnvironmentVariableArgs{})
@@ -48379,6 +49530,8 @@ func init() {
 	pulumi.RegisterOutputType(HarRegistryConfigAuthArrayOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(InfraModuleTestingTestingMetadataOutput{})
+	pulumi.RegisterOutputType(InfraModuleTestingTestingMetadataPtrOutput{})
 	pulumi.RegisterOutputType(InfraVariableSetConnectorOutput{})
 	pulumi.RegisterOutputType(InfraVariableSetConnectorArrayOutput{})
 	pulumi.RegisterOutputType(InfraVariableSetEnvironmentVariableOutput{})
@@ -48839,6 +49992,12 @@ func init() {
 	pulumi.RegisterOutputType(GetHarRegistryConfigAuthArrayOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetInfraModuleTestingMetadataOutput{})
+	pulumi.RegisterOutputType(GetInfraModuleTestingMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GetInfraModuleTestingTestingMetadataOutput{})
+	pulumi.RegisterOutputType(GetInfraModuleTestingTestingMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GetInfraModulesModuleOutput{})
+	pulumi.RegisterOutputType(GetInfraModulesModuleArrayOutput{})
 	pulumi.RegisterOutputType(GetInfraVariableSetConnectorOutput{})
 	pulumi.RegisterOutputType(GetInfraVariableSetConnectorArrayOutput{})
 	pulumi.RegisterOutputType(GetInfraVariableSetEnvironmentVariableOutput{})

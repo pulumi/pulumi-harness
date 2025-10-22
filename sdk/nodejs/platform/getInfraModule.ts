@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,10 +14,15 @@ import * as utilities from "../utilities";
 export function getInfraModule(args: GetInfraModuleArgs, opts?: pulumi.InvokeOptions): Promise<GetInfraModuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getInfraModule:getInfraModule", {
+        "account": args.account,
         "created": args.created,
         "description": args.description,
+        "gitTagStyle": args.gitTagStyle,
         "id": args.id,
+        "moduleError": args.moduleError,
         "name": args.name,
+        "org": args.org,
+        "project": args.project,
         "repository": args.repository,
         "repositoryBranch": args.repositoryBranch,
         "repositoryCommit": args.repositoryCommit,
@@ -25,6 +32,10 @@ export function getInfraModule(args: GetInfraModuleArgs, opts?: pulumi.InvokeOpt
         "synced": args.synced,
         "system": args.system,
         "tags": args.tags,
+        "testingEnabled": args.testingEnabled,
+        "testingMetadata": args.testingMetadata,
+        "updated": args.updated,
+        "versions": args.versions,
     }, opts);
 }
 
@@ -32,6 +43,10 @@ export function getInfraModule(args: GetInfraModuleArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getInfraModule.
  */
 export interface GetInfraModuleArgs {
+    /**
+     * Account that owns the module
+     */
+    account: string;
     /**
      * Timestamp when the module was created
      */
@@ -41,13 +56,29 @@ export interface GetInfraModuleArgs {
      */
     description?: string;
     /**
+     * Git Tag Style
+     */
+    gitTagStyle?: string;
+    /**
      * Identifier of the module
      */
     id: string;
     /**
+     * Error while retrieving the module
+     */
+    moduleError?: string;
+    /**
      * Name of the module
      */
     name: string;
+    /**
+     * Organization that owns the module
+     */
+    org?: string;
+    /**
+     * Project that owns the module
+     */
+    project?: string;
     /**
      * For account connectors, the repository where the module is stored
      */
@@ -84,12 +115,32 @@ export interface GetInfraModuleArgs {
      * Tags associated with the module
      */
     tags?: string;
+    /**
+     * Whether testing is enabled for the module
+     */
+    testingEnabled?: boolean;
+    /**
+     * Testing metadata for the module
+     */
+    testingMetadata?: inputs.platform.GetInfraModuleTestingMetadata;
+    /**
+     * Timestamp when the module was last modified
+     */
+    updated?: number;
+    /**
+     * Versions of the module
+     */
+    versions?: string[];
 }
 
 /**
  * A collection of values returned by getInfraModule.
  */
 export interface GetInfraModuleResult {
+    /**
+     * Account that owns the module
+     */
+    readonly account: string;
     /**
      * Timestamp when the module was created
      */
@@ -99,13 +150,29 @@ export interface GetInfraModuleResult {
      */
     readonly description: string;
     /**
+     * Git Tag Style
+     */
+    readonly gitTagStyle: string;
+    /**
      * Identifier of the module
      */
     readonly id: string;
     /**
+     * Error while retrieving the module
+     */
+    readonly moduleError: string;
+    /**
      * Name of the module
      */
     readonly name: string;
+    /**
+     * Organization that owns the module
+     */
+    readonly org: string;
+    /**
+     * Project that owns the module
+     */
+    readonly project: string;
     /**
      * For account connectors, the repository where the module is stored
      */
@@ -142,6 +209,22 @@ export interface GetInfraModuleResult {
      * Tags associated with the module
      */
     readonly tags: string;
+    /**
+     * Whether testing is enabled for the module
+     */
+    readonly testingEnabled: boolean;
+    /**
+     * Testing metadata for the module
+     */
+    readonly testingMetadata: outputs.platform.GetInfraModuleTestingMetadata;
+    /**
+     * Timestamp when the module was last modified
+     */
+    readonly updated: number;
+    /**
+     * Versions of the module
+     */
+    readonly versions: string[];
 }
 /**
  * Data source for retrieving modules from the module registry.
@@ -151,10 +234,15 @@ export interface GetInfraModuleResult {
 export function getInfraModuleOutput(args: GetInfraModuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInfraModuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getInfraModule:getInfraModule", {
+        "account": args.account,
         "created": args.created,
         "description": args.description,
+        "gitTagStyle": args.gitTagStyle,
         "id": args.id,
+        "moduleError": args.moduleError,
         "name": args.name,
+        "org": args.org,
+        "project": args.project,
         "repository": args.repository,
         "repositoryBranch": args.repositoryBranch,
         "repositoryCommit": args.repositoryCommit,
@@ -164,6 +252,10 @@ export function getInfraModuleOutput(args: GetInfraModuleOutputArgs, opts?: pulu
         "synced": args.synced,
         "system": args.system,
         "tags": args.tags,
+        "testingEnabled": args.testingEnabled,
+        "testingMetadata": args.testingMetadata,
+        "updated": args.updated,
+        "versions": args.versions,
     }, opts);
 }
 
@@ -171,6 +263,10 @@ export function getInfraModuleOutput(args: GetInfraModuleOutputArgs, opts?: pulu
  * A collection of arguments for invoking getInfraModule.
  */
 export interface GetInfraModuleOutputArgs {
+    /**
+     * Account that owns the module
+     */
+    account: pulumi.Input<string>;
     /**
      * Timestamp when the module was created
      */
@@ -180,13 +276,29 @@ export interface GetInfraModuleOutputArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Git Tag Style
+     */
+    gitTagStyle?: pulumi.Input<string>;
+    /**
      * Identifier of the module
      */
     id: pulumi.Input<string>;
     /**
+     * Error while retrieving the module
+     */
+    moduleError?: pulumi.Input<string>;
+    /**
      * Name of the module
      */
     name: pulumi.Input<string>;
+    /**
+     * Organization that owns the module
+     */
+    org?: pulumi.Input<string>;
+    /**
+     * Project that owns the module
+     */
+    project?: pulumi.Input<string>;
     /**
      * For account connectors, the repository where the module is stored
      */
@@ -223,4 +335,20 @@ export interface GetInfraModuleOutputArgs {
      * Tags associated with the module
      */
     tags?: pulumi.Input<string>;
+    /**
+     * Whether testing is enabled for the module
+     */
+    testingEnabled?: pulumi.Input<boolean>;
+    /**
+     * Testing metadata for the module
+     */
+    testingMetadata?: pulumi.Input<inputs.platform.GetInfraModuleTestingMetadataArgs>;
+    /**
+     * Timestamp when the module was last modified
+     */
+    updated?: pulumi.Input<number>;
+    /**
+     * Versions of the module
+     */
+    versions?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -53,14 +53,14 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
     }
 
     /**
-     * Holds helm specific options.
+     * Helm specific options.
      * 
      */
     @Import(name="helms")
     private @Nullable Output<List<GitOpsApplicationsApplicationSpecSourceHelmArgs>> helms;
 
     /**
-     * @return Holds helm specific options.
+     * @return Helm specific options.
      * 
      */
     public Optional<Output<List<GitOpsApplicationsApplicationSpecSourceHelmArgs>>> helms() {
@@ -95,6 +95,21 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
      */
     public Optional<Output<List<GitOpsApplicationsApplicationSpecSourceKustomizeArgs>>> kustomizes() {
         return Optional.ofNullable(this.kustomizes);
+    }
+
+    /**
+     * Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -180,6 +195,7 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
         this.helms = $.helms;
         this.ksonnets = $.ksonnets;
         this.kustomizes = $.kustomizes;
+        this.name = $.name;
         this.path = $.path;
         this.plugins = $.plugins;
         this.ref = $.ref;
@@ -258,7 +274,7 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
         }
 
         /**
-         * @param helms Holds helm specific options.
+         * @param helms Helm specific options.
          * 
          * @return builder
          * 
@@ -269,7 +285,7 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
         }
 
         /**
-         * @param helms Holds helm specific options.
+         * @param helms Helm specific options.
          * 
          * @return builder
          * 
@@ -279,7 +295,7 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
         }
 
         /**
-         * @param helms Holds helm specific options.
+         * @param helms Helm specific options.
          * 
          * @return builder
          * 
@@ -348,6 +364,27 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
          */
         public Builder kustomizes(GitOpsApplicationsApplicationSpecSourceKustomizeArgs... kustomizes) {
             return kustomizes(List.of(kustomizes));
+        }
+
+        /**
+         * @param name Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

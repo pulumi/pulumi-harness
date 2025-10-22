@@ -32,7 +32,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
         /// </summary>
-        public readonly int? RevisionHistoryLimit;
+        public readonly string? RevisionHistoryLimit;
         /// <summary>
         /// Location of the application's manifests or chart.
         /// </summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? project,
 
-            int? revisionHistoryLimit,
+            string? revisionHistoryLimit,
 
             ImmutableArray<Outputs.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorGitTemplateSpecSource> source,
 

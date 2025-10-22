@@ -26,7 +26,7 @@ class GetDbInstanceResult:
     """
     A collection of values returned by getDbInstance.
     """
-    def __init__(__self__, branch=None, connector=None, context=None, description=None, id=None, identifier=None, liquibase_substitute_properties=None, name=None, org_id=None, project_id=None, schema=None, tags=None):
+    def __init__(__self__, branch=None, connector=None, context=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, schema=None, substitute_properties=None, tags=None):
         if branch and not isinstance(branch, str):
             raise TypeError("Expected argument 'branch' to be a str")
         pulumi.set(__self__, "branch", branch)
@@ -45,9 +45,6 @@ class GetDbInstanceResult:
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
-        if liquibase_substitute_properties and not isinstance(liquibase_substitute_properties, dict):
-            raise TypeError("Expected argument 'liquibase_substitute_properties' to be a dict")
-        pulumi.set(__self__, "liquibase_substitute_properties", liquibase_substitute_properties)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -60,6 +57,9 @@ class GetDbInstanceResult:
         if schema and not isinstance(schema, str):
             raise TypeError("Expected argument 'schema' to be a str")
         pulumi.set(__self__, "schema", schema)
+        if substitute_properties and not isinstance(substitute_properties, dict):
+            raise TypeError("Expected argument 'substitute_properties' to be a dict")
+        pulumi.set(__self__, "substitute_properties", substitute_properties)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -113,14 +113,6 @@ class GetDbInstanceResult:
         return pulumi.get(self, "identifier")
 
     @_builtins.property
-    @pulumi.getter(name="liquibaseSubstituteProperties")
-    def liquibase_substitute_properties(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        The properties to substitute in liquibase changelog
-        """
-        return pulumi.get(self, "liquibase_substitute_properties")
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
@@ -153,6 +145,14 @@ class GetDbInstanceResult:
         return pulumi.get(self, "schema")
 
     @_builtins.property
+    @pulumi.getter(name="substituteProperties")
+    def substitute_properties(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The properties to substitute in changelog/migration script
+        """
+        return pulumi.get(self, "substitute_properties")
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
@@ -173,20 +173,20 @@ class AwaitableGetDbInstanceResult(GetDbInstanceResult):
             description=self.description,
             id=self.id,
             identifier=self.identifier,
-            liquibase_substitute_properties=self.liquibase_substitute_properties,
             name=self.name,
             org_id=self.org_id,
             project_id=self.project_id,
             schema=self.schema,
+            substitute_properties=self.substitute_properties,
             tags=self.tags)
 
 
 def get_db_instance(identifier: Optional[_builtins.str] = None,
-                    liquibase_substitute_properties: Optional[Mapping[str, _builtins.str]] = None,
                     name: Optional[_builtins.str] = None,
                     org_id: Optional[_builtins.str] = None,
                     project_id: Optional[_builtins.str] = None,
                     schema: Optional[_builtins.str] = None,
+                    substitute_properties: Optional[Mapping[str, _builtins.str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbInstanceResult:
     """
     Data source for retrieving a Harness DBDevOps Instance.
@@ -205,19 +205,19 @@ def get_db_instance(identifier: Optional[_builtins.str] = None,
 
 
     :param _builtins.str identifier: Unique identifier of the resource.
-    :param Mapping[str, _builtins.str] liquibase_substitute_properties: The properties to substitute in liquibase changelog
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str schema: The identifier of the parent database schema
+    :param Mapping[str, _builtins.str] substitute_properties: The properties to substitute in changelog/migration script
     """
     __args__ = dict()
     __args__['identifier'] = identifier
-    __args__['liquibaseSubstituteProperties'] = liquibase_substitute_properties
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     __args__['schema'] = schema
+    __args__['substituteProperties'] = substitute_properties
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getDbInstance:getDbInstance', __args__, opts=opts, typ=GetDbInstanceResult).value
 
@@ -228,18 +228,18 @@ def get_db_instance(identifier: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
-        liquibase_substitute_properties=pulumi.get(__ret__, 'liquibase_substitute_properties'),
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         schema=pulumi.get(__ret__, 'schema'),
+        substitute_properties=pulumi.get(__ret__, 'substitute_properties'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_db_instance_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                           liquibase_substitute_properties: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                            name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            org_id: Optional[pulumi.Input[_builtins.str]] = None,
                            project_id: Optional[pulumi.Input[_builtins.str]] = None,
                            schema: Optional[pulumi.Input[_builtins.str]] = None,
+                           substitute_properties: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbInstanceResult]:
     """
     Data source for retrieving a Harness DBDevOps Instance.
@@ -258,19 +258,19 @@ def get_db_instance_output(identifier: Optional[pulumi.Input[_builtins.str]] = N
 
 
     :param _builtins.str identifier: Unique identifier of the resource.
-    :param Mapping[str, _builtins.str] liquibase_substitute_properties: The properties to substitute in liquibase changelog
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str schema: The identifier of the parent database schema
+    :param Mapping[str, _builtins.str] substitute_properties: The properties to substitute in changelog/migration script
     """
     __args__ = dict()
     __args__['identifier'] = identifier
-    __args__['liquibaseSubstituteProperties'] = liquibase_substitute_properties
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     __args__['schema'] = schema
+    __args__['substituteProperties'] = substitute_properties
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getDbInstance:getDbInstance', __args__, opts=opts, typ=GetDbInstanceResult)
     return __ret__.apply(lambda __response__: GetDbInstanceResult(
@@ -280,9 +280,9 @@ def get_db_instance_output(identifier: Optional[pulumi.Input[_builtins.str]] = N
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
-        liquibase_substitute_properties=pulumi.get(__response__, 'liquibase_substitute_properties'),
         name=pulumi.get(__response__, 'name'),
         org_id=pulumi.get(__response__, 'org_id'),
         project_id=pulumi.get(__response__, 'project_id'),
         schema=pulumi.get(__response__, 'schema'),
+        substitute_properties=pulumi.get(__response__, 'substitute_properties'),
         tags=pulumi.get(__response__, 'tags')))

@@ -40,6 +40,12 @@ namespace Pulumi.Harness.Platform
     public sealed class GetInfraModuleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Account that owns the module
+        /// </summary>
+        [Input("account", required: true)]
+        public string Account { get; set; } = null!;
+
+        /// <summary>
         /// Timestamp when the module was created
         /// </summary>
         [Input("created")]
@@ -52,16 +58,40 @@ namespace Pulumi.Harness.Platform
         public string? Description { get; set; }
 
         /// <summary>
+        /// Git Tag Style
+        /// </summary>
+        [Input("gitTagStyle")]
+        public string? GitTagStyle { get; set; }
+
+        /// <summary>
         /// Identifier of the module
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
         /// <summary>
+        /// Error while retrieving the module
+        /// </summary>
+        [Input("moduleError")]
+        public string? ModuleError { get; set; }
+
+        /// <summary>
         /// Name of the module
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
+
+        /// <summary>
+        /// Organization that owns the module
+        /// </summary>
+        [Input("org")]
+        public string? Org { get; set; }
+
+        /// <summary>
+        /// Project that owns the module
+        /// </summary>
+        [Input("project")]
+        public string? Project { get; set; }
 
         /// <summary>
         /// For account connectors, the repository where the module is stored
@@ -117,6 +147,36 @@ namespace Pulumi.Harness.Platform
         [Input("tags")]
         public string? Tags { get; set; }
 
+        /// <summary>
+        /// Whether testing is enabled for the module
+        /// </summary>
+        [Input("testingEnabled")]
+        public bool? TestingEnabled { get; set; }
+
+        /// <summary>
+        /// Testing metadata for the module
+        /// </summary>
+        [Input("testingMetadata")]
+        public Inputs.GetInfraModuleTestingMetadataArgs? TestingMetadata { get; set; }
+
+        /// <summary>
+        /// Timestamp when the module was last modified
+        /// </summary>
+        [Input("updated")]
+        public int? Updated { get; set; }
+
+        [Input("versions")]
+        private List<string>? _versions;
+
+        /// <summary>
+        /// Versions of the module
+        /// </summary>
+        public List<string> Versions
+        {
+            get => _versions ?? (_versions = new List<string>());
+            set => _versions = value;
+        }
+
         public GetInfraModuleArgs()
         {
         }
@@ -125,6 +185,12 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetInfraModuleInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account that owns the module
+        /// </summary>
+        [Input("account", required: true)]
+        public Input<string> Account { get; set; } = null!;
+
         /// <summary>
         /// Timestamp when the module was created
         /// </summary>
@@ -138,16 +204,40 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Git Tag Style
+        /// </summary>
+        [Input("gitTagStyle")]
+        public Input<string>? GitTagStyle { get; set; }
+
+        /// <summary>
         /// Identifier of the module
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
+        /// Error while retrieving the module
+        /// </summary>
+        [Input("moduleError")]
+        public Input<string>? ModuleError { get; set; }
+
+        /// <summary>
         /// Name of the module
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Organization that owns the module
+        /// </summary>
+        [Input("org")]
+        public Input<string>? Org { get; set; }
+
+        /// <summary>
+        /// Project that owns the module
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// For account connectors, the repository where the module is stored
@@ -203,6 +293,36 @@ namespace Pulumi.Harness.Platform
         [Input("tags")]
         public Input<string>? Tags { get; set; }
 
+        /// <summary>
+        /// Whether testing is enabled for the module
+        /// </summary>
+        [Input("testingEnabled")]
+        public Input<bool>? TestingEnabled { get; set; }
+
+        /// <summary>
+        /// Testing metadata for the module
+        /// </summary>
+        [Input("testingMetadata")]
+        public Input<Inputs.GetInfraModuleTestingMetadataInputArgs>? TestingMetadata { get; set; }
+
+        /// <summary>
+        /// Timestamp when the module was last modified
+        /// </summary>
+        [Input("updated")]
+        public Input<int>? Updated { get; set; }
+
+        [Input("versions")]
+        private InputList<string>? _versions;
+
+        /// <summary>
+        /// Versions of the module
+        /// </summary>
+        public InputList<string> Versions
+        {
+            get => _versions ?? (_versions = new InputList<string>());
+            set => _versions = value;
+        }
+
         public GetInfraModuleInvokeArgs()
         {
         }
@@ -214,6 +334,10 @@ namespace Pulumi.Harness.Platform
     public sealed class GetInfraModuleResult
     {
         /// <summary>
+        /// Account that owns the module
+        /// </summary>
+        public readonly string Account;
+        /// <summary>
         /// Timestamp when the module was created
         /// </summary>
         public readonly int Created;
@@ -222,13 +346,29 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Git Tag Style
+        /// </summary>
+        public readonly string GitTagStyle;
+        /// <summary>
         /// Identifier of the module
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Error while retrieving the module
+        /// </summary>
+        public readonly string ModuleError;
+        /// <summary>
         /// Name of the module
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Organization that owns the module
+        /// </summary>
+        public readonly string Org;
+        /// <summary>
+        /// Project that owns the module
+        /// </summary>
+        public readonly string Project;
         /// <summary>
         /// For account connectors, the repository where the module is stored
         /// </summary>
@@ -265,16 +405,42 @@ namespace Pulumi.Harness.Platform
         /// Tags associated with the module
         /// </summary>
         public readonly string Tags;
+        /// <summary>
+        /// Whether testing is enabled for the module
+        /// </summary>
+        public readonly bool TestingEnabled;
+        /// <summary>
+        /// Testing metadata for the module
+        /// </summary>
+        public readonly Outputs.GetInfraModuleTestingMetadataResult TestingMetadata;
+        /// <summary>
+        /// Timestamp when the module was last modified
+        /// </summary>
+        public readonly int Updated;
+        /// <summary>
+        /// Versions of the module
+        /// </summary>
+        public readonly ImmutableArray<string> Versions;
 
         [OutputConstructor]
         private GetInfraModuleResult(
+            string account,
+
             int created,
 
             string description,
 
+            string gitTagStyle,
+
             string id,
 
+            string moduleError,
+
             string name,
+
+            string org,
+
+            string project,
 
             string repository,
 
@@ -292,12 +458,25 @@ namespace Pulumi.Harness.Platform
 
             string system,
 
-            string tags)
+            string tags,
+
+            bool testingEnabled,
+
+            Outputs.GetInfraModuleTestingMetadataResult testingMetadata,
+
+            int updated,
+
+            ImmutableArray<string> versions)
         {
+            Account = account;
             Created = created;
             Description = description;
+            GitTagStyle = gitTagStyle;
             Id = id;
+            ModuleError = moduleError;
             Name = name;
+            Org = org;
+            Project = project;
             Repository = repository;
             RepositoryBranch = repositoryBranch;
             RepositoryCommit = repositoryCommit;
@@ -307,6 +486,10 @@ namespace Pulumi.Harness.Platform
             Synced = synced;
             System = system;
             Tags = tags;
+            TestingEnabled = testingEnabled;
+            TestingMetadata = testingMetadata;
+            Updated = updated;
+            Versions = versions;
         }
     }
 }

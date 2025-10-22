@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     branch: "main",
  *     connector: "jdbcConnector",
  *     context: "ctx",
- *     liquibaseSubstituteProperties: {
+ *     substituteProperties: {
  *         key1: "value1",
  *         key2: "value2",
  *     },
@@ -92,10 +92,6 @@ export class DbInstance extends pulumi.CustomResource {
      */
     declare public readonly identifier: pulumi.Output<string>;
     /**
-     * The properties to substitute in liquibase changelog
-     */
-    declare public readonly liquibaseSubstituteProperties: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
      * Name of the resource.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -111,6 +107,10 @@ export class DbInstance extends pulumi.CustomResource {
      * The identifier of the parent database schema
      */
     declare public readonly schema: pulumi.Output<string>;
+    /**
+     * The properties to substitute in changelog/migration script
+     */
+    declare public readonly substituteProperties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Tags to associate with the resource.
      */
@@ -134,11 +134,11 @@ export class DbInstance extends pulumi.CustomResource {
             resourceInputs["context"] = state?.context;
             resourceInputs["description"] = state?.description;
             resourceInputs["identifier"] = state?.identifier;
-            resourceInputs["liquibaseSubstituteProperties"] = state?.liquibaseSubstituteProperties;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["schema"] = state?.schema;
+            resourceInputs["substituteProperties"] = state?.substituteProperties;
             resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DbInstanceArgs | undefined;
@@ -162,11 +162,11 @@ export class DbInstance extends pulumi.CustomResource {
             resourceInputs["context"] = args?.context;
             resourceInputs["description"] = args?.description;
             resourceInputs["identifier"] = args?.identifier;
-            resourceInputs["liquibaseSubstituteProperties"] = args?.liquibaseSubstituteProperties;
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["schema"] = args?.schema;
+            resourceInputs["substituteProperties"] = args?.substituteProperties;
             resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -199,10 +199,6 @@ export interface DbInstanceState {
      */
     identifier?: pulumi.Input<string>;
     /**
-     * The properties to substitute in liquibase changelog
-     */
-    liquibaseSubstituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
@@ -218,6 +214,10 @@ export interface DbInstanceState {
      * The identifier of the parent database schema
      */
     schema?: pulumi.Input<string>;
+    /**
+     * The properties to substitute in changelog/migration script
+     */
+    substituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Tags to associate with the resource.
      */
@@ -249,10 +249,6 @@ export interface DbInstanceArgs {
      */
     identifier: pulumi.Input<string>;
     /**
-     * The properties to substitute in liquibase changelog
-     */
-    liquibaseSubstituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
@@ -268,6 +264,10 @@ export interface DbInstanceArgs {
      * The identifier of the parent database schema
      */
     schema: pulumi.Input<string>;
+    /**
+     * The properties to substitute in changelog/migration script
+     */
+    substituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Tags to associate with the resource.
      */
