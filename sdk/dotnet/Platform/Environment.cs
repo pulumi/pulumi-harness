@@ -14,6 +14,101 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Environment("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "bar:foo",
+    ///         },
+    ///         Type = "PreProduction",
+    ///         GitDetails = new Harness.Platform.Inputs.EnvironmentGitDetailsArgs
+    ///         {
+    ///             BranchName = "branchName",
+    ///             CommitMessage = "commitMessage",
+    ///             FilePath = "filePath",
+    ///             ConnectorRef = "connectorRef",
+    ///             StoreType = "REMOTE",
+    ///             RepoName = "repoName",
+    ///         },
+    ///         Yaml = @"environment:
+    ///    name: name
+    ///    identifier: identifier
+    ///    orgIdentifier: org_id
+    ///    projectIdentifier: project_id
+    ///    type: PreProduction
+    ///    tags:
+    ///      foo: bar
+    ///      bar: foo
+    ///    variables:
+    ///      - name: envVar1
+    ///        type: String
+    ///        value: v1
+    ///        description: \""\""
+    ///      - name: envVar2
+    ///        type: String
+    ///        value: v2
+    ///        description: \""\""
+    ///    overrides:
+    ///      manifests:
+    ///        - manifest:
+    ///            identifier: manifestEnv
+    ///            type: Values
+    ///            spec:
+    ///              store:
+    ///                type: Git
+    ///                spec:
+    ///                  connectorRef: &lt;+input&gt;
+    ///                  gitFetchType: Branch
+    ///                  paths:
+    ///                    - file1
+    ///                  repoName: &lt;+input&gt;
+    ///                  branch: master
+    ///      configFiles:
+    ///        - configFile:
+    ///            identifier: configFileEnv
+    ///            spec:
+    ///              store:
+    ///                type: Harness
+    ///                spec:
+    ///                  files:
+    ///                    - account:/Add-ons/svcOverrideTest
+    ///                  secretFiles: []
+    /// ",
+    ///     });
+    /// 
+    ///     //## Importing Environment from Git
+    ///     var test = new Harness.Platform.Environment("test", new()
+    ///     {
+    ///         Identifier = "accEnv",
+    ///         Name = "accEnv",
+    ///         Type = "PreProduction",
+    ///         GitDetails = new Harness.Platform.Inputs.EnvironmentGitDetailsArgs
+    ///         {
+    ///             StoreType = "REMOTE",
+    ///             ConnectorRef = "account.DoNotDeleteGitX",
+    ///             RepoName = "pcf_practice",
+    ///             FilePath = ".harness/accountEnvironment.yaml",
+    ///             Branch = "main",
+    ///             ImportFromGit = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The `pulumi import` command can be used, for example:

@@ -14,6 +14,92 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Service("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         GitDetails = new Harness.Platform.Inputs.ServiceGitDetailsArgs
+    ///         {
+    ///             BranchName = "branchName",
+    ///             CommitMessage = "commitMessage",
+    ///             FilePath = "filePath",
+    ///             ConnectorRef = "connectorRef",
+    ///             StoreType = "REMOTE",
+    ///             RepoName = "repoName",
+    ///         },
+    ///         Yaml = @"service:
+    ///   name: name
+    ///   identifier: identifier
+    ///   serviceDefinition:
+    ///     spec:
+    ///       manifests:
+    ///         - manifest:
+    ///             identifier: manifest1
+    ///             type: K8sManifest
+    ///             spec:
+    ///               store:
+    ///                 type: Github
+    ///                 spec:
+    ///                   connectorRef: &lt;+input&gt;
+    ///                   gitFetchType: Branch
+    ///                   paths:
+    ///                     - files1
+    ///                   repoName: &lt;+input&gt;
+    ///                   branch: master
+    ///               skipResourceVersioning: false
+    ///       configFiles:
+    ///         - configFile:
+    ///             identifier: configFile1
+    ///             spec:
+    ///               store:
+    ///                 type: Harness
+    ///                 spec:
+    ///                   files:
+    ///                     - &lt;+org.description&gt;
+    ///       variables:
+    ///         - name: var1
+    ///           type: String
+    ///           value: val1
+    ///         - name: var2
+    ///           type: String
+    ///           value: val2
+    ///     type: Kubernetes
+    ///   gitOpsEnabled: false
+    /// ",
+    ///     });
+    /// 
+    ///     //## Importing Service from Git
+    ///     var test = new Harness.Platform.Service("test", new()
+    ///     {
+    ///         Identifier = "id",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         ImportFromGit = true,
+    ///         GitDetails = new Harness.Platform.Inputs.ServiceGitDetailsArgs
+    ///         {
+    ///             StoreType = "REMOTE",
+    ///             ConnectorRef = "account.DoNotDeleteGitX",
+    ///             RepoName = "pcf_practice",
+    ///             FilePath = ".harness/accountService.yaml",
+    ///             Branch = "main",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The `pulumi import` command can be used, for example:

@@ -11,6 +11,89 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Environment("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     tags: [
+ *         "foo:bar",
+ *         "bar:foo",
+ *     ],
+ *     type: "PreProduction",
+ *     gitDetails: {
+ *         branchName: "branchName",
+ *         commitMessage: "commitMessage",
+ *         filePath: "filePath",
+ *         connectorRef: "connectorRef",
+ *         storeType: "REMOTE",
+ *         repoName: "repoName",
+ *     },
+ *     yaml: `environment:
+ *    name: name
+ *    identifier: identifier
+ *    orgIdentifier: org_id
+ *    projectIdentifier: project_id
+ *    type: PreProduction
+ *    tags:
+ *      foo: bar
+ *      bar: foo
+ *    variables:
+ *      - name: envVar1
+ *        type: String
+ *        value: v1
+ *        description: \\"\\"
+ *      - name: envVar2
+ *        type: String
+ *        value: v2
+ *        description: \\"\\"
+ *    overrides:
+ *      manifests:
+ *        - manifest:
+ *            identifier: manifestEnv
+ *            type: Values
+ *            spec:
+ *              store:
+ *                type: Git
+ *                spec:
+ *                  connectorRef: <+input>
+ *                  gitFetchType: Branch
+ *                  paths:
+ *                    - file1
+ *                  repoName: <+input>
+ *                  branch: master
+ *      configFiles:
+ *        - configFile:
+ *            identifier: configFileEnv
+ *            spec:
+ *              store:
+ *                type: Harness
+ *                spec:
+ *                  files:
+ *                    - account:/Add-ons/svcOverrideTest
+ *                  secretFiles: []
+ * `,
+ * });
+ * //## Importing Environment from Git
+ * const test = new harness.platform.Environment("test", {
+ *     identifier: "accEnv",
+ *     name: "accEnv",
+ *     type: "PreProduction",
+ *     gitDetails: {
+ *         storeType: "REMOTE",
+ *         connectorRef: "account.DoNotDeleteGitX",
+ *         repoName: "pcf_practice",
+ *         filePath: ".harness/accountEnvironment.yaml",
+ *         branch: "main",
+ *         importFromGit: true,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * The `pulumi import` command can be used, for example:

@@ -407,6 +407,87 @@ class Environment(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Environment("example",
+            identifier="identifier",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            type="PreProduction",
+            git_details={
+                "branch_name": "branchName",
+                "commit_message": "commitMessage",
+                "file_path": "filePath",
+                "connector_ref": "connectorRef",
+                "store_type": "REMOTE",
+                "repo_name": "repoName",
+            },
+            yaml=\"\"\"environment:
+           name: name
+           identifier: identifier
+           orgIdentifier: org_id
+           projectIdentifier: project_id
+           type: PreProduction
+           tags:
+             foo: bar
+             bar: foo
+           variables:
+             - name: envVar1
+               type: String
+               value: v1
+               description: \\"\\"
+             - name: envVar2
+               type: String
+               value: v2
+               description: \\"\\"
+           overrides:
+             manifests:
+               - manifest:
+                   identifier: manifestEnv
+                   type: Values
+                   spec:
+                     store:
+                       type: Git
+                       spec:
+                         connectorRef: <+input>
+                         gitFetchType: Branch
+                         paths:
+                           - file1
+                         repoName: <+input>
+                         branch: master
+             configFiles:
+               - configFile:
+                   identifier: configFileEnv
+                   spec:
+                     store:
+                       type: Harness
+                       spec:
+                         files:
+                           - account:/Add-ons/svcOverrideTest
+                         secretFiles: []
+        \"\"\")
+        ### Importing Environment from Git
+        test = harness.platform.Environment("test",
+            identifier="accEnv",
+            name="accEnv",
+            type="PreProduction",
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "account.DoNotDeleteGitX",
+                "repo_name": "pcf_practice",
+                "file_path": ".harness/accountEnvironment.yaml",
+                "branch": "main",
+                "import_from_git": True,
+            })
+        ```
+
         ## Import
 
         The `pulumi import` command can be used, for example:
@@ -453,6 +534,87 @@ class Environment(pulumi.CustomResource):
         Resource for creating a Harness environment.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Environment("example",
+            identifier="identifier",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            type="PreProduction",
+            git_details={
+                "branch_name": "branchName",
+                "commit_message": "commitMessage",
+                "file_path": "filePath",
+                "connector_ref": "connectorRef",
+                "store_type": "REMOTE",
+                "repo_name": "repoName",
+            },
+            yaml=\"\"\"environment:
+           name: name
+           identifier: identifier
+           orgIdentifier: org_id
+           projectIdentifier: project_id
+           type: PreProduction
+           tags:
+             foo: bar
+             bar: foo
+           variables:
+             - name: envVar1
+               type: String
+               value: v1
+               description: \\"\\"
+             - name: envVar2
+               type: String
+               value: v2
+               description: \\"\\"
+           overrides:
+             manifests:
+               - manifest:
+                   identifier: manifestEnv
+                   type: Values
+                   spec:
+                     store:
+                       type: Git
+                       spec:
+                         connectorRef: <+input>
+                         gitFetchType: Branch
+                         paths:
+                           - file1
+                         repoName: <+input>
+                         branch: master
+             configFiles:
+               - configFile:
+                   identifier: configFileEnv
+                   spec:
+                     store:
+                       type: Harness
+                       spec:
+                         files:
+                           - account:/Add-ons/svcOverrideTest
+                         secretFiles: []
+        \"\"\")
+        ### Importing Environment from Git
+        test = harness.platform.Environment("test",
+            identifier="accEnv",
+            name="accEnv",
+            type="PreProduction",
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "account.DoNotDeleteGitX",
+                "repo_name": "pcf_practice",
+                "file_path": ".harness/accountEnvironment.yaml",
+                "branch": "main",
+                "import_from_git": True,
+            })
+        ```
 
         ## Import
 

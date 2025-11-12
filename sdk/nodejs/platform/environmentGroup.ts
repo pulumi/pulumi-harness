@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  *     projectId: "projectIdentifier",
  *     color: "#0063F7",
  *     yaml: `environmentGroup:
- *   name: "name"
- *   identifier: "identifier"
- *   description: "temp"
- *   orgIdentifier: "orgIdentifer"
- *   projectIdentifier: "projectIdentifier"
+ *   name: \\"name\\"
+ *   identifier: \\"identifier\\"
+ *   description: \\"temp\\"
+ *   orgIdentifier: \\"orgIdentifer\\"
+ *   projectIdentifier: \\"projectIdentifier\\"
  *   envIdentifiers: []
  * `,
  * });

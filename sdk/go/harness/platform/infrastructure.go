@@ -16,6 +16,63 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewInfrastructure(ctx, "example", &platform.InfrastructureArgs{
+//				Identifier:     pulumi.String("identifier"),
+//				Name:           pulumi.String("name"),
+//				OrgId:          pulumi.String("orgIdentifer"),
+//				ProjectId:      pulumi.String("projectIdentifier"),
+//				EnvId:          pulumi.String("environmentIdentifier"),
+//				Type:           pulumi.String("KubernetesDirect"),
+//				DeploymentType: pulumi.String("Kubernetes"),
+//				GitDetails: &platform.InfrastructureGitDetailsArgs{
+//					BranchName:    "branchName",
+//					CommitMessage: pulumi.String("commitMessage"),
+//					FilePath:      pulumi.String("filePath"),
+//					ConnectorRef:  pulumi.String("connectorRef"),
+//					StoreType:     pulumi.String("REMOTE"),
+//					RepoName:      pulumi.String("repoName"),
+//				},
+//				Yaml: pulumi.String(`infrastructureDefinition:
+//	 name: name
+//	 identifier: identifier
+//	 description: \"\"
+//	 tags:
+//	   asda: \"\"
+//	 orgIdentifier: orgIdentifer
+//	 projectIdentifier: projectIdentifier
+//	 environmentRef: environmentIdentifier
+//	 deploymentType: Kubernetes
+//	 type: KubernetesDirect
+//	 spec:
+//	  connectorRef: account.gfgf
+//	  namespace: asdasdsa
+//	  releaseName: release-<+INFRA_KEY>
+//	  allowSimultaneousDeployments: false
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The `pulumi import` command can be used, for example:

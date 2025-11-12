@@ -16,6 +16,99 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewGcpSecretManagerConnector(ctx, "gcp_sm_manual", &platform.GcpSecretManagerConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				CredentialsRef: pulumi.Sprintf("account.%v", test.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewGcpSecretManagerConnector(ctx, "gcp_sm_inherit", &platform.GcpSecretManagerConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				InheritFromDelegate: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewGcpSecretManagerConnector(ctx, "gcp_sm_oidc_platform", &platform.GcpSecretManagerConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				ExecuteOnDelegate: pulumi.Bool(false),
+//				OidcAuthentications: platform.GcpSecretManagerConnectorOidcAuthenticationArray{
+//					&platform.GcpSecretManagerConnectorOidcAuthenticationArgs{
+//						WorkloadPoolId:      pulumi.String("harness-pool-test"),
+//						ProviderId:          pulumi.String("harness"),
+//						GcpProjectId:        pulumi.String("1234567"),
+//						ServiceAccountEmail: pulumi.String("harness.sample@iam.gserviceaccount.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewGcpSecretManagerConnector(ctx, "gcp_sm_oidc_delegate", &platform.GcpSecretManagerConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Default: true,
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				OidcAuthentications: platform.GcpSecretManagerConnectorOidcAuthenticationArray{
+//					&platform.GcpSecretManagerConnectorOidcAuthenticationArgs{
+//						WorkloadPoolId:      pulumi.String("harness-pool-test"),
+//						ProviderId:          pulumi.String("harness"),
+//						GcpProjectId:        pulumi.String("1234567"),
+//						ServiceAccountEmail: pulumi.String("harness.sample@iam.gserviceaccount.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The `pulumi import` command can be used, for example:

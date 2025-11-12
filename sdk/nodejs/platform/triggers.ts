@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *   name: name
  *   identifier: identifier
  *   enabled: true
- *   description: ""
+ *   description: \\"\\"
  *   tags: {}
  *   projectIdentifier: projectIdentifier
  *   orgIdentifier: orgIdentifer
@@ -48,7 +48,8 @@ import * as utilities from "../utilities";
  *           repoName: repoName
  *           actions: []
  *   inputYaml: |
- *     pipeline: {}\\n
+ *     pipeline: {}\\
+ *
  * `,
  * });
  * ```

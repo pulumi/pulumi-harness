@@ -22,6 +22,113 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Environment;
+ * import com.pulumi.harness.platform.EnvironmentArgs;
+ * import com.pulumi.harness.platform.inputs.EnvironmentGitDetailsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Environment("example", EnvironmentArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .tags(            
+ *                 "foo:bar",
+ *                 "bar:foo")
+ *             .type("PreProduction")
+ *             .gitDetails(EnvironmentGitDetailsArgs.builder()
+ *                 .branchName("branchName")
+ *                 .commitMessage("commitMessage")
+ *                 .filePath("filePath")
+ *                 .connectorRef("connectorRef")
+ *                 .storeType("REMOTE")
+ *                 .repoName("repoName")
+ *                 .build())
+ *             .yaml("""
+ * environment:
+ *    name: name
+ *    identifier: identifier
+ *    orgIdentifier: org_id
+ *    projectIdentifier: project_id
+ *    type: PreProduction
+ *    tags:
+ *      foo: bar
+ *      bar: foo
+ *    variables:
+ *      - name: envVar1
+ *        type: String
+ *        value: v1
+ *        description: \"\"
+ *      - name: envVar2
+ *        type: String
+ *        value: v2
+ *        description: \"\"
+ *    overrides:
+ *      manifests:
+ *        - manifest:
+ *            identifier: manifestEnv
+ *            type: Values
+ *            spec:
+ *              store:
+ *                type: Git
+ *                spec:
+ *                  connectorRef: <+input>
+ *                  gitFetchType: Branch
+ *                  paths:
+ *                    - file1
+ *                  repoName: <+input>
+ *                  branch: master
+ *      configFiles:
+ *        - configFile:
+ *            identifier: configFileEnv
+ *            spec:
+ *              store:
+ *                type: Harness
+ *                spec:
+ *                  files:
+ *                    - account:/Add-ons/svcOverrideTest
+ *                  secretFiles: []
+ *             """)
+ *             .build());
+ * 
+ *         //## Importing Environment from Git
+ *         var test = new Environment("test", EnvironmentArgs.builder()
+ *             .identifier("accEnv")
+ *             .name("accEnv")
+ *             .type("PreProduction")
+ *             .gitDetails(EnvironmentGitDetailsArgs.builder()
+ *                 .storeType("REMOTE")
+ *                 .connectorRef("account.DoNotDeleteGitX")
+ *                 .repoName("pcf_practice")
+ *                 .filePath(".harness/accountEnvironment.yaml")
+ *                 .branch("main")
+ *                 .importFromGit(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * The `pulumi import` command can be used, for example:

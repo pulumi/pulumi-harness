@@ -441,6 +441,79 @@ class Service(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Service("example",
+            identifier="identifier",
+            name="name",
+            description="test",
+            org_id="org_id",
+            project_id="project_id",
+            git_details={
+                "branch_name": "branchName",
+                "commit_message": "commitMessage",
+                "file_path": "filePath",
+                "connector_ref": "connectorRef",
+                "store_type": "REMOTE",
+                "repo_name": "repoName",
+            },
+            yaml=\"\"\"service:
+          name: name
+          identifier: identifier
+          serviceDefinition:
+            spec:
+              manifests:
+                - manifest:
+                    identifier: manifest1
+                    type: K8sManifest
+                    spec:
+                      store:
+                        type: Github
+                        spec:
+                          connectorRef: <+input>
+                          gitFetchType: Branch
+                          paths:
+                            - files1
+                          repoName: <+input>
+                          branch: master
+                      skipResourceVersioning: false
+              configFiles:
+                - configFile:
+                    identifier: configFile1
+                    spec:
+                      store:
+                        type: Harness
+                        spec:
+                          files:
+                            - <+org.description>
+              variables:
+                - name: var1
+                  type: String
+                  value: val1
+                - name: var2
+                  type: String
+                  value: val2
+            type: Kubernetes
+          gitOpsEnabled: false
+        \"\"\")
+        ### Importing Service from Git
+        test = harness.platform.Service("test",
+            identifier="id",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            import_from_git=True,
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "account.DoNotDeleteGitX",
+                "repo_name": "pcf_practice",
+                "file_path": ".harness/accountService.yaml",
+                "branch": "main",
+            })
+        ```
+
         ## Import
 
         The `pulumi import` command can be used, for example:
@@ -488,6 +561,79 @@ class Service(pulumi.CustomResource):
         Resource for creating a Harness project.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Service("example",
+            identifier="identifier",
+            name="name",
+            description="test",
+            org_id="org_id",
+            project_id="project_id",
+            git_details={
+                "branch_name": "branchName",
+                "commit_message": "commitMessage",
+                "file_path": "filePath",
+                "connector_ref": "connectorRef",
+                "store_type": "REMOTE",
+                "repo_name": "repoName",
+            },
+            yaml=\"\"\"service:
+          name: name
+          identifier: identifier
+          serviceDefinition:
+            spec:
+              manifests:
+                - manifest:
+                    identifier: manifest1
+                    type: K8sManifest
+                    spec:
+                      store:
+                        type: Github
+                        spec:
+                          connectorRef: <+input>
+                          gitFetchType: Branch
+                          paths:
+                            - files1
+                          repoName: <+input>
+                          branch: master
+                      skipResourceVersioning: false
+              configFiles:
+                - configFile:
+                    identifier: configFile1
+                    spec:
+                      store:
+                        type: Harness
+                        spec:
+                          files:
+                            - <+org.description>
+              variables:
+                - name: var1
+                  type: String
+                  value: val1
+                - name: var2
+                  type: String
+                  value: val2
+            type: Kubernetes
+          gitOpsEnabled: false
+        \"\"\")
+        ### Importing Service from Git
+        test = harness.platform.Service("test",
+            identifier="id",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            import_from_git=True,
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "account.DoNotDeleteGitX",
+                "repo_name": "pcf_practice",
+                "file_path": ".harness/accountService.yaml",
+                "branch": "main",
+            })
+        ```
 
         ## Import
 

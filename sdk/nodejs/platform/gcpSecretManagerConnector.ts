@@ -11,6 +11,55 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const gcpSmManual = new harness.platform.GcpSecretManagerConnector("gcp_sm_manual", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     delegateSelectors: ["harness-delegate"],
+ *     credentialsRef: `account.${test.id}`,
+ * });
+ * const gcpSmInherit = new harness.platform.GcpSecretManagerConnector("gcp_sm_inherit", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     delegateSelectors: ["harness-delegate"],
+ *     inheritFromDelegate: true,
+ * });
+ * const gcpSmOidcPlatform = new harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_platform", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     executeOnDelegate: false,
+ *     oidcAuthentications: [{
+ *         workloadPoolId: "harness-pool-test",
+ *         providerId: "harness",
+ *         gcpProjectId: "1234567",
+ *         serviceAccountEmail: "harness.sample@iam.gserviceaccount.com",
+ *     }],
+ * });
+ * const gcpSmOidcDelegate = new harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_delegate", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     "default": true,
+ *     delegateSelectors: ["harness-delegate"],
+ *     oidcAuthentications: [{
+ *         workloadPoolId: "harness-pool-test",
+ *         providerId: "harness",
+ *         gcpProjectId: "1234567",
+ *         serviceAccountEmail: "harness.sample@iam.gserviceaccount.com",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * The `pulumi import` command can be used, for example:

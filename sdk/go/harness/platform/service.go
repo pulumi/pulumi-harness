@@ -16,6 +16,101 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewService(ctx, "example", &platform.ServiceArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				OrgId:       pulumi.String("org_id"),
+//				ProjectId:   pulumi.String("project_id"),
+//				GitDetails: &platform.ServiceGitDetailsArgs{
+//					BranchName:    "branchName",
+//					CommitMessage: pulumi.String("commitMessage"),
+//					FilePath:      pulumi.String("filePath"),
+//					ConnectorRef:  pulumi.String("connectorRef"),
+//					StoreType:     pulumi.String("REMOTE"),
+//					RepoName:      pulumi.String("repoName"),
+//				},
+//				Yaml: pulumi.String(`service:
+//	  name: name
+//	  identifier: identifier
+//	  serviceDefinition:
+//	    spec:
+//	      manifests:
+//	        - manifest:
+//	            identifier: manifest1
+//	            type: K8sManifest
+//	            spec:
+//	              store:
+//	                type: Github
+//	                spec:
+//	                  connectorRef: <+input>
+//	                  gitFetchType: Branch
+//	                  paths:
+//	                    - files1
+//	                  repoName: <+input>
+//	                  branch: master
+//	              skipResourceVersioning: false
+//	      configFiles:
+//	        - configFile:
+//	            identifier: configFile1
+//	            spec:
+//	              store:
+//	                type: Harness
+//	                spec:
+//	                  files:
+//	                    - <+org.description>
+//	      variables:
+//	        - name: var1
+//	          type: String
+//	          value: val1
+//	        - name: var2
+//	          type: String
+//	          value: val2
+//	    type: Kubernetes
+//	  gitOpsEnabled: false
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// ## Importing Service from Git
+//			_, err = platform.NewService(ctx, "test", &platform.ServiceArgs{
+//				Identifier:    pulumi.String("id"),
+//				Name:          pulumi.String("name"),
+//				OrgId:         pulumi.String("org_id"),
+//				ProjectId:     pulumi.String("project_id"),
+//				ImportFromGit: pulumi.Bool(true),
+//				GitDetails: &platform.ServiceGitDetailsArgs{
+//					StoreType:    pulumi.String("REMOTE"),
+//					ConnectorRef: pulumi.String("account.DoNotDeleteGitX"),
+//					RepoName:     pulumi.String("pcf_practice"),
+//					FilePath:     pulumi.String(".harness/accountService.yaml"),
+//					Branch:       pulumi.String("main"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The `pulumi import` command can be used, for example:

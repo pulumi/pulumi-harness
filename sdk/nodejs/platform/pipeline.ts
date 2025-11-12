@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *         - stage:
  *             name: dep
  *             identifier: dep
- *             description: ""
+ *             description: \\"\\"
  *             type: Deployment
  *             spec:
  *                 serviceConfig:
