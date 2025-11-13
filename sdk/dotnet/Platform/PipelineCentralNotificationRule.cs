@@ -11,6 +11,156 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Harness Notification Rule for Pipeline
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var projExample = new Harness.Platform.PipelineCentralNotificationRule("projExample", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Status = "ENABLED",
+    ///         NotificationChannelRefs = new[]
+    ///         {
+    ///             "account.channel",
+    ///         },
+    ///         Org = "default",
+    ///         Project = "proj0",
+    ///         NotificationConditions = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionArgs
+    ///             {
+    ///                 ConditionName = "pipelineRuleProjectConditionName",
+    ///                 NotificationEventConfigs = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs
+    ///                     {
+    ///                         NotificationEntity = "PIPELINE",
+    ///                         NotificationEvent = "PIPELINE_START",
+    ///                         NotificationEventDatas = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs
+    ///                             {
+    ///                                 Type = "PIPELINE",
+    ///                                 ScopeIdentifiers = new() { },
+    ///                             },
+    ///                         },
+    ///                         EntityIdentifiers = new() { },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var orgExample = new Harness.Platform.PipelineCentralNotificationRule("orgExample", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Status = "ENABLED",
+    ///         NotificationChannelRefs = new[]
+    ///         {
+    ///             "channel",
+    ///         },
+    ///         Org = "default",
+    ///         NotificationConditions = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionArgs
+    ///             {
+    ///                 ConditionName = "pipelineRuleOrgConditionName",
+    ///                 NotificationEventConfigs = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs
+    ///                     {
+    ///                         NotificationEntity = "PIPELINE",
+    ///                         NotificationEvent = "PIPELINE_START",
+    ///                         NotificationEventDatas = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs
+    ///                             {
+    ///                                 Type = "PIPELINE",
+    ///                                 ScopeIdentifiers = new[]
+    ///                                 {
+    ///                                     "proj0",
+    ///                                     "random",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         EntityIdentifiers = new() { },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var accountExample = new Harness.Platform.PipelineCentralNotificationRule("accountExample", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Status = "DISABLED",
+    ///         NotificationChannelRefs = new[]
+    ///         {
+    ///             "org.channel",
+    ///         },
+    ///         NotificationConditions = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionArgs
+    ///             {
+    ///                 ConditionName = "pipelineRuleConditionName",
+    ///                 NotificationEventConfigs = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs
+    ///                     {
+    ///                         NotificationEntity = "PIPELINE",
+    ///                         NotificationEvent = "PIPELINE_START",
+    ///                         NotificationEventDatas = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs
+    ///                             {
+    ///                                 Type = "PIPELINE",
+    ///                                 ScopeIdentifiers = new[]
+    ///                                 {
+    ///                                     "org",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         EntityIdentifiers = new() { },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
+    /// Import account level pipeline central notification rule
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example &lt;notification_rule_id&gt;
+    /// ```
+    /// 
+    /// Import org level pipeline central notification rule
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example &lt;ord_id&gt;/&lt;notification_rule_id&gt;
+    /// ```
+    /// 
+    /// Import project level pipeline central notification rule
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example &lt;org_id&gt;/&lt;project_id&gt;/&lt;notification_rule_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule")]
     public partial class PipelineCentralNotificationRule : global::Pulumi.CustomResource

@@ -22,6 +22,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Api;
         /// <summary>
+        /// Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+        /// </summary>
+        public readonly Outputs.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderGitlabCaRef? CaRef;
+        /// <summary>
         /// Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
         /// </summary>
         public readonly string Group;
@@ -40,6 +44,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? api,
 
+            Outputs.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderGitlabCaRef? caRef,
+
             string group,
 
             bool? includeSubgroups,
@@ -48,6 +54,7 @@ namespace Pulumi.Harness.Platform.Outputs
         {
             AllBranches = allBranches;
             Api = api;
+            CaRef = caRef;
             Group = group;
             IncludeSubgroups = includeSubgroups;
             TokenRef = tokenRef;

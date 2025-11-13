@@ -18,6 +18,13 @@ public final class GetPipelineCentralNotificationRuleNotificationConditionNotifi
 
     public static final GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs Empty = new GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs();
 
+    @Import(name="entityIdentifiers")
+    private @Nullable Output<List<String>> entityIdentifiers;
+
+    public Optional<Output<List<String>>> entityIdentifiers() {
+        return Optional.ofNullable(this.entityIdentifiers);
+    }
+
     @Import(name="notificationEntity", required=true)
     private Output<String> notificationEntity;
 
@@ -42,6 +49,7 @@ public final class GetPipelineCentralNotificationRuleNotificationConditionNotifi
     private GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs() {}
 
     private GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs $) {
+        this.entityIdentifiers = $.entityIdentifiers;
         this.notificationEntity = $.notificationEntity;
         this.notificationEvent = $.notificationEvent;
         this.notificationEventDatas = $.notificationEventDatas;
@@ -63,6 +71,19 @@ public final class GetPipelineCentralNotificationRuleNotificationConditionNotifi
 
         public Builder(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs defaults) {
             $ = new GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder entityIdentifiers(@Nullable Output<List<String>> entityIdentifiers) {
+            $.entityIdentifiers = entityIdentifiers;
+            return this;
+        }
+
+        public Builder entityIdentifiers(List<String> entityIdentifiers) {
+            return entityIdentifiers(Output.of(entityIdentifiers));
+        }
+
+        public Builder entityIdentifiers(String... entityIdentifiers) {
+            return entityIdentifiers(List.of(entityIdentifiers));
         }
 
         public Builder notificationEntity(Output<String> notificationEntity) {

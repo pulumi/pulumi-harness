@@ -21,6 +21,120 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness Notification Rule for Pipeline
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.PipelineCentralNotificationRule;
+ * import com.pulumi.harness.platform.PipelineCentralNotificationRuleArgs;
+ * import com.pulumi.harness.platform.inputs.PipelineCentralNotificationRuleNotificationConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var projExample = new PipelineCentralNotificationRule("projExample", PipelineCentralNotificationRuleArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .status("ENABLED")
+ *             .notificationChannelRefs("account.channel")
+ *             .org("default")
+ *             .project("proj0")
+ *             .notificationConditions(PipelineCentralNotificationRuleNotificationConditionArgs.builder()
+ *                 .conditionName("pipelineRuleProjectConditionName")
+ *                 .notificationEventConfigs(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs.builder()
+ *                     .notificationEntity("PIPELINE")
+ *                     .notificationEvent("PIPELINE_START")
+ *                     .notificationEventDatas(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs.builder()
+ *                         .type("PIPELINE")
+ *                         .scopeIdentifiers()
+ *                         .build())
+ *                     .entityIdentifiers()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var orgExample = new PipelineCentralNotificationRule("orgExample", PipelineCentralNotificationRuleArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .status("ENABLED")
+ *             .notificationChannelRefs("channel")
+ *             .org("default")
+ *             .notificationConditions(PipelineCentralNotificationRuleNotificationConditionArgs.builder()
+ *                 .conditionName("pipelineRuleOrgConditionName")
+ *                 .notificationEventConfigs(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs.builder()
+ *                     .notificationEntity("PIPELINE")
+ *                     .notificationEvent("PIPELINE_START")
+ *                     .notificationEventDatas(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs.builder()
+ *                         .type("PIPELINE")
+ *                         .scopeIdentifiers(                        
+ *                             "proj0",
+ *                             "random")
+ *                         .build())
+ *                     .entityIdentifiers()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var accountExample = new PipelineCentralNotificationRule("accountExample", PipelineCentralNotificationRuleArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .status("DISABLED")
+ *             .notificationChannelRefs("org.channel")
+ *             .notificationConditions(PipelineCentralNotificationRuleNotificationConditionArgs.builder()
+ *                 .conditionName("pipelineRuleConditionName")
+ *                 .notificationEventConfigs(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs.builder()
+ *                     .notificationEntity("PIPELINE")
+ *                     .notificationEvent("PIPELINE_START")
+ *                     .notificationEventDatas(PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs.builder()
+ *                         .type("PIPELINE")
+ *                         .scopeIdentifiers("org")
+ *                         .build())
+ *                     .entityIdentifiers()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
+ * 
+ * Import account level pipeline central notification rule
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example &lt;notification_rule_id&gt;
+ * ```
+ * 
+ * Import org level pipeline central notification rule
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example &lt;ord_id&gt;/&lt;notification_rule_id&gt;
+ * ```
+ * 
+ * Import project level pipeline central notification rule
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example &lt;org_id&gt;/&lt;project_id&gt;/&lt;notification_rule_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule")
 public class PipelineCentralNotificationRule extends com.pulumi.resources.CustomResource {

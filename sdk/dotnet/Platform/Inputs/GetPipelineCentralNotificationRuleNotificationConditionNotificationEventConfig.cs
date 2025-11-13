@@ -12,6 +12,14 @@ namespace Pulumi.Harness.Platform.Inputs
 
     public sealed class GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs : global::Pulumi.InvokeArgs
     {
+        [Input("entityIdentifiers")]
+        private List<string>? _entityIdentifiers;
+        public List<string> EntityIdentifiers
+        {
+            get => _entityIdentifiers ?? (_entityIdentifiers = new List<string>());
+            set => _entityIdentifiers = value;
+        }
+
         [Input("notificationEntity", required: true)]
         public string NotificationEntity { get; set; } = null!;
 

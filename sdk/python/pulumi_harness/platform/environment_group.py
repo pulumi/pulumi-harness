@@ -250,11 +250,11 @@ class EnvironmentGroup(pulumi.CustomResource):
             project_id="projectIdentifier",
             color="#0063F7",
             yaml=\"\"\"environmentGroup:
-          name: "name"
-          identifier: "identifier"
-          description: "temp"
-          orgIdentifier: "orgIdentifer"
-          projectIdentifier: "projectIdentifier"
+          name: \\"name\\"
+          identifier: \\"identifier\\"
+          description: \\"temp\\"
+          orgIdentifier: \\"orgIdentifer\\"
+          projectIdentifier: \\"projectIdentifier\\"
           envIdentifiers: []
         \"\"\")
         ```
@@ -311,11 +311,11 @@ class EnvironmentGroup(pulumi.CustomResource):
             project_id="projectIdentifier",
             color="#0063F7",
             yaml=\"\"\"environmentGroup:
-          name: "name"
-          identifier: "identifier"
-          description: "temp"
-          orgIdentifier: "orgIdentifer"
-          projectIdentifier: "projectIdentifier"
+          name: \\"name\\"
+          identifier: \\"identifier\\"
+          description: \\"temp\\"
+          orgIdentifier: \\"orgIdentifer\\"
+          projectIdentifier: \\"projectIdentifier\\"
           envIdentifiers: []
         \"\"\")
         ```

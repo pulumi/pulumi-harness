@@ -13,18 +13,22 @@ namespace Pulumi.Harness.Platform.Outputs
     [OutputType]
     public sealed class GetCentralNotificationRuleNotificationConditionNotificationEventConfigResult
     {
+        public readonly ImmutableArray<string> EntityIdentifiers;
         public readonly string NotificationEntity;
         public readonly string NotificationEvent;
         public readonly ImmutableDictionary<string, string>? NotificationEventData;
 
         [OutputConstructor]
         private GetCentralNotificationRuleNotificationConditionNotificationEventConfigResult(
+            ImmutableArray<string> entityIdentifiers,
+
             string notificationEntity,
 
             string notificationEvent,
 
             ImmutableDictionary<string, string>? notificationEventData)
         {
+            EntityIdentifiers = entityIdentifiers;
             NotificationEntity = notificationEntity;
             NotificationEvent = notificationEvent;
             NotificationEventData = notificationEventData;

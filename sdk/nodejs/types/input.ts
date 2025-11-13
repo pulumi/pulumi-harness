@@ -1154,6 +1154,228 @@ export namespace autostopping {
         port: pulumi.Input<number>;
     }
 
+    export interface GetRuleScaleGroupDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface GetRuleScaleGroupDependArgs {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: pulumi.Input<number>;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: pulumi.Input<number>;
+    }
+
+    export interface GetRuleScaleGroupHttp {
+        /**
+         * Health Check Details
+         */
+        healths?: inputs.autostopping.GetRuleScaleGroupHttpHealth[];
+        /**
+         * Id of the proxy
+         */
+        proxyId: string;
+        /**
+         * Routing configuration used to access the scaling group
+         */
+        routings?: inputs.autostopping.GetRuleScaleGroupHttpRouting[];
+    }
+
+    export interface GetRuleScaleGroupHttpArgs {
+        /**
+         * Health Check Details
+         */
+        healths?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleScaleGroupHttpHealthArgs>[]>;
+        /**
+         * Id of the proxy
+         */
+        proxyId: pulumi.Input<string>;
+        /**
+         * Routing configuration used to access the scaling group
+         */
+        routings?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleScaleGroupHttpRoutingArgs>[]>;
+    }
+
+    export interface GetRuleScaleGroupHttpHealth {
+        /**
+         * API path to use for health check
+         */
+        path?: string;
+        /**
+         * Health check port on the VM
+         */
+        port: number;
+        /**
+         * Protocol can be http or https
+         */
+        protocol: string;
+        /**
+         * Lower limit for acceptable status code
+         */
+        statusCodeFrom?: number;
+        /**
+         * Upper limit for acceptable status code
+         */
+        statusCodeTo?: number;
+        /**
+         * Health check timeout
+         */
+        timeout?: number;
+    }
+
+    export interface GetRuleScaleGroupHttpHealthArgs {
+        /**
+         * API path to use for health check
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * Health check port on the VM
+         */
+        port: pulumi.Input<number>;
+        /**
+         * Protocol can be http or https
+         */
+        protocol: pulumi.Input<string>;
+        /**
+         * Lower limit for acceptable status code
+         */
+        statusCodeFrom?: pulumi.Input<number>;
+        /**
+         * Upper limit for acceptable status code
+         */
+        statusCodeTo?: pulumi.Input<number>;
+        /**
+         * Health check timeout
+         */
+        timeout?: pulumi.Input<number>;
+    }
+
+    export interface GetRuleScaleGroupHttpRouting {
+        /**
+         * Organization Identifier for the Entity
+         */
+        action?: string;
+        /**
+         * Port on the proxy
+         */
+        sourcePort?: number;
+        /**
+         * Source protocol of the proxy can be http or https
+         */
+        sourceProtocol: string;
+        /**
+         * Port on the VM
+         */
+        targetPort?: number;
+        /**
+         * Target protocol of the instance can be http or https
+         */
+        targetProtocol: string;
+    }
+
+    export interface GetRuleScaleGroupHttpRoutingArgs {
+        /**
+         * Organization Identifier for the Entity
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * Port on the proxy
+         */
+        sourcePort?: pulumi.Input<number>;
+        /**
+         * Source protocol of the proxy can be http or https
+         */
+        sourceProtocol: pulumi.Input<string>;
+        /**
+         * Port on the VM
+         */
+        targetPort?: pulumi.Input<number>;
+        /**
+         * Target protocol of the instance can be http or https
+         */
+        targetProtocol: pulumi.Input<string>;
+    }
+
+    export interface GetRuleScaleGroupScaleGroup {
+        /**
+         * Desired capacity of the Scaling Group
+         */
+        desired: number;
+        /**
+         * ID of the Scaling Group
+         */
+        id: string;
+        /**
+         * Maximum capacity of the Scaling Group
+         */
+        max: number;
+        /**
+         * Minimum capacity of the Scaling Group
+         */
+        min: number;
+        /**
+         * Name of the Scaling Group
+         */
+        name: string;
+        /**
+         * On-demand capacity of the Scaling Group
+         */
+        onDemand: number;
+        /**
+         * Region of the Scaling Group
+         */
+        region?: string;
+        /**
+         * Zone of the Scaling Group. Needed for GCP only
+         */
+        zone?: string;
+    }
+
+    export interface GetRuleScaleGroupScaleGroupArgs {
+        /**
+         * Desired capacity of the Scaling Group
+         */
+        desired: pulumi.Input<number>;
+        /**
+         * ID of the Scaling Group
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Maximum capacity of the Scaling Group
+         */
+        max: pulumi.Input<number>;
+        /**
+         * Minimum capacity of the Scaling Group
+         */
+        min: pulumi.Input<number>;
+        /**
+         * Name of the Scaling Group
+         */
+        name: pulumi.Input<string>;
+        /**
+         * On-demand capacity of the Scaling Group
+         */
+        onDemand: pulumi.Input<number>;
+        /**
+         * Region of the Scaling Group
+         */
+        region?: pulumi.Input<string>;
+        /**
+         * Zone of the Scaling Group. Needed for GCP only
+         */
+        zone?: pulumi.Input<string>;
+    }
+
     export interface GetRuleVmDepend {
         /**
          * Number of seconds the rule should wait after warming up the dependent rule
@@ -1537,6 +1759,117 @@ export namespace autostopping {
          * Port to listen on the vm
          */
         port: pulumi.Input<number>;
+    }
+
+    export interface RuleScaleGroupDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: pulumi.Input<number>;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: pulumi.Input<number>;
+    }
+
+    export interface RuleScaleGroupHttp {
+        /**
+         * Health Check Details
+         */
+        healths?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleScaleGroupHttpHealth>[]>;
+        /**
+         * Id of the proxy
+         */
+        proxyId: pulumi.Input<string>;
+        /**
+         * Routing configuration used to access the scaling group
+         */
+        routings?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleScaleGroupHttpRouting>[]>;
+    }
+
+    export interface RuleScaleGroupHttpHealth {
+        /**
+         * API path to use for health check
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * Health check port on the VM
+         */
+        port: pulumi.Input<number>;
+        /**
+         * Protocol can be http or https
+         */
+        protocol: pulumi.Input<string>;
+        /**
+         * Lower limit for acceptable status code
+         */
+        statusCodeFrom?: pulumi.Input<number>;
+        /**
+         * Upper limit for acceptable status code
+         */
+        statusCodeTo?: pulumi.Input<number>;
+        /**
+         * Health check timeout
+         */
+        timeout?: pulumi.Input<number>;
+    }
+
+    export interface RuleScaleGroupHttpRouting {
+        /**
+         * Organization Identifier for the Entity
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * Port on the proxy
+         */
+        sourcePort?: pulumi.Input<number>;
+        /**
+         * Source protocol of the proxy can be http or https
+         */
+        sourceProtocol: pulumi.Input<string>;
+        /**
+         * Port on the VM
+         */
+        targetPort?: pulumi.Input<number>;
+        /**
+         * Target protocol of the instance can be http or https
+         */
+        targetProtocol: pulumi.Input<string>;
+    }
+
+    export interface RuleScaleGroupScaleGroup {
+        /**
+         * Desired capacity of the Scaling Group
+         */
+        desired: pulumi.Input<number>;
+        /**
+         * ID of the Scaling Group
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Maximum capacity of the Scaling Group
+         */
+        max: pulumi.Input<number>;
+        /**
+         * Minimum capacity of the Scaling Group
+         */
+        min: pulumi.Input<number>;
+        /**
+         * Name of the Scaling Group
+         */
+        name: pulumi.Input<string>;
+        /**
+         * On-demand capacity of the Scaling Group
+         */
+        onDemand: pulumi.Input<number>;
+        /**
+         * Region of the Scaling Group
+         */
+        region?: pulumi.Input<string>;
+        /**
+         * Zone of the Scaling Group. Needed for GCP only
+         */
+        zone?: pulumi.Input<string>;
     }
 
     export interface RuleVmDepend {
@@ -4323,12 +4656,14 @@ export namespace platform {
     }
 
     export interface GetCentralNotificationRuleNotificationConditionNotificationEventConfig {
+        entityIdentifiers?: string[];
         notificationEntity: string;
         notificationEvent: string;
         notificationEventData?: {[key: string]: string};
     }
 
     export interface GetCentralNotificationRuleNotificationConditionNotificationEventConfigArgs {
+        entityIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
         notificationEntity: pulumi.Input<string>;
         notificationEvent: pulumi.Input<string>;
         notificationEventData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -5327,12 +5662,14 @@ export namespace platform {
     }
 
     export interface GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
+        entityIdentifiers?: string[];
         notificationEntity: string;
         notificationEvent: string;
         notificationEventDatas?: inputs.platform.GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData[];
     }
 
     export interface GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs {
+        entityIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
         notificationEntity: pulumi.Input<string>;
         notificationEvent: pulumi.Input<string>;
         notificationEventDatas?: pulumi.Input<pulumi.Input<inputs.platform.GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs>[]>;
@@ -14191,6 +14528,10 @@ export namespace platform {
          */
         api?: pulumi.Input<string>;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderGitlabCaRef>;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: pulumi.Input<string>;
@@ -14202,6 +14543,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderGitlabTokenRef>;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: pulumi.Input<string>;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderGitlabTokenRef {
@@ -17885,6 +18237,10 @@ export namespace platform {
          */
         api?: pulumi.Input<string>;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabCaRef>;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: pulumi.Input<string>;
@@ -17896,6 +18252,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabTokenRef>;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: pulumi.Input<string>;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabTokenRef {
@@ -19659,6 +20026,10 @@ export namespace platform {
          */
         api?: pulumi.Input<string>;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderGitlabCaRef>;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: pulumi.Input<string>;
@@ -19670,6 +20041,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderGitlabTokenRef>;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: pulumi.Input<string>;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderGitlabTokenRef {
@@ -25277,6 +25659,10 @@ export namespace platform {
          */
         api?: pulumi.Input<string>;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabCaRef>;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: pulumi.Input<string>;
@@ -25288,6 +25674,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabTokenRef>;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: pulumi.Input<string>;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabTokenRef {
@@ -28971,6 +29368,10 @@ export namespace platform {
          */
         api?: pulumi.Input<string>;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderGitlabCaRef>;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: pulumi.Input<string>;
@@ -28982,6 +29383,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderGitlabTokenRef>;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: pulumi.Input<string>;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderGitlabTokenRef {
@@ -30745,6 +31157,10 @@ export namespace platform {
          */
         api?: pulumi.Input<string>;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderGitlabCaRef>;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: pulumi.Input<string>;
@@ -30756,6 +31172,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderGitlabTokenRef>;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: pulumi.Input<string>;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderGitlabTokenRef {
@@ -32519,6 +32946,10 @@ export namespace platform {
          */
         api?: pulumi.Input<string>;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorScmProviderGitlabCaRef>;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: pulumi.Input<string>;
@@ -32530,6 +32961,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorScmProviderGitlabTokenRef>;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: pulumi.Input<string>;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: pulumi.Input<string>;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorScmProviderGitlabTokenRef {

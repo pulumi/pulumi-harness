@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for retrieving a Notification Rule.
+ *
+ * ## Example Usage
  */
 export function getPipelineCentralNotificationRule(args: GetPipelineCentralNotificationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineCentralNotificationRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,6 +61,8 @@ export interface GetPipelineCentralNotificationRuleResult {
 }
 /**
  * Data source for retrieving a Notification Rule.
+ *
+ * ## Example Usage
  */
 export function getPipelineCentralNotificationRuleOutput(args: GetPipelineCentralNotificationRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelineCentralNotificationRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

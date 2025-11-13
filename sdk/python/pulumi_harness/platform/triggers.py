@@ -383,7 +383,7 @@ class Triggers(pulumi.CustomResource):
           name: name
           identifier: identifier
           enabled: true
-          description: ""
+          description: \\"\\"
           tags: {}
           projectIdentifier: projectIdentifier
           orgIdentifier: orgIdentifer
@@ -408,7 +408,8 @@ class Triggers(pulumi.CustomResource):
                   repoName: repoName
                   actions: []
           inputYaml: |
-            pipeline: {}\\n
+            pipeline: {}\\
+
         \"\"\")
         ```
 
@@ -460,7 +461,7 @@ class Triggers(pulumi.CustomResource):
           name: name
           identifier: identifier
           enabled: true
-          description: ""
+          description: \\"\\"
           tags: {}
           projectIdentifier: projectIdentifier
           orgIdentifier: orgIdentifer
@@ -485,7 +486,8 @@ class Triggers(pulumi.CustomResource):
                   repoName: repoName
                   actions: []
           inputYaml: |
-            pipeline: {}\\n
+            pipeline: {}\\
+
         \"\"\")
         ```
 

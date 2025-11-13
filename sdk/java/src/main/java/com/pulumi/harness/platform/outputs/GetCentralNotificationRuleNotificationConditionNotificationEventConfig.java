@@ -6,17 +6,22 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCentralNotificationRuleNotificationConditionNotificationEventConfig {
+    private @Nullable List<String> entityIdentifiers;
     private String notificationEntity;
     private String notificationEvent;
     private @Nullable Map<String,String> notificationEventData;
 
     private GetCentralNotificationRuleNotificationConditionNotificationEventConfig() {}
+    public List<String> entityIdentifiers() {
+        return this.entityIdentifiers == null ? List.of() : this.entityIdentifiers;
+    }
     public String notificationEntity() {
         return this.notificationEntity;
     }
@@ -36,17 +41,28 @@ public final class GetCentralNotificationRuleNotificationConditionNotificationEv
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> entityIdentifiers;
         private String notificationEntity;
         private String notificationEvent;
         private @Nullable Map<String,String> notificationEventData;
         public Builder() {}
         public Builder(GetCentralNotificationRuleNotificationConditionNotificationEventConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.entityIdentifiers = defaults.entityIdentifiers;
     	      this.notificationEntity = defaults.notificationEntity;
     	      this.notificationEvent = defaults.notificationEvent;
     	      this.notificationEventData = defaults.notificationEventData;
         }
 
+        @CustomType.Setter
+        public Builder entityIdentifiers(@Nullable List<String> entityIdentifiers) {
+
+            this.entityIdentifiers = entityIdentifiers;
+            return this;
+        }
+        public Builder entityIdentifiers(String... entityIdentifiers) {
+            return entityIdentifiers(List.of(entityIdentifiers));
+        }
         @CustomType.Setter
         public Builder notificationEntity(String notificationEntity) {
             if (notificationEntity == null) {
@@ -71,6 +87,7 @@ public final class GetCentralNotificationRuleNotificationConditionNotificationEv
         }
         public GetCentralNotificationRuleNotificationConditionNotificationEventConfig build() {
             final var _resultValue = new GetCentralNotificationRuleNotificationConditionNotificationEventConfig();
+            _resultValue.entityIdentifiers = entityIdentifiers;
             _resultValue.notificationEntity = notificationEntity;
             _resultValue.notificationEvent = notificationEvent;
             _resultValue.notificationEventData = notificationEventData;

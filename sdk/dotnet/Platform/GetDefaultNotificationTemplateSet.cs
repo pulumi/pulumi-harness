@@ -75,6 +75,12 @@ namespace Pulumi.Harness.Platform
         [Input("notificationEntity", required: true)]
         public string NotificationEntity { get; set; } = null!;
 
+        [Input("org")]
+        public string? Org { get; set; }
+
+        [Input("project")]
+        public string? Project { get; set; }
+
         [Input("tags")]
         private Dictionary<string, string>? _tags;
 
@@ -137,6 +143,12 @@ namespace Pulumi.Harness.Platform
         [Input("notificationEntity", required: true)]
         public Input<string> NotificationEntity { get; set; } = null!;
 
+        [Input("org")]
+        public Input<string>? Org { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -195,6 +207,8 @@ namespace Pulumi.Harness.Platform
         /// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
         /// </summary>
         public readonly string NotificationEntity;
+        public readonly string? Org;
+        public readonly string? Project;
         /// <summary>
         /// Key-value tags
         /// </summary>
@@ -220,6 +234,10 @@ namespace Pulumi.Harness.Platform
 
             string notificationEntity,
 
+            string? org,
+
+            string? project,
+
             ImmutableDictionary<string, string>? tags)
         {
             Created = created;
@@ -231,6 +249,8 @@ namespace Pulumi.Harness.Platform
             Name = name;
             NotificationChannelType = notificationChannelType;
             NotificationEntity = notificationEntity;
+            Org = org;
+            Project = project;
             Tags = tags;
         }
     }

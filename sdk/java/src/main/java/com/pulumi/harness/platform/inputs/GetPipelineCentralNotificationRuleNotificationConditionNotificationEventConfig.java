@@ -17,6 +17,13 @@ public final class GetPipelineCentralNotificationRuleNotificationConditionNotifi
 
     public static final GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig Empty = new GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig();
 
+    @Import(name="entityIdentifiers")
+    private @Nullable List<String> entityIdentifiers;
+
+    public Optional<List<String>> entityIdentifiers() {
+        return Optional.ofNullable(this.entityIdentifiers);
+    }
+
     @Import(name="notificationEntity", required=true)
     private String notificationEntity;
 
@@ -41,6 +48,7 @@ public final class GetPipelineCentralNotificationRuleNotificationConditionNotifi
     private GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig() {}
 
     private GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig $) {
+        this.entityIdentifiers = $.entityIdentifiers;
         this.notificationEntity = $.notificationEntity;
         this.notificationEvent = $.notificationEvent;
         this.notificationEventDatas = $.notificationEventDatas;
@@ -62,6 +70,15 @@ public final class GetPipelineCentralNotificationRuleNotificationConditionNotifi
 
         public Builder(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig defaults) {
             $ = new GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig(Objects.requireNonNull(defaults));
+        }
+
+        public Builder entityIdentifiers(@Nullable List<String> entityIdentifiers) {
+            $.entityIdentifiers = entityIdentifiers;
+            return this;
+        }
+
+        public Builder entityIdentifiers(String... entityIdentifiers) {
+            return entityIdentifiers(List.of(entityIdentifiers));
         }
 
         public Builder notificationEntity(String notificationEntity) {

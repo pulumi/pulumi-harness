@@ -501,7 +501,7 @@ class Pipeline(pulumi.CustomResource):
                 - stage:
                     name: dep
                     identifier: dep
-                    description: ""
+                    description: \\"\\"
                     type: Deployment
                     spec:
                         serviceConfig:
@@ -670,7 +670,7 @@ class Pipeline(pulumi.CustomResource):
                 - stage:
                     name: dep
                     identifier: dep
-                    description: ""
+                    description: \\"\\"
                     type: Deployment
                     spec:
                         serviceConfig:

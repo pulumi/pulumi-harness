@@ -13,6 +13,143 @@ import (
 )
 
 // Resource for creating a Harness Notification Rule for Pipeline
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewPipelineCentralNotificationRule(ctx, "projExample", &platform.PipelineCentralNotificationRuleArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				Status:     pulumi.String("ENABLED"),
+//				NotificationChannelRefs: pulumi.StringArray{
+//					pulumi.String("account.channel"),
+//				},
+//				Org:     pulumi.String("default"),
+//				Project: pulumi.String("proj0"),
+//				NotificationConditions: platform.PipelineCentralNotificationRuleNotificationConditionArray{
+//					&platform.PipelineCentralNotificationRuleNotificationConditionArgs{
+//						ConditionName: pulumi.String("pipelineRuleProjectConditionName"),
+//						NotificationEventConfigs: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray{
+//							&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{
+//								NotificationEntity: pulumi.String("PIPELINE"),
+//								NotificationEvent:  pulumi.String("PIPELINE_START"),
+//								NotificationEventDatas: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray{
+//									&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{
+//										Type:             pulumi.String("PIPELINE"),
+//										ScopeIdentifiers: pulumi.StringArray{},
+//									},
+//								},
+//								EntityIdentifiers: pulumi.StringArray{},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewPipelineCentralNotificationRule(ctx, "orgExample", &platform.PipelineCentralNotificationRuleArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				Status:     pulumi.String("ENABLED"),
+//				NotificationChannelRefs: pulumi.StringArray{
+//					pulumi.String("channel"),
+//				},
+//				Org: pulumi.String("default"),
+//				NotificationConditions: platform.PipelineCentralNotificationRuleNotificationConditionArray{
+//					&platform.PipelineCentralNotificationRuleNotificationConditionArgs{
+//						ConditionName: pulumi.String("pipelineRuleOrgConditionName"),
+//						NotificationEventConfigs: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray{
+//							&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{
+//								NotificationEntity: pulumi.String("PIPELINE"),
+//								NotificationEvent:  pulumi.String("PIPELINE_START"),
+//								NotificationEventDatas: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray{
+//									&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{
+//										Type: pulumi.String("PIPELINE"),
+//										ScopeIdentifiers: pulumi.StringArray{
+//											pulumi.String("proj0"),
+//											pulumi.String("random"),
+//										},
+//									},
+//								},
+//								EntityIdentifiers: pulumi.StringArray{},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewPipelineCentralNotificationRule(ctx, "accountExample", &platform.PipelineCentralNotificationRuleArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				Status:     pulumi.String("DISABLED"),
+//				NotificationChannelRefs: pulumi.StringArray{
+//					pulumi.String("org.channel"),
+//				},
+//				NotificationConditions: platform.PipelineCentralNotificationRuleNotificationConditionArray{
+//					&platform.PipelineCentralNotificationRuleNotificationConditionArgs{
+//						ConditionName: pulumi.String("pipelineRuleConditionName"),
+//						NotificationEventConfigs: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray{
+//							&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{
+//								NotificationEntity: pulumi.String("PIPELINE"),
+//								NotificationEvent:  pulumi.String("PIPELINE_START"),
+//								NotificationEventDatas: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray{
+//									&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{
+//										Type: pulumi.String("PIPELINE"),
+//										ScopeIdentifiers: pulumi.StringArray{
+//											pulumi.String("org"),
+//										},
+//									},
+//								},
+//								EntityIdentifiers: pulumi.StringArray{},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// The `pulumi import` command can be used, for example:
+//
+// # Import account level pipeline central notification rule
+//
+// ```sh
+// $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <notification_rule_id>
+// ```
+//
+// # Import org level pipeline central notification rule
+//
+// ```sh
+// $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <ord_id>/<notification_rule_id>
+// ```
+//
+// # Import project level pipeline central notification rule
+//
+// ```sh
+// $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <org_id>/<project_id>/<notification_rule_id>
+// ```
 type PipelineCentralNotificationRule struct {
 	pulumi.CustomResourceState
 

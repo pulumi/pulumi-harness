@@ -34,11 +34,11 @@ import (
 //				ProjectId:  pulumi.String("projectIdentifier"),
 //				Color:      pulumi.String("#0063F7"),
 //				Yaml: pulumi.String(`environmentGroup:
-//	  name: "name"
-//	  identifier: "identifier"
-//	  description: "temp"
-//	  orgIdentifier: "orgIdentifer"
-//	  projectIdentifier: "projectIdentifier"
+//	  name: \"name\"
+//	  identifier: \"identifier\"
+//	  description: \"temp\"
+//	  orgIdentifier: \"orgIdentifer\"
+//	  projectIdentifier: \"projectIdentifier\"
 //	  envIdentifiers: []
 //
 // `),

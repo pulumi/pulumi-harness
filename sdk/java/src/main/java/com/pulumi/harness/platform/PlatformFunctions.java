@@ -14296,12 +14296,16 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving a Notification Rule.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetPipelineCentralNotificationRuleResult> getPipelineCentralNotificationRule(GetPipelineCentralNotificationRuleArgs args) {
         return getPipelineCentralNotificationRule(args, InvokeOptions.Empty);
     }
     /**
      * Data source for retrieving a Notification Rule.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetPipelineCentralNotificationRuleResult> getPipelineCentralNotificationRulePlain(GetPipelineCentralNotificationRulePlainArgs args) {
@@ -14310,6 +14314,8 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving a Notification Rule.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetPipelineCentralNotificationRuleResult> getPipelineCentralNotificationRule(GetPipelineCentralNotificationRuleArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getPipelineCentralNotificationRule:getPipelineCentralNotificationRule", TypeShape.of(GetPipelineCentralNotificationRuleResult.class), args, Utilities.withVersion(options));
@@ -14317,12 +14323,16 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving a Notification Rule.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetPipelineCentralNotificationRuleResult> getPipelineCentralNotificationRule(GetPipelineCentralNotificationRuleArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getPipelineCentralNotificationRule:getPipelineCentralNotificationRule", TypeShape.of(GetPipelineCentralNotificationRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Notification Rule.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetPipelineCentralNotificationRuleResult> getPipelineCentralNotificationRulePlain(GetPipelineCentralNotificationRulePlainArgs args, InvokeOptions options) {

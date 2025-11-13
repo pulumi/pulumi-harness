@@ -161,6 +161,8 @@ def get_pipeline_central_notification_rule(custom_notification_template_ref: Opt
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPipelineCentralNotificationRuleResult:
     """
     Data source for retrieving a Notification Rule.
+
+    ## Example Usage
     """
     __args__ = dict()
     __args__['customNotificationTemplateRef'] = custom_notification_template_ref
@@ -198,6 +200,8 @@ def get_pipeline_central_notification_rule_output(custom_notification_template_r
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineCentralNotificationRuleResult]:
     """
     Data source for retrieving a Notification Rule.
+
+    ## Example Usage
     """
     __args__ = dict()
     __args__['customNotificationTemplateRef'] = custom_notification_template_ref

@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class GetCentralNotificationRuleNotificationConditionNotificationEventConfig extends com.pulumi.resources.InvokeArgs {
 
     public static final GetCentralNotificationRuleNotificationConditionNotificationEventConfig Empty = new GetCentralNotificationRuleNotificationConditionNotificationEventConfig();
+
+    @Import(name="entityIdentifiers")
+    private @Nullable List<String> entityIdentifiers;
+
+    public Optional<List<String>> entityIdentifiers() {
+        return Optional.ofNullable(this.entityIdentifiers);
+    }
 
     @Import(name="notificationEntity", required=true)
     private String notificationEntity;
@@ -40,6 +48,7 @@ public final class GetCentralNotificationRuleNotificationConditionNotificationEv
     private GetCentralNotificationRuleNotificationConditionNotificationEventConfig() {}
 
     private GetCentralNotificationRuleNotificationConditionNotificationEventConfig(GetCentralNotificationRuleNotificationConditionNotificationEventConfig $) {
+        this.entityIdentifiers = $.entityIdentifiers;
         this.notificationEntity = $.notificationEntity;
         this.notificationEvent = $.notificationEvent;
         this.notificationEventData = $.notificationEventData;
@@ -61,6 +70,15 @@ public final class GetCentralNotificationRuleNotificationConditionNotificationEv
 
         public Builder(GetCentralNotificationRuleNotificationConditionNotificationEventConfig defaults) {
             $ = new GetCentralNotificationRuleNotificationConditionNotificationEventConfig(Objects.requireNonNull(defaults));
+        }
+
+        public Builder entityIdentifiers(@Nullable List<String> entityIdentifiers) {
+            $.entityIdentifiers = entityIdentifiers;
+            return this;
+        }
+
+        public Builder entityIdentifiers(String... entityIdentifiers) {
+            return entityIdentifiers(List.of(entityIdentifiers));
         }
 
         public Builder notificationEntity(String notificationEntity) {

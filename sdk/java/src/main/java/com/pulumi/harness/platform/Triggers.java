@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *   name: name
  *   identifier: identifier
  *   enabled: true
- *   description: ""
+ *   description: \"\"
  *   tags: {}
  *   projectIdentifier: projectIdentifier
  *   orgIdentifier: orgIdentifer
@@ -79,7 +79,8 @@ import javax.annotation.Nullable;
  *           repoName: repoName
  *           actions: []
  *   inputYaml: |
- *     pipeline: {}\n
+ *     pipeline: {}\
+ * 
  *             """)
  *             .build());
  * 

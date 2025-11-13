@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabCaRefArgs;
 import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabTokenRefArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -46,6 +47,21 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
      */
     public Optional<Output<String>> api() {
         return Optional.ofNullable(this.api);
+    }
+
+    /**
+     * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+     * 
+     */
+    @Import(name="caRef")
+    private @Nullable Output<GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabCaRefArgs> caRef;
+
+    /**
+     * @return Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+     * 
+     */
+    public Optional<Output<GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabCaRefArgs>> caRef() {
+        return Optional.ofNullable(this.caRef);
     }
 
     /**
@@ -98,6 +114,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
     private GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabArgs(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabArgs $) {
         this.allBranches = $.allBranches;
         this.api = $.api;
+        this.caRef = $.caRef;
         this.group = $.group;
         this.includeSubgroups = $.includeSubgroups;
         this.tokenRef = $.tokenRef;
@@ -161,6 +178,27 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
          */
         public Builder api(String api) {
             return api(Output.of(api));
+        }
+
+        /**
+         * @param caRef Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caRef(@Nullable Output<GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabCaRefArgs> caRef) {
+            $.caRef = caRef;
+            return this;
+        }
+
+        /**
+         * @param caRef Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caRef(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabCaRefArgs caRef) {
+            return caRef(Output.of(caRef));
         }
 
         /**

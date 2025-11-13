@@ -49,11 +49,11 @@ import javax.annotation.Nullable;
  *             .color("#0063F7")
  *             .yaml("""
  * environmentGroup:
- *   name: "name"
- *   identifier: "identifier"
- *   description: "temp"
- *   orgIdentifier: "orgIdentifer"
- *   projectIdentifier: "projectIdentifier"
+ *   name: \"name\"
+ *   identifier: \"identifier\"
+ *   description: \"temp\"
+ *   orgIdentifier: \"orgIdentifer\"
+ *   projectIdentifier: \"projectIdentifier\"
  *   envIdentifiers: []
  *             """)
  *             .build());

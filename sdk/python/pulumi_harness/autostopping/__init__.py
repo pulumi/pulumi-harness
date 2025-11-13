@@ -18,10 +18,12 @@ from .get_azure_proxy import *
 from .get_gcp_proxy import *
 from .get_rule_ecs import *
 from .get_rule_rds import *
+from .get_rule_scale_group import *
 from .get_rule_vm import *
 from .get_schedule import *
 from .rule_ecs import *
 from .rule_rds import *
+from .rule_scale_group import *
 from .rule_vm import *
 from .schedule import *
 from ._inputs import *

@@ -297,6 +297,93 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
         """
         Resource for creating a Harness Notification Rule for Pipeline
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        proj_example = harness.platform.PipelineCentralNotificationRule("projExample",
+            identifier="identifier",
+            name="name",
+            status="ENABLED",
+            notification_channel_refs=["account.channel"],
+            org="default",
+            project="proj0",
+            notification_conditions=[{
+                "condition_name": "pipelineRuleProjectConditionName",
+                "notification_event_configs": [{
+                    "notification_entity": "PIPELINE",
+                    "notification_event": "PIPELINE_START",
+                    "notification_event_datas": [{
+                        "type": "PIPELINE",
+                        "scope_identifiers": [],
+                    }],
+                    "entity_identifiers": [],
+                }],
+            }])
+        org_example = harness.platform.PipelineCentralNotificationRule("orgExample",
+            identifier="identifier",
+            name="name",
+            status="ENABLED",
+            notification_channel_refs=["channel"],
+            org="default",
+            notification_conditions=[{
+                "condition_name": "pipelineRuleOrgConditionName",
+                "notification_event_configs": [{
+                    "notification_entity": "PIPELINE",
+                    "notification_event": "PIPELINE_START",
+                    "notification_event_datas": [{
+                        "type": "PIPELINE",
+                        "scope_identifiers": [
+                            "proj0",
+                            "random",
+                        ],
+                    }],
+                    "entity_identifiers": [],
+                }],
+            }])
+        account_example = harness.platform.PipelineCentralNotificationRule("accountExample",
+            identifier="identifier",
+            name="name",
+            status="DISABLED",
+            notification_channel_refs=["org.channel"],
+            notification_conditions=[{
+                "condition_name": "pipelineRuleConditionName",
+                "notification_event_configs": [{
+                    "notification_entity": "PIPELINE",
+                    "notification_event": "PIPELINE_START",
+                    "notification_event_datas": [{
+                        "type": "PIPELINE",
+                        "scope_identifiers": ["org"],
+                    }],
+                    "entity_identifiers": [],
+                }],
+            }])
+        ```
+
+        ## Import
+
+        The `pulumi import` command can be used, for example:
+
+        Import account level pipeline central notification rule
+
+        ```sh
+        $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <notification_rule_id>
+        ```
+
+        Import org level pipeline central notification rule
+
+        ```sh
+        $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <ord_id>/<notification_rule_id>
+        ```
+
+        Import project level pipeline central notification rule
+
+        ```sh
+        $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <org_id>/<project_id>/<notification_rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] status: Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
@@ -309,6 +396,93 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness Notification Rule for Pipeline
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        proj_example = harness.platform.PipelineCentralNotificationRule("projExample",
+            identifier="identifier",
+            name="name",
+            status="ENABLED",
+            notification_channel_refs=["account.channel"],
+            org="default",
+            project="proj0",
+            notification_conditions=[{
+                "condition_name": "pipelineRuleProjectConditionName",
+                "notification_event_configs": [{
+                    "notification_entity": "PIPELINE",
+                    "notification_event": "PIPELINE_START",
+                    "notification_event_datas": [{
+                        "type": "PIPELINE",
+                        "scope_identifiers": [],
+                    }],
+                    "entity_identifiers": [],
+                }],
+            }])
+        org_example = harness.platform.PipelineCentralNotificationRule("orgExample",
+            identifier="identifier",
+            name="name",
+            status="ENABLED",
+            notification_channel_refs=["channel"],
+            org="default",
+            notification_conditions=[{
+                "condition_name": "pipelineRuleOrgConditionName",
+                "notification_event_configs": [{
+                    "notification_entity": "PIPELINE",
+                    "notification_event": "PIPELINE_START",
+                    "notification_event_datas": [{
+                        "type": "PIPELINE",
+                        "scope_identifiers": [
+                            "proj0",
+                            "random",
+                        ],
+                    }],
+                    "entity_identifiers": [],
+                }],
+            }])
+        account_example = harness.platform.PipelineCentralNotificationRule("accountExample",
+            identifier="identifier",
+            name="name",
+            status="DISABLED",
+            notification_channel_refs=["org.channel"],
+            notification_conditions=[{
+                "condition_name": "pipelineRuleConditionName",
+                "notification_event_configs": [{
+                    "notification_entity": "PIPELINE",
+                    "notification_event": "PIPELINE_START",
+                    "notification_event_datas": [{
+                        "type": "PIPELINE",
+                        "scope_identifiers": ["org"],
+                    }],
+                    "entity_identifiers": [],
+                }],
+            }])
+        ```
+
+        ## Import
+
+        The `pulumi import` command can be used, for example:
+
+        Import account level pipeline central notification rule
+
+        ```sh
+        $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <notification_rule_id>
+        ```
+
+        Import org level pipeline central notification rule
+
+        ```sh
+        $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <ord_id>/<notification_rule_id>
+        ```
+
+        Import project level pipeline central notification rule
+
+        ```sh
+        $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <org_id>/<project_id>/<notification_rule_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param PipelineCentralNotificationRuleArgs args: The arguments to use to populate this resource's properties.

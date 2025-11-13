@@ -1033,6 +1033,117 @@ export namespace autostopping {
         port: number;
     }
 
+    export interface GetRuleScaleGroupDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface GetRuleScaleGroupHttp {
+        /**
+         * Health Check Details
+         */
+        healths?: outputs.autostopping.GetRuleScaleGroupHttpHealth[];
+        /**
+         * Id of the proxy
+         */
+        proxyId: string;
+        /**
+         * Routing configuration used to access the scaling group
+         */
+        routings?: outputs.autostopping.GetRuleScaleGroupHttpRouting[];
+    }
+
+    export interface GetRuleScaleGroupHttpHealth {
+        /**
+         * API path to use for health check
+         */
+        path?: string;
+        /**
+         * Health check port on the VM
+         */
+        port: number;
+        /**
+         * Protocol can be http or https
+         */
+        protocol: string;
+        /**
+         * Lower limit for acceptable status code
+         */
+        statusCodeFrom?: number;
+        /**
+         * Upper limit for acceptable status code
+         */
+        statusCodeTo?: number;
+        /**
+         * Health check timeout
+         */
+        timeout?: number;
+    }
+
+    export interface GetRuleScaleGroupHttpRouting {
+        /**
+         * Organization Identifier for the Entity
+         */
+        action?: string;
+        /**
+         * Port on the proxy
+         */
+        sourcePort?: number;
+        /**
+         * Source protocol of the proxy can be http or https
+         */
+        sourceProtocol: string;
+        /**
+         * Port on the VM
+         */
+        targetPort?: number;
+        /**
+         * Target protocol of the instance can be http or https
+         */
+        targetProtocol: string;
+    }
+
+    export interface GetRuleScaleGroupScaleGroup {
+        /**
+         * Desired capacity of the Scaling Group
+         */
+        desired: number;
+        /**
+         * ID of the Scaling Group
+         */
+        id: string;
+        /**
+         * Maximum capacity of the Scaling Group
+         */
+        max: number;
+        /**
+         * Minimum capacity of the Scaling Group
+         */
+        min: number;
+        /**
+         * Name of the Scaling Group
+         */
+        name: string;
+        /**
+         * On-demand capacity of the Scaling Group
+         */
+        onDemand: number;
+        /**
+         * Region of the Scaling Group
+         */
+        region?: string;
+        /**
+         * Zone of the Scaling Group. Needed for GCP only
+         */
+        zone?: string;
+    }
+
     export interface GetRuleVmDepend {
         /**
          * Number of seconds the rule should wait after warming up the dependent rule
@@ -1279,6 +1390,117 @@ export namespace autostopping {
          * Port to listen on the vm
          */
         port: number;
+    }
+
+    export interface RuleScaleGroupDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface RuleScaleGroupHttp {
+        /**
+         * Health Check Details
+         */
+        healths?: outputs.autostopping.RuleScaleGroupHttpHealth[];
+        /**
+         * Id of the proxy
+         */
+        proxyId: string;
+        /**
+         * Routing configuration used to access the scaling group
+         */
+        routings?: outputs.autostopping.RuleScaleGroupHttpRouting[];
+    }
+
+    export interface RuleScaleGroupHttpHealth {
+        /**
+         * API path to use for health check
+         */
+        path?: string;
+        /**
+         * Health check port on the VM
+         */
+        port: number;
+        /**
+         * Protocol can be http or https
+         */
+        protocol: string;
+        /**
+         * Lower limit for acceptable status code
+         */
+        statusCodeFrom?: number;
+        /**
+         * Upper limit for acceptable status code
+         */
+        statusCodeTo?: number;
+        /**
+         * Health check timeout
+         */
+        timeout?: number;
+    }
+
+    export interface RuleScaleGroupHttpRouting {
+        /**
+         * Organization Identifier for the Entity
+         */
+        action?: string;
+        /**
+         * Port on the proxy
+         */
+        sourcePort?: number;
+        /**
+         * Source protocol of the proxy can be http or https
+         */
+        sourceProtocol: string;
+        /**
+         * Port on the VM
+         */
+        targetPort?: number;
+        /**
+         * Target protocol of the instance can be http or https
+         */
+        targetProtocol: string;
+    }
+
+    export interface RuleScaleGroupScaleGroup {
+        /**
+         * Desired capacity of the Scaling Group
+         */
+        desired: number;
+        /**
+         * ID of the Scaling Group
+         */
+        id: string;
+        /**
+         * Maximum capacity of the Scaling Group
+         */
+        max: number;
+        /**
+         * Minimum capacity of the Scaling Group
+         */
+        min: number;
+        /**
+         * Name of the Scaling Group
+         */
+        name: string;
+        /**
+         * On-demand capacity of the Scaling Group
+         */
+        onDemand: number;
+        /**
+         * Region of the Scaling Group
+         */
+        region?: string;
+        /**
+         * Zone of the Scaling Group. Needed for GCP only
+         */
+        zone?: string;
     }
 
     export interface RuleVmDepend {
@@ -4245,6 +4467,7 @@ export namespace platform {
     }
 
     export interface GetCentralNotificationRuleNotificationConditionNotificationEventConfig {
+        entityIdentifiers?: string[];
         notificationEntity: string;
         notificationEvent: string;
         notificationEventData?: {[key: string]: string};
@@ -6464,6 +6687,7 @@ export namespace platform {
     }
 
     export interface GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
+        entityIdentifiers?: string[];
         notificationEntity: string;
         notificationEvent: string;
         notificationEventDatas?: outputs.platform.GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData[];
@@ -15488,6 +15712,10 @@ export namespace platform {
          */
         api?: string;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderGitlabCaRef;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: string;
@@ -15499,6 +15727,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderGitlabTokenRef;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: string;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderGitlabTokenRef {
@@ -19182,6 +19421,10 @@ export namespace platform {
          */
         api?: string;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabCaRef;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: string;
@@ -19193,6 +19436,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabTokenRef;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: string;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderGitlabTokenRef {
@@ -20956,6 +21210,10 @@ export namespace platform {
          */
         api?: string;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderGitlabCaRef;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: string;
@@ -20967,6 +21225,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderGitlabTokenRef;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: string;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderGitlabTokenRef {
@@ -26574,6 +26843,10 @@ export namespace platform {
          */
         api?: string;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabCaRef;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: string;
@@ -26585,6 +26858,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabTokenRef;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: string;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabTokenRef {
@@ -30268,6 +30552,10 @@ export namespace platform {
          */
         api?: string;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderGitlabCaRef;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: string;
@@ -30279,6 +30567,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderGitlabTokenRef;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: string;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderGitlabTokenRef {
@@ -32042,6 +32341,10 @@ export namespace platform {
          */
         api?: string;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderGitlabCaRef;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: string;
@@ -32053,6 +32356,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderGitlabTokenRef;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: string;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderGitlabTokenRef {
@@ -33816,6 +34130,10 @@ export namespace platform {
          */
         api?: string;
         /**
+         * Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+         */
+        caRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorScmProviderGitlabCaRef;
+        /**
          * Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
          */
         group: string;
@@ -33827,6 +34145,17 @@ export namespace platform {
          * Authentication token reference.
          */
         tokenRef?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorScmProviderGitlabTokenRef;
+    }
+
+    export interface GitopsApplicationsetApplicationsetSpecGeneratorScmProviderGitlabCaRef {
+        /**
+         * Name of Kubernetes `ConfigMap`.
+         */
+        configMapName: string;
+        /**
+         * Key containing information in Kubernetes `ConfigMap`.
+         */
+        key: string;
     }
 
     export interface GitopsApplicationsetApplicationsetSpecGeneratorScmProviderGitlabTokenRef {

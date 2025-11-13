@@ -12,6 +12,8 @@ import (
 )
 
 // Data source for retrieving a Notification Rule.
+//
+// ## Example Usage
 func LookupPipelineCentralNotificationRule(ctx *pulumi.Context, args *LookupPipelineCentralNotificationRuleArgs, opts ...pulumi.InvokeOption) (*LookupPipelineCentralNotificationRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineCentralNotificationRuleResult
