@@ -3,7 +3,7 @@ module github.com/harness/terraform-provider-harness/shim
 go 1.24.0
 
 require (
-	github.com/harness/terraform-provider-harness v0.39.0
+	github.com/harness/terraform-provider-harness v0.39.1
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0
 	github.com/pulumi/pulumi-harness/provider v0.0.0-20221227064623-0d00513c0628
 )
