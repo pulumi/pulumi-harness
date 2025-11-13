@@ -14,6 +14,97 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gcpSmManual = new Harness.Platform.GcpSecretManagerConnector("gcp_sm_manual", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         CredentialsRef = $"account.{test.Id}",
+    ///     });
+    /// 
+    ///     var gcpSmInherit = new Harness.Platform.GcpSecretManagerConnector("gcp_sm_inherit", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         InheritFromDelegate = true,
+    ///     });
+    /// 
+    ///     var gcpSmOidcPlatform = new Harness.Platform.GcpSecretManagerConnector("gcp_sm_oidc_platform", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         ExecuteOnDelegate = false,
+    ///         OidcAuthentications = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.GcpSecretManagerConnectorOidcAuthenticationArgs
+    ///             {
+    ///                 WorkloadPoolId = "harness-pool-test",
+    ///                 ProviderId = "harness",
+    ///                 GcpProjectId = "1234567",
+    ///                 ServiceAccountEmail = "harness.sample@iam.gserviceaccount.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var gcpSmOidcDelegate = new Harness.Platform.GcpSecretManagerConnector("gcp_sm_oidc_delegate", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Default = true,
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         OidcAuthentications = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.GcpSecretManagerConnectorOidcAuthenticationArgs
+    ///             {
+    ///                 WorkloadPoolId = "harness-pool-test",
+    ///                 ProviderId = "harness",
+    ///                 GcpProjectId = "1234567",
+    ///                 ServiceAccountEmail = "harness.sample@iam.gserviceaccount.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The `pulumi import` command can be used, for example:

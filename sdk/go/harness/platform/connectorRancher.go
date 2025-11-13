@@ -16,6 +16,44 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewKubernetesConnector(ctx, "bearer_token", &platform.KubernetesConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("description"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				RancherUrl: "https://rancher.cluster.example",
+//				BearerToken: []map[string]interface{}{
+//					map[string]interface{}{
+//						"bearerTokenRef": "account.test_rancher_bearer_token",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The `pulumi import` command can be used, for example:

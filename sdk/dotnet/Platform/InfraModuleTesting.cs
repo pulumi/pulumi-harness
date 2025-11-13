@@ -12,6 +12,32 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.InfraModule("example", new()
+    ///     {
+    ///         ModuleId = 1234,
+    ///         Org = "default",
+    ///         Project = "project",
+    ///         ProviderConnector = "account.connector",
+    ///         ProvisionerType = "tofu",
+    ///         ProvisionerVersion = "1.9.4",
+    ///         Pipelines = new[]
+    ///         {
+    ///             "pipelinea",
+    ///             "pipelineb",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The `pulumi import` command can be used, for example:
