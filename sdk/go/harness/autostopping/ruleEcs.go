@@ -15,6 +15,55 @@ import (
 // Resource for creating a Harness Variables.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.NewRuleEcs(ctx, "test", &autostopping.RuleEcsArgs{
+//				Name:             pulumi.String("name"),
+//				CloudConnectorId: pulumi.String("cloud_connector_id"),
+//				IdleTimeMins:     pulumi.Int(10),
+//				DryRun:           pulumi.Bool(true),
+//				Container: &autostopping.RuleEcsContainerArgs{
+//					Cluster:   pulumi.String("cluster"),
+//					Service:   pulumi.String("service"),
+//					Region:    pulumi.String("us-east-1"),
+//					TaskCount: pulumi.Int(1),
+//				},
+//				Tcp: []map[string]interface{}{
+//					map[string]interface{}{
+//						"proxyId": "proxy_id",
+//						"forwardRule": []map[string]interface{}{
+//							map[string]interface{}{
+//								"port": 2233,
+//							},
+//						},
+//					},
+//				},
+//				Depends: autostopping.RuleEcsDependArray{
+//					&autostopping.RuleEcsDependArgs{
+//						RuleId:     pulumi.Int(24576),
+//						DelayInSec: pulumi.Int(5),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type RuleEcs struct {
 	pulumi.CustomResourceState
 

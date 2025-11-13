@@ -22,6 +22,70 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Infrastructure;
+ * import com.pulumi.harness.platform.InfrastructureArgs;
+ * import com.pulumi.harness.platform.inputs.InfrastructureGitDetailsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Infrastructure("example", InfrastructureArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .orgId("orgIdentifer")
+ *             .projectId("projectIdentifier")
+ *             .envId("environmentIdentifier")
+ *             .type("KubernetesDirect")
+ *             .deploymentType("Kubernetes")
+ *             .gitDetails(InfrastructureGitDetailsArgs.builder()
+ *                 .branchName("branchName")
+ *                 .commitMessage("commitMessage")
+ *                 .filePath("filePath")
+ *                 .connectorRef("connectorRef")
+ *                 .storeType("REMOTE")
+ *                 .repoName("repoName")
+ *                 .build())
+ *             .yaml("""
+ * infrastructureDefinition:
+ *  name: name
+ *  identifier: identifier
+ *  description: \"\"
+ *  tags:
+ *    asda: \"\"
+ *  orgIdentifier: orgIdentifer
+ *  projectIdentifier: projectIdentifier
+ *  environmentRef: environmentIdentifier
+ *  deploymentType: Kubernetes
+ *  type: KubernetesDirect
+ *  spec:
+ *   connectorRef: account.gfgf
+ *   namespace: asdasdsa
+ *   releaseName: release-<+INFRA_KEY>
+ *   allowSimultaneousDeployments: false
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * The `pulumi import` command can be used, for example:

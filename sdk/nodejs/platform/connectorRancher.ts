@@ -11,6 +11,23 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const bearerToken = new harness.platform.KubernetesConnector("bearer_token", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "description",
+ *     tags: ["foo:bar"],
+ *     delegateSelectors: ["harness-delegate"],
+ *     rancherUrl: "https://rancher.cluster.example",
+ *     bearerToken: [{
+ *         bearerTokenRef: "account.test_rancher_bearer_token",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * The `pulumi import` command can be used, for example:

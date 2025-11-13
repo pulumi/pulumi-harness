@@ -14,6 +14,54 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Infrastructure("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "orgIdentifer",
+    ///         ProjectId = "projectIdentifier",
+    ///         EnvId = "environmentIdentifier",
+    ///         Type = "KubernetesDirect",
+    ///         DeploymentType = "Kubernetes",
+    ///         GitDetails = new Harness.Platform.Inputs.InfrastructureGitDetailsArgs
+    ///         {
+    ///             BranchName = "branchName",
+    ///             CommitMessage = "commitMessage",
+    ///             FilePath = "filePath",
+    ///             ConnectorRef = "connectorRef",
+    ///             StoreType = "REMOTE",
+    ///             RepoName = "repoName",
+    ///         },
+    ///         Yaml = @"infrastructureDefinition:
+    ///  name: name
+    ///  identifier: identifier
+    ///  description: \""\""
+    ///  tags:
+    ///    asda: \""\""
+    ///  orgIdentifier: orgIdentifer
+    ///  projectIdentifier: projectIdentifier
+    ///  environmentRef: environmentIdentifier
+    ///  deploymentType: Kubernetes
+    ///  type: KubernetesDirect
+    ///  spec:
+    ///   connectorRef: account.gfgf
+    ///   namespace: asdasdsa
+    ///   releaseName: release-&lt;+INFRA_KEY&gt;
+    ///   allowSimultaneousDeployments: false
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The `pulumi import` command can be used, for example:

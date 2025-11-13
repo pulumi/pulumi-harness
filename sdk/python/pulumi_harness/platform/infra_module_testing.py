@@ -665,6 +665,23 @@ class InfraModuleTesting(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.InfraModule("example",
+            module_id=1234,
+            org="default",
+            project="project",
+            provider_connector="account.connector",
+            provisioner_type="tofu",
+            provisioner_version="1.9.4",
+            pipelines=[
+                "pipelinea",
+                "pipelineb",
+            ])
+        ```
+
         ## Import
 
         The `pulumi import` command can be used, for example:
@@ -695,6 +712,23 @@ class InfraModuleTesting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.InfraModule("example",
+            module_id=1234,
+            org="default",
+            project="project",
+            provider_connector="account.connector",
+            provisioner_type="tofu",
+            provisioner_version="1.9.4",
+            pipelines=[
+                "pipelinea",
+                "pipelineb",
+            ])
+        ```
 
         ## Import
 
