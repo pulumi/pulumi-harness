@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabCaRef;
 import com.pulumi.harness.platform.outputs.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabTokenRef;
 import java.lang.Boolean;
 import java.lang.String;
@@ -24,6 +25,11 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
      * 
      */
     private @Nullable String api;
+    /**
+     * @return Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+     * 
+     */
+    private @Nullable GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabCaRef caRef;
     /**
      * @return Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
      * 
@@ -54,6 +60,13 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
      */
     public Optional<String> api() {
         return Optional.ofNullable(this.api);
+    }
+    /**
+     * @return Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+     * 
+     */
+    public Optional<GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabCaRef> caRef() {
+        return Optional.ofNullable(this.caRef);
     }
     /**
      * @return Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
@@ -88,6 +101,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
     public static final class Builder {
         private @Nullable Boolean allBranches;
         private @Nullable String api;
+        private @Nullable GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabCaRef caRef;
         private String group;
         private @Nullable Boolean includeSubgroups;
         private @Nullable GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabTokenRef tokenRef;
@@ -96,6 +110,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
     	      Objects.requireNonNull(defaults);
     	      this.allBranches = defaults.allBranches;
     	      this.api = defaults.api;
+    	      this.caRef = defaults.caRef;
     	      this.group = defaults.group;
     	      this.includeSubgroups = defaults.includeSubgroups;
     	      this.tokenRef = defaults.tokenRef;
@@ -111,6 +126,12 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
         public Builder api(@Nullable String api) {
 
             this.api = api;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder caRef(@Nullable GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlabCaRef caRef) {
+
+            this.caRef = caRef;
             return this;
         }
         @CustomType.Setter
@@ -137,6 +158,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMergeGenerator
             final var _resultValue = new GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderGitlab();
             _resultValue.allBranches = allBranches;
             _resultValue.api = api;
+            _resultValue.caRef = caRef;
             _resultValue.group = group;
             _resultValue.includeSubgroups = includeSubgroups;
             _resultValue.tokenRef = tokenRef;

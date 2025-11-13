@@ -1352,6 +1352,772 @@ func (o RuleRdsTcpForwardRuleArrayOutput) Index(i pulumi.IntInput) RuleRdsTcpFor
 	}).(RuleRdsTcpForwardRuleOutput)
 }
 
+type RuleScaleGroupDepend struct {
+	// Number of seconds the rule should wait after warming up the dependent rule
+	DelayInSec *int `pulumi:"delayInSec"`
+	// Rule id of the dependent rule
+	RuleId int `pulumi:"ruleId"`
+}
+
+// RuleScaleGroupDependInput is an input type that accepts RuleScaleGroupDependArgs and RuleScaleGroupDependOutput values.
+// You can construct a concrete instance of `RuleScaleGroupDependInput` via:
+//
+//	RuleScaleGroupDependArgs{...}
+type RuleScaleGroupDependInput interface {
+	pulumi.Input
+
+	ToRuleScaleGroupDependOutput() RuleScaleGroupDependOutput
+	ToRuleScaleGroupDependOutputWithContext(context.Context) RuleScaleGroupDependOutput
+}
+
+type RuleScaleGroupDependArgs struct {
+	// Number of seconds the rule should wait after warming up the dependent rule
+	DelayInSec pulumi.IntPtrInput `pulumi:"delayInSec"`
+	// Rule id of the dependent rule
+	RuleId pulumi.IntInput `pulumi:"ruleId"`
+}
+
+func (RuleScaleGroupDependArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleScaleGroupDepend)(nil)).Elem()
+}
+
+func (i RuleScaleGroupDependArgs) ToRuleScaleGroupDependOutput() RuleScaleGroupDependOutput {
+	return i.ToRuleScaleGroupDependOutputWithContext(context.Background())
+}
+
+func (i RuleScaleGroupDependArgs) ToRuleScaleGroupDependOutputWithContext(ctx context.Context) RuleScaleGroupDependOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScaleGroupDependOutput)
+}
+
+// RuleScaleGroupDependArrayInput is an input type that accepts RuleScaleGroupDependArray and RuleScaleGroupDependArrayOutput values.
+// You can construct a concrete instance of `RuleScaleGroupDependArrayInput` via:
+//
+//	RuleScaleGroupDependArray{ RuleScaleGroupDependArgs{...} }
+type RuleScaleGroupDependArrayInput interface {
+	pulumi.Input
+
+	ToRuleScaleGroupDependArrayOutput() RuleScaleGroupDependArrayOutput
+	ToRuleScaleGroupDependArrayOutputWithContext(context.Context) RuleScaleGroupDependArrayOutput
+}
+
+type RuleScaleGroupDependArray []RuleScaleGroupDependInput
+
+func (RuleScaleGroupDependArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleScaleGroupDepend)(nil)).Elem()
+}
+
+func (i RuleScaleGroupDependArray) ToRuleScaleGroupDependArrayOutput() RuleScaleGroupDependArrayOutput {
+	return i.ToRuleScaleGroupDependArrayOutputWithContext(context.Background())
+}
+
+func (i RuleScaleGroupDependArray) ToRuleScaleGroupDependArrayOutputWithContext(ctx context.Context) RuleScaleGroupDependArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScaleGroupDependArrayOutput)
+}
+
+type RuleScaleGroupDependOutput struct{ *pulumi.OutputState }
+
+func (RuleScaleGroupDependOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleScaleGroupDepend)(nil)).Elem()
+}
+
+func (o RuleScaleGroupDependOutput) ToRuleScaleGroupDependOutput() RuleScaleGroupDependOutput {
+	return o
+}
+
+func (o RuleScaleGroupDependOutput) ToRuleScaleGroupDependOutputWithContext(ctx context.Context) RuleScaleGroupDependOutput {
+	return o
+}
+
+// Number of seconds the rule should wait after warming up the dependent rule
+func (o RuleScaleGroupDependOutput) DelayInSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleScaleGroupDepend) *int { return v.DelayInSec }).(pulumi.IntPtrOutput)
+}
+
+// Rule id of the dependent rule
+func (o RuleScaleGroupDependOutput) RuleId() pulumi.IntOutput {
+	return o.ApplyT(func(v RuleScaleGroupDepend) int { return v.RuleId }).(pulumi.IntOutput)
+}
+
+type RuleScaleGroupDependArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleScaleGroupDependArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleScaleGroupDepend)(nil)).Elem()
+}
+
+func (o RuleScaleGroupDependArrayOutput) ToRuleScaleGroupDependArrayOutput() RuleScaleGroupDependArrayOutput {
+	return o
+}
+
+func (o RuleScaleGroupDependArrayOutput) ToRuleScaleGroupDependArrayOutputWithContext(ctx context.Context) RuleScaleGroupDependArrayOutput {
+	return o
+}
+
+func (o RuleScaleGroupDependArrayOutput) Index(i pulumi.IntInput) RuleScaleGroupDependOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleScaleGroupDepend {
+		return vs[0].([]RuleScaleGroupDepend)[vs[1].(int)]
+	}).(RuleScaleGroupDependOutput)
+}
+
+type RuleScaleGroupHttp struct {
+	// Health Check Details
+	Healths []RuleScaleGroupHttpHealth `pulumi:"healths"`
+	// Id of the proxy
+	ProxyId string `pulumi:"proxyId"`
+	// Routing configuration used to access the scaling group
+	Routings []RuleScaleGroupHttpRouting `pulumi:"routings"`
+}
+
+// RuleScaleGroupHttpInput is an input type that accepts RuleScaleGroupHttpArgs and RuleScaleGroupHttpOutput values.
+// You can construct a concrete instance of `RuleScaleGroupHttpInput` via:
+//
+//	RuleScaleGroupHttpArgs{...}
+type RuleScaleGroupHttpInput interface {
+	pulumi.Input
+
+	ToRuleScaleGroupHttpOutput() RuleScaleGroupHttpOutput
+	ToRuleScaleGroupHttpOutputWithContext(context.Context) RuleScaleGroupHttpOutput
+}
+
+type RuleScaleGroupHttpArgs struct {
+	// Health Check Details
+	Healths RuleScaleGroupHttpHealthArrayInput `pulumi:"healths"`
+	// Id of the proxy
+	ProxyId pulumi.StringInput `pulumi:"proxyId"`
+	// Routing configuration used to access the scaling group
+	Routings RuleScaleGroupHttpRoutingArrayInput `pulumi:"routings"`
+}
+
+func (RuleScaleGroupHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleScaleGroupHttp)(nil)).Elem()
+}
+
+func (i RuleScaleGroupHttpArgs) ToRuleScaleGroupHttpOutput() RuleScaleGroupHttpOutput {
+	return i.ToRuleScaleGroupHttpOutputWithContext(context.Background())
+}
+
+func (i RuleScaleGroupHttpArgs) ToRuleScaleGroupHttpOutputWithContext(ctx context.Context) RuleScaleGroupHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScaleGroupHttpOutput)
+}
+
+// RuleScaleGroupHttpArrayInput is an input type that accepts RuleScaleGroupHttpArray and RuleScaleGroupHttpArrayOutput values.
+// You can construct a concrete instance of `RuleScaleGroupHttpArrayInput` via:
+//
+//	RuleScaleGroupHttpArray{ RuleScaleGroupHttpArgs{...} }
+type RuleScaleGroupHttpArrayInput interface {
+	pulumi.Input
+
+	ToRuleScaleGroupHttpArrayOutput() RuleScaleGroupHttpArrayOutput
+	ToRuleScaleGroupHttpArrayOutputWithContext(context.Context) RuleScaleGroupHttpArrayOutput
+}
+
+type RuleScaleGroupHttpArray []RuleScaleGroupHttpInput
+
+func (RuleScaleGroupHttpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleScaleGroupHttp)(nil)).Elem()
+}
+
+func (i RuleScaleGroupHttpArray) ToRuleScaleGroupHttpArrayOutput() RuleScaleGroupHttpArrayOutput {
+	return i.ToRuleScaleGroupHttpArrayOutputWithContext(context.Background())
+}
+
+func (i RuleScaleGroupHttpArray) ToRuleScaleGroupHttpArrayOutputWithContext(ctx context.Context) RuleScaleGroupHttpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScaleGroupHttpArrayOutput)
+}
+
+type RuleScaleGroupHttpOutput struct{ *pulumi.OutputState }
+
+func (RuleScaleGroupHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleScaleGroupHttp)(nil)).Elem()
+}
+
+func (o RuleScaleGroupHttpOutput) ToRuleScaleGroupHttpOutput() RuleScaleGroupHttpOutput {
+	return o
+}
+
+func (o RuleScaleGroupHttpOutput) ToRuleScaleGroupHttpOutputWithContext(ctx context.Context) RuleScaleGroupHttpOutput {
+	return o
+}
+
+// Health Check Details
+func (o RuleScaleGroupHttpOutput) Healths() RuleScaleGroupHttpHealthArrayOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttp) []RuleScaleGroupHttpHealth { return v.Healths }).(RuleScaleGroupHttpHealthArrayOutput)
+}
+
+// Id of the proxy
+func (o RuleScaleGroupHttpOutput) ProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttp) string { return v.ProxyId }).(pulumi.StringOutput)
+}
+
+// Routing configuration used to access the scaling group
+func (o RuleScaleGroupHttpOutput) Routings() RuleScaleGroupHttpRoutingArrayOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttp) []RuleScaleGroupHttpRouting { return v.Routings }).(RuleScaleGroupHttpRoutingArrayOutput)
+}
+
+type RuleScaleGroupHttpArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleScaleGroupHttpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleScaleGroupHttp)(nil)).Elem()
+}
+
+func (o RuleScaleGroupHttpArrayOutput) ToRuleScaleGroupHttpArrayOutput() RuleScaleGroupHttpArrayOutput {
+	return o
+}
+
+func (o RuleScaleGroupHttpArrayOutput) ToRuleScaleGroupHttpArrayOutputWithContext(ctx context.Context) RuleScaleGroupHttpArrayOutput {
+	return o
+}
+
+func (o RuleScaleGroupHttpArrayOutput) Index(i pulumi.IntInput) RuleScaleGroupHttpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleScaleGroupHttp {
+		return vs[0].([]RuleScaleGroupHttp)[vs[1].(int)]
+	}).(RuleScaleGroupHttpOutput)
+}
+
+type RuleScaleGroupHttpHealth struct {
+	// API path to use for health check
+	Path *string `pulumi:"path"`
+	// Health check port on the VM
+	Port int `pulumi:"port"`
+	// Protocol can be http or https
+	Protocol string `pulumi:"protocol"`
+	// Lower limit for acceptable status code
+	StatusCodeFrom *int `pulumi:"statusCodeFrom"`
+	// Upper limit for acceptable status code
+	StatusCodeTo *int `pulumi:"statusCodeTo"`
+	// Health check timeout
+	Timeout *int `pulumi:"timeout"`
+}
+
+// RuleScaleGroupHttpHealthInput is an input type that accepts RuleScaleGroupHttpHealthArgs and RuleScaleGroupHttpHealthOutput values.
+// You can construct a concrete instance of `RuleScaleGroupHttpHealthInput` via:
+//
+//	RuleScaleGroupHttpHealthArgs{...}
+type RuleScaleGroupHttpHealthInput interface {
+	pulumi.Input
+
+	ToRuleScaleGroupHttpHealthOutput() RuleScaleGroupHttpHealthOutput
+	ToRuleScaleGroupHttpHealthOutputWithContext(context.Context) RuleScaleGroupHttpHealthOutput
+}
+
+type RuleScaleGroupHttpHealthArgs struct {
+	// API path to use for health check
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Health check port on the VM
+	Port pulumi.IntInput `pulumi:"port"`
+	// Protocol can be http or https
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Lower limit for acceptable status code
+	StatusCodeFrom pulumi.IntPtrInput `pulumi:"statusCodeFrom"`
+	// Upper limit for acceptable status code
+	StatusCodeTo pulumi.IntPtrInput `pulumi:"statusCodeTo"`
+	// Health check timeout
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (RuleScaleGroupHttpHealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleScaleGroupHttpHealth)(nil)).Elem()
+}
+
+func (i RuleScaleGroupHttpHealthArgs) ToRuleScaleGroupHttpHealthOutput() RuleScaleGroupHttpHealthOutput {
+	return i.ToRuleScaleGroupHttpHealthOutputWithContext(context.Background())
+}
+
+func (i RuleScaleGroupHttpHealthArgs) ToRuleScaleGroupHttpHealthOutputWithContext(ctx context.Context) RuleScaleGroupHttpHealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScaleGroupHttpHealthOutput)
+}
+
+// RuleScaleGroupHttpHealthArrayInput is an input type that accepts RuleScaleGroupHttpHealthArray and RuleScaleGroupHttpHealthArrayOutput values.
+// You can construct a concrete instance of `RuleScaleGroupHttpHealthArrayInput` via:
+//
+//	RuleScaleGroupHttpHealthArray{ RuleScaleGroupHttpHealthArgs{...} }
+type RuleScaleGroupHttpHealthArrayInput interface {
+	pulumi.Input
+
+	ToRuleScaleGroupHttpHealthArrayOutput() RuleScaleGroupHttpHealthArrayOutput
+	ToRuleScaleGroupHttpHealthArrayOutputWithContext(context.Context) RuleScaleGroupHttpHealthArrayOutput
+}
+
+type RuleScaleGroupHttpHealthArray []RuleScaleGroupHttpHealthInput
+
+func (RuleScaleGroupHttpHealthArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleScaleGroupHttpHealth)(nil)).Elem()
+}
+
+func (i RuleScaleGroupHttpHealthArray) ToRuleScaleGroupHttpHealthArrayOutput() RuleScaleGroupHttpHealthArrayOutput {
+	return i.ToRuleScaleGroupHttpHealthArrayOutputWithContext(context.Background())
+}
+
+func (i RuleScaleGroupHttpHealthArray) ToRuleScaleGroupHttpHealthArrayOutputWithContext(ctx context.Context) RuleScaleGroupHttpHealthArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScaleGroupHttpHealthArrayOutput)
+}
+
+type RuleScaleGroupHttpHealthOutput struct{ *pulumi.OutputState }
+
+func (RuleScaleGroupHttpHealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleScaleGroupHttpHealth)(nil)).Elem()
+}
+
+func (o RuleScaleGroupHttpHealthOutput) ToRuleScaleGroupHttpHealthOutput() RuleScaleGroupHttpHealthOutput {
+	return o
+}
+
+func (o RuleScaleGroupHttpHealthOutput) ToRuleScaleGroupHttpHealthOutputWithContext(ctx context.Context) RuleScaleGroupHttpHealthOutput {
+	return o
+}
+
+// API path to use for health check
+func (o RuleScaleGroupHttpHealthOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttpHealth) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Health check port on the VM
+func (o RuleScaleGroupHttpHealthOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttpHealth) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Protocol can be http or https
+func (o RuleScaleGroupHttpHealthOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttpHealth) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Lower limit for acceptable status code
+func (o RuleScaleGroupHttpHealthOutput) StatusCodeFrom() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttpHealth) *int { return v.StatusCodeFrom }).(pulumi.IntPtrOutput)
+}
+
+// Upper limit for acceptable status code
+func (o RuleScaleGroupHttpHealthOutput) StatusCodeTo() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttpHealth) *int { return v.StatusCodeTo }).(pulumi.IntPtrOutput)
+}
+
+// Health check timeout
+func (o RuleScaleGroupHttpHealthOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttpHealth) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type RuleScaleGroupHttpHealthArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleScaleGroupHttpHealthArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleScaleGroupHttpHealth)(nil)).Elem()
+}
+
+func (o RuleScaleGroupHttpHealthArrayOutput) ToRuleScaleGroupHttpHealthArrayOutput() RuleScaleGroupHttpHealthArrayOutput {
+	return o
+}
+
+func (o RuleScaleGroupHttpHealthArrayOutput) ToRuleScaleGroupHttpHealthArrayOutputWithContext(ctx context.Context) RuleScaleGroupHttpHealthArrayOutput {
+	return o
+}
+
+func (o RuleScaleGroupHttpHealthArrayOutput) Index(i pulumi.IntInput) RuleScaleGroupHttpHealthOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleScaleGroupHttpHealth {
+		return vs[0].([]RuleScaleGroupHttpHealth)[vs[1].(int)]
+	}).(RuleScaleGroupHttpHealthOutput)
+}
+
+type RuleScaleGroupHttpRouting struct {
+	// Organization Identifier for the Entity
+	Action *string `pulumi:"action"`
+	// Port on the proxy
+	SourcePort *int `pulumi:"sourcePort"`
+	// Source protocol of the proxy can be http or https
+	SourceProtocol string `pulumi:"sourceProtocol"`
+	// Port on the VM
+	TargetPort *int `pulumi:"targetPort"`
+	// Target protocol of the instance can be http or https
+	TargetProtocol string `pulumi:"targetProtocol"`
+}
+
+// RuleScaleGroupHttpRoutingInput is an input type that accepts RuleScaleGroupHttpRoutingArgs and RuleScaleGroupHttpRoutingOutput values.
+// You can construct a concrete instance of `RuleScaleGroupHttpRoutingInput` via:
+//
+//	RuleScaleGroupHttpRoutingArgs{...}
+type RuleScaleGroupHttpRoutingInput interface {
+	pulumi.Input
+
+	ToRuleScaleGroupHttpRoutingOutput() RuleScaleGroupHttpRoutingOutput
+	ToRuleScaleGroupHttpRoutingOutputWithContext(context.Context) RuleScaleGroupHttpRoutingOutput
+}
+
+type RuleScaleGroupHttpRoutingArgs struct {
+	// Organization Identifier for the Entity
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Port on the proxy
+	SourcePort pulumi.IntPtrInput `pulumi:"sourcePort"`
+	// Source protocol of the proxy can be http or https
+	SourceProtocol pulumi.StringInput `pulumi:"sourceProtocol"`
+	// Port on the VM
+	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
+	// Target protocol of the instance can be http or https
+	TargetProtocol pulumi.StringInput `pulumi:"targetProtocol"`
+}
+
+func (RuleScaleGroupHttpRoutingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleScaleGroupHttpRouting)(nil)).Elem()
+}
+
+func (i RuleScaleGroupHttpRoutingArgs) ToRuleScaleGroupHttpRoutingOutput() RuleScaleGroupHttpRoutingOutput {
+	return i.ToRuleScaleGroupHttpRoutingOutputWithContext(context.Background())
+}
+
+func (i RuleScaleGroupHttpRoutingArgs) ToRuleScaleGroupHttpRoutingOutputWithContext(ctx context.Context) RuleScaleGroupHttpRoutingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScaleGroupHttpRoutingOutput)
+}
+
+// RuleScaleGroupHttpRoutingArrayInput is an input type that accepts RuleScaleGroupHttpRoutingArray and RuleScaleGroupHttpRoutingArrayOutput values.
+// You can construct a concrete instance of `RuleScaleGroupHttpRoutingArrayInput` via:
+//
+//	RuleScaleGroupHttpRoutingArray{ RuleScaleGroupHttpRoutingArgs{...} }
+type RuleScaleGroupHttpRoutingArrayInput interface {
+	pulumi.Input
+
+	ToRuleScaleGroupHttpRoutingArrayOutput() RuleScaleGroupHttpRoutingArrayOutput
+	ToRuleScaleGroupHttpRoutingArrayOutputWithContext(context.Context) RuleScaleGroupHttpRoutingArrayOutput
+}
+
+type RuleScaleGroupHttpRoutingArray []RuleScaleGroupHttpRoutingInput
+
+func (RuleScaleGroupHttpRoutingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleScaleGroupHttpRouting)(nil)).Elem()
+}
+
+func (i RuleScaleGroupHttpRoutingArray) ToRuleScaleGroupHttpRoutingArrayOutput() RuleScaleGroupHttpRoutingArrayOutput {
+	return i.ToRuleScaleGroupHttpRoutingArrayOutputWithContext(context.Background())
+}
+
+func (i RuleScaleGroupHttpRoutingArray) ToRuleScaleGroupHttpRoutingArrayOutputWithContext(ctx context.Context) RuleScaleGroupHttpRoutingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScaleGroupHttpRoutingArrayOutput)
+}
+
+type RuleScaleGroupHttpRoutingOutput struct{ *pulumi.OutputState }
+
+func (RuleScaleGroupHttpRoutingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleScaleGroupHttpRouting)(nil)).Elem()
+}
+
+func (o RuleScaleGroupHttpRoutingOutput) ToRuleScaleGroupHttpRoutingOutput() RuleScaleGroupHttpRoutingOutput {
+	return o
+}
+
+func (o RuleScaleGroupHttpRoutingOutput) ToRuleScaleGroupHttpRoutingOutputWithContext(ctx context.Context) RuleScaleGroupHttpRoutingOutput {
+	return o
+}
+
+// Organization Identifier for the Entity
+func (o RuleScaleGroupHttpRoutingOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttpRouting) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Port on the proxy
+func (o RuleScaleGroupHttpRoutingOutput) SourcePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttpRouting) *int { return v.SourcePort }).(pulumi.IntPtrOutput)
+}
+
+// Source protocol of the proxy can be http or https
+func (o RuleScaleGroupHttpRoutingOutput) SourceProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttpRouting) string { return v.SourceProtocol }).(pulumi.StringOutput)
+}
+
+// Port on the VM
+func (o RuleScaleGroupHttpRoutingOutput) TargetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttpRouting) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
+}
+
+// Target protocol of the instance can be http or https
+func (o RuleScaleGroupHttpRoutingOutput) TargetProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttpRouting) string { return v.TargetProtocol }).(pulumi.StringOutput)
+}
+
+type RuleScaleGroupHttpRoutingArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleScaleGroupHttpRoutingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleScaleGroupHttpRouting)(nil)).Elem()
+}
+
+func (o RuleScaleGroupHttpRoutingArrayOutput) ToRuleScaleGroupHttpRoutingArrayOutput() RuleScaleGroupHttpRoutingArrayOutput {
+	return o
+}
+
+func (o RuleScaleGroupHttpRoutingArrayOutput) ToRuleScaleGroupHttpRoutingArrayOutputWithContext(ctx context.Context) RuleScaleGroupHttpRoutingArrayOutput {
+	return o
+}
+
+func (o RuleScaleGroupHttpRoutingArrayOutput) Index(i pulumi.IntInput) RuleScaleGroupHttpRoutingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleScaleGroupHttpRouting {
+		return vs[0].([]RuleScaleGroupHttpRouting)[vs[1].(int)]
+	}).(RuleScaleGroupHttpRoutingOutput)
+}
+
+type RuleScaleGroupScaleGroup struct {
+	// Desired capacity of the Scaling Group
+	Desired int `pulumi:"desired"`
+	// ID of the Scaling Group
+	Id string `pulumi:"id"`
+	// Maximum capacity of the Scaling Group
+	Max int `pulumi:"max"`
+	// Minimum capacity of the Scaling Group
+	Min int `pulumi:"min"`
+	// Name of the Scaling Group
+	Name string `pulumi:"name"`
+	// On-demand capacity of the Scaling Group
+	OnDemand int `pulumi:"onDemand"`
+	// Region of the Scaling Group
+	Region *string `pulumi:"region"`
+	// Zone of the Scaling Group. Needed for GCP only
+	Zone *string `pulumi:"zone"`
+}
+
+// RuleScaleGroupScaleGroupInput is an input type that accepts RuleScaleGroupScaleGroupArgs and RuleScaleGroupScaleGroupOutput values.
+// You can construct a concrete instance of `RuleScaleGroupScaleGroupInput` via:
+//
+//	RuleScaleGroupScaleGroupArgs{...}
+type RuleScaleGroupScaleGroupInput interface {
+	pulumi.Input
+
+	ToRuleScaleGroupScaleGroupOutput() RuleScaleGroupScaleGroupOutput
+	ToRuleScaleGroupScaleGroupOutputWithContext(context.Context) RuleScaleGroupScaleGroupOutput
+}
+
+type RuleScaleGroupScaleGroupArgs struct {
+	// Desired capacity of the Scaling Group
+	Desired pulumi.IntInput `pulumi:"desired"`
+	// ID of the Scaling Group
+	Id pulumi.StringInput `pulumi:"id"`
+	// Maximum capacity of the Scaling Group
+	Max pulumi.IntInput `pulumi:"max"`
+	// Minimum capacity of the Scaling Group
+	Min pulumi.IntInput `pulumi:"min"`
+	// Name of the Scaling Group
+	Name pulumi.StringInput `pulumi:"name"`
+	// On-demand capacity of the Scaling Group
+	OnDemand pulumi.IntInput `pulumi:"onDemand"`
+	// Region of the Scaling Group
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Zone of the Scaling Group. Needed for GCP only
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (RuleScaleGroupScaleGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleScaleGroupScaleGroup)(nil)).Elem()
+}
+
+func (i RuleScaleGroupScaleGroupArgs) ToRuleScaleGroupScaleGroupOutput() RuleScaleGroupScaleGroupOutput {
+	return i.ToRuleScaleGroupScaleGroupOutputWithContext(context.Background())
+}
+
+func (i RuleScaleGroupScaleGroupArgs) ToRuleScaleGroupScaleGroupOutputWithContext(ctx context.Context) RuleScaleGroupScaleGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScaleGroupScaleGroupOutput)
+}
+
+func (i RuleScaleGroupScaleGroupArgs) ToRuleScaleGroupScaleGroupPtrOutput() RuleScaleGroupScaleGroupPtrOutput {
+	return i.ToRuleScaleGroupScaleGroupPtrOutputWithContext(context.Background())
+}
+
+func (i RuleScaleGroupScaleGroupArgs) ToRuleScaleGroupScaleGroupPtrOutputWithContext(ctx context.Context) RuleScaleGroupScaleGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScaleGroupScaleGroupOutput).ToRuleScaleGroupScaleGroupPtrOutputWithContext(ctx)
+}
+
+// RuleScaleGroupScaleGroupPtrInput is an input type that accepts RuleScaleGroupScaleGroupArgs, RuleScaleGroupScaleGroupPtr and RuleScaleGroupScaleGroupPtrOutput values.
+// You can construct a concrete instance of `RuleScaleGroupScaleGroupPtrInput` via:
+//
+//	        RuleScaleGroupScaleGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleScaleGroupScaleGroupPtrInput interface {
+	pulumi.Input
+
+	ToRuleScaleGroupScaleGroupPtrOutput() RuleScaleGroupScaleGroupPtrOutput
+	ToRuleScaleGroupScaleGroupPtrOutputWithContext(context.Context) RuleScaleGroupScaleGroupPtrOutput
+}
+
+type ruleScaleGroupScaleGroupPtrType RuleScaleGroupScaleGroupArgs
+
+func RuleScaleGroupScaleGroupPtr(v *RuleScaleGroupScaleGroupArgs) RuleScaleGroupScaleGroupPtrInput {
+	return (*ruleScaleGroupScaleGroupPtrType)(v)
+}
+
+func (*ruleScaleGroupScaleGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleScaleGroupScaleGroup)(nil)).Elem()
+}
+
+func (i *ruleScaleGroupScaleGroupPtrType) ToRuleScaleGroupScaleGroupPtrOutput() RuleScaleGroupScaleGroupPtrOutput {
+	return i.ToRuleScaleGroupScaleGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleScaleGroupScaleGroupPtrType) ToRuleScaleGroupScaleGroupPtrOutputWithContext(ctx context.Context) RuleScaleGroupScaleGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScaleGroupScaleGroupPtrOutput)
+}
+
+type RuleScaleGroupScaleGroupOutput struct{ *pulumi.OutputState }
+
+func (RuleScaleGroupScaleGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleScaleGroupScaleGroup)(nil)).Elem()
+}
+
+func (o RuleScaleGroupScaleGroupOutput) ToRuleScaleGroupScaleGroupOutput() RuleScaleGroupScaleGroupOutput {
+	return o
+}
+
+func (o RuleScaleGroupScaleGroupOutput) ToRuleScaleGroupScaleGroupOutputWithContext(ctx context.Context) RuleScaleGroupScaleGroupOutput {
+	return o
+}
+
+func (o RuleScaleGroupScaleGroupOutput) ToRuleScaleGroupScaleGroupPtrOutput() RuleScaleGroupScaleGroupPtrOutput {
+	return o.ToRuleScaleGroupScaleGroupPtrOutputWithContext(context.Background())
+}
+
+func (o RuleScaleGroupScaleGroupOutput) ToRuleScaleGroupScaleGroupPtrOutputWithContext(ctx context.Context) RuleScaleGroupScaleGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleScaleGroupScaleGroup) *RuleScaleGroupScaleGroup {
+		return &v
+	}).(RuleScaleGroupScaleGroupPtrOutput)
+}
+
+// Desired capacity of the Scaling Group
+func (o RuleScaleGroupScaleGroupOutput) Desired() pulumi.IntOutput {
+	return o.ApplyT(func(v RuleScaleGroupScaleGroup) int { return v.Desired }).(pulumi.IntOutput)
+}
+
+// ID of the Scaling Group
+func (o RuleScaleGroupScaleGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleScaleGroupScaleGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Maximum capacity of the Scaling Group
+func (o RuleScaleGroupScaleGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v RuleScaleGroupScaleGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// Minimum capacity of the Scaling Group
+func (o RuleScaleGroupScaleGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v RuleScaleGroupScaleGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+// Name of the Scaling Group
+func (o RuleScaleGroupScaleGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleScaleGroupScaleGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// On-demand capacity of the Scaling Group
+func (o RuleScaleGroupScaleGroupOutput) OnDemand() pulumi.IntOutput {
+	return o.ApplyT(func(v RuleScaleGroupScaleGroup) int { return v.OnDemand }).(pulumi.IntOutput)
+}
+
+// Region of the Scaling Group
+func (o RuleScaleGroupScaleGroupOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleScaleGroupScaleGroup) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Zone of the Scaling Group. Needed for GCP only
+func (o RuleScaleGroupScaleGroupOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleScaleGroupScaleGroup) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type RuleScaleGroupScaleGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleScaleGroupScaleGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleScaleGroupScaleGroup)(nil)).Elem()
+}
+
+func (o RuleScaleGroupScaleGroupPtrOutput) ToRuleScaleGroupScaleGroupPtrOutput() RuleScaleGroupScaleGroupPtrOutput {
+	return o
+}
+
+func (o RuleScaleGroupScaleGroupPtrOutput) ToRuleScaleGroupScaleGroupPtrOutputWithContext(ctx context.Context) RuleScaleGroupScaleGroupPtrOutput {
+	return o
+}
+
+func (o RuleScaleGroupScaleGroupPtrOutput) Elem() RuleScaleGroupScaleGroupOutput {
+	return o.ApplyT(func(v *RuleScaleGroupScaleGroup) RuleScaleGroupScaleGroup {
+		if v != nil {
+			return *v
+		}
+		var ret RuleScaleGroupScaleGroup
+		return ret
+	}).(RuleScaleGroupScaleGroupOutput)
+}
+
+// Desired capacity of the Scaling Group
+func (o RuleScaleGroupScaleGroupPtrOutput) Desired() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleScaleGroupScaleGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Desired
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the Scaling Group
+func (o RuleScaleGroupScaleGroupPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleScaleGroupScaleGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum capacity of the Scaling Group
+func (o RuleScaleGroupScaleGroupPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleScaleGroupScaleGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum capacity of the Scaling Group
+func (o RuleScaleGroupScaleGroupPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleScaleGroupScaleGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+// Name of the Scaling Group
+func (o RuleScaleGroupScaleGroupPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleScaleGroupScaleGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// On-demand capacity of the Scaling Group
+func (o RuleScaleGroupScaleGroupPtrOutput) OnDemand() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleScaleGroupScaleGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.OnDemand
+	}).(pulumi.IntPtrOutput)
+}
+
+// Region of the Scaling Group
+func (o RuleScaleGroupScaleGroupPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleScaleGroupScaleGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Zone of the Scaling Group. Needed for GCP only
+func (o RuleScaleGroupScaleGroupPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleScaleGroupScaleGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
 type RuleVmDepend struct {
 	// Number of seconds the rule should wait after warming up the dependent rule
 	DelayInSec *int `pulumi:"delayInSec"`
@@ -3943,6 +4709,617 @@ func (o GetRuleRdsTcpForwardRuleArrayOutput) Index(i pulumi.IntInput) GetRuleRds
 	}).(GetRuleRdsTcpForwardRuleOutput)
 }
 
+type GetRuleScaleGroupDepend struct {
+	// Number of seconds the rule should wait after warming up the dependent rule
+	DelayInSec *int `pulumi:"delayInSec"`
+	// Rule id of the dependent rule
+	RuleId int `pulumi:"ruleId"`
+}
+
+// GetRuleScaleGroupDependInput is an input type that accepts GetRuleScaleGroupDependArgs and GetRuleScaleGroupDependOutput values.
+// You can construct a concrete instance of `GetRuleScaleGroupDependInput` via:
+//
+//	GetRuleScaleGroupDependArgs{...}
+type GetRuleScaleGroupDependInput interface {
+	pulumi.Input
+
+	ToGetRuleScaleGroupDependOutput() GetRuleScaleGroupDependOutput
+	ToGetRuleScaleGroupDependOutputWithContext(context.Context) GetRuleScaleGroupDependOutput
+}
+
+type GetRuleScaleGroupDependArgs struct {
+	// Number of seconds the rule should wait after warming up the dependent rule
+	DelayInSec pulumi.IntPtrInput `pulumi:"delayInSec"`
+	// Rule id of the dependent rule
+	RuleId pulumi.IntInput `pulumi:"ruleId"`
+}
+
+func (GetRuleScaleGroupDependArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleScaleGroupDepend)(nil)).Elem()
+}
+
+func (i GetRuleScaleGroupDependArgs) ToGetRuleScaleGroupDependOutput() GetRuleScaleGroupDependOutput {
+	return i.ToGetRuleScaleGroupDependOutputWithContext(context.Background())
+}
+
+func (i GetRuleScaleGroupDependArgs) ToGetRuleScaleGroupDependOutputWithContext(ctx context.Context) GetRuleScaleGroupDependOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRuleScaleGroupDependOutput)
+}
+
+// GetRuleScaleGroupDependArrayInput is an input type that accepts GetRuleScaleGroupDependArray and GetRuleScaleGroupDependArrayOutput values.
+// You can construct a concrete instance of `GetRuleScaleGroupDependArrayInput` via:
+//
+//	GetRuleScaleGroupDependArray{ GetRuleScaleGroupDependArgs{...} }
+type GetRuleScaleGroupDependArrayInput interface {
+	pulumi.Input
+
+	ToGetRuleScaleGroupDependArrayOutput() GetRuleScaleGroupDependArrayOutput
+	ToGetRuleScaleGroupDependArrayOutputWithContext(context.Context) GetRuleScaleGroupDependArrayOutput
+}
+
+type GetRuleScaleGroupDependArray []GetRuleScaleGroupDependInput
+
+func (GetRuleScaleGroupDependArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRuleScaleGroupDepend)(nil)).Elem()
+}
+
+func (i GetRuleScaleGroupDependArray) ToGetRuleScaleGroupDependArrayOutput() GetRuleScaleGroupDependArrayOutput {
+	return i.ToGetRuleScaleGroupDependArrayOutputWithContext(context.Background())
+}
+
+func (i GetRuleScaleGroupDependArray) ToGetRuleScaleGroupDependArrayOutputWithContext(ctx context.Context) GetRuleScaleGroupDependArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRuleScaleGroupDependArrayOutput)
+}
+
+type GetRuleScaleGroupDependOutput struct{ *pulumi.OutputState }
+
+func (GetRuleScaleGroupDependOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleScaleGroupDepend)(nil)).Elem()
+}
+
+func (o GetRuleScaleGroupDependOutput) ToGetRuleScaleGroupDependOutput() GetRuleScaleGroupDependOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupDependOutput) ToGetRuleScaleGroupDependOutputWithContext(ctx context.Context) GetRuleScaleGroupDependOutput {
+	return o
+}
+
+// Number of seconds the rule should wait after warming up the dependent rule
+func (o GetRuleScaleGroupDependOutput) DelayInSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupDepend) *int { return v.DelayInSec }).(pulumi.IntPtrOutput)
+}
+
+// Rule id of the dependent rule
+func (o GetRuleScaleGroupDependOutput) RuleId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupDepend) int { return v.RuleId }).(pulumi.IntOutput)
+}
+
+type GetRuleScaleGroupDependArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRuleScaleGroupDependArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRuleScaleGroupDepend)(nil)).Elem()
+}
+
+func (o GetRuleScaleGroupDependArrayOutput) ToGetRuleScaleGroupDependArrayOutput() GetRuleScaleGroupDependArrayOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupDependArrayOutput) ToGetRuleScaleGroupDependArrayOutputWithContext(ctx context.Context) GetRuleScaleGroupDependArrayOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupDependArrayOutput) Index(i pulumi.IntInput) GetRuleScaleGroupDependOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRuleScaleGroupDepend {
+		return vs[0].([]GetRuleScaleGroupDepend)[vs[1].(int)]
+	}).(GetRuleScaleGroupDependOutput)
+}
+
+type GetRuleScaleGroupHttp struct {
+	// Health Check Details
+	Healths []GetRuleScaleGroupHttpHealth `pulumi:"healths"`
+	// Id of the proxy
+	ProxyId string `pulumi:"proxyId"`
+	// Routing configuration used to access the scaling group
+	Routings []GetRuleScaleGroupHttpRouting `pulumi:"routings"`
+}
+
+// GetRuleScaleGroupHttpInput is an input type that accepts GetRuleScaleGroupHttpArgs and GetRuleScaleGroupHttpOutput values.
+// You can construct a concrete instance of `GetRuleScaleGroupHttpInput` via:
+//
+//	GetRuleScaleGroupHttpArgs{...}
+type GetRuleScaleGroupHttpInput interface {
+	pulumi.Input
+
+	ToGetRuleScaleGroupHttpOutput() GetRuleScaleGroupHttpOutput
+	ToGetRuleScaleGroupHttpOutputWithContext(context.Context) GetRuleScaleGroupHttpOutput
+}
+
+type GetRuleScaleGroupHttpArgs struct {
+	// Health Check Details
+	Healths GetRuleScaleGroupHttpHealthArrayInput `pulumi:"healths"`
+	// Id of the proxy
+	ProxyId pulumi.StringInput `pulumi:"proxyId"`
+	// Routing configuration used to access the scaling group
+	Routings GetRuleScaleGroupHttpRoutingArrayInput `pulumi:"routings"`
+}
+
+func (GetRuleScaleGroupHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleScaleGroupHttp)(nil)).Elem()
+}
+
+func (i GetRuleScaleGroupHttpArgs) ToGetRuleScaleGroupHttpOutput() GetRuleScaleGroupHttpOutput {
+	return i.ToGetRuleScaleGroupHttpOutputWithContext(context.Background())
+}
+
+func (i GetRuleScaleGroupHttpArgs) ToGetRuleScaleGroupHttpOutputWithContext(ctx context.Context) GetRuleScaleGroupHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRuleScaleGroupHttpOutput)
+}
+
+// GetRuleScaleGroupHttpArrayInput is an input type that accepts GetRuleScaleGroupHttpArray and GetRuleScaleGroupHttpArrayOutput values.
+// You can construct a concrete instance of `GetRuleScaleGroupHttpArrayInput` via:
+//
+//	GetRuleScaleGroupHttpArray{ GetRuleScaleGroupHttpArgs{...} }
+type GetRuleScaleGroupHttpArrayInput interface {
+	pulumi.Input
+
+	ToGetRuleScaleGroupHttpArrayOutput() GetRuleScaleGroupHttpArrayOutput
+	ToGetRuleScaleGroupHttpArrayOutputWithContext(context.Context) GetRuleScaleGroupHttpArrayOutput
+}
+
+type GetRuleScaleGroupHttpArray []GetRuleScaleGroupHttpInput
+
+func (GetRuleScaleGroupHttpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRuleScaleGroupHttp)(nil)).Elem()
+}
+
+func (i GetRuleScaleGroupHttpArray) ToGetRuleScaleGroupHttpArrayOutput() GetRuleScaleGroupHttpArrayOutput {
+	return i.ToGetRuleScaleGroupHttpArrayOutputWithContext(context.Background())
+}
+
+func (i GetRuleScaleGroupHttpArray) ToGetRuleScaleGroupHttpArrayOutputWithContext(ctx context.Context) GetRuleScaleGroupHttpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRuleScaleGroupHttpArrayOutput)
+}
+
+type GetRuleScaleGroupHttpOutput struct{ *pulumi.OutputState }
+
+func (GetRuleScaleGroupHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleScaleGroupHttp)(nil)).Elem()
+}
+
+func (o GetRuleScaleGroupHttpOutput) ToGetRuleScaleGroupHttpOutput() GetRuleScaleGroupHttpOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupHttpOutput) ToGetRuleScaleGroupHttpOutputWithContext(ctx context.Context) GetRuleScaleGroupHttpOutput {
+	return o
+}
+
+// Health Check Details
+func (o GetRuleScaleGroupHttpOutput) Healths() GetRuleScaleGroupHttpHealthArrayOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttp) []GetRuleScaleGroupHttpHealth { return v.Healths }).(GetRuleScaleGroupHttpHealthArrayOutput)
+}
+
+// Id of the proxy
+func (o GetRuleScaleGroupHttpOutput) ProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttp) string { return v.ProxyId }).(pulumi.StringOutput)
+}
+
+// Routing configuration used to access the scaling group
+func (o GetRuleScaleGroupHttpOutput) Routings() GetRuleScaleGroupHttpRoutingArrayOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttp) []GetRuleScaleGroupHttpRouting { return v.Routings }).(GetRuleScaleGroupHttpRoutingArrayOutput)
+}
+
+type GetRuleScaleGroupHttpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRuleScaleGroupHttpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRuleScaleGroupHttp)(nil)).Elem()
+}
+
+func (o GetRuleScaleGroupHttpArrayOutput) ToGetRuleScaleGroupHttpArrayOutput() GetRuleScaleGroupHttpArrayOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupHttpArrayOutput) ToGetRuleScaleGroupHttpArrayOutputWithContext(ctx context.Context) GetRuleScaleGroupHttpArrayOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupHttpArrayOutput) Index(i pulumi.IntInput) GetRuleScaleGroupHttpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRuleScaleGroupHttp {
+		return vs[0].([]GetRuleScaleGroupHttp)[vs[1].(int)]
+	}).(GetRuleScaleGroupHttpOutput)
+}
+
+type GetRuleScaleGroupHttpHealth struct {
+	// API path to use for health check
+	Path *string `pulumi:"path"`
+	// Health check port on the VM
+	Port int `pulumi:"port"`
+	// Protocol can be http or https
+	Protocol string `pulumi:"protocol"`
+	// Lower limit for acceptable status code
+	StatusCodeFrom *int `pulumi:"statusCodeFrom"`
+	// Upper limit for acceptable status code
+	StatusCodeTo *int `pulumi:"statusCodeTo"`
+	// Health check timeout
+	Timeout *int `pulumi:"timeout"`
+}
+
+// GetRuleScaleGroupHttpHealthInput is an input type that accepts GetRuleScaleGroupHttpHealthArgs and GetRuleScaleGroupHttpHealthOutput values.
+// You can construct a concrete instance of `GetRuleScaleGroupHttpHealthInput` via:
+//
+//	GetRuleScaleGroupHttpHealthArgs{...}
+type GetRuleScaleGroupHttpHealthInput interface {
+	pulumi.Input
+
+	ToGetRuleScaleGroupHttpHealthOutput() GetRuleScaleGroupHttpHealthOutput
+	ToGetRuleScaleGroupHttpHealthOutputWithContext(context.Context) GetRuleScaleGroupHttpHealthOutput
+}
+
+type GetRuleScaleGroupHttpHealthArgs struct {
+	// API path to use for health check
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Health check port on the VM
+	Port pulumi.IntInput `pulumi:"port"`
+	// Protocol can be http or https
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Lower limit for acceptable status code
+	StatusCodeFrom pulumi.IntPtrInput `pulumi:"statusCodeFrom"`
+	// Upper limit for acceptable status code
+	StatusCodeTo pulumi.IntPtrInput `pulumi:"statusCodeTo"`
+	// Health check timeout
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (GetRuleScaleGroupHttpHealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleScaleGroupHttpHealth)(nil)).Elem()
+}
+
+func (i GetRuleScaleGroupHttpHealthArgs) ToGetRuleScaleGroupHttpHealthOutput() GetRuleScaleGroupHttpHealthOutput {
+	return i.ToGetRuleScaleGroupHttpHealthOutputWithContext(context.Background())
+}
+
+func (i GetRuleScaleGroupHttpHealthArgs) ToGetRuleScaleGroupHttpHealthOutputWithContext(ctx context.Context) GetRuleScaleGroupHttpHealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRuleScaleGroupHttpHealthOutput)
+}
+
+// GetRuleScaleGroupHttpHealthArrayInput is an input type that accepts GetRuleScaleGroupHttpHealthArray and GetRuleScaleGroupHttpHealthArrayOutput values.
+// You can construct a concrete instance of `GetRuleScaleGroupHttpHealthArrayInput` via:
+//
+//	GetRuleScaleGroupHttpHealthArray{ GetRuleScaleGroupHttpHealthArgs{...} }
+type GetRuleScaleGroupHttpHealthArrayInput interface {
+	pulumi.Input
+
+	ToGetRuleScaleGroupHttpHealthArrayOutput() GetRuleScaleGroupHttpHealthArrayOutput
+	ToGetRuleScaleGroupHttpHealthArrayOutputWithContext(context.Context) GetRuleScaleGroupHttpHealthArrayOutput
+}
+
+type GetRuleScaleGroupHttpHealthArray []GetRuleScaleGroupHttpHealthInput
+
+func (GetRuleScaleGroupHttpHealthArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRuleScaleGroupHttpHealth)(nil)).Elem()
+}
+
+func (i GetRuleScaleGroupHttpHealthArray) ToGetRuleScaleGroupHttpHealthArrayOutput() GetRuleScaleGroupHttpHealthArrayOutput {
+	return i.ToGetRuleScaleGroupHttpHealthArrayOutputWithContext(context.Background())
+}
+
+func (i GetRuleScaleGroupHttpHealthArray) ToGetRuleScaleGroupHttpHealthArrayOutputWithContext(ctx context.Context) GetRuleScaleGroupHttpHealthArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRuleScaleGroupHttpHealthArrayOutput)
+}
+
+type GetRuleScaleGroupHttpHealthOutput struct{ *pulumi.OutputState }
+
+func (GetRuleScaleGroupHttpHealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleScaleGroupHttpHealth)(nil)).Elem()
+}
+
+func (o GetRuleScaleGroupHttpHealthOutput) ToGetRuleScaleGroupHttpHealthOutput() GetRuleScaleGroupHttpHealthOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupHttpHealthOutput) ToGetRuleScaleGroupHttpHealthOutputWithContext(ctx context.Context) GetRuleScaleGroupHttpHealthOutput {
+	return o
+}
+
+// API path to use for health check
+func (o GetRuleScaleGroupHttpHealthOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttpHealth) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Health check port on the VM
+func (o GetRuleScaleGroupHttpHealthOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttpHealth) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Protocol can be http or https
+func (o GetRuleScaleGroupHttpHealthOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttpHealth) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Lower limit for acceptable status code
+func (o GetRuleScaleGroupHttpHealthOutput) StatusCodeFrom() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttpHealth) *int { return v.StatusCodeFrom }).(pulumi.IntPtrOutput)
+}
+
+// Upper limit for acceptable status code
+func (o GetRuleScaleGroupHttpHealthOutput) StatusCodeTo() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttpHealth) *int { return v.StatusCodeTo }).(pulumi.IntPtrOutput)
+}
+
+// Health check timeout
+func (o GetRuleScaleGroupHttpHealthOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttpHealth) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type GetRuleScaleGroupHttpHealthArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRuleScaleGroupHttpHealthArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRuleScaleGroupHttpHealth)(nil)).Elem()
+}
+
+func (o GetRuleScaleGroupHttpHealthArrayOutput) ToGetRuleScaleGroupHttpHealthArrayOutput() GetRuleScaleGroupHttpHealthArrayOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupHttpHealthArrayOutput) ToGetRuleScaleGroupHttpHealthArrayOutputWithContext(ctx context.Context) GetRuleScaleGroupHttpHealthArrayOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupHttpHealthArrayOutput) Index(i pulumi.IntInput) GetRuleScaleGroupHttpHealthOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRuleScaleGroupHttpHealth {
+		return vs[0].([]GetRuleScaleGroupHttpHealth)[vs[1].(int)]
+	}).(GetRuleScaleGroupHttpHealthOutput)
+}
+
+type GetRuleScaleGroupHttpRouting struct {
+	// Organization Identifier for the Entity
+	Action *string `pulumi:"action"`
+	// Port on the proxy
+	SourcePort *int `pulumi:"sourcePort"`
+	// Source protocol of the proxy can be http or https
+	SourceProtocol string `pulumi:"sourceProtocol"`
+	// Port on the VM
+	TargetPort *int `pulumi:"targetPort"`
+	// Target protocol of the instance can be http or https
+	TargetProtocol string `pulumi:"targetProtocol"`
+}
+
+// GetRuleScaleGroupHttpRoutingInput is an input type that accepts GetRuleScaleGroupHttpRoutingArgs and GetRuleScaleGroupHttpRoutingOutput values.
+// You can construct a concrete instance of `GetRuleScaleGroupHttpRoutingInput` via:
+//
+//	GetRuleScaleGroupHttpRoutingArgs{...}
+type GetRuleScaleGroupHttpRoutingInput interface {
+	pulumi.Input
+
+	ToGetRuleScaleGroupHttpRoutingOutput() GetRuleScaleGroupHttpRoutingOutput
+	ToGetRuleScaleGroupHttpRoutingOutputWithContext(context.Context) GetRuleScaleGroupHttpRoutingOutput
+}
+
+type GetRuleScaleGroupHttpRoutingArgs struct {
+	// Organization Identifier for the Entity
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Port on the proxy
+	SourcePort pulumi.IntPtrInput `pulumi:"sourcePort"`
+	// Source protocol of the proxy can be http or https
+	SourceProtocol pulumi.StringInput `pulumi:"sourceProtocol"`
+	// Port on the VM
+	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
+	// Target protocol of the instance can be http or https
+	TargetProtocol pulumi.StringInput `pulumi:"targetProtocol"`
+}
+
+func (GetRuleScaleGroupHttpRoutingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleScaleGroupHttpRouting)(nil)).Elem()
+}
+
+func (i GetRuleScaleGroupHttpRoutingArgs) ToGetRuleScaleGroupHttpRoutingOutput() GetRuleScaleGroupHttpRoutingOutput {
+	return i.ToGetRuleScaleGroupHttpRoutingOutputWithContext(context.Background())
+}
+
+func (i GetRuleScaleGroupHttpRoutingArgs) ToGetRuleScaleGroupHttpRoutingOutputWithContext(ctx context.Context) GetRuleScaleGroupHttpRoutingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRuleScaleGroupHttpRoutingOutput)
+}
+
+// GetRuleScaleGroupHttpRoutingArrayInput is an input type that accepts GetRuleScaleGroupHttpRoutingArray and GetRuleScaleGroupHttpRoutingArrayOutput values.
+// You can construct a concrete instance of `GetRuleScaleGroupHttpRoutingArrayInput` via:
+//
+//	GetRuleScaleGroupHttpRoutingArray{ GetRuleScaleGroupHttpRoutingArgs{...} }
+type GetRuleScaleGroupHttpRoutingArrayInput interface {
+	pulumi.Input
+
+	ToGetRuleScaleGroupHttpRoutingArrayOutput() GetRuleScaleGroupHttpRoutingArrayOutput
+	ToGetRuleScaleGroupHttpRoutingArrayOutputWithContext(context.Context) GetRuleScaleGroupHttpRoutingArrayOutput
+}
+
+type GetRuleScaleGroupHttpRoutingArray []GetRuleScaleGroupHttpRoutingInput
+
+func (GetRuleScaleGroupHttpRoutingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRuleScaleGroupHttpRouting)(nil)).Elem()
+}
+
+func (i GetRuleScaleGroupHttpRoutingArray) ToGetRuleScaleGroupHttpRoutingArrayOutput() GetRuleScaleGroupHttpRoutingArrayOutput {
+	return i.ToGetRuleScaleGroupHttpRoutingArrayOutputWithContext(context.Background())
+}
+
+func (i GetRuleScaleGroupHttpRoutingArray) ToGetRuleScaleGroupHttpRoutingArrayOutputWithContext(ctx context.Context) GetRuleScaleGroupHttpRoutingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRuleScaleGroupHttpRoutingArrayOutput)
+}
+
+type GetRuleScaleGroupHttpRoutingOutput struct{ *pulumi.OutputState }
+
+func (GetRuleScaleGroupHttpRoutingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleScaleGroupHttpRouting)(nil)).Elem()
+}
+
+func (o GetRuleScaleGroupHttpRoutingOutput) ToGetRuleScaleGroupHttpRoutingOutput() GetRuleScaleGroupHttpRoutingOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupHttpRoutingOutput) ToGetRuleScaleGroupHttpRoutingOutputWithContext(ctx context.Context) GetRuleScaleGroupHttpRoutingOutput {
+	return o
+}
+
+// Organization Identifier for the Entity
+func (o GetRuleScaleGroupHttpRoutingOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttpRouting) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Port on the proxy
+func (o GetRuleScaleGroupHttpRoutingOutput) SourcePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttpRouting) *int { return v.SourcePort }).(pulumi.IntPtrOutput)
+}
+
+// Source protocol of the proxy can be http or https
+func (o GetRuleScaleGroupHttpRoutingOutput) SourceProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttpRouting) string { return v.SourceProtocol }).(pulumi.StringOutput)
+}
+
+// Port on the VM
+func (o GetRuleScaleGroupHttpRoutingOutput) TargetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttpRouting) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
+}
+
+// Target protocol of the instance can be http or https
+func (o GetRuleScaleGroupHttpRoutingOutput) TargetProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttpRouting) string { return v.TargetProtocol }).(pulumi.StringOutput)
+}
+
+type GetRuleScaleGroupHttpRoutingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRuleScaleGroupHttpRoutingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRuleScaleGroupHttpRouting)(nil)).Elem()
+}
+
+func (o GetRuleScaleGroupHttpRoutingArrayOutput) ToGetRuleScaleGroupHttpRoutingArrayOutput() GetRuleScaleGroupHttpRoutingArrayOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupHttpRoutingArrayOutput) ToGetRuleScaleGroupHttpRoutingArrayOutputWithContext(ctx context.Context) GetRuleScaleGroupHttpRoutingArrayOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupHttpRoutingArrayOutput) Index(i pulumi.IntInput) GetRuleScaleGroupHttpRoutingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRuleScaleGroupHttpRouting {
+		return vs[0].([]GetRuleScaleGroupHttpRouting)[vs[1].(int)]
+	}).(GetRuleScaleGroupHttpRoutingOutput)
+}
+
+type GetRuleScaleGroupScaleGroup struct {
+	// Desired capacity of the Scaling Group
+	Desired int `pulumi:"desired"`
+	// ID of the Scaling Group
+	Id string `pulumi:"id"`
+	// Maximum capacity of the Scaling Group
+	Max int `pulumi:"max"`
+	// Minimum capacity of the Scaling Group
+	Min int `pulumi:"min"`
+	// Name of the Scaling Group
+	Name string `pulumi:"name"`
+	// On-demand capacity of the Scaling Group
+	OnDemand int `pulumi:"onDemand"`
+	// Region of the Scaling Group
+	Region *string `pulumi:"region"`
+	// Zone of the Scaling Group. Needed for GCP only
+	Zone *string `pulumi:"zone"`
+}
+
+// GetRuleScaleGroupScaleGroupInput is an input type that accepts GetRuleScaleGroupScaleGroupArgs and GetRuleScaleGroupScaleGroupOutput values.
+// You can construct a concrete instance of `GetRuleScaleGroupScaleGroupInput` via:
+//
+//	GetRuleScaleGroupScaleGroupArgs{...}
+type GetRuleScaleGroupScaleGroupInput interface {
+	pulumi.Input
+
+	ToGetRuleScaleGroupScaleGroupOutput() GetRuleScaleGroupScaleGroupOutput
+	ToGetRuleScaleGroupScaleGroupOutputWithContext(context.Context) GetRuleScaleGroupScaleGroupOutput
+}
+
+type GetRuleScaleGroupScaleGroupArgs struct {
+	// Desired capacity of the Scaling Group
+	Desired pulumi.IntInput `pulumi:"desired"`
+	// ID of the Scaling Group
+	Id pulumi.StringInput `pulumi:"id"`
+	// Maximum capacity of the Scaling Group
+	Max pulumi.IntInput `pulumi:"max"`
+	// Minimum capacity of the Scaling Group
+	Min pulumi.IntInput `pulumi:"min"`
+	// Name of the Scaling Group
+	Name pulumi.StringInput `pulumi:"name"`
+	// On-demand capacity of the Scaling Group
+	OnDemand pulumi.IntInput `pulumi:"onDemand"`
+	// Region of the Scaling Group
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Zone of the Scaling Group. Needed for GCP only
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (GetRuleScaleGroupScaleGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleScaleGroupScaleGroup)(nil)).Elem()
+}
+
+func (i GetRuleScaleGroupScaleGroupArgs) ToGetRuleScaleGroupScaleGroupOutput() GetRuleScaleGroupScaleGroupOutput {
+	return i.ToGetRuleScaleGroupScaleGroupOutputWithContext(context.Background())
+}
+
+func (i GetRuleScaleGroupScaleGroupArgs) ToGetRuleScaleGroupScaleGroupOutputWithContext(ctx context.Context) GetRuleScaleGroupScaleGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRuleScaleGroupScaleGroupOutput)
+}
+
+type GetRuleScaleGroupScaleGroupOutput struct{ *pulumi.OutputState }
+
+func (GetRuleScaleGroupScaleGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleScaleGroupScaleGroup)(nil)).Elem()
+}
+
+func (o GetRuleScaleGroupScaleGroupOutput) ToGetRuleScaleGroupScaleGroupOutput() GetRuleScaleGroupScaleGroupOutput {
+	return o
+}
+
+func (o GetRuleScaleGroupScaleGroupOutput) ToGetRuleScaleGroupScaleGroupOutputWithContext(ctx context.Context) GetRuleScaleGroupScaleGroupOutput {
+	return o
+}
+
+// Desired capacity of the Scaling Group
+func (o GetRuleScaleGroupScaleGroupOutput) Desired() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupScaleGroup) int { return v.Desired }).(pulumi.IntOutput)
+}
+
+// ID of the Scaling Group
+func (o GetRuleScaleGroupScaleGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupScaleGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Maximum capacity of the Scaling Group
+func (o GetRuleScaleGroupScaleGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupScaleGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// Minimum capacity of the Scaling Group
+func (o GetRuleScaleGroupScaleGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupScaleGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+// Name of the Scaling Group
+func (o GetRuleScaleGroupScaleGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupScaleGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// On-demand capacity of the Scaling Group
+func (o GetRuleScaleGroupScaleGroupOutput) OnDemand() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupScaleGroup) int { return v.OnDemand }).(pulumi.IntOutput)
+}
+
+// Region of the Scaling Group
+func (o GetRuleScaleGroupScaleGroupOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupScaleGroup) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Zone of the Scaling Group. Needed for GCP only
+func (o GetRuleScaleGroupScaleGroupOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupScaleGroup) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
 type GetRuleVmDepend struct {
 	// Number of seconds the rule should wait after warming up the dependent rule
 	DelayInSec *int `pulumi:"delayInSec"`
@@ -5196,6 +6573,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRdsTcpArrayInput)(nil)).Elem(), RuleRdsTcpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRdsTcpForwardRuleInput)(nil)).Elem(), RuleRdsTcpForwardRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRdsTcpForwardRuleArrayInput)(nil)).Elem(), RuleRdsTcpForwardRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleScaleGroupDependInput)(nil)).Elem(), RuleScaleGroupDependArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleScaleGroupDependArrayInput)(nil)).Elem(), RuleScaleGroupDependArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleScaleGroupHttpInput)(nil)).Elem(), RuleScaleGroupHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleScaleGroupHttpArrayInput)(nil)).Elem(), RuleScaleGroupHttpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleScaleGroupHttpHealthInput)(nil)).Elem(), RuleScaleGroupHttpHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleScaleGroupHttpHealthArrayInput)(nil)).Elem(), RuleScaleGroupHttpHealthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleScaleGroupHttpRoutingInput)(nil)).Elem(), RuleScaleGroupHttpRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleScaleGroupHttpRoutingArrayInput)(nil)).Elem(), RuleScaleGroupHttpRoutingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleScaleGroupScaleGroupInput)(nil)).Elem(), RuleScaleGroupScaleGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleScaleGroupScaleGroupPtrInput)(nil)).Elem(), RuleScaleGroupScaleGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleVmDependInput)(nil)).Elem(), RuleVmDependArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleVmDependArrayInput)(nil)).Elem(), RuleVmDependArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleVmFilterInput)(nil)).Elem(), RuleVmFilterArgs{})
@@ -5237,6 +6624,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleRdsTcpArrayInput)(nil)).Elem(), GetRuleRdsTcpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleRdsTcpForwardRuleInput)(nil)).Elem(), GetRuleRdsTcpForwardRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleRdsTcpForwardRuleArrayInput)(nil)).Elem(), GetRuleRdsTcpForwardRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleScaleGroupDependInput)(nil)).Elem(), GetRuleScaleGroupDependArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleScaleGroupDependArrayInput)(nil)).Elem(), GetRuleScaleGroupDependArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleScaleGroupHttpInput)(nil)).Elem(), GetRuleScaleGroupHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleScaleGroupHttpArrayInput)(nil)).Elem(), GetRuleScaleGroupHttpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleScaleGroupHttpHealthInput)(nil)).Elem(), GetRuleScaleGroupHttpHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleScaleGroupHttpHealthArrayInput)(nil)).Elem(), GetRuleScaleGroupHttpHealthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleScaleGroupHttpRoutingInput)(nil)).Elem(), GetRuleScaleGroupHttpRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleScaleGroupHttpRoutingArrayInput)(nil)).Elem(), GetRuleScaleGroupHttpRoutingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleScaleGroupScaleGroupInput)(nil)).Elem(), GetRuleScaleGroupScaleGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleVmDependInput)(nil)).Elem(), GetRuleVmDependArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleVmDependArrayInput)(nil)).Elem(), GetRuleVmDependArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleVmFilterInput)(nil)).Elem(), GetRuleVmFilterArgs{})
@@ -5278,6 +6674,16 @@ func init() {
 	pulumi.RegisterOutputType(RuleRdsTcpArrayOutput{})
 	pulumi.RegisterOutputType(RuleRdsTcpForwardRuleOutput{})
 	pulumi.RegisterOutputType(RuleRdsTcpForwardRuleArrayOutput{})
+	pulumi.RegisterOutputType(RuleScaleGroupDependOutput{})
+	pulumi.RegisterOutputType(RuleScaleGroupDependArrayOutput{})
+	pulumi.RegisterOutputType(RuleScaleGroupHttpOutput{})
+	pulumi.RegisterOutputType(RuleScaleGroupHttpArrayOutput{})
+	pulumi.RegisterOutputType(RuleScaleGroupHttpHealthOutput{})
+	pulumi.RegisterOutputType(RuleScaleGroupHttpHealthArrayOutput{})
+	pulumi.RegisterOutputType(RuleScaleGroupHttpRoutingOutput{})
+	pulumi.RegisterOutputType(RuleScaleGroupHttpRoutingArrayOutput{})
+	pulumi.RegisterOutputType(RuleScaleGroupScaleGroupOutput{})
+	pulumi.RegisterOutputType(RuleScaleGroupScaleGroupPtrOutput{})
 	pulumi.RegisterOutputType(RuleVmDependOutput{})
 	pulumi.RegisterOutputType(RuleVmDependArrayOutput{})
 	pulumi.RegisterOutputType(RuleVmFilterOutput{})
@@ -5319,6 +6725,15 @@ func init() {
 	pulumi.RegisterOutputType(GetRuleRdsTcpArrayOutput{})
 	pulumi.RegisterOutputType(GetRuleRdsTcpForwardRuleOutput{})
 	pulumi.RegisterOutputType(GetRuleRdsTcpForwardRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetRuleScaleGroupDependOutput{})
+	pulumi.RegisterOutputType(GetRuleScaleGroupDependArrayOutput{})
+	pulumi.RegisterOutputType(GetRuleScaleGroupHttpOutput{})
+	pulumi.RegisterOutputType(GetRuleScaleGroupHttpArrayOutput{})
+	pulumi.RegisterOutputType(GetRuleScaleGroupHttpHealthOutput{})
+	pulumi.RegisterOutputType(GetRuleScaleGroupHttpHealthArrayOutput{})
+	pulumi.RegisterOutputType(GetRuleScaleGroupHttpRoutingOutput{})
+	pulumi.RegisterOutputType(GetRuleScaleGroupHttpRoutingArrayOutput{})
+	pulumi.RegisterOutputType(GetRuleScaleGroupScaleGroupOutput{})
 	pulumi.RegisterOutputType(GetRuleVmDependOutput{})
 	pulumi.RegisterOutputType(GetRuleVmDependArrayOutput{})
 	pulumi.RegisterOutputType(GetRuleVmFilterOutput{})

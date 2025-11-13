@@ -35,7 +35,9 @@ type LookupDefaultNotificationTemplateSetArgs struct {
 	// Type of channel (e.g. SLACK, EMAIL, etc.)
 	NotificationChannelType string `pulumi:"notificationChannelType"`
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
-	NotificationEntity string `pulumi:"notificationEntity"`
+	NotificationEntity string  `pulumi:"notificationEntity"`
+	Org                *string `pulumi:"org"`
+	Project            *string `pulumi:"project"`
 	// Key-value tags
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -59,7 +61,9 @@ type LookupDefaultNotificationTemplateSetResult struct {
 	// Type of channel (e.g. SLACK, EMAIL, etc.)
 	NotificationChannelType string `pulumi:"notificationChannelType"`
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
-	NotificationEntity string `pulumi:"notificationEntity"`
+	NotificationEntity string  `pulumi:"notificationEntity"`
+	Org                *string `pulumi:"org"`
+	Project            *string `pulumi:"project"`
 	// Key-value tags
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -86,7 +90,9 @@ type LookupDefaultNotificationTemplateSetOutputArgs struct {
 	// Type of channel (e.g. SLACK, EMAIL, etc.)
 	NotificationChannelType pulumi.StringInput `pulumi:"notificationChannelType"`
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
-	NotificationEntity pulumi.StringInput `pulumi:"notificationEntity"`
+	NotificationEntity pulumi.StringInput    `pulumi:"notificationEntity"`
+	Org                pulumi.StringPtrInput `pulumi:"org"`
+	Project            pulumi.StringPtrInput `pulumi:"project"`
 	// Key-value tags
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
@@ -155,6 +161,14 @@ func (o LookupDefaultNotificationTemplateSetResultOutput) NotificationChannelTyp
 // Type of the entity (e.g. PIPELINE, SERVICE, etc.)
 func (o LookupDefaultNotificationTemplateSetResultOutput) NotificationEntity() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDefaultNotificationTemplateSetResult) string { return v.NotificationEntity }).(pulumi.StringOutput)
+}
+
+func (o LookupDefaultNotificationTemplateSetResultOutput) Org() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDefaultNotificationTemplateSetResult) *string { return v.Org }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupDefaultNotificationTemplateSetResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDefaultNotificationTemplateSetResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // Key-value tags

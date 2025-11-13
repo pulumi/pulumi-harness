@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *         - stage:
  *             name: dep
  *             identifier: dep
- *             description: ""
+ *             description: \"\"
  *             type: Deployment
  *             spec:
  *                 serviceConfig:

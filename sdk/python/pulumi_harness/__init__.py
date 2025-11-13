@@ -130,6 +130,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "autostopping/ruleScaleGroup",
+  "fqn": "pulumi_harness.autostopping",
+  "classes": {
+   "harness:autostopping/ruleScaleGroup:RuleScaleGroup": "RuleScaleGroup"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "autostopping/ruleVm",
   "fqn": "pulumi_harness.autostopping",
   "classes": {

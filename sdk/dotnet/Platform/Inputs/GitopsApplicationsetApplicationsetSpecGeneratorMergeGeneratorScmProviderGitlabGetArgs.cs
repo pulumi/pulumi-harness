@@ -25,6 +25,12 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? Api { get; set; }
 
         /// <summary>
+        /// Reference to a ConfigMap containing a CA certificate for self-signed GitLab instances.
+        /// </summary>
+        [Input("caRef")]
+        public Input<Inputs.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderGitlabCaRefGetArgs>? CaRef { get; set; }
+
+        /// <summary>
         /// Gitlab group to scan. You can use either the project id (recommended) or the full namespaced path.
         /// </summary>
         [Input("group", required: true)]

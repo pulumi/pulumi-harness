@@ -23,6 +23,8 @@ import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleEcsPlainArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleRdsPlainArgs;
+import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupPlainArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleVmPlainArgs;
 import com.pulumi.harness.autostopping.inputs.GetScheduleArgs;
@@ -34,6 +36,7 @@ import com.pulumi.harness.autostopping.outputs.GetAzureProxyResult;
 import com.pulumi.harness.autostopping.outputs.GetGcpProxyResult;
 import com.pulumi.harness.autostopping.outputs.GetRuleEcsResult;
 import com.pulumi.harness.autostopping.outputs.GetRuleRdsResult;
+import com.pulumi.harness.autostopping.outputs.GetRuleScaleGroupResult;
 import com.pulumi.harness.autostopping.outputs.GetRuleVmResult;
 import com.pulumi.harness.autostopping.outputs.GetScheduleResult;
 import java.util.concurrent.CompletableFuture;
@@ -353,6 +356,51 @@ public final class AutostoppingFunctions {
      */
     public static CompletableFuture<GetRuleRdsResult> getRuleRdsPlain(GetRuleRdsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleRds:getRuleRds", TypeShape.of(GetRuleRdsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRuleScaleGroupResult> getRuleScaleGroup(GetRuleScaleGroupArgs args) {
+        return getRuleScaleGroup(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetRuleScaleGroupResult> getRuleScaleGroupPlain(GetRuleScaleGroupPlainArgs args) {
+        return getRuleScaleGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRuleScaleGroupResult> getRuleScaleGroup(GetRuleScaleGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", TypeShape.of(GetRuleScaleGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRuleScaleGroupResult> getRuleScaleGroup(GetRuleScaleGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", TypeShape.of(GetRuleScaleGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetRuleScaleGroupResult> getRuleScaleGroupPlain(GetRuleScaleGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", TypeShape.of(GetRuleScaleGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness Variable.

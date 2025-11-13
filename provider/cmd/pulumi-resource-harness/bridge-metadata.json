@@ -97,6 +97,33 @@
                     }
                 }
             },
+            "harness_autostopping_rule_scale_group": {
+                "current": "harness:autostopping/ruleScaleGroup:RuleScaleGroup",
+                "fields": {
+                    "custom_domains": {
+                        "maxItemsOne": false
+                    },
+                    "depends": {
+                        "maxItemsOne": false
+                    },
+                    "http": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "health": {
+                                    "maxItemsOne": false
+                                },
+                                "routing": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "scale_group": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "harness_autostopping_rule_vm": {
                 "current": "harness:autostopping/ruleVm:RuleVm",
                 "fields": {
@@ -5220,6 +5247,9 @@
                                                                                                                         "maxItemsOne": true,
                                                                                                                         "elem": {
                                                                                                                             "fields": {
+                                                                                                                                "ca_ref": {
+                                                                                                                                    "maxItemsOne": true
+                                                                                                                                },
                                                                                                                                 "token_ref": {
                                                                                                                                     "maxItemsOne": true
                                                                                                                                 }
@@ -6879,6 +6909,9 @@
                                                                                                                         "maxItemsOne": true,
                                                                                                                         "elem": {
                                                                                                                             "fields": {
+                                                                                                                                "ca_ref": {
+                                                                                                                                    "maxItemsOne": true
+                                                                                                                                },
                                                                                                                                 "token_ref": {
                                                                                                                                     "maxItemsOne": true
                                                                                                                                 }
@@ -7658,6 +7691,9 @@
                                                                                                 "maxItemsOne": true,
                                                                                                 "elem": {
                                                                                                     "fields": {
+                                                                                                        "ca_ref": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        },
                                                                                                         "token_ref": {
                                                                                                             "maxItemsOne": true
                                                                                                         }
@@ -10200,6 +10236,9 @@
                                                                                                                         "maxItemsOne": true,
                                                                                                                         "elem": {
                                                                                                                             "fields": {
+                                                                                                                                "ca_ref": {
+                                                                                                                                    "maxItemsOne": true
+                                                                                                                                },
                                                                                                                                 "token_ref": {
                                                                                                                                     "maxItemsOne": true
                                                                                                                                 }
@@ -11859,6 +11898,9 @@
                                                                                                                         "maxItemsOne": true,
                                                                                                                         "elem": {
                                                                                                                             "fields": {
+                                                                                                                                "ca_ref": {
+                                                                                                                                    "maxItemsOne": true
+                                                                                                                                },
                                                                                                                                 "token_ref": {
                                                                                                                                     "maxItemsOne": true
                                                                                                                                 }
@@ -12638,6 +12680,9 @@
                                                                                                 "maxItemsOne": true,
                                                                                                 "elem": {
                                                                                                     "fields": {
+                                                                                                        "ca_ref": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        },
                                                                                                         "token_ref": {
                                                                                                             "maxItemsOne": true
                                                                                                         }
@@ -13417,6 +13462,9 @@
                                                                         "maxItemsOne": true,
                                                                         "elem": {
                                                                             "fields": {
+                                                                                "ca_ref": {
+                                                                                    "maxItemsOne": true
+                                                                                },
                                                                                 "token_ref": {
                                                                                     "maxItemsOne": true
                                                                                 }
@@ -15438,6 +15486,33 @@
                     }
                 }
             },
+            "harness_autostopping_rule_scale_group": {
+                "current": "harness:autostopping/getRuleScaleGroup:getRuleScaleGroup",
+                "fields": {
+                    "custom_domains": {
+                        "maxItemsOne": false
+                    },
+                    "depends": {
+                        "maxItemsOne": false
+                    },
+                    "http": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "health": {
+                                    "maxItemsOne": false
+                                },
+                                "routing": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "scale_group": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "harness_autostopping_rule_vm": {
                 "current": "harness:autostopping/getRuleVm:getRuleVm",
                 "fields": {
@@ -15866,7 +15941,14 @@
                         "elem": {
                             "fields": {
                                 "notification_event_configs": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entity_identifiers": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -17525,6 +17607,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "entity_identifiers": {
+                                                "maxItemsOne": false
+                                            },
                                             "notification_event_data": {
                                                 "maxItemsOne": false,
                                                 "elem": {

@@ -61,6 +61,8 @@ public final class GetDefaultNotificationTemplateSetResult {
      * 
      */
     private String notificationEntity;
+    private @Nullable String org;
+    private @Nullable String project;
     /**
      * @return Key-value tags
      * 
@@ -131,6 +133,12 @@ public final class GetDefaultNotificationTemplateSetResult {
     public String notificationEntity() {
         return this.notificationEntity;
     }
+    public Optional<String> org() {
+        return Optional.ofNullable(this.org);
+    }
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
+    }
     /**
      * @return Key-value tags
      * 
@@ -157,6 +165,8 @@ public final class GetDefaultNotificationTemplateSetResult {
         private String name;
         private String notificationChannelType;
         private String notificationEntity;
+        private @Nullable String org;
+        private @Nullable String project;
         private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetDefaultNotificationTemplateSetResult defaults) {
@@ -170,6 +180,8 @@ public final class GetDefaultNotificationTemplateSetResult {
     	      this.name = defaults.name;
     	      this.notificationChannelType = defaults.notificationChannelType;
     	      this.notificationEntity = defaults.notificationEntity;
+    	      this.org = defaults.org;
+    	      this.project = defaults.project;
     	      this.tags = defaults.tags;
         }
 
@@ -247,6 +259,18 @@ public final class GetDefaultNotificationTemplateSetResult {
             return this;
         }
         @CustomType.Setter
+        public Builder org(@Nullable String org) {
+
+            this.org = org;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder project(@Nullable String project) {
+
+            this.project = project;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
@@ -263,6 +287,8 @@ public final class GetDefaultNotificationTemplateSetResult {
             _resultValue.name = name;
             _resultValue.notificationChannelType = notificationChannelType;
             _resultValue.notificationEntity = notificationEntity;
+            _resultValue.org = org;
+            _resultValue.project = project;
             _resultValue.tags = tags;
             return _resultValue;
         }

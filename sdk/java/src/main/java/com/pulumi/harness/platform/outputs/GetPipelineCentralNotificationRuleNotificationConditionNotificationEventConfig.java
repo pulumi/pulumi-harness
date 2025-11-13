@@ -13,11 +13,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
+    private @Nullable List<String> entityIdentifiers;
     private String notificationEntity;
     private String notificationEvent;
     private @Nullable List<GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData> notificationEventDatas;
 
     private GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig() {}
+    public List<String> entityIdentifiers() {
+        return this.entityIdentifiers == null ? List.of() : this.entityIdentifiers;
+    }
     public String notificationEntity() {
         return this.notificationEntity;
     }
@@ -37,17 +41,28 @@ public final class GetPipelineCentralNotificationRuleNotificationConditionNotifi
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> entityIdentifiers;
         private String notificationEntity;
         private String notificationEvent;
         private @Nullable List<GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData> notificationEventDatas;
         public Builder() {}
         public Builder(GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.entityIdentifiers = defaults.entityIdentifiers;
     	      this.notificationEntity = defaults.notificationEntity;
     	      this.notificationEvent = defaults.notificationEvent;
     	      this.notificationEventDatas = defaults.notificationEventDatas;
         }
 
+        @CustomType.Setter
+        public Builder entityIdentifiers(@Nullable List<String> entityIdentifiers) {
+
+            this.entityIdentifiers = entityIdentifiers;
+            return this;
+        }
+        public Builder entityIdentifiers(String... entityIdentifiers) {
+            return entityIdentifiers(List.of(entityIdentifiers));
+        }
         @CustomType.Setter
         public Builder notificationEntity(String notificationEntity) {
             if (notificationEntity == null) {
@@ -75,6 +90,7 @@ public final class GetPipelineCentralNotificationRuleNotificationConditionNotifi
         }
         public GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig build() {
             final var _resultValue = new GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig();
+            _resultValue.entityIdentifiers = entityIdentifiers;
             _resultValue.notificationEntity = notificationEntity;
             _resultValue.notificationEvent = notificationEvent;
             _resultValue.notificationEventDatas = notificationEventDatas;

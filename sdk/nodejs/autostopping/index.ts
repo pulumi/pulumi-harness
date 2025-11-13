@@ -65,6 +65,11 @@ export const getRuleRds: typeof import("./getRuleRds").getRuleRds = null as any;
 export const getRuleRdsOutput: typeof import("./getRuleRds").getRuleRdsOutput = null as any;
 utilities.lazyLoad(exports, ["getRuleRds","getRuleRdsOutput"], () => require("./getRuleRds"));
 
+export { GetRuleScaleGroupArgs, GetRuleScaleGroupResult, GetRuleScaleGroupOutputArgs } from "./getRuleScaleGroup";
+export const getRuleScaleGroup: typeof import("./getRuleScaleGroup").getRuleScaleGroup = null as any;
+export const getRuleScaleGroupOutput: typeof import("./getRuleScaleGroup").getRuleScaleGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getRuleScaleGroup","getRuleScaleGroupOutput"], () => require("./getRuleScaleGroup"));
+
 export { GetRuleVmArgs, GetRuleVmResult, GetRuleVmOutputArgs } from "./getRuleVm";
 export const getRuleVm: typeof import("./getRuleVm").getRuleVm = null as any;
 export const getRuleVmOutput: typeof import("./getRuleVm").getRuleVmOutput = null as any;
@@ -84,6 +89,11 @@ export { RuleRdsArgs, RuleRdsState } from "./ruleRds";
 export type RuleRds = import("./ruleRds").RuleRds;
 export const RuleRds: typeof import("./ruleRds").RuleRds = null as any;
 utilities.lazyLoad(exports, ["RuleRds"], () => require("./ruleRds"));
+
+export { RuleScaleGroupArgs, RuleScaleGroupState } from "./ruleScaleGroup";
+export type RuleScaleGroup = import("./ruleScaleGroup").RuleScaleGroup;
+export const RuleScaleGroup: typeof import("./ruleScaleGroup").RuleScaleGroup = null as any;
+utilities.lazyLoad(exports, ["RuleScaleGroup"], () => require("./ruleScaleGroup"));
 
 export { RuleVmArgs, RuleVmState } from "./ruleVm";
 export type RuleVm = import("./ruleVm").RuleVm;
@@ -114,6 +124,8 @@ const _module = {
                 return new RuleEcs(name, <any>undefined, { urn })
             case "harness:autostopping/ruleRds:RuleRds":
                 return new RuleRds(name, <any>undefined, { urn })
+            case "harness:autostopping/ruleScaleGroup:RuleScaleGroup":
+                return new RuleScaleGroup(name, <any>undefined, { urn })
             case "harness:autostopping/ruleVm:RuleVm":
                 return new RuleVm(name, <any>undefined, { urn })
             case "harness:autostopping/schedule:Schedule":
@@ -130,5 +142,6 @@ pulumi.runtime.registerResourceModule("harness", "autostopping/azureProxy", _mod
 pulumi.runtime.registerResourceModule("harness", "autostopping/gcpProxy", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/ruleEcs", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/ruleRds", _module)
+pulumi.runtime.registerResourceModule("harness", "autostopping/ruleScaleGroup", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/ruleVm", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/schedule", _module)

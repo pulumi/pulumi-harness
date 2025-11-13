@@ -18,6 +18,8 @@ export function getDefaultNotificationTemplateSet(args: GetDefaultNotificationTe
         "name": args.name,
         "notificationChannelType": args.notificationChannelType,
         "notificationEntity": args.notificationEntity,
+        "org": args.org,
+        "project": args.project,
         "tags": args.tags,
     }, opts);
 }
@@ -50,6 +52,8 @@ export interface GetDefaultNotificationTemplateSetArgs {
      * Type of the entity (e.g. PIPELINE, SERVICE, etc.)
      */
     notificationEntity: string;
+    org?: string;
+    project?: string;
     /**
      * Key-value tags
      */
@@ -96,6 +100,8 @@ export interface GetDefaultNotificationTemplateSetResult {
      * Type of the entity (e.g. PIPELINE, SERVICE, etc.)
      */
     readonly notificationEntity: string;
+    readonly org?: string;
+    readonly project?: string;
     /**
      * Key-value tags
      */
@@ -113,6 +119,8 @@ export function getDefaultNotificationTemplateSetOutput(args: GetDefaultNotifica
         "name": args.name,
         "notificationChannelType": args.notificationChannelType,
         "notificationEntity": args.notificationEntity,
+        "org": args.org,
+        "project": args.project,
         "tags": args.tags,
     }, opts);
 }
@@ -145,6 +153,8 @@ export interface GetDefaultNotificationTemplateSetOutputArgs {
      * Type of the entity (e.g. PIPELINE, SERVICE, etc.)
      */
     notificationEntity: pulumi.Input<string>;
+    org?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Key-value tags
      */

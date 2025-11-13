@@ -8,6 +8,96 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness Notification Rule for Pipeline
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const projExample = new harness.platform.PipelineCentralNotificationRule("projExample", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     status: "ENABLED",
+ *     notificationChannelRefs: ["account.channel"],
+ *     org: "default",
+ *     project: "proj0",
+ *     notificationConditions: [{
+ *         conditionName: "pipelineRuleProjectConditionName",
+ *         notificationEventConfigs: [{
+ *             notificationEntity: "PIPELINE",
+ *             notificationEvent: "PIPELINE_START",
+ *             notificationEventDatas: [{
+ *                 type: "PIPELINE",
+ *                 scopeIdentifiers: [],
+ *             }],
+ *             entityIdentifiers: [],
+ *         }],
+ *     }],
+ * });
+ * const orgExample = new harness.platform.PipelineCentralNotificationRule("orgExample", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     status: "ENABLED",
+ *     notificationChannelRefs: ["channel"],
+ *     org: "default",
+ *     notificationConditions: [{
+ *         conditionName: "pipelineRuleOrgConditionName",
+ *         notificationEventConfigs: [{
+ *             notificationEntity: "PIPELINE",
+ *             notificationEvent: "PIPELINE_START",
+ *             notificationEventDatas: [{
+ *                 type: "PIPELINE",
+ *                 scopeIdentifiers: [
+ *                     "proj0",
+ *                     "random",
+ *                 ],
+ *             }],
+ *             entityIdentifiers: [],
+ *         }],
+ *     }],
+ * });
+ * const accountExample = new harness.platform.PipelineCentralNotificationRule("accountExample", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     status: "DISABLED",
+ *     notificationChannelRefs: ["org.channel"],
+ *     notificationConditions: [{
+ *         conditionName: "pipelineRuleConditionName",
+ *         notificationEventConfigs: [{
+ *             notificationEntity: "PIPELINE",
+ *             notificationEvent: "PIPELINE_START",
+ *             notificationEventDatas: [{
+ *                 type: "PIPELINE",
+ *                 scopeIdentifiers: ["org"],
+ *             }],
+ *             entityIdentifiers: [],
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * Import account level pipeline central notification rule
+ *
+ * ```sh
+ * $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <notification_rule_id>
+ * ```
+ *
+ * Import org level pipeline central notification rule
+ *
+ * ```sh
+ * $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <ord_id>/<notification_rule_id>
+ * ```
+ *
+ * Import project level pipeline central notification rule
+ *
+ * ```sh
+ * $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <org_id>/<project_id>/<notification_rule_id>
+ * ```
  */
 export class PipelineCentralNotificationRule extends pulumi.CustomResource {
     /**

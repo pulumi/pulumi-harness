@@ -49,7 +49,7 @@ namespace Pulumi.Harness.Platform
     ///         - stage:
     ///             name: dep
     ///             identifier: dep
-    ///             description: """"
+    ///             description: \""\""
     ///             type: Deployment
     ///             spec:
     ///                 serviceConfig:

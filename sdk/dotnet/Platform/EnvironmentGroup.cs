@@ -29,11 +29,11 @@ namespace Pulumi.Harness.Platform
     ///         ProjectId = "projectIdentifier",
     ///         Color = "#0063F7",
     ///         Yaml = @"environmentGroup:
-    ///   name: ""name""
-    ///   identifier: ""identifier""
-    ///   description: ""temp""
-    ///   orgIdentifier: ""orgIdentifer""
-    ///   projectIdentifier: ""projectIdentifier""
+    ///   name: \""name\""
+    ///   identifier: \""identifier\""
+    ///   description: \""temp\""
+    ///   orgIdentifier: \""orgIdentifer\""
+    ///   projectIdentifier: \""projectIdentifier\""
     ///   envIdentifiers: []
     /// ",
     ///     });

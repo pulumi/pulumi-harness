@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RuleEcs{}
 	case "harness:autostopping/ruleRds:RuleRds":
 		r = &RuleRds{}
+	case "harness:autostopping/ruleScaleGroup:RuleScaleGroup":
+		r = &RuleScaleGroup{}
 	case "harness:autostopping/ruleVm:RuleVm":
 		r = &RuleVm{}
 	case "harness:autostopping/schedule:Schedule":
@@ -85,6 +87,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"autostopping/ruleRds",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"autostopping/ruleScaleGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

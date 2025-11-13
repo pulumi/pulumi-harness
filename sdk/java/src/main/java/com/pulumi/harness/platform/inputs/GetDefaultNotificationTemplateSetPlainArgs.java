@@ -108,6 +108,20 @@ public final class GetDefaultNotificationTemplateSetPlainArgs extends com.pulumi
         return this.notificationEntity;
     }
 
+    @Import(name="org")
+    private @Nullable String org;
+
+    public Optional<String> org() {
+        return Optional.ofNullable(this.org);
+    }
+
+    @Import(name="project")
+    private @Nullable String project;
+
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
+    }
+
     /**
      * Key-value tags
      * 
@@ -132,6 +146,8 @@ public final class GetDefaultNotificationTemplateSetPlainArgs extends com.pulumi
         this.name = $.name;
         this.notificationChannelType = $.notificationChannelType;
         this.notificationEntity = $.notificationEntity;
+        this.org = $.org;
+        this.project = $.project;
         this.tags = $.tags;
     }
 
@@ -226,6 +242,16 @@ public final class GetDefaultNotificationTemplateSetPlainArgs extends com.pulumi
          */
         public Builder notificationEntity(String notificationEntity) {
             $.notificationEntity = notificationEntity;
+            return this;
+        }
+
+        public Builder org(@Nullable String org) {
+            $.org = org;
+            return this;
+        }
+
+        public Builder project(@Nullable String project) {
+            $.project = project;
             return this;
         }
 

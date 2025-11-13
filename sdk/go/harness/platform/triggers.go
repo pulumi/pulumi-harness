@@ -38,7 +38,7 @@ import (
 //	  name: name
 //	  identifier: identifier
 //	  enabled: true
-//	  description: ""
+//	  description: \"\"
 //	  tags: {}
 //	  projectIdentifier: projectIdentifier
 //	  orgIdentifier: orgIdentifer
@@ -63,7 +63,7 @@ import (
 //	          repoName: repoName
 //	          actions: []
 //	  inputYaml: |
-//	    pipeline: {}\n
+//	    pipeline: {}\
 //
 // `),
 //

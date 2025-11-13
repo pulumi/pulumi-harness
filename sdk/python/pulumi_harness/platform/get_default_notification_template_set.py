@@ -28,7 +28,7 @@ class GetDefaultNotificationTemplateSetResult:
     """
     A collection of values returned by getDefaultNotificationTemplateSet.
     """
-    def __init__(__self__, created=None, description=None, event_template_configuration_sets=None, id=None, identifier=None, last_modified=None, name=None, notification_channel_type=None, notification_entity=None, tags=None):
+    def __init__(__self__, created=None, description=None, event_template_configuration_sets=None, id=None, identifier=None, last_modified=None, name=None, notification_channel_type=None, notification_entity=None, org=None, project=None, tags=None):
         if created and not isinstance(created, int):
             raise TypeError("Expected argument 'created' to be a int")
         pulumi.set(__self__, "created", created)
@@ -56,6 +56,12 @@ class GetDefaultNotificationTemplateSetResult:
         if notification_entity and not isinstance(notification_entity, str):
             raise TypeError("Expected argument 'notification_entity' to be a str")
         pulumi.set(__self__, "notification_entity", notification_entity)
+        if org and not isinstance(org, str):
+            raise TypeError("Expected argument 'org' to be a str")
+        pulumi.set(__self__, "org", org)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
@@ -134,6 +140,16 @@ class GetDefaultNotificationTemplateSetResult:
 
     @_builtins.property
     @pulumi.getter
+    def org(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "org")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
         Key-value tags
@@ -156,6 +172,8 @@ class AwaitableGetDefaultNotificationTemplateSetResult(GetDefaultNotificationTem
             name=self.name,
             notification_channel_type=self.notification_channel_type,
             notification_entity=self.notification_entity,
+            org=self.org,
+            project=self.project,
             tags=self.tags)
 
 
@@ -165,6 +183,8 @@ def get_default_notification_template_set(description: Optional[_builtins.str] =
                                           name: Optional[_builtins.str] = None,
                                           notification_channel_type: Optional[_builtins.str] = None,
                                           notification_entity: Optional[_builtins.str] = None,
+                                          org: Optional[_builtins.str] = None,
+                                          project: Optional[_builtins.str] = None,
                                           tags: Optional[Mapping[str, _builtins.str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDefaultNotificationTemplateSetResult:
     """
@@ -186,6 +206,8 @@ def get_default_notification_template_set(description: Optional[_builtins.str] =
     __args__['name'] = name
     __args__['notificationChannelType'] = notification_channel_type
     __args__['notificationEntity'] = notification_entity
+    __args__['org'] = org
+    __args__['project'] = project
     __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getDefaultNotificationTemplateSet:getDefaultNotificationTemplateSet', __args__, opts=opts, typ=GetDefaultNotificationTemplateSetResult).value
@@ -200,6 +222,8 @@ def get_default_notification_template_set(description: Optional[_builtins.str] =
         name=pulumi.get(__ret__, 'name'),
         notification_channel_type=pulumi.get(__ret__, 'notification_channel_type'),
         notification_entity=pulumi.get(__ret__, 'notification_entity'),
+        org=pulumi.get(__ret__, 'org'),
+        project=pulumi.get(__ret__, 'project'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_default_notification_template_set_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                  event_template_configuration_sets: Optional[pulumi.Input[Sequence[Union['GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]] = None,
@@ -207,6 +231,8 @@ def get_default_notification_template_set_output(description: Optional[pulumi.In
                                                  name: Optional[pulumi.Input[_builtins.str]] = None,
                                                  notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
                                                  notification_entity: Optional[pulumi.Input[_builtins.str]] = None,
+                                                 org: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                                 project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                  tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDefaultNotificationTemplateSetResult]:
     """
@@ -228,6 +254,8 @@ def get_default_notification_template_set_output(description: Optional[pulumi.In
     __args__['name'] = name
     __args__['notificationChannelType'] = notification_channel_type
     __args__['notificationEntity'] = notification_entity
+    __args__['org'] = org
+    __args__['project'] = project
     __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getDefaultNotificationTemplateSet:getDefaultNotificationTemplateSet', __args__, opts=opts, typ=GetDefaultNotificationTemplateSetResult)
@@ -241,4 +269,6 @@ def get_default_notification_template_set_output(description: Optional[pulumi.In
         name=pulumi.get(__response__, 'name'),
         notification_channel_type=pulumi.get(__response__, 'notification_channel_type'),
         notification_entity=pulumi.get(__response__, 'notification_entity'),
+        org=pulumi.get(__response__, 'org'),
+        project=pulumi.get(__response__, 'project'),
         tags=pulumi.get(__response__, 'tags')))
