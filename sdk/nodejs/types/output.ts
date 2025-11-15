@@ -7170,6 +7170,82 @@ export namespace platform {
         version?: string;
     }
 
+    export interface GetSecretWinrmKerbero {
+        /**
+         * Kerberos principal.
+         */
+        principal: string;
+        /**
+         * Kerberos realm.
+         */
+        realm: string;
+        /**
+         * Skip certificate verification.
+         */
+        skipCertCheck: boolean;
+        /**
+         * Method to generate TGT (Ticket Granting Ticket).
+         */
+        tgtGenerationMethod: string;
+        /**
+         * TGT generation using key tab file.
+         */
+        tgtKeyTabFilePathSpecs: outputs.platform.GetSecretWinrmKerberoTgtKeyTabFilePathSpec[];
+        /**
+         * TGT generation using password.
+         */
+        tgtPasswordSpecs: outputs.platform.GetSecretWinrmKerberoTgtPasswordSpec[];
+        /**
+         * Use no profile.
+         */
+        useNoProfile: boolean;
+        /**
+         * Use SSL/TLS for WinRM communication.
+         */
+        useSsl: boolean;
+    }
+
+    export interface GetSecretWinrmKerberoTgtKeyTabFilePathSpec {
+        /**
+         * Path to the key tab file.
+         */
+        keyPath: string;
+    }
+
+    export interface GetSecretWinrmKerberoTgtPasswordSpec {
+        /**
+         * Reference to a secret containing the password.
+         */
+        passwordRef: string;
+    }
+
+    export interface GetSecretWinrmNtlm {
+        /**
+         * Domain name for NTLM authentication.
+         */
+        domain: string;
+        /**
+         * Reference to a secret containing the password to use for authentication.
+         */
+        passwordRef: string;
+        /**
+         * Skip certificate verification.
+         */
+        skipCertCheck: boolean;
+        /**
+         * Use no profile.
+         */
+        useNoProfile: boolean;
+        /**
+         * Use SSL/TLS for WinRM communication.
+         */
+        useSsl: boolean;
+        /**
+         * Username to use for authentication.
+         */
+        username: string;
+    }
+
     export interface GetServiceGitDetails {
         /**
          * Name of the branch.
@@ -36508,6 +36584,82 @@ export namespace platform {
 
     export interface SecretTextAdditionalMetadataValue {
         version?: string;
+    }
+
+    export interface SecretWinrmKerberos {
+        /**
+         * Kerberos principal.
+         */
+        principal: string;
+        /**
+         * Kerberos realm.
+         */
+        realm: string;
+        /**
+         * Skip certificate verification.
+         */
+        skipCertCheck?: boolean;
+        /**
+         * Method to generate TGT (Ticket Granting Ticket).
+         */
+        tgtGenerationMethod?: string;
+        /**
+         * TGT generation using key tab file.
+         */
+        tgtKeyTabFilePathSpec?: outputs.platform.SecretWinrmKerberosTgtKeyTabFilePathSpec;
+        /**
+         * TGT generation using password.
+         */
+        tgtPasswordSpec?: outputs.platform.SecretWinrmKerberosTgtPasswordSpec;
+        /**
+         * Use no profile.
+         */
+        useNoProfile?: boolean;
+        /**
+         * Use SSL/TLS for WinRM communication.
+         */
+        useSsl?: boolean;
+    }
+
+    export interface SecretWinrmKerberosTgtKeyTabFilePathSpec {
+        /**
+         * Path to the key tab file.
+         */
+        keyPath: string;
+    }
+
+    export interface SecretWinrmKerberosTgtPasswordSpec {
+        /**
+         * Reference to a secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        passwordRef: string;
+    }
+
+    export interface SecretWinrmNtlm {
+        /**
+         * Domain name for NTLM authentication.
+         */
+        domain?: string;
+        /**
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        passwordRef: string;
+        /**
+         * Skip certificate verification.
+         */
+        skipCertCheck?: boolean;
+        /**
+         * Use no profile.
+         */
+        useNoProfile?: boolean;
+        /**
+         * Use SSL/TLS for WinRM communication.
+         */
+        useSsl?: boolean;
+        /**
+         * Username to use for authentication.
+         */
+        username: string;
     }
 
     export interface ServiceGitDetails {

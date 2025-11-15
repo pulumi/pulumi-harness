@@ -35326,6 +35326,82 @@ export namespace platform {
         version?: pulumi.Input<string>;
     }
 
+    export interface SecretWinrmKerberos {
+        /**
+         * Kerberos principal.
+         */
+        principal: pulumi.Input<string>;
+        /**
+         * Kerberos realm.
+         */
+        realm: pulumi.Input<string>;
+        /**
+         * Skip certificate verification.
+         */
+        skipCertCheck?: pulumi.Input<boolean>;
+        /**
+         * Method to generate TGT (Ticket Granting Ticket).
+         */
+        tgtGenerationMethod?: pulumi.Input<string>;
+        /**
+         * TGT generation using key tab file.
+         */
+        tgtKeyTabFilePathSpec?: pulumi.Input<inputs.platform.SecretWinrmKerberosTgtKeyTabFilePathSpec>;
+        /**
+         * TGT generation using password.
+         */
+        tgtPasswordSpec?: pulumi.Input<inputs.platform.SecretWinrmKerberosTgtPasswordSpec>;
+        /**
+         * Use no profile.
+         */
+        useNoProfile?: pulumi.Input<boolean>;
+        /**
+         * Use SSL/TLS for WinRM communication.
+         */
+        useSsl?: pulumi.Input<boolean>;
+    }
+
+    export interface SecretWinrmKerberosTgtKeyTabFilePathSpec {
+        /**
+         * Path to the key tab file.
+         */
+        keyPath: pulumi.Input<string>;
+    }
+
+    export interface SecretWinrmKerberosTgtPasswordSpec {
+        /**
+         * Reference to a secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        passwordRef: pulumi.Input<string>;
+    }
+
+    export interface SecretWinrmNtlm {
+        /**
+         * Domain name for NTLM authentication.
+         */
+        domain?: pulumi.Input<string>;
+        /**
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        passwordRef: pulumi.Input<string>;
+        /**
+         * Skip certificate verification.
+         */
+        skipCertCheck?: pulumi.Input<boolean>;
+        /**
+         * Use no profile.
+         */
+        useNoProfile?: pulumi.Input<boolean>;
+        /**
+         * Use SSL/TLS for WinRM communication.
+         */
+        useSsl?: pulumi.Input<boolean>;
+        /**
+         * Username to use for authentication.
+         */
+        username: pulumi.Input<string>;
+    }
+
     export interface ServiceGitDetails {
         /**
          * Name of the default branch (this checks out a new branch titled by branch_name).

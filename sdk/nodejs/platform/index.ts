@@ -730,6 +730,11 @@ export const getSecretText: typeof import("./getSecretText").getSecretText = nul
 export const getSecretTextOutput: typeof import("./getSecretText").getSecretTextOutput = null as any;
 utilities.lazyLoad(exports, ["getSecretText","getSecretTextOutput"], () => require("./getSecretText"));
 
+export { GetSecretWinrmArgs, GetSecretWinrmResult, GetSecretWinrmOutputArgs } from "./getSecretWinrm";
+export const getSecretWinrm: typeof import("./getSecretWinrm").getSecretWinrm = null as any;
+export const getSecretWinrmOutput: typeof import("./getSecretWinrm").getSecretWinrmOutput = null as any;
+utilities.lazyLoad(exports, ["getSecretWinrm","getSecretWinrmOutput"], () => require("./getSecretWinrm"));
+
 export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
 export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
@@ -1100,6 +1105,11 @@ export type SecretText = import("./secretText").SecretText;
 export const SecretText: typeof import("./secretText").SecretText = null as any;
 utilities.lazyLoad(exports, ["SecretText"], () => require("./secretText"));
 
+export { SecretWinrmArgs, SecretWinrmState } from "./secretWinrm";
+export type SecretWinrm = import("./secretWinrm").SecretWinrm;
+export const SecretWinrm: typeof import("./secretWinrm").SecretWinrm = null as any;
+utilities.lazyLoad(exports, ["SecretWinrm"], () => require("./secretWinrm"));
+
 export { ServiceArgs, ServiceState } from "./service";
 export type Service = import("./service").Service;
 export const Service: typeof import("./service").Service = null as any;
@@ -1394,6 +1404,8 @@ const _module = {
                 return new SecretSshkey(name, <any>undefined, { urn })
             case "harness:platform/secretText:SecretText":
                 return new SecretText(name, <any>undefined, { urn })
+            case "harness:platform/secretWinrm:SecretWinrm":
+                return new SecretWinrm(name, <any>undefined, { urn })
             case "harness:platform/service:Service":
                 return new Service(name, <any>undefined, { urn })
             case "harness:platform/serviceAccount:ServiceAccount":
@@ -1534,6 +1546,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/roles", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/secretFile", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/secretSshkey", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/secretText", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/secretWinrm", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/service", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/serviceAccount", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/serviceNowConnector", _module)

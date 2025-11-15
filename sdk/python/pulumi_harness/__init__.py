@@ -1202,6 +1202,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/secretWinrm",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/secretWinrm:SecretWinrm": "SecretWinrm"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/service",
   "fqn": "pulumi_harness.platform",
   "classes": {

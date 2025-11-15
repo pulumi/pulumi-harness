@@ -14708,6 +14708,30 @@
                     }
                 }
             },
+            "harness_platform_secret_winrm": {
+                "current": "harness:platform/secretWinrm:SecretWinrm",
+                "fields": {
+                    "kerberos": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "tgt_key_tab_file_path_spec": {
+                                    "maxItemsOne": true
+                                },
+                                "tgt_password_spec": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "ntlm": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_service": {
                 "current": "harness:platform/service:Service",
                 "fields": {
@@ -17927,6 +17951,30 @@
                                 }
                             }
                         }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_secret_winrm": {
+                "current": "harness:platform/getSecretWinrm:getSecretWinrm",
+                "fields": {
+                    "kerberos": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tgt_key_tab_file_path_spec": {
+                                    "maxItemsOne": false
+                                },
+                                "tgt_password_spec": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ntlm": {
+                        "maxItemsOne": false
                     },
                     "tags": {
                         "maxItemsOne": false
