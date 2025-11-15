@@ -70,9 +70,9 @@ require (
 	github.com/googleapis/enterprise-certificate-proxy v0.3.2 // indirect
 	github.com/googleapis/gax-go/v2 v2.12.2 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
-	github.com/harness/harness-go-sdk v0.6.1 // indirect
+	github.com/harness/harness-go-sdk v0.6.2 // indirect
 	github.com/harness/harness-openapi-go-client v0.0.25 // indirect
-	github.com/harness/terraform-provider-harness v0.39.1 // indirect
+	github.com/harness/terraform-provider-harness v0.39.2 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
