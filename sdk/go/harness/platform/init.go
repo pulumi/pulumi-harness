@@ -215,6 +215,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecretSshkey{}
 	case "harness:platform/secretText:SecretText":
 		r = &SecretText{}
+	case "harness:platform/secretWinrm:SecretWinrm":
+		r = &SecretWinrm{}
 	case "harness:platform/service:Service":
 		r = &Service{}
 	case "harness:platform/serviceAccount:ServiceAccount":
@@ -749,6 +751,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/secretText",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/secretWinrm",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

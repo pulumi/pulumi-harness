@@ -18011,6 +18011,782 @@ func (o SecretTextAdditionalMetadataValueArrayOutput) Index(i pulumi.IntInput) S
 	}).(SecretTextAdditionalMetadataValueOutput)
 }
 
+type SecretWinrmKerberos struct {
+	// Kerberos principal.
+	Principal string `pulumi:"principal"`
+	// Kerberos realm.
+	Realm string `pulumi:"realm"`
+	// Skip certificate verification.
+	SkipCertCheck *bool `pulumi:"skipCertCheck"`
+	// Method to generate TGT (Ticket Granting Ticket).
+	TgtGenerationMethod *string `pulumi:"tgtGenerationMethod"`
+	// TGT generation using key tab file.
+	TgtKeyTabFilePathSpec *SecretWinrmKerberosTgtKeyTabFilePathSpec `pulumi:"tgtKeyTabFilePathSpec"`
+	// TGT generation using password.
+	TgtPasswordSpec *SecretWinrmKerberosTgtPasswordSpec `pulumi:"tgtPasswordSpec"`
+	// Use no profile.
+	UseNoProfile *bool `pulumi:"useNoProfile"`
+	// Use SSL/TLS for WinRM communication.
+	UseSsl *bool `pulumi:"useSsl"`
+}
+
+// SecretWinrmKerberosInput is an input type that accepts SecretWinrmKerberosArgs and SecretWinrmKerberosOutput values.
+// You can construct a concrete instance of `SecretWinrmKerberosInput` via:
+//
+//	SecretWinrmKerberosArgs{...}
+type SecretWinrmKerberosInput interface {
+	pulumi.Input
+
+	ToSecretWinrmKerberosOutput() SecretWinrmKerberosOutput
+	ToSecretWinrmKerberosOutputWithContext(context.Context) SecretWinrmKerberosOutput
+}
+
+type SecretWinrmKerberosArgs struct {
+	// Kerberos principal.
+	Principal pulumi.StringInput `pulumi:"principal"`
+	// Kerberos realm.
+	Realm pulumi.StringInput `pulumi:"realm"`
+	// Skip certificate verification.
+	SkipCertCheck pulumi.BoolPtrInput `pulumi:"skipCertCheck"`
+	// Method to generate TGT (Ticket Granting Ticket).
+	TgtGenerationMethod pulumi.StringPtrInput `pulumi:"tgtGenerationMethod"`
+	// TGT generation using key tab file.
+	TgtKeyTabFilePathSpec SecretWinrmKerberosTgtKeyTabFilePathSpecPtrInput `pulumi:"tgtKeyTabFilePathSpec"`
+	// TGT generation using password.
+	TgtPasswordSpec SecretWinrmKerberosTgtPasswordSpecPtrInput `pulumi:"tgtPasswordSpec"`
+	// Use no profile.
+	UseNoProfile pulumi.BoolPtrInput `pulumi:"useNoProfile"`
+	// Use SSL/TLS for WinRM communication.
+	UseSsl pulumi.BoolPtrInput `pulumi:"useSsl"`
+}
+
+func (SecretWinrmKerberosArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretWinrmKerberos)(nil)).Elem()
+}
+
+func (i SecretWinrmKerberosArgs) ToSecretWinrmKerberosOutput() SecretWinrmKerberosOutput {
+	return i.ToSecretWinrmKerberosOutputWithContext(context.Background())
+}
+
+func (i SecretWinrmKerberosArgs) ToSecretWinrmKerberosOutputWithContext(ctx context.Context) SecretWinrmKerberosOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretWinrmKerberosOutput)
+}
+
+func (i SecretWinrmKerberosArgs) ToSecretWinrmKerberosPtrOutput() SecretWinrmKerberosPtrOutput {
+	return i.ToSecretWinrmKerberosPtrOutputWithContext(context.Background())
+}
+
+func (i SecretWinrmKerberosArgs) ToSecretWinrmKerberosPtrOutputWithContext(ctx context.Context) SecretWinrmKerberosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretWinrmKerberosOutput).ToSecretWinrmKerberosPtrOutputWithContext(ctx)
+}
+
+// SecretWinrmKerberosPtrInput is an input type that accepts SecretWinrmKerberosArgs, SecretWinrmKerberosPtr and SecretWinrmKerberosPtrOutput values.
+// You can construct a concrete instance of `SecretWinrmKerberosPtrInput` via:
+//
+//	        SecretWinrmKerberosArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretWinrmKerberosPtrInput interface {
+	pulumi.Input
+
+	ToSecretWinrmKerberosPtrOutput() SecretWinrmKerberosPtrOutput
+	ToSecretWinrmKerberosPtrOutputWithContext(context.Context) SecretWinrmKerberosPtrOutput
+}
+
+type secretWinrmKerberosPtrType SecretWinrmKerberosArgs
+
+func SecretWinrmKerberosPtr(v *SecretWinrmKerberosArgs) SecretWinrmKerberosPtrInput {
+	return (*secretWinrmKerberosPtrType)(v)
+}
+
+func (*secretWinrmKerberosPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretWinrmKerberos)(nil)).Elem()
+}
+
+func (i *secretWinrmKerberosPtrType) ToSecretWinrmKerberosPtrOutput() SecretWinrmKerberosPtrOutput {
+	return i.ToSecretWinrmKerberosPtrOutputWithContext(context.Background())
+}
+
+func (i *secretWinrmKerberosPtrType) ToSecretWinrmKerberosPtrOutputWithContext(ctx context.Context) SecretWinrmKerberosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretWinrmKerberosPtrOutput)
+}
+
+type SecretWinrmKerberosOutput struct{ *pulumi.OutputState }
+
+func (SecretWinrmKerberosOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretWinrmKerberos)(nil)).Elem()
+}
+
+func (o SecretWinrmKerberosOutput) ToSecretWinrmKerberosOutput() SecretWinrmKerberosOutput {
+	return o
+}
+
+func (o SecretWinrmKerberosOutput) ToSecretWinrmKerberosOutputWithContext(ctx context.Context) SecretWinrmKerberosOutput {
+	return o
+}
+
+func (o SecretWinrmKerberosOutput) ToSecretWinrmKerberosPtrOutput() SecretWinrmKerberosPtrOutput {
+	return o.ToSecretWinrmKerberosPtrOutputWithContext(context.Background())
+}
+
+func (o SecretWinrmKerberosOutput) ToSecretWinrmKerberosPtrOutputWithContext(ctx context.Context) SecretWinrmKerberosPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretWinrmKerberos) *SecretWinrmKerberos {
+		return &v
+	}).(SecretWinrmKerberosPtrOutput)
+}
+
+// Kerberos principal.
+func (o SecretWinrmKerberosOutput) Principal() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretWinrmKerberos) string { return v.Principal }).(pulumi.StringOutput)
+}
+
+// Kerberos realm.
+func (o SecretWinrmKerberosOutput) Realm() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretWinrmKerberos) string { return v.Realm }).(pulumi.StringOutput)
+}
+
+// Skip certificate verification.
+func (o SecretWinrmKerberosOutput) SkipCertCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecretWinrmKerberos) *bool { return v.SkipCertCheck }).(pulumi.BoolPtrOutput)
+}
+
+// Method to generate TGT (Ticket Granting Ticket).
+func (o SecretWinrmKerberosOutput) TgtGenerationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretWinrmKerberos) *string { return v.TgtGenerationMethod }).(pulumi.StringPtrOutput)
+}
+
+// TGT generation using key tab file.
+func (o SecretWinrmKerberosOutput) TgtKeyTabFilePathSpec() SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput {
+	return o.ApplyT(func(v SecretWinrmKerberos) *SecretWinrmKerberosTgtKeyTabFilePathSpec { return v.TgtKeyTabFilePathSpec }).(SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput)
+}
+
+// TGT generation using password.
+func (o SecretWinrmKerberosOutput) TgtPasswordSpec() SecretWinrmKerberosTgtPasswordSpecPtrOutput {
+	return o.ApplyT(func(v SecretWinrmKerberos) *SecretWinrmKerberosTgtPasswordSpec { return v.TgtPasswordSpec }).(SecretWinrmKerberosTgtPasswordSpecPtrOutput)
+}
+
+// Use no profile.
+func (o SecretWinrmKerberosOutput) UseNoProfile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecretWinrmKerberos) *bool { return v.UseNoProfile }).(pulumi.BoolPtrOutput)
+}
+
+// Use SSL/TLS for WinRM communication.
+func (o SecretWinrmKerberosOutput) UseSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecretWinrmKerberos) *bool { return v.UseSsl }).(pulumi.BoolPtrOutput)
+}
+
+type SecretWinrmKerberosPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretWinrmKerberosPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretWinrmKerberos)(nil)).Elem()
+}
+
+func (o SecretWinrmKerberosPtrOutput) ToSecretWinrmKerberosPtrOutput() SecretWinrmKerberosPtrOutput {
+	return o
+}
+
+func (o SecretWinrmKerberosPtrOutput) ToSecretWinrmKerberosPtrOutputWithContext(ctx context.Context) SecretWinrmKerberosPtrOutput {
+	return o
+}
+
+func (o SecretWinrmKerberosPtrOutput) Elem() SecretWinrmKerberosOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberos) SecretWinrmKerberos {
+		if v != nil {
+			return *v
+		}
+		var ret SecretWinrmKerberos
+		return ret
+	}).(SecretWinrmKerberosOutput)
+}
+
+// Kerberos principal.
+func (o SecretWinrmKerberosPtrOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberos) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Principal
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kerberos realm.
+func (o SecretWinrmKerberosPtrOutput) Realm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberos) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Realm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Skip certificate verification.
+func (o SecretWinrmKerberosPtrOutput) SkipCertCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberos) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipCertCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Method to generate TGT (Ticket Granting Ticket).
+func (o SecretWinrmKerberosPtrOutput) TgtGenerationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberos) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TgtGenerationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// TGT generation using key tab file.
+func (o SecretWinrmKerberosPtrOutput) TgtKeyTabFilePathSpec() SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberos) *SecretWinrmKerberosTgtKeyTabFilePathSpec {
+		if v == nil {
+			return nil
+		}
+		return v.TgtKeyTabFilePathSpec
+	}).(SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput)
+}
+
+// TGT generation using password.
+func (o SecretWinrmKerberosPtrOutput) TgtPasswordSpec() SecretWinrmKerberosTgtPasswordSpecPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberos) *SecretWinrmKerberosTgtPasswordSpec {
+		if v == nil {
+			return nil
+		}
+		return v.TgtPasswordSpec
+	}).(SecretWinrmKerberosTgtPasswordSpecPtrOutput)
+}
+
+// Use no profile.
+func (o SecretWinrmKerberosPtrOutput) UseNoProfile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberos) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseNoProfile
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Use SSL/TLS for WinRM communication.
+func (o SecretWinrmKerberosPtrOutput) UseSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberos) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSsl
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SecretWinrmKerberosTgtKeyTabFilePathSpec struct {
+	// Path to the key tab file.
+	KeyPath string `pulumi:"keyPath"`
+}
+
+// SecretWinrmKerberosTgtKeyTabFilePathSpecInput is an input type that accepts SecretWinrmKerberosTgtKeyTabFilePathSpecArgs and SecretWinrmKerberosTgtKeyTabFilePathSpecOutput values.
+// You can construct a concrete instance of `SecretWinrmKerberosTgtKeyTabFilePathSpecInput` via:
+//
+//	SecretWinrmKerberosTgtKeyTabFilePathSpecArgs{...}
+type SecretWinrmKerberosTgtKeyTabFilePathSpecInput interface {
+	pulumi.Input
+
+	ToSecretWinrmKerberosTgtKeyTabFilePathSpecOutput() SecretWinrmKerberosTgtKeyTabFilePathSpecOutput
+	ToSecretWinrmKerberosTgtKeyTabFilePathSpecOutputWithContext(context.Context) SecretWinrmKerberosTgtKeyTabFilePathSpecOutput
+}
+
+type SecretWinrmKerberosTgtKeyTabFilePathSpecArgs struct {
+	// Path to the key tab file.
+	KeyPath pulumi.StringInput `pulumi:"keyPath"`
+}
+
+func (SecretWinrmKerberosTgtKeyTabFilePathSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretWinrmKerberosTgtKeyTabFilePathSpec)(nil)).Elem()
+}
+
+func (i SecretWinrmKerberosTgtKeyTabFilePathSpecArgs) ToSecretWinrmKerberosTgtKeyTabFilePathSpecOutput() SecretWinrmKerberosTgtKeyTabFilePathSpecOutput {
+	return i.ToSecretWinrmKerberosTgtKeyTabFilePathSpecOutputWithContext(context.Background())
+}
+
+func (i SecretWinrmKerberosTgtKeyTabFilePathSpecArgs) ToSecretWinrmKerberosTgtKeyTabFilePathSpecOutputWithContext(ctx context.Context) SecretWinrmKerberosTgtKeyTabFilePathSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretWinrmKerberosTgtKeyTabFilePathSpecOutput)
+}
+
+func (i SecretWinrmKerberosTgtKeyTabFilePathSpecArgs) ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput() SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput {
+	return i.ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutputWithContext(context.Background())
+}
+
+func (i SecretWinrmKerberosTgtKeyTabFilePathSpecArgs) ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutputWithContext(ctx context.Context) SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretWinrmKerberosTgtKeyTabFilePathSpecOutput).ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutputWithContext(ctx)
+}
+
+// SecretWinrmKerberosTgtKeyTabFilePathSpecPtrInput is an input type that accepts SecretWinrmKerberosTgtKeyTabFilePathSpecArgs, SecretWinrmKerberosTgtKeyTabFilePathSpecPtr and SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput values.
+// You can construct a concrete instance of `SecretWinrmKerberosTgtKeyTabFilePathSpecPtrInput` via:
+//
+//	        SecretWinrmKerberosTgtKeyTabFilePathSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretWinrmKerberosTgtKeyTabFilePathSpecPtrInput interface {
+	pulumi.Input
+
+	ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput() SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput
+	ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutputWithContext(context.Context) SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput
+}
+
+type secretWinrmKerberosTgtKeyTabFilePathSpecPtrType SecretWinrmKerberosTgtKeyTabFilePathSpecArgs
+
+func SecretWinrmKerberosTgtKeyTabFilePathSpecPtr(v *SecretWinrmKerberosTgtKeyTabFilePathSpecArgs) SecretWinrmKerberosTgtKeyTabFilePathSpecPtrInput {
+	return (*secretWinrmKerberosTgtKeyTabFilePathSpecPtrType)(v)
+}
+
+func (*secretWinrmKerberosTgtKeyTabFilePathSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretWinrmKerberosTgtKeyTabFilePathSpec)(nil)).Elem()
+}
+
+func (i *secretWinrmKerberosTgtKeyTabFilePathSpecPtrType) ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput() SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput {
+	return i.ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *secretWinrmKerberosTgtKeyTabFilePathSpecPtrType) ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutputWithContext(ctx context.Context) SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput)
+}
+
+type SecretWinrmKerberosTgtKeyTabFilePathSpecOutput struct{ *pulumi.OutputState }
+
+func (SecretWinrmKerberosTgtKeyTabFilePathSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretWinrmKerberosTgtKeyTabFilePathSpec)(nil)).Elem()
+}
+
+func (o SecretWinrmKerberosTgtKeyTabFilePathSpecOutput) ToSecretWinrmKerberosTgtKeyTabFilePathSpecOutput() SecretWinrmKerberosTgtKeyTabFilePathSpecOutput {
+	return o
+}
+
+func (o SecretWinrmKerberosTgtKeyTabFilePathSpecOutput) ToSecretWinrmKerberosTgtKeyTabFilePathSpecOutputWithContext(ctx context.Context) SecretWinrmKerberosTgtKeyTabFilePathSpecOutput {
+	return o
+}
+
+func (o SecretWinrmKerberosTgtKeyTabFilePathSpecOutput) ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput() SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput {
+	return o.ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutputWithContext(context.Background())
+}
+
+func (o SecretWinrmKerberosTgtKeyTabFilePathSpecOutput) ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutputWithContext(ctx context.Context) SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretWinrmKerberosTgtKeyTabFilePathSpec) *SecretWinrmKerberosTgtKeyTabFilePathSpec {
+		return &v
+	}).(SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput)
+}
+
+// Path to the key tab file.
+func (o SecretWinrmKerberosTgtKeyTabFilePathSpecOutput) KeyPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretWinrmKerberosTgtKeyTabFilePathSpec) string { return v.KeyPath }).(pulumi.StringOutput)
+}
+
+type SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretWinrmKerberosTgtKeyTabFilePathSpec)(nil)).Elem()
+}
+
+func (o SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput) ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput() SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput {
+	return o
+}
+
+func (o SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput) ToSecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutputWithContext(ctx context.Context) SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput {
+	return o
+}
+
+func (o SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput) Elem() SecretWinrmKerberosTgtKeyTabFilePathSpecOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberosTgtKeyTabFilePathSpec) SecretWinrmKerberosTgtKeyTabFilePathSpec {
+		if v != nil {
+			return *v
+		}
+		var ret SecretWinrmKerberosTgtKeyTabFilePathSpec
+		return ret
+	}).(SecretWinrmKerberosTgtKeyTabFilePathSpecOutput)
+}
+
+// Path to the key tab file.
+func (o SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput) KeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberosTgtKeyTabFilePathSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecretWinrmKerberosTgtPasswordSpec struct {
+	// Reference to a secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	PasswordRef string `pulumi:"passwordRef"`
+}
+
+// SecretWinrmKerberosTgtPasswordSpecInput is an input type that accepts SecretWinrmKerberosTgtPasswordSpecArgs and SecretWinrmKerberosTgtPasswordSpecOutput values.
+// You can construct a concrete instance of `SecretWinrmKerberosTgtPasswordSpecInput` via:
+//
+//	SecretWinrmKerberosTgtPasswordSpecArgs{...}
+type SecretWinrmKerberosTgtPasswordSpecInput interface {
+	pulumi.Input
+
+	ToSecretWinrmKerberosTgtPasswordSpecOutput() SecretWinrmKerberosTgtPasswordSpecOutput
+	ToSecretWinrmKerberosTgtPasswordSpecOutputWithContext(context.Context) SecretWinrmKerberosTgtPasswordSpecOutput
+}
+
+type SecretWinrmKerberosTgtPasswordSpecArgs struct {
+	// Reference to a secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+}
+
+func (SecretWinrmKerberosTgtPasswordSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretWinrmKerberosTgtPasswordSpec)(nil)).Elem()
+}
+
+func (i SecretWinrmKerberosTgtPasswordSpecArgs) ToSecretWinrmKerberosTgtPasswordSpecOutput() SecretWinrmKerberosTgtPasswordSpecOutput {
+	return i.ToSecretWinrmKerberosTgtPasswordSpecOutputWithContext(context.Background())
+}
+
+func (i SecretWinrmKerberosTgtPasswordSpecArgs) ToSecretWinrmKerberosTgtPasswordSpecOutputWithContext(ctx context.Context) SecretWinrmKerberosTgtPasswordSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretWinrmKerberosTgtPasswordSpecOutput)
+}
+
+func (i SecretWinrmKerberosTgtPasswordSpecArgs) ToSecretWinrmKerberosTgtPasswordSpecPtrOutput() SecretWinrmKerberosTgtPasswordSpecPtrOutput {
+	return i.ToSecretWinrmKerberosTgtPasswordSpecPtrOutputWithContext(context.Background())
+}
+
+func (i SecretWinrmKerberosTgtPasswordSpecArgs) ToSecretWinrmKerberosTgtPasswordSpecPtrOutputWithContext(ctx context.Context) SecretWinrmKerberosTgtPasswordSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretWinrmKerberosTgtPasswordSpecOutput).ToSecretWinrmKerberosTgtPasswordSpecPtrOutputWithContext(ctx)
+}
+
+// SecretWinrmKerberosTgtPasswordSpecPtrInput is an input type that accepts SecretWinrmKerberosTgtPasswordSpecArgs, SecretWinrmKerberosTgtPasswordSpecPtr and SecretWinrmKerberosTgtPasswordSpecPtrOutput values.
+// You can construct a concrete instance of `SecretWinrmKerberosTgtPasswordSpecPtrInput` via:
+//
+//	        SecretWinrmKerberosTgtPasswordSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretWinrmKerberosTgtPasswordSpecPtrInput interface {
+	pulumi.Input
+
+	ToSecretWinrmKerberosTgtPasswordSpecPtrOutput() SecretWinrmKerberosTgtPasswordSpecPtrOutput
+	ToSecretWinrmKerberosTgtPasswordSpecPtrOutputWithContext(context.Context) SecretWinrmKerberosTgtPasswordSpecPtrOutput
+}
+
+type secretWinrmKerberosTgtPasswordSpecPtrType SecretWinrmKerberosTgtPasswordSpecArgs
+
+func SecretWinrmKerberosTgtPasswordSpecPtr(v *SecretWinrmKerberosTgtPasswordSpecArgs) SecretWinrmKerberosTgtPasswordSpecPtrInput {
+	return (*secretWinrmKerberosTgtPasswordSpecPtrType)(v)
+}
+
+func (*secretWinrmKerberosTgtPasswordSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretWinrmKerberosTgtPasswordSpec)(nil)).Elem()
+}
+
+func (i *secretWinrmKerberosTgtPasswordSpecPtrType) ToSecretWinrmKerberosTgtPasswordSpecPtrOutput() SecretWinrmKerberosTgtPasswordSpecPtrOutput {
+	return i.ToSecretWinrmKerberosTgtPasswordSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *secretWinrmKerberosTgtPasswordSpecPtrType) ToSecretWinrmKerberosTgtPasswordSpecPtrOutputWithContext(ctx context.Context) SecretWinrmKerberosTgtPasswordSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretWinrmKerberosTgtPasswordSpecPtrOutput)
+}
+
+type SecretWinrmKerberosTgtPasswordSpecOutput struct{ *pulumi.OutputState }
+
+func (SecretWinrmKerberosTgtPasswordSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretWinrmKerberosTgtPasswordSpec)(nil)).Elem()
+}
+
+func (o SecretWinrmKerberosTgtPasswordSpecOutput) ToSecretWinrmKerberosTgtPasswordSpecOutput() SecretWinrmKerberosTgtPasswordSpecOutput {
+	return o
+}
+
+func (o SecretWinrmKerberosTgtPasswordSpecOutput) ToSecretWinrmKerberosTgtPasswordSpecOutputWithContext(ctx context.Context) SecretWinrmKerberosTgtPasswordSpecOutput {
+	return o
+}
+
+func (o SecretWinrmKerberosTgtPasswordSpecOutput) ToSecretWinrmKerberosTgtPasswordSpecPtrOutput() SecretWinrmKerberosTgtPasswordSpecPtrOutput {
+	return o.ToSecretWinrmKerberosTgtPasswordSpecPtrOutputWithContext(context.Background())
+}
+
+func (o SecretWinrmKerberosTgtPasswordSpecOutput) ToSecretWinrmKerberosTgtPasswordSpecPtrOutputWithContext(ctx context.Context) SecretWinrmKerberosTgtPasswordSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretWinrmKerberosTgtPasswordSpec) *SecretWinrmKerberosTgtPasswordSpec {
+		return &v
+	}).(SecretWinrmKerberosTgtPasswordSpecPtrOutput)
+}
+
+// Reference to a secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o SecretWinrmKerberosTgtPasswordSpecOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretWinrmKerberosTgtPasswordSpec) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+type SecretWinrmKerberosTgtPasswordSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretWinrmKerberosTgtPasswordSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretWinrmKerberosTgtPasswordSpec)(nil)).Elem()
+}
+
+func (o SecretWinrmKerberosTgtPasswordSpecPtrOutput) ToSecretWinrmKerberosTgtPasswordSpecPtrOutput() SecretWinrmKerberosTgtPasswordSpecPtrOutput {
+	return o
+}
+
+func (o SecretWinrmKerberosTgtPasswordSpecPtrOutput) ToSecretWinrmKerberosTgtPasswordSpecPtrOutputWithContext(ctx context.Context) SecretWinrmKerberosTgtPasswordSpecPtrOutput {
+	return o
+}
+
+func (o SecretWinrmKerberosTgtPasswordSpecPtrOutput) Elem() SecretWinrmKerberosTgtPasswordSpecOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberosTgtPasswordSpec) SecretWinrmKerberosTgtPasswordSpec {
+		if v != nil {
+			return *v
+		}
+		var ret SecretWinrmKerberosTgtPasswordSpec
+		return ret
+	}).(SecretWinrmKerberosTgtPasswordSpecOutput)
+}
+
+// Reference to a secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o SecretWinrmKerberosTgtPasswordSpecPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmKerberosTgtPasswordSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecretWinrmNtlm struct {
+	// Domain name for NTLM authentication.
+	Domain *string `pulumi:"domain"`
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Skip certificate verification.
+	SkipCertCheck *bool `pulumi:"skipCertCheck"`
+	// Use no profile.
+	UseNoProfile *bool `pulumi:"useNoProfile"`
+	// Use SSL/TLS for WinRM communication.
+	UseSsl *bool `pulumi:"useSsl"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+}
+
+// SecretWinrmNtlmInput is an input type that accepts SecretWinrmNtlmArgs and SecretWinrmNtlmOutput values.
+// You can construct a concrete instance of `SecretWinrmNtlmInput` via:
+//
+//	SecretWinrmNtlmArgs{...}
+type SecretWinrmNtlmInput interface {
+	pulumi.Input
+
+	ToSecretWinrmNtlmOutput() SecretWinrmNtlmOutput
+	ToSecretWinrmNtlmOutputWithContext(context.Context) SecretWinrmNtlmOutput
+}
+
+type SecretWinrmNtlmArgs struct {
+	// Domain name for NTLM authentication.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Skip certificate verification.
+	SkipCertCheck pulumi.BoolPtrInput `pulumi:"skipCertCheck"`
+	// Use no profile.
+	UseNoProfile pulumi.BoolPtrInput `pulumi:"useNoProfile"`
+	// Use SSL/TLS for WinRM communication.
+	UseSsl pulumi.BoolPtrInput `pulumi:"useSsl"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (SecretWinrmNtlmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretWinrmNtlm)(nil)).Elem()
+}
+
+func (i SecretWinrmNtlmArgs) ToSecretWinrmNtlmOutput() SecretWinrmNtlmOutput {
+	return i.ToSecretWinrmNtlmOutputWithContext(context.Background())
+}
+
+func (i SecretWinrmNtlmArgs) ToSecretWinrmNtlmOutputWithContext(ctx context.Context) SecretWinrmNtlmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretWinrmNtlmOutput)
+}
+
+func (i SecretWinrmNtlmArgs) ToSecretWinrmNtlmPtrOutput() SecretWinrmNtlmPtrOutput {
+	return i.ToSecretWinrmNtlmPtrOutputWithContext(context.Background())
+}
+
+func (i SecretWinrmNtlmArgs) ToSecretWinrmNtlmPtrOutputWithContext(ctx context.Context) SecretWinrmNtlmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretWinrmNtlmOutput).ToSecretWinrmNtlmPtrOutputWithContext(ctx)
+}
+
+// SecretWinrmNtlmPtrInput is an input type that accepts SecretWinrmNtlmArgs, SecretWinrmNtlmPtr and SecretWinrmNtlmPtrOutput values.
+// You can construct a concrete instance of `SecretWinrmNtlmPtrInput` via:
+//
+//	        SecretWinrmNtlmArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretWinrmNtlmPtrInput interface {
+	pulumi.Input
+
+	ToSecretWinrmNtlmPtrOutput() SecretWinrmNtlmPtrOutput
+	ToSecretWinrmNtlmPtrOutputWithContext(context.Context) SecretWinrmNtlmPtrOutput
+}
+
+type secretWinrmNtlmPtrType SecretWinrmNtlmArgs
+
+func SecretWinrmNtlmPtr(v *SecretWinrmNtlmArgs) SecretWinrmNtlmPtrInput {
+	return (*secretWinrmNtlmPtrType)(v)
+}
+
+func (*secretWinrmNtlmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretWinrmNtlm)(nil)).Elem()
+}
+
+func (i *secretWinrmNtlmPtrType) ToSecretWinrmNtlmPtrOutput() SecretWinrmNtlmPtrOutput {
+	return i.ToSecretWinrmNtlmPtrOutputWithContext(context.Background())
+}
+
+func (i *secretWinrmNtlmPtrType) ToSecretWinrmNtlmPtrOutputWithContext(ctx context.Context) SecretWinrmNtlmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretWinrmNtlmPtrOutput)
+}
+
+type SecretWinrmNtlmOutput struct{ *pulumi.OutputState }
+
+func (SecretWinrmNtlmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretWinrmNtlm)(nil)).Elem()
+}
+
+func (o SecretWinrmNtlmOutput) ToSecretWinrmNtlmOutput() SecretWinrmNtlmOutput {
+	return o
+}
+
+func (o SecretWinrmNtlmOutput) ToSecretWinrmNtlmOutputWithContext(ctx context.Context) SecretWinrmNtlmOutput {
+	return o
+}
+
+func (o SecretWinrmNtlmOutput) ToSecretWinrmNtlmPtrOutput() SecretWinrmNtlmPtrOutput {
+	return o.ToSecretWinrmNtlmPtrOutputWithContext(context.Background())
+}
+
+func (o SecretWinrmNtlmOutput) ToSecretWinrmNtlmPtrOutputWithContext(ctx context.Context) SecretWinrmNtlmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretWinrmNtlm) *SecretWinrmNtlm {
+		return &v
+	}).(SecretWinrmNtlmPtrOutput)
+}
+
+// Domain name for NTLM authentication.
+func (o SecretWinrmNtlmOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretWinrmNtlm) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o SecretWinrmNtlmOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretWinrmNtlm) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// Skip certificate verification.
+func (o SecretWinrmNtlmOutput) SkipCertCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecretWinrmNtlm) *bool { return v.SkipCertCheck }).(pulumi.BoolPtrOutput)
+}
+
+// Use no profile.
+func (o SecretWinrmNtlmOutput) UseNoProfile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecretWinrmNtlm) *bool { return v.UseNoProfile }).(pulumi.BoolPtrOutput)
+}
+
+// Use SSL/TLS for WinRM communication.
+func (o SecretWinrmNtlmOutput) UseSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecretWinrmNtlm) *bool { return v.UseSsl }).(pulumi.BoolPtrOutput)
+}
+
+// Username to use for authentication.
+func (o SecretWinrmNtlmOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretWinrmNtlm) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type SecretWinrmNtlmPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretWinrmNtlmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretWinrmNtlm)(nil)).Elem()
+}
+
+func (o SecretWinrmNtlmPtrOutput) ToSecretWinrmNtlmPtrOutput() SecretWinrmNtlmPtrOutput {
+	return o
+}
+
+func (o SecretWinrmNtlmPtrOutput) ToSecretWinrmNtlmPtrOutputWithContext(ctx context.Context) SecretWinrmNtlmPtrOutput {
+	return o
+}
+
+func (o SecretWinrmNtlmPtrOutput) Elem() SecretWinrmNtlmOutput {
+	return o.ApplyT(func(v *SecretWinrmNtlm) SecretWinrmNtlm {
+		if v != nil {
+			return *v
+		}
+		var ret SecretWinrmNtlm
+		return ret
+	}).(SecretWinrmNtlmOutput)
+}
+
+// Domain name for NTLM authentication.
+func (o SecretWinrmNtlmPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmNtlm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o SecretWinrmNtlmPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmNtlm) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Skip certificate verification.
+func (o SecretWinrmNtlmPtrOutput) SkipCertCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmNtlm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipCertCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Use no profile.
+func (o SecretWinrmNtlmPtrOutput) UseNoProfile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmNtlm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseNoProfile
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Use SSL/TLS for WinRM communication.
+func (o SecretWinrmNtlmPtrOutput) UseSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmNtlm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSsl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Username to use for authentication.
+func (o SecretWinrmNtlmPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretWinrmNtlm) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceGitDetails struct {
 	// Name of the default branch (this checks out a new branch titled by branch_name).
 	BaseBranch *string `pulumi:"baseBranch"`
@@ -47145,6 +47921,504 @@ func (o GetSecretTextAdditionalMetadataValueArrayOutput) Index(i pulumi.IntInput
 	}).(GetSecretTextAdditionalMetadataValueOutput)
 }
 
+type GetSecretWinrmKerbero struct {
+	// Kerberos principal.
+	Principal string `pulumi:"principal"`
+	// Kerberos realm.
+	Realm string `pulumi:"realm"`
+	// Skip certificate verification.
+	SkipCertCheck bool `pulumi:"skipCertCheck"`
+	// Method to generate TGT (Ticket Granting Ticket).
+	TgtGenerationMethod string `pulumi:"tgtGenerationMethod"`
+	// TGT generation using key tab file.
+	TgtKeyTabFilePathSpecs []GetSecretWinrmKerberoTgtKeyTabFilePathSpec `pulumi:"tgtKeyTabFilePathSpecs"`
+	// TGT generation using password.
+	TgtPasswordSpecs []GetSecretWinrmKerberoTgtPasswordSpec `pulumi:"tgtPasswordSpecs"`
+	// Use no profile.
+	UseNoProfile bool `pulumi:"useNoProfile"`
+	// Use SSL/TLS for WinRM communication.
+	UseSsl bool `pulumi:"useSsl"`
+}
+
+// GetSecretWinrmKerberoInput is an input type that accepts GetSecretWinrmKerberoArgs and GetSecretWinrmKerberoOutput values.
+// You can construct a concrete instance of `GetSecretWinrmKerberoInput` via:
+//
+//	GetSecretWinrmKerberoArgs{...}
+type GetSecretWinrmKerberoInput interface {
+	pulumi.Input
+
+	ToGetSecretWinrmKerberoOutput() GetSecretWinrmKerberoOutput
+	ToGetSecretWinrmKerberoOutputWithContext(context.Context) GetSecretWinrmKerberoOutput
+}
+
+type GetSecretWinrmKerberoArgs struct {
+	// Kerberos principal.
+	Principal pulumi.StringInput `pulumi:"principal"`
+	// Kerberos realm.
+	Realm pulumi.StringInput `pulumi:"realm"`
+	// Skip certificate verification.
+	SkipCertCheck pulumi.BoolInput `pulumi:"skipCertCheck"`
+	// Method to generate TGT (Ticket Granting Ticket).
+	TgtGenerationMethod pulumi.StringInput `pulumi:"tgtGenerationMethod"`
+	// TGT generation using key tab file.
+	TgtKeyTabFilePathSpecs GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayInput `pulumi:"tgtKeyTabFilePathSpecs"`
+	// TGT generation using password.
+	TgtPasswordSpecs GetSecretWinrmKerberoTgtPasswordSpecArrayInput `pulumi:"tgtPasswordSpecs"`
+	// Use no profile.
+	UseNoProfile pulumi.BoolInput `pulumi:"useNoProfile"`
+	// Use SSL/TLS for WinRM communication.
+	UseSsl pulumi.BoolInput `pulumi:"useSsl"`
+}
+
+func (GetSecretWinrmKerberoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretWinrmKerbero)(nil)).Elem()
+}
+
+func (i GetSecretWinrmKerberoArgs) ToGetSecretWinrmKerberoOutput() GetSecretWinrmKerberoOutput {
+	return i.ToGetSecretWinrmKerberoOutputWithContext(context.Background())
+}
+
+func (i GetSecretWinrmKerberoArgs) ToGetSecretWinrmKerberoOutputWithContext(ctx context.Context) GetSecretWinrmKerberoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretWinrmKerberoOutput)
+}
+
+// GetSecretWinrmKerberoArrayInput is an input type that accepts GetSecretWinrmKerberoArray and GetSecretWinrmKerberoArrayOutput values.
+// You can construct a concrete instance of `GetSecretWinrmKerberoArrayInput` via:
+//
+//	GetSecretWinrmKerberoArray{ GetSecretWinrmKerberoArgs{...} }
+type GetSecretWinrmKerberoArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretWinrmKerberoArrayOutput() GetSecretWinrmKerberoArrayOutput
+	ToGetSecretWinrmKerberoArrayOutputWithContext(context.Context) GetSecretWinrmKerberoArrayOutput
+}
+
+type GetSecretWinrmKerberoArray []GetSecretWinrmKerberoInput
+
+func (GetSecretWinrmKerberoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretWinrmKerbero)(nil)).Elem()
+}
+
+func (i GetSecretWinrmKerberoArray) ToGetSecretWinrmKerberoArrayOutput() GetSecretWinrmKerberoArrayOutput {
+	return i.ToGetSecretWinrmKerberoArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretWinrmKerberoArray) ToGetSecretWinrmKerberoArrayOutputWithContext(ctx context.Context) GetSecretWinrmKerberoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretWinrmKerberoArrayOutput)
+}
+
+type GetSecretWinrmKerberoOutput struct{ *pulumi.OutputState }
+
+func (GetSecretWinrmKerberoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretWinrmKerbero)(nil)).Elem()
+}
+
+func (o GetSecretWinrmKerberoOutput) ToGetSecretWinrmKerberoOutput() GetSecretWinrmKerberoOutput {
+	return o
+}
+
+func (o GetSecretWinrmKerberoOutput) ToGetSecretWinrmKerberoOutputWithContext(ctx context.Context) GetSecretWinrmKerberoOutput {
+	return o
+}
+
+// Kerberos principal.
+func (o GetSecretWinrmKerberoOutput) Principal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretWinrmKerbero) string { return v.Principal }).(pulumi.StringOutput)
+}
+
+// Kerberos realm.
+func (o GetSecretWinrmKerberoOutput) Realm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretWinrmKerbero) string { return v.Realm }).(pulumi.StringOutput)
+}
+
+// Skip certificate verification.
+func (o GetSecretWinrmKerberoOutput) SkipCertCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecretWinrmKerbero) bool { return v.SkipCertCheck }).(pulumi.BoolOutput)
+}
+
+// Method to generate TGT (Ticket Granting Ticket).
+func (o GetSecretWinrmKerberoOutput) TgtGenerationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretWinrmKerbero) string { return v.TgtGenerationMethod }).(pulumi.StringOutput)
+}
+
+// TGT generation using key tab file.
+func (o GetSecretWinrmKerberoOutput) TgtKeyTabFilePathSpecs() GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput {
+	return o.ApplyT(func(v GetSecretWinrmKerbero) []GetSecretWinrmKerberoTgtKeyTabFilePathSpec {
+		return v.TgtKeyTabFilePathSpecs
+	}).(GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput)
+}
+
+// TGT generation using password.
+func (o GetSecretWinrmKerberoOutput) TgtPasswordSpecs() GetSecretWinrmKerberoTgtPasswordSpecArrayOutput {
+	return o.ApplyT(func(v GetSecretWinrmKerbero) []GetSecretWinrmKerberoTgtPasswordSpec { return v.TgtPasswordSpecs }).(GetSecretWinrmKerberoTgtPasswordSpecArrayOutput)
+}
+
+// Use no profile.
+func (o GetSecretWinrmKerberoOutput) UseNoProfile() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecretWinrmKerbero) bool { return v.UseNoProfile }).(pulumi.BoolOutput)
+}
+
+// Use SSL/TLS for WinRM communication.
+func (o GetSecretWinrmKerberoOutput) UseSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecretWinrmKerbero) bool { return v.UseSsl }).(pulumi.BoolOutput)
+}
+
+type GetSecretWinrmKerberoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretWinrmKerberoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretWinrmKerbero)(nil)).Elem()
+}
+
+func (o GetSecretWinrmKerberoArrayOutput) ToGetSecretWinrmKerberoArrayOutput() GetSecretWinrmKerberoArrayOutput {
+	return o
+}
+
+func (o GetSecretWinrmKerberoArrayOutput) ToGetSecretWinrmKerberoArrayOutputWithContext(ctx context.Context) GetSecretWinrmKerberoArrayOutput {
+	return o
+}
+
+func (o GetSecretWinrmKerberoArrayOutput) Index(i pulumi.IntInput) GetSecretWinrmKerberoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretWinrmKerbero {
+		return vs[0].([]GetSecretWinrmKerbero)[vs[1].(int)]
+	}).(GetSecretWinrmKerberoOutput)
+}
+
+type GetSecretWinrmKerberoTgtKeyTabFilePathSpec struct {
+	// Path to the key tab file.
+	KeyPath string `pulumi:"keyPath"`
+}
+
+// GetSecretWinrmKerberoTgtKeyTabFilePathSpecInput is an input type that accepts GetSecretWinrmKerberoTgtKeyTabFilePathSpecArgs and GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput values.
+// You can construct a concrete instance of `GetSecretWinrmKerberoTgtKeyTabFilePathSpecInput` via:
+//
+//	GetSecretWinrmKerberoTgtKeyTabFilePathSpecArgs{...}
+type GetSecretWinrmKerberoTgtKeyTabFilePathSpecInput interface {
+	pulumi.Input
+
+	ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput() GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput
+	ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecOutputWithContext(context.Context) GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput
+}
+
+type GetSecretWinrmKerberoTgtKeyTabFilePathSpecArgs struct {
+	// Path to the key tab file.
+	KeyPath pulumi.StringInput `pulumi:"keyPath"`
+}
+
+func (GetSecretWinrmKerberoTgtKeyTabFilePathSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretWinrmKerberoTgtKeyTabFilePathSpec)(nil)).Elem()
+}
+
+func (i GetSecretWinrmKerberoTgtKeyTabFilePathSpecArgs) ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput() GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput {
+	return i.ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecOutputWithContext(context.Background())
+}
+
+func (i GetSecretWinrmKerberoTgtKeyTabFilePathSpecArgs) ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecOutputWithContext(ctx context.Context) GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput)
+}
+
+// GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayInput is an input type that accepts GetSecretWinrmKerberoTgtKeyTabFilePathSpecArray and GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput values.
+// You can construct a concrete instance of `GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayInput` via:
+//
+//	GetSecretWinrmKerberoTgtKeyTabFilePathSpecArray{ GetSecretWinrmKerberoTgtKeyTabFilePathSpecArgs{...} }
+type GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput() GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput
+	ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutputWithContext(context.Context) GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput
+}
+
+type GetSecretWinrmKerberoTgtKeyTabFilePathSpecArray []GetSecretWinrmKerberoTgtKeyTabFilePathSpecInput
+
+func (GetSecretWinrmKerberoTgtKeyTabFilePathSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretWinrmKerberoTgtKeyTabFilePathSpec)(nil)).Elem()
+}
+
+func (i GetSecretWinrmKerberoTgtKeyTabFilePathSpecArray) ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput() GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput {
+	return i.ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretWinrmKerberoTgtKeyTabFilePathSpecArray) ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutputWithContext(ctx context.Context) GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput)
+}
+
+type GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput struct{ *pulumi.OutputState }
+
+func (GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretWinrmKerberoTgtKeyTabFilePathSpec)(nil)).Elem()
+}
+
+func (o GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput) ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput() GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput {
+	return o
+}
+
+func (o GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput) ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecOutputWithContext(ctx context.Context) GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput {
+	return o
+}
+
+// Path to the key tab file.
+func (o GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput) KeyPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretWinrmKerberoTgtKeyTabFilePathSpec) string { return v.KeyPath }).(pulumi.StringOutput)
+}
+
+type GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretWinrmKerberoTgtKeyTabFilePathSpec)(nil)).Elem()
+}
+
+func (o GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput) ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput() GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput {
+	return o
+}
+
+func (o GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput) ToGetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutputWithContext(ctx context.Context) GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput {
+	return o
+}
+
+func (o GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput) Index(i pulumi.IntInput) GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretWinrmKerberoTgtKeyTabFilePathSpec {
+		return vs[0].([]GetSecretWinrmKerberoTgtKeyTabFilePathSpec)[vs[1].(int)]
+	}).(GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput)
+}
+
+type GetSecretWinrmKerberoTgtPasswordSpec struct {
+	// Reference to a secret containing the password.
+	PasswordRef string `pulumi:"passwordRef"`
+}
+
+// GetSecretWinrmKerberoTgtPasswordSpecInput is an input type that accepts GetSecretWinrmKerberoTgtPasswordSpecArgs and GetSecretWinrmKerberoTgtPasswordSpecOutput values.
+// You can construct a concrete instance of `GetSecretWinrmKerberoTgtPasswordSpecInput` via:
+//
+//	GetSecretWinrmKerberoTgtPasswordSpecArgs{...}
+type GetSecretWinrmKerberoTgtPasswordSpecInput interface {
+	pulumi.Input
+
+	ToGetSecretWinrmKerberoTgtPasswordSpecOutput() GetSecretWinrmKerberoTgtPasswordSpecOutput
+	ToGetSecretWinrmKerberoTgtPasswordSpecOutputWithContext(context.Context) GetSecretWinrmKerberoTgtPasswordSpecOutput
+}
+
+type GetSecretWinrmKerberoTgtPasswordSpecArgs struct {
+	// Reference to a secret containing the password.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+}
+
+func (GetSecretWinrmKerberoTgtPasswordSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretWinrmKerberoTgtPasswordSpec)(nil)).Elem()
+}
+
+func (i GetSecretWinrmKerberoTgtPasswordSpecArgs) ToGetSecretWinrmKerberoTgtPasswordSpecOutput() GetSecretWinrmKerberoTgtPasswordSpecOutput {
+	return i.ToGetSecretWinrmKerberoTgtPasswordSpecOutputWithContext(context.Background())
+}
+
+func (i GetSecretWinrmKerberoTgtPasswordSpecArgs) ToGetSecretWinrmKerberoTgtPasswordSpecOutputWithContext(ctx context.Context) GetSecretWinrmKerberoTgtPasswordSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretWinrmKerberoTgtPasswordSpecOutput)
+}
+
+// GetSecretWinrmKerberoTgtPasswordSpecArrayInput is an input type that accepts GetSecretWinrmKerberoTgtPasswordSpecArray and GetSecretWinrmKerberoTgtPasswordSpecArrayOutput values.
+// You can construct a concrete instance of `GetSecretWinrmKerberoTgtPasswordSpecArrayInput` via:
+//
+//	GetSecretWinrmKerberoTgtPasswordSpecArray{ GetSecretWinrmKerberoTgtPasswordSpecArgs{...} }
+type GetSecretWinrmKerberoTgtPasswordSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretWinrmKerberoTgtPasswordSpecArrayOutput() GetSecretWinrmKerberoTgtPasswordSpecArrayOutput
+	ToGetSecretWinrmKerberoTgtPasswordSpecArrayOutputWithContext(context.Context) GetSecretWinrmKerberoTgtPasswordSpecArrayOutput
+}
+
+type GetSecretWinrmKerberoTgtPasswordSpecArray []GetSecretWinrmKerberoTgtPasswordSpecInput
+
+func (GetSecretWinrmKerberoTgtPasswordSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretWinrmKerberoTgtPasswordSpec)(nil)).Elem()
+}
+
+func (i GetSecretWinrmKerberoTgtPasswordSpecArray) ToGetSecretWinrmKerberoTgtPasswordSpecArrayOutput() GetSecretWinrmKerberoTgtPasswordSpecArrayOutput {
+	return i.ToGetSecretWinrmKerberoTgtPasswordSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretWinrmKerberoTgtPasswordSpecArray) ToGetSecretWinrmKerberoTgtPasswordSpecArrayOutputWithContext(ctx context.Context) GetSecretWinrmKerberoTgtPasswordSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretWinrmKerberoTgtPasswordSpecArrayOutput)
+}
+
+type GetSecretWinrmKerberoTgtPasswordSpecOutput struct{ *pulumi.OutputState }
+
+func (GetSecretWinrmKerberoTgtPasswordSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretWinrmKerberoTgtPasswordSpec)(nil)).Elem()
+}
+
+func (o GetSecretWinrmKerberoTgtPasswordSpecOutput) ToGetSecretWinrmKerberoTgtPasswordSpecOutput() GetSecretWinrmKerberoTgtPasswordSpecOutput {
+	return o
+}
+
+func (o GetSecretWinrmKerberoTgtPasswordSpecOutput) ToGetSecretWinrmKerberoTgtPasswordSpecOutputWithContext(ctx context.Context) GetSecretWinrmKerberoTgtPasswordSpecOutput {
+	return o
+}
+
+// Reference to a secret containing the password.
+func (o GetSecretWinrmKerberoTgtPasswordSpecOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretWinrmKerberoTgtPasswordSpec) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+type GetSecretWinrmKerberoTgtPasswordSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretWinrmKerberoTgtPasswordSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretWinrmKerberoTgtPasswordSpec)(nil)).Elem()
+}
+
+func (o GetSecretWinrmKerberoTgtPasswordSpecArrayOutput) ToGetSecretWinrmKerberoTgtPasswordSpecArrayOutput() GetSecretWinrmKerberoTgtPasswordSpecArrayOutput {
+	return o
+}
+
+func (o GetSecretWinrmKerberoTgtPasswordSpecArrayOutput) ToGetSecretWinrmKerberoTgtPasswordSpecArrayOutputWithContext(ctx context.Context) GetSecretWinrmKerberoTgtPasswordSpecArrayOutput {
+	return o
+}
+
+func (o GetSecretWinrmKerberoTgtPasswordSpecArrayOutput) Index(i pulumi.IntInput) GetSecretWinrmKerberoTgtPasswordSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretWinrmKerberoTgtPasswordSpec {
+		return vs[0].([]GetSecretWinrmKerberoTgtPasswordSpec)[vs[1].(int)]
+	}).(GetSecretWinrmKerberoTgtPasswordSpecOutput)
+}
+
+type GetSecretWinrmNtlm struct {
+	// Domain name for NTLM authentication.
+	Domain string `pulumi:"domain"`
+	// Reference to a secret containing the password to use for authentication.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Skip certificate verification.
+	SkipCertCheck bool `pulumi:"skipCertCheck"`
+	// Use no profile.
+	UseNoProfile bool `pulumi:"useNoProfile"`
+	// Use SSL/TLS for WinRM communication.
+	UseSsl bool `pulumi:"useSsl"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+}
+
+// GetSecretWinrmNtlmInput is an input type that accepts GetSecretWinrmNtlmArgs and GetSecretWinrmNtlmOutput values.
+// You can construct a concrete instance of `GetSecretWinrmNtlmInput` via:
+//
+//	GetSecretWinrmNtlmArgs{...}
+type GetSecretWinrmNtlmInput interface {
+	pulumi.Input
+
+	ToGetSecretWinrmNtlmOutput() GetSecretWinrmNtlmOutput
+	ToGetSecretWinrmNtlmOutputWithContext(context.Context) GetSecretWinrmNtlmOutput
+}
+
+type GetSecretWinrmNtlmArgs struct {
+	// Domain name for NTLM authentication.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// Reference to a secret containing the password to use for authentication.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Skip certificate verification.
+	SkipCertCheck pulumi.BoolInput `pulumi:"skipCertCheck"`
+	// Use no profile.
+	UseNoProfile pulumi.BoolInput `pulumi:"useNoProfile"`
+	// Use SSL/TLS for WinRM communication.
+	UseSsl pulumi.BoolInput `pulumi:"useSsl"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetSecretWinrmNtlmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretWinrmNtlm)(nil)).Elem()
+}
+
+func (i GetSecretWinrmNtlmArgs) ToGetSecretWinrmNtlmOutput() GetSecretWinrmNtlmOutput {
+	return i.ToGetSecretWinrmNtlmOutputWithContext(context.Background())
+}
+
+func (i GetSecretWinrmNtlmArgs) ToGetSecretWinrmNtlmOutputWithContext(ctx context.Context) GetSecretWinrmNtlmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretWinrmNtlmOutput)
+}
+
+// GetSecretWinrmNtlmArrayInput is an input type that accepts GetSecretWinrmNtlmArray and GetSecretWinrmNtlmArrayOutput values.
+// You can construct a concrete instance of `GetSecretWinrmNtlmArrayInput` via:
+//
+//	GetSecretWinrmNtlmArray{ GetSecretWinrmNtlmArgs{...} }
+type GetSecretWinrmNtlmArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretWinrmNtlmArrayOutput() GetSecretWinrmNtlmArrayOutput
+	ToGetSecretWinrmNtlmArrayOutputWithContext(context.Context) GetSecretWinrmNtlmArrayOutput
+}
+
+type GetSecretWinrmNtlmArray []GetSecretWinrmNtlmInput
+
+func (GetSecretWinrmNtlmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretWinrmNtlm)(nil)).Elem()
+}
+
+func (i GetSecretWinrmNtlmArray) ToGetSecretWinrmNtlmArrayOutput() GetSecretWinrmNtlmArrayOutput {
+	return i.ToGetSecretWinrmNtlmArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretWinrmNtlmArray) ToGetSecretWinrmNtlmArrayOutputWithContext(ctx context.Context) GetSecretWinrmNtlmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretWinrmNtlmArrayOutput)
+}
+
+type GetSecretWinrmNtlmOutput struct{ *pulumi.OutputState }
+
+func (GetSecretWinrmNtlmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretWinrmNtlm)(nil)).Elem()
+}
+
+func (o GetSecretWinrmNtlmOutput) ToGetSecretWinrmNtlmOutput() GetSecretWinrmNtlmOutput {
+	return o
+}
+
+func (o GetSecretWinrmNtlmOutput) ToGetSecretWinrmNtlmOutputWithContext(ctx context.Context) GetSecretWinrmNtlmOutput {
+	return o
+}
+
+// Domain name for NTLM authentication.
+func (o GetSecretWinrmNtlmOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretWinrmNtlm) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Reference to a secret containing the password to use for authentication.
+func (o GetSecretWinrmNtlmOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretWinrmNtlm) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// Skip certificate verification.
+func (o GetSecretWinrmNtlmOutput) SkipCertCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecretWinrmNtlm) bool { return v.SkipCertCheck }).(pulumi.BoolOutput)
+}
+
+// Use no profile.
+func (o GetSecretWinrmNtlmOutput) UseNoProfile() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecretWinrmNtlm) bool { return v.UseNoProfile }).(pulumi.BoolOutput)
+}
+
+// Use SSL/TLS for WinRM communication.
+func (o GetSecretWinrmNtlmOutput) UseSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecretWinrmNtlm) bool { return v.UseSsl }).(pulumi.BoolOutput)
+}
+
+// Username to use for authentication.
+func (o GetSecretWinrmNtlmOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretWinrmNtlm) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetSecretWinrmNtlmArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretWinrmNtlmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretWinrmNtlm)(nil)).Elem()
+}
+
+func (o GetSecretWinrmNtlmArrayOutput) ToGetSecretWinrmNtlmArrayOutput() GetSecretWinrmNtlmArrayOutput {
+	return o
+}
+
+func (o GetSecretWinrmNtlmArrayOutput) ToGetSecretWinrmNtlmArrayOutputWithContext(ctx context.Context) GetSecretWinrmNtlmArrayOutput {
+	return o
+}
+
+func (o GetSecretWinrmNtlmArrayOutput) Index(i pulumi.IntInput) GetSecretWinrmNtlmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretWinrmNtlm {
+		return vs[0].([]GetSecretWinrmNtlm)[vs[1].(int)]
+	}).(GetSecretWinrmNtlmOutput)
+}
+
 type GetServiceGitDetails struct {
 	// Name of the branch.
 	Branch string `pulumi:"branch"`
@@ -50097,6 +51371,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretTextAdditionalMetadataArrayInput)(nil)).Elem(), SecretTextAdditionalMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretTextAdditionalMetadataValueInput)(nil)).Elem(), SecretTextAdditionalMetadataValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretTextAdditionalMetadataValueArrayInput)(nil)).Elem(), SecretTextAdditionalMetadataValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretWinrmKerberosInput)(nil)).Elem(), SecretWinrmKerberosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretWinrmKerberosPtrInput)(nil)).Elem(), SecretWinrmKerberosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretWinrmKerberosTgtKeyTabFilePathSpecInput)(nil)).Elem(), SecretWinrmKerberosTgtKeyTabFilePathSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretWinrmKerberosTgtKeyTabFilePathSpecPtrInput)(nil)).Elem(), SecretWinrmKerberosTgtKeyTabFilePathSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretWinrmKerberosTgtPasswordSpecInput)(nil)).Elem(), SecretWinrmKerberosTgtPasswordSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretWinrmKerberosTgtPasswordSpecPtrInput)(nil)).Elem(), SecretWinrmKerberosTgtPasswordSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretWinrmNtlmInput)(nil)).Elem(), SecretWinrmNtlmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretWinrmNtlmPtrInput)(nil)).Elem(), SecretWinrmNtlmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGitDetailsInput)(nil)).Elem(), ServiceGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGitDetailsPtrInput)(nil)).Elem(), ServiceGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNowConnectorAuthInput)(nil)).Elem(), ServiceNowConnectorAuthArgs{})
@@ -50538,6 +51820,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretTextAdditionalMetadataArrayInput)(nil)).Elem(), GetSecretTextAdditionalMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretTextAdditionalMetadataValueInput)(nil)).Elem(), GetSecretTextAdditionalMetadataValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretTextAdditionalMetadataValueArrayInput)(nil)).Elem(), GetSecretTextAdditionalMetadataValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmKerberoInput)(nil)).Elem(), GetSecretWinrmKerberoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmKerberoArrayInput)(nil)).Elem(), GetSecretWinrmKerberoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmKerberoTgtKeyTabFilePathSpecInput)(nil)).Elem(), GetSecretWinrmKerberoTgtKeyTabFilePathSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayInput)(nil)).Elem(), GetSecretWinrmKerberoTgtKeyTabFilePathSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmKerberoTgtPasswordSpecInput)(nil)).Elem(), GetSecretWinrmKerberoTgtPasswordSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmKerberoTgtPasswordSpecArrayInput)(nil)).Elem(), GetSecretWinrmKerberoTgtPasswordSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmNtlmInput)(nil)).Elem(), GetSecretWinrmNtlmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretWinrmNtlmArrayInput)(nil)).Elem(), GetSecretWinrmNtlmArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceGitDetailsInput)(nil)).Elem(), GetServiceGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceGitDetailsPtrInput)(nil)).Elem(), GetServiceGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceListServiceInput)(nil)).Elem(), GetServiceListServiceArgs{})
@@ -50796,6 +52086,14 @@ func init() {
 	pulumi.RegisterOutputType(SecretTextAdditionalMetadataArrayOutput{})
 	pulumi.RegisterOutputType(SecretTextAdditionalMetadataValueOutput{})
 	pulumi.RegisterOutputType(SecretTextAdditionalMetadataValueArrayOutput{})
+	pulumi.RegisterOutputType(SecretWinrmKerberosOutput{})
+	pulumi.RegisterOutputType(SecretWinrmKerberosPtrOutput{})
+	pulumi.RegisterOutputType(SecretWinrmKerberosTgtKeyTabFilePathSpecOutput{})
+	pulumi.RegisterOutputType(SecretWinrmKerberosTgtKeyTabFilePathSpecPtrOutput{})
+	pulumi.RegisterOutputType(SecretWinrmKerberosTgtPasswordSpecOutput{})
+	pulumi.RegisterOutputType(SecretWinrmKerberosTgtPasswordSpecPtrOutput{})
+	pulumi.RegisterOutputType(SecretWinrmNtlmOutput{})
+	pulumi.RegisterOutputType(SecretWinrmNtlmPtrOutput{})
 	pulumi.RegisterOutputType(ServiceGitDetailsOutput{})
 	pulumi.RegisterOutputType(ServiceGitDetailsPtrOutput{})
 	pulumi.RegisterOutputType(ServiceNowConnectorAuthOutput{})
@@ -51237,6 +52535,14 @@ func init() {
 	pulumi.RegisterOutputType(GetSecretTextAdditionalMetadataArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretTextAdditionalMetadataValueOutput{})
 	pulumi.RegisterOutputType(GetSecretTextAdditionalMetadataValueArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretWinrmKerberoOutput{})
+	pulumi.RegisterOutputType(GetSecretWinrmKerberoArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretWinrmKerberoTgtKeyTabFilePathSpecOutput{})
+	pulumi.RegisterOutputType(GetSecretWinrmKerberoTgtKeyTabFilePathSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretWinrmKerberoTgtPasswordSpecOutput{})
+	pulumi.RegisterOutputType(GetSecretWinrmKerberoTgtPasswordSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretWinrmNtlmOutput{})
+	pulumi.RegisterOutputType(GetSecretWinrmNtlmArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceGitDetailsOutput{})
 	pulumi.RegisterOutputType(GetServiceGitDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceListServiceOutput{})

@@ -151,6 +151,7 @@ from .get_roles import *
 from .get_secret_file import *
 from .get_secret_sshkey import *
 from .get_secret_text import *
+from .get_secret_winrm import *
 from .get_service import *
 from .get_service_account import *
 from .get_service_list import *
@@ -225,6 +226,7 @@ from .roles import *
 from .secret_file import *
 from .secret_sshkey import *
 from .secret_text import *
+from .secret_winrm import *
 from .service import *
 from .service_account import *
 from .service_now_connector import *

@@ -207,6 +207,8 @@ import com.pulumi.harness.platform.inputs.GetSecretSshkeyArgs;
 import com.pulumi.harness.platform.inputs.GetSecretSshkeyPlainArgs;
 import com.pulumi.harness.platform.inputs.GetSecretTextArgs;
 import com.pulumi.harness.platform.inputs.GetSecretTextPlainArgs;
+import com.pulumi.harness.platform.inputs.GetSecretWinrmArgs;
+import com.pulumi.harness.platform.inputs.GetSecretWinrmPlainArgs;
 import com.pulumi.harness.platform.inputs.GetServiceAccountArgs;
 import com.pulumi.harness.platform.inputs.GetServiceAccountPlainArgs;
 import com.pulumi.harness.platform.inputs.GetServiceArgs;
@@ -350,6 +352,7 @@ import com.pulumi.harness.platform.outputs.GetRolesResult;
 import com.pulumi.harness.platform.outputs.GetSecretFileResult;
 import com.pulumi.harness.platform.outputs.GetSecretSshkeyResult;
 import com.pulumi.harness.platform.outputs.GetSecretTextResult;
+import com.pulumi.harness.platform.outputs.GetSecretWinrmResult;
 import com.pulumi.harness.platform.outputs.GetServiceAccountResult;
 import com.pulumi.harness.platform.outputs.GetServiceListResult;
 import com.pulumi.harness.platform.outputs.GetServiceNowConnectorResult;
@@ -16927,6 +16930,286 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetSecretTextResult> getSecretTextPlain(GetSecretTextPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getSecretText:getSecretText", TypeShape.of(GetSecretTextResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for looking up a WinRM credential secret.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetSecretWinrmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Data source to retrieve account level WinRM credential by identifier
+     *         final var example = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .build());
+     * 
+     *         // Data source to retrieve organization level WinRM credential
+     *         final var orgExample = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .orgId("org_identifier")
+     *             .build());
+     * 
+     *         // Data source to retrieve project level WinRM credential
+     *         final var projectExample = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .orgId("org_identifier")
+     *             .projectId("project_identifier")
+     *             .build());
+     * 
+     *         ctx.export("winrmPort", example.port());
+     *         ctx.export("winrmAuthType", example.ntlms().length().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecretWinrmResult> getSecretWinrm(GetSecretWinrmArgs args) {
+        return getSecretWinrm(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for looking up a WinRM credential secret.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetSecretWinrmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Data source to retrieve account level WinRM credential by identifier
+     *         final var example = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .build());
+     * 
+     *         // Data source to retrieve organization level WinRM credential
+     *         final var orgExample = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .orgId("org_identifier")
+     *             .build());
+     * 
+     *         // Data source to retrieve project level WinRM credential
+     *         final var projectExample = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .orgId("org_identifier")
+     *             .projectId("project_identifier")
+     *             .build());
+     * 
+     *         ctx.export("winrmPort", example.port());
+     *         ctx.export("winrmAuthType", example.ntlms().length().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecretWinrmResult> getSecretWinrmPlain(GetSecretWinrmPlainArgs args) {
+        return getSecretWinrmPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for looking up a WinRM credential secret.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetSecretWinrmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Data source to retrieve account level WinRM credential by identifier
+     *         final var example = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .build());
+     * 
+     *         // Data source to retrieve organization level WinRM credential
+     *         final var orgExample = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .orgId("org_identifier")
+     *             .build());
+     * 
+     *         // Data source to retrieve project level WinRM credential
+     *         final var projectExample = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .orgId("org_identifier")
+     *             .projectId("project_identifier")
+     *             .build());
+     * 
+     *         ctx.export("winrmPort", example.port());
+     *         ctx.export("winrmAuthType", example.ntlms().length().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecretWinrmResult> getSecretWinrm(GetSecretWinrmArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getSecretWinrm:getSecretWinrm", TypeShape.of(GetSecretWinrmResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for looking up a WinRM credential secret.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetSecretWinrmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Data source to retrieve account level WinRM credential by identifier
+     *         final var example = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .build());
+     * 
+     *         // Data source to retrieve organization level WinRM credential
+     *         final var orgExample = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .orgId("org_identifier")
+     *             .build());
+     * 
+     *         // Data source to retrieve project level WinRM credential
+     *         final var projectExample = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .orgId("org_identifier")
+     *             .projectId("project_identifier")
+     *             .build());
+     * 
+     *         ctx.export("winrmPort", example.port());
+     *         ctx.export("winrmAuthType", example.ntlms().length().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecretWinrmResult> getSecretWinrm(GetSecretWinrmArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getSecretWinrm:getSecretWinrm", TypeShape.of(GetSecretWinrmResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for looking up a WinRM credential secret.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetSecretWinrmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Data source to retrieve account level WinRM credential by identifier
+     *         final var example = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .build());
+     * 
+     *         // Data source to retrieve organization level WinRM credential
+     *         final var orgExample = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .orgId("org_identifier")
+     *             .build());
+     * 
+     *         // Data source to retrieve project level WinRM credential
+     *         final var projectExample = PlatformFunctions.getSecretWinrm(GetSecretWinrmArgs.builder()
+     *             .identifier("winrm_credential_id")
+     *             .orgId("org_identifier")
+     *             .projectId("project_identifier")
+     *             .build());
+     * 
+     *         ctx.export("winrmPort", example.port());
+     *         ctx.export("winrmAuthType", example.ntlms().length().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecretWinrmResult> getSecretWinrmPlain(GetSecretWinrmPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getSecretWinrm:getSecretWinrm", TypeShape.of(GetSecretWinrmResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness service.
