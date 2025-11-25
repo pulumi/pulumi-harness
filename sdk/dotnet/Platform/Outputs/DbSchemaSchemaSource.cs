@@ -29,6 +29,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// If connector url is of account, which repository to connect to using the connector
         /// </summary>
         public readonly string? Repo;
+        /// <summary>
+        /// Config file, to define various settings and properties for managing database schema change
+        /// </summary>
+        public readonly string? Toml;
 
         [OutputConstructor]
         private DbSchemaSchemaSource(
@@ -38,12 +42,15 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string location,
 
-            string? repo)
+            string? repo,
+
+            string? toml)
         {
             ArchivePath = archivePath;
             Connector = connector;
             Location = location;
             Repo = repo;
+            Toml = toml;
         }
     }
 }

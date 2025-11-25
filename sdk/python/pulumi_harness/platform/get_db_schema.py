@@ -27,7 +27,7 @@ class GetDbSchemaResult:
     """
     A collection of values returned by getDbSchema.
     """
-    def __init__(__self__, changelog_script=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, schema_sources=None, service=None, tags=None, type=None):
+    def __init__(__self__, changelog_script=None, description=None, id=None, identifier=None, migration_type=None, name=None, org_id=None, project_id=None, schema_sources=None, service=None, tags=None, type=None):
         if changelog_script and not isinstance(changelog_script, dict):
             raise TypeError("Expected argument 'changelog_script' to be a dict")
         pulumi.set(__self__, "changelog_script", changelog_script)
@@ -40,6 +40,9 @@ class GetDbSchemaResult:
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
+        if migration_type and not isinstance(migration_type, str):
+            raise TypeError("Expected argument 'migration_type' to be a str")
+        pulumi.set(__self__, "migration_type", migration_type)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -93,6 +96,14 @@ class GetDbSchemaResult:
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="migrationType")
+    def migration_type(self) -> Optional[_builtins.str]:
+        """
+        DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+        """
+        return pulumi.get(self, "migration_type")
 
     @_builtins.property
     @pulumi.getter
@@ -161,6 +172,7 @@ class AwaitableGetDbSchemaResult(GetDbSchemaResult):
             description=self.description,
             id=self.id,
             identifier=self.identifier,
+            migration_type=self.migration_type,
             name=self.name,
             org_id=self.org_id,
             project_id=self.project_id,
@@ -171,6 +183,7 @@ class AwaitableGetDbSchemaResult(GetDbSchemaResult):
 
 
 def get_db_schema(identifier: Optional[_builtins.str] = None,
+                  migration_type: Optional[_builtins.str] = None,
                   name: Optional[_builtins.str] = None,
                   org_id: Optional[_builtins.str] = None,
                   project_id: Optional[_builtins.str] = None,
@@ -192,6 +205,7 @@ def get_db_schema(identifier: Optional[_builtins.str] = None,
 
 
     :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str migration_type: DB Migration tool type, Valid values are any one of: Liquibase, Flyway
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
@@ -199,6 +213,7 @@ def get_db_schema(identifier: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['identifier'] = identifier
+    __args__['migrationType'] = migration_type
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
@@ -211,6 +226,7 @@ def get_db_schema(identifier: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
+        migration_type=pulumi.get(__ret__, 'migration_type'),
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
@@ -219,6 +235,7 @@ def get_db_schema(identifier: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
 def get_db_schema_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                         migration_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          org_id: Optional[pulumi.Input[_builtins.str]] = None,
                          project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -240,6 +257,7 @@ def get_db_schema_output(identifier: Optional[pulumi.Input[_builtins.str]] = Non
 
 
     :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str migration_type: DB Migration tool type, Valid values are any one of: Liquibase, Flyway
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
@@ -247,6 +265,7 @@ def get_db_schema_output(identifier: Optional[pulumi.Input[_builtins.str]] = Non
     """
     __args__ = dict()
     __args__['identifier'] = identifier
+    __args__['migrationType'] = migration_type
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
@@ -258,6 +277,7 @@ def get_db_schema_output(identifier: Optional[pulumi.Input[_builtins.str]] = Non
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
+        migration_type=pulumi.get(__response__, 'migration_type'),
         name=pulumi.get(__response__, 'name'),
         org_id=pulumi.get(__response__, 'org_id'),
         project_id=pulumi.get(__response__, 'project_id'),

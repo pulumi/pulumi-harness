@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbSchemaSchemaSource {
@@ -30,6 +32,11 @@ public final class GetDbSchemaSchemaSource {
      * 
      */
     private String repo;
+    /**
+     * @return [Optional] For flyway migration type only
+     * 
+     */
+    private @Nullable String toml;
 
     private GetDbSchemaSchemaSource() {}
     /**
@@ -60,6 +67,13 @@ public final class GetDbSchemaSchemaSource {
     public String repo() {
         return this.repo;
     }
+    /**
+     * @return [Optional] For flyway migration type only
+     * 
+     */
+    public Optional<String> toml() {
+        return Optional.ofNullable(this.toml);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -74,6 +88,7 @@ public final class GetDbSchemaSchemaSource {
         private String connector;
         private String location;
         private String repo;
+        private @Nullable String toml;
         public Builder() {}
         public Builder(GetDbSchemaSchemaSource defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,6 +96,7 @@ public final class GetDbSchemaSchemaSource {
     	      this.connector = defaults.connector;
     	      this.location = defaults.location;
     	      this.repo = defaults.repo;
+    	      this.toml = defaults.toml;
         }
 
         @CustomType.Setter
@@ -115,12 +131,19 @@ public final class GetDbSchemaSchemaSource {
             this.repo = repo;
             return this;
         }
+        @CustomType.Setter
+        public Builder toml(@Nullable String toml) {
+
+            this.toml = toml;
+            return this;
+        }
         public GetDbSchemaSchemaSource build() {
             final var _resultValue = new GetDbSchemaSchemaSource();
             _resultValue.archivePath = archivePath;
             _resultValue.connector = connector;
             _resultValue.location = location;
             _resultValue.repo = repo;
+            _resultValue.toml = toml;
             return _resultValue;
         }
     }

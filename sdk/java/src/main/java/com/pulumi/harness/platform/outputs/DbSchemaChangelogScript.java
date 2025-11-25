@@ -31,6 +31,11 @@ public final class DbSchemaChangelogScript {
      * 
      */
     private @Nullable String shell;
+    /**
+     * @return Config file, to define various settings and properties for managing database schema change
+     * 
+     */
+    private @Nullable String toml;
 
     private DbSchemaChangelogScript() {}
     /**
@@ -61,6 +66,13 @@ public final class DbSchemaChangelogScript {
     public Optional<String> shell() {
         return Optional.ofNullable(this.shell);
     }
+    /**
+     * @return Config file, to define various settings and properties for managing database schema change
+     * 
+     */
+    public Optional<String> toml() {
+        return Optional.ofNullable(this.toml);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -75,6 +87,7 @@ public final class DbSchemaChangelogScript {
         private @Nullable String image;
         private @Nullable String location;
         private @Nullable String shell;
+        private @Nullable String toml;
         public Builder() {}
         public Builder(DbSchemaChangelogScript defaults) {
     	      Objects.requireNonNull(defaults);
@@ -82,6 +95,7 @@ public final class DbSchemaChangelogScript {
     	      this.image = defaults.image;
     	      this.location = defaults.location;
     	      this.shell = defaults.shell;
+    	      this.toml = defaults.toml;
         }
 
         @CustomType.Setter
@@ -108,12 +122,19 @@ public final class DbSchemaChangelogScript {
             this.shell = shell;
             return this;
         }
+        @CustomType.Setter
+        public Builder toml(@Nullable String toml) {
+
+            this.toml = toml;
+            return this;
+        }
         public DbSchemaChangelogScript build() {
             final var _resultValue = new DbSchemaChangelogScript();
             _resultValue.command = command;
             _resultValue.image = image;
             _resultValue.location = location;
             _resultValue.shell = shell;
+            _resultValue.toml = toml;
             return _resultValue;
         }
     }

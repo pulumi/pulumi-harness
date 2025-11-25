@@ -32,6 +32,11 @@ public final class DbSchemaSchemaSource {
      * 
      */
     private @Nullable String repo;
+    /**
+     * @return Config file, to define various settings and properties for managing database schema change
+     * 
+     */
+    private @Nullable String toml;
 
     private DbSchemaSchemaSource() {}
     /**
@@ -62,6 +67,13 @@ public final class DbSchemaSchemaSource {
     public Optional<String> repo() {
         return Optional.ofNullable(this.repo);
     }
+    /**
+     * @return Config file, to define various settings and properties for managing database schema change
+     * 
+     */
+    public Optional<String> toml() {
+        return Optional.ofNullable(this.toml);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -76,6 +88,7 @@ public final class DbSchemaSchemaSource {
         private String connector;
         private String location;
         private @Nullable String repo;
+        private @Nullable String toml;
         public Builder() {}
         public Builder(DbSchemaSchemaSource defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,6 +96,7 @@ public final class DbSchemaSchemaSource {
     	      this.connector = defaults.connector;
     	      this.location = defaults.location;
     	      this.repo = defaults.repo;
+    	      this.toml = defaults.toml;
         }
 
         @CustomType.Setter
@@ -113,12 +127,19 @@ public final class DbSchemaSchemaSource {
             this.repo = repo;
             return this;
         }
+        @CustomType.Setter
+        public Builder toml(@Nullable String toml) {
+
+            this.toml = toml;
+            return this;
+        }
         public DbSchemaSchemaSource build() {
             final var _resultValue = new DbSchemaSchemaSource();
             _resultValue.archivePath = archivePath;
             _resultValue.connector = connector;
             _resultValue.location = location;
             _resultValue.repo = repo;
+            _resultValue.toml = toml;
             return _resultValue;
         }
     }

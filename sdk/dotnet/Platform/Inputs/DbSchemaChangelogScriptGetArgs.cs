@@ -36,6 +36,12 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("shell")]
         public Input<string>? Shell { get; set; }
 
+        /// <summary>
+        /// Config file, to define various settings and properties for managing database schema change
+        /// </summary>
+        [Input("toml")]
+        public Input<string>? Toml { get; set; }
+
         public DbSchemaChangelogScriptGetArgs()
         {
         }

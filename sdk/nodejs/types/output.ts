@@ -3510,6 +3510,10 @@ export namespace platform {
          * Type of the shell. For example Sh or Bash
          */
         shell?: string;
+        /**
+         * Config file, to define various settings and properties for managing database schema change
+         */
+        toml?: string;
     }
 
     export interface DbSchemaSchemaSource {
@@ -3529,6 +3533,10 @@ export namespace platform {
          * If connector url is of account, which repository to connect to using the connector
          */
         repo?: string;
+        /**
+         * Config file, to define various settings and properties for managing database schema change
+         */
+        toml?: string;
     }
 
     export interface DefaultNotificationTemplateSetEventTemplateConfigurationSet {
@@ -4684,6 +4692,10 @@ export namespace platform {
          * Type of the shell. For example Sh or Bash
          */
         shell: string;
+        /**
+         * [Optional] For flyway migration type only
+         */
+        toml?: string;
     }
 
     export interface GetDbSchemaSchemaSource {
@@ -4703,6 +4715,10 @@ export namespace platform {
          * If connector url is of account, which repository to connect to using the connector
          */
         repo: string;
+        /**
+         * [Optional] For flyway migration type only
+         */
+        toml?: string;
     }
 
     export interface GetDefaultNotificationTemplateSetEventTemplateConfigurationSet {

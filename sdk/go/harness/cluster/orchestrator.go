@@ -12,35 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating ClusterOrchestrators.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cluster"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cluster.NewOrchestrator(ctx, "test", &cluster.OrchestratorArgs{
-//				Name:            pulumi.String("name"),
-//				ClusterEndpoint: pulumi.String("http://test.test.com"),
-//				K8sConnectorId:  pulumi.String("test"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Orchestrator struct {
 	pulumi.CustomResourceState
 

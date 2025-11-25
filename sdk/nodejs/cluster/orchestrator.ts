@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Resource for creating ClusterOrchestrators.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const test = new harness.cluster.Orchestrator("test", {
- *     name: "name",
- *     clusterEndpoint: "http://test.test.com",
- *     k8sConnectorId: "test",
- * });
- * ```
- */
 export class Orchestrator extends pulumi.CustomResource {
     /**
      * Get an existing Orchestrator resource's state with the given name, ID, and optional extra

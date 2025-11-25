@@ -29,6 +29,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Type of the shell. For example Sh or Bash
         /// </summary>
         public readonly string Shell;
+        /// <summary>
+        /// [Optional] For flyway migration type only
+        /// </summary>
+        public readonly string? Toml;
 
         [OutputConstructor]
         private GetDbSchemaChangelogScriptResult(
@@ -38,12 +42,15 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string location,
 
-            string shell)
+            string shell,
+
+            string? toml)
         {
             Command = command;
             Image = image;
             Location = location;
             Shell = shell;
+            Toml = toml;
         }
     }
 }

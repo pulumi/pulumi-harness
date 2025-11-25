@@ -137,20 +137,7 @@ class Orchestrator(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Resource for creating ClusterOrchestrators.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        test = harness.cluster.Orchestrator("test",
-            name="name",
-            cluster_endpoint="http://test.test.com",
-            k8s_connector_id="test")
-        ```
-
+        Create a Orchestrator resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
@@ -164,20 +151,7 @@ class Orchestrator(pulumi.CustomResource):
                  args: OrchestratorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating ClusterOrchestrators.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        test = harness.cluster.Orchestrator("test",
-            name="name",
-            cluster_endpoint="http://test.test.com",
-            k8s_connector_id="test")
-        ```
-
+        Create a Orchestrator resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param OrchestratorArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

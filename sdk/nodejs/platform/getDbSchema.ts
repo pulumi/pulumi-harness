@@ -26,6 +26,7 @@ export function getDbSchema(args: GetDbSchemaArgs, opts?: pulumi.InvokeOptions):
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDbSchema:getDbSchema", {
         "identifier": args.identifier,
+        "migrationType": args.migrationType,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
@@ -41,6 +42,10 @@ export interface GetDbSchemaArgs {
      * Unique identifier of the resource.
      */
     identifier: string;
+    /**
+     * DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     */
+    migrationType?: string;
     /**
      * Name of the resource.
      */
@@ -79,6 +84,10 @@ export interface GetDbSchemaResult {
      * Unique identifier of the resource.
      */
     readonly identifier: string;
+    /**
+     * DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     */
+    readonly migrationType?: string;
     /**
      * Name of the resource.
      */
@@ -128,6 +137,7 @@ export function getDbSchemaOutput(args: GetDbSchemaOutputArgs, opts?: pulumi.Inv
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getDbSchema:getDbSchema", {
         "identifier": args.identifier,
+        "migrationType": args.migrationType,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
@@ -143,6 +153,10 @@ export interface GetDbSchemaOutputArgs {
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
+    /**
+     * DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     */
+    migrationType?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */

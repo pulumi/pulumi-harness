@@ -20,6 +20,132 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness DBDevOps Schema.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.DbSchema;
+ * import com.pulumi.harness.platform.DbSchemaArgs;
+ * import com.pulumi.harness.platform.inputs.DbSchemaSchemaSourceArgs;
+ * import com.pulumi.harness.platform.inputs.DbSchemaChangelogScriptArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultTypeTest = new DbSchema("defaultTypeTest", DbSchemaArgs.builder()
+ *             .identifier("identifier")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .name("name")
+ *             .service("service1")
+ *             .tags(            
+ *                 "foo:bar",
+ *                 "bar:foo")
+ *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
+ *                 .connector("gitConnector")
+ *                 .repo("TestRepo")
+ *                 .location("db/example-changelog.yaml")
+ *                 .archivePath("path/to/archive.zip")
+ *                 .build())
+ *             .build());
+ * 
+ *         var liquibaseRepositoryTest = new DbSchema("liquibaseRepositoryTest", DbSchemaArgs.builder()
+ *             .identifier("identifier")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .name("name")
+ *             .service("service1")
+ *             .type("Repository")
+ *             .migrationType("Liquibase")
+ *             .tags(            
+ *                 "foo:bar",
+ *                 "bar:foo")
+ *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
+ *                 .connector("gitConnector")
+ *                 .repo("TestRepo")
+ *                 .location("db/example-changelog.yaml")
+ *                 .archivePath("path/to/archive.zip")
+ *                 .build())
+ *             .build());
+ * 
+ *         var liquibaseScriptTest = new DbSchema("liquibaseScriptTest", DbSchemaArgs.builder()
+ *             .identifier("identifier")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .name("name")
+ *             .migrationType("Liquibase")
+ *             .service("service1")
+ *             .type("Script")
+ *             .tags(            
+ *                 "foo:bar",
+ *                 "bar:foo")
+ *             .changelogScript(DbSchemaChangelogScriptArgs.builder()
+ *                 .image("plugins/image")
+ *                 .command("echo \\\"hello dbops\\\"")
+ *                 .shell("sh/bash")
+ *                 .location("db/example-changelog.yaml")
+ *                 .build())
+ *             .build());
+ * 
+ *         var flywayRepositoryTest = new DbSchema("flywayRepositoryTest", DbSchemaArgs.builder()
+ *             .identifier("identifier")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .name("name")
+ *             .service("service1")
+ *             .type("Repository")
+ *             .migrationType("Flyway")
+ *             .tags(            
+ *                 "foo:bar",
+ *                 "bar:foo")
+ *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
+ *                 .connector("gitConnector")
+ *                 .repo("TestRepo")
+ *                 .location("db/flyway/migrations")
+ *                 .toml("db/flyway.toml")
+ *                 .archivePath("path/to/archive.zip")
+ *                 .build())
+ *             .build());
+ * 
+ *         var flywayScriptTest = new DbSchema("flywayScriptTest", DbSchemaArgs.builder()
+ *             .identifier("identifier")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .name("name")
+ *             .migrationType("Flyway")
+ *             .service("service1")
+ *             .type("Script")
+ *             .tags(            
+ *                 "foo:bar",
+ *                 "bar:foo")
+ *             .changelogScript(DbSchemaChangelogScriptArgs.builder()
+ *                 .image("plugins/image")
+ *                 .command("echo \\\"hello dbops\\\"")
+ *                 .shell("sh/bash")
+ *                 .location("db/flyway/migrations")
+ *                 .toml("db/flyway.toml")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * The `pulumi import` command can be used, for example:
@@ -74,6 +200,20 @@ public class DbSchema extends com.pulumi.resources.CustomResource {
      */
     public Output<String> identifier() {
         return this.identifier;
+    }
+    /**
+     * DB migration tool type. Valid values are any one of: Liquibase, Flyway
+     * 
+     */
+    @Export(name="migrationType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> migrationType;
+
+    /**
+     * @return DB migration tool type. Valid values are any one of: Liquibase, Flyway
+     * 
+     */
+    public Output<Optional<String>> migrationType() {
+        return Codegen.optional(this.migrationType);
     }
     /**
      * Name of the resource.
