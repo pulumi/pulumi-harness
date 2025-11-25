@@ -9,29 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness.Cluster
 {
-    /// <summary>
-    /// Resource for creating ClusterOrchestrators.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new Harness.Cluster.Orchestrator("test", new()
-    ///     {
-    ///         Name = "name",
-    ///         ClusterEndpoint = "http://test.test.com",
-    ///         K8sConnectorId = "test",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [HarnessResourceType("harness:cluster/orchestrator:Orchestrator")]
     public partial class Orchestrator : global::Pulumi.CustomResource
     {

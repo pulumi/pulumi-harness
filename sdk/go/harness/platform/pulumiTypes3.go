@@ -30140,6 +30140,8 @@ type GetDbSchemaChangelogScript struct {
 	Location string `pulumi:"location"`
 	// Type of the shell. For example Sh or Bash
 	Shell string `pulumi:"shell"`
+	// [Optional] For flyway migration type only
+	Toml *string `pulumi:"toml"`
 }
 
 // GetDbSchemaChangelogScriptInput is an input type that accepts GetDbSchemaChangelogScriptArgs and GetDbSchemaChangelogScriptOutput values.
@@ -30162,6 +30164,8 @@ type GetDbSchemaChangelogScriptArgs struct {
 	Location pulumi.StringInput `pulumi:"location"`
 	// Type of the shell. For example Sh or Bash
 	Shell pulumi.StringInput `pulumi:"shell"`
+	// [Optional] For flyway migration type only
+	Toml pulumi.StringPtrInput `pulumi:"toml"`
 }
 
 func (GetDbSchemaChangelogScriptArgs) ElementType() reflect.Type {
@@ -30210,6 +30214,11 @@ func (o GetDbSchemaChangelogScriptOutput) Shell() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbSchemaChangelogScript) string { return v.Shell }).(pulumi.StringOutput)
 }
 
+// [Optional] For flyway migration type only
+func (o GetDbSchemaChangelogScriptOutput) Toml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDbSchemaChangelogScript) *string { return v.Toml }).(pulumi.StringPtrOutput)
+}
+
 type GetDbSchemaSchemaSource struct {
 	// If connector type is artifactory, path to the archive file which contains the changeLog
 	ArchivePath string `pulumi:"archivePath"`
@@ -30219,6 +30228,8 @@ type GetDbSchemaSchemaSource struct {
 	Location string `pulumi:"location"`
 	// If connector url is of account, which repository to connect to using the connector
 	Repo string `pulumi:"repo"`
+	// [Optional] For flyway migration type only
+	Toml *string `pulumi:"toml"`
 }
 
 // GetDbSchemaSchemaSourceInput is an input type that accepts GetDbSchemaSchemaSourceArgs and GetDbSchemaSchemaSourceOutput values.
@@ -30241,6 +30252,8 @@ type GetDbSchemaSchemaSourceArgs struct {
 	Location pulumi.StringInput `pulumi:"location"`
 	// If connector url is of account, which repository to connect to using the connector
 	Repo pulumi.StringInput `pulumi:"repo"`
+	// [Optional] For flyway migration type only
+	Toml pulumi.StringPtrInput `pulumi:"toml"`
 }
 
 func (GetDbSchemaSchemaSourceArgs) ElementType() reflect.Type {
@@ -30312,6 +30325,11 @@ func (o GetDbSchemaSchemaSourceOutput) Location() pulumi.StringOutput {
 // If connector url is of account, which repository to connect to using the connector
 func (o GetDbSchemaSchemaSourceOutput) Repo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbSchemaSchemaSource) string { return v.Repo }).(pulumi.StringOutput)
+}
+
+// [Optional] For flyway migration type only
+func (o GetDbSchemaSchemaSourceOutput) Toml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDbSchemaSchemaSource) *string { return v.Toml }).(pulumi.StringPtrOutput)
 }
 
 type GetDbSchemaSchemaSourceArrayOutput struct{ *pulumi.OutputState }

@@ -14,6 +14,136 @@ import (
 
 // Resource for creating a Harness DBDevOps Schema.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewDbSchema(ctx, "default_type_test", &platform.DbSchemaArgs{
+//				Identifier: pulumi.String("identifier"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Name:       pulumi.String("name"),
+//				Service:    pulumi.String("service1"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
+//				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
+//					Connector:   pulumi.String("gitConnector"),
+//					Repo:        pulumi.String("TestRepo"),
+//					Location:    pulumi.String("db/example-changelog.yaml"),
+//					ArchivePath: pulumi.String("path/to/archive.zip"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewDbSchema(ctx, "liquibase_repository_test", &platform.DbSchemaArgs{
+//				Identifier:    pulumi.String("identifier"),
+//				OrgId:         pulumi.String("org_id"),
+//				ProjectId:     pulumi.String("project_id"),
+//				Name:          pulumi.String("name"),
+//				Service:       pulumi.String("service1"),
+//				Type:          pulumi.String("Repository"),
+//				MigrationType: pulumi.String("Liquibase"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
+//				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
+//					Connector:   pulumi.String("gitConnector"),
+//					Repo:        pulumi.String("TestRepo"),
+//					Location:    pulumi.String("db/example-changelog.yaml"),
+//					ArchivePath: pulumi.String("path/to/archive.zip"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewDbSchema(ctx, "liquibase_script_test", &platform.DbSchemaArgs{
+//				Identifier:    pulumi.String("identifier"),
+//				OrgId:         pulumi.String("org_id"),
+//				ProjectId:     pulumi.String("project_id"),
+//				Name:          pulumi.String("name"),
+//				MigrationType: pulumi.String("Liquibase"),
+//				Service:       pulumi.String("service1"),
+//				Type:          pulumi.String("Script"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
+//				ChangelogScript: &platform.DbSchemaChangelogScriptArgs{
+//					Image:    pulumi.String("plugins/image"),
+//					Command:  pulumi.String("echo \\\"hello dbops\\\""),
+//					Shell:    pulumi.String("sh/bash"),
+//					Location: pulumi.String("db/example-changelog.yaml"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewDbSchema(ctx, "flyway_repository_test", &platform.DbSchemaArgs{
+//				Identifier:    pulumi.String("identifier"),
+//				OrgId:         pulumi.String("org_id"),
+//				ProjectId:     pulumi.String("project_id"),
+//				Name:          pulumi.String("name"),
+//				Service:       pulumi.String("service1"),
+//				Type:          pulumi.String("Repository"),
+//				MigrationType: pulumi.String("Flyway"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
+//				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
+//					Connector:   pulumi.String("gitConnector"),
+//					Repo:        pulumi.String("TestRepo"),
+//					Location:    pulumi.String("db/flyway/migrations"),
+//					Toml:        pulumi.String("db/flyway.toml"),
+//					ArchivePath: pulumi.String("path/to/archive.zip"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewDbSchema(ctx, "flyway_script_test", &platform.DbSchemaArgs{
+//				Identifier:    pulumi.String("identifier"),
+//				OrgId:         pulumi.String("org_id"),
+//				ProjectId:     pulumi.String("project_id"),
+//				Name:          pulumi.String("name"),
+//				MigrationType: pulumi.String("Flyway"),
+//				Service:       pulumi.String("service1"),
+//				Type:          pulumi.String("Script"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
+//				ChangelogScript: &platform.DbSchemaChangelogScriptArgs{
+//					Image:    pulumi.String("plugins/image"),
+//					Command:  pulumi.String("echo \\\"hello dbops\\\""),
+//					Shell:    pulumi.String("sh/bash"),
+//					Location: pulumi.String("db/flyway/migrations"),
+//					Toml:     pulumi.String("db/flyway.toml"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The `pulumi import` command can be used, for example:
@@ -32,6 +162,8 @@ type DbSchema struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+	MigrationType pulumi.StringPtrOutput `pulumi:"migrationType"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -93,6 +225,8 @@ type dbSchemaState struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
+	// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+	MigrationType *string `pulumi:"migrationType"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -116,6 +250,8 @@ type DbSchemaState struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
+	// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+	MigrationType pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -143,6 +279,8 @@ type dbSchemaArgs struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
+	// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+	MigrationType *string `pulumi:"migrationType"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -167,6 +305,8 @@ type DbSchemaArgs struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
+	// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+	MigrationType pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -283,6 +423,11 @@ func (o DbSchemaOutput) Description() pulumi.StringPtrOutput {
 // Unique identifier of the resource.
 func (o DbSchemaOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbSchema) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+func (o DbSchemaOutput) MigrationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSchema) pulumi.StringPtrOutput { return v.MigrationType }).(pulumi.StringPtrOutput)
 }
 
 // Name of the resource.

@@ -36,6 +36,11 @@ public final class GetDbSchemaResult {
      */
     private String identifier;
     /**
+     * @return DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     * 
+     */
+    private @Nullable String migrationType;
+    /**
      * @return Name of the resource.
      * 
      */
@@ -101,6 +106,13 @@ public final class GetDbSchemaResult {
         return this.identifier;
     }
     /**
+     * @return DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     * 
+     */
+    public Optional<String> migrationType() {
+        return Optional.ofNullable(this.migrationType);
+    }
+    /**
      * @return Name of the resource.
      * 
      */
@@ -163,6 +175,7 @@ public final class GetDbSchemaResult {
         private String description;
         private String id;
         private String identifier;
+        private @Nullable String migrationType;
         private @Nullable String name;
         private String orgId;
         private String projectId;
@@ -177,6 +190,7 @@ public final class GetDbSchemaResult {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
+    	      this.migrationType = defaults.migrationType;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
@@ -216,6 +230,12 @@ public final class GetDbSchemaResult {
               throw new MissingRequiredPropertyException("GetDbSchemaResult", "identifier");
             }
             this.identifier = identifier;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder migrationType(@Nullable String migrationType) {
+
+            this.migrationType = migrationType;
             return this;
         }
         @CustomType.Setter
@@ -282,6 +302,7 @@ public final class GetDbSchemaResult {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
+            _resultValue.migrationType = migrationType;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;

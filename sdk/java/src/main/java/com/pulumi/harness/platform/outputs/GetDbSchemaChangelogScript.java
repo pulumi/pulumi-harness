@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbSchemaChangelogScript {
@@ -30,6 +32,11 @@ public final class GetDbSchemaChangelogScript {
      * 
      */
     private String shell;
+    /**
+     * @return [Optional] For flyway migration type only
+     * 
+     */
+    private @Nullable String toml;
 
     private GetDbSchemaChangelogScript() {}
     /**
@@ -60,6 +67,13 @@ public final class GetDbSchemaChangelogScript {
     public String shell() {
         return this.shell;
     }
+    /**
+     * @return [Optional] For flyway migration type only
+     * 
+     */
+    public Optional<String> toml() {
+        return Optional.ofNullable(this.toml);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -74,6 +88,7 @@ public final class GetDbSchemaChangelogScript {
         private String image;
         private String location;
         private String shell;
+        private @Nullable String toml;
         public Builder() {}
         public Builder(GetDbSchemaChangelogScript defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,6 +96,7 @@ public final class GetDbSchemaChangelogScript {
     	      this.image = defaults.image;
     	      this.location = defaults.location;
     	      this.shell = defaults.shell;
+    	      this.toml = defaults.toml;
         }
 
         @CustomType.Setter
@@ -115,12 +131,19 @@ public final class GetDbSchemaChangelogScript {
             this.shell = shell;
             return this;
         }
+        @CustomType.Setter
+        public Builder toml(@Nullable String toml) {
+
+            this.toml = toml;
+            return this;
+        }
         public GetDbSchemaChangelogScript build() {
             final var _resultValue = new GetDbSchemaChangelogScript();
             _resultValue.command = command;
             _resultValue.image = image;
             _resultValue.location = location;
             _resultValue.shell = shell;
+            _resultValue.toml = toml;
             return _resultValue;
         }
     }

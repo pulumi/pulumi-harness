@@ -9,6 +9,109 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Harness DBDevOps Schema.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const defaultTypeTest = new harness.platform.DbSchema("default_type_test", {
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     name: "name",
+ *     service: "service1",
+ *     tags: [
+ *         "foo:bar",
+ *         "bar:foo",
+ *     ],
+ *     schemaSource: {
+ *         connector: "gitConnector",
+ *         repo: "TestRepo",
+ *         location: "db/example-changelog.yaml",
+ *         archivePath: "path/to/archive.zip",
+ *     },
+ * });
+ * const liquibaseRepositoryTest = new harness.platform.DbSchema("liquibase_repository_test", {
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     name: "name",
+ *     service: "service1",
+ *     type: "Repository",
+ *     migrationType: "Liquibase",
+ *     tags: [
+ *         "foo:bar",
+ *         "bar:foo",
+ *     ],
+ *     schemaSource: {
+ *         connector: "gitConnector",
+ *         repo: "TestRepo",
+ *         location: "db/example-changelog.yaml",
+ *         archivePath: "path/to/archive.zip",
+ *     },
+ * });
+ * const liquibaseScriptTest = new harness.platform.DbSchema("liquibase_script_test", {
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     name: "name",
+ *     migrationType: "Liquibase",
+ *     service: "service1",
+ *     type: "Script",
+ *     tags: [
+ *         "foo:bar",
+ *         "bar:foo",
+ *     ],
+ *     changelogScript: {
+ *         image: "plugins/image",
+ *         command: "echo \\\"hello dbops\\\"",
+ *         shell: "sh/bash",
+ *         location: "db/example-changelog.yaml",
+ *     },
+ * });
+ * const flywayRepositoryTest = new harness.platform.DbSchema("flyway_repository_test", {
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     name: "name",
+ *     service: "service1",
+ *     type: "Repository",
+ *     migrationType: "Flyway",
+ *     tags: [
+ *         "foo:bar",
+ *         "bar:foo",
+ *     ],
+ *     schemaSource: {
+ *         connector: "gitConnector",
+ *         repo: "TestRepo",
+ *         location: "db/flyway/migrations",
+ *         toml: "db/flyway.toml",
+ *         archivePath: "path/to/archive.zip",
+ *     },
+ * });
+ * const flywayScriptTest = new harness.platform.DbSchema("flyway_script_test", {
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     name: "name",
+ *     migrationType: "Flyway",
+ *     service: "service1",
+ *     type: "Script",
+ *     tags: [
+ *         "foo:bar",
+ *         "bar:foo",
+ *     ],
+ *     changelogScript: {
+ *         image: "plugins/image",
+ *         command: "echo \\\"hello dbops\\\"",
+ *         shell: "sh/bash",
+ *         location: "db/flyway/migrations",
+ *         toml: "db/flyway.toml",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * The `pulumi import` command can be used, for example:
@@ -60,6 +163,10 @@ export class DbSchema extends pulumi.CustomResource {
      */
     declare public readonly identifier: pulumi.Output<string>;
     /**
+     * DB migration tool type. Valid values are any one of: Liquibase, Flyway
+     */
+    declare public readonly migrationType: pulumi.Output<string | undefined>;
+    /**
      * Name of the resource.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -104,6 +211,7 @@ export class DbSchema extends pulumi.CustomResource {
             resourceInputs["changelogScript"] = state?.changelogScript;
             resourceInputs["description"] = state?.description;
             resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["migrationType"] = state?.migrationType;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["projectId"] = state?.projectId;
@@ -125,6 +233,7 @@ export class DbSchema extends pulumi.CustomResource {
             resourceInputs["changelogScript"] = args?.changelogScript;
             resourceInputs["description"] = args?.description;
             resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["migrationType"] = args?.migrationType;
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["projectId"] = args?.projectId;
@@ -154,6 +263,10 @@ export interface DbSchemaState {
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
+    /**
+     * DB migration tool type. Valid values are any one of: Liquibase, Flyway
+     */
+    migrationType?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
@@ -200,6 +313,10 @@ export interface DbSchemaArgs {
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
+    /**
+     * DB migration tool type. Valid values are any one of: Liquibase, Flyway
+     */
+    migrationType?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */

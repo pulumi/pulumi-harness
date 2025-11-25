@@ -76,6 +76,21 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.repo);
     }
 
+    /**
+     * Config file, to define various settings and properties for managing database schema change
+     * 
+     */
+    @Import(name="toml")
+    private @Nullable Output<String> toml;
+
+    /**
+     * @return Config file, to define various settings and properties for managing database schema change
+     * 
+     */
+    public Optional<Output<String>> toml() {
+        return Optional.ofNullable(this.toml);
+    }
+
     private DbSchemaSchemaSourceArgs() {}
 
     private DbSchemaSchemaSourceArgs(DbSchemaSchemaSourceArgs $) {
@@ -83,6 +98,7 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
         this.connector = $.connector;
         this.location = $.location;
         this.repo = $.repo;
+        this.toml = $.toml;
     }
 
     public static Builder builder() {
@@ -185,6 +201,27 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
          */
         public Builder repo(String repo) {
             return repo(Output.of(repo));
+        }
+
+        /**
+         * @param toml Config file, to define various settings and properties for managing database schema change
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toml(@Nullable Output<String> toml) {
+            $.toml = toml;
+            return this;
+        }
+
+        /**
+         * @param toml Config file, to define various settings and properties for managing database schema change
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toml(String toml) {
+            return toml(Output.of(toml));
         }
 
         public DbSchemaSchemaSourceArgs build() {

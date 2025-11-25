@@ -31,6 +31,21 @@ public final class GetDbSchemaPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     * 
+     */
+    @Import(name="migrationType")
+    private @Nullable String migrationType;
+
+    /**
+     * @return DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     * 
+     */
+    public Optional<String> migrationType() {
+        return Optional.ofNullable(this.migrationType);
+    }
+
+    /**
      * Name of the resource.
      * 
      */
@@ -94,6 +109,7 @@ public final class GetDbSchemaPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     private GetDbSchemaPlainArgs(GetDbSchemaPlainArgs $) {
         this.identifier = $.identifier;
+        this.migrationType = $.migrationType;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -126,6 +142,17 @@ public final class GetDbSchemaPlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder identifier(String identifier) {
             $.identifier = identifier;
+            return this;
+        }
+
+        /**
+         * @param migrationType DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrationType(@Nullable String migrationType) {
+            $.migrationType = migrationType;
             return this;
         }
 

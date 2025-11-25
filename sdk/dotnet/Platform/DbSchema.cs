@@ -12,6 +12,134 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating a Harness DBDevOps Schema.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultTypeTest = new Harness.Platform.DbSchema("default_type_test", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Name = "name",
+    ///         Service = "service1",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "bar:foo",
+    ///         },
+    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
+    ///         {
+    ///             Connector = "gitConnector",
+    ///             Repo = "TestRepo",
+    ///             Location = "db/example-changelog.yaml",
+    ///             ArchivePath = "path/to/archive.zip",
+    ///         },
+    ///     });
+    /// 
+    ///     var liquibaseRepositoryTest = new Harness.Platform.DbSchema("liquibase_repository_test", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Name = "name",
+    ///         Service = "service1",
+    ///         Type = "Repository",
+    ///         MigrationType = "Liquibase",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "bar:foo",
+    ///         },
+    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
+    ///         {
+    ///             Connector = "gitConnector",
+    ///             Repo = "TestRepo",
+    ///             Location = "db/example-changelog.yaml",
+    ///             ArchivePath = "path/to/archive.zip",
+    ///         },
+    ///     });
+    /// 
+    ///     var liquibaseScriptTest = new Harness.Platform.DbSchema("liquibase_script_test", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Name = "name",
+    ///         MigrationType = "Liquibase",
+    ///         Service = "service1",
+    ///         Type = "Script",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "bar:foo",
+    ///         },
+    ///         ChangelogScript = new Harness.Platform.Inputs.DbSchemaChangelogScriptArgs
+    ///         {
+    ///             Image = "plugins/image",
+    ///             Command = "echo \\\"hello dbops\\\"",
+    ///             Shell = "sh/bash",
+    ///             Location = "db/example-changelog.yaml",
+    ///         },
+    ///     });
+    /// 
+    ///     var flywayRepositoryTest = new Harness.Platform.DbSchema("flyway_repository_test", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Name = "name",
+    ///         Service = "service1",
+    ///         Type = "Repository",
+    ///         MigrationType = "Flyway",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "bar:foo",
+    ///         },
+    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
+    ///         {
+    ///             Connector = "gitConnector",
+    ///             Repo = "TestRepo",
+    ///             Location = "db/flyway/migrations",
+    ///             Toml = "db/flyway.toml",
+    ///             ArchivePath = "path/to/archive.zip",
+    ///         },
+    ///     });
+    /// 
+    ///     var flywayScriptTest = new Harness.Platform.DbSchema("flyway_script_test", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Name = "name",
+    ///         MigrationType = "Flyway",
+    ///         Service = "service1",
+    ///         Type = "Script",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "bar:foo",
+    ///         },
+    ///         ChangelogScript = new Harness.Platform.Inputs.DbSchemaChangelogScriptArgs
+    ///         {
+    ///             Image = "plugins/image",
+    ///             Command = "echo \\\"hello dbops\\\"",
+    ///             Shell = "sh/bash",
+    ///             Location = "db/flyway/migrations",
+    ///             Toml = "db/flyway.toml",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The `pulumi import` command can be used, for example:
@@ -42,6 +170,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
+
+        /// <summary>
+        /// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        /// </summary>
+        [Output("migrationType")]
+        public Output<string?> MigrationType { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -151,6 +285,12 @@ namespace Pulumi.Harness.Platform
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
+        /// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        /// </summary>
+        [Input("migrationType")]
+        public Input<string>? MigrationType { get; set; }
+
+        /// <summary>
         /// Name of the resource.
         /// </summary>
         [Input("name")]
@@ -223,6 +363,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
+
+        /// <summary>
+        /// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        /// </summary>
+        [Input("migrationType")]
+        public Input<string>? MigrationType { get; set; }
 
         /// <summary>
         /// Name of the resource.

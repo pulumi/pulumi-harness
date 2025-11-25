@@ -26,6 +26,7 @@ class DbSchemaArgs:
                  project_id: pulumi.Input[_builtins.str],
                  changelog_script: Optional[pulumi.Input['DbSchemaChangelogScriptArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 migration_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  schema_source: Optional[pulumi.Input['DbSchemaSchemaSourceArgs']] = None,
                  service: Optional[pulumi.Input[_builtins.str]] = None,
@@ -38,6 +39,7 @@ class DbSchemaArgs:
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input['DbSchemaChangelogScriptArgs'] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.str] migration_type: DB migration tool type. Valid values are any one of: Liquibase, Flyway
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input['DbSchemaSchemaSourceArgs'] schema_source: Provides a connector and path at which to find the database schema representation
         :param pulumi.Input[_builtins.str] service: The service associated with schema
@@ -51,6 +53,8 @@ class DbSchemaArgs:
             pulumi.set(__self__, "changelog_script", changelog_script)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if migration_type is not None:
+            pulumi.set(__self__, "migration_type", migration_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if schema_source is not None:
@@ -123,6 +127,18 @@ class DbSchemaArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="migrationType")
+    def migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        """
+        return pulumi.get(self, "migration_type")
+
+    @migration_type.setter
+    def migration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "migration_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -189,6 +205,7 @@ class _DbSchemaState:
                  changelog_script: Optional[pulumi.Input['DbSchemaChangelogScriptArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 migration_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -201,6 +218,7 @@ class _DbSchemaState:
         :param pulumi.Input['DbSchemaChangelogScriptArgs'] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.str] migration_type: DB migration tool type. Valid values are any one of: Liquibase, Flyway
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -215,6 +233,8 @@ class _DbSchemaState:
             pulumi.set(__self__, "description", description)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if migration_type is not None:
+            pulumi.set(__self__, "migration_type", migration_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -265,6 +285,18 @@ class _DbSchemaState:
     @identifier.setter
     def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="migrationType")
+    def migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        """
+        return pulumi.get(self, "migration_type")
+
+    @migration_type.setter
+    def migration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "migration_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -360,6 +392,7 @@ class DbSchema(pulumi.CustomResource):
                  changelog_script: Optional[pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 migration_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -370,6 +403,104 @@ class DbSchema(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for creating a Harness DBDevOps Schema.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        default_type_test = harness.platform.DbSchema("default_type_test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            service="service1",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+                "archive_path": "path/to/archive.zip",
+            })
+        liquibase_repository_test = harness.platform.DbSchema("liquibase_repository_test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            service="service1",
+            type="Repository",
+            migration_type="Liquibase",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+                "archive_path": "path/to/archive.zip",
+            })
+        liquibase_script_test = harness.platform.DbSchema("liquibase_script_test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            migration_type="Liquibase",
+            service="service1",
+            type="Script",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            changelog_script={
+                "image": "plugins/image",
+                "command": "echo \\\\\\"hello dbops\\\\\\"",
+                "shell": "sh/bash",
+                "location": "db/example-changelog.yaml",
+            })
+        flyway_repository_test = harness.platform.DbSchema("flyway_repository_test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            service="service1",
+            type="Repository",
+            migration_type="Flyway",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/flyway/migrations",
+                "toml": "db/flyway.toml",
+                "archive_path": "path/to/archive.zip",
+            })
+        flyway_script_test = harness.platform.DbSchema("flyway_script_test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            migration_type="Flyway",
+            service="service1",
+            type="Script",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            changelog_script={
+                "image": "plugins/image",
+                "command": "echo \\\\\\"hello dbops\\\\\\"",
+                "shell": "sh/bash",
+                "location": "db/flyway/migrations",
+                "toml": "db/flyway.toml",
+            })
+        ```
 
         ## Import
 
@@ -386,6 +517,7 @@ class DbSchema(pulumi.CustomResource):
         :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.str] migration_type: DB migration tool type. Valid values are any one of: Liquibase, Flyway
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -402,6 +534,104 @@ class DbSchema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness DBDevOps Schema.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        default_type_test = harness.platform.DbSchema("default_type_test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            service="service1",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+                "archive_path": "path/to/archive.zip",
+            })
+        liquibase_repository_test = harness.platform.DbSchema("liquibase_repository_test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            service="service1",
+            type="Repository",
+            migration_type="Liquibase",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+                "archive_path": "path/to/archive.zip",
+            })
+        liquibase_script_test = harness.platform.DbSchema("liquibase_script_test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            migration_type="Liquibase",
+            service="service1",
+            type="Script",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            changelog_script={
+                "image": "plugins/image",
+                "command": "echo \\\\\\"hello dbops\\\\\\"",
+                "shell": "sh/bash",
+                "location": "db/example-changelog.yaml",
+            })
+        flyway_repository_test = harness.platform.DbSchema("flyway_repository_test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            service="service1",
+            type="Repository",
+            migration_type="Flyway",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/flyway/migrations",
+                "toml": "db/flyway.toml",
+                "archive_path": "path/to/archive.zip",
+            })
+        flyway_script_test = harness.platform.DbSchema("flyway_script_test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            migration_type="Flyway",
+            service="service1",
+            type="Script",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            changelog_script={
+                "image": "plugins/image",
+                "command": "echo \\\\\\"hello dbops\\\\\\"",
+                "shell": "sh/bash",
+                "location": "db/flyway/migrations",
+                "toml": "db/flyway.toml",
+            })
+        ```
 
         ## Import
 
@@ -431,6 +661,7 @@ class DbSchema(pulumi.CustomResource):
                  changelog_script: Optional[pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 migration_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -452,6 +683,7 @@ class DbSchema(pulumi.CustomResource):
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["migration_type"] = migration_type
             __props__.__dict__["name"] = name
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
@@ -476,6 +708,7 @@ class DbSchema(pulumi.CustomResource):
             changelog_script: Optional[pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             identifier: Optional[pulumi.Input[_builtins.str]] = None,
+            migration_type: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -493,6 +726,7 @@ class DbSchema(pulumi.CustomResource):
         :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.str] migration_type: DB migration tool type. Valid values are any one of: Liquibase, Flyway
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -508,6 +742,7 @@ class DbSchema(pulumi.CustomResource):
         __props__.__dict__["changelog_script"] = changelog_script
         __props__.__dict__["description"] = description
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["migration_type"] = migration_type
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
@@ -540,6 +775,14 @@ class DbSchema(pulumi.CustomResource):
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="migrationType")
+    def migration_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        """
+        return pulumi.get(self, "migration_type")
 
     @_builtins.property
     @pulumi.getter

@@ -29,6 +29,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Type of the shell. For example Sh or Bash
         /// </summary>
         public readonly string? Shell;
+        /// <summary>
+        /// Config file, to define various settings and properties for managing database schema change
+        /// </summary>
+        public readonly string? Toml;
 
         [OutputConstructor]
         private DbSchemaChangelogScript(
@@ -38,12 +42,15 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? location,
 
-            string? shell)
+            string? shell,
+
+            string? toml)
         {
             Command = command;
             Image = image;
             Location = location;
             Shell = shell;
+            Toml = toml;
         }
     }
 }

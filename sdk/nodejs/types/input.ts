@@ -4105,6 +4105,10 @@ export namespace platform {
          * Type of the shell. For example Sh or Bash
          */
         shell?: pulumi.Input<string>;
+        /**
+         * Config file, to define various settings and properties for managing database schema change
+         */
+        toml?: pulumi.Input<string>;
     }
 
     export interface DbSchemaSchemaSource {
@@ -4124,6 +4128,10 @@ export namespace platform {
          * If connector url is of account, which repository to connect to using the connector
          */
         repo?: pulumi.Input<string>;
+        /**
+         * Config file, to define various settings and properties for managing database schema change
+         */
+        toml?: pulumi.Input<string>;
     }
 
     export interface DefaultNotificationTemplateSetEventTemplateConfigurationSet {
