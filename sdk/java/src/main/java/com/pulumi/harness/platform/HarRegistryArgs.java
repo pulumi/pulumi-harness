@@ -109,33 +109,33 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Parent reference for the registry
+     * Parent reference for the registry (required for creation)
      * 
      */
-    @Import(name="parentRef")
-    private @Nullable Output<String> parentRef;
+    @Import(name="parentRef", required=true)
+    private Output<String> parentRef;
 
     /**
-     * @return Parent reference for the registry
+     * @return Parent reference for the registry (required for creation)
      * 
      */
-    public Optional<Output<String>> parentRef() {
-        return Optional.ofNullable(this.parentRef);
+    public Output<String> parentRef() {
+        return this.parentRef;
     }
 
     /**
-     * Space reference for the registry
+     * Space reference for the registry (required for creation)
      * 
      */
-    @Import(name="spaceRef")
-    private @Nullable Output<String> spaceRef;
+    @Import(name="spaceRef", required=true)
+    private Output<String> spaceRef;
 
     /**
-     * @return Space reference for the registry
+     * @return Space reference for the registry (required for creation)
      * 
      */
-    public Optional<Output<String>> spaceRef() {
-        return Optional.ofNullable(this.spaceRef);
+    public Output<String> spaceRef() {
+        return this.spaceRef;
     }
 
     private HarRegistryArgs() {}
@@ -326,18 +326,18 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentRef Parent reference for the registry
+         * @param parentRef Parent reference for the registry (required for creation)
          * 
          * @return builder
          * 
          */
-        public Builder parentRef(@Nullable Output<String> parentRef) {
+        public Builder parentRef(Output<String> parentRef) {
             $.parentRef = parentRef;
             return this;
         }
 
         /**
-         * @param parentRef Parent reference for the registry
+         * @param parentRef Parent reference for the registry (required for creation)
          * 
          * @return builder
          * 
@@ -347,18 +347,18 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spaceRef Space reference for the registry
+         * @param spaceRef Space reference for the registry (required for creation)
          * 
          * @return builder
          * 
          */
-        public Builder spaceRef(@Nullable Output<String> spaceRef) {
+        public Builder spaceRef(Output<String> spaceRef) {
             $.spaceRef = spaceRef;
             return this;
         }
 
         /**
-         * @param spaceRef Space reference for the registry
+         * @param spaceRef Space reference for the registry (required for creation)
          * 
          * @return builder
          * 
@@ -373,6 +373,12 @@ public final class HarRegistryArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.packageType == null) {
                 throw new MissingRequiredPropertyException("HarRegistryArgs", "packageType");
+            }
+            if ($.parentRef == null) {
+                throw new MissingRequiredPropertyException("HarRegistryArgs", "parentRef");
+            }
+            if ($.spaceRef == null) {
+                throw new MissingRequiredPropertyException("HarRegistryArgs", "spaceRef");
             }
             return $;
         }

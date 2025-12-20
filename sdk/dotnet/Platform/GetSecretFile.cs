@@ -93,6 +93,9 @@ namespace Pulumi.Harness.Platform
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
+        [Input("kmsKeyId")]
+        public string? KmsKeyId { get; set; }
+
         /// <summary>
         /// Name of the resource.
         /// </summary>
@@ -124,6 +127,9 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
+
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
         /// Name of the resource.
@@ -169,6 +175,7 @@ namespace Pulumi.Harness.Platform
         /// Unique identifier of the resource.
         /// </summary>
         public readonly string Identifier;
+        public readonly string? KmsKeyId;
         /// <summary>
         /// Name of the resource.
         /// </summary>
@@ -200,6 +207,8 @@ namespace Pulumi.Harness.Platform
 
             string identifier,
 
+            string? kmsKeyId,
+
             string? name,
 
             string? orgId,
@@ -214,6 +223,7 @@ namespace Pulumi.Harness.Platform
             FilePath = filePath;
             Id = id;
             Identifier = identifier;
+            KmsKeyId = kmsKeyId;
             Name = name;
             OrgId = orgId;
             ProjectId = projectId;

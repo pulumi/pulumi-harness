@@ -26,7 +26,7 @@ class GetSecretFileResult:
     """
     A collection of values returned by getSecretFile.
     """
-    def __init__(__self__, description=None, file_path=None, id=None, identifier=None, name=None, org_id=None, project_id=None, secret_manager_identifier=None, tags=None):
+    def __init__(__self__, description=None, file_path=None, id=None, identifier=None, kms_key_id=None, name=None, org_id=None, project_id=None, secret_manager_identifier=None, tags=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -39,6 +39,9 @@ class GetSecretFileResult:
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
+        if kms_key_id and not isinstance(kms_key_id, str):
+            raise TypeError("Expected argument 'kms_key_id' to be a str")
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -86,6 +89,11 @@ class GetSecretFileResult:
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter
@@ -138,6 +146,7 @@ class AwaitableGetSecretFileResult(GetSecretFileResult):
             file_path=self.file_path,
             id=self.id,
             identifier=self.identifier,
+            kms_key_id=self.kms_key_id,
             name=self.name,
             org_id=self.org_id,
             project_id=self.project_id,
@@ -146,6 +155,7 @@ class AwaitableGetSecretFileResult(GetSecretFileResult):
 
 
 def get_secret_file(identifier: Optional[_builtins.str] = None,
+                    kms_key_id: Optional[_builtins.str] = None,
                     name: Optional[_builtins.str] = None,
                     org_id: Optional[_builtins.str] = None,
                     project_id: Optional[_builtins.str] = None,
@@ -170,6 +180,7 @@ def get_secret_file(identifier: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['identifier'] = identifier
+    __args__['kmsKeyId'] = kms_key_id
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
@@ -181,12 +192,14 @@ def get_secret_file(identifier: Optional[_builtins.str] = None,
         file_path=pulumi.get(__ret__, 'file_path'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
+        kms_key_id=pulumi.get(__ret__, 'kms_key_id'),
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         secret_manager_identifier=pulumi.get(__ret__, 'secret_manager_identifier'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_secret_file_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                           kms_key_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -211,6 +224,7 @@ def get_secret_file_output(identifier: Optional[pulumi.Input[_builtins.str]] = N
     """
     __args__ = dict()
     __args__['identifier'] = identifier
+    __args__['kmsKeyId'] = kms_key_id
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
@@ -221,6 +235,7 @@ def get_secret_file_output(identifier: Optional[pulumi.Input[_builtins.str]] = N
         file_path=pulumi.get(__response__, 'file_path'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
+        kms_key_id=pulumi.get(__response__, 'kms_key_id'),
         name=pulumi.get(__response__, 'name'),
         org_id=pulumi.get(__response__, 'org_id'),
         project_id=pulumi.get(__response__, 'project_id'),

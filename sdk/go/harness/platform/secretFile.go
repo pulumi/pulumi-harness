@@ -77,6 +77,8 @@ type SecretFile struct {
 	FilePath pulumi.StringOutput `pulumi:"filePath"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Kms Key Id for encrypting the secret value
+	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -134,6 +136,8 @@ type secretFileState struct {
 	FilePath *string `pulumi:"filePath"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
+	// Kms Key Id for encrypting the secret value
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -153,6 +157,8 @@ type SecretFileState struct {
 	FilePath pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
+	// Kms Key Id for encrypting the secret value
+	KmsKeyId pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -176,6 +182,8 @@ type secretFileArgs struct {
 	FilePath string `pulumi:"filePath"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
+	// Kms Key Id for encrypting the secret value
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -196,6 +204,8 @@ type SecretFileArgs struct {
 	FilePath pulumi.StringInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
+	// Kms Key Id for encrypting the secret value
+	KmsKeyId pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -308,6 +318,11 @@ func (o SecretFileOutput) FilePath() pulumi.StringOutput {
 // Unique identifier of the resource.
 func (o SecretFileOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretFile) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Kms Key Id for encrypting the secret value
+func (o SecretFileOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretFile) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
 // Name of the resource.

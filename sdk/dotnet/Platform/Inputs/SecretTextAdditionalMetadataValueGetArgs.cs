@@ -12,6 +12,9 @@ namespace Pulumi.Harness.Platform.Inputs
 
     public sealed class SecretTextAdditionalMetadataValueGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
         [Input("version")]
         public Input<string>? Version { get; set; }
 

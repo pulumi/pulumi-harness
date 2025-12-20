@@ -14,6 +14,8 @@ import (
 
 // Resource for creating and managing Harness Registries.
 //
+// **Note:** Both `parentRef` and `spaceRef` are required for registry creation.
+//
 // ## Example Usage
 //
 // ```go
@@ -79,6 +81,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ### After Import
+//
+// bash
+//
+// pulumi preview
+//
+// pulumi up
 type HarRegistry struct {
 	pulumi.CustomResourceState
 
@@ -96,10 +108,10 @@ type HarRegistry struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType pulumi.StringOutput `pulumi:"packageType"`
-	// Parent reference for the registry
-	ParentRef pulumi.StringPtrOutput `pulumi:"parentRef"`
-	// Space reference for the registry
-	SpaceRef pulumi.StringPtrOutput `pulumi:"spaceRef"`
+	// Parent reference for the registry (required for creation)
+	ParentRef pulumi.StringOutput `pulumi:"parentRef"`
+	// Space reference for the registry (required for creation)
+	SpaceRef pulumi.StringOutput `pulumi:"spaceRef"`
 	// URL of the registry
 	Url pulumi.StringOutput `pulumi:"url"`
 }
@@ -116,6 +128,12 @@ func NewHarRegistry(ctx *pulumi.Context,
 	}
 	if args.PackageType == nil {
 		return nil, errors.New("invalid value for required argument 'PackageType'")
+	}
+	if args.ParentRef == nil {
+		return nil, errors.New("invalid value for required argument 'ParentRef'")
+	}
+	if args.SpaceRef == nil {
+		return nil, errors.New("invalid value for required argument 'SpaceRef'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HarRegistry
@@ -154,9 +172,9 @@ type harRegistryState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType *string `pulumi:"packageType"`
-	// Parent reference for the registry
+	// Parent reference for the registry (required for creation)
 	ParentRef *string `pulumi:"parentRef"`
-	// Space reference for the registry
+	// Space reference for the registry (required for creation)
 	SpaceRef *string `pulumi:"spaceRef"`
 	// URL of the registry
 	Url *string `pulumi:"url"`
@@ -177,9 +195,9 @@ type HarRegistryState struct {
 	Identifier pulumi.StringPtrInput
 	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType pulumi.StringPtrInput
-	// Parent reference for the registry
+	// Parent reference for the registry (required for creation)
 	ParentRef pulumi.StringPtrInput
-	// Space reference for the registry
+	// Space reference for the registry (required for creation)
 	SpaceRef pulumi.StringPtrInput
 	// URL of the registry
 	Url pulumi.StringPtrInput
@@ -202,10 +220,10 @@ type harRegistryArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType string `pulumi:"packageType"`
-	// Parent reference for the registry
-	ParentRef *string `pulumi:"parentRef"`
-	// Space reference for the registry
-	SpaceRef *string `pulumi:"spaceRef"`
+	// Parent reference for the registry (required for creation)
+	ParentRef string `pulumi:"parentRef"`
+	// Space reference for the registry (required for creation)
+	SpaceRef string `pulumi:"spaceRef"`
 }
 
 // The set of arguments for constructing a HarRegistry resource.
@@ -222,10 +240,10 @@ type HarRegistryArgs struct {
 	Identifier pulumi.StringInput
 	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType pulumi.StringInput
-	// Parent reference for the registry
-	ParentRef pulumi.StringPtrInput
-	// Space reference for the registry
-	SpaceRef pulumi.StringPtrInput
+	// Parent reference for the registry (required for creation)
+	ParentRef pulumi.StringInput
+	// Space reference for the registry (required for creation)
+	SpaceRef pulumi.StringInput
 }
 
 func (HarRegistryArgs) ElementType() reflect.Type {
@@ -350,14 +368,14 @@ func (o HarRegistryOutput) PackageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *HarRegistry) pulumi.StringOutput { return v.PackageType }).(pulumi.StringOutput)
 }
 
-// Parent reference for the registry
-func (o HarRegistryOutput) ParentRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HarRegistry) pulumi.StringPtrOutput { return v.ParentRef }).(pulumi.StringPtrOutput)
+// Parent reference for the registry (required for creation)
+func (o HarRegistryOutput) ParentRef() pulumi.StringOutput {
+	return o.ApplyT(func(v *HarRegistry) pulumi.StringOutput { return v.ParentRef }).(pulumi.StringOutput)
 }
 
-// Space reference for the registry
-func (o HarRegistryOutput) SpaceRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HarRegistry) pulumi.StringPtrOutput { return v.SpaceRef }).(pulumi.StringPtrOutput)
+// Space reference for the registry (required for creation)
+func (o HarRegistryOutput) SpaceRef() pulumi.StringOutput {
+	return o.ApplyT(func(v *HarRegistry) pulumi.StringOutput { return v.SpaceRef }).(pulumi.StringOutput)
 }
 
 // URL of the registry

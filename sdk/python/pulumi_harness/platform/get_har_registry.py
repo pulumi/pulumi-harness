@@ -129,7 +129,7 @@ class GetHarRegistryResult:
 
     @_builtins.property
     @pulumi.getter(name="parentRef")
-    def parent_ref(self) -> Optional[_builtins.str]:
+    def parent_ref(self) -> _builtins.str:
         """
         Parent reference for the registry
         """
@@ -137,7 +137,7 @@ class GetHarRegistryResult:
 
     @_builtins.property
     @pulumi.getter(name="spaceRef")
-    def space_ref(self) -> Optional[_builtins.str]:
+    def space_ref(self) -> _builtins.str:
         """
         Space reference for the registry
         """
@@ -233,8 +233,8 @@ def get_har_registry_output(allowed_patterns: Optional[pulumi.Input[Optional[Seq
                             description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             identifier: Optional[pulumi.Input[_builtins.str]] = None,
                             package_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            parent_ref: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            space_ref: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                            parent_ref: Optional[pulumi.Input[_builtins.str]] = None,
+                            space_ref: Optional[pulumi.Input[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHarRegistryResult]:
     """
     Resource for creating and managing Harness Registries.

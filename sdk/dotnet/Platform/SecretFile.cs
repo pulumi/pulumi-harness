@@ -82,6 +82,12 @@ namespace Pulumi.Harness.Platform
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
+        /// Kms Key Id for encrypting the secret value
+        /// </summary>
+        [Output("kmsKeyId")]
+        public Output<string?> KmsKeyId { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource.
         /// </summary>
         [Output("name")]
@@ -177,6 +183,12 @@ namespace Pulumi.Harness.Platform
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
+        /// Kms Key Id for encrypting the secret value
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// Name of the resource.
         /// </summary>
         [Input("name")]
@@ -237,6 +249,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
+
+        /// <summary>
+        /// Kms Key Id for encrypting the secret value
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
         /// Name of the resource.

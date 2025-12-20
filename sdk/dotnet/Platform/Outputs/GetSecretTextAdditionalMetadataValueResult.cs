@@ -13,11 +13,16 @@ namespace Pulumi.Harness.Platform.Outputs
     [OutputType]
     public sealed class GetSecretTextAdditionalMetadataValueResult
     {
+        public readonly string? KmsKeyId;
         public readonly string? Version;
 
         [OutputConstructor]
-        private GetSecretTextAdditionalMetadataValueResult(string? version)
+        private GetSecretTextAdditionalMetadataValueResult(
+            string? kmsKeyId,
+
+            string? version)
         {
+            KmsKeyId = kmsKeyId;
             Version = version;
         }
     }

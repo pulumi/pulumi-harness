@@ -33,7 +33,7 @@ public final class HarRegistryConfigAuth {
      */
     private @Nullable String secretSpacePath;
     /**
-     * @return User name for UserPassword auth type
+     * @return Username for UserPassword auth type
      * 
      */
     private @Nullable String userName;
@@ -76,7 +76,7 @@ public final class HarRegistryConfigAuth {
         return Optional.ofNullable(this.secretSpacePath);
     }
     /**
-     * @return User name for UserPassword auth type
+     * @return Username for UserPassword auth type
      * 
      */
     public Optional<String> userName() {

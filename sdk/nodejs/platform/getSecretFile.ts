@@ -22,6 +22,7 @@ export function getSecretFile(args: GetSecretFileArgs, opts?: pulumi.InvokeOptio
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getSecretFile:getSecretFile", {
         "identifier": args.identifier,
+        "kmsKeyId": args.kmsKeyId,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
@@ -36,6 +37,7 @@ export interface GetSecretFileArgs {
      * Unique identifier of the resource.
      */
     identifier: string;
+    kmsKeyId?: string;
     /**
      * Name of the resource.
      */
@@ -70,6 +72,7 @@ export interface GetSecretFileResult {
      * Unique identifier of the resource.
      */
     readonly identifier: string;
+    readonly kmsKeyId?: string;
     /**
      * Name of the resource.
      */
@@ -109,6 +112,7 @@ export function getSecretFileOutput(args: GetSecretFileOutputArgs, opts?: pulumi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getSecretFile:getSecretFile", {
         "identifier": args.identifier,
+        "kmsKeyId": args.kmsKeyId,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
@@ -123,6 +127,7 @@ export interface GetSecretFileOutputArgs {
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */

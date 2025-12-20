@@ -7183,6 +7183,7 @@ export namespace platform {
     }
 
     export interface GetSecretTextAdditionalMetadataValue {
+        kmsKeyId?: string;
         version?: string;
     }
 
@@ -35263,7 +35264,7 @@ export namespace platform {
          */
         secretSpacePath?: string;
         /**
-         * User name for UserPassword auth type
+         * Username for UserPassword auth type
          */
         userName?: string;
     }
@@ -36599,6 +36600,7 @@ export namespace platform {
     }
 
     export interface SecretTextAdditionalMetadataValue {
+        kmsKeyId?: string;
         version?: string;
     }
 

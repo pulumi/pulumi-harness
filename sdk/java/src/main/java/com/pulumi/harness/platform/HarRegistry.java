@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating and managing Harness Registries.
  * 
+ * **Note:** Both `parentRef` and `spaceRef` are required for registry creation.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -83,6 +85,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ## Import
+ * 
+ * ### After Import
+ * 
+ * bash
+ * 
+ * pulumi preview
+ * 
+ * pulumi up
  * 
  */
 @ResourceType(type="harness:platform/harRegistry:HarRegistry")
@@ -186,32 +198,32 @@ public class HarRegistry extends com.pulumi.resources.CustomResource {
         return this.packageType;
     }
     /**
-     * Parent reference for the registry
+     * Parent reference for the registry (required for creation)
      * 
      */
     @Export(name="parentRef", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> parentRef;
+    private Output<String> parentRef;
 
     /**
-     * @return Parent reference for the registry
+     * @return Parent reference for the registry (required for creation)
      * 
      */
-    public Output<Optional<String>> parentRef() {
-        return Codegen.optional(this.parentRef);
+    public Output<String> parentRef() {
+        return this.parentRef;
     }
     /**
-     * Space reference for the registry
+     * Space reference for the registry (required for creation)
      * 
      */
     @Export(name="spaceRef", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> spaceRef;
+    private Output<String> spaceRef;
 
     /**
-     * @return Space reference for the registry
+     * @return Space reference for the registry (required for creation)
      * 
      */
-    public Output<Optional<String>> spaceRef() {
-        return Codegen.optional(this.spaceRef);
+    public Output<String> spaceRef() {
+        return this.spaceRef;
     }
     /**
      * URL of the registry

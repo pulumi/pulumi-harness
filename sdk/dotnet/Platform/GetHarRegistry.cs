@@ -147,14 +147,14 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Parent reference for the registry
         /// </summary>
-        [Input("parentRef")]
-        public string? ParentRef { get; set; }
+        [Input("parentRef", required: true)]
+        public string ParentRef { get; set; } = null!;
 
         /// <summary>
         /// Space reference for the registry
         /// </summary>
-        [Input("spaceRef")]
-        public string? SpaceRef { get; set; }
+        [Input("spaceRef", required: true)]
+        public string SpaceRef { get; set; } = null!;
 
         public GetHarRegistryArgs()
         {
@@ -221,14 +221,14 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Parent reference for the registry
         /// </summary>
-        [Input("parentRef")]
-        public Input<string>? ParentRef { get; set; }
+        [Input("parentRef", required: true)]
+        public Input<string> ParentRef { get; set; } = null!;
 
         /// <summary>
         /// Space reference for the registry
         /// </summary>
-        [Input("spaceRef")]
-        public Input<string>? SpaceRef { get; set; }
+        [Input("spaceRef", required: true)]
+        public Input<string> SpaceRef { get; set; } = null!;
 
         public GetHarRegistryInvokeArgs()
         {
@@ -275,11 +275,11 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Parent reference for the registry
         /// </summary>
-        public readonly string? ParentRef;
+        public readonly string ParentRef;
         /// <summary>
         /// Space reference for the registry
         /// </summary>
-        public readonly string? SpaceRef;
+        public readonly string SpaceRef;
         /// <summary>
         /// URL of the registry
         /// </summary>
@@ -303,9 +303,9 @@ namespace Pulumi.Harness.Platform
 
             string? packageType,
 
-            string? parentRef,
+            string parentRef,
 
-            string? spaceRef,
+            string spaceRef,
 
             string url)
         {

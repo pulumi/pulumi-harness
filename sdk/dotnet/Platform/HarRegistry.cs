@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating and managing Harness Registries.
     /// 
+    /// **Note:** Both `ParentRef` and `SpaceRef` are required for registry creation.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -75,6 +77,16 @@ namespace Pulumi.Harness.Platform
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ### After Import
+    /// 
+    /// bash
+    /// 
+    /// pulumi preview
+    /// 
+    /// pulumi up
     /// </summary>
     [HarnessResourceType("harness:platform/harRegistry:HarRegistry")]
     public partial class HarRegistry : global::Pulumi.CustomResource
@@ -122,16 +134,16 @@ namespace Pulumi.Harness.Platform
         public Output<string> PackageType { get; private set; } = null!;
 
         /// <summary>
-        /// Parent reference for the registry
+        /// Parent reference for the registry (required for creation)
         /// </summary>
         [Output("parentRef")]
-        public Output<string?> ParentRef { get; private set; } = null!;
+        public Output<string> ParentRef { get; private set; } = null!;
 
         /// <summary>
-        /// Space reference for the registry
+        /// Space reference for the registry (required for creation)
         /// </summary>
         [Output("spaceRef")]
-        public Output<string?> SpaceRef { get; private set; } = null!;
+        public Output<string> SpaceRef { get; private set; } = null!;
 
         /// <summary>
         /// URL of the registry
@@ -241,16 +253,16 @@ namespace Pulumi.Harness.Platform
         public Input<string> PackageType { get; set; } = null!;
 
         /// <summary>
-        /// Parent reference for the registry
+        /// Parent reference for the registry (required for creation)
         /// </summary>
-        [Input("parentRef")]
-        public Input<string>? ParentRef { get; set; }
+        [Input("parentRef", required: true)]
+        public Input<string> ParentRef { get; set; } = null!;
 
         /// <summary>
-        /// Space reference for the registry
+        /// Space reference for the registry (required for creation)
         /// </summary>
-        [Input("spaceRef")]
-        public Input<string>? SpaceRef { get; set; }
+        [Input("spaceRef", required: true)]
+        public Input<string> SpaceRef { get; set; } = null!;
 
         public HarRegistryArgs()
         {
@@ -321,13 +333,13 @@ namespace Pulumi.Harness.Platform
         public Input<string>? PackageType { get; set; }
 
         /// <summary>
-        /// Parent reference for the registry
+        /// Parent reference for the registry (required for creation)
         /// </summary>
         [Input("parentRef")]
         public Input<string>? ParentRef { get; set; }
 
         /// <summary>
-        /// Space reference for the registry
+        /// Space reference for the registry (required for creation)
         /// </summary>
         [Input("spaceRef")]
         public Input<string>? SpaceRef { get; set; }

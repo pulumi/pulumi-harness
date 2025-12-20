@@ -31,7 +31,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? SecretSpacePath;
         /// <summary>
-        /// User name for UserPassword auth type
+        /// Username for UserPassword auth type
         /// </summary>
         public readonly string? UserName;
 

@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating and managing Harness Registries.
  *
+ * **Note:** Both `parentRef` and `spaceRef` are required for registry creation.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -50,6 +52,16 @@ import * as utilities from "../utilities";
  *     parentRef: "accountId/orgId/projectId",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ### After Import
+ *
+ * bash
+ *
+ * pulumi preview
+ *
+ * pulumi up
  */
 export class HarRegistry extends pulumi.CustomResource {
     /**
@@ -108,13 +120,13 @@ export class HarRegistry extends pulumi.CustomResource {
      */
     declare public readonly packageType: pulumi.Output<string>;
     /**
-     * Parent reference for the registry
+     * Parent reference for the registry (required for creation)
      */
-    declare public readonly parentRef: pulumi.Output<string | undefined>;
+    declare public readonly parentRef: pulumi.Output<string>;
     /**
-     * Space reference for the registry
+     * Space reference for the registry (required for creation)
      */
-    declare public readonly spaceRef: pulumi.Output<string | undefined>;
+    declare public readonly spaceRef: pulumi.Output<string>;
     /**
      * URL of the registry
      */
@@ -150,6 +162,12 @@ export class HarRegistry extends pulumi.CustomResource {
             }
             if (args?.packageType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'packageType'");
+            }
+            if (args?.parentRef === undefined && !opts.urn) {
+                throw new Error("Missing required property 'parentRef'");
+            }
+            if (args?.spaceRef === undefined && !opts.urn) {
+                throw new Error("Missing required property 'spaceRef'");
             }
             resourceInputs["allowedPatterns"] = args?.allowedPatterns;
             resourceInputs["blockedPatterns"] = args?.blockedPatterns;
@@ -200,11 +218,11 @@ export interface HarRegistryState {
      */
     packageType?: pulumi.Input<string>;
     /**
-     * Parent reference for the registry
+     * Parent reference for the registry (required for creation)
      */
     parentRef?: pulumi.Input<string>;
     /**
-     * Space reference for the registry
+     * Space reference for the registry (required for creation)
      */
     spaceRef?: pulumi.Input<string>;
     /**
@@ -242,11 +260,11 @@ export interface HarRegistryArgs {
      */
     packageType: pulumi.Input<string>;
     /**
-     * Parent reference for the registry
+     * Parent reference for the registry (required for creation)
      */
-    parentRef?: pulumi.Input<string>;
+    parentRef: pulumi.Input<string>;
     /**
-     * Space reference for the registry
+     * Space reference for the registry (required for creation)
      */
-    spaceRef?: pulumi.Input<string>;
+    spaceRef: pulumi.Input<string>;
 }

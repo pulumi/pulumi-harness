@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupHarRegistry(ctx, &platform.LookupHarRegistryArgs{
 //				Identifier: "test_registry",
-//				SpaceRef:   pulumi.StringRef("accountId/orgId/projectId"),
+//				SpaceRef:   "accountId/orgId/projectId",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -64,9 +64,9 @@ type LookupHarRegistryArgs struct {
 	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType *string `pulumi:"packageType"`
 	// Parent reference for the registry
-	ParentRef *string `pulumi:"parentRef"`
+	ParentRef string `pulumi:"parentRef"`
 	// Space reference for the registry
-	SpaceRef *string `pulumi:"spaceRef"`
+	SpaceRef string `pulumi:"spaceRef"`
 }
 
 // A collection of values returned by getHarRegistry.
@@ -88,9 +88,9 @@ type LookupHarRegistryResult struct {
 	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType *string `pulumi:"packageType"`
 	// Parent reference for the registry
-	ParentRef *string `pulumi:"parentRef"`
+	ParentRef string `pulumi:"parentRef"`
 	// Space reference for the registry
-	SpaceRef *string `pulumi:"spaceRef"`
+	SpaceRef string `pulumi:"spaceRef"`
 	// URL of the registry
 	Url string `pulumi:"url"`
 }
@@ -119,9 +119,9 @@ type LookupHarRegistryOutputArgs struct {
 	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
 	// Parent reference for the registry
-	ParentRef pulumi.StringPtrInput `pulumi:"parentRef"`
+	ParentRef pulumi.StringInput `pulumi:"parentRef"`
 	// Space reference for the registry
-	SpaceRef pulumi.StringPtrInput `pulumi:"spaceRef"`
+	SpaceRef pulumi.StringInput `pulumi:"spaceRef"`
 }
 
 func (LookupHarRegistryOutputArgs) ElementType() reflect.Type {
@@ -184,13 +184,13 @@ func (o LookupHarRegistryResultOutput) PackageType() pulumi.StringPtrOutput {
 }
 
 // Parent reference for the registry
-func (o LookupHarRegistryResultOutput) ParentRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupHarRegistryResult) *string { return v.ParentRef }).(pulumi.StringPtrOutput)
+func (o LookupHarRegistryResultOutput) ParentRef() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHarRegistryResult) string { return v.ParentRef }).(pulumi.StringOutput)
 }
 
 // Space reference for the registry
-func (o LookupHarRegistryResultOutput) SpaceRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupHarRegistryResult) *string { return v.SpaceRef }).(pulumi.StringPtrOutput)
+func (o LookupHarRegistryResultOutput) SpaceRef() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHarRegistryResult) string { return v.SpaceRef }).(pulumi.StringOutput)
 }
 
 // URL of the registry

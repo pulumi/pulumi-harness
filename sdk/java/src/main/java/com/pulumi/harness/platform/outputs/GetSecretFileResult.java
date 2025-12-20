@@ -33,6 +33,7 @@ public final class GetSecretFileResult {
      * 
      */
     private String identifier;
+    private @Nullable String kmsKeyId;
     /**
      * @return Name of the resource.
      * 
@@ -88,6 +89,9 @@ public final class GetSecretFileResult {
     public String identifier() {
         return this.identifier;
     }
+    public Optional<String> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
     /**
      * @return Name of the resource.
      * 
@@ -137,6 +141,7 @@ public final class GetSecretFileResult {
         private String filePath;
         private String id;
         private String identifier;
+        private @Nullable String kmsKeyId;
         private @Nullable String name;
         private @Nullable String orgId;
         private @Nullable String projectId;
@@ -149,6 +154,7 @@ public final class GetSecretFileResult {
     	      this.filePath = defaults.filePath;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
+    	      this.kmsKeyId = defaults.kmsKeyId;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
@@ -186,6 +192,12 @@ public final class GetSecretFileResult {
               throw new MissingRequiredPropertyException("GetSecretFileResult", "identifier");
             }
             this.identifier = identifier;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kmsKeyId(@Nullable String kmsKeyId) {
+
+            this.kmsKeyId = kmsKeyId;
             return this;
         }
         @CustomType.Setter
@@ -231,6 +243,7 @@ public final class GetSecretFileResult {
             _resultValue.filePath = filePath;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
+            _resultValue.kmsKeyId = kmsKeyId;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
