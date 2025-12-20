@@ -111,30 +111,30 @@ public final class GetHarRegistryPlainArgs extends com.pulumi.resources.InvokeAr
      * Parent reference for the registry
      * 
      */
-    @Import(name="parentRef")
-    private @Nullable String parentRef;
+    @Import(name="parentRef", required=true)
+    private String parentRef;
 
     /**
      * @return Parent reference for the registry
      * 
      */
-    public Optional<String> parentRef() {
-        return Optional.ofNullable(this.parentRef);
+    public String parentRef() {
+        return this.parentRef;
     }
 
     /**
      * Space reference for the registry
      * 
      */
-    @Import(name="spaceRef")
-    private @Nullable String spaceRef;
+    @Import(name="spaceRef", required=true)
+    private String spaceRef;
 
     /**
      * @return Space reference for the registry
      * 
      */
-    public Optional<String> spaceRef() {
-        return Optional.ofNullable(this.spaceRef);
+    public String spaceRef() {
+        return this.spaceRef;
     }
 
     private GetHarRegistryPlainArgs() {}
@@ -270,7 +270,7 @@ public final class GetHarRegistryPlainArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder parentRef(@Nullable String parentRef) {
+        public Builder parentRef(String parentRef) {
             $.parentRef = parentRef;
             return this;
         }
@@ -281,7 +281,7 @@ public final class GetHarRegistryPlainArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder spaceRef(@Nullable String spaceRef) {
+        public Builder spaceRef(String spaceRef) {
             $.spaceRef = spaceRef;
             return this;
         }
@@ -289,6 +289,12 @@ public final class GetHarRegistryPlainArgs extends com.pulumi.resources.InvokeAr
         public GetHarRegistryPlainArgs build() {
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("GetHarRegistryPlainArgs", "identifier");
+            }
+            if ($.parentRef == null) {
+                throw new MissingRequiredPropertyException("GetHarRegistryPlainArgs", "parentRef");
+            }
+            if ($.spaceRef == null) {
+                throw new MissingRequiredPropertyException("GetHarRegistryPlainArgs", "spaceRef");
             }
             return $;
         }

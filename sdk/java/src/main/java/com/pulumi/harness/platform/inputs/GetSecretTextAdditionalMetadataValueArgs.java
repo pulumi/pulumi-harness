@@ -15,6 +15,13 @@ public final class GetSecretTextAdditionalMetadataValueArgs extends com.pulumi.r
 
     public static final GetSecretTextAdditionalMetadataValueArgs Empty = new GetSecretTextAdditionalMetadataValueArgs();
 
+    @Import(name="kmsKeyId")
+    private @Nullable Output<String> kmsKeyId;
+
+    public Optional<Output<String>> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
+
     @Import(name="version")
     private @Nullable Output<String> version;
 
@@ -25,6 +32,7 @@ public final class GetSecretTextAdditionalMetadataValueArgs extends com.pulumi.r
     private GetSecretTextAdditionalMetadataValueArgs() {}
 
     private GetSecretTextAdditionalMetadataValueArgs(GetSecretTextAdditionalMetadataValueArgs $) {
+        this.kmsKeyId = $.kmsKeyId;
         this.version = $.version;
     }
 
@@ -44,6 +52,15 @@ public final class GetSecretTextAdditionalMetadataValueArgs extends com.pulumi.r
 
         public Builder(GetSecretTextAdditionalMetadataValueArgs defaults) {
             $ = new GetSecretTextAdditionalMetadataValueArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
+            $.kmsKeyId = kmsKeyId;
+            return this;
+        }
+
+        public Builder kmsKeyId(String kmsKeyId) {
+            return kmsKeyId(Output.of(kmsKeyId));
         }
 
         public Builder version(@Nullable Output<String> version) {

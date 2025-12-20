@@ -86,6 +86,10 @@ export class SecretFile extends pulumi.CustomResource {
      */
     declare public readonly identifier: pulumi.Output<string>;
     /**
+     * Kms Key Id for encrypting the secret value
+     */
+    declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
+    /**
      * Name of the resource.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -122,6 +126,7 @@ export class SecretFile extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["filePath"] = state?.filePath;
             resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["projectId"] = state?.projectId;
@@ -141,6 +146,7 @@ export class SecretFile extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["filePath"] = args?.filePath;
             resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["projectId"] = args?.projectId;
@@ -168,6 +174,10 @@ export interface SecretFileState {
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
+    /**
+     * Kms Key Id for encrypting the secret value
+     */
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
@@ -206,6 +216,10 @@ export interface SecretFileArgs {
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
+    /**
+     * Kms Key Id for encrypting the secret value
+     */
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */

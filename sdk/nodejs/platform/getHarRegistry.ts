@@ -66,11 +66,11 @@ export interface GetHarRegistryArgs {
     /**
      * Parent reference for the registry
      */
-    parentRef?: string;
+    parentRef: string;
     /**
      * Space reference for the registry
      */
-    spaceRef?: string;
+    spaceRef: string;
 }
 
 /**
@@ -112,11 +112,11 @@ export interface GetHarRegistryResult {
     /**
      * Parent reference for the registry
      */
-    readonly parentRef?: string;
+    readonly parentRef: string;
     /**
      * Space reference for the registry
      */
-    readonly spaceRef?: string;
+    readonly spaceRef: string;
     /**
      * URL of the registry
      */
@@ -182,9 +182,9 @@ export interface GetHarRegistryOutputArgs {
     /**
      * Parent reference for the registry
      */
-    parentRef?: pulumi.Input<string>;
+    parentRef: pulumi.Input<string>;
     /**
      * Space reference for the registry
      */
-    spaceRef?: pulumi.Input<string>;
+    spaceRef: pulumi.Input<string>;
 }

@@ -97,14 +97,14 @@ public final class HarRegistryConfigAuthArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * User name for UserPassword auth type
+     * Username for UserPassword auth type
      * 
      */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
     /**
-     * @return User name for UserPassword auth type
+     * @return Username for UserPassword auth type
      * 
      */
     public Optional<Output<String>> userName() {
@@ -252,7 +252,7 @@ public final class HarRegistryConfigAuthArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param userName User name for UserPassword auth type
+         * @param userName Username for UserPassword auth type
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class HarRegistryConfigAuthArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param userName User name for UserPassword auth type
+         * @param userName Username for UserPassword auth type
          * 
          * @return builder
          * 

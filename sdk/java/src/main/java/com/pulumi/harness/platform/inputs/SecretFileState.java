@@ -62,6 +62,21 @@ public final class SecretFileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Kms Key Id for encrypting the secret value
+     * 
+     */
+    @Import(name="kmsKeyId")
+    private @Nullable Output<String> kmsKeyId;
+
+    /**
+     * @return Kms Key Id for encrypting the secret value
+     * 
+     */
+    public Optional<Output<String>> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
+
+    /**
      * Name of the resource.
      * 
      */
@@ -142,6 +157,7 @@ public final class SecretFileState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.filePath = $.filePath;
         this.identifier = $.identifier;
+        this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -228,6 +244,27 @@ public final class SecretFileState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
+        }
+
+        /**
+         * @param kmsKeyId Kms Key Id for encrypting the secret value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
+            $.kmsKeyId = kmsKeyId;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyId Kms Key Id for encrypting the secret value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyId(String kmsKeyId) {
+            return kmsKeyId(Output.of(kmsKeyId));
         }
 
         /**

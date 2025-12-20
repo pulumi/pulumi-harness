@@ -58,12 +58,12 @@ public final class GetHarRegistryResult {
      * @return Parent reference for the registry
      * 
      */
-    private @Nullable String parentRef;
+    private String parentRef;
     /**
      * @return Space reference for the registry
      * 
      */
-    private @Nullable String spaceRef;
+    private String spaceRef;
     /**
      * @return URL of the registry
      * 
@@ -131,15 +131,15 @@ public final class GetHarRegistryResult {
      * @return Parent reference for the registry
      * 
      */
-    public Optional<String> parentRef() {
-        return Optional.ofNullable(this.parentRef);
+    public String parentRef() {
+        return this.parentRef;
     }
     /**
      * @return Space reference for the registry
      * 
      */
-    public Optional<String> spaceRef() {
-        return Optional.ofNullable(this.spaceRef);
+    public String spaceRef() {
+        return this.spaceRef;
     }
     /**
      * @return URL of the registry
@@ -166,8 +166,8 @@ public final class GetHarRegistryResult {
         private String id;
         private String identifier;
         private @Nullable String packageType;
-        private @Nullable String parentRef;
-        private @Nullable String spaceRef;
+        private String parentRef;
+        private String spaceRef;
         private String url;
         public Builder() {}
         public Builder(GetHarRegistryResult defaults) {
@@ -249,14 +249,18 @@ public final class GetHarRegistryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder parentRef(@Nullable String parentRef) {
-
+        public Builder parentRef(String parentRef) {
+            if (parentRef == null) {
+              throw new MissingRequiredPropertyException("GetHarRegistryResult", "parentRef");
+            }
             this.parentRef = parentRef;
             return this;
         }
         @CustomType.Setter
-        public Builder spaceRef(@Nullable String spaceRef) {
-
+        public Builder spaceRef(String spaceRef) {
+            if (spaceRef == null) {
+              throw new MissingRequiredPropertyException("GetHarRegistryResult", "spaceRef");
+            }
             this.spaceRef = spaceRef;
             return this;
         }

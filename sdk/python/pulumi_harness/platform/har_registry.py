@@ -23,25 +23,27 @@ class HarRegistryArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
                  package_type: pulumi.Input[_builtins.str],
+                 parent_ref: pulumi.Input[_builtins.str],
+                 space_ref: pulumi.Input[_builtins.str],
                  allowed_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  blocked_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 space_ref: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HarRegistry resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
         :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
+        :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
+        :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry (required for creation)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed artifact patterns
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked artifact patterns
         :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]] configs: Configuration for the registry
         :param pulumi.Input[_builtins.str] description: Description of the registry
-        :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry
-        :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "package_type", package_type)
+        pulumi.set(__self__, "parent_ref", parent_ref)
+        pulumi.set(__self__, "space_ref", space_ref)
         if allowed_patterns is not None:
             pulumi.set(__self__, "allowed_patterns", allowed_patterns)
         if blocked_patterns is not None:
@@ -50,10 +52,6 @@ class HarRegistryArgs:
             pulumi.set(__self__, "configs", configs)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if parent_ref is not None:
-            pulumi.set(__self__, "parent_ref", parent_ref)
-        if space_ref is not None:
-            pulumi.set(__self__, "space_ref", space_ref)
 
     @_builtins.property
     @pulumi.getter
@@ -78,6 +76,30 @@ class HarRegistryArgs:
     @package_type.setter
     def package_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "package_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parentRef")
+    def parent_ref(self) -> pulumi.Input[_builtins.str]:
+        """
+        Parent reference for the registry (required for creation)
+        """
+        return pulumi.get(self, "parent_ref")
+
+    @parent_ref.setter
+    def parent_ref(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "parent_ref", value)
+
+    @_builtins.property
+    @pulumi.getter(name="spaceRef")
+    def space_ref(self) -> pulumi.Input[_builtins.str]:
+        """
+        Space reference for the registry (required for creation)
+        """
+        return pulumi.get(self, "space_ref")
+
+    @space_ref.setter
+    def space_ref(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "space_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedPatterns")
@@ -127,30 +149,6 @@ class HarRegistryArgs:
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
 
-    @_builtins.property
-    @pulumi.getter(name="parentRef")
-    def parent_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Parent reference for the registry
-        """
-        return pulumi.get(self, "parent_ref")
-
-    @parent_ref.setter
-    def parent_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "parent_ref", value)
-
-    @_builtins.property
-    @pulumi.getter(name="spaceRef")
-    def space_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Space reference for the registry
-        """
-        return pulumi.get(self, "space_ref")
-
-    @space_ref.setter
-    def space_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "space_ref", value)
-
 
 @pulumi.input_type
 class _HarRegistryState:
@@ -174,8 +172,8 @@ class _HarRegistryState:
         :param pulumi.Input[_builtins.str] description: Description of the registry
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
         :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
-        :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry
-        :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry
+        :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
+        :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] url: URL of the registry
         """
         if allowed_patterns is not None:
@@ -287,7 +285,7 @@ class _HarRegistryState:
     @pulumi.getter(name="parentRef")
     def parent_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Parent reference for the registry
+        Parent reference for the registry (required for creation)
         """
         return pulumi.get(self, "parent_ref")
 
@@ -299,7 +297,7 @@ class _HarRegistryState:
     @pulumi.getter(name="spaceRef")
     def space_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Space reference for the registry
+        Space reference for the registry (required for creation)
         """
         return pulumi.get(self, "space_ref")
 
@@ -338,6 +336,8 @@ class HarRegistry(pulumi.CustomResource):
         """
         Resource for creating and managing Harness Registries.
 
+        **Note:** Both `parent_ref` and `space_ref` are required for registry creation.
+
         ## Example Usage
 
         ```python
@@ -378,6 +378,16 @@ class HarRegistry(pulumi.CustomResource):
             parent_ref="accountId/orgId/projectId")
         ```
 
+        ## Import
+
+        ### After Import
+
+        bash
+
+        pulumi preview
+
+        pulumi up
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed artifact patterns
@@ -386,8 +396,8 @@ class HarRegistry(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the registry
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
         :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
-        :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry
-        :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry
+        :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
+        :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry (required for creation)
         """
         ...
     @overload
@@ -398,6 +408,8 @@ class HarRegistry(pulumi.CustomResource):
         """
         Resource for creating and managing Harness Registries.
 
+        **Note:** Both `parent_ref` and `space_ref` are required for registry creation.
+
         ## Example Usage
 
         ```python
@@ -437,6 +449,16 @@ class HarRegistry(pulumi.CustomResource):
             }],
             parent_ref="accountId/orgId/projectId")
         ```
+
+        ## Import
+
+        ### After Import
+
+        bash
+
+        pulumi preview
+
+        pulumi up
 
         :param str resource_name: The name of the resource.
         :param HarRegistryArgs args: The arguments to use to populate this resource's properties.
@@ -480,7 +502,11 @@ class HarRegistry(pulumi.CustomResource):
             if package_type is None and not opts.urn:
                 raise TypeError("Missing required property 'package_type'")
             __props__.__dict__["package_type"] = package_type
+            if parent_ref is None and not opts.urn:
+                raise TypeError("Missing required property 'parent_ref'")
             __props__.__dict__["parent_ref"] = parent_ref
+            if space_ref is None and not opts.urn:
+                raise TypeError("Missing required property 'space_ref'")
             __props__.__dict__["space_ref"] = space_ref
             __props__.__dict__["created_at"] = None
             __props__.__dict__["url"] = None
@@ -518,8 +544,8 @@ class HarRegistry(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the registry
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
         :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
-        :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry
-        :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry
+        :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
+        :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] url: URL of the registry
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -596,17 +622,17 @@ class HarRegistry(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="parentRef")
-    def parent_ref(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def parent_ref(self) -> pulumi.Output[_builtins.str]:
         """
-        Parent reference for the registry
+        Parent reference for the registry (required for creation)
         """
         return pulumi.get(self, "parent_ref")
 
     @_builtins.property
     @pulumi.getter(name="spaceRef")
-    def space_ref(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def space_ref(self) -> pulumi.Output[_builtins.str]:
         """
-        Space reference for the registry
+        Space reference for the registry (required for creation)
         """
         return pulumi.get(self, "space_ref")
 

@@ -55,7 +55,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? SecretSpacePath { get; set; }
 
         /// <summary>
-        /// User name for UserPassword auth type
+        /// Username for UserPassword auth type
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

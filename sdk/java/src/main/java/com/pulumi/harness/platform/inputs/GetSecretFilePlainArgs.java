@@ -30,6 +30,13 @@ public final class GetSecretFilePlainArgs extends com.pulumi.resources.InvokeArg
         return this.identifier;
     }
 
+    @Import(name="kmsKeyId")
+    private @Nullable String kmsKeyId;
+
+    public Optional<String> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
+
     /**
      * Name of the resource.
      * 
@@ -79,6 +86,7 @@ public final class GetSecretFilePlainArgs extends com.pulumi.resources.InvokeArg
 
     private GetSecretFilePlainArgs(GetSecretFilePlainArgs $) {
         this.identifier = $.identifier;
+        this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -110,6 +118,11 @@ public final class GetSecretFilePlainArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder identifier(String identifier) {
             $.identifier = identifier;
+            return this;
+        }
+
+        public Builder kmsKeyId(@Nullable String kmsKeyId) {
+            $.kmsKeyId = kmsKeyId;
             return this;
         }
 

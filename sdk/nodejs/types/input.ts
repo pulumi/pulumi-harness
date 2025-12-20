@@ -6016,10 +6016,12 @@ export namespace platform {
     }
 
     export interface GetSecretTextAdditionalMetadataValue {
+        kmsKeyId?: string;
         version?: string;
     }
 
     export interface GetSecretTextAdditionalMetadataValueArgs {
+        kmsKeyId?: pulumi.Input<string>;
         version?: pulumi.Input<string>;
     }
 
@@ -33995,7 +33997,7 @@ export namespace platform {
          */
         secretSpacePath?: pulumi.Input<string>;
         /**
-         * User name for UserPassword auth type
+         * Username for UserPassword auth type
          */
         userName?: pulumi.Input<string>;
     }
@@ -35331,6 +35333,7 @@ export namespace platform {
     }
 
     export interface SecretTextAdditionalMetadataValue {
+        kmsKeyId?: pulumi.Input<string>;
         version?: pulumi.Input<string>;
     }
 

@@ -123,14 +123,14 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Parent reference for the registry
+     * Parent reference for the registry (required for creation)
      * 
      */
     @Import(name="parentRef")
     private @Nullable Output<String> parentRef;
 
     /**
-     * @return Parent reference for the registry
+     * @return Parent reference for the registry (required for creation)
      * 
      */
     public Optional<Output<String>> parentRef() {
@@ -138,14 +138,14 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Space reference for the registry
+     * Space reference for the registry (required for creation)
      * 
      */
     @Import(name="spaceRef")
     private @Nullable Output<String> spaceRef;
 
     /**
-     * @return Space reference for the registry
+     * @return Space reference for the registry (required for creation)
      * 
      */
     public Optional<Output<String>> spaceRef() {
@@ -378,7 +378,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentRef Parent reference for the registry
+         * @param parentRef Parent reference for the registry (required for creation)
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentRef Parent reference for the registry
+         * @param parentRef Parent reference for the registry (required for creation)
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spaceRef Space reference for the registry
+         * @param spaceRef Space reference for the registry (required for creation)
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spaceRef Space reference for the registry
+         * @param spaceRef Space reference for the registry (required for creation)
          * 
          * @return builder
          * 

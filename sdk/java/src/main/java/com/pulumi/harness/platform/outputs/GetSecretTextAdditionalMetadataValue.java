@@ -11,9 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretTextAdditionalMetadataValue {
+    private @Nullable String kmsKeyId;
     private @Nullable String version;
 
     private GetSecretTextAdditionalMetadataValue() {}
+    public Optional<String> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }
@@ -27,13 +31,21 @@ public final class GetSecretTextAdditionalMetadataValue {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String kmsKeyId;
         private @Nullable String version;
         public Builder() {}
         public Builder(GetSecretTextAdditionalMetadataValue defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.kmsKeyId = defaults.kmsKeyId;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
+        public Builder kmsKeyId(@Nullable String kmsKeyId) {
+
+            this.kmsKeyId = kmsKeyId;
+            return this;
+        }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
 
@@ -42,6 +54,7 @@ public final class GetSecretTextAdditionalMetadataValue {
         }
         public GetSecretTextAdditionalMetadataValue build() {
             final var _resultValue = new GetSecretTextAdditionalMetadataValue();
+            _resultValue.kmsKeyId = kmsKeyId;
             _resultValue.version = version;
             return _resultValue;
         }

@@ -124,6 +124,20 @@ public class SecretFile extends com.pulumi.resources.CustomResource {
         return this.identifier;
     }
     /**
+     * Kms Key Id for encrypting the secret value
+     * 
+     */
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKeyId;
+
+    /**
+     * @return Kms Key Id for encrypting the secret value
+     * 
+     */
+    public Output<Optional<String>> kmsKeyId() {
+        return Codegen.optional(this.kmsKeyId);
+    }
+    /**
      * Name of the resource.
      * 
      */

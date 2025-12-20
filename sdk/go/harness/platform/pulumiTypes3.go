@@ -5768,7 +5768,7 @@ type HarRegistryConfigAuth struct {
 	SecretKeySecretPath *string `pulumi:"secretKeySecretPath"`
 	// Secret space path for UserPassword auth type
 	SecretSpacePath *string `pulumi:"secretSpacePath"`
-	// User name for UserPassword auth type
+	// Username for UserPassword auth type
 	UserName *string `pulumi:"userName"`
 }
 
@@ -5795,7 +5795,7 @@ type HarRegistryConfigAuthArgs struct {
 	SecretKeySecretPath pulumi.StringPtrInput `pulumi:"secretKeySecretPath"`
 	// Secret space path for UserPassword auth type
 	SecretSpacePath pulumi.StringPtrInput `pulumi:"secretSpacePath"`
-	// User name for UserPassword auth type
+	// Username for UserPassword auth type
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
 }
 
@@ -5885,7 +5885,7 @@ func (o HarRegistryConfigAuthOutput) SecretSpacePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HarRegistryConfigAuth) *string { return v.SecretSpacePath }).(pulumi.StringPtrOutput)
 }
 
-// User name for UserPassword auth type
+// Username for UserPassword auth type
 func (o HarRegistryConfigAuthOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HarRegistryConfigAuth) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -17918,7 +17918,8 @@ func (o SecretTextAdditionalMetadataArrayOutput) Index(i pulumi.IntInput) Secret
 }
 
 type SecretTextAdditionalMetadataValue struct {
-	Version *string `pulumi:"version"`
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	Version  *string `pulumi:"version"`
 }
 
 // SecretTextAdditionalMetadataValueInput is an input type that accepts SecretTextAdditionalMetadataValueArgs and SecretTextAdditionalMetadataValueOutput values.
@@ -17933,7 +17934,8 @@ type SecretTextAdditionalMetadataValueInput interface {
 }
 
 type SecretTextAdditionalMetadataValueArgs struct {
-	Version pulumi.StringPtrInput `pulumi:"version"`
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	Version  pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SecretTextAdditionalMetadataValueArgs) ElementType() reflect.Type {
@@ -17985,6 +17987,10 @@ func (o SecretTextAdditionalMetadataValueOutput) ToSecretTextAdditionalMetadataV
 
 func (o SecretTextAdditionalMetadataValueOutput) ToSecretTextAdditionalMetadataValueOutputWithContext(ctx context.Context) SecretTextAdditionalMetadataValueOutput {
 	return o
+}
+
+func (o SecretTextAdditionalMetadataValueOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretTextAdditionalMetadataValue) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
 func (o SecretTextAdditionalMetadataValueOutput) Version() pulumi.StringPtrOutput {
@@ -47846,7 +47852,8 @@ func (o GetSecretTextAdditionalMetadataArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetSecretTextAdditionalMetadataValue struct {
-	Version *string `pulumi:"version"`
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	Version  *string `pulumi:"version"`
 }
 
 // GetSecretTextAdditionalMetadataValueInput is an input type that accepts GetSecretTextAdditionalMetadataValueArgs and GetSecretTextAdditionalMetadataValueOutput values.
@@ -47861,7 +47868,8 @@ type GetSecretTextAdditionalMetadataValueInput interface {
 }
 
 type GetSecretTextAdditionalMetadataValueArgs struct {
-	Version pulumi.StringPtrInput `pulumi:"version"`
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	Version  pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GetSecretTextAdditionalMetadataValueArgs) ElementType() reflect.Type {
@@ -47913,6 +47921,10 @@ func (o GetSecretTextAdditionalMetadataValueOutput) ToGetSecretTextAdditionalMet
 
 func (o GetSecretTextAdditionalMetadataValueOutput) ToGetSecretTextAdditionalMetadataValueOutputWithContext(ctx context.Context) GetSecretTextAdditionalMetadataValueOutput {
 	return o
+}
+
+func (o GetSecretTextAdditionalMetadataValueOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretTextAdditionalMetadataValue) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
 func (o GetSecretTextAdditionalMetadataValueOutput) Version() pulumi.StringPtrOutput {
