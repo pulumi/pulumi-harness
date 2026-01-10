@@ -107,6 +107,8 @@ type Triggers struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Identifier of the target pipeline
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
+	// The webhook URL if the trigger is type `Webhook`.
+	WebhookUrl pulumi.StringOutput `pulumi:"webhookUrl"`
 	// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
@@ -174,6 +176,8 @@ type triggersState struct {
 	Tags []string `pulumi:"tags"`
 	// Identifier of the target pipeline
 	TargetId *string `pulumi:"targetId"`
+	// The webhook URL if the trigger is type `Webhook`.
+	WebhookUrl *string `pulumi:"webhookUrl"`
 	// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
@@ -197,6 +201,8 @@ type TriggersState struct {
 	Tags pulumi.StringArrayInput
 	// Identifier of the target pipeline
 	TargetId pulumi.StringPtrInput
+	// The webhook URL if the trigger is type `Webhook`.
+	WebhookUrl pulumi.StringPtrInput
 	// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
@@ -224,6 +230,8 @@ type triggersArgs struct {
 	Tags []string `pulumi:"tags"`
 	// Identifier of the target pipeline
 	TargetId string `pulumi:"targetId"`
+	// The webhook URL if the trigger is type `Webhook`.
+	WebhookUrl *string `pulumi:"webhookUrl"`
 	// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml string `pulumi:"yaml"`
 }
@@ -248,6 +256,8 @@ type TriggersArgs struct {
 	Tags pulumi.StringArrayInput
 	// Identifier of the target pipeline
 	TargetId pulumi.StringInput
+	// The webhook URL if the trigger is type `Webhook`.
+	WebhookUrl pulumi.StringPtrInput
 	// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringInput
 }
@@ -382,6 +392,11 @@ func (o TriggersOutput) Tags() pulumi.StringArrayOutput {
 // Identifier of the target pipeline
 func (o TriggersOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Triggers) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
+}
+
+// The webhook URL if the trigger is type `Webhook`.
+func (o TriggersOutput) WebhookUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Triggers) pulumi.StringOutput { return v.WebhookUrl }).(pulumi.StringOutput)
 }
 
 // trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.

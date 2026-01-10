@@ -49,6 +49,21 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Git Tag Style.
+     * 
+     */
+    @Import(name="gitTagStyle")
+    private @Nullable Output<String> gitTagStyle;
+
+    /**
+     * @return Git Tag Style.
+     * 
+     */
+    public Optional<Output<String>> gitTagStyle() {
+        return Optional.ofNullable(this.gitTagStyle);
+    }
+
+    /**
      * Name of the module.
      * 
      */
@@ -218,6 +233,7 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
     private InfraModuleArgs(InfraModuleArgs $) {
         this.created = $.created;
         this.description = $.description;
+        this.gitTagStyle = $.gitTagStyle;
         this.name = $.name;
         this.repository = $.repository;
         this.repositoryBranch = $.repositoryBranch;
@@ -289,6 +305,27 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param gitTagStyle Git Tag Style.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitTagStyle(@Nullable Output<String> gitTagStyle) {
+            $.gitTagStyle = gitTagStyle;
+            return this;
+        }
+
+        /**
+         * @param gitTagStyle Git Tag Style.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitTagStyle(String gitTagStyle) {
+            return gitTagStyle(Output.of(gitTagStyle));
         }
 
         /**

@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     projectId: "project_id",
  *     agentId: "agent_id",
  *     argoProjectName: "argoProjectName",
+ *     autoCreateServiceEnv: true,
  * });
  * ```
  *
@@ -75,6 +76,10 @@ export class GitopsAppProjectMapping extends pulumi.CustomResource {
      */
     declare public readonly argoProjectName: pulumi.Output<string>;
     /**
+     * Enable automated creation of service, environment and cluster-env link. Defaults to false.
+     */
+    declare public readonly autoCreateServiceEnv: pulumi.Output<boolean | undefined>;
+    /**
      * Identifier of the GitOps Application Project.
      */
     declare public /*out*/ readonly identifier: pulumi.Output<string>;
@@ -103,6 +108,7 @@ export class GitopsAppProjectMapping extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["agentId"] = state?.agentId;
             resourceInputs["argoProjectName"] = state?.argoProjectName;
+            resourceInputs["autoCreateServiceEnv"] = state?.autoCreateServiceEnv;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["projectId"] = state?.projectId;
@@ -123,6 +129,7 @@ export class GitopsAppProjectMapping extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["agentId"] = args?.agentId;
             resourceInputs["argoProjectName"] = args?.argoProjectName;
+            resourceInputs["autoCreateServiceEnv"] = args?.autoCreateServiceEnv;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["identifier"] = undefined /*out*/;
@@ -150,6 +157,10 @@ export interface GitopsAppProjectMappingState {
      * ArgoCD Project name which is to be mapped to the Harness project.
      */
     argoProjectName?: pulumi.Input<string>;
+    /**
+     * Enable automated creation of service, environment and cluster-env link. Defaults to false.
+     */
+    autoCreateServiceEnv?: pulumi.Input<boolean>;
     /**
      * Identifier of the GitOps Application Project.
      */
@@ -182,6 +193,10 @@ export interface GitopsAppProjectMappingArgs {
      * ArgoCD Project name which is to be mapped to the Harness project.
      */
     argoProjectName: pulumi.Input<string>;
+    /**
+     * Enable automated creation of service, environment and cluster-env link. Defaults to false.
+     */
+    autoCreateServiceEnv?: pulumi.Input<boolean>;
     /**
      * Organization identifier of the GitOps agent's Application Project.
      */

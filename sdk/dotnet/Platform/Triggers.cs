@@ -134,6 +134,12 @@ namespace Pulumi.Harness.Platform
         public Output<string> TargetId { get; private set; } = null!;
 
         /// <summary>
+        /// The webhook URL if the trigger is type `Webhook`.
+        /// </summary>
+        [Output("webhookUrl")]
+        public Output<string> WebhookUrl { get; private set; } = null!;
+
+        /// <summary>
         /// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Output("yaml")]
@@ -247,6 +253,12 @@ namespace Pulumi.Harness.Platform
         public Input<string> TargetId { get; set; } = null!;
 
         /// <summary>
+        /// The webhook URL if the trigger is type `Webhook`.
+        /// </summary>
+        [Input("webhookUrl")]
+        public Input<string>? WebhookUrl { get; set; }
+
+        /// <summary>
         /// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml", required: true)]
@@ -319,6 +331,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("targetId")]
         public Input<string>? TargetId { get; set; }
+
+        /// <summary>
+        /// The webhook URL if the trigger is type `Webhook`.
+        /// </summary>
+        [Input("webhookUrl")]
+        public Input<string>? WebhookUrl { get; set; }
 
         /// <summary>
         /// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.

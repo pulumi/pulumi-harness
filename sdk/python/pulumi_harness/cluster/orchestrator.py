@@ -21,17 +21,21 @@ class OrchestratorArgs:
     def __init__(__self__, *,
                  cluster_endpoint: pulumi.Input[_builtins.str],
                  k8s_connector_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Orchestrator resource.
         :param pulumi.Input[_builtins.str] cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
         :param pulumi.Input[_builtins.str] k8s_connector_id: ID of the Harness Kubernetes Connector Being used
         :param pulumi.Input[_builtins.str] name: Name of the Orchestrator
+        :param pulumi.Input[_builtins.str] region: Region of the k8s cluster
         """
         pulumi.set(__self__, "cluster_endpoint", cluster_endpoint)
         pulumi.set(__self__, "k8s_connector_id", k8s_connector_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="clusterEndpoint")
@@ -69,18 +73,32 @@ class OrchestratorArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region of the k8s cluster
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _OrchestratorState:
     def __init__(__self__, *,
                  cluster_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Orchestrator resources.
         :param pulumi.Input[_builtins.str] cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
         :param pulumi.Input[_builtins.str] k8s_connector_id: ID of the Harness Kubernetes Connector Being used
         :param pulumi.Input[_builtins.str] name: Name of the Orchestrator
+        :param pulumi.Input[_builtins.str] region: Region of the k8s cluster
         """
         if cluster_endpoint is not None:
             pulumi.set(__self__, "cluster_endpoint", cluster_endpoint)
@@ -88,6 +106,8 @@ class _OrchestratorState:
             pulumi.set(__self__, "k8s_connector_id", k8s_connector_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="clusterEndpoint")
@@ -125,6 +145,18 @@ class _OrchestratorState:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region of the k8s cluster
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.type_token("harness:cluster/orchestrator:Orchestrator")
 class Orchestrator(pulumi.CustomResource):
@@ -135,6 +167,7 @@ class Orchestrator(pulumi.CustomResource):
                  cluster_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Create a Orchestrator resource with the given unique name, props, and options.
@@ -143,6 +176,7 @@ class Orchestrator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
         :param pulumi.Input[_builtins.str] k8s_connector_id: ID of the Harness Kubernetes Connector Being used
         :param pulumi.Input[_builtins.str] name: Name of the Orchestrator
+        :param pulumi.Input[_builtins.str] region: Region of the k8s cluster
         """
         ...
     @overload
@@ -170,6 +204,7 @@ class Orchestrator(pulumi.CustomResource):
                  cluster_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -186,6 +221,7 @@ class Orchestrator(pulumi.CustomResource):
                 raise TypeError("Missing required property 'k8s_connector_id'")
             __props__.__dict__["k8s_connector_id"] = k8s_connector_id
             __props__.__dict__["name"] = name
+            __props__.__dict__["region"] = region
         super(Orchestrator, __self__).__init__(
             'harness:cluster/orchestrator:Orchestrator',
             resource_name,
@@ -198,7 +234,8 @@ class Orchestrator(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
             k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Orchestrator':
+            name: Optional[pulumi.Input[_builtins.str]] = None,
+            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'Orchestrator':
         """
         Get an existing Orchestrator resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -209,6 +246,7 @@ class Orchestrator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
         :param pulumi.Input[_builtins.str] k8s_connector_id: ID of the Harness Kubernetes Connector Being used
         :param pulumi.Input[_builtins.str] name: Name of the Orchestrator
+        :param pulumi.Input[_builtins.str] region: Region of the k8s cluster
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -217,6 +255,7 @@ class Orchestrator(pulumi.CustomResource):
         __props__.__dict__["cluster_endpoint"] = cluster_endpoint
         __props__.__dict__["k8s_connector_id"] = k8s_connector_id
         __props__.__dict__["name"] = name
+        __props__.__dict__["region"] = region
         return Orchestrator(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -242,4 +281,12 @@ class Orchestrator(pulumi.CustomResource):
         Name of the Orchestrator
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Region of the k8s cluster
+        """
+        return pulumi.get(self, "region")
 

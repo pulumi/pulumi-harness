@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving a Harness Variable.
+// Data source for retrieving a Harness AutoStopping rule for ECS services.
 //
 // ## Example Usage
 func LookupRuleEcs(ctx *pulumi.Context, args *LookupRuleEcsArgs, opts ...pulumi.InvokeOption) (*LookupRuleEcsResult, error) {

@@ -22,6 +22,7 @@ class InfraModuleArgs:
                  system: pulumi.Input[_builtins.str],
                  created: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 git_tag_style: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  repository: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
@@ -37,6 +38,7 @@ class InfraModuleArgs:
         :param pulumi.Input[_builtins.str] system: Provider of the module.
         :param pulumi.Input[_builtins.int] created: Timestamp when the module was created.
         :param pulumi.Input[_builtins.str] description: Description of the module.
+        :param pulumi.Input[_builtins.str] git_tag_style: Git Tag Style.
         :param pulumi.Input[_builtins.str] name: Name of the module.
         :param pulumi.Input[_builtins.str] repository: For account connectors, the repository where the module can be found
         :param pulumi.Input[_builtins.str] repository_branch: Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -53,6 +55,8 @@ class InfraModuleArgs:
             pulumi.set(__self__, "created", created)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if git_tag_style is not None:
+            pulumi.set(__self__, "git_tag_style", git_tag_style)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if repository is not None:
@@ -109,6 +113,18 @@ class InfraModuleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitTagStyle")
+    def git_tag_style(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Git Tag Style.
+        """
+        return pulumi.get(self, "git_tag_style")
+
+    @git_tag_style.setter
+    def git_tag_style(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "git_tag_style", value)
 
     @_builtins.property
     @pulumi.getter
@@ -236,6 +252,7 @@ class _InfraModuleState:
     def __init__(__self__, *,
                  created: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 git_tag_style: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  repository: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
@@ -251,6 +268,7 @@ class _InfraModuleState:
         Input properties used for looking up and filtering InfraModule resources.
         :param pulumi.Input[_builtins.int] created: Timestamp when the module was created.
         :param pulumi.Input[_builtins.str] description: Description of the module.
+        :param pulumi.Input[_builtins.str] git_tag_style: Git Tag Style.
         :param pulumi.Input[_builtins.str] name: Name of the module.
         :param pulumi.Input[_builtins.str] repository: For account connectors, the repository where the module can be found
         :param pulumi.Input[_builtins.str] repository_branch: Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -267,6 +285,8 @@ class _InfraModuleState:
             pulumi.set(__self__, "created", created)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if git_tag_style is not None:
+            pulumi.set(__self__, "git_tag_style", git_tag_style)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if repository is not None:
@@ -313,6 +333,18 @@ class _InfraModuleState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitTagStyle")
+    def git_tag_style(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Git Tag Style.
+        """
+        return pulumi.get(self, "git_tag_style")
+
+    @git_tag_style.setter
+    def git_tag_style(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "git_tag_style", value)
 
     @_builtins.property
     @pulumi.getter
@@ -455,6 +487,7 @@ class InfraModule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  created: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 git_tag_style: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  repository: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
@@ -496,6 +529,7 @@ class InfraModule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] created: Timestamp when the module was created.
         :param pulumi.Input[_builtins.str] description: Description of the module.
+        :param pulumi.Input[_builtins.str] git_tag_style: Git Tag Style.
         :param pulumi.Input[_builtins.str] name: Name of the module.
         :param pulumi.Input[_builtins.str] repository: For account connectors, the repository where the module can be found
         :param pulumi.Input[_builtins.str] repository_branch: Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -556,6 +590,7 @@ class InfraModule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  created: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 git_tag_style: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  repository: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
@@ -578,6 +613,7 @@ class InfraModule(pulumi.CustomResource):
 
             __props__.__dict__["created"] = created
             __props__.__dict__["description"] = description
+            __props__.__dict__["git_tag_style"] = git_tag_style
             __props__.__dict__["name"] = name
             __props__.__dict__["repository"] = repository
             __props__.__dict__["repository_branch"] = repository_branch
@@ -603,6 +639,7 @@ class InfraModule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created: Optional[pulumi.Input[_builtins.int]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            git_tag_style: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             repository: Optional[pulumi.Input[_builtins.str]] = None,
             repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
@@ -623,6 +660,7 @@ class InfraModule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] created: Timestamp when the module was created.
         :param pulumi.Input[_builtins.str] description: Description of the module.
+        :param pulumi.Input[_builtins.str] git_tag_style: Git Tag Style.
         :param pulumi.Input[_builtins.str] name: Name of the module.
         :param pulumi.Input[_builtins.str] repository: For account connectors, the repository where the module can be found
         :param pulumi.Input[_builtins.str] repository_branch: Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -641,6 +679,7 @@ class InfraModule(pulumi.CustomResource):
 
         __props__.__dict__["created"] = created
         __props__.__dict__["description"] = description
+        __props__.__dict__["git_tag_style"] = git_tag_style
         __props__.__dict__["name"] = name
         __props__.__dict__["repository"] = repository
         __props__.__dict__["repository_branch"] = repository_branch
@@ -669,6 +708,14 @@ class InfraModule(pulumi.CustomResource):
         Description of the module.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="gitTagStyle")
+    def git_tag_style(self) -> pulumi.Output[_builtins.str]:
+        """
+        Git Tag Style.
+        """
+        return pulumi.get(self, "git_tag_style")
 
     @_builtins.property
     @pulumi.getter

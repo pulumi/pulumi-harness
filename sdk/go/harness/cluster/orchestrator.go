@@ -21,6 +21,8 @@ type Orchestrator struct {
 	K8sConnectorId pulumi.StringOutput `pulumi:"k8sConnectorId"`
 	// Name of the Orchestrator
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Region of the k8s cluster
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 }
 
 // NewOrchestrator registers a new resource with the given unique name, arguments, and options.
@@ -65,6 +67,8 @@ type orchestratorState struct {
 	K8sConnectorId *string `pulumi:"k8sConnectorId"`
 	// Name of the Orchestrator
 	Name *string `pulumi:"name"`
+	// Region of the k8s cluster
+	Region *string `pulumi:"region"`
 }
 
 type OrchestratorState struct {
@@ -74,6 +78,8 @@ type OrchestratorState struct {
 	K8sConnectorId pulumi.StringPtrInput
 	// Name of the Orchestrator
 	Name pulumi.StringPtrInput
+	// Region of the k8s cluster
+	Region pulumi.StringPtrInput
 }
 
 func (OrchestratorState) ElementType() reflect.Type {
@@ -87,6 +93,8 @@ type orchestratorArgs struct {
 	K8sConnectorId string `pulumi:"k8sConnectorId"`
 	// Name of the Orchestrator
 	Name *string `pulumi:"name"`
+	// Region of the k8s cluster
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a Orchestrator resource.
@@ -97,6 +105,8 @@ type OrchestratorArgs struct {
 	K8sConnectorId pulumi.StringInput
 	// Name of the Orchestrator
 	Name pulumi.StringPtrInput
+	// Region of the k8s cluster
+	Region pulumi.StringPtrInput
 }
 
 func (OrchestratorArgs) ElementType() reflect.Type {
@@ -199,6 +209,11 @@ func (o OrchestratorOutput) K8sConnectorId() pulumi.StringOutput {
 // Name of the Orchestrator
 func (o OrchestratorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Orchestrator) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Region of the k8s cluster
+func (o OrchestratorOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Orchestrator) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 type OrchestratorArrayOutput struct{ *pulumi.OutputState }

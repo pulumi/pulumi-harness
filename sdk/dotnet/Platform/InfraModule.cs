@@ -58,6 +58,12 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Git Tag Style.
+        /// </summary>
+        [Output("gitTagStyle")]
+        public Output<string> GitTagStyle { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the module.
         /// </summary>
         [Output("name")]
@@ -183,6 +189,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Git Tag Style.
+        /// </summary>
+        [Input("gitTagStyle")]
+        public Input<string>? GitTagStyle { get; set; }
+
+        /// <summary>
         /// Name of the module.
         /// </summary>
         [Input("name")]
@@ -273,6 +285,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Git Tag Style.
+        /// </summary>
+        [Input("gitTagStyle")]
+        public Input<string>? GitTagStyle { get; set; }
 
         /// <summary>
         /// Name of the module.

@@ -313,7 +313,7 @@ class RuleEcs(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness Variables.
+        Resource for creating a AutoStopping rule for ECS services.
 
         ## Example Usage
 
@@ -361,7 +361,7 @@ class RuleEcs(pulumi.CustomResource):
                  args: RuleEcsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness Variables.
+        Resource for creating a AutoStopping rule for ECS services.
 
         ## Example Usage
 

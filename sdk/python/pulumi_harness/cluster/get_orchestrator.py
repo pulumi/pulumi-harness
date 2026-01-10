@@ -26,7 +26,7 @@ class GetOrchestratorResult:
     """
     A collection of values returned by getOrchestrator.
     """
-    def __init__(__self__, cluster_endpoint=None, id=None, k8s_connector_id=None, name=None):
+    def __init__(__self__, cluster_endpoint=None, id=None, k8s_connector_id=None, name=None, region=None):
         if cluster_endpoint and not isinstance(cluster_endpoint, str):
             raise TypeError("Expected argument 'cluster_endpoint' to be a str")
         pulumi.set(__self__, "cluster_endpoint", cluster_endpoint)
@@ -39,6 +39,9 @@ class GetOrchestratorResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="clusterEndpoint")
@@ -72,6 +75,14 @@ class GetOrchestratorResult:
         """
         return pulumi.get(self, "name")
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region of the k8s cluster
+        """
+        return pulumi.get(self, "region")
+
 
 class AwaitableGetOrchestratorResult(GetOrchestratorResult):
     # pylint: disable=using-constant-test
@@ -82,12 +93,14 @@ class AwaitableGetOrchestratorResult(GetOrchestratorResult):
             cluster_endpoint=self.cluster_endpoint,
             id=self.id,
             k8s_connector_id=self.k8s_connector_id,
-            name=self.name)
+            name=self.name,
+            region=self.region)
 
 
 def get_orchestrator(cluster_endpoint: Optional[_builtins.str] = None,
                      k8s_connector_id: Optional[_builtins.str] = None,
                      name: Optional[_builtins.str] = None,
+                     region: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrchestratorResult:
     """
     Data source for retrieving a Harness ClusterOrchestrator.
@@ -98,11 +111,13 @@ def get_orchestrator(cluster_endpoint: Optional[_builtins.str] = None,
     :param _builtins.str cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
     :param _builtins.str k8s_connector_id: ID of the Harness Kubernetes Connector Being used
     :param _builtins.str name: Name of the Orchestrator
+    :param _builtins.str region: Region of the k8s cluster
     """
     __args__ = dict()
     __args__['clusterEndpoint'] = cluster_endpoint
     __args__['k8sConnectorId'] = k8s_connector_id
     __args__['name'] = name
+    __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:cluster/getOrchestrator:getOrchestrator', __args__, opts=opts, typ=GetOrchestratorResult).value
 
@@ -110,10 +125,12 @@ def get_orchestrator(cluster_endpoint: Optional[_builtins.str] = None,
         cluster_endpoint=pulumi.get(__ret__, 'cluster_endpoint'),
         id=pulumi.get(__ret__, 'id'),
         k8s_connector_id=pulumi.get(__ret__, 'k8s_connector_id'),
-        name=pulumi.get(__ret__, 'name'))
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'))
 def get_orchestrator_output(cluster_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                             k8s_connector_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             name: Optional[pulumi.Input[_builtins.str]] = None,
+                            region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrchestratorResult]:
     """
     Data source for retrieving a Harness ClusterOrchestrator.
@@ -124,15 +141,18 @@ def get_orchestrator_output(cluster_endpoint: Optional[pulumi.Input[_builtins.st
     :param _builtins.str cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
     :param _builtins.str k8s_connector_id: ID of the Harness Kubernetes Connector Being used
     :param _builtins.str name: Name of the Orchestrator
+    :param _builtins.str region: Region of the k8s cluster
     """
     __args__ = dict()
     __args__['clusterEndpoint'] = cluster_endpoint
     __args__['k8sConnectorId'] = k8s_connector_id
     __args__['name'] = name
+    __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:cluster/getOrchestrator:getOrchestrator', __args__, opts=opts, typ=GetOrchestratorResult)
     return __ret__.apply(lambda __response__: GetOrchestratorResult(
         cluster_endpoint=pulumi.get(__response__, 'cluster_endpoint'),
         id=pulumi.get(__response__, 'id'),
         k8s_connector_id=pulumi.get(__response__, 'k8s_connector_id'),
-        name=pulumi.get(__response__, 'name')))
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region')))

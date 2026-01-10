@@ -50,6 +50,8 @@ type LookupGitopsAppProjectMappingResult struct {
 	AgentId string `pulumi:"agentId"`
 	// ArgoCD Project name which is to be mapped to the Harness project.
 	ArgoProjectName string `pulumi:"argoProjectName"`
+	// Enable automated creation of service, environment and cluster-env link. Defaults to false.
+	AutoCreateServiceEnv bool `pulumi:"autoCreateServiceEnv"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Identifier of the GitOps Application Project.
@@ -119,6 +121,11 @@ func (o LookupGitopsAppProjectMappingResultOutput) AgentId() pulumi.StringOutput
 // ArgoCD Project name which is to be mapped to the Harness project.
 func (o LookupGitopsAppProjectMappingResultOutput) ArgoProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsAppProjectMappingResult) string { return v.ArgoProjectName }).(pulumi.StringOutput)
+}
+
+// Enable automated creation of service, environment and cluster-env link. Defaults to false.
+func (o LookupGitopsAppProjectMappingResultOutput) AutoCreateServiceEnv() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGitopsAppProjectMappingResult) bool { return v.AutoCreateServiceEnv }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

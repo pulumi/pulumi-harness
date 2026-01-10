@@ -67,6 +67,10 @@ export class InfraModule extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * Git Tag Style.
+     */
+    declare public readonly gitTagStyle: pulumi.Output<string>;
+    /**
      * Name of the module.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -126,6 +130,7 @@ export class InfraModule extends pulumi.CustomResource {
             const state = argsOrState as InfraModuleState | undefined;
             resourceInputs["created"] = state?.created;
             resourceInputs["description"] = state?.description;
+            resourceInputs["gitTagStyle"] = state?.gitTagStyle;
             resourceInputs["name"] = state?.name;
             resourceInputs["repository"] = state?.repository;
             resourceInputs["repositoryBranch"] = state?.repositoryBranch;
@@ -144,6 +149,7 @@ export class InfraModule extends pulumi.CustomResource {
             }
             resourceInputs["created"] = args?.created;
             resourceInputs["description"] = args?.description;
+            resourceInputs["gitTagStyle"] = args?.gitTagStyle;
             resourceInputs["name"] = args?.name;
             resourceInputs["repository"] = args?.repository;
             resourceInputs["repositoryBranch"] = args?.repositoryBranch;
@@ -173,6 +179,10 @@ export interface InfraModuleState {
      * Description of the module.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Git Tag Style.
+     */
+    gitTagStyle?: pulumi.Input<string>;
     /**
      * Name of the module.
      */
@@ -231,6 +241,10 @@ export interface InfraModuleArgs {
      * Description of the module.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Git Tag Style.
+     */
+    gitTagStyle?: pulumi.Input<string>;
     /**
      * Name of the module.
      */

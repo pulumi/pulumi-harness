@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -69,6 +70,21 @@ public final class GitopsAppProjectMappingState extends com.pulumi.resources.Res
     }
 
     /**
+     * Enable automated creation of service, environment and cluster-env link. Defaults to false.
+     * 
+     */
+    @Import(name="autoCreateServiceEnv")
+    private @Nullable Output<Boolean> autoCreateServiceEnv;
+
+    /**
+     * @return Enable automated creation of service, environment and cluster-env link. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> autoCreateServiceEnv() {
+        return Optional.ofNullable(this.autoCreateServiceEnv);
+    }
+
+    /**
      * Identifier of the GitOps Application Project.
      * 
      */
@@ -119,6 +135,7 @@ public final class GitopsAppProjectMappingState extends com.pulumi.resources.Res
         this.accountId = $.accountId;
         this.agentId = $.agentId;
         this.argoProjectName = $.argoProjectName;
+        this.autoCreateServiceEnv = $.autoCreateServiceEnv;
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -211,6 +228,27 @@ public final class GitopsAppProjectMappingState extends com.pulumi.resources.Res
          */
         public Builder argoProjectName(String argoProjectName) {
             return argoProjectName(Output.of(argoProjectName));
+        }
+
+        /**
+         * @param autoCreateServiceEnv Enable automated creation of service, environment and cluster-env link. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoCreateServiceEnv(@Nullable Output<Boolean> autoCreateServiceEnv) {
+            $.autoCreateServiceEnv = autoCreateServiceEnv;
+            return this;
+        }
+
+        /**
+         * @param autoCreateServiceEnv Enable automated creation of service, environment and cluster-env link. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoCreateServiceEnv(Boolean autoCreateServiceEnv) {
+            return autoCreateServiceEnv(Output.of(autoCreateServiceEnv));
         }
 
         /**

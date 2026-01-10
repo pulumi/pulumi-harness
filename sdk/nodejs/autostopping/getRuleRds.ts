@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving a Harness Variable.
+ * Data source for retrieving a Harness AutoStopping rule for RDS databases.
  *
  * ## Example Usage
  */
@@ -85,7 +85,7 @@ export interface GetRuleRdsResult {
     readonly tcps?: outputs.autostopping.GetRuleRdsTcp[];
 }
 /**
- * Data source for retrieving a Harness Variable.
+ * Data source for retrieving a Harness AutoStopping rule for RDS databases.
  *
  * ## Example Usage
  */

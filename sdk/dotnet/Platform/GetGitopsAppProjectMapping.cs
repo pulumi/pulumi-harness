@@ -130,6 +130,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string ArgoProjectName;
         /// <summary>
+        /// Enable automated creation of service, environment and cluster-env link. Defaults to false.
+        /// </summary>
+        public readonly bool AutoCreateServiceEnv;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -154,6 +158,8 @@ namespace Pulumi.Harness.Platform
 
             string argoProjectName,
 
+            bool autoCreateServiceEnv,
+
             string id,
 
             string identifier,
@@ -165,6 +171,7 @@ namespace Pulumi.Harness.Platform
             AccountId = accountId;
             AgentId = agentId;
             ArgoProjectName = argoProjectName;
+            AutoCreateServiceEnv = autoCreateServiceEnv;
             Id = id;
             Identifier = identifier;
             OrgId = orgId;

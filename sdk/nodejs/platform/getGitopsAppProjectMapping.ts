@@ -67,6 +67,10 @@ export interface GetGitopsAppProjectMappingResult {
      */
     readonly argoProjectName: string;
     /**
+     * Enable automated creation of service, environment and cluster-env link. Defaults to false.
+     */
+    readonly autoCreateServiceEnv: boolean;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

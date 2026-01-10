@@ -44,6 +44,10 @@ export class Orchestrator extends pulumi.CustomResource {
      * Name of the Orchestrator
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Region of the k8s cluster
+     */
+    declare public readonly region: pulumi.Output<string | undefined>;
 
     /**
      * Create a Orchestrator resource with the given unique name, arguments, and options.
@@ -61,6 +65,7 @@ export class Orchestrator extends pulumi.CustomResource {
             resourceInputs["clusterEndpoint"] = state?.clusterEndpoint;
             resourceInputs["k8sConnectorId"] = state?.k8sConnectorId;
             resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as OrchestratorArgs | undefined;
             if (args?.clusterEndpoint === undefined && !opts.urn) {
@@ -72,6 +77,7 @@ export class Orchestrator extends pulumi.CustomResource {
             resourceInputs["clusterEndpoint"] = args?.clusterEndpoint;
             resourceInputs["k8sConnectorId"] = args?.k8sConnectorId;
             resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Orchestrator.__pulumiType, name, resourceInputs, opts);
@@ -94,6 +100,10 @@ export interface OrchestratorState {
      * Name of the Orchestrator
      */
     name?: pulumi.Input<string>;
+    /**
+     * Region of the k8s cluster
+     */
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -112,4 +122,8 @@ export interface OrchestratorArgs {
      * Name of the Orchestrator
      */
     name?: pulumi.Input<string>;
+    /**
+     * Region of the k8s cluster
+     */
+    region?: pulumi.Input<string>;
 }

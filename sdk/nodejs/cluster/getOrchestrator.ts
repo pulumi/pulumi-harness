@@ -15,6 +15,7 @@ export function getOrchestrator(args: GetOrchestratorArgs, opts?: pulumi.InvokeO
         "clusterEndpoint": args.clusterEndpoint,
         "k8sConnectorId": args.k8sConnectorId,
         "name": args.name,
+        "region": args.region,
     }, opts);
 }
 
@@ -34,6 +35,10 @@ export interface GetOrchestratorArgs {
      * Name of the Orchestrator
      */
     name: string;
+    /**
+     * Region of the k8s cluster
+     */
+    region?: string;
 }
 
 /**
@@ -56,6 +61,10 @@ export interface GetOrchestratorResult {
      * Name of the Orchestrator
      */
     readonly name: string;
+    /**
+     * Region of the k8s cluster
+     */
+    readonly region?: string;
 }
 /**
  * Data source for retrieving a Harness ClusterOrchestrator.
@@ -68,6 +77,7 @@ export function getOrchestratorOutput(args: GetOrchestratorOutputArgs, opts?: pu
         "clusterEndpoint": args.clusterEndpoint,
         "k8sConnectorId": args.k8sConnectorId,
         "name": args.name,
+        "region": args.region,
     }, opts);
 }
 
@@ -87,4 +97,8 @@ export interface GetOrchestratorOutputArgs {
      * Name of the Orchestrator
      */
     name: pulumi.Input<string>;
+    /**
+     * Region of the k8s cluster
+     */
+    region?: pulumi.Input<string>;
 }

@@ -58,6 +58,8 @@ type InfraModule struct {
 	Created pulumi.IntOutput `pulumi:"created"`
 	// Description of the module.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Git Tag Style.
+	GitTagStyle pulumi.StringOutput `pulumi:"gitTagStyle"`
 	// Name of the module.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// For account connectors, the repository where the module can be found
@@ -119,6 +121,8 @@ type infraModuleState struct {
 	Created *int `pulumi:"created"`
 	// Description of the module.
 	Description *string `pulumi:"description"`
+	// Git Tag Style.
+	GitTagStyle *string `pulumi:"gitTagStyle"`
 	// Name of the module.
 	Name *string `pulumi:"name"`
 	// For account connectors, the repository where the module can be found
@@ -148,6 +152,8 @@ type InfraModuleState struct {
 	Created pulumi.IntPtrInput
 	// Description of the module.
 	Description pulumi.StringPtrInput
+	// Git Tag Style.
+	GitTagStyle pulumi.StringPtrInput
 	// Name of the module.
 	Name pulumi.StringPtrInput
 	// For account connectors, the repository where the module can be found
@@ -181,6 +187,8 @@ type infraModuleArgs struct {
 	Created *int `pulumi:"created"`
 	// Description of the module.
 	Description *string `pulumi:"description"`
+	// Git Tag Style.
+	GitTagStyle *string `pulumi:"gitTagStyle"`
 	// Name of the module.
 	Name *string `pulumi:"name"`
 	// For account connectors, the repository where the module can be found
@@ -211,6 +219,8 @@ type InfraModuleArgs struct {
 	Created pulumi.IntPtrInput
 	// Description of the module.
 	Description pulumi.StringPtrInput
+	// Git Tag Style.
+	GitTagStyle pulumi.StringPtrInput
 	// Name of the module.
 	Name pulumi.StringPtrInput
 	// For account connectors, the repository where the module can be found
@@ -330,6 +340,11 @@ func (o InfraModuleOutput) Created() pulumi.IntOutput {
 // Description of the module.
 func (o InfraModuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfraModule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Git Tag Style.
+func (o InfraModuleOutput) GitTagStyle() pulumi.StringOutput {
+	return o.ApplyT(func(v *InfraModule) pulumi.StringOutput { return v.GitTagStyle }).(pulumi.StringOutput)
 }
 
 // Name of the module.

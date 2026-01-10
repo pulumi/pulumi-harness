@@ -169,7 +169,7 @@ def get_rule_scale_group(cloud_connector_id: Optional[_builtins.str] = None,
                          scale_group: Optional[Union['GetRuleScaleGroupScaleGroupArgs', 'GetRuleScaleGroupScaleGroupArgsDict']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleScaleGroupResult:
     """
-    Data source for retrieving a Harness Variable.
+    Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
 
     ## Example Usage
 
@@ -216,7 +216,7 @@ def get_rule_scale_group_output(cloud_connector_id: Optional[pulumi.Input[_built
                                 scale_group: Optional[pulumi.Input[Union['GetRuleScaleGroupScaleGroupArgs', 'GetRuleScaleGroupScaleGroupArgsDict']]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleScaleGroupResult]:
     """
-    Data source for retrieving a Harness Variable.
+    Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
 
     ## Example Usage
 

@@ -32,6 +32,11 @@ public final class GetOrchestratorResult {
      * 
      */
     private String name;
+    /**
+     * @return Region of the k8s cluster
+     * 
+     */
+    private @Nullable String region;
 
     private GetOrchestratorResult() {}
     /**
@@ -62,6 +67,13 @@ public final class GetOrchestratorResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Region of the k8s cluster
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -76,6 +88,7 @@ public final class GetOrchestratorResult {
         private String id;
         private @Nullable String k8sConnectorId;
         private String name;
+        private @Nullable String region;
         public Builder() {}
         public Builder(GetOrchestratorResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,6 +96,7 @@ public final class GetOrchestratorResult {
     	      this.id = defaults.id;
     	      this.k8sConnectorId = defaults.k8sConnectorId;
     	      this.name = defaults.name;
+    	      this.region = defaults.region;
         }
 
         @CustomType.Setter
@@ -115,12 +129,19 @@ public final class GetOrchestratorResult {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
+            return this;
+        }
         public GetOrchestratorResult build() {
             final var _resultValue = new GetOrchestratorResult();
             _resultValue.clusterEndpoint = clusterEndpoint;
             _resultValue.id = id;
             _resultValue.k8sConnectorId = k8sConnectorId;
             _resultValue.name = name;
+            _resultValue.region = region;
             return _resultValue;
         }
     }

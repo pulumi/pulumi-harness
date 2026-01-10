@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Autostopping
     public static class GetRuleEcs
     {
         /// <summary>
-        /// Data source for retrieving a Harness Variable.
+        /// Data source for retrieving a Harness AutoStopping rule for ECS services.
         /// 
         /// ## Example Usage
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.Harness.Autostopping
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRuleEcsResult>("harness:autostopping/getRuleEcs:getRuleEcs", args ?? new GetRuleEcsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a Harness Variable.
+        /// Data source for retrieving a Harness AutoStopping rule for ECS services.
         /// 
         /// ## Example Usage
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Harness.Autostopping
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleEcsResult>("harness:autostopping/getRuleEcs:getRuleEcs", args ?? new GetRuleEcsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a Harness Variable.
+        /// Data source for retrieving a Harness AutoStopping rule for ECS services.
         /// 
         /// ## Example Usage
         /// </summary>

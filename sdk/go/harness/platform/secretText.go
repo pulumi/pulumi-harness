@@ -14,6 +14,11 @@ import (
 
 // Resource for creating secret of type secret text
 //
+// > [!NOTE]
+// Selecting a Customer managed Key (CMK) for encryption is supported in Harness Delegate version 25.11.87300 or later and is behind the feature flag `PL_ENABLE_NON_DEFAULT_ENCRYPTION_KEY`. Contact Harness Support to enable the feature.
+//
+// Refer to the [documentation](https://developer.harness.io/docs/platform/secrets/secrets-management/add-an-aws-secret-manager/#create-a-text-or-file-secret) for details.
+//
 // ## Example Usage
 //
 // ```go
@@ -71,6 +76,29 @@ import (
 //						Values: platform.SecretTextAdditionalMetadataValueArray{
 //							&platform.SecretTextAdditionalMetadataValueArgs{
 //								Version: pulumi.String("1"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewSecretText(ctx, "aws_secret_manager", &platform.SecretTextArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				SecretManagerIdentifier: pulumi.String("awsSecretManager"),
+//				ValueType:               pulumi.String("Inline"),
+//				Value:                   pulumi.String("secret"),
+//				AdditionalMetadatas: platform.SecretTextAdditionalMetadataArray{
+//					&platform.SecretTextAdditionalMetadataArgs{
+//						Values: platform.SecretTextAdditionalMetadataValueArray{
+//							&platform.SecretTextAdditionalMetadataValueArgs{
+//								KmsKeyId: pulumi.String("kmsKeyId"),
 //							},
 //						},
 //					},

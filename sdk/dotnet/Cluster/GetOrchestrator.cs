@@ -57,6 +57,12 @@ namespace Pulumi.Harness.Cluster
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Region of the k8s cluster
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
         public GetOrchestratorArgs()
         {
         }
@@ -82,6 +88,12 @@ namespace Pulumi.Harness.Cluster
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Region of the k8s cluster
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public GetOrchestratorInvokeArgs()
         {
@@ -109,6 +121,10 @@ namespace Pulumi.Harness.Cluster
         /// Name of the Orchestrator
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Region of the k8s cluster
+        /// </summary>
+        public readonly string? Region;
 
         [OutputConstructor]
         private GetOrchestratorResult(
@@ -118,12 +134,15 @@ namespace Pulumi.Harness.Cluster
 
             string? k8sConnectorId,
 
-            string name)
+            string name,
+
+            string? region)
         {
             ClusterEndpoint = clusterEndpoint;
             Id = id;
             K8sConnectorId = k8sConnectorId;
             Name = name;
+            Region = region;
         }
     }
 }

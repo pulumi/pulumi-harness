@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving a Harness Variable.
+// Data source for retrieving a Harness AutoStopping rule for VMs.
 //
 // ## Example Usage
 func LookupRuleVm(ctx *pulumi.Context, args *LookupRuleVmArgs, opts ...pulumi.InvokeOption) (*LookupRuleVmResult, error) {
