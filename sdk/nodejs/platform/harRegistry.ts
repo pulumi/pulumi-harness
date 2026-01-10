@@ -9,8 +9,8 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating and managing Harness Registries.
  *
- * **Note:** Both `parentRef` and `spaceRef` are required for registry creation.
- *
+ * **Note:**
+ * > In Harness Artifact Registry, a **Virtual** registry is functionally equivalent to what is commonly referred to as a **Local** registry in other systems.
  * ## Example Usage
  *
  * ```typescript

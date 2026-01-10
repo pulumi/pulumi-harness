@@ -229,6 +229,20 @@ public class Triggers extends com.pulumi.resources.CustomResource {
         return this.targetId;
     }
     /**
+     * The webhook URL if the trigger is type `Webhook`.
+     * 
+     */
+    @Export(name="webhookUrl", refs={String.class}, tree="[0]")
+    private Output<String> webhookUrl;
+
+    /**
+     * @return The webhook URL if the trigger is type `Webhook`.
+     * 
+     */
+    public Output<String> webhookUrl() {
+        return this.webhookUrl;
+    }
+    /**
      * trigger yaml. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */

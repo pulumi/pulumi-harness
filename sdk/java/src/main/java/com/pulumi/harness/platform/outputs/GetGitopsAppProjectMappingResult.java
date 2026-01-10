@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -29,6 +30,11 @@ public final class GetGitopsAppProjectMappingResult {
      * 
      */
     private String argoProjectName;
+    /**
+     * @return Enable automated creation of service, environment and cluster-env link. Defaults to false.
+     * 
+     */
+    private Boolean autoCreateServiceEnv;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -77,6 +83,13 @@ public final class GetGitopsAppProjectMappingResult {
         return this.argoProjectName;
     }
     /**
+     * @return Enable automated creation of service, environment and cluster-env link. Defaults to false.
+     * 
+     */
+    public Boolean autoCreateServiceEnv() {
+        return this.autoCreateServiceEnv;
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -117,6 +130,7 @@ public final class GetGitopsAppProjectMappingResult {
         private String accountId;
         private String agentId;
         private String argoProjectName;
+        private Boolean autoCreateServiceEnv;
         private String id;
         private String identifier;
         private String orgId;
@@ -127,6 +141,7 @@ public final class GetGitopsAppProjectMappingResult {
     	      this.accountId = defaults.accountId;
     	      this.agentId = defaults.agentId;
     	      this.argoProjectName = defaults.argoProjectName;
+    	      this.autoCreateServiceEnv = defaults.autoCreateServiceEnv;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.orgId = defaults.orgId;
@@ -155,6 +170,14 @@ public final class GetGitopsAppProjectMappingResult {
               throw new MissingRequiredPropertyException("GetGitopsAppProjectMappingResult", "argoProjectName");
             }
             this.argoProjectName = argoProjectName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoCreateServiceEnv(Boolean autoCreateServiceEnv) {
+            if (autoCreateServiceEnv == null) {
+              throw new MissingRequiredPropertyException("GetGitopsAppProjectMappingResult", "autoCreateServiceEnv");
+            }
+            this.autoCreateServiceEnv = autoCreateServiceEnv;
             return this;
         }
         @CustomType.Setter
@@ -194,6 +217,7 @@ public final class GetGitopsAppProjectMappingResult {
             _resultValue.accountId = accountId;
             _resultValue.agentId = agentId;
             _resultValue.argoProjectName = argoProjectName;
+            _resultValue.autoCreateServiceEnv = autoCreateServiceEnv;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.orgId = orgId;

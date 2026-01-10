@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving a Harness Variable.
+ * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
  *
  * ## Example Usage
  */
@@ -109,7 +109,7 @@ export interface GetRuleScaleGroupResult {
     readonly scaleGroup: outputs.autostopping.GetRuleScaleGroupScaleGroup;
 }
 /**
- * Data source for retrieving a Harness Variable.
+ * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
  *
  * ## Example Usage
  */

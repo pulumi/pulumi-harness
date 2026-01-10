@@ -12,8 +12,8 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating and managing Harness Registries.
     /// 
-    /// **Note:** Both `ParentRef` and `SpaceRef` are required for registry creation.
-    /// 
+    /// **Note:**
+    /// &gt; In Harness Artifact Registry, a **Virtual** registry is functionally equivalent to what is commonly referred to as a **Local** registry in other systems.
     /// ## Example Usage
     /// 
     /// ```csharp

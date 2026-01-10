@@ -279,7 +279,7 @@ class RuleRds(pulumi.CustomResource):
                  tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsTcpArgs', 'RuleRdsTcpArgsDict']]]]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness Variables.
+        Resource for creating a AutoStopping rule for RDS databases.
 
         ## Example Usage
 
@@ -320,7 +320,7 @@ class RuleRds(pulumi.CustomResource):
                  args: RuleRdsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness Variables.
+        Resource for creating a AutoStopping rule for RDS databases.
 
         ## Example Usage
 

@@ -153,7 +153,7 @@ def get_rule_ecs(cloud_connector_id: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleEcsResult:
     """
-    Data source for retrieving a Harness Variable.
+    Data source for retrieving a Harness AutoStopping rule for ECS services.
 
     ## Example Usage
 
@@ -195,7 +195,7 @@ def get_rule_ecs_output(cloud_connector_id: Optional[pulumi.Input[_builtins.str]
                         name: Optional[pulumi.Input[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleEcsResult]:
     """
-    Data source for retrieving a Harness Variable.
+    Data source for retrieving a Harness AutoStopping rule for ECS services.
 
     ## Example Usage
 

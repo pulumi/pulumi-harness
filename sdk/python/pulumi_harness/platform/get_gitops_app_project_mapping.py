@@ -26,7 +26,7 @@ class GetGitopsAppProjectMappingResult:
     """
     A collection of values returned by getGitopsAppProjectMapping.
     """
-    def __init__(__self__, account_id=None, agent_id=None, argo_project_name=None, id=None, identifier=None, org_id=None, project_id=None):
+    def __init__(__self__, account_id=None, agent_id=None, argo_project_name=None, auto_create_service_env=None, id=None, identifier=None, org_id=None, project_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -36,6 +36,9 @@ class GetGitopsAppProjectMappingResult:
         if argo_project_name and not isinstance(argo_project_name, str):
             raise TypeError("Expected argument 'argo_project_name' to be a str")
         pulumi.set(__self__, "argo_project_name", argo_project_name)
+        if auto_create_service_env and not isinstance(auto_create_service_env, bool):
+            raise TypeError("Expected argument 'auto_create_service_env' to be a bool")
+        pulumi.set(__self__, "auto_create_service_env", auto_create_service_env)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -73,6 +76,14 @@ class GetGitopsAppProjectMappingResult:
         ArgoCD Project name which is to be mapped to the Harness project.
         """
         return pulumi.get(self, "argo_project_name")
+
+    @_builtins.property
+    @pulumi.getter(name="autoCreateServiceEnv")
+    def auto_create_service_env(self) -> _builtins.bool:
+        """
+        Enable automated creation of service, environment and cluster-env link. Defaults to false.
+        """
+        return pulumi.get(self, "auto_create_service_env")
 
     @_builtins.property
     @pulumi.getter
@@ -116,6 +127,7 @@ class AwaitableGetGitopsAppProjectMappingResult(GetGitopsAppProjectMappingResult
             account_id=self.account_id,
             agent_id=self.agent_id,
             argo_project_name=self.argo_project_name,
+            auto_create_service_env=self.auto_create_service_env,
             id=self.id,
             identifier=self.identifier,
             org_id=self.org_id,
@@ -153,6 +165,7 @@ def get_gitops_app_project_mapping(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         agent_id=pulumi.get(__ret__, 'agent_id'),
         argo_project_name=pulumi.get(__ret__, 'argo_project_name'),
+        auto_create_service_env=pulumi.get(__ret__, 'auto_create_service_env'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         org_id=pulumi.get(__ret__, 'org_id'),
@@ -187,6 +200,7 @@ def get_gitops_app_project_mapping_output(account_id: Optional[pulumi.Input[Opti
         account_id=pulumi.get(__response__, 'account_id'),
         agent_id=pulumi.get(__response__, 'agent_id'),
         argo_project_name=pulumi.get(__response__, 'argo_project_name'),
+        auto_create_service_env=pulumi.get(__response__, 'auto_create_service_env'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         org_id=pulumi.get(__response__, 'org_id'),

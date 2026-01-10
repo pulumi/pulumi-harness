@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving a Harness Variable.
+// Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
 //
 // ## Example Usage
 func LookupRuleScaleGroup(ctx *pulumi.Context, args *LookupRuleScaleGroupArgs, opts ...pulumi.InvokeOption) (*LookupRuleScaleGroupResult, error) {

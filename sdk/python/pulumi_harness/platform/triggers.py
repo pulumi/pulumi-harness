@@ -28,7 +28,8 @@ class TriggersArgs:
                  if_match: Optional[pulumi.Input[_builtins.str]] = None,
                  ignore_error: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 webhook_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Triggers resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -41,6 +42,7 @@ class TriggersArgs:
         :param pulumi.Input[_builtins.bool] ignore_error: ignore error default false
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[_builtins.str] webhook_url: The webhook URL if the trigger is type `Webhook`.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "org_id", org_id)
@@ -57,6 +59,8 @@ class TriggersArgs:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if webhook_url is not None:
+            pulumi.set(__self__, "webhook_url", webhook_url)
 
     @_builtins.property
     @pulumi.getter
@@ -178,6 +182,18 @@ class TriggersArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="webhookUrl")
+    def webhook_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The webhook URL if the trigger is type `Webhook`.
+        """
+        return pulumi.get(self, "webhook_url")
+
+    @webhook_url.setter
+    def webhook_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "webhook_url", value)
+
 
 @pulumi.input_type
 class _TriggersState:
@@ -191,6 +207,7 @@ class _TriggersState:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 webhook_url: Optional[pulumi.Input[_builtins.str]] = None,
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Triggers resources.
@@ -203,6 +220,7 @@ class _TriggersState:
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] target_id: Identifier of the target pipeline
+        :param pulumi.Input[_builtins.str] webhook_url: The webhook URL if the trigger is type `Webhook`.
         :param pulumi.Input[_builtins.str] yaml: trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         if description is not None:
@@ -223,6 +241,8 @@ class _TriggersState:
             pulumi.set(__self__, "tags", tags)
         if target_id is not None:
             pulumi.set(__self__, "target_id", target_id)
+        if webhook_url is not None:
+            pulumi.set(__self__, "webhook_url", webhook_url)
         if yaml is not None:
             pulumi.set(__self__, "yaml", yaml)
 
@@ -335,6 +355,18 @@ class _TriggersState:
         pulumi.set(self, "target_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="webhookUrl")
+    def webhook_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The webhook URL if the trigger is type `Webhook`.
+        """
+        return pulumi.get(self, "webhook_url")
+
+    @webhook_url.setter
+    def webhook_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "webhook_url", value)
+
+    @_builtins.property
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -362,6 +394,7 @@ class Triggers(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 webhook_url: Optional[pulumi.Input[_builtins.str]] = None,
                  yaml: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -434,6 +467,7 @@ class Triggers(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] target_id: Identifier of the target pipeline
+        :param pulumi.Input[_builtins.str] webhook_url: The webhook URL if the trigger is type `Webhook`.
         :param pulumi.Input[_builtins.str] yaml: trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         ...
@@ -525,6 +559,7 @@ class Triggers(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 webhook_url: Optional[pulumi.Input[_builtins.str]] = None,
                  yaml: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -552,6 +587,7 @@ class Triggers(pulumi.CustomResource):
             if target_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_id'")
             __props__.__dict__["target_id"] = target_id
+            __props__.__dict__["webhook_url"] = webhook_url
             if yaml is None and not opts.urn:
                 raise TypeError("Missing required property 'yaml'")
             __props__.__dict__["yaml"] = yaml
@@ -574,6 +610,7 @@ class Triggers(pulumi.CustomResource):
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             target_id: Optional[pulumi.Input[_builtins.str]] = None,
+            webhook_url: Optional[pulumi.Input[_builtins.str]] = None,
             yaml: Optional[pulumi.Input[_builtins.str]] = None) -> 'Triggers':
         """
         Get an existing Triggers resource's state with the given name, id, and optional extra
@@ -591,6 +628,7 @@ class Triggers(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] target_id: Identifier of the target pipeline
+        :param pulumi.Input[_builtins.str] webhook_url: The webhook URL if the trigger is type `Webhook`.
         :param pulumi.Input[_builtins.str] yaml: trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -606,6 +644,7 @@ class Triggers(pulumi.CustomResource):
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_id"] = target_id
+        __props__.__dict__["webhook_url"] = webhook_url
         __props__.__dict__["yaml"] = yaml
         return Triggers(resource_name, opts=opts, __props__=__props__)
 
@@ -680,6 +719,14 @@ class Triggers(pulumi.CustomResource):
         Identifier of the target pipeline
         """
         return pulumi.get(self, "target_id")
+
+    @_builtins.property
+    @pulumi.getter(name="webhookUrl")
+    def webhook_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        The webhook URL if the trigger is type `Webhook`.
+        """
+        return pulumi.get(self, "webhook_url")
 
     @_builtins.property
     @pulumi.getter

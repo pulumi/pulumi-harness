@@ -11,6 +11,7 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.cluster.OrchestratorArgs;
 import com.pulumi.harness.cluster.inputs.OrchestratorState;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @ResourceType(type="harness:cluster/orchestrator:Orchestrator")
@@ -56,6 +57,20 @@ public class Orchestrator extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Region of the k8s cluster
+     * 
+     */
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> region;
+
+    /**
+     * @return Region of the k8s cluster
+     * 
+     */
+    public Output<Optional<String>> region() {
+        return Codegen.optional(this.region);
     }
 
     /**

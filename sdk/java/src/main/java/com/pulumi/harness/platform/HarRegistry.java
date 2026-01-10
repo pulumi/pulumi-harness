@@ -19,8 +19,8 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating and managing Harness Registries.
  * 
- * **Note:** Both `parentRef` and `spaceRef` are required for registry creation.
- * 
+ * **Note:**
+ * &gt; In Harness Artifact Registry, a **Virtual** registry is functionally equivalent to what is commonly referred to as a **Local** registry in other systems.
  * ## Example Usage
  * 
  * <pre>

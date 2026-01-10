@@ -12,6 +12,11 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating secret of type secret text
     /// 
+    /// &gt; [!NOTE]
+    /// Selecting a Customer managed Key (CMK) for encryption is supported in Harness Delegate version 25.11.87300 or later and is behind the feature flag `PL_ENABLE_NON_DEFAULT_ENCRYPTION_KEY`. Contact Harness Support to enable the feature.
+    /// 
+    /// Refer to the [documentation](https://developer.harness.io/docs/platform/secrets/secrets-management/add-an-aws-secret-manager/#create-a-text-or-file-secret) for details.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -71,6 +76,33 @@ namespace Pulumi.Harness.Platform
     ///                     new Harness.Platform.Inputs.SecretTextAdditionalMetadataValueArgs
     ///                     {
     ///                         Version = "1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var awsSecretManager = new Harness.Platform.SecretText("aws_secret_manager", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         SecretManagerIdentifier = "awsSecretManager",
+    ///         ValueType = "Inline",
+    ///         Value = "secret",
+    ///         AdditionalMetadatas = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.SecretTextAdditionalMetadataArgs
+    ///             {
+    ///                 Values = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.SecretTextAdditionalMetadataValueArgs
+    ///                     {
+    ///                         KmsKeyId = "kmsKeyId",
     ///                     },
     ///                 },
     ///             },

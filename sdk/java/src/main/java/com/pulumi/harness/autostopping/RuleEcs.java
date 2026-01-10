@@ -22,7 +22,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Harness Variables.
+ * Resource for creating a AutoStopping rule for ECS services.
  * 
  * ## Example Usage
  * 

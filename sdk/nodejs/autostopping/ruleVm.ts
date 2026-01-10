@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Harness Variables.
+ * Resource for creating a AutoStopping rule for VMs.
  *
  * ## Example Usage
  *

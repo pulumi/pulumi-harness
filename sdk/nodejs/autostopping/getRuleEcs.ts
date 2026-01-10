@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving a Harness Variable.
+ * Data source for retrieving a Harness AutoStopping rule for ECS services.
  *
  * ## Example Usage
  */
@@ -94,7 +94,7 @@ export interface GetRuleEcsResult {
     readonly name: string;
 }
 /**
- * Data source for retrieving a Harness Variable.
+ * Data source for retrieving a Harness AutoStopping rule for ECS services.
  *
  * ## Example Usage
  */

@@ -19,6 +19,11 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating secret of type secret text
  * 
+ * &gt; [!NOTE]
+ * Selecting a Customer managed Key (CMK) for encryption is supported in Harness Delegate version 25.11.87300 or later and is behind the feature flag `PL_ENABLE_NON_DEFAULT_ENCRYPTION_KEY`. Contact Harness Support to enable the feature.
+ * 
+ * Refer to the [documentation](https://developer.harness.io/docs/platform/secrets/secrets-management/add-an-aws-secret-manager/#create-a-text-or-file-secret) for details.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -75,6 +80,21 @@ import javax.annotation.Nullable;
  *             .additionalMetadatas(SecretTextAdditionalMetadataArgs.builder()
  *                 .values(SecretTextAdditionalMetadataValueArgs.builder()
  *                     .version("1")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var awsSecretManager = new SecretText("awsSecretManager", SecretTextArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("example")
+ *             .tags("foo:bar")
+ *             .secretManagerIdentifier("awsSecretManager")
+ *             .valueType("Inline")
+ *             .value("secret")
+ *             .additionalMetadatas(SecretTextAdditionalMetadataArgs.builder()
+ *                 .values(SecretTextAdditionalMetadataValueArgs.builder()
+ *                     .kmsKeyId("kmsKeyId")
  *                     .build())
  *                 .build())
  *             .build());

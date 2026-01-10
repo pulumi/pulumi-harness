@@ -96,6 +96,20 @@ public class InfraModule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Git Tag Style.
+     * 
+     */
+    @Export(name="gitTagStyle", refs={String.class}, tree="[0]")
+    private Output<String> gitTagStyle;
+
+    /**
+     * @return Git Tag Style.
+     * 
+     */
+    public Output<String> gitTagStyle() {
+        return this.gitTagStyle;
+    }
+    /**
      * Name of the module.
      * 
      */

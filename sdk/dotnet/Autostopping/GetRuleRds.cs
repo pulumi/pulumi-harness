@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Autostopping
     public static class GetRuleRds
     {
         /// <summary>
-        /// Data source for retrieving a Harness Variable.
+        /// Data source for retrieving a Harness AutoStopping rule for RDS databases.
         /// 
         /// ## Example Usage
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.Harness.Autostopping
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRuleRdsResult>("harness:autostopping/getRuleRds:getRuleRds", args ?? new GetRuleRdsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a Harness Variable.
+        /// Data source for retrieving a Harness AutoStopping rule for RDS databases.
         /// 
         /// ## Example Usage
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Harness.Autostopping
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleRdsResult>("harness:autostopping/getRuleRds:getRuleRds", args ?? new GetRuleRdsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a Harness Variable.
+        /// Data source for retrieving a Harness AutoStopping rule for RDS databases.
         /// 
         /// ## Example Usage
         /// </summary>

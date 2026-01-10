@@ -29,11 +29,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewGitopsAppProjectMapping(ctx, "example", &platform.GitopsAppProjectMappingArgs{
-//				AccountId:       pulumi.String("account_id"),
-//				OrgId:           pulumi.String("organization_id"),
-//				ProjectId:       pulumi.String("project_id"),
-//				AgentId:         pulumi.String("agent_id"),
-//				ArgoProjectName: pulumi.String("argoProjectName"),
+//				AccountId:            pulumi.String("account_id"),
+//				OrgId:                pulumi.String("organization_id"),
+//				ProjectId:            pulumi.String("project_id"),
+//				AgentId:              pulumi.String("agent_id"),
+//				ArgoProjectName:      pulumi.String("argoProjectName"),
+//				AutoCreateServiceEnv: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -64,6 +65,8 @@ type GitopsAppProjectMapping struct {
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// ArgoCD Project name which is to be mapped to the Harness project.
 	ArgoProjectName pulumi.StringOutput `pulumi:"argoProjectName"`
+	// Enable automated creation of service, environment and cluster-env link. Defaults to false.
+	AutoCreateServiceEnv pulumi.BoolPtrOutput `pulumi:"autoCreateServiceEnv"`
 	// Identifier of the GitOps Application Project.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Organization identifier of the GitOps agent's Application Project.
@@ -122,6 +125,8 @@ type gitopsAppProjectMappingState struct {
 	AgentId *string `pulumi:"agentId"`
 	// ArgoCD Project name which is to be mapped to the Harness project.
 	ArgoProjectName *string `pulumi:"argoProjectName"`
+	// Enable automated creation of service, environment and cluster-env link. Defaults to false.
+	AutoCreateServiceEnv *bool `pulumi:"autoCreateServiceEnv"`
 	// Identifier of the GitOps Application Project.
 	Identifier *string `pulumi:"identifier"`
 	// Organization identifier of the GitOps agent's Application Project.
@@ -139,6 +144,8 @@ type GitopsAppProjectMappingState struct {
 	AgentId pulumi.StringPtrInput
 	// ArgoCD Project name which is to be mapped to the Harness project.
 	ArgoProjectName pulumi.StringPtrInput
+	// Enable automated creation of service, environment and cluster-env link. Defaults to false.
+	AutoCreateServiceEnv pulumi.BoolPtrInput
 	// Identifier of the GitOps Application Project.
 	Identifier pulumi.StringPtrInput
 	// Organization identifier of the GitOps agent's Application Project.
@@ -160,6 +167,8 @@ type gitopsAppProjectMappingArgs struct {
 	AgentId string `pulumi:"agentId"`
 	// ArgoCD Project name which is to be mapped to the Harness project.
 	ArgoProjectName string `pulumi:"argoProjectName"`
+	// Enable automated creation of service, environment and cluster-env link. Defaults to false.
+	AutoCreateServiceEnv *bool `pulumi:"autoCreateServiceEnv"`
 	// Organization identifier of the GitOps agent's Application Project.
 	OrgId string `pulumi:"orgId"`
 	// Project identifier of the GitOps agent's Application Project.
@@ -176,6 +185,8 @@ type GitopsAppProjectMappingArgs struct {
 	AgentId pulumi.StringInput
 	// ArgoCD Project name which is to be mapped to the Harness project.
 	ArgoProjectName pulumi.StringInput
+	// Enable automated creation of service, environment and cluster-env link. Defaults to false.
+	AutoCreateServiceEnv pulumi.BoolPtrInput
 	// Organization identifier of the GitOps agent's Application Project.
 	OrgId pulumi.StringInput
 	// Project identifier of the GitOps agent's Application Project.
@@ -284,6 +295,11 @@ func (o GitopsAppProjectMappingOutput) AgentId() pulumi.StringOutput {
 // ArgoCD Project name which is to be mapped to the Harness project.
 func (o GitopsAppProjectMappingOutput) ArgoProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitopsAppProjectMapping) pulumi.StringOutput { return v.ArgoProjectName }).(pulumi.StringOutput)
+}
+
+// Enable automated creation of service, environment and cluster-env link. Defaults to false.
+func (o GitopsAppProjectMappingOutput) AutoCreateServiceEnv() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsAppProjectMapping) pulumi.BoolPtrOutput { return v.AutoCreateServiceEnv }).(pulumi.BoolPtrOutput)
 }
 
 // Identifier of the GitOps Application Project.

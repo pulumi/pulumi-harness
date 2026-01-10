@@ -153,6 +153,21 @@ public final class TriggersState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The webhook URL if the trigger is type `Webhook`.
+     * 
+     */
+    @Import(name="webhookUrl")
+    private @Nullable Output<String> webhookUrl;
+
+    /**
+     * @return The webhook URL if the trigger is type `Webhook`.
+     * 
+     */
+    public Optional<Output<String>> webhookUrl() {
+        return Optional.ofNullable(this.webhookUrl);
+    }
+
+    /**
      * trigger yaml. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
@@ -179,6 +194,7 @@ public final class TriggersState extends com.pulumi.resources.ResourceArgs {
         this.projectId = $.projectId;
         this.tags = $.tags;
         this.targetId = $.targetId;
+        this.webhookUrl = $.webhookUrl;
         this.yaml = $.yaml;
     }
 
@@ -397,6 +413,27 @@ public final class TriggersState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder targetId(String targetId) {
             return targetId(Output.of(targetId));
+        }
+
+        /**
+         * @param webhookUrl The webhook URL if the trigger is type `Webhook`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webhookUrl(@Nullable Output<String> webhookUrl) {
+            $.webhookUrl = webhookUrl;
+            return this;
+        }
+
+        /**
+         * @param webhookUrl The webhook URL if the trigger is type `Webhook`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webhookUrl(String webhookUrl) {
+            return webhookUrl(Output.of(webhookUrl));
         }
 
         /**

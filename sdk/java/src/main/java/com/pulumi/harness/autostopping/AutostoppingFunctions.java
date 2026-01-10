@@ -268,7 +268,7 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getGcpProxy:getGcpProxy", TypeShape.of(GetGcpProxyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for ECS services.
      * 
      * ## Example Usage
      * 
@@ -277,7 +277,7 @@ public final class AutostoppingFunctions {
         return getRuleEcs(args, InvokeOptions.Empty);
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for ECS services.
      * 
      * ## Example Usage
      * 
@@ -286,7 +286,7 @@ public final class AutostoppingFunctions {
         return getRuleEcsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for ECS services.
      * 
      * ## Example Usage
      * 
@@ -295,7 +295,7 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleEcs:getRuleEcs", TypeShape.of(GetRuleEcsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for ECS services.
      * 
      * ## Example Usage
      * 
@@ -304,7 +304,7 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleEcs:getRuleEcs", TypeShape.of(GetRuleEcsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for ECS services.
      * 
      * ## Example Usage
      * 
@@ -313,7 +313,7 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleEcs:getRuleEcs", TypeShape.of(GetRuleEcsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for RDS databases.
      * 
      * ## Example Usage
      * 
@@ -322,7 +322,7 @@ public final class AutostoppingFunctions {
         return getRuleRds(args, InvokeOptions.Empty);
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for RDS databases.
      * 
      * ## Example Usage
      * 
@@ -331,7 +331,7 @@ public final class AutostoppingFunctions {
         return getRuleRdsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for RDS databases.
      * 
      * ## Example Usage
      * 
@@ -340,7 +340,7 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleRds:getRuleRds", TypeShape.of(GetRuleRdsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for RDS databases.
      * 
      * ## Example Usage
      * 
@@ -349,7 +349,7 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleRds:getRuleRds", TypeShape.of(GetRuleRdsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for RDS databases.
      * 
      * ## Example Usage
      * 
@@ -358,7 +358,7 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleRds:getRuleRds", TypeShape.of(GetRuleRdsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
      * 
      * ## Example Usage
      * 
@@ -367,7 +367,7 @@ public final class AutostoppingFunctions {
         return getRuleScaleGroup(args, InvokeOptions.Empty);
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
      * 
      * ## Example Usage
      * 
@@ -376,7 +376,7 @@ public final class AutostoppingFunctions {
         return getRuleScaleGroupPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
      * 
      * ## Example Usage
      * 
@@ -385,7 +385,7 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", TypeShape.of(GetRuleScaleGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
      * 
      * ## Example Usage
      * 
@@ -394,7 +394,7 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", TypeShape.of(GetRuleScaleGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
      * 
      * ## Example Usage
      * 
@@ -403,7 +403,7 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", TypeShape.of(GetRuleScaleGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for VMs.
      * 
      * ## Example Usage
      * 
@@ -412,7 +412,7 @@ public final class AutostoppingFunctions {
         return getRuleVm(args, InvokeOptions.Empty);
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for VMs.
      * 
      * ## Example Usage
      * 
@@ -421,7 +421,7 @@ public final class AutostoppingFunctions {
         return getRuleVmPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for VMs.
      * 
      * ## Example Usage
      * 
@@ -430,7 +430,7 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleVm:getRuleVm", TypeShape.of(GetRuleVmResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for VMs.
      * 
      * ## Example Usage
      * 
@@ -439,7 +439,7 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleVm:getRuleVm", TypeShape.of(GetRuleVmResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Variable.
+     * Data source for retrieving a Harness AutoStopping rule for VMs.
      * 
      * ## Example Usage
      * 

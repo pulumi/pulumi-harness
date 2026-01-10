@@ -140,7 +140,7 @@ def get_rule_rds(cloud_connector_id: Optional[_builtins.str] = None,
                  tcps: Optional[Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleRdsResult:
     """
-    Data source for retrieving a Harness Variable.
+    Data source for retrieving a Harness AutoStopping rule for RDS databases.
 
     ## Example Usage
 
@@ -178,7 +178,7 @@ def get_rule_rds_output(cloud_connector_id: Optional[pulumi.Input[_builtins.str]
                         tcps: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleRdsResult]:
     """
-    Data source for retrieving a Harness Variable.
+    Data source for retrieving a Harness AutoStopping rule for RDS databases.
 
     ## Example Usage
 

@@ -30,6 +30,12 @@ namespace Pulumi.Harness.Cluster
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Region of the k8s cluster
+        /// </summary>
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Orchestrator resource with the given unique name, arguments, and options.
@@ -95,6 +101,12 @@ namespace Pulumi.Harness.Cluster
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Region of the k8s cluster
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         public OrchestratorArgs()
         {
         }
@@ -120,6 +132,12 @@ namespace Pulumi.Harness.Cluster
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Region of the k8s cluster
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public OrchestratorState()
         {

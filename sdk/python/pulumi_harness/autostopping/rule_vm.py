@@ -378,7 +378,7 @@ class RuleVm(pulumi.CustomResource):
                  use_spot: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness Variables.
+        Resource for creating a AutoStopping rule for VMs.
 
         ## Example Usage
 
@@ -459,7 +459,7 @@ class RuleVm(pulumi.CustomResource):
                  args: RuleVmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness Variables.
+        Resource for creating a AutoStopping rule for VMs.
 
         ## Example Usage
 

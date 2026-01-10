@@ -29,6 +29,7 @@ namespace Pulumi.Harness.Platform
     ///         ProjectId = "project_id",
     ///         AgentId = "agent_id",
     ///         ArgoProjectName = "argoProjectName",
+    ///         AutoCreateServiceEnv = true,
     ///     });
     /// 
     /// });
@@ -64,6 +65,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("argoProjectName")]
         public Output<string> ArgoProjectName { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable automated creation of service, environment and cluster-env link. Defaults to false.
+        /// </summary>
+        [Output("autoCreateServiceEnv")]
+        public Output<bool?> AutoCreateServiceEnv { get; private set; } = null!;
 
         /// <summary>
         /// Identifier of the GitOps Application Project.
@@ -149,6 +156,12 @@ namespace Pulumi.Harness.Platform
         public Input<string> ArgoProjectName { get; set; } = null!;
 
         /// <summary>
+        /// Enable automated creation of service, environment and cluster-env link. Defaults to false.
+        /// </summary>
+        [Input("autoCreateServiceEnv")]
+        public Input<bool>? AutoCreateServiceEnv { get; set; }
+
+        /// <summary>
         /// Organization identifier of the GitOps agent's Application Project.
         /// </summary>
         [Input("orgId", required: true)]
@@ -185,6 +198,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("argoProjectName")]
         public Input<string>? ArgoProjectName { get; set; }
+
+        /// <summary>
+        /// Enable automated creation of service, environment and cluster-env link. Defaults to false.
+        /// </summary>
+        [Input("autoCreateServiceEnv")]
+        public Input<bool>? AutoCreateServiceEnv { get; set; }
 
         /// <summary>
         /// Identifier of the GitOps Application Project.

@@ -61,12 +61,28 @@ public final class GetOrchestratorArgs extends com.pulumi.resources.InvokeArgs {
         return this.name;
     }
 
+    /**
+     * Region of the k8s cluster
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return Region of the k8s cluster
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
     private GetOrchestratorArgs() {}
 
     private GetOrchestratorArgs(GetOrchestratorArgs $) {
         this.clusterEndpoint = $.clusterEndpoint;
         this.k8sConnectorId = $.k8sConnectorId;
         this.name = $.name;
+        this.region = $.region;
     }
 
     public static Builder builder() {
@@ -148,6 +164,27 @@ public final class GetOrchestratorArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param region Region of the k8s cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region Region of the k8s cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         public GetOrchestratorArgs build() {

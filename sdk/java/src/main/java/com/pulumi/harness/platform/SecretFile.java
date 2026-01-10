@@ -18,6 +18,12 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a secret of type secret file in Harness.
  * 
+ * &gt; [!NOTE]
+ * &gt; 1. Selecting a Customer managed Key (CMK) for encryption is supported in Harness Delegate version 25.11.87300 or later and is behind the feature flag `PL_ENABLE_NON_DEFAULT_ENCRYPTION_KEY`. Contact Harness Support to enable the feature.
+ * &gt; 2. This option would be unavailable if the AWS Secret Manager connector has the option Use &#34;put-secret-value&#34; action to update secret value enabled.
+ * 
+ * Refer to the [documentation](https://developer.harness.io/docs/platform/secrets/secrets-management/add-an-aws-secret-manager/#create-a-text-or-file-secret) for details.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -29,6 +35,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.SecretFile;
  * import com.pulumi.harness.platform.SecretFileArgs;
+ * import com.pulumi.harness.platform.SecretText;
+ * import com.pulumi.harness.platform.SecretTextArgs;
+ * import com.pulumi.harness.platform.inputs.SecretTextAdditionalMetadataArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,6 +58,21 @@ import javax.annotation.Nullable;
  *             .tags("foo:bar")
  *             .filePath("file_path")
  *             .secretManagerIdentifier("harnessSecretManager")
+ *             .build());
+ * 
+ *         var awsSecretManager = new SecretText("awsSecretManager", SecretTextArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("example")
+ *             .tags("foo:bar")
+ *             .secretManagerIdentifier("awsSecretManager")
+ *             .valueType("Inline")
+ *             .value("secret")
+ *             .additionalMetadatas(SecretTextAdditionalMetadataArgs.builder()
+ *                 .values(SecretTextAdditionalMetadataValueArgs.builder()
+ *                     .kmsKeyId("kmsKeyId")
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }

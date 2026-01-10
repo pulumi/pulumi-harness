@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Autostopping
     public static class GetRuleScaleGroup
     {
         /// <summary>
-        /// Data source for retrieving a Harness Variable.
+        /// Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
         /// 
         /// ## Example Usage
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.Harness.Autostopping
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRuleScaleGroupResult>("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", args ?? new GetRuleScaleGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a Harness Variable.
+        /// Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
         /// 
         /// ## Example Usage
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Harness.Autostopping
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleScaleGroupResult>("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", args ?? new GetRuleScaleGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a Harness Variable.
+        /// Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
         /// 
         /// ## Example Usage
         /// </summary>

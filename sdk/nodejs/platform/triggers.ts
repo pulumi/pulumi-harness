@@ -129,6 +129,10 @@ export class Triggers extends pulumi.CustomResource {
      */
     declare public readonly targetId: pulumi.Output<string>;
     /**
+     * The webhook URL if the trigger is type `Webhook`.
+     */
+    declare public readonly webhookUrl: pulumi.Output<string>;
+    /**
      * trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     declare public readonly yaml: pulumi.Output<string>;
@@ -155,6 +159,7 @@ export class Triggers extends pulumi.CustomResource {
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["targetId"] = state?.targetId;
+            resourceInputs["webhookUrl"] = state?.webhookUrl;
             resourceInputs["yaml"] = state?.yaml;
         } else {
             const args = argsOrState as TriggersArgs | undefined;
@@ -182,6 +187,7 @@ export class Triggers extends pulumi.CustomResource {
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["targetId"] = args?.targetId;
+            resourceInputs["webhookUrl"] = args?.webhookUrl;
             resourceInputs["yaml"] = args?.yaml;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -230,6 +236,10 @@ export interface TriggersState {
      */
     targetId?: pulumi.Input<string>;
     /**
+     * The webhook URL if the trigger is type `Webhook`.
+     */
+    webhookUrl?: pulumi.Input<string>;
+    /**
      * trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml?: pulumi.Input<string>;
@@ -275,6 +285,10 @@ export interface TriggersArgs {
      * Identifier of the target pipeline
      */
     targetId: pulumi.Input<string>;
+    /**
+     * The webhook URL if the trigger is type `Webhook`.
+     */
+    webhookUrl?: pulumi.Input<string>;
     /**
      * trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */

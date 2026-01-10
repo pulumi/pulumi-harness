@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.GitopsAppProjectMappingArgs;
 import com.pulumi.harness.platform.inputs.GitopsAppProjectMappingState;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -46,6 +48,7 @@ import javax.annotation.Nullable;
  *             .projectId("project_id")
  *             .agentId("agent_id")
  *             .argoProjectName("argoProjectName")
+ *             .autoCreateServiceEnv(true)
  *             .build());
  * 
  *     }
@@ -111,6 +114,20 @@ public class GitopsAppProjectMapping extends com.pulumi.resources.CustomResource
      */
     public Output<String> argoProjectName() {
         return this.argoProjectName;
+    }
+    /**
+     * Enable automated creation of service, environment and cluster-env link. Defaults to false.
+     * 
+     */
+    @Export(name="autoCreateServiceEnv", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoCreateServiceEnv;
+
+    /**
+     * @return Enable automated creation of service, environment and cluster-env link. Defaults to false.
+     * 
+     */
+    public Output<Optional<Boolean>> autoCreateServiceEnv() {
+        return Codegen.optional(this.autoCreateServiceEnv);
     }
     /**
      * Identifier of the GitOps Application Project.

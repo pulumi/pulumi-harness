@@ -23,7 +23,8 @@ class GitopsAppProjectMappingArgs:
                  argo_project_name: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_create_service_env: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitopsAppProjectMapping resource.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
@@ -31,6 +32,7 @@ class GitopsAppProjectMappingArgs:
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps agent's Application Project.
+        :param pulumi.Input[_builtins.bool] auto_create_service_env: Enable automated creation of service, environment and cluster-env link. Defaults to false.
         """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "argo_project_name", argo_project_name)
@@ -41,6 +43,8 @@ class GitopsAppProjectMappingArgs:
             pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if auto_create_service_env is not None:
+            pulumi.set(__self__, "auto_create_service_env", auto_create_service_env)
 
     @_builtins.property
     @pulumi.getter(name="agentId")
@@ -103,6 +107,18 @@ class GitopsAppProjectMappingArgs:
     def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="autoCreateServiceEnv")
+    def auto_create_service_env(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable automated creation of service, environment and cluster-env link. Defaults to false.
+        """
+        return pulumi.get(self, "auto_create_service_env")
+
+    @auto_create_service_env.setter
+    def auto_create_service_env(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "auto_create_service_env", value)
+
 
 @pulumi.input_type
 class _GitopsAppProjectMappingState:
@@ -110,6 +126,7 @@ class _GitopsAppProjectMappingState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  agent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  argo_project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_create_service_env: Optional[pulumi.Input[_builtins.bool]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
@@ -118,6 +135,7 @@ class _GitopsAppProjectMappingState:
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
         :param pulumi.Input[_builtins.str] argo_project_name: ArgoCD Project name which is to be mapped to the Harness project.
+        :param pulumi.Input[_builtins.bool] auto_create_service_env: Enable automated creation of service, environment and cluster-env link. Defaults to false.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps Application Project.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent's Application Project.
@@ -131,6 +149,8 @@ class _GitopsAppProjectMappingState:
             pulumi.set(__self__, "agent_id", agent_id)
         if argo_project_name is not None:
             pulumi.set(__self__, "argo_project_name", argo_project_name)
+        if auto_create_service_env is not None:
+            pulumi.set(__self__, "auto_create_service_env", auto_create_service_env)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if org_id is not None:
@@ -174,6 +194,18 @@ class _GitopsAppProjectMappingState:
     @argo_project_name.setter
     def argo_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "argo_project_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoCreateServiceEnv")
+    def auto_create_service_env(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable automated creation of service, environment and cluster-env link. Defaults to false.
+        """
+        return pulumi.get(self, "auto_create_service_env")
+
+    @auto_create_service_env.setter
+    def auto_create_service_env(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "auto_create_service_env", value)
 
     @_builtins.property
     @pulumi.getter
@@ -221,6 +253,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  agent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  argo_project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_create_service_env: Optional[pulumi.Input[_builtins.bool]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -238,7 +271,8 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
             org_id="organization_id",
             project_id="project_id",
             agent_id="agent_id",
-            argo_project_name="argoProjectName")
+            argo_project_name="argoProjectName",
+            auto_create_service_env=True)
         ```
 
         ## Import
@@ -256,6 +290,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
         :param pulumi.Input[_builtins.str] argo_project_name: ArgoCD Project name which is to be mapped to the Harness project.
+        :param pulumi.Input[_builtins.bool] auto_create_service_env: Enable automated creation of service, environment and cluster-env link. Defaults to false.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent's Application Project.
         """
@@ -279,7 +314,8 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
             org_id="organization_id",
             project_id="project_id",
             agent_id="agent_id",
-            argo_project_name="argoProjectName")
+            argo_project_name="argoProjectName",
+            auto_create_service_env=True)
         ```
 
         ## Import
@@ -310,6 +346,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  agent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  argo_project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_create_service_env: Optional[pulumi.Input[_builtins.bool]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -328,6 +365,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
             if argo_project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'argo_project_name'")
             __props__.__dict__["argo_project_name"] = argo_project_name
+            __props__.__dict__["auto_create_service_env"] = auto_create_service_env
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
@@ -348,6 +386,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             agent_id: Optional[pulumi.Input[_builtins.str]] = None,
             argo_project_name: Optional[pulumi.Input[_builtins.str]] = None,
+            auto_create_service_env: Optional[pulumi.Input[_builtins.bool]] = None,
             identifier: Optional[pulumi.Input[_builtins.str]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GitopsAppProjectMapping':
@@ -361,6 +400,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
         :param pulumi.Input[_builtins.str] argo_project_name: ArgoCD Project name which is to be mapped to the Harness project.
+        :param pulumi.Input[_builtins.bool] auto_create_service_env: Enable automated creation of service, environment and cluster-env link. Defaults to false.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps Application Project.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent's Application Project.
@@ -372,6 +412,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["agent_id"] = agent_id
         __props__.__dict__["argo_project_name"] = argo_project_name
+        __props__.__dict__["auto_create_service_env"] = auto_create_service_env
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
@@ -401,6 +442,14 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         ArgoCD Project name which is to be mapped to the Harness project.
         """
         return pulumi.get(self, "argo_project_name")
+
+    @_builtins.property
+    @pulumi.getter(name="autoCreateServiceEnv")
+    def auto_create_service_env(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enable automated creation of service, environment and cluster-env link. Defaults to false.
+        """
+        return pulumi.get(self, "auto_create_service_env")
 
     @_builtins.property
     @pulumi.getter

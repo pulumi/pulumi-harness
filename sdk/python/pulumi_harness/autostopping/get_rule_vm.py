@@ -179,7 +179,7 @@ def get_rule_vm(cloud_connector_id: Optional[_builtins.str] = None,
                 use_spot: Optional[_builtins.bool] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleVmResult:
     """
-    Data source for retrieving a Harness Variable.
+    Data source for retrieving a Harness AutoStopping rule for VMs.
 
     ## Example Usage
 
@@ -229,7 +229,7 @@ def get_rule_vm_output(cloud_connector_id: Optional[pulumi.Input[_builtins.str]]
                        use_spot: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleVmResult]:
     """
-    Data source for retrieving a Harness Variable.
+    Data source for retrieving a Harness AutoStopping rule for VMs.
 
     ## Example Usage
 

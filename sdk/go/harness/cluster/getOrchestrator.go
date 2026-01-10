@@ -32,6 +32,8 @@ type LookupOrchestratorArgs struct {
 	K8sConnectorId *string `pulumi:"k8sConnectorId"`
 	// Name of the Orchestrator
 	Name string `pulumi:"name"`
+	// Region of the k8s cluster
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getOrchestrator.
@@ -44,6 +46,8 @@ type LookupOrchestratorResult struct {
 	K8sConnectorId *string `pulumi:"k8sConnectorId"`
 	// Name of the Orchestrator
 	Name string `pulumi:"name"`
+	// Region of the k8s cluster
+	Region *string `pulumi:"region"`
 }
 
 func LookupOrchestratorOutput(ctx *pulumi.Context, args LookupOrchestratorOutputArgs, opts ...pulumi.InvokeOption) LookupOrchestratorResultOutput {
@@ -63,6 +67,8 @@ type LookupOrchestratorOutputArgs struct {
 	K8sConnectorId pulumi.StringPtrInput `pulumi:"k8sConnectorId"`
 	// Name of the Orchestrator
 	Name pulumi.StringInput `pulumi:"name"`
+	// Region of the k8s cluster
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupOrchestratorOutputArgs) ElementType() reflect.Type {
@@ -102,6 +108,11 @@ func (o LookupOrchestratorResultOutput) K8sConnectorId() pulumi.StringPtrOutput 
 // Name of the Orchestrator
 func (o LookupOrchestratorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrchestratorResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Region of the k8s cluster
+func (o LookupOrchestratorResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOrchestratorResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 func init() {

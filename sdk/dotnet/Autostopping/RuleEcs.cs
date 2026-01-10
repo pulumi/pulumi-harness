@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Autostopping
 {
     /// <summary>
-    /// Resource for creating a Harness Variables.
+    /// Resource for creating a AutoStopping rule for ECS services.
     /// 
     /// ## Example Usage
     /// 

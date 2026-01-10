@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving a Harness Variable.
+// Data source for retrieving a Harness AutoStopping rule for RDS databases.
 //
 // ## Example Usage
 func LookupRuleRds(ctx *pulumi.Context, args *LookupRuleRdsArgs, opts ...pulumi.InvokeOption) (*LookupRuleRdsResult, error) {
