@@ -922,6 +922,30 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/idpCatalogEntity",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/idpCatalogEntity:IdpCatalogEntity": "IdpCatalogEntity"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/idpEnvironment",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/idpEnvironment:IdpEnvironment": "IdpEnvironment"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/idpEnvironmentBlueprint",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint": "IdpEnvironmentBlueprint"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/infraModule",
   "fqn": "pulumi_harness.platform",
   "classes": {

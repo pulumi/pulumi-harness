@@ -47,21 +47,45 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = platform.NewSecretText(ctx, "aws_secret_manager", &platform.SecretTextArgs{
+//			// With AWS Secret Manager KMS Key
+//			_, err = platform.NewSecretFile(ctx, "aws_secret_manager", &platform.SecretFileArgs{
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("example"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
+//				FilePath:                pulumi.String("file_path"),
 //				SecretManagerIdentifier: pulumi.String("awsSecretManager"),
-//				ValueType:               pulumi.String("Inline"),
-//				Value:                   pulumi.String("secret"),
-//				AdditionalMetadatas: platform.SecretTextAdditionalMetadataArray{
-//					&platform.SecretTextAdditionalMetadataArgs{
-//						Values: platform.SecretTextAdditionalMetadataValueArray{
-//							&platform.SecretTextAdditionalMetadataValueArgs{
+//				AdditionalMetadatas: platform.SecretFileAdditionalMetadataArray{
+//					&platform.SecretFileAdditionalMetadataArgs{
+//						Values: platform.SecretFileAdditionalMetadataValueArray{
+//							&platform.SecretFileAdditionalMetadataValueArgs{
 //								KmsKeyId: pulumi.String("kmsKeyId"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// With GCP Secret Manager project ID and region
+//			_, err = platform.NewSecretFile(ctx, "gcp_secret_manager", &platform.SecretFileArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				FilePath:                pulumi.String("file_path"),
+//				SecretManagerIdentifier: pulumi.String("gcpSecretManager"),
+//				AdditionalMetadatas: platform.SecretFileAdditionalMetadataArray{
+//					&platform.SecretFileAdditionalMetadataArgs{
+//						Values: platform.SecretFileAdditionalMetadataValueArray{
+//							&platform.SecretFileAdditionalMetadataValueArgs{
+//								Regions:      pulumi.String("us-east1"),
+//								GcpProjectId: pulumi.String("my-gcp-project-id"),
 //							},
 //						},
 //					},
@@ -100,14 +124,14 @@ import (
 type SecretFile struct {
 	pulumi.CustomResourceState
 
+	// Additional Metadata for the Secret
+	AdditionalMetadatas SecretFileAdditionalMetadataArrayOutput `pulumi:"additionalMetadatas"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Path of the file containing secret value
 	FilePath pulumi.StringOutput `pulumi:"filePath"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// Kms Key Id for encrypting the secret value
-	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -159,14 +183,14 @@ func GetSecretFile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretFile resources.
 type secretFileState struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas []SecretFileAdditionalMetadata `pulumi:"additionalMetadatas"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Path of the file containing secret value
 	FilePath *string `pulumi:"filePath"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// Kms Key Id for encrypting the secret value
-	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -180,14 +204,14 @@ type secretFileState struct {
 }
 
 type SecretFileState struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas SecretFileAdditionalMetadataArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Path of the file containing secret value
 	FilePath pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
-	// Kms Key Id for encrypting the secret value
-	KmsKeyId pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -205,14 +229,14 @@ func (SecretFileState) ElementType() reflect.Type {
 }
 
 type secretFileArgs struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas []SecretFileAdditionalMetadata `pulumi:"additionalMetadatas"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Path of the file containing secret value
 	FilePath string `pulumi:"filePath"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// Kms Key Id for encrypting the secret value
-	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -227,14 +251,14 @@ type secretFileArgs struct {
 
 // The set of arguments for constructing a SecretFile resource.
 type SecretFileArgs struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas SecretFileAdditionalMetadataArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Path of the file containing secret value
 	FilePath pulumi.StringInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
-	// Kms Key Id for encrypting the secret value
-	KmsKeyId pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -334,6 +358,11 @@ func (o SecretFileOutput) ToSecretFileOutputWithContext(ctx context.Context) Sec
 	return o
 }
 
+// Additional Metadata for the Secret
+func (o SecretFileOutput) AdditionalMetadatas() SecretFileAdditionalMetadataArrayOutput {
+	return o.ApplyT(func(v *SecretFile) SecretFileAdditionalMetadataArrayOutput { return v.AdditionalMetadatas }).(SecretFileAdditionalMetadataArrayOutput)
+}
+
 // Description of the resource.
 func (o SecretFileOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretFile) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -347,11 +376,6 @@ func (o SecretFileOutput) FilePath() pulumi.StringOutput {
 // Unique identifier of the resource.
 func (o SecretFileOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretFile) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
-}
-
-// Kms Key Id for encrypting the secret value
-func (o SecretFileOutput) KmsKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecretFile) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
 // Name of the resource.

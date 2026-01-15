@@ -11,13 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretTextAdditionalMetadataValue {
+    /**
+     * @return GCP Project ID (for GCP Secret Manager)
+     * 
+     */
+    private @Nullable String gcpProjectId;
+    /**
+     * @return KMS Key ID (for AWS Secret Manager)
+     * 
+     */
     private @Nullable String kmsKeyId;
+    /**
+     * @return GCP region for the secret (for GCP Secret Manager)
+     * 
+     */
+    private @Nullable String regions;
+    /**
+     * @return Version of the secret (for AWS/Azure Secret Manager)
+     * 
+     */
     private @Nullable String version;
 
     private GetSecretTextAdditionalMetadataValue() {}
+    /**
+     * @return GCP Project ID (for GCP Secret Manager)
+     * 
+     */
+    public Optional<String> gcpProjectId() {
+        return Optional.ofNullable(this.gcpProjectId);
+    }
+    /**
+     * @return KMS Key ID (for AWS Secret Manager)
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
+    /**
+     * @return GCP region for the secret (for GCP Secret Manager)
+     * 
+     */
+    public Optional<String> regions() {
+        return Optional.ofNullable(this.regions);
+    }
+    /**
+     * @return Version of the secret (for AWS/Azure Secret Manager)
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }
@@ -31,19 +71,35 @@ public final class GetSecretTextAdditionalMetadataValue {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String gcpProjectId;
         private @Nullable String kmsKeyId;
+        private @Nullable String regions;
         private @Nullable String version;
         public Builder() {}
         public Builder(GetSecretTextAdditionalMetadataValue defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.gcpProjectId = defaults.gcpProjectId;
     	      this.kmsKeyId = defaults.kmsKeyId;
+    	      this.regions = defaults.regions;
     	      this.version = defaults.version;
         }
 
         @CustomType.Setter
+        public Builder gcpProjectId(@Nullable String gcpProjectId) {
+
+            this.gcpProjectId = gcpProjectId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
 
             this.kmsKeyId = kmsKeyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder regions(@Nullable String regions) {
+
+            this.regions = regions;
             return this;
         }
         @CustomType.Setter
@@ -54,7 +110,9 @@ public final class GetSecretTextAdditionalMetadataValue {
         }
         public GetSecretTextAdditionalMetadataValue build() {
             final var _resultValue = new GetSecretTextAdditionalMetadataValue();
+            _resultValue.gcpProjectId = gcpProjectId;
             _resultValue.kmsKeyId = kmsKeyId;
+            _resultValue.regions = regions;
             _resultValue.version = version;
             return _resultValue;
         }

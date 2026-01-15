@@ -87,14 +87,23 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetSecretFileArgs : global::Pulumi.InvokeArgs
     {
+        [Input("additionalMetadatas")]
+        private List<Inputs.GetSecretFileAdditionalMetadataArgs>? _additionalMetadatas;
+
+        /// <summary>
+        /// Additional Metadata for the Secret
+        /// </summary>
+        public List<Inputs.GetSecretFileAdditionalMetadataArgs> AdditionalMetadatas
+        {
+            get => _additionalMetadatas ?? (_additionalMetadatas = new List<Inputs.GetSecretFileAdditionalMetadataArgs>());
+            set => _additionalMetadatas = value;
+        }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
-
-        [Input("kmsKeyId")]
-        public string? KmsKeyId { get; set; }
 
         /// <summary>
         /// Name of the resource.
@@ -122,14 +131,23 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetSecretFileInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("additionalMetadatas")]
+        private InputList<Inputs.GetSecretFileAdditionalMetadataInputArgs>? _additionalMetadatas;
+
+        /// <summary>
+        /// Additional Metadata for the Secret
+        /// </summary>
+        public InputList<Inputs.GetSecretFileAdditionalMetadataInputArgs> AdditionalMetadatas
+        {
+            get => _additionalMetadatas ?? (_additionalMetadatas = new InputList<Inputs.GetSecretFileAdditionalMetadataInputArgs>());
+            set => _additionalMetadatas = value;
+        }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
-
-        [Input("kmsKeyId")]
-        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
         /// Name of the resource.
@@ -160,6 +178,10 @@ namespace Pulumi.Harness.Platform
     public sealed class GetSecretFileResult
     {
         /// <summary>
+        /// Additional Metadata for the Secret
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetSecretFileAdditionalMetadataResult> AdditionalMetadatas;
+        /// <summary>
         /// Description of the resource.
         /// </summary>
         public readonly string Description;
@@ -175,7 +197,6 @@ namespace Pulumi.Harness.Platform
         /// Unique identifier of the resource.
         /// </summary>
         public readonly string Identifier;
-        public readonly string? KmsKeyId;
         /// <summary>
         /// Name of the resource.
         /// </summary>
@@ -199,6 +220,8 @@ namespace Pulumi.Harness.Platform
 
         [OutputConstructor]
         private GetSecretFileResult(
+            ImmutableArray<Outputs.GetSecretFileAdditionalMetadataResult> additionalMetadatas,
+
             string description,
 
             string filePath,
@@ -206,8 +229,6 @@ namespace Pulumi.Harness.Platform
             string id,
 
             string identifier,
-
-            string? kmsKeyId,
 
             string? name,
 
@@ -219,11 +240,11 @@ namespace Pulumi.Harness.Platform
 
             ImmutableArray<string> tags)
         {
+            AdditionalMetadatas = additionalMetadatas;
             Description = description;
             FilePath = filePath;
             Id = id;
             Identifier = identifier;
-            KmsKeyId = kmsKeyId;
             Name = name;
             OrgId = orgId;
             ProjectId = projectId;

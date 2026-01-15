@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetSecretFileAdditionalMetadata;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretFileResult {
+    /**
+     * @return Additional Metadata for the Secret
+     * 
+     */
+    private @Nullable List<GetSecretFileAdditionalMetadata> additionalMetadatas;
     /**
      * @return Description of the resource.
      * 
@@ -33,7 +39,6 @@ public final class GetSecretFileResult {
      * 
      */
     private String identifier;
-    private @Nullable String kmsKeyId;
     /**
      * @return Name of the resource.
      * 
@@ -62,6 +67,13 @@ public final class GetSecretFileResult {
 
     private GetSecretFileResult() {}
     /**
+     * @return Additional Metadata for the Secret
+     * 
+     */
+    public List<GetSecretFileAdditionalMetadata> additionalMetadatas() {
+        return this.additionalMetadatas == null ? List.of() : this.additionalMetadatas;
+    }
+    /**
      * @return Description of the resource.
      * 
      */
@@ -88,9 +100,6 @@ public final class GetSecretFileResult {
      */
     public String identifier() {
         return this.identifier;
-    }
-    public Optional<String> kmsKeyId() {
-        return Optional.ofNullable(this.kmsKeyId);
     }
     /**
      * @return Name of the resource.
@@ -137,11 +146,11 @@ public final class GetSecretFileResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<GetSecretFileAdditionalMetadata> additionalMetadatas;
         private String description;
         private String filePath;
         private String id;
         private String identifier;
-        private @Nullable String kmsKeyId;
         private @Nullable String name;
         private @Nullable String orgId;
         private @Nullable String projectId;
@@ -150,11 +159,11 @@ public final class GetSecretFileResult {
         public Builder() {}
         public Builder(GetSecretFileResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalMetadatas = defaults.additionalMetadatas;
     	      this.description = defaults.description;
     	      this.filePath = defaults.filePath;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
-    	      this.kmsKeyId = defaults.kmsKeyId;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
@@ -162,6 +171,15 @@ public final class GetSecretFileResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
+        public Builder additionalMetadatas(@Nullable List<GetSecretFileAdditionalMetadata> additionalMetadatas) {
+
+            this.additionalMetadatas = additionalMetadatas;
+            return this;
+        }
+        public Builder additionalMetadatas(GetSecretFileAdditionalMetadata... additionalMetadatas) {
+            return additionalMetadatas(List.of(additionalMetadatas));
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -192,12 +210,6 @@ public final class GetSecretFileResult {
               throw new MissingRequiredPropertyException("GetSecretFileResult", "identifier");
             }
             this.identifier = identifier;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder kmsKeyId(@Nullable String kmsKeyId) {
-
-            this.kmsKeyId = kmsKeyId;
             return this;
         }
         @CustomType.Setter
@@ -239,11 +251,11 @@ public final class GetSecretFileResult {
         }
         public GetSecretFileResult build() {
             final var _resultValue = new GetSecretFileResult();
+            _resultValue.additionalMetadatas = additionalMetadatas;
             _resultValue.description = description;
             _resultValue.filePath = filePath;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
-            _resultValue.kmsKeyId = kmsKeyId;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;

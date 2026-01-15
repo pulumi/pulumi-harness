@@ -16634,6 +16634,224 @@ func (o RoleAssignmentsPrincipalArrayOutput) Index(i pulumi.IntInput) RoleAssign
 	}).(RoleAssignmentsPrincipalOutput)
 }
 
+type SecretFileAdditionalMetadata struct {
+	Values []SecretFileAdditionalMetadataValue `pulumi:"values"`
+}
+
+// SecretFileAdditionalMetadataInput is an input type that accepts SecretFileAdditionalMetadataArgs and SecretFileAdditionalMetadataOutput values.
+// You can construct a concrete instance of `SecretFileAdditionalMetadataInput` via:
+//
+//	SecretFileAdditionalMetadataArgs{...}
+type SecretFileAdditionalMetadataInput interface {
+	pulumi.Input
+
+	ToSecretFileAdditionalMetadataOutput() SecretFileAdditionalMetadataOutput
+	ToSecretFileAdditionalMetadataOutputWithContext(context.Context) SecretFileAdditionalMetadataOutput
+}
+
+type SecretFileAdditionalMetadataArgs struct {
+	Values SecretFileAdditionalMetadataValueArrayInput `pulumi:"values"`
+}
+
+func (SecretFileAdditionalMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretFileAdditionalMetadata)(nil)).Elem()
+}
+
+func (i SecretFileAdditionalMetadataArgs) ToSecretFileAdditionalMetadataOutput() SecretFileAdditionalMetadataOutput {
+	return i.ToSecretFileAdditionalMetadataOutputWithContext(context.Background())
+}
+
+func (i SecretFileAdditionalMetadataArgs) ToSecretFileAdditionalMetadataOutputWithContext(ctx context.Context) SecretFileAdditionalMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretFileAdditionalMetadataOutput)
+}
+
+// SecretFileAdditionalMetadataArrayInput is an input type that accepts SecretFileAdditionalMetadataArray and SecretFileAdditionalMetadataArrayOutput values.
+// You can construct a concrete instance of `SecretFileAdditionalMetadataArrayInput` via:
+//
+//	SecretFileAdditionalMetadataArray{ SecretFileAdditionalMetadataArgs{...} }
+type SecretFileAdditionalMetadataArrayInput interface {
+	pulumi.Input
+
+	ToSecretFileAdditionalMetadataArrayOutput() SecretFileAdditionalMetadataArrayOutput
+	ToSecretFileAdditionalMetadataArrayOutputWithContext(context.Context) SecretFileAdditionalMetadataArrayOutput
+}
+
+type SecretFileAdditionalMetadataArray []SecretFileAdditionalMetadataInput
+
+func (SecretFileAdditionalMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretFileAdditionalMetadata)(nil)).Elem()
+}
+
+func (i SecretFileAdditionalMetadataArray) ToSecretFileAdditionalMetadataArrayOutput() SecretFileAdditionalMetadataArrayOutput {
+	return i.ToSecretFileAdditionalMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i SecretFileAdditionalMetadataArray) ToSecretFileAdditionalMetadataArrayOutputWithContext(ctx context.Context) SecretFileAdditionalMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretFileAdditionalMetadataArrayOutput)
+}
+
+type SecretFileAdditionalMetadataOutput struct{ *pulumi.OutputState }
+
+func (SecretFileAdditionalMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretFileAdditionalMetadata)(nil)).Elem()
+}
+
+func (o SecretFileAdditionalMetadataOutput) ToSecretFileAdditionalMetadataOutput() SecretFileAdditionalMetadataOutput {
+	return o
+}
+
+func (o SecretFileAdditionalMetadataOutput) ToSecretFileAdditionalMetadataOutputWithContext(ctx context.Context) SecretFileAdditionalMetadataOutput {
+	return o
+}
+
+func (o SecretFileAdditionalMetadataOutput) Values() SecretFileAdditionalMetadataValueArrayOutput {
+	return o.ApplyT(func(v SecretFileAdditionalMetadata) []SecretFileAdditionalMetadataValue { return v.Values }).(SecretFileAdditionalMetadataValueArrayOutput)
+}
+
+type SecretFileAdditionalMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretFileAdditionalMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretFileAdditionalMetadata)(nil)).Elem()
+}
+
+func (o SecretFileAdditionalMetadataArrayOutput) ToSecretFileAdditionalMetadataArrayOutput() SecretFileAdditionalMetadataArrayOutput {
+	return o
+}
+
+func (o SecretFileAdditionalMetadataArrayOutput) ToSecretFileAdditionalMetadataArrayOutputWithContext(ctx context.Context) SecretFileAdditionalMetadataArrayOutput {
+	return o
+}
+
+func (o SecretFileAdditionalMetadataArrayOutput) Index(i pulumi.IntInput) SecretFileAdditionalMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretFileAdditionalMetadata {
+		return vs[0].([]SecretFileAdditionalMetadata)[vs[1].(int)]
+	}).(SecretFileAdditionalMetadataOutput)
+}
+
+type SecretFileAdditionalMetadataValue struct {
+	// GCP Project ID (for GCP Secret Manager)
+	GcpProjectId *string `pulumi:"gcpProjectId"`
+	// KMS Key ID (for AWS Secret Manager)
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// GCP region for the secret (for GCP Secret Manager)
+	Regions *string `pulumi:"regions"`
+	// Version of the secret (for AWS/Azure Secret Manager)
+	Version *string `pulumi:"version"`
+}
+
+// SecretFileAdditionalMetadataValueInput is an input type that accepts SecretFileAdditionalMetadataValueArgs and SecretFileAdditionalMetadataValueOutput values.
+// You can construct a concrete instance of `SecretFileAdditionalMetadataValueInput` via:
+//
+//	SecretFileAdditionalMetadataValueArgs{...}
+type SecretFileAdditionalMetadataValueInput interface {
+	pulumi.Input
+
+	ToSecretFileAdditionalMetadataValueOutput() SecretFileAdditionalMetadataValueOutput
+	ToSecretFileAdditionalMetadataValueOutputWithContext(context.Context) SecretFileAdditionalMetadataValueOutput
+}
+
+type SecretFileAdditionalMetadataValueArgs struct {
+	// GCP Project ID (for GCP Secret Manager)
+	GcpProjectId pulumi.StringPtrInput `pulumi:"gcpProjectId"`
+	// KMS Key ID (for AWS Secret Manager)
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// GCP region for the secret (for GCP Secret Manager)
+	Regions pulumi.StringPtrInput `pulumi:"regions"`
+	// Version of the secret (for AWS/Azure Secret Manager)
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (SecretFileAdditionalMetadataValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretFileAdditionalMetadataValue)(nil)).Elem()
+}
+
+func (i SecretFileAdditionalMetadataValueArgs) ToSecretFileAdditionalMetadataValueOutput() SecretFileAdditionalMetadataValueOutput {
+	return i.ToSecretFileAdditionalMetadataValueOutputWithContext(context.Background())
+}
+
+func (i SecretFileAdditionalMetadataValueArgs) ToSecretFileAdditionalMetadataValueOutputWithContext(ctx context.Context) SecretFileAdditionalMetadataValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretFileAdditionalMetadataValueOutput)
+}
+
+// SecretFileAdditionalMetadataValueArrayInput is an input type that accepts SecretFileAdditionalMetadataValueArray and SecretFileAdditionalMetadataValueArrayOutput values.
+// You can construct a concrete instance of `SecretFileAdditionalMetadataValueArrayInput` via:
+//
+//	SecretFileAdditionalMetadataValueArray{ SecretFileAdditionalMetadataValueArgs{...} }
+type SecretFileAdditionalMetadataValueArrayInput interface {
+	pulumi.Input
+
+	ToSecretFileAdditionalMetadataValueArrayOutput() SecretFileAdditionalMetadataValueArrayOutput
+	ToSecretFileAdditionalMetadataValueArrayOutputWithContext(context.Context) SecretFileAdditionalMetadataValueArrayOutput
+}
+
+type SecretFileAdditionalMetadataValueArray []SecretFileAdditionalMetadataValueInput
+
+func (SecretFileAdditionalMetadataValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretFileAdditionalMetadataValue)(nil)).Elem()
+}
+
+func (i SecretFileAdditionalMetadataValueArray) ToSecretFileAdditionalMetadataValueArrayOutput() SecretFileAdditionalMetadataValueArrayOutput {
+	return i.ToSecretFileAdditionalMetadataValueArrayOutputWithContext(context.Background())
+}
+
+func (i SecretFileAdditionalMetadataValueArray) ToSecretFileAdditionalMetadataValueArrayOutputWithContext(ctx context.Context) SecretFileAdditionalMetadataValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretFileAdditionalMetadataValueArrayOutput)
+}
+
+type SecretFileAdditionalMetadataValueOutput struct{ *pulumi.OutputState }
+
+func (SecretFileAdditionalMetadataValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretFileAdditionalMetadataValue)(nil)).Elem()
+}
+
+func (o SecretFileAdditionalMetadataValueOutput) ToSecretFileAdditionalMetadataValueOutput() SecretFileAdditionalMetadataValueOutput {
+	return o
+}
+
+func (o SecretFileAdditionalMetadataValueOutput) ToSecretFileAdditionalMetadataValueOutputWithContext(ctx context.Context) SecretFileAdditionalMetadataValueOutput {
+	return o
+}
+
+// GCP Project ID (for GCP Secret Manager)
+func (o SecretFileAdditionalMetadataValueOutput) GcpProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretFileAdditionalMetadataValue) *string { return v.GcpProjectId }).(pulumi.StringPtrOutput)
+}
+
+// KMS Key ID (for AWS Secret Manager)
+func (o SecretFileAdditionalMetadataValueOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretFileAdditionalMetadataValue) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// GCP region for the secret (for GCP Secret Manager)
+func (o SecretFileAdditionalMetadataValueOutput) Regions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretFileAdditionalMetadataValue) *string { return v.Regions }).(pulumi.StringPtrOutput)
+}
+
+// Version of the secret (for AWS/Azure Secret Manager)
+func (o SecretFileAdditionalMetadataValueOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretFileAdditionalMetadataValue) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type SecretFileAdditionalMetadataValueArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretFileAdditionalMetadataValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretFileAdditionalMetadataValue)(nil)).Elem()
+}
+
+func (o SecretFileAdditionalMetadataValueArrayOutput) ToSecretFileAdditionalMetadataValueArrayOutput() SecretFileAdditionalMetadataValueArrayOutput {
+	return o
+}
+
+func (o SecretFileAdditionalMetadataValueArrayOutput) ToSecretFileAdditionalMetadataValueArrayOutputWithContext(ctx context.Context) SecretFileAdditionalMetadataValueArrayOutput {
+	return o
+}
+
+func (o SecretFileAdditionalMetadataValueArrayOutput) Index(i pulumi.IntInput) SecretFileAdditionalMetadataValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretFileAdditionalMetadataValue {
+		return vs[0].([]SecretFileAdditionalMetadataValue)[vs[1].(int)]
+	}).(SecretFileAdditionalMetadataValueOutput)
+}
+
 type SecretSshkeyKerberos struct {
 	// Username to use for authentication.
 	Principal string `pulumi:"principal"`
@@ -17918,8 +18136,14 @@ func (o SecretTextAdditionalMetadataArrayOutput) Index(i pulumi.IntInput) Secret
 }
 
 type SecretTextAdditionalMetadataValue struct {
+	// GCP Project ID (for GCP Secret Manager)
+	GcpProjectId *string `pulumi:"gcpProjectId"`
+	// KMS Key ID (for AWS Secret Manager)
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	Version  *string `pulumi:"version"`
+	// GCP region for the secret (for GCP Secret Manager)
+	Regions *string `pulumi:"regions"`
+	// Version of the secret (for AWS/Azure Secret Manager)
+	Version *string `pulumi:"version"`
 }
 
 // SecretTextAdditionalMetadataValueInput is an input type that accepts SecretTextAdditionalMetadataValueArgs and SecretTextAdditionalMetadataValueOutput values.
@@ -17934,8 +18158,14 @@ type SecretTextAdditionalMetadataValueInput interface {
 }
 
 type SecretTextAdditionalMetadataValueArgs struct {
+	// GCP Project ID (for GCP Secret Manager)
+	GcpProjectId pulumi.StringPtrInput `pulumi:"gcpProjectId"`
+	// KMS Key ID (for AWS Secret Manager)
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	Version  pulumi.StringPtrInput `pulumi:"version"`
+	// GCP region for the secret (for GCP Secret Manager)
+	Regions pulumi.StringPtrInput `pulumi:"regions"`
+	// Version of the secret (for AWS/Azure Secret Manager)
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SecretTextAdditionalMetadataValueArgs) ElementType() reflect.Type {
@@ -17989,10 +18219,22 @@ func (o SecretTextAdditionalMetadataValueOutput) ToSecretTextAdditionalMetadataV
 	return o
 }
 
+// GCP Project ID (for GCP Secret Manager)
+func (o SecretTextAdditionalMetadataValueOutput) GcpProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretTextAdditionalMetadataValue) *string { return v.GcpProjectId }).(pulumi.StringPtrOutput)
+}
+
+// KMS Key ID (for AWS Secret Manager)
 func (o SecretTextAdditionalMetadataValueOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretTextAdditionalMetadataValue) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
+// GCP region for the secret (for GCP Secret Manager)
+func (o SecretTextAdditionalMetadataValueOutput) Regions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretTextAdditionalMetadataValue) *string { return v.Regions }).(pulumi.StringPtrOutput)
+}
+
+// Version of the secret (for AWS/Azure Secret Manager)
 func (o SecretTextAdditionalMetadataValueOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretTextAdditionalMetadataValue) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -32355,6 +32597,106 @@ func (o GetGcpConnectorOidcAuthenticationArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGcpConnectorOidcAuthentication {
 		return vs[0].([]GetGcpConnectorOidcAuthentication)[vs[1].(int)]
 	}).(GetGcpConnectorOidcAuthenticationOutput)
+}
+
+type GetGcpProjectsProject struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// GetGcpProjectsProjectInput is an input type that accepts GetGcpProjectsProjectArgs and GetGcpProjectsProjectOutput values.
+// You can construct a concrete instance of `GetGcpProjectsProjectInput` via:
+//
+//	GetGcpProjectsProjectArgs{...}
+type GetGcpProjectsProjectInput interface {
+	pulumi.Input
+
+	ToGetGcpProjectsProjectOutput() GetGcpProjectsProjectOutput
+	ToGetGcpProjectsProjectOutputWithContext(context.Context) GetGcpProjectsProjectOutput
+}
+
+type GetGcpProjectsProjectArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetGcpProjectsProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGcpProjectsProject)(nil)).Elem()
+}
+
+func (i GetGcpProjectsProjectArgs) ToGetGcpProjectsProjectOutput() GetGcpProjectsProjectOutput {
+	return i.ToGetGcpProjectsProjectOutputWithContext(context.Background())
+}
+
+func (i GetGcpProjectsProjectArgs) ToGetGcpProjectsProjectOutputWithContext(ctx context.Context) GetGcpProjectsProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGcpProjectsProjectOutput)
+}
+
+// GetGcpProjectsProjectArrayInput is an input type that accepts GetGcpProjectsProjectArray and GetGcpProjectsProjectArrayOutput values.
+// You can construct a concrete instance of `GetGcpProjectsProjectArrayInput` via:
+//
+//	GetGcpProjectsProjectArray{ GetGcpProjectsProjectArgs{...} }
+type GetGcpProjectsProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetGcpProjectsProjectArrayOutput() GetGcpProjectsProjectArrayOutput
+	ToGetGcpProjectsProjectArrayOutputWithContext(context.Context) GetGcpProjectsProjectArrayOutput
+}
+
+type GetGcpProjectsProjectArray []GetGcpProjectsProjectInput
+
+func (GetGcpProjectsProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGcpProjectsProject)(nil)).Elem()
+}
+
+func (i GetGcpProjectsProjectArray) ToGetGcpProjectsProjectArrayOutput() GetGcpProjectsProjectArrayOutput {
+	return i.ToGetGcpProjectsProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetGcpProjectsProjectArray) ToGetGcpProjectsProjectArrayOutputWithContext(ctx context.Context) GetGcpProjectsProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGcpProjectsProjectArrayOutput)
+}
+
+type GetGcpProjectsProjectOutput struct{ *pulumi.OutputState }
+
+func (GetGcpProjectsProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGcpProjectsProject)(nil)).Elem()
+}
+
+func (o GetGcpProjectsProjectOutput) ToGetGcpProjectsProjectOutput() GetGcpProjectsProjectOutput {
+	return o
+}
+
+func (o GetGcpProjectsProjectOutput) ToGetGcpProjectsProjectOutputWithContext(ctx context.Context) GetGcpProjectsProjectOutput {
+	return o
+}
+
+func (o GetGcpProjectsProjectOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGcpProjectsProject) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetGcpProjectsProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGcpProjectsProject) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetGcpProjectsProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGcpProjectsProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGcpProjectsProject)(nil)).Elem()
+}
+
+func (o GetGcpProjectsProjectArrayOutput) ToGetGcpProjectsProjectArrayOutput() GetGcpProjectsProjectArrayOutput {
+	return o
+}
+
+func (o GetGcpProjectsProjectArrayOutput) ToGetGcpProjectsProjectArrayOutputWithContext(ctx context.Context) GetGcpProjectsProjectArrayOutput {
+	return o
+}
+
+func (o GetGcpProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetGcpProjectsProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGcpProjectsProject {
+		return vs[0].([]GetGcpProjectsProject)[vs[1].(int)]
+	}).(GetGcpProjectsProjectOutput)
 }
 
 type GetGcpSecretManagerConnectorOidcAuthentication struct {
@@ -46966,6 +47308,224 @@ func (o GetRoleAssignmentsPrincipalArrayOutput) Index(i pulumi.IntInput) GetRole
 	}).(GetRoleAssignmentsPrincipalOutput)
 }
 
+type GetSecretFileAdditionalMetadata struct {
+	Values []GetSecretFileAdditionalMetadataValue `pulumi:"values"`
+}
+
+// GetSecretFileAdditionalMetadataInput is an input type that accepts GetSecretFileAdditionalMetadataArgs and GetSecretFileAdditionalMetadataOutput values.
+// You can construct a concrete instance of `GetSecretFileAdditionalMetadataInput` via:
+//
+//	GetSecretFileAdditionalMetadataArgs{...}
+type GetSecretFileAdditionalMetadataInput interface {
+	pulumi.Input
+
+	ToGetSecretFileAdditionalMetadataOutput() GetSecretFileAdditionalMetadataOutput
+	ToGetSecretFileAdditionalMetadataOutputWithContext(context.Context) GetSecretFileAdditionalMetadataOutput
+}
+
+type GetSecretFileAdditionalMetadataArgs struct {
+	Values GetSecretFileAdditionalMetadataValueArrayInput `pulumi:"values"`
+}
+
+func (GetSecretFileAdditionalMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretFileAdditionalMetadata)(nil)).Elem()
+}
+
+func (i GetSecretFileAdditionalMetadataArgs) ToGetSecretFileAdditionalMetadataOutput() GetSecretFileAdditionalMetadataOutput {
+	return i.ToGetSecretFileAdditionalMetadataOutputWithContext(context.Background())
+}
+
+func (i GetSecretFileAdditionalMetadataArgs) ToGetSecretFileAdditionalMetadataOutputWithContext(ctx context.Context) GetSecretFileAdditionalMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretFileAdditionalMetadataOutput)
+}
+
+// GetSecretFileAdditionalMetadataArrayInput is an input type that accepts GetSecretFileAdditionalMetadataArray and GetSecretFileAdditionalMetadataArrayOutput values.
+// You can construct a concrete instance of `GetSecretFileAdditionalMetadataArrayInput` via:
+//
+//	GetSecretFileAdditionalMetadataArray{ GetSecretFileAdditionalMetadataArgs{...} }
+type GetSecretFileAdditionalMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretFileAdditionalMetadataArrayOutput() GetSecretFileAdditionalMetadataArrayOutput
+	ToGetSecretFileAdditionalMetadataArrayOutputWithContext(context.Context) GetSecretFileAdditionalMetadataArrayOutput
+}
+
+type GetSecretFileAdditionalMetadataArray []GetSecretFileAdditionalMetadataInput
+
+func (GetSecretFileAdditionalMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretFileAdditionalMetadata)(nil)).Elem()
+}
+
+func (i GetSecretFileAdditionalMetadataArray) ToGetSecretFileAdditionalMetadataArrayOutput() GetSecretFileAdditionalMetadataArrayOutput {
+	return i.ToGetSecretFileAdditionalMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretFileAdditionalMetadataArray) ToGetSecretFileAdditionalMetadataArrayOutputWithContext(ctx context.Context) GetSecretFileAdditionalMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretFileAdditionalMetadataArrayOutput)
+}
+
+type GetSecretFileAdditionalMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetSecretFileAdditionalMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretFileAdditionalMetadata)(nil)).Elem()
+}
+
+func (o GetSecretFileAdditionalMetadataOutput) ToGetSecretFileAdditionalMetadataOutput() GetSecretFileAdditionalMetadataOutput {
+	return o
+}
+
+func (o GetSecretFileAdditionalMetadataOutput) ToGetSecretFileAdditionalMetadataOutputWithContext(ctx context.Context) GetSecretFileAdditionalMetadataOutput {
+	return o
+}
+
+func (o GetSecretFileAdditionalMetadataOutput) Values() GetSecretFileAdditionalMetadataValueArrayOutput {
+	return o.ApplyT(func(v GetSecretFileAdditionalMetadata) []GetSecretFileAdditionalMetadataValue { return v.Values }).(GetSecretFileAdditionalMetadataValueArrayOutput)
+}
+
+type GetSecretFileAdditionalMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretFileAdditionalMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretFileAdditionalMetadata)(nil)).Elem()
+}
+
+func (o GetSecretFileAdditionalMetadataArrayOutput) ToGetSecretFileAdditionalMetadataArrayOutput() GetSecretFileAdditionalMetadataArrayOutput {
+	return o
+}
+
+func (o GetSecretFileAdditionalMetadataArrayOutput) ToGetSecretFileAdditionalMetadataArrayOutputWithContext(ctx context.Context) GetSecretFileAdditionalMetadataArrayOutput {
+	return o
+}
+
+func (o GetSecretFileAdditionalMetadataArrayOutput) Index(i pulumi.IntInput) GetSecretFileAdditionalMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretFileAdditionalMetadata {
+		return vs[0].([]GetSecretFileAdditionalMetadata)[vs[1].(int)]
+	}).(GetSecretFileAdditionalMetadataOutput)
+}
+
+type GetSecretFileAdditionalMetadataValue struct {
+	// GCP Project ID (for GCP Secret Manager)
+	GcpProjectId *string `pulumi:"gcpProjectId"`
+	// KMS Key ID (for AWS Secret Manager)
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// GCP region for the secret (for GCP Secret Manager)
+	Regions *string `pulumi:"regions"`
+	// Version of the secret (for AWS/Azure Secret Manager)
+	Version *string `pulumi:"version"`
+}
+
+// GetSecretFileAdditionalMetadataValueInput is an input type that accepts GetSecretFileAdditionalMetadataValueArgs and GetSecretFileAdditionalMetadataValueOutput values.
+// You can construct a concrete instance of `GetSecretFileAdditionalMetadataValueInput` via:
+//
+//	GetSecretFileAdditionalMetadataValueArgs{...}
+type GetSecretFileAdditionalMetadataValueInput interface {
+	pulumi.Input
+
+	ToGetSecretFileAdditionalMetadataValueOutput() GetSecretFileAdditionalMetadataValueOutput
+	ToGetSecretFileAdditionalMetadataValueOutputWithContext(context.Context) GetSecretFileAdditionalMetadataValueOutput
+}
+
+type GetSecretFileAdditionalMetadataValueArgs struct {
+	// GCP Project ID (for GCP Secret Manager)
+	GcpProjectId pulumi.StringPtrInput `pulumi:"gcpProjectId"`
+	// KMS Key ID (for AWS Secret Manager)
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// GCP region for the secret (for GCP Secret Manager)
+	Regions pulumi.StringPtrInput `pulumi:"regions"`
+	// Version of the secret (for AWS/Azure Secret Manager)
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GetSecretFileAdditionalMetadataValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretFileAdditionalMetadataValue)(nil)).Elem()
+}
+
+func (i GetSecretFileAdditionalMetadataValueArgs) ToGetSecretFileAdditionalMetadataValueOutput() GetSecretFileAdditionalMetadataValueOutput {
+	return i.ToGetSecretFileAdditionalMetadataValueOutputWithContext(context.Background())
+}
+
+func (i GetSecretFileAdditionalMetadataValueArgs) ToGetSecretFileAdditionalMetadataValueOutputWithContext(ctx context.Context) GetSecretFileAdditionalMetadataValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretFileAdditionalMetadataValueOutput)
+}
+
+// GetSecretFileAdditionalMetadataValueArrayInput is an input type that accepts GetSecretFileAdditionalMetadataValueArray and GetSecretFileAdditionalMetadataValueArrayOutput values.
+// You can construct a concrete instance of `GetSecretFileAdditionalMetadataValueArrayInput` via:
+//
+//	GetSecretFileAdditionalMetadataValueArray{ GetSecretFileAdditionalMetadataValueArgs{...} }
+type GetSecretFileAdditionalMetadataValueArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretFileAdditionalMetadataValueArrayOutput() GetSecretFileAdditionalMetadataValueArrayOutput
+	ToGetSecretFileAdditionalMetadataValueArrayOutputWithContext(context.Context) GetSecretFileAdditionalMetadataValueArrayOutput
+}
+
+type GetSecretFileAdditionalMetadataValueArray []GetSecretFileAdditionalMetadataValueInput
+
+func (GetSecretFileAdditionalMetadataValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretFileAdditionalMetadataValue)(nil)).Elem()
+}
+
+func (i GetSecretFileAdditionalMetadataValueArray) ToGetSecretFileAdditionalMetadataValueArrayOutput() GetSecretFileAdditionalMetadataValueArrayOutput {
+	return i.ToGetSecretFileAdditionalMetadataValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretFileAdditionalMetadataValueArray) ToGetSecretFileAdditionalMetadataValueArrayOutputWithContext(ctx context.Context) GetSecretFileAdditionalMetadataValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretFileAdditionalMetadataValueArrayOutput)
+}
+
+type GetSecretFileAdditionalMetadataValueOutput struct{ *pulumi.OutputState }
+
+func (GetSecretFileAdditionalMetadataValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretFileAdditionalMetadataValue)(nil)).Elem()
+}
+
+func (o GetSecretFileAdditionalMetadataValueOutput) ToGetSecretFileAdditionalMetadataValueOutput() GetSecretFileAdditionalMetadataValueOutput {
+	return o
+}
+
+func (o GetSecretFileAdditionalMetadataValueOutput) ToGetSecretFileAdditionalMetadataValueOutputWithContext(ctx context.Context) GetSecretFileAdditionalMetadataValueOutput {
+	return o
+}
+
+// GCP Project ID (for GCP Secret Manager)
+func (o GetSecretFileAdditionalMetadataValueOutput) GcpProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretFileAdditionalMetadataValue) *string { return v.GcpProjectId }).(pulumi.StringPtrOutput)
+}
+
+// KMS Key ID (for AWS Secret Manager)
+func (o GetSecretFileAdditionalMetadataValueOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretFileAdditionalMetadataValue) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// GCP region for the secret (for GCP Secret Manager)
+func (o GetSecretFileAdditionalMetadataValueOutput) Regions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretFileAdditionalMetadataValue) *string { return v.Regions }).(pulumi.StringPtrOutput)
+}
+
+// Version of the secret (for AWS/Azure Secret Manager)
+func (o GetSecretFileAdditionalMetadataValueOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretFileAdditionalMetadataValue) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type GetSecretFileAdditionalMetadataValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretFileAdditionalMetadataValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretFileAdditionalMetadataValue)(nil)).Elem()
+}
+
+func (o GetSecretFileAdditionalMetadataValueArrayOutput) ToGetSecretFileAdditionalMetadataValueArrayOutput() GetSecretFileAdditionalMetadataValueArrayOutput {
+	return o
+}
+
+func (o GetSecretFileAdditionalMetadataValueArrayOutput) ToGetSecretFileAdditionalMetadataValueArrayOutputWithContext(ctx context.Context) GetSecretFileAdditionalMetadataValueArrayOutput {
+	return o
+}
+
+func (o GetSecretFileAdditionalMetadataValueArrayOutput) Index(i pulumi.IntInput) GetSecretFileAdditionalMetadataValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretFileAdditionalMetadataValue {
+		return vs[0].([]GetSecretFileAdditionalMetadataValue)[vs[1].(int)]
+	}).(GetSecretFileAdditionalMetadataValueOutput)
+}
+
 type GetSecretSshkeyKerbero struct {
 	// Username to use for authentication.
 	Principal string `pulumi:"principal"`
@@ -47852,8 +48412,14 @@ func (o GetSecretTextAdditionalMetadataArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetSecretTextAdditionalMetadataValue struct {
+	// GCP Project ID (for GCP Secret Manager)
+	GcpProjectId *string `pulumi:"gcpProjectId"`
+	// KMS Key ID (for AWS Secret Manager)
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	Version  *string `pulumi:"version"`
+	// GCP region for the secret (for GCP Secret Manager)
+	Regions *string `pulumi:"regions"`
+	// Version of the secret (for AWS/Azure Secret Manager)
+	Version *string `pulumi:"version"`
 }
 
 // GetSecretTextAdditionalMetadataValueInput is an input type that accepts GetSecretTextAdditionalMetadataValueArgs and GetSecretTextAdditionalMetadataValueOutput values.
@@ -47868,8 +48434,14 @@ type GetSecretTextAdditionalMetadataValueInput interface {
 }
 
 type GetSecretTextAdditionalMetadataValueArgs struct {
+	// GCP Project ID (for GCP Secret Manager)
+	GcpProjectId pulumi.StringPtrInput `pulumi:"gcpProjectId"`
+	// KMS Key ID (for AWS Secret Manager)
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	Version  pulumi.StringPtrInput `pulumi:"version"`
+	// GCP region for the secret (for GCP Secret Manager)
+	Regions pulumi.StringPtrInput `pulumi:"regions"`
+	// Version of the secret (for AWS/Azure Secret Manager)
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GetSecretTextAdditionalMetadataValueArgs) ElementType() reflect.Type {
@@ -47923,10 +48495,22 @@ func (o GetSecretTextAdditionalMetadataValueOutput) ToGetSecretTextAdditionalMet
 	return o
 }
 
+// GCP Project ID (for GCP Secret Manager)
+func (o GetSecretTextAdditionalMetadataValueOutput) GcpProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretTextAdditionalMetadataValue) *string { return v.GcpProjectId }).(pulumi.StringPtrOutput)
+}
+
+// KMS Key ID (for AWS Secret Manager)
 func (o GetSecretTextAdditionalMetadataValueOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecretTextAdditionalMetadataValue) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
+// GCP region for the secret (for GCP Secret Manager)
+func (o GetSecretTextAdditionalMetadataValueOutput) Regions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretTextAdditionalMetadataValue) *string { return v.Regions }).(pulumi.StringPtrOutput)
+}
+
+// Version of the secret (for AWS/Azure Secret Manager)
 func (o GetSecretTextAdditionalMetadataValueOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecretTextAdditionalMetadataValue) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -51383,6 +51967,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResourceFilterResourceAttributeFilterArrayInput)(nil)).Elem(), ResourceGroupResourceFilterResourceAttributeFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleAssignmentsPrincipalInput)(nil)).Elem(), RoleAssignmentsPrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleAssignmentsPrincipalArrayInput)(nil)).Elem(), RoleAssignmentsPrincipalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretFileAdditionalMetadataInput)(nil)).Elem(), SecretFileAdditionalMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretFileAdditionalMetadataArrayInput)(nil)).Elem(), SecretFileAdditionalMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretFileAdditionalMetadataValueInput)(nil)).Elem(), SecretFileAdditionalMetadataValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretFileAdditionalMetadataValueArrayInput)(nil)).Elem(), SecretFileAdditionalMetadataValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretSshkeyKerberosInput)(nil)).Elem(), SecretSshkeyKerberosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretSshkeyKerberosPtrInput)(nil)).Elem(), SecretSshkeyKerberosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretSshkeyKerberosTgtKeyTabFilePathSpecInput)(nil)).Elem(), SecretSshkeyKerberosTgtKeyTabFilePathSpecArgs{})
@@ -51613,6 +52201,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorManualArrayInput)(nil)).Elem(), GetGcpConnectorManualArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorOidcAuthenticationInput)(nil)).Elem(), GetGcpConnectorOidcAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorOidcAuthenticationArrayInput)(nil)).Elem(), GetGcpConnectorOidcAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpProjectsProjectInput)(nil)).Elem(), GetGcpProjectsProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpProjectsProjectArrayInput)(nil)).Elem(), GetGcpProjectsProjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpSecretManagerConnectorOidcAuthenticationInput)(nil)).Elem(), GetGcpSecretManagerConnectorOidcAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpSecretManagerConnectorOidcAuthenticationArrayInput)(nil)).Elem(), GetGcpSecretManagerConnectorOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialInput)(nil)).Elem(), GetGitConnectorCredentialArgs{})
@@ -51832,6 +52422,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupResourceFilterResourceAttributeFilterArrayInput)(nil)).Elem(), GetResourceGroupResourceFilterResourceAttributeFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleAssignmentsPrincipalInput)(nil)).Elem(), GetRoleAssignmentsPrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleAssignmentsPrincipalArrayInput)(nil)).Elem(), GetRoleAssignmentsPrincipalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretFileAdditionalMetadataInput)(nil)).Elem(), GetSecretFileAdditionalMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretFileAdditionalMetadataArrayInput)(nil)).Elem(), GetSecretFileAdditionalMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretFileAdditionalMetadataValueInput)(nil)).Elem(), GetSecretFileAdditionalMetadataValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretFileAdditionalMetadataValueArrayInput)(nil)).Elem(), GetSecretFileAdditionalMetadataValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretSshkeyKerberoInput)(nil)).Elem(), GetSecretSshkeyKerberoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretSshkeyKerberoArrayInput)(nil)).Elem(), GetSecretSshkeyKerberoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretSshkeyKerberoTgtKeyTabFilePathSpecInput)(nil)).Elem(), GetSecretSshkeyKerberoTgtKeyTabFilePathSpecArgs{})
@@ -52098,6 +52692,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourceGroupResourceFilterResourceAttributeFilterArrayOutput{})
 	pulumi.RegisterOutputType(RoleAssignmentsPrincipalOutput{})
 	pulumi.RegisterOutputType(RoleAssignmentsPrincipalArrayOutput{})
+	pulumi.RegisterOutputType(SecretFileAdditionalMetadataOutput{})
+	pulumi.RegisterOutputType(SecretFileAdditionalMetadataArrayOutput{})
+	pulumi.RegisterOutputType(SecretFileAdditionalMetadataValueOutput{})
+	pulumi.RegisterOutputType(SecretFileAdditionalMetadataValueArrayOutput{})
 	pulumi.RegisterOutputType(SecretSshkeyKerberosOutput{})
 	pulumi.RegisterOutputType(SecretSshkeyKerberosPtrOutput{})
 	pulumi.RegisterOutputType(SecretSshkeyKerberosTgtKeyTabFilePathSpecOutput{})
@@ -52328,6 +52926,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGcpConnectorManualArrayOutput{})
 	pulumi.RegisterOutputType(GetGcpConnectorOidcAuthenticationOutput{})
 	pulumi.RegisterOutputType(GetGcpConnectorOidcAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetGcpProjectsProjectOutput{})
+	pulumi.RegisterOutputType(GetGcpProjectsProjectArrayOutput{})
 	pulumi.RegisterOutputType(GetGcpSecretManagerConnectorOidcAuthenticationOutput{})
 	pulumi.RegisterOutputType(GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetGitConnectorCredentialOutput{})
@@ -52547,6 +53147,10 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceGroupResourceFilterResourceAttributeFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetRoleAssignmentsPrincipalOutput{})
 	pulumi.RegisterOutputType(GetRoleAssignmentsPrincipalArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretFileAdditionalMetadataOutput{})
+	pulumi.RegisterOutputType(GetSecretFileAdditionalMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretFileAdditionalMetadataValueOutput{})
+	pulumi.RegisterOutputType(GetSecretFileAdditionalMetadataValueArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretSshkeyKerberoOutput{})
 	pulumi.RegisterOutputType(GetSecretSshkeyKerberoArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretSshkeyKerberoTgtKeyTabFilePathSpecOutput{})

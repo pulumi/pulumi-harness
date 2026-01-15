@@ -411,6 +411,21 @@ class SecretText(pulumi.CustomResource):
                     "version": "1",
                 }],
             }])
+        # GCP Secret Manager with project ID and region (for secrets in a different GCP project)
+        gcp_secret_manager_with_project = harness.platform.SecretText("gcp_secret_manager_with_project",
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            secret_manager_identifier="gcpSecretManager",
+            value_type="Inline",
+            value="secret",
+            additional_metadatas=[{
+                "values": [{
+                    "regions": "us-east1",
+                    "gcp_project_id": "my-gcp-project-id",
+                }],
+            }])
         aws_secret_manager = harness.platform.SecretText("aws_secret_manager",
             identifier="identifier",
             name="name",
@@ -508,6 +523,21 @@ class SecretText(pulumi.CustomResource):
             additional_metadatas=[{
                 "values": [{
                     "version": "1",
+                }],
+            }])
+        # GCP Secret Manager with project ID and region (for secrets in a different GCP project)
+        gcp_secret_manager_with_project = harness.platform.SecretText("gcp_secret_manager_with_project",
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            secret_manager_identifier="gcpSecretManager",
+            value_type="Inline",
+            value="secret",
+            additional_metadatas=[{
+                "values": [{
+                    "regions": "us-east1",
+                    "gcp_project_id": "my-gcp-project-id",
                 }],
             }])
         aws_secret_manager = harness.platform.SecretText("aws_secret_manager",

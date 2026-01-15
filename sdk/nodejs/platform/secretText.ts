@@ -52,6 +52,22 @@ import * as utilities from "../utilities";
  *         }],
  *     }],
  * });
+ * // GCP Secret Manager with project ID and region (for secrets in a different GCP project)
+ * const gcpSecretManagerWithProject = new harness.platform.SecretText("gcp_secret_manager_with_project", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "example",
+ *     tags: ["foo:bar"],
+ *     secretManagerIdentifier: "gcpSecretManager",
+ *     valueType: "Inline",
+ *     value: "secret",
+ *     additionalMetadatas: [{
+ *         values: [{
+ *             regions: "us-east1",
+ *             gcpProjectId: "my-gcp-project-id",
+ *         }],
+ *     }],
+ * });
  * const awsSecretManager = new harness.platform.SecretText("aws_secret_manager", {
  *     identifier: "identifier",
  *     name: "name",

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['SecretFileArgs', 'SecretFile']
 
@@ -22,8 +24,8 @@ class SecretFileArgs:
                  file_path: pulumi.Input[_builtins.str],
                  identifier: pulumi.Input[_builtins.str],
                  secret_manager_identifier: pulumi.Input[_builtins.str],
+                 additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['SecretFileAdditionalMetadataArgs']]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -33,8 +35,8 @@ class SecretFileArgs:
         :param pulumi.Input[_builtins.str] file_path: Path of the file containing secret value
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretFileAdditionalMetadataArgs']]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[_builtins.str] kms_key_id: Kms Key Id for encrypting the secret value
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -43,10 +45,10 @@ class SecretFileArgs:
         pulumi.set(__self__, "file_path", file_path)
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "secret_manager_identifier", secret_manager_identifier)
+        if additional_metadatas is not None:
+            pulumi.set(__self__, "additional_metadatas", additional_metadatas)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -93,6 +95,18 @@ class SecretFileArgs:
         pulumi.set(self, "secret_manager_identifier", value)
 
     @_builtins.property
+    @pulumi.getter(name="additionalMetadatas")
+    def additional_metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretFileAdditionalMetadataArgs']]]]:
+        """
+        Additional Metadata for the Secret
+        """
+        return pulumi.get(self, "additional_metadatas")
+
+    @additional_metadatas.setter
+    def additional_metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecretFileAdditionalMetadataArgs']]]]):
+        pulumi.set(self, "additional_metadatas", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -103,18 +117,6 @@ class SecretFileArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Kms Key Id for encrypting the secret value
-        """
-        return pulumi.get(self, "kms_key_id")
-
-    @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -168,10 +170,10 @@ class SecretFileArgs:
 @pulumi.input_type
 class _SecretFileState:
     def __init__(__self__, *,
+                 additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['SecretFileAdditionalMetadataArgs']]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  file_path: Optional[pulumi.Input[_builtins.str]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -179,24 +181,24 @@ class _SecretFileState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SecretFile resources.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretFileAdditionalMetadataArgs']]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] file_path: Path of the file containing secret value
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] kms_key_id: Kms Key Id for encrypting the secret value
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
+        if additional_metadatas is not None:
+            pulumi.set(__self__, "additional_metadatas", additional_metadatas)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if file_path is not None:
             pulumi.set(__self__, "file_path", file_path)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
-        if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -207,6 +209,18 @@ class _SecretFileState:
             pulumi.set(__self__, "secret_manager_identifier", secret_manager_identifier)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalMetadatas")
+    def additional_metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretFileAdditionalMetadataArgs']]]]:
+        """
+        Additional Metadata for the Secret
+        """
+        return pulumi.get(self, "additional_metadatas")
+
+    @additional_metadatas.setter
+    def additional_metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecretFileAdditionalMetadataArgs']]]]):
+        pulumi.set(self, "additional_metadatas", value)
 
     @_builtins.property
     @pulumi.getter
@@ -243,18 +257,6 @@ class _SecretFileState:
     @identifier.setter
     def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "identifier", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Kms Key Id for encrypting the secret value
-        """
-        return pulumi.get(self, "kms_key_id")
-
-    @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -323,10 +325,10 @@ class SecretFile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  file_path: Optional[pulumi.Input[_builtins.str]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -355,17 +357,31 @@ class SecretFile(pulumi.CustomResource):
             tags=["foo:bar"],
             file_path="file_path",
             secret_manager_identifier="harnessSecretManager")
-        aws_secret_manager = harness.platform.SecretText("aws_secret_manager",
+        # With AWS Secret Manager KMS Key
+        aws_secret_manager = harness.platform.SecretFile("aws_secret_manager",
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
+            file_path="file_path",
             secret_manager_identifier="awsSecretManager",
-            value_type="Inline",
-            value="secret",
             additional_metadatas=[{
                 "values": [{
                     "kms_key_id": "kmsKeyId",
+                }],
+            }])
+        # With GCP Secret Manager project ID and region
+        gcp_secret_manager = harness.platform.SecretFile("gcp_secret_manager",
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            file_path="file_path",
+            secret_manager_identifier="gcpSecretManager",
+            additional_metadatas=[{
+                "values": [{
+                    "regions": "us-east1",
+                    "gcp_project_id": "my-gcp-project-id",
                 }],
             }])
         ```
@@ -394,10 +410,10 @@ class SecretFile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict']]]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] file_path: Path of the file containing secret value
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] kms_key_id: Kms Key Id for encrypting the secret value
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -432,17 +448,31 @@ class SecretFile(pulumi.CustomResource):
             tags=["foo:bar"],
             file_path="file_path",
             secret_manager_identifier="harnessSecretManager")
-        aws_secret_manager = harness.platform.SecretText("aws_secret_manager",
+        # With AWS Secret Manager KMS Key
+        aws_secret_manager = harness.platform.SecretFile("aws_secret_manager",
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
+            file_path="file_path",
             secret_manager_identifier="awsSecretManager",
-            value_type="Inline",
-            value="secret",
             additional_metadatas=[{
                 "values": [{
                     "kms_key_id": "kmsKeyId",
+                }],
+            }])
+        # With GCP Secret Manager project ID and region
+        gcp_secret_manager = harness.platform.SecretFile("gcp_secret_manager",
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            file_path="file_path",
+            secret_manager_identifier="gcpSecretManager",
+            additional_metadatas=[{
+                "values": [{
+                    "regions": "us-east1",
+                    "gcp_project_id": "my-gcp-project-id",
                 }],
             }])
         ```
@@ -484,10 +514,10 @@ class SecretFile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  file_path: Optional[pulumi.Input[_builtins.str]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -502,6 +532,7 @@ class SecretFile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecretFileArgs.__new__(SecretFileArgs)
 
+            __props__.__dict__["additional_metadatas"] = additional_metadatas
             __props__.__dict__["description"] = description
             if file_path is None and not opts.urn:
                 raise TypeError("Missing required property 'file_path'")
@@ -509,7 +540,6 @@ class SecretFile(pulumi.CustomResource):
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
-            __props__.__dict__["kms_key_id"] = kms_key_id
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
@@ -527,10 +557,10 @@ class SecretFile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict']]]]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             file_path: Optional[pulumi.Input[_builtins.str]] = None,
             identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -543,10 +573,10 @@ class SecretFile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict']]]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] file_path: Path of the file containing secret value
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] kms_key_id: Kms Key Id for encrypting the secret value
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -557,16 +587,24 @@ class SecretFile(pulumi.CustomResource):
 
         __props__ = _SecretFileState.__new__(_SecretFileState)
 
+        __props__.__dict__["additional_metadatas"] = additional_metadatas
         __props__.__dict__["description"] = description
         __props__.__dict__["file_path"] = file_path
         __props__.__dict__["identifier"] = identifier
-        __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["secret_manager_identifier"] = secret_manager_identifier
         __props__.__dict__["tags"] = tags
         return SecretFile(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalMetadatas")
+    def additional_metadatas(self) -> pulumi.Output[Optional[Sequence['outputs.SecretFileAdditionalMetadata']]]:
+        """
+        Additional Metadata for the Secret
+        """
+        return pulumi.get(self, "additional_metadatas")
 
     @_builtins.property
     @pulumi.getter
@@ -591,14 +629,6 @@ class SecretFile(pulumi.CustomResource):
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
-
-    @_builtins.property
-    @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Kms Key Id for encrypting the secret value
-        """
-        return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter

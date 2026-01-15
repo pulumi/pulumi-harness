@@ -15,16 +15,62 @@ public final class GetSecretTextAdditionalMetadataValueArgs extends com.pulumi.r
 
     public static final GetSecretTextAdditionalMetadataValueArgs Empty = new GetSecretTextAdditionalMetadataValueArgs();
 
+    /**
+     * GCP Project ID (for GCP Secret Manager)
+     * 
+     */
+    @Import(name="gcpProjectId")
+    private @Nullable Output<String> gcpProjectId;
+
+    /**
+     * @return GCP Project ID (for GCP Secret Manager)
+     * 
+     */
+    public Optional<Output<String>> gcpProjectId() {
+        return Optional.ofNullable(this.gcpProjectId);
+    }
+
+    /**
+     * KMS Key ID (for AWS Secret Manager)
+     * 
+     */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
+    /**
+     * @return KMS Key ID (for AWS Secret Manager)
+     * 
+     */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
 
+    /**
+     * GCP region for the secret (for GCP Secret Manager)
+     * 
+     */
+    @Import(name="regions")
+    private @Nullable Output<String> regions;
+
+    /**
+     * @return GCP region for the secret (for GCP Secret Manager)
+     * 
+     */
+    public Optional<Output<String>> regions() {
+        return Optional.ofNullable(this.regions);
+    }
+
+    /**
+     * Version of the secret (for AWS/Azure Secret Manager)
+     * 
+     */
     @Import(name="version")
     private @Nullable Output<String> version;
 
+    /**
+     * @return Version of the secret (for AWS/Azure Secret Manager)
+     * 
+     */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -32,7 +78,9 @@ public final class GetSecretTextAdditionalMetadataValueArgs extends com.pulumi.r
     private GetSecretTextAdditionalMetadataValueArgs() {}
 
     private GetSecretTextAdditionalMetadataValueArgs(GetSecretTextAdditionalMetadataValueArgs $) {
+        this.gcpProjectId = $.gcpProjectId;
         this.kmsKeyId = $.kmsKeyId;
+        this.regions = $.regions;
         this.version = $.version;
     }
 
@@ -54,20 +102,86 @@ public final class GetSecretTextAdditionalMetadataValueArgs extends com.pulumi.r
             $ = new GetSecretTextAdditionalMetadataValueArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gcpProjectId GCP Project ID (for GCP Secret Manager)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpProjectId(@Nullable Output<String> gcpProjectId) {
+            $.gcpProjectId = gcpProjectId;
+            return this;
+        }
+
+        /**
+         * @param gcpProjectId GCP Project ID (for GCP Secret Manager)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpProjectId(String gcpProjectId) {
+            return gcpProjectId(Output.of(gcpProjectId));
+        }
+
+        /**
+         * @param kmsKeyId KMS Key ID (for AWS Secret Manager)
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
             $.kmsKeyId = kmsKeyId;
             return this;
         }
 
+        /**
+         * @param kmsKeyId KMS Key ID (for AWS Secret Manager)
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
         }
 
+        /**
+         * @param regions GCP region for the secret (for GCP Secret Manager)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(@Nullable Output<String> regions) {
+            $.regions = regions;
+            return this;
+        }
+
+        /**
+         * @param regions GCP region for the secret (for GCP Secret Manager)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(String regions) {
+            return regions(Output.of(regions));
+        }
+
+        /**
+         * @param version Version of the secret (for AWS/Azure Secret Manager)
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
 
+        /**
+         * @param version Version of the secret (for AWS/Azure Secret Manager)
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(String version) {
             return version(Output.of(version));
         }

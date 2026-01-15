@@ -4934,6 +4934,11 @@ export namespace platform {
         workloadPoolId: string;
     }
 
+    export interface GetGcpProjectsProject {
+        id: string;
+        name: string;
+    }
+
     export interface GetGcpSecretManagerConnectorOidcAuthentication {
         /**
          * The project number of the GCP project that is used to create the workload identity..
@@ -7081,6 +7086,29 @@ export namespace platform {
         type: string;
     }
 
+    export interface GetSecretFileAdditionalMetadata {
+        values?: outputs.platform.GetSecretFileAdditionalMetadataValue[];
+    }
+
+    export interface GetSecretFileAdditionalMetadataValue {
+        /**
+         * GCP Project ID (for GCP Secret Manager)
+         */
+        gcpProjectId?: string;
+        /**
+         * KMS Key ID (for AWS Secret Manager)
+         */
+        kmsKeyId?: string;
+        /**
+         * GCP region for the secret (for GCP Secret Manager)
+         */
+        regions?: string;
+        /**
+         * Version of the secret (for AWS/Azure Secret Manager)
+         */
+        version?: string;
+    }
+
     export interface GetSecretSshkeyKerbero {
         /**
          * Username to use for authentication.
@@ -7183,7 +7211,21 @@ export namespace platform {
     }
 
     export interface GetSecretTextAdditionalMetadataValue {
+        /**
+         * GCP Project ID (for GCP Secret Manager)
+         */
+        gcpProjectId?: string;
+        /**
+         * KMS Key ID (for AWS Secret Manager)
+         */
         kmsKeyId?: string;
+        /**
+         * GCP region for the secret (for GCP Secret Manager)
+         */
+        regions?: string;
+        /**
+         * Version of the secret (for AWS/Azure Secret Manager)
+         */
         version?: string;
     }
 
@@ -36498,6 +36540,29 @@ export namespace platform {
         type: string;
     }
 
+    export interface SecretFileAdditionalMetadata {
+        values?: outputs.platform.SecretFileAdditionalMetadataValue[];
+    }
+
+    export interface SecretFileAdditionalMetadataValue {
+        /**
+         * GCP Project ID (for GCP Secret Manager)
+         */
+        gcpProjectId?: string;
+        /**
+         * KMS Key ID (for AWS Secret Manager)
+         */
+        kmsKeyId?: string;
+        /**
+         * GCP region for the secret (for GCP Secret Manager)
+         */
+        regions?: string;
+        /**
+         * Version of the secret (for AWS/Azure Secret Manager)
+         */
+        version?: string;
+    }
+
     export interface SecretSshkeyKerberos {
         /**
          * Username to use for authentication.
@@ -36600,7 +36665,21 @@ export namespace platform {
     }
 
     export interface SecretTextAdditionalMetadataValue {
+        /**
+         * GCP Project ID (for GCP Secret Manager)
+         */
+        gcpProjectId?: string;
+        /**
+         * KMS Key ID (for AWS Secret Manager)
+         */
         kmsKeyId?: string;
+        /**
+         * GCP region for the secret (for GCP Secret Manager)
+         */
+        regions?: string;
+        /**
+         * Version of the secret (for AWS/Azure Secret Manager)
+         */
         version?: string;
     }
 

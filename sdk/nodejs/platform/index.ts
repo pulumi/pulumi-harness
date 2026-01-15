@@ -440,6 +440,11 @@ export const getGcpConnector: typeof import("./getGcpConnector").getGcpConnector
 export const getGcpConnectorOutput: typeof import("./getGcpConnector").getGcpConnectorOutput = null as any;
 utilities.lazyLoad(exports, ["getGcpConnector","getGcpConnectorOutput"], () => require("./getGcpConnector"));
 
+export { GetGcpProjectsArgs, GetGcpProjectsResult, GetGcpProjectsOutputArgs } from "./getGcpProjects";
+export const getGcpProjects: typeof import("./getGcpProjects").getGcpProjects = null as any;
+export const getGcpProjectsOutput: typeof import("./getGcpProjects").getGcpProjectsOutput = null as any;
+utilities.lazyLoad(exports, ["getGcpProjects","getGcpProjectsOutput"], () => require("./getGcpProjects"));
+
 export { GetGcpSecretManagerConnectorArgs, GetGcpSecretManagerConnectorResult, GetGcpSecretManagerConnectorOutputArgs } from "./getGcpSecretManagerConnector";
 export const getGcpSecretManagerConnector: typeof import("./getGcpSecretManagerConnector").getGcpSecretManagerConnector = null as any;
 export const getGcpSecretManagerConnectorOutput: typeof import("./getGcpSecretManagerConnector").getGcpSecretManagerConnectorOutput = null as any;
@@ -539,6 +544,21 @@ export { GetIacmDefaultPipelineArgs, GetIacmDefaultPipelineResult, GetIacmDefaul
 export const getIacmDefaultPipeline: typeof import("./getIacmDefaultPipeline").getIacmDefaultPipeline = null as any;
 export const getIacmDefaultPipelineOutput: typeof import("./getIacmDefaultPipeline").getIacmDefaultPipelineOutput = null as any;
 utilities.lazyLoad(exports, ["getIacmDefaultPipeline","getIacmDefaultPipelineOutput"], () => require("./getIacmDefaultPipeline"));
+
+export { GetIdpCatalogEntityArgs, GetIdpCatalogEntityResult, GetIdpCatalogEntityOutputArgs } from "./getIdpCatalogEntity";
+export const getIdpCatalogEntity: typeof import("./getIdpCatalogEntity").getIdpCatalogEntity = null as any;
+export const getIdpCatalogEntityOutput: typeof import("./getIdpCatalogEntity").getIdpCatalogEntityOutput = null as any;
+utilities.lazyLoad(exports, ["getIdpCatalogEntity","getIdpCatalogEntityOutput"], () => require("./getIdpCatalogEntity"));
+
+export { GetIdpEnvironmentArgs, GetIdpEnvironmentResult, GetIdpEnvironmentOutputArgs } from "./getIdpEnvironment";
+export const getIdpEnvironment: typeof import("./getIdpEnvironment").getIdpEnvironment = null as any;
+export const getIdpEnvironmentOutput: typeof import("./getIdpEnvironment").getIdpEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getIdpEnvironment","getIdpEnvironmentOutput"], () => require("./getIdpEnvironment"));
+
+export { GetIdpEnvironmentBlueprintArgs, GetIdpEnvironmentBlueprintResult, GetIdpEnvironmentBlueprintOutputArgs } from "./getIdpEnvironmentBlueprint";
+export const getIdpEnvironmentBlueprint: typeof import("./getIdpEnvironmentBlueprint").getIdpEnvironmentBlueprint = null as any;
+export const getIdpEnvironmentBlueprintOutput: typeof import("./getIdpEnvironmentBlueprint").getIdpEnvironmentBlueprintOutput = null as any;
+utilities.lazyLoad(exports, ["getIdpEnvironmentBlueprint","getIdpEnvironmentBlueprintOutput"], () => require("./getIdpEnvironmentBlueprint"));
 
 export { GetInfraModuleArgs, GetInfraModuleResult, GetInfraModuleOutputArgs } from "./getInfraModule";
 export const getInfraModule: typeof import("./getInfraModule").getInfraModule = null as any;
@@ -929,6 +949,21 @@ export { IacmDefaultPipelineArgs, IacmDefaultPipelineState } from "./iacmDefault
 export type IacmDefaultPipeline = import("./iacmDefaultPipeline").IacmDefaultPipeline;
 export const IacmDefaultPipeline: typeof import("./iacmDefaultPipeline").IacmDefaultPipeline = null as any;
 utilities.lazyLoad(exports, ["IacmDefaultPipeline"], () => require("./iacmDefaultPipeline"));
+
+export { IdpCatalogEntityArgs, IdpCatalogEntityState } from "./idpCatalogEntity";
+export type IdpCatalogEntity = import("./idpCatalogEntity").IdpCatalogEntity;
+export const IdpCatalogEntity: typeof import("./idpCatalogEntity").IdpCatalogEntity = null as any;
+utilities.lazyLoad(exports, ["IdpCatalogEntity"], () => require("./idpCatalogEntity"));
+
+export { IdpEnvironmentArgs, IdpEnvironmentState } from "./idpEnvironment";
+export type IdpEnvironment = import("./idpEnvironment").IdpEnvironment;
+export const IdpEnvironment: typeof import("./idpEnvironment").IdpEnvironment = null as any;
+utilities.lazyLoad(exports, ["IdpEnvironment"], () => require("./idpEnvironment"));
+
+export { IdpEnvironmentBlueprintArgs, IdpEnvironmentBlueprintState } from "./idpEnvironmentBlueprint";
+export type IdpEnvironmentBlueprint = import("./idpEnvironmentBlueprint").IdpEnvironmentBlueprint;
+export const IdpEnvironmentBlueprint: typeof import("./idpEnvironmentBlueprint").IdpEnvironmentBlueprint = null as any;
+utilities.lazyLoad(exports, ["IdpEnvironmentBlueprint"], () => require("./idpEnvironmentBlueprint"));
 
 export { InfraModuleArgs, InfraModuleState } from "./infraModule";
 export type InfraModule = import("./infraModule").InfraModule;
@@ -1334,6 +1369,12 @@ const _module = {
                 return new HelmConnector(name, <any>undefined, { urn })
             case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
                 return new IacmDefaultPipeline(name, <any>undefined, { urn })
+            case "harness:platform/idpCatalogEntity:IdpCatalogEntity":
+                return new IdpCatalogEntity(name, <any>undefined, { urn })
+            case "harness:platform/idpEnvironment:IdpEnvironment":
+                return new IdpEnvironment(name, <any>undefined, { urn })
+            case "harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint":
+                return new IdpEnvironmentBlueprint(name, <any>undefined, { urn })
             case "harness:platform/infraModule:InfraModule":
                 return new InfraModule(name, <any>undefined, { urn })
             case "harness:platform/infraModuleTesting:InfraModuleTesting":
@@ -1511,6 +1552,9 @@ pulumi.runtime.registerResourceModule("harness", "platform/gitxWebhook", _module
 pulumi.runtime.registerResourceModule("harness", "platform/harRegistry", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/iacmDefaultPipeline", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/idpCatalogEntity", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/idpEnvironment", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/idpEnvironmentBlueprint", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraModule", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraModuleTesting", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraVariableSet", _module)

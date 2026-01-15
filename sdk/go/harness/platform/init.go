@@ -145,6 +145,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HelmConnector{}
 	case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
 		r = &IacmDefaultPipeline{}
+	case "harness:platform/idpCatalogEntity:IdpCatalogEntity":
+		r = &IdpCatalogEntity{}
+	case "harness:platform/idpEnvironment:IdpEnvironment":
+		r = &IdpEnvironment{}
+	case "harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint":
+		r = &IdpEnvironmentBlueprint{}
 	case "harness:platform/infraModule:InfraModule":
 		r = &InfraModule{}
 	case "harness:platform/infraModuleTesting:InfraModuleTesting":
@@ -576,6 +582,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/iacmDefaultPipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/idpCatalogEntity",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/idpEnvironment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/idpEnvironmentBlueprint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

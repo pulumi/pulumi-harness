@@ -93,6 +93,8 @@ import com.pulumi.harness.platform.inputs.GetGcpCloudCostConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetGcpCloudCostConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGcpConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetGcpConnectorPlainArgs;
+import com.pulumi.harness.platform.inputs.GetGcpProjectsArgs;
+import com.pulumi.harness.platform.inputs.GetGcpProjectsPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGcpSecretManagerConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetGcpSecretManagerConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitConnectorArgs;
@@ -133,6 +135,12 @@ import com.pulumi.harness.platform.inputs.GetHelmConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetHelmConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelineArgs;
 import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelinePlainArgs;
+import com.pulumi.harness.platform.inputs.GetIdpCatalogEntityArgs;
+import com.pulumi.harness.platform.inputs.GetIdpCatalogEntityPlainArgs;
+import com.pulumi.harness.platform.inputs.GetIdpEnvironmentArgs;
+import com.pulumi.harness.platform.inputs.GetIdpEnvironmentBlueprintArgs;
+import com.pulumi.harness.platform.inputs.GetIdpEnvironmentBlueprintPlainArgs;
+import com.pulumi.harness.platform.inputs.GetIdpEnvironmentPlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModulePlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModuleTestingArgs;
@@ -294,6 +302,7 @@ import com.pulumi.harness.platform.outputs.GetFileStoreFolderResult;
 import com.pulumi.harness.platform.outputs.GetFiltersResult;
 import com.pulumi.harness.platform.outputs.GetGcpCloudCostConnectorResult;
 import com.pulumi.harness.platform.outputs.GetGcpConnectorResult;
+import com.pulumi.harness.platform.outputs.GetGcpProjectsResult;
 import com.pulumi.harness.platform.outputs.GetGcpSecretManagerConnectorResult;
 import com.pulumi.harness.platform.outputs.GetGitConnectorResult;
 import com.pulumi.harness.platform.outputs.GetGithubConnectorResult;
@@ -314,6 +323,9 @@ import com.pulumi.harness.platform.outputs.GetGitxWebhookResult;
 import com.pulumi.harness.platform.outputs.GetHarRegistryResult;
 import com.pulumi.harness.platform.outputs.GetHelmConnectorResult;
 import com.pulumi.harness.platform.outputs.GetIacmDefaultPipelineResult;
+import com.pulumi.harness.platform.outputs.GetIdpCatalogEntityResult;
+import com.pulumi.harness.platform.outputs.GetIdpEnvironmentBlueprintResult;
+import com.pulumi.harness.platform.outputs.GetIdpEnvironmentResult;
 import com.pulumi.harness.platform.outputs.GetInfraModuleResult;
 import com.pulumi.harness.platform.outputs.GetInfraModuleTestingResult;
 import com.pulumi.harness.platform.outputs.GetInfraModulesResult;
@@ -7605,6 +7617,21 @@ public final class PlatformFunctions {
     public static CompletableFuture<GetGcpConnectorResult> getGcpConnectorPlain(GetGcpConnectorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getGcpConnector:getGcpConnector", TypeShape.of(GetGcpConnectorResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetGcpProjectsResult> getGcpProjects(GetGcpProjectsArgs args) {
+        return getGcpProjects(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGcpProjectsResult> getGcpProjectsPlain(GetGcpProjectsPlainArgs args) {
+        return getGcpProjectsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGcpProjectsResult> getGcpProjects(GetGcpProjectsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getGcpProjects:getGcpProjects", TypeShape.of(GetGcpProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGcpProjectsResult> getGcpProjects(GetGcpProjectsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getGcpProjects:getGcpProjects", TypeShape.of(GetGcpProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGcpProjectsResult> getGcpProjectsPlain(GetGcpProjectsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getGcpProjects:getGcpProjects", TypeShape.of(GetGcpProjectsResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Datasource for looking up GCP Secret Manager connector.
      * 
@@ -10594,6 +10621,111 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetIacmDefaultPipelineResult> getIacmDefaultPipelinePlain(GetIacmDefaultPipelinePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", TypeShape.of(GetIacmDefaultPipelineResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving Harness catalog entities.
+     * 
+     */
+    public static Output<GetIdpCatalogEntityResult> getIdpCatalogEntity(GetIdpCatalogEntityArgs args) {
+        return getIdpCatalogEntity(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving Harness catalog entities.
+     * 
+     */
+    public static CompletableFuture<GetIdpCatalogEntityResult> getIdpCatalogEntityPlain(GetIdpCatalogEntityPlainArgs args) {
+        return getIdpCatalogEntityPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving Harness catalog entities.
+     * 
+     */
+    public static Output<GetIdpCatalogEntityResult> getIdpCatalogEntity(GetIdpCatalogEntityArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpCatalogEntity:getIdpCatalogEntity", TypeShape.of(GetIdpCatalogEntityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving Harness catalog entities.
+     * 
+     */
+    public static Output<GetIdpCatalogEntityResult> getIdpCatalogEntity(GetIdpCatalogEntityArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpCatalogEntity:getIdpCatalogEntity", TypeShape.of(GetIdpCatalogEntityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving Harness catalog entities.
+     * 
+     */
+    public static CompletableFuture<GetIdpCatalogEntityResult> getIdpCatalogEntityPlain(GetIdpCatalogEntityPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getIdpCatalogEntity:getIdpCatalogEntity", TypeShape.of(GetIdpCatalogEntityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving IDP environments.
+     * 
+     */
+    public static Output<GetIdpEnvironmentResult> getIdpEnvironment(GetIdpEnvironmentArgs args) {
+        return getIdpEnvironment(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving IDP environments.
+     * 
+     */
+    public static CompletableFuture<GetIdpEnvironmentResult> getIdpEnvironmentPlain(GetIdpEnvironmentPlainArgs args) {
+        return getIdpEnvironmentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving IDP environments.
+     * 
+     */
+    public static Output<GetIdpEnvironmentResult> getIdpEnvironment(GetIdpEnvironmentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpEnvironment:getIdpEnvironment", TypeShape.of(GetIdpEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving IDP environments.
+     * 
+     */
+    public static Output<GetIdpEnvironmentResult> getIdpEnvironment(GetIdpEnvironmentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpEnvironment:getIdpEnvironment", TypeShape.of(GetIdpEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving IDP environments.
+     * 
+     */
+    public static CompletableFuture<GetIdpEnvironmentResult> getIdpEnvironmentPlain(GetIdpEnvironmentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getIdpEnvironment:getIdpEnvironment", TypeShape.of(GetIdpEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving Harness environment blueprints.
+     * 
+     */
+    public static Output<GetIdpEnvironmentBlueprintResult> getIdpEnvironmentBlueprint(GetIdpEnvironmentBlueprintArgs args) {
+        return getIdpEnvironmentBlueprint(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving Harness environment blueprints.
+     * 
+     */
+    public static CompletableFuture<GetIdpEnvironmentBlueprintResult> getIdpEnvironmentBlueprintPlain(GetIdpEnvironmentBlueprintPlainArgs args) {
+        return getIdpEnvironmentBlueprintPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving Harness environment blueprints.
+     * 
+     */
+    public static Output<GetIdpEnvironmentBlueprintResult> getIdpEnvironmentBlueprint(GetIdpEnvironmentBlueprintArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpEnvironmentBlueprint:getIdpEnvironmentBlueprint", TypeShape.of(GetIdpEnvironmentBlueprintResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving Harness environment blueprints.
+     * 
+     */
+    public static Output<GetIdpEnvironmentBlueprintResult> getIdpEnvironmentBlueprint(GetIdpEnvironmentBlueprintArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpEnvironmentBlueprint:getIdpEnvironmentBlueprint", TypeShape.of(GetIdpEnvironmentBlueprintResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving Harness environment blueprints.
+     * 
+     */
+    public static CompletableFuture<GetIdpEnvironmentBlueprintResult> getIdpEnvironmentBlueprintPlain(GetIdpEnvironmentBlueprintPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getIdpEnvironmentBlueprint:getIdpEnvironmentBlueprint", TypeShape.of(GetIdpEnvironmentBlueprintResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving modules from the module registry.

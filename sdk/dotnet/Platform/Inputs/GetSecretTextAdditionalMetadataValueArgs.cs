@@ -12,9 +12,27 @@ namespace Pulumi.Harness.Platform.Inputs
 
     public sealed class GetSecretTextAdditionalMetadataValueInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// GCP Project ID (for GCP Secret Manager)
+        /// </summary>
+        [Input("gcpProjectId")]
+        public Input<string>? GcpProjectId { get; set; }
+
+        /// <summary>
+        /// KMS Key ID (for AWS Secret Manager)
+        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
+        /// <summary>
+        /// GCP region for the secret (for GCP Secret Manager)
+        /// </summary>
+        [Input("regions")]
+        public Input<string>? Regions { get; set; }
+
+        /// <summary>
+        /// Version of the secret (for AWS/Azure Secret Manager)
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
