@@ -5,7 +5,9 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetSecretFileAdditionalMetadata;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,21 @@ import javax.annotation.Nullable;
 public final class GetSecretFilePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSecretFilePlainArgs Empty = new GetSecretFilePlainArgs();
+
+    /**
+     * Additional Metadata for the Secret
+     * 
+     */
+    @Import(name="additionalMetadatas")
+    private @Nullable List<GetSecretFileAdditionalMetadata> additionalMetadatas;
+
+    /**
+     * @return Additional Metadata for the Secret
+     * 
+     */
+    public Optional<List<GetSecretFileAdditionalMetadata>> additionalMetadatas() {
+        return Optional.ofNullable(this.additionalMetadatas);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -28,13 +45,6 @@ public final class GetSecretFilePlainArgs extends com.pulumi.resources.InvokeArg
      */
     public String identifier() {
         return this.identifier;
-    }
-
-    @Import(name="kmsKeyId")
-    private @Nullable String kmsKeyId;
-
-    public Optional<String> kmsKeyId() {
-        return Optional.ofNullable(this.kmsKeyId);
     }
 
     /**
@@ -85,8 +95,8 @@ public final class GetSecretFilePlainArgs extends com.pulumi.resources.InvokeArg
     private GetSecretFilePlainArgs() {}
 
     private GetSecretFilePlainArgs(GetSecretFilePlainArgs $) {
+        this.additionalMetadatas = $.additionalMetadatas;
         this.identifier = $.identifier;
-        this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -111,6 +121,27 @@ public final class GetSecretFilePlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
+         * @param additionalMetadatas Additional Metadata for the Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalMetadatas(@Nullable List<GetSecretFileAdditionalMetadata> additionalMetadatas) {
+            $.additionalMetadatas = additionalMetadatas;
+            return this;
+        }
+
+        /**
+         * @param additionalMetadatas Additional Metadata for the Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalMetadatas(GetSecretFileAdditionalMetadata... additionalMetadatas) {
+            return additionalMetadatas(List.of(additionalMetadatas));
+        }
+
+        /**
          * @param identifier Unique identifier of the resource.
          * 
          * @return builder
@@ -118,11 +149,6 @@ public final class GetSecretFilePlainArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder identifier(String identifier) {
             $.identifier = identifier;
-            return this;
-        }
-
-        public Builder kmsKeyId(@Nullable String kmsKeyId) {
-            $.kmsKeyId = kmsKeyId;
             return this;
         }
 

@@ -14,16 +14,62 @@ public final class GetSecretTextAdditionalMetadataValue extends com.pulumi.resou
 
     public static final GetSecretTextAdditionalMetadataValue Empty = new GetSecretTextAdditionalMetadataValue();
 
+    /**
+     * GCP Project ID (for GCP Secret Manager)
+     * 
+     */
+    @Import(name="gcpProjectId")
+    private @Nullable String gcpProjectId;
+
+    /**
+     * @return GCP Project ID (for GCP Secret Manager)
+     * 
+     */
+    public Optional<String> gcpProjectId() {
+        return Optional.ofNullable(this.gcpProjectId);
+    }
+
+    /**
+     * KMS Key ID (for AWS Secret Manager)
+     * 
+     */
     @Import(name="kmsKeyId")
     private @Nullable String kmsKeyId;
 
+    /**
+     * @return KMS Key ID (for AWS Secret Manager)
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
 
+    /**
+     * GCP region for the secret (for GCP Secret Manager)
+     * 
+     */
+    @Import(name="regions")
+    private @Nullable String regions;
+
+    /**
+     * @return GCP region for the secret (for GCP Secret Manager)
+     * 
+     */
+    public Optional<String> regions() {
+        return Optional.ofNullable(this.regions);
+    }
+
+    /**
+     * Version of the secret (for AWS/Azure Secret Manager)
+     * 
+     */
     @Import(name="version")
     private @Nullable String version;
 
+    /**
+     * @return Version of the secret (for AWS/Azure Secret Manager)
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }
@@ -31,7 +77,9 @@ public final class GetSecretTextAdditionalMetadataValue extends com.pulumi.resou
     private GetSecretTextAdditionalMetadataValue() {}
 
     private GetSecretTextAdditionalMetadataValue(GetSecretTextAdditionalMetadataValue $) {
+        this.gcpProjectId = $.gcpProjectId;
         this.kmsKeyId = $.kmsKeyId;
+        this.regions = $.regions;
         this.version = $.version;
     }
 
@@ -53,11 +101,45 @@ public final class GetSecretTextAdditionalMetadataValue extends com.pulumi.resou
             $ = new GetSecretTextAdditionalMetadataValue(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gcpProjectId GCP Project ID (for GCP Secret Manager)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpProjectId(@Nullable String gcpProjectId) {
+            $.gcpProjectId = gcpProjectId;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyId KMS Key ID (for AWS Secret Manager)
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
             $.kmsKeyId = kmsKeyId;
             return this;
         }
 
+        /**
+         * @param regions GCP region for the secret (for GCP Secret Manager)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(@Nullable String regions) {
+            $.regions = regions;
+            return this;
+        }
+
+        /**
+         * @param version Version of the secret (for AWS/Azure Secret Manager)
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(@Nullable String version) {
             $.version = version;
             return this;

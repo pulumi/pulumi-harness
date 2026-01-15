@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.SecretFileAdditionalMetadataArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class SecretFileState extends com.pulumi.resources.ResourceArgs {
 
     public static final SecretFileState Empty = new SecretFileState();
+
+    /**
+     * Additional Metadata for the Secret
+     * 
+     */
+    @Import(name="additionalMetadatas")
+    private @Nullable Output<List<SecretFileAdditionalMetadataArgs>> additionalMetadatas;
+
+    /**
+     * @return Additional Metadata for the Secret
+     * 
+     */
+    public Optional<Output<List<SecretFileAdditionalMetadataArgs>>> additionalMetadatas() {
+        return Optional.ofNullable(this.additionalMetadatas);
+    }
 
     /**
      * Description of the resource.
@@ -59,21 +75,6 @@ public final class SecretFileState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> identifier() {
         return Optional.ofNullable(this.identifier);
-    }
-
-    /**
-     * Kms Key Id for encrypting the secret value
-     * 
-     */
-    @Import(name="kmsKeyId")
-    private @Nullable Output<String> kmsKeyId;
-
-    /**
-     * @return Kms Key Id for encrypting the secret value
-     * 
-     */
-    public Optional<Output<String>> kmsKeyId() {
-        return Optional.ofNullable(this.kmsKeyId);
     }
 
     /**
@@ -154,10 +155,10 @@ public final class SecretFileState extends com.pulumi.resources.ResourceArgs {
     private SecretFileState() {}
 
     private SecretFileState(SecretFileState $) {
+        this.additionalMetadatas = $.additionalMetadatas;
         this.description = $.description;
         this.filePath = $.filePath;
         this.identifier = $.identifier;
-        this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -181,6 +182,37 @@ public final class SecretFileState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SecretFileState defaults) {
             $ = new SecretFileState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalMetadatas Additional Metadata for the Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalMetadatas(@Nullable Output<List<SecretFileAdditionalMetadataArgs>> additionalMetadatas) {
+            $.additionalMetadatas = additionalMetadatas;
+            return this;
+        }
+
+        /**
+         * @param additionalMetadatas Additional Metadata for the Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalMetadatas(List<SecretFileAdditionalMetadataArgs> additionalMetadatas) {
+            return additionalMetadatas(Output.of(additionalMetadatas));
+        }
+
+        /**
+         * @param additionalMetadatas Additional Metadata for the Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalMetadatas(SecretFileAdditionalMetadataArgs... additionalMetadatas) {
+            return additionalMetadatas(List.of(additionalMetadatas));
         }
 
         /**
@@ -244,27 +276,6 @@ public final class SecretFileState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
-        }
-
-        /**
-         * @param kmsKeyId Kms Key Id for encrypting the secret value
-         * 
-         * @return builder
-         * 
-         */
-        public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
-            $.kmsKeyId = kmsKeyId;
-            return this;
-        }
-
-        /**
-         * @param kmsKeyId Kms Key Id for encrypting the secret value
-         * 
-         * @return builder
-         * 
-         */
-        public Builder kmsKeyId(String kmsKeyId) {
-            return kmsKeyId(Output.of(kmsKeyId));
         }
 
         /**

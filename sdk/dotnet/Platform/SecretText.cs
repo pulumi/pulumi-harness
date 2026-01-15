@@ -82,6 +82,35 @@ namespace Pulumi.Harness.Platform
     ///         },
     ///     });
     /// 
+    ///     // GCP Secret Manager with project ID and region (for secrets in a different GCP project)
+    ///     var gcpSecretManagerWithProject = new Harness.Platform.SecretText("gcp_secret_manager_with_project", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         SecretManagerIdentifier = "gcpSecretManager",
+    ///         ValueType = "Inline",
+    ///         Value = "secret",
+    ///         AdditionalMetadatas = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.SecretTextAdditionalMetadataArgs
+    ///             {
+    ///                 Values = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.SecretTextAdditionalMetadataValueArgs
+    ///                     {
+    ///                         Regions = "us-east1",
+    ///                         GcpProjectId = "my-gcp-project-id",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
     ///     var awsSecretManager = new Harness.Platform.SecretText("aws_secret_manager", new()
     ///     {
     ///         Identifier = "identifier",

@@ -13,16 +13,36 @@ namespace Pulumi.Harness.Platform.Outputs
     [OutputType]
     public sealed class GetSecretTextAdditionalMetadataValueResult
     {
+        /// <summary>
+        /// GCP Project ID (for GCP Secret Manager)
+        /// </summary>
+        public readonly string? GcpProjectId;
+        /// <summary>
+        /// KMS Key ID (for AWS Secret Manager)
+        /// </summary>
         public readonly string? KmsKeyId;
+        /// <summary>
+        /// GCP region for the secret (for GCP Secret Manager)
+        /// </summary>
+        public readonly string? Regions;
+        /// <summary>
+        /// Version of the secret (for AWS/Azure Secret Manager)
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]
         private GetSecretTextAdditionalMetadataValueResult(
+            string? gcpProjectId,
+
             string? kmsKeyId,
+
+            string? regions,
 
             string? version)
         {
+            GcpProjectId = gcpProjectId;
             KmsKeyId = kmsKeyId;
+            Regions = regions;
             Version = version;
         }
     }

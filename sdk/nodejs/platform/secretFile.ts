@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -27,17 +29,32 @@ import * as utilities from "../utilities";
  *     filePath: "file_path",
  *     secretManagerIdentifier: "harnessSecretManager",
  * });
- * const awsSecretManager = new harness.platform.SecretText("aws_secret_manager", {
+ * // With AWS Secret Manager KMS Key
+ * const awsSecretManager = new harness.platform.SecretFile("aws_secret_manager", {
  *     identifier: "identifier",
  *     name: "name",
  *     description: "example",
  *     tags: ["foo:bar"],
+ *     filePath: "file_path",
  *     secretManagerIdentifier: "awsSecretManager",
- *     valueType: "Inline",
- *     value: "secret",
  *     additionalMetadatas: [{
  *         values: [{
  *             kmsKeyId: "kmsKeyId",
+ *         }],
+ *     }],
+ * });
+ * // With GCP Secret Manager project ID and region
+ * const gcpSecretManager = new harness.platform.SecretFile("gcp_secret_manager", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "example",
+ *     tags: ["foo:bar"],
+ *     filePath: "file_path",
+ *     secretManagerIdentifier: "gcpSecretManager",
+ *     additionalMetadatas: [{
+ *         values: [{
+ *             regions: "us-east1",
+ *             gcpProjectId: "my-gcp-project-id",
  *         }],
  *     }],
  * });
@@ -94,6 +111,10 @@ export class SecretFile extends pulumi.CustomResource {
     }
 
     /**
+     * Additional Metadata for the Secret
+     */
+    declare public readonly additionalMetadatas: pulumi.Output<outputs.platform.SecretFileAdditionalMetadata[] | undefined>;
+    /**
      * Description of the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -105,10 +126,6 @@ export class SecretFile extends pulumi.CustomResource {
      * Unique identifier of the resource.
      */
     declare public readonly identifier: pulumi.Output<string>;
-    /**
-     * Kms Key Id for encrypting the secret value
-     */
-    declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
      * Name of the resource.
      */
@@ -143,10 +160,10 @@ export class SecretFile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretFileState | undefined;
+            resourceInputs["additionalMetadatas"] = state?.additionalMetadatas;
             resourceInputs["description"] = state?.description;
             resourceInputs["filePath"] = state?.filePath;
             resourceInputs["identifier"] = state?.identifier;
-            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["projectId"] = state?.projectId;
@@ -163,10 +180,10 @@ export class SecretFile extends pulumi.CustomResource {
             if (args?.secretManagerIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretManagerIdentifier'");
             }
+            resourceInputs["additionalMetadatas"] = args?.additionalMetadatas;
             resourceInputs["description"] = args?.description;
             resourceInputs["filePath"] = args?.filePath;
             resourceInputs["identifier"] = args?.identifier;
-            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["projectId"] = args?.projectId;
@@ -183,6 +200,10 @@ export class SecretFile extends pulumi.CustomResource {
  */
 export interface SecretFileState {
     /**
+     * Additional Metadata for the Secret
+     */
+    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.SecretFileAdditionalMetadata>[]>;
+    /**
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
@@ -194,10 +215,6 @@ export interface SecretFileState {
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
-    /**
-     * Kms Key Id for encrypting the secret value
-     */
-    kmsKeyId?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
@@ -225,6 +242,10 @@ export interface SecretFileState {
  */
 export interface SecretFileArgs {
     /**
+     * Additional Metadata for the Secret
+     */
+    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.SecretFileAdditionalMetadata>[]>;
+    /**
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
@@ -236,10 +257,6 @@ export interface SecretFileArgs {
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
-    /**
-     * Kms Key Id for encrypting the secret value
-     */
-    kmsKeyId?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */

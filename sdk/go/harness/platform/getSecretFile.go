@@ -50,9 +50,10 @@ func LookupSecretFile(ctx *pulumi.Context, args *LookupSecretFileArgs, opts ...p
 
 // A collection of arguments for invoking getSecretFile.
 type LookupSecretFileArgs struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas []GetSecretFileAdditionalMetadata `pulumi:"additionalMetadatas"`
 	// Unique identifier of the resource.
-	Identifier string  `pulumi:"identifier"`
-	KmsKeyId   *string `pulumi:"kmsKeyId"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -63,6 +64,8 @@ type LookupSecretFileArgs struct {
 
 // A collection of values returned by getSecretFile.
 type LookupSecretFileResult struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas []GetSecretFileAdditionalMetadata `pulumi:"additionalMetadatas"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
 	// Path of the file containing secret value
@@ -70,8 +73,7 @@ type LookupSecretFileResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier string  `pulumi:"identifier"`
-	KmsKeyId   *string `pulumi:"kmsKeyId"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -95,9 +97,10 @@ func LookupSecretFileOutput(ctx *pulumi.Context, args LookupSecretFileOutputArgs
 
 // A collection of arguments for invoking getSecretFile.
 type LookupSecretFileOutputArgs struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas GetSecretFileAdditionalMetadataArrayInput `pulumi:"additionalMetadatas"`
 	// Unique identifier of the resource.
-	Identifier pulumi.StringInput    `pulumi:"identifier"`
-	KmsKeyId   pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -125,6 +128,11 @@ func (o LookupSecretFileResultOutput) ToLookupSecretFileResultOutputWithContext(
 	return o
 }
 
+// Additional Metadata for the Secret
+func (o LookupSecretFileResultOutput) AdditionalMetadatas() GetSecretFileAdditionalMetadataArrayOutput {
+	return o.ApplyT(func(v LookupSecretFileResult) []GetSecretFileAdditionalMetadata { return v.AdditionalMetadatas }).(GetSecretFileAdditionalMetadataArrayOutput)
+}
+
 // Description of the resource.
 func (o LookupSecretFileResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretFileResult) string { return v.Description }).(pulumi.StringOutput)
@@ -143,10 +151,6 @@ func (o LookupSecretFileResultOutput) Id() pulumi.StringOutput {
 // Unique identifier of the resource.
 func (o LookupSecretFileResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretFileResult) string { return v.Identifier }).(pulumi.StringOutput)
-}
-
-func (o LookupSecretFileResultOutput) KmsKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSecretFileResult) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
 // Name of the resource.

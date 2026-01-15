@@ -84,6 +84,23 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // GCP Secret Manager with project ID and region (for secrets in a different GCP project)
+ *         var gcpSecretManagerWithProject = new SecretText("gcpSecretManagerWithProject", SecretTextArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("example")
+ *             .tags("foo:bar")
+ *             .secretManagerIdentifier("gcpSecretManager")
+ *             .valueType("Inline")
+ *             .value("secret")
+ *             .additionalMetadatas(SecretTextAdditionalMetadataArgs.builder()
+ *                 .values(SecretTextAdditionalMetadataValueArgs.builder()
+ *                     .regions("us-east1")
+ *                     .gcpProjectId("my-gcp-project-id")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
  *         var awsSecretManager = new SecretText("awsSecretManager", SecretTextArgs.builder()
  *             .identifier("identifier")
  *             .name("name")

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.SecretFileArgs;
 import com.pulumi.harness.platform.inputs.SecretFileState;
+import com.pulumi.harness.platform.outputs.SecretFileAdditionalMetadata;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -35,9 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.SecretFile;
  * import com.pulumi.harness.platform.SecretFileArgs;
- * import com.pulumi.harness.platform.SecretText;
- * import com.pulumi.harness.platform.SecretTextArgs;
- * import com.pulumi.harness.platform.inputs.SecretTextAdditionalMetadataArgs;
+ * import com.pulumi.harness.platform.inputs.SecretFileAdditionalMetadataArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,17 +59,33 @@ import javax.annotation.Nullable;
  *             .secretManagerIdentifier("harnessSecretManager")
  *             .build());
  * 
- *         var awsSecretManager = new SecretText("awsSecretManager", SecretTextArgs.builder()
+ *         // With AWS Secret Manager KMS Key
+ *         var awsSecretManager = new SecretFile("awsSecretManager", SecretFileArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .description("example")
  *             .tags("foo:bar")
+ *             .filePath("file_path")
  *             .secretManagerIdentifier("awsSecretManager")
- *             .valueType("Inline")
- *             .value("secret")
- *             .additionalMetadatas(SecretTextAdditionalMetadataArgs.builder()
- *                 .values(SecretTextAdditionalMetadataValueArgs.builder()
+ *             .additionalMetadatas(SecretFileAdditionalMetadataArgs.builder()
+ *                 .values(SecretFileAdditionalMetadataValueArgs.builder()
  *                     .kmsKeyId("kmsKeyId")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         // With GCP Secret Manager project ID and region
+ *         var gcpSecretManager = new SecretFile("gcpSecretManager", SecretFileArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("example")
+ *             .tags("foo:bar")
+ *             .filePath("file_path")
+ *             .secretManagerIdentifier("gcpSecretManager")
+ *             .additionalMetadatas(SecretFileAdditionalMetadataArgs.builder()
+ *                 .values(SecretFileAdditionalMetadataValueArgs.builder()
+ *                     .regions("us-east1")
+ *                     .gcpProjectId("my-gcp-project-id")
  *                     .build())
  *                 .build())
  *             .build());
@@ -105,6 +120,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="harness:platform/secretFile:SecretFile")
 public class SecretFile extends com.pulumi.resources.CustomResource {
+    /**
+     * Additional Metadata for the Secret
+     * 
+     */
+    @Export(name="additionalMetadatas", refs={List.class,SecretFileAdditionalMetadata.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<SecretFileAdditionalMetadata>> additionalMetadatas;
+
+    /**
+     * @return Additional Metadata for the Secret
+     * 
+     */
+    public Output<Optional<List<SecretFileAdditionalMetadata>>> additionalMetadatas() {
+        return Codegen.optional(this.additionalMetadatas);
+    }
     /**
      * Description of the resource.
      * 
@@ -146,20 +175,6 @@ public class SecretFile extends com.pulumi.resources.CustomResource {
      */
     public Output<String> identifier() {
         return this.identifier;
-    }
-    /**
-     * Kms Key Id for encrypting the secret value
-     * 
-     */
-    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> kmsKeyId;
-
-    /**
-     * @return Kms Key Id for encrypting the secret value
-     * 
-     */
-    public Output<Optional<String>> kmsKeyId() {
-        return Codegen.optional(this.kmsKeyId);
     }
     /**
      * Name of the resource.

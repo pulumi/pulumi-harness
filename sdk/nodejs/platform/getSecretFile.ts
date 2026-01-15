@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,8 +23,8 @@ import * as utilities from "../utilities";
 export function getSecretFile(args: GetSecretFileArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretFileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getSecretFile:getSecretFile", {
+        "additionalMetadatas": args.additionalMetadatas,
         "identifier": args.identifier,
-        "kmsKeyId": args.kmsKeyId,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
@@ -34,10 +36,13 @@ export function getSecretFile(args: GetSecretFileArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetSecretFileArgs {
     /**
+     * Additional Metadata for the Secret
+     */
+    additionalMetadatas?: inputs.platform.GetSecretFileAdditionalMetadata[];
+    /**
      * Unique identifier of the resource.
      */
     identifier: string;
-    kmsKeyId?: string;
     /**
      * Name of the resource.
      */
@@ -57,6 +62,10 @@ export interface GetSecretFileArgs {
  */
 export interface GetSecretFileResult {
     /**
+     * Additional Metadata for the Secret
+     */
+    readonly additionalMetadatas?: outputs.platform.GetSecretFileAdditionalMetadata[];
+    /**
      * Description of the resource.
      */
     readonly description: string;
@@ -72,7 +81,6 @@ export interface GetSecretFileResult {
      * Unique identifier of the resource.
      */
     readonly identifier: string;
-    readonly kmsKeyId?: string;
     /**
      * Name of the resource.
      */
@@ -111,8 +119,8 @@ export interface GetSecretFileResult {
 export function getSecretFileOutput(args: GetSecretFileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretFileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getSecretFile:getSecretFile", {
+        "additionalMetadatas": args.additionalMetadatas,
         "identifier": args.identifier,
-        "kmsKeyId": args.kmsKeyId,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
@@ -124,10 +132,13 @@ export function getSecretFileOutput(args: GetSecretFileOutputArgs, opts?: pulumi
  */
 export interface GetSecretFileOutputArgs {
     /**
+     * Additional Metadata for the Secret
+     */
+    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.GetSecretFileAdditionalMetadataArgs>[]>;
+    /**
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
-    kmsKeyId?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */

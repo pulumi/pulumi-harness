@@ -41,7 +41,8 @@ namespace Pulumi.Harness.Platform
     ///         SecretManagerIdentifier = "harnessSecretManager",
     ///     });
     /// 
-    ///     var awsSecretManager = new Harness.Platform.SecretText("aws_secret_manager", new()
+    ///     // With AWS Secret Manager KMS Key
+    ///     var awsSecretManager = new Harness.Platform.SecretFile("aws_secret_manager", new()
     ///     {
     ///         Identifier = "identifier",
     ///         Name = "name",
@@ -50,18 +51,45 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             "foo:bar",
     ///         },
+    ///         FilePath = "file_path",
     ///         SecretManagerIdentifier = "awsSecretManager",
-    ///         ValueType = "Inline",
-    ///         Value = "secret",
     ///         AdditionalMetadatas = new[]
     ///         {
-    ///             new Harness.Platform.Inputs.SecretTextAdditionalMetadataArgs
+    ///             new Harness.Platform.Inputs.SecretFileAdditionalMetadataArgs
     ///             {
     ///                 Values = new[]
     ///                 {
-    ///                     new Harness.Platform.Inputs.SecretTextAdditionalMetadataValueArgs
+    ///                     new Harness.Platform.Inputs.SecretFileAdditionalMetadataValueArgs
     ///                     {
     ///                         KmsKeyId = "kmsKeyId",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // With GCP Secret Manager project ID and region
+    ///     var gcpSecretManager = new Harness.Platform.SecretFile("gcp_secret_manager", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         FilePath = "file_path",
+    ///         SecretManagerIdentifier = "gcpSecretManager",
+    ///         AdditionalMetadatas = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.SecretFileAdditionalMetadataArgs
+    ///             {
+    ///                 Values = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.SecretFileAdditionalMetadataValueArgs
+    ///                     {
+    ///                         Regions = "us-east1",
+    ///                         GcpProjectId = "my-gcp-project-id",
     ///                     },
     ///                 },
     ///             },
@@ -97,6 +125,12 @@ namespace Pulumi.Harness.Platform
     public partial class SecretFile : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Additional Metadata for the Secret
+        /// </summary>
+        [Output("additionalMetadatas")]
+        public Output<ImmutableArray<Outputs.SecretFileAdditionalMetadata>> AdditionalMetadatas { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the resource.
         /// </summary>
         [Output("description")]
@@ -113,12 +147,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
-
-        /// <summary>
-        /// Kms Key Id for encrypting the secret value
-        /// </summary>
-        [Output("kmsKeyId")]
-        public Output<string?> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -197,6 +225,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class SecretFileArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalMetadatas")]
+        private InputList<Inputs.SecretFileAdditionalMetadataArgs>? _additionalMetadatas;
+
+        /// <summary>
+        /// Additional Metadata for the Secret
+        /// </summary>
+        public InputList<Inputs.SecretFileAdditionalMetadataArgs> AdditionalMetadatas
+        {
+            get => _additionalMetadatas ?? (_additionalMetadatas = new InputList<Inputs.SecretFileAdditionalMetadataArgs>());
+            set => _additionalMetadatas = value;
+        }
+
         /// <summary>
         /// Description of the resource.
         /// </summary>
@@ -214,12 +254,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
-
-        /// <summary>
-        /// Kms Key Id for encrypting the secret value
-        /// </summary>
-        [Input("kmsKeyId")]
-        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
         /// Name of the resource.
@@ -265,6 +299,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class SecretFileState : global::Pulumi.ResourceArgs
     {
+        [Input("additionalMetadatas")]
+        private InputList<Inputs.SecretFileAdditionalMetadataGetArgs>? _additionalMetadatas;
+
+        /// <summary>
+        /// Additional Metadata for the Secret
+        /// </summary>
+        public InputList<Inputs.SecretFileAdditionalMetadataGetArgs> AdditionalMetadatas
+        {
+            get => _additionalMetadatas ?? (_additionalMetadatas = new InputList<Inputs.SecretFileAdditionalMetadataGetArgs>());
+            set => _additionalMetadatas = value;
+        }
+
         /// <summary>
         /// Description of the resource.
         /// </summary>
@@ -282,12 +328,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
-
-        /// <summary>
-        /// Kms Key Id for encrypting the secret value
-        /// </summary>
-        [Input("kmsKeyId")]
-        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
         /// Name of the resource.

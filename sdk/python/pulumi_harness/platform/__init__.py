@@ -93,6 +93,7 @@ from .get_file_store_folder import *
 from .get_filters import *
 from .get_gcp_cloud_cost_connector import *
 from .get_gcp_connector import *
+from .get_gcp_projects import *
 from .get_gcp_secret_manager_connector import *
 from .get_git_connector import *
 from .get_github_connector import *
@@ -113,6 +114,9 @@ from .get_gitx_webhook import *
 from .get_har_registry import *
 from .get_helm_connector import *
 from .get_iacm_default_pipeline import *
+from .get_idp_catalog_entity import *
+from .get_idp_environment import *
+from .get_idp_environment_blueprint import *
 from .get_infra_module import *
 from .get_infra_module_testing import *
 from .get_infra_modules import *
@@ -191,6 +195,9 @@ from .gitx_webhook import *
 from .har_registry import *
 from .helm_connector import *
 from .iacm_default_pipeline import *
+from .idp_catalog_entity import *
+from .idp_environment import *
+from .idp_environment_blueprint import *
 from .infra_module import *
 from .infra_module_testing import *
 from .infra_variable_set import *
