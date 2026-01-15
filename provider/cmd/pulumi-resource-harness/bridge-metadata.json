@@ -14179,6 +14179,15 @@
             "harness_platform_iacm_default_pipeline": {
                 "current": "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline"
             },
+            "harness_platform_idp_catalog_entity": {
+                "current": "harness:platform/idpCatalogEntity:IdpCatalogEntity"
+            },
+            "harness_platform_idp_environment": {
+                "current": "harness:platform/idpEnvironment:IdpEnvironment"
+            },
+            "harness_platform_idp_environment_blueprint": {
+                "current": "harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint"
+            },
             "harness_platform_infra_module": {
                 "current": "harness:platform/infraModule:InfraModule",
                 "fields": {
@@ -14648,6 +14657,16 @@
             "harness_platform_secret_file": {
                 "current": "harness:platform/secretFile:SecretFile",
                 "fields": {
+                    "additional_metadata": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -17050,6 +17069,14 @@
                     }
                 }
             },
+            "harness_platform_gcp_projects": {
+                "current": "harness:platform/getGcpProjects:getGcpProjects",
+                "fields": {
+                    "projects": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_gitops_agent": {
                 "current": "harness:platform/getGitopsAgent:getGitopsAgent",
                 "fields": {
@@ -17441,6 +17468,15 @@
             },
             "harness_platform_iacm_default_pipeline": {
                 "current": "harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline"
+            },
+            "harness_platform_idp_catalog_entity": {
+                "current": "harness:platform/getIdpCatalogEntity:getIdpCatalogEntity"
+            },
+            "harness_platform_idp_environment": {
+                "current": "harness:platform/getIdpEnvironment:getIdpEnvironment"
+            },
+            "harness_platform_idp_environment_blueprint": {
+                "current": "harness:platform/getIdpEnvironmentBlueprint:getIdpEnvironmentBlueprint"
             },
             "harness_platform_infra_module": {
                 "current": "harness:platform/getInfraModule:getInfraModule",
@@ -17897,6 +17933,16 @@
             "harness_platform_secret_file": {
                 "current": "harness:platform/getSecretFile:getSecretFile",
                 "fields": {
+                    "additional_metadata": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
