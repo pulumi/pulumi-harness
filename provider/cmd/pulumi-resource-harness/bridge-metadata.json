@@ -14180,7 +14180,12 @@
                 "current": "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline"
             },
             "harness_platform_idp_catalog_entity": {
-                "current": "harness:platform/idpCatalogEntity:IdpCatalogEntity"
+                "current": "harness:platform/idpCatalogEntity:IdpCatalogEntity",
+                "fields": {
+                    "git_details": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "harness_platform_idp_environment": {
                 "current": "harness:platform/idpEnvironment:IdpEnvironment"
@@ -17470,7 +17475,12 @@
                 "current": "harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline"
             },
             "harness_platform_idp_catalog_entity": {
-                "current": "harness:platform/getIdpCatalogEntity:getIdpCatalogEntity"
+                "current": "harness:platform/getIdpCatalogEntity:getIdpCatalogEntity",
+                "fields": {
+                    "git_details": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_platform_idp_environment": {
                 "current": "harness:platform/getIdpEnvironment:getIdpEnvironment"
