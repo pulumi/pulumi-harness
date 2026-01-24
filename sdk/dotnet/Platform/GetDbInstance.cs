@@ -130,7 +130,7 @@ namespace Pulumi.Harness.Platform
         private Dictionary<string, string>? _substituteProperties;
 
         /// <summary>
-        /// The properties to substitute in changelog/migration script
+        /// The properties to substitute in changelog migration script
         /// </summary>
         public Dictionary<string, string> SubstituteProperties
         {
@@ -180,7 +180,7 @@ namespace Pulumi.Harness.Platform
         private InputMap<string>? _substituteProperties;
 
         /// <summary>
-        /// The properties to substitute in changelog/migration script
+        /// The properties to substitute in changelog migration script
         /// </summary>
         public InputMap<string> SubstituteProperties
         {
@@ -239,7 +239,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Schema;
         /// <summary>
-        /// The properties to substitute in changelog/migration script
+        /// The properties to substitute in changelog migration script
         /// </summary>
         public readonly ImmutableDictionary<string, string>? SubstituteProperties;
         /// <summary>

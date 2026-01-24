@@ -17,6 +17,46 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating, updating, and managing rule.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.governance.Rule;
+ * import com.pulumi.harness.governance.RuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Rule("example", RuleArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .cloudProvider("AWS/AZURE/GCP")
+ *             .description("description")
+ *             .rulesYaml("""
+ * policies:
+ *   - name: aws-list-ec2
+ *     resource: aws.ec2            """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * The `pulumi import` command can be used, for example:

@@ -31,7 +31,6 @@ class PipelineCentralNotificationRuleArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PipelineCentralNotificationRule resource.
-        :param pulumi.Input[_builtins.str] status: Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "notification_channel_refs", notification_channel_refs)
@@ -113,9 +112,6 @@ class PipelineCentralNotificationRuleArgs:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -142,7 +138,6 @@ class _PipelineCentralNotificationRuleState:
         :param pulumi.Input[_builtins.str] account: Account identifier associated with this notification channel.
         :param pulumi.Input[_builtins.int] created: Timestamp when the notification rule was created.
         :param pulumi.Input[_builtins.int] last_modified: Timestamp when the notification rule was last modified.
-        :param pulumi.Input[_builtins.str] status: Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
         """
         if account is not None:
             pulumi.set(__self__, "account", account)
@@ -269,9 +264,6 @@ class _PipelineCentralNotificationRuleState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -386,7 +378,6 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] status: Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
         """
         ...
     @overload
@@ -564,7 +555,6 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account: Account identifier associated with this notification channel.
         :param pulumi.Input[_builtins.int] created: Timestamp when the notification rule was created.
         :param pulumi.Input[_builtins.int] last_modified: Timestamp when the notification rule was last modified.
-        :param pulumi.Input[_builtins.str] status: Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -645,8 +635,5 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
-        """
         return pulumi.get(self, "status")
 

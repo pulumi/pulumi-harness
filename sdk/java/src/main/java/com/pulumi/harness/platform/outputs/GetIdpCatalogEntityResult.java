@@ -5,13 +5,20 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetIdpCatalogEntityGitDetail;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIdpCatalogEntityResult {
+    /**
+     * @return Contains Git Information for importing entities from Git
+     * 
+     */
+    private List<GetIdpCatalogEntityGitDetail> gitDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -44,6 +51,13 @@ public final class GetIdpCatalogEntityResult {
     private String yaml;
 
     private GetIdpCatalogEntityResult() {}
+    /**
+     * @return Contains Git Information for importing entities from Git
+     * 
+     */
+    public List<GetIdpCatalogEntityGitDetail> gitDetails() {
+        return this.gitDetails;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -96,6 +110,7 @@ public final class GetIdpCatalogEntityResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetIdpCatalogEntityGitDetail> gitDetails;
         private String id;
         private String identifier;
         private String kind;
@@ -105,6 +120,7 @@ public final class GetIdpCatalogEntityResult {
         public Builder() {}
         public Builder(GetIdpCatalogEntityResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.gitDetails = defaults.gitDetails;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.kind = defaults.kind;
@@ -113,6 +129,17 @@ public final class GetIdpCatalogEntityResult {
     	      this.yaml = defaults.yaml;
         }
 
+        @CustomType.Setter
+        public Builder gitDetails(List<GetIdpCatalogEntityGitDetail> gitDetails) {
+            if (gitDetails == null) {
+              throw new MissingRequiredPropertyException("GetIdpCatalogEntityResult", "gitDetails");
+            }
+            this.gitDetails = gitDetails;
+            return this;
+        }
+        public Builder gitDetails(GetIdpCatalogEntityGitDetail... gitDetails) {
+            return gitDetails(List.of(gitDetails));
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -159,6 +186,7 @@ public final class GetIdpCatalogEntityResult {
         }
         public GetIdpCatalogEntityResult build() {
             final var _resultValue = new GetIdpCatalogEntityResult();
+            _resultValue.gitDetails = gitDetails;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.kind = kind;

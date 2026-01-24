@@ -7,6 +7,28 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating, updating, and managing rule enforcement.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.governance.RuleEnforcement("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     cloudProvider: "AWS/AZURE/GCP",
+ *     ruleIds: ["rule_id1"],
+ *     ruleSetIds: ["rule_set_id1"],
+ *     executionSchedule: "0 0 * * * *",
+ *     executionTimezone: "UTC",
+ *     isEnabled: true,
+ *     targetAccounts: ["awsAccountId/azureSubscriptionId/gcpProjectId"],
+ *     targetRegions: ["us-east-1/eastus"],
+ *     isDryRun: false,
+ *     description: "description",
+ * });
+ * ```
+ *
  * ## Import
  *
  * The `pulumi import` command can be used, for example:

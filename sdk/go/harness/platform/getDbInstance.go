@@ -63,7 +63,7 @@ type LookupDbInstanceArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// The identifier of the parent database schema
 	Schema string `pulumi:"schema"`
-	// The properties to substitute in changelog/migration script
+	// The properties to substitute in changelog migration script
 	SubstituteProperties map[string]string `pulumi:"substituteProperties"`
 }
 
@@ -89,7 +89,7 @@ type LookupDbInstanceResult struct {
 	ProjectId string `pulumi:"projectId"`
 	// The identifier of the parent database schema
 	Schema string `pulumi:"schema"`
-	// The properties to substitute in changelog/migration script
+	// The properties to substitute in changelog migration script
 	SubstituteProperties map[string]string `pulumi:"substituteProperties"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
@@ -116,7 +116,7 @@ type LookupDbInstanceOutputArgs struct {
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// The identifier of the parent database schema
 	Schema pulumi.StringInput `pulumi:"schema"`
-	// The properties to substitute in changelog/migration script
+	// The properties to substitute in changelog migration script
 	SubstituteProperties pulumi.StringMapInput `pulumi:"substituteProperties"`
 }
 
@@ -189,7 +189,7 @@ func (o LookupDbInstanceResultOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbInstanceResult) string { return v.Schema }).(pulumi.StringOutput)
 }
 
-// The properties to substitute in changelog/migration script
+// The properties to substitute in changelog migration script
 func (o LookupDbInstanceResultOutput) SubstituteProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDbInstanceResult) map[string]string { return v.SubstituteProperties }).(pulumi.StringMapOutput)
 }

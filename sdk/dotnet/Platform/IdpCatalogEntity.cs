@@ -38,10 +38,22 @@ namespace Pulumi.Harness.Platform
     public partial class IdpCatalogEntity : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Contains Git Information for importing entities from Git
+        /// </summary>
+        [Output("gitDetails")]
+        public Output<Outputs.IdpCatalogEntityGitDetails> GitDetails { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag to set if importing from Git
+        /// </summary>
+        [Output("importFromGit")]
+        public Output<bool> ImportFromGit { get; private set; } = null!;
 
         /// <summary>
         /// Kind of the catalog entity
@@ -115,16 +127,28 @@ namespace Pulumi.Harness.Platform
     public sealed class IdpCatalogEntityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Contains Git Information for importing entities from Git
+        /// </summary>
+        [Input("gitDetails")]
+        public Input<Inputs.IdpCatalogEntityGitDetailsArgs>? GitDetails { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
+        /// Flag to set if importing from Git
+        /// </summary>
+        [Input("importFromGit")]
+        public Input<bool>? ImportFromGit { get; set; }
+
+        /// <summary>
         /// Kind of the catalog entity
         /// </summary>
-        [Input("kind", required: true)]
-        public Input<string> Kind { get; set; } = null!;
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// Unique identifier of the organization.
@@ -141,8 +165,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// YAML definition of the catalog entity
         /// </summary>
-        [Input("yaml", required: true)]
-        public Input<string> Yaml { get; set; } = null!;
+        [Input("yaml")]
+        public Input<string>? Yaml { get; set; }
 
         public IdpCatalogEntityArgs()
         {
@@ -153,10 +177,22 @@ namespace Pulumi.Harness.Platform
     public sealed class IdpCatalogEntityState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Contains Git Information for importing entities from Git
+        /// </summary>
+        [Input("gitDetails")]
+        public Input<Inputs.IdpCatalogEntityGitDetailsGetArgs>? GitDetails { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
+
+        /// <summary>
+        /// Flag to set if importing from Git
+        /// </summary>
+        [Input("importFromGit")]
+        public Input<bool>? ImportFromGit { get; set; }
 
         /// <summary>
         /// Kind of the catalog entity

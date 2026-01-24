@@ -14,17 +14,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGcpProjectsResult {
+    /**
+     * @return Identifier of the GCP cloud connector or secret manager connector.
+     * 
+     */
     private String connectorId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     private @Nullable String orgId;
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     private @Nullable String projectId;
     private List<GetGcpProjectsProject> projects;
 
     private GetGcpProjectsResult() {}
+    /**
+     * @return Identifier of the GCP cloud connector or secret manager connector.
+     * 
+     */
     public String connectorId() {
         return this.connectorId;
     }
@@ -35,9 +51,17 @@ public final class GetGcpProjectsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }

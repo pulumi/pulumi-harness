@@ -7617,18 +7617,273 @@ public final class PlatformFunctions {
     public static CompletableFuture<GetGcpConnectorResult> getGcpConnectorPlain(GetGcpConnectorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getGcpConnector:getGcpConnector", TypeShape.of(GetGcpConnectorResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGcpProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Example: List GCP projects using a GCP cloud connector
+     *         final var example = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_connector")
+     *             .build());
+     * 
+     *         // Example: List GCP projects using a GCP secret manager connector
+     *         final var exampleSecretManager = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_secret_manager_connector")
+     *             .build());
+     * 
+     *         // Example: List GCP projects with org and project scope
+     *         final var exampleScoped = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_connector")
+     *             .orgId("my_org")
+     *             .projectId("my_project")
+     *             .build());
+     * 
+     *         ctx.export("gcpProjects", example.projects());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetGcpProjectsResult> getGcpProjects(GetGcpProjectsArgs args) {
         return getGcpProjects(args, InvokeOptions.Empty);
     }
+    /**
+     * Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGcpProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Example: List GCP projects using a GCP cloud connector
+     *         final var example = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_connector")
+     *             .build());
+     * 
+     *         // Example: List GCP projects using a GCP secret manager connector
+     *         final var exampleSecretManager = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_secret_manager_connector")
+     *             .build());
+     * 
+     *         // Example: List GCP projects with org and project scope
+     *         final var exampleScoped = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_connector")
+     *             .orgId("my_org")
+     *             .projectId("my_project")
+     *             .build());
+     * 
+     *         ctx.export("gcpProjects", example.projects());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetGcpProjectsResult> getGcpProjectsPlain(GetGcpProjectsPlainArgs args) {
         return getGcpProjectsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGcpProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Example: List GCP projects using a GCP cloud connector
+     *         final var example = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_connector")
+     *             .build());
+     * 
+     *         // Example: List GCP projects using a GCP secret manager connector
+     *         final var exampleSecretManager = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_secret_manager_connector")
+     *             .build());
+     * 
+     *         // Example: List GCP projects with org and project scope
+     *         final var exampleScoped = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_connector")
+     *             .orgId("my_org")
+     *             .projectId("my_project")
+     *             .build());
+     * 
+     *         ctx.export("gcpProjects", example.projects());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetGcpProjectsResult> getGcpProjects(GetGcpProjectsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getGcpProjects:getGcpProjects", TypeShape.of(GetGcpProjectsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGcpProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Example: List GCP projects using a GCP cloud connector
+     *         final var example = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_connector")
+     *             .build());
+     * 
+     *         // Example: List GCP projects using a GCP secret manager connector
+     *         final var exampleSecretManager = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_secret_manager_connector")
+     *             .build());
+     * 
+     *         // Example: List GCP projects with org and project scope
+     *         final var exampleScoped = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_connector")
+     *             .orgId("my_org")
+     *             .projectId("my_project")
+     *             .build());
+     * 
+     *         ctx.export("gcpProjects", example.projects());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetGcpProjectsResult> getGcpProjects(GetGcpProjectsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getGcpProjects:getGcpProjects", TypeShape.of(GetGcpProjectsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGcpProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Example: List GCP projects using a GCP cloud connector
+     *         final var example = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_connector")
+     *             .build());
+     * 
+     *         // Example: List GCP projects using a GCP secret manager connector
+     *         final var exampleSecretManager = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_secret_manager_connector")
+     *             .build());
+     * 
+     *         // Example: List GCP projects with org and project scope
+     *         final var exampleScoped = PlatformFunctions.getGcpProjects(GetGcpProjectsArgs.builder()
+     *             .connectorId("my_gcp_connector")
+     *             .orgId("my_org")
+     *             .projectId("my_project")
+     *             .build());
+     * 
+     *         ctx.export("gcpProjects", example.projects());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetGcpProjectsResult> getGcpProjectsPlain(GetGcpProjectsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getGcpProjects:getGcpProjects", TypeShape.of(GetGcpProjectsResult.class), args, Utilities.withVersion(options));
     }
@@ -9968,35 +10223,35 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invokeAsync("harness:platform/getGitopsRepository:getGitopsRepository", TypeShape.of(GetGitopsRepositoryResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Resource for creating a Harness pipeline.
+     * Data source for retrieving a Harness GitX Webhook.
      * 
      */
     public static Output<GetGitxWebhookResult> getGitxWebhook(GetGitxWebhookArgs args) {
         return getGitxWebhook(args, InvokeOptions.Empty);
     }
     /**
-     * Resource for creating a Harness pipeline.
+     * Data source for retrieving a Harness GitX Webhook.
      * 
      */
     public static CompletableFuture<GetGitxWebhookResult> getGitxWebhookPlain(GetGitxWebhookPlainArgs args) {
         return getGitxWebhookPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Resource for creating a Harness pipeline.
+     * Data source for retrieving a Harness GitX Webhook.
      * 
      */
     public static Output<GetGitxWebhookResult> getGitxWebhook(GetGitxWebhookArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getGitxWebhook:getGitxWebhook", TypeShape.of(GetGitxWebhookResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Resource for creating a Harness pipeline.
+     * Data source for retrieving a Harness GitX Webhook.
      * 
      */
     public static Output<GetGitxWebhookResult> getGitxWebhook(GetGitxWebhookArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getGitxWebhook:getGitxWebhook", TypeShape.of(GetGitxWebhookResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Resource for creating a Harness pipeline.
+     * Data source for retrieving a Harness GitX Webhook.
      * 
      */
     public static CompletableFuture<GetGitxWebhookResult> getGitxWebhookPlain(GetGitxWebhookPlainArgs args, InvokeOptions options) {
@@ -10812,34 +11067,6 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetInfraModulesResult> getInfraModules() {
         return getInfraModules(InvokeArgs.Empty, InvokeOptions.Empty);
@@ -10848,34 +11075,6 @@ public final class PlatformFunctions {
      * Data source for retrieving a list of modules from the module registry.
      * 
      * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public static CompletableFuture<GetInfraModulesResult> getInfraModulesPlain() {
@@ -10886,34 +11085,6 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetInfraModulesResult> getInfraModules(InvokeArgs args) {
         return getInfraModules(args, InvokeOptions.Empty);
@@ -10922,34 +11093,6 @@ public final class PlatformFunctions {
      * Data source for retrieving a list of modules from the module registry.
      * 
      * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public static CompletableFuture<GetInfraModulesResult> getInfraModulesPlain(InvokeArgs args) {
@@ -10960,34 +11103,6 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetInfraModulesResult> getInfraModules(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getInfraModules:getInfraModules", TypeShape.of(GetInfraModulesResult.class), args, Utilities.withVersion(options));
@@ -10997,34 +11112,6 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetInfraModulesResult> getInfraModules(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getInfraModules:getInfraModules", TypeShape.of(GetInfraModulesResult.class), args, Utilities.withVersion(options));
@@ -11033,34 +11120,6 @@ public final class PlatformFunctions {
      * Data source for retrieving a list of modules from the module registry.
      * 
      * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = PlatformFunctions.getInfraModules(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public static CompletableFuture<GetInfraModulesResult> getInfraModulesPlain(InvokeArgs args, InvokeOptions options) {

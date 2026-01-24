@@ -148,7 +148,7 @@ class GetDbInstanceResult:
     @pulumi.getter(name="substituteProperties")
     def substitute_properties(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        The properties to substitute in changelog/migration script
+        The properties to substitute in changelog migration script
         """
         return pulumi.get(self, "substitute_properties")
 
@@ -209,7 +209,7 @@ def get_db_instance(identifier: Optional[_builtins.str] = None,
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str schema: The identifier of the parent database schema
-    :param Mapping[str, _builtins.str] substitute_properties: The properties to substitute in changelog/migration script
+    :param Mapping[str, _builtins.str] substitute_properties: The properties to substitute in changelog migration script
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -262,7 +262,7 @@ def get_db_instance_output(identifier: Optional[pulumi.Input[_builtins.str]] = N
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str schema: The identifier of the parent database schema
-    :param Mapping[str, _builtins.str] substitute_properties: The properties to substitute in changelog/migration script
+    :param Mapping[str, _builtins.str] substitute_properties: The properties to substitute in changelog migration script
     """
     __args__ = dict()
     __args__['identifier'] = identifier

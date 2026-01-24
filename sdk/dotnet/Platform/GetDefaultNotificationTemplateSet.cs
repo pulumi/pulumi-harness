@@ -75,9 +75,15 @@ namespace Pulumi.Harness.Platform
         [Input("notificationEntity", required: true)]
         public string NotificationEntity { get; set; } = null!;
 
+        /// <summary>
+        /// Organization identifier
+        /// </summary>
         [Input("org")]
         public string? Org { get; set; }
 
+        /// <summary>
+        /// Project identifier
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
@@ -143,9 +149,15 @@ namespace Pulumi.Harness.Platform
         [Input("notificationEntity", required: true)]
         public Input<string> NotificationEntity { get; set; } = null!;
 
+        /// <summary>
+        /// Organization identifier
+        /// </summary>
         [Input("org")]
         public Input<string>? Org { get; set; }
 
+        /// <summary>
+        /// Project identifier
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -207,7 +219,13 @@ namespace Pulumi.Harness.Platform
         /// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
         /// </summary>
         public readonly string NotificationEntity;
+        /// <summary>
+        /// Organization identifier
+        /// </summary>
         public readonly string? Org;
+        /// <summary>
+        /// Project identifier
+        /// </summary>
         public readonly string? Project;
         /// <summary>
         /// Key-value tags

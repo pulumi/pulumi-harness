@@ -38,8 +38,12 @@ import (
 type IdpCatalogEntity struct {
 	pulumi.CustomResourceState
 
+	// Contains Git Information for importing entities from Git
+	GitDetails IdpCatalogEntityGitDetailsOutput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Flag to set if importing from Git
+	ImportFromGit pulumi.BoolOutput `pulumi:"importFromGit"`
 	// Kind of the catalog entity
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Unique identifier of the organization.
@@ -59,12 +63,6 @@ func NewIdpCatalogEntity(ctx *pulumi.Context,
 
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
-	if args.Kind == nil {
-		return nil, errors.New("invalid value for required argument 'Kind'")
-	}
-	if args.Yaml == nil {
-		return nil, errors.New("invalid value for required argument 'Yaml'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IdpCatalogEntity
@@ -89,8 +87,12 @@ func GetIdpCatalogEntity(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IdpCatalogEntity resources.
 type idpCatalogEntityState struct {
+	// Contains Git Information for importing entities from Git
+	GitDetails *IdpCatalogEntityGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
+	// Flag to set if importing from Git
+	ImportFromGit *bool `pulumi:"importFromGit"`
 	// Kind of the catalog entity
 	Kind *string `pulumi:"kind"`
 	// Unique identifier of the organization.
@@ -102,8 +104,12 @@ type idpCatalogEntityState struct {
 }
 
 type IdpCatalogEntityState struct {
+	// Contains Git Information for importing entities from Git
+	GitDetails IdpCatalogEntityGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
+	// Flag to set if importing from Git
+	ImportFromGit pulumi.BoolPtrInput
 	// Kind of the catalog entity
 	Kind pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -119,30 +125,38 @@ func (IdpCatalogEntityState) ElementType() reflect.Type {
 }
 
 type idpCatalogEntityArgs struct {
+	// Contains Git Information for importing entities from Git
+	GitDetails *IdpCatalogEntityGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
+	// Flag to set if importing from Git
+	ImportFromGit *bool `pulumi:"importFromGit"`
 	// Kind of the catalog entity
-	Kind string `pulumi:"kind"`
+	Kind *string `pulumi:"kind"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// YAML definition of the catalog entity
-	Yaml string `pulumi:"yaml"`
+	Yaml *string `pulumi:"yaml"`
 }
 
 // The set of arguments for constructing a IdpCatalogEntity resource.
 type IdpCatalogEntityArgs struct {
+	// Contains Git Information for importing entities from Git
+	GitDetails IdpCatalogEntityGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
+	// Flag to set if importing from Git
+	ImportFromGit pulumi.BoolPtrInput
 	// Kind of the catalog entity
-	Kind pulumi.StringInput
+	Kind pulumi.StringPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// YAML definition of the catalog entity
-	Yaml pulumi.StringInput
+	Yaml pulumi.StringPtrInput
 }
 
 func (IdpCatalogEntityArgs) ElementType() reflect.Type {
@@ -232,9 +246,19 @@ func (o IdpCatalogEntityOutput) ToIdpCatalogEntityOutputWithContext(ctx context.
 	return o
 }
 
+// Contains Git Information for importing entities from Git
+func (o IdpCatalogEntityOutput) GitDetails() IdpCatalogEntityGitDetailsOutput {
+	return o.ApplyT(func(v *IdpCatalogEntity) IdpCatalogEntityGitDetailsOutput { return v.GitDetails }).(IdpCatalogEntityGitDetailsOutput)
+}
+
 // Unique identifier of the resource.
 func (o IdpCatalogEntityOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdpCatalogEntity) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Flag to set if importing from Git
+func (o IdpCatalogEntityOutput) ImportFromGit() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IdpCatalogEntity) pulumi.BoolOutput { return v.ImportFromGit }).(pulumi.BoolOutput)
 }
 
 // Kind of the catalog entity

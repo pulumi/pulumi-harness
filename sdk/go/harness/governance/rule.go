@@ -14,6 +14,36 @@ import (
 
 // Resource for creating, updating, and managing rule.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/governance"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := governance.NewRule(ctx, "example", &governance.RuleArgs{
+//				Identifier:    "identifier",
+//				Name:          pulumi.String("name"),
+//				CloudProvider: pulumi.String("AWS/AZURE/GCP"),
+//				Description:   pulumi.String("description"),
+//				RulesYaml:     pulumi.String("policies:\n  - name: aws-list-ec2\n    resource: aws.ec2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The `pulumi import` command can be used, for example:

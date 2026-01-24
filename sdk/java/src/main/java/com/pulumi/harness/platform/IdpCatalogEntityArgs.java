@@ -6,6 +6,8 @@ package com.pulumi.harness.platform;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.IdpCatalogEntityGitDetailsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class IdpCatalogEntityArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final IdpCatalogEntityArgs Empty = new IdpCatalogEntityArgs();
+
+    /**
+     * Contains Git Information for importing entities from Git
+     * 
+     */
+    @Import(name="gitDetails")
+    private @Nullable Output<IdpCatalogEntityGitDetailsArgs> gitDetails;
+
+    /**
+     * @return Contains Git Information for importing entities from Git
+     * 
+     */
+    public Optional<Output<IdpCatalogEntityGitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -32,18 +49,33 @@ public final class IdpCatalogEntityArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Flag to set if importing from Git
+     * 
+     */
+    @Import(name="importFromGit")
+    private @Nullable Output<Boolean> importFromGit;
+
+    /**
+     * @return Flag to set if importing from Git
+     * 
+     */
+    public Optional<Output<Boolean>> importFromGit() {
+        return Optional.ofNullable(this.importFromGit);
+    }
+
+    /**
      * Kind of the catalog entity
      * 
      */
-    @Import(name="kind", required=true)
-    private Output<String> kind;
+    @Import(name="kind")
+    private @Nullable Output<String> kind;
 
     /**
      * @return Kind of the catalog entity
      * 
      */
-    public Output<String> kind() {
-        return this.kind;
+    public Optional<Output<String>> kind() {
+        return Optional.ofNullable(this.kind);
     }
 
     /**
@@ -80,21 +112,23 @@ public final class IdpCatalogEntityArgs extends com.pulumi.resources.ResourceArg
      * YAML definition of the catalog entity
      * 
      */
-    @Import(name="yaml", required=true)
-    private Output<String> yaml;
+    @Import(name="yaml")
+    private @Nullable Output<String> yaml;
 
     /**
      * @return YAML definition of the catalog entity
      * 
      */
-    public Output<String> yaml() {
-        return this.yaml;
+    public Optional<Output<String>> yaml() {
+        return Optional.ofNullable(this.yaml);
     }
 
     private IdpCatalogEntityArgs() {}
 
     private IdpCatalogEntityArgs(IdpCatalogEntityArgs $) {
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
+        this.importFromGit = $.importFromGit;
         this.kind = $.kind;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -120,6 +154,27 @@ public final class IdpCatalogEntityArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param gitDetails Contains Git Information for importing entities from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(@Nullable Output<IdpCatalogEntityGitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        /**
+         * @param gitDetails Contains Git Information for importing entities from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(IdpCatalogEntityGitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
+        }
+
+        /**
          * @param identifier Unique identifier of the resource.
          * 
          * @return builder
@@ -141,12 +196,33 @@ public final class IdpCatalogEntityArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param importFromGit Flag to set if importing from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(@Nullable Output<Boolean> importFromGit) {
+            $.importFromGit = importFromGit;
+            return this;
+        }
+
+        /**
+         * @param importFromGit Flag to set if importing from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(Boolean importFromGit) {
+            return importFromGit(Output.of(importFromGit));
+        }
+
+        /**
          * @param kind Kind of the catalog entity
          * 
          * @return builder
          * 
          */
-        public Builder kind(Output<String> kind) {
+        public Builder kind(@Nullable Output<String> kind) {
             $.kind = kind;
             return this;
         }
@@ -209,7 +285,7 @@ public final class IdpCatalogEntityArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder yaml(Output<String> yaml) {
+        public Builder yaml(@Nullable Output<String> yaml) {
             $.yaml = yaml;
             return this;
         }
@@ -227,12 +303,6 @@ public final class IdpCatalogEntityArgs extends com.pulumi.resources.ResourceArg
         public IdpCatalogEntityArgs build() {
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("IdpCatalogEntityArgs", "identifier");
-            }
-            if ($.kind == null) {
-                throw new MissingRequiredPropertyException("IdpCatalogEntityArgs", "kind");
-            }
-            if ($.yaml == null) {
-                throw new MissingRequiredPropertyException("IdpCatalogEntityArgs", "yaml");
             }
             return $;
         }

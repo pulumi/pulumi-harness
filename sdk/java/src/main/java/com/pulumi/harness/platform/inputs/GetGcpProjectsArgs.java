@@ -16,23 +16,47 @@ public final class GetGcpProjectsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetGcpProjectsArgs Empty = new GetGcpProjectsArgs();
 
+    /**
+     * Identifier of the GCP cloud connector or secret manager connector.
+     * 
+     */
     @Import(name="connectorId", required=true)
     private Output<String> connectorId;
 
+    /**
+     * @return Identifier of the GCP cloud connector or secret manager connector.
+     * 
+     */
     public Output<String> connectorId() {
         return this.connectorId;
     }
 
+    /**
+     * Unique identifier of the organization.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Unique identifier of the project.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -63,29 +87,65 @@ public final class GetGcpProjectsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetGcpProjectsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param connectorId Identifier of the GCP cloud connector or secret manager connector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectorId(Output<String> connectorId) {
             $.connectorId = connectorId;
             return this;
         }
 
+        /**
+         * @param connectorId Identifier of the GCP cloud connector or secret manager connector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectorId(String connectorId) {
             return connectorId(Output.of(connectorId));
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }

@@ -65,7 +65,7 @@ public final class GetDbInstanceResult {
      */
     private String schema;
     /**
-     * @return The properties to substitute in changelog/migration script
+     * @return The properties to substitute in changelog migration script
      * 
      */
     private @Nullable Map<String,String> substituteProperties;
@@ -147,7 +147,7 @@ public final class GetDbInstanceResult {
         return this.schema;
     }
     /**
-     * @return The properties to substitute in changelog/migration script
+     * @return The properties to substitute in changelog migration script
      * 
      */
     public Map<String,String> substituteProperties() {

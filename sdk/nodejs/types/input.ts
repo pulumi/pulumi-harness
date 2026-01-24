@@ -5672,6 +5672,9 @@ export namespace platform {
     export interface GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
         entityIdentifiers?: string[];
         notificationEntity: string;
+        /**
+         * The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+         */
         notificationEvent: string;
         notificationEventDatas?: inputs.platform.GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData[];
     }
@@ -5679,6 +5682,9 @@ export namespace platform {
     export interface GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs {
         entityIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
         notificationEntity: pulumi.Input<string>;
+        /**
+         * The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+         */
         notificationEvent: pulumi.Input<string>;
         notificationEventDatas?: pulumi.Input<pulumi.Input<inputs.platform.GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs>[]>;
     }
@@ -34089,6 +34095,49 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface IdpCatalogEntityGitDetails {
+        /**
+         * Name of the default branch (this checks out a new branch titled by branch_name).
+         */
+        baseBranch?: pulumi.Input<string>;
+        /**
+         * Name of the branch.
+         */
+        branchName?: pulumi.Input<string>;
+        /**
+         * Commit message used for the merge commit.
+         */
+        commitMessage?: pulumi.Input<string>;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef?: pulumi.Input<string>;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath?: pulumi.Input<string>;
+        /**
+         * If the repo is a Harness Code repo
+         */
+        isHarnessCodeRepo?: pulumi.Input<boolean>;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+         */
+        lastCommitId?: pulumi.Input<string>;
+        /**
+         * Last object identifier (for Github). To be provided only when updating Pipeline.
+         */
+        lastObjectId?: pulumi.Input<string>;
+        /**
+         * Name of the repository.
+         */
+        repoName?: pulumi.Input<string>;
+        /**
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         */
+        storeType?: pulumi.Input<string>;
     }
 
     export interface InfraModuleTestingTestingMetadata {

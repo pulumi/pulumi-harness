@@ -15,19 +15,6 @@ namespace Pulumi.Harness.Platform
         /// Data source for retrieving a list of modules from the module registry.
         /// 
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var all = Harness.Platform.GetInfraModules.Invoke();
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetInfraModulesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInfraModulesResult>("harness:platform/getInfraModules:getInfraModules", InvokeArgs.Empty, options.WithDefaults());
@@ -36,19 +23,6 @@ namespace Pulumi.Harness.Platform
         /// Data source for retrieving a list of modules from the module registry.
         /// 
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var all = Harness.Platform.GetInfraModules.Invoke();
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetInfraModulesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInfraModulesResult>("harness:platform/getInfraModules:getInfraModules", InvokeArgs.Empty, options.WithDefaults());
@@ -57,19 +31,6 @@ namespace Pulumi.Harness.Platform
         /// Data source for retrieving a list of modules from the module registry.
         /// 
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var all = Harness.Platform.GetInfraModules.Invoke();
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetInfraModulesResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInfraModulesResult>("harness:platform/getInfraModules:getInfraModules", InvokeArgs.Empty, options.WithDefaults());

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Harness pipeline.
+ * Resource for creating a Harness GitX Webhook.
  *
  * ## Import
  *

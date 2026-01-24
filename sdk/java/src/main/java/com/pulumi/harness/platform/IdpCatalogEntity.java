@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.IdpCatalogEntityArgs;
 import com.pulumi.harness.platform.inputs.IdpCatalogEntityState;
+import com.pulumi.harness.platform.outputs.IdpCatalogEntityGitDetails;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -43,6 +45,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/idpCatalogEntity:IdpCatalogEntity")
 public class IdpCatalogEntity extends com.pulumi.resources.CustomResource {
     /**
+     * Contains Git Information for importing entities from Git
+     * 
+     */
+    @Export(name="gitDetails", refs={IdpCatalogEntityGitDetails.class}, tree="[0]")
+    private Output<IdpCatalogEntityGitDetails> gitDetails;
+
+    /**
+     * @return Contains Git Information for importing entities from Git
+     * 
+     */
+    public Output<IdpCatalogEntityGitDetails> gitDetails() {
+        return this.gitDetails;
+    }
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -55,6 +71,20 @@ public class IdpCatalogEntity extends com.pulumi.resources.CustomResource {
      */
     public Output<String> identifier() {
         return this.identifier;
+    }
+    /**
+     * Flag to set if importing from Git
+     * 
+     */
+    @Export(name="importFromGit", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> importFromGit;
+
+    /**
+     * @return Flag to set if importing from Git
+     * 
+     */
+    public Output<Boolean> importFromGit() {
+        return this.importFromGit;
     }
     /**
      * Kind of the catalog entity

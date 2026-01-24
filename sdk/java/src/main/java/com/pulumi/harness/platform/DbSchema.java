@@ -202,14 +202,14 @@ public class DbSchema extends com.pulumi.resources.CustomResource {
         return this.identifier;
     }
     /**
-     * DB migration tool type. Valid values are any one of: Liquibase, Flyway
+     * DB Migration tool type. Valid values are: Liquibase, Flyway
      * 
      */
     @Export(name="migrationType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> migrationType;
 
     /**
-     * @return DB migration tool type. Valid values are any one of: Liquibase, Flyway
+     * @return DB Migration tool type. Valid values are: Liquibase, Flyway
      * 
      */
     public Output<Optional<String>> migrationType() {

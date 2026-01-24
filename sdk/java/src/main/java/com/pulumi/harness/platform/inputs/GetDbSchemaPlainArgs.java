@@ -31,14 +31,14 @@ public final class GetDbSchemaPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     * DB Migration tool type. Valid values are: Liquibase, Flyway
      * 
      */
     @Import(name="migrationType")
     private @Nullable String migrationType;
 
     /**
-     * @return DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     * @return DB Migration tool type. Valid values are: Liquibase, Flyway
      * 
      */
     public Optional<String> migrationType() {
@@ -146,7 +146,7 @@ public final class GetDbSchemaPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param migrationType DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+         * @param migrationType DB Migration tool type. Valid values are: Liquibase, Flyway
          * 
          * @return builder
          * 

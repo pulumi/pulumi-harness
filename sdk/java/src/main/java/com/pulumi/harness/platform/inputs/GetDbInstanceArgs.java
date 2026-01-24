@@ -93,14 +93,14 @@ public final class GetDbInstanceArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The properties to substitute in changelog/migration script
+     * The properties to substitute in changelog migration script
      * 
      */
     @Import(name="substituteProperties")
     private @Nullable Output<Map<String,String>> substituteProperties;
 
     /**
-     * @return The properties to substitute in changelog/migration script
+     * @return The properties to substitute in changelog migration script
      * 
      */
     public Optional<Output<Map<String,String>>> substituteProperties() {
@@ -242,7 +242,7 @@ public final class GetDbInstanceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param substituteProperties The properties to substitute in changelog/migration script
+         * @param substituteProperties The properties to substitute in changelog migration script
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class GetDbInstanceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param substituteProperties The properties to substitute in changelog/migration script
+         * @param substituteProperties The properties to substitute in changelog migration script
          * 
          * @return builder
          * 

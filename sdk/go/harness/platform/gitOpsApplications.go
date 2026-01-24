@@ -94,6 +94,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // # Import a Project level Gitops Application
 //
 // ```sh

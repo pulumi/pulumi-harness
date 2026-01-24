@@ -12,19 +12,19 @@ namespace Pulumi.Harness.Platform
     public static class GetGitxWebhook
     {
         /// <summary>
-        /// Resource for creating a Harness pipeline.
+        /// Data source for retrieving a Harness GitX Webhook.
         /// </summary>
         public static Task<GetGitxWebhookResult> InvokeAsync(GetGitxWebhookArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitxWebhookResult>("harness:platform/getGitxWebhook:getGitxWebhook", args ?? new GetGitxWebhookArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Resource for creating a Harness pipeline.
+        /// Data source for retrieving a Harness GitX Webhook.
         /// </summary>
         public static Output<GetGitxWebhookResult> Invoke(GetGitxWebhookInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitxWebhookResult>("harness:platform/getGitxWebhook:getGitxWebhook", args ?? new GetGitxWebhookInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Resource for creating a Harness pipeline.
+        /// Data source for retrieving a Harness GitX Webhook.
         /// </summary>
         public static Output<GetGitxWebhookResult> Invoke(GetGitxWebhookInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitxWebhookResult>("harness:platform/getGitxWebhook:getGitxWebhook", args ?? new GetGitxWebhookInvokeArgs(), options.WithDefaults());

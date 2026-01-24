@@ -36,6 +36,8 @@ type LookupIdpCatalogEntityArgs struct {
 
 // A collection of values returned by getIdpCatalogEntity.
 type LookupIdpCatalogEntityResult struct {
+	// Contains Git Information for importing entities from Git
+	GitDetails []GetIdpCatalogEntityGitDetail `pulumi:"gitDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
@@ -88,6 +90,11 @@ func (o LookupIdpCatalogEntityResultOutput) ToLookupIdpCatalogEntityResultOutput
 
 func (o LookupIdpCatalogEntityResultOutput) ToLookupIdpCatalogEntityResultOutputWithContext(ctx context.Context) LookupIdpCatalogEntityResultOutput {
 	return o
+}
+
+// Contains Git Information for importing entities from Git
+func (o LookupIdpCatalogEntityResultOutput) GitDetails() GetIdpCatalogEntityGitDetailArrayOutput {
+	return o.ApplyT(func(v LookupIdpCatalogEntityResult) []GetIdpCatalogEntityGitDetail { return v.GitDetails }).(GetIdpCatalogEntityGitDetailArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -163,7 +163,7 @@ export class DbSchema extends pulumi.CustomResource {
      */
     declare public readonly identifier: pulumi.Output<string>;
     /**
-     * DB migration tool type. Valid values are any one of: Liquibase, Flyway
+     * DB Migration tool type. Valid values are: Liquibase, Flyway
      */
     declare public readonly migrationType: pulumi.Output<string | undefined>;
     /**
@@ -264,7 +264,7 @@ export interface DbSchemaState {
      */
     identifier?: pulumi.Input<string>;
     /**
-     * DB migration tool type. Valid values are any one of: Liquibase, Flyway
+     * DB Migration tool type. Valid values are: Liquibase, Flyway
      */
     migrationType?: pulumi.Input<string>;
     /**
@@ -314,7 +314,7 @@ export interface DbSchemaArgs {
      */
     identifier: pulumi.Input<string>;
     /**
-     * DB migration tool type. Valid values are any one of: Liquibase, Flyway
+     * DB Migration tool type. Valid values are: Liquibase, Flyway
      */
     migrationType?: pulumi.Input<string>;
     /**

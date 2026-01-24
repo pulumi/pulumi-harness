@@ -12,6 +12,47 @@ namespace Pulumi.Harness.Governance
     /// <summary>
     /// Resource for creating, updating, and managing rule enforcement.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Governance.RuleEnforcement("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         CloudProvider = "AWS/AZURE/GCP",
+    ///         RuleIds = new[]
+    ///         {
+    ///             "rule_id1",
+    ///         },
+    ///         RuleSetIds = new[]
+    ///         {
+    ///             "rule_set_id1",
+    ///         },
+    ///         ExecutionSchedule = "0 0 * * * *",
+    ///         ExecutionTimezone = "UTC",
+    ///         IsEnabled = true,
+    ///         TargetAccounts = new[]
+    ///         {
+    ///             "awsAccountId/azureSubscriptionId/gcpProjectId",
+    ///         },
+    ///         TargetRegions = new[]
+    ///         {
+    ///             "us-east-1/eastus",
+    ///         },
+    ///         IsDryRun = false,
+    ///         Description = "description",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The `pulumi import` command can be used, for example:

@@ -129,7 +129,7 @@ def get_gitx_webhook(description: Optional[_builtins.str] = None,
                      tags: Optional[Sequence[_builtins.str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitxWebhookResult:
     """
-    Resource for creating a Harness pipeline.
+    Data source for retrieving a Harness GitX Webhook.
 
 
     :param _builtins.str description: Description of the resource.
@@ -165,7 +165,7 @@ def get_gitx_webhook_output(description: Optional[pulumi.Input[Optional[_builtin
                             tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitxWebhookResult]:
     """
-    Resource for creating a Harness pipeline.
+    Data source for retrieving a Harness GitX Webhook.
 
 
     :param _builtins.str description: Description of the resource.

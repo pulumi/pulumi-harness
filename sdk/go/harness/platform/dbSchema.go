@@ -162,7 +162,7 @@ type DbSchema struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+	// DB Migration tool type. Valid values are: Liquibase, Flyway
 	MigrationType pulumi.StringPtrOutput `pulumi:"migrationType"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -225,7 +225,7 @@ type dbSchemaState struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+	// DB Migration tool type. Valid values are: Liquibase, Flyway
 	MigrationType *string `pulumi:"migrationType"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
@@ -250,7 +250,7 @@ type DbSchemaState struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
-	// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+	// DB Migration tool type. Valid values are: Liquibase, Flyway
 	MigrationType pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
@@ -279,7 +279,7 @@ type dbSchemaArgs struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+	// DB Migration tool type. Valid values are: Liquibase, Flyway
 	MigrationType *string `pulumi:"migrationType"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
@@ -305,7 +305,7 @@ type DbSchemaArgs struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
-	// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+	// DB Migration tool type. Valid values are: Liquibase, Flyway
 	MigrationType pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
@@ -425,7 +425,7 @@ func (o DbSchemaOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbSchema) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// DB migration tool type. Valid values are any one of: Liquibase, Flyway
+// DB Migration tool type. Valid values are: Liquibase, Flyway
 func (o DbSchemaOutput) MigrationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbSchema) pulumi.StringPtrOutput { return v.MigrationType }).(pulumi.StringPtrOutput)
 }

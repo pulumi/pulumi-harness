@@ -367,7 +367,7 @@ class GitxWebhook(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness pipeline.
+        Resource for creating a Harness GitX Webhook.
 
         ## Import
 
@@ -411,7 +411,7 @@ class GitxWebhook(pulumi.CustomResource):
                  args: GitxWebhookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness pipeline.
+        Resource for creating a Harness GitX Webhook.
 
         ## Import
 

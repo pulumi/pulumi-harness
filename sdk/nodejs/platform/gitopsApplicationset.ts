@@ -195,6 +195,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import gitOps applicationset with account level agent, agent id has account prefix #
  *
  * ```sh

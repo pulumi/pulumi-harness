@@ -5,6 +5,8 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.IdpCatalogEntityGitDetailsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +16,21 @@ import javax.annotation.Nullable;
 public final class IdpCatalogEntityState extends com.pulumi.resources.ResourceArgs {
 
     public static final IdpCatalogEntityState Empty = new IdpCatalogEntityState();
+
+    /**
+     * Contains Git Information for importing entities from Git
+     * 
+     */
+    @Import(name="gitDetails")
+    private @Nullable Output<IdpCatalogEntityGitDetailsArgs> gitDetails;
+
+    /**
+     * @return Contains Git Information for importing entities from Git
+     * 
+     */
+    public Optional<Output<IdpCatalogEntityGitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -28,6 +45,21 @@ public final class IdpCatalogEntityState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> identifier() {
         return Optional.ofNullable(this.identifier);
+    }
+
+    /**
+     * Flag to set if importing from Git
+     * 
+     */
+    @Import(name="importFromGit")
+    private @Nullable Output<Boolean> importFromGit;
+
+    /**
+     * @return Flag to set if importing from Git
+     * 
+     */
+    public Optional<Output<Boolean>> importFromGit() {
+        return Optional.ofNullable(this.importFromGit);
     }
 
     /**
@@ -93,7 +125,9 @@ public final class IdpCatalogEntityState extends com.pulumi.resources.ResourceAr
     private IdpCatalogEntityState() {}
 
     private IdpCatalogEntityState(IdpCatalogEntityState $) {
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
+        this.importFromGit = $.importFromGit;
         this.kind = $.kind;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -119,6 +153,27 @@ public final class IdpCatalogEntityState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param gitDetails Contains Git Information for importing entities from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(@Nullable Output<IdpCatalogEntityGitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        /**
+         * @param gitDetails Contains Git Information for importing entities from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(IdpCatalogEntityGitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
+        }
+
+        /**
          * @param identifier Unique identifier of the resource.
          * 
          * @return builder
@@ -137,6 +192,27 @@ public final class IdpCatalogEntityState extends com.pulumi.resources.ResourceAr
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
+        }
+
+        /**
+         * @param importFromGit Flag to set if importing from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(@Nullable Output<Boolean> importFromGit) {
+            $.importFromGit = importFromGit;
+            return this;
+        }
+
+        /**
+         * @param importFromGit Flag to set if importing from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(Boolean importFromGit) {
+            return importFromGit(Output.of(importFromGit));
         }
 
         /**

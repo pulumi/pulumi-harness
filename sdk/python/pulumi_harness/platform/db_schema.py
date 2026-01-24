@@ -39,7 +39,7 @@ class DbSchemaArgs:
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input['DbSchemaChangelogScriptArgs'] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[_builtins.str] migration_type: DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        :param pulumi.Input[_builtins.str] migration_type: DB Migration tool type. Valid values are: Liquibase, Flyway
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input['DbSchemaSchemaSourceArgs'] schema_source: Provides a connector and path at which to find the database schema representation
         :param pulumi.Input[_builtins.str] service: The service associated with schema
@@ -130,7 +130,7 @@ class DbSchemaArgs:
     @pulumi.getter(name="migrationType")
     def migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        DB Migration tool type. Valid values are: Liquibase, Flyway
         """
         return pulumi.get(self, "migration_type")
 
@@ -218,7 +218,7 @@ class _DbSchemaState:
         :param pulumi.Input['DbSchemaChangelogScriptArgs'] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] migration_type: DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        :param pulumi.Input[_builtins.str] migration_type: DB Migration tool type. Valid values are: Liquibase, Flyway
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -290,7 +290,7 @@ class _DbSchemaState:
     @pulumi.getter(name="migrationType")
     def migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        DB Migration tool type. Valid values are: Liquibase, Flyway
         """
         return pulumi.get(self, "migration_type")
 
@@ -517,7 +517,7 @@ class DbSchema(pulumi.CustomResource):
         :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] migration_type: DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        :param pulumi.Input[_builtins.str] migration_type: DB Migration tool type. Valid values are: Liquibase, Flyway
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -726,7 +726,7 @@ class DbSchema(pulumi.CustomResource):
         :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] migration_type: DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        :param pulumi.Input[_builtins.str] migration_type: DB Migration tool type. Valid values are: Liquibase, Flyway
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -780,7 +780,7 @@ class DbSchema(pulumi.CustomResource):
     @pulumi.getter(name="migrationType")
     def migration_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        DB migration tool type. Valid values are any one of: Liquibase, Flyway
+        DB Migration tool type. Valid values are: Liquibase, Flyway
         """
         return pulumi.get(self, "migration_type")
 

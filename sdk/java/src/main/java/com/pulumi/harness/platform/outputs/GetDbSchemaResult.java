@@ -36,7 +36,7 @@ public final class GetDbSchemaResult {
      */
     private String identifier;
     /**
-     * @return DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     * @return DB Migration tool type. Valid values are: Liquibase, Flyway
      * 
      */
     private @Nullable String migrationType;
@@ -106,7 +106,7 @@ public final class GetDbSchemaResult {
         return this.identifier;
     }
     /**
-     * @return DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     * @return DB Migration tool type. Valid values are: Liquibase, Flyway
      * 
      */
     public Optional<String> migrationType() {

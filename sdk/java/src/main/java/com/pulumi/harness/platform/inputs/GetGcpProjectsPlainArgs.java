@@ -15,23 +15,47 @@ public final class GetGcpProjectsPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetGcpProjectsPlainArgs Empty = new GetGcpProjectsPlainArgs();
 
+    /**
+     * Identifier of the GCP cloud connector or secret manager connector.
+     * 
+     */
     @Import(name="connectorId", required=true)
     private String connectorId;
 
+    /**
+     * @return Identifier of the GCP cloud connector or secret manager connector.
+     * 
+     */
     public String connectorId() {
         return this.connectorId;
     }
 
+    /**
+     * Unique identifier of the organization.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable String orgId;
 
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Unique identifier of the project.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable String projectId;
 
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -62,16 +86,34 @@ public final class GetGcpProjectsPlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetGcpProjectsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param connectorId Identifier of the GCP cloud connector or secret manager connector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectorId(String connectorId) {
             $.connectorId = connectorId;
             return this;
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;
