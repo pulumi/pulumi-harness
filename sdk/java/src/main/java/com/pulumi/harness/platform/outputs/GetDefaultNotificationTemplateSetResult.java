@@ -61,7 +61,15 @@ public final class GetDefaultNotificationTemplateSetResult {
      * 
      */
     private String notificationEntity;
+    /**
+     * @return Organization identifier
+     * 
+     */
     private @Nullable String org;
+    /**
+     * @return Project identifier
+     * 
+     */
     private @Nullable String project;
     /**
      * @return Key-value tags
@@ -133,9 +141,17 @@ public final class GetDefaultNotificationTemplateSetResult {
     public String notificationEntity() {
         return this.notificationEntity;
     }
+    /**
+     * @return Organization identifier
+     * 
+     */
     public Optional<String> org() {
         return Optional.ofNullable(this.org);
     }
+    /**
+     * @return Project identifier
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }

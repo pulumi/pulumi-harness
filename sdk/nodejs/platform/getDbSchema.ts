@@ -43,7 +43,7 @@ export interface GetDbSchemaArgs {
      */
     identifier: string;
     /**
-     * DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     * DB Migration tool type. Valid values are: Liquibase, Flyway
      */
     migrationType?: string;
     /**
@@ -85,7 +85,7 @@ export interface GetDbSchemaResult {
      */
     readonly identifier: string;
     /**
-     * DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     * DB Migration tool type. Valid values are: Liquibase, Flyway
      */
     readonly migrationType?: string;
     /**
@@ -154,7 +154,7 @@ export interface GetDbSchemaOutputArgs {
      */
     identifier: pulumi.Input<string>;
     /**
-     * DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+     * DB Migration tool type. Valid values are: Liquibase, Flyway
      */
     migrationType?: pulumi.Input<string>;
     /**

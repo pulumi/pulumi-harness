@@ -7,6 +7,23 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating, updating, and managing rule.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.governance.Rule("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     cloudProvider: "AWS/AZURE/GCP",
+ *     description: "description",
+ *     rulesYaml: `policies:
+ *   - name: aws-list-ec2
+ *     resource: aws.ec2`,
+ * });
+ * ```
+ *
  * ## Import
  *
  * The `pulumi import` command can be used, for example:

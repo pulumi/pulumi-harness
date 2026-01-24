@@ -108,7 +108,7 @@ export class DbInstance extends pulumi.CustomResource {
      */
     declare public readonly schema: pulumi.Output<string>;
     /**
-     * The properties to substitute in changelog/migration script
+     * The properties to substitute in changelog migration script
      */
     declare public readonly substituteProperties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -215,7 +215,7 @@ export interface DbInstanceState {
      */
     schema?: pulumi.Input<string>;
     /**
-     * The properties to substitute in changelog/migration script
+     * The properties to substitute in changelog migration script
      */
     substituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -265,7 +265,7 @@ export interface DbInstanceArgs {
      */
     schema: pulumi.Input<string>;
     /**
-     * The properties to substitute in changelog/migration script
+     * The properties to substitute in changelog migration script
      */
     substituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

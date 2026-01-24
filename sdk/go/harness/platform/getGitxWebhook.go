@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Harness pipeline.
+// Data source for retrieving a Harness GitX Webhook.
 func LookupGitxWebhook(ctx *pulumi.Context, args *LookupGitxWebhookArgs, opts ...pulumi.InvokeOption) (*LookupGitxWebhookResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGitxWebhookResult

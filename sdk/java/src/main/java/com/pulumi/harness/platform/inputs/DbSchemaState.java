@@ -64,14 +64,14 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * DB migration tool type. Valid values are any one of: Liquibase, Flyway
+     * DB Migration tool type. Valid values are: Liquibase, Flyway
      * 
      */
     @Import(name="migrationType")
     private @Nullable Output<String> migrationType;
 
     /**
-     * @return DB migration tool type. Valid values are any one of: Liquibase, Flyway
+     * @return DB Migration tool type. Valid values are: Liquibase, Flyway
      * 
      */
     public Optional<Output<String>> migrationType() {
@@ -281,7 +281,7 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param migrationType DB migration tool type. Valid values are any one of: Liquibase, Flyway
+         * @param migrationType DB Migration tool type. Valid values are: Liquibase, Flyway
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param migrationType DB migration tool type. Valid values are any one of: Liquibase, Flyway
+         * @param migrationType DB Migration tool type. Valid values are: Liquibase, Flyway
          * 
          * @return builder
          * 

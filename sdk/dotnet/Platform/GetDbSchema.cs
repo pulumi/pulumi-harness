@@ -100,7 +100,7 @@ namespace Pulumi.Harness.Platform
         public string Identifier { get; set; } = null!;
 
         /// <summary>
-        /// DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+        /// DB Migration tool type. Valid values are: Liquibase, Flyway
         /// </summary>
         [Input("migrationType")]
         public string? MigrationType { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+        /// DB Migration tool type. Valid values are: Liquibase, Flyway
         /// </summary>
         [Input("migrationType")]
         public Input<string>? MigrationType { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Identifier;
         /// <summary>
-        /// DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+        /// DB Migration tool type. Valid values are: Liquibase, Flyway
         /// </summary>
         public readonly string? MigrationType;
         /// <summary>

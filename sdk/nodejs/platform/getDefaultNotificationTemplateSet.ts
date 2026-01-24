@@ -52,7 +52,13 @@ export interface GetDefaultNotificationTemplateSetArgs {
      * Type of the entity (e.g. PIPELINE, SERVICE, etc.)
      */
     notificationEntity: string;
+    /**
+     * Organization identifier
+     */
     org?: string;
+    /**
+     * Project identifier
+     */
     project?: string;
     /**
      * Key-value tags
@@ -100,7 +106,13 @@ export interface GetDefaultNotificationTemplateSetResult {
      * Type of the entity (e.g. PIPELINE, SERVICE, etc.)
      */
     readonly notificationEntity: string;
+    /**
+     * Organization identifier
+     */
     readonly org?: string;
+    /**
+     * Project identifier
+     */
     readonly project?: string;
     /**
      * Key-value tags
@@ -153,7 +165,13 @@ export interface GetDefaultNotificationTemplateSetOutputArgs {
      * Type of the entity (e.g. PIPELINE, SERVICE, etc.)
      */
     notificationEntity: pulumi.Input<string>;
+    /**
+     * Organization identifier
+     */
     org?: pulumi.Input<string>;
+    /**
+     * Project identifier
+     */
     project?: pulumi.Input<string>;
     /**
      * Key-value tags

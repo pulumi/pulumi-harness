@@ -11,6 +11,51 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Example: List GCP projects using a GCP cloud connector
+//			example, err := platform.GetGcpProjects(ctx, &platform.GetGcpProjectsArgs{
+//				ConnectorId: "my_gcp_connector",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Example: List GCP projects using a GCP secret manager connector
+//			_, err = platform.GetGcpProjects(ctx, &platform.GetGcpProjectsArgs{
+//				ConnectorId: "my_gcp_secret_manager_connector",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Example: List GCP projects with org and project scope
+//			_, err = platform.GetGcpProjects(ctx, &platform.GetGcpProjectsArgs{
+//				ConnectorId: "my_gcp_connector",
+//				OrgId:       pulumi.StringRef("my_org"),
+//				ProjectId:   pulumi.StringRef("my_project"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("gcpProjects", example.Projects)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGcpProjects(ctx *pulumi.Context, args *GetGcpProjectsArgs, opts ...pulumi.InvokeOption) (*GetGcpProjectsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGcpProjectsResult
@@ -23,17 +68,23 @@ func GetGcpProjects(ctx *pulumi.Context, args *GetGcpProjectsArgs, opts ...pulum
 
 // A collection of arguments for invoking getGcpProjects.
 type GetGcpProjectsArgs struct {
-	ConnectorId string  `pulumi:"connectorId"`
-	OrgId       *string `pulumi:"orgId"`
-	ProjectId   *string `pulumi:"projectId"`
+	// Identifier of the GCP cloud connector or secret manager connector.
+	ConnectorId string `pulumi:"connectorId"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getGcpProjects.
 type GetGcpProjectsResult struct {
+	// Identifier of the GCP cloud connector or secret manager connector.
 	ConnectorId string `pulumi:"connectorId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string                  `pulumi:"id"`
-	OrgId     *string                 `pulumi:"orgId"`
+	Id string `pulumi:"id"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
 	ProjectId *string                 `pulumi:"projectId"`
 	Projects  []GetGcpProjectsProject `pulumi:"projects"`
 }
@@ -49,9 +100,12 @@ func GetGcpProjectsOutput(ctx *pulumi.Context, args GetGcpProjectsOutputArgs, op
 
 // A collection of arguments for invoking getGcpProjects.
 type GetGcpProjectsOutputArgs struct {
-	ConnectorId pulumi.StringInput    `pulumi:"connectorId"`
-	OrgId       pulumi.StringPtrInput `pulumi:"orgId"`
-	ProjectId   pulumi.StringPtrInput `pulumi:"projectId"`
+	// Identifier of the GCP cloud connector or secret manager connector.
+	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
 func (GetGcpProjectsOutputArgs) ElementType() reflect.Type {
@@ -73,6 +127,7 @@ func (o GetGcpProjectsResultOutput) ToGetGcpProjectsResultOutputWithContext(ctx 
 	return o
 }
 
+// Identifier of the GCP cloud connector or secret manager connector.
 func (o GetGcpProjectsResultOutput) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGcpProjectsResult) string { return v.ConnectorId }).(pulumi.StringOutput)
 }
@@ -82,10 +137,12 @@ func (o GetGcpProjectsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGcpProjectsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the organization.
 func (o GetGcpProjectsResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGcpProjectsResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the project.
 func (o GetGcpProjectsResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGcpProjectsResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

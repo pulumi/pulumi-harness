@@ -100,6 +100,10 @@ namespace Pulumi.Harness.Platform
     public sealed class GetIdpCatalogEntityResult
     {
         /// <summary>
+        /// Contains Git Information for importing entities from Git
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetIdpCatalogEntityGitDetailResult> GitDetails;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -126,6 +130,8 @@ namespace Pulumi.Harness.Platform
 
         [OutputConstructor]
         private GetIdpCatalogEntityResult(
+            ImmutableArray<Outputs.GetIdpCatalogEntityGitDetailResult> gitDetails,
+
             string id,
 
             string identifier,
@@ -138,6 +144,7 @@ namespace Pulumi.Harness.Platform
 
             string yaml)
         {
+            GitDetails = gitDetails;
             Id = id;
             Identifier = identifier;
             Kind = kind;

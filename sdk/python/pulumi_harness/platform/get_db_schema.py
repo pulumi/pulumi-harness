@@ -101,7 +101,7 @@ class GetDbSchemaResult:
     @pulumi.getter(name="migrationType")
     def migration_type(self) -> Optional[_builtins.str]:
         """
-        DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+        DB Migration tool type. Valid values are: Liquibase, Flyway
         """
         return pulumi.get(self, "migration_type")
 
@@ -205,7 +205,7 @@ def get_db_schema(identifier: Optional[_builtins.str] = None,
 
 
     :param _builtins.str identifier: Unique identifier of the resource.
-    :param _builtins.str migration_type: DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+    :param _builtins.str migration_type: DB Migration tool type. Valid values are: Liquibase, Flyway
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
@@ -257,7 +257,7 @@ def get_db_schema_output(identifier: Optional[pulumi.Input[_builtins.str]] = Non
 
 
     :param _builtins.str identifier: Unique identifier of the resource.
-    :param _builtins.str migration_type: DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+    :param _builtins.str migration_type: DB Migration tool type. Valid values are: Liquibase, Flyway
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.

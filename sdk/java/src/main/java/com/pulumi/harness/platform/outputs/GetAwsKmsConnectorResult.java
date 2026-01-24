@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAwsKmsConnectorResult {
+    /**
+     * @return The ARN of the AWS KMS in plaintext. This is used when the ARN is not stored in a Harness secret. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
     private String arnPlaintext;
     /**
      * @return A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
@@ -83,6 +87,10 @@ public final class GetAwsKmsConnectorResult {
     private List<String> tags;
 
     private GetAwsKmsConnectorResult() {}
+    /**
+     * @return The ARN of the AWS KMS in plaintext. This is used when the ARN is not stored in a Harness secret. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
     public String arnPlaintext() {
         return this.arnPlaintext;
     }

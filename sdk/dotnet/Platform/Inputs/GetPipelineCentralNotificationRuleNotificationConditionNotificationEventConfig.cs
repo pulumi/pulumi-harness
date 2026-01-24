@@ -23,6 +23,9 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("notificationEntity", required: true)]
         public string NotificationEntity { get; set; } = null!;
 
+        /// <summary>
+        /// The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+        /// </summary>
         [Input("notificationEvent", required: true)]
         public string NotificationEvent { get; set; } = null!;
 

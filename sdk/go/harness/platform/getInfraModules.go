@@ -14,28 +14,6 @@ import (
 // Data source for retrieving a list of modules from the module registry.
 //
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetInfraModules(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInfraModules(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetInfraModulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInfraModulesResult

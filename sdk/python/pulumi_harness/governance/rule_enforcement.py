@@ -417,6 +417,27 @@ class RuleEnforcement(pulumi.CustomResource):
         """
         Resource for creating, updating, and managing rule enforcement.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.governance.RuleEnforcement("example",
+            identifier="identifier",
+            name="name",
+            cloud_provider="AWS/AZURE/GCP",
+            rule_ids=["rule_id1"],
+            rule_set_ids=["rule_set_id1"],
+            execution_schedule="0 0 * * * *",
+            execution_timezone="UTC",
+            is_enabled=True,
+            target_accounts=["awsAccountId/azureSubscriptionId/gcpProjectId"],
+            target_regions=["us-east-1/eastus"],
+            is_dry_run=False,
+            description="description")
+        ```
+
         ## Import
 
         The `pulumi import` command can be used, for example:
@@ -449,6 +470,27 @@ class RuleEnforcement(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating, updating, and managing rule enforcement.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.governance.RuleEnforcement("example",
+            identifier="identifier",
+            name="name",
+            cloud_provider="AWS/AZURE/GCP",
+            rule_ids=["rule_id1"],
+            rule_set_ids=["rule_set_id1"],
+            execution_schedule="0 0 * * * *",
+            execution_timezone="UTC",
+            is_enabled=True,
+            target_accounts=["awsAccountId/azureSubscriptionId/gcpProjectId"],
+            target_regions=["us-east-1/eastus"],
+            is_dry_run=False,
+            description="description")
+        ```
 
         ## Import
 

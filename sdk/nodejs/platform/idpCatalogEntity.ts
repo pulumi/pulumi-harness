@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -58,9 +60,17 @@ export class IdpCatalogEntity extends pulumi.CustomResource {
     }
 
     /**
+     * Contains Git Information for importing entities from Git
+     */
+    declare public readonly gitDetails: pulumi.Output<outputs.platform.IdpCatalogEntityGitDetails>;
+    /**
      * Unique identifier of the resource.
      */
     declare public readonly identifier: pulumi.Output<string>;
+    /**
+     * Flag to set if importing from Git
+     */
+    declare public readonly importFromGit: pulumi.Output<boolean>;
     /**
      * Kind of the catalog entity
      */
@@ -91,7 +101,9 @@ export class IdpCatalogEntity extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdpCatalogEntityState | undefined;
+            resourceInputs["gitDetails"] = state?.gitDetails;
             resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["importFromGit"] = state?.importFromGit;
             resourceInputs["kind"] = state?.kind;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["projectId"] = state?.projectId;
@@ -101,13 +113,9 @@ export class IdpCatalogEntity extends pulumi.CustomResource {
             if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if (args?.kind === undefined && !opts.urn) {
-                throw new Error("Missing required property 'kind'");
-            }
-            if (args?.yaml === undefined && !opts.urn) {
-                throw new Error("Missing required property 'yaml'");
-            }
+            resourceInputs["gitDetails"] = args?.gitDetails;
             resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["importFromGit"] = args?.importFromGit;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["projectId"] = args?.projectId;
@@ -123,9 +131,17 @@ export class IdpCatalogEntity extends pulumi.CustomResource {
  */
 export interface IdpCatalogEntityState {
     /**
+     * Contains Git Information for importing entities from Git
+     */
+    gitDetails?: pulumi.Input<inputs.platform.IdpCatalogEntityGitDetails>;
+    /**
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
+    /**
+     * Flag to set if importing from Git
+     */
+    importFromGit?: pulumi.Input<boolean>;
     /**
      * Kind of the catalog entity
      */
@@ -149,13 +165,21 @@ export interface IdpCatalogEntityState {
  */
 export interface IdpCatalogEntityArgs {
     /**
+     * Contains Git Information for importing entities from Git
+     */
+    gitDetails?: pulumi.Input<inputs.platform.IdpCatalogEntityGitDetails>;
+    /**
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
     /**
+     * Flag to set if importing from Git
+     */
+    importFromGit?: pulumi.Input<boolean>;
+    /**
      * Kind of the catalog entity
      */
-    kind: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Unique identifier of the organization.
      */
@@ -167,5 +191,5 @@ export interface IdpCatalogEntityArgs {
     /**
      * YAML definition of the catalog entity
      */
-    yaml: pulumi.Input<string>;
+    yaml?: pulumi.Input<string>;
 }

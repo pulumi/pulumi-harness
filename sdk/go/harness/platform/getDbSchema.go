@@ -54,7 +54,7 @@ func LookupDbSchema(ctx *pulumi.Context, args *LookupDbSchemaArgs, opts ...pulum
 type LookupDbSchemaArgs struct {
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+	// DB Migration tool type. Valid values are: Liquibase, Flyway
 	MigrationType *string `pulumi:"migrationType"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
@@ -76,7 +76,7 @@ type LookupDbSchemaResult struct {
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+	// DB Migration tool type. Valid values are: Liquibase, Flyway
 	MigrationType *string `pulumi:"migrationType"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
@@ -107,7 +107,7 @@ func LookupDbSchemaOutput(ctx *pulumi.Context, args LookupDbSchemaOutputArgs, op
 type LookupDbSchemaOutputArgs struct {
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
-	// DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+	// DB Migration tool type. Valid values are: Liquibase, Flyway
 	MigrationType pulumi.StringPtrInput `pulumi:"migrationType"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -158,7 +158,7 @@ func (o LookupDbSchemaResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbSchemaResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// DB Migration tool type, Valid values are any one of: Liquibase, Flyway
+// DB Migration tool type. Valid values are: Liquibase, Flyway
 func (o LookupDbSchemaResultOutput) MigrationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDbSchemaResult) *string { return v.MigrationType }).(pulumi.StringPtrOutput)
 }

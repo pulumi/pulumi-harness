@@ -85,7 +85,7 @@ type DbInstance struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The identifier of the parent database schema
 	Schema pulumi.StringOutput `pulumi:"schema"`
-	// The properties to substitute in changelog/migration script
+	// The properties to substitute in changelog migration script
 	SubstituteProperties pulumi.StringMapOutput `pulumi:"substituteProperties"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -154,7 +154,7 @@ type dbInstanceState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The identifier of the parent database schema
 	Schema *string `pulumi:"schema"`
-	// The properties to substitute in changelog/migration script
+	// The properties to substitute in changelog migration script
 	SubstituteProperties map[string]string `pulumi:"substituteProperties"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
@@ -179,7 +179,7 @@ type DbInstanceState struct {
 	ProjectId pulumi.StringPtrInput
 	// The identifier of the parent database schema
 	Schema pulumi.StringPtrInput
-	// The properties to substitute in changelog/migration script
+	// The properties to substitute in changelog migration script
 	SubstituteProperties pulumi.StringMapInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
@@ -208,7 +208,7 @@ type dbInstanceArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// The identifier of the parent database schema
 	Schema string `pulumi:"schema"`
-	// The properties to substitute in changelog/migration script
+	// The properties to substitute in changelog migration script
 	SubstituteProperties map[string]string `pulumi:"substituteProperties"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
@@ -234,7 +234,7 @@ type DbInstanceArgs struct {
 	ProjectId pulumi.StringInput
 	// The identifier of the parent database schema
 	Schema pulumi.StringInput
-	// The properties to substitute in changelog/migration script
+	// The properties to substitute in changelog migration script
 	SubstituteProperties pulumi.StringMapInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
@@ -372,7 +372,7 @@ func (o DbInstanceOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
 }
 
-// The properties to substitute in changelog/migration script
+// The properties to substitute in changelog migration script
 func (o DbInstanceOutput) SubstituteProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringMapOutput { return v.SubstituteProperties }).(pulumi.StringMapOutput)
 }

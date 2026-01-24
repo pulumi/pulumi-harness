@@ -108,16 +108,32 @@ public final class GetDefaultNotificationTemplateSetPlainArgs extends com.pulumi
         return this.notificationEntity;
     }
 
+    /**
+     * Organization identifier
+     * 
+     */
     @Import(name="org")
     private @Nullable String org;
 
+    /**
+     * @return Organization identifier
+     * 
+     */
     public Optional<String> org() {
         return Optional.ofNullable(this.org);
     }
 
+    /**
+     * Project identifier
+     * 
+     */
     @Import(name="project")
     private @Nullable String project;
 
+    /**
+     * @return Project identifier
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -245,11 +261,23 @@ public final class GetDefaultNotificationTemplateSetPlainArgs extends com.pulumi
             return this;
         }
 
+        /**
+         * @param org Organization identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder org(@Nullable String org) {
             $.org = org;
             return this;
         }
 
+        /**
+         * @param project Project identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;

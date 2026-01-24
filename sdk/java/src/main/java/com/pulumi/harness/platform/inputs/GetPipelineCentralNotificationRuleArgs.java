@@ -26,9 +26,17 @@ public final class GetPipelineCentralNotificationRuleArgs extends com.pulumi.res
         return Optional.ofNullable(this.customNotificationTemplateRef);
     }
 
+    /**
+     * Identifier of the Notification Rule.
+     * 
+     */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
+    /**
+     * @return Identifier of the Notification Rule.
+     * 
+     */
     public Output<String> identifier() {
         return this.identifier;
     }
@@ -54,16 +62,32 @@ public final class GetPipelineCentralNotificationRuleArgs extends com.pulumi.res
         return Optional.ofNullable(this.notificationConditions);
     }
 
+    /**
+     * Identifier of the organization in which the Notification Rule is configured.
+     * 
+     */
     @Import(name="org")
     private @Nullable Output<String> org;
 
+    /**
+     * @return Identifier of the organization in which the Notification Rule is configured.
+     * 
+     */
     public Optional<Output<String>> org() {
         return Optional.ofNullable(this.org);
     }
 
+    /**
+     * Identifier of the project in which the Notification Rule is configured.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return Identifier of the project in which the Notification Rule is configured.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -115,11 +139,23 @@ public final class GetPipelineCentralNotificationRuleArgs extends com.pulumi.res
             return customNotificationTemplateRef(Output.of(customNotificationTemplateRef));
         }
 
+        /**
+         * @param identifier Identifier of the Notification Rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
 
+        /**
+         * @param identifier Identifier of the Notification Rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
         }
@@ -159,20 +195,44 @@ public final class GetPipelineCentralNotificationRuleArgs extends com.pulumi.res
             return notificationConditions(List.of(notificationConditions));
         }
 
+        /**
+         * @param org Identifier of the organization in which the Notification Rule is configured.
+         * 
+         * @return builder
+         * 
+         */
         public Builder org(@Nullable Output<String> org) {
             $.org = org;
             return this;
         }
 
+        /**
+         * @param org Identifier of the organization in which the Notification Rule is configured.
+         * 
+         * @return builder
+         * 
+         */
         public Builder org(String org) {
             return org(Output.of(org));
         }
 
+        /**
+         * @param project Identifier of the project in which the Notification Rule is configured.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project Identifier of the project in which the Notification Rule is configured.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

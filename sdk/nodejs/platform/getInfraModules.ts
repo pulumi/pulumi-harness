@@ -10,13 +10,6 @@ import * as utilities from "../utilities";
  * Data source for retrieving a list of modules from the module registry.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const all = harness.platform.getInfraModules({});
- * ```
  */
 export function getInfraModules(opts?: pulumi.InvokeOptions): Promise<GetInfraModulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,13 +34,6 @@ export interface GetInfraModulesResult {
  * Data source for retrieving a list of modules from the module registry.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const all = harness.platform.getInfraModules({});
- * ```
  */
 export function getInfraModulesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInfraModulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

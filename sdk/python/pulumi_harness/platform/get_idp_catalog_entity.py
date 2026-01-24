@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetIdpCatalogEntityResult',
@@ -26,7 +27,10 @@ class GetIdpCatalogEntityResult:
     """
     A collection of values returned by getIdpCatalogEntity.
     """
-    def __init__(__self__, id=None, identifier=None, kind=None, org_id=None, project_id=None, yaml=None):
+    def __init__(__self__, git_details=None, id=None, identifier=None, kind=None, org_id=None, project_id=None, yaml=None):
+        if git_details and not isinstance(git_details, list):
+            raise TypeError("Expected argument 'git_details' to be a list")
+        pulumi.set(__self__, "git_details", git_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -45,6 +49,14 @@ class GetIdpCatalogEntityResult:
         if yaml and not isinstance(yaml, str):
             raise TypeError("Expected argument 'yaml' to be a str")
         pulumi.set(__self__, "yaml", yaml)
+
+    @_builtins.property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> Sequence['outputs.GetIdpCatalogEntityGitDetailResult']:
+        """
+        Contains Git Information for importing entities from Git
+        """
+        return pulumi.get(self, "git_details")
 
     @_builtins.property
     @pulumi.getter
@@ -101,6 +113,7 @@ class AwaitableGetIdpCatalogEntityResult(GetIdpCatalogEntityResult):
         if False:
             yield self
         return GetIdpCatalogEntityResult(
+            git_details=self.git_details,
             id=self.id,
             identifier=self.identifier,
             kind=self.kind,
@@ -132,6 +145,7 @@ def get_idp_catalog_entity(identifier: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getIdpCatalogEntity:getIdpCatalogEntity', __args__, opts=opts, typ=GetIdpCatalogEntityResult).value
 
     return AwaitableGetIdpCatalogEntityResult(
+        git_details=pulumi.get(__ret__, 'git_details'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         kind=pulumi.get(__ret__, 'kind'),
@@ -160,6 +174,7 @@ def get_idp_catalog_entity_output(identifier: Optional[pulumi.Input[_builtins.st
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getIdpCatalogEntity:getIdpCatalogEntity', __args__, opts=opts, typ=GetIdpCatalogEntityResult)
     return __ret__.apply(lambda __response__: GetIdpCatalogEntityResult(
+        git_details=pulumi.get(__response__, 'git_details'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         kind=pulumi.get(__response__, 'kind'),

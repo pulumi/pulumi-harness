@@ -14,6 +14,51 @@ import (
 
 // Resource for creating, updating, and managing rule enforcement.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/governance"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := governance.NewRuleEnforcement(ctx, "example", &governance.RuleEnforcementArgs{
+//				Identifier:    "identifier",
+//				Name:          pulumi.String("name"),
+//				CloudProvider: pulumi.String("AWS/AZURE/GCP"),
+//				RuleIds: pulumi.StringArray{
+//					pulumi.String("rule_id1"),
+//				},
+//				RuleSetIds: pulumi.StringArray{
+//					pulumi.String("rule_set_id1"),
+//				},
+//				ExecutionSchedule: pulumi.String("0 0 * * * *"),
+//				ExecutionTimezone: pulumi.String("UTC"),
+//				IsEnabled:         pulumi.Bool(true),
+//				TargetAccounts: pulumi.StringArray{
+//					pulumi.String("awsAccountId/azureSubscriptionId/gcpProjectId"),
+//				},
+//				TargetRegions: pulumi.StringArray{
+//					pulumi.String("us-east-1/eastus"),
+//				},
+//				IsDryRun:    pulumi.Bool(false),
+//				Description: pulumi.String("description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The `pulumi import` command can be used, for example:

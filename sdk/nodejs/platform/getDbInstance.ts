@@ -58,7 +58,7 @@ export interface GetDbInstanceArgs {
      */
     schema: string;
     /**
-     * The properties to substitute in changelog/migration script
+     * The properties to substitute in changelog migration script
      */
     substituteProperties?: {[key: string]: string};
 }
@@ -108,7 +108,7 @@ export interface GetDbInstanceResult {
      */
     readonly schema: string;
     /**
-     * The properties to substitute in changelog/migration script
+     * The properties to substitute in changelog migration script
      */
     readonly substituteProperties?: {[key: string]: string};
     /**
@@ -170,7 +170,7 @@ export interface GetDbInstanceOutputArgs {
      */
     schema: pulumi.Input<string>;
     /**
-     * The properties to substitute in changelog/migration script
+     * The properties to substitute in changelog migration script
      */
     substituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

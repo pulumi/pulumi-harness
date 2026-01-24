@@ -11,12 +11,132 @@ namespace Pulumi.Harness.Platform
 {
     public static class GetGcpProjects
     {
+        /// <summary>
+        /// Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Example: List GCP projects using a GCP cloud connector
+        ///     var example = Harness.Platform.GetGcpProjects.Invoke(new()
+        ///     {
+        ///         ConnectorId = "my_gcp_connector",
+        ///     });
+        /// 
+        ///     // Example: List GCP projects using a GCP secret manager connector
+        ///     var exampleSecretManager = Harness.Platform.GetGcpProjects.Invoke(new()
+        ///     {
+        ///         ConnectorId = "my_gcp_secret_manager_connector",
+        ///     });
+        /// 
+        ///     // Example: List GCP projects with org and project scope
+        ///     var exampleScoped = Harness.Platform.GetGcpProjects.Invoke(new()
+        ///     {
+        ///         ConnectorId = "my_gcp_connector",
+        ///         OrgId = "my_org",
+        ///         ProjectId = "my_project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gcpProjects"] = example.Apply(getGcpProjectsResult =&gt; getGcpProjectsResult.Projects),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetGcpProjectsResult> InvokeAsync(GetGcpProjectsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGcpProjectsResult>("harness:platform/getGcpProjects:getGcpProjects", args ?? new GetGcpProjectsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Example: List GCP projects using a GCP cloud connector
+        ///     var example = Harness.Platform.GetGcpProjects.Invoke(new()
+        ///     {
+        ///         ConnectorId = "my_gcp_connector",
+        ///     });
+        /// 
+        ///     // Example: List GCP projects using a GCP secret manager connector
+        ///     var exampleSecretManager = Harness.Platform.GetGcpProjects.Invoke(new()
+        ///     {
+        ///         ConnectorId = "my_gcp_secret_manager_connector",
+        ///     });
+        /// 
+        ///     // Example: List GCP projects with org and project scope
+        ///     var exampleScoped = Harness.Platform.GetGcpProjects.Invoke(new()
+        ///     {
+        ///         ConnectorId = "my_gcp_connector",
+        ///         OrgId = "my_org",
+        ///         ProjectId = "my_project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gcpProjects"] = example.Apply(getGcpProjectsResult =&gt; getGcpProjectsResult.Projects),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetGcpProjectsResult> Invoke(GetGcpProjectsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpProjectsResult>("harness:platform/getGcpProjects:getGcpProjects", args ?? new GetGcpProjectsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Example: List GCP projects using a GCP cloud connector
+        ///     var example = Harness.Platform.GetGcpProjects.Invoke(new()
+        ///     {
+        ///         ConnectorId = "my_gcp_connector",
+        ///     });
+        /// 
+        ///     // Example: List GCP projects using a GCP secret manager connector
+        ///     var exampleSecretManager = Harness.Platform.GetGcpProjects.Invoke(new()
+        ///     {
+        ///         ConnectorId = "my_gcp_secret_manager_connector",
+        ///     });
+        /// 
+        ///     // Example: List GCP projects with org and project scope
+        ///     var exampleScoped = Harness.Platform.GetGcpProjects.Invoke(new()
+        ///     {
+        ///         ConnectorId = "my_gcp_connector",
+        ///         OrgId = "my_org",
+        ///         ProjectId = "my_project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gcpProjects"] = example.Apply(getGcpProjectsResult =&gt; getGcpProjectsResult.Projects),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetGcpProjectsResult> Invoke(GetGcpProjectsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpProjectsResult>("harness:platform/getGcpProjects:getGcpProjects", args ?? new GetGcpProjectsInvokeArgs(), options.WithDefaults());
     }
@@ -24,12 +144,21 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetGcpProjectsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifier of the GCP cloud connector or secret manager connector.
+        /// </summary>
         [Input("connectorId", required: true)]
         public string ConnectorId { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
@@ -41,12 +170,21 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetGcpProjectsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifier of the GCP cloud connector or secret manager connector.
+        /// </summary>
         [Input("connectorId", required: true)]
         public Input<string> ConnectorId { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
@@ -60,12 +198,21 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetGcpProjectsResult
     {
+        /// <summary>
+        /// Identifier of the GCP cloud connector or secret manager connector.
+        /// </summary>
         public readonly string ConnectorId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         public readonly string? OrgId;
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         public readonly string? ProjectId;
         public readonly ImmutableArray<Outputs.GetGcpProjectsProjectResult> Projects;
 

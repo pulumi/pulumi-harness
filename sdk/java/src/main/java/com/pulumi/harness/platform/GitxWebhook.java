@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Harness pipeline.
+ * Resource for creating a Harness GitX Webhook.
  * 
  * ## Import
  * 

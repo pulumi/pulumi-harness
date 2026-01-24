@@ -56,6 +56,9 @@ export interface GetAwsKmsConnectorArgs {
  * A collection of values returned by getAwsKmsConnector.
  */
 export interface GetAwsKmsConnectorResult {
+    /**
+     * The ARN of the AWS KMS in plaintext. This is used when the ARN is not stored in a Harness secret. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+     */
     readonly arnPlaintext: string;
     /**
      * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.

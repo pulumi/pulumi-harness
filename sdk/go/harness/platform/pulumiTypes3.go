@@ -6085,6 +6085,314 @@ func (o HelmConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type IdpCatalogEntityGitDetails struct {
+	// Name of the default branch (this checks out a new branch titled by branch_name).
+	BaseBranch *string `pulumi:"baseBranch"`
+	// Name of the branch.
+	BranchName *string `pulumi:"branchName"`
+	// Commit message used for the merge commit.
+	CommitMessage *string `pulumi:"commitMessage"`
+	// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ConnectorRef *string `pulumi:"connectorRef"`
+	// File path of the Entity in the repository.
+	FilePath *string `pulumi:"filePath"`
+	// If the repo is a Harness Code repo
+	IsHarnessCodeRepo *bool `pulumi:"isHarnessCodeRepo"`
+	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+	LastCommitId *string `pulumi:"lastCommitId"`
+	// Last object identifier (for Github). To be provided only when updating Pipeline.
+	LastObjectId *string `pulumi:"lastObjectId"`
+	// Name of the repository.
+	RepoName *string `pulumi:"repoName"`
+	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+	StoreType *string `pulumi:"storeType"`
+}
+
+// IdpCatalogEntityGitDetailsInput is an input type that accepts IdpCatalogEntityGitDetailsArgs and IdpCatalogEntityGitDetailsOutput values.
+// You can construct a concrete instance of `IdpCatalogEntityGitDetailsInput` via:
+//
+//	IdpCatalogEntityGitDetailsArgs{...}
+type IdpCatalogEntityGitDetailsInput interface {
+	pulumi.Input
+
+	ToIdpCatalogEntityGitDetailsOutput() IdpCatalogEntityGitDetailsOutput
+	ToIdpCatalogEntityGitDetailsOutputWithContext(context.Context) IdpCatalogEntityGitDetailsOutput
+}
+
+type IdpCatalogEntityGitDetailsArgs struct {
+	// Name of the default branch (this checks out a new branch titled by branch_name).
+	BaseBranch pulumi.StringPtrInput `pulumi:"baseBranch"`
+	// Name of the branch.
+	BranchName pulumi.StringPtrInput `pulumi:"branchName"`
+	// Commit message used for the merge commit.
+	CommitMessage pulumi.StringPtrInput `pulumi:"commitMessage"`
+	// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ConnectorRef pulumi.StringPtrInput `pulumi:"connectorRef"`
+	// File path of the Entity in the repository.
+	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
+	// If the repo is a Harness Code repo
+	IsHarnessCodeRepo pulumi.BoolPtrInput `pulumi:"isHarnessCodeRepo"`
+	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+	LastCommitId pulumi.StringPtrInput `pulumi:"lastCommitId"`
+	// Last object identifier (for Github). To be provided only when updating Pipeline.
+	LastObjectId pulumi.StringPtrInput `pulumi:"lastObjectId"`
+	// Name of the repository.
+	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
+	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+	StoreType pulumi.StringPtrInput `pulumi:"storeType"`
+}
+
+func (IdpCatalogEntityGitDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpCatalogEntityGitDetails)(nil)).Elem()
+}
+
+func (i IdpCatalogEntityGitDetailsArgs) ToIdpCatalogEntityGitDetailsOutput() IdpCatalogEntityGitDetailsOutput {
+	return i.ToIdpCatalogEntityGitDetailsOutputWithContext(context.Background())
+}
+
+func (i IdpCatalogEntityGitDetailsArgs) ToIdpCatalogEntityGitDetailsOutputWithContext(ctx context.Context) IdpCatalogEntityGitDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpCatalogEntityGitDetailsOutput)
+}
+
+func (i IdpCatalogEntityGitDetailsArgs) ToIdpCatalogEntityGitDetailsPtrOutput() IdpCatalogEntityGitDetailsPtrOutput {
+	return i.ToIdpCatalogEntityGitDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i IdpCatalogEntityGitDetailsArgs) ToIdpCatalogEntityGitDetailsPtrOutputWithContext(ctx context.Context) IdpCatalogEntityGitDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpCatalogEntityGitDetailsOutput).ToIdpCatalogEntityGitDetailsPtrOutputWithContext(ctx)
+}
+
+// IdpCatalogEntityGitDetailsPtrInput is an input type that accepts IdpCatalogEntityGitDetailsArgs, IdpCatalogEntityGitDetailsPtr and IdpCatalogEntityGitDetailsPtrOutput values.
+// You can construct a concrete instance of `IdpCatalogEntityGitDetailsPtrInput` via:
+//
+//	        IdpCatalogEntityGitDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpCatalogEntityGitDetailsPtrInput interface {
+	pulumi.Input
+
+	ToIdpCatalogEntityGitDetailsPtrOutput() IdpCatalogEntityGitDetailsPtrOutput
+	ToIdpCatalogEntityGitDetailsPtrOutputWithContext(context.Context) IdpCatalogEntityGitDetailsPtrOutput
+}
+
+type idpCatalogEntityGitDetailsPtrType IdpCatalogEntityGitDetailsArgs
+
+func IdpCatalogEntityGitDetailsPtr(v *IdpCatalogEntityGitDetailsArgs) IdpCatalogEntityGitDetailsPtrInput {
+	return (*idpCatalogEntityGitDetailsPtrType)(v)
+}
+
+func (*idpCatalogEntityGitDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpCatalogEntityGitDetails)(nil)).Elem()
+}
+
+func (i *idpCatalogEntityGitDetailsPtrType) ToIdpCatalogEntityGitDetailsPtrOutput() IdpCatalogEntityGitDetailsPtrOutput {
+	return i.ToIdpCatalogEntityGitDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *idpCatalogEntityGitDetailsPtrType) ToIdpCatalogEntityGitDetailsPtrOutputWithContext(ctx context.Context) IdpCatalogEntityGitDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpCatalogEntityGitDetailsPtrOutput)
+}
+
+type IdpCatalogEntityGitDetailsOutput struct{ *pulumi.OutputState }
+
+func (IdpCatalogEntityGitDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpCatalogEntityGitDetails)(nil)).Elem()
+}
+
+func (o IdpCatalogEntityGitDetailsOutput) ToIdpCatalogEntityGitDetailsOutput() IdpCatalogEntityGitDetailsOutput {
+	return o
+}
+
+func (o IdpCatalogEntityGitDetailsOutput) ToIdpCatalogEntityGitDetailsOutputWithContext(ctx context.Context) IdpCatalogEntityGitDetailsOutput {
+	return o
+}
+
+func (o IdpCatalogEntityGitDetailsOutput) ToIdpCatalogEntityGitDetailsPtrOutput() IdpCatalogEntityGitDetailsPtrOutput {
+	return o.ToIdpCatalogEntityGitDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o IdpCatalogEntityGitDetailsOutput) ToIdpCatalogEntityGitDetailsPtrOutputWithContext(ctx context.Context) IdpCatalogEntityGitDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpCatalogEntityGitDetails) *IdpCatalogEntityGitDetails {
+		return &v
+	}).(IdpCatalogEntityGitDetailsPtrOutput)
+}
+
+// Name of the default branch (this checks out a new branch titled by branch_name).
+func (o IdpCatalogEntityGitDetailsOutput) BaseBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpCatalogEntityGitDetails) *string { return v.BaseBranch }).(pulumi.StringPtrOutput)
+}
+
+// Name of the branch.
+func (o IdpCatalogEntityGitDetailsOutput) BranchName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpCatalogEntityGitDetails) *string { return v.BranchName }).(pulumi.StringPtrOutput)
+}
+
+// Commit message used for the merge commit.
+func (o IdpCatalogEntityGitDetailsOutput) CommitMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpCatalogEntityGitDetails) *string { return v.CommitMessage }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o IdpCatalogEntityGitDetailsOutput) ConnectorRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpCatalogEntityGitDetails) *string { return v.ConnectorRef }).(pulumi.StringPtrOutput)
+}
+
+// File path of the Entity in the repository.
+func (o IdpCatalogEntityGitDetailsOutput) FilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpCatalogEntityGitDetails) *string { return v.FilePath }).(pulumi.StringPtrOutput)
+}
+
+// If the repo is a Harness Code repo
+func (o IdpCatalogEntityGitDetailsOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdpCatalogEntityGitDetails) *bool { return v.IsHarnessCodeRepo }).(pulumi.BoolPtrOutput)
+}
+
+// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+func (o IdpCatalogEntityGitDetailsOutput) LastCommitId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpCatalogEntityGitDetails) *string { return v.LastCommitId }).(pulumi.StringPtrOutput)
+}
+
+// Last object identifier (for Github). To be provided only when updating Pipeline.
+func (o IdpCatalogEntityGitDetailsOutput) LastObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpCatalogEntityGitDetails) *string { return v.LastObjectId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the repository.
+func (o IdpCatalogEntityGitDetailsOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpCatalogEntityGitDetails) *string { return v.RepoName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+func (o IdpCatalogEntityGitDetailsOutput) StoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpCatalogEntityGitDetails) *string { return v.StoreType }).(pulumi.StringPtrOutput)
+}
+
+type IdpCatalogEntityGitDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpCatalogEntityGitDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpCatalogEntityGitDetails)(nil)).Elem()
+}
+
+func (o IdpCatalogEntityGitDetailsPtrOutput) ToIdpCatalogEntityGitDetailsPtrOutput() IdpCatalogEntityGitDetailsPtrOutput {
+	return o
+}
+
+func (o IdpCatalogEntityGitDetailsPtrOutput) ToIdpCatalogEntityGitDetailsPtrOutputWithContext(ctx context.Context) IdpCatalogEntityGitDetailsPtrOutput {
+	return o
+}
+
+func (o IdpCatalogEntityGitDetailsPtrOutput) Elem() IdpCatalogEntityGitDetailsOutput {
+	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) IdpCatalogEntityGitDetails {
+		if v != nil {
+			return *v
+		}
+		var ret IdpCatalogEntityGitDetails
+		return ret
+	}).(IdpCatalogEntityGitDetailsOutput)
+}
+
+// Name of the default branch (this checks out a new branch titled by branch_name).
+func (o IdpCatalogEntityGitDetailsPtrOutput) BaseBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BaseBranch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the branch.
+func (o IdpCatalogEntityGitDetailsPtrOutput) BranchName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BranchName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Commit message used for the merge commit.
+func (o IdpCatalogEntityGitDetailsPtrOutput) CommitMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o IdpCatalogEntityGitDetailsPtrOutput) ConnectorRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// File path of the Entity in the repository.
+func (o IdpCatalogEntityGitDetailsPtrOutput) FilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// If the repo is a Harness Code repo
+func (o IdpCatalogEntityGitDetailsPtrOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsHarnessCodeRepo
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+func (o IdpCatalogEntityGitDetailsPtrOutput) LastCommitId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastCommitId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last object identifier (for Github). To be provided only when updating Pipeline.
+func (o IdpCatalogEntityGitDetailsPtrOutput) LastObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the repository.
+func (o IdpCatalogEntityGitDetailsPtrOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepoName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+func (o IdpCatalogEntityGitDetailsPtrOutput) StoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StoreType
+	}).(pulumi.StringPtrOutput)
+}
+
 type InfraModuleTestingTestingMetadata struct {
 	// Account is the internal customer account ID
 	Account *string `pulumi:"account"`
@@ -40149,6 +40457,184 @@ func (o GetHelmConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetHelmC
 	}).(GetHelmConnectorCredentialOutput)
 }
 
+type GetIdpCatalogEntityGitDetail struct {
+	// Name of the default branch (this checks out a new branch titled by branch_name).
+	BaseBranch string `pulumi:"baseBranch"`
+	// Name of the branch.
+	BranchName string `pulumi:"branchName"`
+	// Commit message used for the merge commit.
+	CommitMessage string `pulumi:"commitMessage"`
+	// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ConnectorRef string `pulumi:"connectorRef"`
+	// File path of the Entity in the repository.
+	FilePath string `pulumi:"filePath"`
+	// If the repo is a Harness Code repo
+	IsHarnessCodeRepo bool `pulumi:"isHarnessCodeRepo"`
+	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+	LastCommitId string `pulumi:"lastCommitId"`
+	// Last object identifier (for Github). To be provided only when updating Pipeline.
+	LastObjectId string `pulumi:"lastObjectId"`
+	// Name of the repository.
+	RepoName string `pulumi:"repoName"`
+	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+	StoreType string `pulumi:"storeType"`
+}
+
+// GetIdpCatalogEntityGitDetailInput is an input type that accepts GetIdpCatalogEntityGitDetailArgs and GetIdpCatalogEntityGitDetailOutput values.
+// You can construct a concrete instance of `GetIdpCatalogEntityGitDetailInput` via:
+//
+//	GetIdpCatalogEntityGitDetailArgs{...}
+type GetIdpCatalogEntityGitDetailInput interface {
+	pulumi.Input
+
+	ToGetIdpCatalogEntityGitDetailOutput() GetIdpCatalogEntityGitDetailOutput
+	ToGetIdpCatalogEntityGitDetailOutputWithContext(context.Context) GetIdpCatalogEntityGitDetailOutput
+}
+
+type GetIdpCatalogEntityGitDetailArgs struct {
+	// Name of the default branch (this checks out a new branch titled by branch_name).
+	BaseBranch pulumi.StringInput `pulumi:"baseBranch"`
+	// Name of the branch.
+	BranchName pulumi.StringInput `pulumi:"branchName"`
+	// Commit message used for the merge commit.
+	CommitMessage pulumi.StringInput `pulumi:"commitMessage"`
+	// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
+	// File path of the Entity in the repository.
+	FilePath pulumi.StringInput `pulumi:"filePath"`
+	// If the repo is a Harness Code repo
+	IsHarnessCodeRepo pulumi.BoolInput `pulumi:"isHarnessCodeRepo"`
+	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+	LastCommitId pulumi.StringInput `pulumi:"lastCommitId"`
+	// Last object identifier (for Github). To be provided only when updating Pipeline.
+	LastObjectId pulumi.StringInput `pulumi:"lastObjectId"`
+	// Name of the repository.
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+	StoreType pulumi.StringInput `pulumi:"storeType"`
+}
+
+func (GetIdpCatalogEntityGitDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpCatalogEntityGitDetail)(nil)).Elem()
+}
+
+func (i GetIdpCatalogEntityGitDetailArgs) ToGetIdpCatalogEntityGitDetailOutput() GetIdpCatalogEntityGitDetailOutput {
+	return i.ToGetIdpCatalogEntityGitDetailOutputWithContext(context.Background())
+}
+
+func (i GetIdpCatalogEntityGitDetailArgs) ToGetIdpCatalogEntityGitDetailOutputWithContext(ctx context.Context) GetIdpCatalogEntityGitDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpCatalogEntityGitDetailOutput)
+}
+
+// GetIdpCatalogEntityGitDetailArrayInput is an input type that accepts GetIdpCatalogEntityGitDetailArray and GetIdpCatalogEntityGitDetailArrayOutput values.
+// You can construct a concrete instance of `GetIdpCatalogEntityGitDetailArrayInput` via:
+//
+//	GetIdpCatalogEntityGitDetailArray{ GetIdpCatalogEntityGitDetailArgs{...} }
+type GetIdpCatalogEntityGitDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpCatalogEntityGitDetailArrayOutput() GetIdpCatalogEntityGitDetailArrayOutput
+	ToGetIdpCatalogEntityGitDetailArrayOutputWithContext(context.Context) GetIdpCatalogEntityGitDetailArrayOutput
+}
+
+type GetIdpCatalogEntityGitDetailArray []GetIdpCatalogEntityGitDetailInput
+
+func (GetIdpCatalogEntityGitDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpCatalogEntityGitDetail)(nil)).Elem()
+}
+
+func (i GetIdpCatalogEntityGitDetailArray) ToGetIdpCatalogEntityGitDetailArrayOutput() GetIdpCatalogEntityGitDetailArrayOutput {
+	return i.ToGetIdpCatalogEntityGitDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpCatalogEntityGitDetailArray) ToGetIdpCatalogEntityGitDetailArrayOutputWithContext(ctx context.Context) GetIdpCatalogEntityGitDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpCatalogEntityGitDetailArrayOutput)
+}
+
+type GetIdpCatalogEntityGitDetailOutput struct{ *pulumi.OutputState }
+
+func (GetIdpCatalogEntityGitDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpCatalogEntityGitDetail)(nil)).Elem()
+}
+
+func (o GetIdpCatalogEntityGitDetailOutput) ToGetIdpCatalogEntityGitDetailOutput() GetIdpCatalogEntityGitDetailOutput {
+	return o
+}
+
+func (o GetIdpCatalogEntityGitDetailOutput) ToGetIdpCatalogEntityGitDetailOutputWithContext(ctx context.Context) GetIdpCatalogEntityGitDetailOutput {
+	return o
+}
+
+// Name of the default branch (this checks out a new branch titled by branch_name).
+func (o GetIdpCatalogEntityGitDetailOutput) BaseBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpCatalogEntityGitDetail) string { return v.BaseBranch }).(pulumi.StringOutput)
+}
+
+// Name of the branch.
+func (o GetIdpCatalogEntityGitDetailOutput) BranchName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpCatalogEntityGitDetail) string { return v.BranchName }).(pulumi.StringOutput)
+}
+
+// Commit message used for the merge commit.
+func (o GetIdpCatalogEntityGitDetailOutput) CommitMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpCatalogEntityGitDetail) string { return v.CommitMessage }).(pulumi.StringOutput)
+}
+
+// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetIdpCatalogEntityGitDetailOutput) ConnectorRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpCatalogEntityGitDetail) string { return v.ConnectorRef }).(pulumi.StringOutput)
+}
+
+// File path of the Entity in the repository.
+func (o GetIdpCatalogEntityGitDetailOutput) FilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpCatalogEntityGitDetail) string { return v.FilePath }).(pulumi.StringOutput)
+}
+
+// If the repo is a Harness Code repo
+func (o GetIdpCatalogEntityGitDetailOutput) IsHarnessCodeRepo() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIdpCatalogEntityGitDetail) bool { return v.IsHarnessCodeRepo }).(pulumi.BoolOutput)
+}
+
+// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+func (o GetIdpCatalogEntityGitDetailOutput) LastCommitId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpCatalogEntityGitDetail) string { return v.LastCommitId }).(pulumi.StringOutput)
+}
+
+// Last object identifier (for Github). To be provided only when updating Pipeline.
+func (o GetIdpCatalogEntityGitDetailOutput) LastObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpCatalogEntityGitDetail) string { return v.LastObjectId }).(pulumi.StringOutput)
+}
+
+// Name of the repository.
+func (o GetIdpCatalogEntityGitDetailOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpCatalogEntityGitDetail) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+func (o GetIdpCatalogEntityGitDetailOutput) StoreType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpCatalogEntityGitDetail) string { return v.StoreType }).(pulumi.StringOutput)
+}
+
+type GetIdpCatalogEntityGitDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpCatalogEntityGitDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpCatalogEntityGitDetail)(nil)).Elem()
+}
+
+func (o GetIdpCatalogEntityGitDetailArrayOutput) ToGetIdpCatalogEntityGitDetailArrayOutput() GetIdpCatalogEntityGitDetailArrayOutput {
+	return o
+}
+
+func (o GetIdpCatalogEntityGitDetailArrayOutput) ToGetIdpCatalogEntityGitDetailArrayOutputWithContext(ctx context.Context) GetIdpCatalogEntityGitDetailArrayOutput {
+	return o
+}
+
+func (o GetIdpCatalogEntityGitDetailArrayOutput) Index(i pulumi.IntInput) GetIdpCatalogEntityGitDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpCatalogEntityGitDetail {
+		return vs[0].([]GetIdpCatalogEntityGitDetail)[vs[1].(int)]
+	}).(GetIdpCatalogEntityGitDetailOutput)
+}
+
 type GetInfraModuleTestingMetadata struct {
 	// Account is the internal customer account ID
 	Account string `pulumi:"account"`
@@ -44627,8 +45113,9 @@ func (o GetPipelineCentralNotificationRuleNotificationConditionArrayOutput) Inde
 }
 
 type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig struct {
-	EntityIdentifiers      []string                                                                                              `pulumi:"entityIdentifiers"`
-	NotificationEntity     string                                                                                                `pulumi:"notificationEntity"`
+	EntityIdentifiers  []string `pulumi:"entityIdentifiers"`
+	NotificationEntity string   `pulumi:"notificationEntity"`
+	// The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
 	NotificationEvent      string                                                                                                `pulumi:"notificationEvent"`
 	NotificationEventDatas []GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData `pulumi:"notificationEventDatas"`
 }
@@ -44645,8 +45132,9 @@ type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventCon
 }
 
 type GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs struct {
-	EntityIdentifiers      pulumi.StringArrayInput                                                                                       `pulumi:"entityIdentifiers"`
-	NotificationEntity     pulumi.StringInput                                                                                            `pulumi:"notificationEntity"`
+	EntityIdentifiers  pulumi.StringArrayInput `pulumi:"entityIdentifiers"`
+	NotificationEntity pulumi.StringInput      `pulumi:"notificationEntity"`
+	// The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
 	NotificationEvent      pulumi.StringInput                                                                                            `pulumi:"notificationEvent"`
 	NotificationEventDatas GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArrayInput `pulumi:"notificationEventDatas"`
 }
@@ -44714,6 +45202,7 @@ func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEvent
 	}).(pulumi.StringOutput)
 }
 
+// The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
 func (o GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) NotificationEvent() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig) string {
 		return v.NotificationEvent
@@ -51843,6 +52332,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigAuthArrayInput)(nil)).Elem(), HarRegistryConfigAuthArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsPtrInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpCatalogEntityGitDetailsInput)(nil)).Elem(), IdpCatalogEntityGitDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpCatalogEntityGitDetailsPtrInput)(nil)).Elem(), IdpCatalogEntityGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraModuleTestingTestingMetadataInput)(nil)).Elem(), InfraModuleTestingTestingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraModuleTestingTestingMetadataPtrInput)(nil)).Elem(), InfraModuleTestingTestingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetConnectorInput)(nil)).Elem(), InfraVariableSetConnectorArgs{})
@@ -52319,6 +52810,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigAuthArrayInput)(nil)).Elem(), GetHarRegistryConfigAuthArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialInput)(nil)).Elem(), GetHelmConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialArrayInput)(nil)).Elem(), GetHelmConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpCatalogEntityGitDetailInput)(nil)).Elem(), GetIdpCatalogEntityGitDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpCatalogEntityGitDetailArrayInput)(nil)).Elem(), GetIdpCatalogEntityGitDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModuleTestingMetadataInput)(nil)).Elem(), GetInfraModuleTestingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModuleTestingMetadataPtrInput)(nil)).Elem(), GetInfraModuleTestingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModuleTestingTestingMetadataInput)(nil)).Elem(), GetInfraModuleTestingTestingMetadataArgs{})
@@ -52568,6 +53061,8 @@ func init() {
 	pulumi.RegisterOutputType(HarRegistryConfigAuthArrayOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(IdpCatalogEntityGitDetailsOutput{})
+	pulumi.RegisterOutputType(IdpCatalogEntityGitDetailsPtrOutput{})
 	pulumi.RegisterOutputType(InfraModuleTestingTestingMetadataOutput{})
 	pulumi.RegisterOutputType(InfraModuleTestingTestingMetadataPtrOutput{})
 	pulumi.RegisterOutputType(InfraVariableSetConnectorOutput{})
@@ -53044,6 +53539,8 @@ func init() {
 	pulumi.RegisterOutputType(GetHarRegistryConfigAuthArrayOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpCatalogEntityGitDetailOutput{})
+	pulumi.RegisterOutputType(GetIdpCatalogEntityGitDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetInfraModuleTestingMetadataOutput{})
 	pulumi.RegisterOutputType(GetInfraModuleTestingMetadataPtrOutput{})
 	pulumi.RegisterOutputType(GetInfraModuleTestingTestingMetadataOutput{})

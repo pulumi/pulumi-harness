@@ -12,6 +12,30 @@ namespace Pulumi.Harness.Governance
     /// <summary>
     /// Resource for creating, updating, and managing rule.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Governance.Rule("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         CloudProvider = "AWS/AZURE/GCP",
+    ///         Description = "description",
+    ///         RulesYaml = @"policies:
+    ///   - name: aws-list-ec2
+    ///     resource: aws.ec2",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The `pulumi import` command can be used, for example:

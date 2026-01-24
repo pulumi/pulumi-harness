@@ -109,16 +109,32 @@ public final class GetDefaultNotificationTemplateSetArgs extends com.pulumi.reso
         return this.notificationEntity;
     }
 
+    /**
+     * Organization identifier
+     * 
+     */
     @Import(name="org")
     private @Nullable Output<String> org;
 
+    /**
+     * @return Organization identifier
+     * 
+     */
     public Optional<Output<String>> org() {
         return Optional.ofNullable(this.org);
     }
 
+    /**
+     * Project identifier
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return Project identifier
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -306,20 +322,44 @@ public final class GetDefaultNotificationTemplateSetArgs extends com.pulumi.reso
             return notificationEntity(Output.of(notificationEntity));
         }
 
+        /**
+         * @param org Organization identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder org(@Nullable Output<String> org) {
             $.org = org;
             return this;
         }
 
+        /**
+         * @param org Organization identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder org(String org) {
             return org(Output.of(org));
         }
 
+        /**
+         * @param project Project identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project Project identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

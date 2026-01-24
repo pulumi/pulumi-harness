@@ -41,7 +41,7 @@ class DbInstanceArgs:
         :param pulumi.Input[_builtins.str] context: The liquibase context
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitute_properties: The properties to substitute in changelog/migration script
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitute_properties: The properties to substitute in changelog migration script
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "connector", connector)
@@ -174,7 +174,7 @@ class DbInstanceArgs:
     @pulumi.getter(name="substituteProperties")
     def substitute_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The properties to substitute in changelog/migration script
+        The properties to substitute in changelog migration script
         """
         return pulumi.get(self, "substitute_properties")
 
@@ -220,7 +220,7 @@ class _DbInstanceState:
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] schema: The identifier of the parent database schema
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitute_properties: The properties to substitute in changelog/migration script
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitute_properties: The properties to substitute in changelog migration script
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
         if branch is not None:
@@ -358,7 +358,7 @@ class _DbInstanceState:
     @pulumi.getter(name="substituteProperties")
     def substitute_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The properties to substitute in changelog/migration script
+        The properties to substitute in changelog migration script
         """
         return pulumi.get(self, "substitute_properties")
 
@@ -446,7 +446,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] schema: The identifier of the parent database schema
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitute_properties: The properties to substitute in changelog/migration script
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitute_properties: The properties to substitute in changelog migration script
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
         ...
@@ -586,7 +586,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] schema: The identifier of the parent database schema
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitute_properties: The properties to substitute in changelog/migration script
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitute_properties: The properties to substitute in changelog migration script
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -682,7 +682,7 @@ class DbInstance(pulumi.CustomResource):
     @pulumi.getter(name="substituteProperties")
     def substitute_properties(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        The properties to substitute in changelog/migration script
+        The properties to substitute in changelog migration script
         """
         return pulumi.get(self, "substitute_properties")
 

@@ -153,14 +153,14 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The properties to substitute in changelog/migration script
+     * The properties to substitute in changelog migration script
      * 
      */
     @Import(name="substituteProperties")
     private @Nullable Output<Map<String,String>> substituteProperties;
 
     /**
-     * @return The properties to substitute in changelog/migration script
+     * @return The properties to substitute in changelog migration script
      * 
      */
     public Optional<Output<Map<String,String>>> substituteProperties() {
@@ -406,7 +406,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param substituteProperties The properties to substitute in changelog/migration script
+         * @param substituteProperties The properties to substitute in changelog migration script
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param substituteProperties The properties to substitute in changelog/migration script
+         * @param substituteProperties The properties to substitute in changelog migration script
          * 
          * @return builder
          * 

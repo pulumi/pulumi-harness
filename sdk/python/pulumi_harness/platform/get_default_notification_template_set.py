@@ -141,11 +141,17 @@ class GetDefaultNotificationTemplateSetResult:
     @_builtins.property
     @pulumi.getter
     def org(self) -> Optional[_builtins.str]:
+        """
+        Organization identifier
+        """
         return pulumi.get(self, "org")
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
+        """
+        Project identifier
+        """
         return pulumi.get(self, "project")
 
     @_builtins.property
@@ -197,6 +203,8 @@ def get_default_notification_template_set(description: Optional[_builtins.str] =
     :param _builtins.str name: Name of Default Notification Template Set
     :param _builtins.str notification_channel_type: Type of channel (e.g. SLACK, EMAIL, etc.)
     :param _builtins.str notification_entity: Type of the entity (e.g. PIPELINE, SERVICE, etc.)
+    :param _builtins.str org: Organization identifier
+    :param _builtins.str project: Project identifier
     :param Mapping[str, _builtins.str] tags: Key-value tags
     """
     __args__ = dict()
@@ -245,6 +253,8 @@ def get_default_notification_template_set_output(description: Optional[pulumi.In
     :param _builtins.str name: Name of Default Notification Template Set
     :param _builtins.str notification_channel_type: Type of channel (e.g. SLACK, EMAIL, etc.)
     :param _builtins.str notification_entity: Type of the entity (e.g. PIPELINE, SERVICE, etc.)
+    :param _builtins.str org: Organization identifier
+    :param _builtins.str project: Project identifier
     :param Mapping[str, _builtins.str] tags: Key-value tags
     """
     __args__ = dict()

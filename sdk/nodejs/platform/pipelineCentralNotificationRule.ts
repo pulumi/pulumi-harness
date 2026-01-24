@@ -146,9 +146,6 @@ export class PipelineCentralNotificationRule extends pulumi.CustomResource {
     declare public readonly notificationConditions: pulumi.Output<outputs.platform.PipelineCentralNotificationRuleNotificationCondition[]>;
     declare public readonly org: pulumi.Output<string | undefined>;
     declare public readonly project: pulumi.Output<string | undefined>;
-    /**
-     * Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
-     */
     declare public readonly status: pulumi.Output<string | undefined>;
 
     /**
@@ -226,9 +223,6 @@ export interface PipelineCentralNotificationRuleState {
     notificationConditions?: pulumi.Input<pulumi.Input<inputs.platform.PipelineCentralNotificationRuleNotificationCondition>[]>;
     org?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
-    /**
-     * Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
-     */
     status?: pulumi.Input<string>;
 }
 
@@ -243,8 +237,5 @@ export interface PipelineCentralNotificationRuleArgs {
     notificationConditions: pulumi.Input<pulumi.Input<inputs.platform.PipelineCentralNotificationRuleNotificationCondition>[]>;
     org?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
-    /**
-     * Status of the notification rule. Supported values: `ENABLED`, `DISABLED`. Default: `ENABLED`.
-     */
     status?: pulumi.Input<string>;
 }

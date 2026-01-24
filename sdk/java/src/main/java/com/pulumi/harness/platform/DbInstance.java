@@ -206,14 +206,14 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return this.schema;
     }
     /**
-     * The properties to substitute in changelog/migration script
+     * The properties to substitute in changelog migration script
      * 
      */
     @Export(name="substituteProperties", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> substituteProperties;
 
     /**
-     * @return The properties to substitute in changelog/migration script
+     * @return The properties to substitute in changelog migration script
      * 
      */
     public Output<Optional<Map<String,String>>> substituteProperties() {

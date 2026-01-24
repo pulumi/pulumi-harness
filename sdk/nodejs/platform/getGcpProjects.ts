@@ -6,6 +6,32 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * // Example: List GCP projects using a GCP cloud connector
+ * const example = harness.platform.getGcpProjects({
+ *     connectorId: "my_gcp_connector",
+ * });
+ * // Example: List GCP projects using a GCP secret manager connector
+ * const exampleSecretManager = harness.platform.getGcpProjects({
+ *     connectorId: "my_gcp_secret_manager_connector",
+ * });
+ * // Example: List GCP projects with org and project scope
+ * const exampleScoped = harness.platform.getGcpProjects({
+ *     connectorId: "my_gcp_connector",
+ *     orgId: "my_org",
+ *     projectId: "my_project",
+ * });
+ * export const gcpProjects = example.then(example => example.projects);
+ * ```
+ */
 export function getGcpProjects(args: GetGcpProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpProjectsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGcpProjects:getGcpProjects", {
@@ -19,8 +45,17 @@ export function getGcpProjects(args: GetGcpProjectsArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getGcpProjects.
  */
 export interface GetGcpProjectsArgs {
+    /**
+     * Identifier of the GCP cloud connector or secret manager connector.
+     */
     connectorId: string;
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: string;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: string;
 }
 
@@ -28,15 +63,50 @@ export interface GetGcpProjectsArgs {
  * A collection of values returned by getGcpProjects.
  */
 export interface GetGcpProjectsResult {
+    /**
+     * Identifier of the GCP cloud connector or secret manager connector.
+     */
     readonly connectorId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Unique identifier of the organization.
+     */
     readonly orgId?: string;
+    /**
+     * Unique identifier of the project.
+     */
     readonly projectId?: string;
     readonly projects: outputs.platform.GetGcpProjectsProject[];
 }
+/**
+ * Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * // Example: List GCP projects using a GCP cloud connector
+ * const example = harness.platform.getGcpProjects({
+ *     connectorId: "my_gcp_connector",
+ * });
+ * // Example: List GCP projects using a GCP secret manager connector
+ * const exampleSecretManager = harness.platform.getGcpProjects({
+ *     connectorId: "my_gcp_secret_manager_connector",
+ * });
+ * // Example: List GCP projects with org and project scope
+ * const exampleScoped = harness.platform.getGcpProjects({
+ *     connectorId: "my_gcp_connector",
+ *     orgId: "my_org",
+ *     projectId: "my_project",
+ * });
+ * export const gcpProjects = example.then(example => example.projects);
+ * ```
+ */
 export function getGcpProjectsOutput(args: GetGcpProjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGcpProjectsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGcpProjects:getGcpProjects", {
@@ -50,7 +120,16 @@ export function getGcpProjectsOutput(args: GetGcpProjectsOutputArgs, opts?: pulu
  * A collection of arguments for invoking getGcpProjects.
  */
 export interface GetGcpProjectsOutputArgs {
+    /**
+     * Identifier of the GCP cloud connector or secret manager connector.
+     */
     connectorId: pulumi.Input<string>;
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: pulumi.Input<string>;
 }

@@ -74,6 +74,9 @@ class GetAwsKmsConnectorResult:
     @_builtins.property
     @pulumi.getter(name="arnPlaintext")
     def arn_plaintext(self) -> _builtins.str:
+        """
+        The ARN of the AWS KMS in plaintext. This is used when the ARN is not stored in a Harness secret. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
         return pulumi.get(self, "arn_plaintext")
 
     @_builtins.property

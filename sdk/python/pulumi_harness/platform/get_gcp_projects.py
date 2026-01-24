@@ -47,6 +47,9 @@ class GetGcpProjectsResult:
     @_builtins.property
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> _builtins.str:
+        """
+        Identifier of the GCP cloud connector or secret manager connector.
+        """
         return pulumi.get(self, "connector_id")
 
     @_builtins.property
@@ -60,11 +63,17 @@ class GetGcpProjectsResult:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the organization.
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the project.
+        """
         return pulumi.get(self, "project_id")
 
     @_builtins.property
@@ -91,7 +100,29 @@ def get_gcp_projects(connector_id: Optional[_builtins.str] = None,
                      project_id: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGcpProjectsResult:
     """
-    Use this data source to access information about an existing resource.
+    Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    # Example: List GCP projects using a GCP cloud connector
+    example = harness.platform.get_gcp_projects(connector_id="my_gcp_connector")
+    # Example: List GCP projects using a GCP secret manager connector
+    example_secret_manager = harness.platform.get_gcp_projects(connector_id="my_gcp_secret_manager_connector")
+    # Example: List GCP projects with org and project scope
+    example_scoped = harness.platform.get_gcp_projects(connector_id="my_gcp_connector",
+        org_id="my_org",
+        project_id="my_project")
+    pulumi.export("gcpProjects", example.projects)
+    ```
+
+
+    :param _builtins.str connector_id: Identifier of the GCP cloud connector or secret manager connector.
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['connectorId'] = connector_id
@@ -111,7 +142,29 @@ def get_gcp_projects_output(connector_id: Optional[pulumi.Input[_builtins.str]] 
                             project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGcpProjectsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    # Example: List GCP projects using a GCP cloud connector
+    example = harness.platform.get_gcp_projects(connector_id="my_gcp_connector")
+    # Example: List GCP projects using a GCP secret manager connector
+    example_secret_manager = harness.platform.get_gcp_projects(connector_id="my_gcp_secret_manager_connector")
+    # Example: List GCP projects with org and project scope
+    example_scoped = harness.platform.get_gcp_projects(connector_id="my_gcp_connector",
+        org_id="my_org",
+        project_id="my_project")
+    pulumi.export("gcpProjects", example.projects)
+    ```
+
+
+    :param _builtins.str connector_id: Identifier of the GCP cloud connector or secret manager connector.
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['connectorId'] = connector_id

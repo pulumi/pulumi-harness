@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a Harness pipeline.
+    /// Resource for creating a Harness GitX Webhook.
     /// 
     /// ## Import
     /// 

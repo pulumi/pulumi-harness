@@ -32,9 +32,17 @@ public final class GetPipelineCentralNotificationRuleNotificationConditionNotifi
         return this.notificationEntity;
     }
 
+    /**
+     * The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+     * 
+     */
     @Import(name="notificationEvent", required=true)
     private Output<String> notificationEvent;
 
+    /**
+     * @return The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+     * 
+     */
     public Output<String> notificationEvent() {
         return this.notificationEvent;
     }
@@ -95,11 +103,23 @@ public final class GetPipelineCentralNotificationRuleNotificationConditionNotifi
             return notificationEntity(Output.of(notificationEntity));
         }
 
+        /**
+         * @param notificationEvent The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notificationEvent(Output<String> notificationEvent) {
             $.notificationEvent = notificationEvent;
             return this;
         }
 
+        /**
+         * @param notificationEvent The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notificationEvent(String notificationEvent) {
             return notificationEvent(Output.of(notificationEvent));
         }

@@ -35,9 +35,11 @@ type LookupDefaultNotificationTemplateSetArgs struct {
 	// Type of channel (e.g. SLACK, EMAIL, etc.)
 	NotificationChannelType string `pulumi:"notificationChannelType"`
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
-	NotificationEntity string  `pulumi:"notificationEntity"`
-	Org                *string `pulumi:"org"`
-	Project            *string `pulumi:"project"`
+	NotificationEntity string `pulumi:"notificationEntity"`
+	// Organization identifier
+	Org *string `pulumi:"org"`
+	// Project identifier
+	Project *string `pulumi:"project"`
 	// Key-value tags
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -61,9 +63,11 @@ type LookupDefaultNotificationTemplateSetResult struct {
 	// Type of channel (e.g. SLACK, EMAIL, etc.)
 	NotificationChannelType string `pulumi:"notificationChannelType"`
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
-	NotificationEntity string  `pulumi:"notificationEntity"`
-	Org                *string `pulumi:"org"`
-	Project            *string `pulumi:"project"`
+	NotificationEntity string `pulumi:"notificationEntity"`
+	// Organization identifier
+	Org *string `pulumi:"org"`
+	// Project identifier
+	Project *string `pulumi:"project"`
 	// Key-value tags
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -90,9 +94,11 @@ type LookupDefaultNotificationTemplateSetOutputArgs struct {
 	// Type of channel (e.g. SLACK, EMAIL, etc.)
 	NotificationChannelType pulumi.StringInput `pulumi:"notificationChannelType"`
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
-	NotificationEntity pulumi.StringInput    `pulumi:"notificationEntity"`
-	Org                pulumi.StringPtrInput `pulumi:"org"`
-	Project            pulumi.StringPtrInput `pulumi:"project"`
+	NotificationEntity pulumi.StringInput `pulumi:"notificationEntity"`
+	// Organization identifier
+	Org pulumi.StringPtrInput `pulumi:"org"`
+	// Project identifier
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Key-value tags
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
@@ -163,10 +169,12 @@ func (o LookupDefaultNotificationTemplateSetResultOutput) NotificationEntity() p
 	return o.ApplyT(func(v LookupDefaultNotificationTemplateSetResult) string { return v.NotificationEntity }).(pulumi.StringOutput)
 }
 
+// Organization identifier
 func (o LookupDefaultNotificationTemplateSetResultOutput) Org() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDefaultNotificationTemplateSetResult) *string { return v.Org }).(pulumi.StringPtrOutput)
 }
 
+// Project identifier
 func (o LookupDefaultNotificationTemplateSetResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDefaultNotificationTemplateSetResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }

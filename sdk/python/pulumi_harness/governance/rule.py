@@ -188,6 +188,22 @@ class Rule(pulumi.CustomResource):
         """
         Resource for creating, updating, and managing rule.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.governance.Rule("example",
+            identifier="identifier",
+            name="name",
+            cloud_provider="AWS/AZURE/GCP",
+            description="description",
+            rules_yaml=\"\"\"policies:
+          - name: aws-list-ec2
+            resource: aws.ec2\"\"\")
+        ```
+
         ## Import
 
         The `pulumi import` command can be used, for example:
@@ -213,6 +229,22 @@ class Rule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating, updating, and managing rule.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.governance.Rule("example",
+            identifier="identifier",
+            name="name",
+            cloud_provider="AWS/AZURE/GCP",
+            description="description",
+            rules_yaml=\"\"\"policies:
+          - name: aws-list-ec2
+            resource: aws.ec2\"\"\")
+        ```
 
         ## Import
 

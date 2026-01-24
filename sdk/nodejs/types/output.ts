@@ -6102,6 +6102,49 @@ export namespace platform {
         usernameRef: string;
     }
 
+    export interface GetIdpCatalogEntityGitDetail {
+        /**
+         * Name of the default branch (this checks out a new branch titled by branch_name).
+         */
+        baseBranch: string;
+        /**
+         * Name of the branch.
+         */
+        branchName: string;
+        /**
+         * Commit message used for the merge commit.
+         */
+        commitMessage: string;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef: string;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath: string;
+        /**
+         * If the repo is a Harness Code repo
+         */
+        isHarnessCodeRepo: boolean;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+         */
+        lastCommitId: string;
+        /**
+         * Last object identifier (for Github). To be provided only when updating Pipeline.
+         */
+        lastObjectId: string;
+        /**
+         * Name of the repository.
+         */
+        repoName: string;
+        /**
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         */
+        storeType: string;
+    }
+
     export interface GetInfraModuleTestingMetadata {
         /**
          * Account is the internal customer account ID
@@ -6710,6 +6753,9 @@ export namespace platform {
     export interface GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfig {
         entityIdentifiers?: string[];
         notificationEntity: string;
+        /**
+         * The pipeline event that triggers the notification. Supported values: `PIPELINE_START`, `PIPELINE_SUCCESS`, `PIPELINE_FAILED`, `STAGE_START`, `STAGE_SUCCESS`, `STAGE_FAILED`.
+         */
         notificationEvent: string;
         notificationEventDatas?: outputs.platform.GetPipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventData[];
     }
@@ -35324,6 +35370,49 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: string;
+    }
+
+    export interface IdpCatalogEntityGitDetails {
+        /**
+         * Name of the default branch (this checks out a new branch titled by branch_name).
+         */
+        baseBranch: string;
+        /**
+         * Name of the branch.
+         */
+        branchName: string;
+        /**
+         * Commit message used for the merge commit.
+         */
+        commitMessage: string;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef: string;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath: string;
+        /**
+         * If the repo is a Harness Code repo
+         */
+        isHarnessCodeRepo: boolean;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+         */
+        lastCommitId: string;
+        /**
+         * Last object identifier (for Github). To be provided only when updating Pipeline.
+         */
+        lastObjectId: string;
+        /**
+         * Name of the repository.
+         */
+        repoName: string;
+        /**
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         */
+        storeType: string;
     }
 
     export interface InfraModuleTestingTestingMetadata {

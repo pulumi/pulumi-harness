@@ -153,6 +153,9 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetAwsKmsConnectorResult
     {
+        /// <summary>
+        /// The ARN of the AWS KMS in plaintext. This is used when the ARN is not stored in a Harness secret. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// </summary>
         public readonly string ArnPlaintext;
         /// <summary>
         /// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
