@@ -9,5 +9,5 @@
       "sdk/java/**",
       "sdk/nodejs/**",
       "sdk/python/**"
-  ],
+  ]
 }
