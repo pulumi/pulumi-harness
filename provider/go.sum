@@ -1947,12 +1947,12 @@ github.com/grpc-ecosystem/grpc-gateway/v2 v2.11.3/go.mod h1:o//XUCC/F+yRGJoPO/VU
 github.com/grpc-ecosystem/grpc-gateway/v2 v2.16.0/go.mod h1:YN5jB8ie0yfIUg6VvR9Kz84aCaG7AsGZnLjhHbUqwPg=
 github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 h1:MJG/KsmcqMwFAkh8mTnAwhyKoB+sTAnY4CACC110tbU=
 github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645/go.mod h1:6iZfnjpejD4L/4DwD7NryNaJyCQdzwWwH2MWhCA90Kw=
-github.com/harness/harness-go-sdk v0.7.2 h1:QuGvAEYCMAdiTgE1WbwdAwZAar0eXET0z/I/V5TM2ic=
-github.com/harness/harness-go-sdk v0.7.2/go.mod h1:T3nqoDb9WUuGxPbh0Dt2jfytimCLmZ9rQ8bCJgOgnRE=
+github.com/harness/harness-go-sdk v0.7.5 h1:Fu2PePeqxpr0foPlh2rgw+Ho+p9+lpUao1uZpo6Ow5I=
+github.com/harness/harness-go-sdk v0.7.5/go.mod h1:T3nqoDb9WUuGxPbh0Dt2jfytimCLmZ9rQ8bCJgOgnRE=
 github.com/harness/harness-openapi-go-client v0.0.25 h1:s1ALpC6cCJCMBkEVPjAjyHTPEpBfPyV78TeXpp3CEoU=
 github.com/harness/harness-openapi-go-client v0.0.25/go.mod h1:u0vqYb994BJGotmEwJevF4L3BNAdU9i8ui2d22gmLPA=
-github.com/harness/terraform-provider-harness v0.41.0 h1:7eals2ggjbAYImCenrH5wm5Zd7cdS9F6eT+9dqTx78c=
-github.com/harness/terraform-provider-harness v0.41.0/go.mod h1:KQ1BtB66FgBHbsXfxTJ9HrN95MLR/3/wF7G8ZbyyGPk=
+github.com/harness/terraform-provider-harness v0.41.1 h1:JkXlwwMRGywrm5YR77mXh3u773pHXJ6IQdfO7Fx10fo=
+github.com/harness/terraform-provider-harness v0.41.1/go.mod h1:78aEMD5CkHnWVPJ3CjXasLooC/KFsE4KsJk5LflEeks=
 github.com/hashicorp/cli v1.1.7/go.mod h1:e6Mfpga9OCT1vqzFuoGZiiF/KaG9CbUfO5s3ghU3YgU=
 github.com/hashicorp/consul/api v1.3.0/go.mod h1:MmDNSzIMUjNpY/mQ398R4bk2FnqQLoPndWW5VkKPlCE=
 github.com/hashicorp/consul/sdk v0.3.0/go.mod h1:VKf9jXwCTEY1QZP2MOLRhb5i/I/ssyNV1vwHyQBF0x8=
@@ -3785,8 +3785,8 @@ google.golang.org/grpc v1.67.1/go.mod h1:1gLDyUQU7CTLJI90u3nXZ9ekeghjeM7pTDZlqFN
 google.golang.org/grpc v1.70.0/go.mod h1:ofIJqVKDXx/JiXrwr2IG4/zwdH9txy3IlF40RmcJSQw=
 google.golang.org/grpc v1.71.0/go.mod h1:H0GRtasmQOh9LkFoCPDu3ZrwUtD1YGE+b2vYBYd/8Ec=
 google.golang.org/grpc v1.75.1/go.mod h1:JtPAzKiq4v1xcAB2hydNlWI2RnF85XXcV0mhKXr2ecQ=
-google.golang.org/grpc v1.77.0 h1:wVVY6/8cGA6vvffn+wWK5ToddbgdU3d8MNENr4evgXM=
-google.golang.org/grpc v1.77.0/go.mod h1:z0BY1iVj0q8E1uSQCjL9cppRj+gnZjzDnzV0dHhrNig=
+google.golang.org/grpc v1.78.0 h1:K1XZG/yGDJnzMdd/uZHAkVqJE+xIDOcmdSFZkBUicNc=
+google.golang.org/grpc v1.78.0/go.mod h1:I47qjTo4OKbMkjA/aOOwxDIiPSBofUtQUI5EfpWvW7U=
 google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0/go.mod h1:6Kw0yEErY5E/yWrBtf03jp27GLLJujG4z/JK95pnjjw=
 google.golang.org/grpc/examples v0.0.0-20230224211313-3775f633ce20/go.mod h1:Nr5H8+MlGWr5+xX/STzdoEqJrO+YteqFbMyCsrb6mH0=
 google.golang.org/protobuf v0.0.0-20200109180630-ec00e32a8dfd/go.mod h1:DFci5gLYBciE7Vtevhsrf46CRTquxDuWsQurQQe4oz8=

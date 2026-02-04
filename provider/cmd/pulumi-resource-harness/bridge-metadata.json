@@ -14270,6 +14270,17 @@
                     }
                 }
             },
+            "harness_platform_ip_allowlist": {
+                "current": "harness:platform/ipAllowlist:IpAllowlist",
+                "fields": {
+                    "allowed_source_type": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_manual_freeze": {
                 "current": "harness:platform/manualFreeze:ManualFreeze",
                 "fields": {
