@@ -161,6 +161,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Infrastructure{}
 	case "harness:platform/inputSet:InputSet":
 		r = &InputSet{}
+	case "harness:platform/ipAllowlist:IpAllowlist":
+		r = &IpAllowlist{}
 	case "harness:platform/jenkinsConnector:JenkinsConnector":
 		r = &JenkinsConnector{}
 	case "harness:platform/jiraConnector:JiraConnector":
@@ -622,6 +624,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/inputSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/ipAllowlist",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

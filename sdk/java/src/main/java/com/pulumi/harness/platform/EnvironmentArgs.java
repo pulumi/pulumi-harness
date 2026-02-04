@@ -83,15 +83,15 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
      * Unique identifier of the resource.
      * 
      */
-    @Import(name="identifier", required=true)
-    private Output<String> identifier;
+    @Import(name="identifier")
+    private @Nullable Output<String> identifier;
 
     /**
      * @return Unique identifier of the resource.
      * 
      */
-    public Output<String> identifier() {
-        return this.identifier;
+    public Optional<Output<String>> identifier() {
+        return Optional.ofNullable(this.identifier);
     }
 
     /**
@@ -308,7 +308,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder identifier(Output<String> identifier) {
+        public Builder identifier(@Nullable Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
@@ -460,9 +460,6 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EnvironmentArgs build() {
-            if ($.identifier == null) {
-                throw new MissingRequiredPropertyException("EnvironmentArgs", "identifier");
-            }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("EnvironmentArgs", "type");
             }

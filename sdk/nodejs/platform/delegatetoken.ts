@@ -92,6 +92,7 @@ export class Delegatetoken extends pulumi.CustomResource {
      * Project Identifier for the Entity
      */
     declare public readonly projectId: pulumi.Output<string | undefined>;
+    declare public readonly purgeOnDelete: pulumi.Output<boolean | undefined>;
     /**
      * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
      */
@@ -124,6 +125,7 @@ export class Delegatetoken extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["purgeOnDelete"] = state?.purgeOnDelete;
             resourceInputs["revokeAfter"] = state?.revokeAfter;
             resourceInputs["tokenStatus"] = state?.tokenStatus;
             resourceInputs["value"] = state?.value;
@@ -138,6 +140,7 @@ export class Delegatetoken extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["purgeOnDelete"] = args?.purgeOnDelete;
             resourceInputs["revokeAfter"] = args?.revokeAfter;
             resourceInputs["tokenStatus"] = args?.tokenStatus;
             resourceInputs["value"] = args?.value;
@@ -175,6 +178,7 @@ export interface DelegatetokenState {
      * Project Identifier for the Entity
      */
     projectId?: pulumi.Input<string>;
+    purgeOnDelete?: pulumi.Input<boolean>;
     /**
      * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
      */
@@ -217,6 +221,7 @@ export interface DelegatetokenArgs {
      * Project Identifier for the Entity
      */
     projectId?: pulumi.Input<string>;
+    purgeOnDelete?: pulumi.Input<boolean>;
     /**
      * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
      */

@@ -990,6 +990,11 @@ export type InputSet = import("./inputSet").InputSet;
 export const InputSet: typeof import("./inputSet").InputSet = null as any;
 utilities.lazyLoad(exports, ["InputSet"], () => require("./inputSet"));
 
+export { IpAllowlistArgs, IpAllowlistState } from "./ipAllowlist";
+export type IpAllowlist = import("./ipAllowlist").IpAllowlist;
+export const IpAllowlist: typeof import("./ipAllowlist").IpAllowlist = null as any;
+utilities.lazyLoad(exports, ["IpAllowlist"], () => require("./ipAllowlist"));
+
 export { JenkinsConnectorArgs, JenkinsConnectorState } from "./jenkinsConnector";
 export type JenkinsConnector = import("./jenkinsConnector").JenkinsConnector;
 export const JenkinsConnector: typeof import("./jenkinsConnector").JenkinsConnector = null as any;
@@ -1385,6 +1390,8 @@ const _module = {
                 return new Infrastructure(name, <any>undefined, { urn })
             case "harness:platform/inputSet:InputSet":
                 return new InputSet(name, <any>undefined, { urn })
+            case "harness:platform/ipAllowlist:IpAllowlist":
+                return new IpAllowlist(name, <any>undefined, { urn })
             case "harness:platform/jenkinsConnector:JenkinsConnector":
                 return new JenkinsConnector(name, <any>undefined, { urn })
             case "harness:platform/jiraConnector:JiraConnector":
@@ -1560,6 +1567,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/infraModuleTesting", 
 pulumi.runtime.registerResourceModule("harness", "platform/infraVariableSet", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infrastructure", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/inputSet", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/ipAllowlist", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/jenkinsConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/jiraConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/kubernetesCloudCostConnector", _module)

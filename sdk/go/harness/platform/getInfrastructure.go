@@ -70,7 +70,7 @@ type LookupInfrastructureArgs struct {
 
 // A collection of values returned by getInfrastructure.
 type LookupInfrastructureResult struct {
-	// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
+	// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
 	DeploymentType string `pulumi:"deploymentType"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
@@ -90,7 +90,7 @@ type LookupInfrastructureResult struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM, GoogleManagedInstanceGroup.
 	Type string `pulumi:"type"`
 	// Infrastructure YAML
 	Yaml string `pulumi:"yaml"`
@@ -140,7 +140,7 @@ func (o LookupInfrastructureResultOutput) ToLookupInfrastructureResultOutputWith
 	return o
 }
 
-// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
+// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
 func (o LookupInfrastructureResultOutput) DeploymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) string { return v.DeploymentType }).(pulumi.StringOutput)
 }
@@ -190,7 +190,7 @@ func (o LookupInfrastructureResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM, GoogleManagedInstanceGroup.
 func (o LookupInfrastructureResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) string { return v.Type }).(pulumi.StringOutput)
 }

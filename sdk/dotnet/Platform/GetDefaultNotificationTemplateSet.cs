@@ -76,16 +76,28 @@ namespace Pulumi.Harness.Platform
         public string NotificationEntity { get; set; } = null!;
 
         /// <summary>
-        /// Organization identifier
+        /// Unique identifier of the organization. Use `OrgId` instead.
         /// </summary>
         [Input("org")]
         public string? Org { get; set; }
 
         /// <summary>
-        /// Project identifier
+        /// Unique identifier of the organization.
+        /// </summary>
+        [Input("orgId")]
+        public string? OrgId { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the project. Use `ProjectId` instead.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
+        [Input("projectId")]
+        public string? ProjectId { get; set; }
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
@@ -150,16 +162,28 @@ namespace Pulumi.Harness.Platform
         public Input<string> NotificationEntity { get; set; } = null!;
 
         /// <summary>
-        /// Organization identifier
+        /// Unique identifier of the organization. Use `OrgId` instead.
         /// </summary>
         [Input("org")]
         public Input<string>? Org { get; set; }
 
         /// <summary>
-        /// Project identifier
+        /// Unique identifier of the organization.
+        /// </summary>
+        [Input("orgId")]
+        public Input<string>? OrgId { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the project. Use `ProjectId` instead.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -220,13 +244,21 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string NotificationEntity;
         /// <summary>
-        /// Organization identifier
+        /// Unique identifier of the organization. Use `OrgId` instead.
         /// </summary>
         public readonly string? Org;
         /// <summary>
-        /// Project identifier
+        /// Unique identifier of the organization.
+        /// </summary>
+        public readonly string? OrgId;
+        /// <summary>
+        /// Unique identifier of the project. Use `ProjectId` instead.
         /// </summary>
         public readonly string? Project;
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
+        public readonly string? ProjectId;
         /// <summary>
         /// Key-value tags
         /// </summary>
@@ -254,7 +286,11 @@ namespace Pulumi.Harness.Platform
 
             string? org,
 
+            string? orgId,
+
             string? project,
+
+            string? projectId,
 
             ImmutableDictionary<string, string>? tags)
         {
@@ -268,7 +304,9 @@ namespace Pulumi.Harness.Platform
             NotificationChannelType = notificationChannelType;
             NotificationEntity = notificationEntity;
             Org = org;
+            OrgId = orgId;
             Project = project;
+            ProjectId = projectId;
             Tags = tags;
         }
     }

@@ -986,6 +986,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/ipAllowlist",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/ipAllowlist:IpAllowlist": "IpAllowlist"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/jenkinsConnector",
   "fqn": "pulumi_harness.platform",
   "classes": {

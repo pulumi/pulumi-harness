@@ -292,6 +292,7 @@
         "platform/infraVariableSet.ts",
         "platform/infrastructure.ts",
         "platform/inputSet.ts",
+        "platform/ipAllowlist.ts",
         "platform/jenkinsConnector.ts",
         "platform/jiraConnector.ts",
         "platform/kubernetesCloudCostConnector.ts",

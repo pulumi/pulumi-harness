@@ -203,6 +203,7 @@ from .infra_module_testing import *
 from .infra_variable_set import *
 from .infrastructure import *
 from .input_set import *
+from .ip_allowlist import *
 from .jenkins_connector import *
 from .jira_connector import *
 from .kubernetes_cloud_cost_connector import *
