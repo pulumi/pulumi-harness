@@ -190,7 +190,7 @@ namespace Pulumi.Harness.Platform
     public sealed class GetInfrastructureResult
     {
         /// <summary>
-        /// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
+        /// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
         /// </summary>
         public readonly string DeploymentType;
         /// <summary>
@@ -230,7 +230,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM, GoogleManagedInstanceGroup.
         /// </summary>
         public readonly string Type;
         /// <summary>

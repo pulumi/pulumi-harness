@@ -151,7 +151,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * Description of the resource.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Enable this flag for force deletion of environments
      */
@@ -163,7 +163,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * Unique identifier of the resource.
      */
-    declare public readonly identifier: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string | undefined>;
     /**
      * Name of the resource.
      */
@@ -215,9 +215,6 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["yaml"] = state?.yaml;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
-            if (args?.identifier === undefined && !opts.urn) {
-                throw new Error("Missing required property 'identifier'");
-            }
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -311,7 +308,7 @@ export interface EnvironmentArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier: pulumi.Input<string>;
+    identifier?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */

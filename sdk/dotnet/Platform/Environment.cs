@@ -144,7 +144,7 @@ namespace Pulumi.Harness.Platform
         /// Description of the resource.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// Enable this flag for force deletion of environments
@@ -162,7 +162,7 @@ namespace Pulumi.Harness.Platform
         /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
-        public Output<string> Identifier { get; private set; } = null!;
+        public Output<string?> Identifier { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -274,8 +274,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        [Input("identifier", required: true)]
-        public Input<string> Identifier { get; set; } = null!;
+        [Input("identifier")]
+        public Input<string>? Identifier { get; set; }
 
         /// <summary>
         /// Name of the resource.

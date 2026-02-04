@@ -84,7 +84,8 @@ type Delegatetoken struct {
 	// Org Identifier for the Entity
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Project Identifier for the Entity
-	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
+	ProjectId     pulumi.StringPtrOutput `pulumi:"projectId"`
+	PurgeOnDelete pulumi.BoolPtrOutput   `pulumi:"purgeOnDelete"`
 	// Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
 	RevokeAfter pulumi.IntPtrOutput `pulumi:"revokeAfter"`
 	// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
@@ -137,7 +138,8 @@ type delegatetokenState struct {
 	// Org Identifier for the Entity
 	OrgId *string `pulumi:"orgId"`
 	// Project Identifier for the Entity
-	ProjectId *string `pulumi:"projectId"`
+	ProjectId     *string `pulumi:"projectId"`
+	PurgeOnDelete *bool   `pulumi:"purgeOnDelete"`
 	// Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
 	RevokeAfter *int `pulumi:"revokeAfter"`
 	// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
@@ -158,7 +160,8 @@ type DelegatetokenState struct {
 	// Org Identifier for the Entity
 	OrgId pulumi.StringPtrInput
 	// Project Identifier for the Entity
-	ProjectId pulumi.StringPtrInput
+	ProjectId     pulumi.StringPtrInput
+	PurgeOnDelete pulumi.BoolPtrInput
 	// Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
 	RevokeAfter pulumi.IntPtrInput
 	// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
@@ -183,7 +186,8 @@ type delegatetokenArgs struct {
 	// Org Identifier for the Entity
 	OrgId *string `pulumi:"orgId"`
 	// Project Identifier for the Entity
-	ProjectId *string `pulumi:"projectId"`
+	ProjectId     *string `pulumi:"projectId"`
+	PurgeOnDelete *bool   `pulumi:"purgeOnDelete"`
 	// Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
 	RevokeAfter *int `pulumi:"revokeAfter"`
 	// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
@@ -205,7 +209,8 @@ type DelegatetokenArgs struct {
 	// Org Identifier for the Entity
 	OrgId pulumi.StringPtrInput
 	// Project Identifier for the Entity
-	ProjectId pulumi.StringPtrInput
+	ProjectId     pulumi.StringPtrInput
+	PurgeOnDelete pulumi.BoolPtrInput
 	// Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
 	RevokeAfter pulumi.IntPtrInput
 	// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
@@ -329,6 +334,10 @@ func (o DelegatetokenOutput) OrgId() pulumi.StringPtrOutput {
 // Project Identifier for the Entity
 func (o DelegatetokenOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Delegatetoken) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+func (o DelegatetokenOutput) PurgeOnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Delegatetoken) pulumi.BoolPtrOutput { return v.PurgeOnDelete }).(pulumi.BoolPtrOutput)
 }
 
 // Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.

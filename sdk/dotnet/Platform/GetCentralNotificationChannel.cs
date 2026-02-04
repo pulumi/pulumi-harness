@@ -82,16 +82,28 @@ namespace Pulumi.Harness.Platform
         public string? NotificationChannelType { get; set; }
 
         /// <summary>
-        /// Identifier of the organization the notification channel is scoped to.
+        /// Unique identifier of the organization. Use `OrgId` instead.
         /// </summary>
         [Input("org")]
         public string? Org { get; set; }
 
         /// <summary>
-        /// Identifier of the project the notification channel is scoped to.
+        /// Unique identifier of the organization.
+        /// </summary>
+        [Input("orgId")]
+        public string? OrgId { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the project. Use `ProjectId` instead.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
+        [Input("projectId")]
+        public string? ProjectId { get; set; }
 
         /// <summary>
         /// Status of the notification channel. Possible values are ENABLED or DISABLED.
@@ -156,16 +168,28 @@ namespace Pulumi.Harness.Platform
         public Input<string>? NotificationChannelType { get; set; }
 
         /// <summary>
-        /// Identifier of the organization the notification channel is scoped to.
+        /// Unique identifier of the organization. Use `OrgId` instead.
         /// </summary>
         [Input("org")]
         public Input<string>? Org { get; set; }
 
         /// <summary>
-        /// Identifier of the project the notification channel is scoped to.
+        /// Unique identifier of the organization.
+        /// </summary>
+        [Input("orgId")]
+        public Input<string>? OrgId { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the project. Use `ProjectId` instead.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// Status of the notification channel. Possible values are ENABLED or DISABLED.
@@ -216,13 +240,21 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? NotificationChannelType;
         /// <summary>
-        /// Identifier of the organization the notification channel is scoped to.
+        /// Unique identifier of the organization. Use `OrgId` instead.
         /// </summary>
         public readonly string? Org;
         /// <summary>
-        /// Identifier of the project the notification channel is scoped to.
+        /// Unique identifier of the organization.
+        /// </summary>
+        public readonly string? OrgId;
+        /// <summary>
+        /// Unique identifier of the project. Use `ProjectId` instead.
         /// </summary>
         public readonly string? Project;
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
+        public readonly string? ProjectId;
         /// <summary>
         /// Status of the notification channel. Possible values are ENABLED or DISABLED.
         /// </summary>
@@ -248,7 +280,11 @@ namespace Pulumi.Harness.Platform
 
             string? org,
 
+            string? orgId,
+
             string? project,
+
+            string? projectId,
 
             string? status)
         {
@@ -261,7 +297,9 @@ namespace Pulumi.Harness.Platform
             Name = name;
             NotificationChannelType = notificationChannelType;
             Org = org;
+            OrgId = orgId;
             Project = project;
+            ProjectId = projectId;
             Status = status;
         }
     }

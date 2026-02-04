@@ -102,13 +102,13 @@ export class Infrastructure extends pulumi.CustomResource {
     }
 
     /**
-     * Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
+     * Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
      */
     declare public readonly deploymentType: pulumi.Output<string>;
     /**
      * Description of the resource.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Environment Identifier.
      */
@@ -124,7 +124,7 @@ export class Infrastructure extends pulumi.CustomResource {
     /**
      * Unique identifier of the resource.
      */
-    declare public readonly identifier: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string | undefined>;
     /**
      * Name of the resource.
      */
@@ -142,7 +142,7 @@ export class Infrastructure extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<string[]>;
     /**
-     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM, GoogleManagedInstanceGroup.
      */
     declare public readonly type: pulumi.Output<string | undefined>;
     /**
@@ -180,9 +180,6 @@ export class Infrastructure extends pulumi.CustomResource {
             if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if (args?.identifier === undefined && !opts.urn) {
-                throw new Error("Missing required property 'identifier'");
-            }
             resourceInputs["deploymentType"] = args?.deploymentType;
             resourceInputs["description"] = args?.description;
             resourceInputs["envId"] = args?.envId;
@@ -206,7 +203,7 @@ export class Infrastructure extends pulumi.CustomResource {
  */
 export interface InfrastructureState {
     /**
-     * Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
+     * Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
      */
     deploymentType?: pulumi.Input<string>;
     /**
@@ -246,7 +243,7 @@ export interface InfrastructureState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM, GoogleManagedInstanceGroup.
      */
     type?: pulumi.Input<string>;
     /**
@@ -260,7 +257,7 @@ export interface InfrastructureState {
  */
 export interface InfrastructureArgs {
     /**
-     * Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
+     * Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
      */
     deploymentType?: pulumi.Input<string>;
     /**
@@ -282,7 +279,7 @@ export interface InfrastructureArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier: pulumi.Input<string>;
+    identifier?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
@@ -300,7 +297,7 @@ export interface InfrastructureArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM, GoogleManagedInstanceGroup.
      */
     type?: pulumi.Input<string>;
     /**

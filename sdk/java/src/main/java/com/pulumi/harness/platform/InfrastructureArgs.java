@@ -20,14 +20,14 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
     public static final InfrastructureArgs Empty = new InfrastructureArgs();
 
     /**
-     * Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
+     * Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
      * 
      */
     @Import(name="deploymentType")
     private @Nullable Output<String> deploymentType;
 
     /**
-     * @return Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
+     * @return Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
      * 
      */
     public Optional<Output<String>> deploymentType() {
@@ -98,15 +98,15 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
      * Unique identifier of the resource.
      * 
      */
-    @Import(name="identifier", required=true)
-    private Output<String> identifier;
+    @Import(name="identifier")
+    private @Nullable Output<String> identifier;
 
     /**
      * @return Unique identifier of the resource.
      * 
      */
-    public Output<String> identifier() {
-        return this.identifier;
+    public Optional<Output<String>> identifier() {
+        return Optional.ofNullable(this.identifier);
     }
 
     /**
@@ -170,14 +170,14 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM, GoogleManagedInstanceGroup.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM, GoogleManagedInstanceGroup.
      * 
      */
     public Optional<Output<String>> type() {
@@ -235,7 +235,7 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param deploymentType Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
+         * @param deploymentType Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param deploymentType Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
+         * @param deploymentType Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder identifier(Output<String> identifier) {
+        public Builder identifier(@Nullable Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
@@ -455,7 +455,7 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM, GoogleManagedInstanceGroup.
          * 
          * @return builder
          * 
@@ -466,7 +466,7 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM, GoogleManagedInstanceGroup.
          * 
          * @return builder
          * 
@@ -499,9 +499,6 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
         public InfrastructureArgs build() {
             if ($.envId == null) {
                 throw new MissingRequiredPropertyException("InfrastructureArgs", "envId");
-            }
-            if ($.identifier == null) {
-                throw new MissingRequiredPropertyException("InfrastructureArgs", "identifier");
             }
             return $;
         }

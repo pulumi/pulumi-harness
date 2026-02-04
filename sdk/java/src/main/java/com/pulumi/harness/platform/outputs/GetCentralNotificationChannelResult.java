@@ -56,15 +56,33 @@ public final class GetCentralNotificationChannelResult {
      */
     private @Nullable String notificationChannelType;
     /**
-     * @return Identifier of the organization the notification channel is scoped to.
+     * @return Unique identifier of the organization. Use `orgId` instead.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release. Please use &#39;org_id&#39; instead.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'org_id' instead. */
     private @Nullable String org;
     /**
-     * @return Identifier of the project the notification channel is scoped to.
+     * @return Unique identifier of the organization.
      * 
      */
+    private @Nullable String orgId;
+    /**
+     * @return Unique identifier of the project. Use `projectId` instead.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release. Please use &#39;project_id&#39; instead.
+     * 
+     */
+    @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'project_id' instead. */
     private @Nullable String project;
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
+    private @Nullable String projectId;
     /**
      * @return Status of the notification channel. Possible values are ENABLED or DISABLED.
      * 
@@ -129,18 +147,40 @@ public final class GetCentralNotificationChannelResult {
         return Optional.ofNullable(this.notificationChannelType);
     }
     /**
-     * @return Identifier of the organization the notification channel is scoped to.
+     * @return Unique identifier of the organization. Use `orgId` instead.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release. Please use &#39;org_id&#39; instead.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'org_id' instead. */
     public Optional<String> org() {
         return Optional.ofNullable(this.org);
     }
     /**
-     * @return Identifier of the project the notification channel is scoped to.
+     * @return Unique identifier of the organization.
      * 
      */
+    public Optional<String> orgId() {
+        return Optional.ofNullable(this.orgId);
+    }
+    /**
+     * @return Unique identifier of the project. Use `projectId` instead.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release. Please use &#39;project_id&#39; instead.
+     * 
+     */
+    @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'project_id' instead. */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
     /**
      * @return Status of the notification channel. Possible values are ENABLED or DISABLED.
@@ -168,7 +208,9 @@ public final class GetCentralNotificationChannelResult {
         private @Nullable String name;
         private @Nullable String notificationChannelType;
         private @Nullable String org;
+        private @Nullable String orgId;
         private @Nullable String project;
+        private @Nullable String projectId;
         private @Nullable String status;
         public Builder() {}
         public Builder(GetCentralNotificationChannelResult defaults) {
@@ -182,7 +224,9 @@ public final class GetCentralNotificationChannelResult {
     	      this.name = defaults.name;
     	      this.notificationChannelType = defaults.notificationChannelType;
     	      this.org = defaults.org;
+    	      this.orgId = defaults.orgId;
     	      this.project = defaults.project;
+    	      this.projectId = defaults.projectId;
     	      this.status = defaults.status;
         }
 
@@ -248,9 +292,21 @@ public final class GetCentralNotificationChannelResult {
             return this;
         }
         @CustomType.Setter
+        public Builder orgId(@Nullable String orgId) {
+
+            this.orgId = orgId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder projectId(@Nullable String projectId) {
+
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
@@ -270,7 +326,9 @@ public final class GetCentralNotificationChannelResult {
             _resultValue.name = name;
             _resultValue.notificationChannelType = notificationChannelType;
             _resultValue.org = org;
+            _resultValue.orgId = orgId;
             _resultValue.project = project;
+            _resultValue.projectId = projectId;
             _resultValue.status = status;
             return _resultValue;
         }

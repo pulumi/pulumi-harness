@@ -146,13 +146,13 @@ type Environment struct {
 	// Color of the environment.
 	Color pulumi.StringOutput `pulumi:"color"`
 	// Description of the resource.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Enable this flag for force deletion of environments
 	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails EnvironmentGitDetailsOutput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
-	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	Identifier pulumi.StringPtrOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -174,9 +174,6 @@ func NewEnvironment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Identifier == nil {
-		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
@@ -266,7 +263,7 @@ type environmentArgs struct {
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *EnvironmentGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
-	Identifier string `pulumi:"identifier"`
+	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -292,7 +289,7 @@ type EnvironmentArgs struct {
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails EnvironmentGitDetailsPtrInput
 	// Unique identifier of the resource.
-	Identifier pulumi.StringInput
+	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -400,8 +397,8 @@ func (o EnvironmentOutput) Color() pulumi.StringOutput {
 }
 
 // Description of the resource.
-func (o EnvironmentOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o EnvironmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Enable this flag for force deletion of environments
@@ -415,8 +412,8 @@ func (o EnvironmentOutput) GitDetails() EnvironmentGitDetailsOutput {
 }
 
 // Unique identifier of the resource.
-func (o EnvironmentOutput) Identifier() pulumi.StringOutput {
-	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+func (o EnvironmentOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Identifier }).(pulumi.StringPtrOutput)
 }
 
 // Name of the resource.

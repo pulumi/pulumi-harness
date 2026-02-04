@@ -28,7 +28,7 @@ class GetCentralNotificationChannelResult:
     """
     A collection of values returned by getCentralNotificationChannel.
     """
-    def __init__(__self__, account=None, channels=None, created=None, id=None, identifier=None, last_modified=None, name=None, notification_channel_type=None, org=None, project=None, status=None):
+    def __init__(__self__, account=None, channels=None, created=None, id=None, identifier=None, last_modified=None, name=None, notification_channel_type=None, org=None, org_id=None, project=None, project_id=None, status=None):
         if account and not isinstance(account, str):
             raise TypeError("Expected argument 'account' to be a str")
         pulumi.set(__self__, "account", account)
@@ -56,9 +56,15 @@ class GetCentralNotificationChannelResult:
         if org and not isinstance(org, str):
             raise TypeError("Expected argument 'org' to be a str")
         pulumi.set(__self__, "org", org)
+        if org_id and not isinstance(org_id, str):
+            raise TypeError("Expected argument 'org_id' to be a str")
+        pulumi.set(__self__, "org_id", org_id)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -129,19 +135,37 @@ class GetCentralNotificationChannelResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""")
     def org(self) -> Optional[_builtins.str]:
         """
-        Identifier of the organization the notification channel is scoped to.
+        Unique identifier of the organization. Use `org_id` instead.
         """
         return pulumi.get(self, "org")
 
     @_builtins.property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the organization.
+        """
+        return pulumi.get(self, "org_id")
+
+    @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""")
     def project(self) -> Optional[_builtins.str]:
         """
-        Identifier of the project the notification channel is scoped to.
+        Unique identifier of the project. Use `project_id` instead.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the project.
+        """
+        return pulumi.get(self, "project_id")
 
     @_builtins.property
     @pulumi.getter
@@ -167,7 +191,9 @@ class AwaitableGetCentralNotificationChannelResult(GetCentralNotificationChannel
             name=self.name,
             notification_channel_type=self.notification_channel_type,
             org=self.org,
+            org_id=self.org_id,
             project=self.project,
+            project_id=self.project_id,
             status=self.status)
 
 
@@ -179,7 +205,9 @@ def get_central_notification_channel(account: Optional[_builtins.str] = None,
                                      name: Optional[_builtins.str] = None,
                                      notification_channel_type: Optional[_builtins.str] = None,
                                      org: Optional[_builtins.str] = None,
+                                     org_id: Optional[_builtins.str] = None,
                                      project: Optional[_builtins.str] = None,
+                                     project_id: Optional[_builtins.str] = None,
                                      status: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCentralNotificationChannelResult:
     """
@@ -193,8 +221,10 @@ def get_central_notification_channel(account: Optional[_builtins.str] = None,
     :param _builtins.int last_modified: Timestamp when the notification channel was last modified.
     :param _builtins.str name: Name of the notification channel.
     :param _builtins.str notification_channel_type: Type of notification channel. One of: EMAIL, SLACK, PAGERDUTY, MSTeams, WEBHOOK, DATADOG.
-    :param _builtins.str org: Identifier of the organization the notification channel is scoped to.
-    :param _builtins.str project: Identifier of the project the notification channel is scoped to.
+    :param _builtins.str org: Unique identifier of the organization. Use `org_id` instead.
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.str project: Unique identifier of the project. Use `project_id` instead.
+    :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str status: Status of the notification channel. Possible values are ENABLED or DISABLED.
     """
     __args__ = dict()
@@ -206,7 +236,9 @@ def get_central_notification_channel(account: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['notificationChannelType'] = notification_channel_type
     __args__['org'] = org
+    __args__['orgId'] = org_id
     __args__['project'] = project
+    __args__['projectId'] = project_id
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getCentralNotificationChannel:getCentralNotificationChannel', __args__, opts=opts, typ=GetCentralNotificationChannelResult).value
@@ -221,7 +253,9 @@ def get_central_notification_channel(account: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         notification_channel_type=pulumi.get(__ret__, 'notification_channel_type'),
         org=pulumi.get(__ret__, 'org'),
+        org_id=pulumi.get(__ret__, 'org_id'),
         project=pulumi.get(__ret__, 'project'),
+        project_id=pulumi.get(__ret__, 'project_id'),
         status=pulumi.get(__ret__, 'status'))
 def get_central_notification_channel_output(account: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             channels: Optional[pulumi.Input[Optional[Sequence[Union['GetCentralNotificationChannelChannelArgs', 'GetCentralNotificationChannelChannelArgsDict']]]]] = None,
@@ -231,7 +265,9 @@ def get_central_notification_channel_output(account: Optional[pulumi.Input[Optio
                                             name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             notification_channel_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             org: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                            org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                            project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCentralNotificationChannelResult]:
     """
@@ -245,8 +281,10 @@ def get_central_notification_channel_output(account: Optional[pulumi.Input[Optio
     :param _builtins.int last_modified: Timestamp when the notification channel was last modified.
     :param _builtins.str name: Name of the notification channel.
     :param _builtins.str notification_channel_type: Type of notification channel. One of: EMAIL, SLACK, PAGERDUTY, MSTeams, WEBHOOK, DATADOG.
-    :param _builtins.str org: Identifier of the organization the notification channel is scoped to.
-    :param _builtins.str project: Identifier of the project the notification channel is scoped to.
+    :param _builtins.str org: Unique identifier of the organization. Use `org_id` instead.
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.str project: Unique identifier of the project. Use `project_id` instead.
+    :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str status: Status of the notification channel. Possible values are ENABLED or DISABLED.
     """
     __args__ = dict()
@@ -258,7 +296,9 @@ def get_central_notification_channel_output(account: Optional[pulumi.Input[Optio
     __args__['name'] = name
     __args__['notificationChannelType'] = notification_channel_type
     __args__['org'] = org
+    __args__['orgId'] = org_id
     __args__['project'] = project
+    __args__['projectId'] = project_id
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getCentralNotificationChannel:getCentralNotificationChannel', __args__, opts=opts, typ=GetCentralNotificationChannelResult)
@@ -272,5 +312,7 @@ def get_central_notification_channel_output(account: Optional[pulumi.Input[Optio
         name=pulumi.get(__response__, 'name'),
         notification_channel_type=pulumi.get(__response__, 'notification_channel_type'),
         org=pulumi.get(__response__, 'org'),
+        org_id=pulumi.get(__response__, 'org_id'),
         project=pulumi.get(__response__, 'project'),
+        project_id=pulumi.get(__response__, 'project_id'),
         status=pulumi.get(__response__, 'status')))

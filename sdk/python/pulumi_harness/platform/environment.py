@@ -21,12 +21,12 @@ __all__ = ['EnvironmentArgs', 'Environment']
 @pulumi.input_type
 class EnvironmentArgs:
     def __init__(__self__, *,
-                 identifier: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
                  color: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  git_details: Optional[pulumi.Input['EnvironmentGitDetailsArgs']] = None,
+                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -34,19 +34,18 @@ class EnvironmentArgs:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Environment resource.
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] type: The type of environment. Valid values are PreProduction, Production
         :param pulumi.Input[_builtins.str] color: Color of the environment.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of environments
         :param pulumi.Input['EnvironmentGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
-        pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "type", type)
         if color is not None:
             pulumi.set(__self__, "color", color)
@@ -56,6 +55,8 @@ class EnvironmentArgs:
             pulumi.set(__self__, "force_delete", force_delete)
         if git_details is not None:
             pulumi.set(__self__, "git_details", git_details)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -66,18 +67,6 @@ class EnvironmentArgs:
             pulumi.set(__self__, "tags", tags)
         if yaml is not None:
             pulumi.set(__self__, "yaml", yaml)
-
-    @_builtins.property
-    @pulumi.getter
-    def identifier(self) -> pulumi.Input[_builtins.str]:
-        """
-        Unique identifier of the resource.
-        """
-        return pulumi.get(self, "identifier")
-
-    @identifier.setter
-    def identifier(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
@@ -138,6 +127,18 @@ class EnvironmentArgs:
     @git_details.setter
     def git_details(self, value: Optional[pulumi.Input['EnvironmentGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique identifier of the resource.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
@@ -677,8 +678,6 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["git_details"] = git_details
-            if identifier is None and not opts.urn:
-                raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
@@ -755,7 +754,7 @@ class Environment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def description(self) -> pulumi.Output[_builtins.str]:
         """
         Description of the resource.
         """
@@ -779,7 +778,7 @@ class Environment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> pulumi.Output[_builtins.str]:
+    def identifier(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """

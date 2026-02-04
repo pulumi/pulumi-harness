@@ -26,10 +26,16 @@ class CentralNotificationChannelArgs:
                  notification_channel_type: pulumi.Input[_builtins.str],
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org: Optional[pulumi.Input[_builtins.str]] = None,
+                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CentralNotificationChannel resource.
+        :param pulumi.Input[_builtins.str] org: Unique identifier of the organization. Use `org_id` instead.
+        :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[_builtins.str] project: Unique identifier of the project. Use `project_id` instead.
+        :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         """
         pulumi.set(__self__, "channel", channel)
         pulumi.set(__self__, "identifier", identifier)
@@ -37,9 +43,19 @@ class CentralNotificationChannelArgs:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""org is deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""")
+        if org is not None:
             pulumi.set(__self__, "org", org)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if project is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""project is deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""")
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -81,7 +97,11 @@ class CentralNotificationChannelArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""")
     def org(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique identifier of the organization. Use `org_id` instead.
+        """
         return pulumi.get(self, "org")
 
     @org.setter
@@ -89,13 +109,41 @@ class CentralNotificationChannelArgs:
         pulumi.set(self, "org", value)
 
     @_builtins.property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique identifier of the organization.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "org_id", value)
+
+    @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""")
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique identifier of the project. Use `project_id` instead.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique identifier of the project.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -118,13 +166,19 @@ class _CentralNotificationChannelState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
                  org: Optional[pulumi.Input[_builtins.str]] = None,
+                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CentralNotificationChannel resources.
         :param pulumi.Input[_builtins.str] account: Account identifier associated with this notification channel.
         :param pulumi.Input[_builtins.int] created: Timestamp when the notification channel was created.
         :param pulumi.Input[_builtins.int] last_modified: Timestamp when the notification channel was last modified.
+        :param pulumi.Input[_builtins.str] org: Unique identifier of the organization. Use `org_id` instead.
+        :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[_builtins.str] project: Unique identifier of the project. Use `project_id` instead.
+        :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         """
         if account is not None:
             pulumi.set(__self__, "account", account)
@@ -141,9 +195,19 @@ class _CentralNotificationChannelState:
         if notification_channel_type is not None:
             pulumi.set(__self__, "notification_channel_type", notification_channel_type)
         if org is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""org is deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""")
+        if org is not None:
             pulumi.set(__self__, "org", org)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if project is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""project is deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""")
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -221,7 +285,11 @@ class _CentralNotificationChannelState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""")
     def org(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique identifier of the organization. Use `org_id` instead.
+        """
         return pulumi.get(self, "org")
 
     @org.setter
@@ -229,13 +297,41 @@ class _CentralNotificationChannelState:
         pulumi.set(self, "org", value)
 
     @_builtins.property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique identifier of the organization.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "org_id", value)
+
+    @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""")
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique identifier of the project. Use `project_id` instead.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique identifier of the project.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -258,7 +354,9 @@ class CentralNotificationChannel(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
                  org: Optional[pulumi.Input[_builtins.str]] = None,
+                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -266,6 +364,10 @@ class CentralNotificationChannel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] org: Unique identifier of the organization. Use `org_id` instead.
+        :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[_builtins.str] project: Unique identifier of the project. Use `project_id` instead.
+        :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         """
         ...
     @overload
@@ -296,7 +398,9 @@ class CentralNotificationChannel(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
                  org: Optional[pulumi.Input[_builtins.str]] = None,
+                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -318,7 +422,9 @@ class CentralNotificationChannel(pulumi.CustomResource):
                 raise TypeError("Missing required property 'notification_channel_type'")
             __props__.__dict__["notification_channel_type"] = notification_channel_type
             __props__.__dict__["org"] = org
+            __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project"] = project
+            __props__.__dict__["project_id"] = project_id
             __props__.__dict__["status"] = status
             __props__.__dict__["account"] = None
             __props__.__dict__["created"] = None
@@ -341,7 +447,9 @@ class CentralNotificationChannel(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
             org: Optional[pulumi.Input[_builtins.str]] = None,
+            org_id: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
+            project_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'CentralNotificationChannel':
         """
         Get an existing CentralNotificationChannel resource's state with the given name, id, and optional extra
@@ -353,6 +461,10 @@ class CentralNotificationChannel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account: Account identifier associated with this notification channel.
         :param pulumi.Input[_builtins.int] created: Timestamp when the notification channel was created.
         :param pulumi.Input[_builtins.int] last_modified: Timestamp when the notification channel was last modified.
+        :param pulumi.Input[_builtins.str] org: Unique identifier of the organization. Use `org_id` instead.
+        :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[_builtins.str] project: Unique identifier of the project. Use `project_id` instead.
+        :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -366,7 +478,9 @@ class CentralNotificationChannel(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["notification_channel_type"] = notification_channel_type
         __props__.__dict__["org"] = org
+        __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project"] = project
+        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["status"] = status
         return CentralNotificationChannel(resource_name, opts=opts, __props__=__props__)
 
@@ -416,13 +530,37 @@ class CentralNotificationChannel(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""")
     def org(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Unique identifier of the organization. Use `org_id` instead.
+        """
         return pulumi.get(self, "org")
 
     @_builtins.property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Unique identifier of the organization.
+        """
+        return pulumi.get(self, "org_id")
+
+    @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""")
     def project(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Unique identifier of the project. Use `project_id` instead.
+        """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Unique identifier of the project.
+        """
+        return pulumi.get(self, "project_id")
 
     @_builtins.property
     @pulumi.getter

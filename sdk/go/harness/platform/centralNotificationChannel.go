@@ -23,12 +23,22 @@ type CentralNotificationChannel struct {
 	Created    pulumi.IntOutput    `pulumi:"created"`
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Timestamp when the notification channel was last modified.
-	LastModified            pulumi.IntOutput       `pulumi:"lastModified"`
-	Name                    pulumi.StringOutput    `pulumi:"name"`
-	NotificationChannelType pulumi.StringOutput    `pulumi:"notificationChannelType"`
-	Org                     pulumi.StringPtrOutput `pulumi:"org"`
-	Project                 pulumi.StringPtrOutput `pulumi:"project"`
-	Status                  pulumi.StringPtrOutput `pulumi:"status"`
+	LastModified            pulumi.IntOutput    `pulumi:"lastModified"`
+	Name                    pulumi.StringOutput `pulumi:"name"`
+	NotificationChannelType pulumi.StringOutput `pulumi:"notificationChannelType"`
+	// Unique identifier of the organization. Use `orgId` instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+	Org pulumi.StringPtrOutput `pulumi:"org"`
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
+	// Unique identifier of the project. Use `projectId` instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+	Project pulumi.StringPtrOutput `pulumi:"project"`
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
+	Status    pulumi.StringPtrOutput `pulumi:"status"`
 }
 
 // NewCentralNotificationChannel registers a new resource with the given unique name, arguments, and options.
@@ -80,9 +90,19 @@ type centralNotificationChannelState struct {
 	LastModified            *int    `pulumi:"lastModified"`
 	Name                    *string `pulumi:"name"`
 	NotificationChannelType *string `pulumi:"notificationChannelType"`
-	Org                     *string `pulumi:"org"`
-	Project                 *string `pulumi:"project"`
-	Status                  *string `pulumi:"status"`
+	// Unique identifier of the organization. Use `orgId` instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+	Org *string `pulumi:"org"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project. Use `projectId` instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+	Project *string `pulumi:"project"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
+	Status    *string `pulumi:"status"`
 }
 
 type CentralNotificationChannelState struct {
@@ -96,9 +116,19 @@ type CentralNotificationChannelState struct {
 	LastModified            pulumi.IntPtrInput
 	Name                    pulumi.StringPtrInput
 	NotificationChannelType pulumi.StringPtrInput
-	Org                     pulumi.StringPtrInput
-	Project                 pulumi.StringPtrInput
-	Status                  pulumi.StringPtrInput
+	// Unique identifier of the organization. Use `orgId` instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+	Org pulumi.StringPtrInput
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput
+	// Unique identifier of the project. Use `projectId` instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+	Project pulumi.StringPtrInput
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrInput
+	Status    pulumi.StringPtrInput
 }
 
 func (CentralNotificationChannelState) ElementType() reflect.Type {
@@ -110,9 +140,19 @@ type centralNotificationChannelArgs struct {
 	Identifier              string                            `pulumi:"identifier"`
 	Name                    *string                           `pulumi:"name"`
 	NotificationChannelType string                            `pulumi:"notificationChannelType"`
-	Org                     *string                           `pulumi:"org"`
-	Project                 *string                           `pulumi:"project"`
-	Status                  *string                           `pulumi:"status"`
+	// Unique identifier of the organization. Use `orgId` instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+	Org *string `pulumi:"org"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project. Use `projectId` instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+	Project *string `pulumi:"project"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
+	Status    *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a CentralNotificationChannel resource.
@@ -121,9 +161,19 @@ type CentralNotificationChannelArgs struct {
 	Identifier              pulumi.StringInput
 	Name                    pulumi.StringPtrInput
 	NotificationChannelType pulumi.StringInput
-	Org                     pulumi.StringPtrInput
-	Project                 pulumi.StringPtrInput
-	Status                  pulumi.StringPtrInput
+	// Unique identifier of the organization. Use `orgId` instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+	Org pulumi.StringPtrInput
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput
+	// Unique identifier of the project. Use `projectId` instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+	Project pulumi.StringPtrInput
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrInput
+	Status    pulumi.StringPtrInput
 }
 
 func (CentralNotificationChannelArgs) ElementType() reflect.Type {
@@ -244,12 +294,28 @@ func (o CentralNotificationChannelOutput) NotificationChannelType() pulumi.Strin
 	return o.ApplyT(func(v *CentralNotificationChannel) pulumi.StringOutput { return v.NotificationChannelType }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the organization. Use `orgId` instead.
+//
+// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
 func (o CentralNotificationChannelOutput) Org() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CentralNotificationChannel) pulumi.StringPtrOutput { return v.Org }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the organization.
+func (o CentralNotificationChannelOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CentralNotificationChannel) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the project. Use `projectId` instead.
+//
+// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
 func (o CentralNotificationChannelOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CentralNotificationChannel) pulumi.StringPtrOutput { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the project.
+func (o CentralNotificationChannelOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CentralNotificationChannel) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 func (o CentralNotificationChannelOutput) Status() pulumi.StringPtrOutput {

@@ -19,7 +19,9 @@ export function getDefaultNotificationTemplateSet(args: GetDefaultNotificationTe
         "notificationChannelType": args.notificationChannelType,
         "notificationEntity": args.notificationEntity,
         "org": args.org,
+        "orgId": args.orgId,
         "project": args.project,
+        "projectId": args.projectId,
         "tags": args.tags,
     }, opts);
 }
@@ -53,13 +55,25 @@ export interface GetDefaultNotificationTemplateSetArgs {
      */
     notificationEntity: string;
     /**
-     * Organization identifier
+     * Unique identifier of the organization. Use `orgId` instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
      */
     org?: string;
     /**
-     * Project identifier
+     * Unique identifier of the organization.
+     */
+    orgId?: string;
+    /**
+     * Unique identifier of the project. Use `projectId` instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
      */
     project?: string;
+    /**
+     * Unique identifier of the project.
+     */
+    projectId?: string;
     /**
      * Key-value tags
      */
@@ -107,13 +121,25 @@ export interface GetDefaultNotificationTemplateSetResult {
      */
     readonly notificationEntity: string;
     /**
-     * Organization identifier
+     * Unique identifier of the organization. Use `orgId` instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
      */
     readonly org?: string;
     /**
-     * Project identifier
+     * Unique identifier of the organization.
+     */
+    readonly orgId?: string;
+    /**
+     * Unique identifier of the project. Use `projectId` instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
      */
     readonly project?: string;
+    /**
+     * Unique identifier of the project.
+     */
+    readonly projectId?: string;
     /**
      * Key-value tags
      */
@@ -132,7 +158,9 @@ export function getDefaultNotificationTemplateSetOutput(args: GetDefaultNotifica
         "notificationChannelType": args.notificationChannelType,
         "notificationEntity": args.notificationEntity,
         "org": args.org,
+        "orgId": args.orgId,
         "project": args.project,
+        "projectId": args.projectId,
         "tags": args.tags,
     }, opts);
 }
@@ -166,13 +194,25 @@ export interface GetDefaultNotificationTemplateSetOutputArgs {
      */
     notificationEntity: pulumi.Input<string>;
     /**
-     * Organization identifier
+     * Unique identifier of the organization. Use `orgId` instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
      */
     org?: pulumi.Input<string>;
     /**
-     * Project identifier
+     * Unique identifier of the organization.
+     */
+    orgId?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the project. Use `projectId` instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the project.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * Key-value tags
      */

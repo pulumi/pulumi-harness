@@ -70,6 +70,26 @@ export class DefaultNotificationTemplateSet extends pulumi.CustomResource {
      */
     declare public readonly notificationEntity: pulumi.Output<string>;
     /**
+     * Unique identifier of the organization. Use `orgId` instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+     */
+    declare public readonly org: pulumi.Output<string | undefined>;
+    /**
+     * Unique identifier of the organization.
+     */
+    declare public readonly orgId: pulumi.Output<string | undefined>;
+    /**
+     * Unique identifier of the project. Use `projectId` instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+     */
+    declare public readonly project: pulumi.Output<string | undefined>;
+    /**
+     * Unique identifier of the project.
+     */
+    declare public readonly projectId: pulumi.Output<string | undefined>;
+    /**
      * Key-value tags
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
@@ -95,6 +115,10 @@ export class DefaultNotificationTemplateSet extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["notificationChannelType"] = state?.notificationChannelType;
             resourceInputs["notificationEntity"] = state?.notificationEntity;
+            resourceInputs["org"] = state?.org;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectId"] = state?.projectId;
             resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DefaultNotificationTemplateSetArgs | undefined;
@@ -116,6 +140,10 @@ export class DefaultNotificationTemplateSet extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["notificationChannelType"] = args?.notificationChannelType;
             resourceInputs["notificationEntity"] = args?.notificationEntity;
+            resourceInputs["org"] = args?.org;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
@@ -162,6 +190,26 @@ export interface DefaultNotificationTemplateSetState {
      */
     notificationEntity?: pulumi.Input<string>;
     /**
+     * Unique identifier of the organization. Use `orgId` instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+     */
+    org?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the organization.
+     */
+    orgId?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the project. Use `projectId` instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the project.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * Key-value tags
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -195,6 +243,26 @@ export interface DefaultNotificationTemplateSetArgs {
      * Type of the entity (e.g. PIPELINE, SERVICE, etc.)
      */
     notificationEntity: pulumi.Input<string>;
+    /**
+     * Unique identifier of the organization. Use `orgId` instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+     */
+    org?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the organization.
+     */
+    orgId?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the project. Use `projectId` instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the project.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * Key-value tags
      */
