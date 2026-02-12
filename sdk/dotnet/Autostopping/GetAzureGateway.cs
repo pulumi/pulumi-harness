@@ -63,6 +63,9 @@ namespace Pulumi.Harness.Autostopping
         [Input("cloudConnectorId", required: true)]
         public string CloudConnectorId { get; set; } = null!;
 
+        /// <summary>
+        /// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        /// </summary>
         [Input("deleteCloudResourcesOnDestroy", required: true)]
         public bool DeleteCloudResourcesOnDestroy { get; set; }
 
@@ -146,6 +149,9 @@ namespace Pulumi.Harness.Autostopping
         [Input("cloudConnectorId", required: true)]
         public Input<string> CloudConnectorId { get; set; } = null!;
 
+        /// <summary>
+        /// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        /// </summary>
         [Input("deleteCloudResourcesOnDestroy", required: true)]
         public Input<bool> DeleteCloudResourcesOnDestroy { get; set; } = null!;
 
@@ -223,6 +229,9 @@ namespace Pulumi.Harness.Autostopping
         /// Id of the cloud connector
         /// </summary>
         public readonly string CloudConnectorId;
+        /// <summary>
+        /// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        /// </summary>
         public readonly bool DeleteCloudResourcesOnDestroy;
         /// <summary>
         /// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details

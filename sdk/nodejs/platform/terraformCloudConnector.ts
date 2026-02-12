@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
+ * Resource for creating a Terraform Cloud connector.
  *
  * ## Import
  *
@@ -59,6 +59,9 @@ export class TerraformCloudConnector extends pulumi.CustomResource {
         return obj['__pulumiType'] === TerraformCloudConnector.__pulumiType;
     }
 
+    /**
+     * Credentials to connect to the Terraform Cloud platform.
+     */
     declare public readonly credentials: pulumi.Output<outputs.platform.TerraformCloudConnectorCredentials>;
     /**
      * Connect only using delegates with these tags.
@@ -92,6 +95,9 @@ export class TerraformCloudConnector extends pulumi.CustomResource {
      * Tags to associate with the resource.
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
+    /**
+     * URL of the Terraform Cloud platform.
+     */
     declare public readonly url: pulumi.Output<string>;
 
     /**
@@ -148,6 +154,9 @@ export class TerraformCloudConnector extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TerraformCloudConnector resources.
  */
 export interface TerraformCloudConnectorState {
+    /**
+     * Credentials to connect to the Terraform Cloud platform.
+     */
     credentials?: pulumi.Input<inputs.platform.TerraformCloudConnectorCredentials>;
     /**
      * Connect only using delegates with these tags.
@@ -181,6 +190,9 @@ export interface TerraformCloudConnectorState {
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URL of the Terraform Cloud platform.
+     */
     url?: pulumi.Input<string>;
 }
 
@@ -188,6 +200,9 @@ export interface TerraformCloudConnectorState {
  * The set of arguments for constructing a TerraformCloudConnector resource.
  */
 export interface TerraformCloudConnectorArgs {
+    /**
+     * Credentials to connect to the Terraform Cloud platform.
+     */
     credentials: pulumi.Input<inputs.platform.TerraformCloudConnectorCredentials>;
     /**
      * Connect only using delegates with these tags.
@@ -221,5 +236,8 @@ export interface TerraformCloudConnectorArgs {
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URL of the Terraform Cloud platform.
+     */
     url: pulumi.Input<string>;
 }

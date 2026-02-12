@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Resource for managing Terraform/Tofu Modules.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -107,6 +109,9 @@ export class InfraModuleTesting extends pulumi.CustomResource {
      * Provider connector for testing purposes
      */
     declare public readonly providerConnector: pulumi.Output<string>;
+    /**
+     * Provisioner type for testing purposes (e.g., terraform, tofu)
+     */
     declare public readonly provisionerType: pulumi.Output<string>;
     /**
      * Provisioner version for testing purposes
@@ -313,6 +318,9 @@ export interface InfraModuleTestingState {
      * Provider connector for testing purposes
      */
     providerConnector?: pulumi.Input<string>;
+    /**
+     * Provisioner type for testing purposes (e.g., terraform, tofu)
+     */
     provisionerType?: pulumi.Input<string>;
     /**
      * Provisioner version for testing purposes
@@ -400,6 +408,9 @@ export interface InfraModuleTestingArgs {
      * Provider connector for testing purposes
      */
     providerConnector: pulumi.Input<string>;
+    /**
+     * Provisioner type for testing purposes (e.g., terraform, tofu)
+     */
     provisionerType: pulumi.Input<string>;
     /**
      * Provisioner version for testing purposes

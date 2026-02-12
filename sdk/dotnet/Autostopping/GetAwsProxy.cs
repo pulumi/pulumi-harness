@@ -66,6 +66,9 @@ namespace Pulumi.Harness.Autostopping
         [Input("cloudConnectorId", required: true)]
         public string CloudConnectorId { get; set; } = null!;
 
+        /// <summary>
+        /// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+        /// </summary>
         [Input("deleteCloudResourcesOnDestroy", required: true)]
         public bool DeleteCloudResourcesOnDestroy { get; set; }
 
@@ -159,6 +162,9 @@ namespace Pulumi.Harness.Autostopping
         [Input("cloudConnectorId", required: true)]
         public Input<string> CloudConnectorId { get; set; } = null!;
 
+        /// <summary>
+        /// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+        /// </summary>
         [Input("deleteCloudResourcesOnDestroy", required: true)]
         public Input<bool> DeleteCloudResourcesOnDestroy { get; set; } = null!;
 
@@ -236,6 +242,9 @@ namespace Pulumi.Harness.Autostopping
         /// Id of the cloud connector
         /// </summary>
         public readonly string CloudConnectorId;
+        /// <summary>
+        /// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+        /// </summary>
         public readonly bool DeleteCloudResourcesOnDestroy;
         /// <summary>
         /// Hostname for the proxy

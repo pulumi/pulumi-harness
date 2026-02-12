@@ -33,7 +33,9 @@ class TerraformCloudConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TerraformCloudConnector resource.
+        :param pulumi.Input['TerraformCloudConnectorCredentialsArgs'] credentials: Credentials to connect to the Terraform Cloud platform.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.str] url: URL of the Terraform Cloud platform.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Connect only using delegates with these tags.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Enable this flag to execute on delegate (default: true).
@@ -63,6 +65,9 @@ class TerraformCloudConnectorArgs:
     @_builtins.property
     @pulumi.getter
     def credentials(self) -> pulumi.Input['TerraformCloudConnectorCredentialsArgs']:
+        """
+        Credentials to connect to the Terraform Cloud platform.
+        """
         return pulumi.get(self, "credentials")
 
     @credentials.setter
@@ -84,6 +89,9 @@ class TerraformCloudConnectorArgs:
     @_builtins.property
     @pulumi.getter
     def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        URL of the Terraform Cloud platform.
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -190,6 +198,7 @@ class _TerraformCloudConnectorState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TerraformCloudConnector resources.
+        :param pulumi.Input['TerraformCloudConnectorCredentialsArgs'] credentials: Credentials to connect to the Terraform Cloud platform.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Connect only using delegates with these tags.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Enable this flag to execute on delegate (default: true).
@@ -198,6 +207,7 @@ class _TerraformCloudConnectorState:
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[_builtins.str] url: URL of the Terraform Cloud platform.
         """
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
@@ -223,6 +233,9 @@ class _TerraformCloudConnectorState:
     @_builtins.property
     @pulumi.getter
     def credentials(self) -> Optional[pulumi.Input['TerraformCloudConnectorCredentialsArgs']]:
+        """
+        Credentials to connect to the Terraform Cloud platform.
+        """
         return pulumi.get(self, "credentials")
 
     @credentials.setter
@@ -328,6 +341,9 @@ class _TerraformCloudConnectorState:
     @_builtins.property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the Terraform Cloud platform.
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -353,7 +369,7 @@ class TerraformCloudConnector(pulumi.CustomResource):
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        Resource for creating a Terraform Cloud connector.
 
         ## Import
 
@@ -379,6 +395,7 @@ class TerraformCloudConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['TerraformCloudConnectorCredentialsArgs', 'TerraformCloudConnectorCredentialsArgsDict']] credentials: Credentials to connect to the Terraform Cloud platform.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Connect only using delegates with these tags.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Enable this flag to execute on delegate (default: true).
@@ -387,6 +404,7 @@ class TerraformCloudConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[_builtins.str] url: URL of the Terraform Cloud platform.
         """
         ...
     @overload
@@ -395,7 +413,7 @@ class TerraformCloudConnector(pulumi.CustomResource):
                  args: TerraformCloudConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        Resource for creating a Terraform Cloud connector.
 
         ## Import
 
@@ -496,6 +514,7 @@ class TerraformCloudConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['TerraformCloudConnectorCredentialsArgs', 'TerraformCloudConnectorCredentialsArgsDict']] credentials: Credentials to connect to the Terraform Cloud platform.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Connect only using delegates with these tags.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Enable this flag to execute on delegate (default: true).
@@ -504,6 +523,7 @@ class TerraformCloudConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[_builtins.str] url: URL of the Terraform Cloud platform.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -524,6 +544,9 @@ class TerraformCloudConnector(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def credentials(self) -> pulumi.Output['outputs.TerraformCloudConnectorCredentials']:
+        """
+        Credentials to connect to the Terraform Cloud platform.
+        """
         return pulumi.get(self, "credentials")
 
     @_builtins.property
@@ -593,5 +616,8 @@ class TerraformCloudConnector(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def url(self) -> pulumi.Output[_builtins.str]:
+        """
+        URL of the Terraform Cloud platform.
+        """
         return pulumi.get(self, "url")
 

@@ -108,6 +108,9 @@ class GetAzureGatewayResult:
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> _builtins.bool:
+        """
+        Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @_builtins.property
@@ -238,6 +241,7 @@ def get_azure_gateway(app_gateway_id: Optional[_builtins.str] = None,
     :param _builtins.str azure_func_region: Region in which azure cloud function will be provisioned
     :param _builtins.str certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for SSL based rules
     :param _builtins.str cloud_connector_id: Id of the cloud connector
+    :param _builtins.bool delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
     :param _builtins.str frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
     :param _builtins.str host_name: Hostname for the proxy
     :param _builtins.str name: Name of the proxy
@@ -304,6 +308,7 @@ def get_azure_gateway_output(app_gateway_id: Optional[pulumi.Input[Optional[_bui
     :param _builtins.str azure_func_region: Region in which azure cloud function will be provisioned
     :param _builtins.str certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for SSL based rules
     :param _builtins.str cloud_connector_id: Id of the cloud connector
+    :param _builtins.bool delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
     :param _builtins.str frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
     :param _builtins.str host_name: Hostname for the proxy
     :param _builtins.str name: Name of the proxy

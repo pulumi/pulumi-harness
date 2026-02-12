@@ -76,9 +76,11 @@ type LookupInfraVariableSetArgs struct {
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
-	ProjectId              *string                                    `pulumi:"projectId"`
+	ProjectId *string `pulumi:"projectId"`
+	// Terraform variables files configured on the Variable Set (see below for nested schema)
 	TerraformVariableFiles []GetInfraVariableSetTerraformVariableFile `pulumi:"terraformVariableFiles"`
-	TerraformVariables     []GetInfraVariableSetTerraformVariable     `pulumi:"terraformVariables"`
+	// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+	TerraformVariables []GetInfraVariableSetTerraformVariable `pulumi:"terraformVariables"`
 }
 
 // A collection of values returned by getInfraVariableSet.
@@ -100,9 +102,11 @@ type LookupInfraVariableSetResult struct {
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
-	Tags                   []string                                   `pulumi:"tags"`
+	Tags []string `pulumi:"tags"`
+	// Terraform variables files configured on the Variable Set (see below for nested schema)
 	TerraformVariableFiles []GetInfraVariableSetTerraformVariableFile `pulumi:"terraformVariableFiles"`
-	TerraformVariables     []GetInfraVariableSetTerraformVariable     `pulumi:"terraformVariables"`
+	// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+	TerraformVariables []GetInfraVariableSetTerraformVariable `pulumi:"terraformVariables"`
 }
 
 func LookupInfraVariableSetOutput(ctx *pulumi.Context, args LookupInfraVariableSetOutputArgs, opts ...pulumi.InvokeOption) LookupInfraVariableSetResultOutput {
@@ -127,9 +131,11 @@ type LookupInfraVariableSetOutputArgs struct {
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Unique identifier of the project.
-	ProjectId              pulumi.StringPtrInput                              `pulumi:"projectId"`
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Terraform variables files configured on the Variable Set (see below for nested schema)
 	TerraformVariableFiles GetInfraVariableSetTerraformVariableFileArrayInput `pulumi:"terraformVariableFiles"`
-	TerraformVariables     GetInfraVariableSetTerraformVariableArrayInput     `pulumi:"terraformVariables"`
+	// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+	TerraformVariables GetInfraVariableSetTerraformVariableArrayInput `pulumi:"terraformVariables"`
 }
 
 func (LookupInfraVariableSetOutputArgs) ElementType() reflect.Type {
@@ -198,12 +204,14 @@ func (o LookupInfraVariableSetResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Terraform variables files configured on the Variable Set (see below for nested schema)
 func (o LookupInfraVariableSetResultOutput) TerraformVariableFiles() GetInfraVariableSetTerraformVariableFileArrayOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) []GetInfraVariableSetTerraformVariableFile {
 		return v.TerraformVariableFiles
 	}).(GetInfraVariableSetTerraformVariableFileArrayOutput)
 }
 
+// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
 func (o LookupInfraVariableSetResultOutput) TerraformVariables() GetInfraVariableSetTerraformVariableArrayOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) []GetInfraVariableSetTerraformVariable {
 		return v.TerraformVariables

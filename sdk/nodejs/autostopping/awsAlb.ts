@@ -76,6 +76,9 @@ export class AwsAlb extends pulumi.CustomResource {
      * Id of the cloud connector
      */
     declare public readonly cloudConnectorId: pulumi.Output<string>;
+    /**
+     * Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     */
     declare public readonly deleteCloudResourcesOnDestroy: pulumi.Output<boolean>;
     /**
      * Hostname for the proxy
@@ -177,6 +180,9 @@ export interface AwsAlbState {
      * Id of the cloud connector
      */
     cloudConnectorId?: pulumi.Input<string>;
+    /**
+     * Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     */
     deleteCloudResourcesOnDestroy?: pulumi.Input<boolean>;
     /**
      * Hostname for the proxy
@@ -221,6 +227,9 @@ export interface AwsAlbArgs {
      * Id of the cloud connector
      */
     cloudConnectorId: pulumi.Input<string>;
+    /**
+     * Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     */
     deleteCloudResourcesOnDestroy: pulumi.Input<boolean>;
     /**
      * Hostname for the proxy

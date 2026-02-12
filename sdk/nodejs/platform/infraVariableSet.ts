@@ -154,7 +154,13 @@ export class InfraVariableSet extends pulumi.CustomResource {
      * Tags to associate with the resource.
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
+    /**
+     * Terraform variables files configured on the Variable Set (see below for nested schema)
+     */
     declare public readonly terraformVariableFiles: pulumi.Output<outputs.platform.InfraVariableSetTerraformVariableFile[] | undefined>;
+    /**
+     * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     */
     declare public readonly terraformVariables: pulumi.Output<outputs.platform.InfraVariableSetTerraformVariable[] | undefined>;
 
     /**
@@ -237,7 +243,13 @@ export interface InfraVariableSetState {
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Terraform variables files configured on the Variable Set (see below for nested schema)
+     */
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetTerraformVariableFile>[]>;
+    /**
+     * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     */
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetTerraformVariable>[]>;
 }
 
@@ -277,6 +289,12 @@ export interface InfraVariableSetArgs {
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Terraform variables files configured on the Variable Set (see below for nested schema)
+     */
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetTerraformVariableFile>[]>;
+    /**
+     * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     */
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetTerraformVariable>[]>;
 }

@@ -38,6 +38,7 @@ class AwsProxyArgs:
         The set of arguments for constructing a AwsProxy resource.
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] machine_type: Machine instance type
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
@@ -94,6 +95,9 @@ class AwsProxyArgs:
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @delete_cloud_resources_on_destroy.setter
@@ -237,6 +241,7 @@ class _AwsProxyState:
         :param pulumi.Input[_builtins.bool] allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] machine_type: Machine instance type
@@ -323,6 +328,9 @@ class _AwsProxyState:
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @delete_cloud_resources_on_destroy.setter
@@ -486,6 +494,7 @@ class AwsProxy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] machine_type: Machine instance type
         :param pulumi.Input[_builtins.str] name: Name of the proxy
@@ -627,6 +636,7 @@ class AwsProxy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] machine_type: Machine instance type
@@ -688,6 +698,9 @@ class AwsProxy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @_builtins.property

@@ -242,7 +242,6 @@ namespace Pulumi.Harness.Service
     /// The `pulumi import` command can be used, for example:
     /// 
     /// Import Project level Service Discovery Agent
-    /// 
     /// Account and Org level agents are not supported yet
     /// 
     /// ```sh

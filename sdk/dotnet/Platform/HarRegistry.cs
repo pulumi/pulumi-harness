@@ -80,13 +80,17 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// ### Import Format
+    /// 
+    /// The import ID format is: `&lt;space_ref&gt;/&lt;identifier&gt;`
+    /// 
+    /// Where:
+    /// - `SpaceRef` defines the scope: account, org, or project level
+    /// - `Identifier` is the unique registry identifier
+    /// 
+    /// ### Import Examples
+    /// 
     /// ### After Import
-    /// 
-    /// bash
-    /// 
-    /// pulumi preview
-    /// 
-    /// pulumi up
     /// </summary>
     [HarnessResourceType("harness:platform/harRegistry:HarRegistry")]
     public partial class HarRegistry : global::Pulumi.CustomResource

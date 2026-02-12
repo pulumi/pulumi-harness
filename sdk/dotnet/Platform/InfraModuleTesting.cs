@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
+    /// Resource for managing Terraform/Tofu Modules.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -115,6 +117,9 @@ namespace Pulumi.Harness.Platform
         [Output("providerConnector")]
         public Output<string> ProviderConnector { get; private set; } = null!;
 
+        /// <summary>
+        /// Provisioner type for testing purposes (e.g., terraform, tofu)
+        /// </summary>
         [Output("provisionerType")]
         public Output<string> ProvisionerType { get; private set; } = null!;
 
@@ -291,6 +296,9 @@ namespace Pulumi.Harness.Platform
         [Input("providerConnector", required: true)]
         public Input<string> ProviderConnector { get; set; } = null!;
 
+        /// <summary>
+        /// Provisioner type for testing purposes (e.g., terraform, tofu)
+        /// </summary>
         [Input("provisionerType", required: true)]
         public Input<string> ProvisionerType { get; set; } = null!;
 
@@ -416,6 +424,9 @@ namespace Pulumi.Harness.Platform
         [Input("providerConnector")]
         public Input<string>? ProviderConnector { get; set; }
 
+        /// <summary>
+        /// Provisioner type for testing purposes (e.g., terraform, tofu)
+        /// </summary>
         [Input("provisionerType")]
         public Input<string>? ProvisionerType { get; set; }
 

@@ -44,7 +44,7 @@ namespace Pulumi.Harness
     /// Importing a global config only using the yaml path
     /// 
     /// ```sh
-    /// $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Cloud Providers/kubernetes.yaml"
+    /// terraform import harness_yaml_config.k8s_cloudprovider "Setup/Cloud Providers/kubernetes.yaml"
     /// ```
     /// 
     /// Importing a service which requires both the application id and the yaml path.

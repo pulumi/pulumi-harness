@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTerraformCloudConnectorResult {
+    /**
+     * @return Credentials to connect to the Terraform Cloud platform.
+     * 
+     */
     private List<GetTerraformCloudConnectorCredential> credentials;
     /**
      * @return Tags to filter delegates for connection.
@@ -55,9 +59,17 @@ public final class GetTerraformCloudConnectorResult {
      * 
      */
     private List<String> tags;
+    /**
+     * @return URL of the Terraform Cloud platform.
+     * 
+     */
     private String url;
 
     private GetTerraformCloudConnectorResult() {}
+    /**
+     * @return Credentials to connect to the Terraform Cloud platform.
+     * 
+     */
     public List<GetTerraformCloudConnectorCredential> credentials() {
         return this.credentials;
     }
@@ -117,6 +129,10 @@ public final class GetTerraformCloudConnectorResult {
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return URL of the Terraform Cloud platform.
+     * 
+     */
     public String url() {
         return this.url;
     }

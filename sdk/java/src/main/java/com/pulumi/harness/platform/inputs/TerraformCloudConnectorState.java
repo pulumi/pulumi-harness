@@ -18,9 +18,17 @@ public final class TerraformCloudConnectorState extends com.pulumi.resources.Res
 
     public static final TerraformCloudConnectorState Empty = new TerraformCloudConnectorState();
 
+    /**
+     * Credentials to connect to the Terraform Cloud platform.
+     * 
+     */
     @Import(name="credentials")
     private @Nullable Output<TerraformCloudConnectorCredentialsArgs> credentials;
 
+    /**
+     * @return Credentials to connect to the Terraform Cloud platform.
+     * 
+     */
     public Optional<Output<TerraformCloudConnectorCredentialsArgs>> credentials() {
         return Optional.ofNullable(this.credentials);
     }
@@ -145,9 +153,17 @@ public final class TerraformCloudConnectorState extends com.pulumi.resources.Res
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * URL of the Terraform Cloud platform.
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return URL of the Terraform Cloud platform.
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -185,11 +201,23 @@ public final class TerraformCloudConnectorState extends com.pulumi.resources.Res
             $ = new TerraformCloudConnectorState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param credentials Credentials to connect to the Terraform Cloud platform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentials(@Nullable Output<TerraformCloudConnectorCredentialsArgs> credentials) {
             $.credentials = credentials;
             return this;
         }
 
+        /**
+         * @param credentials Credentials to connect to the Terraform Cloud platform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentials(TerraformCloudConnectorCredentialsArgs credentials) {
             return credentials(Output.of(credentials));
         }
@@ -382,11 +410,23 @@ public final class TerraformCloudConnectorState extends com.pulumi.resources.Res
             return tags(List.of(tags));
         }
 
+        /**
+         * @param url URL of the Terraform Cloud platform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url URL of the Terraform Cloud platform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

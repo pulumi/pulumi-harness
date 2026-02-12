@@ -107,6 +107,9 @@ class GetGcpProxyResult:
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> _builtins.bool:
+        """
+        Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @_builtins.property
@@ -236,6 +239,7 @@ def get_gcp_proxy(allocate_static_ip: Optional[_builtins.bool] = None,
     :param _builtins.bool allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
     :param _builtins.str api_key: Harness NG API key
     :param _builtins.str cloud_connector_id: Id of the cloud connector
+    :param _builtins.bool delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
     :param _builtins.str host_name: Hostname for the proxy
     :param _builtins.str machine_type: Machine instance type
     :param _builtins.str name: Name of the proxy
@@ -301,6 +305,7 @@ def get_gcp_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[_bui
     :param _builtins.bool allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
     :param _builtins.str api_key: Harness NG API key
     :param _builtins.str cloud_connector_id: Id of the cloud connector
+    :param _builtins.bool delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
     :param _builtins.str host_name: Hostname for the proxy
     :param _builtins.str machine_type: Machine instance type
     :param _builtins.str name: Name of the proxy

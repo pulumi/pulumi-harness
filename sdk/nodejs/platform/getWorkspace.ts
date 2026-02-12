@@ -85,7 +85,13 @@ export interface GetWorkspaceArgs {
      * Tags to associate with the resource.
      */
     tags?: string[];
+    /**
+     * Terraform variables files configured on the workspace (see below for nested schema)
+     */
     terraformVariableFiles?: inputs.platform.GetWorkspaceTerraformVariableFile[];
+    /**
+     * Terraform variables configured on the workspace (see below for nested schema)
+     */
     terraformVariables?: inputs.platform.GetWorkspaceTerraformVariable[];
     /**
      * Variable sets to use.
@@ -177,7 +183,13 @@ export interface GetWorkspaceResult {
      * Tags to associate with the resource.
      */
     readonly tags?: string[];
+    /**
+     * Terraform variables files configured on the workspace (see below for nested schema)
+     */
     readonly terraformVariableFiles: outputs.platform.GetWorkspaceTerraformVariableFile[];
+    /**
+     * Terraform variables configured on the workspace (see below for nested schema)
+     */
     readonly terraformVariables: outputs.platform.GetWorkspaceTerraformVariable[];
     /**
      * Variable sets to use.
@@ -263,7 +275,13 @@ export interface GetWorkspaceOutputArgs {
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Terraform variables files configured on the workspace (see below for nested schema)
+     */
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableFileArgs>[]>;
+    /**
+     * Terraform variables configured on the workspace (see below for nested schema)
+     */
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableArgs>[]>;
     /**
      * Variable sets to use.

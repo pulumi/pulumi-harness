@@ -262,11 +262,17 @@ class GetWorkspaceResult:
     @_builtins.property
     @pulumi.getter(name="terraformVariableFiles")
     def terraform_variable_files(self) -> Sequence['outputs.GetWorkspaceTerraformVariableFileResult']:
+        """
+        Terraform variables files configured on the workspace (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variable_files")
 
     @_builtins.property
     @pulumi.getter(name="terraformVariables")
     def terraform_variables(self) -> Sequence['outputs.GetWorkspaceTerraformVariableResult']:
+        """
+        Terraform variables configured on the workspace (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variables")
 
     @_builtins.property
@@ -348,6 +354,8 @@ def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs
     :param _builtins.str repository_commit: Repository Tag in which the code should be accessed
     :param _builtins.str repository_sha: Repository Commit SHA in which the code should be accessed
     :param Sequence[_builtins.str] tags: Tags to associate with the resource.
+    :param Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
+    :param Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']] terraform_variables: Terraform variables configured on the workspace (see below for nested schema)
     :param Sequence[_builtins.str] variable_sets: Variable sets to use.
     """
     __args__ = dict()
@@ -430,6 +438,8 @@ def get_workspace_output(connectors: Optional[pulumi.Input[Optional[Sequence[Uni
     :param _builtins.str repository_commit: Repository Tag in which the code should be accessed
     :param _builtins.str repository_sha: Repository Commit SHA in which the code should be accessed
     :param Sequence[_builtins.str] tags: Tags to associate with the resource.
+    :param Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
+    :param Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']] terraform_variables: Terraform variables configured on the workspace (see below for nested schema)
     :param Sequence[_builtins.str] variable_sets: Variable sets to use.
     """
     __args__ = dict()

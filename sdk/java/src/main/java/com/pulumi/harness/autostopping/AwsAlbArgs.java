@@ -55,9 +55,17 @@ public final class AwsAlbArgs extends com.pulumi.resources.ResourceArgs {
         return this.cloudConnectorId;
     }
 
+    /**
+     * Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     * 
+     */
     @Import(name="deleteCloudResourcesOnDestroy", required=true)
     private Output<Boolean> deleteCloudResourcesOnDestroy;
 
+    /**
+     * @return Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     * 
+     */
     public Output<Boolean> deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
     }
@@ -236,11 +244,23 @@ public final class AwsAlbArgs extends com.pulumi.resources.ResourceArgs {
             return cloudConnectorId(Output.of(cloudConnectorId));
         }
 
+        /**
+         * @param deleteCloudResourcesOnDestroy Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteCloudResourcesOnDestroy(Output<Boolean> deleteCloudResourcesOnDestroy) {
             $.deleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
             return this;
         }
 
+        /**
+         * @param deleteCloudResourcesOnDestroy Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteCloudResourcesOnDestroy(Boolean deleteCloudResourcesOnDestroy) {
             return deleteCloudResourcesOnDestroy(Output.of(deleteCloudResourcesOnDestroy));
         }

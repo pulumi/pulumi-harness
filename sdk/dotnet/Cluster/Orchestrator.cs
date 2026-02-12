@@ -9,6 +9,42 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness.Cluster
 {
+    /// <summary>
+    /// Resource for creating and deleting ClusterOrchestrators.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = Aws.Index.Region.Invoke();
+    /// 
+    ///     var test = new Harness.Cluster.Orchestrator("test", new()
+    ///     {
+    ///         Name = "name",
+    ///         ClusterEndpoint = "http://test.test.com",
+    ///         K8sConnectorId = "test",
+    ///         Region = current.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Lifecycle Operations
+    /// 
+    /// This resource supports the following lifecycle operations:
+    /// 
+    /// - **Create**: Creates a new cluster orchestrator in Harness CCM
+    /// - **Delete**: Deletes the cluster orchestrator from Harness CCM
+    /// 
+    /// When you run `terraform destroy`, the cluster orchestrator will be permanently deleted from your Harness account.
+    /// </summary>
     [HarnessResourceType("harness:cluster/orchestrator:Orchestrator")]
     public partial class Orchestrator : global::Pulumi.CustomResource
     {

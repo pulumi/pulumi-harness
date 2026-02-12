@@ -19,9 +19,17 @@ public final class TerraformCloudConnectorArgs extends com.pulumi.resources.Reso
 
     public static final TerraformCloudConnectorArgs Empty = new TerraformCloudConnectorArgs();
 
+    /**
+     * Credentials to connect to the Terraform Cloud platform.
+     * 
+     */
     @Import(name="credentials", required=true)
     private Output<TerraformCloudConnectorCredentialsArgs> credentials;
 
+    /**
+     * @return Credentials to connect to the Terraform Cloud platform.
+     * 
+     */
     public Output<TerraformCloudConnectorCredentialsArgs> credentials() {
         return this.credentials;
     }
@@ -146,9 +154,17 @@ public final class TerraformCloudConnectorArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * URL of the Terraform Cloud platform.
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return URL of the Terraform Cloud platform.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
@@ -186,11 +202,23 @@ public final class TerraformCloudConnectorArgs extends com.pulumi.resources.Reso
             $ = new TerraformCloudConnectorArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param credentials Credentials to connect to the Terraform Cloud platform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentials(Output<TerraformCloudConnectorCredentialsArgs> credentials) {
             $.credentials = credentials;
             return this;
         }
 
+        /**
+         * @param credentials Credentials to connect to the Terraform Cloud platform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentials(TerraformCloudConnectorCredentialsArgs credentials) {
             return credentials(Output.of(credentials));
         }
@@ -383,11 +411,23 @@ public final class TerraformCloudConnectorArgs extends com.pulumi.resources.Reso
             return tags(List.of(tags));
         }
 
+        /**
+         * @param url URL of the Terraform Cloud platform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url URL of the Terraform Cloud platform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

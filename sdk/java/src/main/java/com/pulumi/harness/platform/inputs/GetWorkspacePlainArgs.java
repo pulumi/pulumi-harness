@@ -170,16 +170,32 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Terraform variables files configured on the workspace (see below for nested schema)
+     * 
+     */
     @Import(name="terraformVariableFiles")
     private @Nullable List<GetWorkspaceTerraformVariableFile> terraformVariableFiles;
 
+    /**
+     * @return Terraform variables files configured on the workspace (see below for nested schema)
+     * 
+     */
     public Optional<List<GetWorkspaceTerraformVariableFile>> terraformVariableFiles() {
         return Optional.ofNullable(this.terraformVariableFiles);
     }
 
+    /**
+     * Terraform variables configured on the workspace (see below for nested schema)
+     * 
+     */
     @Import(name="terraformVariables")
     private @Nullable List<GetWorkspaceTerraformVariable> terraformVariables;
 
+    /**
+     * @return Terraform variables configured on the workspace (see below for nested schema)
+     * 
+     */
     public Optional<List<GetWorkspaceTerraformVariable>> terraformVariables() {
         return Optional.ofNullable(this.terraformVariables);
     }
@@ -375,20 +391,44 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
             return tags(List.of(tags));
         }
 
+        /**
+         * @param terraformVariableFiles Terraform variables files configured on the workspace (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariableFiles(@Nullable List<GetWorkspaceTerraformVariableFile> terraformVariableFiles) {
             $.terraformVariableFiles = terraformVariableFiles;
             return this;
         }
 
+        /**
+         * @param terraformVariableFiles Terraform variables files configured on the workspace (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariableFiles(GetWorkspaceTerraformVariableFile... terraformVariableFiles) {
             return terraformVariableFiles(List.of(terraformVariableFiles));
         }
 
+        /**
+         * @param terraformVariables Terraform variables configured on the workspace (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariables(@Nullable List<GetWorkspaceTerraformVariable> terraformVariables) {
             $.terraformVariables = terraformVariables;
             return this;
         }
 
+        /**
+         * @param terraformVariables Terraform variables configured on the workspace (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariables(GetWorkspaceTerraformVariable... terraformVariables) {
             return terraformVariables(List.of(terraformVariables));
         }

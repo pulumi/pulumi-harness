@@ -32,6 +32,10 @@ public final class GetAzureProxyResult {
      * 
      */
     private String cloudConnectorId;
+    /**
+     * @return Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
+     * 
+     */
     private Boolean deleteCloudResourcesOnDestroy;
     /**
      * @return Hostname for the proxy
@@ -117,6 +121,10 @@ public final class GetAzureProxyResult {
     public String cloudConnectorId() {
         return this.cloudConnectorId;
     }
+    /**
+     * @return Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
+     * 
+     */
     public Boolean deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
     }

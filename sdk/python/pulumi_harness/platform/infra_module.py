@@ -501,6 +501,8 @@ class InfraModule(pulumi.CustomResource):
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Resource for managing Terraform/Tofu Modules.
+
         ## Example Usage
 
         ```python
@@ -549,6 +551,8 @@ class InfraModule(pulumi.CustomResource):
                  args: InfraModuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource for managing Terraform/Tofu Modules.
+
         ## Example Usage
 
         ```python

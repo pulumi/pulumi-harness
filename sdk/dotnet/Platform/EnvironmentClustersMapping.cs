@@ -71,6 +71,10 @@ namespace Pulumi.Harness.Platform
     /// ## Import
     /// 
     /// The `pulumi import` command can be used, for example:
+    /// 
+    /// ```sh
+    /// #
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/environmentClustersMapping:EnvironmentClustersMapping")]
     public partial class EnvironmentClustersMapping : global::Pulumi.CustomResource

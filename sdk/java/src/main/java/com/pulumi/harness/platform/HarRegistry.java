@@ -88,13 +88,17 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * ### Import Format
+ * 
+ * The import ID format is: `&lt;space_ref&gt;/&lt;identifier&gt;`
+ * 
+ * Where:
+ * - `spaceRef` defines the scope: account, org, or project level
+ * - `identifier` is the unique registry identifier
+ * 
+ * ### Import Examples
+ * 
  * ### After Import
- * 
- * bash
- * 
- * pulumi preview
- * 
- * pulumi up
  * 
  */
 @ResourceType(type="harness:platform/harRegistry:HarRegistry")

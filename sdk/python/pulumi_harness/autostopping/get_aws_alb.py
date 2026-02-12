@@ -88,6 +88,9 @@ class GetAwsAlbResult:
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> _builtins.bool:
+        """
+        Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @_builtins.property
@@ -194,6 +197,7 @@ def get_aws_alb(alb_arn: Optional[_builtins.str] = None,
 
     :param _builtins.str alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
     :param _builtins.str cloud_connector_id: Id of the cloud connector
+    :param _builtins.bool delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
     :param _builtins.str host_name: Hostname for the proxy
     :param _builtins.str name: Name of the proxy
     :param _builtins.str region: Region in which cloud resources are hosted
@@ -247,6 +251,7 @@ def get_aws_alb_output(alb_arn: Optional[pulumi.Input[Optional[_builtins.str]]] 
 
     :param _builtins.str alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
     :param _builtins.str cloud_connector_id: Id of the cloud connector
+    :param _builtins.bool delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
     :param _builtins.str host_name: Hostname for the proxy
     :param _builtins.str name: Name of the proxy
     :param _builtins.str region: Region in which cloud resources are hosted

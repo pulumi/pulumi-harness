@@ -32,8 +32,9 @@ type LookupAwsProxyArgs struct {
 	ApiKey       string                   `pulumi:"apiKey"`
 	Certificates *GetAwsProxyCertificates `pulumi:"certificates"`
 	// Id of the cloud connector
-	CloudConnectorId              string `pulumi:"cloudConnectorId"`
-	DeleteCloudResourcesOnDestroy bool   `pulumi:"deleteCloudResourcesOnDestroy"`
+	CloudConnectorId string `pulumi:"cloudConnectorId"`
+	// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
 	// Hostname for the proxy
 	HostName string  `pulumi:"hostName"`
 	Keypair  *string `pulumi:"keypair"`
@@ -59,8 +60,9 @@ type LookupAwsProxyResult struct {
 	ApiKey       string                   `pulumi:"apiKey"`
 	Certificates *GetAwsProxyCertificates `pulumi:"certificates"`
 	// Id of the cloud connector
-	CloudConnectorId              string `pulumi:"cloudConnectorId"`
-	DeleteCloudResourcesOnDestroy bool   `pulumi:"deleteCloudResourcesOnDestroy"`
+	CloudConnectorId string `pulumi:"cloudConnectorId"`
+	// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
 	// Hostname for the proxy
 	HostName string `pulumi:"hostName"`
 	// The provider-assigned unique ID for this managed resource.
@@ -99,8 +101,9 @@ type LookupAwsProxyOutputArgs struct {
 	ApiKey       pulumi.StringInput              `pulumi:"apiKey"`
 	Certificates GetAwsProxyCertificatesPtrInput `pulumi:"certificates"`
 	// Id of the cloud connector
-	CloudConnectorId              pulumi.StringInput `pulumi:"cloudConnectorId"`
-	DeleteCloudResourcesOnDestroy pulumi.BoolInput   `pulumi:"deleteCloudResourcesOnDestroy"`
+	CloudConnectorId pulumi.StringInput `pulumi:"cloudConnectorId"`
+	// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+	DeleteCloudResourcesOnDestroy pulumi.BoolInput `pulumi:"deleteCloudResourcesOnDestroy"`
 	// Hostname for the proxy
 	HostName pulumi.StringInput    `pulumi:"hostName"`
 	Keypair  pulumi.StringPtrInput `pulumi:"keypair"`
@@ -156,6 +159,7 @@ func (o LookupAwsProxyResultOutput) CloudConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsProxyResult) string { return v.CloudConnectorId }).(pulumi.StringOutput)
 }
 
+// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
 func (o LookupAwsProxyResultOutput) DeleteCloudResourcesOnDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAwsProxyResult) bool { return v.DeleteCloudResourcesOnDestroy }).(pulumi.BoolOutput)
 }

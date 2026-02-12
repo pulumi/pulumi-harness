@@ -49,6 +49,8 @@ class WorkspaceArgs:
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
+        :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
         :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
         :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides.
@@ -62,6 +64,8 @@ class WorkspaceArgs:
         :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]] terraform_variables: Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] variable_sets: Variable sets to use.
         """
         pulumi.set(__self__, "cost_estimation_enabled", cost_estimation_enabled)
@@ -151,6 +155,9 @@ class WorkspaceArgs:
     @_builtins.property
     @pulumi.getter(name="provisionerType")
     def provisioner_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        """
         return pulumi.get(self, "provisioner_type")
 
     @provisioner_type.setter
@@ -160,6 +167,9 @@ class WorkspaceArgs:
     @_builtins.property
     @pulumi.getter(name="provisionerVersion")
     def provisioner_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+        """
         return pulumi.get(self, "provisioner_version")
 
     @provisioner_version.setter
@@ -325,6 +335,9 @@ class WorkspaceArgs:
     @_builtins.property
     @pulumi.getter(name="terraformVariableFiles")
     def terraform_variable_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]]:
+        """
+        Terraform variables files configured on the workspace (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variable_files")
 
     @terraform_variable_files.setter
@@ -334,6 +347,9 @@ class WorkspaceArgs:
     @_builtins.property
     @pulumi.getter(name="terraformVariables")
     def terraform_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]:
+        """
+        Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variables")
 
     @terraform_variables.setter
@@ -390,6 +406,8 @@ class _WorkspaceState:
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
         :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
@@ -397,6 +415,8 @@ class _WorkspaceState:
         :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides.
         :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]] terraform_variables: Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] variable_sets: Variable sets to use.
         """
         if connectors is not None:
@@ -567,6 +587,9 @@ class _WorkspaceState:
     @_builtins.property
     @pulumi.getter(name="provisionerType")
     def provisioner_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        """
         return pulumi.get(self, "provisioner_type")
 
     @provisioner_type.setter
@@ -576,6 +599,9 @@ class _WorkspaceState:
     @_builtins.property
     @pulumi.getter(name="provisionerVersion")
     def provisioner_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+        """
         return pulumi.get(self, "provisioner_version")
 
     @provisioner_version.setter
@@ -669,6 +695,9 @@ class _WorkspaceState:
     @_builtins.property
     @pulumi.getter(name="terraformVariableFiles")
     def terraform_variable_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]]:
+        """
+        Terraform variables files configured on the workspace (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variable_files")
 
     @terraform_variable_files.setter
@@ -678,6 +707,9 @@ class _WorkspaceState:
     @_builtins.property
     @pulumi.getter(name="terraformVariables")
     def terraform_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]:
+        """
+        Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variables")
 
     @terraform_variables.setter
@@ -839,6 +871,8 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
         :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
@@ -846,6 +880,8 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides.
         :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]] terraform_variables: Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] variable_sets: Variable sets to use.
         """
         ...
@@ -1090,6 +1126,8 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
         :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
@@ -1097,6 +1135,8 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides.
         :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]] terraform_variables: Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] variable_sets: Variable sets to use.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1210,11 +1250,17 @@ class Workspace(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="provisionerType")
     def provisioner_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        """
         return pulumi.get(self, "provisioner_type")
 
     @_builtins.property
     @pulumi.getter(name="provisionerVersion")
     def provisioner_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+        """
         return pulumi.get(self, "provisioner_version")
 
     @_builtins.property
@@ -1276,11 +1322,17 @@ class Workspace(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="terraformVariableFiles")
     def terraform_variable_files(self) -> pulumi.Output[Optional[Sequence['outputs.WorkspaceTerraformVariableFile']]]:
+        """
+        Terraform variables files configured on the workspace (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variable_files")
 
     @_builtins.property
     @pulumi.getter(name="terraformVariables")
     def terraform_variables(self) -> pulumi.Output[Optional[Sequence['outputs.WorkspaceTerraformVariable']]]:
+        """
+        Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variables")
 
     @_builtins.property

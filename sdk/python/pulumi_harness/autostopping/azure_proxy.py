@@ -40,6 +40,7 @@ class AzureProxyArgs:
         The set of arguments for constructing a AzureProxy resource.
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] keypair: Name of SSH Key to be used for proxy VM
         :param pulumi.Input[_builtins.str] machine_type: Type of instance to be used for proxy
@@ -99,6 +100,9 @@ class AzureProxyArgs:
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @delete_cloud_resources_on_destroy.setter
@@ -268,6 +272,7 @@ class _AzureProxyState:
         :param pulumi.Input[_builtins.bool] allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] keypair: Name of SSH Key to be used for proxy VM
@@ -369,6 +374,9 @@ class _AzureProxyState:
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @delete_cloud_resources_on_destroy.setter
@@ -548,6 +556,7 @@ class AzureProxy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] keypair: Name of SSH Key to be used for proxy VM
         :param pulumi.Input[_builtins.str] machine_type: Type of instance to be used for proxy
@@ -702,6 +711,7 @@ class AzureProxy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] keypair: Name of SSH Key to be used for proxy VM
@@ -772,6 +782,9 @@ class AzureProxy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @_builtins.property

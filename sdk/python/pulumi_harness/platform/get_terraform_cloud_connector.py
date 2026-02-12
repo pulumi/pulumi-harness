@@ -62,6 +62,9 @@ class GetTerraformCloudConnectorResult:
     @_builtins.property
     @pulumi.getter
     def credentials(self) -> Sequence['outputs.GetTerraformCloudConnectorCredentialResult']:
+        """
+        Credentials to connect to the Terraform Cloud platform.
+        """
         return pulumi.get(self, "credentials")
 
     @_builtins.property
@@ -131,6 +134,9 @@ class GetTerraformCloudConnectorResult:
     @_builtins.property
     @pulumi.getter
     def url(self) -> _builtins.str:
+        """
+        URL of the Terraform Cloud platform.
+        """
         return pulumi.get(self, "url")
 
 
@@ -158,6 +164,8 @@ def get_terraform_cloud_connector(identifier: Optional[_builtins.str] = None,
                                   project_id: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTerraformCloudConnectorResult:
     """
+    Resource for looking up a Terraform Cloud connector.
+
     ## Example Usage
 
     ```python
@@ -198,6 +206,8 @@ def get_terraform_cloud_connector_output(identifier: Optional[pulumi.Input[_buil
                                          project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTerraformCloudConnectorResult]:
     """
+    Resource for looking up a Terraform Cloud connector.
+
     ## Example Usage
 
     ```python

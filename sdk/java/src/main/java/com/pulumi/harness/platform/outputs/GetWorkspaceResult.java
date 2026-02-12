@@ -118,7 +118,15 @@ public final class GetWorkspaceResult {
      * 
      */
     private @Nullable List<String> tags;
+    /**
+     * @return Terraform variables files configured on the workspace (see below for nested schema)
+     * 
+     */
     private List<GetWorkspaceTerraformVariableFile> terraformVariableFiles;
+    /**
+     * @return Terraform variables configured on the workspace (see below for nested schema)
+     * 
+     */
     private List<GetWorkspaceTerraformVariable> terraformVariables;
     /**
      * @return Variable sets to use.
@@ -267,9 +275,17 @@ public final class GetWorkspaceResult {
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
+    /**
+     * @return Terraform variables files configured on the workspace (see below for nested schema)
+     * 
+     */
     public List<GetWorkspaceTerraformVariableFile> terraformVariableFiles() {
         return this.terraformVariableFiles;
     }
+    /**
+     * @return Terraform variables configured on the workspace (see below for nested schema)
+     * 
+     */
     public List<GetWorkspaceTerraformVariable> terraformVariables() {
         return this.terraformVariables;
     }

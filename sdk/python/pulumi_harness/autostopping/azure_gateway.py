@@ -36,6 +36,7 @@ class AzureGatewayArgs:
         The set of arguments for constructing a AzureGateway resource.
         :param pulumi.Input[_builtins.str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
         :param pulumi.Input[_builtins.str] resource_group: Resource group in which cloud resources are hosted
@@ -94,6 +95,9 @@ class AzureGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @delete_cloud_resources_on_destroy.setter
@@ -244,6 +248,7 @@ class _AzureGatewayState:
         :param pulumi.Input[_builtins.str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[_builtins.str] certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
         :param pulumi.Input[_builtins.str] frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
@@ -334,6 +339,9 @@ class _AzureGatewayState:
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @delete_cloud_resources_on_destroy.setter
@@ -509,6 +517,7 @@ class AzureGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[_builtins.str] certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
         :param pulumi.Input[_builtins.str] frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] name: Name of the proxy
@@ -658,6 +667,7 @@ class AzureGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[_builtins.str] certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
         :param pulumi.Input[_builtins.str] frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
@@ -723,6 +733,9 @@ class AzureGateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @_builtins.property

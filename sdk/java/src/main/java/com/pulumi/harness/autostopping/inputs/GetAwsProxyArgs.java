@@ -71,9 +71,17 @@ public final class GetAwsProxyArgs extends com.pulumi.resources.InvokeArgs {
         return this.cloudConnectorId;
     }
 
+    /**
+     * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+     * 
+     */
     @Import(name="deleteCloudResourcesOnDestroy", required=true)
     private Output<Boolean> deleteCloudResourcesOnDestroy;
 
+    /**
+     * @return Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+     * 
+     */
     public Output<Boolean> deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
     }
@@ -298,11 +306,23 @@ public final class GetAwsProxyArgs extends com.pulumi.resources.InvokeArgs {
             return cloudConnectorId(Output.of(cloudConnectorId));
         }
 
+        /**
+         * @param deleteCloudResourcesOnDestroy Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteCloudResourcesOnDestroy(Output<Boolean> deleteCloudResourcesOnDestroy) {
             $.deleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
             return this;
         }
 
+        /**
+         * @param deleteCloudResourcesOnDestroy Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteCloudResourcesOnDestroy(Boolean deleteCloudResourcesOnDestroy) {
             return deleteCloudResourcesOnDestroy(Output.of(deleteCloudResourcesOnDestroy));
         }

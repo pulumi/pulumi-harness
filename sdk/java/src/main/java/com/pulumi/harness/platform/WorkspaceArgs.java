@@ -173,16 +173,32 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.providerConnector);
     }
 
+    /**
+     * Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     * 
+     */
     @Import(name="provisionerType", required=true)
     private Output<String> provisionerType;
 
+    /**
+     * @return Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     * 
+     */
     public Output<String> provisionerType() {
         return this.provisionerType;
     }
 
+    /**
+     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     * 
+     */
     @Import(name="provisionerVersion", required=true)
     private Output<String> provisionerVersion;
 
+    /**
+     * @return Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     * 
+     */
     public Output<String> provisionerVersion() {
         return this.provisionerVersion;
     }
@@ -292,16 +308,32 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Terraform variables files configured on the workspace (see below for nested schema)
+     * 
+     */
     @Import(name="terraformVariableFiles")
     private @Nullable Output<List<WorkspaceTerraformVariableFileArgs>> terraformVariableFiles;
 
+    /**
+     * @return Terraform variables files configured on the workspace (see below for nested schema)
+     * 
+     */
     public Optional<Output<List<WorkspaceTerraformVariableFileArgs>>> terraformVariableFiles() {
         return Optional.ofNullable(this.terraformVariableFiles);
     }
 
+    /**
+     * Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+     * 
+     */
     @Import(name="terraformVariables")
     private @Nullable Output<List<WorkspaceTerraformVariableArgs>> terraformVariables;
 
+    /**
+     * @return Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+     * 
+     */
     public Optional<Output<List<WorkspaceTerraformVariableArgs>>> terraformVariables() {
         return Optional.ofNullable(this.terraformVariables);
     }
@@ -596,20 +628,44 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
             return providerConnector(Output.of(providerConnector));
         }
 
+        /**
+         * @param provisionerType Provisioner type defines the provisioning tool to use (terraform or opentofu)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionerType(Output<String> provisionerType) {
             $.provisionerType = provisionerType;
             return this;
         }
 
+        /**
+         * @param provisionerType Provisioner type defines the provisioning tool to use (terraform or opentofu)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionerType(String provisionerType) {
             return provisionerType(Output.of(provisionerType));
         }
 
+        /**
+         * @param provisionerVersion Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionerVersion(Output<String> provisionerVersion) {
             $.provisionerVersion = provisionerVersion;
             return this;
         }
 
+        /**
+         * @param provisionerVersion Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionerVersion(String provisionerVersion) {
             return provisionerVersion(Output.of(provisionerVersion));
         }
@@ -771,28 +827,64 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
             return tags(List.of(tags));
         }
 
+        /**
+         * @param terraformVariableFiles Terraform variables files configured on the workspace (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariableFiles(@Nullable Output<List<WorkspaceTerraformVariableFileArgs>> terraformVariableFiles) {
             $.terraformVariableFiles = terraformVariableFiles;
             return this;
         }
 
+        /**
+         * @param terraformVariableFiles Terraform variables files configured on the workspace (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariableFiles(List<WorkspaceTerraformVariableFileArgs> terraformVariableFiles) {
             return terraformVariableFiles(Output.of(terraformVariableFiles));
         }
 
+        /**
+         * @param terraformVariableFiles Terraform variables files configured on the workspace (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariableFiles(WorkspaceTerraformVariableFileArgs... terraformVariableFiles) {
             return terraformVariableFiles(List.of(terraformVariableFiles));
         }
 
+        /**
+         * @param terraformVariables Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariables(@Nullable Output<List<WorkspaceTerraformVariableArgs>> terraformVariables) {
             $.terraformVariables = terraformVariables;
             return this;
         }
 
+        /**
+         * @param terraformVariables Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariables(List<WorkspaceTerraformVariableArgs> terraformVariables) {
             return terraformVariables(Output.of(terraformVariables));
         }
 
+        /**
+         * @param terraformVariables Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariables(WorkspaceTerraformVariableArgs... terraformVariables) {
             return terraformVariables(List.of(terraformVariables));
         }

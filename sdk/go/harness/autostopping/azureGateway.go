@@ -74,8 +74,9 @@ type AzureGateway struct {
 	// ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
 	CertificateId pulumi.StringPtrOutput `pulumi:"certificateId"`
 	// Id of the cloud connector
-	CloudConnectorId              pulumi.StringOutput `pulumi:"cloudConnectorId"`
-	DeleteCloudResourcesOnDestroy pulumi.BoolOutput   `pulumi:"deleteCloudResourcesOnDestroy"`
+	CloudConnectorId pulumi.StringOutput `pulumi:"cloudConnectorId"`
+	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+	DeleteCloudResourcesOnDestroy pulumi.BoolOutput `pulumi:"deleteCloudResourcesOnDestroy"`
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp pulumi.StringPtrOutput `pulumi:"frontendIp"`
 	// Hostname for the proxy
@@ -154,8 +155,9 @@ type azureGatewayState struct {
 	// ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
 	CertificateId *string `pulumi:"certificateId"`
 	// Id of the cloud connector
-	CloudConnectorId              *string `pulumi:"cloudConnectorId"`
-	DeleteCloudResourcesOnDestroy *bool   `pulumi:"deleteCloudResourcesOnDestroy"`
+	CloudConnectorId *string `pulumi:"cloudConnectorId"`
+	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+	DeleteCloudResourcesOnDestroy *bool `pulumi:"deleteCloudResourcesOnDestroy"`
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp *string `pulumi:"frontendIp"`
 	// Hostname for the proxy
@@ -184,7 +186,8 @@ type AzureGatewayState struct {
 	// ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
 	CertificateId pulumi.StringPtrInput
 	// Id of the cloud connector
-	CloudConnectorId              pulumi.StringPtrInput
+	CloudConnectorId pulumi.StringPtrInput
+	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
 	DeleteCloudResourcesOnDestroy pulumi.BoolPtrInput
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp pulumi.StringPtrInput
@@ -218,8 +221,9 @@ type azureGatewayArgs struct {
 	// ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
 	CertificateId *string `pulumi:"certificateId"`
 	// Id of the cloud connector
-	CloudConnectorId              string `pulumi:"cloudConnectorId"`
-	DeleteCloudResourcesOnDestroy bool   `pulumi:"deleteCloudResourcesOnDestroy"`
+	CloudConnectorId string `pulumi:"cloudConnectorId"`
+	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp *string `pulumi:"frontendIp"`
 	// Hostname for the proxy
@@ -247,7 +251,8 @@ type AzureGatewayArgs struct {
 	// ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
 	CertificateId pulumi.StringPtrInput
 	// Id of the cloud connector
-	CloudConnectorId              pulumi.StringInput
+	CloudConnectorId pulumi.StringInput
+	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
 	DeleteCloudResourcesOnDestroy pulumi.BoolInput
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp pulumi.StringPtrInput
@@ -374,6 +379,7 @@ func (o AzureGatewayOutput) CloudConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureGateway) pulumi.StringOutput { return v.CloudConnectorId }).(pulumi.StringOutput)
 }
 
+// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
 func (o AzureGatewayOutput) DeleteCloudResourcesOnDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AzureGateway) pulumi.BoolOutput { return v.DeleteCloudResourcesOnDestroy }).(pulumi.BoolOutput)
 }

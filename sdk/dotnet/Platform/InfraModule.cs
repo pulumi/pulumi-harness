@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
+    /// Resource for managing Terraform/Tofu Modules.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

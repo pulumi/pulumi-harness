@@ -173,6 +173,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("terraformVariableFiles")]
         private List<Inputs.GetWorkspaceTerraformVariableFileArgs>? _terraformVariableFiles;
+
+        /// <summary>
+        /// Terraform variables files configured on the workspace (see below for nested schema)
+        /// </summary>
         public List<Inputs.GetWorkspaceTerraformVariableFileArgs> TerraformVariableFiles
         {
             get => _terraformVariableFiles ?? (_terraformVariableFiles = new List<Inputs.GetWorkspaceTerraformVariableFileArgs>());
@@ -181,6 +185,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("terraformVariables")]
         private List<Inputs.GetWorkspaceTerraformVariableArgs>? _terraformVariables;
+
+        /// <summary>
+        /// Terraform variables configured on the workspace (see below for nested schema)
+        /// </summary>
         public List<Inputs.GetWorkspaceTerraformVariableArgs> TerraformVariables
         {
             get => _terraformVariables ?? (_terraformVariables = new List<Inputs.GetWorkspaceTerraformVariableArgs>());
@@ -287,6 +295,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("terraformVariableFiles")]
         private InputList<Inputs.GetWorkspaceTerraformVariableFileInputArgs>? _terraformVariableFiles;
+
+        /// <summary>
+        /// Terraform variables files configured on the workspace (see below for nested schema)
+        /// </summary>
         public InputList<Inputs.GetWorkspaceTerraformVariableFileInputArgs> TerraformVariableFiles
         {
             get => _terraformVariableFiles ?? (_terraformVariableFiles = new InputList<Inputs.GetWorkspaceTerraformVariableFileInputArgs>());
@@ -295,6 +307,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("terraformVariables")]
         private InputList<Inputs.GetWorkspaceTerraformVariableInputArgs>? _terraformVariables;
+
+        /// <summary>
+        /// Terraform variables configured on the workspace (see below for nested schema)
+        /// </summary>
         public InputList<Inputs.GetWorkspaceTerraformVariableInputArgs> TerraformVariables
         {
             get => _terraformVariables ?? (_terraformVariables = new InputList<Inputs.GetWorkspaceTerraformVariableInputArgs>());
@@ -403,7 +419,13 @@ namespace Pulumi.Harness.Platform
         /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Terraform variables files configured on the workspace (see below for nested schema)
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkspaceTerraformVariableFileResult> TerraformVariableFiles;
+        /// <summary>
+        /// Terraform variables configured on the workspace (see below for nested schema)
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkspaceTerraformVariableResult> TerraformVariables;
         /// <summary>
         /// Variable sets to use.

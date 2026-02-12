@@ -71,9 +71,11 @@ type LookupWorkspaceArgs struct {
 	// Repository Commit SHA in which the code should be accessed
 	RepositorySha *string `pulumi:"repositorySha"`
 	// Tags to associate with the resource.
-	Tags                   []string                            `pulumi:"tags"`
+	Tags []string `pulumi:"tags"`
+	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles []GetWorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
-	TerraformVariables     []GetWorkspaceTerraformVariable     `pulumi:"terraformVariables"`
+	// Terraform variables configured on the workspace (see below for nested schema)
+	TerraformVariables []GetWorkspaceTerraformVariable `pulumi:"terraformVariables"`
 	// Variable sets to use.
 	VariableSets []string `pulumi:"variableSets"`
 }
@@ -119,9 +121,11 @@ type LookupWorkspaceResult struct {
 	// Repository Commit SHA in which the code should be accessed
 	RepositorySha string `pulumi:"repositorySha"`
 	// Tags to associate with the resource.
-	Tags                   []string                            `pulumi:"tags"`
+	Tags []string `pulumi:"tags"`
+	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles []GetWorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
-	TerraformVariables     []GetWorkspaceTerraformVariable     `pulumi:"terraformVariables"`
+	// Terraform variables configured on the workspace (see below for nested schema)
+	TerraformVariables []GetWorkspaceTerraformVariable `pulumi:"terraformVariables"`
 	// Variable sets to use.
 	VariableSets []string `pulumi:"variableSets"`
 }
@@ -156,9 +160,11 @@ type LookupWorkspaceOutputArgs struct {
 	// Repository Commit SHA in which the code should be accessed
 	RepositorySha pulumi.StringPtrInput `pulumi:"repositorySha"`
 	// Tags to associate with the resource.
-	Tags                   pulumi.StringArrayInput                     `pulumi:"tags"`
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles GetWorkspaceTerraformVariableFileArrayInput `pulumi:"terraformVariableFiles"`
-	TerraformVariables     GetWorkspaceTerraformVariableArrayInput     `pulumi:"terraformVariables"`
+	// Terraform variables configured on the workspace (see below for nested schema)
+	TerraformVariables GetWorkspaceTerraformVariableArrayInput `pulumi:"terraformVariables"`
 	// Variable sets to use.
 	VariableSets pulumi.StringArrayInput `pulumi:"variableSets"`
 }
@@ -282,10 +288,12 @@ func (o LookupWorkspaceResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Terraform variables files configured on the workspace (see below for nested schema)
 func (o LookupWorkspaceResultOutput) TerraformVariableFiles() GetWorkspaceTerraformVariableFileArrayOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) []GetWorkspaceTerraformVariableFile { return v.TerraformVariableFiles }).(GetWorkspaceTerraformVariableFileArrayOutput)
 }
 
+// Terraform variables configured on the workspace (see below for nested schema)
 func (o LookupWorkspaceResultOutput) TerraformVariables() GetWorkspaceTerraformVariableArrayOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) []GetWorkspaceTerraformVariable { return v.TerraformVariables }).(GetWorkspaceTerraformVariableArrayOutput)
 }

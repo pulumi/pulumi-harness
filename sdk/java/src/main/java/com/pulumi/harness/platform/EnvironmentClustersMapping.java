@@ -86,6 +86,10 @@ import javax.annotation.Nullable;
  * 
  * The `pulumi import` command can be used, for example:
  * 
+ * ```sh
+ * #
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/environmentClustersMapping:EnvironmentClustersMapping")
 public class EnvironmentClustersMapping extends com.pulumi.resources.CustomResource {

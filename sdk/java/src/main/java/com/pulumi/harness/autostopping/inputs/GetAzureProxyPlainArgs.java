@@ -77,9 +77,17 @@ public final class GetAzureProxyPlainArgs extends com.pulumi.resources.InvokeArg
         return this.cloudConnectorId;
     }
 
+    /**
+     * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
+     * 
+     */
     @Import(name="deleteCloudResourcesOnDestroy", required=true)
     private Boolean deleteCloudResourcesOnDestroy;
 
+    /**
+     * @return Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
+     * 
+     */
     public Boolean deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
     }
@@ -300,6 +308,12 @@ public final class GetAzureProxyPlainArgs extends com.pulumi.resources.InvokeArg
             return this;
         }
 
+        /**
+         * @param deleteCloudResourcesOnDestroy Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteCloudResourcesOnDestroy(Boolean deleteCloudResourcesOnDestroy) {
             $.deleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
             return this;

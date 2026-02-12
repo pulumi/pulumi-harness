@@ -200,9 +200,15 @@ namespace Pulumi.Harness.Platform
         [Output("providerConnector")]
         public Output<string?> ProviderConnector { get; private set; } = null!;
 
+        /// <summary>
+        /// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        /// </summary>
         [Output("provisionerType")]
         public Output<string> ProvisionerType { get; private set; } = null!;
 
+        /// <summary>
+        /// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+        /// </summary>
         [Output("provisionerVersion")]
         public Output<string> ProvisionerVersion { get; private set; } = null!;
 
@@ -248,9 +254,15 @@ namespace Pulumi.Harness.Platform
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Terraform variables files configured on the workspace (see below for nested schema)
+        /// </summary>
         [Output("terraformVariableFiles")]
         public Output<ImmutableArray<Outputs.WorkspaceTerraformVariableFile>> TerraformVariableFiles { get; private set; } = null!;
 
+        /// <summary>
+        /// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+        /// </summary>
         [Output("terraformVariables")]
         public Output<ImmutableArray<Outputs.WorkspaceTerraformVariable>> TerraformVariables { get; private set; } = null!;
 
@@ -385,9 +397,15 @@ namespace Pulumi.Harness.Platform
         [Input("providerConnector")]
         public Input<string>? ProviderConnector { get; set; }
 
+        /// <summary>
+        /// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        /// </summary>
         [Input("provisionerType", required: true)]
         public Input<string> ProvisionerType { get; set; } = null!;
 
+        /// <summary>
+        /// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+        /// </summary>
         [Input("provisionerVersion", required: true)]
         public Input<string> ProvisionerVersion { get; set; } = null!;
 
@@ -441,6 +459,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("terraformVariableFiles")]
         private InputList<Inputs.WorkspaceTerraformVariableFileArgs>? _terraformVariableFiles;
+
+        /// <summary>
+        /// Terraform variables files configured on the workspace (see below for nested schema)
+        /// </summary>
         public InputList<Inputs.WorkspaceTerraformVariableFileArgs> TerraformVariableFiles
         {
             get => _terraformVariableFiles ?? (_terraformVariableFiles = new InputList<Inputs.WorkspaceTerraformVariableFileArgs>());
@@ -449,6 +471,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("terraformVariables")]
         private InputList<Inputs.WorkspaceTerraformVariableArgs>? _terraformVariables;
+
+        /// <summary>
+        /// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+        /// </summary>
         public InputList<Inputs.WorkspaceTerraformVariableArgs> TerraformVariables
         {
             get => _terraformVariables ?? (_terraformVariables = new InputList<Inputs.WorkspaceTerraformVariableArgs>());
@@ -553,9 +579,15 @@ namespace Pulumi.Harness.Platform
         [Input("providerConnector")]
         public Input<string>? ProviderConnector { get; set; }
 
+        /// <summary>
+        /// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        /// </summary>
         [Input("provisionerType")]
         public Input<string>? ProvisionerType { get; set; }
 
+        /// <summary>
+        /// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+        /// </summary>
         [Input("provisionerVersion")]
         public Input<string>? ProvisionerVersion { get; set; }
 
@@ -609,6 +641,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("terraformVariableFiles")]
         private InputList<Inputs.WorkspaceTerraformVariableFileGetArgs>? _terraformVariableFiles;
+
+        /// <summary>
+        /// Terraform variables files configured on the workspace (see below for nested schema)
+        /// </summary>
         public InputList<Inputs.WorkspaceTerraformVariableFileGetArgs> TerraformVariableFiles
         {
             get => _terraformVariableFiles ?? (_terraformVariableFiles = new InputList<Inputs.WorkspaceTerraformVariableFileGetArgs>());
@@ -617,6 +653,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("terraformVariables")]
         private InputList<Inputs.WorkspaceTerraformVariableGetArgs>? _terraformVariables;
+
+        /// <summary>
+        /// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+        /// </summary>
         public InputList<Inputs.WorkspaceTerraformVariableGetArgs> TerraformVariables
         {
             get => _terraformVariables ?? (_terraformVariables = new InputList<Inputs.WorkspaceTerraformVariableGetArgs>());

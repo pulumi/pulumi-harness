@@ -76,9 +76,17 @@ public final class GetAzureGatewayPlainArgs extends com.pulumi.resources.InvokeA
         return this.cloudConnectorId;
     }
 
+    /**
+     * Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     * 
+     */
     @Import(name="deleteCloudResourcesOnDestroy", required=true)
     private Boolean deleteCloudResourcesOnDestroy;
 
+    /**
+     * @return Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     * 
+     */
     public Boolean deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
     }
@@ -283,6 +291,12 @@ public final class GetAzureGatewayPlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param deleteCloudResourcesOnDestroy Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteCloudResourcesOnDestroy(Boolean deleteCloudResourcesOnDestroy) {
             $.deleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
             return this;

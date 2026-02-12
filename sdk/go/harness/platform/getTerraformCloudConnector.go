@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for looking up a Terraform Cloud connector.
+//
 // ## Example Usage
 //
 // ```go
@@ -60,6 +62,7 @@ type LookupTerraformCloudConnectorArgs struct {
 
 // A collection of values returned by getTerraformCloudConnector.
 type LookupTerraformCloudConnectorResult struct {
+	// Credentials to connect to the Terraform Cloud platform.
 	Credentials []GetTerraformCloudConnectorCredential `pulumi:"credentials"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
@@ -77,7 +80,8 @@ type LookupTerraformCloudConnectorResult struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	Url  string   `pulumi:"url"`
+	// URL of the Terraform Cloud platform.
+	Url string `pulumi:"url"`
 }
 
 func LookupTerraformCloudConnectorOutput(ctx *pulumi.Context, args LookupTerraformCloudConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupTerraformCloudConnectorResultOutput {
@@ -120,6 +124,7 @@ func (o LookupTerraformCloudConnectorResultOutput) ToLookupTerraformCloudConnect
 	return o
 }
 
+// Credentials to connect to the Terraform Cloud platform.
 func (o LookupTerraformCloudConnectorResultOutput) Credentials() GetTerraformCloudConnectorCredentialArrayOutput {
 	return o.ApplyT(func(v LookupTerraformCloudConnectorResult) []GetTerraformCloudConnectorCredential {
 		return v.Credentials
@@ -166,6 +171,7 @@ func (o LookupTerraformCloudConnectorResultOutput) Tags() pulumi.StringArrayOutp
 	return o.ApplyT(func(v LookupTerraformCloudConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// URL of the Terraform Cloud platform.
 func (o LookupTerraformCloudConnectorResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTerraformCloudConnectorResult) string { return v.Url }).(pulumi.StringOutput)
 }

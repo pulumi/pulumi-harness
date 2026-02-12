@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * Importing a global config only using the yaml path
  * 
  * ```sh
- * $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider &#34;Setup/Cloud Providers/kubernetes.yaml&#34;
+ * terraform import harness_yaml_config.k8s_cloudprovider &#34;Setup/Cloud Providers/kubernetes.yaml&#34;
  * ```
  * 
  * Importing a service which requires both the application id and the yaml path.

@@ -65,20 +65,15 @@ __all__ = [
     'GetOrchestratorConfigReplacementScheduleWindowDetailsArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class OrchestratorConfigBinpackingArgsDict(TypedDict):
-        disruption: NotRequired[pulumi.Input['OrchestratorConfigBinpackingDisruptionArgsDict']]
-        """
-        Harness disruption configuration
-        """
-        pod_eviction: NotRequired[pulumi.Input['OrchestratorConfigBinpackingPodEvictionArgsDict']]
-        """
-        Harness Pod Evictor Configuration
-        """
-elif False:
-    OrchestratorConfigBinpackingArgsDict: TypeAlias = Mapping[str, Any]
+class OrchestratorConfigBinpackingArgsDict(TypedDict):
+    disruption: NotRequired[pulumi.Input['OrchestratorConfigBinpackingDisruptionArgsDict']]
+    """
+    Harness disruption configuration
+    """
+    pod_eviction: NotRequired[pulumi.Input['OrchestratorConfigBinpackingPodEvictionArgsDict']]
+    """
+    Harness Pod Evictor Configuration
+    """
 
 @pulumi.input_type
 class OrchestratorConfigBinpackingArgs:
@@ -119,22 +114,19 @@ class OrchestratorConfigBinpackingArgs:
         pulumi.set(self, "pod_eviction", value)
 
 
-if not MYPY:
-    class OrchestratorConfigBinpackingDisruptionArgsDict(TypedDict):
-        budgets: NotRequired[pulumi.Input[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgsDict']]]]
-        """
-        Budgets for disruption
-        """
-        criteria: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Criteria for considering a nodes for disruption
-        """
-        delay: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deletion delay
-        """
-elif False:
-    OrchestratorConfigBinpackingDisruptionArgsDict: TypeAlias = Mapping[str, Any]
+class OrchestratorConfigBinpackingDisruptionArgsDict(TypedDict):
+    budgets: NotRequired[pulumi.Input[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgsDict']]]]
+    """
+    Budgets for disruption
+    """
+    criteria: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Criteria for considering a nodes for disruption
+    """
+    delay: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deletion delay
+    """
 
 @pulumi.input_type
 class OrchestratorConfigBinpackingDisruptionArgs:
@@ -191,22 +183,19 @@ class OrchestratorConfigBinpackingDisruptionArgs:
         pulumi.set(self, "delay", value)
 
 
-if not MYPY:
-    class OrchestratorConfigBinpackingDisruptionBudgetArgsDict(TypedDict):
-        nodes: pulumi.Input[_builtins.str]
-        """
-        Number or percentage of Nodes to consider for disruption
-        """
-        reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Reasons for disruption
-        """
-        schedule: NotRequired[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetScheduleArgsDict']]
-        """
-        Schedule for disruption budget
-        """
-elif False:
-    OrchestratorConfigBinpackingDisruptionBudgetArgsDict: TypeAlias = Mapping[str, Any]
+class OrchestratorConfigBinpackingDisruptionBudgetArgsDict(TypedDict):
+    nodes: pulumi.Input[_builtins.str]
+    """
+    Number or percentage of Nodes to consider for disruption
+    """
+    reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Reasons for disruption
+    """
+    schedule: NotRequired[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetScheduleArgsDict']]
+    """
+    Schedule for disruption budget
+    """
 
 @pulumi.input_type
 class OrchestratorConfigBinpackingDisruptionBudgetArgs:
@@ -262,18 +251,15 @@ class OrchestratorConfigBinpackingDisruptionBudgetArgs:
         pulumi.set(self, "schedule", value)
 
 
-if not MYPY:
-    class OrchestratorConfigBinpackingDisruptionBudgetScheduleArgsDict(TypedDict):
-        duration: pulumi.Input[_builtins.str]
-        """
-        Duration for disruption budget
-        """
-        frequency: pulumi.Input[_builtins.str]
-        """
-        Frequency for disruption budget
-        """
-elif False:
-    OrchestratorConfigBinpackingDisruptionBudgetScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class OrchestratorConfigBinpackingDisruptionBudgetScheduleArgsDict(TypedDict):
+    duration: pulumi.Input[_builtins.str]
+    """
+    Duration for disruption budget
+    """
+    frequency: pulumi.Input[_builtins.str]
+    """
+    Frequency for disruption budget
+    """
 
 @pulumi.input_type
 class OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs:
@@ -312,14 +298,11 @@ class OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs:
         pulumi.set(self, "frequency", value)
 
 
-if not MYPY:
-    class OrchestratorConfigBinpackingPodEvictionArgsDict(TypedDict):
-        threshold: pulumi.Input['OrchestratorConfigBinpackingPodEvictionThresholdArgsDict']
-        """
-        Minimum Threshold for considering a node as underutilized
-        """
-elif False:
-    OrchestratorConfigBinpackingPodEvictionArgsDict: TypeAlias = Mapping[str, Any]
+class OrchestratorConfigBinpackingPodEvictionArgsDict(TypedDict):
+    threshold: pulumi.Input['OrchestratorConfigBinpackingPodEvictionThresholdArgsDict']
+    """
+    Minimum Threshold for considering a node as underutilized
+    """
 
 @pulumi.input_type
 class OrchestratorConfigBinpackingPodEvictionArgs:
@@ -343,18 +326,15 @@ class OrchestratorConfigBinpackingPodEvictionArgs:
         pulumi.set(self, "threshold", value)
 
 
-if not MYPY:
-    class OrchestratorConfigBinpackingPodEvictionThresholdArgsDict(TypedDict):
-        cpu: pulumi.Input[_builtins.float]
-        """
-        CPU percentage for considering a node as underutilized
-        """
-        memory: pulumi.Input[_builtins.float]
-        """
-        Memory percentage for considering a node as underutilized
-        """
-elif False:
-    OrchestratorConfigBinpackingPodEvictionThresholdArgsDict: TypeAlias = Mapping[str, Any]
+class OrchestratorConfigBinpackingPodEvictionThresholdArgsDict(TypedDict):
+    cpu: pulumi.Input[_builtins.float]
+    """
+    CPU percentage for considering a node as underutilized
+    """
+    memory: pulumi.Input[_builtins.float]
+    """
+    Memory percentage for considering a node as underutilized
+    """
 
 @pulumi.input_type
 class OrchestratorConfigBinpackingPodEvictionThresholdArgs:
@@ -393,18 +373,15 @@ class OrchestratorConfigBinpackingPodEvictionThresholdArgs:
         pulumi.set(self, "memory", value)
 
 
-if not MYPY:
-    class OrchestratorConfigCommitmentIntegrationArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Flag to enable Commitment Integration
-        """
-        master_account_id: pulumi.Input[_builtins.str]
-        """
-        Master AWS account id for commitment integration
-        """
-elif False:
-    OrchestratorConfigCommitmentIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class OrchestratorConfigCommitmentIntegrationArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Flag to enable Commitment Integration
+    """
+    master_account_id: pulumi.Input[_builtins.str]
+    """
+    Master AWS account id for commitment integration
+    """
 
 @pulumi.input_type
 class OrchestratorConfigCommitmentIntegrationArgs:
@@ -443,26 +420,23 @@ class OrchestratorConfigCommitmentIntegrationArgs:
         pulumi.set(self, "master_account_id", value)
 
 
-if not MYPY:
-    class OrchestratorConfigDistributionArgsDict(TypedDict):
-        ondemand_replica_percentage: pulumi.Input[_builtins.float]
-        """
-        Percentage of on-demand replicas required for workloads
-        """
-        base_ondemand_capacity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of minimum ondemand replicas required for workloads
-        """
-        selector: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Selector for choosing workloads for distribution
-        """
-        strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Strategy for choosing spot nodes for cluster
-        """
-elif False:
-    OrchestratorConfigDistributionArgsDict: TypeAlias = Mapping[str, Any]
+class OrchestratorConfigDistributionArgsDict(TypedDict):
+    ondemand_replica_percentage: pulumi.Input[_builtins.float]
+    """
+    Percentage of on-demand replicas required for workloads
+    """
+    base_ondemand_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of minimum ondemand replicas required for workloads
+    """
+    selector: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Selector for choosing workloads for distribution
+    """
+    strategy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Strategy for choosing spot nodes for cluster
+    """
 
 @pulumi.input_type
 class OrchestratorConfigDistributionArgs:
@@ -534,18 +508,15 @@ class OrchestratorConfigDistributionArgs:
         pulumi.set(self, "strategy", value)
 
 
-if not MYPY:
-    class OrchestratorConfigNodePreferencesArgsDict(TypedDict):
-        reverse_fallback_interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Reverse fallback interval
-        """
-        ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        TTL for nodes
-        """
-elif False:
-    OrchestratorConfigNodePreferencesArgsDict: TypeAlias = Mapping[str, Any]
+class OrchestratorConfigNodePreferencesArgsDict(TypedDict):
+    reverse_fallback_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Reverse fallback interval
+    """
+    ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    TTL for nodes
+    """
 
 @pulumi.input_type
 class OrchestratorConfigNodePreferencesArgs:
@@ -586,19 +557,16 @@ class OrchestratorConfigNodePreferencesArgs:
         pulumi.set(self, "ttl", value)
 
 
-if not MYPY:
-    class OrchestratorConfigReplacementScheduleArgsDict(TypedDict):
-        applies_to: pulumi.Input['OrchestratorConfigReplacementScheduleAppliesToArgsDict']
-        """
-        Defines the scope of the replacement schedule
-        """
-        window_type: pulumi.Input[_builtins.str]
-        """
-        Window type for replacement schedule
-        """
-        window_details: NotRequired[pulumi.Input['OrchestratorConfigReplacementScheduleWindowDetailsArgsDict']]
-elif False:
-    OrchestratorConfigReplacementScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class OrchestratorConfigReplacementScheduleArgsDict(TypedDict):
+    applies_to: pulumi.Input['OrchestratorConfigReplacementScheduleAppliesToArgsDict']
+    """
+    Defines the scope of the replacement schedule
+    """
+    window_type: pulumi.Input[_builtins.str]
+    """
+    Window type for replacement schedule
+    """
+    window_details: NotRequired[pulumi.Input['OrchestratorConfigReplacementScheduleWindowDetailsArgsDict']]
 
 @pulumi.input_type
 class OrchestratorConfigReplacementScheduleArgs:
@@ -649,13 +617,10 @@ class OrchestratorConfigReplacementScheduleArgs:
         pulumi.set(self, "window_details", value)
 
 
-if not MYPY:
-    class OrchestratorConfigReplacementScheduleAppliesToArgsDict(TypedDict):
-        consolidation: pulumi.Input[_builtins.bool]
-        harness_pod_eviction: pulumi.Input[_builtins.bool]
-        reverse_fallback: pulumi.Input[_builtins.bool]
-elif False:
-    OrchestratorConfigReplacementScheduleAppliesToArgsDict: TypeAlias = Mapping[str, Any]
+class OrchestratorConfigReplacementScheduleAppliesToArgsDict(TypedDict):
+    consolidation: pulumi.Input[_builtins.bool]
+    harness_pod_eviction: pulumi.Input[_builtins.bool]
+    reverse_fallback: pulumi.Input[_builtins.bool]
 
 @pulumi.input_type
 class OrchestratorConfigReplacementScheduleAppliesToArgs:
@@ -695,27 +660,24 @@ class OrchestratorConfigReplacementScheduleAppliesToArgs:
         pulumi.set(self, "reverse_fallback", value)
 
 
-if not MYPY:
-    class OrchestratorConfigReplacementScheduleWindowDetailsArgsDict(TypedDict):
-        days: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
-        """
-        time_zone: pulumi.Input[_builtins.str]
-        """
-        Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
-        """
-        all_day: NotRequired[pulumi.Input[_builtins.bool]]
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
-        """
-elif False:
-    OrchestratorConfigReplacementScheduleWindowDetailsArgsDict: TypeAlias = Mapping[str, Any]
+class OrchestratorConfigReplacementScheduleWindowDetailsArgsDict(TypedDict):
+    days: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+    """
+    time_zone: pulumi.Input[_builtins.str]
+    """
+    Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+    """
+    all_day: NotRequired[pulumi.Input[_builtins.bool]]
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+    """
 
 @pulumi.input_type
 class OrchestratorConfigReplacementScheduleWindowDetailsArgs:
@@ -798,18 +760,15 @@ class OrchestratorConfigReplacementScheduleWindowDetailsArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class GetOrchestratorConfigBinpackingArgsDict(TypedDict):
-        disruption: NotRequired['GetOrchestratorConfigBinpackingDisruptionArgsDict']
-        """
-        Harness disruption configuration
-        """
-        pod_eviction: NotRequired['GetOrchestratorConfigBinpackingPodEvictionArgsDict']
-        """
-        Harness Pod Evictor Configuration
-        """
-elif False:
-    GetOrchestratorConfigBinpackingArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrchestratorConfigBinpackingArgsDict(TypedDict):
+    disruption: NotRequired['GetOrchestratorConfigBinpackingDisruptionArgsDict']
+    """
+    Harness disruption configuration
+    """
+    pod_eviction: NotRequired['GetOrchestratorConfigBinpackingPodEvictionArgsDict']
+    """
+    Harness Pod Evictor Configuration
+    """
 
 @pulumi.input_type
 class GetOrchestratorConfigBinpackingArgs:
@@ -850,22 +809,19 @@ class GetOrchestratorConfigBinpackingArgs:
         pulumi.set(self, "pod_eviction", value)
 
 
-if not MYPY:
-    class GetOrchestratorConfigBinpackingDisruptionArgsDict(TypedDict):
-        budgets: NotRequired[Sequence['GetOrchestratorConfigBinpackingDisruptionBudgetArgsDict']]
-        """
-        Budgets for disruption
-        """
-        criteria: NotRequired[_builtins.str]
-        """
-        Criteria for considering a nodes for disruption
-        """
-        delay: NotRequired[_builtins.str]
-        """
-        Deletion delay
-        """
-elif False:
-    GetOrchestratorConfigBinpackingDisruptionArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrchestratorConfigBinpackingDisruptionArgsDict(TypedDict):
+    budgets: NotRequired[Sequence['GetOrchestratorConfigBinpackingDisruptionBudgetArgsDict']]
+    """
+    Budgets for disruption
+    """
+    criteria: NotRequired[_builtins.str]
+    """
+    Criteria for considering a nodes for disruption
+    """
+    delay: NotRequired[_builtins.str]
+    """
+    Deletion delay
+    """
 
 @pulumi.input_type
 class GetOrchestratorConfigBinpackingDisruptionArgs:
@@ -922,22 +878,19 @@ class GetOrchestratorConfigBinpackingDisruptionArgs:
         pulumi.set(self, "delay", value)
 
 
-if not MYPY:
-    class GetOrchestratorConfigBinpackingDisruptionBudgetArgsDict(TypedDict):
-        nodes: _builtins.str
-        """
-        Number or percentage of Nodes to consider for disruption
-        """
-        reasons: NotRequired[Sequence[_builtins.str]]
-        """
-        Reasons for disruption
-        """
-        schedule: NotRequired['GetOrchestratorConfigBinpackingDisruptionBudgetScheduleArgsDict']
-        """
-        Schedule for disruption budget
-        """
-elif False:
-    GetOrchestratorConfigBinpackingDisruptionBudgetArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrchestratorConfigBinpackingDisruptionBudgetArgsDict(TypedDict):
+    nodes: _builtins.str
+    """
+    Number or percentage of Nodes to consider for disruption
+    """
+    reasons: NotRequired[Sequence[_builtins.str]]
+    """
+    Reasons for disruption
+    """
+    schedule: NotRequired['GetOrchestratorConfigBinpackingDisruptionBudgetScheduleArgsDict']
+    """
+    Schedule for disruption budget
+    """
 
 @pulumi.input_type
 class GetOrchestratorConfigBinpackingDisruptionBudgetArgs:
@@ -993,18 +946,15 @@ class GetOrchestratorConfigBinpackingDisruptionBudgetArgs:
         pulumi.set(self, "schedule", value)
 
 
-if not MYPY:
-    class GetOrchestratorConfigBinpackingDisruptionBudgetScheduleArgsDict(TypedDict):
-        duration: _builtins.str
-        """
-        Duration for disruption budget
-        """
-        frequency: _builtins.str
-        """
-        Frequency for disruption budget
-        """
-elif False:
-    GetOrchestratorConfigBinpackingDisruptionBudgetScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrchestratorConfigBinpackingDisruptionBudgetScheduleArgsDict(TypedDict):
+    duration: _builtins.str
+    """
+    Duration for disruption budget
+    """
+    frequency: _builtins.str
+    """
+    Frequency for disruption budget
+    """
 
 @pulumi.input_type
 class GetOrchestratorConfigBinpackingDisruptionBudgetScheduleArgs:
@@ -1043,14 +993,11 @@ class GetOrchestratorConfigBinpackingDisruptionBudgetScheduleArgs:
         pulumi.set(self, "frequency", value)
 
 
-if not MYPY:
-    class GetOrchestratorConfigBinpackingPodEvictionArgsDict(TypedDict):
-        threshold: 'GetOrchestratorConfigBinpackingPodEvictionThresholdArgsDict'
-        """
-        Minimum Threshold for considering a node as underutilized
-        """
-elif False:
-    GetOrchestratorConfigBinpackingPodEvictionArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrchestratorConfigBinpackingPodEvictionArgsDict(TypedDict):
+    threshold: 'GetOrchestratorConfigBinpackingPodEvictionThresholdArgsDict'
+    """
+    Minimum Threshold for considering a node as underutilized
+    """
 
 @pulumi.input_type
 class GetOrchestratorConfigBinpackingPodEvictionArgs:
@@ -1074,18 +1021,15 @@ class GetOrchestratorConfigBinpackingPodEvictionArgs:
         pulumi.set(self, "threshold", value)
 
 
-if not MYPY:
-    class GetOrchestratorConfigBinpackingPodEvictionThresholdArgsDict(TypedDict):
-        cpu: _builtins.float
-        """
-        CPU percentage for considering a node as underutilized
-        """
-        memory: _builtins.float
-        """
-        Memory percentage for considering a node as underutilized
-        """
-elif False:
-    GetOrchestratorConfigBinpackingPodEvictionThresholdArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrchestratorConfigBinpackingPodEvictionThresholdArgsDict(TypedDict):
+    cpu: _builtins.float
+    """
+    CPU percentage for considering a node as underutilized
+    """
+    memory: _builtins.float
+    """
+    Memory percentage for considering a node as underutilized
+    """
 
 @pulumi.input_type
 class GetOrchestratorConfigBinpackingPodEvictionThresholdArgs:
@@ -1124,18 +1068,15 @@ class GetOrchestratorConfigBinpackingPodEvictionThresholdArgs:
         pulumi.set(self, "memory", value)
 
 
-if not MYPY:
-    class GetOrchestratorConfigCommitmentIntegrationArgsDict(TypedDict):
-        enabled: _builtins.bool
-        """
-        Flag to enable Commitment Integration
-        """
-        master_account_id: _builtins.str
-        """
-        Master AWS account id for commitment integration
-        """
-elif False:
-    GetOrchestratorConfigCommitmentIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrchestratorConfigCommitmentIntegrationArgsDict(TypedDict):
+    enabled: _builtins.bool
+    """
+    Flag to enable Commitment Integration
+    """
+    master_account_id: _builtins.str
+    """
+    Master AWS account id for commitment integration
+    """
 
 @pulumi.input_type
 class GetOrchestratorConfigCommitmentIntegrationArgs:
@@ -1174,26 +1115,23 @@ class GetOrchestratorConfigCommitmentIntegrationArgs:
         pulumi.set(self, "master_account_id", value)
 
 
-if not MYPY:
-    class GetOrchestratorConfigDistributionArgsDict(TypedDict):
-        ondemand_replica_percentage: _builtins.float
-        """
-        Percentage of on-demand replicas required for workloads
-        """
-        base_ondemand_capacity: NotRequired[_builtins.int]
-        """
-        Number of minimum ondemand replicas required for workloads
-        """
-        selector: NotRequired[_builtins.str]
-        """
-        Selector for choosing workloads for distribution
-        """
-        strategy: NotRequired[_builtins.str]
-        """
-        Strategy for choosing spot nodes for cluster
-        """
-elif False:
-    GetOrchestratorConfigDistributionArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrchestratorConfigDistributionArgsDict(TypedDict):
+    ondemand_replica_percentage: _builtins.float
+    """
+    Percentage of on-demand replicas required for workloads
+    """
+    base_ondemand_capacity: NotRequired[_builtins.int]
+    """
+    Number of minimum ondemand replicas required for workloads
+    """
+    selector: NotRequired[_builtins.str]
+    """
+    Selector for choosing workloads for distribution
+    """
+    strategy: NotRequired[_builtins.str]
+    """
+    Strategy for choosing spot nodes for cluster
+    """
 
 @pulumi.input_type
 class GetOrchestratorConfigDistributionArgs:
@@ -1265,18 +1203,15 @@ class GetOrchestratorConfigDistributionArgs:
         pulumi.set(self, "strategy", value)
 
 
-if not MYPY:
-    class GetOrchestratorConfigNodePreferencesArgsDict(TypedDict):
-        reverse_fallback_interval: NotRequired[_builtins.str]
-        """
-        Reverse fallback interval
-        """
-        ttl: NotRequired[_builtins.str]
-        """
-        TTL for nodes
-        """
-elif False:
-    GetOrchestratorConfigNodePreferencesArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrchestratorConfigNodePreferencesArgsDict(TypedDict):
+    reverse_fallback_interval: NotRequired[_builtins.str]
+    """
+    Reverse fallback interval
+    """
+    ttl: NotRequired[_builtins.str]
+    """
+    TTL for nodes
+    """
 
 @pulumi.input_type
 class GetOrchestratorConfigNodePreferencesArgs:
@@ -1317,19 +1252,16 @@ class GetOrchestratorConfigNodePreferencesArgs:
         pulumi.set(self, "ttl", value)
 
 
-if not MYPY:
-    class GetOrchestratorConfigReplacementScheduleArgsDict(TypedDict):
-        applies_to: 'GetOrchestratorConfigReplacementScheduleAppliesToArgsDict'
-        """
-        Defines the scope of the replacement schedule
-        """
-        window_type: _builtins.str
-        """
-        Window type for replacement schedule
-        """
-        window_details: NotRequired['GetOrchestratorConfigReplacementScheduleWindowDetailsArgsDict']
-elif False:
-    GetOrchestratorConfigReplacementScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrchestratorConfigReplacementScheduleArgsDict(TypedDict):
+    applies_to: 'GetOrchestratorConfigReplacementScheduleAppliesToArgsDict'
+    """
+    Defines the scope of the replacement schedule
+    """
+    window_type: _builtins.str
+    """
+    Window type for replacement schedule
+    """
+    window_details: NotRequired['GetOrchestratorConfigReplacementScheduleWindowDetailsArgsDict']
 
 @pulumi.input_type
 class GetOrchestratorConfigReplacementScheduleArgs:
@@ -1380,13 +1312,10 @@ class GetOrchestratorConfigReplacementScheduleArgs:
         pulumi.set(self, "window_details", value)
 
 
-if not MYPY:
-    class GetOrchestratorConfigReplacementScheduleAppliesToArgsDict(TypedDict):
-        consolidation: _builtins.bool
-        harness_pod_eviction: _builtins.bool
-        reverse_fallback: _builtins.bool
-elif False:
-    GetOrchestratorConfigReplacementScheduleAppliesToArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrchestratorConfigReplacementScheduleAppliesToArgsDict(TypedDict):
+    consolidation: _builtins.bool
+    harness_pod_eviction: _builtins.bool
+    reverse_fallback: _builtins.bool
 
 @pulumi.input_type
 class GetOrchestratorConfigReplacementScheduleAppliesToArgs:
@@ -1426,27 +1355,24 @@ class GetOrchestratorConfigReplacementScheduleAppliesToArgs:
         pulumi.set(self, "reverse_fallback", value)
 
 
-if not MYPY:
-    class GetOrchestratorConfigReplacementScheduleWindowDetailsArgsDict(TypedDict):
-        days: Sequence[_builtins.str]
-        """
-        List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
-        """
-        time_zone: _builtins.str
-        """
-        Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
-        """
-        all_day: NotRequired[_builtins.bool]
-        end_time: NotRequired[_builtins.str]
-        """
-        End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
-        """
-        start_time: NotRequired[_builtins.str]
-        """
-        Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
-        """
-elif False:
-    GetOrchestratorConfigReplacementScheduleWindowDetailsArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrchestratorConfigReplacementScheduleWindowDetailsArgsDict(TypedDict):
+    days: Sequence[_builtins.str]
+    """
+    List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+    """
+    time_zone: _builtins.str
+    """
+    Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+    """
+    all_day: NotRequired[_builtins.bool]
+    end_time: NotRequired[_builtins.str]
+    """
+    End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+    """
+    start_time: NotRequired[_builtins.str]
+    """
+    Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+    """
 
 @pulumi.input_type
 class GetOrchestratorConfigReplacementScheduleWindowDetailsArgs:

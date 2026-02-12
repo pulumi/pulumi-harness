@@ -32,6 +32,7 @@ class AwsAlbArgs:
         """
         The set of arguments for constructing a AwsAlb resource.
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
         :param pulumi.Input[_builtins.str] vpc: VPC in which cloud resources are hosted
@@ -71,6 +72,9 @@ class AwsAlbArgs:
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @delete_cloud_resources_on_destroy.setter
@@ -189,6 +193,7 @@ class _AwsAlbState:
         Input properties used for looking up and filtering AwsAlb resources.
         :param pulumi.Input[_builtins.str] alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] name: Name of the proxy
@@ -256,6 +261,9 @@ class _AwsAlbState:
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @delete_cloud_resources_on_destroy.setter
@@ -401,6 +409,7 @@ class AwsAlb(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] name: Name of the proxy
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
@@ -532,6 +541,7 @@ class AwsAlb(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
+        :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
         :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] name: Name of the proxy
@@ -581,6 +591,9 @@ class AwsAlb(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @_builtins.property
