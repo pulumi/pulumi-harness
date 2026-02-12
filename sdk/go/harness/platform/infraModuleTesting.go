@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for managing Terraform/Tofu Modules.
+//
 // ## Example Usage
 //
 // ```go
@@ -79,7 +81,8 @@ type InfraModuleTesting struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Provider connector for testing purposes
 	ProviderConnector pulumi.StringOutput `pulumi:"providerConnector"`
-	ProvisionerType   pulumi.StringOutput `pulumi:"provisionerType"`
+	// Provisioner type for testing purposes (e.g., terraform, tofu)
+	ProvisionerType pulumi.StringOutput `pulumi:"provisionerType"`
 	// Provisioner version for testing purposes
 	ProvisionerVersion pulumi.StringOutput `pulumi:"provisionerVersion"`
 	// Pipeline ID to create webhooks for releases
@@ -185,7 +188,8 @@ type infraModuleTestingState struct {
 	Project *string `pulumi:"project"`
 	// Provider connector for testing purposes
 	ProviderConnector *string `pulumi:"providerConnector"`
-	ProvisionerType   *string `pulumi:"provisionerType"`
+	// Provisioner type for testing purposes (e.g., terraform, tofu)
+	ProvisionerType *string `pulumi:"provisionerType"`
 	// Provisioner version for testing purposes
 	ProvisionerVersion *string `pulumi:"provisionerVersion"`
 	// Pipeline ID to create webhooks for releases
@@ -241,7 +245,8 @@ type InfraModuleTestingState struct {
 	Project pulumi.StringPtrInput
 	// Provider connector for testing purposes
 	ProviderConnector pulumi.StringPtrInput
-	ProvisionerType   pulumi.StringPtrInput
+	// Provisioner type for testing purposes (e.g., terraform, tofu)
+	ProvisionerType pulumi.StringPtrInput
 	// Provisioner version for testing purposes
 	ProvisionerVersion pulumi.StringPtrInput
 	// Pipeline ID to create webhooks for releases
@@ -289,7 +294,8 @@ type infraModuleTestingArgs struct {
 	Project string `pulumi:"project"`
 	// Provider connector for testing purposes
 	ProviderConnector string `pulumi:"providerConnector"`
-	ProvisionerType   string `pulumi:"provisionerType"`
+	// Provisioner type for testing purposes (e.g., terraform, tofu)
+	ProvisionerType string `pulumi:"provisionerType"`
 	// Provisioner version for testing purposes
 	ProvisionerVersion string `pulumi:"provisionerVersion"`
 	// Pipeline ID to create webhooks for releases
@@ -316,7 +322,8 @@ type InfraModuleTestingArgs struct {
 	Project pulumi.StringInput
 	// Provider connector for testing purposes
 	ProviderConnector pulumi.StringInput
-	ProvisionerType   pulumi.StringInput
+	// Provisioner type for testing purposes (e.g., terraform, tofu)
+	ProvisionerType pulumi.StringInput
 	// Provisioner version for testing purposes
 	ProvisionerVersion pulumi.StringInput
 	// Pipeline ID to create webhooks for releases
@@ -473,6 +480,7 @@ func (o InfraModuleTestingOutput) ProviderConnector() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfraModuleTesting) pulumi.StringOutput { return v.ProviderConnector }).(pulumi.StringOutput)
 }
 
+// Provisioner type for testing purposes (e.g., terraform, tofu)
 func (o InfraModuleTestingOutput) ProvisionerType() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfraModuleTesting) pulumi.StringOutput { return v.ProvisionerType }).(pulumi.StringOutput)
 }

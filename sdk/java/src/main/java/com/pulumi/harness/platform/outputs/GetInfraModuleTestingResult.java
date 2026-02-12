@@ -76,6 +76,10 @@ public final class GetInfraModuleTestingResult {
      * 
      */
     private String providerConnector;
+    /**
+     * @return Provisioner type for testing purposes (e.g., terraform, tofu)
+     * 
+     */
     private String provisionerType;
     /**
      * @return Provisioner version for testing purposes
@@ -238,6 +242,10 @@ public final class GetInfraModuleTestingResult {
     public String providerConnector() {
         return this.providerConnector;
     }
+    /**
+     * @return Provisioner type for testing purposes (e.g., terraform, tofu)
+     * 
+     */
     public String provisionerType() {
         return this.provisionerType;
     }

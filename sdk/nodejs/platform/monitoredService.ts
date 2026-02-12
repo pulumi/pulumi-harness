@@ -846,19 +846,19 @@ import * as utilities from "../utilities";
  *
  * The `pulumi import` command can be used, for example:
  *
- * Import account level monitored_service
+ * Import account level monitoredService
  *
  * ```sh
  * $ pulumi import harness:platform/monitoredService:MonitoredService example <monitored_service_id>
  * ```
  *
- * Import organization level monitored_service
+ * Import organization level monitoredService
  *
  * ```sh
  * $ pulumi import harness:platform/monitoredService:MonitoredService example <org_id>/<monitored_service_id>
  * ```
  *
- * Import project level monitored_service
+ * Import project level monitoredService
  *
  * ```sh
  * $ pulumi import harness:platform/monitoredService:MonitoredService example <org_id>/<project_id>/<monitored_service_id>

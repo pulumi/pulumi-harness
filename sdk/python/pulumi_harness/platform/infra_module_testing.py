@@ -40,6 +40,7 @@ class InfraModuleTestingArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pipelines: List of pipeline IDs to create webhooks for triggering test executions
         :param pulumi.Input[_builtins.str] project: Project identifier
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector for testing purposes
+        :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type for testing purposes (e.g., terraform, tofu)
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version for testing purposes
         :param pulumi.Input[_builtins.str] release_pipeline: Pipeline ID to create webhooks for releases
         :param pulumi.Input[_builtins.bool] testing_enabled: Whether testing is enabled for the module
@@ -128,6 +129,9 @@ class InfraModuleTestingArgs:
     @_builtins.property
     @pulumi.getter(name="provisionerType")
     def provisioner_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Provisioner type for testing purposes (e.g., terraform, tofu)
+        """
         return pulumi.get(self, "provisioner_type")
 
     @provisioner_type.setter
@@ -250,6 +254,7 @@ class _InfraModuleTestingState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pipelines: List of pipeline IDs to create webhooks for triggering test executions
         :param pulumi.Input[_builtins.str] project: Project identifier
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector for testing purposes
+        :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type for testing purposes (e.g., terraform, tofu)
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version for testing purposes
         :param pulumi.Input[_builtins.str] release_pipeline: Pipeline ID to create webhooks for releases
         :param pulumi.Input[_builtins.str] repository: For account connectors, the repository where the module is stored
@@ -456,6 +461,9 @@ class _InfraModuleTestingState:
     @_builtins.property
     @pulumi.getter(name="provisionerType")
     def provisioner_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provisioner type for testing purposes (e.g., terraform, tofu)
+        """
         return pulumi.get(self, "provisioner_type")
 
     @provisioner_type.setter
@@ -663,6 +671,8 @@ class InfraModuleTesting(pulumi.CustomResource):
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Resource for managing Terraform/Tofu Modules.
+
         ## Example Usage
 
         ```python
@@ -697,6 +707,7 @@ class InfraModuleTesting(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pipelines: List of pipeline IDs to create webhooks for triggering test executions
         :param pulumi.Input[_builtins.str] project: Project identifier
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector for testing purposes
+        :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type for testing purposes (e.g., terraform, tofu)
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version for testing purposes
         :param pulumi.Input[_builtins.str] release_pipeline: Pipeline ID to create webhooks for releases
         :param pulumi.Input[_builtins.bool] testing_enabled: Whether testing is enabled for the module
@@ -711,6 +722,8 @@ class InfraModuleTesting(pulumi.CustomResource):
                  args: InfraModuleTestingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource for managing Terraform/Tofu Modules.
+
         ## Example Usage
 
         ```python
@@ -870,6 +883,7 @@ class InfraModuleTesting(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pipelines: List of pipeline IDs to create webhooks for triggering test executions
         :param pulumi.Input[_builtins.str] project: Project identifier
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector for testing purposes
+        :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type for testing purposes (e.g., terraform, tofu)
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version for testing purposes
         :param pulumi.Input[_builtins.str] release_pipeline: Pipeline ID to create webhooks for releases
         :param pulumi.Input[_builtins.str] repository: For account connectors, the repository where the module is stored
@@ -1010,6 +1024,9 @@ class InfraModuleTesting(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="provisionerType")
     def provisioner_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Provisioner type for testing purposes (e.g., terraform, tofu)
+        """
         return pulumi.get(self, "provisioner_type")
 
     @_builtins.property

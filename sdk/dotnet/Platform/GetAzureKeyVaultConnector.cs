@@ -12,6 +12,13 @@ namespace Pulumi.Harness.Platform
     public static class GetAzureKeyVaultConnector
     {
         /// <summary>
+        /// Data source for looking up an Azure key vault connector.
+        /// 
+        /// References:
+        /// - For details on how to onboard with Terraform, please see Harness Terraform Provider Overview
+        /// - To understand how to use Azure Key Vault, please see [Documentation](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/azure-key-vault)
+        /// - To get more information about Api, please see [API documentation](https://apidocs.harness.io/tag/Connectors)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +41,13 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureKeyVaultConnectorResult>("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", args ?? new GetAzureKeyVaultConnectorArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for looking up an Azure key vault connector.
+        /// 
+        /// References:
+        /// - For details on how to onboard with Terraform, please see Harness Terraform Provider Overview
+        /// - To understand how to use Azure Key Vault, please see [Documentation](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/azure-key-vault)
+        /// - To get more information about Api, please see [API documentation](https://apidocs.harness.io/tag/Connectors)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +70,13 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureKeyVaultConnectorResult>("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", args ?? new GetAzureKeyVaultConnectorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for looking up an Azure key vault connector.
+        /// 
+        /// References:
+        /// - For details on how to onboard with Terraform, please see Harness Terraform Provider Overview
+        /// - To understand how to use Azure Key Vault, please see [Documentation](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/azure-key-vault)
+        /// - To get more information about Api, please see [API documentation](https://apidocs.harness.io/tag/Connectors)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

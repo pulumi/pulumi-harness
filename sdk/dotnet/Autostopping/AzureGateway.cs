@@ -81,6 +81,9 @@ namespace Pulumi.Harness.Autostopping
         [Output("cloudConnectorId")]
         public Output<string> CloudConnectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        /// </summary>
         [Output("deleteCloudResourcesOnDestroy")]
         public Output<bool> DeleteCloudResourcesOnDestroy { get; private set; } = null!;
 
@@ -209,6 +212,9 @@ namespace Pulumi.Harness.Autostopping
         [Input("cloudConnectorId", required: true)]
         public Input<string> CloudConnectorId { get; set; } = null!;
 
+        /// <summary>
+        /// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        /// </summary>
         [Input("deleteCloudResourcesOnDestroy", required: true)]
         public Input<bool> DeleteCloudResourcesOnDestroy { get; set; } = null!;
 
@@ -292,6 +298,9 @@ namespace Pulumi.Harness.Autostopping
         [Input("cloudConnectorId")]
         public Input<string>? CloudConnectorId { get; set; }
 
+        /// <summary>
+        /// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+        /// </summary>
         [Input("deleteCloudResourcesOnDestroy")]
         public Input<bool>? DeleteCloudResourcesOnDestroy { get; set; }
 

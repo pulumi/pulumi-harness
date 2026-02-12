@@ -12,6 +12,50 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating and deleting ClusterOrchestrators.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aws/sdk/go/aws"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cluster"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := aws.Region(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cluster.NewOrchestrator(ctx, "test", &cluster.OrchestratorArgs{
+//				Name:            pulumi.String("name"),
+//				ClusterEndpoint: pulumi.String("http://test.test.com"),
+//				K8sConnectorId:  pulumi.String("test"),
+//				Region:          pulumi.Any(current.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Lifecycle Operations
+//
+// This resource supports the following lifecycle operations:
+//
+// - **Create**: Creates a new cluster orchestrator in Harness CCM
+// - **Delete**: Deletes the cluster orchestrator from Harness CCM
+//
+// When you run `terraform destroy`, the cluster orchestrator will be permanently deleted from your Harness account.
 type Orchestrator struct {
 	pulumi.CustomResourceState
 

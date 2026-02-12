@@ -63,24 +63,19 @@ __all__ = [
     'WinrmVariableArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AmiVariableArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the variable
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Value of the variable
-        """
-elif False:
-    AmiVariableArgsDict: TypeAlias = Mapping[str, Any]
+class AmiVariableArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the variable
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value of the variable
+    """
 
 @pulumi.input_type
 class AmiVariableArgs:
@@ -134,22 +129,19 @@ class AmiVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CodedeployVariableArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the variable
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Value of the variable
-        """
-elif False:
-    CodedeployVariableArgsDict: TypeAlias = Mapping[str, Any]
+class CodedeployVariableArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the variable
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value of the variable
+    """
 
 @pulumi.input_type
 class CodedeployVariableArgs:
@@ -203,42 +195,39 @@ class CodedeployVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DiscoveryAgentConfigArgsDict(TypedDict):
-        kubernetes: pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteArgsDict']]]
-        """
-        Kubernetes-specific configuration.
-        """
-        collector_image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Docker image for the collector.
-        """
-        datas: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataArgsDict']]]]
-        """
-        Data collection configuration.
-        """
-        image_pull_secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of image pull secrets.
-        """
-        log_watcher_image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Docker image for the log watcher.
-        """
-        mtls: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigMtlArgsDict']]]]
-        """
-        mTLS configuration.
-        """
-        proxies: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigProxyArgsDict']]]]
-        """
-        Proxy configuration.
-        """
-        skip_secure_verify: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to skip TLS verification.
-        """
-elif False:
-    DiscoveryAgentConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentConfigArgsDict(TypedDict):
+    kubernetes: pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteArgsDict']]]
+    """
+    Kubernetes-specific configuration.
+    """
+    collector_image: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Docker image for the collector.
+    """
+    datas: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataArgsDict']]]]
+    """
+    Data collection configuration.
+    """
+    image_pull_secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of image pull secrets.
+    """
+    log_watcher_image: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Docker image for the log watcher.
+    """
+    mtls: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigMtlArgsDict']]]]
+    """
+    mTLS configuration.
+    """
+    proxies: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigProxyArgsDict']]]]
+    """
+    Proxy configuration.
+    """
+    skip_secure_verify: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to skip TLS verification.
+    """
 
 @pulumi.input_type
 class DiscoveryAgentConfigArgs:
@@ -374,46 +363,43 @@ class DiscoveryAgentConfigArgs:
         pulumi.set(self, "skip_secure_verify", value)
 
 
-if not MYPY:
-    class DiscoveryAgentConfigDataArgsDict(TypedDict):
-        blacklisted_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of namespaces to exclude from discovery.
-        """
-        collection_window_in_min: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Collection window in minutes.
-        """
-        crons: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataCronArgsDict']]]]
-        """
-        Cron schedule for data collection.
-        """
-        enable_batch_resources: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable batch resources.
-        """
-        enable_node_agent: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable node agent.
-        """
-        enable_orphaned_pod: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable orphaned pod detection.
-        """
-        namespace_selector: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Namespace selector for the agent.
-        """
-        node_agent_selector: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node selector for the node agent.
-        """
-        observed_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of namespaces to observe.
-        """
-elif False:
-    DiscoveryAgentConfigDataArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentConfigDataArgsDict(TypedDict):
+    blacklisted_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of namespaces to exclude from discovery.
+    """
+    collection_window_in_min: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Collection window in minutes.
+    """
+    crons: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigDataCronArgsDict']]]]
+    """
+    Cron schedule for data collection.
+    """
+    enable_batch_resources: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable batch resources.
+    """
+    enable_node_agent: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable node agent.
+    """
+    enable_orphaned_pod: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable orphaned pod detection.
+    """
+    namespace_selector: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Namespace selector for the agent.
+    """
+    node_agent_selector: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node selector for the node agent.
+    """
+    observed_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of namespaces to observe.
+    """
 
 @pulumi.input_type
 class DiscoveryAgentConfigDataArgs:
@@ -566,14 +552,11 @@ class DiscoveryAgentConfigDataArgs:
         pulumi.set(self, "observed_namespaces", value)
 
 
-if not MYPY:
-    class DiscoveryAgentConfigDataCronArgsDict(TypedDict):
-        expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cron expression for scheduling.
-        """
-elif False:
-    DiscoveryAgentConfigDataCronArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentConfigDataCronArgsDict(TypedDict):
+    expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cron expression for scheduling.
+    """
 
 @pulumi.input_type
 class DiscoveryAgentConfigDataCronArgs:
@@ -598,58 +581,55 @@ class DiscoveryAgentConfigDataCronArgs:
         pulumi.set(self, "expression", value)
 
 
-if not MYPY:
-    class DiscoveryAgentConfigKuberneteArgsDict(TypedDict):
-        namespace: pulumi.Input[_builtins.str]
-        """
-        Kubernetes namespace to use
-        """
-        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Annotations to add to all resources.
-        """
-        disable_namespace_creation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to disable namespace creation.
-        """
-        image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The image pull policy.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Labels to add to all resources.
-        """
-        namespaced: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the agent is namespaced.
-        """
-        node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Node selector labels.
-        """
-        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceArgsDict']]]]
-        """
-        Compute resource requirements for the agent container.
-        """
-        run_as_group: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The group ID to run as.
-        """
-        run_as_user: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The user ID to run as.
-        """
-        service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service account to use
-        """
-        tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteTolerationArgsDict']]]]
-        """
-        Tolerations for pod assignment.
-        """
-elif False:
-    DiscoveryAgentConfigKuberneteArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentConfigKuberneteArgsDict(TypedDict):
+    namespace: pulumi.Input[_builtins.str]
+    """
+    Kubernetes namespace to use
+    """
+    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Annotations to add to all resources.
+    """
+    disable_namespace_creation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to disable namespace creation.
+    """
+    image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The image pull policy.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Labels to add to all resources.
+    """
+    namespaced: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the agent is namespaced.
+    """
+    node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Node selector labels.
+    """
+    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceArgsDict']]]]
+    """
+    Compute resource requirements for the agent container.
+    """
+    run_as_group: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The group ID to run as.
+    """
+    run_as_user: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The user ID to run as.
+    """
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service account to use
+    """
+    tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteTolerationArgsDict']]]]
+    """
+    Tolerations for pod assignment.
+    """
 
 @pulumi.input_type
 class DiscoveryAgentConfigKuberneteArgs:
@@ -849,18 +829,15 @@ class DiscoveryAgentConfigKuberneteArgs:
         pulumi.set(self, "tolerations", value)
 
 
-if not MYPY:
-    class DiscoveryAgentConfigKuberneteResourceArgsDict(TypedDict):
-        limits: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceLimitArgsDict']]]]
-        """
-        Maximum amount of compute resources allowed.
-        """
-        requests: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceRequestArgsDict']]]]
-        """
-        Minimum amount of compute resources required.
-        """
-elif False:
-    DiscoveryAgentConfigKuberneteResourceArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentConfigKuberneteResourceArgsDict(TypedDict):
+    limits: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceLimitArgsDict']]]]
+    """
+    Maximum amount of compute resources allowed.
+    """
+    requests: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceRequestArgsDict']]]]
+    """
+    Minimum amount of compute resources required.
+    """
 
 @pulumi.input_type
 class DiscoveryAgentConfigKuberneteResourceArgs:
@@ -901,18 +878,15 @@ class DiscoveryAgentConfigKuberneteResourceArgs:
         pulumi.set(self, "requests", value)
 
 
-if not MYPY:
-    class DiscoveryAgentConfigKuberneteResourceLimitArgsDict(TypedDict):
-        cpu: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
-        """
-        memory: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Memory limit in bytes (e.g., 128Mi, 1Gi).
-        """
-elif False:
-    DiscoveryAgentConfigKuberneteResourceLimitArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentConfigKuberneteResourceLimitArgsDict(TypedDict):
+    cpu: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CPU limit in CPU units (e.g., 500m = 0.5 CPU, 2 = 2 CPUs).
+    """
+    memory: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Memory limit in bytes (e.g., 128Mi, 1Gi).
+    """
 
 @pulumi.input_type
 class DiscoveryAgentConfigKuberneteResourceLimitArgs:
@@ -953,18 +927,15 @@ class DiscoveryAgentConfigKuberneteResourceLimitArgs:
         pulumi.set(self, "memory", value)
 
 
-if not MYPY:
-    class DiscoveryAgentConfigKuberneteResourceRequestArgsDict(TypedDict):
-        cpu: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        CPU request in CPU units (e.g., 100m = 0.1 CPU).
-        """
-        memory: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Memory request in bytes (e.g., 128Mi, 1Gi).
-        """
-elif False:
-    DiscoveryAgentConfigKuberneteResourceRequestArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentConfigKuberneteResourceRequestArgsDict(TypedDict):
+    cpu: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CPU request in CPU units (e.g., 100m = 0.1 CPU).
+    """
+    memory: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Memory request in bytes (e.g., 128Mi, 1Gi).
+    """
 
 @pulumi.input_type
 class DiscoveryAgentConfigKuberneteResourceRequestArgs:
@@ -1005,30 +976,27 @@ class DiscoveryAgentConfigKuberneteResourceRequestArgs:
         pulumi.set(self, "memory", value)
 
 
-if not MYPY:
-    class DiscoveryAgentConfigKuberneteTolerationArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        Effect indicates the taint effect to match.
-        """
-        key: pulumi.Input[_builtins.str]
-        """
-        The taint key that the toleration applies to.
-        """
-        operator: pulumi.Input[_builtins.str]
-        """
-        Operator represents a key's relationship to the value.
-        """
-        toleration_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        TolerationSeconds represents the period of time the toleration tolerates the taint.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The taint value the toleration matches to.
-        """
-elif False:
-    DiscoveryAgentConfigKuberneteTolerationArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentConfigKuberneteTolerationArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    Effect indicates the taint effect to match.
+    """
+    key: pulumi.Input[_builtins.str]
+    """
+    The taint key that the toleration applies to.
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator represents a key's relationship to the value.
+    """
+    toleration_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    TolerationSeconds represents the period of time the toleration tolerates the taint.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The taint value the toleration matches to.
+    """
 
 @pulumi.input_type
 class DiscoveryAgentConfigKuberneteTolerationArgs:
@@ -1114,26 +1082,23 @@ class DiscoveryAgentConfigKuberneteTolerationArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DiscoveryAgentConfigMtlArgsDict(TypedDict):
-        cert_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Path to the certificate file.
-        """
-        key_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Path to the key file.
-        """
-        secret_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Kubernetes secret containing the certificate and key.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the mTLS server.
-        """
-elif False:
-    DiscoveryAgentConfigMtlArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentConfigMtlArgsDict(TypedDict):
+    cert_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to the certificate file.
+    """
+    key_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to the key file.
+    """
+    secret_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Kubernetes secret containing the certificate and key.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the mTLS server.
+    """
 
 @pulumi.input_type
 class DiscoveryAgentConfigMtlArgs:
@@ -1206,26 +1171,23 @@ class DiscoveryAgentConfigMtlArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class DiscoveryAgentConfigProxyArgsDict(TypedDict):
-        http_proxy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTP proxy URL.
-        """
-        https_proxy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTPS proxy URL.
-        """
-        no_proxy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of hosts that should not use the proxy.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Proxy server URL.
-        """
-elif False:
-    DiscoveryAgentConfigProxyArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentConfigProxyArgsDict(TypedDict):
+    http_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP proxy URL.
+    """
+    https_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTPS proxy URL.
+    """
+    no_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of hosts that should not use the proxy.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Proxy server URL.
+    """
 
 @pulumi.input_type
 class DiscoveryAgentConfigProxyArgs:
@@ -1298,86 +1260,83 @@ class DiscoveryAgentConfigProxyArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class DiscoveryAgentInstallationDetailArgsDict(TypedDict):
-        account_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The account identifier for the installation.
-        """
-        agent_details: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailArgsDict']]]]
-        """
-        Details about the installed agent.
-        """
-        agent_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the installed agent.
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The timestamp when the installation was created.
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user who created the installation.
-        """
-        delegate_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the delegate used for installation.
-        """
-        delegate_task_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the delegate task for the installation.
-        """
-        delegate_task_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the delegate task (e.g., 'SUCCESS').
-        """
-        environment_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The environment identifier for the installation.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of the installation.
-        """
-        is_cron_triggered: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the installation was triggered by a cron job.
-        """
-        log_stream_created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The timestamp when the log stream was created.
-        """
-        log_stream_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the log stream for the installation.
-        """
-        organization_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The organization identifier for the installation.
-        """
-        project_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The project identifier for the installation.
-        """
-        removed: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the installation has been removed.
-        """
-        stopped: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the installation has been stopped.
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The timestamp when the installation was last updated.
-        """
-        updated_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user who last updated the installation.
-        """
-elif False:
-    DiscoveryAgentInstallationDetailArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentInstallationDetailArgsDict(TypedDict):
+    account_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The account identifier for the installation.
+    """
+    agent_details: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailArgsDict']]]]
+    """
+    Details about the installed agent.
+    """
+    agent_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the installed agent.
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The timestamp when the installation was created.
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The user who created the installation.
+    """
+    delegate_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the delegate used for installation.
+    """
+    delegate_task_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the delegate task for the installation.
+    """
+    delegate_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the delegate task (e.g., 'SUCCESS').
+    """
+    environment_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The environment identifier for the installation.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the installation.
+    """
+    is_cron_triggered: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the installation was triggered by a cron job.
+    """
+    log_stream_created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The timestamp when the log stream was created.
+    """
+    log_stream_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the log stream for the installation.
+    """
+    organization_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The organization identifier for the installation.
+    """
+    project_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The project identifier for the installation.
+    """
+    removed: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the installation has been removed.
+    """
+    stopped: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the installation has been stopped.
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The timestamp when the installation was last updated.
+    """
+    updated_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The user who last updated the installation.
+    """
 
 @pulumi.input_type
 class DiscoveryAgentInstallationDetailArgs:
@@ -1690,18 +1649,15 @@ class DiscoveryAgentInstallationDetailArgs:
         pulumi.set(self, "updated_by", value)
 
 
-if not MYPY:
-    class DiscoveryAgentInstallationDetailAgentDetailArgsDict(TypedDict):
-        clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailClusterArgsDict']]]]
-        """
-        Details about the cluster where the agent is installed.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the agent installation.
-        """
-elif False:
-    DiscoveryAgentInstallationDetailAgentDetailArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentInstallationDetailAgentDetailArgsDict(TypedDict):
+    clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailClusterArgsDict']]]]
+    """
+    Details about the cluster where the agent is installed.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the agent installation.
+    """
 
 @pulumi.input_type
 class DiscoveryAgentInstallationDetailAgentDetailArgs:
@@ -1742,26 +1698,23 @@ class DiscoveryAgentInstallationDetailAgentDetailArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class DiscoveryAgentInstallationDetailAgentDetailClusterArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the cluster.
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace where the agent is installed.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the cluster (e.g., 'Succeeded').
-        """
-        uid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The UID of the cluster.
-        """
-elif False:
-    DiscoveryAgentInstallationDetailAgentDetailClusterArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoveryAgentInstallationDetailAgentDetailClusterArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the cluster.
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace where the agent is installed.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the cluster (e.g., 'Succeeded').
+    """
+    uid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The UID of the cluster.
+    """
 
 @pulumi.input_type
 class DiscoveryAgentInstallationDetailAgentDetailClusterArgs:
@@ -1834,22 +1787,19 @@ class DiscoveryAgentInstallationDetailAgentDetailClusterArgs:
         pulumi.set(self, "uid", value)
 
 
-if not MYPY:
-    class DiscoverySettingImageRegistryArgsDict(TypedDict):
-        account: pulumi.Input[_builtins.str]
-        """
-        The account name for the image registry.
-        """
-        server: pulumi.Input[_builtins.str]
-        """
-        The server URL for the image registry.
-        """
-        secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of secrets for the image registry.
-        """
-elif False:
-    DiscoverySettingImageRegistryArgsDict: TypeAlias = Mapping[str, Any]
+class DiscoverySettingImageRegistryArgsDict(TypedDict):
+    account: pulumi.Input[_builtins.str]
+    """
+    The account name for the image registry.
+    """
+    server: pulumi.Input[_builtins.str]
+    """
+    The server URL for the image registry.
+    """
+    secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of secrets for the image registry.
+    """
 
 @pulumi.input_type
 class DiscoverySettingImageRegistryArgs:
@@ -1904,22 +1854,19 @@ class DiscoverySettingImageRegistryArgs:
         pulumi.set(self, "secrets", value)
 
 
-if not MYPY:
-    class EcsVariableArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the variable
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Value of the variable
-        """
-elif False:
-    EcsVariableArgsDict: TypeAlias = Mapping[str, Any]
+class EcsVariableArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the variable
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value of the variable
+    """
 
 @pulumi.input_type
 class EcsVariableArgs:
@@ -1973,22 +1920,19 @@ class EcsVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class HelmVariableArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the variable
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Value of the variable
-        """
-elif False:
-    HelmVariableArgsDict: TypeAlias = Mapping[str, Any]
+class HelmVariableArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the variable
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value of the variable
+    """
 
 @pulumi.input_type
 class HelmVariableArgs:
@@ -2042,22 +1986,19 @@ class HelmVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class KubernetesVariableArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the variable
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Value of the variable
-        """
-elif False:
-    KubernetesVariableArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesVariableArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the variable
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value of the variable
+    """
 
 @pulumi.input_type
 class KubernetesVariableArgs:
@@ -2111,22 +2052,19 @@ class KubernetesVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class LambdaVariableArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the variable
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Value of the variable
-        """
-elif False:
-    LambdaVariableArgsDict: TypeAlias = Mapping[str, Any]
+class LambdaVariableArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the variable
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value of the variable
+    """
 
 @pulumi.input_type
 class LambdaVariableArgs:
@@ -2180,22 +2118,19 @@ class LambdaVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class SshVariableArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the variable
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Value of the variable
-        """
-elif False:
-    SshVariableArgsDict: TypeAlias = Mapping[str, Any]
+class SshVariableArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the variable
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value of the variable
+    """
 
 @pulumi.input_type
 class SshVariableArgs:
@@ -2249,22 +2184,19 @@ class SshVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class TanzuVariableArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the variable
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Value of the variable
-        """
-elif False:
-    TanzuVariableArgsDict: TypeAlias = Mapping[str, Any]
+class TanzuVariableArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the variable
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value of the variable
+    """
 
 @pulumi.input_type
 class TanzuVariableArgs:
@@ -2318,22 +2250,19 @@ class TanzuVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class WinrmVariableArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the variable
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Value of the variable
-        """
-elif False:
-    WinrmVariableArgsDict: TypeAlias = Mapping[str, Any]
+class WinrmVariableArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the variable
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value of the variable
+    """
 
 @pulumi.input_type
 class WinrmVariableArgs:

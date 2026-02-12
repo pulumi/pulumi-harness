@@ -84,6 +84,9 @@ export class AzureGateway extends pulumi.CustomResource {
      * Id of the cloud connector
      */
     declare public readonly cloudConnectorId: pulumi.Output<string>;
+    /**
+     * Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     */
     declare public readonly deleteCloudResourcesOnDestroy: pulumi.Output<boolean>;
     /**
      * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
@@ -212,6 +215,9 @@ export interface AzureGatewayState {
      * Id of the cloud connector
      */
     cloudConnectorId?: pulumi.Input<string>;
+    /**
+     * Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     */
     deleteCloudResourcesOnDestroy?: pulumi.Input<boolean>;
     /**
      * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
@@ -271,6 +277,9 @@ export interface AzureGatewayArgs {
      * Id of the cloud connector
      */
     cloudConnectorId: pulumi.Input<string>;
+    /**
+     * Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     */
     deleteCloudResourcesOnDestroy: pulumi.Input<boolean>;
     /**
      * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details

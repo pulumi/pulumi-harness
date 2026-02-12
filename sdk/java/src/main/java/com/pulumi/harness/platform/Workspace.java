@@ -287,15 +287,31 @@ public class Workspace extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> providerConnector() {
         return Codegen.optional(this.providerConnector);
     }
+    /**
+     * Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     * 
+     */
     @Export(name="provisionerType", refs={String.class}, tree="[0]")
     private Output<String> provisionerType;
 
+    /**
+     * @return Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     * 
+     */
     public Output<String> provisionerType() {
         return this.provisionerType;
     }
+    /**
+     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     * 
+     */
     @Export(name="provisionerVersion", refs={String.class}, tree="[0]")
     private Output<String> provisionerVersion;
 
+    /**
+     * @return Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     * 
+     */
     public Output<String> provisionerVersion() {
         return this.provisionerVersion;
     }
@@ -397,15 +413,31 @@ public class Workspace extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * Terraform variables files configured on the workspace (see below for nested schema)
+     * 
+     */
     @Export(name="terraformVariableFiles", refs={List.class,WorkspaceTerraformVariableFile.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkspaceTerraformVariableFile>> terraformVariableFiles;
 
+    /**
+     * @return Terraform variables files configured on the workspace (see below for nested schema)
+     * 
+     */
     public Output<Optional<List<WorkspaceTerraformVariableFile>>> terraformVariableFiles() {
         return Codegen.optional(this.terraformVariableFiles);
     }
+    /**
+     * Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+     * 
+     */
     @Export(name="terraformVariables", refs={List.class,WorkspaceTerraformVariable.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkspaceTerraformVariable>> terraformVariables;
 
+    /**
+     * @return Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+     * 
+     */
     public Output<Optional<List<WorkspaceTerraformVariable>>> terraformVariables() {
         return Codegen.optional(this.terraformVariables);
     }

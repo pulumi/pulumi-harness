@@ -223,6 +223,13 @@ def get_azure_key_vault_connector(identifier: Optional[_builtins.str] = None,
                                   project_id: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAzureKeyVaultConnectorResult:
     """
+    Data source for looking up an Azure key vault connector.
+
+    References:
+    - For details on how to onboard with Terraform, please see Harness Terraform Provider Overview
+    - To understand how to use Azure Key Vault, please see [Documentation](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/azure-key-vault)
+    - To get more information about Api, please see [API documentation](https://apidocs.harness.io/tag/Connectors)
+
     ## Example Usage
 
     ```python
@@ -268,6 +275,13 @@ def get_azure_key_vault_connector_output(identifier: Optional[pulumi.Input[_buil
                                          project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAzureKeyVaultConnectorResult]:
     """
+    Data source for looking up an Azure key vault connector.
+
+    References:
+    - For details on how to onboard with Terraform, please see Harness Terraform Provider Overview
+    - To understand how to use Azure Key Vault, please see [Documentation](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/azure-key-vault)
+    - To get more information about Api, please see [API documentation](https://apidocs.harness.io/tag/Connectors)
+
     ## Example Usage
 
     ```python

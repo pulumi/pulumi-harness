@@ -18,22 +18,15 @@ import (
 //
 // The `pulumi import` command can be used, for example:
 //
-// # Import account level token
-//
 // ```sh
-// $ pulumi import harness:platform/token:Token harness_platform_token <parent_id>/<apikey_id>/<apikey_type>/<token_id>
-// ```
+// # Import account level token
+// terraform import harness_platform_token <parent_id>/<apikey_id>/<apikey_type>/<token_id>
 //
 // # Import org level token
-//
-// ```sh
-// $ pulumi import harness:platform/token:Token harness_platform_token <org_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
-// ```
+// terraform import harness_platform_token <org_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
 //
 // # Import project level token
-//
-// ```sh
-// $ pulumi import harness:platform/token:Token harness_platform_token <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
+// terraform import harness_platform_token <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
 // ```
 type Token struct {
 	pulumi.CustomResourceState

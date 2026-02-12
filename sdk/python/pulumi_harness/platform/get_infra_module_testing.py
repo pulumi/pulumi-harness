@@ -213,6 +213,9 @@ class GetInfraModuleTestingResult:
     @_builtins.property
     @pulumi.getter(name="provisionerType")
     def provisioner_type(self) -> _builtins.str:
+        """
+        Provisioner type for testing purposes (e.g., terraform, tofu)
+        """
         return pulumi.get(self, "provisioner_type")
 
     @_builtins.property
@@ -394,6 +397,7 @@ def get_infra_module_testing(module_id: Optional[_builtins.str] = None,
     :param Sequence[_builtins.str] pipelines: List of pipeline IDs to create webhooks for triggering test executions
     :param _builtins.str project: Project identifier
     :param _builtins.str provider_connector: Provider connector for testing purposes
+    :param _builtins.str provisioner_type: Provisioner type for testing purposes (e.g., terraform, tofu)
     :param _builtins.str provisioner_version: Provisioner version for testing purposes
     :param _builtins.str release_pipeline: Pipeline ID to create webhooks for releases
     :param _builtins.bool testing_enabled: Whether testing is enabled for the module
@@ -468,6 +472,7 @@ def get_infra_module_testing_output(module_id: Optional[pulumi.Input[_builtins.s
     :param Sequence[_builtins.str] pipelines: List of pipeline IDs to create webhooks for triggering test executions
     :param _builtins.str project: Project identifier
     :param _builtins.str provider_connector: Provider connector for testing purposes
+    :param _builtins.str provisioner_type: Provisioner type for testing purposes (e.g., terraform, tofu)
     :param _builtins.str provisioner_version: Provisioner version for testing purposes
     :param _builtins.str release_pipeline: Pipeline ID to create webhooks for releases
     :param _builtins.bool testing_enabled: Whether testing is enabled for the module

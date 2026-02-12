@@ -176,7 +176,13 @@ export class Workspace extends pulumi.CustomResource {
      * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
      */
     declare public readonly providerConnector: pulumi.Output<string | undefined>;
+    /**
+     * Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     */
     declare public readonly provisionerType: pulumi.Output<string>;
+    /**
+     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     */
     declare public readonly provisionerVersion: pulumi.Output<string>;
     /**
      * Repository is the name of the repository to fetch the code from.
@@ -206,7 +212,13 @@ export class Workspace extends pulumi.CustomResource {
      * Tags to associate with the resource.
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
+    /**
+     * Terraform variables files configured on the workspace (see below for nested schema)
+     */
     declare public readonly terraformVariableFiles: pulumi.Output<outputs.platform.WorkspaceTerraformVariableFile[] | undefined>;
+    /**
+     * Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+     */
     declare public readonly terraformVariables: pulumi.Output<outputs.platform.WorkspaceTerraformVariable[] | undefined>;
     /**
      * Variable sets to use.
@@ -349,7 +361,13 @@ export interface WorkspaceState {
      * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
      */
     providerConnector?: pulumi.Input<string>;
+    /**
+     * Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     */
     provisionerType?: pulumi.Input<string>;
+    /**
+     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     */
     provisionerVersion?: pulumi.Input<string>;
     /**
      * Repository is the name of the repository to fetch the code from.
@@ -379,7 +397,13 @@ export interface WorkspaceState {
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Terraform variables files configured on the workspace (see below for nested schema)
+     */
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariableFile>[]>;
+    /**
+     * Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+     */
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariable>[]>;
     /**
      * Variable sets to use.
@@ -431,7 +455,13 @@ export interface WorkspaceArgs {
      * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
      */
     providerConnector?: pulumi.Input<string>;
+    /**
+     * Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     */
     provisionerType: pulumi.Input<string>;
+    /**
+     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     */
     provisionerVersion: pulumi.Input<string>;
     /**
      * Repository is the name of the repository to fetch the code from.
@@ -461,7 +491,13 @@ export interface WorkspaceArgs {
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Terraform variables files configured on the workspace (see below for nested schema)
+     */
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariableFile>[]>;
+    /**
+     * Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+     */
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariable>[]>;
     /**
      * Variable sets to use.

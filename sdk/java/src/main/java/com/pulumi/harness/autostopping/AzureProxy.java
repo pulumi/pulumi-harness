@@ -122,9 +122,17 @@ public class AzureProxy extends com.pulumi.resources.CustomResource {
     public Output<String> cloudConnectorId() {
         return this.cloudConnectorId;
     }
+    /**
+     * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
+     * 
+     */
     @Export(name="deleteCloudResourcesOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deleteCloudResourcesOnDestroy;
 
+    /**
+     * @return Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
+     * 
+     */
     public Output<Boolean> deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
     }

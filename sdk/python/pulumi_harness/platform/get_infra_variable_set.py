@@ -138,11 +138,17 @@ class GetInfraVariableSetResult:
     @_builtins.property
     @pulumi.getter(name="terraformVariableFiles")
     def terraform_variable_files(self) -> Sequence['outputs.GetInfraVariableSetTerraformVariableFileResult']:
+        """
+        Terraform variables files configured on the Variable Set (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variable_files")
 
     @_builtins.property
     @pulumi.getter(name="terraformVariables")
     def terraform_variables(self) -> Sequence['outputs.GetInfraVariableSetTerraformVariableResult']:
+        """
+        Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variables")
 
 
@@ -198,6 +204,8 @@ def get_infra_variable_set(connectors: Optional[Sequence[Union['GetInfraVariable
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
+    :param Sequence[Union['GetInfraVariableSetTerraformVariableFileArgs', 'GetInfraVariableSetTerraformVariableFileArgsDict']] terraform_variable_files: Terraform variables files configured on the Variable Set (see below for nested schema)
+    :param Sequence[Union['GetInfraVariableSetTerraformVariableArgs', 'GetInfraVariableSetTerraformVariableArgsDict']] terraform_variables: Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
     """
     __args__ = dict()
     __args__['connectors'] = connectors
@@ -256,6 +264,8 @@ def get_infra_variable_set_output(connectors: Optional[pulumi.Input[Optional[Seq
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
+    :param Sequence[Union['GetInfraVariableSetTerraformVariableFileArgs', 'GetInfraVariableSetTerraformVariableFileArgsDict']] terraform_variable_files: Terraform variables files configured on the Variable Set (see below for nested schema)
+    :param Sequence[Union['GetInfraVariableSetTerraformVariableArgs', 'GetInfraVariableSetTerraformVariableArgsDict']] terraform_variables: Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
     """
     __args__ = dict()
     __args__['connectors'] = connectors

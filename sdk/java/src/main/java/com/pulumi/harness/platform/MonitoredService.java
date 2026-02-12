@@ -893,19 +893,19 @@ import javax.annotation.Nullable;
  * 
  * The `pulumi import` command can be used, for example:
  * 
- * Import account level monitored_service
+ * Import account level monitoredService
  * 
  * ```sh
  * $ pulumi import harness:platform/monitoredService:MonitoredService example &lt;monitored_service_id&gt;
  * ```
  * 
- * Import organization level monitored_service
+ * Import organization level monitoredService
  * 
  * ```sh
  * $ pulumi import harness:platform/monitoredService:MonitoredService example &lt;org_id&gt;/&lt;monitored_service_id&gt;
  * ```
  * 
- * Import project level monitored_service
+ * Import project level monitoredService
  * 
  * ```sh
  * $ pulumi import harness:platform/monitoredService:MonitoredService example &lt;org_id&gt;/&lt;project_id&gt;/&lt;monitored_service_id&gt;

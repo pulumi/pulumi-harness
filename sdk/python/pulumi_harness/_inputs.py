@@ -105,24 +105,19 @@ __all__ = [
     'GetSshCredentialUsageScopeArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class EncryptedTextUsageScopeArgsDict(TypedDict):
-        application_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Id of the application to scope to. If empty then this scope applies to all applications.
-        """
-        environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
-        """
-        environment_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
-        """
-elif False:
-    EncryptedTextUsageScopeArgsDict: TypeAlias = Mapping[str, Any]
+class EncryptedTextUsageScopeArgsDict(TypedDict):
+    application_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Id of the application to scope to. If empty then this scope applies to all applications.
+    """
+    environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+    """
+    environment_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+    """
 
 @pulumi.input_type
 class EncryptedTextUsageScopeArgs:
@@ -179,26 +174,23 @@ class EncryptedTextUsageScopeArgs:
         pulumi.set(self, "environment_id", value)
 
 
-if not MYPY:
-    class EnvironmentVariableOverrideArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the variable
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of the service variable. Valid values are `TEXT` and `ENCRYPTED_TEXT`
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The value of the service variable
-        """
-        service_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the service
-        """
-elif False:
-    EnvironmentVariableOverrideArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentVariableOverrideArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the variable
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the service variable. Valid values are `TEXT` and `ENCRYPTED_TEXT`
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the service variable
+    """
+    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the service
+    """
 
 @pulumi.input_type
 class EnvironmentVariableOverrideArgs:
@@ -268,22 +260,19 @@ class EnvironmentVariableOverrideArgs:
         pulumi.set(self, "service_name", value)
 
 
-if not MYPY:
-    class GitConnectorCommitDetailsArgsDict(TypedDict):
-        author_email_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The email id of the author
-        """
-        author_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the author
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Commit message
-        """
-elif False:
-    GitConnectorCommitDetailsArgsDict: TypeAlias = Mapping[str, Any]
+class GitConnectorCommitDetailsArgsDict(TypedDict):
+    author_email_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The email id of the author
+    """
+    author_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the author
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Commit message
+    """
 
 @pulumi.input_type
 class GitConnectorCommitDetailsArgs:
@@ -340,22 +329,19 @@ class GitConnectorCommitDetailsArgs:
         pulumi.set(self, "message", value)
 
 
-if not MYPY:
-    class GitConnectorUsageScopeArgsDict(TypedDict):
-        application_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Id of the application to scope to. If empty then this scope applies to all applications.
-        """
-        environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
-        """
-        environment_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
-        """
-elif False:
-    GitConnectorUsageScopeArgsDict: TypeAlias = Mapping[str, Any]
+class GitConnectorUsageScopeArgsDict(TypedDict):
+    application_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Id of the application to scope to. If empty then this scope applies to all applications.
+    """
+    environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+    """
+    environment_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+    """
 
 @pulumi.input_type
 class GitConnectorUsageScopeArgs:
@@ -412,62 +398,59 @@ class GitConnectorUsageScopeArgs:
         pulumi.set(self, "environment_id", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionAwsAmiArgsDict(TypedDict):
-        ami_deployment_type: pulumi.Input[_builtins.str]
-        """
-        The ami deployment type to use. Valid options are AWS_ASG, SPOTINST
-        """
-        cloud_provider_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cloud provider to connect with.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The region to deploy to.
-        """
-        asg_identifies_workload: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Flag to indicate whether the autoscaling group identifies the workload.
-        """
-        autoscaling_group_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the autoscaling group.
-        """
-        classic_loadbalancers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The classic load balancers to use.
-        """
-        hostname_convention: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The naming convention to use for the hostname. Defaults to ${host.ec2Instance.privateDnsName.split('.')[0]}
-        """
-        spotinst_cloud_provider_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the SpotInst cloud provider to connect with.
-        """
-        spotinst_config_json: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SpotInst configuration to use.
-        """
-        stage_classic_loadbalancers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The staging classic load balancers to use.
-        """
-        stage_target_group_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The staging classic load balancers to use.
-        """
-        target_group_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The ARN's of the target groups.
-        """
-        use_traffic_shift: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Flag to enable traffic shifting.
-        """
-elif False:
-    InfrastructureDefinitionAwsAmiArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionAwsAmiArgsDict(TypedDict):
+    ami_deployment_type: pulumi.Input[_builtins.str]
+    """
+    The ami deployment type to use. Valid options are AWS_ASG, SPOTINST
+    """
+    cloud_provider_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cloud provider to connect with.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The region to deploy to.
+    """
+    asg_identifies_workload: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Flag to indicate whether the autoscaling group identifies the workload.
+    """
+    autoscaling_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the autoscaling group.
+    """
+    classic_loadbalancers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The classic load balancers to use.
+    """
+    hostname_convention: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The naming convention to use for the hostname. Defaults to ${host.ec2Instance.privateDnsName.split('.')[0]}
+    """
+    spotinst_cloud_provider_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the SpotInst cloud provider to connect with.
+    """
+    spotinst_config_json: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SpotInst configuration to use.
+    """
+    stage_classic_loadbalancers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The staging classic load balancers to use.
+    """
+    stage_target_group_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The staging classic load balancers to use.
+    """
+    target_group_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The ARN's of the target groups.
+    """
+    use_traffic_shift: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Flag to enable traffic shifting.
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionAwsAmiArgs:
@@ -681,46 +664,43 @@ class InfrastructureDefinitionAwsAmiArgs:
         pulumi.set(self, "use_traffic_shift", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionAwsEcsArgsDict(TypedDict):
-        cloud_provider_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cloud provider to connect with.
-        """
-        cluster_name: pulumi.Input[_builtins.str]
-        """
-        The name of the ECS cluster to use.
-        """
-        launch_type: pulumi.Input[_builtins.str]
-        """
-        The type of launch configuration to use. Valid options are FARGATE
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The region to deploy to.
-        """
-        assign_public_ip: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Flag to assign a public IP address.
-        """
-        execution_role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ARN of the role to use for execution.
-        """
-        security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The security group ids to apply to the ecs service.
-        """
-        subnet_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The subnet ids to apply to the ecs service.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The VPC ids to use when selecting the instances.
-        """
-elif False:
-    InfrastructureDefinitionAwsEcsArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionAwsEcsArgsDict(TypedDict):
+    cloud_provider_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cloud provider to connect with.
+    """
+    cluster_name: pulumi.Input[_builtins.str]
+    """
+    The name of the ECS cluster to use.
+    """
+    launch_type: pulumi.Input[_builtins.str]
+    """
+    The type of launch configuration to use. Valid options are FARGATE
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The region to deploy to.
+    """
+    assign_public_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Flag to assign a public IP address.
+    """
+    execution_role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ARN of the role to use for execution.
+    """
+    security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The security group ids to apply to the ecs service.
+    """
+    subnet_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The subnet ids to apply to the ecs service.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The VPC ids to use when selecting the instances.
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionAwsEcsArgs:
@@ -869,34 +849,31 @@ class InfrastructureDefinitionAwsEcsArgs:
         pulumi.set(self, "vpc_id", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionAwsLambdaArgsDict(TypedDict):
-        cloud_provider_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cloud provider to connect with.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The region to deploy to.
-        """
-        iam_role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IAM role to use.
-        """
-        security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The security group ids to apply to the ecs service.
-        """
-        subnet_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The subnet ids to apply to the ecs service.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The VPC ids to use when selecting the instances.
-        """
-elif False:
-    InfrastructureDefinitionAwsLambdaArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionAwsLambdaArgsDict(TypedDict):
+    cloud_provider_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cloud provider to connect with.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The region to deploy to.
+    """
+    iam_role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IAM role to use.
+    """
+    security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The security group ids to apply to the ecs service.
+    """
+    subnet_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The subnet ids to apply to the ecs service.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The VPC ids to use when selecting the instances.
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionAwsLambdaArgs:
@@ -999,50 +976,47 @@ class InfrastructureDefinitionAwsLambdaArgs:
         pulumi.set(self, "vpc_id", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionAwsSshArgsDict(TypedDict):
-        cloud_provider_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cloud provider to connect with.
-        """
-        host_connection_type: pulumi.Input[_builtins.str]
-        """
-        The type of host connection to use. Valid options are PRIVATE*DNS, PUBLIC*DNS, PRIVATE*IP, PUBLIC*IP
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The region to deploy to.
-        """
-        autoscaling_group_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the autoscaling group.
-        """
-        desired_capacity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The desired capacity of the auto scaling group.
-        """
-        host_connection_attrs_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the host connection attributes to use.
-        """
-        hostname_convention: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The naming convention to use for the hostname. Defaults to ${host.ec2Instance.privateDnsName.split('.')[0]}
-        """
-        loadbalancer_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the load balancer to use.
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionAwsSshTagArgsDict']]]]
-        """
-        The tags to use when selecting the instances.
-        """
-        vpc_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The VPC ids to use when selecting the instances.
-        """
-elif False:
-    InfrastructureDefinitionAwsSshArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionAwsSshArgsDict(TypedDict):
+    cloud_provider_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cloud provider to connect with.
+    """
+    host_connection_type: pulumi.Input[_builtins.str]
+    """
+    The type of host connection to use. Valid options are PRIVATE*DNS, PUBLIC*DNS, PRIVATE*IP, PUBLIC*IP
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The region to deploy to.
+    """
+    autoscaling_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the autoscaling group.
+    """
+    desired_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The desired capacity of the auto scaling group.
+    """
+    host_connection_attrs_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the host connection attributes to use.
+    """
+    hostname_convention: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The naming convention to use for the hostname. Defaults to ${host.ec2Instance.privateDnsName.split('.')[0]}
+    """
+    loadbalancer_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the load balancer to use.
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionAwsSshTagArgsDict']]]]
+    """
+    The tags to use when selecting the instances.
+    """
+    vpc_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The VPC ids to use when selecting the instances.
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionAwsSshArgs:
@@ -1208,18 +1182,15 @@ class InfrastructureDefinitionAwsSshArgs:
         pulumi.set(self, "vpc_ids", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionAwsSshTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The key of the tag.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The value of the tag.
-        """
-elif False:
-    InfrastructureDefinitionAwsSshTagArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionAwsSshTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key of the tag.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the tag.
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionAwsSshTagArgs:
@@ -1258,42 +1229,39 @@ class InfrastructureDefinitionAwsSshTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionAwsWinrmArgsDict(TypedDict):
-        autoscaling_group_name: pulumi.Input[_builtins.str]
-        """
-        The name of the autoscaling group.
-        """
-        cloud_provider_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cloud provider to connect with.
-        """
-        host_connection_attrs_name: pulumi.Input[_builtins.str]
-        """
-        The name of the host connection attributes to use.
-        """
-        host_connection_type: pulumi.Input[_builtins.str]
-        """
-        The type of host connection to use. Valid options are PRIVATE*DNS, PUBLIC*DNS, PRIVATE*IP, PUBLIC*IP
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The region to deploy to.
-        """
-        desired_capacity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The desired capacity of the autoscaling group.
-        """
-        hostname_convention: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The naming convention to use for the hostname. Defaults to ${host.ec2Instance.privateDnsName.split('.')[0]}
-        """
-        loadbalancer_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the load balancer to use.
-        """
-elif False:
-    InfrastructureDefinitionAwsWinrmArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionAwsWinrmArgsDict(TypedDict):
+    autoscaling_group_name: pulumi.Input[_builtins.str]
+    """
+    The name of the autoscaling group.
+    """
+    cloud_provider_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cloud provider to connect with.
+    """
+    host_connection_attrs_name: pulumi.Input[_builtins.str]
+    """
+    The name of the host connection attributes to use.
+    """
+    host_connection_type: pulumi.Input[_builtins.str]
+    """
+    The type of host connection to use. Valid options are PRIVATE*DNS, PUBLIC*DNS, PRIVATE*IP, PUBLIC*IP
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The region to deploy to.
+    """
+    desired_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The desired capacity of the autoscaling group.
+    """
+    hostname_convention: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The naming convention to use for the hostname. Defaults to ${host.ec2Instance.privateDnsName.split('.')[0]}
+    """
+    loadbalancer_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the load balancer to use.
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionAwsWinrmArgs:
@@ -1425,42 +1393,39 @@ class InfrastructureDefinitionAwsWinrmArgs:
         pulumi.set(self, "loadbalancer_name", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionAzureVmssArgsDict(TypedDict):
-        auth_type: pulumi.Input[_builtins.str]
-        """
-        The type of authentication to use. Valid options are SSH*PUBLIC*KEY.
-        """
-        base_name: pulumi.Input[_builtins.str]
-        """
-        Base name.
-        """
-        cloud_provider_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cloud provider to connect with.
-        """
-        deployment_type: pulumi.Input[_builtins.str]
-        """
-        The type of deployment. Valid options are NATIVE_VMSS
-        """
-        resource_group_name: pulumi.Input[_builtins.str]
-        """
-        The name of the resource group.
-        """
-        subscription_id: pulumi.Input[_builtins.str]
-        """
-        The unique id of the azure subscription.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        The username to connect with.
-        """
-        host_connection_attrs_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the host connection attributes to use.
-        """
-elif False:
-    InfrastructureDefinitionAzureVmssArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionAzureVmssArgsDict(TypedDict):
+    auth_type: pulumi.Input[_builtins.str]
+    """
+    The type of authentication to use. Valid options are SSH*PUBLIC*KEY.
+    """
+    base_name: pulumi.Input[_builtins.str]
+    """
+    Base name.
+    """
+    cloud_provider_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cloud provider to connect with.
+    """
+    deployment_type: pulumi.Input[_builtins.str]
+    """
+    The type of deployment. Valid options are NATIVE_VMSS
+    """
+    resource_group_name: pulumi.Input[_builtins.str]
+    """
+    The name of the resource group.
+    """
+    subscription_id: pulumi.Input[_builtins.str]
+    """
+    The unique id of the azure subscription.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    The username to connect with.
+    """
+    host_connection_attrs_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the host connection attributes to use.
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionAzureVmssArgs:
@@ -1590,22 +1555,19 @@ class InfrastructureDefinitionAzureVmssArgs:
         pulumi.set(self, "host_connection_attrs_name", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionAzureWebappArgsDict(TypedDict):
-        cloud_provider_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cloud provider to connect with.
-        """
-        resource_group: pulumi.Input[_builtins.str]
-        """
-        The name of the resource group.
-        """
-        subscription_id: pulumi.Input[_builtins.str]
-        """
-        The unique id of the azure subscription.
-        """
-elif False:
-    InfrastructureDefinitionAzureWebappArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionAzureWebappArgsDict(TypedDict):
+    cloud_provider_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cloud provider to connect with.
+    """
+    resource_group: pulumi.Input[_builtins.str]
+    """
+    The name of the resource group.
+    """
+    subscription_id: pulumi.Input[_builtins.str]
+    """
+    The unique id of the azure subscription.
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionAzureWebappArgs:
@@ -1659,18 +1621,15 @@ class InfrastructureDefinitionAzureWebappArgs:
         pulumi.set(self, "subscription_id", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionCustomArgsDict(TypedDict):
-        deployment_type_template_version: pulumi.Input[_builtins.str]
-        """
-        The template version
-        """
-        variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgsDict']]]]
-        """
-        Variables to be used in the service
-        """
-elif False:
-    InfrastructureDefinitionCustomArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionCustomArgsDict(TypedDict):
+    deployment_type_template_version: pulumi.Input[_builtins.str]
+    """
+    The template version
+    """
+    variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgsDict']]]]
+    """
+    Variables to be used in the service
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionCustomArgs:
@@ -1710,18 +1669,15 @@ class InfrastructureDefinitionCustomArgs:
         pulumi.set(self, "variables", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionCustomVariableArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the variable
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Value of the variable
-        """
-elif False:
-    InfrastructureDefinitionCustomVariableArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionCustomVariableArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the variable
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value of the variable
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionCustomVariableArgs:
@@ -1760,22 +1716,19 @@ class InfrastructureDefinitionCustomVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionDatacenterSshArgsDict(TypedDict):
-        cloud_provider_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cloud provider to connect with.
-        """
-        host_connection_attributes_name: pulumi.Input[_builtins.str]
-        """
-        The name of the SSH connection attributes to use.
-        """
-        hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of hosts to deploy to.
-        """
-elif False:
-    InfrastructureDefinitionDatacenterSshArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionDatacenterSshArgsDict(TypedDict):
+    cloud_provider_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cloud provider to connect with.
+    """
+    host_connection_attributes_name: pulumi.Input[_builtins.str]
+    """
+    The name of the SSH connection attributes to use.
+    """
+    hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of hosts to deploy to.
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionDatacenterSshArgs:
@@ -1829,22 +1782,19 @@ class InfrastructureDefinitionDatacenterSshArgs:
         pulumi.set(self, "hostnames", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionDatacenterWinrmArgsDict(TypedDict):
-        cloud_provider_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cloud provider to connect with.
-        """
-        hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of hosts to deploy to.
-        """
-        winrm_connection_attributes_name: pulumi.Input[_builtins.str]
-        """
-        The name of the WinRM connection attributes to use.
-        """
-elif False:
-    InfrastructureDefinitionDatacenterWinrmArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionDatacenterWinrmArgsDict(TypedDict):
+    cloud_provider_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cloud provider to connect with.
+    """
+    hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of hosts to deploy to.
+    """
+    winrm_connection_attributes_name: pulumi.Input[_builtins.str]
+    """
+    The name of the WinRM connection attributes to use.
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionDatacenterWinrmArgs:
@@ -1898,22 +1848,19 @@ class InfrastructureDefinitionDatacenterWinrmArgs:
         pulumi.set(self, "winrm_connection_attributes_name", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionKubernetesArgsDict(TypedDict):
-        cloud_provider_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cloud provider to connect with.
-        """
-        namespace: pulumi.Input[_builtins.str]
-        """
-        The namespace in Kubernetes to deploy to.
-        """
-        release_name: pulumi.Input[_builtins.str]
-        """
-        The naming convention of the release. When using Helm Native the default is ${infra.kubernetes.infraId}. For standard Kubernetes manifests the default is release-${infra.kubernetes.infraId}
-        """
-elif False:
-    InfrastructureDefinitionKubernetesArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionKubernetesArgsDict(TypedDict):
+    cloud_provider_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cloud provider to connect with.
+    """
+    namespace: pulumi.Input[_builtins.str]
+    """
+    The namespace in Kubernetes to deploy to.
+    """
+    release_name: pulumi.Input[_builtins.str]
+    """
+    The naming convention of the release. When using Helm Native the default is ${infra.kubernetes.infraId}. For standard Kubernetes manifests the default is release-${infra.kubernetes.infraId}
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionKubernetesArgs:
@@ -1967,26 +1914,23 @@ class InfrastructureDefinitionKubernetesArgs:
         pulumi.set(self, "release_name", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionKubernetesGcpArgsDict(TypedDict):
-        cloud_provider_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cloud provider to connect with.
-        """
-        cluster_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cluster being deployed to.
-        """
-        namespace: pulumi.Input[_builtins.str]
-        """
-        The namespace in Kubernetes to deploy to.
-        """
-        release_name: pulumi.Input[_builtins.str]
-        """
-        The naming convention of the release.
-        """
-elif False:
-    InfrastructureDefinitionKubernetesGcpArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionKubernetesGcpArgsDict(TypedDict):
+    cloud_provider_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cloud provider to connect with.
+    """
+    cluster_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cluster being deployed to.
+    """
+    namespace: pulumi.Input[_builtins.str]
+    """
+    The namespace in Kubernetes to deploy to.
+    """
+    release_name: pulumi.Input[_builtins.str]
+    """
+    The naming convention of the release.
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionKubernetesGcpArgs:
@@ -2055,22 +1999,19 @@ class InfrastructureDefinitionKubernetesGcpArgs:
         pulumi.set(self, "release_name", value)
 
 
-if not MYPY:
-    class InfrastructureDefinitionTanzuArgsDict(TypedDict):
-        cloud_provider_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cloud provider to connect with.
-        """
-        organization: pulumi.Input[_builtins.str]
-        """
-        The PCF organization to use.
-        """
-        space: pulumi.Input[_builtins.str]
-        """
-        The PCF space to deploy to.
-        """
-elif False:
-    InfrastructureDefinitionTanzuArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureDefinitionTanzuArgsDict(TypedDict):
+    cloud_provider_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cloud provider to connect with.
+    """
+    organization: pulumi.Input[_builtins.str]
+    """
+    The PCF organization to use.
+    """
+    space: pulumi.Input[_builtins.str]
+    """
+    The PCF space to deploy to.
+    """
 
 @pulumi.input_type
 class InfrastructureDefinitionTanzuArgs:
@@ -2124,18 +2065,15 @@ class InfrastructureDefinitionTanzuArgs:
         pulumi.set(self, "space", value)
 
 
-if not MYPY:
-    class PlatformCcmFiltersFilterPropertiesArgsDict(TypedDict):
-        filter_type: pulumi.Input[_builtins.str]
-        """
-        Type of CCM filters.
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
-        """
-elif False:
-    PlatformCcmFiltersFilterPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+class PlatformCcmFiltersFilterPropertiesArgsDict(TypedDict):
+    filter_type: pulumi.Input[_builtins.str]
+    """
+    Type of CCM filters.
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Tags to associate with the resource. Tags should be in the form `name:value`.
+    """
 
 @pulumi.input_type
 class PlatformCcmFiltersFilterPropertiesArgs:
@@ -2175,26 +2113,23 @@ class PlatformCcmFiltersFilterPropertiesArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SshCredentialKerberosAuthenticationArgsDict(TypedDict):
-        port: pulumi.Input[_builtins.int]
-        """
-        Port to use for Kerberos authentication
-        """
-        principal: pulumi.Input[_builtins.str]
-        """
-        Name of the principal for authentication
-        """
-        realm: pulumi.Input[_builtins.str]
-        """
-        Realm associated with the Kerberos authentication
-        """
-        tgt_generation_method: NotRequired[pulumi.Input['SshCredentialKerberosAuthenticationTgtGenerationMethodArgsDict']]
-        """
-        TGT generation method
-        """
-elif False:
-    SshCredentialKerberosAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+class SshCredentialKerberosAuthenticationArgsDict(TypedDict):
+    port: pulumi.Input[_builtins.int]
+    """
+    Port to use for Kerberos authentication
+    """
+    principal: pulumi.Input[_builtins.str]
+    """
+    Name of the principal for authentication
+    """
+    realm: pulumi.Input[_builtins.str]
+    """
+    Realm associated with the Kerberos authentication
+    """
+    tgt_generation_method: NotRequired[pulumi.Input['SshCredentialKerberosAuthenticationTgtGenerationMethodArgsDict']]
+    """
+    TGT generation method
+    """
 
 @pulumi.input_type
 class SshCredentialKerberosAuthenticationArgs:
@@ -2264,18 +2199,15 @@ class SshCredentialKerberosAuthenticationArgs:
         pulumi.set(self, "tgt_generation_method", value)
 
 
-if not MYPY:
-    class SshCredentialKerberosAuthenticationTgtGenerationMethodArgsDict(TypedDict):
-        kerberos_password_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The id of the encrypted text secret
-        """
-        key_tab_file_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to the key tab file
-        """
-elif False:
-    SshCredentialKerberosAuthenticationTgtGenerationMethodArgsDict: TypeAlias = Mapping[str, Any]
+class SshCredentialKerberosAuthenticationTgtGenerationMethodArgsDict(TypedDict):
+    kerberos_password_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The id of the encrypted text secret
+    """
+    key_tab_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to the key tab file
+    """
 
 @pulumi.input_type
 class SshCredentialKerberosAuthenticationTgtGenerationMethodArgs:
@@ -2316,30 +2248,27 @@ class SshCredentialKerberosAuthenticationTgtGenerationMethodArgs:
         pulumi.set(self, "key_tab_file_path", value)
 
 
-if not MYPY:
-    class SshCredentialSshAuthenticationArgsDict(TypedDict):
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to connect to
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        The username to use when connecting to ssh
-        """
-        inline_ssh: NotRequired[pulumi.Input['SshCredentialSshAuthenticationInlineSshArgsDict']]
-        """
-        Inline SSH authentication configuration. Only ond of `passphrase_secret_id` or `ssh_key_file_id` should be used
-        """
-        server_password: NotRequired[pulumi.Input['SshCredentialSshAuthenticationServerPasswordArgsDict']]
-        """
-        Server password authentication configuration
-        """
-        ssh_key_file: NotRequired[pulumi.Input['SshCredentialSshAuthenticationSshKeyFileArgsDict']]
-        """
-        Use ssh key file for authentication
-        """
-elif False:
-    SshCredentialSshAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+class SshCredentialSshAuthenticationArgsDict(TypedDict):
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to connect to
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    The username to use when connecting to ssh
+    """
+    inline_ssh: NotRequired[pulumi.Input['SshCredentialSshAuthenticationInlineSshArgsDict']]
+    """
+    Inline SSH authentication configuration. Only ond of `passphrase_secret_id` or `ssh_key_file_id` should be used
+    """
+    server_password: NotRequired[pulumi.Input['SshCredentialSshAuthenticationServerPasswordArgsDict']]
+    """
+    Server password authentication configuration
+    """
+    ssh_key_file: NotRequired[pulumi.Input['SshCredentialSshAuthenticationSshKeyFileArgsDict']]
+    """
+    Use ssh key file for authentication
+    """
 
 @pulumi.input_type
 class SshCredentialSshAuthenticationArgs:
@@ -2426,18 +2355,15 @@ class SshCredentialSshAuthenticationArgs:
         pulumi.set(self, "ssh_key_file", value)
 
 
-if not MYPY:
-    class SshCredentialSshAuthenticationInlineSshArgsDict(TypedDict):
-        ssh_key_file_id: pulumi.Input[_builtins.str]
-        """
-        The id of the secret containing the SSH key
-        """
-        passphrase_secret_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The id of the encrypted secret to use
-        """
-elif False:
-    SshCredentialSshAuthenticationInlineSshArgsDict: TypeAlias = Mapping[str, Any]
+class SshCredentialSshAuthenticationInlineSshArgsDict(TypedDict):
+    ssh_key_file_id: pulumi.Input[_builtins.str]
+    """
+    The id of the secret containing the SSH key
+    """
+    passphrase_secret_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The id of the encrypted secret to use
+    """
 
 @pulumi.input_type
 class SshCredentialSshAuthenticationInlineSshArgs:
@@ -2477,14 +2403,11 @@ class SshCredentialSshAuthenticationInlineSshArgs:
         pulumi.set(self, "passphrase_secret_id", value)
 
 
-if not MYPY:
-    class SshCredentialSshAuthenticationServerPasswordArgsDict(TypedDict):
-        password_secret_id: pulumi.Input[_builtins.str]
-        """
-        The id of the encrypted secret
-        """
-elif False:
-    SshCredentialSshAuthenticationServerPasswordArgsDict: TypeAlias = Mapping[str, Any]
+class SshCredentialSshAuthenticationServerPasswordArgsDict(TypedDict):
+    password_secret_id: pulumi.Input[_builtins.str]
+    """
+    The id of the encrypted secret
+    """
 
 @pulumi.input_type
 class SshCredentialSshAuthenticationServerPasswordArgs:
@@ -2508,18 +2431,15 @@ class SshCredentialSshAuthenticationServerPasswordArgs:
         pulumi.set(self, "password_secret_id", value)
 
 
-if not MYPY:
-    class SshCredentialSshAuthenticationSshKeyFileArgsDict(TypedDict):
-        path: pulumi.Input[_builtins.str]
-        """
-        The path to the key file on the delegate
-        """
-        passphrase_secret_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The id of the secret containing the password to use for the ssh key
-        """
-elif False:
-    SshCredentialSshAuthenticationSshKeyFileArgsDict: TypeAlias = Mapping[str, Any]
+class SshCredentialSshAuthenticationSshKeyFileArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    The path to the key file on the delegate
+    """
+    passphrase_secret_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The id of the secret containing the password to use for the ssh key
+    """
 
 @pulumi.input_type
 class SshCredentialSshAuthenticationSshKeyFileArgs:
@@ -2559,22 +2479,19 @@ class SshCredentialSshAuthenticationSshKeyFileArgs:
         pulumi.set(self, "passphrase_secret_id", value)
 
 
-if not MYPY:
-    class SshCredentialUsageScopeArgsDict(TypedDict):
-        application_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Id of the application to scope to. If empty then this scope applies to all applications.
-        """
-        environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
-        """
-        environment_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
-        """
-elif False:
-    SshCredentialUsageScopeArgsDict: TypeAlias = Mapping[str, Any]
+class SshCredentialUsageScopeArgsDict(TypedDict):
+    application_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Id of the application to scope to. If empty then this scope applies to all applications.
+    """
+    environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+    """
+    environment_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+    """
 
 @pulumi.input_type
 class SshCredentialUsageScopeArgs:
@@ -2631,22 +2548,19 @@ class SshCredentialUsageScopeArgs:
         pulumi.set(self, "environment_id", value)
 
 
-if not MYPY:
-    class UserGroupLdapSettingsArgsDict(TypedDict):
-        group_dn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The group DN of the LDAP user group.
-        """
-        group_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The group name of the LDAP user group.
-        """
-        sso_provider_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the SSO provider.
-        """
-elif False:
-    UserGroupLdapSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupLdapSettingsArgsDict(TypedDict):
+    group_dn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The group DN of the LDAP user group.
+    """
+    group_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The group name of the LDAP user group.
+    """
+    sso_provider_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the SSO provider.
+    """
 
 @pulumi.input_type
 class UserGroupLdapSettingsArgs:
@@ -2703,34 +2617,31 @@ class UserGroupLdapSettingsArgs:
         pulumi.set(self, "sso_provider_id", value)
 
 
-if not MYPY:
-    class UserGroupNotificationSettingsArgsDict(TypedDict):
-        group_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The email addresses of the user group.
-        """
-        microsoft_teams_webhook_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Microsoft Teams webhook URL of the user group.
-        """
-        send_mail_to_new_members: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether an email is sent when a new user is added to the group.
-        """
-        send_notifications_to_members: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable this setting to have notifications sent to the members of this group.
-        """
-        slack_channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Slack channel to send notifications to.
-        """
-        slack_webhook_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Slack webhook URL to send notifications to.
-        """
-elif False:
-    UserGroupNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupNotificationSettingsArgsDict(TypedDict):
+    group_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The email addresses of the user group.
+    """
+    microsoft_teams_webhook_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Microsoft Teams webhook URL of the user group.
+    """
+    send_mail_to_new_members: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether an email is sent when a new user is added to the group.
+    """
+    send_notifications_to_members: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable this setting to have notifications sent to the members of this group.
+    """
+    slack_channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Slack channel to send notifications to.
+    """
+    slack_webhook_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Slack webhook URL to send notifications to.
+    """
 
 @pulumi.input_type
 class UserGroupNotificationSettingsArgs:
@@ -2835,18 +2746,15 @@ class UserGroupNotificationSettingsArgs:
         pulumi.set(self, "slack_webhook_url", value)
 
 
-if not MYPY:
-    class UserGroupPermissionsArgsDict(TypedDict):
-        account_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
-        """
-        app_permissions: NotRequired[pulumi.Input['UserGroupPermissionsAppPermissionsArgsDict']]
-        """
-        Application specific permissions
-        """
-elif False:
-    UserGroupPermissionsArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupPermissionsArgsDict(TypedDict):
+    account_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
+    """
+    app_permissions: NotRequired[pulumi.Input['UserGroupPermissionsAppPermissionsArgsDict']]
+    """
+    Application specific permissions
+    """
 
 @pulumi.input_type
 class UserGroupPermissionsArgs:
@@ -2887,42 +2795,39 @@ class UserGroupPermissionsArgs:
         pulumi.set(self, "app_permissions", value)
 
 
-if not MYPY:
-    class UserGroupPermissionsAppPermissionsArgsDict(TypedDict):
-        alls: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgsDict']]]]
-        """
-        The permission to perform actions against all resources.
-        """
-        deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgsDict']]]]
-        """
-        Permission configuration to perform actions against deployments.
-        """
-        environments: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgsDict']]]]
-        """
-        Permission configuration to perform actions against workflows.
-        """
-        pipelines: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgsDict']]]]
-        """
-        Permission configuration to perform actions against pipelines.
-        """
-        provisioners: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgsDict']]]]
-        """
-        Permission configuration to perform actions against provisioners.
-        """
-        services: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgsDict']]]]
-        """
-        Permission configuration to perform actions against services.
-        """
-        templates: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgsDict']]]]
-        """
-        Permission configuration to perform actions against templates.
-        """
-        workflows: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgsDict']]]]
-        """
-        Permission configuration to perform actions against workflows.
-        """
-elif False:
-    UserGroupPermissionsAppPermissionsArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupPermissionsAppPermissionsArgsDict(TypedDict):
+    alls: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgsDict']]]]
+    """
+    The permission to perform actions against all resources.
+    """
+    deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgsDict']]]]
+    """
+    Permission configuration to perform actions against deployments.
+    """
+    environments: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgsDict']]]]
+    """
+    Permission configuration to perform actions against workflows.
+    """
+    pipelines: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgsDict']]]]
+    """
+    Permission configuration to perform actions against pipelines.
+    """
+    provisioners: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgsDict']]]]
+    """
+    Permission configuration to perform actions against provisioners.
+    """
+    services: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgsDict']]]]
+    """
+    Permission configuration to perform actions against services.
+    """
+    templates: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgsDict']]]]
+    """
+    Permission configuration to perform actions against templates.
+    """
+    workflows: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgsDict']]]]
+    """
+    Permission configuration to perform actions against workflows.
+    """
 
 @pulumi.input_type
 class UserGroupPermissionsAppPermissionsArgs:
@@ -3059,18 +2964,15 @@ class UserGroupPermissionsAppPermissionsArgs:
         pulumi.set(self, "workflows", value)
 
 
-if not MYPY:
-    class UserGroupPermissionsAppPermissionsAllArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
-        """
-        app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The application IDs to which the permission applies. Leave empty to apply to all applications.
-        """
-elif False:
-    UserGroupPermissionsAppPermissionsAllArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupPermissionsAppPermissionsAllArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
+    """
+    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The application IDs to which the permission applies. Leave empty to apply to all applications.
+    """
 
 @pulumi.input_type
 class UserGroupPermissionsAppPermissionsAllArgs:
@@ -3110,26 +3012,23 @@ class UserGroupPermissionsAppPermissionsAllArgs:
         pulumi.set(self, "app_ids", value)
 
 
-if not MYPY:
-    class UserGroupPermissionsAppPermissionsDeploymentArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The actions allowed to be performed. Valid options are READ, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK*WORKFLOW, ABORT*WORKFLOW
-        """
-        app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The application IDs to which the permission applies. Leave empty to apply to all applications.
-        """
-        env_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The environment IDs to which the permission applies. Leave empty to apply to all environments.
-        """
-        filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
-        """
-elif False:
-    UserGroupPermissionsAppPermissionsDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupPermissionsAppPermissionsDeploymentArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The actions allowed to be performed. Valid options are READ, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK*WORKFLOW, ABORT*WORKFLOW
+    """
+    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The application IDs to which the permission applies. Leave empty to apply to all applications.
+    """
+    env_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The environment IDs to which the permission applies. Leave empty to apply to all environments.
+    """
+    filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+    """
 
 @pulumi.input_type
 class UserGroupPermissionsAppPermissionsDeploymentArgs:
@@ -3201,26 +3100,23 @@ class UserGroupPermissionsAppPermissionsDeploymentArgs:
         pulumi.set(self, "filters", value)
 
 
-if not MYPY:
-    class UserGroupPermissionsAppPermissionsEnvironmentArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
-        """
-        app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The application IDs to which the permission applies. Leave empty to apply to all applications.
-        """
-        env_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The environment IDs to which the permission applies. Leave empty to apply to all environments.
-        """
-        filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
-        """
-elif False:
-    UserGroupPermissionsAppPermissionsEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupPermissionsAppPermissionsEnvironmentArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
+    """
+    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The application IDs to which the permission applies. Leave empty to apply to all applications.
+    """
+    env_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The environment IDs to which the permission applies. Leave empty to apply to all environments.
+    """
+    filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+    """
 
 @pulumi.input_type
 class UserGroupPermissionsAppPermissionsEnvironmentArgs:
@@ -3292,26 +3188,23 @@ class UserGroupPermissionsAppPermissionsEnvironmentArgs:
         pulumi.set(self, "filters", value)
 
 
-if not MYPY:
-    class UserGroupPermissionsAppPermissionsPipelineArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The actions allowed to be performed. Valid options are [CREATE READ UPDATE DELETE]
-        """
-        app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The application IDs to which the permission applies. Leave empty to apply to all applications.
-        """
-        env_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The environment IDs to which the permission applies. Leave empty to apply to all environments.
-        """
-        filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The filters to apply to the action. Valid options are: NON*PRODUCTION*PIPELINES, PRODUCTION_PIPELINES.
-        """
-elif False:
-    UserGroupPermissionsAppPermissionsPipelineArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupPermissionsAppPermissionsPipelineArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The actions allowed to be performed. Valid options are [CREATE READ UPDATE DELETE]
+    """
+    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The application IDs to which the permission applies. Leave empty to apply to all applications.
+    """
+    env_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The environment IDs to which the permission applies. Leave empty to apply to all environments.
+    """
+    filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The filters to apply to the action. Valid options are: NON*PRODUCTION*PIPELINES, PRODUCTION_PIPELINES.
+    """
 
 @pulumi.input_type
 class UserGroupPermissionsAppPermissionsPipelineArgs:
@@ -3383,22 +3276,19 @@ class UserGroupPermissionsAppPermissionsPipelineArgs:
         pulumi.set(self, "filters", value)
 
 
-if not MYPY:
-    class UserGroupPermissionsAppPermissionsProvisionerArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
-        """
-        app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The application IDs to which the permission applies. Leave empty to apply to all applications.
-        """
-        provisioner_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The provisioner IDs to which the permission applies. Leave empty to apply to all provisioners.
-        """
-elif False:
-    UserGroupPermissionsAppPermissionsProvisionerArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupPermissionsAppPermissionsProvisionerArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
+    """
+    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The application IDs to which the permission applies. Leave empty to apply to all applications.
+    """
+    provisioner_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The provisioner IDs to which the permission applies. Leave empty to apply to all provisioners.
+    """
 
 @pulumi.input_type
 class UserGroupPermissionsAppPermissionsProvisionerArgs:
@@ -3454,22 +3344,19 @@ class UserGroupPermissionsAppPermissionsProvisionerArgs:
         pulumi.set(self, "provisioner_ids", value)
 
 
-if not MYPY:
-    class UserGroupPermissionsAppPermissionsServiceArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
-        """
-        app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The application IDs to which the permission applies. Leave empty to apply to all applications.
-        """
-        service_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The service IDs to which the permission applies. Leave empty to apply to all services.
-        """
-elif False:
-    UserGroupPermissionsAppPermissionsServiceArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupPermissionsAppPermissionsServiceArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
+    """
+    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The application IDs to which the permission applies. Leave empty to apply to all applications.
+    """
+    service_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The service IDs to which the permission applies. Leave empty to apply to all services.
+    """
 
 @pulumi.input_type
 class UserGroupPermissionsAppPermissionsServiceArgs:
@@ -3525,22 +3412,19 @@ class UserGroupPermissionsAppPermissionsServiceArgs:
         pulumi.set(self, "service_ids", value)
 
 
-if not MYPY:
-    class UserGroupPermissionsAppPermissionsTemplateArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
-        """
-        app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The application IDs to which the permission applies. Leave empty to apply to all applications.
-        """
-        template_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The template IDs to which the permission applies. Leave empty to apply to all environments.
-        """
-elif False:
-    UserGroupPermissionsAppPermissionsTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupPermissionsAppPermissionsTemplateArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
+    """
+    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The application IDs to which the permission applies. Leave empty to apply to all applications.
+    """
+    template_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The template IDs to which the permission applies. Leave empty to apply to all environments.
+    """
 
 @pulumi.input_type
 class UserGroupPermissionsAppPermissionsTemplateArgs:
@@ -3596,22 +3480,19 @@ class UserGroupPermissionsAppPermissionsTemplateArgs:
         pulumi.set(self, "template_ids", value)
 
 
-if not MYPY:
-    class UserGroupPermissionsAppPermissionsWorkflowArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
-        """
-        app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The application IDs to which the permission applies. Leave empty to apply to all applications.
-        """
-        filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The filters to apply to the action. Valid options are: NON*PRODUCTION*WORKFLOWS, PRODUCTION*WORKFLOWS, WORKFLOW*TEMPLATES.
-        """
-elif False:
-    UserGroupPermissionsAppPermissionsWorkflowArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupPermissionsAppPermissionsWorkflowArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
+    """
+    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The application IDs to which the permission applies. Leave empty to apply to all applications.
+    """
+    filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The filters to apply to the action. Valid options are: NON*PRODUCTION*WORKFLOWS, PRODUCTION*WORKFLOWS, WORKFLOW*TEMPLATES.
+    """
 
 @pulumi.input_type
 class UserGroupPermissionsAppPermissionsWorkflowArgs:
@@ -3667,18 +3548,15 @@ class UserGroupPermissionsAppPermissionsWorkflowArgs:
         pulumi.set(self, "filters", value)
 
 
-if not MYPY:
-    class UserGroupSamlSettingsArgsDict(TypedDict):
-        group_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The group name of the SAML user group.
-        """
-        sso_provider_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the SSO provider.
-        """
-elif False:
-    UserGroupSamlSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupSamlSettingsArgsDict(TypedDict):
+    group_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The group name of the SAML user group.
+    """
+    sso_provider_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the SSO provider.
+    """
 
 @pulumi.input_type
 class UserGroupSamlSettingsArgs:
@@ -3719,22 +3597,19 @@ class UserGroupSamlSettingsArgs:
         pulumi.set(self, "sso_provider_id", value)
 
 
-if not MYPY:
-    class GetEncryptedTextUsageScopeArgsDict(TypedDict):
-        application_id: NotRequired[_builtins.str]
-        """
-        Id of the application to scope to. If empty then this scope applies to all applications.
-        """
-        environment_filter_type: NotRequired[_builtins.str]
-        """
-        Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
-        """
-        environment_id: NotRequired[_builtins.str]
-        """
-        Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
-        """
-elif False:
-    GetEncryptedTextUsageScopeArgsDict: TypeAlias = Mapping[str, Any]
+class GetEncryptedTextUsageScopeArgsDict(TypedDict):
+    application_id: NotRequired[_builtins.str]
+    """
+    Id of the application to scope to. If empty then this scope applies to all applications.
+    """
+    environment_filter_type: NotRequired[_builtins.str]
+    """
+    Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+    """
+    environment_id: NotRequired[_builtins.str]
+    """
+    Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+    """
 
 @pulumi.input_type
 class GetEncryptedTextUsageScopeArgs:
@@ -3791,26 +3666,23 @@ class GetEncryptedTextUsageScopeArgs:
         pulumi.set(self, "environment_id", value)
 
 
-if not MYPY:
-    class GetEnvironmentVariableOverrideArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the variable
-        """
-        service_name: _builtins.str
-        """
-        The name of the service
-        """
-        type: _builtins.str
-        """
-        The type of the service variable. Valid values are `TEXT` and `ENCRYPTED_TEXT`
-        """
-        value: _builtins.str
-        """
-        The value of the service variable
-        """
-elif False:
-    GetEnvironmentVariableOverrideArgsDict: TypeAlias = Mapping[str, Any]
+class GetEnvironmentVariableOverrideArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the variable
+    """
+    service_name: _builtins.str
+    """
+    The name of the service
+    """
+    type: _builtins.str
+    """
+    The type of the service variable. Valid values are `TEXT` and `ENCRYPTED_TEXT`
+    """
+    value: _builtins.str
+    """
+    The value of the service variable
+    """
 
 @pulumi.input_type
 class GetEnvironmentVariableOverrideArgs:
@@ -3879,22 +3751,19 @@ class GetEnvironmentVariableOverrideArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class GetSecretManagerUsageScopeArgsDict(TypedDict):
-        application_id: NotRequired[_builtins.str]
-        """
-        Id of the application to scope to. If empty then this scope applies to all applications.
-        """
-        environment_filter_type: NotRequired[_builtins.str]
-        """
-        Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
-        """
-        environment_id: NotRequired[_builtins.str]
-        """
-        Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
-        """
-elif False:
-    GetSecretManagerUsageScopeArgsDict: TypeAlias = Mapping[str, Any]
+class GetSecretManagerUsageScopeArgsDict(TypedDict):
+    application_id: NotRequired[_builtins.str]
+    """
+    Id of the application to scope to. If empty then this scope applies to all applications.
+    """
+    environment_filter_type: NotRequired[_builtins.str]
+    """
+    Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+    """
+    environment_id: NotRequired[_builtins.str]
+    """
+    Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+    """
 
 @pulumi.input_type
 class GetSecretManagerUsageScopeArgs:
@@ -3951,22 +3820,19 @@ class GetSecretManagerUsageScopeArgs:
         pulumi.set(self, "environment_id", value)
 
 
-if not MYPY:
-    class GetSshCredentialUsageScopeArgsDict(TypedDict):
-        application_id: NotRequired[_builtins.str]
-        """
-        Id of the application to scope to. If empty then this scope applies to all applications.
-        """
-        environment_filter_type: NotRequired[_builtins.str]
-        """
-        Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
-        """
-        environment_id: NotRequired[_builtins.str]
-        """
-        Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
-        """
-elif False:
-    GetSshCredentialUsageScopeArgsDict: TypeAlias = Mapping[str, Any]
+class GetSshCredentialUsageScopeArgsDict(TypedDict):
+    application_id: NotRequired[_builtins.str]
+    """
+    Id of the application to scope to. If empty then this scope applies to all applications.
+    """
+    environment_filter_type: NotRequired[_builtins.str]
+    """
+    Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+    """
+    environment_id: NotRequired[_builtins.str]
+    """
+    Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+    """
 
 @pulumi.input_type
 class GetSshCredentialUsageScopeArgs:

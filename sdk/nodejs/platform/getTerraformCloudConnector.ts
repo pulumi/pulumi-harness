@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Resource for looking up a Terraform Cloud connector.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -54,6 +56,9 @@ export interface GetTerraformCloudConnectorArgs {
  * A collection of values returned by getTerraformCloudConnector.
  */
 export interface GetTerraformCloudConnectorResult {
+    /**
+     * Credentials to connect to the Terraform Cloud platform.
+     */
     readonly credentials: outputs.platform.GetTerraformCloudConnectorCredential[];
     /**
      * Tags to filter delegates for connection.
@@ -87,9 +92,14 @@ export interface GetTerraformCloudConnectorResult {
      * Tags to associate with the resource.
      */
     readonly tags: string[];
+    /**
+     * URL of the Terraform Cloud platform.
+     */
     readonly url: string;
 }
 /**
+ * Resource for looking up a Terraform Cloud connector.
+ *
  * ## Example Usage
  *
  * ```typescript

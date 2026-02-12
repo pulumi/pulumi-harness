@@ -70,9 +70,17 @@ public final class GcpProxyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.cloudConnectorId);
     }
 
+    /**
+     * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
+     * 
+     */
     @Import(name="deleteCloudResourcesOnDestroy")
     private @Nullable Output<Boolean> deleteCloudResourcesOnDestroy;
 
+    /**
+     * @return Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
+     * 
+     */
     public Optional<Output<Boolean>> deleteCloudResourcesOnDestroy() {
         return Optional.ofNullable(this.deleteCloudResourcesOnDestroy);
     }
@@ -321,11 +329,23 @@ public final class GcpProxyState extends com.pulumi.resources.ResourceArgs {
             return cloudConnectorId(Output.of(cloudConnectorId));
         }
 
+        /**
+         * @param deleteCloudResourcesOnDestroy Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteCloudResourcesOnDestroy(@Nullable Output<Boolean> deleteCloudResourcesOnDestroy) {
             $.deleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
             return this;
         }
 
+        /**
+         * @param deleteCloudResourcesOnDestroy Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteCloudResourcesOnDestroy(Boolean deleteCloudResourcesOnDestroy) {
             return deleteCloudResourcesOnDestroy(Output.of(deleteCloudResourcesOnDestroy));
         }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// ## Example Usage
+    /// Resource for creating a Terraform Cloud connector.
     /// 
     /// ## Import
     /// 
@@ -37,6 +37,9 @@ namespace Pulumi.Harness.Platform
     [HarnessResourceType("harness:platform/terraformCloudConnector:TerraformCloudConnector")]
     public partial class TerraformCloudConnector : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Credentials to connect to the Terraform Cloud platform.
+        /// </summary>
         [Output("credentials")]
         public Output<Outputs.TerraformCloudConnectorCredentials> Credentials { get; private set; } = null!;
 
@@ -88,6 +91,9 @@ namespace Pulumi.Harness.Platform
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// URL of the Terraform Cloud platform.
+        /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
@@ -138,6 +144,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class TerraformCloudConnectorArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Credentials to connect to the Terraform Cloud platform.
+        /// </summary>
         [Input("credentials", required: true)]
         public Input<Inputs.TerraformCloudConnectorCredentialsArgs> Credentials { get; set; } = null!;
 
@@ -201,6 +210,9 @@ namespace Pulumi.Harness.Platform
             set => _tags = value;
         }
 
+        /// <summary>
+        /// URL of the Terraform Cloud platform.
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
@@ -212,6 +224,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class TerraformCloudConnectorState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Credentials to connect to the Terraform Cloud platform.
+        /// </summary>
         [Input("credentials")]
         public Input<Inputs.TerraformCloudConnectorCredentialsGetArgs>? Credentials { get; set; }
 
@@ -275,6 +290,9 @@ namespace Pulumi.Harness.Platform
             set => _tags = value;
         }
 
+        /// <summary>
+        /// URL of the Terraform Cloud platform.
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

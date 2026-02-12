@@ -71,7 +71,13 @@ export interface GetInfraVariableSetArgs {
      * Unique identifier of the project.
      */
     projectId?: string;
+    /**
+     * Terraform variables files configured on the Variable Set (see below for nested schema)
+     */
     terraformVariableFiles?: inputs.platform.GetInfraVariableSetTerraformVariableFile[];
+    /**
+     * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     */
     terraformVariables?: inputs.platform.GetInfraVariableSetTerraformVariable[];
 }
 
@@ -115,7 +121,13 @@ export interface GetInfraVariableSetResult {
      * Tags to associate with the resource.
      */
     readonly tags: string[];
+    /**
+     * Terraform variables files configured on the Variable Set (see below for nested schema)
+     */
     readonly terraformVariableFiles: outputs.platform.GetInfraVariableSetTerraformVariableFile[];
+    /**
+     * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     */
     readonly terraformVariables: outputs.platform.GetInfraVariableSetTerraformVariable[];
 }
 /**
@@ -183,6 +195,12 @@ export interface GetInfraVariableSetOutputArgs {
      * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * Terraform variables files configured on the Variable Set (see below for nested schema)
+     */
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetTerraformVariableFileArgs>[]>;
+    /**
+     * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     */
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetTerraformVariableArgs>[]>;
 }

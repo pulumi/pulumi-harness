@@ -95,9 +95,17 @@ public final class GetInfraModuleTestingArgs extends com.pulumi.resources.Invoke
         return this.providerConnector;
     }
 
+    /**
+     * Provisioner type for testing purposes (e.g., terraform, tofu)
+     * 
+     */
     @Import(name="provisionerType", required=true)
     private Output<String> provisionerType;
 
+    /**
+     * @return Provisioner type for testing purposes (e.g., terraform, tofu)
+     * 
+     */
     public Output<String> provisionerType() {
         return this.provisionerType;
     }
@@ -342,11 +350,23 @@ public final class GetInfraModuleTestingArgs extends com.pulumi.resources.Invoke
             return providerConnector(Output.of(providerConnector));
         }
 
+        /**
+         * @param provisionerType Provisioner type for testing purposes (e.g., terraform, tofu)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionerType(Output<String> provisionerType) {
             $.provisionerType = provisionerType;
             return this;
         }
 
+        /**
+         * @param provisionerType Provisioner type for testing purposes (e.g., terraform, tofu)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionerType(String provisionerType) {
             return provisionerType(Output.of(provisionerType));
         }

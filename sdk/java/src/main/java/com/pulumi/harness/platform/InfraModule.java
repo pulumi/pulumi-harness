@@ -17,6 +17,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Resource for managing Terraform/Tofu Modules.
+ * 
  * ## Example Usage
  * 
  * <pre>

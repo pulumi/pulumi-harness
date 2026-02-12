@@ -2109,6 +2109,13 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invokeAsync("harness:platform/getAzureCloudProviderConnector:getAzureCloudProviderConnector", TypeShape.of(GetAzureCloudProviderConnectorResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Data source for looking up an Azure key vault connector.
+     * 
+     * References:
+     * - For details on how to onboard with Terraform, please see Harness Terraform Provider Overview
+     * - To understand how to use Azure Key Vault, please see [Documentation](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/azure-key-vault)
+     * - To get more information about Api, please see [API documentation](https://apidocs.harness.io/tag/Connectors)
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2147,6 +2154,13 @@ public final class PlatformFunctions {
         return getAzureKeyVaultConnector(args, InvokeOptions.Empty);
     }
     /**
+     * Data source for looking up an Azure key vault connector.
+     * 
+     * References:
+     * - For details on how to onboard with Terraform, please see Harness Terraform Provider Overview
+     * - To understand how to use Azure Key Vault, please see [Documentation](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/azure-key-vault)
+     * - To get more information about Api, please see [API documentation](https://apidocs.harness.io/tag/Connectors)
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2185,6 +2199,13 @@ public final class PlatformFunctions {
         return getAzureKeyVaultConnectorPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Data source for looking up an Azure key vault connector.
+     * 
+     * References:
+     * - For details on how to onboard with Terraform, please see Harness Terraform Provider Overview
+     * - To understand how to use Azure Key Vault, please see [Documentation](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/azure-key-vault)
+     * - To get more information about Api, please see [API documentation](https://apidocs.harness.io/tag/Connectors)
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2223,6 +2244,13 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invoke("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", TypeShape.of(GetAzureKeyVaultConnectorResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Data source for looking up an Azure key vault connector.
+     * 
+     * References:
+     * - For details on how to onboard with Terraform, please see Harness Terraform Provider Overview
+     * - To understand how to use Azure Key Vault, please see [Documentation](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/azure-key-vault)
+     * - To get more information about Api, please see [API documentation](https://apidocs.harness.io/tag/Connectors)
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2261,6 +2289,13 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invoke("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", TypeShape.of(GetAzureKeyVaultConnectorResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Data source for looking up an Azure key vault connector.
+     * 
+     * References:
+     * - For details on how to onboard with Terraform, please see Harness Terraform Provider Overview
+     * - To understand how to use Azure Key Vault, please see [Documentation](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/azure-key-vault)
+     * - To get more information about Api, please see [API documentation](https://apidocs.harness.io/tag/Connectors)
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -20284,6 +20319,8 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invokeAsync("harness:platform/getTemplateFilters:getTemplateFilters", TypeShape.of(GetTemplateFiltersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Resource for looking up a Terraform Cloud connector.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -20322,6 +20359,8 @@ public final class PlatformFunctions {
         return getTerraformCloudConnector(args, InvokeOptions.Empty);
     }
     /**
+     * Resource for looking up a Terraform Cloud connector.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -20360,6 +20399,8 @@ public final class PlatformFunctions {
         return getTerraformCloudConnectorPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Resource for looking up a Terraform Cloud connector.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -20398,6 +20439,8 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invoke("harness:platform/getTerraformCloudConnector:getTerraformCloudConnector", TypeShape.of(GetTerraformCloudConnectorResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Resource for looking up a Terraform Cloud connector.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -20436,6 +20479,8 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invoke("harness:platform/getTerraformCloudConnector:getTerraformCloudConnector", TypeShape.of(GetTerraformCloudConnectorResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Resource for looking up a Terraform Cloud connector.
+     * 
      * ## Example Usage
      * 
      * <pre>

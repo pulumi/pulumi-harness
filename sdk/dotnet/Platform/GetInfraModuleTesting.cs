@@ -69,6 +69,9 @@ namespace Pulumi.Harness.Platform
         [Input("providerConnector", required: true)]
         public string ProviderConnector { get; set; } = null!;
 
+        /// <summary>
+        /// Provisioner type for testing purposes (e.g., terraform, tofu)
+        /// </summary>
         [Input("provisionerType", required: true)]
         public string ProvisionerType { get; set; } = null!;
 
@@ -158,6 +161,9 @@ namespace Pulumi.Harness.Platform
         [Input("providerConnector", required: true)]
         public Input<string> ProviderConnector { get; set; } = null!;
 
+        /// <summary>
+        /// Provisioner type for testing purposes (e.g., terraform, tofu)
+        /// </summary>
         [Input("provisionerType", required: true)]
         public Input<string> ProvisionerType { get; set; } = null!;
 
@@ -261,6 +267,9 @@ namespace Pulumi.Harness.Platform
         /// Provider connector for testing purposes
         /// </summary>
         public readonly string ProviderConnector;
+        /// <summary>
+        /// Provisioner type for testing purposes (e.g., terraform, tofu)
+        /// </summary>
         public readonly string ProvisionerType;
         /// <summary>
         /// Provisioner version for testing purposes

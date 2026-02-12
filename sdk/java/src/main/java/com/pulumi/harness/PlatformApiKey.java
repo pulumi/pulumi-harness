@@ -23,22 +23,15 @@ import javax.annotation.Nullable;
  * 
  * The `pulumi import` command can be used, for example:
  * 
- * Import account level apikey
- * 
  * ```sh
- * $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey &lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;
- * ```
+ * # Import account level apikey
+ * terraform import harness_platform_apikey &lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;
  * 
- * Import org level apikey
+ * # Import org level apikey
+ * terraform import harness_platform_apikey &lt;org_id&gt;/&lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;
  * 
- * ```sh
- * $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey &lt;org_id&gt;/&lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;
- * ```
- * 
- * Import project level apikey
- * 
- * ```sh
- * $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey &lt;org_id&gt;/&lt;project_id&gt;/&lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;
+ * # Import project level apikey
+ * terraform import harness_platform_apikey &lt;org_id&gt;/&lt;project_id&gt;/&lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;
  * ```
  * 
  */

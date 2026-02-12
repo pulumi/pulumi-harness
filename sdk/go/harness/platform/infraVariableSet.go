@@ -131,9 +131,11 @@ type InfraVariableSet struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource.
-	Tags                   pulumi.StringArrayOutput                         `pulumi:"tags"`
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Terraform variables files configured on the Variable Set (see below for nested schema)
 	TerraformVariableFiles InfraVariableSetTerraformVariableFileArrayOutput `pulumi:"terraformVariableFiles"`
-	TerraformVariables     InfraVariableSetTerraformVariableArrayOutput     `pulumi:"terraformVariables"`
+	// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+	TerraformVariables InfraVariableSetTerraformVariableArrayOutput `pulumi:"terraformVariables"`
 }
 
 // NewInfraVariableSet registers a new resource with the given unique name, arguments, and options.
@@ -184,9 +186,11 @@ type infraVariableSetState struct {
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
-	Tags                   []string                                `pulumi:"tags"`
+	Tags []string `pulumi:"tags"`
+	// Terraform variables files configured on the Variable Set (see below for nested schema)
 	TerraformVariableFiles []InfraVariableSetTerraformVariableFile `pulumi:"terraformVariableFiles"`
-	TerraformVariables     []InfraVariableSetTerraformVariable     `pulumi:"terraformVariables"`
+	// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+	TerraformVariables []InfraVariableSetTerraformVariable `pulumi:"terraformVariables"`
 }
 
 type InfraVariableSetState struct {
@@ -205,9 +209,11 @@ type InfraVariableSetState struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
-	Tags                   pulumi.StringArrayInput
+	Tags pulumi.StringArrayInput
+	// Terraform variables files configured on the Variable Set (see below for nested schema)
 	TerraformVariableFiles InfraVariableSetTerraformVariableFileArrayInput
-	TerraformVariables     InfraVariableSetTerraformVariableArrayInput
+	// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+	TerraformVariables InfraVariableSetTerraformVariableArrayInput
 }
 
 func (InfraVariableSetState) ElementType() reflect.Type {
@@ -230,9 +236,11 @@ type infraVariableSetArgs struct {
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
-	Tags                   []string                                `pulumi:"tags"`
+	Tags []string `pulumi:"tags"`
+	// Terraform variables files configured on the Variable Set (see below for nested schema)
 	TerraformVariableFiles []InfraVariableSetTerraformVariableFile `pulumi:"terraformVariableFiles"`
-	TerraformVariables     []InfraVariableSetTerraformVariable     `pulumi:"terraformVariables"`
+	// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+	TerraformVariables []InfraVariableSetTerraformVariable `pulumi:"terraformVariables"`
 }
 
 // The set of arguments for constructing a InfraVariableSet resource.
@@ -252,9 +260,11 @@ type InfraVariableSetArgs struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
-	Tags                   pulumi.StringArrayInput
+	Tags pulumi.StringArrayInput
+	// Terraform variables files configured on the Variable Set (see below for nested schema)
 	TerraformVariableFiles InfraVariableSetTerraformVariableFileArrayInput
-	TerraformVariables     InfraVariableSetTerraformVariableArrayInput
+	// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+	TerraformVariables InfraVariableSetTerraformVariableArrayInput
 }
 
 func (InfraVariableSetArgs) ElementType() reflect.Type {
@@ -386,12 +396,14 @@ func (o InfraVariableSetOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InfraVariableSet) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Terraform variables files configured on the Variable Set (see below for nested schema)
 func (o InfraVariableSetOutput) TerraformVariableFiles() InfraVariableSetTerraformVariableFileArrayOutput {
 	return o.ApplyT(func(v *InfraVariableSet) InfraVariableSetTerraformVariableFileArrayOutput {
 		return v.TerraformVariableFiles
 	}).(InfraVariableSetTerraformVariableFileArrayOutput)
 }
 
+// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
 func (o InfraVariableSetOutput) TerraformVariables() InfraVariableSetTerraformVariableArrayOutput {
 	return o.ApplyT(func(v *InfraVariableSet) InfraVariableSetTerraformVariableArrayOutput { return v.TerraformVariables }).(InfraVariableSetTerraformVariableArrayOutput)
 }

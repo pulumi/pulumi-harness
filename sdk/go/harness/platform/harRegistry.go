@@ -84,13 +84,17 @@ import (
 //
 // ## Import
 //
+// ### Import Format
+//
+// The import ID format is: `<space_ref>/<identifier>`
+//
+// Where:
+// - `spaceRef` defines the scope: account, org, or project level
+// - `identifier` is the unique registry identifier
+//
+// ### Import Examples
+//
 // ### After Import
-//
-// bash
-//
-// pulumi preview
-//
-// pulumi up
 type HarRegistry struct {
 	pulumi.CustomResourceState
 

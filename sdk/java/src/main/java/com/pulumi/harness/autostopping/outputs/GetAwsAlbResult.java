@@ -25,6 +25,10 @@ public final class GetAwsAlbResult {
      * 
      */
     private String cloudConnectorId;
+    /**
+     * @return Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     * 
+     */
     private Boolean deleteCloudResourcesOnDestroy;
     /**
      * @return Hostname for the proxy
@@ -85,6 +89,10 @@ public final class GetAwsAlbResult {
     public String cloudConnectorId() {
         return this.cloudConnectorId;
     }
+    /**
+     * @return Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     * 
+     */
     public Boolean deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
     }

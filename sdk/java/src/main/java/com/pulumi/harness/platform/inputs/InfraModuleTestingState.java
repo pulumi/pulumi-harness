@@ -184,9 +184,17 @@ public final class InfraModuleTestingState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.providerConnector);
     }
 
+    /**
+     * Provisioner type for testing purposes (e.g., terraform, tofu)
+     * 
+     */
     @Import(name="provisionerType")
     private @Nullable Output<String> provisionerType;
 
+    /**
+     * @return Provisioner type for testing purposes (e.g., terraform, tofu)
+     * 
+     */
     public Optional<Output<String>> provisionerType() {
         return Optional.ofNullable(this.provisionerType);
     }
@@ -707,11 +715,23 @@ public final class InfraModuleTestingState extends com.pulumi.resources.Resource
             return providerConnector(Output.of(providerConnector));
         }
 
+        /**
+         * @param provisionerType Provisioner type for testing purposes (e.g., terraform, tofu)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionerType(@Nullable Output<String> provisionerType) {
             $.provisionerType = provisionerType;
             return this;
         }
 
+        /**
+         * @param provisionerType Provisioner type for testing purposes (e.g., terraform, tofu)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionerType(String provisionerType) {
             return provisionerType(Output.of(provisionerType));
         }

@@ -19,6 +19,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Resource for managing Terraform/Tofu Modules.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -225,9 +227,17 @@ public class InfraModuleTesting extends com.pulumi.resources.CustomResource {
     public Output<String> providerConnector() {
         return this.providerConnector;
     }
+    /**
+     * Provisioner type for testing purposes (e.g., terraform, tofu)
+     * 
+     */
     @Export(name="provisionerType", refs={String.class}, tree="[0]")
     private Output<String> provisionerType;
 
+    /**
+     * @return Provisioner type for testing purposes (e.g., terraform, tofu)
+     * 
+     */
     public Output<String> provisionerType() {
         return this.provisionerType;
     }

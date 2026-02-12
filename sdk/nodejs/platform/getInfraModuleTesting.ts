@@ -51,6 +51,9 @@ export interface GetInfraModuleTestingArgs {
      * Provider connector for testing purposes
      */
     providerConnector: string;
+    /**
+     * Provisioner type for testing purposes (e.g., terraform, tofu)
+     */
     provisionerType: string;
     /**
      * Provisioner version for testing purposes
@@ -130,6 +133,9 @@ export interface GetInfraModuleTestingResult {
      * Provider connector for testing purposes
      */
     readonly providerConnector: string;
+    /**
+     * Provisioner type for testing purposes (e.g., terraform, tofu)
+     */
     readonly provisionerType: string;
     /**
      * Provisioner version for testing purposes
@@ -237,6 +243,9 @@ export interface GetInfraModuleTestingOutputArgs {
      * Provider connector for testing purposes
      */
     providerConnector: pulumi.Input<string>;
+    /**
+     * Provisioner type for testing purposes (e.g., terraform, tofu)
+     */
     provisionerType: pulumi.Input<string>;
     /**
      * Provisioner version for testing purposes

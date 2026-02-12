@@ -170,7 +170,32 @@ class Orchestrator(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a Orchestrator resource with the given unique name, props, and options.
+        Resource for creating and deleting ClusterOrchestrators.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_harness as harness
+
+        current = aws.index.region()
+        test = harness.cluster.Orchestrator("test",
+            name="name",
+            cluster_endpoint="http://test.test.com",
+            k8s_connector_id="test",
+            region=current["name"])
+        ```
+
+        ## Lifecycle Operations
+
+        This resource supports the following lifecycle operations:
+
+        - **Create**: Creates a new cluster orchestrator in Harness CCM
+        - **Delete**: Deletes the cluster orchestrator from Harness CCM
+
+        When you run `terraform destroy`, the cluster orchestrator will be permanently deleted from your Harness account.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
@@ -185,7 +210,32 @@ class Orchestrator(pulumi.CustomResource):
                  args: OrchestratorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Orchestrator resource with the given unique name, props, and options.
+        Resource for creating and deleting ClusterOrchestrators.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_harness as harness
+
+        current = aws.index.region()
+        test = harness.cluster.Orchestrator("test",
+            name="name",
+            cluster_endpoint="http://test.test.com",
+            k8s_connector_id="test",
+            region=current["name"])
+        ```
+
+        ## Lifecycle Operations
+
+        This resource supports the following lifecycle operations:
+
+        - **Create**: Creates a new cluster orchestrator in Harness CCM
+        - **Delete**: Deletes the cluster orchestrator from Harness CCM
+
+        When you run `terraform destroy`, the cluster orchestrator will be permanently deleted from your Harness account.
+
         :param str resource_name: The name of the resource.
         :param OrchestratorArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

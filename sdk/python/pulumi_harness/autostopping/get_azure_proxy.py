@@ -118,6 +118,9 @@ class GetAzureProxyResult:
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
     def delete_cloud_resources_on_destroy(self) -> _builtins.bool:
+        """
+        Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
+        """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @_builtins.property
@@ -259,6 +262,7 @@ def get_azure_proxy(allocate_static_ip: Optional[_builtins.bool] = None,
     :param _builtins.bool allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
     :param _builtins.str api_key: Harness NG API key
     :param _builtins.str cloud_connector_id: Id of the cloud connector
+    :param _builtins.bool delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
     :param _builtins.str host_name: Hostname for the proxy
     :param _builtins.str keypair: Name of SSH Key to be used for proxy VM
     :param _builtins.str machine_type: Type of instance to be used for proxy
@@ -331,6 +335,7 @@ def get_azure_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[_b
     :param _builtins.bool allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
     :param _builtins.str api_key: Harness NG API key
     :param _builtins.str cloud_connector_id: Id of the cloud connector
+    :param _builtins.bool delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
     :param _builtins.str host_name: Hostname for the proxy
     :param _builtins.str keypair: Name of SSH Key to be used for proxy VM
     :param _builtins.str machine_type: Type of instance to be used for proxy

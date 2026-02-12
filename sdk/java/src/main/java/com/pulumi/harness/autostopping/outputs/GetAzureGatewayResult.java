@@ -33,6 +33,10 @@ public final class GetAzureGatewayResult {
      * 
      */
     private String cloudConnectorId;
+    /**
+     * @return Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     * 
+     */
     private Boolean deleteCloudResourcesOnDestroy;
     /**
      * @return ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
@@ -114,6 +118,10 @@ public final class GetAzureGatewayResult {
     public String cloudConnectorId() {
         return this.cloudConnectorId;
     }
+    /**
+     * @return Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     * 
+     */
     public Boolean deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
     }

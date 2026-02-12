@@ -14,6 +14,59 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Resource for creating and deleting ClusterOrchestrators.
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aws.AwsFunctions;
+ * import com.pulumi.harness.cluster.Orchestrator;
+ * import com.pulumi.harness.cluster.OrchestratorArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = AwsFunctions.Region(Map.ofEntries(
+ *         ));
+ * 
+ *         var test = new Orchestrator("test", OrchestratorArgs.builder()
+ *             .name("name")
+ *             .clusterEndpoint("http://test.test.com")
+ *             .k8sConnectorId("test")
+ *             .region(current.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Lifecycle Operations
+ * 
+ * This resource supports the following lifecycle operations:
+ * 
+ * - **Create**: Creates a new cluster orchestrator in Harness CCM
+ * - **Delete**: Deletes the cluster orchestrator from Harness CCM
+ * 
+ * When you run `terraform destroy`, the cluster orchestrator will be permanently deleted from your Harness account.
+ * 
+ */
 @ResourceType(type="harness:cluster/orchestrator:Orchestrator")
 public class Orchestrator extends com.pulumi.resources.CustomResource {
     /**

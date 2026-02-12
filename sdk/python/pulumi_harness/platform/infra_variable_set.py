@@ -41,6 +41,8 @@ class InfraVariableSetArgs:
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]] terraform_variable_files: Terraform variables files configured on the Variable Set (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]] terraform_variables: Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
         """
         pulumi.set(__self__, "identifier", identifier)
         if connectors is not None:
@@ -161,6 +163,9 @@ class InfraVariableSetArgs:
     @_builtins.property
     @pulumi.getter(name="terraformVariableFiles")
     def terraform_variable_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]]:
+        """
+        Terraform variables files configured on the Variable Set (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variable_files")
 
     @terraform_variable_files.setter
@@ -170,6 +175,9 @@ class InfraVariableSetArgs:
     @_builtins.property
     @pulumi.getter(name="terraformVariables")
     def terraform_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]]:
+        """
+        Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variables")
 
     @terraform_variables.setter
@@ -200,6 +208,8 @@ class _InfraVariableSetState:
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]] terraform_variable_files: Terraform variables files configured on the Variable Set (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]] terraform_variables: Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
         """
         if connectors is not None:
             pulumi.set(__self__, "connectors", connectors)
@@ -321,6 +331,9 @@ class _InfraVariableSetState:
     @_builtins.property
     @pulumi.getter(name="terraformVariableFiles")
     def terraform_variable_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]]:
+        """
+        Terraform variables files configured on the Variable Set (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variable_files")
 
     @terraform_variable_files.setter
@@ -330,6 +343,9 @@ class _InfraVariableSetState:
     @_builtins.property
     @pulumi.getter(name="terraformVariables")
     def terraform_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]]:
+        """
+        Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variables")
 
     @terraform_variables.setter
@@ -451,6 +467,8 @@ class InfraVariableSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]] terraform_variable_files: Terraform variables files configured on the Variable Set (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]] terraform_variables: Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
         """
         ...
     @overload
@@ -626,6 +644,8 @@ class InfraVariableSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]] terraform_variable_files: Terraform variables files configured on the Variable Set (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]] terraform_variables: Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -710,10 +730,16 @@ class InfraVariableSet(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="terraformVariableFiles")
     def terraform_variable_files(self) -> pulumi.Output[Optional[Sequence['outputs.InfraVariableSetTerraformVariableFile']]]:
+        """
+        Terraform variables files configured on the Variable Set (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variable_files")
 
     @_builtins.property
     @pulumi.getter(name="terraformVariables")
     def terraform_variables(self) -> pulumi.Output[Optional[Sequence['outputs.InfraVariableSetTerraformVariable']]]:
+        """
+        Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+        """
         return pulumi.get(self, "terraform_variables")
 

@@ -110,16 +110,32 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * Terraform variables files configured on the Variable Set (see below for nested schema)
+     * 
+     */
     @Import(name="terraformVariableFiles")
     private @Nullable List<GetInfraVariableSetTerraformVariableFile> terraformVariableFiles;
 
+    /**
+     * @return Terraform variables files configured on the Variable Set (see below for nested schema)
+     * 
+     */
     public Optional<List<GetInfraVariableSetTerraformVariableFile>> terraformVariableFiles() {
         return Optional.ofNullable(this.terraformVariableFiles);
     }
 
+    /**
+     * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     * 
+     */
     @Import(name="terraformVariables")
     private @Nullable List<GetInfraVariableSetTerraformVariable> terraformVariables;
 
+    /**
+     * @return Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     * 
+     */
     public Optional<List<GetInfraVariableSetTerraformVariable>> terraformVariables() {
         return Optional.ofNullable(this.terraformVariables);
     }
@@ -241,20 +257,44 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
             return this;
         }
 
+        /**
+         * @param terraformVariableFiles Terraform variables files configured on the Variable Set (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariableFiles(@Nullable List<GetInfraVariableSetTerraformVariableFile> terraformVariableFiles) {
             $.terraformVariableFiles = terraformVariableFiles;
             return this;
         }
 
+        /**
+         * @param terraformVariableFiles Terraform variables files configured on the Variable Set (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariableFiles(GetInfraVariableSetTerraformVariableFile... terraformVariableFiles) {
             return terraformVariableFiles(List.of(terraformVariableFiles));
         }
 
+        /**
+         * @param terraformVariables Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariables(@Nullable List<GetInfraVariableSetTerraformVariable> terraformVariables) {
             $.terraformVariables = terraformVariables;
             return this;
         }
 
+        /**
+         * @param terraformVariables Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformVariables(GetInfraVariableSetTerraformVariable... terraformVariables) {
             return terraformVariables(List.of(terraformVariables));
         }

@@ -24,22 +24,15 @@ import javax.annotation.Nullable;
  * 
  * The `pulumi import` command can be used, for example:
  * 
- * Import account level token
- * 
  * ```sh
- * $ pulumi import harness:platform/token:Token harness_platform_token &lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;/&lt;token_id&gt;
- * ```
+ * # Import account level token
+ * terraform import harness_platform_token &lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;/&lt;token_id&gt;
  * 
- * Import org level token
+ * # Import org level token
+ * terraform import harness_platform_token &lt;org_id&gt;/&lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;/&lt;token_id&gt;
  * 
- * ```sh
- * $ pulumi import harness:platform/token:Token harness_platform_token &lt;org_id&gt;/&lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;/&lt;token_id&gt;
- * ```
- * 
- * Import project level token
- * 
- * ```sh
- * $ pulumi import harness:platform/token:Token harness_platform_token &lt;org_id&gt;/&lt;project_id&gt;/&lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;/&lt;token_id&gt;
+ * # Import project level token
+ * terraform import harness_platform_token &lt;org_id&gt;/&lt;project_id&gt;/&lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;/&lt;token_id&gt;
  * ```
  * 
  */

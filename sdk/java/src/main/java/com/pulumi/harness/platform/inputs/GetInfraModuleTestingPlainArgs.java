@@ -94,9 +94,17 @@ public final class GetInfraModuleTestingPlainArgs extends com.pulumi.resources.I
         return this.providerConnector;
     }
 
+    /**
+     * Provisioner type for testing purposes (e.g., terraform, tofu)
+     * 
+     */
     @Import(name="provisionerType", required=true)
     private String provisionerType;
 
+    /**
+     * @return Provisioner type for testing purposes (e.g., terraform, tofu)
+     * 
+     */
     public String provisionerType() {
         return this.provisionerType;
     }
@@ -291,6 +299,12 @@ public final class GetInfraModuleTestingPlainArgs extends com.pulumi.resources.I
             return this;
         }
 
+        /**
+         * @param provisionerType Provisioner type for testing purposes (e.g., terraform, tofu)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionerType(String provisionerType) {
             $.provisionerType = provisionerType;
             return this;

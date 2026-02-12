@@ -30,8 +30,9 @@ type LookupAwsAlbArgs struct {
 	AlbArn        *string `pulumi:"albArn"`
 	CertificateId *string `pulumi:"certificateId"`
 	// Id of the cloud connector
-	CloudConnectorId              string `pulumi:"cloudConnectorId"`
-	DeleteCloudResourcesOnDestroy bool   `pulumi:"deleteCloudResourcesOnDestroy"`
+	CloudConnectorId string `pulumi:"cloudConnectorId"`
+	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
 	// Hostname for the proxy
 	HostName string `pulumi:"hostName"`
 	// Name of the proxy
@@ -52,8 +53,9 @@ type LookupAwsAlbResult struct {
 	AlbArn        *string `pulumi:"albArn"`
 	CertificateId *string `pulumi:"certificateId"`
 	// Id of the cloud connector
-	CloudConnectorId              string `pulumi:"cloudConnectorId"`
-	DeleteCloudResourcesOnDestroy bool   `pulumi:"deleteCloudResourcesOnDestroy"`
+	CloudConnectorId string `pulumi:"cloudConnectorId"`
+	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
 	// Hostname for the proxy
 	HostName string `pulumi:"hostName"`
 	// The provider-assigned unique ID for this managed resource.
@@ -87,8 +89,9 @@ type LookupAwsAlbOutputArgs struct {
 	AlbArn        pulumi.StringPtrInput `pulumi:"albArn"`
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
 	// Id of the cloud connector
-	CloudConnectorId              pulumi.StringInput `pulumi:"cloudConnectorId"`
-	DeleteCloudResourcesOnDestroy pulumi.BoolInput   `pulumi:"deleteCloudResourcesOnDestroy"`
+	CloudConnectorId pulumi.StringInput `pulumi:"cloudConnectorId"`
+	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+	DeleteCloudResourcesOnDestroy pulumi.BoolInput `pulumi:"deleteCloudResourcesOnDestroy"`
 	// Hostname for the proxy
 	HostName pulumi.StringInput `pulumi:"hostName"`
 	// Name of the proxy
@@ -136,6 +139,7 @@ func (o LookupAwsAlbResultOutput) CloudConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsAlbResult) string { return v.CloudConnectorId }).(pulumi.StringOutput)
 }
 
+// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
 func (o LookupAwsAlbResultOutput) DeleteCloudResourcesOnDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAwsAlbResult) bool { return v.DeleteCloudResourcesOnDestroy }).(pulumi.BoolOutput)
 }

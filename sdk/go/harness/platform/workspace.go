@@ -151,9 +151,11 @@ type Workspace struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
-	ProviderConnector  pulumi.StringPtrOutput `pulumi:"providerConnector"`
-	ProvisionerType    pulumi.StringOutput    `pulumi:"provisionerType"`
-	ProvisionerVersion pulumi.StringOutput    `pulumi:"provisionerVersion"`
+	ProviderConnector pulumi.StringPtrOutput `pulumi:"providerConnector"`
+	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+	ProvisionerType pulumi.StringOutput `pulumi:"provisionerType"`
+	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+	ProvisionerVersion pulumi.StringOutput `pulumi:"provisionerVersion"`
 	// Repository is the name of the repository to fetch the code from.
 	Repository pulumi.StringOutput `pulumi:"repository"`
 	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
@@ -167,9 +169,11 @@ type Workspace struct {
 	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringPtrOutput `pulumi:"repositorySha"`
 	// Tags to associate with the resource.
-	Tags                   pulumi.StringArrayOutput                  `pulumi:"tags"`
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayOutput `pulumi:"terraformVariableFiles"`
-	TerraformVariables     WorkspaceTerraformVariableArrayOutput     `pulumi:"terraformVariables"`
+	// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+	TerraformVariables WorkspaceTerraformVariableArrayOutput `pulumi:"terraformVariables"`
 	// Variable sets to use.
 	VariableSets pulumi.StringArrayOutput `pulumi:"variableSets"`
 }
@@ -250,8 +254,10 @@ type workspaceState struct {
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
-	ProviderConnector  *string `pulumi:"providerConnector"`
-	ProvisionerType    *string `pulumi:"provisionerType"`
+	ProviderConnector *string `pulumi:"providerConnector"`
+	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+	ProvisionerType *string `pulumi:"provisionerType"`
+	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
 	ProvisionerVersion *string `pulumi:"provisionerVersion"`
 	// Repository is the name of the repository to fetch the code from.
 	Repository *string `pulumi:"repository"`
@@ -266,9 +272,11 @@ type workspaceState struct {
 	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha *string `pulumi:"repositorySha"`
 	// Tags to associate with the resource.
-	Tags                   []string                         `pulumi:"tags"`
+	Tags []string `pulumi:"tags"`
+	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles []WorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
-	TerraformVariables     []WorkspaceTerraformVariable     `pulumi:"terraformVariables"`
+	// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+	TerraformVariables []WorkspaceTerraformVariable `pulumi:"terraformVariables"`
 	// Variable sets to use.
 	VariableSets []string `pulumi:"variableSets"`
 }
@@ -293,8 +301,10 @@ type WorkspaceState struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
-	ProviderConnector  pulumi.StringPtrInput
-	ProvisionerType    pulumi.StringPtrInput
+	ProviderConnector pulumi.StringPtrInput
+	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+	ProvisionerType pulumi.StringPtrInput
+	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
 	ProvisionerVersion pulumi.StringPtrInput
 	// Repository is the name of the repository to fetch the code from.
 	Repository pulumi.StringPtrInput
@@ -309,9 +319,11 @@ type WorkspaceState struct {
 	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringPtrInput
 	// Tags to associate with the resource.
-	Tags                   pulumi.StringArrayInput
+	Tags pulumi.StringArrayInput
+	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayInput
-	TerraformVariables     WorkspaceTerraformVariableArrayInput
+	// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+	TerraformVariables WorkspaceTerraformVariableArrayInput
 	// Variable sets to use.
 	VariableSets pulumi.StringArrayInput
 }
@@ -340,9 +352,11 @@ type workspaceArgs struct {
 	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
 	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
-	ProviderConnector  *string `pulumi:"providerConnector"`
-	ProvisionerType    string  `pulumi:"provisionerType"`
-	ProvisionerVersion string  `pulumi:"provisionerVersion"`
+	ProviderConnector *string `pulumi:"providerConnector"`
+	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+	ProvisionerType string `pulumi:"provisionerType"`
+	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+	ProvisionerVersion string `pulumi:"provisionerVersion"`
 	// Repository is the name of the repository to fetch the code from.
 	Repository string `pulumi:"repository"`
 	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
@@ -356,9 +370,11 @@ type workspaceArgs struct {
 	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha *string `pulumi:"repositorySha"`
 	// Tags to associate with the resource.
-	Tags                   []string                         `pulumi:"tags"`
+	Tags []string `pulumi:"tags"`
+	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles []WorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
-	TerraformVariables     []WorkspaceTerraformVariable     `pulumi:"terraformVariables"`
+	// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+	TerraformVariables []WorkspaceTerraformVariable `pulumi:"terraformVariables"`
 	// Variable sets to use.
 	VariableSets []string `pulumi:"variableSets"`
 }
@@ -384,8 +400,10 @@ type WorkspaceArgs struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringInput
 	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
-	ProviderConnector  pulumi.StringPtrInput
-	ProvisionerType    pulumi.StringInput
+	ProviderConnector pulumi.StringPtrInput
+	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+	ProvisionerType pulumi.StringInput
+	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
 	ProvisionerVersion pulumi.StringInput
 	// Repository is the name of the repository to fetch the code from.
 	Repository pulumi.StringInput
@@ -400,9 +418,11 @@ type WorkspaceArgs struct {
 	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringPtrInput
 	// Tags to associate with the resource.
-	Tags                   pulumi.StringArrayInput
+	Tags pulumi.StringArrayInput
+	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayInput
-	TerraformVariables     WorkspaceTerraformVariableArrayInput
+	// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+	TerraformVariables WorkspaceTerraformVariableArrayInput
 	// Variable sets to use.
 	VariableSets pulumi.StringArrayInput
 }
@@ -544,10 +564,12 @@ func (o WorkspaceOutput) ProviderConnector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.ProviderConnector }).(pulumi.StringPtrOutput)
 }
 
+// Provisioner type defines the provisioning tool to use (terraform or opentofu)
 func (o WorkspaceOutput) ProvisionerType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProvisionerType }).(pulumi.StringOutput)
 }
 
+// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
 func (o WorkspaceOutput) ProvisionerVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProvisionerVersion }).(pulumi.StringOutput)
 }
@@ -587,10 +609,12 @@ func (o WorkspaceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Terraform variables files configured on the workspace (see below for nested schema)
 func (o WorkspaceOutput) TerraformVariableFiles() WorkspaceTerraformVariableFileArrayOutput {
 	return o.ApplyT(func(v *Workspace) WorkspaceTerraformVariableFileArrayOutput { return v.TerraformVariableFiles }).(WorkspaceTerraformVariableFileArrayOutput)
 }
 
+// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
 func (o WorkspaceOutput) TerraformVariables() WorkspaceTerraformVariableArrayOutput {
 	return o.ApplyT(func(v *Workspace) WorkspaceTerraformVariableArrayOutput { return v.TerraformVariables }).(WorkspaceTerraformVariableArrayOutput)
 }

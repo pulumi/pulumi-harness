@@ -133,9 +133,17 @@ public class AzureGateway extends com.pulumi.resources.CustomResource {
     public Output<String> cloudConnectorId() {
         return this.cloudConnectorId;
     }
+    /**
+     * Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     * 
+     */
     @Export(name="deleteCloudResourcesOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deleteCloudResourcesOnDestroy;
 
+    /**
+     * @return Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
+     * 
+     */
     public Output<Boolean> deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
     }

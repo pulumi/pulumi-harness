@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
+ * Resource for creating a Terraform Cloud connector.
  * 
  * ## Import
  * 
@@ -45,9 +45,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="harness:platform/terraformCloudConnector:TerraformCloudConnector")
 public class TerraformCloudConnector extends com.pulumi.resources.CustomResource {
+    /**
+     * Credentials to connect to the Terraform Cloud platform.
+     * 
+     */
     @Export(name="credentials", refs={TerraformCloudConnectorCredentials.class}, tree="[0]")
     private Output<TerraformCloudConnectorCredentials> credentials;
 
+    /**
+     * @return Credentials to connect to the Terraform Cloud platform.
+     * 
+     */
     public Output<TerraformCloudConnectorCredentials> credentials() {
         return this.credentials;
     }
@@ -163,9 +171,17 @@ public class TerraformCloudConnector extends com.pulumi.resources.CustomResource
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * URL of the Terraform Cloud platform.
+     * 
+     */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
+    /**
+     * @return URL of the Terraform Cloud platform.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }

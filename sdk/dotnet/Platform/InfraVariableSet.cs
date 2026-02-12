@@ -167,9 +167,15 @@ namespace Pulumi.Harness.Platform
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Terraform variables files configured on the Variable Set (see below for nested schema)
+        /// </summary>
         [Output("terraformVariableFiles")]
         public Output<ImmutableArray<Outputs.InfraVariableSetTerraformVariableFile>> TerraformVariableFiles { get; private set; } = null!;
 
+        /// <summary>
+        /// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+        /// </summary>
         [Output("terraformVariables")]
         public Output<ImmutableArray<Outputs.InfraVariableSetTerraformVariable>> TerraformVariables { get; private set; } = null!;
 
@@ -288,6 +294,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("terraformVariableFiles")]
         private InputList<Inputs.InfraVariableSetTerraformVariableFileArgs>? _terraformVariableFiles;
+
+        /// <summary>
+        /// Terraform variables files configured on the Variable Set (see below for nested schema)
+        /// </summary>
         public InputList<Inputs.InfraVariableSetTerraformVariableFileArgs> TerraformVariableFiles
         {
             get => _terraformVariableFiles ?? (_terraformVariableFiles = new InputList<Inputs.InfraVariableSetTerraformVariableFileArgs>());
@@ -296,6 +306,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("terraformVariables")]
         private InputList<Inputs.InfraVariableSetTerraformVariableArgs>? _terraformVariables;
+
+        /// <summary>
+        /// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+        /// </summary>
         public InputList<Inputs.InfraVariableSetTerraformVariableArgs> TerraformVariables
         {
             get => _terraformVariables ?? (_terraformVariables = new InputList<Inputs.InfraVariableSetTerraformVariableArgs>());
@@ -378,6 +392,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("terraformVariableFiles")]
         private InputList<Inputs.InfraVariableSetTerraformVariableFileGetArgs>? _terraformVariableFiles;
+
+        /// <summary>
+        /// Terraform variables files configured on the Variable Set (see below for nested schema)
+        /// </summary>
         public InputList<Inputs.InfraVariableSetTerraformVariableFileGetArgs> TerraformVariableFiles
         {
             get => _terraformVariableFiles ?? (_terraformVariableFiles = new InputList<Inputs.InfraVariableSetTerraformVariableFileGetArgs>());
@@ -386,6 +404,10 @@ namespace Pulumi.Harness.Platform
 
         [Input("terraformVariables")]
         private InputList<Inputs.InfraVariableSetTerraformVariableGetArgs>? _terraformVariables;
+
+        /// <summary>
+        /// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+        /// </summary>
         public InputList<Inputs.InfraVariableSetTerraformVariableGetArgs> TerraformVariables
         {
             get => _terraformVariables ?? (_terraformVariables = new InputList<Inputs.InfraVariableSetTerraformVariableGetArgs>());

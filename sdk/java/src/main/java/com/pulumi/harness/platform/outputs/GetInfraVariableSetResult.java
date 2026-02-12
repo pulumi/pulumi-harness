@@ -62,7 +62,15 @@ public final class GetInfraVariableSetResult {
      * 
      */
     private List<String> tags;
+    /**
+     * @return Terraform variables files configured on the Variable Set (see below for nested schema)
+     * 
+     */
     private List<GetInfraVariableSetTerraformVariableFile> terraformVariableFiles;
+    /**
+     * @return Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     * 
+     */
     private List<GetInfraVariableSetTerraformVariable> terraformVariables;
 
     private GetInfraVariableSetResult() {}
@@ -129,9 +137,17 @@ public final class GetInfraVariableSetResult {
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return Terraform variables files configured on the Variable Set (see below for nested schema)
+     * 
+     */
     public List<GetInfraVariableSetTerraformVariableFile> terraformVariableFiles() {
         return this.terraformVariableFiles;
     }
+    /**
+     * @return Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     * 
+     */
     public List<GetInfraVariableSetTerraformVariable> terraformVariables() {
         return this.terraformVariables;
     }

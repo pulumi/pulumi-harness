@@ -244,15 +244,31 @@ public class InfraVariableSet extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * Terraform variables files configured on the Variable Set (see below for nested schema)
+     * 
+     */
     @Export(name="terraformVariableFiles", refs={List.class,InfraVariableSetTerraformVariableFile.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InfraVariableSetTerraformVariableFile>> terraformVariableFiles;
 
+    /**
+     * @return Terraform variables files configured on the Variable Set (see below for nested schema)
+     * 
+     */
     public Output<Optional<List<InfraVariableSetTerraformVariableFile>>> terraformVariableFiles() {
         return Codegen.optional(this.terraformVariableFiles);
     }
+    /**
+     * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     * 
+     */
     @Export(name="terraformVariables", refs={List.class,InfraVariableSetTerraformVariable.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InfraVariableSetTerraformVariable>> terraformVariables;
 
+    /**
+     * @return Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     * 
+     */
     public Output<Optional<List<InfraVariableSetTerraformVariable>>> terraformVariables() {
         return Codegen.optional(this.terraformVariables);
     }

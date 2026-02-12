@@ -380,13 +380,17 @@ class HarRegistry(pulumi.CustomResource):
 
         ## Import
 
+        ### Import Format
+
+        The import ID format is: `<space_ref>/<identifier>`
+
+        Where:
+        - `space_ref` defines the scope: account, org, or project level
+        - `identifier` is the unique registry identifier
+
+        ### Import Examples
+
         ### After Import
-
-        bash
-
-        pulumi preview
-
-        pulumi up
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -452,13 +456,17 @@ class HarRegistry(pulumi.CustomResource):
 
         ## Import
 
+        ### Import Format
+
+        The import ID format is: `<space_ref>/<identifier>`
+
+        Where:
+        - `space_ref` defines the scope: account, org, or project level
+        - `identifier` is the unique registry identifier
+
+        ### Import Examples
+
         ### After Import
-
-        bash
-
-        pulumi preview
-
-        pulumi up
 
         :param str resource_name: The name of the resource.
         :param HarRegistryArgs args: The arguments to use to populate this resource's properties.

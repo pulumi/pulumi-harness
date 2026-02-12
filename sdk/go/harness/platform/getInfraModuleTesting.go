@@ -34,7 +34,8 @@ type LookupInfraModuleTestingArgs struct {
 	Project string `pulumi:"project"`
 	// Provider connector for testing purposes
 	ProviderConnector string `pulumi:"providerConnector"`
-	ProvisionerType   string `pulumi:"provisionerType"`
+	// Provisioner type for testing purposes (e.g., terraform, tofu)
+	ProvisionerType string `pulumi:"provisionerType"`
 	// Provisioner version for testing purposes
 	ProvisionerVersion string `pulumi:"provisionerVersion"`
 	// Pipeline ID to create webhooks for releases
@@ -75,7 +76,8 @@ type LookupInfraModuleTestingResult struct {
 	Project string `pulumi:"project"`
 	// Provider connector for testing purposes
 	ProviderConnector string `pulumi:"providerConnector"`
-	ProvisionerType   string `pulumi:"provisionerType"`
+	// Provisioner type for testing purposes (e.g., terraform, tofu)
+	ProvisionerType string `pulumi:"provisionerType"`
 	// Provisioner version for testing purposes
 	ProvisionerVersion string `pulumi:"provisionerVersion"`
 	// Pipeline ID to create webhooks for releases
@@ -129,7 +131,8 @@ type LookupInfraModuleTestingOutputArgs struct {
 	Project pulumi.StringInput `pulumi:"project"`
 	// Provider connector for testing purposes
 	ProviderConnector pulumi.StringInput `pulumi:"providerConnector"`
-	ProvisionerType   pulumi.StringInput `pulumi:"provisionerType"`
+	// Provisioner type for testing purposes (e.g., terraform, tofu)
+	ProvisionerType pulumi.StringInput `pulumi:"provisionerType"`
 	// Provisioner version for testing purposes
 	ProvisionerVersion pulumi.StringInput `pulumi:"provisionerVersion"`
 	// Pipeline ID to create webhooks for releases
@@ -223,6 +226,7 @@ func (o LookupInfraModuleTestingResultOutput) ProviderConnector() pulumi.StringO
 	return o.ApplyT(func(v LookupInfraModuleTestingResult) string { return v.ProviderConnector }).(pulumi.StringOutput)
 }
 
+// Provisioner type for testing purposes (e.g., terraform, tofu)
 func (o LookupInfraModuleTestingResultOutput) ProvisionerType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfraModuleTestingResult) string { return v.ProvisionerType }).(pulumi.StringOutput)
 }

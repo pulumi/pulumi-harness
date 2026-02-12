@@ -77,16 +77,11 @@ __all__ = [
     'GetInfrastructureV2VolumeMountArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ImageRegistryCustomImageArgsDict(TypedDict):
-        ddcr: NotRequired[pulumi.Input[_builtins.str]]
-        ddcr_fault: NotRequired[pulumi.Input[_builtins.str]]
-        ddcr_lib: NotRequired[pulumi.Input[_builtins.str]]
-        log_watcher: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ImageRegistryCustomImageArgsDict: TypeAlias = Mapping[str, Any]
+class ImageRegistryCustomImageArgsDict(TypedDict):
+    ddcr: NotRequired[pulumi.Input[_builtins.str]]
+    ddcr_fault: NotRequired[pulumi.Input[_builtins.str]]
+    ddcr_lib: NotRequired[pulumi.Input[_builtins.str]]
+    log_watcher: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ImageRegistryCustomImageArgs:
@@ -141,26 +136,23 @@ class ImageRegistryCustomImageArgs:
         pulumi.set(self, "log_watcher", value)
 
 
-if not MYPY:
-    class InfrastructureV2EnvArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the environment variable. Must be a C_IDENTIFIER.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Variable references $(VAR*NAME) are expanded using the container's environment. If the variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
-        """
-        value_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Source for the environment variable's value. Cannot be used if value is not empty.
-        """
-elif False:
-    InfrastructureV2EnvArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureV2EnvArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the environment variable. Must be a C_IDENTIFIER.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Variable references $(VAR*NAME) are expanded using the container's environment. If the variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+    """
+    value_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Source for the environment variable's value. Cannot be used if value is not empty.
+    """
 
 @pulumi.input_type
 class InfrastructureV2EnvArgs:
@@ -232,22 +224,19 @@ class InfrastructureV2EnvArgs:
         pulumi.set(self, "value_from", value)
 
 
-if not MYPY:
-    class InfrastructureV2IdentifierArgsDict(TypedDict):
-        account_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Account identifier.
-        """
-        org_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Organization identifier.
-        """
-        project_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project identifier.
-        """
-elif False:
-    InfrastructureV2IdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureV2IdentifierArgsDict(TypedDict):
+    account_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Account identifier.
+    """
+    org_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Organization identifier.
+    """
+    project_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project identifier.
+    """
 
 @pulumi.input_type
 class InfrastructureV2IdentifierArgs:
@@ -304,58 +293,55 @@ class InfrastructureV2IdentifierArgs:
         pulumi.set(self, "project_identifier", value)
 
 
-if not MYPY:
-    class InfrastructureV2ImageRegistryArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the registry was created.
-        """
-        custom_images: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgsDict']]]]
-        """
-        Custom image configurations. Required when use*custom*images is true.
-        """
-        identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryIdentifierArgsDict']]]]
-        """
-        Scoped identifiers for the registry.
-        """
-        infra_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the infrastructure.
-        """
-        is_default: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether this is the default registry.
-        """
-        is_override_allowed: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether override is allowed for this registry.
-        """
-        is_private: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the registry is private.
-        """
-        registry_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The account name for the container registry.
-        """
-        registry_server: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The container image registry server URL (e.g., docker.io, gcr.io).
-        """
-        secret_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Kubernetes secret containing registry credentials.
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the registry was last updated.
-        """
-        use_custom_images: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to use custom images instead of default ones.
-        """
-elif False:
-    InfrastructureV2ImageRegistryArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureV2ImageRegistryArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the registry was created.
+    """
+    custom_images: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgsDict']]]]
+    """
+    Custom image configurations. Required when use*custom*images is true.
+    """
+    identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryIdentifierArgsDict']]]]
+    """
+    Scoped identifiers for the registry.
+    """
+    infra_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the infrastructure.
+    """
+    is_default: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether this is the default registry.
+    """
+    is_override_allowed: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether override is allowed for this registry.
+    """
+    is_private: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the registry is private.
+    """
+    registry_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The account name for the container registry.
+    """
+    registry_server: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The container image registry server URL (e.g., docker.io, gcr.io).
+    """
+    secret_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Kubernetes secret containing registry credentials.
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the registry was last updated.
+    """
+    use_custom_images: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to use custom images instead of default ones.
+    """
 
 @pulumi.input_type
 class InfrastructureV2ImageRegistryArgs:
@@ -556,26 +542,23 @@ class InfrastructureV2ImageRegistryArgs:
         pulumi.set(self, "use_custom_images", value)
 
 
-if not MYPY:
-    class InfrastructureV2ImageRegistryCustomImageArgsDict(TypedDict):
-        ddcr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom image for ddcr.
-        """
-        ddcr_fault: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom image for ddcr-fault.
-        """
-        ddcr_lib: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom image for ddcr-lib.
-        """
-        log_watcher: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom image for log-watcher.
-        """
-elif False:
-    InfrastructureV2ImageRegistryCustomImageArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureV2ImageRegistryCustomImageArgsDict(TypedDict):
+    ddcr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom image for ddcr.
+    """
+    ddcr_fault: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom image for ddcr-fault.
+    """
+    ddcr_lib: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom image for ddcr-lib.
+    """
+    log_watcher: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom image for log-watcher.
+    """
 
 @pulumi.input_type
 class InfrastructureV2ImageRegistryCustomImageArgs:
@@ -648,22 +631,19 @@ class InfrastructureV2ImageRegistryCustomImageArgs:
         pulumi.set(self, "log_watcher", value)
 
 
-if not MYPY:
-    class InfrastructureV2ImageRegistryIdentifierArgsDict(TypedDict):
-        account_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Harness account identifier.
-        """
-        org_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Harness organization identifier.
-        """
-        project_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Harness project identifier.
-        """
-elif False:
-    InfrastructureV2ImageRegistryIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureV2ImageRegistryIdentifierArgsDict(TypedDict):
+    account_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Harness account identifier.
+    """
+    org_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Harness organization identifier.
+    """
+    project_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Harness project identifier.
+    """
 
 @pulumi.input_type
 class InfrastructureV2ImageRegistryIdentifierArgs:
@@ -720,26 +700,23 @@ class InfrastructureV2ImageRegistryIdentifierArgs:
         pulumi.set(self, "project_identifier", value)
 
 
-if not MYPY:
-    class InfrastructureV2MtlsArgsDict(TypedDict):
-        cert_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Path to the certificate file for mTLS
-        """
-        key_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Path to the private key file for mTLS
-        """
-        secret_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Kubernetes secret containing mTLS certificates
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL for the mTLS endpoint
-        """
-elif False:
-    InfrastructureV2MtlsArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureV2MtlsArgsDict(TypedDict):
+    cert_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to the certificate file for mTLS
+    """
+    key_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to the private key file for mTLS
+    """
+    secret_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Kubernetes secret containing mTLS certificates
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL for the mTLS endpoint
+    """
 
 @pulumi.input_type
 class InfrastructureV2MtlsArgs:
@@ -812,26 +789,23 @@ class InfrastructureV2MtlsArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class InfrastructureV2ProxyArgsDict(TypedDict):
-        url: pulumi.Input[_builtins.str]
-        """
-        Proxy URL.
-        """
-        http_proxy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTP proxy URL.
-        """
-        https_proxy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTPS proxy URL.
-        """
-        no_proxy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        List of hosts that should not use proxy.
-        """
-elif False:
-    InfrastructureV2ProxyArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureV2ProxyArgsDict(TypedDict):
+    url: pulumi.Input[_builtins.str]
+    """
+    Proxy URL.
+    """
+    http_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP proxy URL.
+    """
+    https_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTPS proxy URL.
+    """
+    no_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    List of hosts that should not use proxy.
+    """
 
 @pulumi.input_type
 class InfrastructureV2ProxyArgs:
@@ -903,30 +877,27 @@ class InfrastructureV2ProxyArgs:
         pulumi.set(self, "no_proxy", value)
 
 
-if not MYPY:
-    class InfrastructureV2TolerationArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
-        """
-        key: pulumi.Input[_builtins.str]
-        """
-        Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists.
-        """
-        operator: pulumi.Input[_builtins.str]
-        """
-        Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal.
-        """
-        toleration_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
-        """
-elif False:
-    InfrastructureV2TolerationArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureV2TolerationArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+    """
+    key: pulumi.Input[_builtins.str]
+    """
+    Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists.
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal.
+    """
+    toleration_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+    """
 
 @pulumi.input_type
 class InfrastructureV2TolerationArgs:
@@ -1012,18 +983,15 @@ class InfrastructureV2TolerationArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class InfrastructureV2VolumeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the volume. Must be a DNS_LABEL and unique within the pod.
-        """
-        size_limit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Size limit of the volume. Example: '10Gi', '100Mi'
-        """
-elif False:
-    InfrastructureV2VolumeArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureV2VolumeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the volume. Must be a DNS_LABEL and unique within the pod.
+    """
+    size_limit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Size limit of the volume. Example: '10Gi', '100Mi'
+    """
 
 @pulumi.input_type
 class InfrastructureV2VolumeArgs:
@@ -1063,34 +1031,31 @@ class InfrastructureV2VolumeArgs:
         pulumi.set(self, "size_limit", value)
 
 
-if not MYPY:
-    class InfrastructureV2VolumeMountArgsDict(TypedDict):
-        mount_path: pulumi.Input[_builtins.str]
-        """
-        Path within the container at which the volume should be mounted. Must not contain ':'.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        This must match the Name of a Volume.
-        """
-        mount_propagation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used.
-        """
-        read_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Mounted read-only if true, read-write otherwise.
-        """
-        sub_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Path within the volume from which the container's volume should be mounted. Mutually exclusive with sub*path*expr.
-        """
-        sub_path_expr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
-        """
-elif False:
-    InfrastructureV2VolumeMountArgsDict: TypeAlias = Mapping[str, Any]
+class InfrastructureV2VolumeMountArgsDict(TypedDict):
+    mount_path: pulumi.Input[_builtins.str]
+    """
+    Path within the container at which the volume should be mounted. Must not contain ':'.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    This must match the Name of a Volume.
+    """
+    mount_propagation: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used.
+    """
+    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Mounted read-only if true, read-write otherwise.
+    """
+    sub_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path within the volume from which the container's volume should be mounted. Mutually exclusive with sub*path*expr.
+    """
+    sub_path_expr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
+    """
 
 @pulumi.input_type
 class InfrastructureV2VolumeMountArgs:
@@ -1193,18 +1158,15 @@ class InfrastructureV2VolumeMountArgs:
         pulumi.set(self, "sub_path_expr", value)
 
 
-if not MYPY:
-    class SecurityGovernanceConditionFaultSpecArgsDict(TypedDict):
-        faults: pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionFaultSpecFaultArgsDict']]]
-        """
-        List of fault specifications
-        """
-        operator: pulumi.Input[_builtins.str]
-        """
-        Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
-        """
-elif False:
-    SecurityGovernanceConditionFaultSpecArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGovernanceConditionFaultSpecArgsDict(TypedDict):
+    faults: pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionFaultSpecFaultArgsDict']]]
+    """
+    List of fault specifications
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+    """
 
 @pulumi.input_type
 class SecurityGovernanceConditionFaultSpecArgs:
@@ -1243,18 +1205,15 @@ class SecurityGovernanceConditionFaultSpecArgs:
         pulumi.set(self, "operator", value)
 
 
-if not MYPY:
-    class SecurityGovernanceConditionFaultSpecFaultArgsDict(TypedDict):
-        fault_type: pulumi.Input[_builtins.str]
-        """
-        Type of the fault (FAULT or FAULT_GROUP)
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the fault
-        """
-elif False:
-    SecurityGovernanceConditionFaultSpecFaultArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGovernanceConditionFaultSpecFaultArgsDict(TypedDict):
+    fault_type: pulumi.Input[_builtins.str]
+    """
+    Type of the fault (FAULT or FAULT_GROUP)
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the fault
+    """
 
 @pulumi.input_type
 class SecurityGovernanceConditionFaultSpecFaultArgs:
@@ -1293,22 +1252,19 @@ class SecurityGovernanceConditionFaultSpecFaultArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class SecurityGovernanceConditionK8sSpecArgsDict(TypedDict):
-        application_spec: NotRequired[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecArgsDict']]
-        """
-        Application specification
-        """
-        chaos_service_account_spec: NotRequired[pulumi.Input['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgsDict']]
-        """
-        Chaos service account specification
-        """
-        infra_spec: NotRequired[pulumi.Input['SecurityGovernanceConditionK8sSpecInfraSpecArgsDict']]
-        """
-        Infrastructure specification
-        """
-elif False:
-    SecurityGovernanceConditionK8sSpecArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGovernanceConditionK8sSpecArgsDict(TypedDict):
+    application_spec: NotRequired[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecArgsDict']]
+    """
+    Application specification
+    """
+    chaos_service_account_spec: NotRequired[pulumi.Input['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgsDict']]
+    """
+    Chaos service account specification
+    """
+    infra_spec: NotRequired[pulumi.Input['SecurityGovernanceConditionK8sSpecInfraSpecArgsDict']]
+    """
+    Infrastructure specification
+    """
 
 @pulumi.input_type
 class SecurityGovernanceConditionK8sSpecArgs:
@@ -1365,18 +1321,15 @@ class SecurityGovernanceConditionK8sSpecArgs:
         pulumi.set(self, "infra_spec", value)
 
 
-if not MYPY:
-    class SecurityGovernanceConditionK8sSpecApplicationSpecArgsDict(TypedDict):
-        operator: pulumi.Input[_builtins.str]
-        """
-        Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
-        """
-        workloads: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgsDict']]]]
-        """
-        List of workloads to include/exclude
-        """
-elif False:
-    SecurityGovernanceConditionK8sSpecApplicationSpecArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGovernanceConditionK8sSpecApplicationSpecArgsDict(TypedDict):
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+    """
+    workloads: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgsDict']]]]
+    """
+    List of workloads to include/exclude
+    """
 
 @pulumi.input_type
 class SecurityGovernanceConditionK8sSpecApplicationSpecArgs:
@@ -1416,30 +1369,27 @@ class SecurityGovernanceConditionK8sSpecApplicationSpecArgs:
         pulumi.set(self, "workloads", value)
 
 
-if not MYPY:
-    class SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgsDict(TypedDict):
-        namespace: pulumi.Input[_builtins.str]
-        """
-        Namespace of the workload
-        """
-        application_map_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID for the application map
-        """
-        kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kind of the workload (e.g., deployment, statefulset)
-        """
-        label: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Label selector for the workload
-        """
-        services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of services associated with the workload
-        """
-elif False:
-    SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgsDict(TypedDict):
+    namespace: pulumi.Input[_builtins.str]
+    """
+    Namespace of the workload
+    """
+    application_map_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID for the application map
+    """
+    kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kind of the workload (e.g., deployment, statefulset)
+    """
+    label: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Label selector for the workload
+    """
+    services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of services associated with the workload
+    """
 
 @pulumi.input_type
 class SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs:
@@ -1527,18 +1477,15 @@ class SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs:
         pulumi.set(self, "services", value)
 
 
-if not MYPY:
-    class SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgsDict(TypedDict):
-        operator: pulumi.Input[_builtins.str]
-        """
-        Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
-        """
-        service_accounts: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List of service accounts to include/exclude
-        """
-elif False:
-    SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgsDict(TypedDict):
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+    """
+    service_accounts: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of service accounts to include/exclude
+    """
 
 @pulumi.input_type
 class SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs:
@@ -1577,18 +1524,15 @@ class SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs:
         pulumi.set(self, "service_accounts", value)
 
 
-if not MYPY:
-    class SecurityGovernanceConditionK8sSpecInfraSpecArgsDict(TypedDict):
-        infra_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List of infrastructure IDs to apply the condition to
-        """
-        operator: pulumi.Input[_builtins.str]
-        """
-        Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
-        """
-elif False:
-    SecurityGovernanceConditionK8sSpecInfraSpecArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGovernanceConditionK8sSpecInfraSpecArgsDict(TypedDict):
+    infra_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of infrastructure IDs to apply the condition to
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+    """
 
 @pulumi.input_type
 class SecurityGovernanceConditionK8sSpecInfraSpecArgs:
@@ -1627,14 +1571,11 @@ class SecurityGovernanceConditionK8sSpecInfraSpecArgs:
         pulumi.set(self, "operator", value)
 
 
-if not MYPY:
-    class SecurityGovernanceConditionMachineSpecArgsDict(TypedDict):
-        infra_spec: NotRequired[pulumi.Input['SecurityGovernanceConditionMachineSpecInfraSpecArgsDict']]
-        """
-        Infrastructure specification
-        """
-elif False:
-    SecurityGovernanceConditionMachineSpecArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGovernanceConditionMachineSpecArgsDict(TypedDict):
+    infra_spec: NotRequired[pulumi.Input['SecurityGovernanceConditionMachineSpecInfraSpecArgsDict']]
+    """
+    Infrastructure specification
+    """
 
 @pulumi.input_type
 class SecurityGovernanceConditionMachineSpecArgs:
@@ -1659,18 +1600,15 @@ class SecurityGovernanceConditionMachineSpecArgs:
         pulumi.set(self, "infra_spec", value)
 
 
-if not MYPY:
-    class SecurityGovernanceConditionMachineSpecInfraSpecArgsDict(TypedDict):
-        infra_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List of infrastructure IDs to apply the condition to
-        """
-        operator: pulumi.Input[_builtins.str]
-        """
-        Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
-        """
-elif False:
-    SecurityGovernanceConditionMachineSpecInfraSpecArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGovernanceConditionMachineSpecInfraSpecArgsDict(TypedDict):
+    infra_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of infrastructure IDs to apply the condition to
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+    """
 
 @pulumi.input_type
 class SecurityGovernanceConditionMachineSpecInfraSpecArgs:
@@ -1709,15 +1647,12 @@ class SecurityGovernanceConditionMachineSpecInfraSpecArgs:
         pulumi.set(self, "operator", value)
 
 
-if not MYPY:
-    class SecurityGovernanceRuleTimeWindowArgsDict(TypedDict):
-        start_time: pulumi.Input[_builtins.int]
-        time_zone: pulumi.Input[_builtins.str]
-        duration: NotRequired[pulumi.Input[_builtins.str]]
-        end_time: NotRequired[pulumi.Input[_builtins.int]]
-        recurrence: NotRequired[pulumi.Input['SecurityGovernanceRuleTimeWindowRecurrenceArgsDict']]
-elif False:
-    SecurityGovernanceRuleTimeWindowArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGovernanceRuleTimeWindowArgsDict(TypedDict):
+    start_time: pulumi.Input[_builtins.int]
+    time_zone: pulumi.Input[_builtins.str]
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[_builtins.int]]
+    recurrence: NotRequired[pulumi.Input['SecurityGovernanceRuleTimeWindowRecurrenceArgsDict']]
 
 @pulumi.input_type
 class SecurityGovernanceRuleTimeWindowArgs:
@@ -1782,13 +1717,10 @@ class SecurityGovernanceRuleTimeWindowArgs:
         pulumi.set(self, "recurrence", value)
 
 
-if not MYPY:
-    class SecurityGovernanceRuleTimeWindowRecurrenceArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        until: pulumi.Input[_builtins.int]
-        value: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    SecurityGovernanceRuleTimeWindowRecurrenceArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGovernanceRuleTimeWindowRecurrenceArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    until: pulumi.Input[_builtins.int]
+    value: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class SecurityGovernanceRuleTimeWindowRecurrenceArgs:
@@ -1829,58 +1761,55 @@ class SecurityGovernanceRuleTimeWindowRecurrenceArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class GetInfrastructureV2ImageRegistryArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Timestamp when the registry was created.
-        """
-        custom_images: Sequence['GetInfrastructureV2ImageRegistryCustomImageArgsDict']
-        """
-        Custom image configurations. Required when use*custom*images is true.
-        """
-        identifiers: Sequence['GetInfrastructureV2ImageRegistryIdentifierArgsDict']
-        """
-        Scoped identifiers for the registry.
-        """
-        infra_id: _builtins.str
-        """
-        ID of the infrastructure.
-        """
-        is_default: _builtins.bool
-        """
-        Whether this is the default registry.
-        """
-        is_override_allowed: _builtins.bool
-        """
-        Whether override is allowed for this registry.
-        """
-        is_private: _builtins.bool
-        """
-        Whether the registry is private.
-        """
-        registry_account: _builtins.str
-        """
-        The account name for the container registry.
-        """
-        registry_server: _builtins.str
-        """
-        The container image registry server URL (e.g., docker.io, gcr.io).
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the registry was last updated.
-        """
-        use_custom_images: _builtins.bool
-        """
-        Whether to use custom images instead of default ones.
-        """
-        secret_name: NotRequired[_builtins.str]
-        """
-        Name of the Kubernetes secret containing registry credentials.
-        """
-elif False:
-    GetInfrastructureV2ImageRegistryArgsDict: TypeAlias = Mapping[str, Any]
+class GetInfrastructureV2ImageRegistryArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Timestamp when the registry was created.
+    """
+    custom_images: Sequence['GetInfrastructureV2ImageRegistryCustomImageArgsDict']
+    """
+    Custom image configurations. Required when use*custom*images is true.
+    """
+    identifiers: Sequence['GetInfrastructureV2ImageRegistryIdentifierArgsDict']
+    """
+    Scoped identifiers for the registry.
+    """
+    infra_id: _builtins.str
+    """
+    ID of the infrastructure.
+    """
+    is_default: _builtins.bool
+    """
+    Whether this is the default registry.
+    """
+    is_override_allowed: _builtins.bool
+    """
+    Whether override is allowed for this registry.
+    """
+    is_private: _builtins.bool
+    """
+    Whether the registry is private.
+    """
+    registry_account: _builtins.str
+    """
+    The account name for the container registry.
+    """
+    registry_server: _builtins.str
+    """
+    The container image registry server URL (e.g., docker.io, gcr.io).
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the registry was last updated.
+    """
+    use_custom_images: _builtins.bool
+    """
+    Whether to use custom images instead of default ones.
+    """
+    secret_name: NotRequired[_builtins.str]
+    """
+    Name of the Kubernetes secret containing registry credentials.
+    """
 
 @pulumi.input_type
 class GetInfrastructureV2ImageRegistryArgs:
@@ -2070,26 +1999,23 @@ class GetInfrastructureV2ImageRegistryArgs:
         pulumi.set(self, "secret_name", value)
 
 
-if not MYPY:
-    class GetInfrastructureV2ImageRegistryCustomImageArgsDict(TypedDict):
-        ddcr: _builtins.str
-        """
-        Custom image for ddcr.
-        """
-        ddcr_fault: _builtins.str
-        """
-        Custom image for ddcr-fault.
-        """
-        ddcr_lib: _builtins.str
-        """
-        Custom image for ddcr-lib.
-        """
-        log_watcher: _builtins.str
-        """
-        Custom image for log-watcher.
-        """
-elif False:
-    GetInfrastructureV2ImageRegistryCustomImageArgsDict: TypeAlias = Mapping[str, Any]
+class GetInfrastructureV2ImageRegistryCustomImageArgsDict(TypedDict):
+    ddcr: _builtins.str
+    """
+    Custom image for ddcr.
+    """
+    ddcr_fault: _builtins.str
+    """
+    Custom image for ddcr-fault.
+    """
+    ddcr_lib: _builtins.str
+    """
+    Custom image for ddcr-lib.
+    """
+    log_watcher: _builtins.str
+    """
+    Custom image for log-watcher.
+    """
 
 @pulumi.input_type
 class GetInfrastructureV2ImageRegistryCustomImageArgs:
@@ -2158,22 +2084,19 @@ class GetInfrastructureV2ImageRegistryCustomImageArgs:
         pulumi.set(self, "log_watcher", value)
 
 
-if not MYPY:
-    class GetInfrastructureV2ImageRegistryIdentifierArgsDict(TypedDict):
-        account_identifier: _builtins.str
-        """
-        Harness account identifier.
-        """
-        org_identifier: _builtins.str
-        """
-        Harness organization identifier.
-        """
-        project_identifier: _builtins.str
-        """
-        Harness project identifier.
-        """
-elif False:
-    GetInfrastructureV2ImageRegistryIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class GetInfrastructureV2ImageRegistryIdentifierArgsDict(TypedDict):
+    account_identifier: _builtins.str
+    """
+    Harness account identifier.
+    """
+    org_identifier: _builtins.str
+    """
+    Harness organization identifier.
+    """
+    project_identifier: _builtins.str
+    """
+    Harness project identifier.
+    """
 
 @pulumi.input_type
 class GetInfrastructureV2ImageRegistryIdentifierArgs:
@@ -2227,26 +2150,23 @@ class GetInfrastructureV2ImageRegistryIdentifierArgs:
         pulumi.set(self, "project_identifier", value)
 
 
-if not MYPY:
-    class GetInfrastructureV2MtlsArgsDict(TypedDict):
-        cert_path: NotRequired[_builtins.str]
-        """
-        Path to the certificate file for mTLS
-        """
-        key_path: NotRequired[_builtins.str]
-        """
-        Path to the private key file for mTLS
-        """
-        secret_name: NotRequired[_builtins.str]
-        """
-        Name of the Kubernetes secret containing mTLS certificates
-        """
-        url: NotRequired[_builtins.str]
-        """
-        URL for the mTLS endpoint
-        """
-elif False:
-    GetInfrastructureV2MtlsArgsDict: TypeAlias = Mapping[str, Any]
+class GetInfrastructureV2MtlsArgsDict(TypedDict):
+    cert_path: NotRequired[_builtins.str]
+    """
+    Path to the certificate file for mTLS
+    """
+    key_path: NotRequired[_builtins.str]
+    """
+    Path to the private key file for mTLS
+    """
+    secret_name: NotRequired[_builtins.str]
+    """
+    Name of the Kubernetes secret containing mTLS certificates
+    """
+    url: NotRequired[_builtins.str]
+    """
+    URL for the mTLS endpoint
+    """
 
 @pulumi.input_type
 class GetInfrastructureV2MtlsArgs:
@@ -2319,26 +2239,23 @@ class GetInfrastructureV2MtlsArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class GetInfrastructureV2ProxyArgsDict(TypedDict):
-        url: _builtins.str
-        """
-        Proxy URL.
-        """
-        http_proxy: NotRequired[_builtins.str]
-        """
-        HTTP proxy URL.
-        """
-        https_proxy: NotRequired[_builtins.str]
-        """
-        HTTPS proxy URL.
-        """
-        no_proxy: NotRequired[_builtins.str]
-        """
-        List of hosts that should not use proxy.
-        """
-elif False:
-    GetInfrastructureV2ProxyArgsDict: TypeAlias = Mapping[str, Any]
+class GetInfrastructureV2ProxyArgsDict(TypedDict):
+    url: _builtins.str
+    """
+    Proxy URL.
+    """
+    http_proxy: NotRequired[_builtins.str]
+    """
+    HTTP proxy URL.
+    """
+    https_proxy: NotRequired[_builtins.str]
+    """
+    HTTPS proxy URL.
+    """
+    no_proxy: NotRequired[_builtins.str]
+    """
+    List of hosts that should not use proxy.
+    """
 
 @pulumi.input_type
 class GetInfrastructureV2ProxyArgs:
@@ -2410,30 +2327,27 @@ class GetInfrastructureV2ProxyArgs:
         pulumi.set(self, "no_proxy", value)
 
 
-if not MYPY:
-    class GetInfrastructureV2TolerationArgsDict(TypedDict):
-        effect: _builtins.str
-        """
-        Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
-        """
-        key: _builtins.str
-        """
-        Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists.
-        """
-        operator: _builtins.str
-        """
-        Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal.
-        """
-        toleration_seconds: NotRequired[_builtins.int]
-        """
-        TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
-        """
-        value: NotRequired[_builtins.str]
-        """
-        Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
-        """
-elif False:
-    GetInfrastructureV2TolerationArgsDict: TypeAlias = Mapping[str, Any]
+class GetInfrastructureV2TolerationArgsDict(TypedDict):
+    effect: _builtins.str
+    """
+    Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+    """
+    key: _builtins.str
+    """
+    Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists.
+    """
+    operator: _builtins.str
+    """
+    Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal.
+    """
+    toleration_seconds: NotRequired[_builtins.int]
+    """
+    TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+    """
+    value: NotRequired[_builtins.str]
+    """
+    Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+    """
 
 @pulumi.input_type
 class GetInfrastructureV2TolerationArgs:
@@ -2519,18 +2433,15 @@ class GetInfrastructureV2TolerationArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class GetInfrastructureV2VolumeArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        Name of the volume. Must be a DNS_LABEL and unique within the pod.
-        """
-        size_limit: NotRequired[_builtins.str]
-        """
-        Size limit of the volume. Example: '10Gi', '100Mi'
-        """
-elif False:
-    GetInfrastructureV2VolumeArgsDict: TypeAlias = Mapping[str, Any]
+class GetInfrastructureV2VolumeArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    Name of the volume. Must be a DNS_LABEL and unique within the pod.
+    """
+    size_limit: NotRequired[_builtins.str]
+    """
+    Size limit of the volume. Example: '10Gi', '100Mi'
+    """
 
 @pulumi.input_type
 class GetInfrastructureV2VolumeArgs:
@@ -2570,34 +2481,31 @@ class GetInfrastructureV2VolumeArgs:
         pulumi.set(self, "size_limit", value)
 
 
-if not MYPY:
-    class GetInfrastructureV2VolumeMountArgsDict(TypedDict):
-        mount_path: _builtins.str
-        """
-        Path within the container at which the volume should be mounted. Must not contain ':'.
-        """
-        name: _builtins.str
-        """
-        This must match the Name of a Volume.
-        """
-        mount_propagation: NotRequired[_builtins.str]
-        """
-        Determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used.
-        """
-        read_only: NotRequired[_builtins.bool]
-        """
-        Mounted read-only if true, read-write otherwise.
-        """
-        sub_path: NotRequired[_builtins.str]
-        """
-        Path within the volume from which the container's volume should be mounted. Mutually exclusive with sub*path*expr.
-        """
-        sub_path_expr: NotRequired[_builtins.str]
-        """
-        Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
-        """
-elif False:
-    GetInfrastructureV2VolumeMountArgsDict: TypeAlias = Mapping[str, Any]
+class GetInfrastructureV2VolumeMountArgsDict(TypedDict):
+    mount_path: _builtins.str
+    """
+    Path within the container at which the volume should be mounted. Must not contain ':'.
+    """
+    name: _builtins.str
+    """
+    This must match the Name of a Volume.
+    """
+    mount_propagation: NotRequired[_builtins.str]
+    """
+    Determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used.
+    """
+    read_only: NotRequired[_builtins.bool]
+    """
+    Mounted read-only if true, read-write otherwise.
+    """
+    sub_path: NotRequired[_builtins.str]
+    """
+    Path within the volume from which the container's volume should be mounted. Mutually exclusive with sub*path*expr.
+    """
+    sub_path_expr: NotRequired[_builtins.str]
+    """
+    Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
+    """
 
 @pulumi.input_type
 class GetInfrastructureV2VolumeMountArgs:

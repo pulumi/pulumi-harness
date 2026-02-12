@@ -47,6 +47,9 @@ export interface GetAwsProxyArgs {
      * Id of the cloud connector
      */
     cloudConnectorId: string;
+    /**
+     * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+     */
     deleteCloudResourcesOnDestroy: boolean;
     /**
      * Hostname for the proxy
@@ -96,6 +99,9 @@ export interface GetAwsProxyResult {
      * Id of the cloud connector
      */
     readonly cloudConnectorId: string;
+    /**
+     * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+     */
     readonly deleteCloudResourcesOnDestroy: boolean;
     /**
      * Hostname for the proxy
@@ -176,6 +182,9 @@ export interface GetAwsProxyOutputArgs {
      * Id of the cloud connector
      */
     cloudConnectorId: pulumi.Input<string>;
+    /**
+     * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
+     */
     deleteCloudResourcesOnDestroy: pulumi.Input<boolean>;
     /**
      * Hostname for the proxy

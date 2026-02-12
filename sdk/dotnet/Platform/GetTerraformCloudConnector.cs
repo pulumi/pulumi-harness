@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetTerraformCloudConnector
     {
         /// <summary>
+        /// Resource for looking up a Terraform Cloud connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +36,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTerraformCloudConnectorResult>("harness:platform/getTerraformCloudConnector:getTerraformCloudConnector", args ?? new GetTerraformCloudConnectorArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Resource for looking up a Terraform Cloud connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +60,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetTerraformCloudConnectorResult>("harness:platform/getTerraformCloudConnector:getTerraformCloudConnector", args ?? new GetTerraformCloudConnectorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Resource for looking up a Terraform Cloud connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -147,6 +153,9 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetTerraformCloudConnectorResult
     {
+        /// <summary>
+        /// Credentials to connect to the Terraform Cloud platform.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTerraformCloudConnectorCredentialResult> Credentials;
         /// <summary>
         /// Tags to filter delegates for connection.
@@ -180,6 +189,9 @@ namespace Pulumi.Harness.Platform
         /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// URL of the Terraform Cloud platform.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]
