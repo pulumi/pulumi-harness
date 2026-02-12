@@ -4747,6 +4747,37 @@ export namespace platform {
         value: string;
     }
 
+    export interface GetDelegateListDelegate {
+        /**
+         * Auto upgrade setting.
+         */
+        autoUpgrade: string;
+        /**
+         * Whether the delegate is connected.
+         */
+        connected: boolean;
+        /**
+         * Delegate description.
+         */
+        description: string;
+        /**
+         * Whether this is a legacy delegate.
+         */
+        legacy: boolean;
+        /**
+         * Delegate name.
+         */
+        name: string;
+        /**
+         * Delegate tags.
+         */
+        tags: string[];
+        /**
+         * Delegate type (e.g., HELM_DELEGATE).
+         */
+        type: string;
+    }
+
     export interface GetDockerConnectorCredential {
         /**
          * Execute on delegate or not.
@@ -6038,7 +6069,7 @@ export namespace platform {
 
     export interface GetHarRegistryConfig {
         /**
-         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
          */
         authType?: string;
         /**
@@ -35308,7 +35339,7 @@ export namespace platform {
 
     export interface HarRegistryConfig {
         /**
-         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
          */
         authType?: string;
         /**

@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class HarRegistryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+        /// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }

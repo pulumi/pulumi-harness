@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HarRegistryConfig {
     /**
-     * @return Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+     * @return Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
      * 
      */
     private @Nullable String authType;
@@ -47,7 +47,7 @@ public final class HarRegistryConfig {
 
     private HarRegistryConfig() {}
     /**
-     * @return Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+     * @return Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
      * 
      */
     public Optional<String> authType() {

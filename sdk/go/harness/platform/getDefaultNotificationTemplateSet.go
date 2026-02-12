@@ -36,18 +36,10 @@ type LookupDefaultNotificationTemplateSetArgs struct {
 	NotificationChannelType string `pulumi:"notificationChannelType"`
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
 	NotificationEntity string `pulumi:"notificationEntity"`
-	// Unique identifier of the organization. Use `orgId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+	// Organization identifier
 	Org *string `pulumi:"org"`
-	// Unique identifier of the organization.
-	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project. Use `projectId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+	// Project identifier
 	Project *string `pulumi:"project"`
-	// Unique identifier of the project.
-	ProjectId *string `pulumi:"projectId"`
 	// Key-value tags
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -72,18 +64,10 @@ type LookupDefaultNotificationTemplateSetResult struct {
 	NotificationChannelType string `pulumi:"notificationChannelType"`
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
 	NotificationEntity string `pulumi:"notificationEntity"`
-	// Unique identifier of the organization. Use `orgId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+	// Organization identifier
 	Org *string `pulumi:"org"`
-	// Unique identifier of the organization.
-	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project. Use `projectId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+	// Project identifier
 	Project *string `pulumi:"project"`
-	// Unique identifier of the project.
-	ProjectId *string `pulumi:"projectId"`
 	// Key-value tags
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -111,18 +95,10 @@ type LookupDefaultNotificationTemplateSetOutputArgs struct {
 	NotificationChannelType pulumi.StringInput `pulumi:"notificationChannelType"`
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
 	NotificationEntity pulumi.StringInput `pulumi:"notificationEntity"`
-	// Unique identifier of the organization. Use `orgId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+	// Organization identifier
 	Org pulumi.StringPtrInput `pulumi:"org"`
-	// Unique identifier of the organization.
-	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the project. Use `projectId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+	// Project identifier
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	// Unique identifier of the project.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Key-value tags
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
@@ -193,28 +169,14 @@ func (o LookupDefaultNotificationTemplateSetResultOutput) NotificationEntity() p
 	return o.ApplyT(func(v LookupDefaultNotificationTemplateSetResult) string { return v.NotificationEntity }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization. Use `orgId` instead.
-//
-// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+// Organization identifier
 func (o LookupDefaultNotificationTemplateSetResultOutput) Org() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDefaultNotificationTemplateSetResult) *string { return v.Org }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the organization.
-func (o LookupDefaultNotificationTemplateSetResultOutput) OrgId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDefaultNotificationTemplateSetResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier of the project. Use `projectId` instead.
-//
-// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+// Project identifier
 func (o LookupDefaultNotificationTemplateSetResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDefaultNotificationTemplateSetResult) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier of the project.
-func (o LookupDefaultNotificationTemplateSetResultOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDefaultNotificationTemplateSetResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 // Key-value tags

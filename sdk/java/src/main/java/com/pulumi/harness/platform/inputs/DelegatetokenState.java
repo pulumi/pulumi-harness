@@ -5,7 +5,6 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -108,13 +107,6 @@ public final class DelegatetokenState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.projectId);
     }
 
-    @Import(name="purgeOnDelete")
-    private @Nullable Output<Boolean> purgeOnDelete;
-
-    public Optional<Output<Boolean>> purgeOnDelete() {
-        return Optional.ofNullable(this.purgeOnDelete);
-    }
-
     /**
      * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
      * 
@@ -169,7 +161,6 @@ public final class DelegatetokenState extends com.pulumi.resources.ResourceArgs 
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
-        this.purgeOnDelete = $.purgeOnDelete;
         this.revokeAfter = $.revokeAfter;
         this.tokenStatus = $.tokenStatus;
         this.value = $.value;
@@ -317,15 +308,6 @@ public final class DelegatetokenState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
-        }
-
-        public Builder purgeOnDelete(@Nullable Output<Boolean> purgeOnDelete) {
-            $.purgeOnDelete = purgeOnDelete;
-            return this;
-        }
-
-        public Builder purgeOnDelete(Boolean purgeOnDelete) {
-            return purgeOnDelete(Output.of(purgeOnDelete));
         }
 
         /**

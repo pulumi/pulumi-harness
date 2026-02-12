@@ -17006,6 +17006,24 @@
                     }
                 }
             },
+            "harness_platform_delegate_list": {
+                "current": "harness:platform/getDelegateList:getDelegateList",
+                "fields": {
+                    "delegate_tags": {
+                        "maxItemsOne": false
+                    },
+                    "delegates": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "harness_platform_delegatetoken": {
                 "current": "harness:platform/getDelegatetoken:getDelegatetoken"
             },

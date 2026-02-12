@@ -62,33 +62,15 @@ public final class GetDefaultNotificationTemplateSetResult {
      */
     private String notificationEntity;
     /**
-     * @return Unique identifier of the organization. Use `orgId` instead.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. Please use &#39;org_id&#39; instead.
+     * @return Organization identifier
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'org_id' instead. */
     private @Nullable String org;
     /**
-     * @return Unique identifier of the organization.
+     * @return Project identifier
      * 
      */
-    private @Nullable String orgId;
-    /**
-     * @return Unique identifier of the project. Use `projectId` instead.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. Please use &#39;project_id&#39; instead.
-     * 
-     */
-    @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'project_id' instead. */
     private @Nullable String project;
-    /**
-     * @return Unique identifier of the project.
-     * 
-     */
-    private @Nullable String projectId;
     /**
      * @return Key-value tags
      * 
@@ -160,40 +142,18 @@ public final class GetDefaultNotificationTemplateSetResult {
         return this.notificationEntity;
     }
     /**
-     * @return Unique identifier of the organization. Use `orgId` instead.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. Please use &#39;org_id&#39; instead.
+     * @return Organization identifier
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'org_id' instead. */
     public Optional<String> org() {
         return Optional.ofNullable(this.org);
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Project identifier
      * 
      */
-    public Optional<String> orgId() {
-        return Optional.ofNullable(this.orgId);
-    }
-    /**
-     * @return Unique identifier of the project. Use `projectId` instead.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. Please use &#39;project_id&#39; instead.
-     * 
-     */
-    @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'project_id' instead. */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
-    }
-    /**
-     * @return Unique identifier of the project.
-     * 
-     */
-    public Optional<String> projectId() {
-        return Optional.ofNullable(this.projectId);
     }
     /**
      * @return Key-value tags
@@ -222,9 +182,7 @@ public final class GetDefaultNotificationTemplateSetResult {
         private String notificationChannelType;
         private String notificationEntity;
         private @Nullable String org;
-        private @Nullable String orgId;
         private @Nullable String project;
-        private @Nullable String projectId;
         private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetDefaultNotificationTemplateSetResult defaults) {
@@ -239,9 +197,7 @@ public final class GetDefaultNotificationTemplateSetResult {
     	      this.notificationChannelType = defaults.notificationChannelType;
     	      this.notificationEntity = defaults.notificationEntity;
     	      this.org = defaults.org;
-    	      this.orgId = defaults.orgId;
     	      this.project = defaults.project;
-    	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
         }
 
@@ -325,21 +281,9 @@ public final class GetDefaultNotificationTemplateSetResult {
             return this;
         }
         @CustomType.Setter
-        public Builder orgId(@Nullable String orgId) {
-
-            this.orgId = orgId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder projectId(@Nullable String projectId) {
-
-            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
@@ -360,9 +304,7 @@ public final class GetDefaultNotificationTemplateSetResult {
             _resultValue.notificationChannelType = notificationChannelType;
             _resultValue.notificationEntity = notificationEntity;
             _resultValue.org = org;
-            _resultValue.orgId = orgId;
             _resultValue.project = project;
-            _resultValue.projectId = projectId;
             _resultValue.tags = tags;
             return _resultValue;
         }

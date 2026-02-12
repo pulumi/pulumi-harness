@@ -167,6 +167,7 @@
         "platform/getDbInstance.ts",
         "platform/getDbSchema.ts",
         "platform/getDefaultNotificationTemplateSet.ts",
+        "platform/getDelegateList.ts",
         "platform/getDelegatetoken.ts",
         "platform/getDockerConnector.ts",
         "platform/getDynatraceConnector.ts",

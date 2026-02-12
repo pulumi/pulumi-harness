@@ -5089,7 +5089,7 @@ export namespace platform {
 
     export interface GetHarRegistryConfig {
         /**
-         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
          */
         authType?: string;
         /**
@@ -5116,7 +5116,7 @@ export namespace platform {
 
     export interface GetHarRegistryConfigArgs {
         /**
-         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
          */
         authType?: pulumi.Input<string>;
         /**
@@ -34033,7 +34033,7 @@ export namespace platform {
 
     export interface HarRegistryConfig {
         /**
-         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
          */
         authType?: pulumi.Input<string>;
         /**
