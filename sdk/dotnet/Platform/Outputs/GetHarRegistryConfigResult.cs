@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetHarRegistryConfigResult
     {
         /// <summary>
-        /// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+        /// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
         /// </summary>
         public readonly string? AuthType;
         /// <summary>

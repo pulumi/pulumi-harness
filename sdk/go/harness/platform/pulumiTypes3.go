@@ -5615,7 +5615,7 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyRetryBackoff
 }
 
 type HarRegistryConfig struct {
-	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
 	AuthType *string `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths []HarRegistryConfigAuth `pulumi:"auths"`
@@ -5641,7 +5641,7 @@ type HarRegistryConfigInput interface {
 }
 
 type HarRegistryConfigArgs struct {
-	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
 	AuthType pulumi.StringPtrInput `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths HarRegistryConfigAuthArrayInput `pulumi:"auths"`
@@ -5706,7 +5706,7 @@ func (o HarRegistryConfigOutput) ToHarRegistryConfigOutputWithContext(ctx contex
 	return o
 }
 
-// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
 func (o HarRegistryConfigOutput) AuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HarRegistryConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
 }
@@ -31200,6 +31200,157 @@ func (o GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVa
 	}).(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput)
 }
 
+type GetDelegateListDelegate struct {
+	// Auto upgrade setting.
+	AutoUpgrade string `pulumi:"autoUpgrade"`
+	// Whether the delegate is connected.
+	Connected bool `pulumi:"connected"`
+	// Delegate description.
+	Description string `pulumi:"description"`
+	// Whether this is a legacy delegate.
+	Legacy bool `pulumi:"legacy"`
+	// Delegate name.
+	Name string `pulumi:"name"`
+	// Delegate tags.
+	Tags []string `pulumi:"tags"`
+	// Delegate type (e.g., HELM_DELEGATE).
+	Type string `pulumi:"type"`
+}
+
+// GetDelegateListDelegateInput is an input type that accepts GetDelegateListDelegateArgs and GetDelegateListDelegateOutput values.
+// You can construct a concrete instance of `GetDelegateListDelegateInput` via:
+//
+//	GetDelegateListDelegateArgs{...}
+type GetDelegateListDelegateInput interface {
+	pulumi.Input
+
+	ToGetDelegateListDelegateOutput() GetDelegateListDelegateOutput
+	ToGetDelegateListDelegateOutputWithContext(context.Context) GetDelegateListDelegateOutput
+}
+
+type GetDelegateListDelegateArgs struct {
+	// Auto upgrade setting.
+	AutoUpgrade pulumi.StringInput `pulumi:"autoUpgrade"`
+	// Whether the delegate is connected.
+	Connected pulumi.BoolInput `pulumi:"connected"`
+	// Delegate description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Whether this is a legacy delegate.
+	Legacy pulumi.BoolInput `pulumi:"legacy"`
+	// Delegate name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Delegate tags.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Delegate type (e.g., HELM_DELEGATE).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDelegateListDelegateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDelegateListDelegate)(nil)).Elem()
+}
+
+func (i GetDelegateListDelegateArgs) ToGetDelegateListDelegateOutput() GetDelegateListDelegateOutput {
+	return i.ToGetDelegateListDelegateOutputWithContext(context.Background())
+}
+
+func (i GetDelegateListDelegateArgs) ToGetDelegateListDelegateOutputWithContext(ctx context.Context) GetDelegateListDelegateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDelegateListDelegateOutput)
+}
+
+// GetDelegateListDelegateArrayInput is an input type that accepts GetDelegateListDelegateArray and GetDelegateListDelegateArrayOutput values.
+// You can construct a concrete instance of `GetDelegateListDelegateArrayInput` via:
+//
+//	GetDelegateListDelegateArray{ GetDelegateListDelegateArgs{...} }
+type GetDelegateListDelegateArrayInput interface {
+	pulumi.Input
+
+	ToGetDelegateListDelegateArrayOutput() GetDelegateListDelegateArrayOutput
+	ToGetDelegateListDelegateArrayOutputWithContext(context.Context) GetDelegateListDelegateArrayOutput
+}
+
+type GetDelegateListDelegateArray []GetDelegateListDelegateInput
+
+func (GetDelegateListDelegateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDelegateListDelegate)(nil)).Elem()
+}
+
+func (i GetDelegateListDelegateArray) ToGetDelegateListDelegateArrayOutput() GetDelegateListDelegateArrayOutput {
+	return i.ToGetDelegateListDelegateArrayOutputWithContext(context.Background())
+}
+
+func (i GetDelegateListDelegateArray) ToGetDelegateListDelegateArrayOutputWithContext(ctx context.Context) GetDelegateListDelegateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDelegateListDelegateArrayOutput)
+}
+
+type GetDelegateListDelegateOutput struct{ *pulumi.OutputState }
+
+func (GetDelegateListDelegateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDelegateListDelegate)(nil)).Elem()
+}
+
+func (o GetDelegateListDelegateOutput) ToGetDelegateListDelegateOutput() GetDelegateListDelegateOutput {
+	return o
+}
+
+func (o GetDelegateListDelegateOutput) ToGetDelegateListDelegateOutputWithContext(ctx context.Context) GetDelegateListDelegateOutput {
+	return o
+}
+
+// Auto upgrade setting.
+func (o GetDelegateListDelegateOutput) AutoUpgrade() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDelegateListDelegate) string { return v.AutoUpgrade }).(pulumi.StringOutput)
+}
+
+// Whether the delegate is connected.
+func (o GetDelegateListDelegateOutput) Connected() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDelegateListDelegate) bool { return v.Connected }).(pulumi.BoolOutput)
+}
+
+// Delegate description.
+func (o GetDelegateListDelegateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDelegateListDelegate) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether this is a legacy delegate.
+func (o GetDelegateListDelegateOutput) Legacy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDelegateListDelegate) bool { return v.Legacy }).(pulumi.BoolOutput)
+}
+
+// Delegate name.
+func (o GetDelegateListDelegateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDelegateListDelegate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Delegate tags.
+func (o GetDelegateListDelegateOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDelegateListDelegate) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Delegate type (e.g., HELM_DELEGATE).
+func (o GetDelegateListDelegateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDelegateListDelegate) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDelegateListDelegateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDelegateListDelegateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDelegateListDelegate)(nil)).Elem()
+}
+
+func (o GetDelegateListDelegateArrayOutput) ToGetDelegateListDelegateArrayOutput() GetDelegateListDelegateArrayOutput {
+	return o
+}
+
+func (o GetDelegateListDelegateArrayOutput) ToGetDelegateListDelegateArrayOutputWithContext(ctx context.Context) GetDelegateListDelegateArrayOutput {
+	return o
+}
+
+func (o GetDelegateListDelegateArrayOutput) Index(i pulumi.IntInput) GetDelegateListDelegateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDelegateListDelegate {
+		return vs[0].([]GetDelegateListDelegate)[vs[1].(int)]
+	}).(GetDelegateListDelegateOutput)
+}
+
 type GetDockerConnectorCredential struct {
 	// Execute on delegate or not.
 	ExecuteOnDelegate bool `pulumi:"executeOnDelegate"`
@@ -40047,7 +40198,7 @@ func (o GetGitopsRepositoryRepoArrayOutput) Index(i pulumi.IntInput) GetGitopsRe
 }
 
 type GetHarRegistryConfig struct {
-	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
 	AuthType *string `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths []GetHarRegistryConfigAuth `pulumi:"auths"`
@@ -40073,7 +40224,7 @@ type GetHarRegistryConfigInput interface {
 }
 
 type GetHarRegistryConfigArgs struct {
-	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
 	AuthType pulumi.StringPtrInput `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths GetHarRegistryConfigAuthArrayInput `pulumi:"auths"`
@@ -40138,7 +40289,7 @@ func (o GetHarRegistryConfigOutput) ToGetHarRegistryConfigOutputWithContext(ctx 
 	return o
 }
 
-// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
 func (o GetHarRegistryConfigOutput) AuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHarRegistryConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
 }
@@ -52662,6 +52813,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateInput)(nil)).Elem(), GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableInput)(nil)).Elem(), GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayInput)(nil)).Elem(), GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDelegateListDelegateInput)(nil)).Elem(), GetDelegateListDelegateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDelegateListDelegateArrayInput)(nil)).Elem(), GetDelegateListDelegateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerConnectorCredentialInput)(nil)).Elem(), GetDockerConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerConnectorCredentialArrayInput)(nil)).Elem(), GetDockerConnectorCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticsearchConnectorApiTokenInput)(nil)).Elem(), GetElasticsearchConnectorApiTokenArgs{})
@@ -53391,6 +53544,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateOutput{})
 	pulumi.RegisterOutputType(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableOutput{})
 	pulumi.RegisterOutputType(GetDefaultNotificationTemplateSetEventTemplateConfigurationSetTemplateVariableArrayOutput{})
+	pulumi.RegisterOutputType(GetDelegateListDelegateOutput{})
+	pulumi.RegisterOutputType(GetDelegateListDelegateArrayOutput{})
 	pulumi.RegisterOutputType(GetDockerConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetDockerConnectorCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetElasticsearchConnectorApiTokenOutput{})

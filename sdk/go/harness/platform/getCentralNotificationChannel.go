@@ -38,18 +38,10 @@ type LookupCentralNotificationChannelArgs struct {
 	Name *string `pulumi:"name"`
 	// Type of notification channel. One of: EMAIL, SLACK, PAGERDUTY, MSTeams, WEBHOOK, DATADOG.
 	NotificationChannelType *string `pulumi:"notificationChannelType"`
-	// Unique identifier of the organization. Use `orgId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+	// Identifier of the organization the notification channel is scoped to.
 	Org *string `pulumi:"org"`
-	// Unique identifier of the organization.
-	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project. Use `projectId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+	// Identifier of the project the notification channel is scoped to.
 	Project *string `pulumi:"project"`
-	// Unique identifier of the project.
-	ProjectId *string `pulumi:"projectId"`
 	// Status of the notification channel. Possible values are ENABLED or DISABLED.
 	Status *string `pulumi:"status"`
 }
@@ -72,18 +64,10 @@ type LookupCentralNotificationChannelResult struct {
 	Name *string `pulumi:"name"`
 	// Type of notification channel. One of: EMAIL, SLACK, PAGERDUTY, MSTeams, WEBHOOK, DATADOG.
 	NotificationChannelType *string `pulumi:"notificationChannelType"`
-	// Unique identifier of the organization. Use `orgId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+	// Identifier of the organization the notification channel is scoped to.
 	Org *string `pulumi:"org"`
-	// Unique identifier of the organization.
-	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project. Use `projectId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+	// Identifier of the project the notification channel is scoped to.
 	Project *string `pulumi:"project"`
-	// Unique identifier of the project.
-	ProjectId *string `pulumi:"projectId"`
 	// Status of the notification channel. Possible values are ENABLED or DISABLED.
 	Status *string `pulumi:"status"`
 }
@@ -113,18 +97,10 @@ type LookupCentralNotificationChannelOutputArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Type of notification channel. One of: EMAIL, SLACK, PAGERDUTY, MSTeams, WEBHOOK, DATADOG.
 	NotificationChannelType pulumi.StringPtrInput `pulumi:"notificationChannelType"`
-	// Unique identifier of the organization. Use `orgId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+	// Identifier of the organization the notification channel is scoped to.
 	Org pulumi.StringPtrInput `pulumi:"org"`
-	// Unique identifier of the organization.
-	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the project. Use `projectId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+	// Identifier of the project the notification channel is scoped to.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	// Unique identifier of the project.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Status of the notification channel. Possible values are ENABLED or DISABLED.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
@@ -190,28 +166,14 @@ func (o LookupCentralNotificationChannelResultOutput) NotificationChannelType() 
 	return o.ApplyT(func(v LookupCentralNotificationChannelResult) *string { return v.NotificationChannelType }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the organization. Use `orgId` instead.
-//
-// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+// Identifier of the organization the notification channel is scoped to.
 func (o LookupCentralNotificationChannelResultOutput) Org() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCentralNotificationChannelResult) *string { return v.Org }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the organization.
-func (o LookupCentralNotificationChannelResultOutput) OrgId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCentralNotificationChannelResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier of the project. Use `projectId` instead.
-//
-// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+// Identifier of the project the notification channel is scoped to.
 func (o LookupCentralNotificationChannelResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCentralNotificationChannelResult) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier of the project.
-func (o LookupCentralNotificationChannelResultOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCentralNotificationChannelResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 // Status of the notification channel. Possible values are ENABLED or DISABLED.

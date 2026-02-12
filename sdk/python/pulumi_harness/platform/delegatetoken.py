@@ -25,7 +25,6 @@ class DelegatetokenArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  revoke_after: Optional[pulumi.Input[_builtins.int]] = None,
                  token_status: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
@@ -52,8 +51,6 @@ class DelegatetokenArgs:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
-        if purge_on_delete is not None:
-            pulumi.set(__self__, "purge_on_delete", purge_on_delete)
         if revoke_after is not None:
             pulumi.set(__self__, "revoke_after", revoke_after)
         if token_status is not None:
@@ -134,15 +131,6 @@ class DelegatetokenArgs:
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="purgeOnDelete")
-    def purge_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        return pulumi.get(self, "purge_on_delete")
-
-    @purge_on_delete.setter
-    def purge_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "purge_on_delete", value)
-
-    @_builtins.property
     @pulumi.getter(name="revokeAfter")
     def revoke_after(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -188,7 +176,6 @@ class _DelegatetokenState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  revoke_after: Optional[pulumi.Input[_builtins.int]] = None,
                  token_status: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
@@ -216,8 +203,6 @@ class _DelegatetokenState:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
-        if purge_on_delete is not None:
-            pulumi.set(__self__, "purge_on_delete", purge_on_delete)
         if revoke_after is not None:
             pulumi.set(__self__, "revoke_after", revoke_after)
         if token_status is not None:
@@ -298,15 +283,6 @@ class _DelegatetokenState:
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="purgeOnDelete")
-    def purge_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        return pulumi.get(self, "purge_on_delete")
-
-    @purge_on_delete.setter
-    def purge_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "purge_on_delete", value)
-
-    @_builtins.property
     @pulumi.getter(name="revokeAfter")
     def revoke_after(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -355,7 +331,6 @@ class Delegatetoken(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  revoke_after: Optional[pulumi.Input[_builtins.int]] = None,
                  token_status: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None,
@@ -463,7 +438,6 @@ class Delegatetoken(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  revoke_after: Optional[pulumi.Input[_builtins.int]] = None,
                  token_status: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None,
@@ -484,7 +458,6 @@ class Delegatetoken(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
-            __props__.__dict__["purge_on_delete"] = purge_on_delete
             __props__.__dict__["revoke_after"] = revoke_after
             __props__.__dict__["token_status"] = token_status
             __props__.__dict__["value"] = value
@@ -504,7 +477,6 @@ class Delegatetoken(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
             revoke_after: Optional[pulumi.Input[_builtins.int]] = None,
             token_status: Optional[pulumi.Input[_builtins.str]] = None,
             value: Optional[pulumi.Input[_builtins.str]] = None) -> 'Delegatetoken':
@@ -535,7 +507,6 @@ class Delegatetoken(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
-        __props__.__dict__["purge_on_delete"] = purge_on_delete
         __props__.__dict__["revoke_after"] = revoke_after
         __props__.__dict__["token_status"] = token_status
         __props__.__dict__["value"] = value
@@ -588,11 +559,6 @@ class Delegatetoken(pulumi.CustomResource):
         Project Identifier for the Entity
         """
         return pulumi.get(self, "project_id")
-
-    @_builtins.property
-    @pulumi.getter(name="purgeOnDelete")
-    def purge_on_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        return pulumi.get(self, "purge_on_delete")
 
     @_builtins.property
     @pulumi.getter(name="revokeAfter")

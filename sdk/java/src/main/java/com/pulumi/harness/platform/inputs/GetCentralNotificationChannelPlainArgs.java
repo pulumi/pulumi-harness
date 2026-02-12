@@ -124,79 +124,33 @@ public final class GetCentralNotificationChannelPlainArgs extends com.pulumi.res
     }
 
     /**
-     * Unique identifier of the organization. Use `orgId` instead.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. Please use &#39;org_id&#39; instead.
+     * Identifier of the organization the notification channel is scoped to.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'org_id' instead. */
     @Import(name="org")
     private @Nullable String org;
 
     /**
-     * @return Unique identifier of the organization. Use `orgId` instead.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. Please use &#39;org_id&#39; instead.
+     * @return Identifier of the organization the notification channel is scoped to.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'org_id' instead. */
     public Optional<String> org() {
         return Optional.ofNullable(this.org);
     }
 
     /**
-     * Unique identifier of the organization.
+     * Identifier of the project the notification channel is scoped to.
      * 
      */
-    @Import(name="orgId")
-    private @Nullable String orgId;
-
-    /**
-     * @return Unique identifier of the organization.
-     * 
-     */
-    public Optional<String> orgId() {
-        return Optional.ofNullable(this.orgId);
-    }
-
-    /**
-     * Unique identifier of the project. Use `projectId` instead.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. Please use &#39;project_id&#39; instead.
-     * 
-     */
-    @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'project_id' instead. */
     @Import(name="project")
     private @Nullable String project;
 
     /**
-     * @return Unique identifier of the project. Use `projectId` instead.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. Please use &#39;project_id&#39; instead.
+     * @return Identifier of the project the notification channel is scoped to.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'project_id' instead. */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
-    }
-
-    /**
-     * Unique identifier of the project.
-     * 
-     */
-    @Import(name="projectId")
-    private @Nullable String projectId;
-
-    /**
-     * @return Unique identifier of the project.
-     * 
-     */
-    public Optional<String> projectId() {
-        return Optional.ofNullable(this.projectId);
     }
 
     /**
@@ -225,9 +179,7 @@ public final class GetCentralNotificationChannelPlainArgs extends com.pulumi.res
         this.name = $.name;
         this.notificationChannelType = $.notificationChannelType;
         this.org = $.org;
-        this.orgId = $.orgId;
         this.project = $.project;
-        this.projectId = $.projectId;
         this.status = $.status;
     }
 
@@ -337,54 +289,24 @@ public final class GetCentralNotificationChannelPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param org Unique identifier of the organization. Use `orgId` instead.
+         * @param org Identifier of the organization the notification channel is scoped to.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release. Please use &#39;org_id&#39; instead.
-         * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'org_id' instead. */
         public Builder org(@Nullable String org) {
             $.org = org;
             return this;
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param project Identifier of the project the notification channel is scoped to.
          * 
          * @return builder
          * 
          */
-        public Builder orgId(@Nullable String orgId) {
-            $.orgId = orgId;
-            return this;
-        }
-
-        /**
-         * @param project Unique identifier of the project. Use `projectId` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release. Please use &#39;project_id&#39; instead.
-         * 
-         */
-        @Deprecated /* This field is deprecated and will be removed in a future release. Please use 'project_id' instead. */
         public Builder project(@Nullable String project) {
             $.project = project;
-            return this;
-        }
-
-        /**
-         * @param projectId Unique identifier of the project.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder projectId(@Nullable String projectId) {
-            $.projectId = projectId;
             return this;
         }
 

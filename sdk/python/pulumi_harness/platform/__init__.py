@@ -79,6 +79,7 @@ from .get_datadog_connector import *
 from .get_db_instance import *
 from .get_db_schema import *
 from .get_default_notification_template_set import *
+from .get_delegate_list import *
 from .get_delegatetoken import *
 from .get_docker_connector import *
 from .get_dynatrace_connector import *

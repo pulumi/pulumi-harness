@@ -53,26 +53,8 @@ export class CentralNotificationChannel extends pulumi.CustomResource {
     declare public /*out*/ readonly lastModified: pulumi.Output<number>;
     declare public readonly name: pulumi.Output<string>;
     declare public readonly notificationChannelType: pulumi.Output<string>;
-    /**
-     * Unique identifier of the organization. Use `orgId` instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
-     */
     declare public readonly org: pulumi.Output<string | undefined>;
-    /**
-     * Unique identifier of the organization.
-     */
-    declare public readonly orgId: pulumi.Output<string | undefined>;
-    /**
-     * Unique identifier of the project. Use `projectId` instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
-     */
     declare public readonly project: pulumi.Output<string | undefined>;
-    /**
-     * Unique identifier of the project.
-     */
-    declare public readonly projectId: pulumi.Output<string | undefined>;
     declare public readonly status: pulumi.Output<string | undefined>;
 
     /**
@@ -96,9 +78,7 @@ export class CentralNotificationChannel extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["notificationChannelType"] = state?.notificationChannelType;
             resourceInputs["org"] = state?.org;
-            resourceInputs["orgId"] = state?.orgId;
             resourceInputs["project"] = state?.project;
-            resourceInputs["projectId"] = state?.projectId;
             resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as CentralNotificationChannelArgs | undefined;
@@ -116,9 +96,7 @@ export class CentralNotificationChannel extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["notificationChannelType"] = args?.notificationChannelType;
             resourceInputs["org"] = args?.org;
-            resourceInputs["orgId"] = args?.orgId;
             resourceInputs["project"] = args?.project;
-            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["status"] = args?.status;
             resourceInputs["account"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
@@ -149,26 +127,8 @@ export interface CentralNotificationChannelState {
     lastModified?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     notificationChannelType?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the organization. Use `orgId` instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
-     */
     org?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the organization.
-     */
-    orgId?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the project. Use `projectId` instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
-     */
     project?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the project.
-     */
-    projectId?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
 }
 
@@ -180,25 +140,7 @@ export interface CentralNotificationChannelArgs {
     identifier: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     notificationChannelType: pulumi.Input<string>;
-    /**
-     * Unique identifier of the organization. Use `orgId` instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
-     */
     org?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the organization.
-     */
-    orgId?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the project. Use `projectId` instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
-     */
     project?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the project.
-     */
-    projectId?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
 }

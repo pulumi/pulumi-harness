@@ -32,18 +32,6 @@ type DefaultNotificationTemplateSet struct {
 	NotificationChannelType pulumi.StringOutput `pulumi:"notificationChannelType"`
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
 	NotificationEntity pulumi.StringOutput `pulumi:"notificationEntity"`
-	// Unique identifier of the organization. Use `orgId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
-	Org pulumi.StringPtrOutput `pulumi:"org"`
-	// Unique identifier of the organization.
-	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the project. Use `projectId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
-	Project pulumi.StringPtrOutput `pulumi:"project"`
-	// Unique identifier of the project.
-	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Key-value tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
@@ -106,18 +94,6 @@ type defaultNotificationTemplateSetState struct {
 	NotificationChannelType *string `pulumi:"notificationChannelType"`
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
 	NotificationEntity *string `pulumi:"notificationEntity"`
-	// Unique identifier of the organization. Use `orgId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
-	Org *string `pulumi:"org"`
-	// Unique identifier of the organization.
-	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project. Use `projectId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
-	Project *string `pulumi:"project"`
-	// Unique identifier of the project.
-	ProjectId *string `pulumi:"projectId"`
 	// Key-value tags
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -139,18 +115,6 @@ type DefaultNotificationTemplateSetState struct {
 	NotificationChannelType pulumi.StringPtrInput
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
 	NotificationEntity pulumi.StringPtrInput
-	// Unique identifier of the organization. Use `orgId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
-	Org pulumi.StringPtrInput
-	// Unique identifier of the organization.
-	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project. Use `projectId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
-	Project pulumi.StringPtrInput
-	// Unique identifier of the project.
-	ProjectId pulumi.StringPtrInput
 	// Key-value tags
 	Tags pulumi.StringMapInput
 }
@@ -172,18 +136,6 @@ type defaultNotificationTemplateSetArgs struct {
 	NotificationChannelType string `pulumi:"notificationChannelType"`
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
 	NotificationEntity string `pulumi:"notificationEntity"`
-	// Unique identifier of the organization. Use `orgId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
-	Org *string `pulumi:"org"`
-	// Unique identifier of the organization.
-	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project. Use `projectId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
-	Project *string `pulumi:"project"`
-	// Unique identifier of the project.
-	ProjectId *string `pulumi:"projectId"`
 	// Key-value tags
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -202,18 +154,6 @@ type DefaultNotificationTemplateSetArgs struct {
 	NotificationChannelType pulumi.StringInput
 	// Type of the entity (e.g. PIPELINE, SERVICE, etc.)
 	NotificationEntity pulumi.StringInput
-	// Unique identifier of the organization. Use `orgId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
-	Org pulumi.StringPtrInput
-	// Unique identifier of the organization.
-	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project. Use `projectId` instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
-	Project pulumi.StringPtrInput
-	// Unique identifier of the project.
-	ProjectId pulumi.StringPtrInput
 	// Key-value tags
 	Tags pulumi.StringMapInput
 }
@@ -345,30 +285,6 @@ func (o DefaultNotificationTemplateSetOutput) NotificationChannelType() pulumi.S
 // Type of the entity (e.g. PIPELINE, SERVICE, etc.)
 func (o DefaultNotificationTemplateSetOutput) NotificationEntity() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultNotificationTemplateSet) pulumi.StringOutput { return v.NotificationEntity }).(pulumi.StringOutput)
-}
-
-// Unique identifier of the organization. Use `orgId` instead.
-//
-// Deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
-func (o DefaultNotificationTemplateSetOutput) Org() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefaultNotificationTemplateSet) pulumi.StringPtrOutput { return v.Org }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier of the organization.
-func (o DefaultNotificationTemplateSetOutput) OrgId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefaultNotificationTemplateSet) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier of the project. Use `projectId` instead.
-//
-// Deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
-func (o DefaultNotificationTemplateSetOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefaultNotificationTemplateSet) pulumi.StringPtrOutput { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier of the project.
-func (o DefaultNotificationTemplateSetOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefaultNotificationTemplateSet) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 // Key-value tags

@@ -64,30 +64,6 @@ namespace Pulumi.Harness.Platform
         public Output<string> NotificationEntity { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the organization. Use `OrgId` instead.
-        /// </summary>
-        [Output("org")]
-        public Output<string?> Org { get; private set; } = null!;
-
-        /// <summary>
-        /// Unique identifier of the organization.
-        /// </summary>
-        [Output("orgId")]
-        public Output<string?> OrgId { get; private set; } = null!;
-
-        /// <summary>
-        /// Unique identifier of the project. Use `ProjectId` instead.
-        /// </summary>
-        [Output("project")]
-        public Output<string?> Project { get; private set; } = null!;
-
-        /// <summary>
-        /// Unique identifier of the project.
-        /// </summary>
-        [Output("projectId")]
-        public Output<string?> ProjectId { get; private set; } = null!;
-
-        /// <summary>
         /// Key-value tags
         /// </summary>
         [Output("tags")]
@@ -182,30 +158,6 @@ namespace Pulumi.Harness.Platform
         [Input("notificationEntity", required: true)]
         public Input<string> NotificationEntity { get; set; } = null!;
 
-        /// <summary>
-        /// Unique identifier of the organization. Use `OrgId` instead.
-        /// </summary>
-        [Input("org")]
-        public Input<string>? Org { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the organization.
-        /// </summary>
-        [Input("orgId")]
-        public Input<string>? OrgId { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the project. Use `ProjectId` instead.
-        /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the project.
-        /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
-
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -279,30 +231,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("notificationEntity")]
         public Input<string>? NotificationEntity { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the organization. Use `OrgId` instead.
-        /// </summary>
-        [Input("org")]
-        public Input<string>? Org { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the organization.
-        /// </summary>
-        [Input("orgId")]
-        public Input<string>? OrgId { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the project. Use `ProjectId` instead.
-        /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the project.
-        /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

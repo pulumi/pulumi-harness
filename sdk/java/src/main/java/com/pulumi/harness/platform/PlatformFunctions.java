@@ -65,6 +65,8 @@ import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
 import com.pulumi.harness.platform.inputs.GetDbSchemaPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDefaultNotificationTemplateSetArgs;
 import com.pulumi.harness.platform.inputs.GetDefaultNotificationTemplateSetPlainArgs;
+import com.pulumi.harness.platform.inputs.GetDelegateListArgs;
+import com.pulumi.harness.platform.inputs.GetDelegateListPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
 import com.pulumi.harness.platform.inputs.GetDelegatetokenPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDockerConnectorArgs;
@@ -288,6 +290,7 @@ import com.pulumi.harness.platform.outputs.GetDatadogConnectorResult;
 import com.pulumi.harness.platform.outputs.GetDbInstanceResult;
 import com.pulumi.harness.platform.outputs.GetDbSchemaResult;
 import com.pulumi.harness.platform.outputs.GetDefaultNotificationTemplateSetResult;
+import com.pulumi.harness.platform.outputs.GetDelegateListResult;
 import com.pulumi.harness.platform.outputs.GetDelegatetokenResult;
 import com.pulumi.harness.platform.outputs.GetDockerConnectorResult;
 import com.pulumi.harness.platform.outputs.GetDynatraceConnectorResult;
@@ -4687,6 +4690,311 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetDefaultNotificationTemplateSetResult> getDefaultNotificationTemplateSetPlain(GetDefaultNotificationTemplateSetPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getDefaultNotificationTemplateSet:getDefaultNotificationTemplateSet", TypeShape.of(GetDefaultNotificationTemplateSetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a list of Harness delegates.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Get all delegates in an account
+     *         final var all = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .fetchAll(true)
+     *             .build());
+     * 
+     *         // Get only connected delegates with specific tags
+     *         final var connectedWithTags = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .orgId("your_org_id")
+     *             .projectId("your_project_id")
+     *             .status("CONNECTED")
+     *             .delegateTags(            
+     *                 "production",
+     *                 "kubernetes")
+     *             .build());
+     * 
+     *         // Get delegates by name pattern and group
+     *         final var specificGroup = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .delegateName("prod-delegate")
+     *             .delegateGroupIdentifier("production-group")
+     *             .versionStatus("ACTIVE")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDelegateListResult> getDelegateList(GetDelegateListArgs args) {
+        return getDelegateList(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a list of Harness delegates.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Get all delegates in an account
+     *         final var all = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .fetchAll(true)
+     *             .build());
+     * 
+     *         // Get only connected delegates with specific tags
+     *         final var connectedWithTags = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .orgId("your_org_id")
+     *             .projectId("your_project_id")
+     *             .status("CONNECTED")
+     *             .delegateTags(            
+     *                 "production",
+     *                 "kubernetes")
+     *             .build());
+     * 
+     *         // Get delegates by name pattern and group
+     *         final var specificGroup = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .delegateName("prod-delegate")
+     *             .delegateGroupIdentifier("production-group")
+     *             .versionStatus("ACTIVE")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDelegateListResult> getDelegateListPlain(GetDelegateListPlainArgs args) {
+        return getDelegateListPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a list of Harness delegates.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Get all delegates in an account
+     *         final var all = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .fetchAll(true)
+     *             .build());
+     * 
+     *         // Get only connected delegates with specific tags
+     *         final var connectedWithTags = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .orgId("your_org_id")
+     *             .projectId("your_project_id")
+     *             .status("CONNECTED")
+     *             .delegateTags(            
+     *                 "production",
+     *                 "kubernetes")
+     *             .build());
+     * 
+     *         // Get delegates by name pattern and group
+     *         final var specificGroup = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .delegateName("prod-delegate")
+     *             .delegateGroupIdentifier("production-group")
+     *             .versionStatus("ACTIVE")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDelegateListResult> getDelegateList(GetDelegateListArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDelegateList:getDelegateList", TypeShape.of(GetDelegateListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a list of Harness delegates.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Get all delegates in an account
+     *         final var all = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .fetchAll(true)
+     *             .build());
+     * 
+     *         // Get only connected delegates with specific tags
+     *         final var connectedWithTags = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .orgId("your_org_id")
+     *             .projectId("your_project_id")
+     *             .status("CONNECTED")
+     *             .delegateTags(            
+     *                 "production",
+     *                 "kubernetes")
+     *             .build());
+     * 
+     *         // Get delegates by name pattern and group
+     *         final var specificGroup = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .delegateName("prod-delegate")
+     *             .delegateGroupIdentifier("production-group")
+     *             .versionStatus("ACTIVE")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDelegateListResult> getDelegateList(GetDelegateListArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDelegateList:getDelegateList", TypeShape.of(GetDelegateListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a list of Harness delegates.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Get all delegates in an account
+     *         final var all = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .fetchAll(true)
+     *             .build());
+     * 
+     *         // Get only connected delegates with specific tags
+     *         final var connectedWithTags = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .orgId("your_org_id")
+     *             .projectId("your_project_id")
+     *             .status("CONNECTED")
+     *             .delegateTags(            
+     *                 "production",
+     *                 "kubernetes")
+     *             .build());
+     * 
+     *         // Get delegates by name pattern and group
+     *         final var specificGroup = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
+     *             .accountId("your_account_id")
+     *             .delegateName("prod-delegate")
+     *             .delegateGroupIdentifier("production-group")
+     *             .versionStatus("ACTIVE")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDelegateListResult> getDelegateListPlain(GetDelegateListPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getDelegateList:getDelegateList", TypeShape.of(GetDelegateListResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness delegate Token.

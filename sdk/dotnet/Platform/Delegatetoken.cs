@@ -97,9 +97,6 @@ namespace Pulumi.Harness.Platform
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
-        [Output("purgeOnDelete")]
-        public Output<bool?> PurgeOnDelete { get; private set; } = null!;
-
         /// <summary>
         /// Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
         /// </summary>
@@ -207,9 +204,6 @@ namespace Pulumi.Harness.Platform
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
-        [Input("purgeOnDelete")]
-        public Input<bool>? PurgeOnDelete { get; set; }
-
         /// <summary>
         /// Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
         /// </summary>
@@ -277,9 +271,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
-
-        [Input("purgeOnDelete")]
-        public Input<bool>? PurgeOnDelete { get; set; }
 
         /// <summary>
         /// Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.

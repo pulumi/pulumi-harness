@@ -27,10 +27,6 @@ class DefaultNotificationTemplateSetArgs:
                  notification_entity: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DefaultNotificationTemplateSet resource.
@@ -40,10 +36,6 @@ class DefaultNotificationTemplateSetArgs:
         :param pulumi.Input[_builtins.str] notification_entity: Type of the entity (e.g. PIPELINE, SERVICE, etc.)
         :param pulumi.Input[_builtins.str] description: Description for Default Notification Template Set
         :param pulumi.Input[_builtins.str] name: Name of Default Notification Template Set
-        :param pulumi.Input[_builtins.str] org: Unique identifier of the organization. Use `org_id` instead.
-        :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[_builtins.str] project: Unique identifier of the project. Use `project_id` instead.
-        :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Key-value tags
         """
         pulumi.set(__self__, "event_template_configuration_sets", event_template_configuration_sets)
@@ -54,20 +46,6 @@ class DefaultNotificationTemplateSetArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if org is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""", DeprecationWarning)
-            pulumi.log.warn("""org is deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""")
-        if org is not None:
-            pulumi.set(__self__, "org", org)
-        if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
-        if project is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""", DeprecationWarning)
-            pulumi.log.warn("""project is deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""")
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -145,56 +123,6 @@ class DefaultNotificationTemplateSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""")
-    def org(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Unique identifier of the organization. Use `org_id` instead.
-        """
-        return pulumi.get(self, "org")
-
-    @org.setter
-    def org(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "org", value)
-
-    @_builtins.property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Unique identifier of the organization.
-        """
-        return pulumi.get(self, "org_id")
-
-    @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "org_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""")
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Unique identifier of the project. Use `project_id` instead.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "project", value)
-
-    @_builtins.property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Unique identifier of the project.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "project_id", value)
-
-    @_builtins.property
-    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key-value tags
@@ -217,10 +145,6 @@ class _DefaultNotificationTemplateSetState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
                  notification_entity: Optional[pulumi.Input[_builtins.str]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DefaultNotificationTemplateSet resources.
@@ -232,10 +156,6 @@ class _DefaultNotificationTemplateSetState:
         :param pulumi.Input[_builtins.str] name: Name of Default Notification Template Set
         :param pulumi.Input[_builtins.str] notification_channel_type: Type of channel (e.g. SLACK, EMAIL, etc.)
         :param pulumi.Input[_builtins.str] notification_entity: Type of the entity (e.g. PIPELINE, SERVICE, etc.)
-        :param pulumi.Input[_builtins.str] org: Unique identifier of the organization. Use `org_id` instead.
-        :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[_builtins.str] project: Unique identifier of the project. Use `project_id` instead.
-        :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Key-value tags
         """
         if created is not None:
@@ -254,20 +174,6 @@ class _DefaultNotificationTemplateSetState:
             pulumi.set(__self__, "notification_channel_type", notification_channel_type)
         if notification_entity is not None:
             pulumi.set(__self__, "notification_entity", notification_entity)
-        if org is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""", DeprecationWarning)
-            pulumi.log.warn("""org is deprecated: This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""")
-        if org is not None:
-            pulumi.set(__self__, "org", org)
-        if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
-        if project is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""", DeprecationWarning)
-            pulumi.log.warn("""project is deprecated: This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""")
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -369,56 +275,6 @@ class _DefaultNotificationTemplateSetState:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""")
-    def org(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Unique identifier of the organization. Use `org_id` instead.
-        """
-        return pulumi.get(self, "org")
-
-    @org.setter
-    def org(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "org", value)
-
-    @_builtins.property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Unique identifier of the organization.
-        """
-        return pulumi.get(self, "org_id")
-
-    @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "org_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""")
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Unique identifier of the project. Use `project_id` instead.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "project", value)
-
-    @_builtins.property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Unique identifier of the project.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "project_id", value)
-
-    @_builtins.property
-    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key-value tags
@@ -442,10 +298,6 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
                  notification_entity: Optional[pulumi.Input[_builtins.str]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -459,10 +311,6 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of Default Notification Template Set
         :param pulumi.Input[_builtins.str] notification_channel_type: Type of channel (e.g. SLACK, EMAIL, etc.)
         :param pulumi.Input[_builtins.str] notification_entity: Type of the entity (e.g. PIPELINE, SERVICE, etc.)
-        :param pulumi.Input[_builtins.str] org: Unique identifier of the organization. Use `org_id` instead.
-        :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[_builtins.str] project: Unique identifier of the project. Use `project_id` instead.
-        :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Key-value tags
         """
         ...
@@ -495,10 +343,6 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
                  notification_entity: Optional[pulumi.Input[_builtins.str]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -523,10 +367,6 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
             if notification_entity is None and not opts.urn:
                 raise TypeError("Missing required property 'notification_entity'")
             __props__.__dict__["notification_entity"] = notification_entity
-            __props__.__dict__["org"] = org
-            __props__.__dict__["org_id"] = org_id
-            __props__.__dict__["project"] = project
-            __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["created"] = None
             __props__.__dict__["last_modified"] = None
@@ -548,10 +388,6 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
             notification_entity: Optional[pulumi.Input[_builtins.str]] = None,
-            org: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DefaultNotificationTemplateSet':
         """
         Get an existing DefaultNotificationTemplateSet resource's state with the given name, id, and optional extra
@@ -568,10 +404,6 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of Default Notification Template Set
         :param pulumi.Input[_builtins.str] notification_channel_type: Type of channel (e.g. SLACK, EMAIL, etc.)
         :param pulumi.Input[_builtins.str] notification_entity: Type of the entity (e.g. PIPELINE, SERVICE, etc.)
-        :param pulumi.Input[_builtins.str] org: Unique identifier of the organization. Use `org_id` instead.
-        :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[_builtins.str] project: Unique identifier of the project. Use `project_id` instead.
-        :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Key-value tags
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -586,10 +418,6 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["notification_channel_type"] = notification_channel_type
         __props__.__dict__["notification_entity"] = notification_entity
-        __props__.__dict__["org"] = org
-        __props__.__dict__["org_id"] = org_id
-        __props__.__dict__["project"] = project
-        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["tags"] = tags
         return DefaultNotificationTemplateSet(resource_name, opts=opts, __props__=__props__)
 
@@ -656,40 +484,6 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
         Type of the entity (e.g. PIPELINE, SERVICE, etc.)
         """
         return pulumi.get(self, "notification_entity")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'org_id' instead.""")
-    def org(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Unique identifier of the organization. Use `org_id` instead.
-        """
-        return pulumi.get(self, "org")
-
-    @_builtins.property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Unique identifier of the organization.
-        """
-        return pulumi.get(self, "org_id")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. Please use 'project_id' instead.""")
-    def project(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Unique identifier of the project. Use `project_id` instead.
-        """
-        return pulumi.get(self, "project")
-
-    @_builtins.property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Unique identifier of the project.
-        """
-        return pulumi.get(self, "project_id")
 
     @_builtins.property
     @pulumi.getter

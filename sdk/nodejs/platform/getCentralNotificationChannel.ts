@@ -20,9 +20,7 @@ export function getCentralNotificationChannel(args: GetCentralNotificationChanne
         "name": args.name,
         "notificationChannelType": args.notificationChannelType,
         "org": args.org,
-        "orgId": args.orgId,
         "project": args.project,
-        "projectId": args.projectId,
         "status": args.status,
     }, opts);
 }
@@ -60,25 +58,13 @@ export interface GetCentralNotificationChannelArgs {
      */
     notificationChannelType?: string;
     /**
-     * Unique identifier of the organization. Use `orgId` instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+     * Identifier of the organization the notification channel is scoped to.
      */
     org?: string;
     /**
-     * Unique identifier of the organization.
-     */
-    orgId?: string;
-    /**
-     * Unique identifier of the project. Use `projectId` instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+     * Identifier of the project the notification channel is scoped to.
      */
     project?: string;
-    /**
-     * Unique identifier of the project.
-     */
-    projectId?: string;
     /**
      * Status of the notification channel. Possible values are ENABLED or DISABLED.
      */
@@ -122,25 +108,13 @@ export interface GetCentralNotificationChannelResult {
      */
     readonly notificationChannelType?: string;
     /**
-     * Unique identifier of the organization. Use `orgId` instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+     * Identifier of the organization the notification channel is scoped to.
      */
     readonly org?: string;
     /**
-     * Unique identifier of the organization.
-     */
-    readonly orgId?: string;
-    /**
-     * Unique identifier of the project. Use `projectId` instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+     * Identifier of the project the notification channel is scoped to.
      */
     readonly project?: string;
-    /**
-     * Unique identifier of the project.
-     */
-    readonly projectId?: string;
     /**
      * Status of the notification channel. Possible values are ENABLED or DISABLED.
      */
@@ -160,9 +134,7 @@ export function getCentralNotificationChannelOutput(args: GetCentralNotification
         "name": args.name,
         "notificationChannelType": args.notificationChannelType,
         "org": args.org,
-        "orgId": args.orgId,
         "project": args.project,
-        "projectId": args.projectId,
         "status": args.status,
     }, opts);
 }
@@ -200,25 +172,13 @@ export interface GetCentralNotificationChannelOutputArgs {
      */
     notificationChannelType?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization. Use `orgId` instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. Please use 'org_id' instead.
+     * Identifier of the organization the notification channel is scoped to.
      */
     org?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
-     */
-    orgId?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the project. Use `projectId` instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. Please use 'project_id' instead.
+     * Identifier of the project the notification channel is scoped to.
      */
     project?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the project.
-     */
-    projectId?: pulumi.Input<string>;
     /**
      * Status of the notification channel. Possible values are ENABLED or DISABLED.
      */

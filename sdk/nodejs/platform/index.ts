@@ -370,6 +370,11 @@ export const getDefaultNotificationTemplateSet: typeof import("./getDefaultNotif
 export const getDefaultNotificationTemplateSetOutput: typeof import("./getDefaultNotificationTemplateSet").getDefaultNotificationTemplateSetOutput = null as any;
 utilities.lazyLoad(exports, ["getDefaultNotificationTemplateSet","getDefaultNotificationTemplateSetOutput"], () => require("./getDefaultNotificationTemplateSet"));
 
+export { GetDelegateListArgs, GetDelegateListResult, GetDelegateListOutputArgs } from "./getDelegateList";
+export const getDelegateList: typeof import("./getDelegateList").getDelegateList = null as any;
+export const getDelegateListOutput: typeof import("./getDelegateList").getDelegateListOutput = null as any;
+utilities.lazyLoad(exports, ["getDelegateList","getDelegateListOutput"], () => require("./getDelegateList"));
+
 export { GetDelegatetokenArgs, GetDelegatetokenResult, GetDelegatetokenOutputArgs } from "./getDelegatetoken";
 export const getDelegatetoken: typeof import("./getDelegatetoken").getDelegatetoken = null as any;
 export const getDelegatetokenOutput: typeof import("./getDelegatetoken").getDelegatetokenOutput = null as any;

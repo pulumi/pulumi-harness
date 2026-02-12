@@ -19,14 +19,14 @@ public final class HarRegistryConfigArgs extends com.pulumi.resources.ResourceAr
     public static final HarRegistryConfigArgs Empty = new HarRegistryConfigArgs();
 
     /**
-     * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+     * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
      * 
      */
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
     /**
-     * @return Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+     * @return Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
      * 
      */
     public Optional<Output<String>> authType() {
@@ -138,7 +138,7 @@ public final class HarRegistryConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param authType Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         * @param authType Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class HarRegistryConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param authType Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         * @param authType Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
          * 
          * @return builder
          * 

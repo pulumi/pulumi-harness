@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.DelegatetokenArgs;
 import com.pulumi.harness.platform.inputs.DelegatetokenState;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -164,12 +163,6 @@ public class Delegatetoken extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
-    }
-    @Export(name="purgeOnDelete", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> purgeOnDelete;
-
-    public Output<Optional<Boolean>> purgeOnDelete() {
-        return Codegen.optional(this.purgeOnDelete);
     }
     /**
      * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
