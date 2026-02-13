@@ -86,21 +86,6 @@ public final class GetAwsProxyArgs extends com.pulumi.resources.InvokeArgs {
         return this.deleteCloudResourcesOnDestroy;
     }
 
-    /**
-     * Hostname for the proxy
-     * 
-     */
-    @Import(name="hostName", required=true)
-    private Output<String> hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public Output<String> hostName() {
-        return this.hostName;
-    }
-
     @Import(name="keypair")
     private @Nullable Output<String> keypair;
 
@@ -154,21 +139,6 @@ public final class GetAwsProxyArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Route 53 hosted zone id
-     * 
-     */
-    @Import(name="route53HostedZoneId")
-    private @Nullable Output<String> route53HostedZoneId;
-
-    /**
-     * @return Route 53 hosted zone id
-     * 
-     */
-    public Optional<Output<String>> route53HostedZoneId() {
-        return Optional.ofNullable(this.route53HostedZoneId);
-    }
-
-    /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      * 
      */
@@ -206,12 +176,10 @@ public final class GetAwsProxyArgs extends com.pulumi.resources.InvokeArgs {
         this.certificates = $.certificates;
         this.cloudConnectorId = $.cloudConnectorId;
         this.deleteCloudResourcesOnDestroy = $.deleteCloudResourcesOnDestroy;
-        this.hostName = $.hostName;
         this.keypair = $.keypair;
         this.machineType = $.machineType;
         this.name = $.name;
         this.region = $.region;
-        this.route53HostedZoneId = $.route53HostedZoneId;
         this.securityGroups = $.securityGroups;
         this.vpc = $.vpc;
     }
@@ -327,27 +295,6 @@ public final class GetAwsProxyArgs extends com.pulumi.resources.InvokeArgs {
             return deleteCloudResourcesOnDestroy(Output.of(deleteCloudResourcesOnDestroy));
         }
 
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(Output<String> hostName) {
-            $.hostName = hostName;
-            return this;
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(String hostName) {
-            return hostName(Output.of(hostName));
-        }
-
         public Builder keypair(@Nullable Output<String> keypair) {
             $.keypair = keypair;
             return this;
@@ -421,27 +368,6 @@ public final class GetAwsProxyArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param route53HostedZoneId Route 53 hosted zone id
-         * 
-         * @return builder
-         * 
-         */
-        public Builder route53HostedZoneId(@Nullable Output<String> route53HostedZoneId) {
-            $.route53HostedZoneId = route53HostedZoneId;
-            return this;
-        }
-
-        /**
-         * @param route53HostedZoneId Route 53 hosted zone id
-         * 
-         * @return builder
-         * 
-         */
-        public Builder route53HostedZoneId(String route53HostedZoneId) {
-            return route53HostedZoneId(Output.of(route53HostedZoneId));
-        }
-
-        /**
          * @param securityGroups Security Group to define the security rules that determine the inbound and outbound traffic
          * 
          * @return builder
@@ -502,9 +428,6 @@ public final class GetAwsProxyArgs extends com.pulumi.resources.InvokeArgs {
             }
             if ($.deleteCloudResourcesOnDestroy == null) {
                 throw new MissingRequiredPropertyException("GetAwsProxyArgs", "deleteCloudResourcesOnDestroy");
-            }
-            if ($.hostName == null) {
-                throw new MissingRequiredPropertyException("GetAwsProxyArgs", "hostName");
             }
             if ($.machineType == null) {
                 throw new MissingRequiredPropertyException("GetAwsProxyArgs", "machineType");

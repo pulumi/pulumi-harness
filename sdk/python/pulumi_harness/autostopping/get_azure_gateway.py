@@ -26,7 +26,7 @@ class GetAzureGatewayResult:
     """
     A collection of values returned by getAzureGateway.
     """
-    def __init__(__self__, app_gateway_id=None, azure_func_region=None, certificate_id=None, cloud_connector_id=None, delete_cloud_resources_on_destroy=None, frontend_ip=None, host_name=None, id=None, identifier=None, name=None, region=None, resource_group=None, sku_size=None, subnet_id=None, vpc=None):
+    def __init__(__self__, app_gateway_id=None, azure_func_region=None, certificate_id=None, cloud_connector_id=None, delete_cloud_resources_on_destroy=None, frontend_ip=None, id=None, identifier=None, name=None, region=None, resource_group=None, sku_size=None, subnet_id=None, vpc=None):
         if app_gateway_id and not isinstance(app_gateway_id, str):
             raise TypeError("Expected argument 'app_gateway_id' to be a str")
         pulumi.set(__self__, "app_gateway_id", app_gateway_id)
@@ -45,9 +45,6 @@ class GetAzureGatewayResult:
         if frontend_ip and not isinstance(frontend_ip, str):
             raise TypeError("Expected argument 'frontend_ip' to be a str")
         pulumi.set(__self__, "frontend_ip", frontend_ip)
-        if host_name and not isinstance(host_name, str):
-            raise TypeError("Expected argument 'host_name' to be a str")
-        pulumi.set(__self__, "host_name", host_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -120,14 +117,6 @@ class GetAzureGatewayResult:
         ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
         """
         return pulumi.get(self, "frontend_ip")
-
-    @_builtins.property
-    @pulumi.getter(name="hostName")
-    def host_name(self) -> _builtins.str:
-        """
-        Hostname for the proxy
-        """
-        return pulumi.get(self, "host_name")
 
     @_builtins.property
     @pulumi.getter
@@ -206,7 +195,6 @@ class AwaitableGetAzureGatewayResult(GetAzureGatewayResult):
             cloud_connector_id=self.cloud_connector_id,
             delete_cloud_resources_on_destroy=self.delete_cloud_resources_on_destroy,
             frontend_ip=self.frontend_ip,
-            host_name=self.host_name,
             id=self.id,
             identifier=self.identifier,
             name=self.name,
@@ -223,7 +211,6 @@ def get_azure_gateway(app_gateway_id: Optional[_builtins.str] = None,
                       cloud_connector_id: Optional[_builtins.str] = None,
                       delete_cloud_resources_on_destroy: Optional[_builtins.bool] = None,
                       frontend_ip: Optional[_builtins.str] = None,
-                      host_name: Optional[_builtins.str] = None,
                       name: Optional[_builtins.str] = None,
                       region: Optional[_builtins.str] = None,
                       resource_group: Optional[_builtins.str] = None,
@@ -243,7 +230,6 @@ def get_azure_gateway(app_gateway_id: Optional[_builtins.str] = None,
     :param _builtins.str cloud_connector_id: Id of the cloud connector
     :param _builtins.bool delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
     :param _builtins.str frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
-    :param _builtins.str host_name: Hostname for the proxy
     :param _builtins.str name: Name of the proxy
     :param _builtins.str region: Region in which cloud resources are hosted
     :param _builtins.str resource_group: Resource group in which cloud resources are hosted
@@ -258,7 +244,6 @@ def get_azure_gateway(app_gateway_id: Optional[_builtins.str] = None,
     __args__['cloudConnectorId'] = cloud_connector_id
     __args__['deleteCloudResourcesOnDestroy'] = delete_cloud_resources_on_destroy
     __args__['frontendIp'] = frontend_ip
-    __args__['hostName'] = host_name
     __args__['name'] = name
     __args__['region'] = region
     __args__['resourceGroup'] = resource_group
@@ -275,7 +260,6 @@ def get_azure_gateway(app_gateway_id: Optional[_builtins.str] = None,
         cloud_connector_id=pulumi.get(__ret__, 'cloud_connector_id'),
         delete_cloud_resources_on_destroy=pulumi.get(__ret__, 'delete_cloud_resources_on_destroy'),
         frontend_ip=pulumi.get(__ret__, 'frontend_ip'),
-        host_name=pulumi.get(__ret__, 'host_name'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
@@ -290,7 +274,6 @@ def get_azure_gateway_output(app_gateway_id: Optional[pulumi.Input[Optional[_bui
                              cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
                              delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                              frontend_ip: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             host_name: Optional[pulumi.Input[_builtins.str]] = None,
                              name: Optional[pulumi.Input[_builtins.str]] = None,
                              region: Optional[pulumi.Input[_builtins.str]] = None,
                              resource_group: Optional[pulumi.Input[_builtins.str]] = None,
@@ -310,7 +293,6 @@ def get_azure_gateway_output(app_gateway_id: Optional[pulumi.Input[Optional[_bui
     :param _builtins.str cloud_connector_id: Id of the cloud connector
     :param _builtins.bool delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
     :param _builtins.str frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
-    :param _builtins.str host_name: Hostname for the proxy
     :param _builtins.str name: Name of the proxy
     :param _builtins.str region: Region in which cloud resources are hosted
     :param _builtins.str resource_group: Resource group in which cloud resources are hosted
@@ -325,7 +307,6 @@ def get_azure_gateway_output(app_gateway_id: Optional[pulumi.Input[Optional[_bui
     __args__['cloudConnectorId'] = cloud_connector_id
     __args__['deleteCloudResourcesOnDestroy'] = delete_cloud_resources_on_destroy
     __args__['frontendIp'] = frontend_ip
-    __args__['hostName'] = host_name
     __args__['name'] = name
     __args__['region'] = region
     __args__['resourceGroup'] = resource_group
@@ -341,7 +322,6 @@ def get_azure_gateway_output(app_gateway_id: Optional[pulumi.Input[Optional[_bui
         cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),
         delete_cloud_resources_on_destroy=pulumi.get(__response__, 'delete_cloud_resources_on_destroy'),
         frontend_ip=pulumi.get(__response__, 'frontend_ip'),
-        host_name=pulumi.get(__response__, 'host_name'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         name=pulumi.get(__response__, 'name'),

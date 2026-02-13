@@ -29,18 +29,20 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Get all delegates in an account
 //			_, err := platform.GetDelegateList(ctx, &platform.GetDelegateListArgs{
-//				AccountId: "your_account_id",
-//				FetchAll:  pulumi.BoolRef(true),
+//				AccountId:  "your_account_id",
+//				FilterType: "Delegate",
+//				FetchAll:   pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// Get only connected delegates with specific tags
 //			_, err = platform.GetDelegateList(ctx, &platform.GetDelegateListArgs{
-//				AccountId: "your_account_id",
-//				OrgId:     pulumi.StringRef("your_org_id"),
-//				ProjectId: pulumi.StringRef("your_project_id"),
-//				Status:    pulumi.StringRef("CONNECTED"),
+//				AccountId:  "your_account_id",
+//				OrgId:      pulumi.StringRef("your_org_id"),
+//				ProjectId:  pulumi.StringRef("your_project_id"),
+//				FilterType: "Delegate",
+//				Status:     pulumi.StringRef("CONNECTED"),
 //				DelegateTags: []string{
 //					"production",
 //					"kubernetes",
@@ -52,6 +54,7 @@ import (
 //			// Get delegates by name pattern and group
 //			_, err = platform.GetDelegateList(ctx, &platform.GetDelegateListArgs{
 //				AccountId:               "your_account_id",
+//				FilterType:              "Delegate",
 //				DelegateName:            pulumi.StringRef("prod-delegate"),
 //				DelegateGroupIdentifier: pulumi.StringRef("production-group"),
 //				VersionStatus:           pulumi.StringRef("ACTIVE"),
@@ -88,7 +91,7 @@ type GetDelegateListArgs struct {
 	DelegateName *string `pulumi:"delegateName"`
 	// Filter delegates by tags.
 	DelegateTags []string `pulumi:"delegateTags"`
-	// Whether to fetch all delegates.
+	// Whether to fetch all delegates. Defaults to `false`.
 	FetchAll *bool `pulumi:"fetchAll"`
 	// Filter type for delegates.
 	FilterType string `pulumi:"filterType"`
@@ -118,7 +121,7 @@ type GetDelegateListResult struct {
 	DelegateTags []string `pulumi:"delegateTags"`
 	// List of delegates.
 	Delegates []GetDelegateListDelegate `pulumi:"delegates"`
-	// Whether to fetch all delegates.
+	// Whether to fetch all delegates. Defaults to `false`.
 	FetchAll *bool `pulumi:"fetchAll"`
 	// Filter type for delegates.
 	FilterType string `pulumi:"filterType"`
@@ -157,7 +160,7 @@ type GetDelegateListOutputArgs struct {
 	DelegateName pulumi.StringPtrInput `pulumi:"delegateName"`
 	// Filter delegates by tags.
 	DelegateTags pulumi.StringArrayInput `pulumi:"delegateTags"`
-	// Whether to fetch all delegates.
+	// Whether to fetch all delegates. Defaults to `false`.
 	FetchAll pulumi.BoolPtrInput `pulumi:"fetchAll"`
 	// Filter type for delegates.
 	FilterType pulumi.StringInput `pulumi:"filterType"`
@@ -225,7 +228,7 @@ func (o GetDelegateListResultOutput) Delegates() GetDelegateListDelegateArrayOut
 	return o.ApplyT(func(v GetDelegateListResult) []GetDelegateListDelegate { return v.Delegates }).(GetDelegateListDelegateArrayOutput)
 }
 
-// Whether to fetch all delegates.
+// Whether to fetch all delegates. Defaults to `false`.
 func (o GetDelegateListResultOutput) FetchAll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetDelegateListResult) *bool { return v.FetchAll }).(pulumi.BoolPtrOutput)
 }

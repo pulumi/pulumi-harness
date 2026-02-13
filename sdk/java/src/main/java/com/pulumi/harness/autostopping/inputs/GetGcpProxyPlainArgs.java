@@ -86,21 +86,6 @@ public final class GetGcpProxyPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Hostname for the proxy
-     * 
-     */
-    @Import(name="hostName", required=true)
-    private String hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public String hostName() {
-        return this.hostName;
-    }
-
-    /**
      * Machine instance type
      * 
      */
@@ -213,7 +198,6 @@ public final class GetGcpProxyPlainArgs extends com.pulumi.resources.InvokeArgs 
         this.certificates = $.certificates;
         this.cloudConnectorId = $.cloudConnectorId;
         this.deleteCloudResourcesOnDestroy = $.deleteCloudResourcesOnDestroy;
-        this.hostName = $.hostName;
         this.machineType = $.machineType;
         this.name = $.name;
         this.region = $.region;
@@ -287,17 +271,6 @@ public final class GetGcpProxyPlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder deleteCloudResourcesOnDestroy(Boolean deleteCloudResourcesOnDestroy) {
             $.deleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
-            return this;
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(String hostName) {
-            $.hostName = hostName;
             return this;
         }
 
@@ -397,9 +370,6 @@ public final class GetGcpProxyPlainArgs extends com.pulumi.resources.InvokeArgs 
             }
             if ($.deleteCloudResourcesOnDestroy == null) {
                 throw new MissingRequiredPropertyException("GetGcpProxyPlainArgs", "deleteCloudResourcesOnDestroy");
-            }
-            if ($.hostName == null) {
-                throw new MissingRequiredPropertyException("GetGcpProxyPlainArgs", "hostName");
             }
             if ($.machineType == null) {
                 throw new MissingRequiredPropertyException("GetGcpProxyPlainArgs", "machineType");

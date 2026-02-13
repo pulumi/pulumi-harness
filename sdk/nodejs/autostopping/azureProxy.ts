@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  * const test = new harness.autostopping.AzureProxy("test", {
  *     name: "name",
  *     cloudConnectorId: "cloud_connector_id",
- *     hostName: "host_name",
  *     region: "eastus2",
  *     resourceGroup: "resource_group",
  *     vpc: "/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Network/virtualNetworks/virtual_network",
@@ -79,10 +78,6 @@ export class AzureProxy extends pulumi.CustomResource {
      */
     declare public readonly deleteCloudResourcesOnDestroy: pulumi.Output<boolean>;
     /**
-     * Hostname for the proxy
-     */
-    declare public readonly hostName: pulumi.Output<string>;
-    /**
      * Unique identifier of the resource
      */
     declare public /*out*/ readonly identifier: pulumi.Output<string>;
@@ -138,7 +133,6 @@ export class AzureProxy extends pulumi.CustomResource {
             resourceInputs["certificates"] = state?.certificates;
             resourceInputs["cloudConnectorId"] = state?.cloudConnectorId;
             resourceInputs["deleteCloudResourcesOnDestroy"] = state?.deleteCloudResourcesOnDestroy;
-            resourceInputs["hostName"] = state?.hostName;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["keypair"] = state?.keypair;
             resourceInputs["machineType"] = state?.machineType;
@@ -158,9 +152,6 @@ export class AzureProxy extends pulumi.CustomResource {
             }
             if (args?.deleteCloudResourcesOnDestroy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deleteCloudResourcesOnDestroy'");
-            }
-            if (args?.hostName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'hostName'");
             }
             if (args?.keypair === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keypair'");
@@ -186,7 +177,6 @@ export class AzureProxy extends pulumi.CustomResource {
             resourceInputs["certificates"] = args?.certificates;
             resourceInputs["cloudConnectorId"] = args?.cloudConnectorId;
             resourceInputs["deleteCloudResourcesOnDestroy"] = args?.deleteCloudResourcesOnDestroy;
-            resourceInputs["hostName"] = args?.hostName;
             resourceInputs["keypair"] = args?.keypair;
             resourceInputs["machineType"] = args?.machineType;
             resourceInputs["name"] = args?.name;
@@ -226,10 +216,6 @@ export interface AzureProxyState {
      * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
      */
     deleteCloudResourcesOnDestroy?: pulumi.Input<boolean>;
-    /**
-     * Hostname for the proxy
-     */
-    hostName?: pulumi.Input<string>;
     /**
      * Unique identifier of the resource
      */
@@ -290,10 +276,6 @@ export interface AzureProxyArgs {
      * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
      */
     deleteCloudResourcesOnDestroy: pulumi.Input<boolean>;
-    /**
-     * Hostname for the proxy
-     */
-    hostName: pulumi.Input<string>;
     /**
      * Name of SSH Key to be used for proxy VM
      */

@@ -18,6 +18,14 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string Account;
         /// <summary>
+        /// Repository connector orgoanization
+        /// </summary>
+        public readonly string ConnectorOrg;
+        /// <summary>
+        /// Repository connector project
+        /// </summary>
+        public readonly string ConnectorProject;
+        /// <summary>
         /// Timestamp when the module was created
         /// </summary>
         public readonly int Created;
@@ -33,6 +41,22 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Name of the module
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Onboarding Pipeline identifier.
+        /// </summary>
+        public readonly string? OnboardingPipeline;
+        /// <summary>
+        /// Onboarding Pipeline organization.
+        /// </summary>
+        public readonly string? OnboardingPipelineOrg;
+        /// <summary>
+        /// Onboarding Pipeline project.
+        /// </summary>
+        public readonly string? OnboardingPipelineProject;
+        /// <summary>
+        /// Sync the project automatically.
+        /// </summary>
+        public readonly bool? OnboardingPipelineSync;
         /// <summary>
         /// Organization that owns the module
         /// </summary>
@@ -66,6 +90,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string RepositoryUrl;
         /// <summary>
+        /// How to store the artifact.
+        /// </summary>
+        public readonly string StorageType;
+        /// <summary>
         /// Timestamp when the module was last synced
         /// </summary>
         public readonly int Synced;
@@ -90,6 +118,10 @@ namespace Pulumi.Harness.Platform.Outputs
         private GetInfraModulesModuleResult(
             string account,
 
+            string connectorOrg,
+
+            string connectorProject,
+
             int created,
 
             string description,
@@ -97,6 +129,14 @@ namespace Pulumi.Harness.Platform.Outputs
             string id,
 
             string name,
+
+            string? onboardingPipeline,
+
+            string? onboardingPipelineOrg,
+
+            string? onboardingPipelineProject,
+
+            bool? onboardingPipelineSync,
 
             string org,
 
@@ -114,6 +154,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string repositoryUrl,
 
+            string storageType,
+
             int synced,
 
             string system,
@@ -125,10 +167,16 @@ namespace Pulumi.Harness.Platform.Outputs
             int updated)
         {
             Account = account;
+            ConnectorOrg = connectorOrg;
+            ConnectorProject = connectorProject;
             Created = created;
             Description = description;
             Id = id;
             Name = name;
+            OnboardingPipeline = onboardingPipeline;
+            OnboardingPipelineOrg = onboardingPipelineOrg;
+            OnboardingPipelineProject = onboardingPipelineProject;
+            OnboardingPipelineSync = onboardingPipelineSync;
             Org = org;
             Project = project;
             Repository = repository;
@@ -137,6 +185,7 @@ namespace Pulumi.Harness.Platform.Outputs
             RepositoryConnector = repositoryConnector;
             RepositoryPath = repositoryPath;
             RepositoryUrl = repositoryUrl;
+            StorageType = storageType;
             Synced = synced;
             System = system;
             Tags = tags;

@@ -34,18 +34,14 @@ type LookupAwsProxyArgs struct {
 	// Id of the cloud connector
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
 	// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
-	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName string  `pulumi:"hostName"`
-	Keypair  *string `pulumi:"keypair"`
+	DeleteCloudResourcesOnDestroy bool    `pulumi:"deleteCloudResourcesOnDestroy"`
+	Keypair                       *string `pulumi:"keypair"`
 	// Machine instance type
 	MachineType string `pulumi:"machineType"`
 	// Name of the proxy
 	Name string `pulumi:"name"`
 	// Region in which cloud resources are hosted
 	Region string `pulumi:"region"`
-	// Route 53 hosted zone id
-	Route53HostedZoneId *string `pulumi:"route53HostedZoneId"`
 	// Security Group to define the security rules that determine the inbound and outbound traffic
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// VPC in which cloud resources are hosted
@@ -63,8 +59,6 @@ type LookupAwsProxyResult struct {
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
 	// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
 	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName string `pulumi:"hostName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource
@@ -76,8 +70,6 @@ type LookupAwsProxyResult struct {
 	Name string `pulumi:"name"`
 	// Region in which cloud resources are hosted
 	Region string `pulumi:"region"`
-	// Route 53 hosted zone id
-	Route53HostedZoneId *string `pulumi:"route53HostedZoneId"`
 	// Security Group to define the security rules that determine the inbound and outbound traffic
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// VPC in which cloud resources are hosted
@@ -103,18 +95,14 @@ type LookupAwsProxyOutputArgs struct {
 	// Id of the cloud connector
 	CloudConnectorId pulumi.StringInput `pulumi:"cloudConnectorId"`
 	// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
-	DeleteCloudResourcesOnDestroy pulumi.BoolInput `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName pulumi.StringInput    `pulumi:"hostName"`
-	Keypair  pulumi.StringPtrInput `pulumi:"keypair"`
+	DeleteCloudResourcesOnDestroy pulumi.BoolInput      `pulumi:"deleteCloudResourcesOnDestroy"`
+	Keypair                       pulumi.StringPtrInput `pulumi:"keypair"`
 	// Machine instance type
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 	// Name of the proxy
 	Name pulumi.StringInput `pulumi:"name"`
 	// Region in which cloud resources are hosted
 	Region pulumi.StringInput `pulumi:"region"`
-	// Route 53 hosted zone id
-	Route53HostedZoneId pulumi.StringPtrInput `pulumi:"route53HostedZoneId"`
 	// Security Group to define the security rules that determine the inbound and outbound traffic
 	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
 	// VPC in which cloud resources are hosted
@@ -164,11 +152,6 @@ func (o LookupAwsProxyResultOutput) DeleteCloudResourcesOnDestroy() pulumi.BoolO
 	return o.ApplyT(func(v LookupAwsProxyResult) bool { return v.DeleteCloudResourcesOnDestroy }).(pulumi.BoolOutput)
 }
 
-// Hostname for the proxy
-func (o LookupAwsProxyResultOutput) HostName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAwsProxyResult) string { return v.HostName }).(pulumi.StringOutput)
-}
-
 // The provider-assigned unique ID for this managed resource.
 func (o LookupAwsProxyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsProxyResult) string { return v.Id }).(pulumi.StringOutput)
@@ -196,11 +179,6 @@ func (o LookupAwsProxyResultOutput) Name() pulumi.StringOutput {
 // Region in which cloud resources are hosted
 func (o LookupAwsProxyResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsProxyResult) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// Route 53 hosted zone id
-func (o LookupAwsProxyResultOutput) Route53HostedZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAwsProxyResult) *string { return v.Route53HostedZoneId }).(pulumi.StringPtrOutput)
 }
 
 // Security Group to define the security rules that determine the inbound and outbound traffic

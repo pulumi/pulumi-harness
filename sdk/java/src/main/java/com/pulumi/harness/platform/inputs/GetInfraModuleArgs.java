@@ -126,31 +126,75 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Organization that owns the module
+     * Onboarding Pipeline identifier
      * 
      */
+    @Import(name="onboardingPipeline")
+    private @Nullable Output<String> onboardingPipeline;
+
+    /**
+     * @return Onboarding Pipeline identifier
+     * 
+     */
+    public Optional<Output<String>> onboardingPipeline() {
+        return Optional.ofNullable(this.onboardingPipeline);
+    }
+
+    /**
+     * Onboarding Pipeline organization
+     * 
+     */
+    @Import(name="onboardingPipelineOrg")
+    private @Nullable Output<String> onboardingPipelineOrg;
+
+    /**
+     * @return Onboarding Pipeline organization
+     * 
+     */
+    public Optional<Output<String>> onboardingPipelineOrg() {
+        return Optional.ofNullable(this.onboardingPipelineOrg);
+    }
+
+    /**
+     * Onboarding Pipeline project
+     * 
+     */
+    @Import(name="onboardingPipelineProject")
+    private @Nullable Output<String> onboardingPipelineProject;
+
+    /**
+     * @return Onboarding Pipeline project
+     * 
+     */
+    public Optional<Output<String>> onboardingPipelineProject() {
+        return Optional.ofNullable(this.onboardingPipelineProject);
+    }
+
+    /**
+     * Sync the project automatically
+     * 
+     */
+    @Import(name="onboardingPipelineSync")
+    private @Nullable Output<Boolean> onboardingPipelineSync;
+
+    /**
+     * @return Sync the project automatically
+     * 
+     */
+    public Optional<Output<Boolean>> onboardingPipelineSync() {
+        return Optional.ofNullable(this.onboardingPipelineSync);
+    }
+
     @Import(name="org")
     private @Nullable Output<String> org;
 
-    /**
-     * @return Organization that owns the module
-     * 
-     */
     public Optional<Output<String>> org() {
         return Optional.ofNullable(this.org);
     }
 
-    /**
-     * Project that owns the module
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return Project that owns the module
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -243,6 +287,21 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<Output<String>> repositoryUrl() {
         return Optional.ofNullable(this.repositoryUrl);
+    }
+
+    /**
+     * How to store the artifact
+     * 
+     */
+    @Import(name="storageType")
+    private @Nullable Output<String> storageType;
+
+    /**
+     * @return How to store the artifact
+     * 
+     */
+    public Optional<Output<String>> storageType() {
+        return Optional.ofNullable(this.storageType);
     }
 
     /**
@@ -360,6 +419,10 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
         this.id = $.id;
         this.moduleError = $.moduleError;
         this.name = $.name;
+        this.onboardingPipeline = $.onboardingPipeline;
+        this.onboardingPipelineOrg = $.onboardingPipelineOrg;
+        this.onboardingPipelineProject = $.onboardingPipelineProject;
+        this.onboardingPipelineSync = $.onboardingPipelineSync;
         this.org = $.org;
         this.project = $.project;
         this.repository = $.repository;
@@ -368,6 +431,7 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
         this.repositoryConnector = $.repositoryConnector;
         this.repositoryPath = $.repositoryPath;
         this.repositoryUrl = $.repositoryUrl;
+        this.storageType = $.storageType;
         this.synced = $.synced;
         this.system = $.system;
         this.tags = $.tags;
@@ -543,43 +607,103 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param org Organization that owns the module
+         * @param onboardingPipeline Onboarding Pipeline identifier
          * 
          * @return builder
          * 
          */
+        public Builder onboardingPipeline(@Nullable Output<String> onboardingPipeline) {
+            $.onboardingPipeline = onboardingPipeline;
+            return this;
+        }
+
+        /**
+         * @param onboardingPipeline Onboarding Pipeline identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipeline(String onboardingPipeline) {
+            return onboardingPipeline(Output.of(onboardingPipeline));
+        }
+
+        /**
+         * @param onboardingPipelineOrg Onboarding Pipeline organization
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineOrg(@Nullable Output<String> onboardingPipelineOrg) {
+            $.onboardingPipelineOrg = onboardingPipelineOrg;
+            return this;
+        }
+
+        /**
+         * @param onboardingPipelineOrg Onboarding Pipeline organization
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineOrg(String onboardingPipelineOrg) {
+            return onboardingPipelineOrg(Output.of(onboardingPipelineOrg));
+        }
+
+        /**
+         * @param onboardingPipelineProject Onboarding Pipeline project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineProject(@Nullable Output<String> onboardingPipelineProject) {
+            $.onboardingPipelineProject = onboardingPipelineProject;
+            return this;
+        }
+
+        /**
+         * @param onboardingPipelineProject Onboarding Pipeline project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineProject(String onboardingPipelineProject) {
+            return onboardingPipelineProject(Output.of(onboardingPipelineProject));
+        }
+
+        /**
+         * @param onboardingPipelineSync Sync the project automatically
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineSync(@Nullable Output<Boolean> onboardingPipelineSync) {
+            $.onboardingPipelineSync = onboardingPipelineSync;
+            return this;
+        }
+
+        /**
+         * @param onboardingPipelineSync Sync the project automatically
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineSync(Boolean onboardingPipelineSync) {
+            return onboardingPipelineSync(Output.of(onboardingPipelineSync));
+        }
+
         public Builder org(@Nullable Output<String> org) {
             $.org = org;
             return this;
         }
 
-        /**
-         * @param org Organization that owns the module
-         * 
-         * @return builder
-         * 
-         */
         public Builder org(String org) {
             return org(Output.of(org));
         }
 
-        /**
-         * @param project Project that owns the module
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project Project that owns the module
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -708,6 +832,27 @@ public final class GetInfraModuleArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder repositoryUrl(String repositoryUrl) {
             return repositoryUrl(Output.of(repositoryUrl));
+        }
+
+        /**
+         * @param storageType How to store the artifact
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageType(@Nullable Output<String> storageType) {
+            $.storageType = storageType;
+            return this;
+        }
+
+        /**
+         * @param storageType How to store the artifact
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageType(String storageType) {
+            return storageType(Output.of(storageType));
         }
 
         /**

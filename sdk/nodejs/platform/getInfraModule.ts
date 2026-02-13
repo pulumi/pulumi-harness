@@ -21,6 +21,10 @@ export function getInfraModule(args: GetInfraModuleArgs, opts?: pulumi.InvokeOpt
         "id": args.id,
         "moduleError": args.moduleError,
         "name": args.name,
+        "onboardingPipeline": args.onboardingPipeline,
+        "onboardingPipelineOrg": args.onboardingPipelineOrg,
+        "onboardingPipelineProject": args.onboardingPipelineProject,
+        "onboardingPipelineSync": args.onboardingPipelineSync,
         "org": args.org,
         "project": args.project,
         "repository": args.repository,
@@ -29,6 +33,7 @@ export function getInfraModule(args: GetInfraModuleArgs, opts?: pulumi.InvokeOpt
         "repositoryConnector": args.repositoryConnector,
         "repositoryPath": args.repositoryPath,
         "repositoryUrl": args.repositoryUrl,
+        "storageType": args.storageType,
         "synced": args.synced,
         "system": args.system,
         "tags": args.tags,
@@ -72,12 +77,22 @@ export interface GetInfraModuleArgs {
      */
     name: string;
     /**
-     * Organization that owns the module
+     * Onboarding Pipeline identifier
      */
-    org?: string;
+    onboardingPipeline?: string;
     /**
-     * Project that owns the module
+     * Onboarding Pipeline organization
      */
+    onboardingPipelineOrg?: string;
+    /**
+     * Onboarding Pipeline project
+     */
+    onboardingPipelineProject?: string;
+    /**
+     * Sync the project automatically
+     */
+    onboardingPipelineSync?: boolean;
+    org?: string;
     project?: string;
     /**
      * For account connectors, the repository where the module is stored
@@ -103,6 +118,10 @@ export interface GetInfraModuleArgs {
      * URL where the module is stored
      */
     repositoryUrl?: string;
+    /**
+     * How to store the artifact
+     */
+    storageType?: string;
     /**
      * Timestamp when the module was last synced
      */
@@ -142,6 +161,14 @@ export interface GetInfraModuleResult {
      */
     readonly account: string;
     /**
+     * Repository connector orgoanization
+     */
+    readonly connectorOrg: string;
+    /**
+     * Repository connector project
+     */
+    readonly connectorProject: string;
+    /**
      * Timestamp when the module was created
      */
     readonly created: number;
@@ -166,12 +193,22 @@ export interface GetInfraModuleResult {
      */
     readonly name: string;
     /**
-     * Organization that owns the module
+     * Onboarding Pipeline identifier
      */
-    readonly org: string;
+    readonly onboardingPipeline?: string;
     /**
-     * Project that owns the module
+     * Onboarding Pipeline organization
      */
+    readonly onboardingPipelineOrg?: string;
+    /**
+     * Onboarding Pipeline project
+     */
+    readonly onboardingPipelineProject?: string;
+    /**
+     * Sync the project automatically
+     */
+    readonly onboardingPipelineSync?: boolean;
+    readonly org: string;
     readonly project: string;
     /**
      * For account connectors, the repository where the module is stored
@@ -197,6 +234,10 @@ export interface GetInfraModuleResult {
      * URL where the module is stored
      */
     readonly repositoryUrl: string;
+    /**
+     * How to store the artifact
+     */
+    readonly storageType: string;
     /**
      * Timestamp when the module was last synced
      */
@@ -241,6 +282,10 @@ export function getInfraModuleOutput(args: GetInfraModuleOutputArgs, opts?: pulu
         "id": args.id,
         "moduleError": args.moduleError,
         "name": args.name,
+        "onboardingPipeline": args.onboardingPipeline,
+        "onboardingPipelineOrg": args.onboardingPipelineOrg,
+        "onboardingPipelineProject": args.onboardingPipelineProject,
+        "onboardingPipelineSync": args.onboardingPipelineSync,
         "org": args.org,
         "project": args.project,
         "repository": args.repository,
@@ -249,6 +294,7 @@ export function getInfraModuleOutput(args: GetInfraModuleOutputArgs, opts?: pulu
         "repositoryConnector": args.repositoryConnector,
         "repositoryPath": args.repositoryPath,
         "repositoryUrl": args.repositoryUrl,
+        "storageType": args.storageType,
         "synced": args.synced,
         "system": args.system,
         "tags": args.tags,
@@ -292,12 +338,22 @@ export interface GetInfraModuleOutputArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Organization that owns the module
+     * Onboarding Pipeline identifier
      */
-    org?: pulumi.Input<string>;
+    onboardingPipeline?: pulumi.Input<string>;
     /**
-     * Project that owns the module
+     * Onboarding Pipeline organization
      */
+    onboardingPipelineOrg?: pulumi.Input<string>;
+    /**
+     * Onboarding Pipeline project
+     */
+    onboardingPipelineProject?: pulumi.Input<string>;
+    /**
+     * Sync the project automatically
+     */
+    onboardingPipelineSync?: pulumi.Input<boolean>;
+    org?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * For account connectors, the repository where the module is stored
@@ -323,6 +379,10 @@ export interface GetInfraModuleOutputArgs {
      * URL where the module is stored
      */
     repositoryUrl?: pulumi.Input<string>;
+    /**
+     * How to store the artifact
+     */
+    storageType?: pulumi.Input<string>;
     /**
      * Timestamp when the module was last synced
      */

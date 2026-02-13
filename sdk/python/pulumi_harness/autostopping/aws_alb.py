@@ -21,29 +21,24 @@ class AwsAlbArgs:
     def __init__(__self__, *,
                  cloud_connector_id: pulumi.Input[_builtins.str],
                  delete_cloud_resources_on_destroy: pulumi.Input[_builtins.bool],
-                 host_name: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  vpc: pulumi.Input[_builtins.str],
                  alb_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 route53_hosted_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AwsAlb resource.
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
-        :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
         :param pulumi.Input[_builtins.str] vpc: VPC in which cloud resources are hosted
         :param pulumi.Input[_builtins.str] alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
         :param pulumi.Input[_builtins.str] name: Name of the proxy
-        :param pulumi.Input[_builtins.str] route53_hosted_zone_id: Route 53 hosted zone id
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: Security Group to define the security rules that determine the inbound and outbound traffic
         """
         pulumi.set(__self__, "cloud_connector_id", cloud_connector_id)
         pulumi.set(__self__, "delete_cloud_resources_on_destroy", delete_cloud_resources_on_destroy)
-        pulumi.set(__self__, "host_name", host_name)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "vpc", vpc)
         if alb_arn is not None:
@@ -52,8 +47,6 @@ class AwsAlbArgs:
             pulumi.set(__self__, "certificate_id", certificate_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if route53_hosted_zone_id is not None:
-            pulumi.set(__self__, "route53_hosted_zone_id", route53_hosted_zone_id)
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
 
@@ -80,18 +73,6 @@ class AwsAlbArgs:
     @delete_cloud_resources_on_destroy.setter
     def delete_cloud_resources_on_destroy(self, value: pulumi.Input[_builtins.bool]):
         pulumi.set(self, "delete_cloud_resources_on_destroy", value)
-
-    @_builtins.property
-    @pulumi.getter(name="hostName")
-    def host_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Hostname for the proxy
-        """
-        return pulumi.get(self, "host_name")
-
-    @host_name.setter
-    def host_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -151,18 +132,6 @@ class AwsAlbArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
-    @pulumi.getter(name="route53HostedZoneId")
-    def route53_hosted_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Route 53 hosted zone id
-        """
-        return pulumi.get(self, "route53_hosted_zone_id")
-
-    @route53_hosted_zone_id.setter
-    def route53_hosted_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "route53_hosted_zone_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -182,11 +151,9 @@ class _AwsAlbState:
                  certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 route53_hosted_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vpc: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -194,11 +161,9 @@ class _AwsAlbState:
         :param pulumi.Input[_builtins.str] alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
-        :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] name: Name of the proxy
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
-        :param pulumi.Input[_builtins.str] route53_hosted_zone_id: Route 53 hosted zone id
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: Security Group to define the security rules that determine the inbound and outbound traffic
         :param pulumi.Input[_builtins.str] vpc: VPC in which cloud resources are hosted
         """
@@ -210,16 +175,12 @@ class _AwsAlbState:
             pulumi.set(__self__, "cloud_connector_id", cloud_connector_id)
         if delete_cloud_resources_on_destroy is not None:
             pulumi.set(__self__, "delete_cloud_resources_on_destroy", delete_cloud_resources_on_destroy)
-        if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
-        if route53_hosted_zone_id is not None:
-            pulumi.set(__self__, "route53_hosted_zone_id", route53_hosted_zone_id)
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
         if vpc is not None:
@@ -271,18 +232,6 @@ class _AwsAlbState:
         pulumi.set(self, "delete_cloud_resources_on_destroy", value)
 
     @_builtins.property
-    @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Hostname for the proxy
-        """
-        return pulumi.get(self, "host_name")
-
-    @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "host_name", value)
-
-    @_builtins.property
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -319,18 +268,6 @@ class _AwsAlbState:
         pulumi.set(self, "region", value)
 
     @_builtins.property
-    @pulumi.getter(name="route53HostedZoneId")
-    def route53_hosted_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Route 53 hosted zone id
-        """
-        return pulumi.get(self, "route53_hosted_zone_id")
-
-    @route53_hosted_zone_id.setter
-    def route53_hosted_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "route53_hosted_zone_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -365,10 +302,8 @@ class AwsAlb(pulumi.CustomResource):
                  certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 route53_hosted_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vpc: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -391,7 +326,6 @@ class AwsAlb(pulumi.CustomResource):
                 "sg1",
                 "sg2",
             ],
-            route53_hosted_zone_id="/hostedzone/zone_id",
             delete_cloud_resources_on_destroy=True)
         harness_alb = harness.autostopping.AwsAlb("harness_alb",
             name="harness_alb",
@@ -401,7 +335,6 @@ class AwsAlb(pulumi.CustomResource):
             region="region",
             vpc="vpc",
             security_groups=["sg-0"],
-            route53_hosted_zone_id="/hostedzone/zone_id",
             delete_cloud_resources_on_destroy=False)
         ```
 
@@ -410,10 +343,8 @@ class AwsAlb(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
-        :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] name: Name of the proxy
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
-        :param pulumi.Input[_builtins.str] route53_hosted_zone_id: Route 53 hosted zone id
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: Security Group to define the security rules that determine the inbound and outbound traffic
         :param pulumi.Input[_builtins.str] vpc: VPC in which cloud resources are hosted
         """
@@ -442,7 +373,6 @@ class AwsAlb(pulumi.CustomResource):
                 "sg1",
                 "sg2",
             ],
-            route53_hosted_zone_id="/hostedzone/zone_id",
             delete_cloud_resources_on_destroy=True)
         harness_alb = harness.autostopping.AwsAlb("harness_alb",
             name="harness_alb",
@@ -452,7 +382,6 @@ class AwsAlb(pulumi.CustomResource):
             region="region",
             vpc="vpc",
             security_groups=["sg-0"],
-            route53_hosted_zone_id="/hostedzone/zone_id",
             delete_cloud_resources_on_destroy=False)
         ```
 
@@ -475,10 +404,8 @@ class AwsAlb(pulumi.CustomResource):
                  certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 route53_hosted_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vpc: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -498,14 +425,10 @@ class AwsAlb(pulumi.CustomResource):
             if delete_cloud_resources_on_destroy is None and not opts.urn:
                 raise TypeError("Missing required property 'delete_cloud_resources_on_destroy'")
             __props__.__dict__["delete_cloud_resources_on_destroy"] = delete_cloud_resources_on_destroy
-            if host_name is None and not opts.urn:
-                raise TypeError("Missing required property 'host_name'")
-            __props__.__dict__["host_name"] = host_name
             __props__.__dict__["name"] = name
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
-            __props__.__dict__["route53_hosted_zone_id"] = route53_hosted_zone_id
             __props__.__dict__["security_groups"] = security_groups
             if vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc'")
@@ -525,11 +448,9 @@ class AwsAlb(pulumi.CustomResource):
             certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
             cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
             delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            host_name: Optional[pulumi.Input[_builtins.str]] = None,
             identifier: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
-            route53_hosted_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             vpc: Optional[pulumi.Input[_builtins.str]] = None) -> 'AwsAlb':
         """
@@ -542,11 +463,9 @@ class AwsAlb(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
-        :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] name: Name of the proxy
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
-        :param pulumi.Input[_builtins.str] route53_hosted_zone_id: Route 53 hosted zone id
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: Security Group to define the security rules that determine the inbound and outbound traffic
         :param pulumi.Input[_builtins.str] vpc: VPC in which cloud resources are hosted
         """
@@ -558,18 +477,16 @@ class AwsAlb(pulumi.CustomResource):
         __props__.__dict__["certificate_id"] = certificate_id
         __props__.__dict__["cloud_connector_id"] = cloud_connector_id
         __props__.__dict__["delete_cloud_resources_on_destroy"] = delete_cloud_resources_on_destroy
-        __props__.__dict__["host_name"] = host_name
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
         __props__.__dict__["region"] = region
-        __props__.__dict__["route53_hosted_zone_id"] = route53_hosted_zone_id
         __props__.__dict__["security_groups"] = security_groups
         __props__.__dict__["vpc"] = vpc
         return AwsAlb(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="albArn")
-    def alb_arn(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def alb_arn(self) -> pulumi.Output[_builtins.str]:
         """
         Arn of AWS ALB to be imported. Required only for importing existing ALB
         """
@@ -597,14 +514,6 @@ class AwsAlb(pulumi.CustomResource):
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @_builtins.property
-    @pulumi.getter(name="hostName")
-    def host_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Hostname for the proxy
-        """
-        return pulumi.get(self, "host_name")
-
-    @_builtins.property
     @pulumi.getter
     def identifier(self) -> pulumi.Output[_builtins.str]:
         """
@@ -627,14 +536,6 @@ class AwsAlb(pulumi.CustomResource):
         Region in which cloud resources are hosted
         """
         return pulumi.get(self, "region")
-
-    @_builtins.property
-    @pulumi.getter(name="route53HostedZoneId")
-    def route53_hosted_zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Route 53 hosted zone id
-        """
-        return pulumi.get(self, "route53_hosted_zone_id")
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")

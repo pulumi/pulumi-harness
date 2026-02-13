@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.InfraModuleArgs;
 import com.pulumi.harness.platform.inputs.InfraModuleState;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -51,6 +52,13 @@ import javax.annotation.Nullable;
  *             .repositoryBranch("main")
  *             .repositoryPath("tf/aws/basic")
  *             .repositoryConnector(test.id())
+ *             .onboardingPipeline("my_onboarding_pipeline")
+ *             .onboardingPipelineOrg("default")
+ *             .onboardingPipelineProject("IaCM_Project")
+ *             .onboardingPipelineSync(true)
+ *             .storageType("harness")
+ *             .connectorOrg("default")
+ *             .connectorProject("my_project")
  *             .build());
  * 
  *     }
@@ -69,6 +77,34 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="harness:platform/infraModule:InfraModule")
 public class InfraModule extends com.pulumi.resources.CustomResource {
+    /**
+     * Connector organization.
+     * 
+     */
+    @Export(name="connectorOrg", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> connectorOrg;
+
+    /**
+     * @return Connector organization.
+     * 
+     */
+    public Output<Optional<String>> connectorOrg() {
+        return Codegen.optional(this.connectorOrg);
+    }
+    /**
+     * Connector project.
+     * 
+     */
+    @Export(name="connectorProject", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> connectorProject;
+
+    /**
+     * @return Connector project.
+     * 
+     */
+    public Output<Optional<String>> connectorProject() {
+        return Codegen.optional(this.connectorProject);
+    }
     /**
      * Timestamp when the module was created.
      * 
@@ -124,6 +160,62 @@ public class InfraModule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Onboarding Pipeline identifier.
+     * 
+     */
+    @Export(name="onboardingPipeline", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> onboardingPipeline;
+
+    /**
+     * @return Onboarding Pipeline identifier.
+     * 
+     */
+    public Output<Optional<String>> onboardingPipeline() {
+        return Codegen.optional(this.onboardingPipeline);
+    }
+    /**
+     * Onboarding Pipeline organization.
+     * 
+     */
+    @Export(name="onboardingPipelineOrg", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> onboardingPipelineOrg;
+
+    /**
+     * @return Onboarding Pipeline organization.
+     * 
+     */
+    public Output<Optional<String>> onboardingPipelineOrg() {
+        return Codegen.optional(this.onboardingPipelineOrg);
+    }
+    /**
+     * Onboarding Pipeline project.
+     * 
+     */
+    @Export(name="onboardingPipelineProject", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> onboardingPipelineProject;
+
+    /**
+     * @return Onboarding Pipeline project.
+     * 
+     */
+    public Output<Optional<String>> onboardingPipelineProject() {
+        return Codegen.optional(this.onboardingPipelineProject);
+    }
+    /**
+     * Sync the project automatically.
+     * 
+     */
+    @Export(name="onboardingPipelineSync", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> onboardingPipelineSync;
+
+    /**
+     * @return Sync the project automatically.
+     * 
+     */
+    public Output<Optional<Boolean>> onboardingPipelineSync() {
+        return Codegen.optional(this.onboardingPipelineSync);
     }
     /**
      * For account connectors, the repository where the module can be found
@@ -208,6 +300,20 @@ public class InfraModule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> repositoryUrl() {
         return this.repositoryUrl;
+    }
+    /**
+     * How to store the artifact.
+     * 
+     */
+    @Export(name="storageType", refs={String.class}, tree="[0]")
+    private Output<String> storageType;
+
+    /**
+     * @return How to store the artifact.
+     * 
+     */
+    public Output<String> storageType() {
+        return this.storageType;
     }
     /**
      * Timestamp when the module was last synced.

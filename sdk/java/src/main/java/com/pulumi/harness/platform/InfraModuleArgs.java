@@ -6,6 +6,7 @@ package com.pulumi.harness.platform;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,36 @@ import javax.annotation.Nullable;
 public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InfraModuleArgs Empty = new InfraModuleArgs();
+
+    /**
+     * Connector organization.
+     * 
+     */
+    @Import(name="connectorOrg")
+    private @Nullable Output<String> connectorOrg;
+
+    /**
+     * @return Connector organization.
+     * 
+     */
+    public Optional<Output<String>> connectorOrg() {
+        return Optional.ofNullable(this.connectorOrg);
+    }
+
+    /**
+     * Connector project.
+     * 
+     */
+    @Import(name="connectorProject")
+    private @Nullable Output<String> connectorProject;
+
+    /**
+     * @return Connector project.
+     * 
+     */
+    public Optional<Output<String>> connectorProject() {
+        return Optional.ofNullable(this.connectorProject);
+    }
 
     /**
      * Timestamp when the module was created.
@@ -76,6 +107,66 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Onboarding Pipeline identifier.
+     * 
+     */
+    @Import(name="onboardingPipeline")
+    private @Nullable Output<String> onboardingPipeline;
+
+    /**
+     * @return Onboarding Pipeline identifier.
+     * 
+     */
+    public Optional<Output<String>> onboardingPipeline() {
+        return Optional.ofNullable(this.onboardingPipeline);
+    }
+
+    /**
+     * Onboarding Pipeline organization.
+     * 
+     */
+    @Import(name="onboardingPipelineOrg")
+    private @Nullable Output<String> onboardingPipelineOrg;
+
+    /**
+     * @return Onboarding Pipeline organization.
+     * 
+     */
+    public Optional<Output<String>> onboardingPipelineOrg() {
+        return Optional.ofNullable(this.onboardingPipelineOrg);
+    }
+
+    /**
+     * Onboarding Pipeline project.
+     * 
+     */
+    @Import(name="onboardingPipelineProject")
+    private @Nullable Output<String> onboardingPipelineProject;
+
+    /**
+     * @return Onboarding Pipeline project.
+     * 
+     */
+    public Optional<Output<String>> onboardingPipelineProject() {
+        return Optional.ofNullable(this.onboardingPipelineProject);
+    }
+
+    /**
+     * Sync the project automatically.
+     * 
+     */
+    @Import(name="onboardingPipelineSync")
+    private @Nullable Output<Boolean> onboardingPipelineSync;
+
+    /**
+     * @return Sync the project automatically.
+     * 
+     */
+    public Optional<Output<Boolean>> onboardingPipelineSync() {
+        return Optional.ofNullable(this.onboardingPipelineSync);
     }
 
     /**
@@ -169,6 +260,21 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * How to store the artifact.
+     * 
+     */
+    @Import(name="storageType")
+    private @Nullable Output<String> storageType;
+
+    /**
+     * @return How to store the artifact.
+     * 
+     */
+    public Optional<Output<String>> storageType() {
+        return Optional.ofNullable(this.storageType);
+    }
+
+    /**
      * Timestamp when the module was last synced.
      * 
      */
@@ -231,16 +337,23 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
     private InfraModuleArgs() {}
 
     private InfraModuleArgs(InfraModuleArgs $) {
+        this.connectorOrg = $.connectorOrg;
+        this.connectorProject = $.connectorProject;
         this.created = $.created;
         this.description = $.description;
         this.gitTagStyle = $.gitTagStyle;
         this.name = $.name;
+        this.onboardingPipeline = $.onboardingPipeline;
+        this.onboardingPipelineOrg = $.onboardingPipelineOrg;
+        this.onboardingPipelineProject = $.onboardingPipelineProject;
+        this.onboardingPipelineSync = $.onboardingPipelineSync;
         this.repository = $.repository;
         this.repositoryBranch = $.repositoryBranch;
         this.repositoryCommit = $.repositoryCommit;
         this.repositoryConnector = $.repositoryConnector;
         this.repositoryPath = $.repositoryPath;
         this.repositoryUrl = $.repositoryUrl;
+        this.storageType = $.storageType;
         this.synced = $.synced;
         this.system = $.system;
         this.tags = $.tags;
@@ -263,6 +376,48 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InfraModuleArgs defaults) {
             $ = new InfraModuleArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param connectorOrg Connector organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorOrg(@Nullable Output<String> connectorOrg) {
+            $.connectorOrg = connectorOrg;
+            return this;
+        }
+
+        /**
+         * @param connectorOrg Connector organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorOrg(String connectorOrg) {
+            return connectorOrg(Output.of(connectorOrg));
+        }
+
+        /**
+         * @param connectorProject Connector project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorProject(@Nullable Output<String> connectorProject) {
+            $.connectorProject = connectorProject;
+            return this;
+        }
+
+        /**
+         * @param connectorProject Connector project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorProject(String connectorProject) {
+            return connectorProject(Output.of(connectorProject));
         }
 
         /**
@@ -347,6 +502,90 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param onboardingPipeline Onboarding Pipeline identifier.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipeline(@Nullable Output<String> onboardingPipeline) {
+            $.onboardingPipeline = onboardingPipeline;
+            return this;
+        }
+
+        /**
+         * @param onboardingPipeline Onboarding Pipeline identifier.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipeline(String onboardingPipeline) {
+            return onboardingPipeline(Output.of(onboardingPipeline));
+        }
+
+        /**
+         * @param onboardingPipelineOrg Onboarding Pipeline organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineOrg(@Nullable Output<String> onboardingPipelineOrg) {
+            $.onboardingPipelineOrg = onboardingPipelineOrg;
+            return this;
+        }
+
+        /**
+         * @param onboardingPipelineOrg Onboarding Pipeline organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineOrg(String onboardingPipelineOrg) {
+            return onboardingPipelineOrg(Output.of(onboardingPipelineOrg));
+        }
+
+        /**
+         * @param onboardingPipelineProject Onboarding Pipeline project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineProject(@Nullable Output<String> onboardingPipelineProject) {
+            $.onboardingPipelineProject = onboardingPipelineProject;
+            return this;
+        }
+
+        /**
+         * @param onboardingPipelineProject Onboarding Pipeline project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineProject(String onboardingPipelineProject) {
+            return onboardingPipelineProject(Output.of(onboardingPipelineProject));
+        }
+
+        /**
+         * @param onboardingPipelineSync Sync the project automatically.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineSync(@Nullable Output<Boolean> onboardingPipelineSync) {
+            $.onboardingPipelineSync = onboardingPipelineSync;
+            return this;
+        }
+
+        /**
+         * @param onboardingPipelineSync Sync the project automatically.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineSync(Boolean onboardingPipelineSync) {
+            return onboardingPipelineSync(Output.of(onboardingPipelineSync));
         }
 
         /**
@@ -473,6 +712,27 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder repositoryUrl(String repositoryUrl) {
             return repositoryUrl(Output.of(repositoryUrl));
+        }
+
+        /**
+         * @param storageType How to store the artifact.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageType(@Nullable Output<String> storageType) {
+            $.storageType = storageType;
+            return this;
+        }
+
+        /**
+         * @param storageType How to store the artifact.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageType(String storageType) {
+            return storageType(Output.of(storageType));
         }
 
         /**

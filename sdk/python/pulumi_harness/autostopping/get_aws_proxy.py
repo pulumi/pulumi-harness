@@ -28,7 +28,7 @@ class GetAwsProxyResult:
     """
     A collection of values returned by getAwsProxy.
     """
-    def __init__(__self__, allocate_static_ip=None, api_key=None, certificates=None, cloud_connector_id=None, delete_cloud_resources_on_destroy=None, host_name=None, id=None, identifier=None, keypair=None, machine_type=None, name=None, region=None, route53_hosted_zone_id=None, security_groups=None, vpc=None):
+    def __init__(__self__, allocate_static_ip=None, api_key=None, certificates=None, cloud_connector_id=None, delete_cloud_resources_on_destroy=None, id=None, identifier=None, keypair=None, machine_type=None, name=None, region=None, security_groups=None, vpc=None):
         if allocate_static_ip and not isinstance(allocate_static_ip, bool):
             raise TypeError("Expected argument 'allocate_static_ip' to be a bool")
         pulumi.set(__self__, "allocate_static_ip", allocate_static_ip)
@@ -44,9 +44,6 @@ class GetAwsProxyResult:
         if delete_cloud_resources_on_destroy and not isinstance(delete_cloud_resources_on_destroy, bool):
             raise TypeError("Expected argument 'delete_cloud_resources_on_destroy' to be a bool")
         pulumi.set(__self__, "delete_cloud_resources_on_destroy", delete_cloud_resources_on_destroy)
-        if host_name and not isinstance(host_name, str):
-            raise TypeError("Expected argument 'host_name' to be a str")
-        pulumi.set(__self__, "host_name", host_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -65,9 +62,6 @@ class GetAwsProxyResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
-        if route53_hosted_zone_id and not isinstance(route53_hosted_zone_id, str):
-            raise TypeError("Expected argument 'route53_hosted_zone_id' to be a str")
-        pulumi.set(__self__, "route53_hosted_zone_id", route53_hosted_zone_id)
         if security_groups and not isinstance(security_groups, list):
             raise TypeError("Expected argument 'security_groups' to be a list")
         pulumi.set(__self__, "security_groups", security_groups)
@@ -111,14 +105,6 @@ class GetAwsProxyResult:
         Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
         """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
-
-    @_builtins.property
-    @pulumi.getter(name="hostName")
-    def host_name(self) -> _builtins.str:
-        """
-        Hostname for the proxy
-        """
-        return pulumi.get(self, "host_name")
 
     @_builtins.property
     @pulumi.getter
@@ -166,14 +152,6 @@ class GetAwsProxyResult:
         return pulumi.get(self, "region")
 
     @_builtins.property
-    @pulumi.getter(name="route53HostedZoneId")
-    def route53_hosted_zone_id(self) -> Optional[_builtins.str]:
-        """
-        Route 53 hosted zone id
-        """
-        return pulumi.get(self, "route53_hosted_zone_id")
-
-    @_builtins.property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[Sequence[_builtins.str]]:
         """
@@ -201,14 +179,12 @@ class AwaitableGetAwsProxyResult(GetAwsProxyResult):
             certificates=self.certificates,
             cloud_connector_id=self.cloud_connector_id,
             delete_cloud_resources_on_destroy=self.delete_cloud_resources_on_destroy,
-            host_name=self.host_name,
             id=self.id,
             identifier=self.identifier,
             keypair=self.keypair,
             machine_type=self.machine_type,
             name=self.name,
             region=self.region,
-            route53_hosted_zone_id=self.route53_hosted_zone_id,
             security_groups=self.security_groups,
             vpc=self.vpc)
 
@@ -218,12 +194,10 @@ def get_aws_proxy(allocate_static_ip: Optional[_builtins.bool] = None,
                   certificates: Optional[Union['GetAwsProxyCertificatesArgs', 'GetAwsProxyCertificatesArgsDict']] = None,
                   cloud_connector_id: Optional[_builtins.str] = None,
                   delete_cloud_resources_on_destroy: Optional[_builtins.bool] = None,
-                  host_name: Optional[_builtins.str] = None,
                   keypair: Optional[_builtins.str] = None,
                   machine_type: Optional[_builtins.str] = None,
                   name: Optional[_builtins.str] = None,
                   region: Optional[_builtins.str] = None,
-                  route53_hosted_zone_id: Optional[_builtins.str] = None,
                   security_groups: Optional[Sequence[_builtins.str]] = None,
                   vpc: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsProxyResult:
@@ -237,11 +211,9 @@ def get_aws_proxy(allocate_static_ip: Optional[_builtins.bool] = None,
     :param _builtins.str api_key: Harness NG API key
     :param _builtins.str cloud_connector_id: Id of the cloud connector
     :param _builtins.bool delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
-    :param _builtins.str host_name: Hostname for the proxy
     :param _builtins.str machine_type: Machine instance type
     :param _builtins.str name: Name of the proxy
     :param _builtins.str region: Region in which cloud resources are hosted
-    :param _builtins.str route53_hosted_zone_id: Route 53 hosted zone id
     :param Sequence[_builtins.str] security_groups: Security Group to define the security rules that determine the inbound and outbound traffic
     :param _builtins.str vpc: VPC in which cloud resources are hosted
     """
@@ -251,12 +223,10 @@ def get_aws_proxy(allocate_static_ip: Optional[_builtins.bool] = None,
     __args__['certificates'] = certificates
     __args__['cloudConnectorId'] = cloud_connector_id
     __args__['deleteCloudResourcesOnDestroy'] = delete_cloud_resources_on_destroy
-    __args__['hostName'] = host_name
     __args__['keypair'] = keypair
     __args__['machineType'] = machine_type
     __args__['name'] = name
     __args__['region'] = region
-    __args__['route53HostedZoneId'] = route53_hosted_zone_id
     __args__['securityGroups'] = security_groups
     __args__['vpc'] = vpc
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -268,14 +238,12 @@ def get_aws_proxy(allocate_static_ip: Optional[_builtins.bool] = None,
         certificates=pulumi.get(__ret__, 'certificates'),
         cloud_connector_id=pulumi.get(__ret__, 'cloud_connector_id'),
         delete_cloud_resources_on_destroy=pulumi.get(__ret__, 'delete_cloud_resources_on_destroy'),
-        host_name=pulumi.get(__ret__, 'host_name'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         keypair=pulumi.get(__ret__, 'keypair'),
         machine_type=pulumi.get(__ret__, 'machine_type'),
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
-        route53_hosted_zone_id=pulumi.get(__ret__, 'route53_hosted_zone_id'),
         security_groups=pulumi.get(__ret__, 'security_groups'),
         vpc=pulumi.get(__ret__, 'vpc'))
 def get_aws_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
@@ -283,12 +251,10 @@ def get_aws_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[_bui
                          certificates: Optional[pulumi.Input[Optional[Union['GetAwsProxyCertificatesArgs', 'GetAwsProxyCertificatesArgsDict']]]] = None,
                          cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
                          delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                         host_name: Optional[pulumi.Input[_builtins.str]] = None,
                          keypair: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          machine_type: Optional[pulumi.Input[_builtins.str]] = None,
                          name: Optional[pulumi.Input[_builtins.str]] = None,
                          region: Optional[pulumi.Input[_builtins.str]] = None,
-                         route53_hosted_zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          security_groups: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                          vpc: Optional[pulumi.Input[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsProxyResult]:
@@ -302,11 +268,9 @@ def get_aws_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[_bui
     :param _builtins.str api_key: Harness NG API key
     :param _builtins.str cloud_connector_id: Id of the cloud connector
     :param _builtins.bool delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
-    :param _builtins.str host_name: Hostname for the proxy
     :param _builtins.str machine_type: Machine instance type
     :param _builtins.str name: Name of the proxy
     :param _builtins.str region: Region in which cloud resources are hosted
-    :param _builtins.str route53_hosted_zone_id: Route 53 hosted zone id
     :param Sequence[_builtins.str] security_groups: Security Group to define the security rules that determine the inbound and outbound traffic
     :param _builtins.str vpc: VPC in which cloud resources are hosted
     """
@@ -316,12 +280,10 @@ def get_aws_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[_bui
     __args__['certificates'] = certificates
     __args__['cloudConnectorId'] = cloud_connector_id
     __args__['deleteCloudResourcesOnDestroy'] = delete_cloud_resources_on_destroy
-    __args__['hostName'] = host_name
     __args__['keypair'] = keypair
     __args__['machineType'] = machine_type
     __args__['name'] = name
     __args__['region'] = region
-    __args__['route53HostedZoneId'] = route53_hosted_zone_id
     __args__['securityGroups'] = security_groups
     __args__['vpc'] = vpc
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -332,13 +294,11 @@ def get_aws_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[_bui
         certificates=pulumi.get(__response__, 'certificates'),
         cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),
         delete_cloud_resources_on_destroy=pulumi.get(__response__, 'delete_cloud_resources_on_destroy'),
-        host_name=pulumi.get(__response__, 'host_name'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         keypair=pulumi.get(__response__, 'keypair'),
         machine_type=pulumi.get(__response__, 'machine_type'),
         name=pulumi.get(__response__, 'name'),
         region=pulumi.get(__response__, 'region'),
-        route53_hosted_zone_id=pulumi.get(__response__, 'route53_hosted_zone_id'),
         security_groups=pulumi.get(__response__, 'security_groups'),
         vpc=pulumi.get(__response__, 'vpc')))

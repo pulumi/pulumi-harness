@@ -87,21 +87,6 @@ public final class GcpProxyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hostname for the proxy
-     * 
-     */
-    @Import(name="hostName", required=true)
-    private Output<String> hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public Output<String> hostName() {
-        return this.hostName;
-    }
-
-    /**
      * Machine instance type
      * 
      */
@@ -214,7 +199,6 @@ public final class GcpProxyArgs extends com.pulumi.resources.ResourceArgs {
         this.certificates = $.certificates;
         this.cloudConnectorId = $.cloudConnectorId;
         this.deleteCloudResourcesOnDestroy = $.deleteCloudResourcesOnDestroy;
-        this.hostName = $.hostName;
         this.machineType = $.machineType;
         this.name = $.name;
         this.region = $.region;
@@ -333,27 +317,6 @@ public final class GcpProxyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deleteCloudResourcesOnDestroy(Boolean deleteCloudResourcesOnDestroy) {
             return deleteCloudResourcesOnDestroy(Output.of(deleteCloudResourcesOnDestroy));
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(Output<String> hostName) {
-            $.hostName = hostName;
-            return this;
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(String hostName) {
-            return hostName(Output.of(hostName));
         }
 
         /**
@@ -522,9 +485,6 @@ public final class GcpProxyArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.deleteCloudResourcesOnDestroy == null) {
                 throw new MissingRequiredPropertyException("GcpProxyArgs", "deleteCloudResourcesOnDestroy");
-            }
-            if ($.hostName == null) {
-                throw new MissingRequiredPropertyException("GcpProxyArgs", "hostName");
             }
             if ($.machineType == null) {
                 throw new MissingRequiredPropertyException("GcpProxyArgs", "machineType");

@@ -16,10 +16,8 @@ export function getAwsAlb(args: GetAwsAlbArgs, opts?: pulumi.InvokeOptions): Pro
         "certificateId": args.certificateId,
         "cloudConnectorId": args.cloudConnectorId,
         "deleteCloudResourcesOnDestroy": args.deleteCloudResourcesOnDestroy,
-        "hostName": args.hostName,
         "name": args.name,
         "region": args.region,
-        "route53HostedZoneId": args.route53HostedZoneId,
         "securityGroups": args.securityGroups,
         "vpc": args.vpc,
     }, opts);
@@ -43,10 +41,6 @@ export interface GetAwsAlbArgs {
      */
     deleteCloudResourcesOnDestroy: boolean;
     /**
-     * Hostname for the proxy
-     */
-    hostName: string;
-    /**
      * Name of the proxy
      */
     name: string;
@@ -54,10 +48,6 @@ export interface GetAwsAlbArgs {
      * Region in which cloud resources are hosted
      */
     region: string;
-    /**
-     * Route 53 hosted zone id
-     */
-    route53HostedZoneId?: string;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
@@ -86,10 +76,6 @@ export interface GetAwsAlbResult {
      */
     readonly deleteCloudResourcesOnDestroy: boolean;
     /**
-     * Hostname for the proxy
-     */
-    readonly hostName: string;
-    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -105,10 +91,6 @@ export interface GetAwsAlbResult {
      * Region in which cloud resources are hosted
      */
     readonly region: string;
-    /**
-     * Route 53 hosted zone id
-     */
-    readonly route53HostedZoneId?: string;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
@@ -130,10 +112,8 @@ export function getAwsAlbOutput(args: GetAwsAlbOutputArgs, opts?: pulumi.InvokeO
         "certificateId": args.certificateId,
         "cloudConnectorId": args.cloudConnectorId,
         "deleteCloudResourcesOnDestroy": args.deleteCloudResourcesOnDestroy,
-        "hostName": args.hostName,
         "name": args.name,
         "region": args.region,
-        "route53HostedZoneId": args.route53HostedZoneId,
         "securityGroups": args.securityGroups,
         "vpc": args.vpc,
     }, opts);
@@ -157,10 +137,6 @@ export interface GetAwsAlbOutputArgs {
      */
     deleteCloudResourcesOnDestroy: pulumi.Input<boolean>;
     /**
-     * Hostname for the proxy
-     */
-    hostName: pulumi.Input<string>;
-    /**
      * Name of the proxy
      */
     name: pulumi.Input<string>;
@@ -168,10 +144,6 @@ export interface GetAwsAlbOutputArgs {
      * Region in which cloud resources are hosted
      */
     region: pulumi.Input<string>;
-    /**
-     * Route 53 hosted zone id
-     */
-    route53HostedZoneId?: pulumi.Input<string>;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */

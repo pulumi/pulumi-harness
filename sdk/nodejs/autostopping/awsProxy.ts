@@ -18,14 +18,12 @@ import * as utilities from "../utilities";
  * const test = new harness.autostopping.AwsProxy("test", {
  *     name: "name",
  *     cloudConnectorId: "cloud_connector_id",
- *     hostName: "host_name",
  *     region: "region",
  *     vpc: "vpc",
  *     securityGroups: [
  *         "sg1",
  *         "sg2",
  *     ],
- *     route53HostedZoneId: "/hostedzone/zone_id",
  *     machineType: "t2.medium",
  *     apiKey: "",
  *     allocateStaticIp: true,
@@ -79,10 +77,6 @@ export class AwsProxy extends pulumi.CustomResource {
      */
     declare public readonly deleteCloudResourcesOnDestroy: pulumi.Output<boolean>;
     /**
-     * Hostname for the proxy
-     */
-    declare public readonly hostName: pulumi.Output<string>;
-    /**
      * Unique identifier of the resource
      */
     declare public /*out*/ readonly identifier: pulumi.Output<string>;
@@ -99,10 +93,6 @@ export class AwsProxy extends pulumi.CustomResource {
      * Region in which cloud resources are hosted
      */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Route 53 hosted zone id
-     */
-    declare public readonly route53HostedZoneId: pulumi.Output<string | undefined>;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
@@ -130,13 +120,11 @@ export class AwsProxy extends pulumi.CustomResource {
             resourceInputs["certificates"] = state?.certificates;
             resourceInputs["cloudConnectorId"] = state?.cloudConnectorId;
             resourceInputs["deleteCloudResourcesOnDestroy"] = state?.deleteCloudResourcesOnDestroy;
-            resourceInputs["hostName"] = state?.hostName;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["keypair"] = state?.keypair;
             resourceInputs["machineType"] = state?.machineType;
             resourceInputs["name"] = state?.name;
             resourceInputs["region"] = state?.region;
-            resourceInputs["route53HostedZoneId"] = state?.route53HostedZoneId;
             resourceInputs["securityGroups"] = state?.securityGroups;
             resourceInputs["vpc"] = state?.vpc;
         } else {
@@ -149,9 +137,6 @@ export class AwsProxy extends pulumi.CustomResource {
             }
             if (args?.deleteCloudResourcesOnDestroy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deleteCloudResourcesOnDestroy'");
-            }
-            if (args?.hostName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'hostName'");
             }
             if (args?.machineType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'machineType'");
@@ -167,12 +152,10 @@ export class AwsProxy extends pulumi.CustomResource {
             resourceInputs["certificates"] = args?.certificates;
             resourceInputs["cloudConnectorId"] = args?.cloudConnectorId;
             resourceInputs["deleteCloudResourcesOnDestroy"] = args?.deleteCloudResourcesOnDestroy;
-            resourceInputs["hostName"] = args?.hostName;
             resourceInputs["keypair"] = args?.keypair;
             resourceInputs["machineType"] = args?.machineType;
             resourceInputs["name"] = args?.name;
             resourceInputs["region"] = args?.region;
-            resourceInputs["route53HostedZoneId"] = args?.route53HostedZoneId;
             resourceInputs["securityGroups"] = args?.securityGroups;
             resourceInputs["vpc"] = args?.vpc;
             resourceInputs["identifier"] = undefined /*out*/;
@@ -206,10 +189,6 @@ export interface AwsProxyState {
      */
     deleteCloudResourcesOnDestroy?: pulumi.Input<boolean>;
     /**
-     * Hostname for the proxy
-     */
-    hostName?: pulumi.Input<string>;
-    /**
      * Unique identifier of the resource
      */
     identifier?: pulumi.Input<string>;
@@ -226,10 +205,6 @@ export interface AwsProxyState {
      * Region in which cloud resources are hosted
      */
     region?: pulumi.Input<string>;
-    /**
-     * Route 53 hosted zone id
-     */
-    route53HostedZoneId?: pulumi.Input<string>;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
@@ -261,10 +236,6 @@ export interface AwsProxyArgs {
      * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
      */
     deleteCloudResourcesOnDestroy: pulumi.Input<boolean>;
-    /**
-     * Hostname for the proxy
-     */
-    hostName: pulumi.Input<string>;
     keypair?: pulumi.Input<string>;
     /**
      * Machine instance type
@@ -278,10 +249,6 @@ export interface AwsProxyArgs {
      * Region in which cloud resources are hosted
      */
     region: pulumi.Input<string>;
-    /**
-     * Route 53 hosted zone id
-     */
-    route53HostedZoneId?: pulumi.Input<string>;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */

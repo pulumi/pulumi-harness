@@ -94,21 +94,6 @@ public final class GetAzureProxyArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Hostname for the proxy
-     * 
-     */
-    @Import(name="hostName", required=true)
-    private Output<String> hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public Output<String> hostName() {
-        return this.hostName;
-    }
-
-    /**
      * Name of SSH Key to be used for proxy VM
      * 
      */
@@ -237,7 +222,6 @@ public final class GetAzureProxyArgs extends com.pulumi.resources.InvokeArgs {
         this.certificates = $.certificates;
         this.cloudConnectorId = $.cloudConnectorId;
         this.deleteCloudResourcesOnDestroy = $.deleteCloudResourcesOnDestroy;
-        this.hostName = $.hostName;
         this.keypair = $.keypair;
         this.machineType = $.machineType;
         this.name = $.name;
@@ -366,27 +350,6 @@ public final class GetAzureProxyArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder deleteCloudResourcesOnDestroy(Boolean deleteCloudResourcesOnDestroy) {
             return deleteCloudResourcesOnDestroy(Output.of(deleteCloudResourcesOnDestroy));
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(Output<String> hostName) {
-            $.hostName = hostName;
-            return this;
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(String hostName) {
-            return hostName(Output.of(hostName));
         }
 
         /**
@@ -576,9 +539,6 @@ public final class GetAzureProxyArgs extends com.pulumi.resources.InvokeArgs {
             }
             if ($.deleteCloudResourcesOnDestroy == null) {
                 throw new MissingRequiredPropertyException("GetAzureProxyArgs", "deleteCloudResourcesOnDestroy");
-            }
-            if ($.hostName == null) {
-                throw new MissingRequiredPropertyException("GetAzureProxyArgs", "hostName");
             }
             if ($.keypair == null) {
                 throw new MissingRequiredPropertyException("GetAzureProxyArgs", "keypair");

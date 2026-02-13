@@ -31,14 +31,13 @@ import (
 //			_, err := autostopping.NewAwsAlb(ctx, "test", &autostopping.AwsAlbArgs{
 //				Name:             pulumi.String("name"),
 //				CloudConnectorId: pulumi.String("cloud_connector_id"),
-//				HostName:         pulumi.String("host_name"),
+//				HostName:         "host_name",
 //				Region:           pulumi.String("region"),
 //				Vpc:              pulumi.String("vpc"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("sg1"),
 //					pulumi.String("sg2"),
 //				},
-//				Route53HostedZoneId:           pulumi.String("/hostedzone/zone_id"),
 //				DeleteCloudResourcesOnDestroy: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -47,14 +46,13 @@ import (
 //			_, err = autostopping.NewAwsAlb(ctx, "harness_alb", &autostopping.AwsAlbArgs{
 //				Name:             pulumi.String("harness_alb"),
 //				CloudConnectorId: pulumi.String("cloud_connector_id"),
-//				HostName:         pulumi.String("host.name"),
+//				HostName:         "host.name",
 //				AlbArn:           pulumi.String("arn:aws:elasticloadbalancing:region:aws_account_id:loadbalancer/app/harness_alb/id"),
 //				Region:           pulumi.String("region"),
 //				Vpc:              pulumi.String("vpc"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("sg-0"),
 //				},
-//				Route53HostedZoneId:           pulumi.String("/hostedzone/zone_id"),
 //				DeleteCloudResourcesOnDestroy: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -69,22 +67,18 @@ type AwsAlb struct {
 	pulumi.CustomResourceState
 
 	// Arn of AWS ALB to be imported. Required only for importing existing ALB
-	AlbArn        pulumi.StringPtrOutput `pulumi:"albArn"`
+	AlbArn        pulumi.StringOutput    `pulumi:"albArn"`
 	CertificateId pulumi.StringPtrOutput `pulumi:"certificateId"`
 	// Id of the cloud connector
 	CloudConnectorId pulumi.StringOutput `pulumi:"cloudConnectorId"`
 	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
 	DeleteCloudResourcesOnDestroy pulumi.BoolOutput `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// Unique identifier of the resource
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the proxy
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Region in which cloud resources are hosted
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Route 53 hosted zone id
-	Route53HostedZoneId pulumi.StringPtrOutput `pulumi:"route53HostedZoneId"`
 	// Security Group to define the security rules that determine the inbound and outbound traffic
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	// VPC in which cloud resources are hosted
@@ -103,9 +97,6 @@ func NewAwsAlb(ctx *pulumi.Context,
 	}
 	if args.DeleteCloudResourcesOnDestroy == nil {
 		return nil, errors.New("invalid value for required argument 'DeleteCloudResourcesOnDestroy'")
-	}
-	if args.HostName == nil {
-		return nil, errors.New("invalid value for required argument 'HostName'")
 	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
@@ -143,16 +134,12 @@ type awsAlbState struct {
 	CloudConnectorId *string `pulumi:"cloudConnectorId"`
 	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
 	DeleteCloudResourcesOnDestroy *bool `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName *string `pulumi:"hostName"`
 	// Unique identifier of the resource
 	Identifier *string `pulumi:"identifier"`
 	// Name of the proxy
 	Name *string `pulumi:"name"`
 	// Region in which cloud resources are hosted
 	Region *string `pulumi:"region"`
-	// Route 53 hosted zone id
-	Route53HostedZoneId *string `pulumi:"route53HostedZoneId"`
 	// Security Group to define the security rules that determine the inbound and outbound traffic
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// VPC in which cloud resources are hosted
@@ -167,16 +154,12 @@ type AwsAlbState struct {
 	CloudConnectorId pulumi.StringPtrInput
 	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
 	DeleteCloudResourcesOnDestroy pulumi.BoolPtrInput
-	// Hostname for the proxy
-	HostName pulumi.StringPtrInput
 	// Unique identifier of the resource
 	Identifier pulumi.StringPtrInput
 	// Name of the proxy
 	Name pulumi.StringPtrInput
 	// Region in which cloud resources are hosted
 	Region pulumi.StringPtrInput
-	// Route 53 hosted zone id
-	Route53HostedZoneId pulumi.StringPtrInput
 	// Security Group to define the security rules that determine the inbound and outbound traffic
 	SecurityGroups pulumi.StringArrayInput
 	// VPC in which cloud resources are hosted
@@ -195,14 +178,10 @@ type awsAlbArgs struct {
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
 	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
 	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName string `pulumi:"hostName"`
 	// Name of the proxy
 	Name *string `pulumi:"name"`
 	// Region in which cloud resources are hosted
 	Region string `pulumi:"region"`
-	// Route 53 hosted zone id
-	Route53HostedZoneId *string `pulumi:"route53HostedZoneId"`
 	// Security Group to define the security rules that determine the inbound and outbound traffic
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// VPC in which cloud resources are hosted
@@ -218,14 +197,10 @@ type AwsAlbArgs struct {
 	CloudConnectorId pulumi.StringInput
 	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
 	DeleteCloudResourcesOnDestroy pulumi.BoolInput
-	// Hostname for the proxy
-	HostName pulumi.StringInput
 	// Name of the proxy
 	Name pulumi.StringPtrInput
 	// Region in which cloud resources are hosted
 	Region pulumi.StringInput
-	// Route 53 hosted zone id
-	Route53HostedZoneId pulumi.StringPtrInput
 	// Security Group to define the security rules that determine the inbound and outbound traffic
 	SecurityGroups pulumi.StringArrayInput
 	// VPC in which cloud resources are hosted
@@ -320,8 +295,8 @@ func (o AwsAlbOutput) ToAwsAlbOutputWithContext(ctx context.Context) AwsAlbOutpu
 }
 
 // Arn of AWS ALB to be imported. Required only for importing existing ALB
-func (o AwsAlbOutput) AlbArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AwsAlb) pulumi.StringPtrOutput { return v.AlbArn }).(pulumi.StringPtrOutput)
+func (o AwsAlbOutput) AlbArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsAlb) pulumi.StringOutput { return v.AlbArn }).(pulumi.StringOutput)
 }
 
 func (o AwsAlbOutput) CertificateId() pulumi.StringPtrOutput {
@@ -338,11 +313,6 @@ func (o AwsAlbOutput) DeleteCloudResourcesOnDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AwsAlb) pulumi.BoolOutput { return v.DeleteCloudResourcesOnDestroy }).(pulumi.BoolOutput)
 }
 
-// Hostname for the proxy
-func (o AwsAlbOutput) HostName() pulumi.StringOutput {
-	return o.ApplyT(func(v *AwsAlb) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
-}
-
 // Unique identifier of the resource
 func (o AwsAlbOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsAlb) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
@@ -356,11 +326,6 @@ func (o AwsAlbOutput) Name() pulumi.StringOutput {
 // Region in which cloud resources are hosted
 func (o AwsAlbOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsAlb) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
-}
-
-// Route 53 hosted zone id
-func (o AwsAlbOutput) Route53HostedZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AwsAlb) pulumi.StringPtrOutput { return v.Route53HostedZoneId }).(pulumi.StringPtrOutput)
 }
 
 // Security Group to define the security rules that determine the inbound and outbound traffic

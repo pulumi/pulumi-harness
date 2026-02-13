@@ -28,10 +28,16 @@ class GetInfraModuleResult:
     """
     A collection of values returned by getInfraModule.
     """
-    def __init__(__self__, account=None, created=None, description=None, git_tag_style=None, id=None, module_error=None, name=None, org=None, project=None, repository=None, repository_branch=None, repository_commit=None, repository_connector=None, repository_path=None, repository_url=None, synced=None, system=None, tags=None, testing_enabled=None, testing_metadata=None, updated=None, versions=None):
+    def __init__(__self__, account=None, connector_org=None, connector_project=None, created=None, description=None, git_tag_style=None, id=None, module_error=None, name=None, onboarding_pipeline=None, onboarding_pipeline_org=None, onboarding_pipeline_project=None, onboarding_pipeline_sync=None, org=None, project=None, repository=None, repository_branch=None, repository_commit=None, repository_connector=None, repository_path=None, repository_url=None, storage_type=None, synced=None, system=None, tags=None, testing_enabled=None, testing_metadata=None, updated=None, versions=None):
         if account and not isinstance(account, str):
             raise TypeError("Expected argument 'account' to be a str")
         pulumi.set(__self__, "account", account)
+        if connector_org and not isinstance(connector_org, str):
+            raise TypeError("Expected argument 'connector_org' to be a str")
+        pulumi.set(__self__, "connector_org", connector_org)
+        if connector_project and not isinstance(connector_project, str):
+            raise TypeError("Expected argument 'connector_project' to be a str")
+        pulumi.set(__self__, "connector_project", connector_project)
         if created and not isinstance(created, int):
             raise TypeError("Expected argument 'created' to be a int")
         pulumi.set(__self__, "created", created)
@@ -50,6 +56,18 @@ class GetInfraModuleResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if onboarding_pipeline and not isinstance(onboarding_pipeline, str):
+            raise TypeError("Expected argument 'onboarding_pipeline' to be a str")
+        pulumi.set(__self__, "onboarding_pipeline", onboarding_pipeline)
+        if onboarding_pipeline_org and not isinstance(onboarding_pipeline_org, str):
+            raise TypeError("Expected argument 'onboarding_pipeline_org' to be a str")
+        pulumi.set(__self__, "onboarding_pipeline_org", onboarding_pipeline_org)
+        if onboarding_pipeline_project and not isinstance(onboarding_pipeline_project, str):
+            raise TypeError("Expected argument 'onboarding_pipeline_project' to be a str")
+        pulumi.set(__self__, "onboarding_pipeline_project", onboarding_pipeline_project)
+        if onboarding_pipeline_sync and not isinstance(onboarding_pipeline_sync, bool):
+            raise TypeError("Expected argument 'onboarding_pipeline_sync' to be a bool")
+        pulumi.set(__self__, "onboarding_pipeline_sync", onboarding_pipeline_sync)
         if org and not isinstance(org, str):
             raise TypeError("Expected argument 'org' to be a str")
         pulumi.set(__self__, "org", org)
@@ -74,6 +92,9 @@ class GetInfraModuleResult:
         if repository_url and not isinstance(repository_url, str):
             raise TypeError("Expected argument 'repository_url' to be a str")
         pulumi.set(__self__, "repository_url", repository_url)
+        if storage_type and not isinstance(storage_type, str):
+            raise TypeError("Expected argument 'storage_type' to be a str")
+        pulumi.set(__self__, "storage_type", storage_type)
         if synced and not isinstance(synced, int):
             raise TypeError("Expected argument 'synced' to be a int")
         pulumi.set(__self__, "synced", synced)
@@ -103,6 +124,22 @@ class GetInfraModuleResult:
         Account that owns the module
         """
         return pulumi.get(self, "account")
+
+    @_builtins.property
+    @pulumi.getter(name="connectorOrg")
+    def connector_org(self) -> _builtins.str:
+        """
+        Repository connector orgoanization
+        """
+        return pulumi.get(self, "connector_org")
+
+    @_builtins.property
+    @pulumi.getter(name="connectorProject")
+    def connector_project(self) -> _builtins.str:
+        """
+        Repository connector project
+        """
+        return pulumi.get(self, "connector_project")
 
     @_builtins.property
     @pulumi.getter
@@ -153,19 +190,45 @@ class GetInfraModuleResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="onboardingPipeline")
+    def onboarding_pipeline(self) -> Optional[_builtins.str]:
+        """
+        Onboarding Pipeline identifier
+        """
+        return pulumi.get(self, "onboarding_pipeline")
+
+    @_builtins.property
+    @pulumi.getter(name="onboardingPipelineOrg")
+    def onboarding_pipeline_org(self) -> Optional[_builtins.str]:
+        """
+        Onboarding Pipeline organization
+        """
+        return pulumi.get(self, "onboarding_pipeline_org")
+
+    @_builtins.property
+    @pulumi.getter(name="onboardingPipelineProject")
+    def onboarding_pipeline_project(self) -> Optional[_builtins.str]:
+        """
+        Onboarding Pipeline project
+        """
+        return pulumi.get(self, "onboarding_pipeline_project")
+
+    @_builtins.property
+    @pulumi.getter(name="onboardingPipelineSync")
+    def onboarding_pipeline_sync(self) -> Optional[_builtins.bool]:
+        """
+        Sync the project automatically
+        """
+        return pulumi.get(self, "onboarding_pipeline_sync")
+
+    @_builtins.property
     @pulumi.getter
     def org(self) -> _builtins.str:
-        """
-        Organization that owns the module
-        """
         return pulumi.get(self, "org")
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
-        """
-        Project that owns the module
-        """
         return pulumi.get(self, "project")
 
     @_builtins.property
@@ -215,6 +278,14 @@ class GetInfraModuleResult:
         URL where the module is stored
         """
         return pulumi.get(self, "repository_url")
+
+    @_builtins.property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> _builtins.str:
+        """
+        How to store the artifact
+        """
+        return pulumi.get(self, "storage_type")
 
     @_builtins.property
     @pulumi.getter
@@ -280,12 +351,18 @@ class AwaitableGetInfraModuleResult(GetInfraModuleResult):
             yield self
         return GetInfraModuleResult(
             account=self.account,
+            connector_org=self.connector_org,
+            connector_project=self.connector_project,
             created=self.created,
             description=self.description,
             git_tag_style=self.git_tag_style,
             id=self.id,
             module_error=self.module_error,
             name=self.name,
+            onboarding_pipeline=self.onboarding_pipeline,
+            onboarding_pipeline_org=self.onboarding_pipeline_org,
+            onboarding_pipeline_project=self.onboarding_pipeline_project,
+            onboarding_pipeline_sync=self.onboarding_pipeline_sync,
             org=self.org,
             project=self.project,
             repository=self.repository,
@@ -294,6 +371,7 @@ class AwaitableGetInfraModuleResult(GetInfraModuleResult):
             repository_connector=self.repository_connector,
             repository_path=self.repository_path,
             repository_url=self.repository_url,
+            storage_type=self.storage_type,
             synced=self.synced,
             system=self.system,
             tags=self.tags,
@@ -310,6 +388,10 @@ def get_infra_module(account: Optional[_builtins.str] = None,
                      id: Optional[_builtins.str] = None,
                      module_error: Optional[_builtins.str] = None,
                      name: Optional[_builtins.str] = None,
+                     onboarding_pipeline: Optional[_builtins.str] = None,
+                     onboarding_pipeline_org: Optional[_builtins.str] = None,
+                     onboarding_pipeline_project: Optional[_builtins.str] = None,
+                     onboarding_pipeline_sync: Optional[_builtins.bool] = None,
                      org: Optional[_builtins.str] = None,
                      project: Optional[_builtins.str] = None,
                      repository: Optional[_builtins.str] = None,
@@ -318,6 +400,7 @@ def get_infra_module(account: Optional[_builtins.str] = None,
                      repository_connector: Optional[_builtins.str] = None,
                      repository_path: Optional[_builtins.str] = None,
                      repository_url: Optional[_builtins.str] = None,
+                     storage_type: Optional[_builtins.str] = None,
                      synced: Optional[_builtins.int] = None,
                      system: Optional[_builtins.str] = None,
                      tags: Optional[_builtins.str] = None,
@@ -339,14 +422,17 @@ def get_infra_module(account: Optional[_builtins.str] = None,
     :param _builtins.str id: Identifier of the module
     :param _builtins.str module_error: Error while retrieving the module
     :param _builtins.str name: Name of the module
-    :param _builtins.str org: Organization that owns the module
-    :param _builtins.str project: Project that owns the module
+    :param _builtins.str onboarding_pipeline: Onboarding Pipeline identifier
+    :param _builtins.str onboarding_pipeline_org: Onboarding Pipeline organization
+    :param _builtins.str onboarding_pipeline_project: Onboarding Pipeline project
+    :param _builtins.bool onboarding_pipeline_sync: Sync the project automatically
     :param _builtins.str repository: For account connectors, the repository where the module is stored
     :param _builtins.str repository_branch: Repository Branch in which the module should be accessed
     :param _builtins.str repository_commit: Repository Commit in which the module should be accessed
     :param _builtins.str repository_connector: Repository Connector is the reference to the connector for the repository
     :param _builtins.str repository_path: Repository Path is the path in which the module resides
     :param _builtins.str repository_url: URL where the module is stored
+    :param _builtins.str storage_type: How to store the artifact
     :param _builtins.int synced: Timestamp when the module was last synced
     :param _builtins.str system: Provider of the module
     :param _builtins.str tags: Tags associated with the module
@@ -363,6 +449,10 @@ def get_infra_module(account: Optional[_builtins.str] = None,
     __args__['id'] = id
     __args__['moduleError'] = module_error
     __args__['name'] = name
+    __args__['onboardingPipeline'] = onboarding_pipeline
+    __args__['onboardingPipelineOrg'] = onboarding_pipeline_org
+    __args__['onboardingPipelineProject'] = onboarding_pipeline_project
+    __args__['onboardingPipelineSync'] = onboarding_pipeline_sync
     __args__['org'] = org
     __args__['project'] = project
     __args__['repository'] = repository
@@ -371,6 +461,7 @@ def get_infra_module(account: Optional[_builtins.str] = None,
     __args__['repositoryConnector'] = repository_connector
     __args__['repositoryPath'] = repository_path
     __args__['repositoryUrl'] = repository_url
+    __args__['storageType'] = storage_type
     __args__['synced'] = synced
     __args__['system'] = system
     __args__['tags'] = tags
@@ -383,12 +474,18 @@ def get_infra_module(account: Optional[_builtins.str] = None,
 
     return AwaitableGetInfraModuleResult(
         account=pulumi.get(__ret__, 'account'),
+        connector_org=pulumi.get(__ret__, 'connector_org'),
+        connector_project=pulumi.get(__ret__, 'connector_project'),
         created=pulumi.get(__ret__, 'created'),
         description=pulumi.get(__ret__, 'description'),
         git_tag_style=pulumi.get(__ret__, 'git_tag_style'),
         id=pulumi.get(__ret__, 'id'),
         module_error=pulumi.get(__ret__, 'module_error'),
         name=pulumi.get(__ret__, 'name'),
+        onboarding_pipeline=pulumi.get(__ret__, 'onboarding_pipeline'),
+        onboarding_pipeline_org=pulumi.get(__ret__, 'onboarding_pipeline_org'),
+        onboarding_pipeline_project=pulumi.get(__ret__, 'onboarding_pipeline_project'),
+        onboarding_pipeline_sync=pulumi.get(__ret__, 'onboarding_pipeline_sync'),
         org=pulumi.get(__ret__, 'org'),
         project=pulumi.get(__ret__, 'project'),
         repository=pulumi.get(__ret__, 'repository'),
@@ -397,6 +494,7 @@ def get_infra_module(account: Optional[_builtins.str] = None,
         repository_connector=pulumi.get(__ret__, 'repository_connector'),
         repository_path=pulumi.get(__ret__, 'repository_path'),
         repository_url=pulumi.get(__ret__, 'repository_url'),
+        storage_type=pulumi.get(__ret__, 'storage_type'),
         synced=pulumi.get(__ret__, 'synced'),
         system=pulumi.get(__ret__, 'system'),
         tags=pulumi.get(__ret__, 'tags'),
@@ -411,6 +509,10 @@ def get_infra_module_output(account: Optional[pulumi.Input[_builtins.str]] = Non
                             id: Optional[pulumi.Input[_builtins.str]] = None,
                             module_error: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             name: Optional[pulumi.Input[_builtins.str]] = None,
+                            onboarding_pipeline: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                            onboarding_pipeline_org: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                            onboarding_pipeline_project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                            onboarding_pipeline_sync: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                             org: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             repository: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -419,6 +521,7 @@ def get_infra_module_output(account: Optional[pulumi.Input[_builtins.str]] = Non
                             repository_connector: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             repository_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             repository_url: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                            storage_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             synced: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                             system: Optional[pulumi.Input[_builtins.str]] = None,
                             tags: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -440,14 +543,17 @@ def get_infra_module_output(account: Optional[pulumi.Input[_builtins.str]] = Non
     :param _builtins.str id: Identifier of the module
     :param _builtins.str module_error: Error while retrieving the module
     :param _builtins.str name: Name of the module
-    :param _builtins.str org: Organization that owns the module
-    :param _builtins.str project: Project that owns the module
+    :param _builtins.str onboarding_pipeline: Onboarding Pipeline identifier
+    :param _builtins.str onboarding_pipeline_org: Onboarding Pipeline organization
+    :param _builtins.str onboarding_pipeline_project: Onboarding Pipeline project
+    :param _builtins.bool onboarding_pipeline_sync: Sync the project automatically
     :param _builtins.str repository: For account connectors, the repository where the module is stored
     :param _builtins.str repository_branch: Repository Branch in which the module should be accessed
     :param _builtins.str repository_commit: Repository Commit in which the module should be accessed
     :param _builtins.str repository_connector: Repository Connector is the reference to the connector for the repository
     :param _builtins.str repository_path: Repository Path is the path in which the module resides
     :param _builtins.str repository_url: URL where the module is stored
+    :param _builtins.str storage_type: How to store the artifact
     :param _builtins.int synced: Timestamp when the module was last synced
     :param _builtins.str system: Provider of the module
     :param _builtins.str tags: Tags associated with the module
@@ -464,6 +570,10 @@ def get_infra_module_output(account: Optional[pulumi.Input[_builtins.str]] = Non
     __args__['id'] = id
     __args__['moduleError'] = module_error
     __args__['name'] = name
+    __args__['onboardingPipeline'] = onboarding_pipeline
+    __args__['onboardingPipelineOrg'] = onboarding_pipeline_org
+    __args__['onboardingPipelineProject'] = onboarding_pipeline_project
+    __args__['onboardingPipelineSync'] = onboarding_pipeline_sync
     __args__['org'] = org
     __args__['project'] = project
     __args__['repository'] = repository
@@ -472,6 +582,7 @@ def get_infra_module_output(account: Optional[pulumi.Input[_builtins.str]] = Non
     __args__['repositoryConnector'] = repository_connector
     __args__['repositoryPath'] = repository_path
     __args__['repositoryUrl'] = repository_url
+    __args__['storageType'] = storage_type
     __args__['synced'] = synced
     __args__['system'] = system
     __args__['tags'] = tags
@@ -483,12 +594,18 @@ def get_infra_module_output(account: Optional[pulumi.Input[_builtins.str]] = Non
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getInfraModule:getInfraModule', __args__, opts=opts, typ=GetInfraModuleResult)
     return __ret__.apply(lambda __response__: GetInfraModuleResult(
         account=pulumi.get(__response__, 'account'),
+        connector_org=pulumi.get(__response__, 'connector_org'),
+        connector_project=pulumi.get(__response__, 'connector_project'),
         created=pulumi.get(__response__, 'created'),
         description=pulumi.get(__response__, 'description'),
         git_tag_style=pulumi.get(__response__, 'git_tag_style'),
         id=pulumi.get(__response__, 'id'),
         module_error=pulumi.get(__response__, 'module_error'),
         name=pulumi.get(__response__, 'name'),
+        onboarding_pipeline=pulumi.get(__response__, 'onboarding_pipeline'),
+        onboarding_pipeline_org=pulumi.get(__response__, 'onboarding_pipeline_org'),
+        onboarding_pipeline_project=pulumi.get(__response__, 'onboarding_pipeline_project'),
+        onboarding_pipeline_sync=pulumi.get(__response__, 'onboarding_pipeline_sync'),
         org=pulumi.get(__response__, 'org'),
         project=pulumi.get(__response__, 'project'),
         repository=pulumi.get(__response__, 'repository'),
@@ -497,6 +614,7 @@ def get_infra_module_output(account: Optional[pulumi.Input[_builtins.str]] = Non
         repository_connector=pulumi.get(__response__, 'repository_connector'),
         repository_path=pulumi.get(__response__, 'repository_path'),
         repository_url=pulumi.get(__response__, 'repository_url'),
+        storage_type=pulumi.get(__response__, 'storage_type'),
         synced=pulumi.get(__response__, 'synced'),
         system=pulumi.get(__response__, 'system'),
         tags=pulumi.get(__response__, 'tags'),

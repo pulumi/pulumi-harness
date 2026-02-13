@@ -76,12 +76,6 @@ namespace Pulumi.Harness.Autostopping
         public string? FrontendIp { get; set; }
 
         /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Input("hostName", required: true)]
-        public string HostName { get; set; } = null!;
-
-        /// <summary>
         /// Name of the proxy
         /// </summary>
         [Input("name", required: true)]
@@ -162,12 +156,6 @@ namespace Pulumi.Harness.Autostopping
         public Input<string>? FrontendIp { get; set; }
 
         /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Input("hostName", required: true)]
-        public Input<string> HostName { get; set; } = null!;
-
-        /// <summary>
         /// Name of the proxy
         /// </summary>
         [Input("name", required: true)]
@@ -238,10 +226,6 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public readonly string? FrontendIp;
         /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        public readonly string HostName;
-        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -288,8 +272,6 @@ namespace Pulumi.Harness.Autostopping
 
             string? frontendIp,
 
-            string hostName,
-
             string id,
 
             string identifier,
@@ -312,7 +294,6 @@ namespace Pulumi.Harness.Autostopping
             CloudConnectorId = cloudConnectorId;
             DeleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
             FrontendIp = frontendIp;
-            HostName = hostName;
             Id = id;
             Identifier = identifier;
             Name = name;

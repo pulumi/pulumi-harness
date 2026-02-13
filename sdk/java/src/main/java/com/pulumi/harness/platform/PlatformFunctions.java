@@ -4756,6 +4756,7 @@ public final class PlatformFunctions {
      *         // Get all delegates in an account
      *         final var all = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
      *             .accountId("your_account_id")
+     *             .filterType("Delegate")
      *             .fetchAll(true)
      *             .build());
      * 
@@ -4764,6 +4765,7 @@ public final class PlatformFunctions {
      *             .accountId("your_account_id")
      *             .orgId("your_org_id")
      *             .projectId("your_project_id")
+     *             .filterType("Delegate")
      *             .status("CONNECTED")
      *             .delegateTags(            
      *                 "production",
@@ -4773,6 +4775,7 @@ public final class PlatformFunctions {
      *         // Get delegates by name pattern and group
      *         final var specificGroup = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
      *             .accountId("your_account_id")
+     *             .filterType("Delegate")
      *             .delegateName("prod-delegate")
      *             .delegateGroupIdentifier("production-group")
      *             .versionStatus("ACTIVE")
@@ -4817,6 +4820,7 @@ public final class PlatformFunctions {
      *         // Get all delegates in an account
      *         final var all = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
      *             .accountId("your_account_id")
+     *             .filterType("Delegate")
      *             .fetchAll(true)
      *             .build());
      * 
@@ -4825,6 +4829,7 @@ public final class PlatformFunctions {
      *             .accountId("your_account_id")
      *             .orgId("your_org_id")
      *             .projectId("your_project_id")
+     *             .filterType("Delegate")
      *             .status("CONNECTED")
      *             .delegateTags(            
      *                 "production",
@@ -4834,6 +4839,7 @@ public final class PlatformFunctions {
      *         // Get delegates by name pattern and group
      *         final var specificGroup = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
      *             .accountId("your_account_id")
+     *             .filterType("Delegate")
      *             .delegateName("prod-delegate")
      *             .delegateGroupIdentifier("production-group")
      *             .versionStatus("ACTIVE")
@@ -4878,6 +4884,7 @@ public final class PlatformFunctions {
      *         // Get all delegates in an account
      *         final var all = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
      *             .accountId("your_account_id")
+     *             .filterType("Delegate")
      *             .fetchAll(true)
      *             .build());
      * 
@@ -4886,6 +4893,7 @@ public final class PlatformFunctions {
      *             .accountId("your_account_id")
      *             .orgId("your_org_id")
      *             .projectId("your_project_id")
+     *             .filterType("Delegate")
      *             .status("CONNECTED")
      *             .delegateTags(            
      *                 "production",
@@ -4895,6 +4903,7 @@ public final class PlatformFunctions {
      *         // Get delegates by name pattern and group
      *         final var specificGroup = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
      *             .accountId("your_account_id")
+     *             .filterType("Delegate")
      *             .delegateName("prod-delegate")
      *             .delegateGroupIdentifier("production-group")
      *             .versionStatus("ACTIVE")
@@ -4939,6 +4948,7 @@ public final class PlatformFunctions {
      *         // Get all delegates in an account
      *         final var all = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
      *             .accountId("your_account_id")
+     *             .filterType("Delegate")
      *             .fetchAll(true)
      *             .build());
      * 
@@ -4947,6 +4957,7 @@ public final class PlatformFunctions {
      *             .accountId("your_account_id")
      *             .orgId("your_org_id")
      *             .projectId("your_project_id")
+     *             .filterType("Delegate")
      *             .status("CONNECTED")
      *             .delegateTags(            
      *                 "production",
@@ -4956,6 +4967,7 @@ public final class PlatformFunctions {
      *         // Get delegates by name pattern and group
      *         final var specificGroup = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
      *             .accountId("your_account_id")
+     *             .filterType("Delegate")
      *             .delegateName("prod-delegate")
      *             .delegateGroupIdentifier("production-group")
      *             .versionStatus("ACTIVE")
@@ -5000,6 +5012,7 @@ public final class PlatformFunctions {
      *         // Get all delegates in an account
      *         final var all = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
      *             .accountId("your_account_id")
+     *             .filterType("Delegate")
      *             .fetchAll(true)
      *             .build());
      * 
@@ -5008,6 +5021,7 @@ public final class PlatformFunctions {
      *             .accountId("your_account_id")
      *             .orgId("your_org_id")
      *             .projectId("your_project_id")
+     *             .filterType("Delegate")
      *             .status("CONNECTED")
      *             .delegateTags(            
      *                 "production",
@@ -5017,6 +5031,7 @@ public final class PlatformFunctions {
      *         // Get delegates by name pattern and group
      *         final var specificGroup = PlatformFunctions.getDelegateList(GetDelegateListArgs.builder()
      *             .accountId("your_account_id")
+     *             .filterType("Delegate")
      *             .delegateName("prod-delegate")
      *             .delegateGroupIdentifier("production-group")
      *             .versionStatus("ACTIVE")

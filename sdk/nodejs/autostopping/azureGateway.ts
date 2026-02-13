@@ -93,10 +93,6 @@ export class AzureGateway extends pulumi.CustomResource {
      */
     declare public readonly frontendIp: pulumi.Output<string | undefined>;
     /**
-     * Hostname for the proxy
-     */
-    declare public readonly hostName: pulumi.Output<string>;
-    /**
      * Unique identifier of the resource
      */
     declare public /*out*/ readonly identifier: pulumi.Output<string>;
@@ -144,7 +140,6 @@ export class AzureGateway extends pulumi.CustomResource {
             resourceInputs["cloudConnectorId"] = state?.cloudConnectorId;
             resourceInputs["deleteCloudResourcesOnDestroy"] = state?.deleteCloudResourcesOnDestroy;
             resourceInputs["frontendIp"] = state?.frontendIp;
-            resourceInputs["hostName"] = state?.hostName;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["name"] = state?.name;
             resourceInputs["region"] = state?.region;
@@ -163,9 +158,6 @@ export class AzureGateway extends pulumi.CustomResource {
             if (args?.deleteCloudResourcesOnDestroy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deleteCloudResourcesOnDestroy'");
             }
-            if (args?.hostName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'hostName'");
-            }
             if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -181,7 +173,6 @@ export class AzureGateway extends pulumi.CustomResource {
             resourceInputs["cloudConnectorId"] = args?.cloudConnectorId;
             resourceInputs["deleteCloudResourcesOnDestroy"] = args?.deleteCloudResourcesOnDestroy;
             resourceInputs["frontendIp"] = args?.frontendIp;
-            resourceInputs["hostName"] = args?.hostName;
             resourceInputs["name"] = args?.name;
             resourceInputs["region"] = args?.region;
             resourceInputs["resourceGroup"] = args?.resourceGroup;
@@ -223,10 +214,6 @@ export interface AzureGatewayState {
      * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
      */
     frontendIp?: pulumi.Input<string>;
-    /**
-     * Hostname for the proxy
-     */
-    hostName?: pulumi.Input<string>;
     /**
      * Unique identifier of the resource
      */
@@ -285,10 +272,6 @@ export interface AzureGatewayArgs {
      * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
      */
     frontendIp?: pulumi.Input<string>;
-    /**
-     * Hostname for the proxy
-     */
-    hostName: pulumi.Input<string>;
     /**
      * Name of the proxy
      */

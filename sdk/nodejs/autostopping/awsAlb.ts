@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  *         "sg1",
  *         "sg2",
  *     ],
- *     route53HostedZoneId: "/hostedzone/zone_id",
  *     deleteCloudResourcesOnDestroy: true,
  * });
  * const harnessAlb = new harness.autostopping.AwsAlb("harness_alb", {
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  *     region: "region",
  *     vpc: "vpc",
  *     securityGroups: ["sg-0"],
- *     route53HostedZoneId: "/hostedzone/zone_id",
  *     deleteCloudResourcesOnDestroy: false,
  * });
  * ```
@@ -70,7 +68,7 @@ export class AwsAlb extends pulumi.CustomResource {
     /**
      * Arn of AWS ALB to be imported. Required only for importing existing ALB
      */
-    declare public readonly albArn: pulumi.Output<string | undefined>;
+    declare public readonly albArn: pulumi.Output<string>;
     declare public readonly certificateId: pulumi.Output<string | undefined>;
     /**
      * Id of the cloud connector
@@ -80,10 +78,6 @@ export class AwsAlb extends pulumi.CustomResource {
      * Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
      */
     declare public readonly deleteCloudResourcesOnDestroy: pulumi.Output<boolean>;
-    /**
-     * Hostname for the proxy
-     */
-    declare public readonly hostName: pulumi.Output<string>;
     /**
      * Unique identifier of the resource
      */
@@ -96,10 +90,6 @@ export class AwsAlb extends pulumi.CustomResource {
      * Region in which cloud resources are hosted
      */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Route 53 hosted zone id
-     */
-    declare public readonly route53HostedZoneId: pulumi.Output<string | undefined>;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
@@ -126,11 +116,9 @@ export class AwsAlb extends pulumi.CustomResource {
             resourceInputs["certificateId"] = state?.certificateId;
             resourceInputs["cloudConnectorId"] = state?.cloudConnectorId;
             resourceInputs["deleteCloudResourcesOnDestroy"] = state?.deleteCloudResourcesOnDestroy;
-            resourceInputs["hostName"] = state?.hostName;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["name"] = state?.name;
             resourceInputs["region"] = state?.region;
-            resourceInputs["route53HostedZoneId"] = state?.route53HostedZoneId;
             resourceInputs["securityGroups"] = state?.securityGroups;
             resourceInputs["vpc"] = state?.vpc;
         } else {
@@ -140,9 +128,6 @@ export class AwsAlb extends pulumi.CustomResource {
             }
             if (args?.deleteCloudResourcesOnDestroy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deleteCloudResourcesOnDestroy'");
-            }
-            if (args?.hostName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'hostName'");
             }
             if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
@@ -154,10 +139,8 @@ export class AwsAlb extends pulumi.CustomResource {
             resourceInputs["certificateId"] = args?.certificateId;
             resourceInputs["cloudConnectorId"] = args?.cloudConnectorId;
             resourceInputs["deleteCloudResourcesOnDestroy"] = args?.deleteCloudResourcesOnDestroy;
-            resourceInputs["hostName"] = args?.hostName;
             resourceInputs["name"] = args?.name;
             resourceInputs["region"] = args?.region;
-            resourceInputs["route53HostedZoneId"] = args?.route53HostedZoneId;
             resourceInputs["securityGroups"] = args?.securityGroups;
             resourceInputs["vpc"] = args?.vpc;
             resourceInputs["identifier"] = undefined /*out*/;
@@ -185,10 +168,6 @@ export interface AwsAlbState {
      */
     deleteCloudResourcesOnDestroy?: pulumi.Input<boolean>;
     /**
-     * Hostname for the proxy
-     */
-    hostName?: pulumi.Input<string>;
-    /**
      * Unique identifier of the resource
      */
     identifier?: pulumi.Input<string>;
@@ -200,10 +179,6 @@ export interface AwsAlbState {
      * Region in which cloud resources are hosted
      */
     region?: pulumi.Input<string>;
-    /**
-     * Route 53 hosted zone id
-     */
-    route53HostedZoneId?: pulumi.Input<string>;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
@@ -232,10 +207,6 @@ export interface AwsAlbArgs {
      */
     deleteCloudResourcesOnDestroy: pulumi.Input<boolean>;
     /**
-     * Hostname for the proxy
-     */
-    hostName: pulumi.Input<string>;
-    /**
      * Name of the proxy
      */
     name?: pulumi.Input<string>;
@@ -243,10 +214,6 @@ export interface AwsAlbArgs {
      * Region in which cloud resources are hosted
      */
     region: pulumi.Input<string>;
-    /**
-     * Route 53 hosted zone id
-     */
-    route53HostedZoneId?: pulumi.Input<string>;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */

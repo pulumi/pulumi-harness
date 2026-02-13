@@ -93,21 +93,6 @@ public final class GetAzureProxyPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Hostname for the proxy
-     * 
-     */
-    @Import(name="hostName", required=true)
-    private String hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public String hostName() {
-        return this.hostName;
-    }
-
-    /**
      * Name of SSH Key to be used for proxy VM
      * 
      */
@@ -236,7 +221,6 @@ public final class GetAzureProxyPlainArgs extends com.pulumi.resources.InvokeArg
         this.certificates = $.certificates;
         this.cloudConnectorId = $.cloudConnectorId;
         this.deleteCloudResourcesOnDestroy = $.deleteCloudResourcesOnDestroy;
-        this.hostName = $.hostName;
         this.keypair = $.keypair;
         this.machineType = $.machineType;
         this.name = $.name;
@@ -316,17 +300,6 @@ public final class GetAzureProxyPlainArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder deleteCloudResourcesOnDestroy(Boolean deleteCloudResourcesOnDestroy) {
             $.deleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
-            return this;
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(String hostName) {
-            $.hostName = hostName;
             return this;
         }
 
@@ -437,9 +410,6 @@ public final class GetAzureProxyPlainArgs extends com.pulumi.resources.InvokeArg
             }
             if ($.deleteCloudResourcesOnDestroy == null) {
                 throw new MissingRequiredPropertyException("GetAzureProxyPlainArgs", "deleteCloudResourcesOnDestroy");
-            }
-            if ($.hostName == null) {
-                throw new MissingRequiredPropertyException("GetAzureProxyPlainArgs", "hostName");
             }
             if ($.keypair == null) {
                 throw new MissingRequiredPropertyException("GetAzureProxyPlainArgs", "keypair");

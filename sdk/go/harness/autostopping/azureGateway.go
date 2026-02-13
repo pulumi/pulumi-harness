@@ -31,7 +31,7 @@ import (
 //			_, err := autostopping.NewAzureGateway(ctx, "test", &autostopping.AzureGatewayArgs{
 //				Name:                          pulumi.String("name"),
 //				CloudConnectorId:              pulumi.String("cloud_connector_id"),
-//				HostName:                      pulumi.String("host_name"),
+//				HostName:                      "host_name",
 //				Region:                        pulumi.String("eastus2"),
 //				ResourceGroup:                 pulumi.String("resource_group"),
 //				SubnetId:                      pulumi.String("/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Network/virtualNetworks/virtual_network/subnets/subnet_id"),
@@ -47,7 +47,7 @@ import (
 //			_, err = autostopping.NewAzureGateway(ctx, "import_test", &autostopping.AzureGatewayArgs{
 //				Name:                          pulumi.String("import_test"),
 //				CloudConnectorId:              pulumi.String("cloud_connector_id"),
-//				HostName:                      pulumi.String("host_name"),
+//				HostName:                      "host_name",
 //				Region:                        pulumi.String("westus2"),
 //				ResourceGroup:                 pulumi.String("test_resource_group"),
 //				AppGatewayId:                  pulumi.String("/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/applicationGateways/TestAppGateway"),
@@ -79,8 +79,6 @@ type AzureGateway struct {
 	DeleteCloudResourcesOnDestroy pulumi.BoolOutput `pulumi:"deleteCloudResourcesOnDestroy"`
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp pulumi.StringPtrOutput `pulumi:"frontendIp"`
-	// Hostname for the proxy
-	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// Unique identifier of the resource
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the proxy
@@ -112,9 +110,6 @@ func NewAzureGateway(ctx *pulumi.Context,
 	}
 	if args.DeleteCloudResourcesOnDestroy == nil {
 		return nil, errors.New("invalid value for required argument 'DeleteCloudResourcesOnDestroy'")
-	}
-	if args.HostName == nil {
-		return nil, errors.New("invalid value for required argument 'HostName'")
 	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
@@ -160,8 +155,6 @@ type azureGatewayState struct {
 	DeleteCloudResourcesOnDestroy *bool `pulumi:"deleteCloudResourcesOnDestroy"`
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp *string `pulumi:"frontendIp"`
-	// Hostname for the proxy
-	HostName *string `pulumi:"hostName"`
 	// Unique identifier of the resource
 	Identifier *string `pulumi:"identifier"`
 	// Name of the proxy
@@ -191,8 +184,6 @@ type AzureGatewayState struct {
 	DeleteCloudResourcesOnDestroy pulumi.BoolPtrInput
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp pulumi.StringPtrInput
-	// Hostname for the proxy
-	HostName pulumi.StringPtrInput
 	// Unique identifier of the resource
 	Identifier pulumi.StringPtrInput
 	// Name of the proxy
@@ -226,8 +217,6 @@ type azureGatewayArgs struct {
 	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp *string `pulumi:"frontendIp"`
-	// Hostname for the proxy
-	HostName string `pulumi:"hostName"`
 	// Name of the proxy
 	Name *string `pulumi:"name"`
 	// Region in which cloud resources are hosted
@@ -256,8 +245,6 @@ type AzureGatewayArgs struct {
 	DeleteCloudResourcesOnDestroy pulumi.BoolInput
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp pulumi.StringPtrInput
-	// Hostname for the proxy
-	HostName pulumi.StringInput
 	// Name of the proxy
 	Name pulumi.StringPtrInput
 	// Region in which cloud resources are hosted
@@ -387,11 +374,6 @@ func (o AzureGatewayOutput) DeleteCloudResourcesOnDestroy() pulumi.BoolOutput {
 // ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 func (o AzureGatewayOutput) FrontendIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureGateway) pulumi.StringPtrOutput { return v.FrontendIp }).(pulumi.StringPtrOutput)
-}
-
-// Hostname for the proxy
-func (o AzureGatewayOutput) HostName() pulumi.StringOutput {
-	return o.ApplyT(func(v *AzureGateway) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
 }
 
 // Unique identifier of the resource

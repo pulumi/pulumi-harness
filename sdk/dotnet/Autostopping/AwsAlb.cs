@@ -34,7 +34,6 @@ namespace Pulumi.Harness.Autostopping
     ///             "sg1",
     ///             "sg2",
     ///         },
-    ///         Route53HostedZoneId = "/hostedzone/zone_id",
     ///         DeleteCloudResourcesOnDestroy = true,
     ///     });
     /// 
@@ -50,7 +49,6 @@ namespace Pulumi.Harness.Autostopping
     ///         {
     ///             "sg-0",
     ///         },
-    ///         Route53HostedZoneId = "/hostedzone/zone_id",
     ///         DeleteCloudResourcesOnDestroy = false,
     ///     });
     /// 
@@ -64,7 +62,7 @@ namespace Pulumi.Harness.Autostopping
         /// Arn of AWS ALB to be imported. Required only for importing existing ALB
         /// </summary>
         [Output("albArn")]
-        public Output<string?> AlbArn { get; private set; } = null!;
+        public Output<string> AlbArn { get; private set; } = null!;
 
         [Output("certificateId")]
         public Output<string?> CertificateId { get; private set; } = null!;
@@ -80,12 +78,6 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Output("deleteCloudResourcesOnDestroy")]
         public Output<bool> DeleteCloudResourcesOnDestroy { get; private set; } = null!;
-
-        /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Output("hostName")]
-        public Output<string> HostName { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource
@@ -104,12 +96,6 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
-
-        /// <summary>
-        /// Route 53 hosted zone id
-        /// </summary>
-        [Output("route53HostedZoneId")]
-        public Output<string?> Route53HostedZoneId { get; private set; } = null!;
 
         /// <summary>
         /// Security Group to define the security rules that determine the inbound and outbound traffic
@@ -192,12 +178,6 @@ namespace Pulumi.Harness.Autostopping
         public Input<bool> DeleteCloudResourcesOnDestroy { get; set; } = null!;
 
         /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Input("hostName", required: true)]
-        public Input<string> HostName { get; set; } = null!;
-
-        /// <summary>
         /// Name of the proxy
         /// </summary>
         [Input("name")]
@@ -208,12 +188,6 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// Route 53 hosted zone id
-        /// </summary>
-        [Input("route53HostedZoneId")]
-        public Input<string>? Route53HostedZoneId { get; set; }
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
@@ -263,12 +237,6 @@ namespace Pulumi.Harness.Autostopping
         public Input<bool>? DeleteCloudResourcesOnDestroy { get; set; }
 
         /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Input("hostName")]
-        public Input<string>? HostName { get; set; }
-
-        /// <summary>
         /// Unique identifier of the resource
         /// </summary>
         [Input("identifier")]
@@ -285,12 +253,6 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
-
-        /// <summary>
-        /// Route 53 hosted zone id
-        /// </summary>
-        [Input("route53HostedZoneId")]
-        public Input<string>? Route53HostedZoneId { get; set; }
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;

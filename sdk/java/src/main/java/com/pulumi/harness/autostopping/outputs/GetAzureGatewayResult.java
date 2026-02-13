@@ -44,11 +44,6 @@ public final class GetAzureGatewayResult {
      */
     private @Nullable String frontendIp;
     /**
-     * @return Hostname for the proxy
-     * 
-     */
-    private String hostName;
-    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -133,13 +128,6 @@ public final class GetAzureGatewayResult {
         return Optional.ofNullable(this.frontendIp);
     }
     /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public String hostName() {
-        return this.hostName;
-    }
-    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -211,7 +199,6 @@ public final class GetAzureGatewayResult {
         private String cloudConnectorId;
         private Boolean deleteCloudResourcesOnDestroy;
         private @Nullable String frontendIp;
-        private String hostName;
         private String id;
         private String identifier;
         private String name;
@@ -229,7 +216,6 @@ public final class GetAzureGatewayResult {
     	      this.cloudConnectorId = defaults.cloudConnectorId;
     	      this.deleteCloudResourcesOnDestroy = defaults.deleteCloudResourcesOnDestroy;
     	      this.frontendIp = defaults.frontendIp;
-    	      this.hostName = defaults.hostName;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
@@ -280,14 +266,6 @@ public final class GetAzureGatewayResult {
         public Builder frontendIp(@Nullable String frontendIp) {
 
             this.frontendIp = frontendIp;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder hostName(String hostName) {
-            if (hostName == null) {
-              throw new MissingRequiredPropertyException("GetAzureGatewayResult", "hostName");
-            }
-            this.hostName = hostName;
             return this;
         }
         @CustomType.Setter
@@ -358,7 +336,6 @@ public final class GetAzureGatewayResult {
             _resultValue.cloudConnectorId = cloudConnectorId;
             _resultValue.deleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
             _resultValue.frontendIp = frontendIp;
-            _resultValue.hostName = hostName;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.name = name;

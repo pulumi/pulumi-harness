@@ -52,7 +52,6 @@ import javax.annotation.Nullable;
  *             .securityGroups(            
  *                 "sg1",
  *                 "sg2")
- *             .route53HostedZoneId("/hostedzone/zone_id")
  *             .deleteCloudResourcesOnDestroy(true)
  *             .build());
  * 
@@ -64,7 +63,6 @@ import javax.annotation.Nullable;
  *             .region("region")
  *             .vpc("vpc")
  *             .securityGroups("sg-0")
- *             .route53HostedZoneId("/hostedzone/zone_id")
  *             .deleteCloudResourcesOnDestroy(false)
  *             .build());
  * 
@@ -81,14 +79,14 @@ public class AwsAlb extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="albArn", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> albArn;
+    private Output<String> albArn;
 
     /**
      * @return Arn of AWS ALB to be imported. Required only for importing existing ALB
      * 
      */
-    public Output<Optional<String>> albArn() {
-        return Codegen.optional(this.albArn);
+    public Output<String> albArn() {
+        return this.albArn;
     }
     @Export(name="certificateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificateId;
@@ -123,20 +121,6 @@ public class AwsAlb extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
-    }
-    /**
-     * Hostname for the proxy
-     * 
-     */
-    @Export(name="hostName", refs={String.class}, tree="[0]")
-    private Output<String> hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public Output<String> hostName() {
-        return this.hostName;
     }
     /**
      * Unique identifier of the resource
@@ -179,20 +163,6 @@ public class AwsAlb extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
-    }
-    /**
-     * Route 53 hosted zone id
-     * 
-     */
-    @Export(name="route53HostedZoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> route53HostedZoneId;
-
-    /**
-     * @return Route 53 hosted zone id
-     * 
-     */
-    public Output<Optional<String>> route53HostedZoneId() {
-        return Codegen.optional(this.route53HostedZoneId);
     }
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic

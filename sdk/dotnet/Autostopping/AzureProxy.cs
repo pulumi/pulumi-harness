@@ -26,7 +26,6 @@ namespace Pulumi.Harness.Autostopping
     ///     {
     ///         Name = "name",
     ///         CloudConnectorId = "cloud_connector_id",
-    ///         HostName = "host_name",
     ///         Region = "eastus2",
     ///         ResourceGroup = "resource_group",
     ///         Vpc = "/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Network/virtualNetworks/virtual_network",
@@ -77,12 +76,6 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Output("deleteCloudResourcesOnDestroy")]
         public Output<bool> DeleteCloudResourcesOnDestroy { get; private set; } = null!;
-
-        /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Output("hostName")]
-        public Output<string> HostName { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource
@@ -230,12 +223,6 @@ namespace Pulumi.Harness.Autostopping
         public Input<bool> DeleteCloudResourcesOnDestroy { get; set; } = null!;
 
         /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Input("hostName", required: true)]
-        public Input<string> HostName { get; set; } = null!;
-
-        /// <summary>
         /// Name of SSH Key to be used for proxy VM
         /// </summary>
         [Input("keypair", required: true)]
@@ -336,12 +323,6 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Input("deleteCloudResourcesOnDestroy")]
         public Input<bool>? DeleteCloudResourcesOnDestroy { get; set; }
-
-        /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Input("hostName")]
-        public Input<string>? HostName { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource

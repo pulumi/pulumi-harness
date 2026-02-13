@@ -86,21 +86,6 @@ public final class GcpProxyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hostname for the proxy
-     * 
-     */
-    @Import(name="hostName")
-    private @Nullable Output<String> hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public Optional<Output<String>> hostName() {
-        return Optional.ofNullable(this.hostName);
-    }
-
-    /**
      * Unique identifier of the resource
      * 
      */
@@ -228,7 +213,6 @@ public final class GcpProxyState extends com.pulumi.resources.ResourceArgs {
         this.certificates = $.certificates;
         this.cloudConnectorId = $.cloudConnectorId;
         this.deleteCloudResourcesOnDestroy = $.deleteCloudResourcesOnDestroy;
-        this.hostName = $.hostName;
         this.identifier = $.identifier;
         this.machineType = $.machineType;
         this.name = $.name;
@@ -348,27 +332,6 @@ public final class GcpProxyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deleteCloudResourcesOnDestroy(Boolean deleteCloudResourcesOnDestroy) {
             return deleteCloudResourcesOnDestroy(Output.of(deleteCloudResourcesOnDestroy));
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(@Nullable Output<String> hostName) {
-            $.hostName = hostName;
-            return this;
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(String hostName) {
-            return hostName(Output.of(hostName));
         }
 
         /**
