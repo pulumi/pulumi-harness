@@ -70,21 +70,6 @@ public final class GetAwsAlbPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Hostname for the proxy
-     * 
-     */
-    @Import(name="hostName", required=true)
-    private String hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public String hostName() {
-        return this.hostName;
-    }
-
-    /**
      * Name of the proxy
      * 
      */
@@ -112,21 +97,6 @@ public final class GetAwsAlbPlainArgs extends com.pulumi.resources.InvokeArgs {
      */
     public String region() {
         return this.region;
-    }
-
-    /**
-     * Route 53 hosted zone id
-     * 
-     */
-    @Import(name="route53HostedZoneId")
-    private @Nullable String route53HostedZoneId;
-
-    /**
-     * @return Route 53 hosted zone id
-     * 
-     */
-    public Optional<String> route53HostedZoneId() {
-        return Optional.ofNullable(this.route53HostedZoneId);
     }
 
     /**
@@ -166,10 +136,8 @@ public final class GetAwsAlbPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.certificateId = $.certificateId;
         this.cloudConnectorId = $.cloudConnectorId;
         this.deleteCloudResourcesOnDestroy = $.deleteCloudResourcesOnDestroy;
-        this.hostName = $.hostName;
         this.name = $.name;
         this.region = $.region;
-        this.route53HostedZoneId = $.route53HostedZoneId;
         this.securityGroups = $.securityGroups;
         this.vpc = $.vpc;
     }
@@ -231,17 +199,6 @@ public final class GetAwsAlbPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(String hostName) {
-            $.hostName = hostName;
-            return this;
-        }
-
-        /**
          * @param name Name of the proxy
          * 
          * @return builder
@@ -260,17 +217,6 @@ public final class GetAwsAlbPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder region(String region) {
             $.region = region;
-            return this;
-        }
-
-        /**
-         * @param route53HostedZoneId Route 53 hosted zone id
-         * 
-         * @return builder
-         * 
-         */
-        public Builder route53HostedZoneId(@Nullable String route53HostedZoneId) {
-            $.route53HostedZoneId = route53HostedZoneId;
             return this;
         }
 
@@ -312,9 +258,6 @@ public final class GetAwsAlbPlainArgs extends com.pulumi.resources.InvokeArgs {
             }
             if ($.deleteCloudResourcesOnDestroy == null) {
                 throw new MissingRequiredPropertyException("GetAwsAlbPlainArgs", "deleteCloudResourcesOnDestroy");
-            }
-            if ($.hostName == null) {
-                throw new MissingRequiredPropertyException("GetAwsAlbPlainArgs", "hostName");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("GetAwsAlbPlainArgs", "name");

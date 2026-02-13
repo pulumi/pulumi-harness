@@ -162,20 +162,6 @@ public class AzureGateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.frontendIp);
     }
     /**
-     * Hostname for the proxy
-     * 
-     */
-    @Export(name="hostName", refs={String.class}, tree="[0]")
-    private Output<String> hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public Output<String> hostName() {
-        return this.hostName;
-    }
-    /**
      * Unique identifier of the resource
      * 
      */

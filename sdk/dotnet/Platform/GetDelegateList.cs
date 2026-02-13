@@ -28,6 +28,7 @@ namespace Pulumi.Harness.Platform
         ///     var all = Harness.Platform.GetDelegateList.Invoke(new()
         ///     {
         ///         AccountId = "your_account_id",
+        ///         FilterType = "Delegate",
         ///         FetchAll = true,
         ///     });
         /// 
@@ -37,6 +38,7 @@ namespace Pulumi.Harness.Platform
         ///         AccountId = "your_account_id",
         ///         OrgId = "your_org_id",
         ///         ProjectId = "your_project_id",
+        ///         FilterType = "Delegate",
         ///         Status = "CONNECTED",
         ///         DelegateTags = new[]
         ///         {
@@ -49,6 +51,7 @@ namespace Pulumi.Harness.Platform
         ///     var specificGroup = Harness.Platform.GetDelegateList.Invoke(new()
         ///     {
         ///         AccountId = "your_account_id",
+        ///         FilterType = "Delegate",
         ///         DelegateName = "prod-delegate",
         ///         DelegateGroupIdentifier = "production-group",
         ///         VersionStatus = "ACTIVE",
@@ -77,6 +80,7 @@ namespace Pulumi.Harness.Platform
         ///     var all = Harness.Platform.GetDelegateList.Invoke(new()
         ///     {
         ///         AccountId = "your_account_id",
+        ///         FilterType = "Delegate",
         ///         FetchAll = true,
         ///     });
         /// 
@@ -86,6 +90,7 @@ namespace Pulumi.Harness.Platform
         ///         AccountId = "your_account_id",
         ///         OrgId = "your_org_id",
         ///         ProjectId = "your_project_id",
+        ///         FilterType = "Delegate",
         ///         Status = "CONNECTED",
         ///         DelegateTags = new[]
         ///         {
@@ -98,6 +103,7 @@ namespace Pulumi.Harness.Platform
         ///     var specificGroup = Harness.Platform.GetDelegateList.Invoke(new()
         ///     {
         ///         AccountId = "your_account_id",
+        ///         FilterType = "Delegate",
         ///         DelegateName = "prod-delegate",
         ///         DelegateGroupIdentifier = "production-group",
         ///         VersionStatus = "ACTIVE",
@@ -126,6 +132,7 @@ namespace Pulumi.Harness.Platform
         ///     var all = Harness.Platform.GetDelegateList.Invoke(new()
         ///     {
         ///         AccountId = "your_account_id",
+        ///         FilterType = "Delegate",
         ///         FetchAll = true,
         ///     });
         /// 
@@ -135,6 +142,7 @@ namespace Pulumi.Harness.Platform
         ///         AccountId = "your_account_id",
         ///         OrgId = "your_org_id",
         ///         ProjectId = "your_project_id",
+        ///         FilterType = "Delegate",
         ///         Status = "CONNECTED",
         ///         DelegateTags = new[]
         ///         {
@@ -147,6 +155,7 @@ namespace Pulumi.Harness.Platform
         ///     var specificGroup = Harness.Platform.GetDelegateList.Invoke(new()
         ///     {
         ///         AccountId = "your_account_id",
+        ///         FilterType = "Delegate",
         ///         DelegateName = "prod-delegate",
         ///         DelegateGroupIdentifier = "production-group",
         ///         VersionStatus = "ACTIVE",
@@ -205,7 +214,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Whether to fetch all delegates.
+        /// Whether to fetch all delegates. Defaults to `False`.
         /// </summary>
         [Input("fetchAll")]
         public bool? FetchAll { get; set; }
@@ -291,7 +300,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Whether to fetch all delegates.
+        /// Whether to fetch all delegates. Defaults to `False`.
         /// </summary>
         [Input("fetchAll")]
         public Input<bool>? FetchAll { get; set; }
@@ -365,7 +374,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDelegateListDelegateResult> Delegates;
         /// <summary>
-        /// Whether to fetch all delegates.
+        /// Whether to fetch all delegates. Defaults to `False`.
         /// </summary>
         public readonly bool? FetchAll;
         /// <summary>

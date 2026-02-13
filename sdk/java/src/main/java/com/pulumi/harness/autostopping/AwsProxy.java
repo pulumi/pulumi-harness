@@ -47,13 +47,11 @@ import javax.annotation.Nullable;
  *         var test = new AwsProxy("test", AwsProxyArgs.builder()
  *             .name("name")
  *             .cloudConnectorId("cloud_connector_id")
- *             .hostName("host_name")
  *             .region("region")
  *             .vpc("vpc")
  *             .securityGroups(            
  *                 "sg1",
  *                 "sg2")
- *             .route53HostedZoneId("/hostedzone/zone_id")
  *             .machineType("t2.medium")
  *             .apiKey("")
  *             .allocateStaticIp(true)
@@ -131,20 +129,6 @@ public class AwsProxy extends com.pulumi.resources.CustomResource {
         return this.deleteCloudResourcesOnDestroy;
     }
     /**
-     * Hostname for the proxy
-     * 
-     */
-    @Export(name="hostName", refs={String.class}, tree="[0]")
-    private Output<String> hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public Output<String> hostName() {
-        return this.hostName;
-    }
-    /**
      * Unique identifier of the resource
      * 
      */
@@ -205,20 +189,6 @@ public class AwsProxy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
-    }
-    /**
-     * Route 53 hosted zone id
-     * 
-     */
-    @Export(name="route53HostedZoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> route53HostedZoneId;
-
-    /**
-     * @return Route 53 hosted zone id
-     * 
-     */
-    public Output<Optional<String>> route53HostedZoneId() {
-        return Codegen.optional(this.route53HostedZoneId);
     }
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic

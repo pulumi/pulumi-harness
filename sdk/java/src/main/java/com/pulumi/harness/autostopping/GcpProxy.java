@@ -48,7 +48,6 @@ import javax.annotation.Nullable;
  *         var test = new GcpProxy("test", GcpProxyArgs.builder()
  *             .name("name")
  *             .cloudConnectorId("cloud_connector_id")
- *             .hostName("host_name")
  *             .region("region")
  *             .vpc("https://www.googleapis.com/compute/v1/projects/project_id/global/networks/netwok_id")
  *             .zone("zone")
@@ -133,20 +132,6 @@ public class GcpProxy extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
-    }
-    /**
-     * Hostname for the proxy
-     * 
-     */
-    @Export(name="hostName", refs={String.class}, tree="[0]")
-    private Output<String> hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public Output<String> hostName() {
-        return this.hostName;
     }
     /**
      * Unique identifier of the resource

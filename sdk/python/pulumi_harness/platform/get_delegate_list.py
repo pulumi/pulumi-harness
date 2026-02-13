@@ -131,7 +131,7 @@ class GetDelegateListResult:
     @pulumi.getter(name="fetchAll")
     def fetch_all(self) -> Optional[_builtins.bool]:
         """
-        Whether to fetch all delegates.
+        Whether to fetch all delegates. Defaults to `false`.
         """
         return pulumi.get(self, "fetch_all")
 
@@ -230,11 +230,13 @@ def get_delegate_list(account_id: Optional[_builtins.str] = None,
 
     # Get all delegates in an account
     all = harness.platform.get_delegate_list(account_id="your_account_id",
+        filter_type="Delegate",
         fetch_all=True)
     # Get only connected delegates with specific tags
     connected_with_tags = harness.platform.get_delegate_list(account_id="your_account_id",
         org_id="your_org_id",
         project_id="your_project_id",
+        filter_type="Delegate",
         status="CONNECTED",
         delegate_tags=[
             "production",
@@ -242,6 +244,7 @@ def get_delegate_list(account_id: Optional[_builtins.str] = None,
         ])
     # Get delegates by name pattern and group
     specific_group = harness.platform.get_delegate_list(account_id="your_account_id",
+        filter_type="Delegate",
         delegate_name="prod-delegate",
         delegate_group_identifier="production-group",
         version_status="ACTIVE")
@@ -254,7 +257,7 @@ def get_delegate_list(account_id: Optional[_builtins.str] = None,
     :param _builtins.str delegate_instance_filter: Filter delegate instances. Valid values: AVAILABLE, EXPIRED.
     :param _builtins.str delegate_name: Filter delegates by name.
     :param Sequence[_builtins.str] delegate_tags: Filter delegates by tags.
-    :param _builtins.bool fetch_all: Whether to fetch all delegates.
+    :param _builtins.bool fetch_all: Whether to fetch all delegates. Defaults to `false`.
     :param _builtins.str filter_type: Filter type for delegates.
     :param _builtins.str org_id: Organization identifier.
     :param _builtins.str project_id: Project identifier.
@@ -316,11 +319,13 @@ def get_delegate_list_output(account_id: Optional[pulumi.Input[_builtins.str]] =
 
     # Get all delegates in an account
     all = harness.platform.get_delegate_list(account_id="your_account_id",
+        filter_type="Delegate",
         fetch_all=True)
     # Get only connected delegates with specific tags
     connected_with_tags = harness.platform.get_delegate_list(account_id="your_account_id",
         org_id="your_org_id",
         project_id="your_project_id",
+        filter_type="Delegate",
         status="CONNECTED",
         delegate_tags=[
             "production",
@@ -328,6 +333,7 @@ def get_delegate_list_output(account_id: Optional[pulumi.Input[_builtins.str]] =
         ])
     # Get delegates by name pattern and group
     specific_group = harness.platform.get_delegate_list(account_id="your_account_id",
+        filter_type="Delegate",
         delegate_name="prod-delegate",
         delegate_group_identifier="production-group",
         version_status="ACTIVE")
@@ -340,7 +346,7 @@ def get_delegate_list_output(account_id: Optional[pulumi.Input[_builtins.str]] =
     :param _builtins.str delegate_instance_filter: Filter delegate instances. Valid values: AVAILABLE, EXPIRED.
     :param _builtins.str delegate_name: Filter delegates by name.
     :param Sequence[_builtins.str] delegate_tags: Filter delegates by tags.
-    :param _builtins.bool fetch_all: Whether to fetch all delegates.
+    :param _builtins.bool fetch_all: Whether to fetch all delegates. Defaults to `false`.
     :param _builtins.str filter_type: Filter type for delegates.
     :param _builtins.str org_id: Organization identifier.
     :param _builtins.str project_id: Project identifier.

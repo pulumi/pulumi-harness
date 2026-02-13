@@ -125,31 +125,75 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Organization that owns the module
+     * Onboarding Pipeline identifier
      * 
      */
+    @Import(name="onboardingPipeline")
+    private @Nullable String onboardingPipeline;
+
+    /**
+     * @return Onboarding Pipeline identifier
+     * 
+     */
+    public Optional<String> onboardingPipeline() {
+        return Optional.ofNullable(this.onboardingPipeline);
+    }
+
+    /**
+     * Onboarding Pipeline organization
+     * 
+     */
+    @Import(name="onboardingPipelineOrg")
+    private @Nullable String onboardingPipelineOrg;
+
+    /**
+     * @return Onboarding Pipeline organization
+     * 
+     */
+    public Optional<String> onboardingPipelineOrg() {
+        return Optional.ofNullable(this.onboardingPipelineOrg);
+    }
+
+    /**
+     * Onboarding Pipeline project
+     * 
+     */
+    @Import(name="onboardingPipelineProject")
+    private @Nullable String onboardingPipelineProject;
+
+    /**
+     * @return Onboarding Pipeline project
+     * 
+     */
+    public Optional<String> onboardingPipelineProject() {
+        return Optional.ofNullable(this.onboardingPipelineProject);
+    }
+
+    /**
+     * Sync the project automatically
+     * 
+     */
+    @Import(name="onboardingPipelineSync")
+    private @Nullable Boolean onboardingPipelineSync;
+
+    /**
+     * @return Sync the project automatically
+     * 
+     */
+    public Optional<Boolean> onboardingPipelineSync() {
+        return Optional.ofNullable(this.onboardingPipelineSync);
+    }
+
     @Import(name="org")
     private @Nullable String org;
 
-    /**
-     * @return Organization that owns the module
-     * 
-     */
     public Optional<String> org() {
         return Optional.ofNullable(this.org);
     }
 
-    /**
-     * Project that owns the module
-     * 
-     */
     @Import(name="project")
     private @Nullable String project;
 
-    /**
-     * @return Project that owns the module
-     * 
-     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -242,6 +286,21 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
      */
     public Optional<String> repositoryUrl() {
         return Optional.ofNullable(this.repositoryUrl);
+    }
+
+    /**
+     * How to store the artifact
+     * 
+     */
+    @Import(name="storageType")
+    private @Nullable String storageType;
+
+    /**
+     * @return How to store the artifact
+     * 
+     */
+    public Optional<String> storageType() {
+        return Optional.ofNullable(this.storageType);
     }
 
     /**
@@ -359,6 +418,10 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
         this.id = $.id;
         this.moduleError = $.moduleError;
         this.name = $.name;
+        this.onboardingPipeline = $.onboardingPipeline;
+        this.onboardingPipelineOrg = $.onboardingPipelineOrg;
+        this.onboardingPipelineProject = $.onboardingPipelineProject;
+        this.onboardingPipelineSync = $.onboardingPipelineSync;
         this.org = $.org;
         this.project = $.project;
         this.repository = $.repository;
@@ -367,6 +430,7 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
         this.repositoryConnector = $.repositoryConnector;
         this.repositoryPath = $.repositoryPath;
         this.repositoryUrl = $.repositoryUrl;
+        this.storageType = $.storageType;
         this.synced = $.synced;
         this.system = $.system;
         this.tags = $.tags;
@@ -472,22 +536,54 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param org Organization that owns the module
+         * @param onboardingPipeline Onboarding Pipeline identifier
          * 
          * @return builder
          * 
          */
+        public Builder onboardingPipeline(@Nullable String onboardingPipeline) {
+            $.onboardingPipeline = onboardingPipeline;
+            return this;
+        }
+
+        /**
+         * @param onboardingPipelineOrg Onboarding Pipeline organization
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineOrg(@Nullable String onboardingPipelineOrg) {
+            $.onboardingPipelineOrg = onboardingPipelineOrg;
+            return this;
+        }
+
+        /**
+         * @param onboardingPipelineProject Onboarding Pipeline project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineProject(@Nullable String onboardingPipelineProject) {
+            $.onboardingPipelineProject = onboardingPipelineProject;
+            return this;
+        }
+
+        /**
+         * @param onboardingPipelineSync Sync the project automatically
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onboardingPipelineSync(@Nullable Boolean onboardingPipelineSync) {
+            $.onboardingPipelineSync = onboardingPipelineSync;
+            return this;
+        }
+
         public Builder org(@Nullable String org) {
             $.org = org;
             return this;
         }
 
-        /**
-         * @param project Project that owns the module
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;
@@ -556,6 +652,17 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder repositoryUrl(@Nullable String repositoryUrl) {
             $.repositoryUrl = repositoryUrl;
+            return this;
+        }
+
+        /**
+         * @param storageType How to store the artifact
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageType(@Nullable String storageType) {
+            $.storageType = storageType;
             return this;
         }
 

@@ -51,7 +51,7 @@ public final class GetDelegateListResult {
      */
     private List<GetDelegateListDelegate> delegates;
     /**
-     * @return Whether to fetch all delegates.
+     * @return Whether to fetch all delegates. Defaults to `false`.
      * 
      */
     private @Nullable Boolean fetchAll;
@@ -137,7 +137,7 @@ public final class GetDelegateListResult {
         return this.delegates;
     }
     /**
-     * @return Whether to fetch all delegates.
+     * @return Whether to fetch all delegates. Defaults to `false`.
      * 
      */
     public Optional<Boolean> fetchAll() {

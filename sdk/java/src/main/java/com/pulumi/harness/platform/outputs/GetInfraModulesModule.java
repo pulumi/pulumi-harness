@@ -9,6 +9,8 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInfraModulesModule {
@@ -17,6 +19,16 @@ public final class GetInfraModulesModule {
      * 
      */
     private String account;
+    /**
+     * @return Repository connector orgoanization
+     * 
+     */
+    private String connectorOrg;
+    /**
+     * @return Repository connector project
+     * 
+     */
+    private String connectorProject;
     /**
      * @return Timestamp when the module was created
      * 
@@ -37,6 +49,26 @@ public final class GetInfraModulesModule {
      * 
      */
     private String name;
+    /**
+     * @return Onboarding Pipeline identifier.
+     * 
+     */
+    private @Nullable String onboardingPipeline;
+    /**
+     * @return Onboarding Pipeline organization.
+     * 
+     */
+    private @Nullable String onboardingPipelineOrg;
+    /**
+     * @return Onboarding Pipeline project.
+     * 
+     */
+    private @Nullable String onboardingPipelineProject;
+    /**
+     * @return Sync the project automatically.
+     * 
+     */
+    private @Nullable Boolean onboardingPipelineSync;
     /**
      * @return Organization that owns the module
      * 
@@ -78,6 +110,11 @@ public final class GetInfraModulesModule {
      */
     private String repositoryUrl;
     /**
+     * @return How to store the artifact.
+     * 
+     */
+    private String storageType;
+    /**
      * @return Timestamp when the module was last synced
      * 
      */
@@ -112,6 +149,20 @@ public final class GetInfraModulesModule {
         return this.account;
     }
     /**
+     * @return Repository connector orgoanization
+     * 
+     */
+    public String connectorOrg() {
+        return this.connectorOrg;
+    }
+    /**
+     * @return Repository connector project
+     * 
+     */
+    public String connectorProject() {
+        return this.connectorProject;
+    }
+    /**
      * @return Timestamp when the module was created
      * 
      */
@@ -138,6 +189,34 @@ public final class GetInfraModulesModule {
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return Onboarding Pipeline identifier.
+     * 
+     */
+    public Optional<String> onboardingPipeline() {
+        return Optional.ofNullable(this.onboardingPipeline);
+    }
+    /**
+     * @return Onboarding Pipeline organization.
+     * 
+     */
+    public Optional<String> onboardingPipelineOrg() {
+        return Optional.ofNullable(this.onboardingPipelineOrg);
+    }
+    /**
+     * @return Onboarding Pipeline project.
+     * 
+     */
+    public Optional<String> onboardingPipelineProject() {
+        return Optional.ofNullable(this.onboardingPipelineProject);
+    }
+    /**
+     * @return Sync the project automatically.
+     * 
+     */
+    public Optional<Boolean> onboardingPipelineSync() {
+        return Optional.ofNullable(this.onboardingPipelineSync);
     }
     /**
      * @return Organization that owns the module
@@ -196,6 +275,13 @@ public final class GetInfraModulesModule {
         return this.repositoryUrl;
     }
     /**
+     * @return How to store the artifact.
+     * 
+     */
+    public String storageType() {
+        return this.storageType;
+    }
+    /**
      * @return Timestamp when the module was last synced
      * 
      */
@@ -241,10 +327,16 @@ public final class GetInfraModulesModule {
     @CustomType.Builder
     public static final class Builder {
         private String account;
+        private String connectorOrg;
+        private String connectorProject;
         private Integer created;
         private String description;
         private String id;
         private String name;
+        private @Nullable String onboardingPipeline;
+        private @Nullable String onboardingPipelineOrg;
+        private @Nullable String onboardingPipelineProject;
+        private @Nullable Boolean onboardingPipelineSync;
         private String org;
         private String project;
         private String repository;
@@ -253,6 +345,7 @@ public final class GetInfraModulesModule {
         private String repositoryConnector;
         private String repositoryPath;
         private String repositoryUrl;
+        private String storageType;
         private Integer synced;
         private String system;
         private String tags;
@@ -262,10 +355,16 @@ public final class GetInfraModulesModule {
         public Builder(GetInfraModulesModule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.account = defaults.account;
+    	      this.connectorOrg = defaults.connectorOrg;
+    	      this.connectorProject = defaults.connectorProject;
     	      this.created = defaults.created;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.onboardingPipeline = defaults.onboardingPipeline;
+    	      this.onboardingPipelineOrg = defaults.onboardingPipelineOrg;
+    	      this.onboardingPipelineProject = defaults.onboardingPipelineProject;
+    	      this.onboardingPipelineSync = defaults.onboardingPipelineSync;
     	      this.org = defaults.org;
     	      this.project = defaults.project;
     	      this.repository = defaults.repository;
@@ -274,6 +373,7 @@ public final class GetInfraModulesModule {
     	      this.repositoryConnector = defaults.repositoryConnector;
     	      this.repositoryPath = defaults.repositoryPath;
     	      this.repositoryUrl = defaults.repositoryUrl;
+    	      this.storageType = defaults.storageType;
     	      this.synced = defaults.synced;
     	      this.system = defaults.system;
     	      this.tags = defaults.tags;
@@ -287,6 +387,22 @@ public final class GetInfraModulesModule {
               throw new MissingRequiredPropertyException("GetInfraModulesModule", "account");
             }
             this.account = account;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectorOrg(String connectorOrg) {
+            if (connectorOrg == null) {
+              throw new MissingRequiredPropertyException("GetInfraModulesModule", "connectorOrg");
+            }
+            this.connectorOrg = connectorOrg;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectorProject(String connectorProject) {
+            if (connectorProject == null) {
+              throw new MissingRequiredPropertyException("GetInfraModulesModule", "connectorProject");
+            }
+            this.connectorProject = connectorProject;
             return this;
         }
         @CustomType.Setter
@@ -319,6 +435,30 @@ public final class GetInfraModulesModule {
               throw new MissingRequiredPropertyException("GetInfraModulesModule", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder onboardingPipeline(@Nullable String onboardingPipeline) {
+
+            this.onboardingPipeline = onboardingPipeline;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder onboardingPipelineOrg(@Nullable String onboardingPipelineOrg) {
+
+            this.onboardingPipelineOrg = onboardingPipelineOrg;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder onboardingPipelineProject(@Nullable String onboardingPipelineProject) {
+
+            this.onboardingPipelineProject = onboardingPipelineProject;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder onboardingPipelineSync(@Nullable Boolean onboardingPipelineSync) {
+
+            this.onboardingPipelineSync = onboardingPipelineSync;
             return this;
         }
         @CustomType.Setter
@@ -386,6 +526,14 @@ public final class GetInfraModulesModule {
             return this;
         }
         @CustomType.Setter
+        public Builder storageType(String storageType) {
+            if (storageType == null) {
+              throw new MissingRequiredPropertyException("GetInfraModulesModule", "storageType");
+            }
+            this.storageType = storageType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder synced(Integer synced) {
             if (synced == null) {
               throw new MissingRequiredPropertyException("GetInfraModulesModule", "synced");
@@ -428,10 +576,16 @@ public final class GetInfraModulesModule {
         public GetInfraModulesModule build() {
             final var _resultValue = new GetInfraModulesModule();
             _resultValue.account = account;
+            _resultValue.connectorOrg = connectorOrg;
+            _resultValue.connectorProject = connectorProject;
             _resultValue.created = created;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.onboardingPipeline = onboardingPipeline;
+            _resultValue.onboardingPipelineOrg = onboardingPipelineOrg;
+            _resultValue.onboardingPipelineProject = onboardingPipelineProject;
+            _resultValue.onboardingPipelineSync = onboardingPipelineSync;
             _resultValue.org = org;
             _resultValue.project = project;
             _resultValue.repository = repository;
@@ -440,6 +594,7 @@ public final class GetInfraModulesModule {
             _resultValue.repositoryConnector = repositoryConnector;
             _resultValue.repositoryPath = repositoryPath;
             _resultValue.repositoryUrl = repositoryUrl;
+            _resultValue.storageType = storageType;
             _resultValue.synced = synced;
             _resultValue.system = system;
             _resultValue.tags = tags;

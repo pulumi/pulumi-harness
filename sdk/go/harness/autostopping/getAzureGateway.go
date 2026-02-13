@@ -38,8 +38,6 @@ type LookupAzureGatewayArgs struct {
 	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp *string `pulumi:"frontendIp"`
-	// Hostname for the proxy
-	HostName string `pulumi:"hostName"`
 	// Name of the proxy
 	Name string `pulumi:"name"`
 	// Region in which cloud resources are hosted
@@ -68,8 +66,6 @@ type LookupAzureGatewayResult struct {
 	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp *string `pulumi:"frontendIp"`
-	// Hostname for the proxy
-	HostName string `pulumi:"hostName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource
@@ -111,8 +107,6 @@ type LookupAzureGatewayOutputArgs struct {
 	DeleteCloudResourcesOnDestroy pulumi.BoolInput `pulumi:"deleteCloudResourcesOnDestroy"`
 	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 	FrontendIp pulumi.StringPtrInput `pulumi:"frontendIp"`
-	// Hostname for the proxy
-	HostName pulumi.StringInput `pulumi:"hostName"`
 	// Name of the proxy
 	Name pulumi.StringInput `pulumi:"name"`
 	// Region in which cloud resources are hosted
@@ -174,11 +168,6 @@ func (o LookupAzureGatewayResultOutput) DeleteCloudResourcesOnDestroy() pulumi.B
 // ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
 func (o LookupAzureGatewayResultOutput) FrontendIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAzureGatewayResult) *string { return v.FrontendIp }).(pulumi.StringPtrOutput)
-}
-
-// Hostname for the proxy
-func (o LookupAzureGatewayResultOutput) HostName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAzureGatewayResult) string { return v.HostName }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

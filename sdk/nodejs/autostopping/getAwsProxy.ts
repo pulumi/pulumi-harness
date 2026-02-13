@@ -19,12 +19,10 @@ export function getAwsProxy(args: GetAwsProxyArgs, opts?: pulumi.InvokeOptions):
         "certificates": args.certificates,
         "cloudConnectorId": args.cloudConnectorId,
         "deleteCloudResourcesOnDestroy": args.deleteCloudResourcesOnDestroy,
-        "hostName": args.hostName,
         "keypair": args.keypair,
         "machineType": args.machineType,
         "name": args.name,
         "region": args.region,
-        "route53HostedZoneId": args.route53HostedZoneId,
         "securityGroups": args.securityGroups,
         "vpc": args.vpc,
     }, opts);
@@ -51,10 +49,6 @@ export interface GetAwsProxyArgs {
      * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
      */
     deleteCloudResourcesOnDestroy: boolean;
-    /**
-     * Hostname for the proxy
-     */
-    hostName: string;
     keypair?: string;
     /**
      * Machine instance type
@@ -68,10 +62,6 @@ export interface GetAwsProxyArgs {
      * Region in which cloud resources are hosted
      */
     region: string;
-    /**
-     * Route 53 hosted zone id
-     */
-    route53HostedZoneId?: string;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
@@ -104,10 +94,6 @@ export interface GetAwsProxyResult {
      */
     readonly deleteCloudResourcesOnDestroy: boolean;
     /**
-     * Hostname for the proxy
-     */
-    readonly hostName: string;
-    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -128,10 +114,6 @@ export interface GetAwsProxyResult {
      * Region in which cloud resources are hosted
      */
     readonly region: string;
-    /**
-     * Route 53 hosted zone id
-     */
-    readonly route53HostedZoneId?: string;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
@@ -154,12 +136,10 @@ export function getAwsProxyOutput(args: GetAwsProxyOutputArgs, opts?: pulumi.Inv
         "certificates": args.certificates,
         "cloudConnectorId": args.cloudConnectorId,
         "deleteCloudResourcesOnDestroy": args.deleteCloudResourcesOnDestroy,
-        "hostName": args.hostName,
         "keypair": args.keypair,
         "machineType": args.machineType,
         "name": args.name,
         "region": args.region,
-        "route53HostedZoneId": args.route53HostedZoneId,
         "securityGroups": args.securityGroups,
         "vpc": args.vpc,
     }, opts);
@@ -186,10 +166,6 @@ export interface GetAwsProxyOutputArgs {
      * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
      */
     deleteCloudResourcesOnDestroy: pulumi.Input<boolean>;
-    /**
-     * Hostname for the proxy
-     */
-    hostName: pulumi.Input<string>;
     keypair?: pulumi.Input<string>;
     /**
      * Machine instance type
@@ -203,10 +179,6 @@ export interface GetAwsProxyOutputArgs {
      * Region in which cloud resources are hosted
      */
     region: pulumi.Input<string>;
-    /**
-     * Route 53 hosted zone id
-     */
-    route53HostedZoneId?: pulumi.Input<string>;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */

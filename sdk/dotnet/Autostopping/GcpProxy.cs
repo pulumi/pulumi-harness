@@ -26,7 +26,6 @@ namespace Pulumi.Harness.Autostopping
     ///     {
     ///         Name = "name",
     ///         CloudConnectorId = "cloud_connector_id",
-    ///         HostName = "host_name",
     ///         Region = "region",
     ///         Vpc = "https://www.googleapis.com/compute/v1/projects/project_id/global/networks/netwok_id",
     ///         Zone = "zone",
@@ -78,12 +77,6 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Output("deleteCloudResourcesOnDestroy")]
         public Output<bool> DeleteCloudResourcesOnDestroy { get; private set; } = null!;
-
-        /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Output("hostName")]
-        public Output<string> HostName { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource
@@ -222,12 +215,6 @@ namespace Pulumi.Harness.Autostopping
         public Input<bool> DeleteCloudResourcesOnDestroy { get; set; } = null!;
 
         /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Input("hostName", required: true)]
-        public Input<string> HostName { get; set; } = null!;
-
-        /// <summary>
         /// Machine instance type
         /// </summary>
         [Input("machineType", required: true)]
@@ -319,12 +306,6 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Input("deleteCloudResourcesOnDestroy")]
         public Input<bool>? DeleteCloudResourcesOnDestroy { get; set; }
-
-        /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Input("hostName")]
-        public Input<string>? HostName { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource

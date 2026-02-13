@@ -109,14 +109,14 @@ public final class GetDelegateListArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Whether to fetch all delegates.
+     * Whether to fetch all delegates. Defaults to `false`.
      * 
      */
     @Import(name="fetchAll")
     private @Nullable Output<Boolean> fetchAll;
 
     /**
-     * @return Whether to fetch all delegates.
+     * @return Whether to fetch all delegates. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> fetchAll() {
@@ -370,7 +370,7 @@ public final class GetDelegateListArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param fetchAll Whether to fetch all delegates.
+         * @param fetchAll Whether to fetch all delegates. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class GetDelegateListArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param fetchAll Whether to fetch all delegates.
+         * @param fetchAll Whether to fetch all delegates. Defaults to `false`.
          * 
          * @return builder
          * 

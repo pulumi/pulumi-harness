@@ -73,12 +73,6 @@ namespace Pulumi.Harness.Autostopping
         public bool DeleteCloudResourcesOnDestroy { get; set; }
 
         /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Input("hostName", required: true)]
-        public string HostName { get; set; } = null!;
-
-        /// <summary>
         /// Machine instance type
         /// </summary>
         [Input("machineType", required: true)]
@@ -172,12 +166,6 @@ namespace Pulumi.Harness.Autostopping
         public Input<bool> DeleteCloudResourcesOnDestroy { get; set; } = null!;
 
         /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Input("hostName", required: true)]
-        public Input<string> HostName { get; set; } = null!;
-
-        /// <summary>
         /// Machine instance type
         /// </summary>
         [Input("machineType", required: true)]
@@ -253,10 +241,6 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public readonly bool DeleteCloudResourcesOnDestroy;
         /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        public readonly string HostName;
-        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -305,8 +289,6 @@ namespace Pulumi.Harness.Autostopping
 
             bool deleteCloudResourcesOnDestroy,
 
-            string hostName,
-
             string id,
 
             string identifier,
@@ -330,7 +312,6 @@ namespace Pulumi.Harness.Autostopping
             Certificates = certificates;
             CloudConnectorId = cloudConnectorId;
             DeleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
-            HostName = hostName;
             Id = id;
             Identifier = identifier;
             MachineType = machineType;

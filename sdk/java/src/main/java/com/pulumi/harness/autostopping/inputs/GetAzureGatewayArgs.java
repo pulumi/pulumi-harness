@@ -108,21 +108,6 @@ public final class GetAzureGatewayArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Hostname for the proxy
-     * 
-     */
-    @Import(name="hostName", required=true)
-    private Output<String> hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public Output<String> hostName() {
-        return this.hostName;
-    }
-
-    /**
      * Name of the proxy
      * 
      */
@@ -221,7 +206,6 @@ public final class GetAzureGatewayArgs extends com.pulumi.resources.InvokeArgs {
         this.cloudConnectorId = $.cloudConnectorId;
         this.deleteCloudResourcesOnDestroy = $.deleteCloudResourcesOnDestroy;
         this.frontendIp = $.frontendIp;
-        this.hostName = $.hostName;
         this.name = $.name;
         this.region = $.region;
         this.resourceGroup = $.resourceGroup;
@@ -375,27 +359,6 @@ public final class GetAzureGatewayArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(Output<String> hostName) {
-            $.hostName = hostName;
-            return this;
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(String hostName) {
-            return hostName(Output.of(hostName));
-        }
-
-        /**
          * @param name Name of the proxy
          * 
          * @return builder
@@ -530,9 +493,6 @@ public final class GetAzureGatewayArgs extends com.pulumi.resources.InvokeArgs {
             }
             if ($.deleteCloudResourcesOnDestroy == null) {
                 throw new MissingRequiredPropertyException("GetAzureGatewayArgs", "deleteCloudResourcesOnDestroy");
-            }
-            if ($.hostName == null) {
-                throw new MissingRequiredPropertyException("GetAzureGatewayArgs", "hostName");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("GetAzureGatewayArgs", "name");

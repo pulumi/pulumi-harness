@@ -36,8 +36,6 @@ type LookupAzureProxyArgs struct {
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
 	// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
 	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName string `pulumi:"hostName"`
 	// Name of SSH Key to be used for proxy VM
 	Keypair string `pulumi:"keypair"`
 	// Type of instance to be used for proxy
@@ -68,8 +66,6 @@ type LookupAzureProxyResult struct {
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
 	// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
 	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName string `pulumi:"hostName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource
@@ -113,8 +109,6 @@ type LookupAzureProxyOutputArgs struct {
 	CloudConnectorId pulumi.StringInput `pulumi:"cloudConnectorId"`
 	// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
 	DeleteCloudResourcesOnDestroy pulumi.BoolInput `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName pulumi.StringInput `pulumi:"hostName"`
 	// Name of SSH Key to be used for proxy VM
 	Keypair pulumi.StringInput `pulumi:"keypair"`
 	// Type of instance to be used for proxy
@@ -178,11 +172,6 @@ func (o LookupAzureProxyResultOutput) CloudConnectorId() pulumi.StringOutput {
 // Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
 func (o LookupAzureProxyResultOutput) DeleteCloudResourcesOnDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAzureProxyResult) bool { return v.DeleteCloudResourcesOnDestroy }).(pulumi.BoolOutput)
-}
-
-// Hostname for the proxy
-func (o LookupAzureProxyResultOutput) HostName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAzureProxyResult) string { return v.HostName }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

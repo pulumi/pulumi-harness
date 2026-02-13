@@ -37,11 +37,6 @@ public final class GetAwsProxyResult {
      */
     private Boolean deleteCloudResourcesOnDestroy;
     /**
-     * @return Hostname for the proxy
-     * 
-     */
-    private String hostName;
-    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -67,11 +62,6 @@ public final class GetAwsProxyResult {
      * 
      */
     private String region;
-    /**
-     * @return Route 53 hosted zone id
-     * 
-     */
-    private @Nullable String route53HostedZoneId;
     /**
      * @return Security Group to define the security rules that determine the inbound and outbound traffic
      * 
@@ -116,13 +106,6 @@ public final class GetAwsProxyResult {
         return this.deleteCloudResourcesOnDestroy;
     }
     /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public String hostName() {
-        return this.hostName;
-    }
-    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -161,13 +144,6 @@ public final class GetAwsProxyResult {
         return this.region;
     }
     /**
-     * @return Route 53 hosted zone id
-     * 
-     */
-    public Optional<String> route53HostedZoneId() {
-        return Optional.ofNullable(this.route53HostedZoneId);
-    }
-    /**
      * @return Security Group to define the security rules that determine the inbound and outbound traffic
      * 
      */
@@ -196,14 +172,12 @@ public final class GetAwsProxyResult {
         private @Nullable GetAwsProxyCertificates certificates;
         private String cloudConnectorId;
         private Boolean deleteCloudResourcesOnDestroy;
-        private String hostName;
         private String id;
         private String identifier;
         private @Nullable String keypair;
         private String machineType;
         private String name;
         private String region;
-        private @Nullable String route53HostedZoneId;
         private @Nullable List<String> securityGroups;
         private String vpc;
         public Builder() {}
@@ -214,14 +188,12 @@ public final class GetAwsProxyResult {
     	      this.certificates = defaults.certificates;
     	      this.cloudConnectorId = defaults.cloudConnectorId;
     	      this.deleteCloudResourcesOnDestroy = defaults.deleteCloudResourcesOnDestroy;
-    	      this.hostName = defaults.hostName;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.keypair = defaults.keypair;
     	      this.machineType = defaults.machineType;
     	      this.name = defaults.name;
     	      this.region = defaults.region;
-    	      this.route53HostedZoneId = defaults.route53HostedZoneId;
     	      this.securityGroups = defaults.securityGroups;
     	      this.vpc = defaults.vpc;
         }
@@ -260,14 +232,6 @@ public final class GetAwsProxyResult {
               throw new MissingRequiredPropertyException("GetAwsProxyResult", "deleteCloudResourcesOnDestroy");
             }
             this.deleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder hostName(String hostName) {
-            if (hostName == null) {
-              throw new MissingRequiredPropertyException("GetAwsProxyResult", "hostName");
-            }
-            this.hostName = hostName;
             return this;
         }
         @CustomType.Setter
@@ -317,12 +281,6 @@ public final class GetAwsProxyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder route53HostedZoneId(@Nullable String route53HostedZoneId) {
-
-            this.route53HostedZoneId = route53HostedZoneId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder securityGroups(@Nullable List<String> securityGroups) {
 
             this.securityGroups = securityGroups;
@@ -346,14 +304,12 @@ public final class GetAwsProxyResult {
             _resultValue.certificates = certificates;
             _resultValue.cloudConnectorId = cloudConnectorId;
             _resultValue.deleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
-            _resultValue.hostName = hostName;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.keypair = keypair;
             _resultValue.machineType = machineType;
             _resultValue.name = name;
             _resultValue.region = region;
-            _resultValue.route53HostedZoneId = route53HostedZoneId;
             _resultValue.securityGroups = securityGroups;
             _resultValue.vpc = vpc;
             return _resultValue;

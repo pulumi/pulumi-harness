@@ -35,8 +35,6 @@ type LookupGcpProxyArgs struct {
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
 	// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
 	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName string `pulumi:"hostName"`
 	// Machine instance type
 	MachineType string `pulumi:"machineType"`
 	// Name of the proxy
@@ -64,8 +62,6 @@ type LookupGcpProxyResult struct {
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
 	// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
 	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName string `pulumi:"hostName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource
@@ -106,8 +102,6 @@ type LookupGcpProxyOutputArgs struct {
 	CloudConnectorId pulumi.StringInput `pulumi:"cloudConnectorId"`
 	// Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
 	DeleteCloudResourcesOnDestroy pulumi.BoolInput `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName pulumi.StringInput `pulumi:"hostName"`
 	// Machine instance type
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 	// Name of the proxy
@@ -165,11 +159,6 @@ func (o LookupGcpProxyResultOutput) CloudConnectorId() pulumi.StringOutput {
 // Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
 func (o LookupGcpProxyResultOutput) DeleteCloudResourcesOnDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGcpProxyResult) bool { return v.DeleteCloudResourcesOnDestroy }).(pulumi.BoolOutput)
-}
-
-// Hostname for the proxy
-func (o LookupGcpProxyResultOutput) HostName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGcpProxyResult) string { return v.HostName }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -33,14 +33,10 @@ type LookupAwsAlbArgs struct {
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
 	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
 	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName string `pulumi:"hostName"`
 	// Name of the proxy
 	Name string `pulumi:"name"`
 	// Region in which cloud resources are hosted
 	Region string `pulumi:"region"`
-	// Route 53 hosted zone id
-	Route53HostedZoneId *string `pulumi:"route53HostedZoneId"`
 	// Security Group to define the security rules that determine the inbound and outbound traffic
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// VPC in which cloud resources are hosted
@@ -56,8 +52,6 @@ type LookupAwsAlbResult struct {
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
 	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
 	DeleteCloudResourcesOnDestroy bool `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName string `pulumi:"hostName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource
@@ -66,8 +60,6 @@ type LookupAwsAlbResult struct {
 	Name string `pulumi:"name"`
 	// Region in which cloud resources are hosted
 	Region string `pulumi:"region"`
-	// Route 53 hosted zone id
-	Route53HostedZoneId *string `pulumi:"route53HostedZoneId"`
 	// Security Group to define the security rules that determine the inbound and outbound traffic
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// VPC in which cloud resources are hosted
@@ -92,14 +84,10 @@ type LookupAwsAlbOutputArgs struct {
 	CloudConnectorId pulumi.StringInput `pulumi:"cloudConnectorId"`
 	// Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
 	DeleteCloudResourcesOnDestroy pulumi.BoolInput `pulumi:"deleteCloudResourcesOnDestroy"`
-	// Hostname for the proxy
-	HostName pulumi.StringInput `pulumi:"hostName"`
 	// Name of the proxy
 	Name pulumi.StringInput `pulumi:"name"`
 	// Region in which cloud resources are hosted
 	Region pulumi.StringInput `pulumi:"region"`
-	// Route 53 hosted zone id
-	Route53HostedZoneId pulumi.StringPtrInput `pulumi:"route53HostedZoneId"`
 	// Security Group to define the security rules that determine the inbound and outbound traffic
 	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
 	// VPC in which cloud resources are hosted
@@ -144,11 +132,6 @@ func (o LookupAwsAlbResultOutput) DeleteCloudResourcesOnDestroy() pulumi.BoolOut
 	return o.ApplyT(func(v LookupAwsAlbResult) bool { return v.DeleteCloudResourcesOnDestroy }).(pulumi.BoolOutput)
 }
 
-// Hostname for the proxy
-func (o LookupAwsAlbResultOutput) HostName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAwsAlbResult) string { return v.HostName }).(pulumi.StringOutput)
-}
-
 // The provider-assigned unique ID for this managed resource.
 func (o LookupAwsAlbResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsAlbResult) string { return v.Id }).(pulumi.StringOutput)
@@ -167,11 +150,6 @@ func (o LookupAwsAlbResultOutput) Name() pulumi.StringOutput {
 // Region in which cloud resources are hosted
 func (o LookupAwsAlbResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsAlbResult) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// Route 53 hosted zone id
-func (o LookupAwsAlbResultOutput) Route53HostedZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAwsAlbResult) *string { return v.Route53HostedZoneId }).(pulumi.StringPtrOutput)
 }
 
 // Security Group to define the security rules that determine the inbound and outbound traffic

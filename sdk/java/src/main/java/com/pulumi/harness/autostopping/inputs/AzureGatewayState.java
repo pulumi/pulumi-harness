@@ -107,21 +107,6 @@ public final class AzureGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hostname for the proxy
-     * 
-     */
-    @Import(name="hostName")
-    private @Nullable Output<String> hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public Optional<Output<String>> hostName() {
-        return Optional.ofNullable(this.hostName);
-    }
-
-    /**
      * Unique identifier of the resource
      * 
      */
@@ -235,7 +220,6 @@ public final class AzureGatewayState extends com.pulumi.resources.ResourceArgs {
         this.cloudConnectorId = $.cloudConnectorId;
         this.deleteCloudResourcesOnDestroy = $.deleteCloudResourcesOnDestroy;
         this.frontendIp = $.frontendIp;
-        this.hostName = $.hostName;
         this.identifier = $.identifier;
         this.name = $.name;
         this.region = $.region;
@@ -387,27 +371,6 @@ public final class AzureGatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder frontendIp(String frontendIp) {
             return frontendIp(Output.of(frontendIp));
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(@Nullable Output<String> hostName) {
-            $.hostName = hostName;
-            return this;
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(String hostName) {
-            return hostName(Output.of(hostName));
         }
 
         /**

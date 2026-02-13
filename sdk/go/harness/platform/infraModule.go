@@ -29,13 +29,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewInfraModule(ctx, "example", &platform.InfraModuleArgs{
-//				Description:         pulumi.String("example"),
-//				Name:                pulumi.String("name"),
-//				System:              pulumi.String("provider"),
-//				Repository:          pulumi.String("https://github.com/org/repo"),
-//				RepositoryBranch:    pulumi.String("main"),
-//				RepositoryPath:      pulumi.String("tf/aws/basic"),
-//				RepositoryConnector: pulumi.Any(test.Id),
+//				Description:               pulumi.String("example"),
+//				Name:                      pulumi.String("name"),
+//				System:                    pulumi.String("provider"),
+//				Repository:                pulumi.String("https://github.com/org/repo"),
+//				RepositoryBranch:          pulumi.String("main"),
+//				RepositoryPath:            pulumi.String("tf/aws/basic"),
+//				RepositoryConnector:       pulumi.Any(test.Id),
+//				OnboardingPipeline:        pulumi.String("my_onboarding_pipeline"),
+//				OnboardingPipelineOrg:     pulumi.String("default"),
+//				OnboardingPipelineProject: pulumi.String("IaCM_Project"),
+//				OnboardingPipelineSync:    pulumi.Bool(true),
+//				StorageType:               pulumi.String("harness"),
+//				ConnectorOrg:              pulumi.String("default"),
+//				ConnectorProject:          pulumi.String("my_project"),
 //			})
 //			if err != nil {
 //				return err
@@ -56,6 +63,10 @@ import (
 type InfraModule struct {
 	pulumi.CustomResourceState
 
+	// Connector organization.
+	ConnectorOrg pulumi.StringPtrOutput `pulumi:"connectorOrg"`
+	// Connector project.
+	ConnectorProject pulumi.StringPtrOutput `pulumi:"connectorProject"`
 	// Timestamp when the module was created.
 	Created pulumi.IntOutput `pulumi:"created"`
 	// Description of the module.
@@ -64,6 +75,14 @@ type InfraModule struct {
 	GitTagStyle pulumi.StringOutput `pulumi:"gitTagStyle"`
 	// Name of the module.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Onboarding Pipeline identifier.
+	OnboardingPipeline pulumi.StringPtrOutput `pulumi:"onboardingPipeline"`
+	// Onboarding Pipeline organization.
+	OnboardingPipelineOrg pulumi.StringPtrOutput `pulumi:"onboardingPipelineOrg"`
+	// Onboarding Pipeline project.
+	OnboardingPipelineProject pulumi.StringPtrOutput `pulumi:"onboardingPipelineProject"`
+	// Sync the project automatically.
+	OnboardingPipelineSync pulumi.BoolPtrOutput `pulumi:"onboardingPipelineSync"`
 	// For account connectors, the repository where the module can be found
 	Repository pulumi.StringPtrOutput `pulumi:"repository"`
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -76,6 +95,8 @@ type InfraModule struct {
 	RepositoryPath pulumi.StringPtrOutput `pulumi:"repositoryPath"`
 	// URL of the repository where the module is stored.
 	RepositoryUrl pulumi.StringOutput `pulumi:"repositoryUrl"`
+	// How to store the artifact.
+	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// Timestamp when the module was last synced.
 	Synced pulumi.IntOutput `pulumi:"synced"`
 	// Provider of the module.
@@ -119,6 +140,10 @@ func GetInfraModule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InfraModule resources.
 type infraModuleState struct {
+	// Connector organization.
+	ConnectorOrg *string `pulumi:"connectorOrg"`
+	// Connector project.
+	ConnectorProject *string `pulumi:"connectorProject"`
 	// Timestamp when the module was created.
 	Created *int `pulumi:"created"`
 	// Description of the module.
@@ -127,6 +152,14 @@ type infraModuleState struct {
 	GitTagStyle *string `pulumi:"gitTagStyle"`
 	// Name of the module.
 	Name *string `pulumi:"name"`
+	// Onboarding Pipeline identifier.
+	OnboardingPipeline *string `pulumi:"onboardingPipeline"`
+	// Onboarding Pipeline organization.
+	OnboardingPipelineOrg *string `pulumi:"onboardingPipelineOrg"`
+	// Onboarding Pipeline project.
+	OnboardingPipelineProject *string `pulumi:"onboardingPipelineProject"`
+	// Sync the project automatically.
+	OnboardingPipelineSync *bool `pulumi:"onboardingPipelineSync"`
 	// For account connectors, the repository where the module can be found
 	Repository *string `pulumi:"repository"`
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -139,6 +172,8 @@ type infraModuleState struct {
 	RepositoryPath *string `pulumi:"repositoryPath"`
 	// URL of the repository where the module is stored.
 	RepositoryUrl *string `pulumi:"repositoryUrl"`
+	// How to store the artifact.
+	StorageType *string `pulumi:"storageType"`
 	// Timestamp when the module was last synced.
 	Synced *int `pulumi:"synced"`
 	// Provider of the module.
@@ -150,6 +185,10 @@ type infraModuleState struct {
 }
 
 type InfraModuleState struct {
+	// Connector organization.
+	ConnectorOrg pulumi.StringPtrInput
+	// Connector project.
+	ConnectorProject pulumi.StringPtrInput
 	// Timestamp when the module was created.
 	Created pulumi.IntPtrInput
 	// Description of the module.
@@ -158,6 +197,14 @@ type InfraModuleState struct {
 	GitTagStyle pulumi.StringPtrInput
 	// Name of the module.
 	Name pulumi.StringPtrInput
+	// Onboarding Pipeline identifier.
+	OnboardingPipeline pulumi.StringPtrInput
+	// Onboarding Pipeline organization.
+	OnboardingPipelineOrg pulumi.StringPtrInput
+	// Onboarding Pipeline project.
+	OnboardingPipelineProject pulumi.StringPtrInput
+	// Sync the project automatically.
+	OnboardingPipelineSync pulumi.BoolPtrInput
 	// For account connectors, the repository where the module can be found
 	Repository pulumi.StringPtrInput
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -170,6 +217,8 @@ type InfraModuleState struct {
 	RepositoryPath pulumi.StringPtrInput
 	// URL of the repository where the module is stored.
 	RepositoryUrl pulumi.StringPtrInput
+	// How to store the artifact.
+	StorageType pulumi.StringPtrInput
 	// Timestamp when the module was last synced.
 	Synced pulumi.IntPtrInput
 	// Provider of the module.
@@ -185,6 +234,10 @@ func (InfraModuleState) ElementType() reflect.Type {
 }
 
 type infraModuleArgs struct {
+	// Connector organization.
+	ConnectorOrg *string `pulumi:"connectorOrg"`
+	// Connector project.
+	ConnectorProject *string `pulumi:"connectorProject"`
 	// Timestamp when the module was created.
 	Created *int `pulumi:"created"`
 	// Description of the module.
@@ -193,6 +246,14 @@ type infraModuleArgs struct {
 	GitTagStyle *string `pulumi:"gitTagStyle"`
 	// Name of the module.
 	Name *string `pulumi:"name"`
+	// Onboarding Pipeline identifier.
+	OnboardingPipeline *string `pulumi:"onboardingPipeline"`
+	// Onboarding Pipeline organization.
+	OnboardingPipelineOrg *string `pulumi:"onboardingPipelineOrg"`
+	// Onboarding Pipeline project.
+	OnboardingPipelineProject *string `pulumi:"onboardingPipelineProject"`
+	// Sync the project automatically.
+	OnboardingPipelineSync *bool `pulumi:"onboardingPipelineSync"`
 	// For account connectors, the repository where the module can be found
 	Repository *string `pulumi:"repository"`
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -205,6 +266,8 @@ type infraModuleArgs struct {
 	RepositoryPath *string `pulumi:"repositoryPath"`
 	// URL of the repository where the module is stored.
 	RepositoryUrl *string `pulumi:"repositoryUrl"`
+	// How to store the artifact.
+	StorageType *string `pulumi:"storageType"`
 	// Timestamp when the module was last synced.
 	Synced *int `pulumi:"synced"`
 	// Provider of the module.
@@ -217,6 +280,10 @@ type infraModuleArgs struct {
 
 // The set of arguments for constructing a InfraModule resource.
 type InfraModuleArgs struct {
+	// Connector organization.
+	ConnectorOrg pulumi.StringPtrInput
+	// Connector project.
+	ConnectorProject pulumi.StringPtrInput
 	// Timestamp when the module was created.
 	Created pulumi.IntPtrInput
 	// Description of the module.
@@ -225,6 +292,14 @@ type InfraModuleArgs struct {
 	GitTagStyle pulumi.StringPtrInput
 	// Name of the module.
 	Name pulumi.StringPtrInput
+	// Onboarding Pipeline identifier.
+	OnboardingPipeline pulumi.StringPtrInput
+	// Onboarding Pipeline organization.
+	OnboardingPipelineOrg pulumi.StringPtrInput
+	// Onboarding Pipeline project.
+	OnboardingPipelineProject pulumi.StringPtrInput
+	// Sync the project automatically.
+	OnboardingPipelineSync pulumi.BoolPtrInput
 	// For account connectors, the repository where the module can be found
 	Repository pulumi.StringPtrInput
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -237,6 +312,8 @@ type InfraModuleArgs struct {
 	RepositoryPath pulumi.StringPtrInput
 	// URL of the repository where the module is stored.
 	RepositoryUrl pulumi.StringPtrInput
+	// How to store the artifact.
+	StorageType pulumi.StringPtrInput
 	// Timestamp when the module was last synced.
 	Synced pulumi.IntPtrInput
 	// Provider of the module.
@@ -334,6 +411,16 @@ func (o InfraModuleOutput) ToInfraModuleOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// Connector organization.
+func (o InfraModuleOutput) ConnectorOrg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfraModule) pulumi.StringPtrOutput { return v.ConnectorOrg }).(pulumi.StringPtrOutput)
+}
+
+// Connector project.
+func (o InfraModuleOutput) ConnectorProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfraModule) pulumi.StringPtrOutput { return v.ConnectorProject }).(pulumi.StringPtrOutput)
+}
+
 // Timestamp when the module was created.
 func (o InfraModuleOutput) Created() pulumi.IntOutput {
 	return o.ApplyT(func(v *InfraModule) pulumi.IntOutput { return v.Created }).(pulumi.IntOutput)
@@ -352,6 +439,26 @@ func (o InfraModuleOutput) GitTagStyle() pulumi.StringOutput {
 // Name of the module.
 func (o InfraModuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfraModule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Onboarding Pipeline identifier.
+func (o InfraModuleOutput) OnboardingPipeline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfraModule) pulumi.StringPtrOutput { return v.OnboardingPipeline }).(pulumi.StringPtrOutput)
+}
+
+// Onboarding Pipeline organization.
+func (o InfraModuleOutput) OnboardingPipelineOrg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfraModule) pulumi.StringPtrOutput { return v.OnboardingPipelineOrg }).(pulumi.StringPtrOutput)
+}
+
+// Onboarding Pipeline project.
+func (o InfraModuleOutput) OnboardingPipelineProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfraModule) pulumi.StringPtrOutput { return v.OnboardingPipelineProject }).(pulumi.StringPtrOutput)
+}
+
+// Sync the project automatically.
+func (o InfraModuleOutput) OnboardingPipelineSync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InfraModule) pulumi.BoolPtrOutput { return v.OnboardingPipelineSync }).(pulumi.BoolPtrOutput)
 }
 
 // For account connectors, the repository where the module can be found
@@ -382,6 +489,11 @@ func (o InfraModuleOutput) RepositoryPath() pulumi.StringPtrOutput {
 // URL of the repository where the module is stored.
 func (o InfraModuleOutput) RepositoryUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfraModule) pulumi.StringOutput { return v.RepositoryUrl }).(pulumi.StringOutput)
+}
+
+// How to store the artifact.
+func (o InfraModuleOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *InfraModule) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
 }
 
 // Timestamp when the module was last synced.

@@ -38,11 +38,6 @@ public final class GetAzureProxyResult {
      */
     private Boolean deleteCloudResourcesOnDestroy;
     /**
-     * @return Hostname for the proxy
-     * 
-     */
-    private String hostName;
-    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -127,13 +122,6 @@ public final class GetAzureProxyResult {
      */
     public Boolean deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
-    }
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public String hostName() {
-        return this.hostName;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -221,7 +209,6 @@ public final class GetAzureProxyResult {
         private @Nullable GetAzureProxyCertificates certificates;
         private String cloudConnectorId;
         private Boolean deleteCloudResourcesOnDestroy;
-        private String hostName;
         private String id;
         private String identifier;
         private String keypair;
@@ -241,7 +228,6 @@ public final class GetAzureProxyResult {
     	      this.certificates = defaults.certificates;
     	      this.cloudConnectorId = defaults.cloudConnectorId;
     	      this.deleteCloudResourcesOnDestroy = defaults.deleteCloudResourcesOnDestroy;
-    	      this.hostName = defaults.hostName;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.keypair = defaults.keypair;
@@ -294,14 +280,6 @@ public final class GetAzureProxyResult {
               throw new MissingRequiredPropertyException("GetAzureProxyResult", "deleteCloudResourcesOnDestroy");
             }
             this.deleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder hostName(String hostName) {
-            if (hostName == null) {
-              throw new MissingRequiredPropertyException("GetAzureProxyResult", "hostName");
-            }
-            this.hostName = hostName;
             return this;
         }
         @CustomType.Setter
@@ -393,7 +371,6 @@ public final class GetAzureProxyResult {
             _resultValue.certificates = certificates;
             _resultValue.cloudConnectorId = cloudConnectorId;
             _resultValue.deleteCloudResourcesOnDestroy = deleteCloudResourcesOnDestroy;
-            _resultValue.hostName = hostName;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.keypair = keypair;

@@ -24,7 +24,6 @@ class GcpProxyArgs:
                  api_key: pulumi.Input[_builtins.str],
                  cloud_connector_id: pulumi.Input[_builtins.str],
                  delete_cloud_resources_on_destroy: pulumi.Input[_builtins.bool],
-                 host_name: pulumi.Input[_builtins.str],
                  machine_type: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  subnet_id: pulumi.Input[_builtins.str],
@@ -39,7 +38,6 @@ class GcpProxyArgs:
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
-        :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] machine_type: Machine instance type
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
         :param pulumi.Input[_builtins.str] subnet_id: VPC in which cloud resources are hosted
@@ -52,7 +50,6 @@ class GcpProxyArgs:
         pulumi.set(__self__, "api_key", api_key)
         pulumi.set(__self__, "cloud_connector_id", cloud_connector_id)
         pulumi.set(__self__, "delete_cloud_resources_on_destroy", delete_cloud_resources_on_destroy)
-        pulumi.set(__self__, "host_name", host_name)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -102,18 +99,6 @@ class GcpProxyArgs:
     @delete_cloud_resources_on_destroy.setter
     def delete_cloud_resources_on_destroy(self, value: pulumi.Input[_builtins.bool]):
         pulumi.set(self, "delete_cloud_resources_on_destroy", value)
-
-    @_builtins.property
-    @pulumi.getter(name="hostName")
-    def host_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Hostname for the proxy
-        """
-        return pulumi.get(self, "host_name")
-
-    @host_name.setter
-    def host_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
@@ -229,7 +214,6 @@ class _GcpProxyState:
                  certificates: Optional[pulumi.Input['GcpProxyCertificatesArgs']] = None,
                  cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -244,7 +228,6 @@ class _GcpProxyState:
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
-        :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] machine_type: Machine instance type
         :param pulumi.Input[_builtins.str] name: Name of the proxy
@@ -264,8 +247,6 @@ class _GcpProxyState:
             pulumi.set(__self__, "cloud_connector_id", cloud_connector_id)
         if delete_cloud_resources_on_destroy is not None:
             pulumi.set(__self__, "delete_cloud_resources_on_destroy", delete_cloud_resources_on_destroy)
-        if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if machine_type is not None:
@@ -339,18 +320,6 @@ class _GcpProxyState:
     @delete_cloud_resources_on_destroy.setter
     def delete_cloud_resources_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "delete_cloud_resources_on_destroy", value)
-
-    @_builtins.property
-    @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Hostname for the proxy
-        """
-        return pulumi.get(self, "host_name")
-
-    @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -460,7 +429,6 @@ class GcpProxy(pulumi.CustomResource):
                  certificates: Optional[pulumi.Input[Union['GcpProxyCertificatesArgs', 'GcpProxyCertificatesArgsDict']]] = None,
                  cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -481,7 +449,6 @@ class GcpProxy(pulumi.CustomResource):
         test = harness.autostopping.GcpProxy("test",
             name="name",
             cloud_connector_id="cloud_connector_id",
-            host_name="host_name",
             region="region",
             vpc="https://www.googleapis.com/compute/v1/projects/project_id/global/networks/netwok_id",
             zone="zone",
@@ -503,7 +470,6 @@ class GcpProxy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
-        :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] machine_type: Machine instance type
         :param pulumi.Input[_builtins.str] name: Name of the proxy
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
@@ -530,7 +496,6 @@ class GcpProxy(pulumi.CustomResource):
         test = harness.autostopping.GcpProxy("test",
             name="name",
             cloud_connector_id="cloud_connector_id",
-            host_name="host_name",
             region="region",
             vpc="https://www.googleapis.com/compute/v1/projects/project_id/global/networks/netwok_id",
             zone="zone",
@@ -566,7 +531,6 @@ class GcpProxy(pulumi.CustomResource):
                  certificates: Optional[pulumi.Input[Union['GcpProxyCertificatesArgs', 'GcpProxyCertificatesArgsDict']]] = None,
                  cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -594,9 +558,6 @@ class GcpProxy(pulumi.CustomResource):
             if delete_cloud_resources_on_destroy is None and not opts.urn:
                 raise TypeError("Missing required property 'delete_cloud_resources_on_destroy'")
             __props__.__dict__["delete_cloud_resources_on_destroy"] = delete_cloud_resources_on_destroy
-            if host_name is None and not opts.urn:
-                raise TypeError("Missing required property 'host_name'")
-            __props__.__dict__["host_name"] = host_name
             if machine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'machine_type'")
             __props__.__dict__["machine_type"] = machine_type
@@ -632,7 +593,6 @@ class GcpProxy(pulumi.CustomResource):
             certificates: Optional[pulumi.Input[Union['GcpProxyCertificatesArgs', 'GcpProxyCertificatesArgsDict']]] = None,
             cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
             delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            host_name: Optional[pulumi.Input[_builtins.str]] = None,
             identifier: Optional[pulumi.Input[_builtins.str]] = None,
             machine_type: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -652,7 +612,6 @@ class GcpProxy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
-        :param pulumi.Input[_builtins.str] host_name: Hostname for the proxy
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] machine_type: Machine instance type
         :param pulumi.Input[_builtins.str] name: Name of the proxy
@@ -671,7 +630,6 @@ class GcpProxy(pulumi.CustomResource):
         __props__.__dict__["certificates"] = certificates
         __props__.__dict__["cloud_connector_id"] = cloud_connector_id
         __props__.__dict__["delete_cloud_resources_on_destroy"] = delete_cloud_resources_on_destroy
-        __props__.__dict__["host_name"] = host_name
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["machine_type"] = machine_type
         __props__.__dict__["name"] = name
@@ -718,14 +676,6 @@ class GcpProxy(pulumi.CustomResource):
         Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
         """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
-
-    @_builtins.property
-    @pulumi.getter(name="hostName")
-    def host_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Hostname for the proxy
-        """
-        return pulumi.get(self, "host_name")
 
     @_builtins.property
     @pulumi.getter

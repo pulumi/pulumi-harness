@@ -94,12 +94,6 @@ namespace Pulumi.Harness.Autostopping
         public Output<string?> FrontendIp { get; private set; } = null!;
 
         /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Output("hostName")]
-        public Output<string> HostName { get; private set; } = null!;
-
-        /// <summary>
         /// Unique identifier of the resource
         /// </summary>
         [Output("identifier")]
@@ -225,12 +219,6 @@ namespace Pulumi.Harness.Autostopping
         public Input<string>? FrontendIp { get; set; }
 
         /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Input("hostName", required: true)]
-        public Input<string> HostName { get; set; } = null!;
-
-        /// <summary>
         /// Name of the proxy
         /// </summary>
         [Input("name")]
@@ -309,12 +297,6 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Input("frontendIp")]
         public Input<string>? FrontendIp { get; set; }
-
-        /// <summary>
-        /// Hostname for the proxy
-        /// </summary>
-        [Input("hostName")]
-        public Input<string>? HostName { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource

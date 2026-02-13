@@ -21,6 +21,13 @@ import * as utilities from "../utilities";
  *     repositoryBranch: "main",
  *     repositoryPath: "tf/aws/basic",
  *     repositoryConnector: test.id,
+ *     onboardingPipeline: "my_onboarding_pipeline",
+ *     onboardingPipelineOrg: "default",
+ *     onboardingPipelineProject: "IaCM_Project",
+ *     onboardingPipelineSync: true,
+ *     storageType: "harness",
+ *     connectorOrg: "default",
+ *     connectorProject: "my_project",
  * });
  * ```
  *
@@ -61,6 +68,14 @@ export class InfraModule extends pulumi.CustomResource {
     }
 
     /**
+     * Connector organization.
+     */
+    declare public readonly connectorOrg: pulumi.Output<string | undefined>;
+    /**
+     * Connector project.
+     */
+    declare public readonly connectorProject: pulumi.Output<string | undefined>;
+    /**
      * Timestamp when the module was created.
      */
     declare public readonly created: pulumi.Output<number>;
@@ -76,6 +91,22 @@ export class InfraModule extends pulumi.CustomResource {
      * Name of the module.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Onboarding Pipeline identifier.
+     */
+    declare public readonly onboardingPipeline: pulumi.Output<string | undefined>;
+    /**
+     * Onboarding Pipeline organization.
+     */
+    declare public readonly onboardingPipelineOrg: pulumi.Output<string | undefined>;
+    /**
+     * Onboarding Pipeline project.
+     */
+    declare public readonly onboardingPipelineProject: pulumi.Output<string | undefined>;
+    /**
+     * Sync the project automatically.
+     */
+    declare public readonly onboardingPipelineSync: pulumi.Output<boolean | undefined>;
     /**
      * For account connectors, the repository where the module can be found
      */
@@ -100,6 +131,10 @@ export class InfraModule extends pulumi.CustomResource {
      * URL of the repository where the module is stored.
      */
     declare public readonly repositoryUrl: pulumi.Output<string>;
+    /**
+     * How to store the artifact.
+     */
+    declare public readonly storageType: pulumi.Output<string>;
     /**
      * Timestamp when the module was last synced.
      */
@@ -130,16 +165,23 @@ export class InfraModule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InfraModuleState | undefined;
+            resourceInputs["connectorOrg"] = state?.connectorOrg;
+            resourceInputs["connectorProject"] = state?.connectorProject;
             resourceInputs["created"] = state?.created;
             resourceInputs["description"] = state?.description;
             resourceInputs["gitTagStyle"] = state?.gitTagStyle;
             resourceInputs["name"] = state?.name;
+            resourceInputs["onboardingPipeline"] = state?.onboardingPipeline;
+            resourceInputs["onboardingPipelineOrg"] = state?.onboardingPipelineOrg;
+            resourceInputs["onboardingPipelineProject"] = state?.onboardingPipelineProject;
+            resourceInputs["onboardingPipelineSync"] = state?.onboardingPipelineSync;
             resourceInputs["repository"] = state?.repository;
             resourceInputs["repositoryBranch"] = state?.repositoryBranch;
             resourceInputs["repositoryCommit"] = state?.repositoryCommit;
             resourceInputs["repositoryConnector"] = state?.repositoryConnector;
             resourceInputs["repositoryPath"] = state?.repositoryPath;
             resourceInputs["repositoryUrl"] = state?.repositoryUrl;
+            resourceInputs["storageType"] = state?.storageType;
             resourceInputs["synced"] = state?.synced;
             resourceInputs["system"] = state?.system;
             resourceInputs["tags"] = state?.tags;
@@ -149,16 +191,23 @@ export class InfraModule extends pulumi.CustomResource {
             if (args?.system === undefined && !opts.urn) {
                 throw new Error("Missing required property 'system'");
             }
+            resourceInputs["connectorOrg"] = args?.connectorOrg;
+            resourceInputs["connectorProject"] = args?.connectorProject;
             resourceInputs["created"] = args?.created;
             resourceInputs["description"] = args?.description;
             resourceInputs["gitTagStyle"] = args?.gitTagStyle;
             resourceInputs["name"] = args?.name;
+            resourceInputs["onboardingPipeline"] = args?.onboardingPipeline;
+            resourceInputs["onboardingPipelineOrg"] = args?.onboardingPipelineOrg;
+            resourceInputs["onboardingPipelineProject"] = args?.onboardingPipelineProject;
+            resourceInputs["onboardingPipelineSync"] = args?.onboardingPipelineSync;
             resourceInputs["repository"] = args?.repository;
             resourceInputs["repositoryBranch"] = args?.repositoryBranch;
             resourceInputs["repositoryCommit"] = args?.repositoryCommit;
             resourceInputs["repositoryConnector"] = args?.repositoryConnector;
             resourceInputs["repositoryPath"] = args?.repositoryPath;
             resourceInputs["repositoryUrl"] = args?.repositoryUrl;
+            resourceInputs["storageType"] = args?.storageType;
             resourceInputs["synced"] = args?.synced;
             resourceInputs["system"] = args?.system;
             resourceInputs["tags"] = args?.tags;
@@ -173,6 +222,14 @@ export class InfraModule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InfraModule resources.
  */
 export interface InfraModuleState {
+    /**
+     * Connector organization.
+     */
+    connectorOrg?: pulumi.Input<string>;
+    /**
+     * Connector project.
+     */
+    connectorProject?: pulumi.Input<string>;
     /**
      * Timestamp when the module was created.
      */
@@ -189,6 +246,22 @@ export interface InfraModuleState {
      * Name of the module.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Onboarding Pipeline identifier.
+     */
+    onboardingPipeline?: pulumi.Input<string>;
+    /**
+     * Onboarding Pipeline organization.
+     */
+    onboardingPipelineOrg?: pulumi.Input<string>;
+    /**
+     * Onboarding Pipeline project.
+     */
+    onboardingPipelineProject?: pulumi.Input<string>;
+    /**
+     * Sync the project automatically.
+     */
+    onboardingPipelineSync?: pulumi.Input<boolean>;
     /**
      * For account connectors, the repository where the module can be found
      */
@@ -213,6 +286,10 @@ export interface InfraModuleState {
      * URL of the repository where the module is stored.
      */
     repositoryUrl?: pulumi.Input<string>;
+    /**
+     * How to store the artifact.
+     */
+    storageType?: pulumi.Input<string>;
     /**
      * Timestamp when the module was last synced.
      */
@@ -236,6 +313,14 @@ export interface InfraModuleState {
  */
 export interface InfraModuleArgs {
     /**
+     * Connector organization.
+     */
+    connectorOrg?: pulumi.Input<string>;
+    /**
+     * Connector project.
+     */
+    connectorProject?: pulumi.Input<string>;
+    /**
      * Timestamp when the module was created.
      */
     created?: pulumi.Input<number>;
@@ -251,6 +336,22 @@ export interface InfraModuleArgs {
      * Name of the module.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Onboarding Pipeline identifier.
+     */
+    onboardingPipeline?: pulumi.Input<string>;
+    /**
+     * Onboarding Pipeline organization.
+     */
+    onboardingPipelineOrg?: pulumi.Input<string>;
+    /**
+     * Onboarding Pipeline project.
+     */
+    onboardingPipelineProject?: pulumi.Input<string>;
+    /**
+     * Sync the project automatically.
+     */
+    onboardingPipelineSync?: pulumi.Input<boolean>;
     /**
      * For account connectors, the repository where the module can be found
      */
@@ -275,6 +376,10 @@ export interface InfraModuleArgs {
      * URL of the repository where the module is stored.
      */
     repositoryUrl?: pulumi.Input<string>;
+    /**
+     * How to store the artifact.
+     */
+    storageType?: pulumi.Input<string>;
     /**
      * Timestamp when the module was last synced.
      */

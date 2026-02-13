@@ -41329,6 +41329,10 @@ func (o GetInfraModuleTestingTestingMetadataPtrOutput) ReleasePipeline() pulumi.
 type GetInfraModulesModule struct {
 	// Account that owns the module
 	Account string `pulumi:"account"`
+	// Repository connector orgoanization
+	ConnectorOrg string `pulumi:"connectorOrg"`
+	// Repository connector project
+	ConnectorProject string `pulumi:"connectorProject"`
 	// Timestamp when the module was created
 	Created int `pulumi:"created"`
 	// Description of the module
@@ -41337,6 +41341,14 @@ type GetInfraModulesModule struct {
 	Id string `pulumi:"id"`
 	// Name of the module
 	Name string `pulumi:"name"`
+	// Onboarding Pipeline identifier.
+	OnboardingPipeline *string `pulumi:"onboardingPipeline"`
+	// Onboarding Pipeline organization.
+	OnboardingPipelineOrg *string `pulumi:"onboardingPipelineOrg"`
+	// Onboarding Pipeline project.
+	OnboardingPipelineProject *string `pulumi:"onboardingPipelineProject"`
+	// Sync the project automatically.
+	OnboardingPipelineSync *bool `pulumi:"onboardingPipelineSync"`
 	// Organization that owns the module
 	Org string `pulumi:"org"`
 	// Project that owns the module
@@ -41353,6 +41365,8 @@ type GetInfraModulesModule struct {
 	RepositoryPath string `pulumi:"repositoryPath"`
 	// Repository URL
 	RepositoryUrl string `pulumi:"repositoryUrl"`
+	// How to store the artifact.
+	StorageType string `pulumi:"storageType"`
 	// Timestamp when the module was last synced
 	Synced int `pulumi:"synced"`
 	// Provider of the module
@@ -41379,6 +41393,10 @@ type GetInfraModulesModuleInput interface {
 type GetInfraModulesModuleArgs struct {
 	// Account that owns the module
 	Account pulumi.StringInput `pulumi:"account"`
+	// Repository connector orgoanization
+	ConnectorOrg pulumi.StringInput `pulumi:"connectorOrg"`
+	// Repository connector project
+	ConnectorProject pulumi.StringInput `pulumi:"connectorProject"`
 	// Timestamp when the module was created
 	Created pulumi.IntInput `pulumi:"created"`
 	// Description of the module
@@ -41387,6 +41405,14 @@ type GetInfraModulesModuleArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Name of the module
 	Name pulumi.StringInput `pulumi:"name"`
+	// Onboarding Pipeline identifier.
+	OnboardingPipeline pulumi.StringPtrInput `pulumi:"onboardingPipeline"`
+	// Onboarding Pipeline organization.
+	OnboardingPipelineOrg pulumi.StringPtrInput `pulumi:"onboardingPipelineOrg"`
+	// Onboarding Pipeline project.
+	OnboardingPipelineProject pulumi.StringPtrInput `pulumi:"onboardingPipelineProject"`
+	// Sync the project automatically.
+	OnboardingPipelineSync pulumi.BoolPtrInput `pulumi:"onboardingPipelineSync"`
 	// Organization that owns the module
 	Org pulumi.StringInput `pulumi:"org"`
 	// Project that owns the module
@@ -41403,6 +41429,8 @@ type GetInfraModulesModuleArgs struct {
 	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
 	// Repository URL
 	RepositoryUrl pulumi.StringInput `pulumi:"repositoryUrl"`
+	// How to store the artifact.
+	StorageType pulumi.StringInput `pulumi:"storageType"`
 	// Timestamp when the module was last synced
 	Synced pulumi.IntInput `pulumi:"synced"`
 	// Provider of the module
@@ -41471,6 +41499,16 @@ func (o GetInfraModulesModuleOutput) Account() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Account }).(pulumi.StringOutput)
 }
 
+// Repository connector orgoanization
+func (o GetInfraModulesModuleOutput) ConnectorOrg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.ConnectorOrg }).(pulumi.StringOutput)
+}
+
+// Repository connector project
+func (o GetInfraModulesModuleOutput) ConnectorProject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.ConnectorProject }).(pulumi.StringOutput)
+}
+
 // Timestamp when the module was created
 func (o GetInfraModulesModuleOutput) Created() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInfraModulesModule) int { return v.Created }).(pulumi.IntOutput)
@@ -41489,6 +41527,26 @@ func (o GetInfraModulesModuleOutput) Id() pulumi.StringOutput {
 // Name of the module
 func (o GetInfraModulesModuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Onboarding Pipeline identifier.
+func (o GetInfraModulesModuleOutput) OnboardingPipeline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) *string { return v.OnboardingPipeline }).(pulumi.StringPtrOutput)
+}
+
+// Onboarding Pipeline organization.
+func (o GetInfraModulesModuleOutput) OnboardingPipelineOrg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) *string { return v.OnboardingPipelineOrg }).(pulumi.StringPtrOutput)
+}
+
+// Onboarding Pipeline project.
+func (o GetInfraModulesModuleOutput) OnboardingPipelineProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) *string { return v.OnboardingPipelineProject }).(pulumi.StringPtrOutput)
+}
+
+// Sync the project automatically.
+func (o GetInfraModulesModuleOutput) OnboardingPipelineSync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) *bool { return v.OnboardingPipelineSync }).(pulumi.BoolPtrOutput)
 }
 
 // Organization that owns the module
@@ -41529,6 +41587,11 @@ func (o GetInfraModulesModuleOutput) RepositoryPath() pulumi.StringOutput {
 // Repository URL
 func (o GetInfraModulesModuleOutput) RepositoryUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraModulesModule) string { return v.RepositoryUrl }).(pulumi.StringOutput)
+}
+
+// How to store the artifact.
+func (o GetInfraModulesModuleOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraModulesModule) string { return v.StorageType }).(pulumi.StringOutput)
 }
 
 // Timestamp when the module was last synced

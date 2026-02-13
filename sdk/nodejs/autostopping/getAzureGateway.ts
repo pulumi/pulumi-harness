@@ -18,7 +18,6 @@ export function getAzureGateway(args: GetAzureGatewayArgs, opts?: pulumi.InvokeO
         "cloudConnectorId": args.cloudConnectorId,
         "deleteCloudResourcesOnDestroy": args.deleteCloudResourcesOnDestroy,
         "frontendIp": args.frontendIp,
-        "hostName": args.hostName,
         "name": args.name,
         "region": args.region,
         "resourceGroup": args.resourceGroup,
@@ -56,10 +55,6 @@ export interface GetAzureGatewayArgs {
      * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
      */
     frontendIp?: string;
-    /**
-     * Hostname for the proxy
-     */
-    hostName: string;
     /**
      * Name of the proxy
      */
@@ -115,10 +110,6 @@ export interface GetAzureGatewayResult {
      */
     readonly frontendIp?: string;
     /**
-     * Hostname for the proxy
-     */
-    readonly hostName: string;
-    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -165,7 +156,6 @@ export function getAzureGatewayOutput(args: GetAzureGatewayOutputArgs, opts?: pu
         "cloudConnectorId": args.cloudConnectorId,
         "deleteCloudResourcesOnDestroy": args.deleteCloudResourcesOnDestroy,
         "frontendIp": args.frontendIp,
-        "hostName": args.hostName,
         "name": args.name,
         "region": args.region,
         "resourceGroup": args.resourceGroup,
@@ -203,10 +193,6 @@ export interface GetAzureGatewayOutputArgs {
      * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
      */
     frontendIp?: pulumi.Input<string>;
-    /**
-     * Hostname for the proxy
-     */
-    hostName: pulumi.Input<string>;
     /**
      * Name of the proxy
      */

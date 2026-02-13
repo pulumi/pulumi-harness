@@ -6252,6 +6252,14 @@ export namespace platform {
          */
         account: string;
         /**
+         * Repository connector orgoanization
+         */
+        connectorOrg: string;
+        /**
+         * Repository connector project
+         */
+        connectorProject: string;
+        /**
          * Timestamp when the module was created
          */
         created: number;
@@ -6267,6 +6275,22 @@ export namespace platform {
          * Name of the module
          */
         name: string;
+        /**
+         * Onboarding Pipeline identifier.
+         */
+        onboardingPipeline?: string;
+        /**
+         * Onboarding Pipeline organization.
+         */
+        onboardingPipelineOrg?: string;
+        /**
+         * Onboarding Pipeline project.
+         */
+        onboardingPipelineProject?: string;
+        /**
+         * Sync the project automatically.
+         */
+        onboardingPipelineSync?: boolean;
         /**
          * Organization that owns the module
          */
@@ -6299,6 +6323,10 @@ export namespace platform {
          * Repository URL
          */
         repositoryUrl: string;
+        /**
+         * How to store the artifact.
+         */
+        storageType: string;
         /**
          * Timestamp when the module was last synced
          */

@@ -107,21 +107,6 @@ public final class GetAzureGatewayPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Hostname for the proxy
-     * 
-     */
-    @Import(name="hostName", required=true)
-    private String hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public String hostName() {
-        return this.hostName;
-    }
-
-    /**
      * Name of the proxy
      * 
      */
@@ -220,7 +205,6 @@ public final class GetAzureGatewayPlainArgs extends com.pulumi.resources.InvokeA
         this.cloudConnectorId = $.cloudConnectorId;
         this.deleteCloudResourcesOnDestroy = $.deleteCloudResourcesOnDestroy;
         this.frontendIp = $.frontendIp;
-        this.hostName = $.hostName;
         this.name = $.name;
         this.region = $.region;
         this.resourceGroup = $.resourceGroup;
@@ -314,17 +298,6 @@ public final class GetAzureGatewayPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(String hostName) {
-            $.hostName = hostName;
-            return this;
-        }
-
-        /**
          * @param name Name of the proxy
          * 
          * @return builder
@@ -399,9 +372,6 @@ public final class GetAzureGatewayPlainArgs extends com.pulumi.resources.InvokeA
             }
             if ($.deleteCloudResourcesOnDestroy == null) {
                 throw new MissingRequiredPropertyException("GetAzureGatewayPlainArgs", "deleteCloudResourcesOnDestroy");
-            }
-            if ($.hostName == null) {
-                throw new MissingRequiredPropertyException("GetAzureGatewayPlainArgs", "hostName");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("GetAzureGatewayPlainArgs", "name");

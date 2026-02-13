@@ -47,7 +47,6 @@ import javax.annotation.Nullable;
  *         var test = new AzureProxy("test", AzureProxyArgs.builder()
  *             .name("name")
  *             .cloudConnectorId("cloud_connector_id")
- *             .hostName("host_name")
  *             .region("eastus2")
  *             .resourceGroup("resource_group")
  *             .vpc("/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Network/virtualNetworks/virtual_network")
@@ -135,20 +134,6 @@ public class AzureProxy extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> deleteCloudResourcesOnDestroy() {
         return this.deleteCloudResourcesOnDestroy;
-    }
-    /**
-     * Hostname for the proxy
-     * 
-     */
-    @Export(name="hostName", refs={String.class}, tree="[0]")
-    private Output<String> hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public Output<String> hostName() {
-        return this.hostName;
     }
     /**
      * Unique identifier of the resource

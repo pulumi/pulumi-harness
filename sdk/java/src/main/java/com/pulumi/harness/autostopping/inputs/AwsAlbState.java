@@ -70,21 +70,6 @@ public final class AwsAlbState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hostname for the proxy
-     * 
-     */
-    @Import(name="hostName")
-    private @Nullable Output<String> hostName;
-
-    /**
-     * @return Hostname for the proxy
-     * 
-     */
-    public Optional<Output<String>> hostName() {
-        return Optional.ofNullable(this.hostName);
-    }
-
-    /**
      * Unique identifier of the resource
      * 
      */
@@ -130,21 +115,6 @@ public final class AwsAlbState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Route 53 hosted zone id
-     * 
-     */
-    @Import(name="route53HostedZoneId")
-    private @Nullable Output<String> route53HostedZoneId;
-
-    /**
-     * @return Route 53 hosted zone id
-     * 
-     */
-    public Optional<Output<String>> route53HostedZoneId() {
-        return Optional.ofNullable(this.route53HostedZoneId);
-    }
-
-    /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      * 
      */
@@ -181,11 +151,9 @@ public final class AwsAlbState extends com.pulumi.resources.ResourceArgs {
         this.certificateId = $.certificateId;
         this.cloudConnectorId = $.cloudConnectorId;
         this.deleteCloudResourcesOnDestroy = $.deleteCloudResourcesOnDestroy;
-        this.hostName = $.hostName;
         this.identifier = $.identifier;
         this.name = $.name;
         this.region = $.region;
-        this.route53HostedZoneId = $.route53HostedZoneId;
         this.securityGroups = $.securityGroups;
         this.vpc = $.vpc;
     }
@@ -281,27 +249,6 @@ public final class AwsAlbState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(@Nullable Output<String> hostName) {
-            $.hostName = hostName;
-            return this;
-        }
-
-        /**
-         * @param hostName Hostname for the proxy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostName(String hostName) {
-            return hostName(Output.of(hostName));
-        }
-
-        /**
          * @param identifier Unique identifier of the resource
          * 
          * @return builder
@@ -362,27 +309,6 @@ public final class AwsAlbState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
-        }
-
-        /**
-         * @param route53HostedZoneId Route 53 hosted zone id
-         * 
-         * @return builder
-         * 
-         */
-        public Builder route53HostedZoneId(@Nullable Output<String> route53HostedZoneId) {
-            $.route53HostedZoneId = route53HostedZoneId;
-            return this;
-        }
-
-        /**
-         * @param route53HostedZoneId Route 53 hosted zone id
-         * 
-         * @return builder
-         * 
-         */
-        public Builder route53HostedZoneId(String route53HostedZoneId) {
-            return route53HostedZoneId(Output.of(route53HostedZoneId));
         }
 
         /**

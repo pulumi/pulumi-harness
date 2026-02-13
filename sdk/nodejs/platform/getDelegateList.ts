@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * // Get all delegates in an account
  * const all = harness.platform.getDelegateList({
  *     accountId: "your_account_id",
+ *     filterType: "Delegate",
  *     fetchAll: true,
  * });
  * // Get only connected delegates with specific tags
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  *     accountId: "your_account_id",
  *     orgId: "your_org_id",
  *     projectId: "your_project_id",
+ *     filterType: "Delegate",
  *     status: "CONNECTED",
  *     delegateTags: [
  *         "production",
@@ -34,6 +36,7 @@ import * as utilities from "../utilities";
  * // Get delegates by name pattern and group
  * const specificGroup = harness.platform.getDelegateList({
  *     accountId: "your_account_id",
+ *     filterType: "Delegate",
  *     delegateName: "prod-delegate",
  *     delegateGroupIdentifier: "production-group",
  *     versionStatus: "ACTIVE",
@@ -87,7 +90,7 @@ export interface GetDelegateListArgs {
      */
     delegateTags?: string[];
     /**
-     * Whether to fetch all delegates.
+     * Whether to fetch all delegates. Defaults to `false`.
      */
     fetchAll?: boolean;
     /**
@@ -145,7 +148,7 @@ export interface GetDelegateListResult {
      */
     readonly delegates: outputs.platform.GetDelegateListDelegate[];
     /**
-     * Whether to fetch all delegates.
+     * Whether to fetch all delegates. Defaults to `false`.
      */
     readonly fetchAll?: boolean;
     /**
@@ -185,6 +188,7 @@ export interface GetDelegateListResult {
  * // Get all delegates in an account
  * const all = harness.platform.getDelegateList({
  *     accountId: "your_account_id",
+ *     filterType: "Delegate",
  *     fetchAll: true,
  * });
  * // Get only connected delegates with specific tags
@@ -192,6 +196,7 @@ export interface GetDelegateListResult {
  *     accountId: "your_account_id",
  *     orgId: "your_org_id",
  *     projectId: "your_project_id",
+ *     filterType: "Delegate",
  *     status: "CONNECTED",
  *     delegateTags: [
  *         "production",
@@ -201,6 +206,7 @@ export interface GetDelegateListResult {
  * // Get delegates by name pattern and group
  * const specificGroup = harness.platform.getDelegateList({
  *     accountId: "your_account_id",
+ *     filterType: "Delegate",
  *     delegateName: "prod-delegate",
  *     delegateGroupIdentifier: "production-group",
  *     versionStatus: "ACTIVE",
@@ -254,7 +260,7 @@ export interface GetDelegateListOutputArgs {
      */
     delegateTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether to fetch all delegates.
+     * Whether to fetch all delegates. Defaults to `false`.
      */
     fetchAll?: pulumi.Input<boolean>;
     /**
