@@ -147,6 +147,14 @@ import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModulePlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModuleTestingArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModuleTestingPlainArgs;
+import com.pulumi.harness.platform.inputs.GetInfraProviderArgs;
+import com.pulumi.harness.platform.inputs.GetInfraProviderPlainArgs;
+import com.pulumi.harness.platform.inputs.GetInfraProviderSigningKeyArgs;
+import com.pulumi.harness.platform.inputs.GetInfraProviderSigningKeyPlainArgs;
+import com.pulumi.harness.platform.inputs.GetInfraProviderVersionArgs;
+import com.pulumi.harness.platform.inputs.GetInfraProviderVersionPlainArgs;
+import com.pulumi.harness.platform.inputs.GetInfraProviderVersionsArgs;
+import com.pulumi.harness.platform.inputs.GetInfraProviderVersionsPlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
 import com.pulumi.harness.platform.inputs.GetInfraVariableSetPlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
@@ -332,6 +340,12 @@ import com.pulumi.harness.platform.outputs.GetIdpEnvironmentResult;
 import com.pulumi.harness.platform.outputs.GetInfraModuleResult;
 import com.pulumi.harness.platform.outputs.GetInfraModuleTestingResult;
 import com.pulumi.harness.platform.outputs.GetInfraModulesResult;
+import com.pulumi.harness.platform.outputs.GetInfraProviderResult;
+import com.pulumi.harness.platform.outputs.GetInfraProviderSigningKeyResult;
+import com.pulumi.harness.platform.outputs.GetInfraProviderSigningKeysResult;
+import com.pulumi.harness.platform.outputs.GetInfraProviderVersionResult;
+import com.pulumi.harness.platform.outputs.GetInfraProviderVersionsResult;
+import com.pulumi.harness.platform.outputs.GetInfraProvidersResult;
 import com.pulumi.harness.platform.outputs.GetInfraVariableSetResult;
 import com.pulumi.harness.platform.outputs.GetInfrastructureResult;
 import com.pulumi.harness.platform.outputs.GetInputSetResult;
@@ -11482,6 +11496,812 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetInfraModulesResult> getInfraModulesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getInfraModules:getInfraModules", TypeShape.of(GetInfraModulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Terraform/OpenTofu Provider from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aws = PlatformFunctions.getInfraProvider(GetInfraProviderArgs.builder()
+     *             .id("123")
+     *             .build());
+     * 
+     *         ctx.export("providerType", aws.type());
+     *         ctx.export("providerVersions", aws.versions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraProviderResult> getInfraProvider(GetInfraProviderArgs args) {
+        return getInfraProvider(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Terraform/OpenTofu Provider from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aws = PlatformFunctions.getInfraProvider(GetInfraProviderArgs.builder()
+     *             .id("123")
+     *             .build());
+     * 
+     *         ctx.export("providerType", aws.type());
+     *         ctx.export("providerVersions", aws.versions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInfraProviderResult> getInfraProviderPlain(GetInfraProviderPlainArgs args) {
+        return getInfraProviderPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Terraform/OpenTofu Provider from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aws = PlatformFunctions.getInfraProvider(GetInfraProviderArgs.builder()
+     *             .id("123")
+     *             .build());
+     * 
+     *         ctx.export("providerType", aws.type());
+     *         ctx.export("providerVersions", aws.versions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraProviderResult> getInfraProvider(GetInfraProviderArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraProvider:getInfraProvider", TypeShape.of(GetInfraProviderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Terraform/OpenTofu Provider from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aws = PlatformFunctions.getInfraProvider(GetInfraProviderArgs.builder()
+     *             .id("123")
+     *             .build());
+     * 
+     *         ctx.export("providerType", aws.type());
+     *         ctx.export("providerVersions", aws.versions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraProviderResult> getInfraProvider(GetInfraProviderArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraProvider:getInfraProvider", TypeShape.of(GetInfraProviderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Terraform/OpenTofu Provider from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aws = PlatformFunctions.getInfraProvider(GetInfraProviderArgs.builder()
+     *             .id("123")
+     *             .build());
+     * 
+     *         ctx.export("providerType", aws.type());
+     *         ctx.export("providerVersions", aws.versions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInfraProviderResult> getInfraProviderPlain(GetInfraProviderPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getInfraProvider:getInfraProvider", TypeShape.of(GetInfraProviderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a GPG Signing Key from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderSigningKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getInfraProviderSigningKey(GetInfraProviderSigningKeyArgs.builder()
+     *             .id("signing_key_id")
+     *             .build());
+     * 
+     *         ctx.export("keyId", example.keyId());
+     *         ctx.export("keyName", example.keyName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraProviderSigningKeyResult> getInfraProviderSigningKey(GetInfraProviderSigningKeyArgs args) {
+        return getInfraProviderSigningKey(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a GPG Signing Key from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderSigningKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getInfraProviderSigningKey(GetInfraProviderSigningKeyArgs.builder()
+     *             .id("signing_key_id")
+     *             .build());
+     * 
+     *         ctx.export("keyId", example.keyId());
+     *         ctx.export("keyName", example.keyName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInfraProviderSigningKeyResult> getInfraProviderSigningKeyPlain(GetInfraProviderSigningKeyPlainArgs args) {
+        return getInfraProviderSigningKeyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a GPG Signing Key from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderSigningKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getInfraProviderSigningKey(GetInfraProviderSigningKeyArgs.builder()
+     *             .id("signing_key_id")
+     *             .build());
+     * 
+     *         ctx.export("keyId", example.keyId());
+     *         ctx.export("keyName", example.keyName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraProviderSigningKeyResult> getInfraProviderSigningKey(GetInfraProviderSigningKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraProviderSigningKey:getInfraProviderSigningKey", TypeShape.of(GetInfraProviderSigningKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a GPG Signing Key from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderSigningKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getInfraProviderSigningKey(GetInfraProviderSigningKeyArgs.builder()
+     *             .id("signing_key_id")
+     *             .build());
+     * 
+     *         ctx.export("keyId", example.keyId());
+     *         ctx.export("keyName", example.keyName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraProviderSigningKeyResult> getInfraProviderSigningKey(GetInfraProviderSigningKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraProviderSigningKey:getInfraProviderSigningKey", TypeShape.of(GetInfraProviderSigningKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a GPG Signing Key from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderSigningKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getInfraProviderSigningKey(GetInfraProviderSigningKeyArgs.builder()
+     *             .id("signing_key_id")
+     *             .build());
+     * 
+     *         ctx.export("keyId", example.keyId());
+     *         ctx.export("keyName", example.keyName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInfraProviderSigningKeyResult> getInfraProviderSigningKeyPlain(GetInfraProviderSigningKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getInfraProviderSigningKey:getInfraProviderSigningKey", TypeShape.of(GetInfraProviderSigningKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for listing GPG Signing Keys from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetInfraProviderSigningKeysResult> getInfraProviderSigningKeys() {
+        return getInfraProviderSigningKeys(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for listing GPG Signing Keys from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetInfraProviderSigningKeysResult> getInfraProviderSigningKeysPlain() {
+        return getInfraProviderSigningKeysPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for listing GPG Signing Keys from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetInfraProviderSigningKeysResult> getInfraProviderSigningKeys(InvokeArgs args) {
+        return getInfraProviderSigningKeys(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for listing GPG Signing Keys from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetInfraProviderSigningKeysResult> getInfraProviderSigningKeysPlain(InvokeArgs args) {
+        return getInfraProviderSigningKeysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for listing GPG Signing Keys from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetInfraProviderSigningKeysResult> getInfraProviderSigningKeys(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraProviderSigningKeys:getInfraProviderSigningKeys", TypeShape.of(GetInfraProviderSigningKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for listing GPG Signing Keys from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetInfraProviderSigningKeysResult> getInfraProviderSigningKeys(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraProviderSigningKeys:getInfraProviderSigningKeys", TypeShape.of(GetInfraProviderSigningKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for listing GPG Signing Keys from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetInfraProviderSigningKeysResult> getInfraProviderSigningKeysPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getInfraProviderSigningKeys:getInfraProviderSigningKeys", TypeShape.of(GetInfraProviderSigningKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a specific Terraform/OpenTofu Provider Version from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var awsV5 = PlatformFunctions.getInfraProviderVersion(GetInfraProviderVersionArgs.builder()
+     *             .providerId("provider_id")
+     *             .version("5.0.0")
+     *             .build());
+     * 
+     *         ctx.export("gpgKeyId", awsV5.gpgKeyId());
+     *         ctx.export("protocols", awsV5.protocols());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraProviderVersionResult> getInfraProviderVersion(GetInfraProviderVersionArgs args) {
+        return getInfraProviderVersion(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a specific Terraform/OpenTofu Provider Version from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var awsV5 = PlatformFunctions.getInfraProviderVersion(GetInfraProviderVersionArgs.builder()
+     *             .providerId("provider_id")
+     *             .version("5.0.0")
+     *             .build());
+     * 
+     *         ctx.export("gpgKeyId", awsV5.gpgKeyId());
+     *         ctx.export("protocols", awsV5.protocols());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInfraProviderVersionResult> getInfraProviderVersionPlain(GetInfraProviderVersionPlainArgs args) {
+        return getInfraProviderVersionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a specific Terraform/OpenTofu Provider Version from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var awsV5 = PlatformFunctions.getInfraProviderVersion(GetInfraProviderVersionArgs.builder()
+     *             .providerId("provider_id")
+     *             .version("5.0.0")
+     *             .build());
+     * 
+     *         ctx.export("gpgKeyId", awsV5.gpgKeyId());
+     *         ctx.export("protocols", awsV5.protocols());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraProviderVersionResult> getInfraProviderVersion(GetInfraProviderVersionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraProviderVersion:getInfraProviderVersion", TypeShape.of(GetInfraProviderVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a specific Terraform/OpenTofu Provider Version from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var awsV5 = PlatformFunctions.getInfraProviderVersion(GetInfraProviderVersionArgs.builder()
+     *             .providerId("provider_id")
+     *             .version("5.0.0")
+     *             .build());
+     * 
+     *         ctx.export("gpgKeyId", awsV5.gpgKeyId());
+     *         ctx.export("protocols", awsV5.protocols());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInfraProviderVersionResult> getInfraProviderVersion(GetInfraProviderVersionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraProviderVersion:getInfraProviderVersion", TypeShape.of(GetInfraProviderVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a specific Terraform/OpenTofu Provider Version from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraProviderVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var awsV5 = PlatformFunctions.getInfraProviderVersion(GetInfraProviderVersionArgs.builder()
+     *             .providerId("provider_id")
+     *             .version("5.0.0")
+     *             .build());
+     * 
+     *         ctx.export("gpgKeyId", awsV5.gpgKeyId());
+     *         ctx.export("protocols", awsV5.protocols());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInfraProviderVersionResult> getInfraProviderVersionPlain(GetInfraProviderVersionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getInfraProviderVersion:getInfraProviderVersion", TypeShape.of(GetInfraProviderVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for listing Terraform/OpenTofu Provider Versions from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetInfraProviderVersionsResult> getInfraProviderVersions(GetInfraProviderVersionsArgs args) {
+        return getInfraProviderVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for listing Terraform/OpenTofu Provider Versions from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetInfraProviderVersionsResult> getInfraProviderVersionsPlain(GetInfraProviderVersionsPlainArgs args) {
+        return getInfraProviderVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for listing Terraform/OpenTofu Provider Versions from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetInfraProviderVersionsResult> getInfraProviderVersions(GetInfraProviderVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraProviderVersions:getInfraProviderVersions", TypeShape.of(GetInfraProviderVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for listing Terraform/OpenTofu Provider Versions from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetInfraProviderVersionsResult> getInfraProviderVersions(GetInfraProviderVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraProviderVersions:getInfraProviderVersions", TypeShape.of(GetInfraProviderVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for listing Terraform/OpenTofu Provider Versions from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetInfraProviderVersionsResult> getInfraProviderVersionsPlain(GetInfraProviderVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getInfraProviderVersions:getInfraProviderVersions", TypeShape.of(GetInfraProviderVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for listing Terraform/OpenTofu Providers from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetInfraProvidersResult> getInfraProviders() {
+        return getInfraProviders(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for listing Terraform/OpenTofu Providers from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetInfraProvidersResult> getInfraProvidersPlain() {
+        return getInfraProvidersPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for listing Terraform/OpenTofu Providers from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetInfraProvidersResult> getInfraProviders(InvokeArgs args) {
+        return getInfraProviders(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for listing Terraform/OpenTofu Providers from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetInfraProvidersResult> getInfraProvidersPlain(InvokeArgs args) {
+        return getInfraProvidersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for listing Terraform/OpenTofu Providers from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetInfraProvidersResult> getInfraProviders(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraProviders:getInfraProviders", TypeShape.of(GetInfraProvidersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for listing Terraform/OpenTofu Providers from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetInfraProvidersResult> getInfraProviders(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraProviders:getInfraProviders", TypeShape.of(GetInfraProvidersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for listing Terraform/OpenTofu Providers from the IaCM Provider Registry.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetInfraProvidersResult> getInfraProvidersPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getInfraProviders:getInfraProviders", TypeShape.of(GetInfraProvidersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving Variable Sets.

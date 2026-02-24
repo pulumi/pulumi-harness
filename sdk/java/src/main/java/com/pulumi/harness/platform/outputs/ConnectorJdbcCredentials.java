@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.harness.platform.outputs.ConnectorJdbcCredentialsKeyPair;
 import com.pulumi.harness.platform.outputs.ConnectorJdbcCredentialsServiceAccount;
 import com.pulumi.harness.platform.outputs.ConnectorJdbcCredentialsUsernamePassword;
 import java.lang.String;
@@ -18,6 +19,11 @@ public final class ConnectorJdbcCredentials {
      * 
      */
     private @Nullable String authType;
+    /**
+     * @return Authenticate using key pair.
+     * 
+     */
+    private @Nullable ConnectorJdbcCredentialsKeyPair keyPair;
     /**
      * @return The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -51,6 +57,13 @@ public final class ConnectorJdbcCredentials {
      */
     public Optional<String> authType() {
         return Optional.ofNullable(this.authType);
+    }
+    /**
+     * @return Authenticate using key pair.
+     * 
+     */
+    public Optional<ConnectorJdbcCredentialsKeyPair> keyPair() {
+        return Optional.ofNullable(this.keyPair);
     }
     /**
      * @return The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
@@ -98,6 +111,7 @@ public final class ConnectorJdbcCredentials {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String authType;
+        private @Nullable ConnectorJdbcCredentialsKeyPair keyPair;
         private @Nullable String passwordRef;
         private @Nullable ConnectorJdbcCredentialsServiceAccount serviceAccount;
         private @Nullable String username;
@@ -107,6 +121,7 @@ public final class ConnectorJdbcCredentials {
         public Builder(ConnectorJdbcCredentials defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
+    	      this.keyPair = defaults.keyPair;
     	      this.passwordRef = defaults.passwordRef;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.username = defaults.username;
@@ -118,6 +133,12 @@ public final class ConnectorJdbcCredentials {
         public Builder authType(@Nullable String authType) {
 
             this.authType = authType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder keyPair(@Nullable ConnectorJdbcCredentialsKeyPair keyPair) {
+
+            this.keyPair = keyPair;
             return this;
         }
         @CustomType.Setter
@@ -153,6 +174,7 @@ public final class ConnectorJdbcCredentials {
         public ConnectorJdbcCredentials build() {
             final var _resultValue = new ConnectorJdbcCredentials();
             _resultValue.authType = authType;
+            _resultValue.keyPair = keyPair;
             _resultValue.passwordRef = passwordRef;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.username = username;

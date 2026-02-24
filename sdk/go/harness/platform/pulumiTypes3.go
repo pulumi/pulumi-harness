@@ -13,6 +13,208 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy struct {
+	// Whether to automatically keep an application synced to the target revision.
+	Automated *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomated `pulumi:"automated"`
+	// Controls metadata in the given namespace (if `CreateNamespace=true`).
+	ManagedNamespaceMetadata *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadata `pulumi:"managedNamespaceMetadata"`
+	// Controls failed sync retry behavior.
+	Retry *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyRetry `pulumi:"retry"`
+	// List of sync options. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/.
+	SyncOptions []string `pulumi:"syncOptions"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs struct {
+	// Whether to automatically keep an application synced to the target revision.
+	Automated GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedPtrInput `pulumi:"automated"`
+	// Controls metadata in the given namespace (if `CreateNamespace=true`).
+	ManagedNamespaceMetadata GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadataPtrInput `pulumi:"managedNamespaceMetadata"`
+	// Controls failed sync retry behavior.
+	Retry GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyRetryPtrInput `pulumi:"retry"`
+	// List of sync options. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/.
+	SyncOptions pulumi.StringArrayInput `pulumi:"syncOptions"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs, GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtr and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrType GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs
+
+func GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput)
+}
+
+// Whether to automatically keep an application synced to the target revision.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput) Automated() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomated {
+		return v.Automated
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedPtrOutput)
+}
+
+// Controls metadata in the given namespace (if `CreateNamespace=true`).
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput) ManagedNamespaceMetadata() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadata {
+		return v.ManagedNamespaceMetadata
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput)
+}
+
+// Controls failed sync retry behavior.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput) Retry() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyRetryPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyRetry {
+		return v.Retry
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyRetryPtrOutput)
+}
+
+// List of sync options. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput) SyncOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy) []string {
+		return v.SyncOptions
+	}).(pulumi.StringArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput)
+}
+
+// Whether to automatically keep an application synced to the target revision.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput) Automated() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomated {
+		if v == nil {
+			return nil
+		}
+		return v.Automated
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedPtrOutput)
+}
+
+// Controls metadata in the given namespace (if `CreateNamespace=true`).
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput) ManagedNamespaceMetadata() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedNamespaceMetadata
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput)
+}
+
+// Controls failed sync retry behavior.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput) Retry() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyRetryPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyRetry {
+		if v == nil {
+			return nil
+		}
+		return v.Retry
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyRetryPtrOutput)
+}
+
+// List of sync options. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput) SyncOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncOptions
+	}).(pulumi.StringArrayOutput)
+}
+
 type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomated struct {
 	// Allows apps have zero live resources.
 	AllowEmpty *bool `pulumi:"allowEmpty"`
@@ -6661,6 +6863,121 @@ func (o InfraModuleTestingTestingMetadataPtrOutput) ReleasePipeline() pulumi.Str
 		}
 		return v.ReleasePipeline
 	}).(pulumi.StringPtrOutput)
+}
+
+type InfraProviderVersionType struct {
+	// List of uploaded files for this version.
+	Files []string `pulumi:"files"`
+	// Whether the version is synced.
+	Synced *bool `pulumi:"synced"`
+	// Version number.
+	Version *string `pulumi:"version"`
+}
+
+// InfraProviderVersionTypeInput is an input type that accepts InfraProviderVersionTypeArgs and InfraProviderVersionTypeOutput values.
+// You can construct a concrete instance of `InfraProviderVersionTypeInput` via:
+//
+//	InfraProviderVersionTypeArgs{...}
+type InfraProviderVersionTypeInput interface {
+	pulumi.Input
+
+	ToInfraProviderVersionTypeOutput() InfraProviderVersionTypeOutput
+	ToInfraProviderVersionTypeOutputWithContext(context.Context) InfraProviderVersionTypeOutput
+}
+
+type InfraProviderVersionTypeArgs struct {
+	// List of uploaded files for this version.
+	Files pulumi.StringArrayInput `pulumi:"files"`
+	// Whether the version is synced.
+	Synced pulumi.BoolPtrInput `pulumi:"synced"`
+	// Version number.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (InfraProviderVersionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfraProviderVersionType)(nil)).Elem()
+}
+
+func (i InfraProviderVersionTypeArgs) ToInfraProviderVersionTypeOutput() InfraProviderVersionTypeOutput {
+	return i.ToInfraProviderVersionTypeOutputWithContext(context.Background())
+}
+
+func (i InfraProviderVersionTypeArgs) ToInfraProviderVersionTypeOutputWithContext(ctx context.Context) InfraProviderVersionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraProviderVersionTypeOutput)
+}
+
+// InfraProviderVersionTypeArrayInput is an input type that accepts InfraProviderVersionTypeArray and InfraProviderVersionTypeArrayOutput values.
+// You can construct a concrete instance of `InfraProviderVersionTypeArrayInput` via:
+//
+//	InfraProviderVersionTypeArray{ InfraProviderVersionTypeArgs{...} }
+type InfraProviderVersionTypeArrayInput interface {
+	pulumi.Input
+
+	ToInfraProviderVersionTypeArrayOutput() InfraProviderVersionTypeArrayOutput
+	ToInfraProviderVersionTypeArrayOutputWithContext(context.Context) InfraProviderVersionTypeArrayOutput
+}
+
+type InfraProviderVersionTypeArray []InfraProviderVersionTypeInput
+
+func (InfraProviderVersionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfraProviderVersionType)(nil)).Elem()
+}
+
+func (i InfraProviderVersionTypeArray) ToInfraProviderVersionTypeArrayOutput() InfraProviderVersionTypeArrayOutput {
+	return i.ToInfraProviderVersionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i InfraProviderVersionTypeArray) ToInfraProviderVersionTypeArrayOutputWithContext(ctx context.Context) InfraProviderVersionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraProviderVersionTypeArrayOutput)
+}
+
+type InfraProviderVersionTypeOutput struct{ *pulumi.OutputState }
+
+func (InfraProviderVersionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfraProviderVersionType)(nil)).Elem()
+}
+
+func (o InfraProviderVersionTypeOutput) ToInfraProviderVersionTypeOutput() InfraProviderVersionTypeOutput {
+	return o
+}
+
+func (o InfraProviderVersionTypeOutput) ToInfraProviderVersionTypeOutputWithContext(ctx context.Context) InfraProviderVersionTypeOutput {
+	return o
+}
+
+// List of uploaded files for this version.
+func (o InfraProviderVersionTypeOutput) Files() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InfraProviderVersionType) []string { return v.Files }).(pulumi.StringArrayOutput)
+}
+
+// Whether the version is synced.
+func (o InfraProviderVersionTypeOutput) Synced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InfraProviderVersionType) *bool { return v.Synced }).(pulumi.BoolPtrOutput)
+}
+
+// Version number.
+func (o InfraProviderVersionTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfraProviderVersionType) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type InfraProviderVersionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (InfraProviderVersionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfraProviderVersionType)(nil)).Elem()
+}
+
+func (o InfraProviderVersionTypeArrayOutput) ToInfraProviderVersionTypeArrayOutput() InfraProviderVersionTypeArrayOutput {
+	return o
+}
+
+func (o InfraProviderVersionTypeArrayOutput) ToInfraProviderVersionTypeArrayOutputWithContext(ctx context.Context) InfraProviderVersionTypeArrayOutput {
+	return o
+}
+
+func (o InfraProviderVersionTypeArrayOutput) Index(i pulumi.IntInput) InfraProviderVersionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfraProviderVersionType {
+		return vs[0].([]InfraProviderVersionType)[vs[1].(int)]
+	}).(InfraProviderVersionTypeOutput)
 }
 
 type InfraVariableSetConnector struct {
@@ -30070,6 +30387,8 @@ func (o GetConnectorGcpKmsOidcAuthenticationArrayOutput) Index(i pulumi.IntInput
 type GetConnectorJdbcCredential struct {
 	// Authentication types for JDBC connector
 	AuthType string `pulumi:"authType"`
+	// Authenticate using key pair.
+	KeyPairs []GetConnectorJdbcCredentialKeyPair `pulumi:"keyPairs"`
 	// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
 	// Authenticate using service account.
@@ -30096,6 +30415,8 @@ type GetConnectorJdbcCredentialInput interface {
 type GetConnectorJdbcCredentialArgs struct {
 	// Authentication types for JDBC connector
 	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Authenticate using key pair.
+	KeyPairs GetConnectorJdbcCredentialKeyPairArrayInput `pulumi:"keyPairs"`
 	// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
 	// Authenticate using service account.
@@ -30164,6 +30485,11 @@ func (o GetConnectorJdbcCredentialOutput) AuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorJdbcCredential) string { return v.AuthType }).(pulumi.StringOutput)
 }
 
+// Authenticate using key pair.
+func (o GetConnectorJdbcCredentialOutput) KeyPairs() GetConnectorJdbcCredentialKeyPairArrayOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredential) []GetConnectorJdbcCredentialKeyPair { return v.KeyPairs }).(GetConnectorJdbcCredentialKeyPairArrayOutput)
+}
+
 // The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetConnectorJdbcCredentialOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorJdbcCredential) string { return v.PasswordRef }).(pulumi.StringOutput)
@@ -30211,6 +30537,130 @@ func (o GetConnectorJdbcCredentialArrayOutput) Index(i pulumi.IntInput) GetConne
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorJdbcCredential {
 		return vs[0].([]GetConnectorJdbcCredential)[vs[1].(int)]
 	}).(GetConnectorJdbcCredentialOutput)
+}
+
+type GetConnectorJdbcCredentialKeyPair struct {
+	// Reference to a secret containing the private key file to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PrivateKeyFileRef string `pulumi:"privateKeyFileRef"`
+	// Reference to a secret containing the passphrase for the private key file. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PrivateKeyPassphraseRef string `pulumi:"privateKeyPassphraseRef"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetConnectorJdbcCredentialKeyPairInput is an input type that accepts GetConnectorJdbcCredentialKeyPairArgs and GetConnectorJdbcCredentialKeyPairOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialKeyPairInput` via:
+//
+//	GetConnectorJdbcCredentialKeyPairArgs{...}
+type GetConnectorJdbcCredentialKeyPairInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialKeyPairOutput() GetConnectorJdbcCredentialKeyPairOutput
+	ToGetConnectorJdbcCredentialKeyPairOutputWithContext(context.Context) GetConnectorJdbcCredentialKeyPairOutput
+}
+
+type GetConnectorJdbcCredentialKeyPairArgs struct {
+	// Reference to a secret containing the private key file to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PrivateKeyFileRef pulumi.StringInput `pulumi:"privateKeyFileRef"`
+	// Reference to a secret containing the passphrase for the private key file. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PrivateKeyPassphraseRef pulumi.StringInput `pulumi:"privateKeyPassphraseRef"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetConnectorJdbcCredentialKeyPairArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredentialKeyPair)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialKeyPairArgs) ToGetConnectorJdbcCredentialKeyPairOutput() GetConnectorJdbcCredentialKeyPairOutput {
+	return i.ToGetConnectorJdbcCredentialKeyPairOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialKeyPairArgs) ToGetConnectorJdbcCredentialKeyPairOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialKeyPairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialKeyPairOutput)
+}
+
+// GetConnectorJdbcCredentialKeyPairArrayInput is an input type that accepts GetConnectorJdbcCredentialKeyPairArray and GetConnectorJdbcCredentialKeyPairArrayOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialKeyPairArrayInput` via:
+//
+//	GetConnectorJdbcCredentialKeyPairArray{ GetConnectorJdbcCredentialKeyPairArgs{...} }
+type GetConnectorJdbcCredentialKeyPairArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialKeyPairArrayOutput() GetConnectorJdbcCredentialKeyPairArrayOutput
+	ToGetConnectorJdbcCredentialKeyPairArrayOutputWithContext(context.Context) GetConnectorJdbcCredentialKeyPairArrayOutput
+}
+
+type GetConnectorJdbcCredentialKeyPairArray []GetConnectorJdbcCredentialKeyPairInput
+
+func (GetConnectorJdbcCredentialKeyPairArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredentialKeyPair)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialKeyPairArray) ToGetConnectorJdbcCredentialKeyPairArrayOutput() GetConnectorJdbcCredentialKeyPairArrayOutput {
+	return i.ToGetConnectorJdbcCredentialKeyPairArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialKeyPairArray) ToGetConnectorJdbcCredentialKeyPairArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialKeyPairArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialKeyPairArrayOutput)
+}
+
+type GetConnectorJdbcCredentialKeyPairOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialKeyPairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredentialKeyPair)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialKeyPairOutput) ToGetConnectorJdbcCredentialKeyPairOutput() GetConnectorJdbcCredentialKeyPairOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialKeyPairOutput) ToGetConnectorJdbcCredentialKeyPairOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialKeyPairOutput {
+	return o
+}
+
+// Reference to a secret containing the private key file to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorJdbcCredentialKeyPairOutput) PrivateKeyFileRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialKeyPair) string { return v.PrivateKeyFileRef }).(pulumi.StringOutput)
+}
+
+// Reference to a secret containing the passphrase for the private key file. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorJdbcCredentialKeyPairOutput) PrivateKeyPassphraseRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialKeyPair) string { return v.PrivateKeyPassphraseRef }).(pulumi.StringOutput)
+}
+
+// Username to use for authentication.
+func (o GetConnectorJdbcCredentialKeyPairOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialKeyPair) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorJdbcCredentialKeyPairOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialKeyPair) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetConnectorJdbcCredentialKeyPairArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialKeyPairArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredentialKeyPair)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialKeyPairArrayOutput) ToGetConnectorJdbcCredentialKeyPairArrayOutput() GetConnectorJdbcCredentialKeyPairArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialKeyPairArrayOutput) ToGetConnectorJdbcCredentialKeyPairArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialKeyPairArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialKeyPairArrayOutput) Index(i pulumi.IntInput) GetConnectorJdbcCredentialKeyPairOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorJdbcCredentialKeyPair {
+		return vs[0].([]GetConnectorJdbcCredentialKeyPair)[vs[1].(int)]
+	}).(GetConnectorJdbcCredentialKeyPairOutput)
 }
 
 type GetConnectorJdbcCredentialServiceAccount struct {
@@ -41639,6 +42089,635 @@ func (o GetInfraModulesModuleArrayOutput) Index(i pulumi.IntInput) GetInfraModul
 	}).(GetInfraModulesModuleOutput)
 }
 
+type GetInfraProviderSigningKeysSigningKey struct {
+	// ASCII-armored GPG public key.
+	AsciiArmor string `pulumi:"asciiArmor"`
+	// Creation timestamp.
+	CreatedAt string `pulumi:"createdAt"`
+	// Unique identifier of the signing key.
+	Id string `pulumi:"id"`
+	// GPG key ID.
+	KeyId string `pulumi:"keyId"`
+	// GPG key name.
+	KeyName string `pulumi:"keyName"`
+	// Last updated timestamp.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// User who uploaded the key.
+	User string `pulumi:"user"`
+}
+
+// GetInfraProviderSigningKeysSigningKeyInput is an input type that accepts GetInfraProviderSigningKeysSigningKeyArgs and GetInfraProviderSigningKeysSigningKeyOutput values.
+// You can construct a concrete instance of `GetInfraProviderSigningKeysSigningKeyInput` via:
+//
+//	GetInfraProviderSigningKeysSigningKeyArgs{...}
+type GetInfraProviderSigningKeysSigningKeyInput interface {
+	pulumi.Input
+
+	ToGetInfraProviderSigningKeysSigningKeyOutput() GetInfraProviderSigningKeysSigningKeyOutput
+	ToGetInfraProviderSigningKeysSigningKeyOutputWithContext(context.Context) GetInfraProviderSigningKeysSigningKeyOutput
+}
+
+type GetInfraProviderSigningKeysSigningKeyArgs struct {
+	// ASCII-armored GPG public key.
+	AsciiArmor pulumi.StringInput `pulumi:"asciiArmor"`
+	// Creation timestamp.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Unique identifier of the signing key.
+	Id pulumi.StringInput `pulumi:"id"`
+	// GPG key ID.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// GPG key name.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// Last updated timestamp.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// User who uploaded the key.
+	User pulumi.StringInput `pulumi:"user"`
+}
+
+func (GetInfraProviderSigningKeysSigningKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraProviderSigningKeysSigningKey)(nil)).Elem()
+}
+
+func (i GetInfraProviderSigningKeysSigningKeyArgs) ToGetInfraProviderSigningKeysSigningKeyOutput() GetInfraProviderSigningKeysSigningKeyOutput {
+	return i.ToGetInfraProviderSigningKeysSigningKeyOutputWithContext(context.Background())
+}
+
+func (i GetInfraProviderSigningKeysSigningKeyArgs) ToGetInfraProviderSigningKeysSigningKeyOutputWithContext(ctx context.Context) GetInfraProviderSigningKeysSigningKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraProviderSigningKeysSigningKeyOutput)
+}
+
+// GetInfraProviderSigningKeysSigningKeyArrayInput is an input type that accepts GetInfraProviderSigningKeysSigningKeyArray and GetInfraProviderSigningKeysSigningKeyArrayOutput values.
+// You can construct a concrete instance of `GetInfraProviderSigningKeysSigningKeyArrayInput` via:
+//
+//	GetInfraProviderSigningKeysSigningKeyArray{ GetInfraProviderSigningKeysSigningKeyArgs{...} }
+type GetInfraProviderSigningKeysSigningKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetInfraProviderSigningKeysSigningKeyArrayOutput() GetInfraProviderSigningKeysSigningKeyArrayOutput
+	ToGetInfraProviderSigningKeysSigningKeyArrayOutputWithContext(context.Context) GetInfraProviderSigningKeysSigningKeyArrayOutput
+}
+
+type GetInfraProviderSigningKeysSigningKeyArray []GetInfraProviderSigningKeysSigningKeyInput
+
+func (GetInfraProviderSigningKeysSigningKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraProviderSigningKeysSigningKey)(nil)).Elem()
+}
+
+func (i GetInfraProviderSigningKeysSigningKeyArray) ToGetInfraProviderSigningKeysSigningKeyArrayOutput() GetInfraProviderSigningKeysSigningKeyArrayOutput {
+	return i.ToGetInfraProviderSigningKeysSigningKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfraProviderSigningKeysSigningKeyArray) ToGetInfraProviderSigningKeysSigningKeyArrayOutputWithContext(ctx context.Context) GetInfraProviderSigningKeysSigningKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraProviderSigningKeysSigningKeyArrayOutput)
+}
+
+type GetInfraProviderSigningKeysSigningKeyOutput struct{ *pulumi.OutputState }
+
+func (GetInfraProviderSigningKeysSigningKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraProviderSigningKeysSigningKey)(nil)).Elem()
+}
+
+func (o GetInfraProviderSigningKeysSigningKeyOutput) ToGetInfraProviderSigningKeysSigningKeyOutput() GetInfraProviderSigningKeysSigningKeyOutput {
+	return o
+}
+
+func (o GetInfraProviderSigningKeysSigningKeyOutput) ToGetInfraProviderSigningKeysSigningKeyOutputWithContext(ctx context.Context) GetInfraProviderSigningKeysSigningKeyOutput {
+	return o
+}
+
+// ASCII-armored GPG public key.
+func (o GetInfraProviderSigningKeysSigningKeyOutput) AsciiArmor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProviderSigningKeysSigningKey) string { return v.AsciiArmor }).(pulumi.StringOutput)
+}
+
+// Creation timestamp.
+func (o GetInfraProviderSigningKeysSigningKeyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProviderSigningKeysSigningKey) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the signing key.
+func (o GetInfraProviderSigningKeysSigningKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProviderSigningKeysSigningKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// GPG key ID.
+func (o GetInfraProviderSigningKeysSigningKeyOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProviderSigningKeysSigningKey) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// GPG key name.
+func (o GetInfraProviderSigningKeysSigningKeyOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProviderSigningKeysSigningKey) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// Last updated timestamp.
+func (o GetInfraProviderSigningKeysSigningKeyOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProviderSigningKeysSigningKey) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// User who uploaded the key.
+func (o GetInfraProviderSigningKeysSigningKeyOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProviderSigningKeysSigningKey) string { return v.User }).(pulumi.StringOutput)
+}
+
+type GetInfraProviderSigningKeysSigningKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfraProviderSigningKeysSigningKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraProviderSigningKeysSigningKey)(nil)).Elem()
+}
+
+func (o GetInfraProviderSigningKeysSigningKeyArrayOutput) ToGetInfraProviderSigningKeysSigningKeyArrayOutput() GetInfraProviderSigningKeysSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetInfraProviderSigningKeysSigningKeyArrayOutput) ToGetInfraProviderSigningKeysSigningKeyArrayOutputWithContext(ctx context.Context) GetInfraProviderSigningKeysSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetInfraProviderSigningKeysSigningKeyArrayOutput) Index(i pulumi.IntInput) GetInfraProviderSigningKeysSigningKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfraProviderSigningKeysSigningKey {
+		return vs[0].([]GetInfraProviderSigningKeysSigningKey)[vs[1].(int)]
+	}).(GetInfraProviderSigningKeysSigningKeyOutput)
+}
+
+type GetInfraProviderVersionType struct {
+	// List of uploaded files for this version.
+	Files []string `pulumi:"files"`
+	// Whether the version is synced.
+	Synced bool `pulumi:"synced"`
+	// Version number.
+	Version string `pulumi:"version"`
+}
+
+// GetInfraProviderVersionTypeInput is an input type that accepts GetInfraProviderVersionTypeArgs and GetInfraProviderVersionTypeOutput values.
+// You can construct a concrete instance of `GetInfraProviderVersionTypeInput` via:
+//
+//	GetInfraProviderVersionTypeArgs{...}
+type GetInfraProviderVersionTypeInput interface {
+	pulumi.Input
+
+	ToGetInfraProviderVersionTypeOutput() GetInfraProviderVersionTypeOutput
+	ToGetInfraProviderVersionTypeOutputWithContext(context.Context) GetInfraProviderVersionTypeOutput
+}
+
+type GetInfraProviderVersionTypeArgs struct {
+	// List of uploaded files for this version.
+	Files pulumi.StringArrayInput `pulumi:"files"`
+	// Whether the version is synced.
+	Synced pulumi.BoolInput `pulumi:"synced"`
+	// Version number.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetInfraProviderVersionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraProviderVersionType)(nil)).Elem()
+}
+
+func (i GetInfraProviderVersionTypeArgs) ToGetInfraProviderVersionTypeOutput() GetInfraProviderVersionTypeOutput {
+	return i.ToGetInfraProviderVersionTypeOutputWithContext(context.Background())
+}
+
+func (i GetInfraProviderVersionTypeArgs) ToGetInfraProviderVersionTypeOutputWithContext(ctx context.Context) GetInfraProviderVersionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraProviderVersionTypeOutput)
+}
+
+// GetInfraProviderVersionTypeArrayInput is an input type that accepts GetInfraProviderVersionTypeArray and GetInfraProviderVersionTypeArrayOutput values.
+// You can construct a concrete instance of `GetInfraProviderVersionTypeArrayInput` via:
+//
+//	GetInfraProviderVersionTypeArray{ GetInfraProviderVersionTypeArgs{...} }
+type GetInfraProviderVersionTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetInfraProviderVersionTypeArrayOutput() GetInfraProviderVersionTypeArrayOutput
+	ToGetInfraProviderVersionTypeArrayOutputWithContext(context.Context) GetInfraProviderVersionTypeArrayOutput
+}
+
+type GetInfraProviderVersionTypeArray []GetInfraProviderVersionTypeInput
+
+func (GetInfraProviderVersionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraProviderVersionType)(nil)).Elem()
+}
+
+func (i GetInfraProviderVersionTypeArray) ToGetInfraProviderVersionTypeArrayOutput() GetInfraProviderVersionTypeArrayOutput {
+	return i.ToGetInfraProviderVersionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfraProviderVersionTypeArray) ToGetInfraProviderVersionTypeArrayOutputWithContext(ctx context.Context) GetInfraProviderVersionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraProviderVersionTypeArrayOutput)
+}
+
+type GetInfraProviderVersionTypeOutput struct{ *pulumi.OutputState }
+
+func (GetInfraProviderVersionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraProviderVersionType)(nil)).Elem()
+}
+
+func (o GetInfraProviderVersionTypeOutput) ToGetInfraProviderVersionTypeOutput() GetInfraProviderVersionTypeOutput {
+	return o
+}
+
+func (o GetInfraProviderVersionTypeOutput) ToGetInfraProviderVersionTypeOutputWithContext(ctx context.Context) GetInfraProviderVersionTypeOutput {
+	return o
+}
+
+// List of uploaded files for this version.
+func (o GetInfraProviderVersionTypeOutput) Files() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInfraProviderVersionType) []string { return v.Files }).(pulumi.StringArrayOutput)
+}
+
+// Whether the version is synced.
+func (o GetInfraProviderVersionTypeOutput) Synced() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInfraProviderVersionType) bool { return v.Synced }).(pulumi.BoolOutput)
+}
+
+// Version number.
+func (o GetInfraProviderVersionTypeOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProviderVersionType) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetInfraProviderVersionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfraProviderVersionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraProviderVersionType)(nil)).Elem()
+}
+
+func (o GetInfraProviderVersionTypeArrayOutput) ToGetInfraProviderVersionTypeArrayOutput() GetInfraProviderVersionTypeArrayOutput {
+	return o
+}
+
+func (o GetInfraProviderVersionTypeArrayOutput) ToGetInfraProviderVersionTypeArrayOutputWithContext(ctx context.Context) GetInfraProviderVersionTypeArrayOutput {
+	return o
+}
+
+func (o GetInfraProviderVersionTypeArrayOutput) Index(i pulumi.IntInput) GetInfraProviderVersionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfraProviderVersionType {
+		return vs[0].([]GetInfraProviderVersionType)[vs[1].(int)]
+	}).(GetInfraProviderVersionTypeOutput)
+}
+
+type GetInfraProviderVersionsVersion struct {
+	// Supported platforms.
+	Platforms []GetInfraProviderVersionsVersionPlatform `pulumi:"platforms"`
+	// Supported Terraform protocol versions.
+	Protocols []string `pulumi:"protocols"`
+	// Version number.
+	Version string `pulumi:"version"`
+}
+
+// GetInfraProviderVersionsVersionInput is an input type that accepts GetInfraProviderVersionsVersionArgs and GetInfraProviderVersionsVersionOutput values.
+// You can construct a concrete instance of `GetInfraProviderVersionsVersionInput` via:
+//
+//	GetInfraProviderVersionsVersionArgs{...}
+type GetInfraProviderVersionsVersionInput interface {
+	pulumi.Input
+
+	ToGetInfraProviderVersionsVersionOutput() GetInfraProviderVersionsVersionOutput
+	ToGetInfraProviderVersionsVersionOutputWithContext(context.Context) GetInfraProviderVersionsVersionOutput
+}
+
+type GetInfraProviderVersionsVersionArgs struct {
+	// Supported platforms.
+	Platforms GetInfraProviderVersionsVersionPlatformArrayInput `pulumi:"platforms"`
+	// Supported Terraform protocol versions.
+	Protocols pulumi.StringArrayInput `pulumi:"protocols"`
+	// Version number.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetInfraProviderVersionsVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraProviderVersionsVersion)(nil)).Elem()
+}
+
+func (i GetInfraProviderVersionsVersionArgs) ToGetInfraProviderVersionsVersionOutput() GetInfraProviderVersionsVersionOutput {
+	return i.ToGetInfraProviderVersionsVersionOutputWithContext(context.Background())
+}
+
+func (i GetInfraProviderVersionsVersionArgs) ToGetInfraProviderVersionsVersionOutputWithContext(ctx context.Context) GetInfraProviderVersionsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraProviderVersionsVersionOutput)
+}
+
+// GetInfraProviderVersionsVersionArrayInput is an input type that accepts GetInfraProviderVersionsVersionArray and GetInfraProviderVersionsVersionArrayOutput values.
+// You can construct a concrete instance of `GetInfraProviderVersionsVersionArrayInput` via:
+//
+//	GetInfraProviderVersionsVersionArray{ GetInfraProviderVersionsVersionArgs{...} }
+type GetInfraProviderVersionsVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetInfraProviderVersionsVersionArrayOutput() GetInfraProviderVersionsVersionArrayOutput
+	ToGetInfraProviderVersionsVersionArrayOutputWithContext(context.Context) GetInfraProviderVersionsVersionArrayOutput
+}
+
+type GetInfraProviderVersionsVersionArray []GetInfraProviderVersionsVersionInput
+
+func (GetInfraProviderVersionsVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraProviderVersionsVersion)(nil)).Elem()
+}
+
+func (i GetInfraProviderVersionsVersionArray) ToGetInfraProviderVersionsVersionArrayOutput() GetInfraProviderVersionsVersionArrayOutput {
+	return i.ToGetInfraProviderVersionsVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfraProviderVersionsVersionArray) ToGetInfraProviderVersionsVersionArrayOutputWithContext(ctx context.Context) GetInfraProviderVersionsVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraProviderVersionsVersionArrayOutput)
+}
+
+type GetInfraProviderVersionsVersionOutput struct{ *pulumi.OutputState }
+
+func (GetInfraProviderVersionsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraProviderVersionsVersion)(nil)).Elem()
+}
+
+func (o GetInfraProviderVersionsVersionOutput) ToGetInfraProviderVersionsVersionOutput() GetInfraProviderVersionsVersionOutput {
+	return o
+}
+
+func (o GetInfraProviderVersionsVersionOutput) ToGetInfraProviderVersionsVersionOutputWithContext(ctx context.Context) GetInfraProviderVersionsVersionOutput {
+	return o
+}
+
+// Supported platforms.
+func (o GetInfraProviderVersionsVersionOutput) Platforms() GetInfraProviderVersionsVersionPlatformArrayOutput {
+	return o.ApplyT(func(v GetInfraProviderVersionsVersion) []GetInfraProviderVersionsVersionPlatform { return v.Platforms }).(GetInfraProviderVersionsVersionPlatformArrayOutput)
+}
+
+// Supported Terraform protocol versions.
+func (o GetInfraProviderVersionsVersionOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInfraProviderVersionsVersion) []string { return v.Protocols }).(pulumi.StringArrayOutput)
+}
+
+// Version number.
+func (o GetInfraProviderVersionsVersionOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProviderVersionsVersion) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetInfraProviderVersionsVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfraProviderVersionsVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraProviderVersionsVersion)(nil)).Elem()
+}
+
+func (o GetInfraProviderVersionsVersionArrayOutput) ToGetInfraProviderVersionsVersionArrayOutput() GetInfraProviderVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetInfraProviderVersionsVersionArrayOutput) ToGetInfraProviderVersionsVersionArrayOutputWithContext(ctx context.Context) GetInfraProviderVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetInfraProviderVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetInfraProviderVersionsVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfraProviderVersionsVersion {
+		return vs[0].([]GetInfraProviderVersionsVersion)[vs[1].(int)]
+	}).(GetInfraProviderVersionsVersionOutput)
+}
+
+type GetInfraProviderVersionsVersionPlatform struct {
+	// Architecture.
+	Arch string `pulumi:"arch"`
+	// Operating system.
+	Os string `pulumi:"os"`
+}
+
+// GetInfraProviderVersionsVersionPlatformInput is an input type that accepts GetInfraProviderVersionsVersionPlatformArgs and GetInfraProviderVersionsVersionPlatformOutput values.
+// You can construct a concrete instance of `GetInfraProviderVersionsVersionPlatformInput` via:
+//
+//	GetInfraProviderVersionsVersionPlatformArgs{...}
+type GetInfraProviderVersionsVersionPlatformInput interface {
+	pulumi.Input
+
+	ToGetInfraProviderVersionsVersionPlatformOutput() GetInfraProviderVersionsVersionPlatformOutput
+	ToGetInfraProviderVersionsVersionPlatformOutputWithContext(context.Context) GetInfraProviderVersionsVersionPlatformOutput
+}
+
+type GetInfraProviderVersionsVersionPlatformArgs struct {
+	// Architecture.
+	Arch pulumi.StringInput `pulumi:"arch"`
+	// Operating system.
+	Os pulumi.StringInput `pulumi:"os"`
+}
+
+func (GetInfraProviderVersionsVersionPlatformArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraProviderVersionsVersionPlatform)(nil)).Elem()
+}
+
+func (i GetInfraProviderVersionsVersionPlatformArgs) ToGetInfraProviderVersionsVersionPlatformOutput() GetInfraProviderVersionsVersionPlatformOutput {
+	return i.ToGetInfraProviderVersionsVersionPlatformOutputWithContext(context.Background())
+}
+
+func (i GetInfraProviderVersionsVersionPlatformArgs) ToGetInfraProviderVersionsVersionPlatformOutputWithContext(ctx context.Context) GetInfraProviderVersionsVersionPlatformOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraProviderVersionsVersionPlatformOutput)
+}
+
+// GetInfraProviderVersionsVersionPlatformArrayInput is an input type that accepts GetInfraProviderVersionsVersionPlatformArray and GetInfraProviderVersionsVersionPlatformArrayOutput values.
+// You can construct a concrete instance of `GetInfraProviderVersionsVersionPlatformArrayInput` via:
+//
+//	GetInfraProviderVersionsVersionPlatformArray{ GetInfraProviderVersionsVersionPlatformArgs{...} }
+type GetInfraProviderVersionsVersionPlatformArrayInput interface {
+	pulumi.Input
+
+	ToGetInfraProviderVersionsVersionPlatformArrayOutput() GetInfraProviderVersionsVersionPlatformArrayOutput
+	ToGetInfraProviderVersionsVersionPlatformArrayOutputWithContext(context.Context) GetInfraProviderVersionsVersionPlatformArrayOutput
+}
+
+type GetInfraProviderVersionsVersionPlatformArray []GetInfraProviderVersionsVersionPlatformInput
+
+func (GetInfraProviderVersionsVersionPlatformArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraProviderVersionsVersionPlatform)(nil)).Elem()
+}
+
+func (i GetInfraProviderVersionsVersionPlatformArray) ToGetInfraProviderVersionsVersionPlatformArrayOutput() GetInfraProviderVersionsVersionPlatformArrayOutput {
+	return i.ToGetInfraProviderVersionsVersionPlatformArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfraProviderVersionsVersionPlatformArray) ToGetInfraProviderVersionsVersionPlatformArrayOutputWithContext(ctx context.Context) GetInfraProviderVersionsVersionPlatformArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraProviderVersionsVersionPlatformArrayOutput)
+}
+
+type GetInfraProviderVersionsVersionPlatformOutput struct{ *pulumi.OutputState }
+
+func (GetInfraProviderVersionsVersionPlatformOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraProviderVersionsVersionPlatform)(nil)).Elem()
+}
+
+func (o GetInfraProviderVersionsVersionPlatformOutput) ToGetInfraProviderVersionsVersionPlatformOutput() GetInfraProviderVersionsVersionPlatformOutput {
+	return o
+}
+
+func (o GetInfraProviderVersionsVersionPlatformOutput) ToGetInfraProviderVersionsVersionPlatformOutputWithContext(ctx context.Context) GetInfraProviderVersionsVersionPlatformOutput {
+	return o
+}
+
+// Architecture.
+func (o GetInfraProviderVersionsVersionPlatformOutput) Arch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProviderVersionsVersionPlatform) string { return v.Arch }).(pulumi.StringOutput)
+}
+
+// Operating system.
+func (o GetInfraProviderVersionsVersionPlatformOutput) Os() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProviderVersionsVersionPlatform) string { return v.Os }).(pulumi.StringOutput)
+}
+
+type GetInfraProviderVersionsVersionPlatformArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfraProviderVersionsVersionPlatformArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraProviderVersionsVersionPlatform)(nil)).Elem()
+}
+
+func (o GetInfraProviderVersionsVersionPlatformArrayOutput) ToGetInfraProviderVersionsVersionPlatformArrayOutput() GetInfraProviderVersionsVersionPlatformArrayOutput {
+	return o
+}
+
+func (o GetInfraProviderVersionsVersionPlatformArrayOutput) ToGetInfraProviderVersionsVersionPlatformArrayOutputWithContext(ctx context.Context) GetInfraProviderVersionsVersionPlatformArrayOutput {
+	return o
+}
+
+func (o GetInfraProviderVersionsVersionPlatformArrayOutput) Index(i pulumi.IntInput) GetInfraProviderVersionsVersionPlatformOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfraProviderVersionsVersionPlatform {
+		return vs[0].([]GetInfraProviderVersionsVersionPlatform)[vs[1].(int)]
+	}).(GetInfraProviderVersionsVersionPlatformOutput)
+}
+
+type GetInfraProvidersProvider struct {
+	// Account that owns the provider.
+	Account string `pulumi:"account"`
+	// Timestamp when the provider was created.
+	Created int `pulumi:"created"`
+	// Description of the provider.
+	Description string `pulumi:"description"`
+	// Unique identifier of the provider.
+	Id string `pulumi:"id"`
+	// Provider type.
+	Type string `pulumi:"type"`
+	// Timestamp when the provider was last updated.
+	Updated int `pulumi:"updated"`
+}
+
+// GetInfraProvidersProviderInput is an input type that accepts GetInfraProvidersProviderArgs and GetInfraProvidersProviderOutput values.
+// You can construct a concrete instance of `GetInfraProvidersProviderInput` via:
+//
+//	GetInfraProvidersProviderArgs{...}
+type GetInfraProvidersProviderInput interface {
+	pulumi.Input
+
+	ToGetInfraProvidersProviderOutput() GetInfraProvidersProviderOutput
+	ToGetInfraProvidersProviderOutputWithContext(context.Context) GetInfraProvidersProviderOutput
+}
+
+type GetInfraProvidersProviderArgs struct {
+	// Account that owns the provider.
+	Account pulumi.StringInput `pulumi:"account"`
+	// Timestamp when the provider was created.
+	Created pulumi.IntInput `pulumi:"created"`
+	// Description of the provider.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Unique identifier of the provider.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Provider type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Timestamp when the provider was last updated.
+	Updated pulumi.IntInput `pulumi:"updated"`
+}
+
+func (GetInfraProvidersProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraProvidersProvider)(nil)).Elem()
+}
+
+func (i GetInfraProvidersProviderArgs) ToGetInfraProvidersProviderOutput() GetInfraProvidersProviderOutput {
+	return i.ToGetInfraProvidersProviderOutputWithContext(context.Background())
+}
+
+func (i GetInfraProvidersProviderArgs) ToGetInfraProvidersProviderOutputWithContext(ctx context.Context) GetInfraProvidersProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraProvidersProviderOutput)
+}
+
+// GetInfraProvidersProviderArrayInput is an input type that accepts GetInfraProvidersProviderArray and GetInfraProvidersProviderArrayOutput values.
+// You can construct a concrete instance of `GetInfraProvidersProviderArrayInput` via:
+//
+//	GetInfraProvidersProviderArray{ GetInfraProvidersProviderArgs{...} }
+type GetInfraProvidersProviderArrayInput interface {
+	pulumi.Input
+
+	ToGetInfraProvidersProviderArrayOutput() GetInfraProvidersProviderArrayOutput
+	ToGetInfraProvidersProviderArrayOutputWithContext(context.Context) GetInfraProvidersProviderArrayOutput
+}
+
+type GetInfraProvidersProviderArray []GetInfraProvidersProviderInput
+
+func (GetInfraProvidersProviderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraProvidersProvider)(nil)).Elem()
+}
+
+func (i GetInfraProvidersProviderArray) ToGetInfraProvidersProviderArrayOutput() GetInfraProvidersProviderArrayOutput {
+	return i.ToGetInfraProvidersProviderArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfraProvidersProviderArray) ToGetInfraProvidersProviderArrayOutputWithContext(ctx context.Context) GetInfraProvidersProviderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraProvidersProviderArrayOutput)
+}
+
+type GetInfraProvidersProviderOutput struct{ *pulumi.OutputState }
+
+func (GetInfraProvidersProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraProvidersProvider)(nil)).Elem()
+}
+
+func (o GetInfraProvidersProviderOutput) ToGetInfraProvidersProviderOutput() GetInfraProvidersProviderOutput {
+	return o
+}
+
+func (o GetInfraProvidersProviderOutput) ToGetInfraProvidersProviderOutputWithContext(ctx context.Context) GetInfraProvidersProviderOutput {
+	return o
+}
+
+// Account that owns the provider.
+func (o GetInfraProvidersProviderOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProvidersProvider) string { return v.Account }).(pulumi.StringOutput)
+}
+
+// Timestamp when the provider was created.
+func (o GetInfraProvidersProviderOutput) Created() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfraProvidersProvider) int { return v.Created }).(pulumi.IntOutput)
+}
+
+// Description of the provider.
+func (o GetInfraProvidersProviderOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProvidersProvider) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the provider.
+func (o GetInfraProvidersProviderOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProvidersProvider) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Provider type.
+func (o GetInfraProvidersProviderOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraProvidersProvider) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Timestamp when the provider was last updated.
+func (o GetInfraProvidersProviderOutput) Updated() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInfraProvidersProvider) int { return v.Updated }).(pulumi.IntOutput)
+}
+
+type GetInfraProvidersProviderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfraProvidersProviderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraProvidersProvider)(nil)).Elem()
+}
+
+func (o GetInfraProvidersProviderArrayOutput) ToGetInfraProvidersProviderArrayOutput() GetInfraProvidersProviderArrayOutput {
+	return o
+}
+
+func (o GetInfraProvidersProviderArrayOutput) ToGetInfraProvidersProviderArrayOutputWithContext(ctx context.Context) GetInfraProvidersProviderArrayOutput {
+	return o
+}
+
+func (o GetInfraProvidersProviderArrayOutput) Index(i pulumi.IntInput) GetInfraProvidersProviderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfraProvidersProvider {
+		return vs[0].([]GetInfraProvidersProvider)[vs[1].(int)]
+	}).(GetInfraProvidersProviderOutput)
+}
+
 type GetInfraVariableSetConnector struct {
 	// Connector Ref is the reference to the connector
 	ConnectorRef string `pulumi:"connectorRef"`
@@ -52472,6 +53551,8 @@ func (o GetWorkspaceTerraformVariableFileArrayOutput) Index(i pulumi.IntInput) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadataInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadataArgs{})
@@ -52550,6 +53631,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpCatalogEntityGitDetailsPtrInput)(nil)).Elem(), IdpCatalogEntityGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraModuleTestingTestingMetadataInput)(nil)).Elem(), InfraModuleTestingTestingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraModuleTestingTestingMetadataPtrInput)(nil)).Elem(), InfraModuleTestingTestingMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfraProviderVersionTypeInput)(nil)).Elem(), InfraProviderVersionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfraProviderVersionTypeArrayInput)(nil)).Elem(), InfraProviderVersionTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetConnectorInput)(nil)).Elem(), InfraVariableSetConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetConnectorArrayInput)(nil)).Elem(), InfraVariableSetConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetEnvironmentVariableInput)(nil)).Elem(), InfraVariableSetEnvironmentVariableArgs{})
@@ -52860,6 +53943,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorGcpKmsOidcAuthenticationArrayInput)(nil)).Elem(), GetConnectorGcpKmsOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialInput)(nil)).Elem(), GetConnectorJdbcCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialKeyPairInput)(nil)).Elem(), GetConnectorJdbcCredentialKeyPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialKeyPairArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialKeyPairArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialServiceAccountInput)(nil)).Elem(), GetConnectorJdbcCredentialServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialServiceAccountArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialUsernamePasswordInput)(nil)).Elem(), GetConnectorJdbcCredentialUsernamePasswordArgs{})
@@ -53034,6 +54119,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModuleTestingTestingMetadataPtrInput)(nil)).Elem(), GetInfraModuleTestingTestingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModulesModuleInput)(nil)).Elem(), GetInfraModulesModuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModulesModuleArrayInput)(nil)).Elem(), GetInfraModulesModuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraProviderSigningKeysSigningKeyInput)(nil)).Elem(), GetInfraProviderSigningKeysSigningKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraProviderSigningKeysSigningKeyArrayInput)(nil)).Elem(), GetInfraProviderSigningKeysSigningKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraProviderVersionTypeInput)(nil)).Elem(), GetInfraProviderVersionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraProviderVersionTypeArrayInput)(nil)).Elem(), GetInfraProviderVersionTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraProviderVersionsVersionInput)(nil)).Elem(), GetInfraProviderVersionsVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraProviderVersionsVersionArrayInput)(nil)).Elem(), GetInfraProviderVersionsVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraProviderVersionsVersionPlatformInput)(nil)).Elem(), GetInfraProviderVersionsVersionPlatformArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraProviderVersionsVersionPlatformArrayInput)(nil)).Elem(), GetInfraProviderVersionsVersionPlatformArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraProvidersProviderInput)(nil)).Elem(), GetInfraProvidersProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraProvidersProviderArrayInput)(nil)).Elem(), GetInfraProvidersProviderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetConnectorInput)(nil)).Elem(), GetInfraVariableSetConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetConnectorArrayInput)(nil)).Elem(), GetInfraVariableSetConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetEnvironmentVariableInput)(nil)).Elem(), GetInfraVariableSetEnvironmentVariableArgs{})
@@ -53203,6 +54298,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArray{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadataOutput{})
@@ -53281,6 +54378,8 @@ func init() {
 	pulumi.RegisterOutputType(IdpCatalogEntityGitDetailsPtrOutput{})
 	pulumi.RegisterOutputType(InfraModuleTestingTestingMetadataOutput{})
 	pulumi.RegisterOutputType(InfraModuleTestingTestingMetadataPtrOutput{})
+	pulumi.RegisterOutputType(InfraProviderVersionTypeOutput{})
+	pulumi.RegisterOutputType(InfraProviderVersionTypeArrayOutput{})
 	pulumi.RegisterOutputType(InfraVariableSetConnectorOutput{})
 	pulumi.RegisterOutputType(InfraVariableSetConnectorArrayOutput{})
 	pulumi.RegisterOutputType(InfraVariableSetEnvironmentVariableOutput{})
@@ -53591,6 +54690,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectorGcpKmsOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialKeyPairOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialKeyPairArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialServiceAccountOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialUsernamePasswordOutput{})
@@ -53765,6 +54866,16 @@ func init() {
 	pulumi.RegisterOutputType(GetInfraModuleTestingTestingMetadataPtrOutput{})
 	pulumi.RegisterOutputType(GetInfraModulesModuleOutput{})
 	pulumi.RegisterOutputType(GetInfraModulesModuleArrayOutput{})
+	pulumi.RegisterOutputType(GetInfraProviderSigningKeysSigningKeyOutput{})
+	pulumi.RegisterOutputType(GetInfraProviderSigningKeysSigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetInfraProviderVersionTypeOutput{})
+	pulumi.RegisterOutputType(GetInfraProviderVersionTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetInfraProviderVersionsVersionOutput{})
+	pulumi.RegisterOutputType(GetInfraProviderVersionsVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetInfraProviderVersionsVersionPlatformOutput{})
+	pulumi.RegisterOutputType(GetInfraProviderVersionsVersionPlatformArrayOutput{})
+	pulumi.RegisterOutputType(GetInfraProvidersProviderOutput{})
+	pulumi.RegisterOutputType(GetInfraProvidersProviderArrayOutput{})
 	pulumi.RegisterOutputType(GetInfraVariableSetConnectorOutput{})
 	pulumi.RegisterOutputType(GetInfraVariableSetConnectorArrayOutput{})
 	pulumi.RegisterOutputType(GetInfraVariableSetEnvironmentVariableOutput{})

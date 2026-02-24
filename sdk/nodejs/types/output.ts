@@ -1167,7 +1167,7 @@ export namespace autostopping {
         /**
          * Ids of instances that needs to be managed using the AutoStopping rules
          */
-        vmIds: string[];
+        vmIds?: string[];
         /**
          * Zones of instances that needs to be managed using the AutoStopping rules
          */
@@ -1526,7 +1526,7 @@ export namespace autostopping {
         /**
          * Ids of instances that needs to be managed using the AutoStopping rules
          */
-        vmIds: string[];
+        vmIds?: string[];
         /**
          * Zones of instances that needs to be managed using the AutoStopping rules
          */
@@ -3432,6 +3432,10 @@ export namespace platform {
          */
         authType?: string;
         /**
+         * Authenticate using key pair.
+         */
+        keyPair?: outputs.platform.ConnectorJdbcCredentialsKeyPair;
+        /**
          * The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef?: string;
@@ -3449,6 +3453,25 @@ export namespace platform {
         usernamePassword?: outputs.platform.ConnectorJdbcCredentialsUsernamePassword;
         /**
          * The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef?: string;
+    }
+
+    export interface ConnectorJdbcCredentialsKeyPair {
+        /**
+         * Reference to a secret containing the private key file to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        privateKeyFileRef: string;
+        /**
+         * Reference to a secret containing the passphrase for the private key file. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        privateKeyPassphraseRef?: string;
+        /**
+         * Username to use for authentication.
+         */
+        username?: string;
+        /**
+         * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: string;
     }
@@ -4610,6 +4633,10 @@ export namespace platform {
          */
         authType: string;
         /**
+         * Authenticate using key pair.
+         */
+        keyPairs: outputs.platform.GetConnectorJdbcCredentialKeyPair[];
+        /**
          * The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef: string;
@@ -4627,6 +4654,25 @@ export namespace platform {
         usernamePasswords: outputs.platform.GetConnectorJdbcCredentialUsernamePassword[];
         /**
          * The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef: string;
+    }
+
+    export interface GetConnectorJdbcCredentialKeyPair {
+        /**
+         * Reference to a secret containing the private key file to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        privateKeyFileRef: string;
+        /**
+         * Reference to a secret containing the passphrase for the private key file. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        privateKeyPassphraseRef: string;
+        /**
+         * Username to use for authentication.
+         */
+        username: string;
+        /**
+         * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef: string;
     }
@@ -6345,6 +6391,105 @@ export namespace platform {
         testingEnabled: boolean;
         /**
          * Timestamp when the module was last modified
+         */
+        updated: number;
+    }
+
+    export interface GetInfraProviderSigningKeysSigningKey {
+        /**
+         * ASCII-armored GPG public key.
+         */
+        asciiArmor: string;
+        /**
+         * Creation timestamp.
+         */
+        createdAt: string;
+        /**
+         * Unique identifier of the signing key.
+         */
+        id: string;
+        /**
+         * GPG key ID.
+         */
+        keyId: string;
+        /**
+         * GPG key name.
+         */
+        keyName: string;
+        /**
+         * Last updated timestamp.
+         */
+        updatedAt: string;
+        /**
+         * User who uploaded the key.
+         */
+        user: string;
+    }
+
+    export interface GetInfraProviderVersion {
+        /**
+         * List of uploaded files for this version.
+         */
+        files: string[];
+        /**
+         * Whether the version is synced.
+         */
+        synced: boolean;
+        /**
+         * Version number.
+         */
+        version: string;
+    }
+
+    export interface GetInfraProviderVersionsVersion {
+        /**
+         * Supported platforms.
+         */
+        platforms: outputs.platform.GetInfraProviderVersionsVersionPlatform[];
+        /**
+         * Supported Terraform protocol versions.
+         */
+        protocols: string[];
+        /**
+         * Version number.
+         */
+        version: string;
+    }
+
+    export interface GetInfraProviderVersionsVersionPlatform {
+        /**
+         * Architecture.
+         */
+        arch: string;
+        /**
+         * Operating system.
+         */
+        os: string;
+    }
+
+    export interface GetInfraProvidersProvider {
+        /**
+         * Account that owns the provider.
+         */
+        account: string;
+        /**
+         * Timestamp when the provider was created.
+         */
+        created: number;
+        /**
+         * Description of the provider.
+         */
+        description: string;
+        /**
+         * Unique identifier of the provider.
+         */
+        id: string;
+        /**
+         * Provider type.
+         */
+        type: string;
+        /**
+         * Timestamp when the provider was last updated.
          */
         updated: number;
     }
@@ -35507,6 +35652,21 @@ export namespace platform {
          * Release pipeline
          */
         releasePipeline: string;
+    }
+
+    export interface InfraProviderVersion {
+        /**
+         * List of uploaded files for this version.
+         */
+        files: string[];
+        /**
+         * Whether the version is synced.
+         */
+        synced: boolean;
+        /**
+         * Version number.
+         */
+        version: string;
     }
 
     export interface InfraVariableSetConnector {

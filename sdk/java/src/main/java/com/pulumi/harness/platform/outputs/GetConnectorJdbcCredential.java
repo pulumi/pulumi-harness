@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialKeyPair;
 import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialServiceAccount;
 import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialUsernamePassword;
 import java.lang.String;
@@ -18,6 +19,11 @@ public final class GetConnectorJdbcCredential {
      * 
      */
     private String authType;
+    /**
+     * @return Authenticate using key pair.
+     * 
+     */
+    private List<GetConnectorJdbcCredentialKeyPair> keyPairs;
     /**
      * @return The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -51,6 +57,13 @@ public final class GetConnectorJdbcCredential {
      */
     public String authType() {
         return this.authType;
+    }
+    /**
+     * @return Authenticate using key pair.
+     * 
+     */
+    public List<GetConnectorJdbcCredentialKeyPair> keyPairs() {
+        return this.keyPairs;
     }
     /**
      * @return The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
@@ -98,6 +111,7 @@ public final class GetConnectorJdbcCredential {
     @CustomType.Builder
     public static final class Builder {
         private String authType;
+        private List<GetConnectorJdbcCredentialKeyPair> keyPairs;
         private String passwordRef;
         private List<GetConnectorJdbcCredentialServiceAccount> serviceAccounts;
         private String username;
@@ -107,6 +121,7 @@ public final class GetConnectorJdbcCredential {
         public Builder(GetConnectorJdbcCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
+    	      this.keyPairs = defaults.keyPairs;
     	      this.passwordRef = defaults.passwordRef;
     	      this.serviceAccounts = defaults.serviceAccounts;
     	      this.username = defaults.username;
@@ -121,6 +136,17 @@ public final class GetConnectorJdbcCredential {
             }
             this.authType = authType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder keyPairs(List<GetConnectorJdbcCredentialKeyPair> keyPairs) {
+            if (keyPairs == null) {
+              throw new MissingRequiredPropertyException("GetConnectorJdbcCredential", "keyPairs");
+            }
+            this.keyPairs = keyPairs;
+            return this;
+        }
+        public Builder keyPairs(GetConnectorJdbcCredentialKeyPair... keyPairs) {
+            return keyPairs(List.of(keyPairs));
         }
         @CustomType.Setter
         public Builder passwordRef(String passwordRef) {
@@ -171,6 +197,7 @@ public final class GetConnectorJdbcCredential {
         public GetConnectorJdbcCredential build() {
             final var _resultValue = new GetConnectorJdbcCredential();
             _resultValue.authType = authType;
+            _resultValue.keyPairs = keyPairs;
             _resultValue.passwordRef = passwordRef;
             _resultValue.serviceAccounts = serviceAccounts;
             _resultValue.username = username;

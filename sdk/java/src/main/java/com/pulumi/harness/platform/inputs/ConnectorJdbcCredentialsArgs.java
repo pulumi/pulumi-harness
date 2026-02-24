@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsKeyPairArgs;
 import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsServiceAccountArgs;
 import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsUsernamePasswordArgs;
 import java.lang.String;
@@ -30,6 +31,21 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> authType() {
         return Optional.ofNullable(this.authType);
+    }
+
+    /**
+     * Authenticate using key pair.
+     * 
+     */
+    @Import(name="keyPair")
+    private @Nullable Output<ConnectorJdbcCredentialsKeyPairArgs> keyPair;
+
+    /**
+     * @return Authenticate using key pair.
+     * 
+     */
+    public Optional<Output<ConnectorJdbcCredentialsKeyPairArgs>> keyPair() {
+        return Optional.ofNullable(this.keyPair);
     }
 
     /**
@@ -111,6 +127,7 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
 
     private ConnectorJdbcCredentialsArgs(ConnectorJdbcCredentialsArgs $) {
         this.authType = $.authType;
+        this.keyPair = $.keyPair;
         this.passwordRef = $.passwordRef;
         this.serviceAccount = $.serviceAccount;
         this.username = $.username;
@@ -155,6 +172,27 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
          */
         public Builder authType(String authType) {
             return authType(Output.of(authType));
+        }
+
+        /**
+         * @param keyPair Authenticate using key pair.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyPair(@Nullable Output<ConnectorJdbcCredentialsKeyPairArgs> keyPair) {
+            $.keyPair = keyPair;
+            return this;
+        }
+
+        /**
+         * @param keyPair Authenticate using key pair.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyPair(ConnectorJdbcCredentialsKeyPairArgs keyPair) {
+            return keyPair(Output.of(keyPair));
         }
 
         /**

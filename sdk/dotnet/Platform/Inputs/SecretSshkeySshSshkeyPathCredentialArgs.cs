@@ -12,11 +12,21 @@ namespace Pulumi.Harness.Platform.Inputs
 
     public sealed class SecretSshkeySshSshkeyPathCredentialArgs : global::Pulumi.ResourceArgs
     {
+        [Input("encryptedPassphrase")]
+        private Input<string>? _encryptedPassphrase;
+
         /// <summary>
         /// Encrypted Passphrase . To reference a encryptedPassphrase at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a encryptedPassPhrase at the account scope, prefix 'account` to the expression: account.{identifier}
         /// </summary>
-        [Input("encryptedPassphrase")]
-        public Input<string>? EncryptedPassphrase { get; set; }
+        public Input<string>? EncryptedPassphrase
+        {
+            get => _encryptedPassphrase;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _encryptedPassphrase = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Path of the key file.

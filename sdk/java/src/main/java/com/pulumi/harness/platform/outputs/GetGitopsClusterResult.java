@@ -15,49 +15,25 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsClusterResult {
     /**
-     * @return Account identifier of the GitOps cluster.
-     * 
      * @deprecated
      * This field is deprecated and will be removed in a future release.
      * 
      */
     @Deprecated /* This field is deprecated and will be removed in a future release. */
     private String accountId;
-    /**
-     * @return Agent identifier of the GitOps cluster.
-     * 
-     */
     private String agentId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return Identifier of the GitOps cluster.
-     * 
-     */
     private String identifier;
-    /**
-     * @return Organization identifier of the cluster.
-     * 
-     */
     private @Nullable String orgId;
-    /**
-     * @return Project identifier of the GitOps cluster.
-     * 
-     */
     private @Nullable String projectId;
-    /**
-     * @return Cluster create or update request.
-     * 
-     */
     private List<GetGitopsClusterRequest> requests;
 
     private GetGitopsClusterResult() {}
     /**
-     * @return Account identifier of the GitOps cluster.
-     * 
      * @deprecated
      * This field is deprecated and will be removed in a future release.
      * 
@@ -66,10 +42,6 @@ public final class GetGitopsClusterResult {
     public String accountId() {
         return this.accountId;
     }
-    /**
-     * @return Agent identifier of the GitOps cluster.
-     * 
-     */
     public String agentId() {
         return this.agentId;
     }
@@ -80,31 +52,15 @@ public final class GetGitopsClusterResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return Identifier of the GitOps cluster.
-     * 
-     */
     public String identifier() {
         return this.identifier;
     }
-    /**
-     * @return Organization identifier of the cluster.
-     * 
-     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
-    /**
-     * @return Project identifier of the GitOps cluster.
-     * 
-     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
-    /**
-     * @return Cluster create or update request.
-     * 
-     */
     public List<GetGitopsClusterRequest> requests() {
         return this.requests;
     }

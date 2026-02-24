@@ -159,14 +159,14 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+     * Provider connector is the reference to the connector for the infrastructure provider
      * 
      */
     @Import(name="providerConnector")
     private @Nullable Output<String> providerConnector;
 
     /**
-     * @return Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+     * @return Provider connector is the reference to the connector for the infrastructure provider
      * 
      */
     public Optional<Output<String>> providerConnector() {
@@ -294,6 +294,21 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Boolean flag for run-all terragrunt modules
+     * 
+     */
+    @Import(name="runAll")
+    private @Nullable Output<Boolean> runAll;
+
+    /**
+     * @return Boolean flag for run-all terragrunt modules
+     * 
+     */
+    public Optional<Output<Boolean>> runAll() {
+        return Optional.ofNullable(this.runAll);
+    }
+
+    /**
      * Tags to associate with the resource.
      * 
      */
@@ -339,6 +354,36 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set to true to enable Terragrunt mode
+     * 
+     */
+    @Import(name="terragruntProvider")
+    private @Nullable Output<Boolean> terragruntProvider;
+
+    /**
+     * @return Set to true to enable Terragrunt mode
+     * 
+     */
+    public Optional<Output<Boolean>> terragruntProvider() {
+        return Optional.ofNullable(this.terragruntProvider);
+    }
+
+    /**
+     * Terragrunt version to use (e.g., 0.45.0)
+     * 
+     */
+    @Import(name="terragruntVersion")
+    private @Nullable Output<String> terragruntVersion;
+
+    /**
+     * @return Terragrunt version to use (e.g., 0.45.0)
+     * 
+     */
+    public Optional<Output<String>> terragruntVersion() {
+        return Optional.ofNullable(this.terragruntVersion);
+    }
+
+    /**
      * Variable sets to use.
      * 
      */
@@ -374,9 +419,12 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
         this.repositoryConnector = $.repositoryConnector;
         this.repositoryPath = $.repositoryPath;
         this.repositorySha = $.repositorySha;
+        this.runAll = $.runAll;
         this.tags = $.tags;
         this.terraformVariableFiles = $.terraformVariableFiles;
         this.terraformVariables = $.terraformVariables;
+        this.terragruntProvider = $.terragruntProvider;
+        this.terragruntVersion = $.terragruntVersion;
         this.variableSets = $.variableSets;
     }
 
@@ -608,7 +656,7 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param providerConnector Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+         * @param providerConnector Provider connector is the reference to the connector for the infrastructure provider
          * 
          * @return builder
          * 
@@ -619,7 +667,7 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param providerConnector Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+         * @param providerConnector Provider connector is the reference to the connector for the infrastructure provider
          * 
          * @return builder
          * 
@@ -797,6 +845,27 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param runAll Boolean flag for run-all terragrunt modules
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAll(@Nullable Output<Boolean> runAll) {
+            $.runAll = runAll;
+            return this;
+        }
+
+        /**
+         * @param runAll Boolean flag for run-all terragrunt modules
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAll(Boolean runAll) {
+            return runAll(Output.of(runAll));
+        }
+
+        /**
          * @param tags Tags to associate with the resource.
          * 
          * @return builder
@@ -887,6 +956,48 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder terraformVariables(WorkspaceTerraformVariableArgs... terraformVariables) {
             return terraformVariables(List.of(terraformVariables));
+        }
+
+        /**
+         * @param terragruntProvider Set to true to enable Terragrunt mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terragruntProvider(@Nullable Output<Boolean> terragruntProvider) {
+            $.terragruntProvider = terragruntProvider;
+            return this;
+        }
+
+        /**
+         * @param terragruntProvider Set to true to enable Terragrunt mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terragruntProvider(Boolean terragruntProvider) {
+            return terragruntProvider(Output.of(terragruntProvider));
+        }
+
+        /**
+         * @param terragruntVersion Terragrunt version to use (e.g., 0.45.0)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terragruntVersion(@Nullable Output<String> terragruntVersion) {
+            $.terragruntVersion = terragruntVersion;
+            return this;
+        }
+
+        /**
+         * @param terragruntVersion Terragrunt version to use (e.g., 0.45.0)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terragruntVersion(String terragruntVersion) {
+            return terragruntVersion(Output.of(terragruntVersion));
         }
 
         /**

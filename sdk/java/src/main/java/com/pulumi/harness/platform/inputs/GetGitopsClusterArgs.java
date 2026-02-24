@@ -17,8 +17,6 @@ public final class GetGitopsClusterArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetGitopsClusterArgs Empty = new GetGitopsClusterArgs();
 
     /**
-     * Account identifier of the GitOps cluster.
-     * 
      * @deprecated
      * This field is deprecated and will be removed in a future release.
      * 
@@ -28,8 +26,6 @@ public final class GetGitopsClusterArgs extends com.pulumi.resources.InvokeArgs 
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account identifier of the GitOps cluster.
-     * 
      * @deprecated
      * This field is deprecated and will be removed in a future release.
      * 
@@ -39,62 +35,30 @@ public final class GetGitopsClusterArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * Agent identifier of the GitOps cluster.
-     * 
-     */
     @Import(name="agentId", required=true)
     private Output<String> agentId;
 
-    /**
-     * @return Agent identifier of the GitOps cluster.
-     * 
-     */
     public Output<String> agentId() {
         return this.agentId;
     }
 
-    /**
-     * Identifier of the GitOps cluster.
-     * 
-     */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
-    /**
-     * @return Identifier of the GitOps cluster.
-     * 
-     */
     public Output<String> identifier() {
         return this.identifier;
     }
 
-    /**
-     * Organization identifier of the cluster.
-     * 
-     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
-    /**
-     * @return Organization identifier of the cluster.
-     * 
-     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
-    /**
-     * Project identifier of the GitOps cluster.
-     * 
-     */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
-    /**
-     * @return Project identifier of the GitOps cluster.
-     * 
-     */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -128,8 +92,6 @@ public final class GetGitopsClusterArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param accountId Account identifier of the GitOps cluster.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -143,8 +105,6 @@ public final class GetGitopsClusterArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param accountId Account identifier of the GitOps cluster.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -156,86 +116,38 @@ public final class GetGitopsClusterArgs extends com.pulumi.resources.InvokeArgs 
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param agentId Agent identifier of the GitOps cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder agentId(Output<String> agentId) {
             $.agentId = agentId;
             return this;
         }
 
-        /**
-         * @param agentId Agent identifier of the GitOps cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder agentId(String agentId) {
             return agentId(Output.of(agentId));
         }
 
-        /**
-         * @param identifier Identifier of the GitOps cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder identifier(Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
 
-        /**
-         * @param identifier Identifier of the GitOps cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
         }
 
-        /**
-         * @param orgId Organization identifier of the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
-        /**
-         * @param orgId Organization identifier of the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
-        /**
-         * @param projectId Project identifier of the GitOps cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
-        /**
-         * @param projectId Project identifier of the GitOps cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }

@@ -155,6 +155,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InfraModule{}
 	case "harness:platform/infraModuleTesting:InfraModuleTesting":
 		r = &InfraModuleTesting{}
+	case "harness:platform/infraProvider:InfraProvider":
+		r = &InfraProvider{}
+	case "harness:platform/infraProviderSigningKey:InfraProviderSigningKey":
+		r = &InfraProviderSigningKey{}
+	case "harness:platform/infraProviderVersion:InfraProviderVersion":
+		r = &InfraProviderVersion{}
+	case "harness:platform/infraProviderVersionFile:InfraProviderVersionFile":
+		r = &InfraProviderVersionFile{}
+	case "harness:platform/infraProviderVersionPublish:InfraProviderVersionPublish":
+		r = &InfraProviderVersionPublish{}
 	case "harness:platform/infraVariableSet:InfraVariableSet":
 		r = &InfraVariableSet{}
 	case "harness:platform/infrastructure:Infrastructure":
@@ -609,6 +619,31 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/infraModuleTesting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/infraProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/infraProviderSigningKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/infraProviderVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/infraProviderVersionFile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/infraProviderVersionPublish",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -38,7 +38,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;
  * import com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;
  * import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;
- * import com.pulumi.harness.platform.inputs.WorkspaceConnectorArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -116,19 +115,6 @@ import javax.annotation.Nullable;
  *                 Map.entry("plan", "plan_pipeline_id"),
  *                 Map.entry("apply", "apply_pipeline_id")
  *             ))
- *             .connectors(            
- *                 WorkspaceConnectorArgs.builder()
- *                     .connectorRef("awsconnector")
- *                     .type("aws")
- *                     .build(),
- *                 WorkspaceConnectorArgs.builder()
- *                     .connectorRef("gcpconnector")
- *                     .type("gcp")
- *                     .build(),
- *                 WorkspaceConnectorArgs.builder()
- *                     .connectorRef("azureconnector")
- *                     .type("azure")
- *                     .build())
  *             .build());
  * 
  *     }
@@ -274,14 +260,14 @@ public class Workspace extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+     * Provider connector is the reference to the connector for the infrastructure provider
      * 
      */
     @Export(name="providerConnector", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> providerConnector;
 
     /**
-     * @return Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+     * @return Provider connector is the reference to the connector for the infrastructure provider
      * 
      */
     public Output<Optional<String>> providerConnector() {
@@ -400,6 +386,20 @@ public class Workspace extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.repositorySha);
     }
     /**
+     * Boolean flag for run-all terragrunt modules
+     * 
+     */
+    @Export(name="runAll", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> runAll;
+
+    /**
+     * @return Boolean flag for run-all terragrunt modules
+     * 
+     */
+    public Output<Optional<Boolean>> runAll() {
+        return Codegen.optional(this.runAll);
+    }
+    /**
      * Tags to associate with the resource.
      * 
      */
@@ -440,6 +440,34 @@ public class Workspace extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<WorkspaceTerraformVariable>>> terraformVariables() {
         return Codegen.optional(this.terraformVariables);
+    }
+    /**
+     * Set to true to enable Terragrunt mode
+     * 
+     */
+    @Export(name="terragruntProvider", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> terragruntProvider;
+
+    /**
+     * @return Set to true to enable Terragrunt mode
+     * 
+     */
+    public Output<Optional<Boolean>> terragruntProvider() {
+        return Codegen.optional(this.terragruntProvider);
+    }
+    /**
+     * Terragrunt version to use (e.g., 0.45.0)
+     * 
+     */
+    @Export(name="terragruntVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> terragruntVersion;
+
+    /**
+     * @return Terragrunt version to use (e.g., 0.45.0)
+     * 
+     */
+    public Output<Optional<String>> terragruntVersion() {
+        return Codegen.optional(this.terragruntVersion);
     }
     /**
      * Variable sets to use.

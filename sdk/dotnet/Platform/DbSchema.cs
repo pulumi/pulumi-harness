@@ -137,6 +137,30 @@ namespace Pulumi.Harness.Platform
     ///         },
     ///     });
     /// 
+    ///     var perconaEnabledTest = new Harness.Platform.DbSchema("percona_enabled_test", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Name = "name",
+    ///         Service = "service1",
+    ///         Type = "Repository",
+    ///         MigrationType = "Liquibase",
+    ///         UsePercona = true,
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "bar:foo",
+    ///         },
+    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
+    ///         {
+    ///             Connector = "gitConnector",
+    ///             Repo = "TestRepo",
+    ///             Location = "db/example-changelog.yaml",
+    ///             ArchivePath = "path/to/archive.zip",
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -218,6 +242,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// If percona-toolkit is to be enabled for the database schema. Defaults to `False`.
+        /// </summary>
+        [Output("usePercona")]
+        public Output<bool?> UsePercona { get; private set; } = null!;
 
 
         /// <summary>
@@ -338,6 +368,12 @@ namespace Pulumi.Harness.Platform
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// If percona-toolkit is to be enabled for the database schema. Defaults to `False`.
+        /// </summary>
+        [Input("usePercona")]
+        public Input<bool>? UsePercona { get; set; }
+
         public DbSchemaArgs()
         {
         }
@@ -417,6 +453,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// If percona-toolkit is to be enabled for the database schema. Defaults to `False`.
+        /// </summary>
+        [Input("usePercona")]
+        public Input<bool>? UsePercona { get; set; }
 
         public DbSchemaState()
         {

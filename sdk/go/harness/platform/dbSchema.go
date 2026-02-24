@@ -138,6 +138,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = platform.NewDbSchema(ctx, "percona_enabled_test", &platform.DbSchemaArgs{
+//				Identifier:    pulumi.String("identifier"),
+//				OrgId:         pulumi.String("org_id"),
+//				ProjectId:     pulumi.String("project_id"),
+//				Name:          pulumi.String("name"),
+//				Service:       pulumi.String("service1"),
+//				Type:          pulumi.String("Repository"),
+//				MigrationType: pulumi.String("Liquibase"),
+//				UsePercona:    pulumi.Bool(true),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
+//				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
+//					Connector:   pulumi.String("gitConnector"),
+//					Repo:        pulumi.String("TestRepo"),
+//					Location:    pulumi.String("db/example-changelog.yaml"),
+//					ArchivePath: pulumi.String("path/to/archive.zip"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -178,6 +201,8 @@ type DbSchema struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Type of the database schema. Valid values are: SCRIPT, REPOSITORY
 	Type pulumi.StringPtrOutput `pulumi:"type"`
+	// If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+	UsePercona pulumi.BoolPtrOutput `pulumi:"usePercona"`
 }
 
 // NewDbSchema registers a new resource with the given unique name, arguments, and options.
@@ -241,6 +266,8 @@ type dbSchemaState struct {
 	Tags []string `pulumi:"tags"`
 	// Type of the database schema. Valid values are: SCRIPT, REPOSITORY
 	Type *string `pulumi:"type"`
+	// If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+	UsePercona *bool `pulumi:"usePercona"`
 }
 
 type DbSchemaState struct {
@@ -266,6 +293,8 @@ type DbSchemaState struct {
 	Tags pulumi.StringArrayInput
 	// Type of the database schema. Valid values are: SCRIPT, REPOSITORY
 	Type pulumi.StringPtrInput
+	// If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+	UsePercona pulumi.BoolPtrInput
 }
 
 func (DbSchemaState) ElementType() reflect.Type {
@@ -295,6 +324,8 @@ type dbSchemaArgs struct {
 	Tags []string `pulumi:"tags"`
 	// Type of the database schema. Valid values are: SCRIPT, REPOSITORY
 	Type *string `pulumi:"type"`
+	// If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+	UsePercona *bool `pulumi:"usePercona"`
 }
 
 // The set of arguments for constructing a DbSchema resource.
@@ -321,6 +352,8 @@ type DbSchemaArgs struct {
 	Tags pulumi.StringArrayInput
 	// Type of the database schema. Valid values are: SCRIPT, REPOSITORY
 	Type pulumi.StringPtrInput
+	// If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+	UsePercona pulumi.BoolPtrInput
 }
 
 func (DbSchemaArgs) ElementType() reflect.Type {
@@ -463,6 +496,11 @@ func (o DbSchemaOutput) Tags() pulumi.StringArrayOutput {
 // Type of the database schema. Valid values are: SCRIPT, REPOSITORY
 func (o DbSchemaOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbSchema) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+func (o DbSchemaOutput) UsePercona() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DbSchema) pulumi.BoolPtrOutput { return v.UsePercona }).(pulumi.BoolPtrOutput)
 }
 
 type DbSchemaArrayOutput struct{ *pulumi.OutputState }

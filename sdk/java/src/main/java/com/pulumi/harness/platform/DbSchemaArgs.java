@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.DbSchemaChangelogScriptArgs;
 import com.pulumi.harness.platform.inputs.DbSchemaSchemaSourceArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -184,6 +185,21 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+     * 
+     */
+    @Import(name="usePercona")
+    private @Nullable Output<Boolean> usePercona;
+
+    /**
+     * @return If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> usePercona() {
+        return Optional.ofNullable(this.usePercona);
+    }
+
     private DbSchemaArgs() {}
 
     private DbSchemaArgs(DbSchemaArgs $) {
@@ -198,6 +214,7 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
         this.service = $.service;
         this.tags = $.tags;
         this.type = $.type;
+        this.usePercona = $.usePercona;
     }
 
     public static Builder builder() {
@@ -457,6 +474,27 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param usePercona If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usePercona(@Nullable Output<Boolean> usePercona) {
+            $.usePercona = usePercona;
+            return this;
+        }
+
+        /**
+         * @param usePercona If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usePercona(Boolean usePercona) {
+            return usePercona(Output.of(usePercona));
         }
 
         public DbSchemaArgs build() {

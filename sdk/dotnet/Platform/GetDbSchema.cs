@@ -129,6 +129,12 @@ namespace Pulumi.Harness.Platform
         [Input("type")]
         public string? Type { get; set; }
 
+        /// <summary>
+        /// If percona-toolkit is enabled for the database schema.
+        /// </summary>
+        [Input("usePercona")]
+        public bool? UsePercona { get; set; }
+
         public GetDbSchemaArgs()
         {
         }
@@ -172,6 +178,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// If percona-toolkit is enabled for the database schema.
+        /// </summary>
+        [Input("usePercona")]
+        public Input<bool>? UsePercona { get; set; }
 
         public GetDbSchemaInvokeArgs()
         {
@@ -231,6 +243,10 @@ namespace Pulumi.Harness.Platform
         /// Type of the database schema. Valid values are: Repository, Script
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// If percona-toolkit is enabled for the database schema.
+        /// </summary>
+        public readonly bool? UsePercona;
 
         [OutputConstructor]
         private GetDbSchemaResult(
@@ -256,7 +272,9 @@ namespace Pulumi.Harness.Platform
 
             ImmutableArray<string> tags,
 
-            string? type)
+            string? type,
+
+            bool? usePercona)
         {
             ChangelogScript = changelogScript;
             Description = description;
@@ -270,6 +288,7 @@ namespace Pulumi.Harness.Platform
             Service = service;
             Tags = tags;
             Type = type;
+            UsePercona = usePercona;
         }
     }
 }

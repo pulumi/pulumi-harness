@@ -99,33 +99,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetGitopsClusterArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Account identifier of the GitOps cluster.
-        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
-        /// <summary>
-        /// Agent identifier of the GitOps cluster.
-        /// </summary>
         [Input("agentId", required: true)]
         public string AgentId { get; set; } = null!;
 
-        /// <summary>
-        /// Identifier of the GitOps cluster.
-        /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
-        /// <summary>
-        /// Organization identifier of the cluster.
-        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
-        /// <summary>
-        /// Project identifier of the GitOps cluster.
-        /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
@@ -137,33 +122,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetGitopsClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Account identifier of the GitOps cluster.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// Agent identifier of the GitOps cluster.
-        /// </summary>
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
 
-        /// <summary>
-        /// Identifier of the GitOps cluster.
-        /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
-        /// <summary>
-        /// Organization identifier of the cluster.
-        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
-        /// <summary>
-        /// Project identifier of the GitOps cluster.
-        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
@@ -177,33 +147,15 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetGitopsClusterResult
     {
-        /// <summary>
-        /// Account identifier of the GitOps cluster.
-        /// </summary>
         public readonly string AccountId;
-        /// <summary>
-        /// Agent identifier of the GitOps cluster.
-        /// </summary>
         public readonly string AgentId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Identifier of the GitOps cluster.
-        /// </summary>
         public readonly string Identifier;
-        /// <summary>
-        /// Organization identifier of the cluster.
-        /// </summary>
         public readonly string? OrgId;
-        /// <summary>
-        /// Project identifier of the GitOps cluster.
-        /// </summary>
         public readonly string? ProjectId;
-        /// <summary>
-        /// Cluster create or update request.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsClusterRequestResult> Requests;
 
         [OutputConstructor]
