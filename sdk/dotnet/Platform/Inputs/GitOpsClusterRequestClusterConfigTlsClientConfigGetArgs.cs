@@ -18,11 +18,21 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("caData")]
         public Input<string>? CaData { get; set; }
 
+        [Input("certData")]
+        private Input<string>? _certData;
+
         /// <summary>
         /// Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
         /// </summary>
-        [Input("certData")]
-        public Input<string>? CertData { get; set; }
+        public Input<string>? CertData
+        {
+            get => _certData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Indicates if the TLS connection to the cluster should be insecure.
@@ -30,11 +40,21 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }
 
+        [Input("keyData")]
+        private Input<string>? _keyData;
+
         /// <summary>
         /// Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
         /// </summary>
-        [Input("keyData")]
-        public Input<string>? KeyData { get; set; }
+        public Input<string>? KeyData
+        {
+            get => _keyData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.

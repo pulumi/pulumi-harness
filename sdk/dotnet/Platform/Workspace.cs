@@ -106,24 +106,6 @@ namespace Pulumi.Harness.Platform
     ///             { "plan", "plan_pipeline_id" },
     ///             { "apply", "apply_pipeline_id" },
     ///         },
-    ///         Connectors = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.WorkspaceConnectorArgs
-    ///             {
-    ///                 ConnectorRef = "awsconnector",
-    ///                 Type = "aws",
-    ///             },
-    ///             new Harness.Platform.Inputs.WorkspaceConnectorArgs
-    ///             {
-    ///                 ConnectorRef = "gcpconnector",
-    ///                 Type = "gcp",
-    ///             },
-    ///             new Harness.Platform.Inputs.WorkspaceConnectorArgs
-    ///             {
-    ///                 ConnectorRef = "azureconnector",
-    ///                 Type = "azure",
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });
@@ -195,7 +177,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        /// Provider connector is the reference to the connector for the infrastructure provider
         /// </summary>
         [Output("providerConnector")]
         public Output<string?> ProviderConnector { get; private set; } = null!;
@@ -249,6 +231,12 @@ namespace Pulumi.Harness.Platform
         public Output<string?> RepositorySha { get; private set; } = null!;
 
         /// <summary>
+        /// Boolean flag for run-all terragrunt modules
+        /// </summary>
+        [Output("runAll")]
+        public Output<bool?> RunAll { get; private set; } = null!;
+
+        /// <summary>
         /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
@@ -265,6 +253,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("terraformVariables")]
         public Output<ImmutableArray<Outputs.WorkspaceTerraformVariable>> TerraformVariables { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to true to enable Terragrunt mode
+        /// </summary>
+        [Output("terragruntProvider")]
+        public Output<bool?> TerragruntProvider { get; private set; } = null!;
+
+        /// <summary>
+        /// Terragrunt version to use (e.g., 0.45.0)
+        /// </summary>
+        [Output("terragruntVersion")]
+        public Output<string?> TerragruntVersion { get; private set; } = null!;
 
         /// <summary>
         /// Variable sets to use.
@@ -392,7 +392,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        /// Provider connector is the reference to the connector for the infrastructure provider
         /// </summary>
         [Input("providerConnector")]
         public Input<string>? ProviderConnector { get; set; }
@@ -445,6 +445,12 @@ namespace Pulumi.Harness.Platform
         [Input("repositorySha")]
         public Input<string>? RepositorySha { get; set; }
 
+        /// <summary>
+        /// Boolean flag for run-all terragrunt modules
+        /// </summary>
+        [Input("runAll")]
+        public Input<bool>? RunAll { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -480,6 +486,18 @@ namespace Pulumi.Harness.Platform
             get => _terraformVariables ?? (_terraformVariables = new InputList<Inputs.WorkspaceTerraformVariableArgs>());
             set => _terraformVariables = value;
         }
+
+        /// <summary>
+        /// Set to true to enable Terragrunt mode
+        /// </summary>
+        [Input("terragruntProvider")]
+        public Input<bool>? TerragruntProvider { get; set; }
+
+        /// <summary>
+        /// Terragrunt version to use (e.g., 0.45.0)
+        /// </summary>
+        [Input("terragruntVersion")]
+        public Input<string>? TerragruntVersion { get; set; }
 
         [Input("variableSets")]
         private InputList<string>? _variableSets;
@@ -574,7 +592,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        /// Provider connector is the reference to the connector for the infrastructure provider
         /// </summary>
         [Input("providerConnector")]
         public Input<string>? ProviderConnector { get; set; }
@@ -627,6 +645,12 @@ namespace Pulumi.Harness.Platform
         [Input("repositorySha")]
         public Input<string>? RepositorySha { get; set; }
 
+        /// <summary>
+        /// Boolean flag for run-all terragrunt modules
+        /// </summary>
+        [Input("runAll")]
+        public Input<bool>? RunAll { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -662,6 +686,18 @@ namespace Pulumi.Harness.Platform
             get => _terraformVariables ?? (_terraformVariables = new InputList<Inputs.WorkspaceTerraformVariableGetArgs>());
             set => _terraformVariables = value;
         }
+
+        /// <summary>
+        /// Set to true to enable Terragrunt mode
+        /// </summary>
+        [Input("terragruntProvider")]
+        public Input<bool>? TerragruntProvider { get; set; }
+
+        /// <summary>
+        /// Terragrunt version to use (e.g., 0.45.0)
+        /// </summary>
+        [Input("terragruntVersion")]
+        public Input<string>? TerragruntVersion { get; set; }
 
         [Input("variableSets")]
         private InputList<string>? _variableSets;

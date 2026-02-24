@@ -64,6 +64,8 @@ type LookupDbSchemaArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// Type of the database schema. Valid values are: Repository, Script
 	Type *string `pulumi:"type"`
+	// If percona-toolkit is enabled for the database schema.
+	UsePercona *bool `pulumi:"usePercona"`
 }
 
 // A collection of values returned by getDbSchema.
@@ -92,6 +94,8 @@ type LookupDbSchemaResult struct {
 	Tags []string `pulumi:"tags"`
 	// Type of the database schema. Valid values are: Repository, Script
 	Type *string `pulumi:"type"`
+	// If percona-toolkit is enabled for the database schema.
+	UsePercona *bool `pulumi:"usePercona"`
 }
 
 func LookupDbSchemaOutput(ctx *pulumi.Context, args LookupDbSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupDbSchemaResultOutput {
@@ -117,6 +121,8 @@ type LookupDbSchemaOutputArgs struct {
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Type of the database schema. Valid values are: Repository, Script
 	Type pulumi.StringPtrInput `pulumi:"type"`
+	// If percona-toolkit is enabled for the database schema.
+	UsePercona pulumi.BoolPtrInput `pulumi:"usePercona"`
 }
 
 func (LookupDbSchemaOutputArgs) ElementType() reflect.Type {
@@ -196,6 +202,11 @@ func (o LookupDbSchemaResultOutput) Tags() pulumi.StringArrayOutput {
 // Type of the database schema. Valid values are: Repository, Script
 func (o LookupDbSchemaResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDbSchemaResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// If percona-toolkit is enabled for the database schema.
+func (o LookupDbSchemaResultOutput) UsePercona() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupDbSchemaResult) *bool { return v.UsePercona }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

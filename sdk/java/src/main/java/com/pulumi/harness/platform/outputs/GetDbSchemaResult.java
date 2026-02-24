@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetDbSchemaChangelogScript;
 import com.pulumi.harness.platform.outputs.GetDbSchemaSchemaSource;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -75,6 +76,11 @@ public final class GetDbSchemaResult {
      * 
      */
     private @Nullable String type;
+    /**
+     * @return If percona-toolkit is enabled for the database schema.
+     * 
+     */
+    private @Nullable Boolean usePercona;
 
     private GetDbSchemaResult() {}
     /**
@@ -161,6 +167,13 @@ public final class GetDbSchemaResult {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return If percona-toolkit is enabled for the database schema.
+     * 
+     */
+    public Optional<Boolean> usePercona() {
+        return Optional.ofNullable(this.usePercona);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -183,6 +196,7 @@ public final class GetDbSchemaResult {
         private String service;
         private List<String> tags;
         private @Nullable String type;
+        private @Nullable Boolean usePercona;
         public Builder() {}
         public Builder(GetDbSchemaResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -198,6 +212,7 @@ public final class GetDbSchemaResult {
     	      this.service = defaults.service;
     	      this.tags = defaults.tags;
     	      this.type = defaults.type;
+    	      this.usePercona = defaults.usePercona;
         }
 
         @CustomType.Setter
@@ -296,6 +311,12 @@ public final class GetDbSchemaResult {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder usePercona(@Nullable Boolean usePercona) {
+
+            this.usePercona = usePercona;
+            return this;
+        }
         public GetDbSchemaResult build() {
             final var _resultValue = new GetDbSchemaResult();
             _resultValue.changelogScript = changelogScript;
@@ -310,6 +331,7 @@ public final class GetDbSchemaResult {
             _resultValue.service = service;
             _resultValue.tags = tags;
             _resultValue.type = type;
+            _resultValue.usePercona = usePercona;
             return _resultValue;
         }
     }

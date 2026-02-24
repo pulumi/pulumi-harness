@@ -140,9 +140,11 @@ export class Delegatetoken extends pulumi.CustomResource {
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["revokeAfter"] = args?.revokeAfter;
             resourceInputs["tokenStatus"] = args?.tokenStatus;
-            resourceInputs["value"] = args?.value;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Delegatetoken.__pulumiType, name, resourceInputs, opts);
     }
 }

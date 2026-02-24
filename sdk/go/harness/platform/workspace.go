@@ -98,20 +98,6 @@ import (
 //					"plan":    pulumi.String("plan_pipeline_id"),
 //					"apply":   pulumi.String("apply_pipeline_id"),
 //				},
-//				Connectors: platform.WorkspaceConnectorArray{
-//					&platform.WorkspaceConnectorArgs{
-//						ConnectorRef: pulumi.String("awsconnector"),
-//						Type:         pulumi.String("aws"),
-//					},
-//					&platform.WorkspaceConnectorArgs{
-//						ConnectorRef: pulumi.String("gcpconnector"),
-//						Type:         pulumi.String("gcp"),
-//					},
-//					&platform.WorkspaceConnectorArgs{
-//						ConnectorRef: pulumi.String("azureconnector"),
-//						Type:         pulumi.String("azure"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -150,7 +136,7 @@ type Workspace struct {
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector pulumi.StringPtrOutput `pulumi:"providerConnector"`
 	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
 	ProvisionerType pulumi.StringOutput `pulumi:"provisionerType"`
@@ -168,12 +154,18 @@ type Workspace struct {
 	RepositoryPath pulumi.StringOutput `pulumi:"repositoryPath"`
 	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringPtrOutput `pulumi:"repositorySha"`
+	// Boolean flag for run-all terragrunt modules
+	RunAll pulumi.BoolPtrOutput `pulumi:"runAll"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayOutput `pulumi:"terraformVariableFiles"`
 	// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
 	TerraformVariables WorkspaceTerraformVariableArrayOutput `pulumi:"terraformVariables"`
+	// Set to true to enable Terragrunt mode
+	TerragruntProvider pulumi.BoolPtrOutput `pulumi:"terragruntProvider"`
+	// Terragrunt version to use (e.g., 0.45.0)
+	TerragruntVersion pulumi.StringPtrOutput `pulumi:"terragruntVersion"`
 	// Variable sets to use.
 	VariableSets pulumi.StringArrayOutput `pulumi:"variableSets"`
 }
@@ -253,7 +245,7 @@ type workspaceState struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector *string `pulumi:"providerConnector"`
 	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
 	ProvisionerType *string `pulumi:"provisionerType"`
@@ -271,12 +263,18 @@ type workspaceState struct {
 	RepositoryPath *string `pulumi:"repositoryPath"`
 	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha *string `pulumi:"repositorySha"`
+	// Boolean flag for run-all terragrunt modules
+	RunAll *bool `pulumi:"runAll"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles []WorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
 	TerraformVariables []WorkspaceTerraformVariable `pulumi:"terraformVariables"`
+	// Set to true to enable Terragrunt mode
+	TerragruntProvider *bool `pulumi:"terragruntProvider"`
+	// Terragrunt version to use (e.g., 0.45.0)
+	TerragruntVersion *string `pulumi:"terragruntVersion"`
 	// Variable sets to use.
 	VariableSets []string `pulumi:"variableSets"`
 }
@@ -300,7 +298,7 @@ type WorkspaceState struct {
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector pulumi.StringPtrInput
 	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
 	ProvisionerType pulumi.StringPtrInput
@@ -318,12 +316,18 @@ type WorkspaceState struct {
 	RepositoryPath pulumi.StringPtrInput
 	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringPtrInput
+	// Boolean flag for run-all terragrunt modules
+	RunAll pulumi.BoolPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayInput
 	// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
 	TerraformVariables WorkspaceTerraformVariableArrayInput
+	// Set to true to enable Terragrunt mode
+	TerragruntProvider pulumi.BoolPtrInput
+	// Terragrunt version to use (e.g., 0.45.0)
+	TerragruntVersion pulumi.StringPtrInput
 	// Variable sets to use.
 	VariableSets pulumi.StringArrayInput
 }
@@ -351,7 +355,7 @@ type workspaceArgs struct {
 	OrgId string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
-	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector *string `pulumi:"providerConnector"`
 	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
 	ProvisionerType string `pulumi:"provisionerType"`
@@ -369,12 +373,18 @@ type workspaceArgs struct {
 	RepositoryPath string `pulumi:"repositoryPath"`
 	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha *string `pulumi:"repositorySha"`
+	// Boolean flag for run-all terragrunt modules
+	RunAll *bool `pulumi:"runAll"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles []WorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
 	TerraformVariables []WorkspaceTerraformVariable `pulumi:"terraformVariables"`
+	// Set to true to enable Terragrunt mode
+	TerragruntProvider *bool `pulumi:"terragruntProvider"`
+	// Terragrunt version to use (e.g., 0.45.0)
+	TerragruntVersion *string `pulumi:"terragruntVersion"`
 	// Variable sets to use.
 	VariableSets []string `pulumi:"variableSets"`
 }
@@ -399,7 +409,7 @@ type WorkspaceArgs struct {
 	OrgId pulumi.StringInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringInput
-	// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector pulumi.StringPtrInput
 	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
 	ProvisionerType pulumi.StringInput
@@ -417,12 +427,18 @@ type WorkspaceArgs struct {
 	RepositoryPath pulumi.StringInput
 	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringPtrInput
+	// Boolean flag for run-all terragrunt modules
+	RunAll pulumi.BoolPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// Terraform variables files configured on the workspace (see below for nested schema)
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayInput
 	// Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
 	TerraformVariables WorkspaceTerraformVariableArrayInput
+	// Set to true to enable Terragrunt mode
+	TerragruntProvider pulumi.BoolPtrInput
+	// Terragrunt version to use (e.g., 0.45.0)
+	TerragruntVersion pulumi.StringPtrInput
 	// Variable sets to use.
 	VariableSets pulumi.StringArrayInput
 }
@@ -559,7 +575,7 @@ func (o WorkspaceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+// Provider connector is the reference to the connector for the infrastructure provider
 func (o WorkspaceOutput) ProviderConnector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.ProviderConnector }).(pulumi.StringPtrOutput)
 }
@@ -604,6 +620,11 @@ func (o WorkspaceOutput) RepositorySha() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.RepositorySha }).(pulumi.StringPtrOutput)
 }
 
+// Boolean flag for run-all terragrunt modules
+func (o WorkspaceOutput) RunAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.RunAll }).(pulumi.BoolPtrOutput)
+}
+
 // Tags to associate with the resource.
 func (o WorkspaceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
@@ -617,6 +638,16 @@ func (o WorkspaceOutput) TerraformVariableFiles() WorkspaceTerraformVariableFile
 // Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
 func (o WorkspaceOutput) TerraformVariables() WorkspaceTerraformVariableArrayOutput {
 	return o.ApplyT(func(v *Workspace) WorkspaceTerraformVariableArrayOutput { return v.TerraformVariables }).(WorkspaceTerraformVariableArrayOutput)
+}
+
+// Set to true to enable Terragrunt mode
+func (o WorkspaceOutput) TerragruntProvider() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.TerragruntProvider }).(pulumi.BoolPtrOutput)
+}
+
+// Terragrunt version to use (e.g., 0.45.0)
+func (o WorkspaceOutput) TerragruntVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.TerragruntVersion }).(pulumi.StringPtrOutput)
 }
 
 // Variable sets to use.

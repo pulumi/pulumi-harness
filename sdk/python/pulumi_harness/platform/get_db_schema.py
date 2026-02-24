@@ -27,7 +27,7 @@ class GetDbSchemaResult:
     """
     A collection of values returned by getDbSchema.
     """
-    def __init__(__self__, changelog_script=None, description=None, id=None, identifier=None, migration_type=None, name=None, org_id=None, project_id=None, schema_sources=None, service=None, tags=None, type=None):
+    def __init__(__self__, changelog_script=None, description=None, id=None, identifier=None, migration_type=None, name=None, org_id=None, project_id=None, schema_sources=None, service=None, tags=None, type=None, use_percona=None):
         if changelog_script and not isinstance(changelog_script, dict):
             raise TypeError("Expected argument 'changelog_script' to be a dict")
         pulumi.set(__self__, "changelog_script", changelog_script)
@@ -64,6 +64,9 @@ class GetDbSchemaResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if use_percona and not isinstance(use_percona, bool):
+            raise TypeError("Expected argument 'use_percona' to be a bool")
+        pulumi.set(__self__, "use_percona", use_percona)
 
     @_builtins.property
     @pulumi.getter(name="changelogScript")
@@ -161,6 +164,14 @@ class GetDbSchemaResult:
         """
         return pulumi.get(self, "type")
 
+    @_builtins.property
+    @pulumi.getter(name="usePercona")
+    def use_percona(self) -> Optional[_builtins.bool]:
+        """
+        If percona-toolkit is enabled for the database schema.
+        """
+        return pulumi.get(self, "use_percona")
+
 
 class AwaitableGetDbSchemaResult(GetDbSchemaResult):
     # pylint: disable=using-constant-test
@@ -179,7 +190,8 @@ class AwaitableGetDbSchemaResult(GetDbSchemaResult):
             schema_sources=self.schema_sources,
             service=self.service,
             tags=self.tags,
-            type=self.type)
+            type=self.type,
+            use_percona=self.use_percona)
 
 
 def get_db_schema(identifier: Optional[_builtins.str] = None,
@@ -188,6 +200,7 @@ def get_db_schema(identifier: Optional[_builtins.str] = None,
                   org_id: Optional[_builtins.str] = None,
                   project_id: Optional[_builtins.str] = None,
                   type: Optional[_builtins.str] = None,
+                  use_percona: Optional[_builtins.bool] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbSchemaResult:
     """
     Data source for retrieving a Harness DBDevOps Schema.
@@ -210,6 +223,7 @@ def get_db_schema(identifier: Optional[_builtins.str] = None,
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str type: Type of the database schema. Valid values are: Repository, Script
+    :param _builtins.bool use_percona: If percona-toolkit is enabled for the database schema.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -218,6 +232,7 @@ def get_db_schema(identifier: Optional[_builtins.str] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     __args__['type'] = type
+    __args__['usePercona'] = use_percona
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getDbSchema:getDbSchema', __args__, opts=opts, typ=GetDbSchemaResult).value
 
@@ -233,13 +248,15 @@ def get_db_schema(identifier: Optional[_builtins.str] = None,
         schema_sources=pulumi.get(__ret__, 'schema_sources'),
         service=pulumi.get(__ret__, 'service'),
         tags=pulumi.get(__ret__, 'tags'),
-        type=pulumi.get(__ret__, 'type'))
+        type=pulumi.get(__ret__, 'type'),
+        use_percona=pulumi.get(__ret__, 'use_percona'))
 def get_db_schema_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
                          migration_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          org_id: Optional[pulumi.Input[_builtins.str]] = None,
                          project_id: Optional[pulumi.Input[_builtins.str]] = None,
                          type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                         use_percona: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbSchemaResult]:
     """
     Data source for retrieving a Harness DBDevOps Schema.
@@ -262,6 +279,7 @@ def get_db_schema_output(identifier: Optional[pulumi.Input[_builtins.str]] = Non
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str type: Type of the database schema. Valid values are: Repository, Script
+    :param _builtins.bool use_percona: If percona-toolkit is enabled for the database schema.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -270,6 +288,7 @@ def get_db_schema_output(identifier: Optional[pulumi.Input[_builtins.str]] = Non
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     __args__['type'] = type
+    __args__['usePercona'] = use_percona
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getDbSchema:getDbSchema', __args__, opts=opts, typ=GetDbSchemaResult)
     return __ret__.apply(lambda __response__: GetDbSchemaResult(
@@ -284,4 +303,5 @@ def get_db_schema_output(identifier: Optional[pulumi.Input[_builtins.str]] = Non
         schema_sources=pulumi.get(__response__, 'schema_sources'),
         service=pulumi.get(__response__, 'service'),
         tags=pulumi.get(__response__, 'tags'),
-        type=pulumi.get(__response__, 'type')))
+        type=pulumi.get(__response__, 'type'),
+        use_percona=pulumi.get(__response__, 'use_percona')))

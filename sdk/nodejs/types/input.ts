@@ -1410,7 +1410,7 @@ export namespace autostopping {
         /**
          * Ids of instances that needs to be managed using the AutoStopping rules
          */
-        vmIds: string[];
+        vmIds?: string[];
         /**
          * Zones of instances that needs to be managed using the AutoStopping rules
          */
@@ -1429,7 +1429,7 @@ export namespace autostopping {
         /**
          * Ids of instances that needs to be managed using the AutoStopping rules
          */
-        vmIds: pulumi.Input<pulumi.Input<string>[]>;
+        vmIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Zones of instances that needs to be managed using the AutoStopping rules
          */
@@ -1895,7 +1895,7 @@ export namespace autostopping {
         /**
          * Ids of instances that needs to be managed using the AutoStopping rules
          */
-        vmIds: pulumi.Input<pulumi.Input<string>[]>;
+        vmIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Zones of instances that needs to be managed using the AutoStopping rules
          */
@@ -4027,6 +4027,10 @@ export namespace platform {
          */
         authType?: pulumi.Input<string>;
         /**
+         * Authenticate using key pair.
+         */
+        keyPair?: pulumi.Input<inputs.platform.ConnectorJdbcCredentialsKeyPair>;
+        /**
          * The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef?: pulumi.Input<string>;
@@ -4044,6 +4048,25 @@ export namespace platform {
         usernamePassword?: pulumi.Input<inputs.platform.ConnectorJdbcCredentialsUsernamePassword>;
         /**
          * The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface ConnectorJdbcCredentialsKeyPair {
+        /**
+         * Reference to a secret containing the private key file to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        privateKeyFileRef: pulumi.Input<string>;
+        /**
+         * Reference to a secret containing the passphrase for the private key file. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        privateKeyPassphraseRef?: pulumi.Input<string>;
+        /**
+         * Username to use for authentication.
+         */
+        username?: pulumi.Input<string>;
+        /**
+         * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: pulumi.Input<string>;
     }
@@ -34173,6 +34196,21 @@ export namespace platform {
          * Release pipeline
          */
         releasePipeline?: pulumi.Input<string>;
+    }
+
+    export interface InfraProviderVersion {
+        /**
+         * List of uploaded files for this version.
+         */
+        files?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether the version is synced.
+         */
+        synced?: pulumi.Input<boolean>;
+        /**
+         * Version number.
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface InfraVariableSetConnector {

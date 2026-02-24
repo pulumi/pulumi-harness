@@ -54,17 +54,11 @@ class GetGitopsClusterResult:
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> _builtins.str:
-        """
-        Account identifier of the GitOps cluster.
-        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="agentId")
     def agent_id(self) -> _builtins.str:
-        """
-        Agent identifier of the GitOps cluster.
-        """
         return pulumi.get(self, "agent_id")
 
     @_builtins.property
@@ -78,33 +72,21 @@ class GetGitopsClusterResult:
     @_builtins.property
     @pulumi.getter
     def identifier(self) -> _builtins.str:
-        """
-        Identifier of the GitOps cluster.
-        """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[_builtins.str]:
-        """
-        Organization identifier of the cluster.
-        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[_builtins.str]:
-        """
-        Project identifier of the GitOps cluster.
-        """
         return pulumi.get(self, "project_id")
 
     @_builtins.property
     @pulumi.getter
     def requests(self) -> Sequence['outputs.GetGitopsClusterRequestResult']:
-        """
-        Cluster create or update request.
-        """
         return pulumi.get(self, "requests")
 
 
@@ -144,13 +126,6 @@ def get_gitops_cluster(account_id: Optional[_builtins.str] = None,
         org_id="org_id",
         agent_id="agent_id")
     ```
-
-
-    :param _builtins.str account_id: Account identifier of the GitOps cluster.
-    :param _builtins.str agent_id: Agent identifier of the GitOps cluster.
-    :param _builtins.str identifier: Identifier of the GitOps cluster.
-    :param _builtins.str org_id: Organization identifier of the cluster.
-    :param _builtins.str project_id: Project identifier of the GitOps cluster.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -190,13 +165,6 @@ def get_gitops_cluster_output(account_id: Optional[pulumi.Input[Optional[_builti
         org_id="org_id",
         agent_id="agent_id")
     ```
-
-
-    :param _builtins.str account_id: Account identifier of the GitOps cluster.
-    :param _builtins.str agent_id: Agent identifier of the GitOps cluster.
-    :param _builtins.str identifier: Identifier of the GitOps cluster.
-    :param _builtins.str org_id: Organization identifier of the cluster.
-    :param _builtins.str project_id: Project identifier of the GitOps cluster.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

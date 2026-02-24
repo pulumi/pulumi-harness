@@ -962,6 +962,46 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/infraProvider",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/infraProvider:InfraProvider": "InfraProvider"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/infraProviderSigningKey",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/infraProviderSigningKey:InfraProviderSigningKey": "InfraProviderSigningKey"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/infraProviderVersion",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/infraProviderVersion:InfraProviderVersion": "InfraProviderVersion"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/infraProviderVersionFile",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/infraProviderVersionFile:InfraProviderVersionFile": "InfraProviderVersionFile"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/infraProviderVersionPublish",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/infraProviderVersionPublish:InfraProviderVersionPublish": "InfraProviderVersionPublish"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/infraVariableSet",
   "fqn": "pulumi_harness.platform",
   "classes": {

@@ -19,6 +19,12 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? AuthType { get; set; }
 
         /// <summary>
+        /// Authenticate using key pair.
+        /// </summary>
+        [Input("keyPair")]
+        public Input<Inputs.ConnectorJdbcCredentialsKeyPairGetArgs>? KeyPair { get; set; }
+
+        /// <summary>
         /// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("passwordRef")]

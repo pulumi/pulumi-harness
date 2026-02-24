@@ -36,7 +36,7 @@ namespace Pulumi.Harness.Autostopping.Inputs
             set => _tags = value;
         }
 
-        [Input("vmIds", required: true)]
+        [Input("vmIds")]
         private List<string>? _vmIds;
 
         /// <summary>

@@ -1016,31 +1016,24 @@ class RuleVmFilter(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 vm_ids: Sequence[_builtins.str],
                  regions: Optional[Sequence[_builtins.str]] = None,
                  tags: Optional[Sequence['outputs.RuleVmFilterTag']] = None,
+                 vm_ids: Optional[Sequence[_builtins.str]] = None,
                  zones: Optional[Sequence[_builtins.str]] = None):
         """
-        :param Sequence[_builtins.str] vm_ids: Ids of instances that needs to be managed using the AutoStopping rules
         :param Sequence[_builtins.str] regions: Regions of instances that needs to be managed using the AutoStopping rules
         :param Sequence['RuleVmFilterTagArgs'] tags: Tags of instances that needs to be managed using the AutoStopping rules
+        :param Sequence[_builtins.str] vm_ids: Ids of instances that needs to be managed using the AutoStopping rules
         :param Sequence[_builtins.str] zones: Zones of instances that needs to be managed using the AutoStopping rules
         """
-        pulumi.set(__self__, "vm_ids", vm_ids)
         if regions is not None:
             pulumi.set(__self__, "regions", regions)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vm_ids is not None:
+            pulumi.set(__self__, "vm_ids", vm_ids)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
-
-    @_builtins.property
-    @pulumi.getter(name="vmIds")
-    def vm_ids(self) -> Sequence[_builtins.str]:
-        """
-        Ids of instances that needs to be managed using the AutoStopping rules
-        """
-        return pulumi.get(self, "vm_ids")
 
     @_builtins.property
     @pulumi.getter
@@ -1057,6 +1050,14 @@ class RuleVmFilter(dict):
         Tags of instances that needs to be managed using the AutoStopping rules
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="vmIds")
+    def vm_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Ids of instances that needs to be managed using the AutoStopping rules
+        """
+        return pulumi.get(self, "vm_ids")
 
     @_builtins.property
     @pulumi.getter
@@ -2256,31 +2257,24 @@ class GetRuleVmDependResult(dict):
 @pulumi.output_type
 class GetRuleVmFilterResult(dict):
     def __init__(__self__, *,
-                 vm_ids: Sequence[_builtins.str],
                  regions: Optional[Sequence[_builtins.str]] = None,
                  tags: Optional[Sequence['outputs.GetRuleVmFilterTagResult']] = None,
+                 vm_ids: Optional[Sequence[_builtins.str]] = None,
                  zones: Optional[Sequence[_builtins.str]] = None):
         """
-        :param Sequence[_builtins.str] vm_ids: Ids of instances that needs to be managed using the AutoStopping rules
         :param Sequence[_builtins.str] regions: Regions of instances that needs to be managed using the AutoStopping rules
         :param Sequence['GetRuleVmFilterTagArgs'] tags: Tags of instances that needs to be managed using the AutoStopping rules
+        :param Sequence[_builtins.str] vm_ids: Ids of instances that needs to be managed using the AutoStopping rules
         :param Sequence[_builtins.str] zones: Zones of instances that needs to be managed using the AutoStopping rules
         """
-        pulumi.set(__self__, "vm_ids", vm_ids)
         if regions is not None:
             pulumi.set(__self__, "regions", regions)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vm_ids is not None:
+            pulumi.set(__self__, "vm_ids", vm_ids)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
-
-    @_builtins.property
-    @pulumi.getter(name="vmIds")
-    def vm_ids(self) -> Sequence[_builtins.str]:
-        """
-        Ids of instances that needs to be managed using the AutoStopping rules
-        """
-        return pulumi.get(self, "vm_ids")
 
     @_builtins.property
     @pulumi.getter
@@ -2297,6 +2291,14 @@ class GetRuleVmFilterResult(dict):
         Tags of instances that needs to be managed using the AutoStopping rules
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="vmIds")
+    def vm_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Ids of instances that needs to be managed using the AutoStopping rules
+        """
+        return pulumi.get(self, "vm_ids")
 
     @_builtins.property
     @pulumi.getter

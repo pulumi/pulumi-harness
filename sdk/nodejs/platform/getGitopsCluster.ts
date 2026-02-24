@@ -40,26 +40,12 @@ export function getGitopsCluster(args: GetGitopsClusterArgs, opts?: pulumi.Invok
  */
 export interface GetGitopsClusterArgs {
     /**
-     * Account identifier of the GitOps cluster.
-     *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: string;
-    /**
-     * Agent identifier of the GitOps cluster.
-     */
     agentId: string;
-    /**
-     * Identifier of the GitOps cluster.
-     */
     identifier: string;
-    /**
-     * Organization identifier of the cluster.
-     */
     orgId?: string;
-    /**
-     * Project identifier of the GitOps cluster.
-     */
     projectId?: string;
 }
 
@@ -68,34 +54,17 @@ export interface GetGitopsClusterArgs {
  */
 export interface GetGitopsClusterResult {
     /**
-     * Account identifier of the GitOps cluster.
-     *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
-    /**
-     * Agent identifier of the GitOps cluster.
-     */
     readonly agentId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Identifier of the GitOps cluster.
-     */
     readonly identifier: string;
-    /**
-     * Organization identifier of the cluster.
-     */
     readonly orgId?: string;
-    /**
-     * Project identifier of the GitOps cluster.
-     */
     readonly projectId?: string;
-    /**
-     * Cluster create or update request.
-     */
     readonly requests: outputs.platform.GetGitopsClusterRequest[];
 }
 /**
@@ -132,25 +101,11 @@ export function getGitopsClusterOutput(args: GetGitopsClusterOutputArgs, opts?: 
  */
 export interface GetGitopsClusterOutputArgs {
     /**
-     * Account identifier of the GitOps cluster.
-     *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: pulumi.Input<string>;
-    /**
-     * Agent identifier of the GitOps cluster.
-     */
     agentId: pulumi.Input<string>;
-    /**
-     * Identifier of the GitOps cluster.
-     */
     identifier: pulumi.Input<string>;
-    /**
-     * Organization identifier of the cluster.
-     */
     orgId?: pulumi.Input<string>;
-    /**
-     * Project identifier of the GitOps cluster.
-     */
     projectId?: pulumi.Input<string>;
 }

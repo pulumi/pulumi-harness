@@ -580,6 +580,36 @@ export const getInfraModules: typeof import("./getInfraModules").getInfraModules
 export const getInfraModulesOutput: typeof import("./getInfraModules").getInfraModulesOutput = null as any;
 utilities.lazyLoad(exports, ["getInfraModules","getInfraModulesOutput"], () => require("./getInfraModules"));
 
+export { GetInfraProviderArgs, GetInfraProviderResult, GetInfraProviderOutputArgs } from "./getInfraProvider";
+export const getInfraProvider: typeof import("./getInfraProvider").getInfraProvider = null as any;
+export const getInfraProviderOutput: typeof import("./getInfraProvider").getInfraProviderOutput = null as any;
+utilities.lazyLoad(exports, ["getInfraProvider","getInfraProviderOutput"], () => require("./getInfraProvider"));
+
+export { GetInfraProviderSigningKeyArgs, GetInfraProviderSigningKeyResult, GetInfraProviderSigningKeyOutputArgs } from "./getInfraProviderSigningKey";
+export const getInfraProviderSigningKey: typeof import("./getInfraProviderSigningKey").getInfraProviderSigningKey = null as any;
+export const getInfraProviderSigningKeyOutput: typeof import("./getInfraProviderSigningKey").getInfraProviderSigningKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getInfraProviderSigningKey","getInfraProviderSigningKeyOutput"], () => require("./getInfraProviderSigningKey"));
+
+export { GetInfraProviderSigningKeysResult } from "./getInfraProviderSigningKeys";
+export const getInfraProviderSigningKeys: typeof import("./getInfraProviderSigningKeys").getInfraProviderSigningKeys = null as any;
+export const getInfraProviderSigningKeysOutput: typeof import("./getInfraProviderSigningKeys").getInfraProviderSigningKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getInfraProviderSigningKeys","getInfraProviderSigningKeysOutput"], () => require("./getInfraProviderSigningKeys"));
+
+export { GetInfraProviderVersionArgs, GetInfraProviderVersionResult, GetInfraProviderVersionOutputArgs } from "./getInfraProviderVersion";
+export const getInfraProviderVersion: typeof import("./getInfraProviderVersion").getInfraProviderVersion = null as any;
+export const getInfraProviderVersionOutput: typeof import("./getInfraProviderVersion").getInfraProviderVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getInfraProviderVersion","getInfraProviderVersionOutput"], () => require("./getInfraProviderVersion"));
+
+export { GetInfraProviderVersionsArgs, GetInfraProviderVersionsResult, GetInfraProviderVersionsOutputArgs } from "./getInfraProviderVersions";
+export const getInfraProviderVersions: typeof import("./getInfraProviderVersions").getInfraProviderVersions = null as any;
+export const getInfraProviderVersionsOutput: typeof import("./getInfraProviderVersions").getInfraProviderVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getInfraProviderVersions","getInfraProviderVersionsOutput"], () => require("./getInfraProviderVersions"));
+
+export { GetInfraProvidersResult } from "./getInfraProviders";
+export const getInfraProviders: typeof import("./getInfraProviders").getInfraProviders = null as any;
+export const getInfraProvidersOutput: typeof import("./getInfraProviders").getInfraProvidersOutput = null as any;
+utilities.lazyLoad(exports, ["getInfraProviders","getInfraProvidersOutput"], () => require("./getInfraProviders"));
+
 export { GetInfraVariableSetArgs, GetInfraVariableSetResult, GetInfraVariableSetOutputArgs } from "./getInfraVariableSet";
 export const getInfraVariableSet: typeof import("./getInfraVariableSet").getInfraVariableSet = null as any;
 export const getInfraVariableSetOutput: typeof import("./getInfraVariableSet").getInfraVariableSetOutput = null as any;
@@ -979,6 +1009,31 @@ export { InfraModuleTestingArgs, InfraModuleTestingState } from "./infraModuleTe
 export type InfraModuleTesting = import("./infraModuleTesting").InfraModuleTesting;
 export const InfraModuleTesting: typeof import("./infraModuleTesting").InfraModuleTesting = null as any;
 utilities.lazyLoad(exports, ["InfraModuleTesting"], () => require("./infraModuleTesting"));
+
+export { InfraProviderArgs, InfraProviderState } from "./infraProvider";
+export type InfraProvider = import("./infraProvider").InfraProvider;
+export const InfraProvider: typeof import("./infraProvider").InfraProvider = null as any;
+utilities.lazyLoad(exports, ["InfraProvider"], () => require("./infraProvider"));
+
+export { InfraProviderSigningKeyArgs, InfraProviderSigningKeyState } from "./infraProviderSigningKey";
+export type InfraProviderSigningKey = import("./infraProviderSigningKey").InfraProviderSigningKey;
+export const InfraProviderSigningKey: typeof import("./infraProviderSigningKey").InfraProviderSigningKey = null as any;
+utilities.lazyLoad(exports, ["InfraProviderSigningKey"], () => require("./infraProviderSigningKey"));
+
+export { InfraProviderVersionArgs, InfraProviderVersionState } from "./infraProviderVersion";
+export type InfraProviderVersion = import("./infraProviderVersion").InfraProviderVersion;
+export const InfraProviderVersion: typeof import("./infraProviderVersion").InfraProviderVersion = null as any;
+utilities.lazyLoad(exports, ["InfraProviderVersion"], () => require("./infraProviderVersion"));
+
+export { InfraProviderVersionFileArgs, InfraProviderVersionFileState } from "./infraProviderVersionFile";
+export type InfraProviderVersionFile = import("./infraProviderVersionFile").InfraProviderVersionFile;
+export const InfraProviderVersionFile: typeof import("./infraProviderVersionFile").InfraProviderVersionFile = null as any;
+utilities.lazyLoad(exports, ["InfraProviderVersionFile"], () => require("./infraProviderVersionFile"));
+
+export { InfraProviderVersionPublishArgs, InfraProviderVersionPublishState } from "./infraProviderVersionPublish";
+export type InfraProviderVersionPublish = import("./infraProviderVersionPublish").InfraProviderVersionPublish;
+export const InfraProviderVersionPublish: typeof import("./infraProviderVersionPublish").InfraProviderVersionPublish = null as any;
+utilities.lazyLoad(exports, ["InfraProviderVersionPublish"], () => require("./infraProviderVersionPublish"));
 
 export { InfraVariableSetArgs, InfraVariableSetState } from "./infraVariableSet";
 export type InfraVariableSet = import("./infraVariableSet").InfraVariableSet;
@@ -1389,6 +1444,16 @@ const _module = {
                 return new InfraModule(name, <any>undefined, { urn })
             case "harness:platform/infraModuleTesting:InfraModuleTesting":
                 return new InfraModuleTesting(name, <any>undefined, { urn })
+            case "harness:platform/infraProvider:InfraProvider":
+                return new InfraProvider(name, <any>undefined, { urn })
+            case "harness:platform/infraProviderSigningKey:InfraProviderSigningKey":
+                return new InfraProviderSigningKey(name, <any>undefined, { urn })
+            case "harness:platform/infraProviderVersion:InfraProviderVersion":
+                return new InfraProviderVersion(name, <any>undefined, { urn })
+            case "harness:platform/infraProviderVersionFile:InfraProviderVersionFile":
+                return new InfraProviderVersionFile(name, <any>undefined, { urn })
+            case "harness:platform/infraProviderVersionPublish:InfraProviderVersionPublish":
+                return new InfraProviderVersionPublish(name, <any>undefined, { urn })
             case "harness:platform/infraVariableSet:InfraVariableSet":
                 return new InfraVariableSet(name, <any>undefined, { urn })
             case "harness:platform/infrastructure:Infrastructure":
@@ -1569,6 +1634,11 @@ pulumi.runtime.registerResourceModule("harness", "platform/idpEnvironment", _mod
 pulumi.runtime.registerResourceModule("harness", "platform/idpEnvironmentBlueprint", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraModule", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraModuleTesting", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/infraProvider", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/infraProviderSigningKey", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/infraProviderVersion", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/infraProviderVersionFile", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/infraProviderVersionPublish", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraVariableSet", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infrastructure", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/inputSet", _module)

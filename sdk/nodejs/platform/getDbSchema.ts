@@ -31,6 +31,7 @@ export function getDbSchema(args: GetDbSchemaArgs, opts?: pulumi.InvokeOptions):
         "orgId": args.orgId,
         "projectId": args.projectId,
         "type": args.type,
+        "usePercona": args.usePercona,
     }, opts);
 }
 
@@ -62,6 +63,10 @@ export interface GetDbSchemaArgs {
      * Type of the database schema. Valid values are: Repository, Script
      */
     type?: string;
+    /**
+     * If percona-toolkit is enabled for the database schema.
+     */
+    usePercona?: boolean;
 }
 
 /**
@@ -116,6 +121,10 @@ export interface GetDbSchemaResult {
      * Type of the database schema. Valid values are: Repository, Script
      */
     readonly type?: string;
+    /**
+     * If percona-toolkit is enabled for the database schema.
+     */
+    readonly usePercona?: boolean;
 }
 /**
  * Data source for retrieving a Harness DBDevOps Schema.
@@ -142,6 +151,7 @@ export function getDbSchemaOutput(args: GetDbSchemaOutputArgs, opts?: pulumi.Inv
         "orgId": args.orgId,
         "projectId": args.projectId,
         "type": args.type,
+        "usePercona": args.usePercona,
     }, opts);
 }
 
@@ -173,4 +183,8 @@ export interface GetDbSchemaOutputArgs {
      * Type of the database schema. Valid values are: Repository, Script
      */
     type?: pulumi.Input<string>;
+    /**
+     * If percona-toolkit is enabled for the database schema.
+     */
+    usePercona?: pulumi.Input<boolean>;
 }

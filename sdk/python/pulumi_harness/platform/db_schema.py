@@ -31,7 +31,8 @@ class DbSchemaArgs:
                  schema_source: Optional[pulumi.Input['DbSchemaSchemaSourceArgs']] = None,
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_percona: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DbSchema resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -45,6 +46,7 @@ class DbSchemaArgs:
         :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
+        :param pulumi.Input[_builtins.bool] use_percona: If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "org_id", org_id)
@@ -65,6 +67,8 @@ class DbSchemaArgs:
             pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if use_percona is not None:
+            pulumi.set(__self__, "use_percona", use_percona)
 
     @_builtins.property
     @pulumi.getter
@@ -198,6 +202,18 @@ class DbSchemaArgs:
     def type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="usePercona")
+    def use_percona(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+        """
+        return pulumi.get(self, "use_percona")
+
+    @use_percona.setter
+    def use_percona(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_percona", value)
+
 
 @pulumi.input_type
 class _DbSchemaState:
@@ -212,7 +228,8 @@ class _DbSchemaState:
                  schema_source: Optional[pulumi.Input['DbSchemaSchemaSourceArgs']] = None,
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_percona: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering DbSchema resources.
         :param pulumi.Input['DbSchemaChangelogScriptArgs'] changelog_script: Configuration to clone changeSets using script
@@ -226,6 +243,7 @@ class _DbSchemaState:
         :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
+        :param pulumi.Input[_builtins.bool] use_percona: If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
         """
         if changelog_script is not None:
             pulumi.set(__self__, "changelog_script", changelog_script)
@@ -249,6 +267,8 @@ class _DbSchemaState:
             pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if use_percona is not None:
+            pulumi.set(__self__, "use_percona", use_percona)
 
     @_builtins.property
     @pulumi.getter(name="changelogScript")
@@ -382,6 +402,18 @@ class _DbSchemaState:
     def type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="usePercona")
+    def use_percona(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+        """
+        return pulumi.get(self, "use_percona")
+
+    @use_percona.setter
+    def use_percona(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_percona", value)
+
 
 @pulumi.type_token("harness:platform/dbSchema:DbSchema")
 class DbSchema(pulumi.CustomResource):
@@ -400,6 +432,7 @@ class DbSchema(pulumi.CustomResource):
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_percona: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         Resource for creating a Harness DBDevOps Schema.
@@ -500,6 +533,25 @@ class DbSchema(pulumi.CustomResource):
                 "location": "db/flyway/migrations",
                 "toml": "db/flyway.toml",
             })
+        percona_enabled_test = harness.platform.DbSchema("percona_enabled_test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            service="service1",
+            type="Repository",
+            migration_type="Liquibase",
+            use_percona=True,
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+                "archive_path": "path/to/archive.zip",
+            })
         ```
 
         ## Import
@@ -525,6 +577,7 @@ class DbSchema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
+        :param pulumi.Input[_builtins.bool] use_percona: If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
         """
         ...
     @overload
@@ -631,6 +684,25 @@ class DbSchema(pulumi.CustomResource):
                 "location": "db/flyway/migrations",
                 "toml": "db/flyway.toml",
             })
+        percona_enabled_test = harness.platform.DbSchema("percona_enabled_test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            service="service1",
+            type="Repository",
+            migration_type="Liquibase",
+            use_percona=True,
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+                "archive_path": "path/to/archive.zip",
+            })
         ```
 
         ## Import
@@ -669,6 +741,7 @@ class DbSchema(pulumi.CustomResource):
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_percona: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -695,6 +768,7 @@ class DbSchema(pulumi.CustomResource):
             __props__.__dict__["service"] = service
             __props__.__dict__["tags"] = tags
             __props__.__dict__["type"] = type
+            __props__.__dict__["use_percona"] = use_percona
         super(DbSchema, __self__).__init__(
             'harness:platform/dbSchema:DbSchema',
             resource_name,
@@ -715,7 +789,8 @@ class DbSchema(pulumi.CustomResource):
             schema_source: Optional[pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
             service: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'DbSchema':
+            type: Optional[pulumi.Input[_builtins.str]] = None,
+            use_percona: Optional[pulumi.Input[_builtins.bool]] = None) -> 'DbSchema':
         """
         Get an existing DbSchema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -734,6 +809,7 @@ class DbSchema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
+        :param pulumi.Input[_builtins.bool] use_percona: If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -750,6 +826,7 @@ class DbSchema(pulumi.CustomResource):
         __props__.__dict__["service"] = service
         __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
+        __props__.__dict__["use_percona"] = use_percona
         return DbSchema(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -839,4 +916,12 @@ class DbSchema(pulumi.CustomResource):
         Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="usePercona")
+    def use_percona(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+        """
+        return pulumi.get(self, "use_percona")
 

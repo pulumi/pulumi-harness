@@ -5,7 +5,6 @@ package com.pulumi.harness.autostopping.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.autostopping.inputs.GetRuleVmFilterTagArgs;
 import java.lang.String;
 import java.util.List;
@@ -52,15 +51,15 @@ public final class GetRuleVmFilterArgs extends com.pulumi.resources.ResourceArgs
      * Ids of instances that needs to be managed using the AutoStopping rules
      * 
      */
-    @Import(name="vmIds", required=true)
-    private Output<List<String>> vmIds;
+    @Import(name="vmIds")
+    private @Nullable Output<List<String>> vmIds;
 
     /**
      * @return Ids of instances that needs to be managed using the AutoStopping rules
      * 
      */
-    public Output<List<String>> vmIds() {
-        return this.vmIds;
+    public Optional<Output<List<String>>> vmIds() {
+        return Optional.ofNullable(this.vmIds);
     }
 
     /**
@@ -173,7 +172,7 @@ public final class GetRuleVmFilterArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder vmIds(Output<List<String>> vmIds) {
+        public Builder vmIds(@Nullable Output<List<String>> vmIds) {
             $.vmIds = vmIds;
             return this;
         }
@@ -230,9 +229,6 @@ public final class GetRuleVmFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public GetRuleVmFilterArgs build() {
-            if ($.vmIds == null) {
-                throw new MissingRequiredPropertyException("GetRuleVmFilterArgs", "vmIds");
-            }
             return $;
         }
     }

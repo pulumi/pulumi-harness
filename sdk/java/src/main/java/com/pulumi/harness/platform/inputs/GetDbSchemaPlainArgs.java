@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -105,6 +106,21 @@ public final class GetDbSchemaPlainArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * If percona-toolkit is enabled for the database schema.
+     * 
+     */
+    @Import(name="usePercona")
+    private @Nullable Boolean usePercona;
+
+    /**
+     * @return If percona-toolkit is enabled for the database schema.
+     * 
+     */
+    public Optional<Boolean> usePercona() {
+        return Optional.ofNullable(this.usePercona);
+    }
+
     private GetDbSchemaPlainArgs() {}
 
     private GetDbSchemaPlainArgs(GetDbSchemaPlainArgs $) {
@@ -114,6 +130,7 @@ public final class GetDbSchemaPlainArgs extends com.pulumi.resources.InvokeArgs 
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.type = $.type;
+        this.usePercona = $.usePercona;
     }
 
     public static Builder builder() {
@@ -197,6 +214,17 @@ public final class GetDbSchemaPlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder type(@Nullable String type) {
             $.type = type;
+            return this;
+        }
+
+        /**
+         * @param usePercona If percona-toolkit is enabled for the database schema.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usePercona(@Nullable Boolean usePercona) {
+            $.usePercona = usePercona;
             return this;
         }
 

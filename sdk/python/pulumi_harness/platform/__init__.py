@@ -121,6 +121,12 @@ from .get_idp_environment_blueprint import *
 from .get_infra_module import *
 from .get_infra_module_testing import *
 from .get_infra_modules import *
+from .get_infra_provider import *
+from .get_infra_provider_signing_key import *
+from .get_infra_provider_signing_keys import *
+from .get_infra_provider_version import *
+from .get_infra_provider_versions import *
+from .get_infra_providers import *
 from .get_infra_variable_set import *
 from .get_infrastructure import *
 from .get_input_set import *
@@ -201,6 +207,11 @@ from .idp_environment import *
 from .idp_environment_blueprint import *
 from .infra_module import *
 from .infra_module_testing import *
+from .infra_provider import *
+from .infra_provider_signing_key import *
+from .infra_provider_version import *
+from .infra_provider_version_file import *
+from .infra_provider_version_publish import *
 from .infra_variable_set import *
 from .infrastructure import *
 from .input_set import *

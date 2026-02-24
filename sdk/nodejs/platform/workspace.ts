@@ -83,20 +83,6 @@ import * as utilities from "../utilities";
  *         plan: "plan_pipeline_id",
  *         apply: "apply_pipeline_id",
  *     },
- *     connectors: [
- *         {
- *             connectorRef: "awsconnector",
- *             type: "aws",
- *         },
- *         {
- *             connectorRef: "gcpconnector",
- *             type: "gcp",
- *         },
- *         {
- *             connectorRef: "azureconnector",
- *             type: "azure",
- *         },
- *     ],
  * });
  * ```
  *
@@ -173,7 +159,7 @@ export class Workspace extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
-     * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+     * Provider connector is the reference to the connector for the infrastructure provider
      */
     declare public readonly providerConnector: pulumi.Output<string | undefined>;
     /**
@@ -209,6 +195,10 @@ export class Workspace extends pulumi.CustomResource {
      */
     declare public readonly repositorySha: pulumi.Output<string | undefined>;
     /**
+     * Boolean flag for run-all terragrunt modules
+     */
+    declare public readonly runAll: pulumi.Output<boolean | undefined>;
+    /**
      * Tags to associate with the resource.
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
@@ -220,6 +210,14 @@ export class Workspace extends pulumi.CustomResource {
      * Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
      */
     declare public readonly terraformVariables: pulumi.Output<outputs.platform.WorkspaceTerraformVariable[] | undefined>;
+    /**
+     * Set to true to enable Terragrunt mode
+     */
+    declare public readonly terragruntProvider: pulumi.Output<boolean | undefined>;
+    /**
+     * Terragrunt version to use (e.g., 0.45.0)
+     */
+    declare public readonly terragruntVersion: pulumi.Output<string | undefined>;
     /**
      * Variable sets to use.
      */
@@ -256,9 +254,12 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["repositoryConnector"] = state?.repositoryConnector;
             resourceInputs["repositoryPath"] = state?.repositoryPath;
             resourceInputs["repositorySha"] = state?.repositorySha;
+            resourceInputs["runAll"] = state?.runAll;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["terraformVariableFiles"] = state?.terraformVariableFiles;
             resourceInputs["terraformVariables"] = state?.terraformVariables;
+            resourceInputs["terragruntProvider"] = state?.terragruntProvider;
+            resourceInputs["terragruntVersion"] = state?.terragruntVersion;
             resourceInputs["variableSets"] = state?.variableSets;
         } else {
             const args = argsOrState as WorkspaceArgs | undefined;
@@ -307,9 +308,12 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["repositoryConnector"] = args?.repositoryConnector;
             resourceInputs["repositoryPath"] = args?.repositoryPath;
             resourceInputs["repositorySha"] = args?.repositorySha;
+            resourceInputs["runAll"] = args?.runAll;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["terraformVariableFiles"] = args?.terraformVariableFiles;
             resourceInputs["terraformVariables"] = args?.terraformVariables;
+            resourceInputs["terragruntProvider"] = args?.terragruntProvider;
+            resourceInputs["terragruntVersion"] = args?.terragruntVersion;
             resourceInputs["variableSets"] = args?.variableSets;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -358,7 +362,7 @@ export interface WorkspaceState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+     * Provider connector is the reference to the connector for the infrastructure provider
      */
     providerConnector?: pulumi.Input<string>;
     /**
@@ -394,6 +398,10 @@ export interface WorkspaceState {
      */
     repositorySha?: pulumi.Input<string>;
     /**
+     * Boolean flag for run-all terragrunt modules
+     */
+    runAll?: pulumi.Input<boolean>;
+    /**
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -405,6 +413,14 @@ export interface WorkspaceState {
      * Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
      */
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariable>[]>;
+    /**
+     * Set to true to enable Terragrunt mode
+     */
+    terragruntProvider?: pulumi.Input<boolean>;
+    /**
+     * Terragrunt version to use (e.g., 0.45.0)
+     */
+    terragruntVersion?: pulumi.Input<string>;
     /**
      * Variable sets to use.
      */
@@ -452,7 +468,7 @@ export interface WorkspaceArgs {
      */
     projectId: pulumi.Input<string>;
     /**
-     * Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+     * Provider connector is the reference to the connector for the infrastructure provider
      */
     providerConnector?: pulumi.Input<string>;
     /**
@@ -488,6 +504,10 @@ export interface WorkspaceArgs {
      */
     repositorySha?: pulumi.Input<string>;
     /**
+     * Boolean flag for run-all terragrunt modules
+     */
+    runAll?: pulumi.Input<boolean>;
+    /**
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -499,6 +519,14 @@ export interface WorkspaceArgs {
      * Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
      */
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariable>[]>;
+    /**
+     * Set to true to enable Terragrunt mode
+     */
+    terragruntProvider?: pulumi.Input<boolean>;
+    /**
+     * Terragrunt version to use (e.g., 0.45.0)
+     */
+    terragruntVersion?: pulumi.Input<string>;
     /**
      * Variable sets to use.
      */

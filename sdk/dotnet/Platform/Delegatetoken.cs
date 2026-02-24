@@ -139,6 +139,10 @@ namespace Pulumi.Harness.Platform
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumi",
+                AdditionalSecretOutputs =
+                {
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -216,11 +220,21 @@ namespace Pulumi.Harness.Platform
         [Input("tokenStatus")]
         public Input<string>? TokenStatus { get; set; }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// Value of the delegate token. Encoded in base64.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public DelegatetokenArgs()
         {
@@ -284,11 +298,21 @@ namespace Pulumi.Harness.Platform
         [Input("tokenStatus")]
         public Input<string>? TokenStatus { get; set; }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// Value of the delegate token. Encoded in base64.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public DelegatetokenState()
         {

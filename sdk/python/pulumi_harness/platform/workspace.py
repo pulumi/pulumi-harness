@@ -39,9 +39,12 @@ class WorkspaceArgs:
                  repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_sha: Optional[pulumi.Input[_builtins.str]] = None,
+                 run_all: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]] = None,
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]] = None,
+                 terragrunt_provider: Optional[pulumi.Input[_builtins.bool]] = None,
+                 terragrunt_version: Optional[pulumi.Input[_builtins.str]] = None,
                  variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Workspace resource.
@@ -59,13 +62,16 @@ class WorkspaceArgs:
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
         :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        :param pulumi.Input[_builtins.bool] run_all: Boolean flag for run-all terragrunt modules
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]] terraform_variables: Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+        :param pulumi.Input[_builtins.bool] terragrunt_provider: Set to true to enable Terragrunt mode
+        :param pulumi.Input[_builtins.str] terragrunt_version: Terragrunt version to use (e.g., 0.45.0)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] variable_sets: Variable sets to use.
         """
         pulumi.set(__self__, "cost_estimation_enabled", cost_estimation_enabled)
@@ -95,12 +101,18 @@ class WorkspaceArgs:
             pulumi.set(__self__, "repository_commit", repository_commit)
         if repository_sha is not None:
             pulumi.set(__self__, "repository_sha", repository_sha)
+        if run_all is not None:
+            pulumi.set(__self__, "run_all", run_all)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if terraform_variable_files is not None:
             pulumi.set(__self__, "terraform_variable_files", terraform_variable_files)
         if terraform_variables is not None:
             pulumi.set(__self__, "terraform_variables", terraform_variables)
+        if terragrunt_provider is not None:
+            pulumi.set(__self__, "terragrunt_provider", terragrunt_provider)
+        if terragrunt_version is not None:
+            pulumi.set(__self__, "terragrunt_version", terragrunt_version)
         if variable_sets is not None:
             pulumi.set(__self__, "variable_sets", variable_sets)
 
@@ -276,7 +288,7 @@ class WorkspaceArgs:
     @pulumi.getter(name="providerConnector")
     def provider_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        Provider connector is the reference to the connector for the infrastructure provider
         """
         return pulumi.get(self, "provider_connector")
 
@@ -321,6 +333,18 @@ class WorkspaceArgs:
         pulumi.set(self, "repository_sha", value)
 
     @_builtins.property
+    @pulumi.getter(name="runAll")
+    def run_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Boolean flag for run-all terragrunt modules
+        """
+        return pulumi.get(self, "run_all")
+
+    @run_all.setter
+    def run_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "run_all", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -357,6 +381,30 @@ class WorkspaceArgs:
         pulumi.set(self, "terraform_variables", value)
 
     @_builtins.property
+    @pulumi.getter(name="terragruntProvider")
+    def terragrunt_provider(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true to enable Terragrunt mode
+        """
+        return pulumi.get(self, "terragrunt_provider")
+
+    @terragrunt_provider.setter
+    def terragrunt_provider(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "terragrunt_provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="terragruntVersion")
+    def terragrunt_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Terragrunt version to use (e.g., 0.45.0)
+        """
+        return pulumi.get(self, "terragrunt_version")
+
+    @terragrunt_version.setter
+    def terragrunt_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "terragrunt_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="variableSets")
     def variable_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -390,9 +438,12 @@ class _WorkspaceState:
                  repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_path: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_sha: Optional[pulumi.Input[_builtins.str]] = None,
+                 run_all: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]] = None,
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]] = None,
+                 terragrunt_provider: Optional[pulumi.Input[_builtins.bool]] = None,
+                 terragrunt_version: Optional[pulumi.Input[_builtins.str]] = None,
                  variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Workspace resources.
@@ -405,7 +456,7 @@ class _WorkspaceState:
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
         :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform or opentofu)
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
@@ -414,9 +465,12 @@ class _WorkspaceState:
         :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
         :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides.
         :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        :param pulumi.Input[_builtins.bool] run_all: Boolean flag for run-all terragrunt modules
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]] terraform_variables: Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+        :param pulumi.Input[_builtins.bool] terragrunt_provider: Set to true to enable Terragrunt mode
+        :param pulumi.Input[_builtins.str] terragrunt_version: Terragrunt version to use (e.g., 0.45.0)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] variable_sets: Variable sets to use.
         """
         if connectors is not None:
@@ -455,12 +509,18 @@ class _WorkspaceState:
             pulumi.set(__self__, "repository_path", repository_path)
         if repository_sha is not None:
             pulumi.set(__self__, "repository_sha", repository_sha)
+        if run_all is not None:
+            pulumi.set(__self__, "run_all", run_all)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if terraform_variable_files is not None:
             pulumi.set(__self__, "terraform_variable_files", terraform_variable_files)
         if terraform_variables is not None:
             pulumi.set(__self__, "terraform_variables", terraform_variables)
+        if terragrunt_provider is not None:
+            pulumi.set(__self__, "terragrunt_provider", terragrunt_provider)
+        if terragrunt_version is not None:
+            pulumi.set(__self__, "terragrunt_version", terragrunt_version)
         if variable_sets is not None:
             pulumi.set(__self__, "variable_sets", variable_sets)
 
@@ -576,7 +636,7 @@ class _WorkspaceState:
     @pulumi.getter(name="providerConnector")
     def provider_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        Provider connector is the reference to the connector for the infrastructure provider
         """
         return pulumi.get(self, "provider_connector")
 
@@ -681,6 +741,18 @@ class _WorkspaceState:
         pulumi.set(self, "repository_sha", value)
 
     @_builtins.property
+    @pulumi.getter(name="runAll")
+    def run_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Boolean flag for run-all terragrunt modules
+        """
+        return pulumi.get(self, "run_all")
+
+    @run_all.setter
+    def run_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "run_all", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -715,6 +787,30 @@ class _WorkspaceState:
     @terraform_variables.setter
     def terraform_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]):
         pulumi.set(self, "terraform_variables", value)
+
+    @_builtins.property
+    @pulumi.getter(name="terragruntProvider")
+    def terragrunt_provider(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true to enable Terragrunt mode
+        """
+        return pulumi.get(self, "terragrunt_provider")
+
+    @terragrunt_provider.setter
+    def terragrunt_provider(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "terragrunt_provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="terragruntVersion")
+    def terragrunt_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Terragrunt version to use (e.g., 0.45.0)
+        """
+        return pulumi.get(self, "terragrunt_version")
+
+    @terragrunt_version.setter
+    def terragrunt_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "terragrunt_version", value)
 
     @_builtins.property
     @pulumi.getter(name="variableSets")
@@ -753,9 +849,12 @@ class Workspace(pulumi.CustomResource):
                  repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_path: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_sha: Optional[pulumi.Input[_builtins.str]] = None,
+                 run_all: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
+                 terragrunt_provider: Optional[pulumi.Input[_builtins.bool]] = None,
+                 terragrunt_version: Optional[pulumi.Input[_builtins.str]] = None,
                  variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -834,21 +933,7 @@ class Workspace(pulumi.CustomResource):
                 "drift": "drift_pipeline_id",
                 "plan": "plan_pipeline_id",
                 "apply": "apply_pipeline_id",
-            },
-            connectors=[
-                {
-                    "connector_ref": "awsconnector",
-                    "type": "aws",
-                },
-                {
-                    "connector_ref": "gcpconnector",
-                    "type": "gcp",
-                },
-                {
-                    "connector_ref": "azureconnector",
-                    "type": "azure",
-                },
-            ])
+            })
         ```
 
         ## Import
@@ -870,7 +955,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
         :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform or opentofu)
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
@@ -879,9 +964,12 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
         :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides.
         :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        :param pulumi.Input[_builtins.bool] run_all: Boolean flag for run-all terragrunt modules
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]] terraform_variables: Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+        :param pulumi.Input[_builtins.bool] terragrunt_provider: Set to true to enable Terragrunt mode
+        :param pulumi.Input[_builtins.str] terragrunt_version: Terragrunt version to use (e.g., 0.45.0)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] variable_sets: Variable sets to use.
         """
         ...
@@ -966,21 +1054,7 @@ class Workspace(pulumi.CustomResource):
                 "drift": "drift_pipeline_id",
                 "plan": "plan_pipeline_id",
                 "apply": "apply_pipeline_id",
-            },
-            connectors=[
-                {
-                    "connector_ref": "awsconnector",
-                    "type": "aws",
-                },
-                {
-                    "connector_ref": "gcpconnector",
-                    "type": "gcp",
-                },
-                {
-                    "connector_ref": "azureconnector",
-                    "type": "azure",
-                },
-            ])
+            })
         ```
 
         ## Import
@@ -1024,9 +1098,12 @@ class Workspace(pulumi.CustomResource):
                  repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_path: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_sha: Optional[pulumi.Input[_builtins.str]] = None,
+                 run_all: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
+                 terragrunt_provider: Optional[pulumi.Input[_builtins.bool]] = None,
+                 terragrunt_version: Optional[pulumi.Input[_builtins.str]] = None,
                  variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1073,9 +1150,12 @@ class Workspace(pulumi.CustomResource):
                 raise TypeError("Missing required property 'repository_path'")
             __props__.__dict__["repository_path"] = repository_path
             __props__.__dict__["repository_sha"] = repository_sha
+            __props__.__dict__["run_all"] = run_all
             __props__.__dict__["tags"] = tags
             __props__.__dict__["terraform_variable_files"] = terraform_variable_files
             __props__.__dict__["terraform_variables"] = terraform_variables
+            __props__.__dict__["terragrunt_provider"] = terragrunt_provider
+            __props__.__dict__["terragrunt_version"] = terragrunt_version
             __props__.__dict__["variable_sets"] = variable_sets
         super(Workspace, __self__).__init__(
             'harness:platform/workspace:Workspace',
@@ -1105,9 +1185,12 @@ class Workspace(pulumi.CustomResource):
             repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
             repository_path: Optional[pulumi.Input[_builtins.str]] = None,
             repository_sha: Optional[pulumi.Input[_builtins.str]] = None,
+            run_all: Optional[pulumi.Input[_builtins.bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
             terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
+            terragrunt_provider: Optional[pulumi.Input[_builtins.bool]] = None,
+            terragrunt_version: Optional[pulumi.Input[_builtins.str]] = None,
             variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Workspace':
         """
         Get an existing Workspace resource's state with the given name, id, and optional extra
@@ -1125,7 +1208,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
         :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform or opentofu)
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
@@ -1134,9 +1217,12 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
         :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides.
         :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        :param pulumi.Input[_builtins.bool] run_all: Boolean flag for run-all terragrunt modules
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]] terraform_variables: Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+        :param pulumi.Input[_builtins.bool] terragrunt_provider: Set to true to enable Terragrunt mode
+        :param pulumi.Input[_builtins.str] terragrunt_version: Terragrunt version to use (e.g., 0.45.0)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] variable_sets: Variable sets to use.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1161,9 +1247,12 @@ class Workspace(pulumi.CustomResource):
         __props__.__dict__["repository_connector"] = repository_connector
         __props__.__dict__["repository_path"] = repository_path
         __props__.__dict__["repository_sha"] = repository_sha
+        __props__.__dict__["run_all"] = run_all
         __props__.__dict__["tags"] = tags
         __props__.__dict__["terraform_variable_files"] = terraform_variable_files
         __props__.__dict__["terraform_variables"] = terraform_variables
+        __props__.__dict__["terragrunt_provider"] = terragrunt_provider
+        __props__.__dict__["terragrunt_version"] = terragrunt_version
         __props__.__dict__["variable_sets"] = variable_sets
         return Workspace(resource_name, opts=opts, __props__=__props__)
 
@@ -1243,7 +1332,7 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter(name="providerConnector")
     def provider_connector(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Provider connector is the reference to the connector for the infrastructure provider - this way of defining connector will be deprecated in the coming releases, use connector as block set.
+        Provider connector is the reference to the connector for the infrastructure provider
         """
         return pulumi.get(self, "provider_connector")
 
@@ -1312,6 +1401,14 @@ class Workspace(pulumi.CustomResource):
         return pulumi.get(self, "repository_sha")
 
     @_builtins.property
+    @pulumi.getter(name="runAll")
+    def run_all(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Boolean flag for run-all terragrunt modules
+        """
+        return pulumi.get(self, "run_all")
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
@@ -1334,6 +1431,22 @@ class Workspace(pulumi.CustomResource):
         Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
         """
         return pulumi.get(self, "terraform_variables")
+
+    @_builtins.property
+    @pulumi.getter(name="terragruntProvider")
+    def terragrunt_provider(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Set to true to enable Terragrunt mode
+        """
+        return pulumi.get(self, "terragrunt_provider")
+
+    @_builtins.property
+    @pulumi.getter(name="terragruntVersion")
+    def terragrunt_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Terragrunt version to use (e.g., 0.45.0)
+        """
+        return pulumi.get(self, "terragrunt_version")
 
     @_builtins.property
     @pulumi.getter(name="variableSets")

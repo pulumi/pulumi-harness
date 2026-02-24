@@ -54,38 +54,25 @@ func GetGitopsCluster(ctx *pulumi.Context, args *GetGitopsClusterArgs, opts ...p
 
 // A collection of arguments for invoking getGitopsCluster.
 type GetGitopsClusterArgs struct {
-	// Account identifier of the GitOps cluster.
-	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
-	AccountId *string `pulumi:"accountId"`
-	// Agent identifier of the GitOps cluster.
-	AgentId string `pulumi:"agentId"`
-	// Identifier of the GitOps cluster.
-	Identifier string `pulumi:"identifier"`
-	// Organization identifier of the cluster.
-	OrgId *string `pulumi:"orgId"`
-	// Project identifier of the GitOps cluster.
-	ProjectId *string `pulumi:"projectId"`
+	AccountId  *string `pulumi:"accountId"`
+	AgentId    string  `pulumi:"agentId"`
+	Identifier string  `pulumi:"identifier"`
+	OrgId      *string `pulumi:"orgId"`
+	ProjectId  *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getGitopsCluster.
 type GetGitopsClusterResult struct {
-	// Account identifier of the GitOps cluster.
-	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
-	// Agent identifier of the GitOps cluster.
-	AgentId string `pulumi:"agentId"`
+	AgentId   string `pulumi:"agentId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Identifier of the GitOps cluster.
-	Identifier string `pulumi:"identifier"`
-	// Organization identifier of the cluster.
-	OrgId *string `pulumi:"orgId"`
-	// Project identifier of the GitOps cluster.
-	ProjectId *string `pulumi:"projectId"`
-	// Cluster create or update request.
-	Requests []GetGitopsClusterRequest `pulumi:"requests"`
+	Id         string                    `pulumi:"id"`
+	Identifier string                    `pulumi:"identifier"`
+	OrgId      *string                   `pulumi:"orgId"`
+	ProjectId  *string                   `pulumi:"projectId"`
+	Requests   []GetGitopsClusterRequest `pulumi:"requests"`
 }
 
 func GetGitopsClusterOutput(ctx *pulumi.Context, args GetGitopsClusterOutputArgs, opts ...pulumi.InvokeOption) GetGitopsClusterResultOutput {
@@ -99,18 +86,12 @@ func GetGitopsClusterOutput(ctx *pulumi.Context, args GetGitopsClusterOutputArgs
 
 // A collection of arguments for invoking getGitopsCluster.
 type GetGitopsClusterOutputArgs struct {
-	// Account identifier of the GitOps cluster.
-	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Agent identifier of the GitOps cluster.
-	AgentId pulumi.StringInput `pulumi:"agentId"`
-	// Identifier of the GitOps cluster.
-	Identifier pulumi.StringInput `pulumi:"identifier"`
-	// Organization identifier of the cluster.
-	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Project identifier of the GitOps cluster.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	AccountId  pulumi.StringPtrInput `pulumi:"accountId"`
+	AgentId    pulumi.StringInput    `pulumi:"agentId"`
+	Identifier pulumi.StringInput    `pulumi:"identifier"`
+	OrgId      pulumi.StringPtrInput `pulumi:"orgId"`
+	ProjectId  pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
 func (GetGitopsClusterOutputArgs) ElementType() reflect.Type {
@@ -132,14 +113,11 @@ func (o GetGitopsClusterResultOutput) ToGetGitopsClusterResultOutputWithContext(
 	return o
 }
 
-// Account identifier of the GitOps cluster.
-//
 // Deprecated: This field is deprecated and will be removed in a future release.
 func (o GetGitopsClusterResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsClusterResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Agent identifier of the GitOps cluster.
 func (o GetGitopsClusterResultOutput) AgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsClusterResult) string { return v.AgentId }).(pulumi.StringOutput)
 }
@@ -149,22 +127,18 @@ func (o GetGitopsClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier of the GitOps cluster.
 func (o GetGitopsClusterResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsClusterResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Organization identifier of the cluster.
 func (o GetGitopsClusterResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Project identifier of the GitOps cluster.
 func (o GetGitopsClusterResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Cluster create or update request.
 func (o GetGitopsClusterResultOutput) Requests() GetGitopsClusterRequestArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterResult) []GetGitopsClusterRequest { return v.Requests }).(GetGitopsClusterRequestArrayOutput)
 }

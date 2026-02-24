@@ -460,7 +460,9 @@ class Delegatetoken(pulumi.CustomResource):
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["revoke_after"] = revoke_after
             __props__.__dict__["token_status"] = token_status
-            __props__.__dict__["value"] = value
+            __props__.__dict__["value"] = None if value is None else pulumi.Output.secret(value)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Delegatetoken, __self__).__init__(
             'harness:platform/delegatetoken:Delegatetoken',
             resource_name,

@@ -12,6 +12,7 @@ import com.pulumi.harness.platform.DbSchemaArgs;
 import com.pulumi.harness.platform.inputs.DbSchemaState;
 import com.pulumi.harness.platform.outputs.DbSchemaChangelogScript;
 import com.pulumi.harness.platform.outputs.DbSchemaSchemaSource;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -138,6 +139,26 @@ import javax.annotation.Nullable;
  *                 .shell("sh/bash")
  *                 .location("db/flyway/migrations")
  *                 .toml("db/flyway.toml")
+ *                 .build())
+ *             .build());
+ * 
+ *         var perconaEnabledTest = new DbSchema("perconaEnabledTest", DbSchemaArgs.builder()
+ *             .identifier("identifier")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .name("name")
+ *             .service("service1")
+ *             .type("Repository")
+ *             .migrationType("Liquibase")
+ *             .usePercona(true)
+ *             .tags(            
+ *                 "foo:bar",
+ *                 "bar:foo")
+ *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
+ *                 .connector("gitConnector")
+ *                 .repo("TestRepo")
+ *                 .location("db/example-changelog.yaml")
+ *                 .archivePath("path/to/archive.zip")
  *                 .build())
  *             .build());
  * 
@@ -312,6 +333,20 @@ public class DbSchema extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> type() {
         return Codegen.optional(this.type);
+    }
+    /**
+     * If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+     * 
+     */
+    @Export(name="usePercona", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> usePercona;
+
+    /**
+     * @return If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> usePercona() {
+        return Codegen.optional(this.usePercona);
     }
 
     /**

@@ -110,6 +110,26 @@ import * as utilities from "../utilities";
  *         toml: "db/flyway.toml",
  *     },
  * });
+ * const perconaEnabledTest = new harness.platform.DbSchema("percona_enabled_test", {
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     name: "name",
+ *     service: "service1",
+ *     type: "Repository",
+ *     migrationType: "Liquibase",
+ *     usePercona: true,
+ *     tags: [
+ *         "foo:bar",
+ *         "bar:foo",
+ *     ],
+ *     schemaSource: {
+ *         connector: "gitConnector",
+ *         repo: "TestRepo",
+ *         location: "db/example-changelog.yaml",
+ *         archivePath: "path/to/archive.zip",
+ *     },
+ * });
  * ```
  *
  * ## Import
@@ -194,6 +214,10 @@ export class DbSchema extends pulumi.CustomResource {
      * Type of the database schema. Valid values are: SCRIPT, REPOSITORY
      */
     declare public readonly type: pulumi.Output<string | undefined>;
+    /**
+     * If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+     */
+    declare public readonly usePercona: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a DbSchema resource with the given unique name, arguments, and options.
@@ -219,6 +243,7 @@ export class DbSchema extends pulumi.CustomResource {
             resourceInputs["service"] = state?.service;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["type"] = state?.type;
+            resourceInputs["usePercona"] = state?.usePercona;
         } else {
             const args = argsOrState as DbSchemaArgs | undefined;
             if (args?.identifier === undefined && !opts.urn) {
@@ -241,6 +266,7 @@ export class DbSchema extends pulumi.CustomResource {
             resourceInputs["service"] = args?.service;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["type"] = args?.type;
+            resourceInputs["usePercona"] = args?.usePercona;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DbSchema.__pulumiType, name, resourceInputs, opts);
@@ -295,6 +321,10 @@ export interface DbSchemaState {
      * Type of the database schema. Valid values are: SCRIPT, REPOSITORY
      */
     type?: pulumi.Input<string>;
+    /**
+     * If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+     */
+    usePercona?: pulumi.Input<boolean>;
 }
 
 /**
@@ -345,4 +375,8 @@ export interface DbSchemaArgs {
      * Type of the database schema. Valid values are: SCRIPT, REPOSITORY
      */
     type?: pulumi.Input<string>;
+    /**
+     * If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
+     */
+    usePercona?: pulumi.Input<boolean>;
 }

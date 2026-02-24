@@ -4,7 +4,6 @@
 package com.pulumi.harness.autostopping.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.autostopping.outputs.RuleVmFilterTag;
 import java.lang.String;
 import java.util.List;
@@ -27,7 +26,7 @@ public final class RuleVmFilter {
      * @return Ids of instances that needs to be managed using the AutoStopping rules
      * 
      */
-    private List<String> vmIds;
+    private @Nullable List<String> vmIds;
     /**
      * @return Zones of instances that needs to be managed using the AutoStopping rules
      * 
@@ -54,7 +53,7 @@ public final class RuleVmFilter {
      * 
      */
     public List<String> vmIds() {
-        return this.vmIds;
+        return this.vmIds == null ? List.of() : this.vmIds;
     }
     /**
      * @return Zones of instances that needs to be managed using the AutoStopping rules
@@ -75,7 +74,7 @@ public final class RuleVmFilter {
     public static final class Builder {
         private @Nullable List<String> regions;
         private @Nullable List<RuleVmFilterTag> tags;
-        private List<String> vmIds;
+        private @Nullable List<String> vmIds;
         private @Nullable List<String> zones;
         public Builder() {}
         public Builder(RuleVmFilter defaults) {
@@ -105,10 +104,8 @@ public final class RuleVmFilter {
             return tags(List.of(tags));
         }
         @CustomType.Setter
-        public Builder vmIds(List<String> vmIds) {
-            if (vmIds == null) {
-              throw new MissingRequiredPropertyException("RuleVmFilter", "vmIds");
-            }
+        public Builder vmIds(@Nullable List<String> vmIds) {
+
             this.vmIds = vmIds;
             return this;
         }

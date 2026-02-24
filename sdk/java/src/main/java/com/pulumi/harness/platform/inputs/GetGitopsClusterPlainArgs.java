@@ -16,8 +16,6 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
     public static final GetGitopsClusterPlainArgs Empty = new GetGitopsClusterPlainArgs();
 
     /**
-     * Account identifier of the GitOps cluster.
-     * 
      * @deprecated
      * This field is deprecated and will be removed in a future release.
      * 
@@ -27,8 +25,6 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
     private @Nullable String accountId;
 
     /**
-     * @return Account identifier of the GitOps cluster.
-     * 
      * @deprecated
      * This field is deprecated and will be removed in a future release.
      * 
@@ -38,62 +34,30 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * Agent identifier of the GitOps cluster.
-     * 
-     */
     @Import(name="agentId", required=true)
     private String agentId;
 
-    /**
-     * @return Agent identifier of the GitOps cluster.
-     * 
-     */
     public String agentId() {
         return this.agentId;
     }
 
-    /**
-     * Identifier of the GitOps cluster.
-     * 
-     */
     @Import(name="identifier", required=true)
     private String identifier;
 
-    /**
-     * @return Identifier of the GitOps cluster.
-     * 
-     */
     public String identifier() {
         return this.identifier;
     }
 
-    /**
-     * Organization identifier of the cluster.
-     * 
-     */
     @Import(name="orgId")
     private @Nullable String orgId;
 
-    /**
-     * @return Organization identifier of the cluster.
-     * 
-     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
-    /**
-     * Project identifier of the GitOps cluster.
-     * 
-     */
     @Import(name="projectId")
     private @Nullable String projectId;
 
-    /**
-     * @return Project identifier of the GitOps cluster.
-     * 
-     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -127,8 +91,6 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param accountId Account identifier of the GitOps cluster.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -141,45 +103,21 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
-        /**
-         * @param agentId Agent identifier of the GitOps cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder agentId(String agentId) {
             $.agentId = agentId;
             return this;
         }
 
-        /**
-         * @param identifier Identifier of the GitOps cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder identifier(String identifier) {
             $.identifier = identifier;
             return this;
         }
 
-        /**
-         * @param orgId Organization identifier of the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
         }
 
-        /**
-         * @param projectId Project identifier of the GitOps cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;
