@@ -1409,6 +1409,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "key_pair": {
+                                    "maxItemsOne": true
+                                },
                                 "service_account": {
                                     "maxItemsOne": true
                                 },
@@ -14222,6 +14225,38 @@
                     }
                 }
             },
+            "harness_platform_infra_provider": {
+                "current": "harness:platform/infraProvider:InfraProvider",
+                "fields": {
+                    "versions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "files": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_platform_infra_provider_signing_key": {
+                "current": "harness:platform/infraProviderSigningKey:InfraProviderSigningKey"
+            },
+            "harness_platform_infra_provider_version": {
+                "current": "harness:platform/infraProviderVersion:InfraProviderVersion",
+                "fields": {
+                    "protocols": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_infra_provider_version_file": {
+                "current": "harness:platform/infraProviderVersionFile:InfraProviderVersionFile"
+            },
+            "harness_platform_infra_provider_version_publish": {
+                "current": "harness:platform/infraProviderVersionPublish:InfraProviderVersionPublish"
+            },
             "harness_platform_infra_variable_set": {
                 "current": "harness:platform/infraVariableSet:InfraVariableSet",
                 "fields": {
@@ -16614,6 +16649,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "key_pair": {
+                                    "maxItemsOne": false
+                                },
                                 "service_account": {
                                     "maxItemsOne": false
                                 },
@@ -17560,6 +17598,66 @@
                 "current": "harness:platform/getInfraModules:getInfraModules",
                 "fields": {
                     "modules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_infra_provider": {
+                "current": "harness:platform/getInfraProvider:getInfraProvider",
+                "fields": {
+                    "versions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "files": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_platform_infra_provider_signing_key": {
+                "current": "harness:platform/getInfraProviderSigningKey:getInfraProviderSigningKey"
+            },
+            "harness_platform_infra_provider_signing_keys": {
+                "current": "harness:platform/getInfraProviderSigningKeys:getInfraProviderSigningKeys",
+                "fields": {
+                    "signing_keys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_infra_provider_version": {
+                "current": "harness:platform/getInfraProviderVersion:getInfraProviderVersion",
+                "fields": {
+                    "protocols": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_infra_provider_versions": {
+                "current": "harness:platform/getInfraProviderVersions:getInfraProviderVersions",
+                "fields": {
+                    "versions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "platforms": {
+                                    "maxItemsOne": false
+                                },
+                                "protocols": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_platform_infra_providers": {
+                "current": "harness:platform/getInfraProviders:getInfraProviders",
+                "fields": {
+                    "providers": {
                         "maxItemsOne": false
                     }
                 }

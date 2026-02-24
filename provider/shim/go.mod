@@ -5,7 +5,7 @@ go 1.24.11
 toolchain go1.24.12
 
 require (
-	github.com/harness/terraform-provider-harness v0.41.3
+	github.com/harness/terraform-provider-harness v0.41.4
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.38.1
 	github.com/pulumi/pulumi-harness/provider v0.0.0-20221227064623-0d00513c0628
 )
@@ -23,7 +23,7 @@ require (
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
-	github.com/harness/harness-go-sdk v0.7.7 // indirect
+	github.com/harness/harness-go-sdk v0.7.11 // indirect
 	github.com/harness/harness-openapi-go-client v0.0.25 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
@@ -64,7 +64,7 @@ require (
 	golang.org/x/crypto v0.47.0 // indirect
 	golang.org/x/mod v0.31.0 // indirect
 	golang.org/x/net v0.49.0 // indirect
-	golang.org/x/oauth2 v0.34.0 // indirect
+	golang.org/x/oauth2 v0.35.0 // indirect
 	golang.org/x/sync v0.19.0 // indirect
 	golang.org/x/sys v0.40.0 // indirect
 	golang.org/x/text v0.33.0 // indirect
