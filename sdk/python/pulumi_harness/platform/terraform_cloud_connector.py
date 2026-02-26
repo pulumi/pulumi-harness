@@ -33,6 +33,7 @@ class TerraformCloudConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TerraformCloudConnector resource.
+
         :param pulumi.Input['TerraformCloudConnectorCredentialsArgs'] credentials: Credentials to connect to the Terraform Cloud platform.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] url: URL of the Terraform Cloud platform.
@@ -198,6 +199,7 @@ class _TerraformCloudConnectorState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TerraformCloudConnector resources.
+
         :param pulumi.Input['TerraformCloudConnectorCredentialsArgs'] credentials: Credentials to connect to the Terraform Cloud platform.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Connect only using delegates with these tags.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -393,6 +395,7 @@ class TerraformCloudConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/terraformCloudConnector:TerraformCloudConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TerraformCloudConnectorCredentialsArgs', 'TerraformCloudConnectorCredentialsArgsDict']] credentials: Credentials to connect to the Terraform Cloud platform.
@@ -436,6 +439,7 @@ class TerraformCloudConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/terraformCloudConnector:TerraformCloudConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TerraformCloudConnectorArgs args: The arguments to use to populate this resource's properties.

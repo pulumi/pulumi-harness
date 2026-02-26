@@ -36,6 +36,7 @@ class KubernetesConnectorArgs:
                  username_password: Optional[pulumi.Input['KubernetesConnectorUsernamePasswordArgs']] = None):
         """
         The set of arguments for constructing a KubernetesConnector resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input['KubernetesConnectorClientKeyCertArgs'] client_key_cert: Client key and certificate config for the connector.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Selectors to use for the delegate.
@@ -251,6 +252,7 @@ class _KubernetesConnectorState:
                  username_password: Optional[pulumi.Input['KubernetesConnectorUsernamePasswordArgs']] = None):
         """
         Input properties used for looking up and filtering KubernetesConnector resources.
+
         :param pulumi.Input['KubernetesConnectorClientKeyCertArgs'] client_key_cert: Client key and certificate config for the connector.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Selectors to use for the delegate.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -563,6 +565,7 @@ class KubernetesConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['KubernetesConnectorClientKeyCertArgs', 'KubernetesConnectorClientKeyCertArgsDict']] client_key_cert: Client key and certificate config for the connector.
@@ -678,6 +681,7 @@ class KubernetesConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KubernetesConnectorArgs args: The arguments to use to populate this resource's properties.

@@ -32,6 +32,7 @@ class ConnectorAzureArtifactsArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ConnectorAzureArtifacts resource.
+
         :param pulumi.Input['ConnectorAzureArtifactsCredentialsArgs'] credentials: Credentials to use for authentication.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] url: URL of the Azure Artifacts server.
@@ -181,6 +182,7 @@ class _ConnectorAzureArtifactsState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectorAzureArtifacts resources.
+
         :param pulumi.Input['ConnectorAzureArtifactsCredentialsArgs'] credentials: Credentials to use for authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -338,6 +340,7 @@ class ConnectorAzureArtifacts(pulumi.CustomResource):
         """
         Resource for creating an Azure Artifacts connector.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectorAzureArtifactsCredentialsArgs', 'ConnectorAzureArtifactsCredentialsArgsDict']] credentials: Credentials to use for authentication.
@@ -358,6 +361,7 @@ class ConnectorAzureArtifacts(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating an Azure Artifacts connector.
+
 
         :param str resource_name: The name of the resource.
         :param ConnectorAzureArtifactsArgs args: The arguments to use to populate this resource's properties.

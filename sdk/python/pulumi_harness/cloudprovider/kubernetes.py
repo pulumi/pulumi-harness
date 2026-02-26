@@ -27,6 +27,7 @@ class KubernetesArgs:
                  usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesUsageScopeArgs']]]] = None):
         """
         The set of arguments for constructing a Kubernetes resource.
+
         :param pulumi.Input['KubernetesAuthenticationArgs'] authentication: Authentication configuration for the Kubernetes cluster
         :param pulumi.Input[_builtins.str] name: The name of the cloud provider.
         :param pulumi.Input[_builtins.bool] skip_validation: Skip validation of Kubernetes configuration.
@@ -98,6 +99,7 @@ class _KubernetesState:
                  usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesUsageScopeArgs']]]] = None):
         """
         Input properties used for looking up and filtering Kubernetes resources.
+
         :param pulumi.Input['KubernetesAuthenticationArgs'] authentication: Authentication configuration for the Kubernetes cluster
         :param pulumi.Input[_builtins.str] name: The name of the cloud provider.
         :param pulumi.Input[_builtins.bool] skip_validation: Skip validation of Kubernetes configuration.
@@ -185,6 +187,7 @@ class Kubernetes(pulumi.CustomResource):
         $ pulumi import harness:cloudprovider/kubernetes:Kubernetes example <provider_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['KubernetesAuthenticationArgs', 'KubernetesAuthenticationArgsDict']] authentication: Authentication configuration for the Kubernetes cluster
@@ -210,6 +213,7 @@ class Kubernetes(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:cloudprovider/kubernetes:Kubernetes example <provider_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KubernetesArgs args: The arguments to use to populate this resource's properties.

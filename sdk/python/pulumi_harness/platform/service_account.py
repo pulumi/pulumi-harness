@@ -29,6 +29,7 @@ class ServiceAccountArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServiceAccount resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity.
         :param pulumi.Input[_builtins.str] email: Email of the Service Account.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -162,6 +163,7 @@ class _ServiceAccountState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ServiceAccount resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] email: Email of the Service Account.
@@ -340,6 +342,7 @@ class ServiceAccount(pulumi.CustomResource):
         $ pulumi import harness:platform/serviceAccount:ServiceAccount example <org_id>/<project_id>/<service_account_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity.
@@ -396,6 +399,7 @@ class ServiceAccount(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/serviceAccount:ServiceAccount example <org_id>/<project_id>/<service_account_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceAccountArgs args: The arguments to use to populate this resource's properties.

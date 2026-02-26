@@ -24,6 +24,7 @@ class YamlConfigArgs:
                  app_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a YamlConfig resource.
+
         :param pulumi.Input[_builtins.str] content: The raw YAML configuration.
         :param pulumi.Input[_builtins.str] path: The path of the resource.
         :param pulumi.Input[_builtins.str] app_id: The id of the application. This is required for all resources except global ones.
@@ -79,6 +80,7 @@ class _YamlConfigState:
                  path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering YamlConfig resources.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application. This is required for all resources except global ones.
         :param pulumi.Input[_builtins.str] content: The raw YAML configuration.
         :param pulumi.Input[_builtins.str] name: The name of the resource.
@@ -188,6 +190,7 @@ class YamlConfig(pulumi.CustomResource):
         $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Applications/MyApp/Services/MyService/Index.yaml:<APPLICATION_ID>"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The id of the application. This is required for all resources except global ones.
@@ -235,6 +238,7 @@ class YamlConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Applications/MyApp/Services/MyService/Index.yaml:<APPLICATION_ID>"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param YamlConfigArgs args: The arguments to use to populate this resource's properties.

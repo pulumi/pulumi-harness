@@ -25,6 +25,7 @@ class RuleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Rule resource.
+
         :param pulumi.Input[_builtins.str] cloud_provider: The cloud provider for the rule. It should be either AWS, AZURE or GCP.
         :param pulumi.Input[_builtins.str] rules_yaml: The policy YAML of the rule
         :param pulumi.Input[_builtins.str] description: Description for rule.
@@ -96,6 +97,7 @@ class _RuleState:
                  rules_yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
+
         :param pulumi.Input[_builtins.str] cloud_provider: The cloud provider for the rule. It should be either AWS, AZURE or GCP.
         :param pulumi.Input[_builtins.str] description: Description for rule.
         :param pulumi.Input[_builtins.str] name: Name of the rule.
@@ -214,6 +216,7 @@ class Rule(pulumi.CustomResource):
         $ pulumi import harness:governance/rule:Rule example <rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_provider: The cloud provider for the rule. It should be either AWS, AZURE or GCP.
@@ -255,6 +258,7 @@ class Rule(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:governance/rule:Rule example <rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleArgs args: The arguments to use to populate this resource's properties.

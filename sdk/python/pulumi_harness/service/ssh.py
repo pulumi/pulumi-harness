@@ -28,6 +28,7 @@ class SshArgs:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['SshVariableArgs']]]] = None):
         """
         The set of arguments for constructing a Ssh resource.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
         :param pulumi.Input[_builtins.str] artifact_type: The type of artifact to deploy.
         :param pulumi.Input[_builtins.str] description: Description of th service
@@ -114,6 +115,7 @@ class _SshState:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['SshVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering Ssh resources.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
         :param pulumi.Input[_builtins.str] artifact_type: The type of artifact to deploy.
         :param pulumi.Input[_builtins.str] description: Description of th service
@@ -231,6 +233,7 @@ class Ssh(pulumi.CustomResource):
         $ pulumi import harness:service/ssh:Ssh example <app_id>/<svc_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
@@ -271,6 +274,7 @@ class Ssh(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:service/ssh:Ssh example <app_id>/<svc_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SshArgs args: The arguments to use to populate this resource's properties.

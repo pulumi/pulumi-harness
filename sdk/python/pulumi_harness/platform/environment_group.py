@@ -27,6 +27,7 @@ class EnvironmentGroupArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvironmentGroup resource.
+
         :param pulumi.Input[_builtins.str] identifier: identifier of the environment group.
         :param pulumi.Input[_builtins.str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[_builtins.str] color: Color of the environment group.
@@ -129,6 +130,7 @@ class _EnvironmentGroupState:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentGroup resources.
+
         :param pulumi.Input[_builtins.str] color: Color of the environment group.
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of environment group
         :param pulumi.Input[_builtins.str] identifier: identifier of the environment group.
@@ -281,6 +283,7 @@ class EnvironmentGroup(pulumi.CustomResource):
         $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <org_id>/<project_id>/<environment_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] color: Color of the environment group.
@@ -341,6 +344,7 @@ class EnvironmentGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <org_id>/<project_id>/<environment_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvironmentGroupArgs args: The arguments to use to populate this resource's properties.

@@ -35,6 +35,7 @@ class InfrastructureArgs:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Infrastructure resource.
+
         :param pulumi.Input[_builtins.str] env_id: Environment Identifier.
         :param pulumi.Input[_builtins.str] deployment_type: Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -234,6 +235,7 @@ class _InfrastructureState:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Infrastructure resources.
+
         :param pulumi.Input[_builtins.str] deployment_type: Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] env_id: Environment Identifier.
@@ -502,6 +504,7 @@ class Infrastructure(pulumi.CustomResource):
         $ pulumi import harness:platform/infrastructure:Infrastructure example <org_id>/<project_id>/<env_id>/<infrastructure_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deployment_type: Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
@@ -588,6 +591,7 @@ class Infrastructure(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/infrastructure:Infrastructure example <org_id>/<project_id>/<env_id>/<infrastructure_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InfrastructureArgs args: The arguments to use to populate this resource's properties.

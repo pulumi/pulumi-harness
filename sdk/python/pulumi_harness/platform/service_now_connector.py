@@ -35,6 +35,7 @@ class ServiceNowConnectorArgs:
                  username_ref: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceNowConnector resource.
+
         :param pulumi.Input['ServiceNowConnectorAuthArgs'] auth: The credentials to use for the service now authentication.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] service_now_url: URL of service now.
@@ -232,6 +233,7 @@ class _ServiceNowConnectorState:
                  username_ref: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceNowConnector resources.
+
         :param pulumi.Input['ServiceNowConnectorAuthArgs'] auth: The credentials to use for the service now authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -459,6 +461,7 @@ class ServiceNowConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServiceNowConnectorAuthArgs', 'ServiceNowConnectorAuthArgsDict']] auth: The credentials to use for the service now authentication.
@@ -504,6 +507,7 @@ class ServiceNowConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceNowConnectorArgs args: The arguments to use to populate this resource's properties.

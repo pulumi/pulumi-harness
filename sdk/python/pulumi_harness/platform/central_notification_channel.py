@@ -122,6 +122,7 @@ class _CentralNotificationChannelState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CentralNotificationChannel resources.
+
         :param pulumi.Input[_builtins.str] account: Account identifier associated with this notification channel.
         :param pulumi.Input[_builtins.int] created: Timestamp when the notification channel was created.
         :param pulumi.Input[_builtins.int] last_modified: Timestamp when the notification channel was last modified.
@@ -264,6 +265,7 @@ class CentralNotificationChannel(pulumi.CustomResource):
         """
         Resource for managing Harness Notification Channels.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -275,6 +277,7 @@ class CentralNotificationChannel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for managing Harness Notification Channels.
+
 
         :param str resource_name: The name of the resource.
         :param CentralNotificationChannelArgs args: The arguments to use to populate this resource's properties.

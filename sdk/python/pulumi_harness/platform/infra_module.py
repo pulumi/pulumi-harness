@@ -42,6 +42,7 @@ class InfraModuleArgs:
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a InfraModule resource.
+
         :param pulumi.Input[_builtins.str] system: Provider of the module.
         :param pulumi.Input[_builtins.str] connector_org: Connector organization.
         :param pulumi.Input[_builtins.str] connector_project: Connector project.
@@ -385,6 +386,7 @@ class _InfraModuleState:
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering InfraModule resources.
+
         :param pulumi.Input[_builtins.str] connector_org: Connector organization.
         :param pulumi.Input[_builtins.str] connector_project: Connector project.
         :param pulumi.Input[_builtins.int] created: Timestamp when the module was created.
@@ -765,6 +767,7 @@ class InfraModule(pulumi.CustomResource):
         $ pulumi import harness:platform/infraModule:InfraModule example <module_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connector_org: Connector organization.
@@ -828,6 +831,7 @@ class InfraModule(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/infraModule:InfraModule example <module_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InfraModuleArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class InfraProviderVersionInitArgs:
                  version: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a InfraProviderVersion resource.
+
         :param pulumi.Input[_builtins.str] gpg_key_id: GPG key ID for signing.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: Supported Terraform protocol versions (e.g., ['5.0', '6.0']).
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider this version belongs to.
@@ -93,6 +94,7 @@ class _InfraProviderVersionState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InfraProviderVersion resources.
+
         :param pulumi.Input[_builtins.str] gpg_key_id: GPG key ID for signing.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: Supported Terraform protocol versions (e.g., ['5.0', '6.0']).
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider this version belongs to.
@@ -204,6 +206,7 @@ class InfraProviderVersion(pulumi.CustomResource):
         $ pulumi import harness:platform/infraProviderVersion:InfraProviderVersion example <provider_id>/<version>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] gpg_key_id: GPG key ID for signing.
@@ -253,6 +256,7 @@ class InfraProviderVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/infraProviderVersion:InfraProviderVersion example <provider_id>/<version>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InfraProviderVersionInitArgs args: The arguments to use to populate this resource's properties.

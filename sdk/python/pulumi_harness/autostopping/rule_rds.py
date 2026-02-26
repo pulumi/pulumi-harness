@@ -30,6 +30,7 @@ class RuleRdsArgs:
                  tcps: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRdsTcpArgs']]]] = None):
         """
         The set of arguments for constructing a RuleRds resource.
+
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input['RuleRdsDependArgs']]] depends: Dependent rules
         :param pulumi.Input[_builtins.bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
@@ -145,6 +146,7 @@ class _RuleRdsState:
                  tcps: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRdsTcpArgs']]]] = None):
         """
         Input properties used for looking up and filtering RuleRds resources.
+
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input['RuleRdsDependArgs']]] depends: Dependent rules
         :param pulumi.Input[_builtins.bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
@@ -304,6 +306,7 @@ class RuleRds(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
@@ -344,6 +347,7 @@ class RuleRds(pulumi.CustomResource):
                 }],
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleRdsArgs args: The arguments to use to populate this resource's properties.

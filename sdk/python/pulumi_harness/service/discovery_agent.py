@@ -33,6 +33,7 @@ class DiscoveryAgentArgs:
                  webhook_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DiscoveryAgent resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigArgs']]] configs: Configuration for the agent. This is a required field.
         :param pulumi.Input[_builtins.str] environment_identifier: The environment identifier of the agent. This is a required field.
         :param pulumi.Input[_builtins.str] infra_identifier: The infrastructure identifier of the agent. This is a required field.
@@ -210,6 +211,7 @@ class _DiscoveryAgentState:
                  webhook_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DiscoveryAgent resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigArgs']]] configs: Configuration for the agent. This is a required field.
         :param pulumi.Input[_builtins.str] correlation_id: Correlation ID for the agent.
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the agent was created.
@@ -710,6 +712,7 @@ class DiscoveryAgent(pulumi.CustomResource):
         $ pulumi import harness:service/discoveryAgent:DiscoveryAgent example <org_identifier>/<project_identifier>/<environment_identifier>/<infra_identifier>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict']]]] configs: Configuration for the agent. This is a required field.
@@ -878,6 +881,7 @@ class DiscoveryAgent(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:service/discoveryAgent:DiscoveryAgent example <org_identifier>/<project_identifier>/<environment_identifier>/<infra_identifier>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiscoveryAgentArgs args: The arguments to use to populate this resource's properties.

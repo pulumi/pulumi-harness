@@ -27,6 +27,7 @@ class EnvironmentServiceOverridesArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvironmentServiceOverrides resource.
+
         :param pulumi.Input[_builtins.str] env_id: The env ID to which the overrides associated.
         :param pulumi.Input[_builtins.str] service_id: The service ID to which the overrides applies.
         :param pulumi.Input[_builtins.str] yaml: Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
@@ -128,6 +129,7 @@ class _EnvironmentServiceOverridesState:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentServiceOverrides resources.
+
         :param pulumi.Input[_builtins.str] env_id: The env ID to which the overrides associated.
         :param pulumi.Input[_builtins.str] identifier: identifier of the service overrides.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -304,6 +306,7 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
         $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <org_id>/<project_id>/<env_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] env_id: The env ID to which the overrides associated.
@@ -388,6 +391,7 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <org_id>/<project_id>/<env_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvironmentServiceOverridesArgs args: The arguments to use to populate this resource's properties.

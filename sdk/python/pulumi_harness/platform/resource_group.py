@@ -34,6 +34,7 @@ class ResourceGroupArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ResourceGroup resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier of the account
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_scope_levels: The scope levels at which this resource group can be used
@@ -216,6 +217,7 @@ class _ResourceGroupState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ResourceGroup resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier of the account
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_scope_levels: The scope levels at which this resource group can be used
         :param pulumi.Input[_builtins.str] color: Color of the environment.
@@ -456,6 +458,7 @@ class ResourceGroup(pulumi.CustomResource):
         $ pulumi import harness:platform/resourceGroup:ResourceGroup example <org_id>/<project_id>/<resource_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier of the account
@@ -529,6 +532,7 @@ class ResourceGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/resourceGroup:ResourceGroup example <org_id>/<project_id>/<resource_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceGroupArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class TemplateFiltersArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TemplateFilters resource.
+
         :param pulumi.Input['TemplateFiltersFilterPropertiesArgs'] filter_properties: Properties of the filters entity defined in Harness.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] type: Type of template filters. Currently supported types are { Template}
@@ -147,6 +148,7 @@ class _TemplateFiltersState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TemplateFilters resources.
+
         :param pulumi.Input['TemplateFiltersFilterPropertiesArgs'] filter_properties: Properties of the filters entity defined in Harness.
         :param pulumi.Input[_builtins.str] filter_visibility: Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -313,6 +315,7 @@ class TemplateFilters(pulumi.CustomResource):
         $ pulumi import harness:platform/templateFilters:TemplateFilters example <org_id>/<project_id>/<filter_id>/<type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TemplateFiltersFilterPropertiesArgs', 'TemplateFiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filters entity defined in Harness.
@@ -372,6 +375,7 @@ class TemplateFilters(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/templateFilters:TemplateFilters example <org_id>/<project_id>/<filter_id>/<type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TemplateFiltersArgs args: The arguments to use to populate this resource's properties.

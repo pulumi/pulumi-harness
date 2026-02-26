@@ -31,6 +31,7 @@ class RoleAssignmentsArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RoleAssignments resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]] principals: Principal.
         :param pulumi.Input[_builtins.str] resource_group_identifier: Resource group identifier.
         :param pulumi.Input[_builtins.str] role_identifier: Role identifier.
@@ -164,6 +165,7 @@ class _RoleAssignmentsState:
                  role_identifier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoleAssignments resources.
+
         :param pulumi.Input[_builtins.bool] disabled: Disabled or not.
         :param pulumi.Input[_builtins.str] identifier: Identifier for role assignment.
         :param pulumi.Input[_builtins.bool] managed: Managed or not.
@@ -327,6 +329,7 @@ class RoleAssignments(pulumi.CustomResource):
         $ pulumi import harness:platform/roleAssignments:RoleAssignments example <org_id>/<project_id>/<role_assignments_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disabled: Disabled or not.
@@ -368,6 +371,7 @@ class RoleAssignments(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/roleAssignments:RoleAssignments example <org_id>/<project_id>/<role_assignments_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RoleAssignmentsArgs args: The arguments to use to populate this resource's properties.

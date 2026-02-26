@@ -34,6 +34,7 @@ class GcpConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a GcpConnector resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Enable this flag to execute on Delegate
@@ -217,6 +218,7 @@ class _GcpConnectorState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering GcpConnector resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Enable this flag to execute on Delegate
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of connector
@@ -428,6 +430,7 @@ class GcpConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/gcpConnector:GcpConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -472,6 +475,7 @@ class GcpConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gcpConnector:GcpConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GcpConnectorArgs args: The arguments to use to populate this resource's properties.

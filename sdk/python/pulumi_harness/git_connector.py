@@ -34,6 +34,7 @@ class GitConnectorArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GitConnector resource.
+
         :param pulumi.Input[_builtins.str] url: The URL of the git repository or account/organization
         :param pulumi.Input[_builtins.str] url_type: The type of git url being used. Options are `ACCOUNT`, and `REPO.`
         :param pulumi.Input[_builtins.str] branch: The branch of the git connector to use
@@ -218,6 +219,7 @@ class _GitConnectorState:
                  webhook_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GitConnector resources.
+
         :param pulumi.Input[_builtins.str] branch: The branch of the git connector to use
         :param pulumi.Input['GitConnectorCommitDetailsArgs'] commit_details: Custom details to use when making commits using this git connector
         :param pulumi.Input[_builtins.str] created_at: The time the git connector was created
@@ -468,6 +470,7 @@ class GitConnector(pulumi.CustomResource):
         $ pulumi import harness:index/gitConnector:GitConnector example <connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branch: The branch of the git connector to use
@@ -521,6 +524,7 @@ class GitConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/gitConnector:GitConnector example <connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GitConnectorArgs args: The arguments to use to populate this resource's properties.

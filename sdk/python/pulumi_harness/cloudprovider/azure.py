@@ -26,6 +26,7 @@ class AzureArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Azure resource.
+
         :param pulumi.Input[_builtins.str] client_id: The client id for the Azure application
         :param pulumi.Input[_builtins.str] key: The Name of the Harness secret containing the key for the Azure application
         :param pulumi.Input[_builtins.str] tenant_id: The tenant id for the Azure application
@@ -111,6 +112,7 @@ class _AzureState:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Azure resources.
+
         :param pulumi.Input[_builtins.str] client_id: The client id for the Azure application
         :param pulumi.Input[_builtins.str] environment_type: The type of environment. Valid options are [AZURE AZURE*US*GOVERNMENT]
         :param pulumi.Input[_builtins.str] key: The Name of the Harness secret containing the key for the Azure application
@@ -232,6 +234,7 @@ class Azure(pulumi.CustomResource):
         $ pulumi import harness:cloudprovider/azure:Azure example <provider_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] client_id: The client id for the Azure application
@@ -276,6 +279,7 @@ class Azure(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:cloudprovider/azure:Azure example <provider_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AzureArgs args: The arguments to use to populate this resource's properties.

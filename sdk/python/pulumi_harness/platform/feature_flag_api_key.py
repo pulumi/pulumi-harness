@@ -29,6 +29,7 @@ class FeatureFlagApiKeyArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FeatureFlagApiKey resource.
+
         :param pulumi.Input[_builtins.str] env_id: Environment Identifier
         :param pulumi.Input[_builtins.str] identifier: Identifier of the SDK API Key
         :param pulumi.Input[_builtins.str] org_id: Organization Identifier
@@ -161,6 +162,7 @@ class _FeatureFlagApiKeyState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FeatureFlagApiKey resources.
+
         :param pulumi.Input[_builtins.str] api_key: The value of the SDK API Key
         :param pulumi.Input[_builtins.str] description: Description of the SDK API Key
         :param pulumi.Input[_builtins.str] env_id: Environment Identifier
@@ -335,6 +337,7 @@ class FeatureFlagApiKey(pulumi.CustomResource):
         pulumi.export("serversdkkey", testserverapikey.api_key)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the SDK API Key
@@ -372,6 +375,7 @@ class FeatureFlagApiKey(pulumi.CustomResource):
             type="Server")
         pulumi.export("serversdkkey", testserverapikey.api_key)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FeatureFlagApiKeyArgs args: The arguments to use to populate this resource's properties.

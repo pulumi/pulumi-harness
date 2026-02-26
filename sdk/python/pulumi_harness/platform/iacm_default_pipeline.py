@@ -26,6 +26,7 @@ class IacmDefaultPipelineArgs:
                  provisioner_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a IacmDefaultPipeline resource.
+
         :param pulumi.Input[_builtins.str] operation: The operation associated with this default.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the organization the default pipelines resides in.
         :param pulumi.Input[_builtins.str] pipeline: The pipeline associated with this default.
@@ -109,6 +110,7 @@ class _IacmDefaultPipelineState:
                  provisioner_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IacmDefaultPipeline resources.
+
         :param pulumi.Input[_builtins.str] operation: The operation associated with this default.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the organization the default pipelines resides in.
         :param pulumi.Input[_builtins.str] pipeline: The pipeline associated with this default.
@@ -216,6 +218,7 @@ class IacmDefaultPipeline(pulumi.CustomResource):
             pipeline="pipeline1")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] operation: The operation associated with this default.
@@ -246,6 +249,7 @@ class IacmDefaultPipeline(pulumi.CustomResource):
             operation="plan",
             pipeline="pipeline1")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IacmDefaultPipelineArgs args: The arguments to use to populate this resource's properties.

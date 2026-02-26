@@ -30,6 +30,7 @@ class PlatformCcmFiltersArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PlatformCcmFilters resource.
+
         :param pulumi.Input['PlatformCcmFiltersFilterPropertiesArgs'] filter_properties: Properties of the filters entity defined in Harness.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] type: Type of ccm filters.
@@ -147,6 +148,7 @@ class _PlatformCcmFiltersState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PlatformCcmFilters resources.
+
         :param pulumi.Input['PlatformCcmFiltersFilterPropertiesArgs'] filter_properties: Properties of the filters entity defined in Harness.
         :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters, by default it is Everyone.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -313,6 +315,7 @@ class PlatformCcmFilters(pulumi.CustomResource):
         $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <org_id>/<project_id>/<filter_id>/<type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filters entity defined in Harness.
@@ -372,6 +375,7 @@ class PlatformCcmFilters(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <org_id>/<project_id>/<filter_id>/<type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PlatformCcmFiltersArgs args: The arguments to use to populate this resource's properties.

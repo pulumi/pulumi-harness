@@ -34,6 +34,7 @@ class ElasticsearchConnectorArgs:
                  username_password: Optional[pulumi.Input['ElasticsearchConnectorUsernamePasswordArgs']] = None):
         """
         The set of arguments for constructing a ElasticsearchConnector resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] url: URL of the elasticsearch
         :param pulumi.Input['ElasticsearchConnectorApiTokenArgs'] api_token: Authenticate to ElasticSearch using api token.
@@ -216,6 +217,7 @@ class _ElasticsearchConnectorState:
                  username_password: Optional[pulumi.Input['ElasticsearchConnectorUsernamePasswordArgs']] = None):
         """
         Input properties used for looking up and filtering ElasticsearchConnector resources.
+
         :param pulumi.Input['ElasticsearchConnectorApiTokenArgs'] api_token: Authenticate to ElasticSearch using api token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -467,6 +469,7 @@ class ElasticsearchConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict']] api_token: Authenticate to ElasticSearch using api token.
@@ -551,6 +554,7 @@ class ElasticsearchConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ElasticsearchConnectorArgs args: The arguments to use to populate this resource's properties.

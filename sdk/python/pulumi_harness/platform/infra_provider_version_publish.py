@@ -23,6 +23,7 @@ class InfraProviderVersionPublishArgs:
                  version: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a InfraProviderVersionPublish resource.
+
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider.
         :param pulumi.Input[_builtins.str] version: Provider version number to publish.
         """
@@ -62,6 +63,7 @@ class _InfraProviderVersionPublishState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InfraProviderVersionPublish resources.
+
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider.
         :param pulumi.Input[_builtins.bool] published: Indicates if the provider version is published.
         :param pulumi.Input[_builtins.str] version: Provider version number to publish.
@@ -130,6 +132,7 @@ class InfraProviderVersionPublish(pulumi.CustomResource):
         $ pulumi import harness:platform/infraProviderVersionPublish:InfraProviderVersionPublish example <provider_id>/<version>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider.
@@ -151,6 +154,7 @@ class InfraProviderVersionPublish(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/infraProviderVersionPublish:InfraProviderVersionPublish example <provider_id>/<version>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InfraProviderVersionPublishArgs args: The arguments to use to populate this resource's properties.

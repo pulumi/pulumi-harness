@@ -29,6 +29,7 @@ class RolesArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Roles resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_scope_levels: The scope levels at which this role can be used
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -164,6 +165,7 @@ class _RolesState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Roles resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_scope_levels: The scope levels at which this role can be used
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -342,6 +344,7 @@ class Roles(pulumi.CustomResource):
         $ pulumi import harness:platform/roles:Roles example <org_id>/<project_id>/<roles_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_scope_levels: The scope levels at which this role can be used
@@ -398,6 +401,7 @@ class Roles(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/roles:Roles example <org_id>/<project_id>/<roles_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RolesArgs args: The arguments to use to populate this resource's properties.

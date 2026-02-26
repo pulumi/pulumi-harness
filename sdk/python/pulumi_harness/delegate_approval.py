@@ -23,6 +23,7 @@ class DelegateApprovalArgs:
                  delegate_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DelegateApproval resource.
+
         :param pulumi.Input[_builtins.bool] approve: Whether or not to approve the delegate.
         :param pulumi.Input[_builtins.str] delegate_id: The id of the delegate.
         """
@@ -62,6 +63,7 @@ class _DelegateApprovalState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DelegateApproval resources.
+
         :param pulumi.Input[_builtins.bool] approve: Whether or not to approve the delegate.
         :param pulumi.Input[_builtins.str] delegate_id: The id of the delegate.
         :param pulumi.Input[_builtins.str] status: The status of the delegate.
@@ -144,6 +146,7 @@ class DelegateApproval(pulumi.CustomResource):
         $ pulumi import harness:index/delegateApproval:DelegateApproval example <delegate_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] approve: Whether or not to approve the delegate.
@@ -179,6 +182,7 @@ class DelegateApproval(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/delegateApproval:DelegateApproval example <delegate_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DelegateApprovalArgs args: The arguments to use to populate this resource's properties.

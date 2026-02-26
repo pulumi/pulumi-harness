@@ -33,6 +33,7 @@ class GitOpsAgentArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a GitOpsAgent resource.
+
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps agent.
         :param pulumi.Input[_builtins.str] type: Default: "AGENT*TYPE*UNSET"
                Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
@@ -207,6 +208,7 @@ class _GitOpsAgentState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GitOpsAgent resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps agent.
         :param pulumi.Input[_builtins.str] agent_token: Agent token to be used for authentication of the agent with Harness.
         :param pulumi.Input[_builtins.str] description: Description of the GitOps agent.
@@ -457,6 +459,7 @@ class GitOpsAgent(pulumi.CustomResource):
         $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <organization_id>/<project_id>/<agent_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps agent.
@@ -520,6 +523,7 @@ class GitOpsAgent(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <organization_id>/<project_id>/<agent_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GitOpsAgentArgs args: The arguments to use to populate this resource's properties.

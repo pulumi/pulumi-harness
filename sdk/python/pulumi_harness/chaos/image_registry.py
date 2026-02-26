@@ -34,6 +34,7 @@ class ImageRegistryArgs:
                  use_custom_images: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ImageRegistry resource.
+
         :param pulumi.Input[_builtins.bool] is_private: Whether the registry is private
         :param pulumi.Input[_builtins.str] registry_account: The registry account name
         :param pulumi.Input[_builtins.str] registry_server: The registry server URL
@@ -217,6 +218,7 @@ class _ImageRegistryState:
                  use_custom_images: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ImageRegistry resources.
+
         :param pulumi.Input[_builtins.str] created_at: Creation timestamp
         :param pulumi.Input[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]] custom_images: Custom images configuration
         :param pulumi.Input[_builtins.str] infra_id: The infrastructure ID to set up the image registry
@@ -460,6 +462,7 @@ class ImageRegistry(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict']]]] custom_images: Custom images configuration
@@ -506,6 +509,7 @@ class ImageRegistry(pulumi.CustomResource):
                 "ddcr_fault": "<ddcr_fault_image>",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageRegistryArgs args: The arguments to use to populate this resource's properties.

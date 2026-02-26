@@ -34,6 +34,7 @@ class AzureCloudProviderConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AzureCloudProviderConnector resource.
+
         :param pulumi.Input['AzureCloudProviderConnectorCredentialsArgs'] credentials: Contains Azure connector credentials.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] azure_environment_type: Specifies the Azure Environment type, which is AZURE by default. Can either be AZURE or AZURE*US*GOVERNMENT
@@ -216,6 +217,7 @@ class _AzureCloudProviderConnectorState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AzureCloudProviderConnector resources.
+
         :param pulumi.Input[_builtins.str] azure_environment_type: Specifies the Azure Environment type, which is AZURE by default. Can either be AZURE or AZURE*US*GOVERNMENT
         :param pulumi.Input['AzureCloudProviderConnectorCredentialsArgs'] credentials: Contains Azure connector credentials.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
@@ -523,6 +525,7 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/azureCloudProviderConnector:AzureCloudProviderConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] azure_environment_type: Specifies the Azure Environment type, which is AZURE by default. Can either be AZURE or AZURE*US*GOVERNMENT
@@ -663,6 +666,7 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/azureCloudProviderConnector:AzureCloudProviderConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AzureCloudProviderConnectorArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class GitopsAppProjectArgs:
                  upsert: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitopsAppProject resource.
+
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the agent where argo project will exist (include scope prefix)
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectArgs']]] projects: GitOps project configuration.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps Agent where argo project will exist.
@@ -152,6 +153,7 @@ class _GitopsAppProjectState:
                  upsert: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GitopsAppProject resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps Agent where argo project will exist.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the agent where argo project will exist (include scope prefix)
         :param pulumi.Input[_builtins.str] org_id: Org identifier of the GitOps Agent where argo project is to be created.
@@ -303,6 +305,7 @@ class GitopsAppProject(pulumi.CustomResource):
         $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <organization_id>/<project_id>/<agent_id>/<app_proj_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps Agent where argo project will exist.
@@ -343,6 +346,7 @@ class GitopsAppProject(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <organization_id>/<project_id>/<agent_id>/<app_proj_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GitopsAppProjectArgs args: The arguments to use to populate this resource's properties.

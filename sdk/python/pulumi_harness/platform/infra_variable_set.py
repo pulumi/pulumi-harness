@@ -33,6 +33,7 @@ class InfraVariableSetArgs:
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]] = None):
         """
         The set of arguments for constructing a InfraVariableSet resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -200,6 +201,7 @@ class _InfraVariableSetState:
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering InfraVariableSet resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the Variable Set
@@ -457,6 +459,7 @@ class InfraVariableSet(pulumi.CustomResource):
         $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<project_id>/<variable_set_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
@@ -562,6 +565,7 @@ class InfraVariableSet(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<project_id>/<variable_set_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InfraVariableSetArgs args: The arguments to use to populate this resource's properties.

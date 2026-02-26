@@ -30,6 +30,7 @@ class FiltersArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Filters resource.
+
         :param pulumi.Input['FiltersFilterPropertiesArgs'] filter_properties: Properties of the filter entity defined in Harness.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] type: Type of filter. Currently supported types are {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
@@ -147,6 +148,7 @@ class _FiltersState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Filters resources.
+
         :param pulumi.Input['FiltersFilterPropertiesArgs'] filter_properties: Properties of the filter entity defined in Harness.
         :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filter. By default, everyone can view this filter. Can either be EveryOne or OnlyCreator
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
@@ -313,6 +315,7 @@ class Filters(pulumi.CustomResource):
         $ pulumi import harness:platform/filters:Filters example <org_id>/<project_id>/<filter_id>/<type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FiltersFilterPropertiesArgs', 'FiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filter entity defined in Harness.
@@ -372,6 +375,7 @@ class Filters(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/filters:Filters example <org_id>/<project_id>/<filter_id>/<type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FiltersArgs args: The arguments to use to populate this resource's properties.

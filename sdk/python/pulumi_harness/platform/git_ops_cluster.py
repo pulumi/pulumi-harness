@@ -31,6 +31,7 @@ class GitOpsClusterArgs:
                  requests: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]] = None):
         """
         The set of arguments for constructing a GitOpsCluster resource.
+
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps cluster.
@@ -169,6 +170,7 @@ class _GitOpsClusterState:
                  requests: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]] = None):
         """
         Input properties used for looking up and filtering GitOpsCluster resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps cluster.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
@@ -336,6 +338,7 @@ class GitOpsCluster(pulumi.CustomResource):
         $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <organization_id>/<project_id>/<agent_id>/<cluster_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps cluster.
@@ -377,6 +380,7 @@ class GitOpsCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <organization_id>/<project_id>/<agent_id>/<cluster_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GitOpsClusterArgs args: The arguments to use to populate this resource's properties.

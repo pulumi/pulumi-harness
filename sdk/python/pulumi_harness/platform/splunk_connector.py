@@ -32,6 +32,7 @@ class SplunkConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SplunkConnector resource.
+
         :param pulumi.Input[_builtins.str] account_id: Splunk account id.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] password_ref: The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -211,6 +212,7 @@ class _SplunkConnectorState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SplunkConnector resources.
+
         :param pulumi.Input[_builtins.str] account_id: Splunk account id.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -440,6 +442,7 @@ class SplunkConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/splunkConnector:SplunkConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Splunk account id.
@@ -502,6 +505,7 @@ class SplunkConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/splunkConnector:SplunkConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SplunkConnectorArgs args: The arguments to use to populate this resource's properties.

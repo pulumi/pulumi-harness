@@ -38,6 +38,7 @@ class AwsSecretManagerConnectorArgs:
                  use_put_secret: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AwsSecretManagerConnector resource.
+
         :param pulumi.Input['AwsSecretManagerConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] region: The AWS region where the AWS Secret Manager is.
@@ -283,6 +284,7 @@ class _AwsSecretManagerConnectorState:
                  use_put_secret: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AwsSecretManagerConnector resources.
+
         :param pulumi.Input['AwsSecretManagerConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
         :param pulumi.Input[_builtins.bool] default: Use as Default Secrets Manager.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
@@ -558,6 +560,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AwsSecretManagerConnectorCredentialsArgs', 'AwsSecretManagerConnectorCredentialsArgsDict']] credentials: Credentials to connect to AWS.
@@ -606,6 +609,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AwsSecretManagerConnectorArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class ProviderArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
+
         :param pulumi.Input[_builtins.str] identifier: The identifier of the provider entity.
         :param pulumi.Input['ProviderSpecArgs'] spec: Contains parameters related to the provider entity.
         :param pulumi.Input[_builtins.str] description: The description of the provider entity.
@@ -99,6 +100,7 @@ class _ProviderState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Provider resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the provider entity.
         :param pulumi.Input[_builtins.str] identifier: The identifier of the provider entity.
         :param pulumi.Input[_builtins.int] last_modified_at: The last modified time of the provider entity.
@@ -206,6 +208,7 @@ class Provider(pulumi.CustomResource):
         """
         Resource for creating a Harness Provider.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the provider entity.
@@ -221,6 +224,7 @@ class Provider(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness Provider.
+
 
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.

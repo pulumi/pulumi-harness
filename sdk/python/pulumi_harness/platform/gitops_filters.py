@@ -28,6 +28,7 @@ class GitopsFiltersArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GitopsFilters resource.
+
         :param pulumi.Input[_builtins.str] filter_properties: Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the Entity.
@@ -143,6 +144,7 @@ class _GitopsFiltersState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GitopsFilters resources.
+
         :param pulumi.Input[_builtins.str] filter_properties: Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
         :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters, by default it is Everyone.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -268,6 +270,7 @@ class GitopsFilters(pulumi.CustomResource):
         """
         Resource for creating Harness GitOps Filters.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] filter_properties: Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
@@ -286,6 +289,7 @@ class GitopsFilters(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating Harness GitOps Filters.
+
 
         :param str resource_name: The name of the resource.
         :param GitopsFiltersArgs args: The arguments to use to populate this resource's properties.

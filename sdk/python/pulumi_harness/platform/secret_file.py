@@ -32,6 +32,7 @@ class SecretFileArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecretFile resource.
+
         :param pulumi.Input[_builtins.str] file_path: Path of the file containing secret value
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
@@ -181,6 +182,7 @@ class _SecretFileState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SecretFile resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['SecretFileAdditionalMetadataArgs']]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] file_path: Path of the file containing secret value
@@ -408,6 +410,7 @@ class SecretFile(pulumi.CustomResource):
         $ pulumi import harness:platform/secretFile:SecretFile example <org_id>/<project_id>/<secret_file_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict']]]] additional_metadatas: Additional Metadata for the Secret
@@ -498,6 +501,7 @@ class SecretFile(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/secretFile:SecretFile example <org_id>/<project_id>/<secret_file_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecretFileArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class SpotConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SpotConnector resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input['SpotConnectorPermanentTokenArgs'] permanent_token: Authenticate to Spot using account id and permanent token.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -148,6 +149,7 @@ class _SpotConnectorState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SpotConnector resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
@@ -283,6 +285,7 @@ class SpotConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/spotConnector:SpotConnector example <connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -311,6 +314,7 @@ class SpotConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/spotConnector:SpotConnector example <connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SpotConnectorArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class ChaosInfrastructureArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ChaosInfrastructure resource.
+
         :param pulumi.Input[_builtins.str] environment_id: Environment ID of the chaos infrastructure.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] namespace: Namespace of the chaos infrastructure.
@@ -178,6 +179,7 @@ class _ChaosInfrastructureState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ChaosInfrastructure resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] environment_id: Environment ID of the chaos infrastructure.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -362,6 +364,7 @@ class ChaosInfrastructure(pulumi.CustomResource):
         $ pulumi import harness:index/chaosInfrastructure:ChaosInfrastructure example <chaos_infra_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -409,6 +412,7 @@ class ChaosInfrastructure(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/chaosInfrastructure:ChaosInfrastructure example <chaos_infra_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ChaosInfrastructureArgs args: The arguments to use to populate this resource's properties.

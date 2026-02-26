@@ -28,6 +28,7 @@ class GcpArgs:
                  usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['GcpUsageScopeArgs']]]] = None):
         """
         The set of arguments for constructing a Gcp resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Delegate selectors to use for this provider.
         :param pulumi.Input[_builtins.str] name: The name of the cloud provider.
         :param pulumi.Input[_builtins.str] secret_file_id: The id of the secret containing the GCP credentials
@@ -116,6 +117,7 @@ class _GcpState:
                  usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['GcpUsageScopeArgs']]]] = None):
         """
         Input properties used for looking up and filtering Gcp resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Delegate selectors to use for this provider.
         :param pulumi.Input[_builtins.str] name: The name of the cloud provider.
         :param pulumi.Input[_builtins.str] secret_file_id: The id of the secret containing the GCP credentials
@@ -209,6 +211,7 @@ class Gcp(pulumi.CustomResource):
         """
         Resource for creating a GCP cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Delegate selectors to use for this provider.
@@ -225,6 +228,7 @@ class Gcp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a GCP cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
+
 
         :param str resource_name: The name of the resource.
         :param GcpArgs args: The arguments to use to populate this resource's properties.

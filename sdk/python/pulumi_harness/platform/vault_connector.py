@@ -58,6 +58,7 @@ class VaultConnectorArgs:
                  xvault_aws_iam_server_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VaultConnector resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.int] renewal_interval_minutes: The time interval for the token renewal.
         :param pulumi.Input[_builtins.str] vault_url: URL of the HashiCorp Vault.
@@ -655,6 +656,7 @@ class _VaultConnectorState:
                  xvault_aws_iam_server_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VaultConnector resources.
+
         :param pulumi.Input[_builtins.str] access_type: Access type.
         :param pulumi.Input[_builtins.str] app_role_id: ID of App Role.
         :param pulumi.Input[_builtins.str] auth_token: Authentication token for Vault.
@@ -1423,6 +1425,7 @@ class VaultConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/vaultConnector:VaultConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_type: Access type.
@@ -1634,6 +1637,7 @@ class VaultConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/vaultConnector:VaultConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VaultConnectorArgs args: The arguments to use to populate this resource's properties.

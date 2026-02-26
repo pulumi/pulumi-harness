@@ -31,6 +31,7 @@ class GitxWebhookArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a GitxWebhook resource.
+
         :param pulumi.Input[_builtins.str] connector_ref: ConnectorRef to be used to create Gitx webhook.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] repo_name: Repo Identifier for Gitx webhook.
@@ -196,6 +197,7 @@ class _GitxWebhookState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering GitxWebhook resources.
+
         :param pulumi.Input[_builtins.str] connector_ref: ConnectorRef to be used to create Gitx webhook.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] folder_paths: Folder Paths
@@ -391,6 +393,7 @@ class GitxWebhook(pulumi.CustomResource):
         $ pulumi import harness:platform/gitxWebhook:GitxWebhook example <webhook_identifier>/<org_id>/<project_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connector_ref: ConnectorRef to be used to create Gitx webhook.
@@ -434,6 +437,7 @@ class GitxWebhook(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gitxWebhook:GitxWebhook example <webhook_identifier>/<org_id>/<project_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GitxWebhookArgs args: The arguments to use to populate this resource's properties.

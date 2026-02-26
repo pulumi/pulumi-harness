@@ -38,6 +38,7 @@ class PolicyArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Policy resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] rego: Rego code for the policy.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -316,6 +317,7 @@ class _PolicyState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] git_base_branch: Base branch for the new git branch.
         :param pulumi.Input[_builtins.str] git_branch: Git branch for the policy.
@@ -611,6 +613,7 @@ class Policy(pulumi.CustomResource):
         $ pulumi import harness:platform/policy:Policy example <organization_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -649,6 +652,7 @@ class Policy(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/policy:Policy example <organization_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

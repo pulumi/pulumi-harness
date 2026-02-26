@@ -32,6 +32,7 @@ class SecurityGovernanceConditionArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecurityGovernanceCondition resource.
+
         :param pulumi.Input['SecurityGovernanceConditionFaultSpecArgs'] fault_spec: Specification for faults to be included in the condition
         :param pulumi.Input[_builtins.str] infra_type: Type of infrastructure (Kubernetes, KubernetesV2, Linux, Windows, CloudFoundry, Container)
         :param pulumi.Input[_builtins.str] org_id: The organization ID of the security governance condition
@@ -180,6 +181,7 @@ class _SecurityGovernanceConditionState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SecurityGovernanceCondition resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the security governance condition
         :param pulumi.Input['SecurityGovernanceConditionFaultSpecArgs'] fault_spec: Specification for faults to be included in the condition
         :param pulumi.Input[_builtins.str] infra_type: Type of infrastructure (Kubernetes, KubernetesV2, Linux, Windows, CloudFoundry, Container)
@@ -468,6 +470,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
         $ pulumi import harness:chaos/securityGovernanceCondition:SecurityGovernanceCondition example org_id/project_id/condition_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the security governance condition
@@ -619,6 +622,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:chaos/securityGovernanceCondition:SecurityGovernanceCondition example org_id/project_id/condition_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityGovernanceConditionArgs args: The arguments to use to populate this resource's properties.

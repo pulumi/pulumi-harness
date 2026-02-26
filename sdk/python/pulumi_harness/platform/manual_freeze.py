@@ -28,6 +28,7 @@ class ManualFreezeArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ManualFreeze resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier of the freeze
         :param pulumi.Input[_builtins.str] identifier: Identifier of the freeze
         :param pulumi.Input[_builtins.str] yaml: Yaml of the freeze
@@ -121,6 +122,7 @@ class _ManualFreezeState:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManualFreeze resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier of the freeze
         :param pulumi.Input[Sequence[pulumi.Input['ManualFreezeCurrentOrUpcomingWindowArgs']]] current_or_upcoming_windows: Current or upcoming windows
         :param pulumi.Input[_builtins.str] description: Description of the freeze
@@ -394,6 +396,7 @@ class ManualFreeze(pulumi.CustomResource):
         $ pulumi import harness:platform/manualFreeze:ManualFreeze example <org_id>/<project_id>/<freeze_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier of the freeze
@@ -470,6 +473,7 @@ class ManualFreeze(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/manualFreeze:ManualFreeze example <org_id>/<project_id>/<freeze_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ManualFreezeArgs args: The arguments to use to populate this resource's properties.

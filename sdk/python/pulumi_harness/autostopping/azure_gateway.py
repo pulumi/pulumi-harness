@@ -33,6 +33,7 @@ class AzureGatewayArgs:
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AzureGateway resource.
+
         :param pulumi.Input[_builtins.str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
@@ -228,6 +229,7 @@ class _AzureGatewayState:
                  vpc: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AzureGateway resources.
+
         :param pulumi.Input[_builtins.str] app_gateway_id: ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
         :param pulumi.Input[_builtins.str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[_builtins.str] certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
@@ -479,6 +481,7 @@ class AzureGateway(pulumi.CustomResource):
             delete_cloud_resources_on_destroy=False)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_gateway_id: ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
@@ -533,6 +536,7 @@ class AzureGateway(pulumi.CustomResource):
             vpc="/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/virtualNetworks/test_resource_group_vnet",
             delete_cloud_resources_on_destroy=False)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AzureGatewayArgs args: The arguments to use to populate this resource's properties.

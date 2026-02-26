@@ -34,6 +34,7 @@ class AzureCloudCostConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AzureCloudCostConnector resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] subscription_id: Subsription id.
@@ -214,6 +215,7 @@ class _AzureCloudCostConnectorState:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AzureCloudCostConnector resources.
+
         :param pulumi.Input['AzureCloudCostConnectorBillingExportSpecArgs'] billing_export_spec: Returns billing details for the Azure account.
         :param pulumi.Input['AzureCloudCostConnectorBillingExportSpec2Args'] billing_export_spec2: Returns billing details for the Azure account.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -462,6 +464,7 @@ class AzureCloudCostConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict']] billing_export_spec: Returns billing details for the Azure account.
@@ -543,6 +546,7 @@ class AzureCloudCostConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AzureCloudCostConnectorArgs args: The arguments to use to populate this resource's properties.

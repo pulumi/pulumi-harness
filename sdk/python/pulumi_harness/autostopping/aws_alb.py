@@ -29,6 +29,7 @@ class AwsAlbArgs:
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AwsAlb resource.
+
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
@@ -158,6 +159,7 @@ class _AwsAlbState:
                  vpc: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AwsAlb resources.
+
         :param pulumi.Input[_builtins.str] alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
@@ -338,6 +340,7 @@ class AwsAlb(pulumi.CustomResource):
             delete_cloud_resources_on_destroy=False)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
@@ -384,6 +387,7 @@ class AwsAlb(pulumi.CustomResource):
             security_groups=["sg-0"],
             delete_cloud_resources_on_destroy=False)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AwsAlbArgs args: The arguments to use to populate this resource's properties.

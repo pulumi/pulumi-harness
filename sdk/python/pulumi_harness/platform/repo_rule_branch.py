@@ -32,6 +32,7 @@ class RepoRuleBranchArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RepoRuleBranch resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchBypassArgs']]] bypasses: List of users who can bypass this rule.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the rule.
         :param pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchPolicyArgs']]] policies: Policies to be applied for this rule.
@@ -183,6 +184,7 @@ class _RepoRuleBranchState:
                  updated_by: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RepoRuleBranch resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchBypassArgs']]] bypasses: List of users who can bypass this rule.
         :param pulumi.Input[_builtins.int] created: Timestamp when the rule was created.
         :param pulumi.Input[_builtins.int] created_by: ID of the user who created the rule.
@@ -400,6 +402,7 @@ class RepoRuleBranch(pulumi.CustomResource):
         """
         Resource for creating a Harness Repo Branch Rule.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict']]]] bypasses: List of users who can bypass this rule.
@@ -420,6 +423,7 @@ class RepoRuleBranch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness Repo Branch Rule.
+
 
         :param str resource_name: The name of the resource.
         :param RepoRuleBranchArgs args: The arguments to use to populate this resource's properties.

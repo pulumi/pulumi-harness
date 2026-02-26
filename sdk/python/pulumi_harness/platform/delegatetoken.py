@@ -30,6 +30,7 @@ class DelegatetokenArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Delegatetoken resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity
         :param pulumi.Input[_builtins.int] created_at: Time when the delegate token is created. This is an epoch timestamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] created_by: created by details
@@ -181,6 +182,7 @@ class _DelegatetokenState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Delegatetoken resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity
         :param pulumi.Input[_builtins.int] created_at: Time when the delegate token is created. This is an epoch timestamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] created_by: created by details
@@ -367,6 +369,7 @@ class Delegatetoken(pulumi.CustomResource):
             revoke_after=1769689600000)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity
@@ -416,6 +419,7 @@ class Delegatetoken(pulumi.CustomResource):
             account_id="account_id",
             revoke_after=1769689600000)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DelegatetokenArgs args: The arguments to use to populate this resource's properties.

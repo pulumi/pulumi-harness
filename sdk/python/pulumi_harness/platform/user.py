@@ -28,6 +28,7 @@ class UserArgs:
                  role_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['UserRoleBindingArgs']]]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] email: The email of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_groups: The user group of the user. Cannot be updated.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the user.
@@ -119,6 +120,7 @@ class _UserState:
                  user_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.bool] disabled: Whether or not the user account is disabled.
         :param pulumi.Input[_builtins.str] email: The email of the user.
         :param pulumi.Input[_builtins.bool] externally_managed: Whether or not the user account is externally managed.
@@ -309,6 +311,7 @@ class User(pulumi.CustomResource):
         $ pulumi import harness:platform/user:User john_doe <email_id>/<org_id>/<project_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: The email of the user.
@@ -347,6 +350,7 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/user:User john_doe <email_id>/<org_id>/<project_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

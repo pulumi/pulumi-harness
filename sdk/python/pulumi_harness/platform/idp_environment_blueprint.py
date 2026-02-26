@@ -27,6 +27,7 @@ class IdpEnvironmentBlueprintArgs:
                  stable: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IdpEnvironmentBlueprint resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] version: Version of the catalog entity
         :param pulumi.Input[_builtins.str] yaml: YAML definition of the catalog entity
@@ -128,6 +129,7 @@ class _IdpEnvironmentBlueprintState:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IdpEnvironmentBlueprint resources.
+
         :param pulumi.Input[_builtins.bool] deprecated: Whether the catalog entity is deprecated
         :param pulumi.Input[_builtins.str] description: Description of the catalog entity
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -284,6 +286,7 @@ class IdpEnvironmentBlueprint(pulumi.CustomResource):
         $ pulumi import harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint example <blueprint_id>/<version>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] deprecated: Whether the catalog entity is deprecated
@@ -348,6 +351,7 @@ class IdpEnvironmentBlueprint(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint example <blueprint_id>/<version>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IdpEnvironmentBlueprintArgs args: The arguments to use to populate this resource's properties.

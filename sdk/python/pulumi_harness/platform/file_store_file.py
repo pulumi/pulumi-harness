@@ -34,6 +34,7 @@ class FileStoreFileArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FileStoreFile resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] parent_identifier: File parent identifier on Harness File Store
         :param pulumi.Input[_builtins.str] content: File content stored on Harness File Store
@@ -220,6 +221,7 @@ class _FileStoreFileState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering FileStoreFile resources.
+
         :param pulumi.Input[_builtins.str] content: File content stored on Harness File Store
         :param pulumi.Input[Sequence[pulumi.Input['FileStoreFileCreatedByArgs']]] created_bies: Created by
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -514,6 +516,7 @@ class FileStoreFile(pulumi.CustomResource):
         $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id>/<project_id>/<identifier>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content: File content stored on Harness File Store
@@ -581,6 +584,7 @@ class FileStoreFile(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id>/<project_id>/<identifier>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FileStoreFileArgs args: The arguments to use to populate this resource's properties.

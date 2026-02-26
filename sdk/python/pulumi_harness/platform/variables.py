@@ -30,6 +30,7 @@ class VariablesArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Variables resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input['VariablesSpecArgs'] spec: List of Spec Fields.
         :param pulumi.Input[_builtins.str] type: Type of Variable
@@ -147,6 +148,7 @@ class _VariablesState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Variables resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the entity
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] name: Name of the Variable
@@ -312,6 +314,7 @@ class Variables(pulumi.CustomResource):
         $ pulumi import harness:platform/variables:Variables example <org_id>/<project_id>/<variable_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the entity
@@ -370,6 +373,7 @@ class Variables(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/variables:Variables example <org_id>/<project_id>/<variable_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VariablesArgs args: The arguments to use to populate this resource's properties.

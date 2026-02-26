@@ -30,6 +30,7 @@ class ScheduleArgs:
                  starting_from: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Schedule resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.float]]] rules: ID of AutoStopping rules on which the schedule applies
         :param pulumi.Input[_builtins.str] schedule_type: Type of the schedule. Valid values are `uptime` and `downtime`
         :param pulumi.Input[_builtins.str] time_zone: Time zone in which schedule needs to be executed
@@ -148,6 +149,7 @@ class _ScheduleState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Schedule resources.
+
         :param pulumi.Input[_builtins.str] ending_on: Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         :param pulumi.Input[_builtins.float] identifier: Unique identifier of the schedule
         :param pulumi.Input[_builtins.str] name: Name of the schedule
@@ -288,6 +290,7 @@ class Schedule(pulumi.CustomResource):
         """
         Resource for creating a fixed schedule for Harness AutoStopping rule
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ending_on: Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
@@ -306,6 +309,7 @@ class Schedule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a fixed schedule for Harness AutoStopping rule
+
 
         :param str resource_name: The name of the resource.
         :param ScheduleArgs args: The arguments to use to populate this resource's properties.

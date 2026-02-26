@@ -31,6 +31,7 @@ class NewrelicConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a NewrelicConnector resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID of the NewRelic account.
         :param pulumi.Input[_builtins.str] api_key_ref: Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -195,6 +196,7 @@ class _NewrelicConnectorState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NewrelicConnector resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID of the NewRelic account.
         :param pulumi.Input[_builtins.str] api_key_ref: Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
@@ -407,6 +409,7 @@ class NewrelicConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID of the NewRelic account.
@@ -467,6 +470,7 @@ class NewrelicConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NewrelicConnectorArgs args: The arguments to use to populate this resource's properties.

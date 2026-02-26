@@ -36,6 +36,7 @@ class PipelineArgs:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Pipeline resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -249,6 +250,7 @@ class _PipelineState:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Pipeline resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input['PipelineGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input['PipelineGitImportInfoArgs'] git_import_info: Contains Git Information for importing entities from Git
@@ -614,6 +616,7 @@ class Pipeline(pulumi.CustomResource):
         $ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>/<branch>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -782,6 +785,7 @@ class Pipeline(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>/<branch>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PipelineArgs args: The arguments to use to populate this resource's properties.

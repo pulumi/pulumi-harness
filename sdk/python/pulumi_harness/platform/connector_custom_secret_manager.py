@@ -39,6 +39,7 @@ class ConnectorCustomSecretManagerArgs:
                  working_directory: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectorCustomSecretManager resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -276,6 +277,7 @@ class _ConnectorCustomSecretManagerState:
                  working_directory: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectorCustomSecretManager resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -521,6 +523,7 @@ class ConnectorCustomSecretManager(pulumi.CustomResource):
         """
         Resource for creating a Custom Secrets Manager (CSM) connector.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
@@ -542,6 +545,7 @@ class ConnectorCustomSecretManager(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Custom Secrets Manager (CSM) connector.
+
 
         :param str resource_name: The name of the resource.
         :param ConnectorCustomSecretManagerArgs args: The arguments to use to populate this resource's properties.

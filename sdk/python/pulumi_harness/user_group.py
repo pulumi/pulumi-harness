@@ -29,6 +29,7 @@ class UserGroupArgs:
                  saml_settings: Optional[pulumi.Input['UserGroupSamlSettingsArgs']] = None):
         """
         The set of arguments for constructing a UserGroup resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the user group.
         :param pulumi.Input['UserGroupLdapSettingsArgs'] ldap_settings: The LDAP settings for the user group.
         :param pulumi.Input[_builtins.str] name: The name of the user group.
@@ -135,6 +136,7 @@ class _UserGroupState:
                  saml_settings: Optional[pulumi.Input['UserGroupSamlSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering UserGroup resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the user group.
         :param pulumi.Input[_builtins.bool] imported_by_scim: Indicates whether the user group was imported by SCIM.
         :param pulumi.Input[_builtins.bool] is_sso_linked: Indicates whether the user group is linked to an SSO provider.
@@ -411,6 +413,7 @@ class UserGroup(pulumi.CustomResource):
         $ pulumi import harness:index/userGroup:UserGroup example <USER_GROUP_ID>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the user group.
@@ -565,6 +568,7 @@ class UserGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/userGroup:UserGroup example <USER_GROUP_ID>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserGroupArgs args: The arguments to use to populate this resource's properties.

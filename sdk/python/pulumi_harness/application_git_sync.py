@@ -26,6 +26,7 @@ class ApplicationGitSyncArgs:
                  repository_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationGitSync resource.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application.
         :param pulumi.Input[_builtins.str] branch: The branch of the git repository to sync to.
         :param pulumi.Input[_builtins.str] connector_id: The id of the git connector to use.
@@ -111,6 +112,7 @@ class _ApplicationGitSyncState:
                  repository_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationGitSync resources.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application.
         :param pulumi.Input[_builtins.str] branch: The branch of the git repository to sync to.
         :param pulumi.Input[_builtins.str] connector_id: The id of the git connector to use.
@@ -241,6 +243,7 @@ class ApplicationGitSync(pulumi.CustomResource):
         $ pulumi import harness:index/applicationGitSync:ApplicationGitSync myapp Xyz123
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The id of the application.
@@ -294,6 +297,7 @@ class ApplicationGitSync(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/applicationGitSync:ApplicationGitSync myapp Xyz123
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationGitSyncArgs args: The arguments to use to populate this resource's properties.

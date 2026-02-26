@@ -38,6 +38,7 @@ class TokenArgs:
                  valid_to: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Token resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity
         :param pulumi.Input[_builtins.str] apikey_id: Identifier of the API Key
         :param pulumi.Input[_builtins.str] apikey_type: Type of the API Key
@@ -314,6 +315,7 @@ class _TokenState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Token resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity
         :param pulumi.Input[_builtins.str] apikey_id: Identifier of the API Key
         :param pulumi.Input[_builtins.str] apikey_type: Type of the API Key
@@ -629,6 +631,7 @@ class Token(pulumi.CustomResource):
         terraform import harness_platform_token <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity
@@ -672,6 +675,7 @@ class Token(pulumi.CustomResource):
         # Import project level token
         terraform import harness_platform_token <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TokenArgs args: The arguments to use to populate this resource's properties.

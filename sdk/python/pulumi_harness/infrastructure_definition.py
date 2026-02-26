@@ -44,6 +44,7 @@ class InfrastructureDefinitionArgs:
                  tanzu: Optional[pulumi.Input['InfrastructureDefinitionTanzuArgs']] = None):
         """
         The set of arguments for constructing a InfrastructureDefinition resource.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application the infrastructure definition belongs to.
         :param pulumi.Input[_builtins.str] cloud_provider_type: The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
         :param pulumi.Input[_builtins.str] deployment_type: The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
@@ -384,6 +385,7 @@ class _InfrastructureDefinitionState:
                  tanzu: Optional[pulumi.Input['InfrastructureDefinitionTanzuArgs']] = None):
         """
         Input properties used for looking up and filtering InfrastructureDefinition resources.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application the infrastructure definition belongs to.
         :param pulumi.Input['InfrastructureDefinitionAwsAmiArgs'] aws_ami: The configuration details for Aws AMI deployments.
         :param pulumi.Input['InfrastructureDefinitionAwsEcsArgs'] aws_ecs: The configuration details for Aws AMI deployments.
@@ -810,6 +812,7 @@ class InfrastructureDefinition(pulumi.CustomResource):
         $ pulumi import harness:index/infrastructureDefinition:InfrastructureDefinition example <app_id>/<env_id>/<infradef_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The id of the application the infrastructure definition belongs to.
@@ -919,6 +922,7 @@ class InfrastructureDefinition(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/infrastructureDefinition:InfrastructureDefinition example <app_id>/<env_id>/<infradef_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InfrastructureDefinitionArgs args: The arguments to use to populate this resource's properties.

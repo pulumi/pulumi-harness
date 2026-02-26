@@ -25,6 +25,7 @@ class DatacenterArgs:
                  usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]] = None):
         """
         The set of arguments for constructing a Datacenter resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the cloud provider.
         :param pulumi.Input[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         """
@@ -65,6 +66,7 @@ class _DatacenterState:
                  usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]] = None):
         """
         Input properties used for looking up and filtering Datacenter resources.
+
         :param pulumi.Input[_builtins.str] name: The name of the cloud provider.
         :param pulumi.Input[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         """
@@ -129,6 +131,7 @@ class Datacenter(pulumi.CustomResource):
         $ pulumi import harness:cloudprovider/datacenter:Datacenter example <provider_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the cloud provider.
@@ -161,6 +164,7 @@ class Datacenter(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:cloudprovider/datacenter:Datacenter example <provider_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatacenterArgs args: The arguments to use to populate this resource's properties.

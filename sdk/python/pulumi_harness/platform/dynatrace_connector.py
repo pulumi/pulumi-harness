@@ -30,6 +30,7 @@ class DynatraceConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DynatraceConnector resource.
+
         :param pulumi.Input[_builtins.str] api_token_ref: The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] url: URL of the Dynatrace server.
@@ -179,6 +180,7 @@ class _DynatraceConnectorState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DynatraceConnector resources.
+
         :param pulumi.Input[_builtins.str] api_token_ref: The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -374,6 +376,7 @@ class DynatraceConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_token_ref: The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -432,6 +435,7 @@ class DynatraceConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DynatraceConnectorArgs args: The arguments to use to populate this resource's properties.

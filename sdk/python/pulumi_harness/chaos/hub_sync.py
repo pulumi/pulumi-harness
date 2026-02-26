@@ -24,6 +24,7 @@ class HubSyncArgs:
                  project_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a HubSync resource.
+
         :param pulumi.Input[_builtins.str] hub_id: The ID of the Chaos Hub to sync
         """
         pulumi.set(__self__, "hub_id", hub_id)
@@ -70,6 +71,7 @@ class _HubSyncState:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HubSync resources.
+
         :param pulumi.Input[_builtins.str] hub_id: The ID of the Chaos Hub to sync
         :param pulumi.Input[_builtins.str] last_synced_at: Timestamp of the last sync
         """
@@ -150,6 +152,7 @@ class HubSync(pulumi.CustomResource):
             hub_id="<hub_id>")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] hub_id: The ID of the Chaos Hub to sync
@@ -174,6 +177,7 @@ class HubSync(pulumi.CustomResource):
             project_id="<project_id>",
             hub_id="<hub_id>")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HubSyncArgs args: The arguments to use to populate this resource's properties.

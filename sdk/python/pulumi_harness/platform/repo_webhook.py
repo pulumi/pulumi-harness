@@ -31,6 +31,7 @@ class RepoWebhookArgs:
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RepoWebhook resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Webhook enabled.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the webhook.
         :param pulumi.Input[_builtins.bool] insecure: Allow insecure connections for provided webhook URL.
@@ -197,6 +198,7 @@ class _RepoWebhookState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RepoWebhook resources.
+
         :param pulumi.Input[_builtins.int] created: Timestamp when the webhook was created.
         :param pulumi.Input[_builtins.int] created_by: ID of the user who created the webhook.
         :param pulumi.Input[_builtins.str] description: Description of the webhook.
@@ -415,6 +417,7 @@ class RepoWebhook(pulumi.CustomResource):
         """
         Resource for creating a Harness Repo Webhook.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the webhook.
@@ -436,6 +439,7 @@ class RepoWebhook(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness Repo Webhook.
+
 
         :param str resource_name: The name of the resource.
         :param RepoWebhookArgs args: The arguments to use to populate this resource's properties.

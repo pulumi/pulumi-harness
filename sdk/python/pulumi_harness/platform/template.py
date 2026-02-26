@@ -38,6 +38,7 @@ class TemplateArgs:
                  template_yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Template resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
         :param pulumi.Input[_builtins.str] version: Version Label for Template.
         :param pulumi.Input[_builtins.str] comments: Specify comment with respect to changes.
@@ -288,6 +289,7 @@ class _TemplateState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Template resources.
+
         :param pulumi.Input[_builtins.str] comments: Specify comment with respect to changes.
         :param pulumi.Input[_builtins.str] description: Description of the entity. Description field is deprecated
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
@@ -567,6 +569,7 @@ class Template(pulumi.CustomResource):
         $ pulumi import harness:platform/template:Template example <org_id>/<project_id>/<template_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comments: Specify comment with respect to changes.
@@ -615,6 +618,7 @@ class Template(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/template:Template example <org_id>/<project_id>/<template_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TemplateArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class OrchestratorArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Orchestrator resource.
+
         :param pulumi.Input[_builtins.str] cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
         :param pulumi.Input[_builtins.str] k8s_connector_id: ID of the Harness Kubernetes Connector Being used
         :param pulumi.Input[_builtins.str] name: Name of the Orchestrator
@@ -95,6 +96,7 @@ class _OrchestratorState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Orchestrator resources.
+
         :param pulumi.Input[_builtins.str] cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
         :param pulumi.Input[_builtins.str] k8s_connector_id: ID of the Harness Kubernetes Connector Being used
         :param pulumi.Input[_builtins.str] name: Name of the Orchestrator
@@ -196,6 +198,7 @@ class Orchestrator(pulumi.CustomResource):
 
         When you run `terraform destroy`, the cluster orchestrator will be permanently deleted from your Harness account.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
@@ -235,6 +238,7 @@ class Orchestrator(pulumi.CustomResource):
         - **Delete**: Deletes the cluster orchestrator from Harness CCM
 
         When you run `terraform destroy`, the cluster orchestrator will be permanently deleted from your Harness account.
+
 
         :param str resource_name: The name of the resource.
         :param OrchestratorArgs args: The arguments to use to populate this resource's properties.

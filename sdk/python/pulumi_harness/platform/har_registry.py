@@ -31,6 +31,7 @@ class HarRegistryArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HarRegistry resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
         :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
@@ -165,6 +166,7 @@ class _HarRegistryState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HarRegistry resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed artifact patterns
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked artifact patterns
         :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]] configs: Configuration for the registry
@@ -390,7 +392,21 @@ class HarRegistry(pulumi.CustomResource):
 
         ### Import Examples
 
+        Account level: <account_id>/<registry_identifier>
+        Org level: <account_id>/<org_id>/<registry_identifier>
+        Project level: <account_id>/<org_id>/<project_id>/<registry_identifier>
+
+        ```sh
+        $ pulumi import harness:platform/harRegistry:HarRegistry example <space_ref>/<registry_identifier>
+        ```
+
         ### After Import
+
+        ```sh
+        pulumi preview
+        pulumi up
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -466,7 +482,21 @@ class HarRegistry(pulumi.CustomResource):
 
         ### Import Examples
 
+        Account level: <account_id>/<registry_identifier>
+        Org level: <account_id>/<org_id>/<registry_identifier>
+        Project level: <account_id>/<org_id>/<project_id>/<registry_identifier>
+
+        ```sh
+        $ pulumi import harness:platform/harRegistry:HarRegistry example <space_ref>/<registry_identifier>
+        ```
+
         ### After Import
+
+        ```sh
+        pulumi preview
+        pulumi up
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param HarRegistryArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class DiscoverySettingArgs:
                  project_identifier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DiscoverySetting resource.
+
         :param pulumi.Input[_builtins.str] correlation_id: Correlation ID for the request.
         :param pulumi.Input['DiscoverySettingImageRegistryArgs'] image_registry: Image registry configuration.
         :param pulumi.Input[_builtins.str] org_identifier: The organization identifier.
@@ -101,6 +102,7 @@ class _DiscoverySettingState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DiscoverySetting resources.
+
         :param pulumi.Input[_builtins.str] correlation_id: Correlation ID for the request.
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the setting was created.
         :param pulumi.Input['DiscoverySettingImageRegistryArgs'] image_registry: Image registry configuration.
@@ -225,6 +227,7 @@ class DiscoverySetting(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] correlation_id: Correlation ID for the request.
@@ -257,6 +260,7 @@ class DiscoverySetting(pulumi.CustomResource):
                 "secrets": ["<secret_name>"],
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiscoverySettingArgs args: The arguments to use to populate this resource's properties.

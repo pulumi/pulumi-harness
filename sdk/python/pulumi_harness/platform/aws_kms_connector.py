@@ -36,6 +36,7 @@ class AwsKmsConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AwsKmsConnector resource.
+
         :param pulumi.Input['AwsKmsConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] region: The AWS region where the AWS Secret Manager is.
@@ -249,6 +250,7 @@ class _AwsKmsConnectorState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AwsKmsConnector resources.
+
         :param pulumi.Input[_builtins.str] arn_plaintext: A reference to the Harness secret containing the ARN of the AWS KMS.
         :param pulumi.Input[_builtins.str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input['AwsKmsConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
@@ -492,6 +494,7 @@ class AwsKmsConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] arn_plaintext: A reference to the Harness secret containing the ARN of the AWS KMS.
@@ -538,6 +541,7 @@ class AwsKmsConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AwsKmsConnectorArgs args: The arguments to use to populate this resource's properties.

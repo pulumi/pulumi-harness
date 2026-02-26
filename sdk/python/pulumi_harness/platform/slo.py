@@ -27,6 +27,7 @@ class SloArgs:
                  request: Optional[pulumi.Input['SloRequestArgs']] = None):
         """
         The set of arguments for constructing a Slo resource.
+
         :param pulumi.Input[_builtins.str] identifier: Identifier of the SLO.
         :param pulumi.Input[_builtins.str] org_id: Identifier of the organization in which the SLO is configured.
         :param pulumi.Input[_builtins.str] project_id: Identifier of the project in which the SLO is configured.
@@ -96,6 +97,7 @@ class _SloState:
                  request: Optional[pulumi.Input['SloRequestArgs']] = None):
         """
         Input properties used for looking up and filtering Slo resources.
+
         :param pulumi.Input[_builtins.str] identifier: Identifier of the SLO.
         :param pulumi.Input[_builtins.str] org_id: Identifier of the organization in which the SLO is configured.
         :param pulumi.Input[_builtins.str] project_id: Identifier of the project in which the SLO is configured.
@@ -253,6 +255,7 @@ class Slo(pulumi.CustomResource):
         $ pulumi import harness:platform/slo:Slo example <org_id>/<project_id>/<slo_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the SLO.
@@ -348,6 +351,7 @@ class Slo(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/slo:Slo example <org_id>/<project_id>/<slo_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SloArgs args: The arguments to use to populate this resource's properties.

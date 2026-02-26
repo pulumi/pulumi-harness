@@ -51,6 +51,7 @@ class InfrastructureV2Args:
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]] = None):
         """
         The set of arguments for constructing a InfrastructureV2 resource.
+
         :param pulumi.Input[_builtins.str] environment_id: The ID of the environment.
         :param pulumi.Input[_builtins.str] infra_id: ID of the infrastructure.
         :param pulumi.Input[_builtins.str] org_id: The ID of the organization.
@@ -511,6 +512,7 @@ class _InfrastructureV2State:
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]] = None):
         """
         Input properties used for looking up and filtering InfrastructureV2 resources.
+
         :param pulumi.Input[_builtins.bool] ai_enabled: Enable AI features for the infrastructure.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotation: Annotations to apply to the infrastructure pods.
         :param pulumi.Input[_builtins.str] containers: Container configurations.
@@ -1102,6 +1104,7 @@ class InfrastructureV2(pulumi.CustomResource):
         $ pulumi import harness:chaos/infrastructureV2:InfrastructureV2 example <org_id>/<project_id>/<environment_id>/<infra_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] ai_enabled: Enable AI features for the infrastructure.
@@ -1151,6 +1154,7 @@ class InfrastructureV2(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:chaos/infrastructureV2:InfrastructureV2 example <org_id>/<project_id>/<environment_id>/<infra_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InfrastructureV2Args args: The arguments to use to populate this resource's properties.

@@ -34,6 +34,7 @@ class DockerConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DockerConnector resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] type: The type of the docker registry. Valid options are DockerHub, Harbor, Other, Quay
         :param pulumi.Input[_builtins.str] url: The URL of the docker registry.
@@ -215,6 +216,7 @@ class _DockerConnectorState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DockerConnector resources.
+
         :param pulumi.Input['DockerConnectorCredentialsArgs'] credentials: The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -426,6 +428,7 @@ class DockerConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/dockerConnector:DockerConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DockerConnectorCredentialsArgs', 'DockerConnectorCredentialsArgsDict']] credentials: The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
@@ -470,6 +473,7 @@ class DockerConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/dockerConnector:DockerConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DockerConnectorArgs args: The arguments to use to populate this resource's properties.

@@ -65,7 +65,20 @@ import * as utilities from "../utilities";
  *
  * ### Import Examples
  *
+ * Account level: <account_id>/<registry_identifier>
+ * Org level: <account_id>/<org_id>/<registry_identifier>
+ * Project level: <account_id>/<org_id>/<project_id>/<registry_identifier>
+ *
+ * ```sh
+ * $ pulumi import harness:platform/harRegistry:HarRegistry example <space_ref>/<registry_identifier>
+ * ```
+ *
  * ### After Import
+ *
+ * ```sh
+ * pulumi preview
+ * pulumi up
+ * ```
  */
 export class HarRegistry extends pulumi.CustomResource {
     /**

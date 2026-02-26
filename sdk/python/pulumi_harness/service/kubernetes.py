@@ -28,6 +28,7 @@ class KubernetesArgs:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesVariableArgs']]]] = None):
         """
         The set of arguments for constructing a Kubernetes resource.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
         :param pulumi.Input[_builtins.str] description: Description of th service
         :param pulumi.Input[_builtins.str] helm_version: The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `type` is `KUBERNETES` or `HELM`.
@@ -115,6 +116,7 @@ class _KubernetesState:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering Kubernetes resources.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
         :param pulumi.Input[_builtins.str] description: Description of th service
         :param pulumi.Input[_builtins.str] helm_version: The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `type` is `KUBERNETES` or `HELM`.
@@ -244,6 +246,7 @@ class Kubernetes(pulumi.CustomResource):
         $ pulumi import harness:service/kubernetes:Kubernetes example <app_id>/<svc_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
@@ -296,6 +299,7 @@ class Kubernetes(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:service/kubernetes:Kubernetes example <app_id>/<svc_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KubernetesArgs args: The arguments to use to populate this resource's properties.
