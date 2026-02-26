@@ -37,6 +37,7 @@ class FeatureFlagArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTagArgs']]]] = None):
         """
         The set of arguments for constructing a FeatureFlag resource.
+
         :param pulumi.Input[_builtins.str] default_off_variation: Which of the variations to use when the flag is toggled to off state
         :param pulumi.Input[_builtins.str] default_on_variation: Which of the variations to use when the flag is toggled to on state
         :param pulumi.Input[_builtins.str] identifier: Identifier of the Feature Flag
@@ -261,6 +262,7 @@ class _FeatureFlagState:
                  variations: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None):
         """
         Input properties used for looking up and filtering FeatureFlag resources.
+
         :param pulumi.Input[_builtins.bool] archived: Whether or not the flag is archived.
         :param pulumi.Input[_builtins.str] default_off_variation: Which of the variations to use when the flag is toggled to off state
         :param pulumi.Input[_builtins.str] default_on_variation: Which of the variations to use when the flag is toggled to on state
@@ -498,6 +500,7 @@ class FeatureFlag(pulumi.CustomResource):
         """
         Resource for managing Feature Flags.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] archived: Whether or not the flag is archived.
@@ -523,6 +526,7 @@ class FeatureFlag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for managing Feature Flags.
+
 
         :param str resource_name: The name of the resource.
         :param FeatureFlagArgs args: The arguments to use to populate this resource's properties.

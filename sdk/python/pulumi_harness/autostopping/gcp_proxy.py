@@ -35,6 +35,7 @@ class GcpProxyArgs:
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a GcpProxy resource.
+
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from GCP account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in GCP account itself.
@@ -224,6 +225,7 @@ class _GcpProxyState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GcpProxy resources.
+
         :param pulumi.Input[_builtins.bool] allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
         :param pulumi.Input[_builtins.str] api_key: Harness NG API key
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
@@ -464,6 +466,7 @@ class GcpProxy(pulumi.CustomResource):
             delete_cloud_resources_on_destroy=False)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
@@ -510,6 +513,7 @@ class GcpProxy(pulumi.CustomResource):
             },
             delete_cloud_resources_on_destroy=False)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GcpProxyArgs args: The arguments to use to populate this resource's properties.

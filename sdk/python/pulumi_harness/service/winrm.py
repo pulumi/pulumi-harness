@@ -28,6 +28,7 @@ class WinrmArgs:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['WinrmVariableArgs']]]] = None):
         """
         The set of arguments for constructing a Winrm resource.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
         :param pulumi.Input[_builtins.str] artifact_type: The type of artifact to deploy.
         :param pulumi.Input[_builtins.str] description: Description of th service
@@ -114,6 +115,7 @@ class _WinrmState:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['WinrmVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering Winrm resources.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
         :param pulumi.Input[_builtins.str] artifact_type: The type of artifact to deploy.
         :param pulumi.Input[_builtins.str] description: Description of th service
@@ -231,6 +233,7 @@ class Winrm(pulumi.CustomResource):
         $ pulumi import harness:service/winrm:Winrm example <app_id>/<svc_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
@@ -271,6 +274,7 @@ class Winrm(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:service/winrm:Winrm example <app_id>/<svc_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WinrmArgs args: The arguments to use to populate this resource's properties.

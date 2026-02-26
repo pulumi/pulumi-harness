@@ -37,6 +37,7 @@ class ConnectorGcpKmsArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ConnectorGcpKms resource.
+
         :param pulumi.Input[_builtins.str] gcp_project_id: The project ID of the GCP KMS.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] key_name: The key name of the GCP KMS.
@@ -264,6 +265,7 @@ class _ConnectorGcpKmsState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ConnectorGcpKms resources.
+
         :param pulumi.Input[_builtins.bool] default: Set this flag to set this secret manager as default secret manager.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Enable this flag to execute on Delegate.
@@ -601,6 +603,7 @@ class ConnectorGcpKms(pulumi.CustomResource):
         $ pulumi import harness:platform/connectorGcpKms:ConnectorGcpKms example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] default: Set this flag to set this secret manager as default secret manager.
@@ -726,6 +729,7 @@ class ConnectorGcpKms(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/connectorGcpKms:ConnectorGcpKms example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectorGcpKmsArgs args: The arguments to use to populate this resource's properties.

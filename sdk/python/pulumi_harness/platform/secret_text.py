@@ -33,6 +33,7 @@ class SecretTextArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecretText resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
         :param pulumi.Input[_builtins.str] value_type: This has details to specify if the secret value is Inline or Reference.
@@ -198,6 +199,7 @@ class _SecretTextState:
                  value_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecretText resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['SecretTextAdditionalMetadataArgs']]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -463,6 +465,7 @@ class SecretText(pulumi.CustomResource):
         $ pulumi import harness:platform/secretText:SecretText example <org_id>/<project_id>/<secret_text_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict']]]] additional_metadatas: Additional Metadata for the Secret
@@ -576,6 +579,7 @@ class SecretText(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/secretText:SecretText example <org_id>/<project_id>/<secret_text_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecretTextArgs args: The arguments to use to populate this resource's properties.

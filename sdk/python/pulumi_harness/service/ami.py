@@ -27,6 +27,7 @@ class AmiArgs:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['AmiVariableArgs']]]] = None):
         """
         The set of arguments for constructing a Ami resource.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
         :param pulumi.Input[_builtins.str] description: Description of th service
         :param pulumi.Input[_builtins.str] name: Name of the service
@@ -98,6 +99,7 @@ class _AmiState:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['AmiVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering Ami resources.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
         :param pulumi.Input[_builtins.str] description: Description of th service
         :param pulumi.Input[_builtins.str] name: Name of the service
@@ -198,6 +200,7 @@ class Ami(pulumi.CustomResource):
         $ pulumi import harness:service/ami:Ami example <app_id>/<svc_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
@@ -236,6 +239,7 @@ class Ami(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:service/ami:Ami example <app_id>/<svc_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AmiArgs args: The arguments to use to populate this resource's properties.

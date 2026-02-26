@@ -28,6 +28,7 @@ class IpAllowlistArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a IpAllowlist resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] ip_address: CIDR range or IP address to allow.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_source_types: List of sources to allow. Valid values are `UI` and `API`.
@@ -148,6 +149,7 @@ class _IpAllowlistState:
                  updated: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering IpAllowlist resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_source_types: List of sources to allow. Valid values are `UI` and `API`.
         :param pulumi.Input[_builtins.int] created: Creation timestamp for the config.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -319,6 +321,7 @@ class IpAllowlist(pulumi.CustomResource):
             tags=["foo:bar"])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_source_types: List of sources to allow. Valid values are `UI` and `API`.
@@ -353,6 +356,7 @@ class IpAllowlist(pulumi.CustomResource):
             description="allowlist example",
             tags=["foo:bar"])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IpAllowlistArgs args: The arguments to use to populate this resource's properties.

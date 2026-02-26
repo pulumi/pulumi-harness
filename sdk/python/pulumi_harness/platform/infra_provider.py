@@ -25,6 +25,7 @@ class InfraProviderArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InfraProvider resource.
+
         :param pulumi.Input[_builtins.str] type: Provider type (e.g., aws, azurerm, google).
         :param pulumi.Input[_builtins.str] description: Description of the provider.
         """
@@ -68,6 +69,7 @@ class _InfraProviderState:
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input['InfraProviderVersionArgs']]]] = None):
         """
         Input properties used for looking up and filtering InfraProvider resources.
+
         :param pulumi.Input[_builtins.str] account: Account that owns the provider.
         :param pulumi.Input[_builtins.int] created: Timestamp when the provider was created.
         :param pulumi.Input[_builtins.str] description: Description of the provider.
@@ -198,6 +200,7 @@ class InfraProvider(pulumi.CustomResource):
         $ pulumi import harness:platform/infraProvider:InfraProvider example <provider_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the provider.
@@ -236,6 +239,7 @@ class InfraProvider(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/infraProvider:InfraProvider example <provider_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InfraProviderArgs args: The arguments to use to populate this resource's properties.

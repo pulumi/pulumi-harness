@@ -32,6 +32,7 @@ class SecurityGovernanceRuleArgs:
                  user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecurityGovernanceRule resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] condition_ids: List of condition IDs associated with this rule
         :param pulumi.Input[_builtins.str] org_id: The organization ID of the security governance rule
         :param pulumi.Input[_builtins.str] project_id: The project ID of the security governance rule
@@ -176,6 +177,7 @@ class _SecurityGovernanceRuleState:
                  user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SecurityGovernanceRule resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] condition_ids: List of condition IDs associated with this rule
         :param pulumi.Input[_builtins.str] description: Description of the security governance rule
         :param pulumi.Input[_builtins.bool] is_enabled: Whether the rule is enabled
@@ -413,6 +415,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
         $ pulumi import harness:chaos/securityGovernanceRule:SecurityGovernanceRule example org_id/project_id/rule_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] condition_ids: List of condition IDs associated with this rule
@@ -516,6 +519,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:chaos/securityGovernanceRule:SecurityGovernanceRule example org_id/project_id/rule_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityGovernanceRuleArgs args: The arguments to use to populate this resource's properties.

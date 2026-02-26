@@ -30,6 +30,7 @@ class OrchestratorConfigArgs:
                  replacement_schedule: Optional[pulumi.Input['OrchestratorConfigReplacementScheduleArgs']] = None):
         """
         The set of arguments for constructing a OrchestratorConfig resource.
+
         :param pulumi.Input['OrchestratorConfigDistributionArgs'] distribution: Spot and Ondemand Distribution Preferences for workload replicas
         :param pulumi.Input[_builtins.str] orchestrator_id: ID of the Cluster Orchestrator Object
         :param pulumi.Input['OrchestratorConfigBinpackingArgs'] binpacking: Binpacking preferences for Cluster Orchestrator
@@ -148,6 +149,7 @@ class _OrchestratorConfigState:
                  replacement_schedule: Optional[pulumi.Input['OrchestratorConfigReplacementScheduleArgs']] = None):
         """
         Input properties used for looking up and filtering OrchestratorConfig resources.
+
         :param pulumi.Input['OrchestratorConfigBinpackingArgs'] binpacking: Binpacking preferences for Cluster Orchestrator
         :param pulumi.Input['OrchestratorConfigCommitmentIntegrationArgs'] commitment_integration: Commitment integration configuration for Cluster Orchestrator
         :param pulumi.Input[_builtins.bool] disabled: Whether the cluster orchestrator is disabled
@@ -350,6 +352,7 @@ class OrchestratorConfig(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OrchestratorConfigBinpackingArgs', 'OrchestratorConfigBinpackingArgsDict']] binpacking: Binpacking preferences for Cluster Orchestrator
@@ -445,6 +448,7 @@ class OrchestratorConfig(pulumi.CustomResource):
                 },
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrchestratorConfigArgs args: The arguments to use to populate this resource's properties.

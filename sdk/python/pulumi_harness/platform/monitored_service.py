@@ -27,6 +27,7 @@ class MonitoredServiceArgs:
                  request: Optional[pulumi.Input['MonitoredServiceRequestArgs']] = None):
         """
         The set of arguments for constructing a MonitoredService resource.
+
         :param pulumi.Input[_builtins.str] identifier: Identifier of the monitored service.
         :param pulumi.Input[_builtins.str] org_id: Identifier of the organization in which the monitored service is configured.
         :param pulumi.Input[_builtins.str] project_id: Identifier of the project in which the monitored service is configured.
@@ -96,6 +97,7 @@ class _MonitoredServiceState:
                  request: Optional[pulumi.Input['MonitoredServiceRequestArgs']] = None):
         """
         Input properties used for looking up and filtering MonitoredService resources.
+
         :param pulumi.Input[_builtins.str] identifier: Identifier of the monitored service.
         :param pulumi.Input[_builtins.str] org_id: Identifier of the organization in which the monitored service is configured.
         :param pulumi.Input[_builtins.str] project_id: Identifier of the project in which the monitored service is configured.
@@ -1019,6 +1021,7 @@ class MonitoredService(pulumi.CustomResource):
         $ pulumi import harness:platform/monitoredService:MonitoredService example <org_id>/<project_id>/<monitored_service_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the monitored service.
@@ -1880,6 +1883,7 @@ class MonitoredService(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/monitoredService:MonitoredService example <org_id>/<project_id>/<monitored_service_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MonitoredServiceArgs args: The arguments to use to populate this resource's properties.

@@ -34,6 +34,7 @@ class AwsCCConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AwsCCConnector resource.
+
         :param pulumi.Input[_builtins.str] account_id: The AWS account id.
         :param pulumi.Input['AwsCCConnectorCrossAccountAccessArgs'] cross_account_access: Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy to access the cost and usage reports and resources for the sole purpose of cost analysis and cost optimization.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] features_enableds: The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
@@ -214,6 +215,7 @@ class _AwsCCConnectorState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AwsCCConnector resources.
+
         :param pulumi.Input[_builtins.str] account_id: The AWS account id.
         :param pulumi.Input['AwsCCConnectorCrossAccountAccessArgs'] cross_account_access: Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy to access the cost and usage reports and resources for the sole purpose of cost analysis and cost optimization.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -450,6 +452,7 @@ class AwsCCConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The AWS account id.
@@ -519,6 +522,7 @@ class AwsCCConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AwsCCConnectorArgs args: The arguments to use to populate this resource's properties.

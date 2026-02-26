@@ -23,6 +23,7 @@ class AddUserToGroupArgs:
                  user_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AddUserToGroup resource.
+
         :param pulumi.Input[_builtins.str] group_id: The name of the user.
         :param pulumi.Input[_builtins.str] user_id: Unique identifier of the user.
         """
@@ -61,6 +62,7 @@ class _AddUserToGroupState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddUserToGroup resources.
+
         :param pulumi.Input[_builtins.str] group_id: The name of the user.
         :param pulumi.Input[_builtins.str] user_id: Unique identifier of the user.
         """
@@ -129,6 +131,7 @@ class AddUserToGroup(pulumi.CustomResource):
         $ pulumi import harness:index/addUserToGroup:AddUserToGroup example_admin <user_id>/<group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: The name of the user.
@@ -165,6 +168,7 @@ class AddUserToGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/addUserToGroup:AddUserToGroup example_admin <user_id>/<group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AddUserToGroupArgs args: The arguments to use to populate this resource's properties.

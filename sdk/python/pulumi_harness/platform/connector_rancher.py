@@ -33,6 +33,7 @@ class ConnectorRancherArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ConnectorRancher resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] rancher_url: The URL of the Rancher cluster.
         :param pulumi.Input['ConnectorRancherBearerTokenArgs'] bearer_token: Bearer token information for the rancher cluster.
@@ -199,6 +200,7 @@ class _ConnectorRancherState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ConnectorRancher resources.
+
         :param pulumi.Input['ConnectorRancherBearerTokenArgs'] bearer_token: Bearer token information for the rancher cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Selectors to use for the delegate.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -412,6 +414,7 @@ class ConnectorRancher(pulumi.CustomResource):
         $ pulumi import harness:platform/connectorRancher:ConnectorRancher example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectorRancherBearerTokenArgs', 'ConnectorRancherBearerTokenArgsDict']] bearer_token: Bearer token information for the rancher cluster.
@@ -473,6 +476,7 @@ class ConnectorRancher(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/connectorRancher:ConnectorRancher example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectorRancherArgs args: The arguments to use to populate this resource's properties.

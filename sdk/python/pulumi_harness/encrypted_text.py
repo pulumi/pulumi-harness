@@ -30,6 +30,7 @@ class EncryptedTextArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EncryptedText resource.
+
         :param pulumi.Input[_builtins.str] secret_manager_id: The id of the secret manager to associate the secret with. Once set, this field cannot be changed.
         :param pulumi.Input[_builtins.bool] inherit_scopes_from_secret_manager: Boolean that indicates whether or not to inherit the usage scopes from the secret manager
         :param pulumi.Input[_builtins.str] name: Name of the encrypted text secret
@@ -149,6 +150,7 @@ class _EncryptedTextState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EncryptedText resources.
+
         :param pulumi.Input[_builtins.bool] inherit_scopes_from_secret_manager: Boolean that indicates whether or not to inherit the usage scopes from the secret manager
         :param pulumi.Input[_builtins.str] name: Name of the encrypted text secret
         :param pulumi.Input[_builtins.bool] scoped_to_account: Boolean that indicates whether or not the secret is scoped to the account
@@ -306,6 +308,7 @@ class EncryptedText(pulumi.CustomResource):
         $ pulumi import harness:index/encryptedText:EncryptedText example <secret_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] inherit_scopes_from_secret_manager: Boolean that indicates whether or not to inherit the usage scopes from the secret manager
@@ -356,6 +359,7 @@ class EncryptedText(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/encryptedText:EncryptedText example <secret_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EncryptedTextArgs args: The arguments to use to populate this resource's properties.

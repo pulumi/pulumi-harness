@@ -27,6 +27,7 @@ class GitopsAppProjectMappingArgs:
                  auto_create_service_env: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitopsAppProjectMapping resource.
+
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
         :param pulumi.Input[_builtins.str] argo_project_name: ArgoCD Project name which is to be mapped to the Harness project.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps agent's Application Project.
@@ -132,6 +133,7 @@ class _GitopsAppProjectMappingState:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GitopsAppProjectMapping resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
         :param pulumi.Input[_builtins.str] argo_project_name: ArgoCD Project name which is to be mapped to the Harness project.
@@ -285,6 +287,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         $ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example <organization_id>/<project_id>/<agent_id>/<appproject_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps agent's Application Project.
@@ -327,6 +330,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example <organization_id>/<project_id>/<agent_id>/<appproject_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GitopsAppProjectMappingArgs args: The arguments to use to populate this resource's properties.

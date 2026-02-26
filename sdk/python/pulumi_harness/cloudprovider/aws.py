@@ -32,6 +32,7 @@ class AwsArgs:
                  use_irsa: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Aws resource.
+
         :param pulumi.Input[_builtins.str] access_key_id: The plain text AWS access key id.
         :param pulumi.Input[_builtins.str] access_key_id_secret_name: The name of the Harness secret containing the AWS access key id
         :param pulumi.Input['AwsAssumeCrossAccountRoleArgs'] assume_cross_account_role: Configuration for assuming a cross account role.
@@ -184,6 +185,7 @@ class _AwsState:
                  use_irsa: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Aws resources.
+
         :param pulumi.Input[_builtins.str] access_key_id: The plain text AWS access key id.
         :param pulumi.Input[_builtins.str] access_key_id_secret_name: The name of the Harness secret containing the AWS access key id
         :param pulumi.Input['AwsAssumeCrossAccountRoleArgs'] assume_cross_account_role: Configuration for assuming a cross account role.
@@ -372,6 +374,7 @@ class Aws(pulumi.CustomResource):
         $ pulumi import harness:cloudprovider/aws:Aws example <provider_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_key_id: The plain text AWS access key id.
@@ -423,6 +426,7 @@ class Aws(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:cloudprovider/aws:Aws example <provider_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AwsArgs args: The arguments to use to populate this resource's properties.

@@ -35,6 +35,7 @@ class ServiceArgs:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Service resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] fetch_resolved_yaml: to fetch resoled service yaml
@@ -234,6 +235,7 @@ class _ServiceState:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] fetch_resolved_yaml: to fetch resoled service yaml
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of service
@@ -536,6 +538,7 @@ class Service(pulumi.CustomResource):
         $ pulumi import harness:platform/service:Service example <org_id>/<project_id>/<service_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -656,6 +659,7 @@ class Service(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/service:Service example <org_id>/<project_id>/<service_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

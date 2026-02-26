@@ -25,6 +25,7 @@ class InfraProviderSigningKeyArgs:
                  user: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a InfraProviderSigningKey resource.
+
         :param pulumi.Input[_builtins.str] ascii_armor: ASCII-armored GPG public key.
         :param pulumi.Input[_builtins.str] key_id: GPG key ID.
         :param pulumi.Input[_builtins.str] key_name: GPG key name.
@@ -95,6 +96,7 @@ class _InfraProviderSigningKeyState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InfraProviderSigningKey resources.
+
         :param pulumi.Input[_builtins.str] ascii_armor: ASCII-armored GPG public key.
         :param pulumi.Input[_builtins.str] created_at: Creation timestamp.
         :param pulumi.Input[_builtins.str] key_id: GPG key ID.
@@ -242,6 +244,7 @@ class InfraProviderSigningKey(pulumi.CustomResource):
         $ pulumi import harness:platform/infraProviderSigningKey:InfraProviderSigningKey example <signing_key_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ascii_armor: ASCII-armored GPG public key.
@@ -297,6 +300,7 @@ class InfraProviderSigningKey(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/infraProviderSigningKey:InfraProviderSigningKey example <signing_key_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InfraProviderSigningKeyArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class GitOpsGnupgArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GitOpsGnupg resource.
+
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier for the GnuPG Key.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsGnupgRequestArgs']]] requests: GnuPGPublicKey is a representation of a GnuPG public key
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the GnuPG Key.
@@ -119,6 +120,7 @@ class _GitOpsGnupgState:
                  requests: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsGnupgRequestArgs']]]] = None):
         """
         Input properties used for looking up and filtering GitOpsGnupg resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the GnuPG Key.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier for the GnuPG Key.
         :param pulumi.Input[_builtins.str] identifier: Identifier for the GnuPG Key.
@@ -270,6 +272,7 @@ class GitOpsGnupg(pulumi.CustomResource):
         $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <organization_id>/<project_id>/<agent_id>/<key_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the GnuPG Key.
@@ -325,6 +328,7 @@ class GitOpsGnupg(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <organization_id>/<project_id>/<agent_id>/<key_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GitOpsGnupgArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class RuleSetArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RuleSet resource.
+
         :param pulumi.Input[_builtins.str] cloud_provider: The cloud provider for the rule set. It should be either AWS, AZURE or GCP.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rule_ids: List of rule IDs
         :param pulumi.Input[_builtins.str] description: Description for rule set.
@@ -96,6 +97,7 @@ class _RuleSetState:
                  rule_set_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RuleSet resources.
+
         :param pulumi.Input[_builtins.str] cloud_provider: The cloud provider for the rule set. It should be either AWS, AZURE or GCP.
         :param pulumi.Input[_builtins.str] description: Description for rule set.
         :param pulumi.Input[_builtins.str] name: Name of the rule set.
@@ -188,6 +190,7 @@ class RuleSet(pulumi.CustomResource):
         """
         Resource for creating, updating, and managing rule.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_provider: The cloud provider for the rule set. It should be either AWS, AZURE or GCP.
@@ -203,6 +206,7 @@ class RuleSet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating, updating, and managing rule.
+
 
         :param str resource_name: The name of the resource.
         :param RuleSetArgs args: The arguments to use to populate this resource's properties.

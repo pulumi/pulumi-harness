@@ -32,6 +32,7 @@ class FeatureFlagTargetGroupArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]] = None):
         """
         The set of arguments for constructing a FeatureFlagTargetGroup resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
         :param pulumi.Input[_builtins.str] environment: Environment Identifier
         :param pulumi.Input[_builtins.str] identifier: The unique identifier of the feature flag target group.
@@ -179,6 +180,7 @@ class _FeatureFlagTargetGroupState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering FeatureFlagTargetGroup resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
         :param pulumi.Input[_builtins.str] environment: Environment Identifier
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludeds: A list of targets to exclude from the target group
@@ -358,6 +360,7 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
@@ -400,6 +403,7 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
                 "value": "MY_VALUE",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FeatureFlagTargetGroupArgs args: The arguments to use to populate this resource's properties.

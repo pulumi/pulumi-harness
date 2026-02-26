@@ -25,6 +25,7 @@ class InfraProviderVersionFileArgs:
                  filename: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InfraProviderVersionFile resource.
+
         :param pulumi.Input[_builtins.str] file_path: Local path to the file to upload. Required for uploading file content.
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider.
         :param pulumi.Input[_builtins.str] version: Provider version number.
@@ -95,6 +96,7 @@ class _InfraProviderVersionFileState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InfraProviderVersionFile resources.
+
         :param pulumi.Input[_builtins.str] file_path: Local path to the file to upload. Required for uploading file content.
         :param pulumi.Input[_builtins.str] filename: Name of the file to upload (e.g., terraform-provider-aws*5.0.0*linux*amd64.zip). If not provided, will be derived from file*path. Use this to override the uploaded filename if it should differ from the local filename.
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider.
@@ -255,6 +257,7 @@ class InfraProviderVersionFile(pulumi.CustomResource):
         $ pulumi import harness:platform/infraProviderVersionFile:InfraProviderVersionFile example <provider_id>/<version>/<filename>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] file_path: Local path to the file to upload. Required for uploading file content.
@@ -338,6 +341,7 @@ class InfraProviderVersionFile(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/infraProviderVersionFile:InfraProviderVersionFile example <provider_id>/<version>/<filename>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InfraProviderVersionFileArgs args: The arguments to use to populate this resource's properties.

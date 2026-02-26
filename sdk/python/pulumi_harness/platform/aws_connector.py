@@ -39,6 +39,7 @@ class AwsConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AwsConnector resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input['AwsConnectorCrossAccountAccessArgs'] cross_account_access: Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -302,6 +303,7 @@ class _AwsConnectorState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AwsConnector resources.
+
         :param pulumi.Input['AwsConnectorCrossAccountAccessArgs'] cross_account_access: Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs'] equal_jitter_backoff_strategy: Equal Jitter BackOff Strategy.
@@ -593,6 +595,7 @@ class AwsConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AwsConnectorCrossAccountAccessArgs', 'AwsConnectorCrossAccountAccessArgsDict']] cross_account_access: Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
@@ -642,6 +645,7 @@ class AwsConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AwsConnectorArgs args: The arguments to use to populate this resource's properties.

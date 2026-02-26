@@ -35,6 +35,7 @@ class AzureKeyVaultConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AzureKeyVaultConnector resource.
+
         :param pulumi.Input[_builtins.str] client_id: Application ID of the Azure App.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] secret_key: The Harness text secret with the Azure authentication key as its value.
@@ -261,6 +262,7 @@ class _AzureKeyVaultConnectorState:
                  vault_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AzureKeyVaultConnector resources.
+
         :param pulumi.Input[_builtins.str] azure_environment_type: Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
         :param pulumi.Input[_builtins.str] client_id: Application ID of the Azure App.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
@@ -540,6 +542,7 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] azure_environment_type: Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
@@ -607,6 +610,7 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AzureKeyVaultConnectorArgs args: The arguments to use to populate this resource's properties.

@@ -35,6 +35,7 @@ class BitbucketConnectorArgs:
                  validation_repo: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BitbucketConnector resource.
+
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a BitBucket repository or a BitBucket account. Valid values are Account, Repo.
         :param pulumi.Input['BitbucketConnectorCredentialsArgs'] credentials: Credentials to use for the connection.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -231,6 +232,7 @@ class _BitbucketConnectorState:
                  validation_repo: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BitbucketConnector resources.
+
         :param pulumi.Input['BitbucketConnectorApiAuthenticationArgs'] api_authentication: Configuration for using the BitBucket api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a BitBucket repository or a BitBucket account. Valid values are Account, Repo.
         :param pulumi.Input['BitbucketConnectorCredentialsArgs'] credentials: Credentials to use for the connection.
@@ -458,6 +460,7 @@ class BitbucketConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['BitbucketConnectorApiAuthenticationArgs', 'BitbucketConnectorApiAuthenticationArgsDict']] api_authentication: Configuration for using the BitBucket api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
@@ -503,6 +506,7 @@ class BitbucketConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BitbucketConnectorArgs args: The arguments to use to populate this resource's properties.

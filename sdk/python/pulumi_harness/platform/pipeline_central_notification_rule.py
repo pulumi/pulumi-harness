@@ -135,6 +135,7 @@ class _PipelineCentralNotificationRuleState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PipelineCentralNotificationRule resources.
+
         :param pulumi.Input[_builtins.str] account: Account identifier associated with this notification channel.
         :param pulumi.Input[_builtins.int] created: Timestamp when the notification rule was created.
         :param pulumi.Input[_builtins.int] last_modified: Timestamp when the notification rule was last modified.
@@ -376,6 +377,7 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
         $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <org_id>/<project_id>/<notification_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -474,6 +476,7 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule example <org_id>/<project_id>/<notification_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PipelineCentralNotificationRuleArgs args: The arguments to use to populate this resource's properties.

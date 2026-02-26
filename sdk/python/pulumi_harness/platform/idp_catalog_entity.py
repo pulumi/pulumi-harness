@@ -30,6 +30,7 @@ class IdpCatalogEntityArgs:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IdpCatalogEntity resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input['IdpCatalogEntityGitDetailsArgs'] git_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
@@ -149,6 +150,7 @@ class _IdpCatalogEntityState:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IdpCatalogEntity resources.
+
         :param pulumi.Input['IdpCatalogEntityGitDetailsArgs'] git_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
@@ -296,6 +298,7 @@ class IdpCatalogEntity(pulumi.CustomResource):
         $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <org_id>/<project_id>/<entity_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict']] git_details: Contains Git Information for importing entities from Git
@@ -336,6 +339,7 @@ class IdpCatalogEntity(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <org_id>/<project_id>/<entity_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IdpCatalogEntityArgs args: The arguments to use to populate this resource's properties.

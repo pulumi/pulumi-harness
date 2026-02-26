@@ -27,6 +27,7 @@ class SshCredentialArgs:
                  usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['SshCredentialUsageScopeArgs']]]] = None):
         """
         The set of arguments for constructing a SshCredential resource.
+
         :param pulumi.Input['SshCredentialKerberosAuthenticationArgs'] kerberos_authentication: Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
         :param pulumi.Input[_builtins.str] name: Name of the encrypted text secret
         :param pulumi.Input['SshCredentialSshAuthenticationArgs'] ssh_authentication: Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
@@ -99,6 +100,7 @@ class _SshCredentialState:
                  usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['SshCredentialUsageScopeArgs']]]] = None):
         """
         Input properties used for looking up and filtering SshCredential resources.
+
         :param pulumi.Input['SshCredentialKerberosAuthenticationArgs'] kerberos_authentication: Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
         :param pulumi.Input[_builtins.str] name: Name of the encrypted text secret
         :param pulumi.Input['SshCredentialSshAuthenticationArgs'] ssh_authentication: Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
@@ -212,6 +214,7 @@ class SshCredential(pulumi.CustomResource):
         $ pulumi import harness:index/sshCredential:SshCredential example <credential_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SshCredentialKerberosAuthenticationArgs', 'SshCredentialKerberosAuthenticationArgsDict']] kerberos_authentication: Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
@@ -263,6 +266,7 @@ class SshCredential(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/sshCredential:SshCredential example <credential_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SshCredentialArgs args: The arguments to use to populate this resource's properties.

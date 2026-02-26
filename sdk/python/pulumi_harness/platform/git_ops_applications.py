@@ -41,6 +41,7 @@ class GitOpsApplicationsArgs:
                  validate: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitOpsApplications resource.
+
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps application.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationArgs']]] applications: Definition of the GitOps application resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster identifier of the GitOps application.
@@ -340,6 +341,7 @@ class _GitOpsApplicationsState:
                  validate: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GitOpsApplications resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps application.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps application.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationArgs']]] applications: Definition of the GitOps application resource.
@@ -709,6 +711,7 @@ class GitOpsApplications(pulumi.CustomResource):
         $ pulumi import harness:platform/gitOpsApplications:GitOpsApplications example <organization_id>/<project_id>/<agent_id>/<app_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps application.
@@ -798,6 +801,7 @@ class GitOpsApplications(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gitOpsApplications:GitOpsApplications example <organization_id>/<project_id>/<agent_id>/<app_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GitOpsApplicationsArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class UserArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] email: The email of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = ["group_ids"] }`.
         :param pulumi.Input[_builtins.str] name: The name of the user.
@@ -84,6 +85,7 @@ class _UserState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.str] email: The email of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = ["group_ids"] }`.
         :param pulumi.Input[_builtins.bool] is_email_verified: Flag indicating whether or not the users email has been verified.
@@ -241,6 +243,7 @@ class User(pulumi.CustomResource):
         $ pulumi import harness:index/user:User john_doe john.doe@example.com
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: The email of the user.
@@ -276,6 +279,7 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/user:User john_doe john.doe@example.com
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

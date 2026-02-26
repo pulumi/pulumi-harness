@@ -33,6 +33,7 @@ class GcpCloudCostConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a GcpCloudCostConnector resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] features_enableds: Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[_builtins.str] gcp_project_id: GCP Project Id.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -197,6 +198,7 @@ class _GcpCloudCostConnectorState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering GcpCloudCostConnector resources.
+
         :param pulumi.Input['GcpCloudCostConnectorBillingExportSpecArgs'] billing_export_spec: Returns billing details.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] features_enableds: Indicates which features to enable among Billing, Optimization, Visibility and Governance.
@@ -417,6 +419,7 @@ class GcpCloudCostConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['GcpCloudCostConnectorBillingExportSpecArgs', 'GcpCloudCostConnectorBillingExportSpecArgsDict']] billing_export_spec: Returns billing details.
@@ -485,6 +488,7 @@ class GcpCloudCostConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GcpCloudCostConnectorArgs args: The arguments to use to populate this resource's properties.

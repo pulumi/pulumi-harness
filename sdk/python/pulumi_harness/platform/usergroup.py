@@ -39,6 +39,7 @@ class UsergroupArgs:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Usergroup resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] externally_managed: Whether the user group is externally managed.
@@ -302,6 +303,7 @@ class _UsergroupState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Usergroup resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] externally_managed: Whether the user group is externally managed.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -726,6 +728,7 @@ class Usergroup(pulumi.CustomResource):
         $ pulumi import harness:platform/usergroup:Usergroup example <org_id>/<project_id>/<usergroup_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -908,6 +911,7 @@ class Usergroup(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/usergroup:Usergroup example <org_id>/<project_id>/<usergroup_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UsergroupArgs args: The arguments to use to populate this resource's properties.

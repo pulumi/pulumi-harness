@@ -35,6 +35,7 @@ class DbSchemaArgs:
                  use_percona: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DbSchema resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -232,6 +233,7 @@ class _DbSchemaState:
                  use_percona: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering DbSchema resources.
+
         :param pulumi.Input['DbSchemaChangelogScriptArgs'] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -564,6 +566,7 @@ class DbSchema(pulumi.CustomResource):
         $ pulumi import harness:platform/dbSchema:DbSchema example <org_id>/<project_id>/<db_schema_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Configuration to clone changeSets using script
@@ -714,6 +717,7 @@ class DbSchema(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/dbSchema:DbSchema example <org_id>/<project_id>/<db_schema_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DbSchemaArgs args: The arguments to use to populate this resource's properties.

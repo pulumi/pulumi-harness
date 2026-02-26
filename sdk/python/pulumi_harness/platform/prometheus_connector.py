@@ -34,6 +34,7 @@ class PrometheusConnectorArgs:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrometheusConnector resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] url: URL of the Prometheus server.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
@@ -216,6 +217,7 @@ class _PrometheusConnectorState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrometheusConnector resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['PrometheusConnectorHeaderArgs']]] headers: Headers.
@@ -450,6 +452,7 @@ class PrometheusConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/prometheusConnector:PrometheusConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
@@ -517,6 +520,7 @@ class PrometheusConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/prometheusConnector:PrometheusConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PrometheusConnectorArgs args: The arguments to use to populate this resource's properties.

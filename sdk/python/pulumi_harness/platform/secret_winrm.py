@@ -32,6 +32,7 @@ class SecretWinrmArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecretWinrm resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input['SecretWinrmKerberosArgs'] kerberos: Kerberos authentication scheme
@@ -183,6 +184,7 @@ class _SecretWinrmState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SecretWinrm resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input['SecretWinrmKerberosArgs'] kerberos: Kerberos authentication scheme
@@ -616,6 +618,7 @@ class SecretWinrm(pulumi.CustomResource):
         $ pulumi import harness:platform/secretWinrm:SecretWinrm example <org_id>/<project_id>/<winrm_credential_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -912,6 +915,7 @@ class SecretWinrm(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/secretWinrm:SecretWinrm example <org_id>/<project_id>/<winrm_credential_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecretWinrmArgs args: The arguments to use to populate this resource's properties.

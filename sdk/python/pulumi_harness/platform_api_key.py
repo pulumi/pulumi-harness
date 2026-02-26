@@ -31,6 +31,7 @@ class PlatformApiKeyArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PlatformApiKey resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity
         :param pulumi.Input[_builtins.str] apikey_type: Type of the API Key
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -195,6 +196,7 @@ class _PlatformApiKeyState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering PlatformApiKey resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity
         :param pulumi.Input[_builtins.str] apikey_type: Type of the API Key
         :param pulumi.Input[_builtins.int] default_time_to_expire_token: Default expiration time of the Token within API Key
@@ -383,6 +385,7 @@ class PlatformApiKey(pulumi.CustomResource):
         terraform import harness_platform_apikey <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity
@@ -419,6 +422,7 @@ class PlatformApiKey(pulumi.CustomResource):
         # Import project level apikey
         terraform import harness_platform_apikey <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PlatformApiKeyArgs args: The arguments to use to populate this resource's properties.

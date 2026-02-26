@@ -34,6 +34,7 @@ class AppDynamicsConnectorArgs:
                  username_password: Optional[pulumi.Input['AppDynamicsConnectorUsernamePasswordArgs']] = None):
         """
         The set of arguments for constructing a AppDynamicsConnector resource.
+
         :param pulumi.Input[_builtins.str] account_name: The App Dynamics account name.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] url: URL of the App Dynamics controller.
@@ -215,6 +216,7 @@ class _AppDynamicsConnectorState:
                  username_password: Optional[pulumi.Input['AppDynamicsConnectorUsernamePasswordArgs']] = None):
         """
         Input properties used for looking up and filtering AppDynamicsConnector resources.
+
         :param pulumi.Input[_builtins.str] account_name: The App Dynamics account name.
         :param pulumi.Input['AppDynamicsConnectorApiTokenArgs'] api_token: Authenticate to App Dynamics using api token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
@@ -460,6 +462,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: The App Dynamics account name.
@@ -538,6 +541,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppDynamicsConnectorArgs args: The arguments to use to populate this resource's properties.

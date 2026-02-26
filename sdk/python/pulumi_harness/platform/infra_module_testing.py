@@ -35,6 +35,7 @@ class InfraModuleTestingArgs:
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a InfraModuleTesting resource.
+
         :param pulumi.Input[_builtins.str] module_id: Identifier of the module to enable testing for
         :param pulumi.Input[_builtins.str] org: Organization identifier
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pipelines: List of pipeline IDs to create webhooks for triggering test executions
@@ -243,6 +244,7 @@ class _InfraModuleTestingState:
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering InfraModuleTesting resources.
+
         :param pulumi.Input[_builtins.str] account: Account that owns the module
         :param pulumi.Input[_builtins.int] created: Timestamp when the module was created
         :param pulumi.Input[_builtins.str] description: Description of the module
@@ -700,6 +702,7 @@ class InfraModuleTesting(pulumi.CustomResource):
         $ pulumi import harness:platform/infraModuleTesting:InfraModuleTesting example <module_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] module_id: Identifier of the module to enable testing for
@@ -750,6 +753,7 @@ class InfraModuleTesting(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/infraModuleTesting:InfraModuleTesting example <module_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InfraModuleTestingArgs args: The arguments to use to populate this resource's properties.

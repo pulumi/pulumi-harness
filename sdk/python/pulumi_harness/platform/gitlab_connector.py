@@ -36,6 +36,7 @@ class GitlabConnectorArgs:
                  validation_repo: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GitlabConnector resource.
+
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a gitlab repository or a gitlab account. Valid values are Account, Repo.
         :param pulumi.Input['GitlabConnectorCredentialsArgs'] credentials: Credentials to use for the connection.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -248,6 +249,7 @@ class _GitlabConnectorState:
                  validation_repo: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GitlabConnector resources.
+
         :param pulumi.Input['GitlabConnectorApiAuthenticationArgs'] api_authentication: Configuration for using the gitlab api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a gitlab repository or a gitlab account. Valid values are Account, Repo.
         :param pulumi.Input['GitlabConnectorCredentialsArgs'] credentials: Credentials to use for the connection.
@@ -491,6 +493,7 @@ class GitlabConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/gitlabConnector:GitlabConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['GitlabConnectorApiAuthenticationArgs', 'GitlabConnectorApiAuthenticationArgsDict']] api_authentication: Configuration for using the gitlab api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
@@ -537,6 +540,7 @@ class GitlabConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gitlabConnector:GitlabConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GitlabConnectorArgs args: The arguments to use to populate this resource's properties.

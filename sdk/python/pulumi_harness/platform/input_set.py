@@ -35,6 +35,7 @@ class InputSetArgs:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InputSet resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] pipeline_id: Identifier of the pipeline
@@ -231,6 +232,7 @@ class _InputSetState:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InputSet resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input['InputSetGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input['InputSetGitImportInfoArgs'] git_import_info: Contains Git Information for importing entities from Git
@@ -446,6 +448,7 @@ class InputSet(pulumi.CustomResource):
         $ pulumi import harness:platform/inputSet:InputSet example <org_id>/<project_id>/<pipeline_id>/<input_set_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -479,6 +482,7 @@ class InputSet(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/inputSet:InputSet example <org_id>/<project_id>/<pipeline_id>/<input_set_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InputSetArgs args: The arguments to use to populate this resource's properties.

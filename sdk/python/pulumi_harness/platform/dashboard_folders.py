@@ -22,6 +22,7 @@ class DashboardFoldersArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DashboardFolders resource.
+
         :param pulumi.Input[_builtins.str] name: Name of the folder.
         """
         if name is not None:
@@ -47,6 +48,7 @@ class _DashboardFoldersState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DashboardFolders resources.
+
         :param pulumi.Input[_builtins.str] created_at: Created DateTime of the folder.
         :param pulumi.Input[_builtins.str] name: Name of the folder.
         """
@@ -100,6 +102,7 @@ class DashboardFolders(pulumi.CustomResource):
         folder = harness.platform.DashboardFolders("folder", name="name")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the folder.
@@ -121,6 +124,7 @@ class DashboardFolders(pulumi.CustomResource):
 
         folder = harness.platform.DashboardFolders("folder", name="name")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DashboardFoldersArgs args: The arguments to use to populate this resource's properties.

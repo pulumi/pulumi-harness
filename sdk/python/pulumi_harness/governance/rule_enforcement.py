@@ -32,6 +32,7 @@ class RuleEnforcementArgs:
                  target_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RuleEnforcement resource.
+
         :param pulumi.Input[_builtins.str] cloud_provider: The cloud provider for the rule enforcement. It should be either AWS, AZURE or GCP.
         :param pulumi.Input[_builtins.str] execution_schedule: Execution schedule in cron format.
         :param pulumi.Input[_builtins.str] execution_timezone: Timezone for the execution schedule.
@@ -213,6 +214,7 @@ class _RuleEnforcementState:
                  target_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering RuleEnforcement resources.
+
         :param pulumi.Input[_builtins.str] cloud_provider: The cloud provider for the rule enforcement. It should be either AWS, AZURE or GCP.
         :param pulumi.Input[_builtins.str] description: Description for rule enforcement.
         :param pulumi.Input[_builtins.str] enforcement_id: Id of the rule enforcement.
@@ -448,6 +450,7 @@ class RuleEnforcement(pulumi.CustomResource):
         $ pulumi import harness:governance/ruleEnforcement:RuleEnforcement example <enforcement_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_provider: The cloud provider for the rule enforcement. It should be either AWS, AZURE or GCP.
@@ -501,6 +504,7 @@ class RuleEnforcement(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:governance/ruleEnforcement:RuleEnforcement example <enforcement_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleEnforcementArgs args: The arguments to use to populate this resource's properties.

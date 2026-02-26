@@ -28,6 +28,7 @@ class GitopsApplicationsetArgs:
                  upsert: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitopsApplicationset resource.
+
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps applicationset.
         :param pulumi.Input['GitopsApplicationsetApplicationsetArgs'] applicationset: Definition of the GitOps applicationset resource.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps applicationset.
@@ -113,6 +114,7 @@ class _GitopsApplicationsetState:
                  upsert: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GitopsApplicationset resources.
+
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps applicationset.
         :param pulumi.Input['GitopsApplicationsetApplicationsetArgs'] applicationset: Definition of the GitOps applicationset resource.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps applicationset. This is a unique identifier for the applicationset generated automatically.
@@ -423,6 +425,7 @@ class GitopsApplicationset(pulumi.CustomResource):
         $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example <organization_id>/<project_id>/<agent_id>/<identifier>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps applicationset.
@@ -641,6 +644,7 @@ class GitopsApplicationset(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gitopsApplicationset:GitopsApplicationset example <organization_id>/<project_id>/<agent_id>/<identifier>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GitopsApplicationsetArgs args: The arguments to use to populate this resource's properties.

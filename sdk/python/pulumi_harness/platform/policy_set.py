@@ -34,6 +34,7 @@ class PolicySetArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PolicySet resource.
+
         :param pulumi.Input[_builtins.str] action: Action for the policyset.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] type: Type for the policyset.
@@ -215,6 +216,7 @@ class _PolicySetState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicySet resources.
+
         :param pulumi.Input[_builtins.str] action: Action for the policyset.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] enabled: Enabled for the policyset.
@@ -414,6 +416,7 @@ class PolicySet(pulumi.CustomResource):
         $ pulumi import harness:platform/policySet:PolicySet example <organization_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: Action for the policyset.
@@ -446,6 +449,7 @@ class PolicySet(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/policySet:PolicySet example <organization_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicySetArgs args: The arguments to use to populate this resource's properties.

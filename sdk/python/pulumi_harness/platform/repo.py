@@ -32,6 +32,7 @@ class RepoArgs:
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['RepoSourceArgs']]]] = None):
         """
         The set of arguments for constructing a Repo resource.
+
         :param pulumi.Input[_builtins.str] identifier: Identifier of the repository.
         :param pulumi.Input[_builtins.str] default_branch: Default branch of the repository (Applicate only for create).
         :param pulumi.Input[_builtins.str] description: Description of the repository.
@@ -189,6 +190,7 @@ class _RepoState:
                  updated: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Repo resources.
+
         :param pulumi.Input[_builtins.int] created: Timestamp when the repository was created.
         :param pulumi.Input[_builtins.int] created_by: ID of the user who created the repository.
         :param pulumi.Input[_builtins.str] default_branch: Default branch of the repository (Applicate only for create).
@@ -476,6 +478,7 @@ class Repo(pulumi.CustomResource):
         $ pulumi import harness:platform/repo:Repo example <org_id>/<project_id>/<identifier>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_branch: Default branch of the repository (Applicate only for create).
@@ -536,6 +539,7 @@ class Repo(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/repo:Repo example <org_id>/<project_id>/<identifier>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RepoArgs args: The arguments to use to populate this resource's properties.

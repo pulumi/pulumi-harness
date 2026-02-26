@@ -30,6 +30,7 @@ class DefaultNotificationTemplateSetArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DefaultNotificationTemplateSet resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs']]] event_template_configuration_sets: Set of event-template configurations
         :param pulumi.Input[_builtins.str] identifier: Identifier of Default Notification Template Set
         :param pulumi.Input[_builtins.str] notification_channel_type: Type of channel (e.g. SLACK, EMAIL, etc.)
@@ -148,6 +149,7 @@ class _DefaultNotificationTemplateSetState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DefaultNotificationTemplateSet resources.
+
         :param pulumi.Input[_builtins.int] created: Timestamp when the default notification template set was created.
         :param pulumi.Input[_builtins.str] description: Description for Default Notification Template Set
         :param pulumi.Input[Sequence[pulumi.Input['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs']]] event_template_configuration_sets: Set of event-template configurations
@@ -303,6 +305,7 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
         """
         Resource for creating a Harness Default Notification Template Set
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description for Default Notification Template Set
@@ -321,6 +324,7 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness Default Notification Template Set
+
 
         :param str resource_name: The name of the resource.
         :param DefaultNotificationTemplateSetArgs args: The arguments to use to populate this resource's properties.

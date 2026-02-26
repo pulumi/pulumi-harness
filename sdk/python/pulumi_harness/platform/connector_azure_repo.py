@@ -36,6 +36,7 @@ class ConnectorAzureRepoArgs:
                  validation_repo: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectorAzureRepo resource.
+
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
         :param pulumi.Input['ConnectorAzureRepoCredentialsArgs'] credentials: Credentials to use for the connection.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -248,6 +249,7 @@ class _ConnectorAzureRepoState:
                  validation_repo: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectorAzureRepo resources.
+
         :param pulumi.Input['ConnectorAzureRepoApiAuthenticationArgs'] api_authentication: Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
         :param pulumi.Input['ConnectorAzureRepoCredentialsArgs'] credentials: Credentials to use for the connection.
@@ -469,6 +471,7 @@ class ConnectorAzureRepo(pulumi.CustomResource):
         """
         Resource for creating a Azure Repo connector.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectorAzureRepoApiAuthenticationArgs', 'ConnectorAzureRepoApiAuthenticationArgsDict']] api_authentication: Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
@@ -493,6 +496,7 @@ class ConnectorAzureRepo(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Azure Repo connector.
+
 
         :param str resource_name: The name of the resource.
         :param ConnectorAzureRepoArgs args: The arguments to use to populate this resource's properties.

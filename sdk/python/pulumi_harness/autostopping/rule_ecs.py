@@ -31,6 +31,7 @@ class RuleEcsArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RuleEcs resource.
+
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_domains: Custom URLs used to access the instances
         :param pulumi.Input[Sequence[pulumi.Input['RuleEcsDependArgs']]] depends: Dependent rules
@@ -163,6 +164,7 @@ class _RuleEcsState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RuleEcs resources.
+
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_domains: Custom URLs used to access the instances
         :param pulumi.Input[Sequence[pulumi.Input['RuleEcsDependArgs']]] depends: Dependent rules
@@ -344,6 +346,7 @@ class RuleEcs(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
@@ -391,6 +394,7 @@ class RuleEcs(pulumi.CustomResource):
                 "delay_in_sec": 5,
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleEcsArgs args: The arguments to use to populate this resource's properties.

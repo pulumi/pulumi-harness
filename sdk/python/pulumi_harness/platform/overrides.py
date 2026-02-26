@@ -35,6 +35,7 @@ class OverridesArgs:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Overrides resource.
+
         :param pulumi.Input[_builtins.str] env_id: The environment ID to which the overrides are associated.
         :param pulumi.Input[_builtins.str] type: The type of the overrides.
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID to which the overrides are associated.
@@ -233,6 +234,7 @@ class _OverridesState:
                  yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Overrides resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID to which the overrides are associated.
         :param pulumi.Input[_builtins.str] env_id: The environment ID to which the overrides are associated.
         :param pulumi.Input['OverridesGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
@@ -460,6 +462,7 @@ class Overrides(pulumi.CustomResource):
         $ pulumi import harness:platform/overrides:Overrides example <org_id>/<project_id>/<override_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID to which the overrides are associated.
@@ -505,6 +508,7 @@ class Overrides(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/overrides:Overrides example <org_id>/<project_id>/<override_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OverridesArgs args: The arguments to use to populate this resource's properties.

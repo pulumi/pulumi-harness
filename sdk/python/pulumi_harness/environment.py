@@ -28,6 +28,7 @@ class EnvironmentArgs:
                  variable_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]] = None):
         """
         The set of arguments for constructing a Environment resource.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application.
         :param pulumi.Input[_builtins.str] type: The type of the environment. Valid values are `PROD` and `NON_PROD`
         :param pulumi.Input[_builtins.str] description: The description of the environment.
@@ -114,6 +115,7 @@ class _EnvironmentState:
                  variable_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
+
         :param pulumi.Input[_builtins.str] app_id: The id of the application.
         :param pulumi.Input[_builtins.str] description: The description of the environment.
         :param pulumi.Input[_builtins.str] name: The name of the environment.
@@ -261,6 +263,7 @@ class Environment(pulumi.CustomResource):
         $ pulumi import harness:index/environment:Environment dev <application_id>/<environment_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The id of the application.
@@ -331,6 +334,7 @@ class Environment(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/environment:Environment dev <application_id>/<environment_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvironmentArgs args: The arguments to use to populate this resource's properties.

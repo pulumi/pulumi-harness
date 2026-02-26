@@ -27,6 +27,7 @@ class TanzuArgs:
                  username_secret_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Tanzu resource.
+
         :param pulumi.Input[_builtins.str] endpoint: The url of the Tanzu platform.
         :param pulumi.Input[_builtins.str] password_secret_name: The name of the Harness secret containing the password to use to authenticate to Tanzu.
         :param pulumi.Input[_builtins.str] name: The name of the cloud provider.
@@ -129,6 +130,7 @@ class _TanzuState:
                  username_secret_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tanzu resources.
+
         :param pulumi.Input[_builtins.str] endpoint: The url of the Tanzu platform.
         :param pulumi.Input[_builtins.str] name: The name of the cloud provider.
         :param pulumi.Input[_builtins.str] password_secret_name: The name of the Harness secret containing the password to use to authenticate to Tanzu.
@@ -267,6 +269,7 @@ class Tanzu(pulumi.CustomResource):
         $ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint: The url of the Tanzu platform.
@@ -313,6 +316,7 @@ class Tanzu(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TanzuArgs args: The arguments to use to populate this resource's properties.

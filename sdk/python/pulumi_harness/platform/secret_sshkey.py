@@ -32,6 +32,7 @@ class SecretSshkeyArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecretSshkey resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input['SecretSshkeyKerberosArgs'] kerberos: Kerberos authentication scheme
@@ -183,6 +184,7 @@ class _SecretSshkeyState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SecretSshkey resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input['SecretSshkeyKerberosArgs'] kerberos: Kerberos authentication scheme
@@ -362,6 +364,7 @@ class SecretSshkey(pulumi.CustomResource):
         $ pulumi import harness:platform/secretSshkey:SecretSshkey example <org_id>/<project_id>/<secret_sshkey_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -404,6 +407,7 @@ class SecretSshkey(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/secretSshkey:SecretSshkey example <org_id>/<project_id>/<secret_sshkey_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecretSshkeyArgs args: The arguments to use to populate this resource's properties.

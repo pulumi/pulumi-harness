@@ -33,6 +33,7 @@ class NexusConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a NexusConnector resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] url: URL of the Nexus server.
         :param pulumi.Input[_builtins.str] version: Version of the Nexus server. Valid values are 2.x, 3.x
@@ -198,6 +199,7 @@ class _NexusConnectorState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NexusConnector resources.
+
         :param pulumi.Input['NexusConnectorCredentialsArgs'] credentials: Credentials to use for authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -393,6 +395,7 @@ class NexusConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/nexusConnector:NexusConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NexusConnectorCredentialsArgs', 'NexusConnectorCredentialsArgsDict']] credentials: Credentials to use for authentication.
@@ -436,6 +439,7 @@ class NexusConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/nexusConnector:NexusConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NexusConnectorArgs args: The arguments to use to populate this resource's properties.

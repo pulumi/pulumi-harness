@@ -32,6 +32,7 @@ class DashboardsArgs:
                  view_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Dashboards resource.
+
         :param pulumi.Input[_builtins.str] dashboard_id: Unique identifier of the Template Dashboard to create from.
         :param pulumi.Input[_builtins.str] resource_identifier: The Folder ID that the Dashboard belongs to.
         :param pulumi.Input[_builtins.str] created_at: Created at timestamp of the Dashboard.
@@ -216,6 +217,7 @@ class _DashboardsState:
                  view_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Dashboards resources.
+
         :param pulumi.Input[_builtins.str] created_at: Created at timestamp of the Dashboard.
         :param pulumi.Input[_builtins.str] dashboard_id: Unique identifier of the Template Dashboard to create from.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_sources: Data Sources within the Dashboard.
@@ -448,6 +450,7 @@ class Dashboards(pulumi.CustomResource):
             title="Dashboard Title")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: Created at timestamp of the Dashboard.
@@ -483,6 +486,7 @@ class Dashboards(pulumi.CustomResource):
             resource_identifier="999",
             title="Dashboard Title")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DashboardsArgs args: The arguments to use to populate this resource's properties.

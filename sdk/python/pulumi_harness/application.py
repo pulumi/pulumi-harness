@@ -25,6 +25,7 @@ class ApplicationArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Application resource.
+
         :param pulumi.Input[_builtins.str] description: The application description
         :param pulumi.Input[_builtins.bool] is_manual_trigger_authorized: When this is set to true, all manual triggers will require API Key authorization
         :param pulumi.Input[_builtins.str] name: The name of the application
@@ -99,6 +100,7 @@ class _ApplicationState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Application resources.
+
         :param pulumi.Input[_builtins.str] description: The application description
         :param pulumi.Input[_builtins.str] git_sync_connector_id: The id of the git sync connector
         :param pulumi.Input[_builtins.bool] git_sync_enabled: True if git sync is enabled on this application
@@ -231,6 +233,7 @@ class Application(pulumi.CustomResource):
         $ pulumi import harness:index/application:Application myapp Xyz123
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The application description
@@ -271,6 +274,7 @@ class Application(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:index/application:Application myapp Xyz123
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationArgs args: The arguments to use to populate this resource's properties.

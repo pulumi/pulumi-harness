@@ -30,6 +30,7 @@ class GitOpsRepoCredArgs:
                  upsert: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitOpsRepoCred resource.
+
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the Repository Credentials.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the Repository Credentials.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the Repository Credentials.
@@ -152,6 +153,7 @@ class _GitOpsRepoCredState:
                  upsert: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GitOpsRepoCred resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the Repository Credentials.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the Repository Credentials.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]] creds: credential details.
@@ -327,6 +329,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
         $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <organization_id>/<project_id>/<agent_id>/<repocred_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the Repository Credentials.
@@ -391,6 +394,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <organization_id>/<project_id>/<agent_id>/<repocred_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GitOpsRepoCredArgs args: The arguments to use to populate this resource's properties.

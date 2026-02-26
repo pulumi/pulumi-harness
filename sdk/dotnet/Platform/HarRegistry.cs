@@ -90,7 +90,20 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ### Import Examples
     /// 
+    /// Account level: &lt;account_id&gt;/&lt;registry_identifier&gt;
+    /// Org level: &lt;account_id&gt;/&lt;org_id&gt;/&lt;registry_identifier&gt;
+    /// Project level: &lt;account_id&gt;/&lt;org_id&gt;/&lt;project_id&gt;/&lt;registry_identifier&gt;
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/harRegistry:HarRegistry example &lt;space_ref&gt;/&lt;registry_identifier&gt;
+    /// ```
+    /// 
     /// ### After Import
+    /// 
+    /// ```sh
+    /// pulumi preview
+    /// pulumi up
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/harRegistry:HarRegistry")]
     public partial class HarRegistry : global::Pulumi.CustomResource

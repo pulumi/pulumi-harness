@@ -28,6 +28,7 @@ class EnvironmentClustersMappingArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvironmentClustersMapping resource.
+
         :param pulumi.Input[_builtins.str] env_id: environment identifier.
         :param pulumi.Input[_builtins.str] identifier: identifier for the cluster mapping(can be given any value).
         :param pulumi.Input[Sequence[pulumi.Input['EnvironmentClustersMappingClusterArgs']]] clusters: list of cluster identifiers and names
@@ -115,6 +116,7 @@ class _EnvironmentClustersMappingState:
                  scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentClustersMapping resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['EnvironmentClustersMappingClusterArgs']]] clusters: list of cluster identifiers and names
         :param pulumi.Input[_builtins.str] env_id: environment identifier.
         :param pulumi.Input[_builtins.str] identifier: identifier for the cluster mapping(can be given any value).
@@ -269,6 +271,7 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
         #
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict']]]] clusters: list of cluster identifiers and names
@@ -331,6 +334,7 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
         ```sh
         #
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvironmentClustersMappingArgs args: The arguments to use to populate this resource's properties.

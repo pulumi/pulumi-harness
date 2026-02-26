@@ -27,6 +27,7 @@ class NotificationRuleArgs:
                  request: Optional[pulumi.Input['NotificationRuleRequestArgs']] = None):
         """
         The set of arguments for constructing a NotificationRule resource.
+
         :param pulumi.Input[_builtins.str] identifier: Identifier of the Notification Rule.
         :param pulumi.Input[_builtins.str] org_id: Identifier of the organization in which the Notification Rule is configured.
         :param pulumi.Input[_builtins.str] project_id: Identifier of the project in which the Notification Rule is configured.
@@ -96,6 +97,7 @@ class _NotificationRuleState:
                  request: Optional[pulumi.Input['NotificationRuleRequestArgs']] = None):
         """
         Input properties used for looking up and filtering NotificationRule resources.
+
         :param pulumi.Input[_builtins.str] identifier: Identifier of the Notification Rule.
         :param pulumi.Input[_builtins.str] org_id: Identifier of the organization in which the Notification Rule is configured.
         :param pulumi.Input[_builtins.str] project_id: Identifier of the project in which the Notification Rule is configured.
@@ -290,6 +292,7 @@ class NotificationRule(pulumi.CustomResource):
         $ pulumi import harness:platform/notificationRule:NotificationRule example <org_id>/<project_id>/<notification_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the Notification Rule.
@@ -422,6 +425,7 @@ class NotificationRule(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/notificationRule:NotificationRule example <org_id>/<project_id>/<notification_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NotificationRuleArgs args: The arguments to use to populate this resource's properties.

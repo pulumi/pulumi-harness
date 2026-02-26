@@ -48,6 +48,7 @@ class WorkspaceArgs:
                  variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Workspace resource.
+
         :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -447,6 +448,7 @@ class _WorkspaceState:
                  variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Workspace resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
         :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] default_pipelines: Default pipelines associated with this workspace
@@ -944,6 +946,7 @@ class Workspace(pulumi.CustomResource):
         $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<workspace_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
@@ -1064,6 +1067,7 @@ class Workspace(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<workspace_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceArgs args: The arguments to use to populate this resource's properties.

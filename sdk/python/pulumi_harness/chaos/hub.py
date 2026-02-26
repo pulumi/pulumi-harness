@@ -31,6 +31,7 @@ class HubArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Hub resource.
+
         :param pulumi.Input[_builtins.str] connector_id: ID of the Git connector
         :param pulumi.Input[_builtins.str] repo_branch: Git repository branch
         :param pulumi.Input[_builtins.str] connector_scope: Scope of the Git connector (PROJECT, ORGANISATION, or ACCOUNT)
@@ -203,6 +204,7 @@ class _HubState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Hub resources.
+
         :param pulumi.Input[_builtins.str] connector_id: ID of the Git connector
         :param pulumi.Input[_builtins.str] connector_scope: Scope of the Git connector (PROJECT, ORGANISATION, or ACCOUNT)
         :param pulumi.Input[_builtins.str] created_at: Creation timestamp
@@ -497,6 +499,7 @@ class Hub(pulumi.CustomResource):
         $ pulumi import harness:chaos/hub:Hub example <org_id>/<project_id>/<hub_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connector_id: ID of the Git connector
@@ -549,6 +552,7 @@ class Hub(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:chaos/hub:Hub example <org_id>/<project_id>/<hub_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HubArgs args: The arguments to use to populate this resource's properties.

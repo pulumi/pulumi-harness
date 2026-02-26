@@ -37,6 +37,7 @@ class GithubConnectorArgs:
                  validation_repo: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GithubConnector resource.
+
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a github repository or a github account. Valid values are Account, Repo.
         :param pulumi.Input['GithubConnectorCredentialsArgs'] credentials: Credentials to use for the connection.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -265,6 +266,7 @@ class _GithubConnectorState:
                  validation_repo: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GithubConnector resources.
+
         :param pulumi.Input['GithubConnectorApiAuthenticationArgs'] api_authentication: Configuration for using the github api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a github repository or a github account. Valid values are Account, Repo.
         :param pulumi.Input['GithubConnectorCredentialsArgs'] credentials: Credentials to use for the connection.
@@ -524,6 +526,7 @@ class GithubConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/githubConnector:GithubConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['GithubConnectorApiAuthenticationArgs', 'GithubConnectorApiAuthenticationArgsDict']] api_authentication: Configuration for using the github api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
@@ -571,6 +574,7 @@ class GithubConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/githubConnector:GithubConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GithubConnectorArgs args: The arguments to use to populate this resource's properties.

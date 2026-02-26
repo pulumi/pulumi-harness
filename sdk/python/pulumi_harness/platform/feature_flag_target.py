@@ -28,6 +28,7 @@ class FeatureFlagTargetArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FeatureFlagTarget resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
         :param pulumi.Input[_builtins.str] environment: Environment Identifier
         :param pulumi.Input[_builtins.str] identifier: Identifier of the Feature Flag Target
@@ -143,6 +144,7 @@ class _FeatureFlagTargetState:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FeatureFlagTarget resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] attributes: Attributes
         :param pulumi.Input[_builtins.str] environment: Environment Identifier
@@ -286,6 +288,7 @@ class FeatureFlagTarget(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
@@ -322,6 +325,7 @@ class FeatureFlagTarget(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FeatureFlagTargetArgs args: The arguments to use to populate this resource's properties.

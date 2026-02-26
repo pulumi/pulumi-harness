@@ -33,6 +33,7 @@ class OciHelmConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a OciHelmConnector resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] url: URL of the helm server.
         :param pulumi.Input['OciHelmConnectorCredentialsArgs'] credentials: Credentials to use for authentication.
@@ -199,6 +200,7 @@ class _OciHelmConnectorState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OciHelmConnector resources.
+
         :param pulumi.Input['OciHelmConnectorCredentialsArgs'] credentials: Credentials to use for authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -394,6 +396,7 @@ class OciHelmConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OciHelmConnectorCredentialsArgs', 'OciHelmConnectorCredentialsArgsDict']] credentials: Credentials to use for authentication.
@@ -437,6 +440,7 @@ class OciHelmConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OciHelmConnectorArgs args: The arguments to use to populate this resource's properties.

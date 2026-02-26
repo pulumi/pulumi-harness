@@ -36,6 +36,7 @@ class ConnectorCustomhealthsourceArgs:
                  validation_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectorCustomhealthsource resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] method: HTTP Verb Method for the API Call
         :param pulumi.Input[_builtins.str] url: URL of the Custom Healthsource controller.
@@ -249,6 +250,7 @@ class _ConnectorCustomhealthsourceState:
                  validation_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectorCustomhealthsource resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectorCustomhealthsourceHeaderArgs']]] headers: Headers.
@@ -516,6 +518,7 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
         $ pulumi import harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
@@ -586,6 +589,7 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectorCustomhealthsourceArgs args: The arguments to use to populate this resource's properties.

@@ -35,6 +35,7 @@ class GcpSecretManagerConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a GcpSecretManagerConnector resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] credentials_ref: Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: The delegates to inherit the credentials from.
@@ -234,6 +235,7 @@ class _GcpSecretManagerConnectorState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering GcpSecretManagerConnector resources.
+
         :param pulumi.Input[_builtins.str] credentials_ref: Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: The delegates to inherit the credentials from.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -508,6 +510,7 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <org_id>/<project_id>/<connector_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] credentials_ref: Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -600,6 +603,7 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <org_id>/<project_id>/<connector_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GcpSecretManagerConnectorArgs args: The arguments to use to populate this resource's properties.
