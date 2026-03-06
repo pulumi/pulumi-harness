@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AlertArgs, AlertState } from "./alert";
+export type Alert = import("./alert").Alert;
+export const Alert: typeof import("./alert").Alert = null as any;
+utilities.lazyLoad(exports, ["Alert"], () => require("./alert"));
+
 export { AwsAlbArgs, AwsAlbState } from "./awsAlb";
 export type AwsAlb = import("./awsAlb").AwsAlb;
 export const AwsAlb: typeof import("./awsAlb").AwsAlb = null as any;
@@ -29,6 +34,11 @@ export { GcpProxyArgs, GcpProxyState } from "./gcpProxy";
 export type GcpProxy = import("./gcpProxy").GcpProxy;
 export const GcpProxy: typeof import("./gcpProxy").GcpProxy = null as any;
 utilities.lazyLoad(exports, ["GcpProxy"], () => require("./gcpProxy"));
+
+export { GetAlertArgs, GetAlertResult, GetAlertOutputArgs } from "./getAlert";
+export const getAlert: typeof import("./getAlert").getAlert = null as any;
+export const getAlertOutput: typeof import("./getAlert").getAlertOutput = null as any;
+utilities.lazyLoad(exports, ["getAlert","getAlertOutput"], () => require("./getAlert"));
 
 export { GetAwsAlbArgs, GetAwsAlbResult, GetAwsAlbOutputArgs } from "./getAwsAlb";
 export const getAwsAlb: typeof import("./getAwsAlb").getAwsAlb = null as any;
@@ -60,6 +70,11 @@ export const getRuleEcs: typeof import("./getRuleEcs").getRuleEcs = null as any;
 export const getRuleEcsOutput: typeof import("./getRuleEcs").getRuleEcsOutput = null as any;
 utilities.lazyLoad(exports, ["getRuleEcs","getRuleEcsOutput"], () => require("./getRuleEcs"));
 
+export { GetRuleK8sArgs, GetRuleK8sResult, GetRuleK8sOutputArgs } from "./getRuleK8s";
+export const getRuleK8s: typeof import("./getRuleK8s").getRuleK8s = null as any;
+export const getRuleK8sOutput: typeof import("./getRuleK8s").getRuleK8sOutput = null as any;
+utilities.lazyLoad(exports, ["getRuleK8s","getRuleK8sOutput"], () => require("./getRuleK8s"));
+
 export { GetRuleRdsArgs, GetRuleRdsResult, GetRuleRdsOutputArgs } from "./getRuleRds";
 export const getRuleRds: typeof import("./getRuleRds").getRuleRds = null as any;
 export const getRuleRdsOutput: typeof import("./getRuleRds").getRuleRdsOutput = null as any;
@@ -75,6 +90,11 @@ export const getRuleVm: typeof import("./getRuleVm").getRuleVm = null as any;
 export const getRuleVmOutput: typeof import("./getRuleVm").getRuleVmOutput = null as any;
 utilities.lazyLoad(exports, ["getRuleVm","getRuleVmOutput"], () => require("./getRuleVm"));
 
+export { GetRulesArgs, GetRulesResult, GetRulesOutputArgs } from "./getRules";
+export const getRules: typeof import("./getRules").getRules = null as any;
+export const getRulesOutput: typeof import("./getRules").getRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getRules","getRulesOutput"], () => require("./getRules"));
+
 export { GetScheduleArgs, GetScheduleResult, GetScheduleOutputArgs } from "./getSchedule";
 export const getSchedule: typeof import("./getSchedule").getSchedule = null as any;
 export const getScheduleOutput: typeof import("./getSchedule").getScheduleOutput = null as any;
@@ -84,6 +104,11 @@ export { RuleEcsArgs, RuleEcsState } from "./ruleEcs";
 export type RuleEcs = import("./ruleEcs").RuleEcs;
 export const RuleEcs: typeof import("./ruleEcs").RuleEcs = null as any;
 utilities.lazyLoad(exports, ["RuleEcs"], () => require("./ruleEcs"));
+
+export { RuleK8sArgs, RuleK8sState } from "./ruleK8s";
+export type RuleK8s = import("./ruleK8s").RuleK8s;
+export const RuleK8s: typeof import("./ruleK8s").RuleK8s = null as any;
+utilities.lazyLoad(exports, ["RuleK8s"], () => require("./ruleK8s"));
 
 export { RuleRdsArgs, RuleRdsState } from "./ruleRds";
 export type RuleRds = import("./ruleRds").RuleRds;
@@ -110,6 +135,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "harness:autostopping/alert:Alert":
+                return new Alert(name, <any>undefined, { urn })
             case "harness:autostopping/awsAlb:AwsAlb":
                 return new AwsAlb(name, <any>undefined, { urn })
             case "harness:autostopping/awsProxy:AwsProxy":
@@ -122,6 +149,8 @@ const _module = {
                 return new GcpProxy(name, <any>undefined, { urn })
             case "harness:autostopping/ruleEcs:RuleEcs":
                 return new RuleEcs(name, <any>undefined, { urn })
+            case "harness:autostopping/ruleK8s:RuleK8s":
+                return new RuleK8s(name, <any>undefined, { urn })
             case "harness:autostopping/ruleRds:RuleRds":
                 return new RuleRds(name, <any>undefined, { urn })
             case "harness:autostopping/ruleScaleGroup:RuleScaleGroup":
@@ -135,12 +164,14 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("harness", "autostopping/alert", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/awsAlb", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/awsProxy", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/azureGateway", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/azureProxy", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/gcpProxy", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/ruleEcs", _module)
+pulumi.runtime.registerResourceModule("harness", "autostopping/ruleK8s", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/ruleRds", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/ruleScaleGroup", _module)
 pulumi.runtime.registerResourceModule("harness", "autostopping/ruleVm", _module)

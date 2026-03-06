@@ -79,7 +79,7 @@ type RuleEcs struct {
 	// Http routing configuration
 	Https RuleEcsHttpArrayOutput `pulumi:"https"`
 	// Unique identifier of the resource
-	Identifier pulumi.Float64Output `pulumi:"identifier"`
+	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 	IdleTimeMins pulumi.IntPtrOutput `pulumi:"idleTimeMins"`
 	// Name of the rule
@@ -131,7 +131,7 @@ type ruleEcsState struct {
 	// Http routing configuration
 	Https []RuleEcsHttp `pulumi:"https"`
 	// Unique identifier of the resource
-	Identifier *float64 `pulumi:"identifier"`
+	Identifier *string `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 	IdleTimeMins *int `pulumi:"idleTimeMins"`
 	// Name of the rule
@@ -151,7 +151,7 @@ type RuleEcsState struct {
 	// Http routing configuration
 	Https RuleEcsHttpArrayInput
 	// Unique identifier of the resource
-	Identifier pulumi.Float64PtrInput
+	Identifier pulumi.StringPtrInput
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 	IdleTimeMins pulumi.IntPtrInput
 	// Name of the rule
@@ -316,8 +316,8 @@ func (o RuleEcsOutput) Https() RuleEcsHttpArrayOutput {
 }
 
 // Unique identifier of the resource
-func (o RuleEcsOutput) Identifier() pulumi.Float64Output {
-	return o.ApplyT(func(v *RuleEcs) pulumi.Float64Output { return v.Identifier }).(pulumi.Float64Output)
+func (o RuleEcsOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *RuleEcs) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.

@@ -195,7 +195,7 @@ namespace Pulumi.Harness.Autostopping
         /// <summary>
         /// Unique identifier of the resource
         /// </summary>
-        public readonly double Identifier;
+        public readonly string Identifier;
         /// <summary>
         /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         /// </summary>
@@ -219,7 +219,7 @@ namespace Pulumi.Harness.Autostopping
 
             string id,
 
-            double identifier,
+            string identifier,
 
             int? idleTimeMins,
 

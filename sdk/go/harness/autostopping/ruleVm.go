@@ -112,6 +112,8 @@ type RuleVm struct {
 
 	// Id of the cloud connector
 	CloudConnectorId pulumi.StringOutput `pulumi:"cloudConnectorId"`
+	// Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+	Connect pulumi.IntMapOutput `pulumi:"connect"`
 	// Custom URLs used to access the instances
 	CustomDomains pulumi.StringArrayOutput `pulumi:"customDomains"`
 	// Dependent rules
@@ -122,7 +124,7 @@ type RuleVm struct {
 	// Http routing configuration
 	Https RuleVmHttpArrayOutput `pulumi:"https"`
 	// Unique identifier of the resource
-	Identifier pulumi.Float64Output `pulumi:"identifier"`
+	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 	IdleTimeMins pulumi.IntPtrOutput `pulumi:"idleTimeMins"`
 	// Name of the rule
@@ -171,6 +173,8 @@ func GetRuleVm(ctx *pulumi.Context,
 type ruleVmState struct {
 	// Id of the cloud connector
 	CloudConnectorId *string `pulumi:"cloudConnectorId"`
+	// Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+	Connect map[string]int `pulumi:"connect"`
 	// Custom URLs used to access the instances
 	CustomDomains []string `pulumi:"customDomains"`
 	// Dependent rules
@@ -181,7 +185,7 @@ type ruleVmState struct {
 	// Http routing configuration
 	Https []RuleVmHttp `pulumi:"https"`
 	// Unique identifier of the resource
-	Identifier *float64 `pulumi:"identifier"`
+	Identifier *string `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 	IdleTimeMins *int `pulumi:"idleTimeMins"`
 	// Name of the rule
@@ -195,6 +199,8 @@ type ruleVmState struct {
 type RuleVmState struct {
 	// Id of the cloud connector
 	CloudConnectorId pulumi.StringPtrInput
+	// Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+	Connect pulumi.IntMapInput
 	// Custom URLs used to access the instances
 	CustomDomains pulumi.StringArrayInput
 	// Dependent rules
@@ -205,7 +211,7 @@ type RuleVmState struct {
 	// Http routing configuration
 	Https RuleVmHttpArrayInput
 	// Unique identifier of the resource
-	Identifier pulumi.Float64PtrInput
+	Identifier pulumi.StringPtrInput
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 	IdleTimeMins pulumi.IntPtrInput
 	// Name of the rule
@@ -357,6 +363,11 @@ func (o RuleVmOutput) CloudConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuleVm) pulumi.StringOutput { return v.CloudConnectorId }).(pulumi.StringOutput)
 }
 
+// Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+func (o RuleVmOutput) Connect() pulumi.IntMapOutput {
+	return o.ApplyT(func(v *RuleVm) pulumi.IntMapOutput { return v.Connect }).(pulumi.IntMapOutput)
+}
+
 // Custom URLs used to access the instances
 func (o RuleVmOutput) CustomDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleVm) pulumi.StringArrayOutput { return v.CustomDomains }).(pulumi.StringArrayOutput)
@@ -382,8 +393,8 @@ func (o RuleVmOutput) Https() RuleVmHttpArrayOutput {
 }
 
 // Unique identifier of the resource
-func (o RuleVmOutput) Identifier() pulumi.Float64Output {
-	return o.ApplyT(func(v *RuleVm) pulumi.Float64Output { return v.Identifier }).(pulumi.Float64Output)
+func (o RuleVmOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *RuleVm) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.

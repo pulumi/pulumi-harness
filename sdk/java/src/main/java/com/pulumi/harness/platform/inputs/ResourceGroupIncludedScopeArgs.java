@@ -32,14 +32,14 @@ public final class ResourceGroupIncludedScopeArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+     * Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
      * 
      */
     @Import(name="filter", required=true)
     private Output<String> filter;
 
     /**
-     * @return Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+     * @return Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
      * 
      */
     public Output<String> filter() {
@@ -125,7 +125,7 @@ public final class ResourceGroupIncludedScopeArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param filter Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+         * @param filter Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ResourceGroupIncludedScopeArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param filter Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+         * @param filter Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
          * 
          * @return builder
          * 

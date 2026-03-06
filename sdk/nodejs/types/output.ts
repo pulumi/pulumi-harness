@@ -886,6 +886,17 @@ export interface UserGroupSamlSettings {
 }
 
 export namespace autostopping {
+    export interface AlertRecipients {
+        /**
+         * List of email addresses to notify. Required if `slack` is not set.
+         */
+        emails?: string[];
+        /**
+         * List of Slack webhook URLs or channel identifiers to notify. Required if `email` is not set.
+         */
+        slacks?: string[];
+    }
+
     export interface AwsProxyCertificates {
         /**
          * Certificate secret ID
@@ -917,6 +928,17 @@ export namespace autostopping {
          * Private key secret ID
          */
         keySecretId: string;
+    }
+
+    export interface GetAlertRecipients {
+        /**
+         * List of email addresses.
+         */
+        emails?: string[];
+        /**
+         * List of Slack webhook URLs or channel identifiers.
+         */
+        slacks?: string[];
     }
 
     export interface GetAwsProxyCertificates {
@@ -987,6 +1009,17 @@ export namespace autostopping {
          * Id of the proxy
          */
         proxyId: string;
+    }
+
+    export interface GetRuleK8sDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
     }
 
     export interface GetRuleRdsDatabase {
@@ -1088,9 +1121,13 @@ export namespace autostopping {
 
     export interface GetRuleScaleGroupHttpRouting {
         /**
-         * Organization Identifier for the Entity
+         * Action to take for the routing rule
          */
         action?: string;
+        /**
+         * Path to use for the proxy
+         */
+        path?: string;
         /**
          * Port on the proxy
          */
@@ -1223,9 +1260,13 @@ export namespace autostopping {
 
     export interface GetRuleVmHttpRouting {
         /**
-         * Organization Identifier for the Entity
+         * Action to take for the routing rule
          */
         action?: string;
+        /**
+         * Path to use for the proxy
+         */
+        path?: string;
         /**
          * Port on the proxy
          */
@@ -1296,6 +1337,25 @@ export namespace autostopping {
         port?: number;
     }
 
+    export interface GetRulesRule {
+        /**
+         * Id of the cloud connector.
+         */
+        cloudConnectorId: string;
+        /**
+         * Unique identifier of the rule.
+         */
+        id: number;
+        /**
+         * Kind of the rule.
+         */
+        kind: string;
+        /**
+         * Name of the rule.
+         */
+        name: string;
+    }
+
     export interface GetScheduleRepeat {
         /**
          * List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
@@ -1346,6 +1406,17 @@ export namespace autostopping {
          * Id of the proxy
          */
         proxyId: string;
+    }
+
+    export interface RuleK8sDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
     }
 
     export interface RuleRdsDatabase {
@@ -1447,9 +1518,13 @@ export namespace autostopping {
 
     export interface RuleScaleGroupHttpRouting {
         /**
-         * Organization Identifier for the Entity
+         * Action to take for the routing rule
          */
         action?: string;
+        /**
+         * Path to use for the proxy
+         */
+        path?: string;
         /**
          * Port on the proxy
          */
@@ -1582,9 +1657,13 @@ export namespace autostopping {
 
     export interface RuleVmHttpRouting {
         /**
-         * Organization Identifier for the Entity
+         * Action to take for the routing rule
          */
         action?: string;
+        /**
+         * Path to use for the proxy
+         */
+        path?: string;
         /**
          * Port on the proxy
          */
@@ -36783,7 +36862,7 @@ export namespace platform {
          */
         accountId?: string;
         /**
-         * Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+         * Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
          */
         filter: string;
         /**
@@ -36828,7 +36907,7 @@ export namespace platform {
          */
         attributeName?: string;
         /**
-         * Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
+         * Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD_COST,CLOUD_PROVIDER,CODE_REPO,MONITORING,SECRET_MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
          */
         attributeValues?: string[];
     }

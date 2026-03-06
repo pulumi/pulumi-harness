@@ -19,7 +19,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+        /// Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
         /// </summary>
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;

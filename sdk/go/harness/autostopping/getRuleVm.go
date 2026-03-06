@@ -49,6 +49,8 @@ type LookupRuleVmArgs struct {
 type LookupRuleVmResult struct {
 	// Id of the cloud connector
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
+	// Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+	Connect map[string]int `pulumi:"connect"`
 	// Custom URLs used to access the instances
 	CustomDomains []string `pulumi:"customDomains"`
 	// Dependent rules
@@ -59,7 +61,7 @@ type LookupRuleVmResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource
-	Identifier float64 `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 	IdleTimeMins *int `pulumi:"idleTimeMins"`
 	// Name of the rule
@@ -124,6 +126,11 @@ func (o LookupRuleVmResultOutput) CloudConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleVmResult) string { return v.CloudConnectorId }).(pulumi.StringOutput)
 }
 
+// Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+func (o LookupRuleVmResultOutput) Connect() pulumi.IntMapOutput {
+	return o.ApplyT(func(v LookupRuleVmResult) map[string]int { return v.Connect }).(pulumi.IntMapOutput)
+}
+
 // Custom URLs used to access the instances
 func (o LookupRuleVmResultOutput) CustomDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRuleVmResult) []string { return v.CustomDomains }).(pulumi.StringArrayOutput)
@@ -149,8 +156,8 @@ func (o LookupRuleVmResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource
-func (o LookupRuleVmResultOutput) Identifier() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupRuleVmResult) float64 { return v.Identifier }).(pulumi.Float64Output)
+func (o LookupRuleVmResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleVmResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.

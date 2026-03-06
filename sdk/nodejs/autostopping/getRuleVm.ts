@@ -74,6 +74,10 @@ export interface GetRuleVmResult {
      */
     readonly cloudConnectorId: string;
     /**
+     * Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+     */
+    readonly connect: {[key: string]: number};
+    /**
      * Custom URLs used to access the instances
      */
     readonly customDomains?: string[];
@@ -93,7 +97,7 @@ export interface GetRuleVmResult {
     /**
      * Unique identifier of the resource
      */
-    readonly identifier: number;
+    readonly identifier: string;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */

@@ -102,7 +102,7 @@ namespace Pulumi.Harness.Autostopping
         /// Unique identifier of the resource
         /// </summary>
         [Output("identifier")]
-        public Output<double> Identifier { get; private set; } = null!;
+        public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
         /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
@@ -289,7 +289,7 @@ namespace Pulumi.Harness.Autostopping
         /// Unique identifier of the resource
         /// </summary>
         [Input("identifier")]
-        public Input<double>? Identifier { get; set; }
+        public Input<string>? Identifier { get; set; }
 
         /// <summary>
         /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.

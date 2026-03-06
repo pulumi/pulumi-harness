@@ -12,7 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Harness Resource Group
+// A **Resource Group** defines the **set of Harness resources** that fall within an RBAC boundary (for example, all pipelines, selected connectors, or specific secrets), along with the **scopes** (account, organization, or project) where the group applies.
+//
+// When configuring a resource group, you typically control access using two dimensions:
+//
+// * **Scopes** – where the resource group applies (`includedScopes`)
+// * **Resources** – what resources are included (`resourceFilter`)
+//
+// ***
 //
 // ## Example Usage
 //
@@ -28,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewResourceGroup(ctx, "test", &platform.ResourceGroupArgs{
+//			_, err := platform.NewResourceGroup(ctx, "example", &platform.ResourceGroupArgs{
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -72,6 +79,278 @@ import (
 //	}
 //
 // ```
+//
+// ***
+//
+// ## Scopes: `includedScopes`
+//
+// The `includedScopes` block defines the scope boundaries covered by this resource group.
+//
+// You can define scope using:
+//
+// * `accountId` → Account-level scope
+// * `accountId` + `orgId` → Organization-level scope
+// * `accountId` + `orgId` + `projectId` → Project-level scope
+//
+// ### `included_scopes.filter` (Required)
+//
+// Controls whether child scopes are included automatically:
+//
+// * `EXCLUDING_CHILD_SCOPES`
+// Includes only the explicitly specified scope.
+// Example: Account only (does not automatically include its organizations or projects).
+//
+// * `INCLUDING_CHILD_SCOPES`
+// Includes the specified scope and all nested child scopes.
+// Example: Account plus all organizations and projects under it.
+//
+// ***
+//
+// ## Resources: `resourceFilter`
+//
+// The `resourceFilter` block determines which resources within the included scopes are part of the resource group.
+//
+// ### `includeAllResources`
+//
+// * `true` – Includes all resources within the defined scopes.
+// * `false` – Includes only the resources explicitly defined under `resources`.
+//
+// ### `resources`
+//
+// Each `resources` block selects a set of resources using:
+//
+// * `resourceType` (**required**)
+// * `attributeFilter` (optional rule-based filtering)
+// * `identifiers` (optional explicit allowlist):
+//
+//  1. You can only use `identifiers` when the resource group operates in **static scope**. This happens when:
+//     * `includedScopes` points to that **same scope**
+//     * `filter = EXCLUDING_CHILD_SCOPES`
+//
+//     In this case, the set of resources is fixed, so you can select specific resources such as:
+//     * `"pipelineA"`
+//     * `"connectorX"`
+//
+//  2. You cannot use `identifiers` when the resource group is in **dynamic scope**. This happens when:
+//     * `filter = INCLUDING_CHILD_SCOPES`
+//     * `includedScopes` points to a child scope.
+//
+//     In dynamic scope, the matching resources can change over time as child scopes are added or removed. Because of this, you can only select resources by `resourceType` (and optionally `attributeFilter`), not by specific identifiers.
+//
+//     If you attempt to use `identifiers` in this case, you will receive:
+//     ```
+//     Cannot provide specific identifiers in resource filter for a dynamic scope
+//     ```
+//
+// ***
+//
+// ## Supported `resourceType` Values
+//
+// The following values are supported for `resourceType`:
+//
+// | Category                                       | Resource Types                                                                                                                                                                                                                                                                                                                                                            |
+// | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | **Core Platform**                              | `ACCOUNT`, `ORGANIZATION`, `PROJECT`, `USER`, `USERGROUP`, `ROLE`, `RESOURCEGROUP`, `SERVICEACCOUNT`, `LICENSE`, `SETTING`, `AUTHSETTING`, `ACCESS_POLICIES`, `BANNER`                                                                                                                                                                                                    |
+// | **Pipelines & Delivery**                       | `PIPELINE`, `INPUT_SET`, `SERVICE`, `ENVIRONMENT`, `ENVIRONMENT_GROUP`, `DEPLOYMENTFREEZE`, `TEMPLATE`, `FILE`, `VARIABLE`, `ARTIFACT_REGISTRY`, `PROVIDER`                                                                                                                                                                                                               |
+// | **Connectors & Infrastructure**                | `CONNECTOR`, `DELEGATE`, `DELEGATECONFIGURATION`, `CERTIFICATE`, `CODE_REPOSITORY`, `NETWORK_MAP`                                                                                                                                                                                                                                                                         |
+// | **Secrets & Security**                         | `SECRET`, `FEATUREFLAG`, `FF_PROXYAPIKEY`, `SSCA_REMEDIATION_TRACKER`, `SSCA_ENFORCEMENT_EXEMPTION`, `STO_TESTTARGET`, `STO_EXEMPTION`, `STO_ISSUE`, `STO_SCAN`                                                                                                                                                                                                           |
+// | **Governance & Policy**                        | `GOVERNANCEPOLICY`, `GOVERNANCEPOLICYSETS`, `AUDIT`                                                                                                                                                                                                                                                                                                                       |
+// | **Monitoring & Reliability**                   | `MONITOREDSERVICE`, `SLO`, `DOWNTIME`, `MONITORING_AGENT`, `METRIC_SOURCE`, `NOTIFICATION`, `NOTIFICATION_CHANNEL`, `NOTIFICATION_RULE`                                                                                                                                                                                                                                   |
+// | **GitOps**                                     | `GITOPS_AGENT`, `GITOPS_APP`, `GITOPS_REPOSITORY`, `GITOPS_CLUSTER`, `GITOPS_GPGKEY`, `GITOPS_CERT`                                                                                                                                                                                                                                                                       |
+// | **Chaos Engineering**                          | `CHAOS_IMAGE_REGISTRY`, `CHAOS_HUB`, `CHAOS_INFRASTRUCTURE`, `CHAOS_EXPERIMENT`, `CHAOS_GAMEDAY`, `CHAOS_PROBE`, `CHAOS_SECURITY_GOVERNANCE`                                                                                                                                                                                                                              |
+// | **Cloud Cost Management (CCM)**                | `CCM_OVERVIEW`, `CCM_PERSPECTIVE`, `CCM_DATA_SCOPE`, `CCM_FOLDER`, `CCM_BUDGET`, `CCM_COSTCATEGORY`, `CCM_AUTOSTOPPINGRULE`, `CCM_LOADBALANCER`, `CCM_CURRENCYPREFERENCE`, `CCM_CLOUD_ASSET_GOVERNANCE_RULE`, `CCM_CLOUD_ASSET_GOVERNANCE_RULE_SET`, `CCM_CLOUD_ASSET_GOVERNANCE_RULE_ENFORCEMENT`, `CCM_ANOMALIES`, `CCM_RECOMMENDATIONS`, `CCM_COMMITMENT_ORCHESTRATOR` |
+// | **Internal Developer Portal (IDP)**            | `IDP_CATALOG`, `IDP_WORKFLOW`, `IDP_PLUGIN`, `IDP_SCORECARD`, `IDP_LAYOUT`, `IDP_CATALOG_ACCESS_POLICY`, `IDP_INTEGRATION`, `IDP_ADVANCED_CONFIGURATION`                                                                                                                                                                                                                  |
+// | **Incident Response (IRO)**                    | `IRO_MANAGER`, `IRO_ALERT`, `IRO_ALERT_RULE`, `IRO_INCIDENT`, `IRO_CONNECT_WORKSPACE`, `IRO_RUNBOOK`                                                                                                                                                                                                                                                                      |
+// | **Continuous Engineering Tools (CET)**         | `CET_AGENT`, `CET_TOKEN`, `CET_CRITICAL_EVENT`                                                                                                                                                                                                                                                                                                                            |
+// | **Infrastructure as Code (IAC)**               | `IAC_WORKSPACE`, `IAC_REGISTRY`, `IAC_VARIABLE_SET`                                                                                                                                                                                                                                                                                                                       |
+// | **Software Engineering Insights (SEI)**        | `SEI_CONFIGURATION_SETTINGS`, `SEI_COLLECTIONS`, `SEI_INSIGHTS`, `SEI_PANORAMA`                                                                                                                                                                                                                                                                                           |
+// | **Feature Management & Experimentation (FME)** | `FME_ENVIRONMENT`, `FME_TRAFFIC_TYPE`, `FME_FEATURE_FLAG`, `FME_SEGMENT`, `FME_LARGE_SEGMENT`, `FME_METRIC`, `FME_EXPERIMENT`                                                                                                                                                                                                                                             |
+// | **Databases**                                  | `DB_SCHEMA`, `DB_INSTANCE`                                                                                                                                                                                                                                                                                                                                                |
+// | **Targets & Deployment**                       | `TARGET`, `TARGETGROUP`, `TICKET`, `SMTP`, `STREAMING_DESTINATION`                                                                                                                                                                                                                                                                                                        |
+// | **Dashboards & Reporting**                     | `DASHBOARDS`                                                                                                                                                                                                                                                                                                                                                              |
+//
+// ***
+//
+// ## Attribute Filtering (`attributeFilter`)
+//
+// Use `attributeFilter` to include resources dynamically based on defined rules instead of explicit identifiers.
+//
+// ### Valid `attributeName` Values
+//
+// * `category`
+// * `type`
+// * `labels`
+// * `tag` or `tags`
+//
+// ### `attributeValues` Constraints
+//
+// * For `category`, supported values include:
+// `ARTIFACTORY`, `CLOUD_COST`, `CLOUD_PROVIDER`, `CODE_REPO`, `MONITORING`, `SECRET_MANAGER`, `TICKETING`
+//
+// * For `type`, supported values include:
+// `Production`, `PreProduction`
+//
+// * For `labels`, use the format:
+// `label:value`
+//
+// * For `tag` or `tags`, any string value is supported.
+//
+// ***
+//
+// ## Common Configuration Patterns
+//
+// ### Common Configuration Examples
+//
+// 1. Add Specific Resources at the Current Scope (Static Scope)
+//
+// Use this when you want to allow only certain resources (for example, specific pipelines or connectors) in the same scope where the resource group is created.
+//
+// This works because the scope is static (EXCLUDING_CHILD_SCOPES).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewResourceGroup(ctx, "static_example", &platform.ResourceGroupArgs{
+//				Identifier: pulumi.String("static_rg"),
+//				Name:       pulumi.String("Static Resource Group"),
+//				AccountId:  pulumi.String("account_id"),
+//				AllowedScopeLevels: pulumi.StringArray{
+//					pulumi.String("account"),
+//				},
+//				IncludedScopes: platform.ResourceGroupIncludedScopeArray{
+//					&platform.ResourceGroupIncludedScopeArgs{
+//						Filter:    pulumi.String("EXCLUDING_CHILD_SCOPES"),
+//						AccountId: pulumi.String("account_id"),
+//					},
+//				},
+//				ResourceFilters: platform.ResourceGroupResourceFilterArray{
+//					&platform.ResourceGroupResourceFilterArgs{
+//						IncludeAllResources: pulumi.Bool(false),
+//						Resources: platform.ResourceGroupResourceFilterResourceArray{
+//							&platform.ResourceGroupResourceFilterResourceArgs{
+//								ResourceType: pulumi.String("PIPELINE"),
+//								Identifiers: pulumi.StringArray{
+//									pulumi.String("pipeline_a"),
+//									pulumi.String("pipeline_b"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// 2. Add All Resources at the Current Scope
+//
+// This includes all resources within the defined included_scopes. If you want to include everything at a specific scope:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewResourceGroup(ctx, "all_resources_account", &platform.ResourceGroupArgs{
+//				Identifier:  pulumi.String("all_resources_account"),
+//				Name:        pulumi.String("All Resources - Account Level"),
+//				Description: pulumi.String("Includes all resources at the account scope"),
+//				AccountId:   pulumi.String("account_id"),
+//				AllowedScopeLevels: pulumi.StringArray{
+//					pulumi.String("account"),
+//				},
+//				IncludedScopes: platform.ResourceGroupIncludedScopeArray{
+//					&platform.ResourceGroupIncludedScopeArgs{
+//						Filter:    pulumi.String("EXCLUDING_CHILD_SCOPES"),
+//						AccountId: pulumi.String("account_id"),
+//					},
+//				},
+//				ResourceFilters: platform.ResourceGroupResourceFilterArray{
+//					&platform.ResourceGroupResourceFilterArgs{
+//						IncludeAllResources: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// 3. Add All Resources Across Child Scopes (Dynamic Scope)
+//
+// Use this when you want all resources across an account and its child orgs/projects.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewResourceGroup(ctx, "dynamic_example", &platform.ResourceGroupArgs{
+//				Identifier: pulumi.String("dynamic_rg"),
+//				Name:       pulumi.String("Dynamic Resource Group"),
+//				AccountId:  pulumi.String("account_id"),
+//				AllowedScopeLevels: pulumi.StringArray{
+//					pulumi.String("account"),
+//				},
+//				IncludedScopes: platform.ResourceGroupIncludedScopeArray{
+//					&platform.ResourceGroupIncludedScopeArgs{
+//						Filter:    pulumi.String("INCLUDING_CHILD_SCOPES"),
+//						AccountId: pulumi.String("account_id"),
+//					},
+//				},
+//				ResourceFilters: platform.ResourceGroupResourceFilterArray{
+//					&platform.ResourceGroupResourceFilterArgs{
+//						IncludeAllResources: pulumi.Bool(false),
+//						Resources: platform.ResourceGroupResourceFilterResourceArray{
+//							&platform.ResourceGroupResourceFilterResourceArgs{
+//								ResourceType: pulumi.String("PIPELINE"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ***
 //
 // ## Import
 //

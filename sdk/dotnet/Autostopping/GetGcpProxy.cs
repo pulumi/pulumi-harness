@@ -257,6 +257,14 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Private IP address of the proxy
+        /// </summary>
+        public readonly string PrivateIp;
+        /// <summary>
+        /// Public IP address of the proxy
+        /// </summary>
+        public readonly string PublicIp;
+        /// <summary>
         /// Region in which cloud resources are hosted
         /// </summary>
         public readonly string Region;
@@ -297,6 +305,10 @@ namespace Pulumi.Harness.Autostopping
 
             string name,
 
+            string privateIp,
+
+            string publicIp,
+
             string region,
 
             ImmutableArray<string> securityGroups,
@@ -316,6 +328,8 @@ namespace Pulumi.Harness.Autostopping
             Identifier = identifier;
             MachineType = machineType;
             Name = name;
+            PrivateIp = privateIp;
+            PublicIp = publicIp;
             Region = region;
             SecurityGroups = securityGroups;
             SubnetId = subnetId;

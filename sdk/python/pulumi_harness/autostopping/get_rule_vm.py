@@ -28,10 +28,13 @@ class GetRuleVmResult:
     """
     A collection of values returned by getRuleVm.
     """
-    def __init__(__self__, cloud_connector_id=None, custom_domains=None, depends=None, filter=None, https=None, id=None, identifier=None, idle_time_mins=None, name=None, tcps=None, use_spot=None):
+    def __init__(__self__, cloud_connector_id=None, connect=None, custom_domains=None, depends=None, filter=None, https=None, id=None, identifier=None, idle_time_mins=None, name=None, tcps=None, use_spot=None):
         if cloud_connector_id and not isinstance(cloud_connector_id, str):
             raise TypeError("Expected argument 'cloud_connector_id' to be a str")
         pulumi.set(__self__, "cloud_connector_id", cloud_connector_id)
+        if connect and not isinstance(connect, dict):
+            raise TypeError("Expected argument 'connect' to be a dict")
+        pulumi.set(__self__, "connect", connect)
         if custom_domains and not isinstance(custom_domains, list):
             raise TypeError("Expected argument 'custom_domains' to be a list")
         pulumi.set(__self__, "custom_domains", custom_domains)
@@ -47,8 +50,8 @@ class GetRuleVmResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if identifier and not isinstance(identifier, float):
-            raise TypeError("Expected argument 'identifier' to be a float")
+        if identifier and not isinstance(identifier, str):
+            raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
         if idle_time_mins and not isinstance(idle_time_mins, int):
             raise TypeError("Expected argument 'idle_time_mins' to be a int")
@@ -70,6 +73,14 @@ class GetRuleVmResult:
         Id of the cloud connector
         """
         return pulumi.get(self, "cloud_connector_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def connect(self) -> Mapping[str, _builtins.int]:
+        """
+        Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+        """
+        return pulumi.get(self, "connect")
 
     @_builtins.property
     @pulumi.getter(name="customDomains")
@@ -110,7 +121,7 @@ class GetRuleVmResult:
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> _builtins.float:
+    def identifier(self) -> _builtins.str:
         """
         Unique identifier of the resource
         """
@@ -156,6 +167,7 @@ class AwaitableGetRuleVmResult(GetRuleVmResult):
             yield self
         return GetRuleVmResult(
             cloud_connector_id=self.cloud_connector_id,
+            connect=self.connect,
             custom_domains=self.custom_domains,
             depends=self.depends,
             filter=self.filter,
@@ -208,6 +220,7 @@ def get_rule_vm(cloud_connector_id: Optional[_builtins.str] = None,
 
     return AwaitableGetRuleVmResult(
         cloud_connector_id=pulumi.get(__ret__, 'cloud_connector_id'),
+        connect=pulumi.get(__ret__, 'connect'),
         custom_domains=pulumi.get(__ret__, 'custom_domains'),
         depends=pulumi.get(__ret__, 'depends'),
         filter=pulumi.get(__ret__, 'filter'),
@@ -257,6 +270,7 @@ def get_rule_vm_output(cloud_connector_id: Optional[pulumi.Input[_builtins.str]]
     __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getRuleVm:getRuleVm', __args__, opts=opts, typ=GetRuleVmResult)
     return __ret__.apply(lambda __response__: GetRuleVmResult(
         cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),
+        connect=pulumi.get(__response__, 'connect'),
         custom_domains=pulumi.get(__response__, 'custom_domains'),
         depends=pulumi.get(__response__, 'depends'),
         filter=pulumi.get(__response__, 'filter'),

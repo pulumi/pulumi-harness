@@ -14,7 +14,6 @@ import com.pulumi.harness.autostopping.outputs.RuleEcsContainer;
 import com.pulumi.harness.autostopping.outputs.RuleEcsDepend;
 import com.pulumi.harness.autostopping.outputs.RuleEcsHttp;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -159,14 +158,14 @@ public class RuleEcs extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource
      * 
      */
-    @Export(name="identifier", refs={Double.class}, tree="[0]")
-    private Output<Double> identifier;
+    @Export(name="identifier", refs={String.class}, tree="[0]")
+    private Output<String> identifier;
 
     /**
      * @return Unique identifier of the resource
      * 
      */
-    public Output<Double> identifier() {
+    public Output<String> identifier() {
         return this.identifier;
     }
     /**

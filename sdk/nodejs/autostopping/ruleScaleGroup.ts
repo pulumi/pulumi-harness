@@ -101,7 +101,7 @@ export class RuleScaleGroup extends pulumi.CustomResource {
     /**
      * Unique identifier of the resource
      */
-    declare public /*out*/ readonly identifier: pulumi.Output<number>;
+    declare public /*out*/ readonly identifier: pulumi.Output<string>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
@@ -187,7 +187,7 @@ export interface RuleScaleGroupState {
     /**
      * Unique identifier of the resource
      */
-    identifier?: pulumi.Input<number>;
+    identifier?: pulumi.Input<string>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */

@@ -10,10 +10,10 @@ import com.pulumi.harness.autostopping.inputs.RuleVmFilterArgs;
 import com.pulumi.harness.autostopping.inputs.RuleVmHttpArgs;
 import com.pulumi.harness.autostopping.inputs.RuleVmTcpArgs;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,6 +36,21 @@ public final class RuleVmState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> cloudConnectorId() {
         return Optional.ofNullable(this.cloudConnectorId);
+    }
+
+    /**
+     * Connection information (source ports on the proxy). Keys: &#34;ssh&#34; and &#34;rdp&#34; for SSH/RDP; other keys are target port as string (e.g. &#34;80&#34;) for forward_rule, value is the proxy source port.
+     * 
+     */
+    @Import(name="connect")
+    private @Nullable Output<Map<String,Integer>> connect;
+
+    /**
+     * @return Connection information (source ports on the proxy). Keys: &#34;ssh&#34; and &#34;rdp&#34; for SSH/RDP; other keys are target port as string (e.g. &#34;80&#34;) for forward_rule, value is the proxy source port.
+     * 
+     */
+    public Optional<Output<Map<String,Integer>>> connect() {
+        return Optional.ofNullable(this.connect);
     }
 
     /**
@@ -110,13 +125,13 @@ public final class RuleVmState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="identifier")
-    private @Nullable Output<Double> identifier;
+    private @Nullable Output<String> identifier;
 
     /**
      * @return Unique identifier of the resource
      * 
      */
-    public Optional<Output<Double>> identifier() {
+    public Optional<Output<String>> identifier() {
         return Optional.ofNullable(this.identifier);
     }
 
@@ -184,6 +199,7 @@ public final class RuleVmState extends com.pulumi.resources.ResourceArgs {
 
     private RuleVmState(RuleVmState $) {
         this.cloudConnectorId = $.cloudConnectorId;
+        this.connect = $.connect;
         this.customDomains = $.customDomains;
         this.depends = $.depends;
         this.dryRun = $.dryRun;
@@ -233,6 +249,27 @@ public final class RuleVmState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder cloudConnectorId(String cloudConnectorId) {
             return cloudConnectorId(Output.of(cloudConnectorId));
+        }
+
+        /**
+         * @param connect Connection information (source ports on the proxy). Keys: &#34;ssh&#34; and &#34;rdp&#34; for SSH/RDP; other keys are target port as string (e.g. &#34;80&#34;) for forward_rule, value is the proxy source port.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connect(@Nullable Output<Map<String,Integer>> connect) {
+            $.connect = connect;
+            return this;
+        }
+
+        /**
+         * @param connect Connection information (source ports on the proxy). Keys: &#34;ssh&#34; and &#34;rdp&#34; for SSH/RDP; other keys are target port as string (e.g. &#34;80&#34;) for forward_rule, value is the proxy source port.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connect(Map<String,Integer> connect) {
+            return connect(Output.of(connect));
         }
 
         /**
@@ -364,7 +401,7 @@ public final class RuleVmState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder identifier(@Nullable Output<Double> identifier) {
+        public Builder identifier(@Nullable Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
@@ -375,7 +412,7 @@ public final class RuleVmState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder identifier(Double identifier) {
+        public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
         }
 

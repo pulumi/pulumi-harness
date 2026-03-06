@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "harness:autostopping/alert:Alert":
+		r = &Alert{}
 	case "harness:autostopping/awsAlb:AwsAlb":
 		r = &AwsAlb{}
 	case "harness:autostopping/awsProxy:AwsProxy":
@@ -33,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GcpProxy{}
 	case "harness:autostopping/ruleEcs:RuleEcs":
 		r = &RuleEcs{}
+	case "harness:autostopping/ruleK8s:RuleK8s":
+		r = &RuleK8s{}
 	case "harness:autostopping/ruleRds:RuleRds":
 		r = &RuleRds{}
 	case "harness:autostopping/ruleScaleGroup:RuleScaleGroup":
@@ -54,6 +58,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"harness",
+		"autostopping/alert",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"harness",
 		"autostopping/awsAlb",
@@ -82,6 +91,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"autostopping/ruleEcs",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"autostopping/ruleK8s",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

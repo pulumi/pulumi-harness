@@ -16,12 +16,14 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AlertRecipients',
     'AwsProxyCertificates',
     'AzureProxyCertificates',
     'GcpProxyCertificates',
     'RuleEcsContainer',
     'RuleEcsDepend',
     'RuleEcsHttp',
+    'RuleK8sDepend',
     'RuleRdsDatabase',
     'RuleRdsDepend',
     'RuleRdsTcp',
@@ -42,12 +44,14 @@ __all__ = [
     'RuleVmTcpRdp',
     'RuleVmTcpSsh',
     'ScheduleRepeat',
+    'GetAlertRecipientsResult',
     'GetAwsProxyCertificatesResult',
     'GetAzureProxyCertificatesResult',
     'GetGcpProxyCertificatesResult',
     'GetRuleEcsContainerResult',
     'GetRuleEcsDependResult',
     'GetRuleEcsHttpResult',
+    'GetRuleK8sDependResult',
     'GetRuleRdsDatabaseResult',
     'GetRuleRdsDependResult',
     'GetRuleRdsTcpResult',
@@ -67,8 +71,40 @@ __all__ = [
     'GetRuleVmTcpForwardRuleResult',
     'GetRuleVmTcpRdpResult',
     'GetRuleVmTcpSshResult',
+    'GetRulesRuleResult',
     'GetScheduleRepeatResult',
 ]
+
+@pulumi.output_type
+class AlertRecipients(dict):
+    def __init__(__self__, *,
+                 emails: Optional[Sequence[_builtins.str]] = None,
+                 slacks: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] emails: List of email addresses to notify. Required if `slack` is not set.
+        :param Sequence[_builtins.str] slacks: List of Slack webhook URLs or channel identifiers to notify. Required if `email` is not set.
+        """
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if slacks is not None:
+            pulumi.set(__self__, "slacks", slacks)
+
+    @_builtins.property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of email addresses to notify. Required if `slack` is not set.
+        """
+        return pulumi.get(self, "emails")
+
+    @_builtins.property
+    @pulumi.getter
+    def slacks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of Slack webhook URLs or channel identifiers to notify. Required if `email` is not set.
+        """
+        return pulumi.get(self, "slacks")
+
 
 @pulumi.output_type
 class AwsProxyCertificates(dict):
@@ -365,6 +401,55 @@ class RuleEcsHttp(dict):
         Id of the proxy
         """
         return pulumi.get(self, "proxy_id")
+
+
+@pulumi.output_type
+class RuleK8sDepend(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleId":
+            suggest = "rule_id"
+        elif key == "delayInSec":
+            suggest = "delay_in_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleK8sDepend. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleK8sDepend.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleK8sDepend.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rule_id: _builtins.int,
+                 delay_in_sec: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int rule_id: Rule id of the dependent rule
+        :param _builtins.int delay_in_sec: Number of seconds the rule should wait after warming up the dependent rule
+        """
+        pulumi.set(__self__, "rule_id", rule_id)
+        if delay_in_sec is not None:
+            pulumi.set(__self__, "delay_in_sec", delay_in_sec)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> _builtins.int:
+        """
+        Rule id of the dependent rule
+        """
+        return pulumi.get(self, "rule_id")
+
+    @_builtins.property
+    @pulumi.getter(name="delayInSec")
+    def delay_in_sec(self) -> Optional[_builtins.int]:
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+        return pulumi.get(self, "delay_in_sec")
 
 
 @pulumi.output_type
@@ -774,12 +859,14 @@ class RuleScaleGroupHttpRouting(dict):
                  source_protocol: _builtins.str,
                  target_protocol: _builtins.str,
                  action: Optional[_builtins.str] = None,
+                 path: Optional[_builtins.str] = None,
                  source_port: Optional[_builtins.int] = None,
                  target_port: Optional[_builtins.int] = None):
         """
         :param _builtins.str source_protocol: Source protocol of the proxy can be http or https
         :param _builtins.str target_protocol: Target protocol of the instance can be http or https
-        :param _builtins.str action: Organization Identifier for the Entity
+        :param _builtins.str action: Action to take for the routing rule
+        :param _builtins.str path: Path to use for the proxy
         :param _builtins.int source_port: Port on the proxy
         :param _builtins.int target_port: Port on the VM
         """
@@ -787,6 +874,8 @@ class RuleScaleGroupHttpRouting(dict):
         pulumi.set(__self__, "target_protocol", target_protocol)
         if action is not None:
             pulumi.set(__self__, "action", action)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
         if source_port is not None:
             pulumi.set(__self__, "source_port", source_port)
         if target_port is not None:
@@ -812,9 +901,17 @@ class RuleScaleGroupHttpRouting(dict):
     @pulumi.getter
     def action(self) -> Optional[_builtins.str]:
         """
-        Organization Identifier for the Entity
+        Action to take for the routing rule
         """
         return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        Path to use for the proxy
+        """
+        return pulumi.get(self, "path")
 
     @_builtins.property
     @pulumi.getter(name="sourcePort")
@@ -1271,12 +1368,14 @@ class RuleVmHttpRouting(dict):
                  source_protocol: _builtins.str,
                  target_protocol: _builtins.str,
                  action: Optional[_builtins.str] = None,
+                 path: Optional[_builtins.str] = None,
                  source_port: Optional[_builtins.int] = None,
                  target_port: Optional[_builtins.int] = None):
         """
         :param _builtins.str source_protocol: Source protocol of the proxy can be http or https
         :param _builtins.str target_protocol: Target protocol of the instance can be http or https
-        :param _builtins.str action: Organization Identifier for the Entity
+        :param _builtins.str action: Action to take for the routing rule
+        :param _builtins.str path: Path to use for the proxy
         :param _builtins.int source_port: Port on the proxy
         :param _builtins.int target_port: Port on the VM
         """
@@ -1284,6 +1383,8 @@ class RuleVmHttpRouting(dict):
         pulumi.set(__self__, "target_protocol", target_protocol)
         if action is not None:
             pulumi.set(__self__, "action", action)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
         if source_port is not None:
             pulumi.set(__self__, "source_port", source_port)
         if target_port is not None:
@@ -1309,9 +1410,17 @@ class RuleVmHttpRouting(dict):
     @pulumi.getter
     def action(self) -> Optional[_builtins.str]:
         """
-        Organization Identifier for the Entity
+        Action to take for the routing rule
         """
         return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        Path to use for the proxy
+        """
+        return pulumi.get(self, "path")
 
     @_builtins.property
     @pulumi.getter(name="sourcePort")
@@ -1608,6 +1717,37 @@ class ScheduleRepeat(dict):
 
 
 @pulumi.output_type
+class GetAlertRecipientsResult(dict):
+    def __init__(__self__, *,
+                 emails: Optional[Sequence[_builtins.str]] = None,
+                 slacks: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] emails: List of email addresses.
+        :param Sequence[_builtins.str] slacks: List of Slack webhook URLs or channel identifiers.
+        """
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if slacks is not None:
+            pulumi.set(__self__, "slacks", slacks)
+
+    @_builtins.property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of email addresses.
+        """
+        return pulumi.get(self, "emails")
+
+    @_builtins.property
+    @pulumi.getter
+    def slacks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of Slack webhook URLs or channel identifiers.
+        """
+        return pulumi.get(self, "slacks")
+
+
+@pulumi.output_type
 class GetAwsProxyCertificatesResult(dict):
     def __init__(__self__, *,
                  cert_secret_id: _builtins.str,
@@ -1792,6 +1932,36 @@ class GetRuleEcsHttpResult(dict):
         Id of the proxy
         """
         return pulumi.get(self, "proxy_id")
+
+
+@pulumi.output_type
+class GetRuleK8sDependResult(dict):
+    def __init__(__self__, *,
+                 rule_id: _builtins.int,
+                 delay_in_sec: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int rule_id: Rule id of the dependent rule
+        :param _builtins.int delay_in_sec: Number of seconds the rule should wait after warming up the dependent rule
+        """
+        pulumi.set(__self__, "rule_id", rule_id)
+        if delay_in_sec is not None:
+            pulumi.set(__self__, "delay_in_sec", delay_in_sec)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> _builtins.int:
+        """
+        Rule id of the dependent rule
+        """
+        return pulumi.get(self, "rule_id")
+
+    @_builtins.property
+    @pulumi.getter(name="delayInSec")
+    def delay_in_sec(self) -> Optional[_builtins.int]:
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+        return pulumi.get(self, "delay_in_sec")
 
 
 @pulumi.output_type
@@ -2068,12 +2238,14 @@ class GetRuleScaleGroupHttpRoutingResult(dict):
                  source_protocol: _builtins.str,
                  target_protocol: _builtins.str,
                  action: Optional[_builtins.str] = None,
+                 path: Optional[_builtins.str] = None,
                  source_port: Optional[_builtins.int] = None,
                  target_port: Optional[_builtins.int] = None):
         """
         :param _builtins.str source_protocol: Source protocol of the proxy can be http or https
         :param _builtins.str target_protocol: Target protocol of the instance can be http or https
-        :param _builtins.str action: Organization Identifier for the Entity
+        :param _builtins.str action: Action to take for the routing rule
+        :param _builtins.str path: Path to use for the proxy
         :param _builtins.int source_port: Port on the proxy
         :param _builtins.int target_port: Port on the VM
         """
@@ -2081,6 +2253,8 @@ class GetRuleScaleGroupHttpRoutingResult(dict):
         pulumi.set(__self__, "target_protocol", target_protocol)
         if action is not None:
             pulumi.set(__self__, "action", action)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
         if source_port is not None:
             pulumi.set(__self__, "source_port", source_port)
         if target_port is not None:
@@ -2106,9 +2280,17 @@ class GetRuleScaleGroupHttpRoutingResult(dict):
     @pulumi.getter
     def action(self) -> Optional[_builtins.str]:
         """
-        Organization Identifier for the Entity
+        Action to take for the routing rule
         """
         return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        Path to use for the proxy
+        """
+        return pulumi.get(self, "path")
 
     @_builtins.property
     @pulumi.getter(name="sourcePort")
@@ -2453,12 +2635,14 @@ class GetRuleVmHttpRoutingResult(dict):
                  source_protocol: _builtins.str,
                  target_protocol: _builtins.str,
                  action: Optional[_builtins.str] = None,
+                 path: Optional[_builtins.str] = None,
                  source_port: Optional[_builtins.int] = None,
                  target_port: Optional[_builtins.int] = None):
         """
         :param _builtins.str source_protocol: Source protocol of the proxy can be http or https
         :param _builtins.str target_protocol: Target protocol of the instance can be http or https
-        :param _builtins.str action: Organization Identifier for the Entity
+        :param _builtins.str action: Action to take for the routing rule
+        :param _builtins.str path: Path to use for the proxy
         :param _builtins.int source_port: Port on the proxy
         :param _builtins.int target_port: Port on the VM
         """
@@ -2466,6 +2650,8 @@ class GetRuleVmHttpRoutingResult(dict):
         pulumi.set(__self__, "target_protocol", target_protocol)
         if action is not None:
             pulumi.set(__self__, "action", action)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
         if source_port is not None:
             pulumi.set(__self__, "source_port", source_port)
         if target_port is not None:
@@ -2491,9 +2677,17 @@ class GetRuleVmHttpRoutingResult(dict):
     @pulumi.getter
     def action(self) -> Optional[_builtins.str]:
         """
-        Organization Identifier for the Entity
+        Action to take for the routing rule
         """
         return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        Path to use for the proxy
+        """
+        return pulumi.get(self, "path")
 
     @_builtins.property
     @pulumi.getter(name="sourcePort")
@@ -2656,6 +2850,57 @@ class GetRuleVmTcpSshResult(dict):
         Port to listen on the vm
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 cloud_connector_id: _builtins.str,
+                 id: _builtins.float,
+                 kind: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str cloud_connector_id: Id of the cloud connector.
+        :param _builtins.float id: Unique identifier of the rule.
+        :param _builtins.str kind: Kind of the rule.
+        :param _builtins.str name: Name of the rule.
+        """
+        pulumi.set(__self__, "cloud_connector_id", cloud_connector_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudConnectorId")
+    def cloud_connector_id(self) -> _builtins.str:
+        """
+        Id of the cloud connector.
+        """
+        return pulumi.get(self, "cloud_connector_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.float:
+        """
+        Unique identifier of the rule.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> _builtins.str:
+        """
+        Kind of the rule.
+        """
+        return pulumi.get(self, "kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the rule.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

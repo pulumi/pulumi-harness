@@ -159,7 +159,7 @@ class _RuleEcsState:
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleEcsDependArgs']]]] = None,
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
                  https: Optional[pulumi.Input[Sequence[pulumi.Input['RuleEcsHttpArgs']]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.float]] = None,
+                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -170,7 +170,7 @@ class _RuleEcsState:
         :param pulumi.Input[Sequence[pulumi.Input['RuleEcsDependArgs']]] depends: Dependent rules
         :param pulumi.Input[_builtins.bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[Sequence[pulumi.Input['RuleEcsHttpArgs']]] https: Http routing configuration
-        :param pulumi.Input[_builtins.float] identifier: Unique identifier of the resource
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[_builtins.str] name: Name of the rule
         """
@@ -264,14 +264,14 @@ class _RuleEcsState:
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Unique identifier of the resource
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
@@ -455,7 +455,7 @@ class RuleEcs(pulumi.CustomResource):
             depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict']]]]] = None,
             dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
             https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict']]]]] = None,
-            identifier: Optional[pulumi.Input[_builtins.float]] = None,
+            identifier: Optional[pulumi.Input[_builtins.str]] = None,
             idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None) -> 'RuleEcs':
         """
@@ -470,7 +470,7 @@ class RuleEcs(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict']]]] depends: Dependent rules
         :param pulumi.Input[_builtins.bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict']]]] https: Http routing configuration
-        :param pulumi.Input[_builtins.float] identifier: Unique identifier of the resource
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[_builtins.str] name: Name of the rule
         """
@@ -536,7 +536,7 @@ class RuleEcs(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> pulumi.Output[_builtins.float]:
+    def identifier(self) -> pulumi.Output[_builtins.str]:
         """
         Unique identifier of the resource
         """

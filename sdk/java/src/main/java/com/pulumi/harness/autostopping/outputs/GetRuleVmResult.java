@@ -10,10 +10,10 @@ import com.pulumi.harness.autostopping.outputs.GetRuleVmFilter;
 import com.pulumi.harness.autostopping.outputs.GetRuleVmHttp;
 import com.pulumi.harness.autostopping.outputs.GetRuleVmTcp;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,6 +25,11 @@ public final class GetRuleVmResult {
      * 
      */
     private String cloudConnectorId;
+    /**
+     * @return Connection information (source ports on the proxy). Keys: &#34;ssh&#34; and &#34;rdp&#34; for SSH/RDP; other keys are target port as string (e.g. &#34;80&#34;) for forward_rule, value is the proxy source port.
+     * 
+     */
+    private Map<String,Integer> connect;
     /**
      * @return Custom URLs used to access the instances
      * 
@@ -50,7 +55,7 @@ public final class GetRuleVmResult {
      * @return Unique identifier of the resource
      * 
      */
-    private Double identifier;
+    private String identifier;
     /**
      * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      * 
@@ -79,6 +84,13 @@ public final class GetRuleVmResult {
      */
     public String cloudConnectorId() {
         return this.cloudConnectorId;
+    }
+    /**
+     * @return Connection information (source ports on the proxy). Keys: &#34;ssh&#34; and &#34;rdp&#34; for SSH/RDP; other keys are target port as string (e.g. &#34;80&#34;) for forward_rule, value is the proxy source port.
+     * 
+     */
+    public Map<String,Integer> connect() {
+        return this.connect;
     }
     /**
      * @return Custom URLs used to access the instances
@@ -115,7 +127,7 @@ public final class GetRuleVmResult {
      * @return Unique identifier of the resource
      * 
      */
-    public Double identifier() {
+    public String identifier() {
         return this.identifier;
     }
     /**
@@ -157,12 +169,13 @@ public final class GetRuleVmResult {
     @CustomType.Builder
     public static final class Builder {
         private String cloudConnectorId;
+        private Map<String,Integer> connect;
         private @Nullable List<String> customDomains;
         private @Nullable List<GetRuleVmDepend> depends;
         private GetRuleVmFilter filter;
         private @Nullable List<GetRuleVmHttp> https;
         private String id;
-        private Double identifier;
+        private String identifier;
         private @Nullable Integer idleTimeMins;
         private String name;
         private @Nullable List<GetRuleVmTcp> tcps;
@@ -171,6 +184,7 @@ public final class GetRuleVmResult {
         public Builder(GetRuleVmResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudConnectorId = defaults.cloudConnectorId;
+    	      this.connect = defaults.connect;
     	      this.customDomains = defaults.customDomains;
     	      this.depends = defaults.depends;
     	      this.filter = defaults.filter;
@@ -189,6 +203,14 @@ public final class GetRuleVmResult {
               throw new MissingRequiredPropertyException("GetRuleVmResult", "cloudConnectorId");
             }
             this.cloudConnectorId = cloudConnectorId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connect(Map<String,Integer> connect) {
+            if (connect == null) {
+              throw new MissingRequiredPropertyException("GetRuleVmResult", "connect");
+            }
+            this.connect = connect;
             return this;
         }
         @CustomType.Setter
@@ -235,7 +257,7 @@ public final class GetRuleVmResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(Double identifier) {
+        public Builder identifier(String identifier) {
             if (identifier == null) {
               throw new MissingRequiredPropertyException("GetRuleVmResult", "identifier");
             }
@@ -274,6 +296,7 @@ public final class GetRuleVmResult {
         public GetRuleVmResult build() {
             final var _resultValue = new GetRuleVmResult();
             _resultValue.cloudConnectorId = cloudConnectorId;
+            _resultValue.connect = connect;
             _resultValue.customDomains = customDomains;
             _resultValue.depends = depends;
             _resultValue.filter = filter;

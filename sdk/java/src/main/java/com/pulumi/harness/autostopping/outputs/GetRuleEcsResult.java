@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.autostopping.outputs.GetRuleEcsContainer;
 import com.pulumi.harness.autostopping.outputs.GetRuleEcsDepend;
 import com.pulumi.harness.autostopping.outputs.GetRuleEcsHttp;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -48,7 +47,7 @@ public final class GetRuleEcsResult {
      * @return Unique identifier of the resource
      * 
      */
-    private Double identifier;
+    private String identifier;
     /**
      * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      * 
@@ -103,7 +102,7 @@ public final class GetRuleEcsResult {
      * @return Unique identifier of the resource
      * 
      */
-    public Double identifier() {
+    public String identifier() {
         return this.identifier;
     }
     /**
@@ -136,7 +135,7 @@ public final class GetRuleEcsResult {
         private @Nullable List<GetRuleEcsDepend> depends;
         private @Nullable List<GetRuleEcsHttp> https;
         private String id;
-        private Double identifier;
+        private String identifier;
         private @Nullable Integer idleTimeMins;
         private String name;
         public Builder() {}
@@ -203,7 +202,7 @@ public final class GetRuleEcsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(Double identifier) {
+        public Builder identifier(String identifier) {
             if (identifier == null) {
               throw new MissingRequiredPropertyException("GetRuleEcsResult", "identifier");
             }

@@ -118,6 +118,14 @@ export interface GetGcpProxyResult {
      */
     readonly name: string;
     /**
+     * Private IP address of the proxy
+     */
+    readonly privateIp: string;
+    /**
+     * Public IP address of the proxy
+     */
+    readonly publicIp: string;
+    /**
      * Region in which cloud resources are hosted
      */
     readonly region: string;

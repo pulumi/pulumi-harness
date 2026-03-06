@@ -92,6 +92,14 @@ export class GcpProxy extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Private IP address of the proxy
+     */
+    declare public /*out*/ readonly privateIp: pulumi.Output<string>;
+    /**
+     * Public IP address of the proxy
+     */
+    declare public /*out*/ readonly publicIp: pulumi.Output<string>;
+    /**
      * Region in which cloud resources are hosted
      */
     declare public readonly region: pulumi.Output<string>;
@@ -133,6 +141,8 @@ export class GcpProxy extends pulumi.CustomResource {
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["machineType"] = state?.machineType;
             resourceInputs["name"] = state?.name;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["publicIp"] = state?.publicIp;
             resourceInputs["region"] = state?.region;
             resourceInputs["securityGroups"] = state?.securityGroups;
             resourceInputs["subnetId"] = state?.subnetId;
@@ -177,6 +187,8 @@ export class GcpProxy extends pulumi.CustomResource {
             resourceInputs["vpc"] = args?.vpc;
             resourceInputs["zone"] = args?.zone;
             resourceInputs["identifier"] = undefined /*out*/;
+            resourceInputs["privateIp"] = undefined /*out*/;
+            resourceInputs["publicIp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiKey"] };
@@ -218,6 +230,14 @@ export interface GcpProxyState {
      * Name of the proxy
      */
     name?: pulumi.Input<string>;
+    /**
+     * Private IP address of the proxy
+     */
+    privateIp?: pulumi.Input<string>;
+    /**
+     * Public IP address of the proxy
+     */
+    publicIp?: pulumi.Input<string>;
     /**
      * Region in which cloud resources are hosted
      */

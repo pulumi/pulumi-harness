@@ -63,6 +63,16 @@ public final class GetAzureProxyResult {
      */
     private String name;
     /**
+     * @return Private IP address of the proxy
+     * 
+     */
+    private String privateIp;
+    /**
+     * @return Public IP address of the proxy
+     * 
+     */
+    private String publicIp;
+    /**
      * @return Region in which cloud resources are hosted
      * 
      */
@@ -159,6 +169,20 @@ public final class GetAzureProxyResult {
         return this.name;
     }
     /**
+     * @return Private IP address of the proxy
+     * 
+     */
+    public String privateIp() {
+        return this.privateIp;
+    }
+    /**
+     * @return Public IP address of the proxy
+     * 
+     */
+    public String publicIp() {
+        return this.publicIp;
+    }
+    /**
      * @return Region in which cloud resources are hosted
      * 
      */
@@ -214,6 +238,8 @@ public final class GetAzureProxyResult {
         private String keypair;
         private String machineType;
         private String name;
+        private String privateIp;
+        private String publicIp;
         private String region;
         private String resourceGroup;
         private @Nullable List<String> securityGroups;
@@ -233,6 +259,8 @@ public final class GetAzureProxyResult {
     	      this.keypair = defaults.keypair;
     	      this.machineType = defaults.machineType;
     	      this.name = defaults.name;
+    	      this.privateIp = defaults.privateIp;
+    	      this.publicIp = defaults.publicIp;
     	      this.region = defaults.region;
     	      this.resourceGroup = defaults.resourceGroup;
     	      this.securityGroups = defaults.securityGroups;
@@ -323,6 +351,22 @@ public final class GetAzureProxyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder privateIp(String privateIp) {
+            if (privateIp == null) {
+              throw new MissingRequiredPropertyException("GetAzureProxyResult", "privateIp");
+            }
+            this.privateIp = privateIp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publicIp(String publicIp) {
+            if (publicIp == null) {
+              throw new MissingRequiredPropertyException("GetAzureProxyResult", "publicIp");
+            }
+            this.publicIp = publicIp;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("GetAzureProxyResult", "region");
@@ -376,6 +420,8 @@ public final class GetAzureProxyResult {
             _resultValue.keypair = keypair;
             _resultValue.machineType = machineType;
             _resultValue.name = name;
+            _resultValue.privateIp = privateIp;
+            _resultValue.publicIp = publicIp;
             _resultValue.region = region;
             _resultValue.resourceGroup = resourceGroup;
             _resultValue.securityGroups = securityGroups;

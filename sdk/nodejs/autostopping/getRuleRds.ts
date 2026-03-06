@@ -70,7 +70,7 @@ export interface GetRuleRdsResult {
     /**
      * Unique identifier of the resource
      */
-    readonly identifier: number;
+    readonly identifier: string;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */

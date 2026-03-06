@@ -103,6 +103,10 @@ export class RuleVm extends pulumi.CustomResource {
      */
     declare public readonly cloudConnectorId: pulumi.Output<string>;
     /**
+     * Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+     */
+    declare public /*out*/ readonly connect: pulumi.Output<{[key: string]: number}>;
+    /**
      * Custom URLs used to access the instances
      */
     declare public readonly customDomains: pulumi.Output<string[] | undefined>;
@@ -122,7 +126,7 @@ export class RuleVm extends pulumi.CustomResource {
     /**
      * Unique identifier of the resource
      */
-    declare public /*out*/ readonly identifier: pulumi.Output<number>;
+    declare public /*out*/ readonly identifier: pulumi.Output<string>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
@@ -154,6 +158,7 @@ export class RuleVm extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RuleVmState | undefined;
             resourceInputs["cloudConnectorId"] = state?.cloudConnectorId;
+            resourceInputs["connect"] = state?.connect;
             resourceInputs["customDomains"] = state?.customDomains;
             resourceInputs["depends"] = state?.depends;
             resourceInputs["dryRun"] = state?.dryRun;
@@ -182,6 +187,7 @@ export class RuleVm extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["tcps"] = args?.tcps;
             resourceInputs["useSpot"] = args?.useSpot;
+            resourceInputs["connect"] = undefined /*out*/;
             resourceInputs["identifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -197,6 +203,10 @@ export interface RuleVmState {
      * Id of the cloud connector
      */
     cloudConnectorId?: pulumi.Input<string>;
+    /**
+     * Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+     */
+    connect?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
     /**
      * Custom URLs used to access the instances
      */
@@ -217,7 +227,7 @@ export interface RuleVmState {
     /**
      * Unique identifier of the resource
      */
-    identifier?: pulumi.Input<number>;
+    identifier?: pulumi.Input<string>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */

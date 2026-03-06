@@ -13,6 +13,162 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AlertRecipients struct {
+	// List of email addresses to notify. Required if `slack` is not set.
+	Emails []string `pulumi:"emails"`
+	// List of Slack webhook URLs or channel identifiers to notify. Required if `email` is not set.
+	Slacks []string `pulumi:"slacks"`
+}
+
+// AlertRecipientsInput is an input type that accepts AlertRecipientsArgs and AlertRecipientsOutput values.
+// You can construct a concrete instance of `AlertRecipientsInput` via:
+//
+//	AlertRecipientsArgs{...}
+type AlertRecipientsInput interface {
+	pulumi.Input
+
+	ToAlertRecipientsOutput() AlertRecipientsOutput
+	ToAlertRecipientsOutputWithContext(context.Context) AlertRecipientsOutput
+}
+
+type AlertRecipientsArgs struct {
+	// List of email addresses to notify. Required if `slack` is not set.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// List of Slack webhook URLs or channel identifiers to notify. Required if `email` is not set.
+	Slacks pulumi.StringArrayInput `pulumi:"slacks"`
+}
+
+func (AlertRecipientsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRecipients)(nil)).Elem()
+}
+
+func (i AlertRecipientsArgs) ToAlertRecipientsOutput() AlertRecipientsOutput {
+	return i.ToAlertRecipientsOutputWithContext(context.Background())
+}
+
+func (i AlertRecipientsArgs) ToAlertRecipientsOutputWithContext(ctx context.Context) AlertRecipientsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRecipientsOutput)
+}
+
+func (i AlertRecipientsArgs) ToAlertRecipientsPtrOutput() AlertRecipientsPtrOutput {
+	return i.ToAlertRecipientsPtrOutputWithContext(context.Background())
+}
+
+func (i AlertRecipientsArgs) ToAlertRecipientsPtrOutputWithContext(ctx context.Context) AlertRecipientsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRecipientsOutput).ToAlertRecipientsPtrOutputWithContext(ctx)
+}
+
+// AlertRecipientsPtrInput is an input type that accepts AlertRecipientsArgs, AlertRecipientsPtr and AlertRecipientsPtrOutput values.
+// You can construct a concrete instance of `AlertRecipientsPtrInput` via:
+//
+//	        AlertRecipientsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertRecipientsPtrInput interface {
+	pulumi.Input
+
+	ToAlertRecipientsPtrOutput() AlertRecipientsPtrOutput
+	ToAlertRecipientsPtrOutputWithContext(context.Context) AlertRecipientsPtrOutput
+}
+
+type alertRecipientsPtrType AlertRecipientsArgs
+
+func AlertRecipientsPtr(v *AlertRecipientsArgs) AlertRecipientsPtrInput {
+	return (*alertRecipientsPtrType)(v)
+}
+
+func (*alertRecipientsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRecipients)(nil)).Elem()
+}
+
+func (i *alertRecipientsPtrType) ToAlertRecipientsPtrOutput() AlertRecipientsPtrOutput {
+	return i.ToAlertRecipientsPtrOutputWithContext(context.Background())
+}
+
+func (i *alertRecipientsPtrType) ToAlertRecipientsPtrOutputWithContext(ctx context.Context) AlertRecipientsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRecipientsPtrOutput)
+}
+
+type AlertRecipientsOutput struct{ *pulumi.OutputState }
+
+func (AlertRecipientsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRecipients)(nil)).Elem()
+}
+
+func (o AlertRecipientsOutput) ToAlertRecipientsOutput() AlertRecipientsOutput {
+	return o
+}
+
+func (o AlertRecipientsOutput) ToAlertRecipientsOutputWithContext(ctx context.Context) AlertRecipientsOutput {
+	return o
+}
+
+func (o AlertRecipientsOutput) ToAlertRecipientsPtrOutput() AlertRecipientsPtrOutput {
+	return o.ToAlertRecipientsPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRecipientsOutput) ToAlertRecipientsPtrOutputWithContext(ctx context.Context) AlertRecipientsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertRecipients) *AlertRecipients {
+		return &v
+	}).(AlertRecipientsPtrOutput)
+}
+
+// List of email addresses to notify. Required if `slack` is not set.
+func (o AlertRecipientsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertRecipients) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// List of Slack webhook URLs or channel identifiers to notify. Required if `email` is not set.
+func (o AlertRecipientsOutput) Slacks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertRecipients) []string { return v.Slacks }).(pulumi.StringArrayOutput)
+}
+
+type AlertRecipientsPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRecipientsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRecipients)(nil)).Elem()
+}
+
+func (o AlertRecipientsPtrOutput) ToAlertRecipientsPtrOutput() AlertRecipientsPtrOutput {
+	return o
+}
+
+func (o AlertRecipientsPtrOutput) ToAlertRecipientsPtrOutputWithContext(ctx context.Context) AlertRecipientsPtrOutput {
+	return o
+}
+
+func (o AlertRecipientsPtrOutput) Elem() AlertRecipientsOutput {
+	return o.ApplyT(func(v *AlertRecipients) AlertRecipients {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRecipients
+		return ret
+	}).(AlertRecipientsOutput)
+}
+
+// List of email addresses to notify. Required if `slack` is not set.
+func (o AlertRecipientsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertRecipients) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of Slack webhook URLs or channel identifiers to notify. Required if `email` is not set.
+func (o AlertRecipientsPtrOutput) Slacks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertRecipients) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Slacks
+	}).(pulumi.StringArrayOutput)
+}
+
 type AwsProxyCertificates struct {
 	// Certificate secret ID
 	CertSecretId string `pulumi:"certSecretId"`
@@ -878,6 +1034,112 @@ func (o RuleEcsHttpArrayOutput) Index(i pulumi.IntInput) RuleEcsHttpOutput {
 	}).(RuleEcsHttpOutput)
 }
 
+type RuleK8sDepend struct {
+	// Number of seconds the rule should wait after warming up the dependent rule
+	DelayInSec *int `pulumi:"delayInSec"`
+	// Rule id of the dependent rule
+	RuleId int `pulumi:"ruleId"`
+}
+
+// RuleK8sDependInput is an input type that accepts RuleK8sDependArgs and RuleK8sDependOutput values.
+// You can construct a concrete instance of `RuleK8sDependInput` via:
+//
+//	RuleK8sDependArgs{...}
+type RuleK8sDependInput interface {
+	pulumi.Input
+
+	ToRuleK8sDependOutput() RuleK8sDependOutput
+	ToRuleK8sDependOutputWithContext(context.Context) RuleK8sDependOutput
+}
+
+type RuleK8sDependArgs struct {
+	// Number of seconds the rule should wait after warming up the dependent rule
+	DelayInSec pulumi.IntPtrInput `pulumi:"delayInSec"`
+	// Rule id of the dependent rule
+	RuleId pulumi.IntInput `pulumi:"ruleId"`
+}
+
+func (RuleK8sDependArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleK8sDepend)(nil)).Elem()
+}
+
+func (i RuleK8sDependArgs) ToRuleK8sDependOutput() RuleK8sDependOutput {
+	return i.ToRuleK8sDependOutputWithContext(context.Background())
+}
+
+func (i RuleK8sDependArgs) ToRuleK8sDependOutputWithContext(ctx context.Context) RuleK8sDependOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleK8sDependOutput)
+}
+
+// RuleK8sDependArrayInput is an input type that accepts RuleK8sDependArray and RuleK8sDependArrayOutput values.
+// You can construct a concrete instance of `RuleK8sDependArrayInput` via:
+//
+//	RuleK8sDependArray{ RuleK8sDependArgs{...} }
+type RuleK8sDependArrayInput interface {
+	pulumi.Input
+
+	ToRuleK8sDependArrayOutput() RuleK8sDependArrayOutput
+	ToRuleK8sDependArrayOutputWithContext(context.Context) RuleK8sDependArrayOutput
+}
+
+type RuleK8sDependArray []RuleK8sDependInput
+
+func (RuleK8sDependArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleK8sDepend)(nil)).Elem()
+}
+
+func (i RuleK8sDependArray) ToRuleK8sDependArrayOutput() RuleK8sDependArrayOutput {
+	return i.ToRuleK8sDependArrayOutputWithContext(context.Background())
+}
+
+func (i RuleK8sDependArray) ToRuleK8sDependArrayOutputWithContext(ctx context.Context) RuleK8sDependArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleK8sDependArrayOutput)
+}
+
+type RuleK8sDependOutput struct{ *pulumi.OutputState }
+
+func (RuleK8sDependOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleK8sDepend)(nil)).Elem()
+}
+
+func (o RuleK8sDependOutput) ToRuleK8sDependOutput() RuleK8sDependOutput {
+	return o
+}
+
+func (o RuleK8sDependOutput) ToRuleK8sDependOutputWithContext(ctx context.Context) RuleK8sDependOutput {
+	return o
+}
+
+// Number of seconds the rule should wait after warming up the dependent rule
+func (o RuleK8sDependOutput) DelayInSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleK8sDepend) *int { return v.DelayInSec }).(pulumi.IntPtrOutput)
+}
+
+// Rule id of the dependent rule
+func (o RuleK8sDependOutput) RuleId() pulumi.IntOutput {
+	return o.ApplyT(func(v RuleK8sDepend) int { return v.RuleId }).(pulumi.IntOutput)
+}
+
+type RuleK8sDependArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleK8sDependArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleK8sDepend)(nil)).Elem()
+}
+
+func (o RuleK8sDependArrayOutput) ToRuleK8sDependArrayOutput() RuleK8sDependArrayOutput {
+	return o
+}
+
+func (o RuleK8sDependArrayOutput) ToRuleK8sDependArrayOutputWithContext(ctx context.Context) RuleK8sDependArrayOutput {
+	return o
+}
+
+func (o RuleK8sDependArrayOutput) Index(i pulumi.IntInput) RuleK8sDependOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleK8sDepend {
+		return vs[0].([]RuleK8sDepend)[vs[1].(int)]
+	}).(RuleK8sDependOutput)
+}
+
 type RuleRdsDatabase struct {
 	// ID of the database
 	Id string `pulumi:"id"`
@@ -1716,8 +1978,10 @@ func (o RuleScaleGroupHttpHealthArrayOutput) Index(i pulumi.IntInput) RuleScaleG
 }
 
 type RuleScaleGroupHttpRouting struct {
-	// Organization Identifier for the Entity
+	// Action to take for the routing rule
 	Action *string `pulumi:"action"`
+	// Path to use for the proxy
+	Path *string `pulumi:"path"`
 	// Port on the proxy
 	SourcePort *int `pulumi:"sourcePort"`
 	// Source protocol of the proxy can be http or https
@@ -1740,8 +2004,10 @@ type RuleScaleGroupHttpRoutingInput interface {
 }
 
 type RuleScaleGroupHttpRoutingArgs struct {
-	// Organization Identifier for the Entity
+	// Action to take for the routing rule
 	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Path to use for the proxy
+	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Port on the proxy
 	SourcePort pulumi.IntPtrInput `pulumi:"sourcePort"`
 	// Source protocol of the proxy can be http or https
@@ -1803,9 +2069,14 @@ func (o RuleScaleGroupHttpRoutingOutput) ToRuleScaleGroupHttpRoutingOutputWithCo
 	return o
 }
 
-// Organization Identifier for the Entity
+// Action to take for the routing rule
 func (o RuleScaleGroupHttpRoutingOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleScaleGroupHttpRouting) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Path to use for the proxy
+func (o RuleScaleGroupHttpRoutingOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleScaleGroupHttpRouting) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 // Port on the proxy
@@ -2776,8 +3047,10 @@ func (o RuleVmHttpHealthArrayOutput) Index(i pulumi.IntInput) RuleVmHttpHealthOu
 }
 
 type RuleVmHttpRouting struct {
-	// Organization Identifier for the Entity
+	// Action to take for the routing rule
 	Action *string `pulumi:"action"`
+	// Path to use for the proxy
+	Path *string `pulumi:"path"`
 	// Port on the proxy
 	SourcePort *int `pulumi:"sourcePort"`
 	// Source protocol of the proxy can be http or https
@@ -2800,8 +3073,10 @@ type RuleVmHttpRoutingInput interface {
 }
 
 type RuleVmHttpRoutingArgs struct {
-	// Organization Identifier for the Entity
+	// Action to take for the routing rule
 	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Path to use for the proxy
+	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Port on the proxy
 	SourcePort pulumi.IntPtrInput `pulumi:"sourcePort"`
 	// Source protocol of the proxy can be http or https
@@ -2863,9 +3138,14 @@ func (o RuleVmHttpRoutingOutput) ToRuleVmHttpRoutingOutputWithContext(ctx contex
 	return o
 }
 
-// Organization Identifier for the Entity
+// Action to take for the routing rule
 func (o RuleVmHttpRoutingOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleVmHttpRouting) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Path to use for the proxy
+func (o RuleVmHttpRoutingOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleVmHttpRouting) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 // Port on the proxy
@@ -3463,6 +3743,67 @@ func (o ScheduleRepeatArrayOutput) Index(i pulumi.IntInput) ScheduleRepeatOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduleRepeat {
 		return vs[0].([]ScheduleRepeat)[vs[1].(int)]
 	}).(ScheduleRepeatOutput)
+}
+
+type GetAlertRecipients struct {
+	// List of email addresses.
+	Emails []string `pulumi:"emails"`
+	// List of Slack webhook URLs or channel identifiers.
+	Slacks []string `pulumi:"slacks"`
+}
+
+// GetAlertRecipientsInput is an input type that accepts GetAlertRecipientsArgs and GetAlertRecipientsOutput values.
+// You can construct a concrete instance of `GetAlertRecipientsInput` via:
+//
+//	GetAlertRecipientsArgs{...}
+type GetAlertRecipientsInput interface {
+	pulumi.Input
+
+	ToGetAlertRecipientsOutput() GetAlertRecipientsOutput
+	ToGetAlertRecipientsOutputWithContext(context.Context) GetAlertRecipientsOutput
+}
+
+type GetAlertRecipientsArgs struct {
+	// List of email addresses.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// List of Slack webhook URLs or channel identifiers.
+	Slacks pulumi.StringArrayInput `pulumi:"slacks"`
+}
+
+func (GetAlertRecipientsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRecipients)(nil)).Elem()
+}
+
+func (i GetAlertRecipientsArgs) ToGetAlertRecipientsOutput() GetAlertRecipientsOutput {
+	return i.ToGetAlertRecipientsOutputWithContext(context.Background())
+}
+
+func (i GetAlertRecipientsArgs) ToGetAlertRecipientsOutputWithContext(ctx context.Context) GetAlertRecipientsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRecipientsOutput)
+}
+
+type GetAlertRecipientsOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRecipientsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRecipients)(nil)).Elem()
+}
+
+func (o GetAlertRecipientsOutput) ToGetAlertRecipientsOutput() GetAlertRecipientsOutput {
+	return o
+}
+
+func (o GetAlertRecipientsOutput) ToGetAlertRecipientsOutputWithContext(ctx context.Context) GetAlertRecipientsOutput {
+	return o
+}
+
+// List of email addresses.
+func (o GetAlertRecipientsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlertRecipients) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// List of Slack webhook URLs or channel identifiers.
+func (o GetAlertRecipientsOutput) Slacks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlertRecipients) []string { return v.Slacks }).(pulumi.StringArrayOutput)
 }
 
 type GetAwsProxyCertificates struct {
@@ -4330,6 +4671,112 @@ func (o GetRuleEcsHttpArrayOutput) Index(i pulumi.IntInput) GetRuleEcsHttpOutput
 	}).(GetRuleEcsHttpOutput)
 }
 
+type GetRuleK8sDepend struct {
+	// Number of seconds the rule should wait after warming up the dependent rule
+	DelayInSec *int `pulumi:"delayInSec"`
+	// Rule id of the dependent rule
+	RuleId int `pulumi:"ruleId"`
+}
+
+// GetRuleK8sDependInput is an input type that accepts GetRuleK8sDependArgs and GetRuleK8sDependOutput values.
+// You can construct a concrete instance of `GetRuleK8sDependInput` via:
+//
+//	GetRuleK8sDependArgs{...}
+type GetRuleK8sDependInput interface {
+	pulumi.Input
+
+	ToGetRuleK8sDependOutput() GetRuleK8sDependOutput
+	ToGetRuleK8sDependOutputWithContext(context.Context) GetRuleK8sDependOutput
+}
+
+type GetRuleK8sDependArgs struct {
+	// Number of seconds the rule should wait after warming up the dependent rule
+	DelayInSec pulumi.IntPtrInput `pulumi:"delayInSec"`
+	// Rule id of the dependent rule
+	RuleId pulumi.IntInput `pulumi:"ruleId"`
+}
+
+func (GetRuleK8sDependArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleK8sDepend)(nil)).Elem()
+}
+
+func (i GetRuleK8sDependArgs) ToGetRuleK8sDependOutput() GetRuleK8sDependOutput {
+	return i.ToGetRuleK8sDependOutputWithContext(context.Background())
+}
+
+func (i GetRuleK8sDependArgs) ToGetRuleK8sDependOutputWithContext(ctx context.Context) GetRuleK8sDependOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRuleK8sDependOutput)
+}
+
+// GetRuleK8sDependArrayInput is an input type that accepts GetRuleK8sDependArray and GetRuleK8sDependArrayOutput values.
+// You can construct a concrete instance of `GetRuleK8sDependArrayInput` via:
+//
+//	GetRuleK8sDependArray{ GetRuleK8sDependArgs{...} }
+type GetRuleK8sDependArrayInput interface {
+	pulumi.Input
+
+	ToGetRuleK8sDependArrayOutput() GetRuleK8sDependArrayOutput
+	ToGetRuleK8sDependArrayOutputWithContext(context.Context) GetRuleK8sDependArrayOutput
+}
+
+type GetRuleK8sDependArray []GetRuleK8sDependInput
+
+func (GetRuleK8sDependArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRuleK8sDepend)(nil)).Elem()
+}
+
+func (i GetRuleK8sDependArray) ToGetRuleK8sDependArrayOutput() GetRuleK8sDependArrayOutput {
+	return i.ToGetRuleK8sDependArrayOutputWithContext(context.Background())
+}
+
+func (i GetRuleK8sDependArray) ToGetRuleK8sDependArrayOutputWithContext(ctx context.Context) GetRuleK8sDependArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRuleK8sDependArrayOutput)
+}
+
+type GetRuleK8sDependOutput struct{ *pulumi.OutputState }
+
+func (GetRuleK8sDependOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleK8sDepend)(nil)).Elem()
+}
+
+func (o GetRuleK8sDependOutput) ToGetRuleK8sDependOutput() GetRuleK8sDependOutput {
+	return o
+}
+
+func (o GetRuleK8sDependOutput) ToGetRuleK8sDependOutputWithContext(ctx context.Context) GetRuleK8sDependOutput {
+	return o
+}
+
+// Number of seconds the rule should wait after warming up the dependent rule
+func (o GetRuleK8sDependOutput) DelayInSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRuleK8sDepend) *int { return v.DelayInSec }).(pulumi.IntPtrOutput)
+}
+
+// Rule id of the dependent rule
+func (o GetRuleK8sDependOutput) RuleId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRuleK8sDepend) int { return v.RuleId }).(pulumi.IntOutput)
+}
+
+type GetRuleK8sDependArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRuleK8sDependArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRuleK8sDepend)(nil)).Elem()
+}
+
+func (o GetRuleK8sDependArrayOutput) ToGetRuleK8sDependArrayOutput() GetRuleK8sDependArrayOutput {
+	return o
+}
+
+func (o GetRuleK8sDependArrayOutput) ToGetRuleK8sDependArrayOutputWithContext(ctx context.Context) GetRuleK8sDependArrayOutput {
+	return o
+}
+
+func (o GetRuleK8sDependArrayOutput) Index(i pulumi.IntInput) GetRuleK8sDependOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRuleK8sDepend {
+		return vs[0].([]GetRuleK8sDepend)[vs[1].(int)]
+	}).(GetRuleK8sDependOutput)
+}
+
 type GetRuleRdsDatabase struct {
 	// ID of the database
 	Id string `pulumi:"id"`
@@ -5073,8 +5520,10 @@ func (o GetRuleScaleGroupHttpHealthArrayOutput) Index(i pulumi.IntInput) GetRule
 }
 
 type GetRuleScaleGroupHttpRouting struct {
-	// Organization Identifier for the Entity
+	// Action to take for the routing rule
 	Action *string `pulumi:"action"`
+	// Path to use for the proxy
+	Path *string `pulumi:"path"`
 	// Port on the proxy
 	SourcePort *int `pulumi:"sourcePort"`
 	// Source protocol of the proxy can be http or https
@@ -5097,8 +5546,10 @@ type GetRuleScaleGroupHttpRoutingInput interface {
 }
 
 type GetRuleScaleGroupHttpRoutingArgs struct {
-	// Organization Identifier for the Entity
+	// Action to take for the routing rule
 	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Path to use for the proxy
+	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Port on the proxy
 	SourcePort pulumi.IntPtrInput `pulumi:"sourcePort"`
 	// Source protocol of the proxy can be http or https
@@ -5160,9 +5611,14 @@ func (o GetRuleScaleGroupHttpRoutingOutput) ToGetRuleScaleGroupHttpRoutingOutput
 	return o
 }
 
-// Organization Identifier for the Entity
+// Action to take for the routing rule
 func (o GetRuleScaleGroupHttpRoutingOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRuleScaleGroupHttpRouting) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Path to use for the proxy
+func (o GetRuleScaleGroupHttpRoutingOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRuleScaleGroupHttpRouting) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 // Port on the proxy
@@ -5863,8 +6319,10 @@ func (o GetRuleVmHttpHealthArrayOutput) Index(i pulumi.IntInput) GetRuleVmHttpHe
 }
 
 type GetRuleVmHttpRouting struct {
-	// Organization Identifier for the Entity
+	// Action to take for the routing rule
 	Action *string `pulumi:"action"`
+	// Path to use for the proxy
+	Path *string `pulumi:"path"`
 	// Port on the proxy
 	SourcePort *int `pulumi:"sourcePort"`
 	// Source protocol of the proxy can be http or https
@@ -5887,8 +6345,10 @@ type GetRuleVmHttpRoutingInput interface {
 }
 
 type GetRuleVmHttpRoutingArgs struct {
-	// Organization Identifier for the Entity
+	// Action to take for the routing rule
 	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Path to use for the proxy
+	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Port on the proxy
 	SourcePort pulumi.IntPtrInput `pulumi:"sourcePort"`
 	// Source protocol of the proxy can be http or https
@@ -5950,9 +6410,14 @@ func (o GetRuleVmHttpRoutingOutput) ToGetRuleVmHttpRoutingOutputWithContext(ctx 
 	return o
 }
 
-// Organization Identifier for the Entity
+// Action to take for the routing rule
 func (o GetRuleVmHttpRoutingOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRuleVmHttpRouting) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Path to use for the proxy
+func (o GetRuleVmHttpRoutingOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRuleVmHttpRouting) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 // Port on the proxy
@@ -6437,6 +6902,130 @@ func (o GetRuleVmTcpSshArrayOutput) Index(i pulumi.IntInput) GetRuleVmTcpSshOutp
 	}).(GetRuleVmTcpSshOutput)
 }
 
+type GetRulesRule struct {
+	// Id of the cloud connector.
+	CloudConnectorId string `pulumi:"cloudConnectorId"`
+	// Unique identifier of the rule.
+	Id float64 `pulumi:"id"`
+	// Kind of the rule.
+	Kind string `pulumi:"kind"`
+	// Name of the rule.
+	Name string `pulumi:"name"`
+}
+
+// GetRulesRuleInput is an input type that accepts GetRulesRuleArgs and GetRulesRuleOutput values.
+// You can construct a concrete instance of `GetRulesRuleInput` via:
+//
+//	GetRulesRuleArgs{...}
+type GetRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleOutput() GetRulesRuleOutput
+	ToGetRulesRuleOutputWithContext(context.Context) GetRulesRuleOutput
+}
+
+type GetRulesRuleArgs struct {
+	// Id of the cloud connector.
+	CloudConnectorId pulumi.StringInput `pulumi:"cloudConnectorId"`
+	// Unique identifier of the rule.
+	Id pulumi.Float64Input `pulumi:"id"`
+	// Kind of the rule.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Name of the rule.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRule)(nil)).Elem()
+}
+
+func (i GetRulesRuleArgs) ToGetRulesRuleOutput() GetRulesRuleOutput {
+	return i.ToGetRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleArgs) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleOutput)
+}
+
+// GetRulesRuleArrayInput is an input type that accepts GetRulesRuleArray and GetRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleArrayInput` via:
+//
+//	GetRulesRuleArray{ GetRulesRuleArgs{...} }
+type GetRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleArrayOutput() GetRulesRuleArrayOutput
+	ToGetRulesRuleArrayOutputWithContext(context.Context) GetRulesRuleArrayOutput
+}
+
+type GetRulesRuleArray []GetRulesRuleInput
+
+func (GetRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRule)(nil)).Elem()
+}
+
+func (i GetRulesRuleArray) ToGetRulesRuleArrayOutput() GetRulesRuleArrayOutput {
+	return i.ToGetRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleArray) ToGetRulesRuleArrayOutputWithContext(ctx context.Context) GetRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleArrayOutput)
+}
+
+type GetRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRule)(nil)).Elem()
+}
+
+func (o GetRulesRuleOutput) ToGetRulesRuleOutput() GetRulesRuleOutput {
+	return o
+}
+
+func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
+	return o
+}
+
+// Id of the cloud connector.
+func (o GetRulesRuleOutput) CloudConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.CloudConnectorId }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the rule.
+func (o GetRulesRuleOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v GetRulesRule) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// Kind of the rule.
+func (o GetRulesRuleOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the rule.
+func (o GetRulesRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRule)(nil)).Elem()
+}
+
+func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutput() GetRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutputWithContext(ctx context.Context) GetRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRule {
+		return vs[0].([]GetRulesRule)[vs[1].(int)]
+	}).(GetRulesRuleOutput)
+}
+
 type GetScheduleRepeat struct {
 	// List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
 	Days []string `pulumi:"days"`
@@ -6553,6 +7142,8 @@ func (o GetScheduleRepeatArrayOutput) Index(i pulumi.IntInput) GetScheduleRepeat
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRecipientsInput)(nil)).Elem(), AlertRecipientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRecipientsPtrInput)(nil)).Elem(), AlertRecipientsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsProxyCertificatesInput)(nil)).Elem(), AwsProxyCertificatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsProxyCertificatesPtrInput)(nil)).Elem(), AwsProxyCertificatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureProxyCertificatesInput)(nil)).Elem(), AzureProxyCertificatesArgs{})
@@ -6565,6 +7156,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleEcsDependArrayInput)(nil)).Elem(), RuleEcsDependArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleEcsHttpInput)(nil)).Elem(), RuleEcsHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleEcsHttpArrayInput)(nil)).Elem(), RuleEcsHttpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleK8sDependInput)(nil)).Elem(), RuleK8sDependArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleK8sDependArrayInput)(nil)).Elem(), RuleK8sDependArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRdsDatabaseInput)(nil)).Elem(), RuleRdsDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRdsDatabasePtrInput)(nil)).Elem(), RuleRdsDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRdsDependInput)(nil)).Elem(), RuleRdsDependArgs{})
@@ -6605,6 +7198,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleVmTcpSshArrayInput)(nil)).Elem(), RuleVmTcpSshArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRepeatInput)(nil)).Elem(), ScheduleRepeatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRepeatArrayInput)(nil)).Elem(), ScheduleRepeatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRecipientsInput)(nil)).Elem(), GetAlertRecipientsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsProxyCertificatesInput)(nil)).Elem(), GetAwsProxyCertificatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsProxyCertificatesPtrInput)(nil)).Elem(), GetAwsProxyCertificatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureProxyCertificatesInput)(nil)).Elem(), GetAzureProxyCertificatesArgs{})
@@ -6617,6 +7211,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleEcsDependArrayInput)(nil)).Elem(), GetRuleEcsDependArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleEcsHttpInput)(nil)).Elem(), GetRuleEcsHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleEcsHttpArrayInput)(nil)).Elem(), GetRuleEcsHttpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleK8sDependInput)(nil)).Elem(), GetRuleK8sDependArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleK8sDependArrayInput)(nil)).Elem(), GetRuleK8sDependArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleRdsDatabaseInput)(nil)).Elem(), GetRuleRdsDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleRdsDependInput)(nil)).Elem(), GetRuleRdsDependArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleRdsDependArrayInput)(nil)).Elem(), GetRuleRdsDependArray{})
@@ -6652,8 +7248,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleVmTcpRdpArrayInput)(nil)).Elem(), GetRuleVmTcpRdpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleVmTcpSshInput)(nil)).Elem(), GetRuleVmTcpSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRuleVmTcpSshArrayInput)(nil)).Elem(), GetRuleVmTcpSshArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleInput)(nil)).Elem(), GetRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleArrayInput)(nil)).Elem(), GetRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduleRepeatInput)(nil)).Elem(), GetScheduleRepeatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduleRepeatArrayInput)(nil)).Elem(), GetScheduleRepeatArray{})
+	pulumi.RegisterOutputType(AlertRecipientsOutput{})
+	pulumi.RegisterOutputType(AlertRecipientsPtrOutput{})
 	pulumi.RegisterOutputType(AwsProxyCertificatesOutput{})
 	pulumi.RegisterOutputType(AwsProxyCertificatesPtrOutput{})
 	pulumi.RegisterOutputType(AzureProxyCertificatesOutput{})
@@ -6666,6 +7266,8 @@ func init() {
 	pulumi.RegisterOutputType(RuleEcsDependArrayOutput{})
 	pulumi.RegisterOutputType(RuleEcsHttpOutput{})
 	pulumi.RegisterOutputType(RuleEcsHttpArrayOutput{})
+	pulumi.RegisterOutputType(RuleK8sDependOutput{})
+	pulumi.RegisterOutputType(RuleK8sDependArrayOutput{})
 	pulumi.RegisterOutputType(RuleRdsDatabaseOutput{})
 	pulumi.RegisterOutputType(RuleRdsDatabasePtrOutput{})
 	pulumi.RegisterOutputType(RuleRdsDependOutput{})
@@ -6706,6 +7308,7 @@ func init() {
 	pulumi.RegisterOutputType(RuleVmTcpSshArrayOutput{})
 	pulumi.RegisterOutputType(ScheduleRepeatOutput{})
 	pulumi.RegisterOutputType(ScheduleRepeatArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRecipientsOutput{})
 	pulumi.RegisterOutputType(GetAwsProxyCertificatesOutput{})
 	pulumi.RegisterOutputType(GetAwsProxyCertificatesPtrOutput{})
 	pulumi.RegisterOutputType(GetAzureProxyCertificatesOutput{})
@@ -6718,6 +7321,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRuleEcsDependArrayOutput{})
 	pulumi.RegisterOutputType(GetRuleEcsHttpOutput{})
 	pulumi.RegisterOutputType(GetRuleEcsHttpArrayOutput{})
+	pulumi.RegisterOutputType(GetRuleK8sDependOutput{})
+	pulumi.RegisterOutputType(GetRuleK8sDependArrayOutput{})
 	pulumi.RegisterOutputType(GetRuleRdsDatabaseOutput{})
 	pulumi.RegisterOutputType(GetRuleRdsDependOutput{})
 	pulumi.RegisterOutputType(GetRuleRdsDependArrayOutput{})
@@ -6753,6 +7358,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRuleVmTcpRdpArrayOutput{})
 	pulumi.RegisterOutputType(GetRuleVmTcpSshOutput{})
 	pulumi.RegisterOutputType(GetRuleVmTcpSshArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetScheduleRepeatOutput{})
 	pulumi.RegisterOutputType(GetScheduleRepeatArrayOutput{})
 }

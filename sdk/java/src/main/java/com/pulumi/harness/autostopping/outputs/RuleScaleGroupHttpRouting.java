@@ -14,10 +14,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleScaleGroupHttpRouting {
     /**
-     * @return Organization Identifier for the Entity
+     * @return Action to take for the routing rule
      * 
      */
     private @Nullable String action;
+    /**
+     * @return Path to use for the proxy
+     * 
+     */
+    private @Nullable String path;
     /**
      * @return Port on the proxy
      * 
@@ -41,11 +46,18 @@ public final class RuleScaleGroupHttpRouting {
 
     private RuleScaleGroupHttpRouting() {}
     /**
-     * @return Organization Identifier for the Entity
+     * @return Action to take for the routing rule
      * 
      */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
+    }
+    /**
+     * @return Path to use for the proxy
+     * 
+     */
+    public Optional<String> path() {
+        return Optional.ofNullable(this.path);
     }
     /**
      * @return Port on the proxy
@@ -86,6 +98,7 @@ public final class RuleScaleGroupHttpRouting {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String action;
+        private @Nullable String path;
         private @Nullable Integer sourcePort;
         private String sourceProtocol;
         private @Nullable Integer targetPort;
@@ -94,6 +107,7 @@ public final class RuleScaleGroupHttpRouting {
         public Builder(RuleScaleGroupHttpRouting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
+    	      this.path = defaults.path;
     	      this.sourcePort = defaults.sourcePort;
     	      this.sourceProtocol = defaults.sourceProtocol;
     	      this.targetPort = defaults.targetPort;
@@ -104,6 +118,12 @@ public final class RuleScaleGroupHttpRouting {
         public Builder action(@Nullable String action) {
 
             this.action = action;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder path(@Nullable String path) {
+
+            this.path = path;
             return this;
         }
         @CustomType.Setter
@@ -137,6 +157,7 @@ public final class RuleScaleGroupHttpRouting {
         public RuleScaleGroupHttpRouting build() {
             final var _resultValue = new RuleScaleGroupHttpRouting();
             _resultValue.action = action;
+            _resultValue.path = path;
             _resultValue.sourcePort = sourcePort;
             _resultValue.sourceProtocol = sourceProtocol;
             _resultValue.targetPort = targetPort;

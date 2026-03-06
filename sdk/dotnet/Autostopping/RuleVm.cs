@@ -128,6 +128,12 @@ namespace Pulumi.Harness.Autostopping
         public Output<string> CloudConnectorId { get; private set; } = null!;
 
         /// <summary>
+        /// Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+        /// </summary>
+        [Output("connect")]
+        public Output<ImmutableDictionary<string, int>> Connect { get; private set; } = null!;
+
+        /// <summary>
         /// Custom URLs used to access the instances
         /// </summary>
         [Output("customDomains")]
@@ -158,7 +164,7 @@ namespace Pulumi.Harness.Autostopping
         /// Unique identifier of the resource
         /// </summary>
         [Output("identifier")]
-        public Output<double> Identifier { get; private set; } = null!;
+        public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
         /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
@@ -326,6 +332,18 @@ namespace Pulumi.Harness.Autostopping
         [Input("cloudConnectorId")]
         public Input<string>? CloudConnectorId { get; set; }
 
+        [Input("connect")]
+        private InputMap<int>? _connect;
+
+        /// <summary>
+        /// Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+        /// </summary>
+        public InputMap<int> Connect
+        {
+            get => _connect ?? (_connect = new InputMap<int>());
+            set => _connect = value;
+        }
+
         [Input("customDomains")]
         private InputList<string>? _customDomains;
 
@@ -375,7 +393,7 @@ namespace Pulumi.Harness.Autostopping
         /// Unique identifier of the resource
         /// </summary>
         [Input("identifier")]
-        public Input<double>? Identifier { get; set; }
+        public Input<string>? Identifier { get; set; }
 
         /// <summary>
         /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.

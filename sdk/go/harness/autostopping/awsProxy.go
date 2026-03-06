@@ -69,6 +69,10 @@ type AwsProxy struct {
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// Name of the proxy
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Private IP address of the proxy
+	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
+	// Public IP address of the proxy
+	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
 	// Region in which cloud resources are hosted
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Security Group to define the security rules that determine the inbound and outbound traffic
@@ -148,6 +152,10 @@ type awsProxyState struct {
 	MachineType *string `pulumi:"machineType"`
 	// Name of the proxy
 	Name *string `pulumi:"name"`
+	// Private IP address of the proxy
+	PrivateIp *string `pulumi:"privateIp"`
+	// Public IP address of the proxy
+	PublicIp *string `pulumi:"publicIp"`
 	// Region in which cloud resources are hosted
 	Region *string `pulumi:"region"`
 	// Security Group to define the security rules that determine the inbound and outbound traffic
@@ -173,6 +181,10 @@ type AwsProxyState struct {
 	MachineType pulumi.StringPtrInput
 	// Name of the proxy
 	Name pulumi.StringPtrInput
+	// Private IP address of the proxy
+	PrivateIp pulumi.StringPtrInput
+	// Public IP address of the proxy
+	PublicIp pulumi.StringPtrInput
 	// Region in which cloud resources are hosted
 	Region pulumi.StringPtrInput
 	// Security Group to define the security rules that determine the inbound and outbound traffic
@@ -360,6 +372,16 @@ func (o AwsProxyOutput) MachineType() pulumi.StringOutput {
 // Name of the proxy
 func (o AwsProxyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsProxy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Private IP address of the proxy
+func (o AwsProxyOutput) PrivateIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsProxy) pulumi.StringOutput { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+// Public IP address of the proxy
+func (o AwsProxyOutput) PublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsProxy) pulumi.StringOutput { return v.PublicIp }).(pulumi.StringOutput)
 }
 
 // Region in which cloud resources are hosted

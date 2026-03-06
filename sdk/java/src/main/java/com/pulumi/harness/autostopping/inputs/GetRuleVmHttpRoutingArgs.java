@@ -18,18 +18,33 @@ public final class GetRuleVmHttpRoutingArgs extends com.pulumi.resources.Resourc
     public static final GetRuleVmHttpRoutingArgs Empty = new GetRuleVmHttpRoutingArgs();
 
     /**
-     * Organization Identifier for the Entity
+     * Action to take for the routing rule
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Organization Identifier for the Entity
+     * @return Action to take for the routing rule
      * 
      */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
+    }
+
+    /**
+     * Path to use for the proxy
+     * 
+     */
+    @Import(name="path")
+    private @Nullable Output<String> path;
+
+    /**
+     * @return Path to use for the proxy
+     * 
+     */
+    public Optional<Output<String>> path() {
+        return Optional.ofNullable(this.path);
     }
 
     /**
@@ -96,6 +111,7 @@ public final class GetRuleVmHttpRoutingArgs extends com.pulumi.resources.Resourc
 
     private GetRuleVmHttpRoutingArgs(GetRuleVmHttpRoutingArgs $) {
         this.action = $.action;
+        this.path = $.path;
         this.sourcePort = $.sourcePort;
         this.sourceProtocol = $.sourceProtocol;
         this.targetPort = $.targetPort;
@@ -121,7 +137,7 @@ public final class GetRuleVmHttpRoutingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param action Organization Identifier for the Entity
+         * @param action Action to take for the routing rule
          * 
          * @return builder
          * 
@@ -132,13 +148,34 @@ public final class GetRuleVmHttpRoutingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param action Organization Identifier for the Entity
+         * @param action Action to take for the routing rule
          * 
          * @return builder
          * 
          */
         public Builder action(String action) {
             return action(Output.of(action));
+        }
+
+        /**
+         * @param path Path to use for the proxy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder path(@Nullable Output<String> path) {
+            $.path = path;
+            return this;
+        }
+
+        /**
+         * @param path Path to use for the proxy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder path(String path) {
+            return path(Output.of(path));
         }
 
         /**

@@ -74,6 +74,14 @@ _utilities.register(
 [
  {
   "pkg": "harness",
+  "mod": "autostopping/alert",
+  "fqn": "pulumi_harness.autostopping",
+  "classes": {
+   "harness:autostopping/alert:Alert": "Alert"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "autostopping/awsAlb",
   "fqn": "pulumi_harness.autostopping",
   "classes": {
@@ -118,6 +126,14 @@ _utilities.register(
   "fqn": "pulumi_harness.autostopping",
   "classes": {
    "harness:autostopping/ruleEcs:RuleEcs": "RuleEcs"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "autostopping/ruleK8s",
+  "fqn": "pulumi_harness.autostopping",
+  "classes": {
+   "harness:autostopping/ruleK8s:RuleK8s": "RuleK8s"
   }
  },
  {

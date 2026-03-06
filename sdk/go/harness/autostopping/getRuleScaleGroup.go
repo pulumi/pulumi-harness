@@ -59,7 +59,7 @@ type LookupRuleScaleGroupResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource
-	Identifier float64 `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 	IdleTimeMins *int `pulumi:"idleTimeMins"`
 	// Name of the rule
@@ -147,8 +147,8 @@ func (o LookupRuleScaleGroupResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource
-func (o LookupRuleScaleGroupResultOutput) Identifier() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupRuleScaleGroupResult) float64 { return v.Identifier }).(pulumi.Float64Output)
+func (o LookupRuleScaleGroupResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleScaleGroupResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
