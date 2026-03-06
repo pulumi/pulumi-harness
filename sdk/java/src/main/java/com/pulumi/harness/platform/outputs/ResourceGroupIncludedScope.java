@@ -18,7 +18,7 @@ public final class ResourceGroupIncludedScope {
      */
     private @Nullable String accountId;
     /**
-     * @return Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+     * @return Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
      * 
      */
     private String filter;
@@ -42,7 +42,7 @@ public final class ResourceGroupIncludedScope {
         return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+     * @return Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
      * 
      */
     public String filter() {

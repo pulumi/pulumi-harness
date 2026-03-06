@@ -28,7 +28,7 @@ class GetGcpProxyResult:
     """
     A collection of values returned by getGcpProxy.
     """
-    def __init__(__self__, allocate_static_ip=None, api_key=None, certificates=None, cloud_connector_id=None, delete_cloud_resources_on_destroy=None, id=None, identifier=None, machine_type=None, name=None, region=None, security_groups=None, subnet_id=None, vpc=None, zone=None):
+    def __init__(__self__, allocate_static_ip=None, api_key=None, certificates=None, cloud_connector_id=None, delete_cloud_resources_on_destroy=None, id=None, identifier=None, machine_type=None, name=None, private_ip=None, public_ip=None, region=None, security_groups=None, subnet_id=None, vpc=None, zone=None):
         if allocate_static_ip and not isinstance(allocate_static_ip, bool):
             raise TypeError("Expected argument 'allocate_static_ip' to be a bool")
         pulumi.set(__self__, "allocate_static_ip", allocate_static_ip)
@@ -56,6 +56,12 @@ class GetGcpProxyResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if private_ip and not isinstance(private_ip, str):
+            raise TypeError("Expected argument 'private_ip' to be a str")
+        pulumi.set(__self__, "private_ip", private_ip)
+        if public_ip and not isinstance(public_ip, str):
+            raise TypeError("Expected argument 'public_ip' to be a str")
+        pulumi.set(__self__, "public_ip", public_ip)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -142,6 +148,22 @@ class GetGcpProxyResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> _builtins.str:
+        """
+        Private IP address of the proxy
+        """
+        return pulumi.get(self, "private_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="publicIp")
+    def public_ip(self) -> _builtins.str:
+        """
+        Public IP address of the proxy
+        """
+        return pulumi.get(self, "public_ip")
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> _builtins.str:
         """
@@ -197,6 +219,8 @@ class AwaitableGetGcpProxyResult(GetGcpProxyResult):
             identifier=self.identifier,
             machine_type=self.machine_type,
             name=self.name,
+            private_ip=self.private_ip,
+            public_ip=self.public_ip,
             region=self.region,
             security_groups=self.security_groups,
             subnet_id=self.subnet_id,
@@ -261,6 +285,8 @@ def get_gcp_proxy(allocate_static_ip: Optional[_builtins.bool] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         machine_type=pulumi.get(__ret__, 'machine_type'),
         name=pulumi.get(__ret__, 'name'),
+        private_ip=pulumi.get(__ret__, 'private_ip'),
+        public_ip=pulumi.get(__ret__, 'public_ip'),
         region=pulumi.get(__ret__, 'region'),
         security_groups=pulumi.get(__ret__, 'security_groups'),
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
@@ -322,6 +348,8 @@ def get_gcp_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[_bui
         identifier=pulumi.get(__response__, 'identifier'),
         machine_type=pulumi.get(__response__, 'machine_type'),
         name=pulumi.get(__response__, 'name'),
+        private_ip=pulumi.get(__response__, 'private_ip'),
+        public_ip=pulumi.get(__response__, 'public_ip'),
         region=pulumi.get(__response__, 'region'),
         security_groups=pulumi.get(__response__, 'security_groups'),
         subnet_id=pulumi.get(__response__, 'subnet_id'),

@@ -140,7 +140,7 @@ class _RuleRdsState:
                  database: Optional[pulumi.Input['RuleRdsDatabaseArgs']] = None,
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRdsDependArgs']]]] = None,
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.float]] = None,
+                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  tcps: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRdsTcpArgs']]]] = None):
@@ -150,7 +150,7 @@ class _RuleRdsState:
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input['RuleRdsDependArgs']]] depends: Dependent rules
         :param pulumi.Input[_builtins.bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-        :param pulumi.Input[_builtins.float] identifier: Unique identifier of the resource
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[_builtins.str] name: Name of the rule
         :param pulumi.Input[Sequence[pulumi.Input['RuleRdsTcpArgs']]] tcps: TCP routing configuration
@@ -219,14 +219,14 @@ class _RuleRdsState:
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Unique identifier of the resource
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
@@ -406,7 +406,7 @@ class RuleRds(pulumi.CustomResource):
             database: Optional[pulumi.Input[Union['RuleRdsDatabaseArgs', 'RuleRdsDatabaseArgsDict']]] = None,
             depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsDependArgs', 'RuleRdsDependArgsDict']]]]] = None,
             dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.float]] = None,
+            identifier: Optional[pulumi.Input[_builtins.str]] = None,
             idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsTcpArgs', 'RuleRdsTcpArgsDict']]]]] = None) -> 'RuleRds':
@@ -420,7 +420,7 @@ class RuleRds(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsDependArgs', 'RuleRdsDependArgsDict']]]] depends: Dependent rules
         :param pulumi.Input[_builtins.bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-        :param pulumi.Input[_builtins.float] identifier: Unique identifier of the resource
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[_builtins.str] name: Name of the rule
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsTcpArgs', 'RuleRdsTcpArgsDict']]]] tcps: TCP routing configuration
@@ -470,7 +470,7 @@ class RuleRds(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> pulumi.Output[_builtins.float]:
+    def identifier(self) -> pulumi.Output[_builtins.str]:
         """
         Unique identifier of the resource
         """

@@ -9,7 +9,6 @@ import com.pulumi.harness.autostopping.inputs.RuleRdsDatabaseArgs;
 import com.pulumi.harness.autostopping.inputs.RuleRdsDependArgs;
 import com.pulumi.harness.autostopping.inputs.RuleRdsTcpArgs;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -79,13 +78,13 @@ public final class RuleRdsState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="identifier")
-    private @Nullable Output<Double> identifier;
+    private @Nullable Output<String> identifier;
 
     /**
      * @return Unique identifier of the resource
      * 
      */
-    public Optional<Output<Double>> identifier() {
+    public Optional<Output<String>> identifier() {
         return Optional.ofNullable(this.identifier);
     }
 
@@ -253,7 +252,7 @@ public final class RuleRdsState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder identifier(@Nullable Output<Double> identifier) {
+        public Builder identifier(@Nullable Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
@@ -264,7 +263,7 @@ public final class RuleRdsState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder identifier(Double identifier) {
+        public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
         }
 

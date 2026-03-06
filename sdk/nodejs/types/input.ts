@@ -893,6 +893,17 @@ export interface UserGroupSamlSettings {
     ssoProviderId?: pulumi.Input<string>;
 }
 export namespace autostopping {
+    export interface AlertRecipients {
+        /**
+         * List of email addresses to notify. Required if `slack` is not set.
+         */
+        emails?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of Slack webhook URLs or channel identifiers to notify. Required if `email` is not set.
+         */
+        slacks?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface AwsProxyCertificates {
         /**
          * Certificate secret ID
@@ -924,6 +935,28 @@ export namespace autostopping {
          * Private key secret ID
          */
         keySecretId: pulumi.Input<string>;
+    }
+
+    export interface GetAlertRecipients {
+        /**
+         * List of email addresses.
+         */
+        emails?: string[];
+        /**
+         * List of Slack webhook URLs or channel identifiers.
+         */
+        slacks?: string[];
+    }
+
+    export interface GetAlertRecipientsArgs {
+        /**
+         * List of email addresses.
+         */
+        emails?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of Slack webhook URLs or channel identifiers.
+         */
+        slacks?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GetAwsProxyCertificates {
@@ -1064,6 +1097,28 @@ export namespace autostopping {
          * Id of the proxy
          */
         proxyId: pulumi.Input<string>;
+    }
+
+    export interface GetRuleK8sDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface GetRuleK8sDependArgs {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: pulumi.Input<number>;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: pulumi.Input<number>;
     }
 
     export interface GetRuleRdsDatabase {
@@ -1262,9 +1317,13 @@ export namespace autostopping {
 
     export interface GetRuleScaleGroupHttpRouting {
         /**
-         * Organization Identifier for the Entity
+         * Action to take for the routing rule
          */
         action?: string;
+        /**
+         * Path to use for the proxy
+         */
+        path?: string;
         /**
          * Port on the proxy
          */
@@ -1285,9 +1344,13 @@ export namespace autostopping {
 
     export interface GetRuleScaleGroupHttpRoutingArgs {
         /**
-         * Organization Identifier for the Entity
+         * Action to take for the routing rule
          */
         action?: pulumi.Input<string>;
+        /**
+         * Path to use for the proxy
+         */
+        path?: pulumi.Input<string>;
         /**
          * Port on the proxy
          */
@@ -1532,9 +1595,13 @@ export namespace autostopping {
 
     export interface GetRuleVmHttpRouting {
         /**
-         * Organization Identifier for the Entity
+         * Action to take for the routing rule
          */
         action?: string;
+        /**
+         * Path to use for the proxy
+         */
+        path?: string;
         /**
          * Port on the proxy
          */
@@ -1555,9 +1622,13 @@ export namespace autostopping {
 
     export interface GetRuleVmHttpRoutingArgs {
         /**
-         * Organization Identifier for the Entity
+         * Action to take for the routing rule
          */
         action?: pulumi.Input<string>;
+        /**
+         * Path to use for the proxy
+         */
+        path?: pulumi.Input<string>;
         /**
          * Port on the proxy
          */
@@ -1717,6 +1788,17 @@ export namespace autostopping {
         proxyId: pulumi.Input<string>;
     }
 
+    export interface RuleK8sDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: pulumi.Input<number>;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: pulumi.Input<number>;
+    }
+
     export interface RuleRdsDatabase {
         /**
          * ID of the database
@@ -1816,9 +1898,13 @@ export namespace autostopping {
 
     export interface RuleScaleGroupHttpRouting {
         /**
-         * Organization Identifier for the Entity
+         * Action to take for the routing rule
          */
         action?: pulumi.Input<string>;
+        /**
+         * Path to use for the proxy
+         */
+        path?: pulumi.Input<string>;
         /**
          * Port on the proxy
          */
@@ -1951,9 +2037,13 @@ export namespace autostopping {
 
     export interface RuleVmHttpRouting {
         /**
-         * Organization Identifier for the Entity
+         * Action to take for the routing rule
          */
         action?: pulumi.Input<string>;
+        /**
+         * Path to use for the proxy
+         */
+        path?: pulumi.Input<string>;
         /**
          * Port on the proxy
          */
@@ -35327,7 +35417,7 @@ export namespace platform {
          */
         accountId?: pulumi.Input<string>;
         /**
-         * Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+         * Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
          */
         filter: pulumi.Input<string>;
         /**
@@ -35372,7 +35462,7 @@ export namespace platform {
          */
         attributeName?: pulumi.Input<string>;
         /**
-         * Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
+         * Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD_COST,CLOUD_PROVIDER,CODE_REPO,MONITORING,SECRET_MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
          */
         attributeValues?: pulumi.Input<pulumi.Input<string>[]>;
     }

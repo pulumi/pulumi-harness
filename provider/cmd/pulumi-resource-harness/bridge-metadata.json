@@ -15,6 +15,30 @@
             "harness_application_gitsync": {
                 "current": "harness:index/applicationGitSync:ApplicationGitSync"
             },
+            "harness_autostopping_alert": {
+                "current": "harness:autostopping/alert:Alert",
+                "fields": {
+                    "events": {
+                        "maxItemsOne": false
+                    },
+                    "recipients": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "email": {
+                                    "maxItemsOne": false
+                                },
+                                "slack": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "rule_id_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_autostopping_aws_alb": {
                 "current": "harness:autostopping/awsAlb:AwsAlb",
                 "fields": {
@@ -72,6 +96,14 @@
                         "maxItemsOne": false
                     },
                     "http": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_autostopping_rule_k8s": {
+                "current": "harness:autostopping/ruleK8s:RuleK8s",
+                "fields": {
+                    "depends": {
                         "maxItemsOne": false
                     }
                 }
@@ -15498,6 +15530,30 @@
             "harness_application": {
                 "current": "harness:index/getApplication:getApplication"
             },
+            "harness_autostopping_alert": {
+                "current": "harness:autostopping/getAlert:getAlert",
+                "fields": {
+                    "events": {
+                        "maxItemsOne": false
+                    },
+                    "recipients": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "email": {
+                                    "maxItemsOne": false
+                                },
+                                "slack": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "rule_id_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_autostopping_aws_alb": {
                 "current": "harness:autostopping/getAwsAlb:getAwsAlb",
                 "fields": {
@@ -15555,6 +15611,14 @@
                         "maxItemsOne": false
                     },
                     "http": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_autostopping_rule_k8s": {
+                "current": "harness:autostopping/getRuleK8s:getRuleK8s",
+                "fields": {
+                    "depends": {
                         "maxItemsOne": false
                     }
                 }
@@ -15663,6 +15727,14 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "harness_autostopping_rules": {
+                "current": "harness:autostopping/getRules:getRules",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
                     }
                 }
             },

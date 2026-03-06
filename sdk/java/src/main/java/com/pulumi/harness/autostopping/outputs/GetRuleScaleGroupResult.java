@@ -9,7 +9,6 @@ import com.pulumi.harness.autostopping.outputs.GetRuleScaleGroupDepend;
 import com.pulumi.harness.autostopping.outputs.GetRuleScaleGroupHttp;
 import com.pulumi.harness.autostopping.outputs.GetRuleScaleGroupScaleGroup;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -53,7 +52,7 @@ public final class GetRuleScaleGroupResult {
      * @return Unique identifier of the resource
      * 
      */
-    private Double identifier;
+    private String identifier;
     /**
      * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      * 
@@ -117,7 +116,7 @@ public final class GetRuleScaleGroupResult {
      * @return Unique identifier of the resource
      * 
      */
-    public Double identifier() {
+    public String identifier() {
         return this.identifier;
     }
     /**
@@ -157,7 +156,7 @@ public final class GetRuleScaleGroupResult {
         private @Nullable Boolean dryRun;
         private @Nullable List<GetRuleScaleGroupHttp> https;
         private String id;
-        private Double identifier;
+        private String identifier;
         private @Nullable Integer idleTimeMins;
         private String name;
         private GetRuleScaleGroupScaleGroup scaleGroup;
@@ -226,7 +225,7 @@ public final class GetRuleScaleGroupResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(Double identifier) {
+        public Builder identifier(String identifier) {
             if (identifier == null) {
               throw new MissingRequiredPropertyException("GetRuleScaleGroupResult", "identifier");
             }

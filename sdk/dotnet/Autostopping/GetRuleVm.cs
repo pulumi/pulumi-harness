@@ -212,6 +212,10 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public readonly string CloudConnectorId;
         /// <summary>
+        /// Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
+        /// </summary>
+        public readonly ImmutableDictionary<string, int> Connect;
+        /// <summary>
         /// Custom URLs used to access the instances
         /// </summary>
         public readonly ImmutableArray<string> CustomDomains;
@@ -231,7 +235,7 @@ namespace Pulumi.Harness.Autostopping
         /// <summary>
         /// Unique identifier of the resource
         /// </summary>
-        public readonly double Identifier;
+        public readonly string Identifier;
         /// <summary>
         /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         /// </summary>
@@ -253,6 +257,8 @@ namespace Pulumi.Harness.Autostopping
         private GetRuleVmResult(
             string cloudConnectorId,
 
+            ImmutableDictionary<string, int> connect,
+
             ImmutableArray<string> customDomains,
 
             ImmutableArray<Outputs.GetRuleVmDependResult> depends,
@@ -263,7 +269,7 @@ namespace Pulumi.Harness.Autostopping
 
             string id,
 
-            double identifier,
+            string identifier,
 
             int? idleTimeMins,
 
@@ -274,6 +280,7 @@ namespace Pulumi.Harness.Autostopping
             bool? useSpot)
         {
             CloudConnectorId = cloudConnectorId;
+            Connect = connect;
             CustomDomains = customDomains;
             Depends = depends;
             Filter = filter;

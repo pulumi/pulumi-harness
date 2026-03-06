@@ -9,6 +9,8 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.harness.Utilities;
+import com.pulumi.harness.autostopping.inputs.GetAlertArgs;
+import com.pulumi.harness.autostopping.inputs.GetAlertPlainArgs;
 import com.pulumi.harness.autostopping.inputs.GetAwsAlbArgs;
 import com.pulumi.harness.autostopping.inputs.GetAwsAlbPlainArgs;
 import com.pulumi.harness.autostopping.inputs.GetAwsProxyArgs;
@@ -21,27 +23,69 @@ import com.pulumi.harness.autostopping.inputs.GetGcpProxyArgs;
 import com.pulumi.harness.autostopping.inputs.GetGcpProxyPlainArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleEcsPlainArgs;
+import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+import com.pulumi.harness.autostopping.inputs.GetRuleK8sPlainArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleRdsPlainArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupPlainArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
 import com.pulumi.harness.autostopping.inputs.GetRuleVmPlainArgs;
+import com.pulumi.harness.autostopping.inputs.GetRulesArgs;
+import com.pulumi.harness.autostopping.inputs.GetRulesPlainArgs;
 import com.pulumi.harness.autostopping.inputs.GetScheduleArgs;
 import com.pulumi.harness.autostopping.inputs.GetSchedulePlainArgs;
+import com.pulumi.harness.autostopping.outputs.GetAlertResult;
 import com.pulumi.harness.autostopping.outputs.GetAwsAlbResult;
 import com.pulumi.harness.autostopping.outputs.GetAwsProxyResult;
 import com.pulumi.harness.autostopping.outputs.GetAzureGatewayResult;
 import com.pulumi.harness.autostopping.outputs.GetAzureProxyResult;
 import com.pulumi.harness.autostopping.outputs.GetGcpProxyResult;
 import com.pulumi.harness.autostopping.outputs.GetRuleEcsResult;
+import com.pulumi.harness.autostopping.outputs.GetRuleK8sResult;
 import com.pulumi.harness.autostopping.outputs.GetRuleRdsResult;
 import com.pulumi.harness.autostopping.outputs.GetRuleScaleGroupResult;
 import com.pulumi.harness.autostopping.outputs.GetRuleVmResult;
+import com.pulumi.harness.autostopping.outputs.GetRulesResult;
 import com.pulumi.harness.autostopping.outputs.GetScheduleResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class AutostoppingFunctions {
+    /**
+     * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+     * 
+     */
+    public static Output<GetAlertResult> getAlert(GetAlertArgs args) {
+        return getAlert(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+     * 
+     */
+    public static CompletableFuture<GetAlertResult> getAlertPlain(GetAlertPlainArgs args) {
+        return getAlertPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+     * 
+     */
+    public static Output<GetAlertResult> getAlert(GetAlertArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getAlert:getAlert", TypeShape.of(GetAlertResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+     * 
+     */
+    public static Output<GetAlertResult> getAlert(GetAlertArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getAlert:getAlert", TypeShape.of(GetAlertResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+     * 
+     */
+    public static CompletableFuture<GetAlertResult> getAlertPlain(GetAlertPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:autostopping/getAlert:getAlert", TypeShape.of(GetAlertResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Data source for AWS Autostopping proxy
      * 
@@ -313,6 +357,51 @@ public final class AutostoppingFunctions {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleEcs:getRuleEcs", TypeShape.of(GetRuleEcsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Data source for retrieving a Harness AutoStopping rule for K8s services.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRuleK8sResult> getRuleK8s(GetRuleK8sArgs args) {
+        return getRuleK8s(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for K8s services.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetRuleK8sResult> getRuleK8sPlain(GetRuleK8sPlainArgs args) {
+        return getRuleK8sPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for K8s services.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRuleK8sResult> getRuleK8s(GetRuleK8sArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getRuleK8s:getRuleK8s", TypeShape.of(GetRuleK8sResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for K8s services.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRuleK8sResult> getRuleK8s(GetRuleK8sArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getRuleK8s:getRuleK8s", TypeShape.of(GetRuleK8sResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for K8s services.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetRuleK8sResult> getRuleK8sPlain(GetRuleK8sPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleK8s:getRuleK8s", TypeShape.of(GetRuleK8sResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Data source for retrieving a Harness AutoStopping rule for RDS databases.
      * 
      * ## Example Usage
@@ -446,6 +535,69 @@ public final class AutostoppingFunctions {
      */
     public static CompletableFuture<GetRuleVmResult> getRuleVmPlain(GetRuleVmPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleVm:getRuleVm", TypeShape.of(GetRuleVmResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for listing Harness AutoStopping rules.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRulesResult> getRules() {
+        return getRules(GetRulesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for listing Harness AutoStopping rules.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetRulesResult> getRulesPlain() {
+        return getRulesPlain(GetRulesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for listing Harness AutoStopping rules.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRulesResult> getRules(GetRulesArgs args) {
+        return getRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for listing Harness AutoStopping rules.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args) {
+        return getRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for listing Harness AutoStopping rules.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for listing Harness AutoStopping rules.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for listing Harness AutoStopping rules.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:autostopping/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a fixed schedule for Harness AutoStopping rule

@@ -14,9 +14,13 @@ namespace Pulumi.Harness.Autostopping.Outputs
     public sealed class RuleScaleGroupHttpRouting
     {
         /// <summary>
-        /// Organization Identifier for the Entity
+        /// Action to take for the routing rule
         /// </summary>
         public readonly string? Action;
+        /// <summary>
+        /// Path to use for the proxy
+        /// </summary>
+        public readonly string? Path;
         /// <summary>
         /// Port on the proxy
         /// </summary>
@@ -38,6 +42,8 @@ namespace Pulumi.Harness.Autostopping.Outputs
         private RuleScaleGroupHttpRouting(
             string? action,
 
+            string? path,
+
             int? sourcePort,
 
             string sourceProtocol,
@@ -47,6 +53,7 @@ namespace Pulumi.Harness.Autostopping.Outputs
             string targetProtocol)
         {
             Action = action;
+            Path = path;
             SourcePort = sourcePort;
             SourceProtocol = sourceProtocol;
             TargetPort = targetPort;

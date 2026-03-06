@@ -15,10 +15,10 @@ import com.pulumi.harness.autostopping.outputs.RuleVmFilter;
 import com.pulumi.harness.autostopping.outputs.RuleVmHttp;
 import com.pulumi.harness.autostopping.outputs.RuleVmTcp;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -129,6 +129,20 @@ public class RuleVm extends com.pulumi.resources.CustomResource {
         return this.cloudConnectorId;
     }
     /**
+     * Connection information (source ports on the proxy). Keys: &#34;ssh&#34; and &#34;rdp&#34; for SSH/RDP; other keys are target port as string (e.g. &#34;80&#34;) for forward_rule, value is the proxy source port.
+     * 
+     */
+    @Export(name="connect", refs={Map.class,String.class,Integer.class}, tree="[0,1,2]")
+    private Output<Map<String,Integer>> connect;
+
+    /**
+     * @return Connection information (source ports on the proxy). Keys: &#34;ssh&#34; and &#34;rdp&#34; for SSH/RDP; other keys are target port as string (e.g. &#34;80&#34;) for forward_rule, value is the proxy source port.
+     * 
+     */
+    public Output<Map<String,Integer>> connect() {
+        return this.connect;
+    }
+    /**
      * Custom URLs used to access the instances
      * 
      */
@@ -194,14 +208,14 @@ public class RuleVm extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource
      * 
      */
-    @Export(name="identifier", refs={Double.class}, tree="[0]")
-    private Output<Double> identifier;
+    @Export(name="identifier", refs={String.class}, tree="[0]")
+    private Output<String> identifier;
 
     /**
      * @return Unique identifier of the resource
      * 
      */
-    public Output<Double> identifier() {
+    public Output<String> identifier() {
         return this.identifier;
     }
     /**

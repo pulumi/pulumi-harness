@@ -192,6 +192,34 @@ public class AzureProxy extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Private IP address of the proxy
+     * 
+     */
+    @Export(name="privateIp", refs={String.class}, tree="[0]")
+    private Output<String> privateIp;
+
+    /**
+     * @return Private IP address of the proxy
+     * 
+     */
+    public Output<String> privateIp() {
+        return this.privateIp;
+    }
+    /**
+     * Public IP address of the proxy
+     * 
+     */
+    @Export(name="publicIp", refs={String.class}, tree="[0]")
+    private Output<String> publicIp;
+
+    /**
+     * @return Public IP address of the proxy
+     * 
+     */
+    public Output<String> publicIp() {
+        return this.publicIp;
+    }
+    /**
      * Region in which cloud resources are hosted
      * 
      */

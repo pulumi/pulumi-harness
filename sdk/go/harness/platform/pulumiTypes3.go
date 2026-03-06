@@ -16694,7 +16694,7 @@ func (o RepoSourceArrayOutput) Index(i pulumi.IntInput) RepoSourceOutput {
 type ResourceGroupIncludedScope struct {
 	// Account Identifier of the account
 	AccountId *string `pulumi:"accountId"`
-	// Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+	// Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
 	Filter string `pulumi:"filter"`
 	// Organization Identifier
 	OrgId *string `pulumi:"orgId"`
@@ -16716,7 +16716,7 @@ type ResourceGroupIncludedScopeInput interface {
 type ResourceGroupIncludedScopeArgs struct {
 	// Account Identifier of the account
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+	// Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
 	Filter pulumi.StringInput `pulumi:"filter"`
 	// Organization Identifier
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
@@ -16780,7 +16780,7 @@ func (o ResourceGroupIncludedScopeOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGroupIncludedScope) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+// Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
 func (o ResourceGroupIncludedScopeOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceGroupIncludedScope) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -17041,7 +17041,7 @@ func (o ResourceGroupResourceFilterResourceArrayOutput) Index(i pulumi.IntInput)
 type ResourceGroupResourceFilterResourceAttributeFilter struct {
 	// Name of the attribute. Valid values are `category`, `type`, `labels`, `tag` or `tags`.
 	AttributeName *string `pulumi:"attributeName"`
-	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
+	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD_COST,CLOUD_PROVIDER,CODE_REPO,MONITORING,SECRET_MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
 	AttributeValues []string `pulumi:"attributeValues"`
 }
 
@@ -17059,7 +17059,7 @@ type ResourceGroupResourceFilterResourceAttributeFilterInput interface {
 type ResourceGroupResourceFilterResourceAttributeFilterArgs struct {
 	// Name of the attribute. Valid values are `category`, `type`, `labels`, `tag` or `tags`.
 	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
-	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
+	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD_COST,CLOUD_PROVIDER,CODE_REPO,MONITORING,SECRET_MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
 	AttributeValues pulumi.StringArrayInput `pulumi:"attributeValues"`
 }
 
@@ -17119,7 +17119,7 @@ func (o ResourceGroupResourceFilterResourceAttributeFilterOutput) AttributeName(
 	return o.ApplyT(func(v ResourceGroupResourceFilterResourceAttributeFilter) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
-// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
+// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD_COST,CLOUD_PROVIDER,CODE_REPO,MONITORING,SECRET_MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
 func (o ResourceGroupResourceFilterResourceAttributeFilterOutput) AttributeValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResourceGroupResourceFilterResourceAttributeFilter) []string { return v.AttributeValues }).(pulumi.StringArrayOutput)
 }

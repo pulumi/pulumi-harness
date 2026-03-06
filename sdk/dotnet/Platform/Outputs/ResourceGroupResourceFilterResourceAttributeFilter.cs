@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? AttributeName;
         /// <summary>
-        /// Value of the attributes.Valid values for `Category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `Type` are [Production,PreProduction], for `Labels`, it can be using the syntax 'label:value', for `Tag` or `Tags` it can be any string.
+        /// Value of the attributes.Valid values for `Category` are [ARTIFACTORY,CLOUD_COST,CLOUD_PROVIDER,CODE_REPO,MONITORING,SECRET_MANAGER,TICKETING], for `Type` are [Production,PreProduction], for `Labels`, it can be using the syntax 'label:value', for `Tag` or `Tags` it can be any string.
         /// </summary>
         public readonly ImmutableArray<string> AttributeValues;
 

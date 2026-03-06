@@ -17,18 +17,33 @@ public final class GetRuleVmHttpRouting extends com.pulumi.resources.InvokeArgs 
     public static final GetRuleVmHttpRouting Empty = new GetRuleVmHttpRouting();
 
     /**
-     * Organization Identifier for the Entity
+     * Action to take for the routing rule
      * 
      */
     @Import(name="action")
     private @Nullable String action;
 
     /**
-     * @return Organization Identifier for the Entity
+     * @return Action to take for the routing rule
      * 
      */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
+    }
+
+    /**
+     * Path to use for the proxy
+     * 
+     */
+    @Import(name="path")
+    private @Nullable String path;
+
+    /**
+     * @return Path to use for the proxy
+     * 
+     */
+    public Optional<String> path() {
+        return Optional.ofNullable(this.path);
     }
 
     /**
@@ -95,6 +110,7 @@ public final class GetRuleVmHttpRouting extends com.pulumi.resources.InvokeArgs 
 
     private GetRuleVmHttpRouting(GetRuleVmHttpRouting $) {
         this.action = $.action;
+        this.path = $.path;
         this.sourcePort = $.sourcePort;
         this.sourceProtocol = $.sourceProtocol;
         this.targetPort = $.targetPort;
@@ -120,13 +136,24 @@ public final class GetRuleVmHttpRouting extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param action Organization Identifier for the Entity
+         * @param action Action to take for the routing rule
          * 
          * @return builder
          * 
          */
         public Builder action(@Nullable String action) {
             $.action = action;
+            return this;
+        }
+
+        /**
+         * @param path Path to use for the proxy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder path(@Nullable String path) {
+            $.path = path;
             return this;
         }
 

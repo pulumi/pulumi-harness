@@ -67,7 +67,7 @@ type RuleRds struct {
 	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Unique identifier of the resource
-	Identifier pulumi.Float64Output `pulumi:"identifier"`
+	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 	IdleTimeMins pulumi.IntPtrOutput `pulumi:"idleTimeMins"`
 	// Name of the rule
@@ -120,7 +120,7 @@ type ruleRdsState struct {
 	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
 	DryRun *bool `pulumi:"dryRun"`
 	// Unique identifier of the resource
-	Identifier *float64 `pulumi:"identifier"`
+	Identifier *string `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 	IdleTimeMins *int `pulumi:"idleTimeMins"`
 	// Name of the rule
@@ -138,7 +138,7 @@ type RuleRdsState struct {
 	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
 	DryRun pulumi.BoolPtrInput
 	// Unique identifier of the resource
-	Identifier pulumi.Float64PtrInput
+	Identifier pulumi.StringPtrInput
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 	IdleTimeMins pulumi.IntPtrInput
 	// Name of the rule
@@ -291,8 +291,8 @@ func (o RuleRdsOutput) DryRun() pulumi.BoolPtrOutput {
 }
 
 // Unique identifier of the resource
-func (o RuleRdsOutput) Identifier() pulumi.Float64Output {
-	return o.ApplyT(func(v *RuleRds) pulumi.Float64Output { return v.Identifier }).(pulumi.Float64Output)
+func (o RuleRdsOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *RuleRds) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.

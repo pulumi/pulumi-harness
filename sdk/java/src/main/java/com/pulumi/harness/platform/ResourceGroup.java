@@ -18,7 +18,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Harness Resource Group
+ * A **Resource Group** defines the **set of Harness resources** that fall within an RBAC boundary (for example, all pipelines, selected connectors, or specific secrets), along with the **scopes** (account, organization, or project) where the group applies.
+ * 
+ * When configuring a resource group, you typically control access using two dimensions:
+ * 
+ * * **Scopes** – where the resource group applies (`includedScopes`)
+ * * **Resources** – what resources are included (`resourceFilter`)
+ * 
+ * ***
  * 
  * ## Example Usage
  * 
@@ -46,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new ResourceGroup("test", ResourceGroupArgs.builder()
+ *         var example = new ResourceGroup("example", ResourceGroupArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
@@ -73,6 +80,281 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ***
+ * 
+ * ## Scopes: `includedScopes`
+ * 
+ * The `includedScopes` block defines the scope boundaries covered by this resource group.
+ * 
+ * You can define scope using:
+ * 
+ * * `accountId` → Account-level scope
+ * * `accountId` + `orgId` → Organization-level scope
+ * * `accountId` + `orgId` + `projectId` → Project-level scope
+ * 
+ * ### `included_scopes.filter` (Required)
+ * 
+ * Controls whether child scopes are included automatically:
+ * 
+ * * `EXCLUDING_CHILD_SCOPES`
+ * Includes only the explicitly specified scope.
+ * Example: Account only (does not automatically include its organizations or projects).
+ * 
+ * * `INCLUDING_CHILD_SCOPES`
+ * Includes the specified scope and all nested child scopes.
+ * Example: Account plus all organizations and projects under it.
+ * 
+ * ***
+ * 
+ * ## Resources: `resourceFilter`
+ * 
+ * The `resourceFilter` block determines which resources within the included scopes are part of the resource group.
+ * 
+ * ### `includeAllResources`
+ * 
+ * * `true` – Includes all resources within the defined scopes.
+ * * `false` – Includes only the resources explicitly defined under `resources`.
+ * 
+ * ### `resources`
+ * 
+ * Each `resources` block selects a set of resources using:
+ * 
+ * * `resourceType` (**required**)
+ * * `attributeFilter` (optional rule-based filtering)
+ * * `identifiers` (optional explicit allowlist):
+ *   
+ *     1. You can only use `identifiers` when the resource group operates in **static scope**. This happens when:
+ *         * `includedScopes` points to that **same scope**
+ *         * `filter = EXCLUDING_CHILD_SCOPES`
+ *   
+ *       In this case, the set of resources is fixed, so you can select specific resources such as:
+ *         * `&#34;pipelineA&#34;`
+ *         * `&#34;connectorX&#34;`
+ *   
+ *     2. You cannot use `identifiers` when the resource group is in **dynamic scope**. This happens when:
+ *         * `filter = INCLUDING_CHILD_SCOPES`
+ *         * `includedScopes` points to a child scope.
+ *   
+ *       In dynamic scope, the matching resources can change over time as child scopes are added or removed. Because of this, you can only select resources by `resourceType` (and optionally `attributeFilter`), not by specific identifiers.
+ *       
+ *       If you attempt to use `identifiers` in this case, you will receive:
+ *         ```
+ *         Cannot provide specific identifiers in resource filter for a dynamic scope
+ *         ``` 
+ * ***
+ * 
+ * ## Supported `resourceType` Values
+ * 
+ * The following values are supported for `resourceType`:
+ * 
+ * | Category                                       | Resource Types                                                                                                                                                                                                                                                                                                                                                            |
+ * | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+ * | **Core Platform**                              | `ACCOUNT`, `ORGANIZATION`, `PROJECT`, `USER`, `USERGROUP`, `ROLE`, `RESOURCEGROUP`, `SERVICEACCOUNT`, `LICENSE`, `SETTING`, `AUTHSETTING`, `ACCESS_POLICIES`, `BANNER`                                                                                                                                                                                                    |
+ * | **Pipelines &amp; Delivery**                       | `PIPELINE`, `INPUT_SET`, `SERVICE`, `ENVIRONMENT`, `ENVIRONMENT_GROUP`, `DEPLOYMENTFREEZE`, `TEMPLATE`, `FILE`, `VARIABLE`, `ARTIFACT_REGISTRY`, `PROVIDER`                                                                                                                                                                                                               |
+ * | **Connectors &amp; Infrastructure**                | `CONNECTOR`, `DELEGATE`, `DELEGATECONFIGURATION`, `CERTIFICATE`, `CODE_REPOSITORY`, `NETWORK_MAP`                                                                                                                                                                                                                                                                         |
+ * | **Secrets &amp; Security**                         | `SECRET`, `FEATUREFLAG`, `FF_PROXYAPIKEY`, `SSCA_REMEDIATION_TRACKER`, `SSCA_ENFORCEMENT_EXEMPTION`, `STO_TESTTARGET`, `STO_EXEMPTION`, `STO_ISSUE`, `STO_SCAN`                                                                                                                                                                                                           |
+ * | **Governance &amp; Policy**                        | `GOVERNANCEPOLICY`, `GOVERNANCEPOLICYSETS`, `AUDIT`                                                                                                                                                                                                                                                                                                                       |
+ * | **Monitoring &amp; Reliability**                   | `MONITOREDSERVICE`, `SLO`, `DOWNTIME`, `MONITORING_AGENT`, `METRIC_SOURCE`, `NOTIFICATION`, `NOTIFICATION_CHANNEL`, `NOTIFICATION_RULE`                                                                                                                                                                                                                                   |
+ * | **GitOps**                                     | `GITOPS_AGENT`, `GITOPS_APP`, `GITOPS_REPOSITORY`, `GITOPS_CLUSTER`, `GITOPS_GPGKEY`, `GITOPS_CERT`                                                                                                                                                                                                                                                                       |
+ * | **Chaos Engineering**                          | `CHAOS_IMAGE_REGISTRY`, `CHAOS_HUB`, `CHAOS_INFRASTRUCTURE`, `CHAOS_EXPERIMENT`, `CHAOS_GAMEDAY`, `CHAOS_PROBE`, `CHAOS_SECURITY_GOVERNANCE`                                                                                                                                                                                                                              |
+ * | **Cloud Cost Management (CCM)**                | `CCM_OVERVIEW`, `CCM_PERSPECTIVE`, `CCM_DATA_SCOPE`, `CCM_FOLDER`, `CCM_BUDGET`, `CCM_COSTCATEGORY`, `CCM_AUTOSTOPPINGRULE`, `CCM_LOADBALANCER`, `CCM_CURRENCYPREFERENCE`, `CCM_CLOUD_ASSET_GOVERNANCE_RULE`, `CCM_CLOUD_ASSET_GOVERNANCE_RULE_SET`, `CCM_CLOUD_ASSET_GOVERNANCE_RULE_ENFORCEMENT`, `CCM_ANOMALIES`, `CCM_RECOMMENDATIONS`, `CCM_COMMITMENT_ORCHESTRATOR` |
+ * | **Internal Developer Portal (IDP)**            | `IDP_CATALOG`, `IDP_WORKFLOW`, `IDP_PLUGIN`, `IDP_SCORECARD`, `IDP_LAYOUT`, `IDP_CATALOG_ACCESS_POLICY`, `IDP_INTEGRATION`, `IDP_ADVANCED_CONFIGURATION`                                                                                                                                                                                                                  |
+ * | **Incident Response (IRO)**                    | `IRO_MANAGER`, `IRO_ALERT`, `IRO_ALERT_RULE`, `IRO_INCIDENT`, `IRO_CONNECT_WORKSPACE`, `IRO_RUNBOOK`                                                                                                                                                                                                                                                                      |
+ * | **Continuous Engineering Tools (CET)**         | `CET_AGENT`, `CET_TOKEN`, `CET_CRITICAL_EVENT`                                                                                                                                                                                                                                                                                                                            |
+ * | **Infrastructure as Code (IAC)**               | `IAC_WORKSPACE`, `IAC_REGISTRY`, `IAC_VARIABLE_SET`                                                                                                                                                                                                                                                                                                                       |
+ * | **Software Engineering Insights (SEI)**        | `SEI_CONFIGURATION_SETTINGS`, `SEI_COLLECTIONS`, `SEI_INSIGHTS`, `SEI_PANORAMA`                                                                                                                                                                                                                                                                                           |
+ * | **Feature Management &amp; Experimentation (FME)** | `FME_ENVIRONMENT`, `FME_TRAFFIC_TYPE`, `FME_FEATURE_FLAG`, `FME_SEGMENT`, `FME_LARGE_SEGMENT`, `FME_METRIC`, `FME_EXPERIMENT`                                                                                                                                                                                                                                             |
+ * | **Databases**                                  | `DB_SCHEMA`, `DB_INSTANCE`                                                                                                                                                                                                                                                                                                                                                |
+ * | **Targets &amp; Deployment**                       | `TARGET`, `TARGETGROUP`, `TICKET`, `SMTP`, `STREAMING_DESTINATION`                                                                                                                                                                                                                                                                                                        |
+ * | **Dashboards &amp; Reporting**                     | `DASHBOARDS`                                                                                                                                                                                                                                                                                                                                                              |
+ * 
+ * ***
+ * 
+ * ## Attribute Filtering (`attributeFilter`)
+ * 
+ * Use `attributeFilter` to include resources dynamically based on defined rules instead of explicit identifiers.
+ * 
+ * ### Valid `attributeName` Values
+ * 
+ * * `category`
+ * * `type`
+ * * `labels`
+ * * `tag` or `tags`
+ * 
+ * ### `attributeValues` Constraints
+ * 
+ * * For `category`, supported values include:
+ * `ARTIFACTORY`, `CLOUD_COST`, `CLOUD_PROVIDER`, `CODE_REPO`, `MONITORING`, `SECRET_MANAGER`, `TICKETING`
+ * 
+ * * For `type`, supported values include:
+ * `Production`, `PreProduction`
+ * 
+ * * For `labels`, use the format:
+ * `label:value`
+ * 
+ * * For `tag` or `tags`, any string value is supported.
+ * 
+ * ***
+ * 
+ * ## Common Configuration Patterns
+ * 
+ * ### Common Configuration Examples
+ * 
+ * 1. Add Specific Resources at the Current Scope (Static Scope)
+ * 
+ * Use this when you want to allow only certain resources (for example, specific pipelines or connectors) in the same scope where the resource group is created.
+ * 
+ * This works because the scope is static (EXCLUDING_CHILD_SCOPES).
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.ResourceGroup;
+ * import com.pulumi.harness.platform.ResourceGroupArgs;
+ * import com.pulumi.harness.platform.inputs.ResourceGroupIncludedScopeArgs;
+ * import com.pulumi.harness.platform.inputs.ResourceGroupResourceFilterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var staticExample = new ResourceGroup("staticExample", ResourceGroupArgs.builder()
+ *             .identifier("static_rg")
+ *             .name("Static Resource Group")
+ *             .accountId("account_id")
+ *             .allowedScopeLevels("account")
+ *             .includedScopes(ResourceGroupIncludedScopeArgs.builder()
+ *                 .filter("EXCLUDING_CHILD_SCOPES")
+ *                 .accountId("account_id")
+ *                 .build())
+ *             .resourceFilters(ResourceGroupResourceFilterArgs.builder()
+ *                 .includeAllResources(false)
+ *                 .resources(ResourceGroupResourceFilterResourceArgs.builder()
+ *                     .resourceType("PIPELINE")
+ *                     .identifiers(                    
+ *                         "pipeline_a",
+ *                         "pipeline_b")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * 2. Add All Resources at the Current Scope
+ * 
+ * This includes all resources within the defined included_scopes. If you want to include everything at a specific scope:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.ResourceGroup;
+ * import com.pulumi.harness.platform.ResourceGroupArgs;
+ * import com.pulumi.harness.platform.inputs.ResourceGroupIncludedScopeArgs;
+ * import com.pulumi.harness.platform.inputs.ResourceGroupResourceFilterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var allResourcesAccount = new ResourceGroup("allResourcesAccount", ResourceGroupArgs.builder()
+ *             .identifier("all_resources_account")
+ *             .name("All Resources - Account Level")
+ *             .description("Includes all resources at the account scope")
+ *             .accountId("account_id")
+ *             .allowedScopeLevels("account")
+ *             .includedScopes(ResourceGroupIncludedScopeArgs.builder()
+ *                 .filter("EXCLUDING_CHILD_SCOPES")
+ *                 .accountId("account_id")
+ *                 .build())
+ *             .resourceFilters(ResourceGroupResourceFilterArgs.builder()
+ *                 .includeAllResources(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * 3. Add All Resources Across Child Scopes (Dynamic Scope)
+ * 
+ * Use this when you want all resources across an account and its child orgs/projects.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.ResourceGroup;
+ * import com.pulumi.harness.platform.ResourceGroupArgs;
+ * import com.pulumi.harness.platform.inputs.ResourceGroupIncludedScopeArgs;
+ * import com.pulumi.harness.platform.inputs.ResourceGroupResourceFilterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dynamicExample = new ResourceGroup("dynamicExample", ResourceGroupArgs.builder()
+ *             .identifier("dynamic_rg")
+ *             .name("Dynamic Resource Group")
+ *             .accountId("account_id")
+ *             .allowedScopeLevels("account")
+ *             .includedScopes(ResourceGroupIncludedScopeArgs.builder()
+ *                 .filter("INCLUDING_CHILD_SCOPES")
+ *                 .accountId("account_id")
+ *                 .build())
+ *             .resourceFilters(ResourceGroupResourceFilterArgs.builder()
+ *                 .includeAllResources(false)
+ *                 .resources(ResourceGroupResourceFilterResourceArgs.builder()
+ *                     .resourceType("PIPELINE")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ***
  * 
  * ## Import
  * 

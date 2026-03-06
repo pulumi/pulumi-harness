@@ -13,10 +13,16 @@ namespace Pulumi.Harness.Autostopping.Inputs
     public sealed class GetRuleScaleGroupHttpRoutingInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Organization Identifier for the Entity
+        /// Action to take for the routing rule
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
+
+        /// <summary>
+        /// Path to use for the proxy
+        /// </summary>
+        [Input("path")]
+        public Input<string>? Path { get; set; }
 
         /// <summary>
         /// Port on the proxy

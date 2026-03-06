@@ -102,6 +102,18 @@ namespace Pulumi.Harness.Autostopping
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Private IP address of the proxy
+        /// </summary>
+        [Output("privateIp")]
+        public Output<string> PrivateIp { get; private set; } = null!;
+
+        /// <summary>
+        /// Public IP address of the proxy
+        /// </summary>
+        [Output("publicIp")]
+        public Output<string> PublicIp { get; private set; } = null!;
+
+        /// <summary>
         /// Region in which cloud resources are hosted
         /// </summary>
         [Output("region")]
@@ -347,6 +359,18 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Private IP address of the proxy
+        /// </summary>
+        [Input("privateIp")]
+        public Input<string>? PrivateIp { get; set; }
+
+        /// <summary>
+        /// Public IP address of the proxy
+        /// </summary>
+        [Input("publicIp")]
+        public Input<string>? PublicIp { get; set; }
 
         /// <summary>
         /// Region in which cloud resources are hosted

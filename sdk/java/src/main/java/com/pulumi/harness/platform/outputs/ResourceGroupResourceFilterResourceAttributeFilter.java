@@ -18,7 +18,7 @@ public final class ResourceGroupResourceFilterResourceAttributeFilter {
      */
     private @Nullable String attributeName;
     /**
-     * @return Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax &#39;label:value&#39;, for `tag` or `tags` it can be any string.
+     * @return Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD_COST,CLOUD_PROVIDER,CODE_REPO,MONITORING,SECRET_MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax &#39;label:value&#39;, for `tag` or `tags` it can be any string.
      * 
      */
     private @Nullable List<String> attributeValues;
@@ -32,7 +32,7 @@ public final class ResourceGroupResourceFilterResourceAttributeFilter {
         return Optional.ofNullable(this.attributeName);
     }
     /**
-     * @return Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax &#39;label:value&#39;, for `tag` or `tags` it can be any string.
+     * @return Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD_COST,CLOUD_PROVIDER,CODE_REPO,MONITORING,SECRET_MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax &#39;label:value&#39;, for `tag` or `tags` it can be any string.
      * 
      */
     public List<String> attributeValues() {

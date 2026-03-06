@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.autostopping.outputs.GetRuleRdsDatabase;
 import com.pulumi.harness.autostopping.outputs.GetRuleRdsDepend;
 import com.pulumi.harness.autostopping.outputs.GetRuleRdsTcp;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -38,7 +37,7 @@ public final class GetRuleRdsResult {
      * @return Unique identifier of the resource
      * 
      */
-    private Double identifier;
+    private String identifier;
     /**
      * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      * 
@@ -84,7 +83,7 @@ public final class GetRuleRdsResult {
      * @return Unique identifier of the resource
      * 
      */
-    public Double identifier() {
+    public String identifier() {
         return this.identifier;
     }
     /**
@@ -122,7 +121,7 @@ public final class GetRuleRdsResult {
         private GetRuleRdsDatabase database;
         private @Nullable List<GetRuleRdsDepend> depends;
         private String id;
-        private Double identifier;
+        private String identifier;
         private @Nullable Integer idleTimeMins;
         private String name;
         private @Nullable List<GetRuleRdsTcp> tcps;
@@ -173,7 +172,7 @@ public final class GetRuleRdsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(Double identifier) {
+        public Builder identifier(String identifier) {
             if (identifier == null) {
               throw new MissingRequiredPropertyException("GetRuleRdsResult", "identifier");
             }

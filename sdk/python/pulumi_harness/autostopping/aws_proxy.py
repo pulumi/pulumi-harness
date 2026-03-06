@@ -201,6 +201,8 @@ class _AwsProxyState:
                  keypair: Optional[pulumi.Input[_builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vpc: Optional[pulumi.Input[_builtins.str]] = None):
@@ -214,6 +216,8 @@ class _AwsProxyState:
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] machine_type: Machine instance type
         :param pulumi.Input[_builtins.str] name: Name of the proxy
+        :param pulumi.Input[_builtins.str] private_ip: Private IP address of the proxy
+        :param pulumi.Input[_builtins.str] public_ip: Public IP address of the proxy
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: Security Group to define the security rules that determine the inbound and outbound traffic
         :param pulumi.Input[_builtins.str] vpc: VPC in which cloud resources are hosted
@@ -236,6 +240,10 @@ class _AwsProxyState:
             pulumi.set(__self__, "machine_type", machine_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if private_ip is not None:
+            pulumi.set(__self__, "private_ip", private_ip)
+        if public_ip is not None:
+            pulumi.set(__self__, "public_ip", public_ip)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if security_groups is not None:
@@ -344,6 +352,30 @@ class _AwsProxyState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Private IP address of the proxy
+        """
+        return pulumi.get(self, "private_ip")
+
+    @private_ip.setter
+    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "private_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="publicIp")
+    def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Public IP address of the proxy
+        """
+        return pulumi.get(self, "public_ip")
+
+    @public_ip.setter
+    def public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "public_ip", value)
 
     @_builtins.property
     @pulumi.getter
@@ -527,6 +559,8 @@ class AwsProxy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vpc'")
             __props__.__dict__["vpc"] = vpc
             __props__.__dict__["identifier"] = None
+            __props__.__dict__["private_ip"] = None
+            __props__.__dict__["public_ip"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AwsProxy, __self__).__init__(
@@ -548,6 +582,8 @@ class AwsProxy(pulumi.CustomResource):
             keypair: Optional[pulumi.Input[_builtins.str]] = None,
             machine_type: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            private_ip: Optional[pulumi.Input[_builtins.str]] = None,
+            public_ip: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             vpc: Optional[pulumi.Input[_builtins.str]] = None) -> 'AwsProxy':
@@ -565,6 +601,8 @@ class AwsProxy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] machine_type: Machine instance type
         :param pulumi.Input[_builtins.str] name: Name of the proxy
+        :param pulumi.Input[_builtins.str] private_ip: Private IP address of the proxy
+        :param pulumi.Input[_builtins.str] public_ip: Public IP address of the proxy
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: Security Group to define the security rules that determine the inbound and outbound traffic
         :param pulumi.Input[_builtins.str] vpc: VPC in which cloud resources are hosted
@@ -582,6 +620,8 @@ class AwsProxy(pulumi.CustomResource):
         __props__.__dict__["keypair"] = keypair
         __props__.__dict__["machine_type"] = machine_type
         __props__.__dict__["name"] = name
+        __props__.__dict__["private_ip"] = private_ip
+        __props__.__dict__["public_ip"] = public_ip
         __props__.__dict__["region"] = region
         __props__.__dict__["security_groups"] = security_groups
         __props__.__dict__["vpc"] = vpc
@@ -652,6 +692,22 @@ class AwsProxy(pulumi.CustomResource):
         Name of the proxy
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> pulumi.Output[_builtins.str]:
+        """
+        Private IP address of the proxy
+        """
+        return pulumi.get(self, "private_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="publicIp")
+    def public_ip(self) -> pulumi.Output[_builtins.str]:
+        """
+        Public IP address of the proxy
+        """
+        return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter

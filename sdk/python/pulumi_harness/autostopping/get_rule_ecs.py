@@ -47,8 +47,8 @@ class GetRuleEcsResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if identifier and not isinstance(identifier, float):
-            raise TypeError("Expected argument 'identifier' to be a float")
+        if identifier and not isinstance(identifier, str):
+            raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
         if idle_time_mins and not isinstance(idle_time_mins, int):
             raise TypeError("Expected argument 'idle_time_mins' to be a int")
@@ -104,7 +104,7 @@ class GetRuleEcsResult:
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> _builtins.float:
+    def identifier(self) -> _builtins.str:
         """
         Unique identifier of the resource
         """

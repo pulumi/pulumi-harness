@@ -57,6 +57,16 @@ public final class GetGcpProxyResult {
      */
     private String name;
     /**
+     * @return Private IP address of the proxy
+     * 
+     */
+    private String privateIp;
+    /**
+     * @return Public IP address of the proxy
+     * 
+     */
+    private String publicIp;
+    /**
      * @return Region in which cloud resources are hosted
      * 
      */
@@ -143,6 +153,20 @@ public final class GetGcpProxyResult {
         return this.name;
     }
     /**
+     * @return Private IP address of the proxy
+     * 
+     */
+    public String privateIp() {
+        return this.privateIp;
+    }
+    /**
+     * @return Public IP address of the proxy
+     * 
+     */
+    public String publicIp() {
+        return this.publicIp;
+    }
+    /**
      * @return Region in which cloud resources are hosted
      * 
      */
@@ -196,6 +220,8 @@ public final class GetGcpProxyResult {
         private String identifier;
         private String machineType;
         private String name;
+        private String privateIp;
+        private String publicIp;
         private String region;
         private @Nullable List<String> securityGroups;
         private String subnetId;
@@ -213,6 +239,8 @@ public final class GetGcpProxyResult {
     	      this.identifier = defaults.identifier;
     	      this.machineType = defaults.machineType;
     	      this.name = defaults.name;
+    	      this.privateIp = defaults.privateIp;
+    	      this.publicIp = defaults.publicIp;
     	      this.region = defaults.region;
     	      this.securityGroups = defaults.securityGroups;
     	      this.subnetId = defaults.subnetId;
@@ -289,6 +317,22 @@ public final class GetGcpProxyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder privateIp(String privateIp) {
+            if (privateIp == null) {
+              throw new MissingRequiredPropertyException("GetGcpProxyResult", "privateIp");
+            }
+            this.privateIp = privateIp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publicIp(String publicIp) {
+            if (publicIp == null) {
+              throw new MissingRequiredPropertyException("GetGcpProxyResult", "publicIp");
+            }
+            this.publicIp = publicIp;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("GetGcpProxyResult", "region");
@@ -340,6 +384,8 @@ public final class GetGcpProxyResult {
             _resultValue.identifier = identifier;
             _resultValue.machineType = machineType;
             _resultValue.name = name;
+            _resultValue.privateIp = privateIp;
+            _resultValue.publicIp = publicIp;
             _resultValue.region = region;
             _resultValue.securityGroups = securityGroups;
             _resultValue.subnetId = subnetId;

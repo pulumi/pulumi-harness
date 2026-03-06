@@ -58,6 +58,16 @@ public final class GetAwsProxyResult {
      */
     private String name;
     /**
+     * @return Private IP address of the proxy
+     * 
+     */
+    private String privateIp;
+    /**
+     * @return Public IP address of the proxy
+     * 
+     */
+    private String publicIp;
+    /**
      * @return Region in which cloud resources are hosted
      * 
      */
@@ -137,6 +147,20 @@ public final class GetAwsProxyResult {
         return this.name;
     }
     /**
+     * @return Private IP address of the proxy
+     * 
+     */
+    public String privateIp() {
+        return this.privateIp;
+    }
+    /**
+     * @return Public IP address of the proxy
+     * 
+     */
+    public String publicIp() {
+        return this.publicIp;
+    }
+    /**
      * @return Region in which cloud resources are hosted
      * 
      */
@@ -177,6 +201,8 @@ public final class GetAwsProxyResult {
         private @Nullable String keypair;
         private String machineType;
         private String name;
+        private String privateIp;
+        private String publicIp;
         private String region;
         private @Nullable List<String> securityGroups;
         private String vpc;
@@ -193,6 +219,8 @@ public final class GetAwsProxyResult {
     	      this.keypair = defaults.keypair;
     	      this.machineType = defaults.machineType;
     	      this.name = defaults.name;
+    	      this.privateIp = defaults.privateIp;
+    	      this.publicIp = defaults.publicIp;
     	      this.region = defaults.region;
     	      this.securityGroups = defaults.securityGroups;
     	      this.vpc = defaults.vpc;
@@ -273,6 +301,22 @@ public final class GetAwsProxyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder privateIp(String privateIp) {
+            if (privateIp == null) {
+              throw new MissingRequiredPropertyException("GetAwsProxyResult", "privateIp");
+            }
+            this.privateIp = privateIp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publicIp(String publicIp) {
+            if (publicIp == null) {
+              throw new MissingRequiredPropertyException("GetAwsProxyResult", "publicIp");
+            }
+            this.publicIp = publicIp;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("GetAwsProxyResult", "region");
@@ -309,6 +353,8 @@ public final class GetAwsProxyResult {
             _resultValue.keypair = keypair;
             _resultValue.machineType = machineType;
             _resultValue.name = name;
+            _resultValue.privateIp = privateIp;
+            _resultValue.publicIp = publicIp;
             _resultValue.region = region;
             _resultValue.securityGroups = securityGroups;
             _resultValue.vpc = vpc;

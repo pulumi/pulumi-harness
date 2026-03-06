@@ -94,6 +94,14 @@ export class AzureProxy extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Private IP address of the proxy
+     */
+    declare public /*out*/ readonly privateIp: pulumi.Output<string>;
+    /**
+     * Public IP address of the proxy
+     */
+    declare public /*out*/ readonly publicIp: pulumi.Output<string>;
+    /**
      * Region in which cloud resources are hosted
      */
     declare public readonly region: pulumi.Output<string>;
@@ -137,6 +145,8 @@ export class AzureProxy extends pulumi.CustomResource {
             resourceInputs["keypair"] = state?.keypair;
             resourceInputs["machineType"] = state?.machineType;
             resourceInputs["name"] = state?.name;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["publicIp"] = state?.publicIp;
             resourceInputs["region"] = state?.region;
             resourceInputs["resourceGroup"] = state?.resourceGroup;
             resourceInputs["securityGroups"] = state?.securityGroups;
@@ -186,6 +196,8 @@ export class AzureProxy extends pulumi.CustomResource {
             resourceInputs["subnetId"] = args?.subnetId;
             resourceInputs["vpc"] = args?.vpc;
             resourceInputs["identifier"] = undefined /*out*/;
+            resourceInputs["privateIp"] = undefined /*out*/;
+            resourceInputs["publicIp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiKey"] };
@@ -232,6 +244,14 @@ export interface AzureProxyState {
      * Name of the proxy
      */
     name?: pulumi.Input<string>;
+    /**
+     * Private IP address of the proxy
+     */
+    privateIp?: pulumi.Input<string>;
+    /**
+     * Public IP address of the proxy
+     */
+    publicIp?: pulumi.Input<string>;
     /**
      * Region in which cloud resources are hosted
      */

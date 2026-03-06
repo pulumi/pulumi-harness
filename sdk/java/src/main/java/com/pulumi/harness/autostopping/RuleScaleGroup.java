@@ -14,7 +14,6 @@ import com.pulumi.harness.autostopping.outputs.RuleScaleGroupDepend;
 import com.pulumi.harness.autostopping.outputs.RuleScaleGroupHttp;
 import com.pulumi.harness.autostopping.outputs.RuleScaleGroupScaleGroup;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -166,14 +165,14 @@ public class RuleScaleGroup extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource
      * 
      */
-    @Export(name="identifier", refs={Double.class}, tree="[0]")
-    private Output<Double> identifier;
+    @Export(name="identifier", refs={String.class}, tree="[0]")
+    private Output<String> identifier;
 
     /**
      * @return Unique identifier of the resource
      * 
      */
-    public Output<Double> identifier() {
+    public Output<String> identifier() {
         return this.identifier;
     }
     /**

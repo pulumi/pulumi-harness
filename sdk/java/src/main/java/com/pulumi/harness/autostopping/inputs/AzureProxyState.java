@@ -153,6 +153,36 @@ public final class AzureProxyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Private IP address of the proxy
+     * 
+     */
+    @Import(name="privateIp")
+    private @Nullable Output<String> privateIp;
+
+    /**
+     * @return Private IP address of the proxy
+     * 
+     */
+    public Optional<Output<String>> privateIp() {
+        return Optional.ofNullable(this.privateIp);
+    }
+
+    /**
+     * Public IP address of the proxy
+     * 
+     */
+    @Import(name="publicIp")
+    private @Nullable Output<String> publicIp;
+
+    /**
+     * @return Public IP address of the proxy
+     * 
+     */
+    public Optional<Output<String>> publicIp() {
+        return Optional.ofNullable(this.publicIp);
+    }
+
+    /**
      * Region in which cloud resources are hosted
      * 
      */
@@ -240,6 +270,8 @@ public final class AzureProxyState extends com.pulumi.resources.ResourceArgs {
         this.keypair = $.keypair;
         this.machineType = $.machineType;
         this.name = $.name;
+        this.privateIp = $.privateIp;
+        this.publicIp = $.publicIp;
         this.region = $.region;
         this.resourceGroup = $.resourceGroup;
         this.securityGroups = $.securityGroups;
@@ -449,6 +481,48 @@ public final class AzureProxyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param privateIp Private IP address of the proxy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateIp(@Nullable Output<String> privateIp) {
+            $.privateIp = privateIp;
+            return this;
+        }
+
+        /**
+         * @param privateIp Private IP address of the proxy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateIp(String privateIp) {
+            return privateIp(Output.of(privateIp));
+        }
+
+        /**
+         * @param publicIp Public IP address of the proxy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicIp(@Nullable Output<String> publicIp) {
+            $.publicIp = publicIp;
+            return this;
+        }
+
+        /**
+         * @param publicIp Public IP address of the proxy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicIp(String publicIp) {
+            return publicIp(Output.of(publicIp));
         }
 
         /**
