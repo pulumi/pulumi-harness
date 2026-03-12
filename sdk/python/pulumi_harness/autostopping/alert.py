@@ -242,6 +242,54 @@ class Alert(pulumi.CustomResource):
         """
         Resource for creating and managing Harness AutoStopping alerts. Alerts notify users via email or Slack when events such as warmup failures, cooldown failures, or rule lifecycle changes occur.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        specific_rule_alert = harness.autostopping.Alert("specific-rule-alert",
+            name="demo-alert",
+            recipients={
+                "emails": [
+                    "user1@example.com",
+                    "user2@example.com",
+                ],
+                "slacks": [
+                    "slack-web-hook-1",
+                    "slack-web-hook-2",
+                ],
+            },
+            events=[
+                "autostopping_rule_created",
+                "autostopping_rule_updated",
+                "autostopping_rule_deleted",
+                "autostopping_warmup_failed",
+                "autostopping_cooldown_failed",
+            ],
+            rule_id_lists=[1234])
+        all_rule_alert = harness.autostopping.Alert("all-rule-alert",
+            name="demo-alert",
+            recipients={
+                "emails": [
+                    "user1@example.com",
+                    "user2@example.com",
+                ],
+                "slacks": [
+                    "slack-web-hook-1",
+                    "slack-web-hook-2",
+                ],
+            },
+            events=[
+                "autostopping_rule_created",
+                "autostopping_rule_updated",
+                "autostopping_rule_deleted",
+                "autostopping_warmup_failed",
+                "autostopping_cooldown_failed",
+            ],
+            applicable_to_all_rules=True)
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -260,6 +308,54 @@ class Alert(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating and managing Harness AutoStopping alerts. Alerts notify users via email or Slack when events such as warmup failures, cooldown failures, or rule lifecycle changes occur.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        specific_rule_alert = harness.autostopping.Alert("specific-rule-alert",
+            name="demo-alert",
+            recipients={
+                "emails": [
+                    "user1@example.com",
+                    "user2@example.com",
+                ],
+                "slacks": [
+                    "slack-web-hook-1",
+                    "slack-web-hook-2",
+                ],
+            },
+            events=[
+                "autostopping_rule_created",
+                "autostopping_rule_updated",
+                "autostopping_rule_deleted",
+                "autostopping_warmup_failed",
+                "autostopping_cooldown_failed",
+            ],
+            rule_id_lists=[1234])
+        all_rule_alert = harness.autostopping.Alert("all-rule-alert",
+            name="demo-alert",
+            recipients={
+                "emails": [
+                    "user1@example.com",
+                    "user2@example.com",
+                ],
+                "slacks": [
+                    "slack-web-hook-1",
+                    "slack-web-hook-2",
+                ],
+            },
+            events=[
+                "autostopping_rule_created",
+                "autostopping_rule_updated",
+                "autostopping_rule_deleted",
+                "autostopping_warmup_failed",
+                "autostopping_cooldown_failed",
+            ],
+            applicable_to_all_rules=True)
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -11,6 +11,76 @@ namespace Pulumi.Harness.Autostopping
 {
     /// <summary>
     /// Resource for creating and managing Harness AutoStopping alerts. Alerts notify users via email or Slack when events such as warmup failures, cooldown failures, or rule lifecycle changes occur.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var specific_rule_alert = new Harness.Autostopping.Alert("specific-rule-alert", new()
+    ///     {
+    ///         Name = "demo-alert",
+    ///         Recipients = new Harness.Autostopping.Inputs.AlertRecipientsArgs
+    ///         {
+    ///             Emails = new[]
+    ///             {
+    ///                 "user1@example.com",
+    ///                 "user2@example.com",
+    ///             },
+    ///             Slacks = new[]
+    ///             {
+    ///                 "slack-web-hook-1",
+    ///                 "slack-web-hook-2",
+    ///             },
+    ///         },
+    ///         Events = new[]
+    ///         {
+    ///             "autostopping_rule_created",
+    ///             "autostopping_rule_updated",
+    ///             "autostopping_rule_deleted",
+    ///             "autostopping_warmup_failed",
+    ///             "autostopping_cooldown_failed",
+    ///         },
+    ///         RuleIdLists = new[]
+    ///         {
+    ///             1234,
+    ///         },
+    ///     });
+    /// 
+    ///     var all_rule_alert = new Harness.Autostopping.Alert("all-rule-alert", new()
+    ///     {
+    ///         Name = "demo-alert",
+    ///         Recipients = new Harness.Autostopping.Inputs.AlertRecipientsArgs
+    ///         {
+    ///             Emails = new[]
+    ///             {
+    ///                 "user1@example.com",
+    ///                 "user2@example.com",
+    ///             },
+    ///             Slacks = new[]
+    ///             {
+    ///                 "slack-web-hook-1",
+    ///                 "slack-web-hook-2",
+    ///             },
+    ///         },
+    ///         Events = new[]
+    ///         {
+    ///             "autostopping_rule_created",
+    ///             "autostopping_rule_updated",
+    ///             "autostopping_rule_deleted",
+    ///             "autostopping_warmup_failed",
+    ///             "autostopping_cooldown_failed",
+    ///         },
+    ///         ApplicableToAllRules = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:autostopping/alert:Alert")]
     public partial class Alert : global::Pulumi.CustomResource

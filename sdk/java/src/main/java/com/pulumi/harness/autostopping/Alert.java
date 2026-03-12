@@ -21,6 +21,74 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating and managing Harness AutoStopping alerts. Alerts notify users via email or Slack when events such as warmup failures, cooldown failures, or rule lifecycle changes occur.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.autostopping.Alert;
+ * import com.pulumi.harness.autostopping.AlertArgs;
+ * import com.pulumi.harness.autostopping.inputs.AlertRecipientsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var specific_rule_alert = new Alert("specific-rule-alert", AlertArgs.builder()
+ *             .name("demo-alert")
+ *             .recipients(AlertRecipientsArgs.builder()
+ *                 .emails(                
+ *                     "user1}{@literal @}{@code example.com",
+ *                     "user2}{@literal @}{@code example.com")
+ *                 .slacks(                
+ *                     "slack-web-hook-1",
+ *                     "slack-web-hook-2")
+ *                 .build())
+ *             .events(            
+ *                 "autostopping_rule_created",
+ *                 "autostopping_rule_updated",
+ *                 "autostopping_rule_deleted",
+ *                 "autostopping_warmup_failed",
+ *                 "autostopping_cooldown_failed")
+ *             .ruleIdLists(1234)
+ *             .build());
+ * 
+ *         var all_rule_alert = new Alert("all-rule-alert", AlertArgs.builder()
+ *             .name("demo-alert")
+ *             .recipients(AlertRecipientsArgs.builder()
+ *                 .emails(                
+ *                     "user1}{@literal @}{@code example.com",
+ *                     "user2}{@literal @}{@code example.com")
+ *                 .slacks(                
+ *                     "slack-web-hook-1",
+ *                     "slack-web-hook-2")
+ *                 .build())
+ *             .events(            
+ *                 "autostopping_rule_created",
+ *                 "autostopping_rule_updated",
+ *                 "autostopping_rule_deleted",
+ *                 "autostopping_warmup_failed",
+ *                 "autostopping_cooldown_failed")
+ *             .applicableToAllRules(true)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="harness:autostopping/alert:Alert")
 public class Alert extends com.pulumi.resources.CustomResource {
