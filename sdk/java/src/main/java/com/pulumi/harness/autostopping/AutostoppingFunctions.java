@@ -54,12 +54,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAlertResult> getAlert(GetAlertArgs args) {
         return getAlert(args, InvokeOptions.Empty);
     }
     /**
      * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAlertResult> getAlertPlain(GetAlertPlainArgs args) {
@@ -68,6 +72,8 @@ public final class AutostoppingFunctions {
     /**
      * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAlertResult> getAlert(GetAlertArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getAlert:getAlert", TypeShape.of(GetAlertResult.class), args, Utilities.withVersion(options));
@@ -75,12 +81,16 @@ public final class AutostoppingFunctions {
     /**
      * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAlertResult> getAlert(GetAlertArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getAlert:getAlert", TypeShape.of(GetAlertResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAlertResult> getAlertPlain(GetAlertPlainArgs args, InvokeOptions options) {

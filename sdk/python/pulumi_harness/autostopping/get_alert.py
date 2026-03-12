@@ -145,6 +145,8 @@ def get_alert(applicable_to_all_rules: Optional[_builtins.bool] = None,
     """
     Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
 
+    ## Example Usage
+
 
     :param _builtins.bool applicable_to_all_rules: When true, the alert applies to all AutoStopping rules in the account (leave `rule_id_list` empty). Mutually exclusive with `rule_id_list`.
     :param _builtins.bool enabled: Whether the alert is enabled.
@@ -181,6 +183,8 @@ def get_alert_output(applicable_to_all_rules: Optional[pulumi.Input[Optional[_bu
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertResult]:
     """
     Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+
+    ## Example Usage
 
 
     :param _builtins.bool applicable_to_all_rules: When true, the alert applies to all AutoStopping rules in the account (leave `rule_id_list` empty). Mutually exclusive with `rule_id_list`.

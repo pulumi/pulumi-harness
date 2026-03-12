@@ -13,6 +13,76 @@ import (
 )
 
 // Resource for creating and managing Harness AutoStopping alerts. Alerts notify users via email or Slack when events such as warmup failures, cooldown failures, or rule lifecycle changes occur.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.NewAlert(ctx, "specific-rule-alert", &autostopping.AlertArgs{
+//				Name: pulumi.String("demo-alert"),
+//				Recipients: &autostopping.AlertRecipientsArgs{
+//					Emails: pulumi.StringArray{
+//						pulumi.String("user1@example.com"),
+//						pulumi.String("user2@example.com"),
+//					},
+//					Slacks: pulumi.StringArray{
+//						pulumi.String("slack-web-hook-1"),
+//						pulumi.String("slack-web-hook-2"),
+//					},
+//				},
+//				Events: pulumi.StringArray{
+//					pulumi.String("autostopping_rule_created"),
+//					pulumi.String("autostopping_rule_updated"),
+//					pulumi.String("autostopping_rule_deleted"),
+//					pulumi.String("autostopping_warmup_failed"),
+//					pulumi.String("autostopping_cooldown_failed"),
+//				},
+//				RuleIdLists: pulumi.IntArray{
+//					pulumi.Int(1234),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = autostopping.NewAlert(ctx, "all-rule-alert", &autostopping.AlertArgs{
+//				Name: pulumi.String("demo-alert"),
+//				Recipients: &autostopping.AlertRecipientsArgs{
+//					Emails: pulumi.StringArray{
+//						pulumi.String("user1@example.com"),
+//						pulumi.String("user2@example.com"),
+//					},
+//					Slacks: pulumi.StringArray{
+//						pulumi.String("slack-web-hook-1"),
+//						pulumi.String("slack-web-hook-2"),
+//					},
+//				},
+//				Events: pulumi.StringArray{
+//					pulumi.String("autostopping_rule_created"),
+//					pulumi.String("autostopping_rule_updated"),
+//					pulumi.String("autostopping_rule_deleted"),
+//					pulumi.String("autostopping_warmup_failed"),
+//					pulumi.String("autostopping_cooldown_failed"),
+//				},
+//				ApplicableToAllRules: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Alert struct {
 	pulumi.CustomResourceState
 

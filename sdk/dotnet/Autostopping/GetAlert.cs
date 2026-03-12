@@ -13,18 +13,24 @@ namespace Pulumi.Harness.Autostopping
     {
         /// <summary>
         /// Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetAlertResult> InvokeAsync(GetAlertArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlertResult>("harness:autostopping/getAlert:getAlert", args ?? new GetAlertArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetAlertResult> Invoke(GetAlertInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertResult>("harness:autostopping/getAlert:getAlert", args ?? new GetAlertInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetAlertResult> Invoke(GetAlertInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertResult>("harness:autostopping/getAlert:getAlert", args ?? new GetAlertInvokeArgs(), options.WithDefaults());

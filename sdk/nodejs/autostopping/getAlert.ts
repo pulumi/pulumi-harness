@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+ *
+ * ## Example Usage
  */
 export function getAlert(args: GetAlertArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -90,6 +92,8 @@ export interface GetAlertResult {
 }
 /**
  * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
+ *
+ * ## Example Usage
  */
 export function getAlertOutput(args: GetAlertOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
