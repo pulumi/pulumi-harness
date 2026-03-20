@@ -21736,6 +21736,554 @@ func (o SloRequestSloTargetPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SplunkConnectorBearerToken struct {
+	// Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	BearerTokenRef string `pulumi:"bearerTokenRef"`
+}
+
+// SplunkConnectorBearerTokenInput is an input type that accepts SplunkConnectorBearerTokenArgs and SplunkConnectorBearerTokenOutput values.
+// You can construct a concrete instance of `SplunkConnectorBearerTokenInput` via:
+//
+//	SplunkConnectorBearerTokenArgs{...}
+type SplunkConnectorBearerTokenInput interface {
+	pulumi.Input
+
+	ToSplunkConnectorBearerTokenOutput() SplunkConnectorBearerTokenOutput
+	ToSplunkConnectorBearerTokenOutputWithContext(context.Context) SplunkConnectorBearerTokenOutput
+}
+
+type SplunkConnectorBearerTokenArgs struct {
+	// Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	BearerTokenRef pulumi.StringInput `pulumi:"bearerTokenRef"`
+}
+
+func (SplunkConnectorBearerTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SplunkConnectorBearerToken)(nil)).Elem()
+}
+
+func (i SplunkConnectorBearerTokenArgs) ToSplunkConnectorBearerTokenOutput() SplunkConnectorBearerTokenOutput {
+	return i.ToSplunkConnectorBearerTokenOutputWithContext(context.Background())
+}
+
+func (i SplunkConnectorBearerTokenArgs) ToSplunkConnectorBearerTokenOutputWithContext(ctx context.Context) SplunkConnectorBearerTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplunkConnectorBearerTokenOutput)
+}
+
+func (i SplunkConnectorBearerTokenArgs) ToSplunkConnectorBearerTokenPtrOutput() SplunkConnectorBearerTokenPtrOutput {
+	return i.ToSplunkConnectorBearerTokenPtrOutputWithContext(context.Background())
+}
+
+func (i SplunkConnectorBearerTokenArgs) ToSplunkConnectorBearerTokenPtrOutputWithContext(ctx context.Context) SplunkConnectorBearerTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplunkConnectorBearerTokenOutput).ToSplunkConnectorBearerTokenPtrOutputWithContext(ctx)
+}
+
+// SplunkConnectorBearerTokenPtrInput is an input type that accepts SplunkConnectorBearerTokenArgs, SplunkConnectorBearerTokenPtr and SplunkConnectorBearerTokenPtrOutput values.
+// You can construct a concrete instance of `SplunkConnectorBearerTokenPtrInput` via:
+//
+//	        SplunkConnectorBearerTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type SplunkConnectorBearerTokenPtrInput interface {
+	pulumi.Input
+
+	ToSplunkConnectorBearerTokenPtrOutput() SplunkConnectorBearerTokenPtrOutput
+	ToSplunkConnectorBearerTokenPtrOutputWithContext(context.Context) SplunkConnectorBearerTokenPtrOutput
+}
+
+type splunkConnectorBearerTokenPtrType SplunkConnectorBearerTokenArgs
+
+func SplunkConnectorBearerTokenPtr(v *SplunkConnectorBearerTokenArgs) SplunkConnectorBearerTokenPtrInput {
+	return (*splunkConnectorBearerTokenPtrType)(v)
+}
+
+func (*splunkConnectorBearerTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SplunkConnectorBearerToken)(nil)).Elem()
+}
+
+func (i *splunkConnectorBearerTokenPtrType) ToSplunkConnectorBearerTokenPtrOutput() SplunkConnectorBearerTokenPtrOutput {
+	return i.ToSplunkConnectorBearerTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *splunkConnectorBearerTokenPtrType) ToSplunkConnectorBearerTokenPtrOutputWithContext(ctx context.Context) SplunkConnectorBearerTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplunkConnectorBearerTokenPtrOutput)
+}
+
+type SplunkConnectorBearerTokenOutput struct{ *pulumi.OutputState }
+
+func (SplunkConnectorBearerTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SplunkConnectorBearerToken)(nil)).Elem()
+}
+
+func (o SplunkConnectorBearerTokenOutput) ToSplunkConnectorBearerTokenOutput() SplunkConnectorBearerTokenOutput {
+	return o
+}
+
+func (o SplunkConnectorBearerTokenOutput) ToSplunkConnectorBearerTokenOutputWithContext(ctx context.Context) SplunkConnectorBearerTokenOutput {
+	return o
+}
+
+func (o SplunkConnectorBearerTokenOutput) ToSplunkConnectorBearerTokenPtrOutput() SplunkConnectorBearerTokenPtrOutput {
+	return o.ToSplunkConnectorBearerTokenPtrOutputWithContext(context.Background())
+}
+
+func (o SplunkConnectorBearerTokenOutput) ToSplunkConnectorBearerTokenPtrOutputWithContext(ctx context.Context) SplunkConnectorBearerTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SplunkConnectorBearerToken) *SplunkConnectorBearerToken {
+		return &v
+	}).(SplunkConnectorBearerTokenPtrOutput)
+}
+
+// Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o SplunkConnectorBearerTokenOutput) BearerTokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v SplunkConnectorBearerToken) string { return v.BearerTokenRef }).(pulumi.StringOutput)
+}
+
+type SplunkConnectorBearerTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (SplunkConnectorBearerTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SplunkConnectorBearerToken)(nil)).Elem()
+}
+
+func (o SplunkConnectorBearerTokenPtrOutput) ToSplunkConnectorBearerTokenPtrOutput() SplunkConnectorBearerTokenPtrOutput {
+	return o
+}
+
+func (o SplunkConnectorBearerTokenPtrOutput) ToSplunkConnectorBearerTokenPtrOutputWithContext(ctx context.Context) SplunkConnectorBearerTokenPtrOutput {
+	return o
+}
+
+func (o SplunkConnectorBearerTokenPtrOutput) Elem() SplunkConnectorBearerTokenOutput {
+	return o.ApplyT(func(v *SplunkConnectorBearerToken) SplunkConnectorBearerToken {
+		if v != nil {
+			return *v
+		}
+		var ret SplunkConnectorBearerToken
+		return ret
+	}).(SplunkConnectorBearerTokenOutput)
+}
+
+// Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o SplunkConnectorBearerTokenPtrOutput) BearerTokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SplunkConnectorBearerToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BearerTokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type SplunkConnectorHecToken struct {
+	// Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	HecTokenRef string `pulumi:"hecTokenRef"`
+}
+
+// SplunkConnectorHecTokenInput is an input type that accepts SplunkConnectorHecTokenArgs and SplunkConnectorHecTokenOutput values.
+// You can construct a concrete instance of `SplunkConnectorHecTokenInput` via:
+//
+//	SplunkConnectorHecTokenArgs{...}
+type SplunkConnectorHecTokenInput interface {
+	pulumi.Input
+
+	ToSplunkConnectorHecTokenOutput() SplunkConnectorHecTokenOutput
+	ToSplunkConnectorHecTokenOutputWithContext(context.Context) SplunkConnectorHecTokenOutput
+}
+
+type SplunkConnectorHecTokenArgs struct {
+	// Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	HecTokenRef pulumi.StringInput `pulumi:"hecTokenRef"`
+}
+
+func (SplunkConnectorHecTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SplunkConnectorHecToken)(nil)).Elem()
+}
+
+func (i SplunkConnectorHecTokenArgs) ToSplunkConnectorHecTokenOutput() SplunkConnectorHecTokenOutput {
+	return i.ToSplunkConnectorHecTokenOutputWithContext(context.Background())
+}
+
+func (i SplunkConnectorHecTokenArgs) ToSplunkConnectorHecTokenOutputWithContext(ctx context.Context) SplunkConnectorHecTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplunkConnectorHecTokenOutput)
+}
+
+func (i SplunkConnectorHecTokenArgs) ToSplunkConnectorHecTokenPtrOutput() SplunkConnectorHecTokenPtrOutput {
+	return i.ToSplunkConnectorHecTokenPtrOutputWithContext(context.Background())
+}
+
+func (i SplunkConnectorHecTokenArgs) ToSplunkConnectorHecTokenPtrOutputWithContext(ctx context.Context) SplunkConnectorHecTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplunkConnectorHecTokenOutput).ToSplunkConnectorHecTokenPtrOutputWithContext(ctx)
+}
+
+// SplunkConnectorHecTokenPtrInput is an input type that accepts SplunkConnectorHecTokenArgs, SplunkConnectorHecTokenPtr and SplunkConnectorHecTokenPtrOutput values.
+// You can construct a concrete instance of `SplunkConnectorHecTokenPtrInput` via:
+//
+//	        SplunkConnectorHecTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type SplunkConnectorHecTokenPtrInput interface {
+	pulumi.Input
+
+	ToSplunkConnectorHecTokenPtrOutput() SplunkConnectorHecTokenPtrOutput
+	ToSplunkConnectorHecTokenPtrOutputWithContext(context.Context) SplunkConnectorHecTokenPtrOutput
+}
+
+type splunkConnectorHecTokenPtrType SplunkConnectorHecTokenArgs
+
+func SplunkConnectorHecTokenPtr(v *SplunkConnectorHecTokenArgs) SplunkConnectorHecTokenPtrInput {
+	return (*splunkConnectorHecTokenPtrType)(v)
+}
+
+func (*splunkConnectorHecTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SplunkConnectorHecToken)(nil)).Elem()
+}
+
+func (i *splunkConnectorHecTokenPtrType) ToSplunkConnectorHecTokenPtrOutput() SplunkConnectorHecTokenPtrOutput {
+	return i.ToSplunkConnectorHecTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *splunkConnectorHecTokenPtrType) ToSplunkConnectorHecTokenPtrOutputWithContext(ctx context.Context) SplunkConnectorHecTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplunkConnectorHecTokenPtrOutput)
+}
+
+type SplunkConnectorHecTokenOutput struct{ *pulumi.OutputState }
+
+func (SplunkConnectorHecTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SplunkConnectorHecToken)(nil)).Elem()
+}
+
+func (o SplunkConnectorHecTokenOutput) ToSplunkConnectorHecTokenOutput() SplunkConnectorHecTokenOutput {
+	return o
+}
+
+func (o SplunkConnectorHecTokenOutput) ToSplunkConnectorHecTokenOutputWithContext(ctx context.Context) SplunkConnectorHecTokenOutput {
+	return o
+}
+
+func (o SplunkConnectorHecTokenOutput) ToSplunkConnectorHecTokenPtrOutput() SplunkConnectorHecTokenPtrOutput {
+	return o.ToSplunkConnectorHecTokenPtrOutputWithContext(context.Background())
+}
+
+func (o SplunkConnectorHecTokenOutput) ToSplunkConnectorHecTokenPtrOutputWithContext(ctx context.Context) SplunkConnectorHecTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SplunkConnectorHecToken) *SplunkConnectorHecToken {
+		return &v
+	}).(SplunkConnectorHecTokenPtrOutput)
+}
+
+// Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o SplunkConnectorHecTokenOutput) HecTokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v SplunkConnectorHecToken) string { return v.HecTokenRef }).(pulumi.StringOutput)
+}
+
+type SplunkConnectorHecTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (SplunkConnectorHecTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SplunkConnectorHecToken)(nil)).Elem()
+}
+
+func (o SplunkConnectorHecTokenPtrOutput) ToSplunkConnectorHecTokenPtrOutput() SplunkConnectorHecTokenPtrOutput {
+	return o
+}
+
+func (o SplunkConnectorHecTokenPtrOutput) ToSplunkConnectorHecTokenPtrOutputWithContext(ctx context.Context) SplunkConnectorHecTokenPtrOutput {
+	return o
+}
+
+func (o SplunkConnectorHecTokenPtrOutput) Elem() SplunkConnectorHecTokenOutput {
+	return o.ApplyT(func(v *SplunkConnectorHecToken) SplunkConnectorHecToken {
+		if v != nil {
+			return *v
+		}
+		var ret SplunkConnectorHecToken
+		return ret
+	}).(SplunkConnectorHecTokenOutput)
+}
+
+// Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o SplunkConnectorHecTokenPtrOutput) HecTokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SplunkConnectorHecToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HecTokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type SplunkConnectorNoAuthentication struct {
+}
+
+// SplunkConnectorNoAuthenticationInput is an input type that accepts SplunkConnectorNoAuthenticationArgs and SplunkConnectorNoAuthenticationOutput values.
+// You can construct a concrete instance of `SplunkConnectorNoAuthenticationInput` via:
+//
+//	SplunkConnectorNoAuthenticationArgs{...}
+type SplunkConnectorNoAuthenticationInput interface {
+	pulumi.Input
+
+	ToSplunkConnectorNoAuthenticationOutput() SplunkConnectorNoAuthenticationOutput
+	ToSplunkConnectorNoAuthenticationOutputWithContext(context.Context) SplunkConnectorNoAuthenticationOutput
+}
+
+type SplunkConnectorNoAuthenticationArgs struct {
+}
+
+func (SplunkConnectorNoAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SplunkConnectorNoAuthentication)(nil)).Elem()
+}
+
+func (i SplunkConnectorNoAuthenticationArgs) ToSplunkConnectorNoAuthenticationOutput() SplunkConnectorNoAuthenticationOutput {
+	return i.ToSplunkConnectorNoAuthenticationOutputWithContext(context.Background())
+}
+
+func (i SplunkConnectorNoAuthenticationArgs) ToSplunkConnectorNoAuthenticationOutputWithContext(ctx context.Context) SplunkConnectorNoAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplunkConnectorNoAuthenticationOutput)
+}
+
+func (i SplunkConnectorNoAuthenticationArgs) ToSplunkConnectorNoAuthenticationPtrOutput() SplunkConnectorNoAuthenticationPtrOutput {
+	return i.ToSplunkConnectorNoAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i SplunkConnectorNoAuthenticationArgs) ToSplunkConnectorNoAuthenticationPtrOutputWithContext(ctx context.Context) SplunkConnectorNoAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplunkConnectorNoAuthenticationOutput).ToSplunkConnectorNoAuthenticationPtrOutputWithContext(ctx)
+}
+
+// SplunkConnectorNoAuthenticationPtrInput is an input type that accepts SplunkConnectorNoAuthenticationArgs, SplunkConnectorNoAuthenticationPtr and SplunkConnectorNoAuthenticationPtrOutput values.
+// You can construct a concrete instance of `SplunkConnectorNoAuthenticationPtrInput` via:
+//
+//	        SplunkConnectorNoAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SplunkConnectorNoAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToSplunkConnectorNoAuthenticationPtrOutput() SplunkConnectorNoAuthenticationPtrOutput
+	ToSplunkConnectorNoAuthenticationPtrOutputWithContext(context.Context) SplunkConnectorNoAuthenticationPtrOutput
+}
+
+type splunkConnectorNoAuthenticationPtrType SplunkConnectorNoAuthenticationArgs
+
+func SplunkConnectorNoAuthenticationPtr(v *SplunkConnectorNoAuthenticationArgs) SplunkConnectorNoAuthenticationPtrInput {
+	return (*splunkConnectorNoAuthenticationPtrType)(v)
+}
+
+func (*splunkConnectorNoAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SplunkConnectorNoAuthentication)(nil)).Elem()
+}
+
+func (i *splunkConnectorNoAuthenticationPtrType) ToSplunkConnectorNoAuthenticationPtrOutput() SplunkConnectorNoAuthenticationPtrOutput {
+	return i.ToSplunkConnectorNoAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *splunkConnectorNoAuthenticationPtrType) ToSplunkConnectorNoAuthenticationPtrOutputWithContext(ctx context.Context) SplunkConnectorNoAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplunkConnectorNoAuthenticationPtrOutput)
+}
+
+type SplunkConnectorNoAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (SplunkConnectorNoAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SplunkConnectorNoAuthentication)(nil)).Elem()
+}
+
+func (o SplunkConnectorNoAuthenticationOutput) ToSplunkConnectorNoAuthenticationOutput() SplunkConnectorNoAuthenticationOutput {
+	return o
+}
+
+func (o SplunkConnectorNoAuthenticationOutput) ToSplunkConnectorNoAuthenticationOutputWithContext(ctx context.Context) SplunkConnectorNoAuthenticationOutput {
+	return o
+}
+
+func (o SplunkConnectorNoAuthenticationOutput) ToSplunkConnectorNoAuthenticationPtrOutput() SplunkConnectorNoAuthenticationPtrOutput {
+	return o.ToSplunkConnectorNoAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o SplunkConnectorNoAuthenticationOutput) ToSplunkConnectorNoAuthenticationPtrOutputWithContext(ctx context.Context) SplunkConnectorNoAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SplunkConnectorNoAuthentication) *SplunkConnectorNoAuthentication {
+		return &v
+	}).(SplunkConnectorNoAuthenticationPtrOutput)
+}
+
+type SplunkConnectorNoAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (SplunkConnectorNoAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SplunkConnectorNoAuthentication)(nil)).Elem()
+}
+
+func (o SplunkConnectorNoAuthenticationPtrOutput) ToSplunkConnectorNoAuthenticationPtrOutput() SplunkConnectorNoAuthenticationPtrOutput {
+	return o
+}
+
+func (o SplunkConnectorNoAuthenticationPtrOutput) ToSplunkConnectorNoAuthenticationPtrOutputWithContext(ctx context.Context) SplunkConnectorNoAuthenticationPtrOutput {
+	return o
+}
+
+func (o SplunkConnectorNoAuthenticationPtrOutput) Elem() SplunkConnectorNoAuthenticationOutput {
+	return o.ApplyT(func(v *SplunkConnectorNoAuthentication) SplunkConnectorNoAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret SplunkConnectorNoAuthentication
+		return ret
+	}).(SplunkConnectorNoAuthenticationOutput)
+}
+
+type SplunkConnectorUsernamePassword struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+}
+
+// SplunkConnectorUsernamePasswordInput is an input type that accepts SplunkConnectorUsernamePasswordArgs and SplunkConnectorUsernamePasswordOutput values.
+// You can construct a concrete instance of `SplunkConnectorUsernamePasswordInput` via:
+//
+//	SplunkConnectorUsernamePasswordArgs{...}
+type SplunkConnectorUsernamePasswordInput interface {
+	pulumi.Input
+
+	ToSplunkConnectorUsernamePasswordOutput() SplunkConnectorUsernamePasswordOutput
+	ToSplunkConnectorUsernamePasswordOutputWithContext(context.Context) SplunkConnectorUsernamePasswordOutput
+}
+
+type SplunkConnectorUsernamePasswordArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (SplunkConnectorUsernamePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SplunkConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (i SplunkConnectorUsernamePasswordArgs) ToSplunkConnectorUsernamePasswordOutput() SplunkConnectorUsernamePasswordOutput {
+	return i.ToSplunkConnectorUsernamePasswordOutputWithContext(context.Background())
+}
+
+func (i SplunkConnectorUsernamePasswordArgs) ToSplunkConnectorUsernamePasswordOutputWithContext(ctx context.Context) SplunkConnectorUsernamePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplunkConnectorUsernamePasswordOutput)
+}
+
+func (i SplunkConnectorUsernamePasswordArgs) ToSplunkConnectorUsernamePasswordPtrOutput() SplunkConnectorUsernamePasswordPtrOutput {
+	return i.ToSplunkConnectorUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i SplunkConnectorUsernamePasswordArgs) ToSplunkConnectorUsernamePasswordPtrOutputWithContext(ctx context.Context) SplunkConnectorUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplunkConnectorUsernamePasswordOutput).ToSplunkConnectorUsernamePasswordPtrOutputWithContext(ctx)
+}
+
+// SplunkConnectorUsernamePasswordPtrInput is an input type that accepts SplunkConnectorUsernamePasswordArgs, SplunkConnectorUsernamePasswordPtr and SplunkConnectorUsernamePasswordPtrOutput values.
+// You can construct a concrete instance of `SplunkConnectorUsernamePasswordPtrInput` via:
+//
+//	        SplunkConnectorUsernamePasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type SplunkConnectorUsernamePasswordPtrInput interface {
+	pulumi.Input
+
+	ToSplunkConnectorUsernamePasswordPtrOutput() SplunkConnectorUsernamePasswordPtrOutput
+	ToSplunkConnectorUsernamePasswordPtrOutputWithContext(context.Context) SplunkConnectorUsernamePasswordPtrOutput
+}
+
+type splunkConnectorUsernamePasswordPtrType SplunkConnectorUsernamePasswordArgs
+
+func SplunkConnectorUsernamePasswordPtr(v *SplunkConnectorUsernamePasswordArgs) SplunkConnectorUsernamePasswordPtrInput {
+	return (*splunkConnectorUsernamePasswordPtrType)(v)
+}
+
+func (*splunkConnectorUsernamePasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SplunkConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (i *splunkConnectorUsernamePasswordPtrType) ToSplunkConnectorUsernamePasswordPtrOutput() SplunkConnectorUsernamePasswordPtrOutput {
+	return i.ToSplunkConnectorUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *splunkConnectorUsernamePasswordPtrType) ToSplunkConnectorUsernamePasswordPtrOutputWithContext(ctx context.Context) SplunkConnectorUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplunkConnectorUsernamePasswordPtrOutput)
+}
+
+type SplunkConnectorUsernamePasswordOutput struct{ *pulumi.OutputState }
+
+func (SplunkConnectorUsernamePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SplunkConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (o SplunkConnectorUsernamePasswordOutput) ToSplunkConnectorUsernamePasswordOutput() SplunkConnectorUsernamePasswordOutput {
+	return o
+}
+
+func (o SplunkConnectorUsernamePasswordOutput) ToSplunkConnectorUsernamePasswordOutputWithContext(ctx context.Context) SplunkConnectorUsernamePasswordOutput {
+	return o
+}
+
+func (o SplunkConnectorUsernamePasswordOutput) ToSplunkConnectorUsernamePasswordPtrOutput() SplunkConnectorUsernamePasswordPtrOutput {
+	return o.ToSplunkConnectorUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (o SplunkConnectorUsernamePasswordOutput) ToSplunkConnectorUsernamePasswordPtrOutputWithContext(ctx context.Context) SplunkConnectorUsernamePasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SplunkConnectorUsernamePassword) *SplunkConnectorUsernamePassword {
+		return &v
+	}).(SplunkConnectorUsernamePasswordPtrOutput)
+}
+
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o SplunkConnectorUsernamePasswordOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v SplunkConnectorUsernamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// Username to use for authentication.
+func (o SplunkConnectorUsernamePasswordOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v SplunkConnectorUsernamePassword) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type SplunkConnectorUsernamePasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (SplunkConnectorUsernamePasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SplunkConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (o SplunkConnectorUsernamePasswordPtrOutput) ToSplunkConnectorUsernamePasswordPtrOutput() SplunkConnectorUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o SplunkConnectorUsernamePasswordPtrOutput) ToSplunkConnectorUsernamePasswordPtrOutputWithContext(ctx context.Context) SplunkConnectorUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o SplunkConnectorUsernamePasswordPtrOutput) Elem() SplunkConnectorUsernamePasswordOutput {
+	return o.ApplyT(func(v *SplunkConnectorUsernamePassword) SplunkConnectorUsernamePassword {
+		if v != nil {
+			return *v
+		}
+		var ret SplunkConnectorUsernamePassword
+		return ret
+	}).(SplunkConnectorUsernamePasswordOutput)
+}
+
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o SplunkConnectorUsernamePasswordPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SplunkConnectorUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to use for authentication.
+func (o SplunkConnectorUsernamePasswordPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SplunkConnectorUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type SpotConnectorPermanentToken struct {
 	// Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef string `pulumi:"apiTokenRef"`
@@ -51791,6 +52339,394 @@ func (o GetServiceOverridesV2GitDetailsPtrOutput) RepoName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetSplunkConnectorBearerToken struct {
+	// Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	BearerTokenRef string `pulumi:"bearerTokenRef"`
+}
+
+// GetSplunkConnectorBearerTokenInput is an input type that accepts GetSplunkConnectorBearerTokenArgs and GetSplunkConnectorBearerTokenOutput values.
+// You can construct a concrete instance of `GetSplunkConnectorBearerTokenInput` via:
+//
+//	GetSplunkConnectorBearerTokenArgs{...}
+type GetSplunkConnectorBearerTokenInput interface {
+	pulumi.Input
+
+	ToGetSplunkConnectorBearerTokenOutput() GetSplunkConnectorBearerTokenOutput
+	ToGetSplunkConnectorBearerTokenOutputWithContext(context.Context) GetSplunkConnectorBearerTokenOutput
+}
+
+type GetSplunkConnectorBearerTokenArgs struct {
+	// Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	BearerTokenRef pulumi.StringInput `pulumi:"bearerTokenRef"`
+}
+
+func (GetSplunkConnectorBearerTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSplunkConnectorBearerToken)(nil)).Elem()
+}
+
+func (i GetSplunkConnectorBearerTokenArgs) ToGetSplunkConnectorBearerTokenOutput() GetSplunkConnectorBearerTokenOutput {
+	return i.ToGetSplunkConnectorBearerTokenOutputWithContext(context.Background())
+}
+
+func (i GetSplunkConnectorBearerTokenArgs) ToGetSplunkConnectorBearerTokenOutputWithContext(ctx context.Context) GetSplunkConnectorBearerTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorBearerTokenOutput)
+}
+
+// GetSplunkConnectorBearerTokenArrayInput is an input type that accepts GetSplunkConnectorBearerTokenArray and GetSplunkConnectorBearerTokenArrayOutput values.
+// You can construct a concrete instance of `GetSplunkConnectorBearerTokenArrayInput` via:
+//
+//	GetSplunkConnectorBearerTokenArray{ GetSplunkConnectorBearerTokenArgs{...} }
+type GetSplunkConnectorBearerTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetSplunkConnectorBearerTokenArrayOutput() GetSplunkConnectorBearerTokenArrayOutput
+	ToGetSplunkConnectorBearerTokenArrayOutputWithContext(context.Context) GetSplunkConnectorBearerTokenArrayOutput
+}
+
+type GetSplunkConnectorBearerTokenArray []GetSplunkConnectorBearerTokenInput
+
+func (GetSplunkConnectorBearerTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSplunkConnectorBearerToken)(nil)).Elem()
+}
+
+func (i GetSplunkConnectorBearerTokenArray) ToGetSplunkConnectorBearerTokenArrayOutput() GetSplunkConnectorBearerTokenArrayOutput {
+	return i.ToGetSplunkConnectorBearerTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetSplunkConnectorBearerTokenArray) ToGetSplunkConnectorBearerTokenArrayOutputWithContext(ctx context.Context) GetSplunkConnectorBearerTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorBearerTokenArrayOutput)
+}
+
+type GetSplunkConnectorBearerTokenOutput struct{ *pulumi.OutputState }
+
+func (GetSplunkConnectorBearerTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSplunkConnectorBearerToken)(nil)).Elem()
+}
+
+func (o GetSplunkConnectorBearerTokenOutput) ToGetSplunkConnectorBearerTokenOutput() GetSplunkConnectorBearerTokenOutput {
+	return o
+}
+
+func (o GetSplunkConnectorBearerTokenOutput) ToGetSplunkConnectorBearerTokenOutputWithContext(ctx context.Context) GetSplunkConnectorBearerTokenOutput {
+	return o
+}
+
+// Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetSplunkConnectorBearerTokenOutput) BearerTokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSplunkConnectorBearerToken) string { return v.BearerTokenRef }).(pulumi.StringOutput)
+}
+
+type GetSplunkConnectorBearerTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSplunkConnectorBearerTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSplunkConnectorBearerToken)(nil)).Elem()
+}
+
+func (o GetSplunkConnectorBearerTokenArrayOutput) ToGetSplunkConnectorBearerTokenArrayOutput() GetSplunkConnectorBearerTokenArrayOutput {
+	return o
+}
+
+func (o GetSplunkConnectorBearerTokenArrayOutput) ToGetSplunkConnectorBearerTokenArrayOutputWithContext(ctx context.Context) GetSplunkConnectorBearerTokenArrayOutput {
+	return o
+}
+
+func (o GetSplunkConnectorBearerTokenArrayOutput) Index(i pulumi.IntInput) GetSplunkConnectorBearerTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSplunkConnectorBearerToken {
+		return vs[0].([]GetSplunkConnectorBearerToken)[vs[1].(int)]
+	}).(GetSplunkConnectorBearerTokenOutput)
+}
+
+type GetSplunkConnectorHecToken struct {
+	// Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	HecTokenRef string `pulumi:"hecTokenRef"`
+}
+
+// GetSplunkConnectorHecTokenInput is an input type that accepts GetSplunkConnectorHecTokenArgs and GetSplunkConnectorHecTokenOutput values.
+// You can construct a concrete instance of `GetSplunkConnectorHecTokenInput` via:
+//
+//	GetSplunkConnectorHecTokenArgs{...}
+type GetSplunkConnectorHecTokenInput interface {
+	pulumi.Input
+
+	ToGetSplunkConnectorHecTokenOutput() GetSplunkConnectorHecTokenOutput
+	ToGetSplunkConnectorHecTokenOutputWithContext(context.Context) GetSplunkConnectorHecTokenOutput
+}
+
+type GetSplunkConnectorHecTokenArgs struct {
+	// Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	HecTokenRef pulumi.StringInput `pulumi:"hecTokenRef"`
+}
+
+func (GetSplunkConnectorHecTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSplunkConnectorHecToken)(nil)).Elem()
+}
+
+func (i GetSplunkConnectorHecTokenArgs) ToGetSplunkConnectorHecTokenOutput() GetSplunkConnectorHecTokenOutput {
+	return i.ToGetSplunkConnectorHecTokenOutputWithContext(context.Background())
+}
+
+func (i GetSplunkConnectorHecTokenArgs) ToGetSplunkConnectorHecTokenOutputWithContext(ctx context.Context) GetSplunkConnectorHecTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorHecTokenOutput)
+}
+
+// GetSplunkConnectorHecTokenArrayInput is an input type that accepts GetSplunkConnectorHecTokenArray and GetSplunkConnectorHecTokenArrayOutput values.
+// You can construct a concrete instance of `GetSplunkConnectorHecTokenArrayInput` via:
+//
+//	GetSplunkConnectorHecTokenArray{ GetSplunkConnectorHecTokenArgs{...} }
+type GetSplunkConnectorHecTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetSplunkConnectorHecTokenArrayOutput() GetSplunkConnectorHecTokenArrayOutput
+	ToGetSplunkConnectorHecTokenArrayOutputWithContext(context.Context) GetSplunkConnectorHecTokenArrayOutput
+}
+
+type GetSplunkConnectorHecTokenArray []GetSplunkConnectorHecTokenInput
+
+func (GetSplunkConnectorHecTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSplunkConnectorHecToken)(nil)).Elem()
+}
+
+func (i GetSplunkConnectorHecTokenArray) ToGetSplunkConnectorHecTokenArrayOutput() GetSplunkConnectorHecTokenArrayOutput {
+	return i.ToGetSplunkConnectorHecTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetSplunkConnectorHecTokenArray) ToGetSplunkConnectorHecTokenArrayOutputWithContext(ctx context.Context) GetSplunkConnectorHecTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorHecTokenArrayOutput)
+}
+
+type GetSplunkConnectorHecTokenOutput struct{ *pulumi.OutputState }
+
+func (GetSplunkConnectorHecTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSplunkConnectorHecToken)(nil)).Elem()
+}
+
+func (o GetSplunkConnectorHecTokenOutput) ToGetSplunkConnectorHecTokenOutput() GetSplunkConnectorHecTokenOutput {
+	return o
+}
+
+func (o GetSplunkConnectorHecTokenOutput) ToGetSplunkConnectorHecTokenOutputWithContext(ctx context.Context) GetSplunkConnectorHecTokenOutput {
+	return o
+}
+
+// Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetSplunkConnectorHecTokenOutput) HecTokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSplunkConnectorHecToken) string { return v.HecTokenRef }).(pulumi.StringOutput)
+}
+
+type GetSplunkConnectorHecTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSplunkConnectorHecTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSplunkConnectorHecToken)(nil)).Elem()
+}
+
+func (o GetSplunkConnectorHecTokenArrayOutput) ToGetSplunkConnectorHecTokenArrayOutput() GetSplunkConnectorHecTokenArrayOutput {
+	return o
+}
+
+func (o GetSplunkConnectorHecTokenArrayOutput) ToGetSplunkConnectorHecTokenArrayOutputWithContext(ctx context.Context) GetSplunkConnectorHecTokenArrayOutput {
+	return o
+}
+
+func (o GetSplunkConnectorHecTokenArrayOutput) Index(i pulumi.IntInput) GetSplunkConnectorHecTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSplunkConnectorHecToken {
+		return vs[0].([]GetSplunkConnectorHecToken)[vs[1].(int)]
+	}).(GetSplunkConnectorHecTokenOutput)
+}
+
+type GetSplunkConnectorNoAuthentication struct {
+}
+
+// GetSplunkConnectorNoAuthenticationInput is an input type that accepts GetSplunkConnectorNoAuthenticationArgs and GetSplunkConnectorNoAuthenticationOutput values.
+// You can construct a concrete instance of `GetSplunkConnectorNoAuthenticationInput` via:
+//
+//	GetSplunkConnectorNoAuthenticationArgs{...}
+type GetSplunkConnectorNoAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetSplunkConnectorNoAuthenticationOutput() GetSplunkConnectorNoAuthenticationOutput
+	ToGetSplunkConnectorNoAuthenticationOutputWithContext(context.Context) GetSplunkConnectorNoAuthenticationOutput
+}
+
+type GetSplunkConnectorNoAuthenticationArgs struct {
+}
+
+func (GetSplunkConnectorNoAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSplunkConnectorNoAuthentication)(nil)).Elem()
+}
+
+func (i GetSplunkConnectorNoAuthenticationArgs) ToGetSplunkConnectorNoAuthenticationOutput() GetSplunkConnectorNoAuthenticationOutput {
+	return i.ToGetSplunkConnectorNoAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetSplunkConnectorNoAuthenticationArgs) ToGetSplunkConnectorNoAuthenticationOutputWithContext(ctx context.Context) GetSplunkConnectorNoAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorNoAuthenticationOutput)
+}
+
+// GetSplunkConnectorNoAuthenticationArrayInput is an input type that accepts GetSplunkConnectorNoAuthenticationArray and GetSplunkConnectorNoAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetSplunkConnectorNoAuthenticationArrayInput` via:
+//
+//	GetSplunkConnectorNoAuthenticationArray{ GetSplunkConnectorNoAuthenticationArgs{...} }
+type GetSplunkConnectorNoAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetSplunkConnectorNoAuthenticationArrayOutput() GetSplunkConnectorNoAuthenticationArrayOutput
+	ToGetSplunkConnectorNoAuthenticationArrayOutputWithContext(context.Context) GetSplunkConnectorNoAuthenticationArrayOutput
+}
+
+type GetSplunkConnectorNoAuthenticationArray []GetSplunkConnectorNoAuthenticationInput
+
+func (GetSplunkConnectorNoAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSplunkConnectorNoAuthentication)(nil)).Elem()
+}
+
+func (i GetSplunkConnectorNoAuthenticationArray) ToGetSplunkConnectorNoAuthenticationArrayOutput() GetSplunkConnectorNoAuthenticationArrayOutput {
+	return i.ToGetSplunkConnectorNoAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetSplunkConnectorNoAuthenticationArray) ToGetSplunkConnectorNoAuthenticationArrayOutputWithContext(ctx context.Context) GetSplunkConnectorNoAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorNoAuthenticationArrayOutput)
+}
+
+type GetSplunkConnectorNoAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetSplunkConnectorNoAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSplunkConnectorNoAuthentication)(nil)).Elem()
+}
+
+func (o GetSplunkConnectorNoAuthenticationOutput) ToGetSplunkConnectorNoAuthenticationOutput() GetSplunkConnectorNoAuthenticationOutput {
+	return o
+}
+
+func (o GetSplunkConnectorNoAuthenticationOutput) ToGetSplunkConnectorNoAuthenticationOutputWithContext(ctx context.Context) GetSplunkConnectorNoAuthenticationOutput {
+	return o
+}
+
+type GetSplunkConnectorNoAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSplunkConnectorNoAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSplunkConnectorNoAuthentication)(nil)).Elem()
+}
+
+func (o GetSplunkConnectorNoAuthenticationArrayOutput) ToGetSplunkConnectorNoAuthenticationArrayOutput() GetSplunkConnectorNoAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetSplunkConnectorNoAuthenticationArrayOutput) ToGetSplunkConnectorNoAuthenticationArrayOutputWithContext(ctx context.Context) GetSplunkConnectorNoAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetSplunkConnectorNoAuthenticationArrayOutput) Index(i pulumi.IntInput) GetSplunkConnectorNoAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSplunkConnectorNoAuthentication {
+		return vs[0].([]GetSplunkConnectorNoAuthentication)[vs[1].(int)]
+	}).(GetSplunkConnectorNoAuthenticationOutput)
+}
+
+type GetSplunkConnectorUsernamePassword struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+}
+
+// GetSplunkConnectorUsernamePasswordInput is an input type that accepts GetSplunkConnectorUsernamePasswordArgs and GetSplunkConnectorUsernamePasswordOutput values.
+// You can construct a concrete instance of `GetSplunkConnectorUsernamePasswordInput` via:
+//
+//	GetSplunkConnectorUsernamePasswordArgs{...}
+type GetSplunkConnectorUsernamePasswordInput interface {
+	pulumi.Input
+
+	ToGetSplunkConnectorUsernamePasswordOutput() GetSplunkConnectorUsernamePasswordOutput
+	ToGetSplunkConnectorUsernamePasswordOutputWithContext(context.Context) GetSplunkConnectorUsernamePasswordOutput
+}
+
+type GetSplunkConnectorUsernamePasswordArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetSplunkConnectorUsernamePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSplunkConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (i GetSplunkConnectorUsernamePasswordArgs) ToGetSplunkConnectorUsernamePasswordOutput() GetSplunkConnectorUsernamePasswordOutput {
+	return i.ToGetSplunkConnectorUsernamePasswordOutputWithContext(context.Background())
+}
+
+func (i GetSplunkConnectorUsernamePasswordArgs) ToGetSplunkConnectorUsernamePasswordOutputWithContext(ctx context.Context) GetSplunkConnectorUsernamePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorUsernamePasswordOutput)
+}
+
+// GetSplunkConnectorUsernamePasswordArrayInput is an input type that accepts GetSplunkConnectorUsernamePasswordArray and GetSplunkConnectorUsernamePasswordArrayOutput values.
+// You can construct a concrete instance of `GetSplunkConnectorUsernamePasswordArrayInput` via:
+//
+//	GetSplunkConnectorUsernamePasswordArray{ GetSplunkConnectorUsernamePasswordArgs{...} }
+type GetSplunkConnectorUsernamePasswordArrayInput interface {
+	pulumi.Input
+
+	ToGetSplunkConnectorUsernamePasswordArrayOutput() GetSplunkConnectorUsernamePasswordArrayOutput
+	ToGetSplunkConnectorUsernamePasswordArrayOutputWithContext(context.Context) GetSplunkConnectorUsernamePasswordArrayOutput
+}
+
+type GetSplunkConnectorUsernamePasswordArray []GetSplunkConnectorUsernamePasswordInput
+
+func (GetSplunkConnectorUsernamePasswordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSplunkConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (i GetSplunkConnectorUsernamePasswordArray) ToGetSplunkConnectorUsernamePasswordArrayOutput() GetSplunkConnectorUsernamePasswordArrayOutput {
+	return i.ToGetSplunkConnectorUsernamePasswordArrayOutputWithContext(context.Background())
+}
+
+func (i GetSplunkConnectorUsernamePasswordArray) ToGetSplunkConnectorUsernamePasswordArrayOutputWithContext(ctx context.Context) GetSplunkConnectorUsernamePasswordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSplunkConnectorUsernamePasswordArrayOutput)
+}
+
+type GetSplunkConnectorUsernamePasswordOutput struct{ *pulumi.OutputState }
+
+func (GetSplunkConnectorUsernamePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSplunkConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (o GetSplunkConnectorUsernamePasswordOutput) ToGetSplunkConnectorUsernamePasswordOutput() GetSplunkConnectorUsernamePasswordOutput {
+	return o
+}
+
+func (o GetSplunkConnectorUsernamePasswordOutput) ToGetSplunkConnectorUsernamePasswordOutputWithContext(ctx context.Context) GetSplunkConnectorUsernamePasswordOutput {
+	return o
+}
+
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetSplunkConnectorUsernamePasswordOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSplunkConnectorUsernamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// Username to use for authentication.
+func (o GetSplunkConnectorUsernamePasswordOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSplunkConnectorUsernamePassword) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetSplunkConnectorUsernamePasswordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSplunkConnectorUsernamePasswordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSplunkConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (o GetSplunkConnectorUsernamePasswordArrayOutput) ToGetSplunkConnectorUsernamePasswordArrayOutput() GetSplunkConnectorUsernamePasswordArrayOutput {
+	return o
+}
+
+func (o GetSplunkConnectorUsernamePasswordArrayOutput) ToGetSplunkConnectorUsernamePasswordArrayOutputWithContext(ctx context.Context) GetSplunkConnectorUsernamePasswordArrayOutput {
+	return o
+}
+
+func (o GetSplunkConnectorUsernamePasswordArrayOutput) Index(i pulumi.IntInput) GetSplunkConnectorUsernamePasswordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSplunkConnectorUsernamePassword {
+		return vs[0].([]GetSplunkConnectorUsernamePassword)[vs[1].(int)]
+	}).(GetSplunkConnectorUsernamePasswordOutput)
+}
+
 type GetSpotConnectorPermanentToken struct {
 	// Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef string `pulumi:"apiTokenRef"`
@@ -53803,6 +54739,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SloRequestNotificationRuleRefArrayInput)(nil)).Elem(), SloRequestNotificationRuleRefArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SloRequestSloTargetInput)(nil)).Elem(), SloRequestSloTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SloRequestSloTargetPtrInput)(nil)).Elem(), SloRequestSloTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SplunkConnectorBearerTokenInput)(nil)).Elem(), SplunkConnectorBearerTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SplunkConnectorBearerTokenPtrInput)(nil)).Elem(), SplunkConnectorBearerTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SplunkConnectorHecTokenInput)(nil)).Elem(), SplunkConnectorHecTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SplunkConnectorHecTokenPtrInput)(nil)).Elem(), SplunkConnectorHecTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SplunkConnectorNoAuthenticationInput)(nil)).Elem(), SplunkConnectorNoAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SplunkConnectorNoAuthenticationPtrInput)(nil)).Elem(), SplunkConnectorNoAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SplunkConnectorUsernamePasswordInput)(nil)).Elem(), SplunkConnectorUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SplunkConnectorUsernamePasswordPtrInput)(nil)).Elem(), SplunkConnectorUsernamePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpotConnectorPermanentTokenInput)(nil)).Elem(), SpotConnectorPermanentTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpotConnectorPermanentTokenPtrInput)(nil)).Elem(), SpotConnectorPermanentTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TasConnectorCredentialsInput)(nil)).Elem(), TasConnectorCredentialsArgs{})
@@ -54270,6 +55214,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceNowConnectorAuthUsernamePasswordArrayInput)(nil)).Elem(), GetServiceNowConnectorAuthUsernamePasswordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceOverridesV2GitDetailsInput)(nil)).Elem(), GetServiceOverridesV2GitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceOverridesV2GitDetailsPtrInput)(nil)).Elem(), GetServiceOverridesV2GitDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorBearerTokenInput)(nil)).Elem(), GetSplunkConnectorBearerTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorBearerTokenArrayInput)(nil)).Elem(), GetSplunkConnectorBearerTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorHecTokenInput)(nil)).Elem(), GetSplunkConnectorHecTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorHecTokenArrayInput)(nil)).Elem(), GetSplunkConnectorHecTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorNoAuthenticationInput)(nil)).Elem(), GetSplunkConnectorNoAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorNoAuthenticationArrayInput)(nil)).Elem(), GetSplunkConnectorNoAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorUsernamePasswordInput)(nil)).Elem(), GetSplunkConnectorUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSplunkConnectorUsernamePasswordArrayInput)(nil)).Elem(), GetSplunkConnectorUsernamePasswordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpotConnectorPermanentTokenInput)(nil)).Elem(), GetSpotConnectorPermanentTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpotConnectorPermanentTokenArrayInput)(nil)).Elem(), GetSpotConnectorPermanentTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTasConnectorCredentialInput)(nil)).Elem(), GetTasConnectorCredentialArgs{})
@@ -54550,6 +55502,14 @@ func init() {
 	pulumi.RegisterOutputType(SloRequestNotificationRuleRefArrayOutput{})
 	pulumi.RegisterOutputType(SloRequestSloTargetOutput{})
 	pulumi.RegisterOutputType(SloRequestSloTargetPtrOutput{})
+	pulumi.RegisterOutputType(SplunkConnectorBearerTokenOutput{})
+	pulumi.RegisterOutputType(SplunkConnectorBearerTokenPtrOutput{})
+	pulumi.RegisterOutputType(SplunkConnectorHecTokenOutput{})
+	pulumi.RegisterOutputType(SplunkConnectorHecTokenPtrOutput{})
+	pulumi.RegisterOutputType(SplunkConnectorNoAuthenticationOutput{})
+	pulumi.RegisterOutputType(SplunkConnectorNoAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(SplunkConnectorUsernamePasswordOutput{})
+	pulumi.RegisterOutputType(SplunkConnectorUsernamePasswordPtrOutput{})
 	pulumi.RegisterOutputType(SpotConnectorPermanentTokenOutput{})
 	pulumi.RegisterOutputType(SpotConnectorPermanentTokenPtrOutput{})
 	pulumi.RegisterOutputType(TasConnectorCredentialsOutput{})
@@ -55017,6 +55977,14 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceNowConnectorAuthUsernamePasswordArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceOverridesV2GitDetailsOutput{})
 	pulumi.RegisterOutputType(GetServiceOverridesV2GitDetailsPtrOutput{})
+	pulumi.RegisterOutputType(GetSplunkConnectorBearerTokenOutput{})
+	pulumi.RegisterOutputType(GetSplunkConnectorBearerTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetSplunkConnectorHecTokenOutput{})
+	pulumi.RegisterOutputType(GetSplunkConnectorHecTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetSplunkConnectorNoAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetSplunkConnectorNoAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetSplunkConnectorUsernamePasswordOutput{})
+	pulumi.RegisterOutputType(GetSplunkConnectorUsernamePasswordArrayOutput{})
 	pulumi.RegisterOutputType(GetSpotConnectorPermanentTokenOutput{})
 	pulumi.RegisterOutputType(GetSpotConnectorPermanentTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetTasConnectorCredentialOutput{})

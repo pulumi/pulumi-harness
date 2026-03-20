@@ -7753,6 +7753,34 @@ export namespace platform {
         repoName: string;
     }
 
+    export interface GetSplunkConnectorBearerToken {
+        /**
+         * Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        bearerTokenRef: string;
+    }
+
+    export interface GetSplunkConnectorHecToken {
+        /**
+         * Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        hecTokenRef: string;
+    }
+
+    export interface GetSplunkConnectorNoAuthentication {
+    }
+
+    export interface GetSplunkConnectorUsernamePassword {
+        /**
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        passwordRef: string;
+        /**
+         * Username to use for authentication.
+         */
+        username: string;
+    }
+
     export interface GetSpotConnectorPermanentToken {
         /**
          * Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -37395,6 +37423,34 @@ export namespace platform {
          * Type of the SLO target.
          */
         type: string;
+    }
+
+    export interface SplunkConnectorBearerToken {
+        /**
+         * Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        bearerTokenRef: string;
+    }
+
+    export interface SplunkConnectorHecToken {
+        /**
+         * Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        hecTokenRef: string;
+    }
+
+    export interface SplunkConnectorNoAuthentication {
+    }
+
+    export interface SplunkConnectorUsernamePassword {
+        /**
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        passwordRef: string;
+        /**
+         * Username to use for authentication.
+         */
+        username: string;
     }
 
     export interface SpotConnectorPermanentToken {

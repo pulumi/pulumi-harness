@@ -158,6 +158,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string AccountId;
         /// <summary>
+        /// Authenticate to Splunk using bearer token.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetSplunkConnectorBearerTokenResult> BearerTokens;
+        /// <summary>
         /// Tags to filter delegates for connection.
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
@@ -165,6 +169,10 @@ namespace Pulumi.Harness.Platform
         /// Description of the resource.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Authenticate to Splunk using HEC (HTTP Event Collector) token.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetSplunkConnectorHecTokenResult> HecTokens;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -178,11 +186,15 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? Name;
         /// <summary>
+        /// No authentication required for Splunk.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetSplunkConnectorNoAuthenticationResult> NoAuthentications;
+        /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string PasswordRef;
         /// <summary>
@@ -198,23 +210,33 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Url;
         /// <summary>
-        /// The username used for connecting to Splunk.
+        /// The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
         /// </summary>
         public readonly string Username;
+        /// <summary>
+        /// Authenticate to Splunk using username and password.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetSplunkConnectorUsernamePasswordResult> UsernamePasswords;
 
         [OutputConstructor]
         private GetSplunkConnectorResult(
             string accountId,
 
+            ImmutableArray<Outputs.GetSplunkConnectorBearerTokenResult> bearerTokens,
+
             ImmutableArray<string> delegateSelectors,
 
             string description,
+
+            ImmutableArray<Outputs.GetSplunkConnectorHecTokenResult> hecTokens,
 
             string id,
 
             string identifier,
 
             string? name,
+
+            ImmutableArray<Outputs.GetSplunkConnectorNoAuthenticationResult> noAuthentications,
 
             string? orgId,
 
@@ -226,20 +248,26 @@ namespace Pulumi.Harness.Platform
 
             string url,
 
-            string username)
+            string username,
+
+            ImmutableArray<Outputs.GetSplunkConnectorUsernamePasswordResult> usernamePasswords)
         {
             AccountId = accountId;
+            BearerTokens = bearerTokens;
             DelegateSelectors = delegateSelectors;
             Description = description;
+            HecTokens = hecTokens;
             Id = id;
             Identifier = identifier;
             Name = name;
+            NoAuthentications = noAuthentications;
             OrgId = orgId;
             PasswordRef = passwordRef;
             ProjectId = projectId;
             Tags = tags;
             Url = url;
             Username = username;
+            UsernamePasswords = usernamePasswords;
         }
     }
 }

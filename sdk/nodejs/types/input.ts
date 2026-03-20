@@ -35952,6 +35952,34 @@ export namespace platform {
         type: pulumi.Input<string>;
     }
 
+    export interface SplunkConnectorBearerToken {
+        /**
+         * Reference to the Harness secret containing the Splunk bearer token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        bearerTokenRef: pulumi.Input<string>;
+    }
+
+    export interface SplunkConnectorHecToken {
+        /**
+         * Reference to the Harness secret containing the Splunk HEC token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        hecTokenRef: pulumi.Input<string>;
+    }
+
+    export interface SplunkConnectorNoAuthentication {
+    }
+
+    export interface SplunkConnectorUsernamePassword {
+        /**
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        passwordRef: pulumi.Input<string>;
+        /**
+         * Username to use for authentication.
+         */
+        username: pulumi.Input<string>;
+    }
+
     export interface SpotConnectorPermanentToken {
         /**
          * Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.

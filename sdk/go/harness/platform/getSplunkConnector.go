@@ -64,19 +64,25 @@ type LookupSplunkConnectorArgs struct {
 type LookupSplunkConnectorResult struct {
 	// Splunk account id.
 	AccountId string `pulumi:"accountId"`
+	// Authenticate to Splunk using bearer token.
+	BearerTokens []GetSplunkConnectorBearerToken `pulumi:"bearerTokens"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
+	// Authenticate to Splunk using HEC (HTTP Event Collector) token.
+	HecTokens []GetSplunkConnectorHecToken `pulumi:"hecTokens"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// No authentication required for Splunk.
+	NoAuthentications []GetSplunkConnectorNoAuthentication `pulumi:"noAuthentications"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
@@ -84,8 +90,10 @@ type LookupSplunkConnectorResult struct {
 	Tags []string `pulumi:"tags"`
 	// URL of the Splunk server.
 	Url string `pulumi:"url"`
-	// The username used for connecting to Splunk.
+	// The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
 	Username string `pulumi:"username"`
+	// Authenticate to Splunk using username and password.
+	UsernamePasswords []GetSplunkConnectorUsernamePassword `pulumi:"usernamePasswords"`
 }
 
 func LookupSplunkConnectorOutput(ctx *pulumi.Context, args LookupSplunkConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupSplunkConnectorResultOutput {
@@ -133,6 +141,11 @@ func (o LookupSplunkConnectorResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Authenticate to Splunk using bearer token.
+func (o LookupSplunkConnectorResultOutput) BearerTokens() GetSplunkConnectorBearerTokenArrayOutput {
+	return o.ApplyT(func(v LookupSplunkConnectorResult) []GetSplunkConnectorBearerToken { return v.BearerTokens }).(GetSplunkConnectorBearerTokenArrayOutput)
+}
+
 // Tags to filter delegates for connection.
 func (o LookupSplunkConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
@@ -141,6 +154,11 @@ func (o LookupSplunkConnectorResultOutput) DelegateSelectors() pulumi.StringArra
 // Description of the resource.
 func (o LookupSplunkConnectorResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Authenticate to Splunk using HEC (HTTP Event Collector) token.
+func (o LookupSplunkConnectorResultOutput) HecTokens() GetSplunkConnectorHecTokenArrayOutput {
+	return o.ApplyT(func(v LookupSplunkConnectorResult) []GetSplunkConnectorHecToken { return v.HecTokens }).(GetSplunkConnectorHecTokenArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -158,12 +176,17 @@ func (o LookupSplunkConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// No authentication required for Splunk.
+func (o LookupSplunkConnectorResultOutput) NoAuthentications() GetSplunkConnectorNoAuthenticationArrayOutput {
+	return o.ApplyT(func(v LookupSplunkConnectorResult) []GetSplunkConnectorNoAuthentication { return v.NoAuthentications }).(GetSplunkConnectorNoAuthenticationArrayOutput)
+}
+
 // Unique identifier of the organization.
 func (o LookupSplunkConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+// The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o LookupSplunkConnectorResultOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
@@ -183,9 +206,14 @@ func (o LookupSplunkConnectorResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) string { return v.Url }).(pulumi.StringOutput)
 }
 
-// The username used for connecting to Splunk.
+// The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
 func (o LookupSplunkConnectorResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// Authenticate to Splunk using username and password.
+func (o LookupSplunkConnectorResultOutput) UsernamePasswords() GetSplunkConnectorUsernamePasswordArrayOutput {
+	return o.ApplyT(func(v LookupSplunkConnectorResult) []GetSplunkConnectorUsernamePassword { return v.UsernamePasswords }).(GetSplunkConnectorUsernamePasswordArrayOutput)
 }
 
 func init() {

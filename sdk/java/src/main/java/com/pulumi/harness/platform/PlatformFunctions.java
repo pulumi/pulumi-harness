@@ -63,8 +63,12 @@ import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
 import com.pulumi.harness.platform.inputs.GetDbInstancePlainArgs;
 import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
 import com.pulumi.harness.platform.inputs.GetDbSchemaPlainArgs;
+import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+import com.pulumi.harness.platform.inputs.GetDefaultImagesPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDefaultNotificationTemplateSetArgs;
 import com.pulumi.harness.platform.inputs.GetDefaultNotificationTemplateSetPlainArgs;
+import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDelegateListArgs;
 import com.pulumi.harness.platform.inputs.GetDelegateListPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
@@ -297,7 +301,9 @@ import com.pulumi.harness.platform.outputs.GetDashboardsResult;
 import com.pulumi.harness.platform.outputs.GetDatadogConnectorResult;
 import com.pulumi.harness.platform.outputs.GetDbInstanceResult;
 import com.pulumi.harness.platform.outputs.GetDbSchemaResult;
+import com.pulumi.harness.platform.outputs.GetDefaultImagesResult;
 import com.pulumi.harness.platform.outputs.GetDefaultNotificationTemplateSetResult;
+import com.pulumi.harness.platform.outputs.GetDelegateDefaultVersionResult;
 import com.pulumi.harness.platform.outputs.GetDelegateListResult;
 import com.pulumi.harness.platform.outputs.GetDelegatetokenResult;
 import com.pulumi.harness.platform.outputs.GetDockerConnectorResult;
@@ -4706,6 +4712,1131 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invokeAsync("harness:platform/getDbSchema:getDbSchema", TypeShape.of(GetDbSchemaResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Data source for retrieving Harness default execution images for CI, IACM, or IDP.
+     * 
+     * ## The `type` Field
+     * 
+     * The `type` field controls which set of images is returned:
+     * 
+     * - **`default`** (default) — returns the Harness-managed default image tags for the account. These are the images Harness ships and updates over time.
+     * - **`customer`** — returns only the image fields that have been explicitly overridden at the account level using the `harness.platform.DefaultImages` resource. Fields that have not been overridden are omitted from the `images` map.
+     * 
+     * Use `type = &#34;customer&#34;` after applying overrides to verify that the correct custom image tags are in effect.
+     * 
+     * ## Example Usage
+     * 
+     * ### CI — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ciDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("ci")
+     *             .build());
+     * 
+     *         ctx.export("ciDefaultImages", ciDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### CI — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ciCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("ci")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("ciLiteEngineOverride", ciCustomer.images().liteEngineTag());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IACM — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iacmDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("iacm")
+     *             .build());
+     * 
+     *         ctx.export("iacmDefaultImages", iacmDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IACM — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iacmCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("iacm")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("iacmAwsCdkOverride", iacmCustomer.images().iacmAwsCdk());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IDP — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var idpDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("idp")
+     *             .build());
+     * 
+     *         ctx.export("idpDefaultImages", idpDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IDP — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var idpCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("idp")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("idpRegisterCatalogOverride", idpCustomer.images().registerCatalog());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDefaultImagesResult> getDefaultImages(GetDefaultImagesArgs args) {
+        return getDefaultImages(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving Harness default execution images for CI, IACM, or IDP.
+     * 
+     * ## The `type` Field
+     * 
+     * The `type` field controls which set of images is returned:
+     * 
+     * - **`default`** (default) — returns the Harness-managed default image tags for the account. These are the images Harness ships and updates over time.
+     * - **`customer`** — returns only the image fields that have been explicitly overridden at the account level using the `harness.platform.DefaultImages` resource. Fields that have not been overridden are omitted from the `images` map.
+     * 
+     * Use `type = &#34;customer&#34;` after applying overrides to verify that the correct custom image tags are in effect.
+     * 
+     * ## Example Usage
+     * 
+     * ### CI — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ciDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("ci")
+     *             .build());
+     * 
+     *         ctx.export("ciDefaultImages", ciDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### CI — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ciCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("ci")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("ciLiteEngineOverride", ciCustomer.images().liteEngineTag());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IACM — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iacmDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("iacm")
+     *             .build());
+     * 
+     *         ctx.export("iacmDefaultImages", iacmDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IACM — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iacmCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("iacm")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("iacmAwsCdkOverride", iacmCustomer.images().iacmAwsCdk());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IDP — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var idpDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("idp")
+     *             .build());
+     * 
+     *         ctx.export("idpDefaultImages", idpDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IDP — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var idpCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("idp")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("idpRegisterCatalogOverride", idpCustomer.images().registerCatalog());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDefaultImagesResult> getDefaultImagesPlain(GetDefaultImagesPlainArgs args) {
+        return getDefaultImagesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving Harness default execution images for CI, IACM, or IDP.
+     * 
+     * ## The `type` Field
+     * 
+     * The `type` field controls which set of images is returned:
+     * 
+     * - **`default`** (default) — returns the Harness-managed default image tags for the account. These are the images Harness ships and updates over time.
+     * - **`customer`** — returns only the image fields that have been explicitly overridden at the account level using the `harness.platform.DefaultImages` resource. Fields that have not been overridden are omitted from the `images` map.
+     * 
+     * Use `type = &#34;customer&#34;` after applying overrides to verify that the correct custom image tags are in effect.
+     * 
+     * ## Example Usage
+     * 
+     * ### CI — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ciDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("ci")
+     *             .build());
+     * 
+     *         ctx.export("ciDefaultImages", ciDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### CI — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ciCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("ci")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("ciLiteEngineOverride", ciCustomer.images().liteEngineTag());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IACM — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iacmDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("iacm")
+     *             .build());
+     * 
+     *         ctx.export("iacmDefaultImages", iacmDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IACM — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iacmCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("iacm")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("iacmAwsCdkOverride", iacmCustomer.images().iacmAwsCdk());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IDP — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var idpDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("idp")
+     *             .build());
+     * 
+     *         ctx.export("idpDefaultImages", idpDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IDP — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var idpCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("idp")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("idpRegisterCatalogOverride", idpCustomer.images().registerCatalog());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDefaultImagesResult> getDefaultImages(GetDefaultImagesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDefaultImages:getDefaultImages", TypeShape.of(GetDefaultImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving Harness default execution images for CI, IACM, or IDP.
+     * 
+     * ## The `type` Field
+     * 
+     * The `type` field controls which set of images is returned:
+     * 
+     * - **`default`** (default) — returns the Harness-managed default image tags for the account. These are the images Harness ships and updates over time.
+     * - **`customer`** — returns only the image fields that have been explicitly overridden at the account level using the `harness.platform.DefaultImages` resource. Fields that have not been overridden are omitted from the `images` map.
+     * 
+     * Use `type = &#34;customer&#34;` after applying overrides to verify that the correct custom image tags are in effect.
+     * 
+     * ## Example Usage
+     * 
+     * ### CI — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ciDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("ci")
+     *             .build());
+     * 
+     *         ctx.export("ciDefaultImages", ciDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### CI — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ciCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("ci")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("ciLiteEngineOverride", ciCustomer.images().liteEngineTag());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IACM — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iacmDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("iacm")
+     *             .build());
+     * 
+     *         ctx.export("iacmDefaultImages", iacmDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IACM — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iacmCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("iacm")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("iacmAwsCdkOverride", iacmCustomer.images().iacmAwsCdk());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IDP — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var idpDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("idp")
+     *             .build());
+     * 
+     *         ctx.export("idpDefaultImages", idpDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IDP — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var idpCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("idp")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("idpRegisterCatalogOverride", idpCustomer.images().registerCatalog());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDefaultImagesResult> getDefaultImages(GetDefaultImagesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDefaultImages:getDefaultImages", TypeShape.of(GetDefaultImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving Harness default execution images for CI, IACM, or IDP.
+     * 
+     * ## The `type` Field
+     * 
+     * The `type` field controls which set of images is returned:
+     * 
+     * - **`default`** (default) — returns the Harness-managed default image tags for the account. These are the images Harness ships and updates over time.
+     * - **`customer`** — returns only the image fields that have been explicitly overridden at the account level using the `harness.platform.DefaultImages` resource. Fields that have not been overridden are omitted from the `images` map.
+     * 
+     * Use `type = &#34;customer&#34;` after applying overrides to verify that the correct custom image tags are in effect.
+     * 
+     * ## Example Usage
+     * 
+     * ### CI — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ciDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("ci")
+     *             .build());
+     * 
+     *         ctx.export("ciDefaultImages", ciDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### CI — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ciCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("ci")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("ciLiteEngineOverride", ciCustomer.images().liteEngineTag());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IACM — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iacmDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("iacm")
+     *             .build());
+     * 
+     *         ctx.export("iacmDefaultImages", iacmDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IACM — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iacmCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("iacm")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("iacmAwsCdkOverride", iacmCustomer.images().iacmAwsCdk());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IDP — read Harness default images
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var idpDefaults = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("idp")
+     *             .build());
+     * 
+     *         ctx.export("idpDefaultImages", idpDefaults.images());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### IDP — read customer-configured overrides
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var idpCustomer = PlatformFunctions.getDefaultImages(GetDefaultImagesArgs.builder()
+     *             .kind("idp")
+     *             .type("customer")
+     *             .build());
+     * 
+     *         ctx.export("idpRegisterCatalogOverride", idpCustomer.images().registerCatalog());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDefaultImagesResult> getDefaultImagesPlain(GetDefaultImagesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getDefaultImages:getDefaultImages", TypeShape.of(GetDefaultImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Data source for retrieving a Default Notification Template Set.
      * 
      */
@@ -4739,6 +5870,804 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetDefaultNotificationTemplateSetResult> getDefaultNotificationTemplateSetPlain(GetDefaultNotificationTemplateSetPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getDefaultNotificationTemplateSet:getDefaultNotificationTemplateSet", TypeShape.of(GetDefaultNotificationTemplateSetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving the latest supported Harness delegate version.
+     * 
+     * By default, customers will often want to pull the most recent version of the delegate image to store within their own container registry or would like to build a new custom delegate based on the same. This data source exposes that version information at account, org, or project scope via Terraform, eliminating the need for a custom script or manual lookup.
+     * 
+     * ## Example Usage
+     * 
+     * ### Account level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("delegateVersion", account.version());
+     *         ctx.export("delegateMinimalVersion", account.minimalVersion());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Org level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgImplicit = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionOrgImplicit", orgImplicit.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Project level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .projectId("your_project_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionProject", project.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDelegateDefaultVersionResult> getDelegateDefaultVersion() {
+        return getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving the latest supported Harness delegate version.
+     * 
+     * By default, customers will often want to pull the most recent version of the delegate image to store within their own container registry or would like to build a new custom delegate based on the same. This data source exposes that version information at account, org, or project scope via Terraform, eliminating the need for a custom script or manual lookup.
+     * 
+     * ## Example Usage
+     * 
+     * ### Account level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("delegateVersion", account.version());
+     *         ctx.export("delegateMinimalVersion", account.minimalVersion());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Org level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgImplicit = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionOrgImplicit", orgImplicit.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Project level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .projectId("your_project_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionProject", project.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDelegateDefaultVersionResult> getDelegateDefaultVersionPlain() {
+        return getDelegateDefaultVersionPlain(GetDelegateDefaultVersionPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving the latest supported Harness delegate version.
+     * 
+     * By default, customers will often want to pull the most recent version of the delegate image to store within their own container registry or would like to build a new custom delegate based on the same. This data source exposes that version information at account, org, or project scope via Terraform, eliminating the need for a custom script or manual lookup.
+     * 
+     * ## Example Usage
+     * 
+     * ### Account level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("delegateVersion", account.version());
+     *         ctx.export("delegateMinimalVersion", account.minimalVersion());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Org level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgImplicit = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionOrgImplicit", orgImplicit.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Project level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .projectId("your_project_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionProject", project.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDelegateDefaultVersionResult> getDelegateDefaultVersion(GetDelegateDefaultVersionArgs args) {
+        return getDelegateDefaultVersion(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving the latest supported Harness delegate version.
+     * 
+     * By default, customers will often want to pull the most recent version of the delegate image to store within their own container registry or would like to build a new custom delegate based on the same. This data source exposes that version information at account, org, or project scope via Terraform, eliminating the need for a custom script or manual lookup.
+     * 
+     * ## Example Usage
+     * 
+     * ### Account level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("delegateVersion", account.version());
+     *         ctx.export("delegateMinimalVersion", account.minimalVersion());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Org level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgImplicit = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionOrgImplicit", orgImplicit.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Project level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .projectId("your_project_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionProject", project.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDelegateDefaultVersionResult> getDelegateDefaultVersionPlain(GetDelegateDefaultVersionPlainArgs args) {
+        return getDelegateDefaultVersionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving the latest supported Harness delegate version.
+     * 
+     * By default, customers will often want to pull the most recent version of the delegate image to store within their own container registry or would like to build a new custom delegate based on the same. This data source exposes that version information at account, org, or project scope via Terraform, eliminating the need for a custom script or manual lookup.
+     * 
+     * ## Example Usage
+     * 
+     * ### Account level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("delegateVersion", account.version());
+     *         ctx.export("delegateMinimalVersion", account.minimalVersion());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Org level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgImplicit = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionOrgImplicit", orgImplicit.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Project level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .projectId("your_project_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionProject", project.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDelegateDefaultVersionResult> getDelegateDefaultVersion(GetDelegateDefaultVersionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDelegateDefaultVersion:getDelegateDefaultVersion", TypeShape.of(GetDelegateDefaultVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving the latest supported Harness delegate version.
+     * 
+     * By default, customers will often want to pull the most recent version of the delegate image to store within their own container registry or would like to build a new custom delegate based on the same. This data source exposes that version information at account, org, or project scope via Terraform, eliminating the need for a custom script or manual lookup.
+     * 
+     * ## Example Usage
+     * 
+     * ### Account level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("delegateVersion", account.version());
+     *         ctx.export("delegateMinimalVersion", account.minimalVersion());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Org level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgImplicit = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionOrgImplicit", orgImplicit.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Project level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .projectId("your_project_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionProject", project.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDelegateDefaultVersionResult> getDelegateDefaultVersion(GetDelegateDefaultVersionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDelegateDefaultVersion:getDelegateDefaultVersion", TypeShape.of(GetDelegateDefaultVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving the latest supported Harness delegate version.
+     * 
+     * By default, customers will often want to pull the most recent version of the delegate image to store within their own container registry or would like to build a new custom delegate based on the same. This data source exposes that version information at account, org, or project scope via Terraform, eliminating the need for a custom script or manual lookup.
+     * 
+     * ## Example Usage
+     * 
+     * ### Account level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("delegateVersion", account.version());
+     *         ctx.export("delegateMinimalVersion", account.minimalVersion());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Org level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgImplicit = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionOrgImplicit", orgImplicit.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Project level — implicit account from provider
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = PlatformFunctions.getDelegateDefaultVersion(GetDelegateDefaultVersionArgs.builder()
+     *             .orgId("your_org_id")
+     *             .projectId("your_project_id")
+     *             .build());
+     * 
+     *         ctx.export("delegateVersionProject", project.version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDelegateDefaultVersionResult> getDelegateDefaultVersionPlain(GetDelegateDefaultVersionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getDelegateDefaultVersion:getDelegateDefaultVersion", TypeShape.of(GetDelegateDefaultVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a list of Harness delegates.

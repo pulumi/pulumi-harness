@@ -5,6 +5,10 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetSplunkConnectorBearerToken;
+import com.pulumi.harness.platform.outputs.GetSplunkConnectorHecToken;
+import com.pulumi.harness.platform.outputs.GetSplunkConnectorNoAuthentication;
+import com.pulumi.harness.platform.outputs.GetSplunkConnectorUsernamePassword;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +23,11 @@ public final class GetSplunkConnectorResult {
      */
     private String accountId;
     /**
+     * @return Authenticate to Splunk using bearer token.
+     * 
+     */
+    private List<GetSplunkConnectorBearerToken> bearerTokens;
+    /**
      * @return Tags to filter delegates for connection.
      * 
      */
@@ -28,6 +37,11 @@ public final class GetSplunkConnectorResult {
      * 
      */
     private String description;
+    /**
+     * @return Authenticate to Splunk using HEC (HTTP Event Collector) token.
+     * 
+     */
+    private List<GetSplunkConnectorHecToken> hecTokens;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -44,12 +58,17 @@ public final class GetSplunkConnectorResult {
      */
     private @Nullable String name;
     /**
+     * @return No authentication required for Splunk.
+     * 
+     */
+    private List<GetSplunkConnectorNoAuthentication> noAuthentications;
+    /**
      * @return Unique identifier of the organization.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return The reference to the Harness secret containing the Splunk password. Deprecated: Use &#39;username_password&#39; block instead. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String passwordRef;
@@ -69,10 +88,15 @@ public final class GetSplunkConnectorResult {
      */
     private String url;
     /**
-     * @return The username used for connecting to Splunk.
+     * @return The username used for connecting to Splunk. Deprecated: Use &#39;username_password&#39; block instead.
      * 
      */
     private String username;
+    /**
+     * @return Authenticate to Splunk using username and password.
+     * 
+     */
+    private List<GetSplunkConnectorUsernamePassword> usernamePasswords;
 
     private GetSplunkConnectorResult() {}
     /**
@@ -81,6 +105,13 @@ public final class GetSplunkConnectorResult {
      */
     public String accountId() {
         return this.accountId;
+    }
+    /**
+     * @return Authenticate to Splunk using bearer token.
+     * 
+     */
+    public List<GetSplunkConnectorBearerToken> bearerTokens() {
+        return this.bearerTokens;
     }
     /**
      * @return Tags to filter delegates for connection.
@@ -95,6 +126,13 @@ public final class GetSplunkConnectorResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Authenticate to Splunk using HEC (HTTP Event Collector) token.
+     * 
+     */
+    public List<GetSplunkConnectorHecToken> hecTokens() {
+        return this.hecTokens;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -118,6 +156,13 @@ public final class GetSplunkConnectorResult {
         return Optional.ofNullable(this.name);
     }
     /**
+     * @return No authentication required for Splunk.
+     * 
+     */
+    public List<GetSplunkConnectorNoAuthentication> noAuthentications() {
+        return this.noAuthentications;
+    }
+    /**
      * @return Unique identifier of the organization.
      * 
      */
@@ -125,7 +170,7 @@ public final class GetSplunkConnectorResult {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return The reference to the Harness secret containing the Splunk password. Deprecated: Use &#39;username_password&#39; block instead. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String passwordRef() {
@@ -153,11 +198,18 @@ public final class GetSplunkConnectorResult {
         return this.url;
     }
     /**
-     * @return The username used for connecting to Splunk.
+     * @return The username used for connecting to Splunk. Deprecated: Use &#39;username_password&#39; block instead.
      * 
      */
     public String username() {
         return this.username;
+    }
+    /**
+     * @return Authenticate to Splunk using username and password.
+     * 
+     */
+    public List<GetSplunkConnectorUsernamePassword> usernamePasswords() {
+        return this.usernamePasswords;
     }
 
     public static Builder builder() {
@@ -170,32 +222,40 @@ public final class GetSplunkConnectorResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private List<GetSplunkConnectorBearerToken> bearerTokens;
         private List<String> delegateSelectors;
         private String description;
+        private List<GetSplunkConnectorHecToken> hecTokens;
         private String id;
         private String identifier;
         private @Nullable String name;
+        private List<GetSplunkConnectorNoAuthentication> noAuthentications;
         private @Nullable String orgId;
         private String passwordRef;
         private @Nullable String projectId;
         private List<String> tags;
         private String url;
         private String username;
+        private List<GetSplunkConnectorUsernamePassword> usernamePasswords;
         public Builder() {}
         public Builder(GetSplunkConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.bearerTokens = defaults.bearerTokens;
     	      this.delegateSelectors = defaults.delegateSelectors;
     	      this.description = defaults.description;
+    	      this.hecTokens = defaults.hecTokens;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
+    	      this.noAuthentications = defaults.noAuthentications;
     	      this.orgId = defaults.orgId;
     	      this.passwordRef = defaults.passwordRef;
     	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
     	      this.url = defaults.url;
     	      this.username = defaults.username;
+    	      this.usernamePasswords = defaults.usernamePasswords;
         }
 
         @CustomType.Setter
@@ -205,6 +265,17 @@ public final class GetSplunkConnectorResult {
             }
             this.accountId = accountId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder bearerTokens(List<GetSplunkConnectorBearerToken> bearerTokens) {
+            if (bearerTokens == null) {
+              throw new MissingRequiredPropertyException("GetSplunkConnectorResult", "bearerTokens");
+            }
+            this.bearerTokens = bearerTokens;
+            return this;
+        }
+        public Builder bearerTokens(GetSplunkConnectorBearerToken... bearerTokens) {
+            return bearerTokens(List.of(bearerTokens));
         }
         @CustomType.Setter
         public Builder delegateSelectors(List<String> delegateSelectors) {
@@ -224,6 +295,17 @@ public final class GetSplunkConnectorResult {
             }
             this.description = description;
             return this;
+        }
+        @CustomType.Setter
+        public Builder hecTokens(List<GetSplunkConnectorHecToken> hecTokens) {
+            if (hecTokens == null) {
+              throw new MissingRequiredPropertyException("GetSplunkConnectorResult", "hecTokens");
+            }
+            this.hecTokens = hecTokens;
+            return this;
+        }
+        public Builder hecTokens(GetSplunkConnectorHecToken... hecTokens) {
+            return hecTokens(List.of(hecTokens));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -246,6 +328,17 @@ public final class GetSplunkConnectorResult {
 
             this.name = name;
             return this;
+        }
+        @CustomType.Setter
+        public Builder noAuthentications(List<GetSplunkConnectorNoAuthentication> noAuthentications) {
+            if (noAuthentications == null) {
+              throw new MissingRequiredPropertyException("GetSplunkConnectorResult", "noAuthentications");
+            }
+            this.noAuthentications = noAuthentications;
+            return this;
+        }
+        public Builder noAuthentications(GetSplunkConnectorNoAuthentication... noAuthentications) {
+            return noAuthentications(List.of(noAuthentications));
         }
         @CustomType.Setter
         public Builder orgId(@Nullable String orgId) {
@@ -294,20 +387,35 @@ public final class GetSplunkConnectorResult {
             this.username = username;
             return this;
         }
+        @CustomType.Setter
+        public Builder usernamePasswords(List<GetSplunkConnectorUsernamePassword> usernamePasswords) {
+            if (usernamePasswords == null) {
+              throw new MissingRequiredPropertyException("GetSplunkConnectorResult", "usernamePasswords");
+            }
+            this.usernamePasswords = usernamePasswords;
+            return this;
+        }
+        public Builder usernamePasswords(GetSplunkConnectorUsernamePassword... usernamePasswords) {
+            return usernamePasswords(List.of(usernamePasswords));
+        }
         public GetSplunkConnectorResult build() {
             final var _resultValue = new GetSplunkConnectorResult();
             _resultValue.accountId = accountId;
+            _resultValue.bearerTokens = bearerTokens;
             _resultValue.delegateSelectors = delegateSelectors;
             _resultValue.description = description;
+            _resultValue.hecTokens = hecTokens;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.name = name;
+            _resultValue.noAuthentications = noAuthentications;
             _resultValue.orgId = orgId;
             _resultValue.passwordRef = passwordRef;
             _resultValue.projectId = projectId;
             _resultValue.tags = tags;
             _resultValue.url = url;
             _resultValue.username = username;
+            _resultValue.usernamePasswords = usernamePasswords;
             return _resultValue;
         }
     }

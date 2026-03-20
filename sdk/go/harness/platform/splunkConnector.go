@@ -28,14 +28,94 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewSplunkConnector(ctx, "test", &platform.SplunkConnectorArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("test"),
+//			// Example 1: Username/Password Authentication (New Block Format)
+//			_, err := platform.NewSplunkConnector(ctx, "username_password", &platform.SplunkConnectorArgs{
+//				Identifier:  pulumi.String("splunk_userpass"),
+//				Name:        pulumi.String("Splunk Username/Password"),
+//				Description: pulumi.String("Splunk connector with username/password authentication"),
 //				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
+//					pulumi.String("env:production"),
 //				},
-//				Url: pulumi.String("https://splunk.com/"),
+//				Url: pulumi.String("https://splunk.company.com:8089"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				AccountId: pulumi.String("splunk_account_id"),
+//				UsernamePassword: &platform.SplunkConnectorUsernamePasswordArgs{
+//					Username:    pulumi.String("splunk_user"),
+//					PasswordRef: pulumi.String("account.splunk_password"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example 2: Bearer Token Authentication
+//			_, err = platform.NewSplunkConnector(ctx, "bearer_token", &platform.SplunkConnectorArgs{
+//				Identifier:  pulumi.String("splunk_bearer"),
+//				Name:        pulumi.String("Splunk Bearer Token"),
+//				Description: pulumi.String("Splunk connector with bearer token authentication"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("env:production"),
+//				},
+//				Url: pulumi.String("https://splunk.company.com:8089"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				AccountId: pulumi.String("splunk_account_id"),
+//				BearerToken: &platform.SplunkConnectorBearerTokenArgs{
+//					BearerTokenRef: pulumi.String("account.splunk_bearer_token"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example 3: HEC Token Authentication
+//			_, err = platform.NewSplunkConnector(ctx, "hec_token", &platform.SplunkConnectorArgs{
+//				Identifier:  pulumi.String("splunk_hec"),
+//				Name:        pulumi.String("Splunk HEC Token"),
+//				Description: pulumi.String("Splunk connector with HEC token authentication"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("env:production"),
+//				},
+//				Url: pulumi.String("https://splunk.company.com:8088"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				AccountId: pulumi.String("splunk_account_id"),
+//				HecToken: &platform.SplunkConnectorHecTokenArgs{
+//					HecTokenRef: pulumi.String("account.splunk_hec_token"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example 4: No Authentication
+//			_, err = platform.NewSplunkConnector(ctx, "no_auth", &platform.SplunkConnectorArgs{
+//				Identifier:  pulumi.String("splunk_no_auth"),
+//				Name:        pulumi.String("Splunk No Auth"),
+//				Description: pulumi.String("Splunk connector without authentication"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("env:development"),
+//				},
+//				Url: pulumi.String("https://splunk-dev.company.com:8089"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				AccountId:        pulumi.String("splunk_account_id"),
+//				NoAuthentication: &platform.SplunkConnectorNoAuthenticationArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example 5: Legacy Format (Deprecated but still supported)
+//			_, err = platform.NewSplunkConnector(ctx, "legacy", &platform.SplunkConnectorArgs{
+//				Identifier:  pulumi.String("splunk_legacy"),
+//				Name:        pulumi.String("Splunk Legacy"),
+//				Description: pulumi.String("Splunk connector using deprecated flat schema"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("deprecated"),
+//				},
+//				Url: pulumi.String("https://splunk.company.com:8089"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
@@ -78,26 +158,38 @@ type SplunkConnector struct {
 
 	// Splunk account id.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Authenticate to Splunk using bearer token.
+	BearerToken SplunkConnectorBearerTokenPtrOutput `pulumi:"bearerToken"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Authenticate to Splunk using HEC (HTTP Event Collector) token.
+	HecToken SplunkConnectorHecTokenPtrOutput `pulumi:"hecToken"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// No authentication required for Splunk.
+	NoAuthentication SplunkConnectorNoAuthenticationPtrOutput `pulumi:"noAuthentication"`
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	PasswordRef pulumi.StringOutput `pulumi:"passwordRef"`
+	// The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	//
+	// Deprecated: Use 'username_password' authentication block instead
+	PasswordRef pulumi.StringPtrOutput `pulumi:"passwordRef"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// URL of the Splunk server.
 	Url pulumi.StringOutput `pulumi:"url"`
-	// The username used for connecting to Splunk.
-	Username pulumi.StringOutput `pulumi:"username"`
+	// The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
+	//
+	// Deprecated: Use 'username_password' authentication block instead
+	Username pulumi.StringPtrOutput `pulumi:"username"`
+	// Authenticate to Splunk using username and password.
+	UsernamePassword SplunkConnectorUsernamePasswordPtrOutput `pulumi:"usernamePassword"`
 }
 
 // NewSplunkConnector registers a new resource with the given unique name, arguments, and options.
@@ -113,14 +205,8 @@ func NewSplunkConnector(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	if args.PasswordRef == nil {
-		return nil, errors.New("invalid value for required argument 'PasswordRef'")
-	}
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
-	}
-	if args.Username == nil {
-		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SplunkConnector
@@ -147,17 +233,25 @@ func GetSplunkConnector(ctx *pulumi.Context,
 type splunkConnectorState struct {
 	// Splunk account id.
 	AccountId *string `pulumi:"accountId"`
+	// Authenticate to Splunk using bearer token.
+	BearerToken *SplunkConnectorBearerToken `pulumi:"bearerToken"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Authenticate to Splunk using HEC (HTTP Event Collector) token.
+	HecToken *SplunkConnectorHecToken `pulumi:"hecToken"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// No authentication required for Splunk.
+	NoAuthentication *SplunkConnectorNoAuthentication `pulumi:"noAuthentication"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	//
+	// Deprecated: Use 'username_password' authentication block instead
 	PasswordRef *string `pulumi:"passwordRef"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
@@ -165,24 +259,36 @@ type splunkConnectorState struct {
 	Tags []string `pulumi:"tags"`
 	// URL of the Splunk server.
 	Url *string `pulumi:"url"`
-	// The username used for connecting to Splunk.
+	// The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
+	//
+	// Deprecated: Use 'username_password' authentication block instead
 	Username *string `pulumi:"username"`
+	// Authenticate to Splunk using username and password.
+	UsernamePassword *SplunkConnectorUsernamePassword `pulumi:"usernamePassword"`
 }
 
 type SplunkConnectorState struct {
 	// Splunk account id.
 	AccountId pulumi.StringPtrInput
+	// Authenticate to Splunk using bearer token.
+	BearerToken SplunkConnectorBearerTokenPtrInput
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Authenticate to Splunk using HEC (HTTP Event Collector) token.
+	HecToken SplunkConnectorHecTokenPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
+	// No authentication required for Splunk.
+	NoAuthentication SplunkConnectorNoAuthenticationPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	//
+	// Deprecated: Use 'username_password' authentication block instead
 	PasswordRef pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
@@ -190,8 +296,12 @@ type SplunkConnectorState struct {
 	Tags pulumi.StringArrayInput
 	// URL of the Splunk server.
 	Url pulumi.StringPtrInput
-	// The username used for connecting to Splunk.
+	// The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
+	//
+	// Deprecated: Use 'username_password' authentication block instead
 	Username pulumi.StringPtrInput
+	// Authenticate to Splunk using username and password.
+	UsernamePassword SplunkConnectorUsernamePasswordPtrInput
 }
 
 func (SplunkConnectorState) ElementType() reflect.Type {
@@ -201,52 +311,76 @@ func (SplunkConnectorState) ElementType() reflect.Type {
 type splunkConnectorArgs struct {
 	// Splunk account id.
 	AccountId string `pulumi:"accountId"`
+	// Authenticate to Splunk using bearer token.
+	BearerToken *SplunkConnectorBearerToken `pulumi:"bearerToken"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Authenticate to Splunk using HEC (HTTP Event Collector) token.
+	HecToken *SplunkConnectorHecToken `pulumi:"hecToken"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// No authentication required for Splunk.
+	NoAuthentication *SplunkConnectorNoAuthentication `pulumi:"noAuthentication"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	PasswordRef string `pulumi:"passwordRef"`
+	// The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	//
+	// Deprecated: Use 'username_password' authentication block instead
+	PasswordRef *string `pulumi:"passwordRef"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// URL of the Splunk server.
 	Url string `pulumi:"url"`
-	// The username used for connecting to Splunk.
-	Username string `pulumi:"username"`
+	// The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
+	//
+	// Deprecated: Use 'username_password' authentication block instead
+	Username *string `pulumi:"username"`
+	// Authenticate to Splunk using username and password.
+	UsernamePassword *SplunkConnectorUsernamePassword `pulumi:"usernamePassword"`
 }
 
 // The set of arguments for constructing a SplunkConnector resource.
 type SplunkConnectorArgs struct {
 	// Splunk account id.
 	AccountId pulumi.StringInput
+	// Authenticate to Splunk using bearer token.
+	BearerToken SplunkConnectorBearerTokenPtrInput
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Authenticate to Splunk using HEC (HTTP Event Collector) token.
+	HecToken SplunkConnectorHecTokenPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
+	// No authentication required for Splunk.
+	NoAuthentication SplunkConnectorNoAuthenticationPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	PasswordRef pulumi.StringInput
+	// The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	//
+	// Deprecated: Use 'username_password' authentication block instead
+	PasswordRef pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// URL of the Splunk server.
 	Url pulumi.StringInput
-	// The username used for connecting to Splunk.
-	Username pulumi.StringInput
+	// The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
+	//
+	// Deprecated: Use 'username_password' authentication block instead
+	Username pulumi.StringPtrInput
+	// Authenticate to Splunk using username and password.
+	UsernamePassword SplunkConnectorUsernamePasswordPtrInput
 }
 
 func (SplunkConnectorArgs) ElementType() reflect.Type {
@@ -341,6 +475,11 @@ func (o SplunkConnectorOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Authenticate to Splunk using bearer token.
+func (o SplunkConnectorOutput) BearerToken() SplunkConnectorBearerTokenPtrOutput {
+	return o.ApplyT(func(v *SplunkConnector) SplunkConnectorBearerTokenPtrOutput { return v.BearerToken }).(SplunkConnectorBearerTokenPtrOutput)
+}
+
 // Tags to filter delegates for connection.
 func (o SplunkConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
@@ -349,6 +488,11 @@ func (o SplunkConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 // Description of the resource.
 func (o SplunkConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Authenticate to Splunk using HEC (HTTP Event Collector) token.
+func (o SplunkConnectorOutput) HecToken() SplunkConnectorHecTokenPtrOutput {
+	return o.ApplyT(func(v *SplunkConnector) SplunkConnectorHecTokenPtrOutput { return v.HecToken }).(SplunkConnectorHecTokenPtrOutput)
 }
 
 // Unique identifier of the resource.
@@ -361,14 +505,21 @@ func (o SplunkConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// No authentication required for Splunk.
+func (o SplunkConnectorOutput) NoAuthentication() SplunkConnectorNoAuthenticationPtrOutput {
+	return o.ApplyT(func(v *SplunkConnector) SplunkConnectorNoAuthenticationPtrOutput { return v.NoAuthentication }).(SplunkConnectorNoAuthenticationPtrOutput)
+}
+
 // Unique identifier of the organization.
 func (o SplunkConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o SplunkConnectorOutput) PasswordRef() pulumi.StringOutput {
-	return o.ApplyT(func(v *SplunkConnector) pulumi.StringOutput { return v.PasswordRef }).(pulumi.StringOutput)
+// The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+//
+// Deprecated: Use 'username_password' authentication block instead
+func (o SplunkConnectorOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SplunkConnector) pulumi.StringPtrOutput { return v.PasswordRef }).(pulumi.StringPtrOutput)
 }
 
 // Unique identifier of the project.
@@ -386,9 +537,16 @@ func (o SplunkConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// The username used for connecting to Splunk.
-func (o SplunkConnectorOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v *SplunkConnector) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+// The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
+//
+// Deprecated: Use 'username_password' authentication block instead
+func (o SplunkConnectorOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SplunkConnector) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Authenticate to Splunk using username and password.
+func (o SplunkConnectorOutput) UsernamePassword() SplunkConnectorUsernamePasswordPtrOutput {
+	return o.ApplyT(func(v *SplunkConnector) SplunkConnectorUsernamePasswordPtrOutput { return v.UsernamePassword }).(SplunkConnectorUsernamePasswordPtrOutput)
 }
 
 type SplunkConnectorArrayOutput struct{ *pulumi.OutputState }

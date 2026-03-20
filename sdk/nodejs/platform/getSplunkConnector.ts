@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -59,6 +61,10 @@ export interface GetSplunkConnectorResult {
      */
     readonly accountId: string;
     /**
+     * Authenticate to Splunk using bearer token.
+     */
+    readonly bearerTokens: outputs.platform.GetSplunkConnectorBearerToken[];
+    /**
      * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
@@ -66,6 +72,10 @@ export interface GetSplunkConnectorResult {
      * Description of the resource.
      */
     readonly description: string;
+    /**
+     * Authenticate to Splunk using HEC (HTTP Event Collector) token.
+     */
+    readonly hecTokens: outputs.platform.GetSplunkConnectorHecToken[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -79,11 +89,15 @@ export interface GetSplunkConnectorResult {
      */
     readonly name?: string;
     /**
+     * No authentication required for Splunk.
+     */
+    readonly noAuthentications: outputs.platform.GetSplunkConnectorNoAuthentication[];
+    /**
      * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+     * The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     readonly passwordRef: string;
     /**
@@ -99,9 +113,13 @@ export interface GetSplunkConnectorResult {
      */
     readonly url: string;
     /**
-     * The username used for connecting to Splunk.
+     * The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
      */
     readonly username: string;
+    /**
+     * Authenticate to Splunk using username and password.
+     */
+    readonly usernamePasswords: outputs.platform.GetSplunkConnectorUsernamePassword[];
 }
 /**
  * Datasource for looking up a Splunk connector.

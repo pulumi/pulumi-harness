@@ -642,6 +642,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/defaultImages",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/defaultImages:DefaultImages": "DefaultImages"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/defaultNotificationTemplateSet",
   "fqn": "pulumi_harness.platform",
   "classes": {
