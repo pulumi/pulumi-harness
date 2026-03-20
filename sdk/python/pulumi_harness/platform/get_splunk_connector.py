@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetSplunkConnectorResult',
@@ -26,16 +27,22 @@ class GetSplunkConnectorResult:
     """
     A collection of values returned by getSplunkConnector.
     """
-    def __init__(__self__, account_id=None, delegate_selectors=None, description=None, id=None, identifier=None, name=None, org_id=None, password_ref=None, project_id=None, tags=None, url=None, username=None):
+    def __init__(__self__, account_id=None, bearer_tokens=None, delegate_selectors=None, description=None, hec_tokens=None, id=None, identifier=None, name=None, no_authentications=None, org_id=None, password_ref=None, project_id=None, tags=None, url=None, username=None, username_passwords=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if bearer_tokens and not isinstance(bearer_tokens, list):
+            raise TypeError("Expected argument 'bearer_tokens' to be a list")
+        pulumi.set(__self__, "bearer_tokens", bearer_tokens)
         if delegate_selectors and not isinstance(delegate_selectors, list):
             raise TypeError("Expected argument 'delegate_selectors' to be a list")
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if hec_tokens and not isinstance(hec_tokens, list):
+            raise TypeError("Expected argument 'hec_tokens' to be a list")
+        pulumi.set(__self__, "hec_tokens", hec_tokens)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -45,6 +52,9 @@ class GetSplunkConnectorResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if no_authentications and not isinstance(no_authentications, list):
+            raise TypeError("Expected argument 'no_authentications' to be a list")
+        pulumi.set(__self__, "no_authentications", no_authentications)
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
@@ -63,6 +73,9 @@ class GetSplunkConnectorResult:
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         pulumi.set(__self__, "username", username)
+        if username_passwords and not isinstance(username_passwords, list):
+            raise TypeError("Expected argument 'username_passwords' to be a list")
+        pulumi.set(__self__, "username_passwords", username_passwords)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -71,6 +84,14 @@ class GetSplunkConnectorResult:
         Splunk account id.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="bearerTokens")
+    def bearer_tokens(self) -> Sequence['outputs.GetSplunkConnectorBearerTokenResult']:
+        """
+        Authenticate to Splunk using bearer token.
+        """
+        return pulumi.get(self, "bearer_tokens")
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
@@ -87,6 +108,14 @@ class GetSplunkConnectorResult:
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="hecTokens")
+    def hec_tokens(self) -> Sequence['outputs.GetSplunkConnectorHecTokenResult']:
+        """
+        Authenticate to Splunk using HEC (HTTP Event Collector) token.
+        """
+        return pulumi.get(self, "hec_tokens")
 
     @_builtins.property
     @pulumi.getter
@@ -113,6 +142,14 @@ class GetSplunkConnectorResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="noAuthentications")
+    def no_authentications(self) -> Sequence['outputs.GetSplunkConnectorNoAuthenticationResult']:
+        """
+        No authentication required for Splunk.
+        """
+        return pulumi.get(self, "no_authentications")
+
+    @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[_builtins.str]:
         """
@@ -124,7 +161,7 @@ class GetSplunkConnectorResult:
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> _builtins.str:
         """
-        The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
@@ -156,9 +193,17 @@ class GetSplunkConnectorResult:
     @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        The username used for connecting to Splunk.
+        The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
         """
         return pulumi.get(self, "username")
+
+    @_builtins.property
+    @pulumi.getter(name="usernamePasswords")
+    def username_passwords(self) -> Sequence['outputs.GetSplunkConnectorUsernamePasswordResult']:
+        """
+        Authenticate to Splunk using username and password.
+        """
+        return pulumi.get(self, "username_passwords")
 
 
 class AwaitableGetSplunkConnectorResult(GetSplunkConnectorResult):
@@ -168,17 +213,21 @@ class AwaitableGetSplunkConnectorResult(GetSplunkConnectorResult):
             yield self
         return GetSplunkConnectorResult(
             account_id=self.account_id,
+            bearer_tokens=self.bearer_tokens,
             delegate_selectors=self.delegate_selectors,
             description=self.description,
+            hec_tokens=self.hec_tokens,
             id=self.id,
             identifier=self.identifier,
             name=self.name,
+            no_authentications=self.no_authentications,
             org_id=self.org_id,
             password_ref=self.password_ref,
             project_id=self.project_id,
             tags=self.tags,
             url=self.url,
-            username=self.username)
+            username=self.username,
+            username_passwords=self.username_passwords)
 
 
 def get_splunk_connector(identifier: Optional[_builtins.str] = None,
@@ -214,17 +263,21 @@ def get_splunk_connector(identifier: Optional[_builtins.str] = None,
 
     return AwaitableGetSplunkConnectorResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        bearer_tokens=pulumi.get(__ret__, 'bearer_tokens'),
         delegate_selectors=pulumi.get(__ret__, 'delegate_selectors'),
         description=pulumi.get(__ret__, 'description'),
+        hec_tokens=pulumi.get(__ret__, 'hec_tokens'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
+        no_authentications=pulumi.get(__ret__, 'no_authentications'),
         org_id=pulumi.get(__ret__, 'org_id'),
         password_ref=pulumi.get(__ret__, 'password_ref'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'),
         url=pulumi.get(__ret__, 'url'),
-        username=pulumi.get(__ret__, 'username'))
+        username=pulumi.get(__ret__, 'username'),
+        username_passwords=pulumi.get(__ret__, 'username_passwords'))
 def get_splunk_connector_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
                                 name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -257,14 +310,18 @@ def get_splunk_connector_output(identifier: Optional[pulumi.Input[_builtins.str]
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getSplunkConnector:getSplunkConnector', __args__, opts=opts, typ=GetSplunkConnectorResult)
     return __ret__.apply(lambda __response__: GetSplunkConnectorResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        bearer_tokens=pulumi.get(__response__, 'bearer_tokens'),
         delegate_selectors=pulumi.get(__response__, 'delegate_selectors'),
         description=pulumi.get(__response__, 'description'),
+        hec_tokens=pulumi.get(__response__, 'hec_tokens'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         name=pulumi.get(__response__, 'name'),
+        no_authentications=pulumi.get(__response__, 'no_authentications'),
         org_id=pulumi.get(__response__, 'org_id'),
         password_ref=pulumi.get(__response__, 'password_ref'),
         project_id=pulumi.get(__response__, 'project_id'),
         tags=pulumi.get(__response__, 'tags'),
         url=pulumi.get(__response__, 'url'),
-        username=pulumi.get(__response__, 'username')))
+        username=pulumi.get(__response__, 'username'),
+        username_passwords=pulumi.get(__response__, 'username_passwords')))

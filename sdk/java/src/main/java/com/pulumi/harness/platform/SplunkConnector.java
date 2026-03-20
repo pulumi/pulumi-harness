@@ -10,6 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.SplunkConnectorArgs;
 import com.pulumi.harness.platform.inputs.SplunkConnectorState;
+import com.pulumi.harness.platform.outputs.SplunkConnectorBearerToken;
+import com.pulumi.harness.platform.outputs.SplunkConnectorHecToken;
+import com.pulumi.harness.platform.outputs.SplunkConnectorNoAuthentication;
+import com.pulumi.harness.platform.outputs.SplunkConnectorUsernamePassword;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.SplunkConnector;
  * import com.pulumi.harness.platform.SplunkConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.SplunkConnectorUsernamePasswordArgs;
+ * import com.pulumi.harness.platform.inputs.SplunkConnectorBearerTokenArgs;
+ * import com.pulumi.harness.platform.inputs.SplunkConnectorHecTokenArgs;
+ * import com.pulumi.harness.platform.inputs.SplunkConnectorNoAuthenticationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,12 +50,69 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new SplunkConnector("test", SplunkConnectorArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("test")
- *             .tags("foo:bar")
- *             .url("https://splunk.com/")
+ *         // Example 1: Username/Password Authentication (New Block Format)
+ *         var usernamePassword = new SplunkConnector("usernamePassword", SplunkConnectorArgs.builder()
+ *             .identifier("splunk_userpass")
+ *             .name("Splunk Username/Password")
+ *             .description("Splunk connector with username/password authentication")
+ *             .tags("env:production")
+ *             .url("https://splunk.company.com:8089")
+ *             .delegateSelectors("harness-delegate")
+ *             .accountId("splunk_account_id")
+ *             .usernamePassword(SplunkConnectorUsernamePasswordArgs.builder()
+ *                 .username("splunk_user")
+ *                 .passwordRef("account.splunk_password")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example 2: Bearer Token Authentication
+ *         var bearerToken = new SplunkConnector("bearerToken", SplunkConnectorArgs.builder()
+ *             .identifier("splunk_bearer")
+ *             .name("Splunk Bearer Token")
+ *             .description("Splunk connector with bearer token authentication")
+ *             .tags("env:production")
+ *             .url("https://splunk.company.com:8089")
+ *             .delegateSelectors("harness-delegate")
+ *             .accountId("splunk_account_id")
+ *             .bearerToken(SplunkConnectorBearerTokenArgs.builder()
+ *                 .bearerTokenRef("account.splunk_bearer_token")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example 3: HEC Token Authentication
+ *         var hecToken = new SplunkConnector("hecToken", SplunkConnectorArgs.builder()
+ *             .identifier("splunk_hec")
+ *             .name("Splunk HEC Token")
+ *             .description("Splunk connector with HEC token authentication")
+ *             .tags("env:production")
+ *             .url("https://splunk.company.com:8088")
+ *             .delegateSelectors("harness-delegate")
+ *             .accountId("splunk_account_id")
+ *             .hecToken(SplunkConnectorHecTokenArgs.builder()
+ *                 .hecTokenRef("account.splunk_hec_token")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example 4: No Authentication
+ *         var noAuth = new SplunkConnector("noAuth", SplunkConnectorArgs.builder()
+ *             .identifier("splunk_no_auth")
+ *             .name("Splunk No Auth")
+ *             .description("Splunk connector without authentication")
+ *             .tags("env:development")
+ *             .url("https://splunk-dev.company.com:8089")
+ *             .delegateSelectors("harness-delegate")
+ *             .accountId("splunk_account_id")
+ *             .noAuthentication(SplunkConnectorNoAuthenticationArgs.builder()
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example 5: Legacy Format (Deprecated but still supported)
+ *         var legacy = new SplunkConnector("legacy", SplunkConnectorArgs.builder()
+ *             .identifier("splunk_legacy")
+ *             .name("Splunk Legacy")
+ *             .description("Splunk connector using deprecated flat schema")
+ *             .tags("deprecated")
+ *             .url("https://splunk.company.com:8089")
  *             .delegateSelectors("harness-delegate")
  *             .accountId("splunk_account_id")
  *             .username("username")
@@ -99,6 +164,20 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
+     * Authenticate to Splunk using bearer token.
+     * 
+     */
+    @Export(name="bearerToken", refs={SplunkConnectorBearerToken.class}, tree="[0]")
+    private Output</* @Nullable */ SplunkConnectorBearerToken> bearerToken;
+
+    /**
+     * @return Authenticate to Splunk using bearer token.
+     * 
+     */
+    public Output<Optional<SplunkConnectorBearerToken>> bearerToken() {
+        return Codegen.optional(this.bearerToken);
+    }
+    /**
      * Tags to filter delegates for connection.
      * 
      */
@@ -125,6 +204,20 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Authenticate to Splunk using HEC (HTTP Event Collector) token.
+     * 
+     */
+    @Export(name="hecToken", refs={SplunkConnectorHecToken.class}, tree="[0]")
+    private Output</* @Nullable */ SplunkConnectorHecToken> hecToken;
+
+    /**
+     * @return Authenticate to Splunk using HEC (HTTP Event Collector) token.
+     * 
+     */
+    public Output<Optional<SplunkConnectorHecToken>> hecToken() {
+        return Codegen.optional(this.hecToken);
     }
     /**
      * Unique identifier of the resource.
@@ -155,6 +248,20 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * No authentication required for Splunk.
+     * 
+     */
+    @Export(name="noAuthentication", refs={SplunkConnectorNoAuthentication.class}, tree="[0]")
+    private Output</* @Nullable */ SplunkConnectorNoAuthentication> noAuthentication;
+
+    /**
+     * @return No authentication required for Splunk.
+     * 
+     */
+    public Output<Optional<SplunkConnectorNoAuthentication>> noAuthentication() {
+        return Codegen.optional(this.noAuthentication);
+    }
+    /**
      * Unique identifier of the organization.
      * 
      */
@@ -169,18 +276,22 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.orgId);
     }
     /**
-     * The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * The reference to the Harness secret containing the Splunk password. Deprecated: Use &#39;username_password&#39; block instead. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     * @deprecated
+     * Use &#39;username_password&#39; authentication block instead
      * 
      */
+    @Deprecated /* Use 'username_password' authentication block instead */
     @Export(name="passwordRef", refs={String.class}, tree="[0]")
-    private Output<String> passwordRef;
+    private Output</* @Nullable */ String> passwordRef;
 
     /**
-     * @return The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return The reference to the Harness secret containing the Splunk password. Deprecated: Use &#39;username_password&#39; block instead. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    public Output<String> passwordRef() {
-        return this.passwordRef;
+    public Output<Optional<String>> passwordRef() {
+        return Codegen.optional(this.passwordRef);
     }
     /**
      * Unique identifier of the project.
@@ -225,18 +336,36 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
         return this.url;
     }
     /**
-     * The username used for connecting to Splunk.
+     * The username used for connecting to Splunk. Deprecated: Use &#39;username_password&#39; block instead.
+     * 
+     * @deprecated
+     * Use &#39;username_password&#39; authentication block instead
      * 
      */
+    @Deprecated /* Use 'username_password' authentication block instead */
     @Export(name="username", refs={String.class}, tree="[0]")
-    private Output<String> username;
+    private Output</* @Nullable */ String> username;
 
     /**
-     * @return The username used for connecting to Splunk.
+     * @return The username used for connecting to Splunk. Deprecated: Use &#39;username_password&#39; block instead.
      * 
      */
-    public Output<String> username() {
-        return this.username;
+    public Output<Optional<String>> username() {
+        return Codegen.optional(this.username);
+    }
+    /**
+     * Authenticate to Splunk using username and password.
+     * 
+     */
+    @Export(name="usernamePassword", refs={SplunkConnectorUsernamePassword.class}, tree="[0]")
+    private Output</* @Nullable */ SplunkConnectorUsernamePassword> usernamePassword;
+
+    /**
+     * @return Authenticate to Splunk using username and password.
+     * 
+     */
+    public Output<Optional<SplunkConnectorUsernamePassword>> usernamePassword() {
+        return Codegen.optional(this.usernamePassword);
     }
 
     /**

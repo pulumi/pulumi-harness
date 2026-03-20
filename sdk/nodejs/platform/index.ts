@@ -130,6 +130,11 @@ export type DbSchema = import("./dbSchema").DbSchema;
 export const DbSchema: typeof import("./dbSchema").DbSchema = null as any;
 utilities.lazyLoad(exports, ["DbSchema"], () => require("./dbSchema"));
 
+export { DefaultImagesArgs, DefaultImagesState } from "./defaultImages";
+export type DefaultImages = import("./defaultImages").DefaultImages;
+export const DefaultImages: typeof import("./defaultImages").DefaultImages = null as any;
+utilities.lazyLoad(exports, ["DefaultImages"], () => require("./defaultImages"));
+
 export { DefaultNotificationTemplateSetArgs, DefaultNotificationTemplateSetState } from "./defaultNotificationTemplateSet";
 export type DefaultNotificationTemplateSet = import("./defaultNotificationTemplateSet").DefaultNotificationTemplateSet;
 export const DefaultNotificationTemplateSet: typeof import("./defaultNotificationTemplateSet").DefaultNotificationTemplateSet = null as any;
@@ -365,10 +370,20 @@ export const getDbSchema: typeof import("./getDbSchema").getDbSchema = null as a
 export const getDbSchemaOutput: typeof import("./getDbSchema").getDbSchemaOutput = null as any;
 utilities.lazyLoad(exports, ["getDbSchema","getDbSchemaOutput"], () => require("./getDbSchema"));
 
+export { GetDefaultImagesArgs, GetDefaultImagesResult, GetDefaultImagesOutputArgs } from "./getDefaultImages";
+export const getDefaultImages: typeof import("./getDefaultImages").getDefaultImages = null as any;
+export const getDefaultImagesOutput: typeof import("./getDefaultImages").getDefaultImagesOutput = null as any;
+utilities.lazyLoad(exports, ["getDefaultImages","getDefaultImagesOutput"], () => require("./getDefaultImages"));
+
 export { GetDefaultNotificationTemplateSetArgs, GetDefaultNotificationTemplateSetResult, GetDefaultNotificationTemplateSetOutputArgs } from "./getDefaultNotificationTemplateSet";
 export const getDefaultNotificationTemplateSet: typeof import("./getDefaultNotificationTemplateSet").getDefaultNotificationTemplateSet = null as any;
 export const getDefaultNotificationTemplateSetOutput: typeof import("./getDefaultNotificationTemplateSet").getDefaultNotificationTemplateSetOutput = null as any;
 utilities.lazyLoad(exports, ["getDefaultNotificationTemplateSet","getDefaultNotificationTemplateSetOutput"], () => require("./getDefaultNotificationTemplateSet"));
+
+export { GetDelegateDefaultVersionArgs, GetDelegateDefaultVersionResult, GetDelegateDefaultVersionOutputArgs } from "./getDelegateDefaultVersion";
+export const getDelegateDefaultVersion: typeof import("./getDelegateDefaultVersion").getDelegateDefaultVersion = null as any;
+export const getDelegateDefaultVersionOutput: typeof import("./getDelegateDefaultVersion").getDelegateDefaultVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getDelegateDefaultVersion","getDelegateDefaultVersionOutput"], () => require("./getDelegateDefaultVersion"));
 
 export { GetDelegateListArgs, GetDelegateListResult, GetDelegateListOutputArgs } from "./getDelegateList";
 export const getDelegateList: typeof import("./getDelegateList").getDelegateList = null as any;
@@ -1360,6 +1375,8 @@ const _module = {
                 return new DbInstance(name, <any>undefined, { urn })
             case "harness:platform/dbSchema:DbSchema":
                 return new DbSchema(name, <any>undefined, { urn })
+            case "harness:platform/defaultImages:DefaultImages":
+                return new DefaultImages(name, <any>undefined, { urn })
             case "harness:platform/defaultNotificationTemplateSet:DefaultNotificationTemplateSet":
                 return new DefaultNotificationTemplateSet(name, <any>undefined, { urn })
             case "harness:platform/delegatetoken:Delegatetoken":
@@ -1592,6 +1609,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/dashboards", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/datadogConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/dbInstance", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/dbSchema", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/defaultImages", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/defaultNotificationTemplateSet", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/delegatetoken", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/dockerConnector", _module)

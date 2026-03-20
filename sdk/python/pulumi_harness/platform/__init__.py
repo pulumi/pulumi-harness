@@ -31,6 +31,7 @@ from .dashboards import *
 from .datadog_connector import *
 from .db_instance import *
 from .db_schema import *
+from .default_images import *
 from .default_notification_template_set import *
 from .delegatetoken import *
 from .docker_connector import *
@@ -78,7 +79,9 @@ from .get_dashboards import *
 from .get_datadog_connector import *
 from .get_db_instance import *
 from .get_db_schema import *
+from .get_default_images import *
 from .get_default_notification_template_set import *
+from .get_delegate_default_version import *
 from .get_delegate_list import *
 from .get_delegatetoken import *
 from .get_docker_connector import *

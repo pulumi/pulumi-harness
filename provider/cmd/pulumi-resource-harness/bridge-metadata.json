@@ -1682,11 +1682,23 @@
             "harness_platform_connector_splunk": {
                 "current": "harness:platform/splunkConnector:SplunkConnector",
                 "fields": {
+                    "bearer_token": {
+                        "maxItemsOne": true
+                    },
                     "delegate_selectors": {
                         "maxItemsOne": false
                     },
+                    "hec_token": {
+                        "maxItemsOne": true
+                    },
+                    "no_authentication": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
+                    },
+                    "username_password": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -1807,6 +1819,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "harness_platform_default_images": {
+                "current": "harness:platform/defaultImages:DefaultImages"
             },
             "harness_platform_default_notification_template_set": {
                 "current": "harness:platform/defaultNotificationTemplateSet:DefaultNotificationTemplateSet",
@@ -16951,10 +16966,22 @@
             "harness_platform_connector_splunk": {
                 "current": "harness:platform/getSplunkConnector:getSplunkConnector",
                 "fields": {
+                    "bearer_token": {
+                        "maxItemsOne": false
+                    },
                     "delegate_selectors": {
                         "maxItemsOne": false
                     },
+                    "hec_token": {
+                        "maxItemsOne": false
+                    },
+                    "no_authentication": {
+                        "maxItemsOne": false
+                    },
                     "tags": {
+                        "maxItemsOne": false
+                    },
+                    "username_password": {
                         "maxItemsOne": false
                     }
                 }
@@ -17091,6 +17118,9 @@
                     }
                 }
             },
+            "harness_platform_default_images": {
+                "current": "harness:platform/getDefaultImages:getDefaultImages"
+            },
             "harness_platform_default_notification_template_set": {
                 "current": "harness:platform/getDefaultNotificationTemplateSet:getDefaultNotificationTemplateSet",
                 "fields": {
@@ -17115,6 +17145,9 @@
                         }
                     }
                 }
+            },
+            "harness_platform_delegate_default_version": {
+                "current": "harness:platform/getDelegateDefaultVersion:getDelegateDefaultVersion"
             },
             "harness_platform_delegate_list": {
                 "current": "harness:platform/getDelegateList:getDelegateList",

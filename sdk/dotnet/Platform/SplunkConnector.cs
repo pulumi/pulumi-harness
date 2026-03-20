@@ -22,16 +22,103 @@ namespace Pulumi.Harness.Platform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Harness.Platform.SplunkConnector("test", new()
+    ///     // Example 1: Username/Password Authentication (New Block Format)
+    ///     var usernamePassword = new Harness.Platform.SplunkConnector("username_password", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "test",
+    ///         Identifier = "splunk_userpass",
+    ///         Name = "Splunk Username/Password",
+    ///         Description = "Splunk connector with username/password authentication",
     ///         Tags = new[]
     ///         {
-    ///             "foo:bar",
+    ///             "env:production",
     ///         },
-    ///         Url = "https://splunk.com/",
+    ///         Url = "https://splunk.company.com:8089",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         AccountId = "splunk_account_id",
+    ///         UsernamePassword = new Harness.Platform.Inputs.SplunkConnectorUsernamePasswordArgs
+    ///         {
+    ///             Username = "splunk_user",
+    ///             PasswordRef = "account.splunk_password",
+    ///         },
+    ///     });
+    /// 
+    ///     // Example 2: Bearer Token Authentication
+    ///     var bearerToken = new Harness.Platform.SplunkConnector("bearer_token", new()
+    ///     {
+    ///         Identifier = "splunk_bearer",
+    ///         Name = "Splunk Bearer Token",
+    ///         Description = "Splunk connector with bearer token authentication",
+    ///         Tags = new[]
+    ///         {
+    ///             "env:production",
+    ///         },
+    ///         Url = "https://splunk.company.com:8089",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         AccountId = "splunk_account_id",
+    ///         BearerToken = new Harness.Platform.Inputs.SplunkConnectorBearerTokenArgs
+    ///         {
+    ///             BearerTokenRef = "account.splunk_bearer_token",
+    ///         },
+    ///     });
+    /// 
+    ///     // Example 3: HEC Token Authentication
+    ///     var hecToken = new Harness.Platform.SplunkConnector("hec_token", new()
+    ///     {
+    ///         Identifier = "splunk_hec",
+    ///         Name = "Splunk HEC Token",
+    ///         Description = "Splunk connector with HEC token authentication",
+    ///         Tags = new[]
+    ///         {
+    ///             "env:production",
+    ///         },
+    ///         Url = "https://splunk.company.com:8088",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         AccountId = "splunk_account_id",
+    ///         HecToken = new Harness.Platform.Inputs.SplunkConnectorHecTokenArgs
+    ///         {
+    ///             HecTokenRef = "account.splunk_hec_token",
+    ///         },
+    ///     });
+    /// 
+    ///     // Example 4: No Authentication
+    ///     var noAuth = new Harness.Platform.SplunkConnector("no_auth", new()
+    ///     {
+    ///         Identifier = "splunk_no_auth",
+    ///         Name = "Splunk No Auth",
+    ///         Description = "Splunk connector without authentication",
+    ///         Tags = new[]
+    ///         {
+    ///             "env:development",
+    ///         },
+    ///         Url = "https://splunk-dev.company.com:8089",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         AccountId = "splunk_account_id",
+    ///         NoAuthentication = null,
+    ///     });
+    /// 
+    ///     // Example 5: Legacy Format (Deprecated but still supported)
+    ///     var legacy = new Harness.Platform.SplunkConnector("legacy", new()
+    ///     {
+    ///         Identifier = "splunk_legacy",
+    ///         Name = "Splunk Legacy",
+    ///         Description = "Splunk connector using deprecated flat schema",
+    ///         Tags = new[]
+    ///         {
+    ///             "deprecated",
+    ///         },
+    ///         Url = "https://splunk.company.com:8089",
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
@@ -76,6 +163,12 @@ namespace Pulumi.Harness.Platform
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// Authenticate to Splunk using bearer token.
+        /// </summary>
+        [Output("bearerToken")]
+        public Output<Outputs.SplunkConnectorBearerToken?> BearerToken { get; private set; } = null!;
+
+        /// <summary>
         /// Tags to filter delegates for connection.
         /// </summary>
         [Output("delegateSelectors")]
@@ -86,6 +179,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Authenticate to Splunk using HEC (HTTP Event Collector) token.
+        /// </summary>
+        [Output("hecToken")]
+        public Output<Outputs.SplunkConnectorHecToken?> HecToken { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -100,16 +199,22 @@ namespace Pulumi.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// No authentication required for Splunk.
+        /// </summary>
+        [Output("noAuthentication")]
+        public Output<Outputs.SplunkConnectorNoAuthentication?> NoAuthentication { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Output("passwordRef")]
-        public Output<string> PasswordRef { get; private set; } = null!;
+        public Output<string?> PasswordRef { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the project.
@@ -130,10 +235,16 @@ namespace Pulumi.Harness.Platform
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// The username used for connecting to Splunk.
+        /// The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
         /// </summary>
         [Output("username")]
-        public Output<string> Username { get; private set; } = null!;
+        public Output<string?> Username { get; private set; } = null!;
+
+        /// <summary>
+        /// Authenticate to Splunk using username and password.
+        /// </summary>
+        [Output("usernamePassword")]
+        public Output<Outputs.SplunkConnectorUsernamePassword?> UsernamePassword { get; private set; } = null!;
 
 
         /// <summary>
@@ -188,6 +299,12 @@ namespace Pulumi.Harness.Platform
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Authenticate to Splunk using bearer token.
+        /// </summary>
+        [Input("bearerToken")]
+        public Input<Inputs.SplunkConnectorBearerTokenArgs>? BearerToken { get; set; }
+
         [Input("delegateSelectors")]
         private InputList<string>? _delegateSelectors;
 
@@ -207,6 +324,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Authenticate to Splunk using HEC (HTTP Event Collector) token.
+        /// </summary>
+        [Input("hecToken")]
+        public Input<Inputs.SplunkConnectorHecTokenArgs>? HecToken { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
@@ -219,16 +342,22 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// No authentication required for Splunk.
+        /// </summary>
+        [Input("noAuthentication")]
+        public Input<Inputs.SplunkConnectorNoAuthenticationArgs>? NoAuthentication { get; set; }
+
+        /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
-        [Input("passwordRef", required: true)]
-        public Input<string> PasswordRef { get; set; } = null!;
+        [Input("passwordRef")]
+        public Input<string>? PasswordRef { get; set; }
 
         /// <summary>
         /// Unique identifier of the project.
@@ -255,10 +384,16 @@ namespace Pulumi.Harness.Platform
         public Input<string> Url { get; set; } = null!;
 
         /// <summary>
-        /// The username used for connecting to Splunk.
+        /// The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// Authenticate to Splunk using username and password.
+        /// </summary>
+        [Input("usernamePassword")]
+        public Input<Inputs.SplunkConnectorUsernamePasswordArgs>? UsernamePassword { get; set; }
 
         public SplunkConnectorArgs()
         {
@@ -273,6 +408,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Authenticate to Splunk using bearer token.
+        /// </summary>
+        [Input("bearerToken")]
+        public Input<Inputs.SplunkConnectorBearerTokenGetArgs>? BearerToken { get; set; }
 
         [Input("delegateSelectors")]
         private InputList<string>? _delegateSelectors;
@@ -293,6 +434,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Authenticate to Splunk using HEC (HTTP Event Collector) token.
+        /// </summary>
+        [Input("hecToken")]
+        public Input<Inputs.SplunkConnectorHecTokenGetArgs>? HecToken { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier")]
@@ -305,13 +452,19 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// No authentication required for Splunk.
+        /// </summary>
+        [Input("noAuthentication")]
+        public Input<Inputs.SplunkConnectorNoAuthenticationGetArgs>? NoAuthentication { get; set; }
+
+        /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("passwordRef")]
         public Input<string>? PasswordRef { get; set; }
@@ -341,10 +494,16 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// The username used for connecting to Splunk.
+        /// The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// Authenticate to Splunk using username and password.
+        /// </summary>
+        [Input("usernamePassword")]
+        public Input<Inputs.SplunkConnectorUsernamePasswordGetArgs>? UsernamePassword { get; set; }
 
         public SplunkConnectorState()
         {
