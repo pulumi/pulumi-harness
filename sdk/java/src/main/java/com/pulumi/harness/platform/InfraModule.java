@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *             .description("example")
  *             .name("name")
  *             .system("provider")
- *             .repository("https://github.com/org/repo")
+ *             .repository("repo")
  *             .repositoryBranch("main")
  *             .repositoryPath("tf/aws/basic")
  *             .repositoryConnector(test.id())
@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .onboardingPipelineOrg("default")
  *             .onboardingPipelineProject("IaCM_Project")
  *             .onboardingPipelineSync(true)
- *             .storageType("harness")
+ *             .storageType("artifact")
  *             .connectorOrg("default")
  *             .connectorProject("my_project")
  *             .build());
@@ -78,28 +78,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/infraModule:InfraModule")
 public class InfraModule extends com.pulumi.resources.CustomResource {
     /**
-     * Connector organization.
+     * Org of the connector to be used to fetch the code.
      * 
      */
     @Export(name="connectorOrg", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> connectorOrg;
 
     /**
-     * @return Connector organization.
+     * @return Org of the connector to be used to fetch the code.
      * 
      */
     public Output<Optional<String>> connectorOrg() {
         return Codegen.optional(this.connectorOrg);
     }
     /**
-     * Connector project.
+     * Project of the connector to be used to fetch the code.
      * 
      */
     @Export(name="connectorProject", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> connectorProject;
 
     /**
-     * @return Connector project.
+     * @return Project of the connector to be used to fetch the code.
      * 
      */
     public Output<Optional<String>> connectorProject() {
@@ -218,14 +218,14 @@ public class InfraModule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.onboardingPipelineSync);
     }
     /**
-     * For account connectors, the repository where the module can be found
+     * For account connectors, the repository name where the module can be found.
      * 
      */
     @Export(name="repository", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repository;
 
     /**
-     * @return For account connectors, the repository where the module can be found
+     * @return For account connectors, the repository name where the module can be found.
      * 
      */
     public Output<Optional<String>> repository() {

@@ -58,15 +58,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly bool? OnboardingPipelineSync;
         /// <summary>
-        /// Organization that owns the module
-        /// </summary>
-        public readonly string Org;
-        /// <summary>
-        /// Project that owns the module
-        /// </summary>
-        public readonly string Project;
-        /// <summary>
-        /// Repository where the module is stored
+        /// Repository name where the module is stored
         /// </summary>
         public readonly string Repository;
         /// <summary>
@@ -138,10 +130,6 @@ namespace Pulumi.Harness.Platform.Outputs
 
             bool? onboardingPipelineSync,
 
-            string org,
-
-            string project,
-
             string repository,
 
             string repositoryBranch,
@@ -177,8 +165,6 @@ namespace Pulumi.Harness.Platform.Outputs
             OnboardingPipelineOrg = onboardingPipelineOrg;
             OnboardingPipelineProject = onboardingPipelineProject;
             OnboardingPipelineSync = onboardingPipelineSync;
-            Org = org;
-            Project = project;
             Repository = repository;
             RepositoryBranch = repositoryBranch;
             RepositoryCommit = repositoryCommit;

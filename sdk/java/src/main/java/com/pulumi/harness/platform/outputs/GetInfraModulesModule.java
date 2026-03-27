@@ -70,17 +70,7 @@ public final class GetInfraModulesModule {
      */
     private @Nullable Boolean onboardingPipelineSync;
     /**
-     * @return Organization that owns the module
-     * 
-     */
-    private String org;
-    /**
-     * @return Project that owns the module
-     * 
-     */
-    private String project;
-    /**
-     * @return Repository where the module is stored
+     * @return Repository name where the module is stored
      * 
      */
     private String repository;
@@ -219,21 +209,7 @@ public final class GetInfraModulesModule {
         return Optional.ofNullable(this.onboardingPipelineSync);
     }
     /**
-     * @return Organization that owns the module
-     * 
-     */
-    public String org() {
-        return this.org;
-    }
-    /**
-     * @return Project that owns the module
-     * 
-     */
-    public String project() {
-        return this.project;
-    }
-    /**
-     * @return Repository where the module is stored
+     * @return Repository name where the module is stored
      * 
      */
     public String repository() {
@@ -337,8 +313,6 @@ public final class GetInfraModulesModule {
         private @Nullable String onboardingPipelineOrg;
         private @Nullable String onboardingPipelineProject;
         private @Nullable Boolean onboardingPipelineSync;
-        private String org;
-        private String project;
         private String repository;
         private String repositoryBranch;
         private String repositoryCommit;
@@ -365,8 +339,6 @@ public final class GetInfraModulesModule {
     	      this.onboardingPipelineOrg = defaults.onboardingPipelineOrg;
     	      this.onboardingPipelineProject = defaults.onboardingPipelineProject;
     	      this.onboardingPipelineSync = defaults.onboardingPipelineSync;
-    	      this.org = defaults.org;
-    	      this.project = defaults.project;
     	      this.repository = defaults.repository;
     	      this.repositoryBranch = defaults.repositoryBranch;
     	      this.repositoryCommit = defaults.repositoryCommit;
@@ -459,22 +431,6 @@ public final class GetInfraModulesModule {
         public Builder onboardingPipelineSync(@Nullable Boolean onboardingPipelineSync) {
 
             this.onboardingPipelineSync = onboardingPipelineSync;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder org(String org) {
-            if (org == null) {
-              throw new MissingRequiredPropertyException("GetInfraModulesModule", "org");
-            }
-            this.org = org;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder project(String project) {
-            if (project == null) {
-              throw new MissingRequiredPropertyException("GetInfraModulesModule", "project");
-            }
-            this.project = project;
             return this;
         }
         @CustomType.Setter
@@ -586,8 +542,6 @@ public final class GetInfraModulesModule {
             _resultValue.onboardingPipelineOrg = onboardingPipelineOrg;
             _resultValue.onboardingPipelineProject = onboardingPipelineProject;
             _resultValue.onboardingPipelineSync = onboardingPipelineSync;
-            _resultValue.org = org;
-            _resultValue.project = project;
             _resultValue.repository = repository;
             _resultValue.repositoryBranch = repositoryBranch;
             _resultValue.repositoryCommit = repositoryCommit;

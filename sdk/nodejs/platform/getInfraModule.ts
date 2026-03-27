@@ -77,25 +77,25 @@ export interface GetInfraModuleArgs {
      */
     name: string;
     /**
-     * Onboarding Pipeline identifier
+     * Onboarding Pipeline identifier.
      */
     onboardingPipeline?: string;
     /**
-     * Onboarding Pipeline organization
+     * Onboarding Pipeline organization.
      */
     onboardingPipelineOrg?: string;
     /**
-     * Onboarding Pipeline project
+     * Onboarding Pipeline project.
      */
     onboardingPipelineProject?: string;
     /**
-     * Sync the project automatically
+     * Sync the project automatically.
      */
     onboardingPipelineSync?: boolean;
     org?: string;
     project?: string;
     /**
-     * For account connectors, the repository where the module is stored
+     * For account connectors, the repository name where the module is stored.
      */
     repository?: string;
     /**
@@ -119,7 +119,7 @@ export interface GetInfraModuleArgs {
      */
     repositoryUrl?: string;
     /**
-     * How to store the artifact
+     * How to store the artifact.
      */
     storageType?: string;
     /**
@@ -193,25 +193,25 @@ export interface GetInfraModuleResult {
      */
     readonly name: string;
     /**
-     * Onboarding Pipeline identifier
+     * Onboarding Pipeline identifier.
      */
     readonly onboardingPipeline?: string;
     /**
-     * Onboarding Pipeline organization
+     * Onboarding Pipeline organization.
      */
     readonly onboardingPipelineOrg?: string;
     /**
-     * Onboarding Pipeline project
+     * Onboarding Pipeline project.
      */
     readonly onboardingPipelineProject?: string;
     /**
-     * Sync the project automatically
+     * Sync the project automatically.
      */
     readonly onboardingPipelineSync?: boolean;
     readonly org: string;
     readonly project: string;
     /**
-     * For account connectors, the repository where the module is stored
+     * For account connectors, the repository name where the module is stored.
      */
     readonly repository: string;
     /**
@@ -235,7 +235,7 @@ export interface GetInfraModuleResult {
      */
     readonly repositoryUrl: string;
     /**
-     * How to store the artifact
+     * How to store the artifact.
      */
     readonly storageType: string;
     /**
@@ -338,25 +338,25 @@ export interface GetInfraModuleOutputArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Onboarding Pipeline identifier
+     * Onboarding Pipeline identifier.
      */
     onboardingPipeline?: pulumi.Input<string>;
     /**
-     * Onboarding Pipeline organization
+     * Onboarding Pipeline organization.
      */
     onboardingPipelineOrg?: pulumi.Input<string>;
     /**
-     * Onboarding Pipeline project
+     * Onboarding Pipeline project.
      */
     onboardingPipelineProject?: pulumi.Input<string>;
     /**
-     * Sync the project automatically
+     * Sync the project automatically.
      */
     onboardingPipelineSync?: pulumi.Input<boolean>;
     org?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * For account connectors, the repository where the module is stored
+     * For account connectors, the repository name where the module is stored.
      */
     repository?: pulumi.Input<string>;
     /**
@@ -380,7 +380,7 @@ export interface GetInfraModuleOutputArgs {
      */
     repositoryUrl?: pulumi.Input<string>;
     /**
-     * How to store the artifact
+     * How to store the artifact.
      */
     storageType?: pulumi.Input<string>;
     /**

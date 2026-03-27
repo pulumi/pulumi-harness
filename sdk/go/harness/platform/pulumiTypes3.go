@@ -41787,12 +41787,8 @@ func (o GetIdpCatalogEntityGitDetailArrayOutput) Index(i pulumi.IntInput) GetIdp
 type GetInfraModuleTestingMetadata struct {
 	// Account is the internal customer account ID
 	Account string `pulumi:"account"`
-	// Organization identifier
-	Org string `pulumi:"org"`
 	// Pipelines where the testing is enabled
 	Pipelines []string `pulumi:"pipelines"`
-	// Project identifier
-	Project string `pulumi:"project"`
 	// Provider connector for testing purposes
 	ProviderConnector string `pulumi:"providerConnector"`
 	// Provisioner type for testing purposes
@@ -41817,12 +41813,8 @@ type GetInfraModuleTestingMetadataInput interface {
 type GetInfraModuleTestingMetadataArgs struct {
 	// Account is the internal customer account ID
 	Account pulumi.StringInput `pulumi:"account"`
-	// Organization identifier
-	Org pulumi.StringInput `pulumi:"org"`
 	// Pipelines where the testing is enabled
 	Pipelines pulumi.StringArrayInput `pulumi:"pipelines"`
-	// Project identifier
-	Project pulumi.StringInput `pulumi:"project"`
 	// Provider connector for testing purposes
 	ProviderConnector pulumi.StringInput `pulumi:"providerConnector"`
 	// Provisioner type for testing purposes
@@ -41915,19 +41907,9 @@ func (o GetInfraModuleTestingMetadataOutput) Account() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraModuleTestingMetadata) string { return v.Account }).(pulumi.StringOutput)
 }
 
-// Organization identifier
-func (o GetInfraModuleTestingMetadataOutput) Org() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInfraModuleTestingMetadata) string { return v.Org }).(pulumi.StringOutput)
-}
-
 // Pipelines where the testing is enabled
 func (o GetInfraModuleTestingMetadataOutput) Pipelines() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInfraModuleTestingMetadata) []string { return v.Pipelines }).(pulumi.StringArrayOutput)
-}
-
-// Project identifier
-func (o GetInfraModuleTestingMetadataOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInfraModuleTestingMetadata) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Provider connector for testing purposes
@@ -41984,16 +41966,6 @@ func (o GetInfraModuleTestingMetadataPtrOutput) Account() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Organization identifier
-func (o GetInfraModuleTestingMetadataPtrOutput) Org() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetInfraModuleTestingMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Org
-	}).(pulumi.StringPtrOutput)
-}
-
 // Pipelines where the testing is enabled
 func (o GetInfraModuleTestingMetadataPtrOutput) Pipelines() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetInfraModuleTestingMetadata) []string {
@@ -42002,16 +41974,6 @@ func (o GetInfraModuleTestingMetadataPtrOutput) Pipelines() pulumi.StringArrayOu
 		}
 		return v.Pipelines
 	}).(pulumi.StringArrayOutput)
-}
-
-// Project identifier
-func (o GetInfraModuleTestingMetadataPtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetInfraModuleTestingMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
 }
 
 // Provider connector for testing purposes
@@ -42347,11 +42309,7 @@ type GetInfraModulesModule struct {
 	OnboardingPipelineProject *string `pulumi:"onboardingPipelineProject"`
 	// Sync the project automatically.
 	OnboardingPipelineSync *bool `pulumi:"onboardingPipelineSync"`
-	// Organization that owns the module
-	Org string `pulumi:"org"`
-	// Project that owns the module
-	Project string `pulumi:"project"`
-	// Repository where the module is stored
+	// Repository name where the module is stored
 	Repository string `pulumi:"repository"`
 	// Repository branch
 	RepositoryBranch string `pulumi:"repositoryBranch"`
@@ -42411,11 +42369,7 @@ type GetInfraModulesModuleArgs struct {
 	OnboardingPipelineProject pulumi.StringPtrInput `pulumi:"onboardingPipelineProject"`
 	// Sync the project automatically.
 	OnboardingPipelineSync pulumi.BoolPtrInput `pulumi:"onboardingPipelineSync"`
-	// Organization that owns the module
-	Org pulumi.StringInput `pulumi:"org"`
-	// Project that owns the module
-	Project pulumi.StringInput `pulumi:"project"`
-	// Repository where the module is stored
+	// Repository name where the module is stored
 	Repository pulumi.StringInput `pulumi:"repository"`
 	// Repository branch
 	RepositoryBranch pulumi.StringInput `pulumi:"repositoryBranch"`
@@ -42547,17 +42501,7 @@ func (o GetInfraModulesModuleOutput) OnboardingPipelineSync() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v GetInfraModulesModule) *bool { return v.OnboardingPipelineSync }).(pulumi.BoolPtrOutput)
 }
 
-// Organization that owns the module
-func (o GetInfraModulesModuleOutput) Org() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Org }).(pulumi.StringOutput)
-}
-
-// Project that owns the module
-func (o GetInfraModulesModuleOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Project }).(pulumi.StringOutput)
-}
-
-// Repository where the module is stored
+// Repository name where the module is stored
 func (o GetInfraModulesModuleOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraModulesModule) string { return v.Repository }).(pulumi.StringOutput)
 }

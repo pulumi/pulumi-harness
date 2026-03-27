@@ -193,7 +193,7 @@ class GetInfraModuleResult:
     @pulumi.getter(name="onboardingPipeline")
     def onboarding_pipeline(self) -> Optional[_builtins.str]:
         """
-        Onboarding Pipeline identifier
+        Onboarding Pipeline identifier.
         """
         return pulumi.get(self, "onboarding_pipeline")
 
@@ -201,7 +201,7 @@ class GetInfraModuleResult:
     @pulumi.getter(name="onboardingPipelineOrg")
     def onboarding_pipeline_org(self) -> Optional[_builtins.str]:
         """
-        Onboarding Pipeline organization
+        Onboarding Pipeline organization.
         """
         return pulumi.get(self, "onboarding_pipeline_org")
 
@@ -209,7 +209,7 @@ class GetInfraModuleResult:
     @pulumi.getter(name="onboardingPipelineProject")
     def onboarding_pipeline_project(self) -> Optional[_builtins.str]:
         """
-        Onboarding Pipeline project
+        Onboarding Pipeline project.
         """
         return pulumi.get(self, "onboarding_pipeline_project")
 
@@ -217,7 +217,7 @@ class GetInfraModuleResult:
     @pulumi.getter(name="onboardingPipelineSync")
     def onboarding_pipeline_sync(self) -> Optional[_builtins.bool]:
         """
-        Sync the project automatically
+        Sync the project automatically.
         """
         return pulumi.get(self, "onboarding_pipeline_sync")
 
@@ -235,7 +235,7 @@ class GetInfraModuleResult:
     @pulumi.getter
     def repository(self) -> _builtins.str:
         """
-        For account connectors, the repository where the module is stored
+        For account connectors, the repository name where the module is stored.
         """
         return pulumi.get(self, "repository")
 
@@ -283,7 +283,7 @@ class GetInfraModuleResult:
     @pulumi.getter(name="storageType")
     def storage_type(self) -> _builtins.str:
         """
-        How to store the artifact
+        How to store the artifact.
         """
         return pulumi.get(self, "storage_type")
 
@@ -422,17 +422,17 @@ def get_infra_module(account: Optional[_builtins.str] = None,
     :param _builtins.str id: Identifier of the module
     :param _builtins.str module_error: Error while retrieving the module
     :param _builtins.str name: Name of the module
-    :param _builtins.str onboarding_pipeline: Onboarding Pipeline identifier
-    :param _builtins.str onboarding_pipeline_org: Onboarding Pipeline organization
-    :param _builtins.str onboarding_pipeline_project: Onboarding Pipeline project
-    :param _builtins.bool onboarding_pipeline_sync: Sync the project automatically
-    :param _builtins.str repository: For account connectors, the repository where the module is stored
+    :param _builtins.str onboarding_pipeline: Onboarding Pipeline identifier.
+    :param _builtins.str onboarding_pipeline_org: Onboarding Pipeline organization.
+    :param _builtins.str onboarding_pipeline_project: Onboarding Pipeline project.
+    :param _builtins.bool onboarding_pipeline_sync: Sync the project automatically.
+    :param _builtins.str repository: For account connectors, the repository name where the module is stored.
     :param _builtins.str repository_branch: Repository Branch in which the module should be accessed
     :param _builtins.str repository_commit: Repository Commit in which the module should be accessed
     :param _builtins.str repository_connector: Repository Connector is the reference to the connector for the repository
     :param _builtins.str repository_path: Repository Path is the path in which the module resides
     :param _builtins.str repository_url: URL where the module is stored
-    :param _builtins.str storage_type: How to store the artifact
+    :param _builtins.str storage_type: How to store the artifact.
     :param _builtins.int synced: Timestamp when the module was last synced
     :param _builtins.str system: Provider of the module
     :param _builtins.str tags: Tags associated with the module
@@ -543,17 +543,17 @@ def get_infra_module_output(account: Optional[pulumi.Input[_builtins.str]] = Non
     :param _builtins.str id: Identifier of the module
     :param _builtins.str module_error: Error while retrieving the module
     :param _builtins.str name: Name of the module
-    :param _builtins.str onboarding_pipeline: Onboarding Pipeline identifier
-    :param _builtins.str onboarding_pipeline_org: Onboarding Pipeline organization
-    :param _builtins.str onboarding_pipeline_project: Onboarding Pipeline project
-    :param _builtins.bool onboarding_pipeline_sync: Sync the project automatically
-    :param _builtins.str repository: For account connectors, the repository where the module is stored
+    :param _builtins.str onboarding_pipeline: Onboarding Pipeline identifier.
+    :param _builtins.str onboarding_pipeline_org: Onboarding Pipeline organization.
+    :param _builtins.str onboarding_pipeline_project: Onboarding Pipeline project.
+    :param _builtins.bool onboarding_pipeline_sync: Sync the project automatically.
+    :param _builtins.str repository: For account connectors, the repository name where the module is stored.
     :param _builtins.str repository_branch: Repository Branch in which the module should be accessed
     :param _builtins.str repository_commit: Repository Commit in which the module should be accessed
     :param _builtins.str repository_connector: Repository Connector is the reference to the connector for the repository
     :param _builtins.str repository_path: Repository Path is the path in which the module resides
     :param _builtins.str repository_url: URL where the module is stored
-    :param _builtins.str storage_type: How to store the artifact
+    :param _builtins.str storage_type: How to store the artifact.
     :param _builtins.int synced: Timestamp when the module was last synced
     :param _builtins.str system: Provider of the module
     :param _builtins.str tags: Tags associated with the module

@@ -27,7 +27,7 @@ namespace Pulumi.Harness.Platform
     ///         Description = "example",
     ///         Name = "name",
     ///         System = "provider",
-    ///         Repository = "https://github.com/org/repo",
+    ///         Repository = "repo",
     ///         RepositoryBranch = "main",
     ///         RepositoryPath = "tf/aws/basic",
     ///         RepositoryConnector = test.Id,
@@ -35,7 +35,7 @@ namespace Pulumi.Harness.Platform
     ///         OnboardingPipelineOrg = "default",
     ///         OnboardingPipelineProject = "IaCM_Project",
     ///         OnboardingPipelineSync = true,
-    ///         StorageType = "harness",
+    ///         StorageType = "artifact",
     ///         ConnectorOrg = "default",
     ///         ConnectorProject = "my_project",
     ///     });
@@ -55,13 +55,13 @@ namespace Pulumi.Harness.Platform
     public partial class InfraModule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Connector organization.
+        /// Org of the connector to be used to fetch the code.
         /// </summary>
         [Output("connectorOrg")]
         public Output<string?> ConnectorOrg { get; private set; } = null!;
 
         /// <summary>
-        /// Connector project.
+        /// Project of the connector to be used to fetch the code.
         /// </summary>
         [Output("connectorProject")]
         public Output<string?> ConnectorProject { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.Harness.Platform
         public Output<bool?> OnboardingPipelineSync { get; private set; } = null!;
 
         /// <summary>
-        /// For account connectors, the repository where the module can be found
+        /// For account connectors, the repository name where the module can be found.
         /// </summary>
         [Output("repository")]
         public Output<string?> Repository { get; private set; } = null!;
@@ -228,13 +228,13 @@ namespace Pulumi.Harness.Platform
     public sealed class InfraModuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Connector organization.
+        /// Org of the connector to be used to fetch the code.
         /// </summary>
         [Input("connectorOrg")]
         public Input<string>? ConnectorOrg { get; set; }
 
         /// <summary>
-        /// Connector project.
+        /// Project of the connector to be used to fetch the code.
         /// </summary>
         [Input("connectorProject")]
         public Input<string>? ConnectorProject { get; set; }
@@ -288,7 +288,7 @@ namespace Pulumi.Harness.Platform
         public Input<bool>? OnboardingPipelineSync { get; set; }
 
         /// <summary>
-        /// For account connectors, the repository where the module can be found
+        /// For account connectors, the repository name where the module can be found.
         /// </summary>
         [Input("repository")]
         public Input<string>? Repository { get; set; }
@@ -368,13 +368,13 @@ namespace Pulumi.Harness.Platform
     public sealed class InfraModuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Connector organization.
+        /// Org of the connector to be used to fetch the code.
         /// </summary>
         [Input("connectorOrg")]
         public Input<string>? ConnectorOrg { get; set; }
 
         /// <summary>
-        /// Connector project.
+        /// Project of the connector to be used to fetch the code.
         /// </summary>
         [Input("connectorProject")]
         public Input<string>? ConnectorProject { get; set; }
@@ -428,7 +428,7 @@ namespace Pulumi.Harness.Platform
         public Input<bool>? OnboardingPipelineSync { get; set; }
 
         /// <summary>
-        /// For account connectors, the repository where the module can be found
+        /// For account connectors, the repository name where the module can be found.
         /// </summary>
         [Input("repository")]
         public Input<string>? Repository { get; set; }

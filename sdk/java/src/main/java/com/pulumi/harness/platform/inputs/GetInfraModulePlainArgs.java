@@ -125,14 +125,14 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Onboarding Pipeline identifier
+     * Onboarding Pipeline identifier.
      * 
      */
     @Import(name="onboardingPipeline")
     private @Nullable String onboardingPipeline;
 
     /**
-     * @return Onboarding Pipeline identifier
+     * @return Onboarding Pipeline identifier.
      * 
      */
     public Optional<String> onboardingPipeline() {
@@ -140,14 +140,14 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Onboarding Pipeline organization
+     * Onboarding Pipeline organization.
      * 
      */
     @Import(name="onboardingPipelineOrg")
     private @Nullable String onboardingPipelineOrg;
 
     /**
-     * @return Onboarding Pipeline organization
+     * @return Onboarding Pipeline organization.
      * 
      */
     public Optional<String> onboardingPipelineOrg() {
@@ -155,14 +155,14 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Onboarding Pipeline project
+     * Onboarding Pipeline project.
      * 
      */
     @Import(name="onboardingPipelineProject")
     private @Nullable String onboardingPipelineProject;
 
     /**
-     * @return Onboarding Pipeline project
+     * @return Onboarding Pipeline project.
      * 
      */
     public Optional<String> onboardingPipelineProject() {
@@ -170,14 +170,14 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Sync the project automatically
+     * Sync the project automatically.
      * 
      */
     @Import(name="onboardingPipelineSync")
     private @Nullable Boolean onboardingPipelineSync;
 
     /**
-     * @return Sync the project automatically
+     * @return Sync the project automatically.
      * 
      */
     public Optional<Boolean> onboardingPipelineSync() {
@@ -199,14 +199,14 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * For account connectors, the repository where the module is stored
+     * For account connectors, the repository name where the module is stored.
      * 
      */
     @Import(name="repository")
     private @Nullable String repository;
 
     /**
-     * @return For account connectors, the repository where the module is stored
+     * @return For account connectors, the repository name where the module is stored.
      * 
      */
     public Optional<String> repository() {
@@ -289,14 +289,14 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * How to store the artifact
+     * How to store the artifact.
      * 
      */
     @Import(name="storageType")
     private @Nullable String storageType;
 
     /**
-     * @return How to store the artifact
+     * @return How to store the artifact.
      * 
      */
     public Optional<String> storageType() {
@@ -536,7 +536,7 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param onboardingPipeline Onboarding Pipeline identifier
+         * @param onboardingPipeline Onboarding Pipeline identifier.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param onboardingPipelineOrg Onboarding Pipeline organization
+         * @param onboardingPipelineOrg Onboarding Pipeline organization.
          * 
          * @return builder
          * 
@@ -558,7 +558,7 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param onboardingPipelineProject Onboarding Pipeline project
+         * @param onboardingPipelineProject Onboarding Pipeline project.
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param onboardingPipelineSync Sync the project automatically
+         * @param onboardingPipelineSync Sync the project automatically.
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param repository For account connectors, the repository where the module is stored
+         * @param repository For account connectors, the repository name where the module is stored.
          * 
          * @return builder
          * 
@@ -656,7 +656,7 @@ public final class GetInfraModulePlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param storageType How to store the artifact
+         * @param storageType How to store the artifact.
          * 
          * @return builder
          * 

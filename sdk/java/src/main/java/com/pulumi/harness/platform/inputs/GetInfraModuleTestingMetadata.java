@@ -30,21 +30,6 @@ public final class GetInfraModuleTestingMetadata extends com.pulumi.resources.In
     }
 
     /**
-     * Organization identifier
-     * 
-     */
-    @Import(name="org", required=true)
-    private String org;
-
-    /**
-     * @return Organization identifier
-     * 
-     */
-    public String org() {
-        return this.org;
-    }
-
-    /**
      * Pipelines where the testing is enabled
      * 
      */
@@ -57,21 +42,6 @@ public final class GetInfraModuleTestingMetadata extends com.pulumi.resources.In
      */
     public List<String> pipelines() {
         return this.pipelines;
-    }
-
-    /**
-     * Project identifier
-     * 
-     */
-    @Import(name="project", required=true)
-    private String project;
-
-    /**
-     * @return Project identifier
-     * 
-     */
-    public String project() {
-        return this.project;
     }
 
     /**
@@ -138,9 +108,7 @@ public final class GetInfraModuleTestingMetadata extends com.pulumi.resources.In
 
     private GetInfraModuleTestingMetadata(GetInfraModuleTestingMetadata $) {
         this.account = $.account;
-        this.org = $.org;
         this.pipelines = $.pipelines;
-        this.project = $.project;
         this.providerConnector = $.providerConnector;
         this.provisionerType = $.provisionerType;
         this.provisionerVersion = $.provisionerVersion;
@@ -177,17 +145,6 @@ public final class GetInfraModuleTestingMetadata extends com.pulumi.resources.In
         }
 
         /**
-         * @param org Organization identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder org(String org) {
-            $.org = org;
-            return this;
-        }
-
-        /**
          * @param pipelines Pipelines where the testing is enabled
          * 
          * @return builder
@@ -206,17 +163,6 @@ public final class GetInfraModuleTestingMetadata extends com.pulumi.resources.In
          */
         public Builder pipelines(String... pipelines) {
             return pipelines(List.of(pipelines));
-        }
-
-        /**
-         * @param project Project identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder project(String project) {
-            $.project = project;
-            return this;
         }
 
         /**
@@ -267,14 +213,8 @@ public final class GetInfraModuleTestingMetadata extends com.pulumi.resources.In
             if ($.account == null) {
                 throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadata", "account");
             }
-            if ($.org == null) {
-                throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadata", "org");
-            }
             if ($.pipelines == null) {
                 throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadata", "pipelines");
-            }
-            if ($.project == null) {
-                throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadata", "project");
             }
             if ($.providerConnector == null) {
                 throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadata", "providerConnector");

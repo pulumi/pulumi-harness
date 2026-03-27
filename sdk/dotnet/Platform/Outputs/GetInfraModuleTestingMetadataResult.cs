@@ -18,17 +18,9 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string Account;
         /// <summary>
-        /// Organization identifier
-        /// </summary>
-        public readonly string Org;
-        /// <summary>
         /// Pipelines where the testing is enabled
         /// </summary>
         public readonly ImmutableArray<string> Pipelines;
-        /// <summary>
-        /// Project identifier
-        /// </summary>
-        public readonly string Project;
         /// <summary>
         /// Provider connector for testing purposes
         /// </summary>
@@ -50,11 +42,7 @@ namespace Pulumi.Harness.Platform.Outputs
         private GetInfraModuleTestingMetadataResult(
             string account,
 
-            string org,
-
             ImmutableArray<string> pipelines,
-
-            string project,
 
             string providerConnector,
 
@@ -65,9 +53,7 @@ namespace Pulumi.Harness.Platform.Outputs
             string releasePipeline)
         {
             Account = account;
-            Org = org;
             Pipelines = pipelines;
-            Project = project;
             ProviderConnector = providerConnector;
             ProvisionerType = provisionerType;
             ProvisionerVersion = provisionerVersion;

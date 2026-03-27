@@ -32,7 +32,7 @@ import (
 //				Description:               pulumi.String("example"),
 //				Name:                      pulumi.String("name"),
 //				System:                    pulumi.String("provider"),
-//				Repository:                pulumi.String("https://github.com/org/repo"),
+//				Repository:                pulumi.String("repo"),
 //				RepositoryBranch:          pulumi.String("main"),
 //				RepositoryPath:            pulumi.String("tf/aws/basic"),
 //				RepositoryConnector:       pulumi.Any(test.Id),
@@ -40,7 +40,7 @@ import (
 //				OnboardingPipelineOrg:     pulumi.String("default"),
 //				OnboardingPipelineProject: pulumi.String("IaCM_Project"),
 //				OnboardingPipelineSync:    pulumi.Bool(true),
-//				StorageType:               pulumi.String("harness"),
+//				StorageType:               pulumi.String("artifact"),
 //				ConnectorOrg:              pulumi.String("default"),
 //				ConnectorProject:          pulumi.String("my_project"),
 //			})
@@ -63,9 +63,9 @@ import (
 type InfraModule struct {
 	pulumi.CustomResourceState
 
-	// Connector organization.
+	// Org of the connector to be used to fetch the code.
 	ConnectorOrg pulumi.StringPtrOutput `pulumi:"connectorOrg"`
-	// Connector project.
+	// Project of the connector to be used to fetch the code.
 	ConnectorProject pulumi.StringPtrOutput `pulumi:"connectorProject"`
 	// Timestamp when the module was created.
 	Created pulumi.IntOutput `pulumi:"created"`
@@ -83,7 +83,7 @@ type InfraModule struct {
 	OnboardingPipelineProject pulumi.StringPtrOutput `pulumi:"onboardingPipelineProject"`
 	// Sync the project automatically.
 	OnboardingPipelineSync pulumi.BoolPtrOutput `pulumi:"onboardingPipelineSync"`
-	// For account connectors, the repository where the module can be found
+	// For account connectors, the repository name where the module can be found.
 	Repository pulumi.StringPtrOutput `pulumi:"repository"`
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
 	RepositoryBranch pulumi.StringPtrOutput `pulumi:"repositoryBranch"`
@@ -140,9 +140,9 @@ func GetInfraModule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InfraModule resources.
 type infraModuleState struct {
-	// Connector organization.
+	// Org of the connector to be used to fetch the code.
 	ConnectorOrg *string `pulumi:"connectorOrg"`
-	// Connector project.
+	// Project of the connector to be used to fetch the code.
 	ConnectorProject *string `pulumi:"connectorProject"`
 	// Timestamp when the module was created.
 	Created *int `pulumi:"created"`
@@ -160,7 +160,7 @@ type infraModuleState struct {
 	OnboardingPipelineProject *string `pulumi:"onboardingPipelineProject"`
 	// Sync the project automatically.
 	OnboardingPipelineSync *bool `pulumi:"onboardingPipelineSync"`
-	// For account connectors, the repository where the module can be found
+	// For account connectors, the repository name where the module can be found.
 	Repository *string `pulumi:"repository"`
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
 	RepositoryBranch *string `pulumi:"repositoryBranch"`
@@ -185,9 +185,9 @@ type infraModuleState struct {
 }
 
 type InfraModuleState struct {
-	// Connector organization.
+	// Org of the connector to be used to fetch the code.
 	ConnectorOrg pulumi.StringPtrInput
-	// Connector project.
+	// Project of the connector to be used to fetch the code.
 	ConnectorProject pulumi.StringPtrInput
 	// Timestamp when the module was created.
 	Created pulumi.IntPtrInput
@@ -205,7 +205,7 @@ type InfraModuleState struct {
 	OnboardingPipelineProject pulumi.StringPtrInput
 	// Sync the project automatically.
 	OnboardingPipelineSync pulumi.BoolPtrInput
-	// For account connectors, the repository where the module can be found
+	// For account connectors, the repository name where the module can be found.
 	Repository pulumi.StringPtrInput
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
 	RepositoryBranch pulumi.StringPtrInput
@@ -234,9 +234,9 @@ func (InfraModuleState) ElementType() reflect.Type {
 }
 
 type infraModuleArgs struct {
-	// Connector organization.
+	// Org of the connector to be used to fetch the code.
 	ConnectorOrg *string `pulumi:"connectorOrg"`
-	// Connector project.
+	// Project of the connector to be used to fetch the code.
 	ConnectorProject *string `pulumi:"connectorProject"`
 	// Timestamp when the module was created.
 	Created *int `pulumi:"created"`
@@ -254,7 +254,7 @@ type infraModuleArgs struct {
 	OnboardingPipelineProject *string `pulumi:"onboardingPipelineProject"`
 	// Sync the project automatically.
 	OnboardingPipelineSync *bool `pulumi:"onboardingPipelineSync"`
-	// For account connectors, the repository where the module can be found
+	// For account connectors, the repository name where the module can be found.
 	Repository *string `pulumi:"repository"`
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
 	RepositoryBranch *string `pulumi:"repositoryBranch"`
@@ -280,9 +280,9 @@ type infraModuleArgs struct {
 
 // The set of arguments for constructing a InfraModule resource.
 type InfraModuleArgs struct {
-	// Connector organization.
+	// Org of the connector to be used to fetch the code.
 	ConnectorOrg pulumi.StringPtrInput
-	// Connector project.
+	// Project of the connector to be used to fetch the code.
 	ConnectorProject pulumi.StringPtrInput
 	// Timestamp when the module was created.
 	Created pulumi.IntPtrInput
@@ -300,7 +300,7 @@ type InfraModuleArgs struct {
 	OnboardingPipelineProject pulumi.StringPtrInput
 	// Sync the project automatically.
 	OnboardingPipelineSync pulumi.BoolPtrInput
-	// For account connectors, the repository where the module can be found
+	// For account connectors, the repository name where the module can be found.
 	Repository pulumi.StringPtrInput
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
 	RepositoryBranch pulumi.StringPtrInput
@@ -411,12 +411,12 @@ func (o InfraModuleOutput) ToInfraModuleOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// Connector organization.
+// Org of the connector to be used to fetch the code.
 func (o InfraModuleOutput) ConnectorOrg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfraModule) pulumi.StringPtrOutput { return v.ConnectorOrg }).(pulumi.StringPtrOutput)
 }
 
-// Connector project.
+// Project of the connector to be used to fetch the code.
 func (o InfraModuleOutput) ConnectorProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfraModule) pulumi.StringPtrOutput { return v.ConnectorProject }).(pulumi.StringPtrOutput)
 }
@@ -461,7 +461,7 @@ func (o InfraModuleOutput) OnboardingPipelineSync() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InfraModule) pulumi.BoolPtrOutput { return v.OnboardingPipelineSync }).(pulumi.BoolPtrOutput)
 }
 
-// For account connectors, the repository where the module can be found
+// For account connectors, the repository name where the module can be found.
 func (o InfraModuleOutput) Repository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfraModule) pulumi.StringPtrOutput { return v.Repository }).(pulumi.StringPtrOutput)
 }

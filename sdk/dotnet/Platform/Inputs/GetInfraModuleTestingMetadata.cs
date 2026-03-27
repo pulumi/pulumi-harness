@@ -18,12 +18,6 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("account", required: true)]
         public string Account { get; set; } = null!;
 
-        /// <summary>
-        /// Organization identifier
-        /// </summary>
-        [Input("org", required: true)]
-        public string Org { get; set; } = null!;
-
         [Input("pipelines", required: true)]
         private List<string>? _pipelines;
 
@@ -35,12 +29,6 @@ namespace Pulumi.Harness.Platform.Inputs
             get => _pipelines ?? (_pipelines = new List<string>());
             set => _pipelines = value;
         }
-
-        /// <summary>
-        /// Project identifier
-        /// </summary>
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
 
         /// <summary>
         /// Provider connector for testing purposes

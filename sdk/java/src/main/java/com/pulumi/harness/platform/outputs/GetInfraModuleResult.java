@@ -62,29 +62,29 @@ public final class GetInfraModuleResult {
      */
     private String name;
     /**
-     * @return Onboarding Pipeline identifier
+     * @return Onboarding Pipeline identifier.
      * 
      */
     private @Nullable String onboardingPipeline;
     /**
-     * @return Onboarding Pipeline organization
+     * @return Onboarding Pipeline organization.
      * 
      */
     private @Nullable String onboardingPipelineOrg;
     /**
-     * @return Onboarding Pipeline project
+     * @return Onboarding Pipeline project.
      * 
      */
     private @Nullable String onboardingPipelineProject;
     /**
-     * @return Sync the project automatically
+     * @return Sync the project automatically.
      * 
      */
     private @Nullable Boolean onboardingPipelineSync;
     private String org;
     private String project;
     /**
-     * @return For account connectors, the repository where the module is stored
+     * @return For account connectors, the repository name where the module is stored.
      * 
      */
     private String repository;
@@ -114,7 +114,7 @@ public final class GetInfraModuleResult {
      */
     private String repositoryUrl;
     /**
-     * @return How to store the artifact
+     * @return How to store the artifact.
      * 
      */
     private String storageType;
@@ -219,28 +219,28 @@ public final class GetInfraModuleResult {
         return this.name;
     }
     /**
-     * @return Onboarding Pipeline identifier
+     * @return Onboarding Pipeline identifier.
      * 
      */
     public Optional<String> onboardingPipeline() {
         return Optional.ofNullable(this.onboardingPipeline);
     }
     /**
-     * @return Onboarding Pipeline organization
+     * @return Onboarding Pipeline organization.
      * 
      */
     public Optional<String> onboardingPipelineOrg() {
         return Optional.ofNullable(this.onboardingPipelineOrg);
     }
     /**
-     * @return Onboarding Pipeline project
+     * @return Onboarding Pipeline project.
      * 
      */
     public Optional<String> onboardingPipelineProject() {
         return Optional.ofNullable(this.onboardingPipelineProject);
     }
     /**
-     * @return Sync the project automatically
+     * @return Sync the project automatically.
      * 
      */
     public Optional<Boolean> onboardingPipelineSync() {
@@ -253,7 +253,7 @@ public final class GetInfraModuleResult {
         return this.project;
     }
     /**
-     * @return For account connectors, the repository where the module is stored
+     * @return For account connectors, the repository name where the module is stored.
      * 
      */
     public String repository() {
@@ -295,7 +295,7 @@ public final class GetInfraModuleResult {
         return this.repositoryUrl;
     }
     /**
-     * @return How to store the artifact
+     * @return How to store the artifact.
      * 
      */
     public String storageType() {
