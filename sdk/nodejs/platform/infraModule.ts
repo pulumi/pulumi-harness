@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *     description: "example",
  *     name: "name",
  *     system: "provider",
- *     repository: "https://github.com/org/repo",
+ *     repository: "repo",
  *     repositoryBranch: "main",
  *     repositoryPath: "tf/aws/basic",
  *     repositoryConnector: test.id,
@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     onboardingPipelineOrg: "default",
  *     onboardingPipelineProject: "IaCM_Project",
  *     onboardingPipelineSync: true,
- *     storageType: "harness",
+ *     storageType: "artifact",
  *     connectorOrg: "default",
  *     connectorProject: "my_project",
  * });
@@ -68,11 +68,11 @@ export class InfraModule extends pulumi.CustomResource {
     }
 
     /**
-     * Connector organization.
+     * Org of the connector to be used to fetch the code.
      */
     declare public readonly connectorOrg: pulumi.Output<string | undefined>;
     /**
-     * Connector project.
+     * Project of the connector to be used to fetch the code.
      */
     declare public readonly connectorProject: pulumi.Output<string | undefined>;
     /**
@@ -108,7 +108,7 @@ export class InfraModule extends pulumi.CustomResource {
      */
     declare public readonly onboardingPipelineSync: pulumi.Output<boolean | undefined>;
     /**
-     * For account connectors, the repository where the module can be found
+     * For account connectors, the repository name where the module can be found.
      */
     declare public readonly repository: pulumi.Output<string | undefined>;
     /**
@@ -223,11 +223,11 @@ export class InfraModule extends pulumi.CustomResource {
  */
 export interface InfraModuleState {
     /**
-     * Connector organization.
+     * Org of the connector to be used to fetch the code.
      */
     connectorOrg?: pulumi.Input<string>;
     /**
-     * Connector project.
+     * Project of the connector to be used to fetch the code.
      */
     connectorProject?: pulumi.Input<string>;
     /**
@@ -263,7 +263,7 @@ export interface InfraModuleState {
      */
     onboardingPipelineSync?: pulumi.Input<boolean>;
     /**
-     * For account connectors, the repository where the module can be found
+     * For account connectors, the repository name where the module can be found.
      */
     repository?: pulumi.Input<string>;
     /**
@@ -313,11 +313,11 @@ export interface InfraModuleState {
  */
 export interface InfraModuleArgs {
     /**
-     * Connector organization.
+     * Org of the connector to be used to fetch the code.
      */
     connectorOrg?: pulumi.Input<string>;
     /**
-     * Connector project.
+     * Project of the connector to be used to fetch the code.
      */
     connectorProject?: pulumi.Input<string>;
     /**
@@ -353,7 +353,7 @@ export interface InfraModuleArgs {
      */
     onboardingPipelineSync?: pulumi.Input<boolean>;
     /**
-     * For account connectors, the repository where the module can be found
+     * For account connectors, the repository name where the module can be found.
      */
     repository?: pulumi.Input<string>;
     /**

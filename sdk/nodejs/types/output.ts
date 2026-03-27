@@ -6307,17 +6307,9 @@ export namespace platform {
          */
         account: string;
         /**
-         * Organization identifier
-         */
-        org: string;
-        /**
          * Pipelines where the testing is enabled
          */
         pipelines: string[];
-        /**
-         * Project identifier
-         */
-        project: string;
         /**
          * Provider connector for testing purposes
          */
@@ -6417,15 +6409,7 @@ export namespace platform {
          */
         onboardingPipelineSync?: boolean;
         /**
-         * Organization that owns the module
-         */
-        org: string;
-        /**
-         * Project that owns the module
-         */
-        project: string;
-        /**
-         * Repository where the module is stored
+         * Repository name where the module is stored
          */
         repository: string;
         /**

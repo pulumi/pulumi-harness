@@ -5308,17 +5308,9 @@ export namespace platform {
          */
         account?: string;
         /**
-         * Organization identifier
-         */
-        org?: string;
-        /**
          * Pipelines where the testing is enabled
          */
         pipelines?: string[];
-        /**
-         * Project identifier
-         */
-        project?: string;
         /**
          * Provider connector for testing purposes
          */
@@ -5343,17 +5335,9 @@ export namespace platform {
          */
         account?: pulumi.Input<string>;
         /**
-         * Organization identifier
-         */
-        org?: pulumi.Input<string>;
-        /**
          * Pipelines where the testing is enabled
          */
         pipelines?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Project identifier
-         */
-        project?: pulumi.Input<string>;
         /**
          * Provider connector for testing purposes
          */

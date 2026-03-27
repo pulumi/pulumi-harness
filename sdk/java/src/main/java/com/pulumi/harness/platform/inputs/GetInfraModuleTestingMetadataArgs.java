@@ -31,21 +31,6 @@ public final class GetInfraModuleTestingMetadataArgs extends com.pulumi.resource
     }
 
     /**
-     * Organization identifier
-     * 
-     */
-    @Import(name="org", required=true)
-    private Output<String> org;
-
-    /**
-     * @return Organization identifier
-     * 
-     */
-    public Output<String> org() {
-        return this.org;
-    }
-
-    /**
      * Pipelines where the testing is enabled
      * 
      */
@@ -58,21 +43,6 @@ public final class GetInfraModuleTestingMetadataArgs extends com.pulumi.resource
      */
     public Output<List<String>> pipelines() {
         return this.pipelines;
-    }
-
-    /**
-     * Project identifier
-     * 
-     */
-    @Import(name="project", required=true)
-    private Output<String> project;
-
-    /**
-     * @return Project identifier
-     * 
-     */
-    public Output<String> project() {
-        return this.project;
     }
 
     /**
@@ -139,9 +109,7 @@ public final class GetInfraModuleTestingMetadataArgs extends com.pulumi.resource
 
     private GetInfraModuleTestingMetadataArgs(GetInfraModuleTestingMetadataArgs $) {
         this.account = $.account;
-        this.org = $.org;
         this.pipelines = $.pipelines;
-        this.project = $.project;
         this.providerConnector = $.providerConnector;
         this.provisionerType = $.provisionerType;
         this.provisionerVersion = $.provisionerVersion;
@@ -188,27 +156,6 @@ public final class GetInfraModuleTestingMetadataArgs extends com.pulumi.resource
         }
 
         /**
-         * @param org Organization identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder org(Output<String> org) {
-            $.org = org;
-            return this;
-        }
-
-        /**
-         * @param org Organization identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder org(String org) {
-            return org(Output.of(org));
-        }
-
-        /**
          * @param pipelines Pipelines where the testing is enabled
          * 
          * @return builder
@@ -237,27 +184,6 @@ public final class GetInfraModuleTestingMetadataArgs extends com.pulumi.resource
          */
         public Builder pipelines(String... pipelines) {
             return pipelines(List.of(pipelines));
-        }
-
-        /**
-         * @param project Project identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder project(Output<String> project) {
-            $.project = project;
-            return this;
-        }
-
-        /**
-         * @param project Project identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder project(String project) {
-            return project(Output.of(project));
         }
 
         /**
@@ -348,14 +274,8 @@ public final class GetInfraModuleTestingMetadataArgs extends com.pulumi.resource
             if ($.account == null) {
                 throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadataArgs", "account");
             }
-            if ($.org == null) {
-                throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadataArgs", "org");
-            }
             if ($.pipelines == null) {
                 throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadataArgs", "pipelines");
-            }
-            if ($.project == null) {
-                throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadataArgs", "project");
             }
             if ($.providerConnector == null) {
                 throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadataArgs", "providerConnector");

@@ -82,25 +82,25 @@ namespace Pulumi.Harness.Platform
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// Onboarding Pipeline identifier
+        /// Onboarding Pipeline identifier.
         /// </summary>
         [Input("onboardingPipeline")]
         public string? OnboardingPipeline { get; set; }
 
         /// <summary>
-        /// Onboarding Pipeline organization
+        /// Onboarding Pipeline organization.
         /// </summary>
         [Input("onboardingPipelineOrg")]
         public string? OnboardingPipelineOrg { get; set; }
 
         /// <summary>
-        /// Onboarding Pipeline project
+        /// Onboarding Pipeline project.
         /// </summary>
         [Input("onboardingPipelineProject")]
         public string? OnboardingPipelineProject { get; set; }
 
         /// <summary>
-        /// Sync the project automatically
+        /// Sync the project automatically.
         /// </summary>
         [Input("onboardingPipelineSync")]
         public bool? OnboardingPipelineSync { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.Harness.Platform
         public string? Project { get; set; }
 
         /// <summary>
-        /// For account connectors, the repository where the module is stored
+        /// For account connectors, the repository name where the module is stored.
         /// </summary>
         [Input("repository")]
         public string? Repository { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.Harness.Platform
         public string? RepositoryUrl { get; set; }
 
         /// <summary>
-        /// How to store the artifact
+        /// How to store the artifact.
         /// </summary>
         [Input("storageType")]
         public string? StorageType { get; set; }
@@ -252,25 +252,25 @@ namespace Pulumi.Harness.Platform
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Onboarding Pipeline identifier
+        /// Onboarding Pipeline identifier.
         /// </summary>
         [Input("onboardingPipeline")]
         public Input<string>? OnboardingPipeline { get; set; }
 
         /// <summary>
-        /// Onboarding Pipeline organization
+        /// Onboarding Pipeline organization.
         /// </summary>
         [Input("onboardingPipelineOrg")]
         public Input<string>? OnboardingPipelineOrg { get; set; }
 
         /// <summary>
-        /// Onboarding Pipeline project
+        /// Onboarding Pipeline project.
         /// </summary>
         [Input("onboardingPipelineProject")]
         public Input<string>? OnboardingPipelineProject { get; set; }
 
         /// <summary>
-        /// Sync the project automatically
+        /// Sync the project automatically.
         /// </summary>
         [Input("onboardingPipelineSync")]
         public Input<bool>? OnboardingPipelineSync { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// For account connectors, the repository where the module is stored
+        /// For account connectors, the repository name where the module is stored.
         /// </summary>
         [Input("repository")]
         public Input<string>? Repository { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? RepositoryUrl { get; set; }
 
         /// <summary>
-        /// How to store the artifact
+        /// How to store the artifact.
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }
@@ -418,25 +418,25 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Onboarding Pipeline identifier
+        /// Onboarding Pipeline identifier.
         /// </summary>
         public readonly string? OnboardingPipeline;
         /// <summary>
-        /// Onboarding Pipeline organization
+        /// Onboarding Pipeline organization.
         /// </summary>
         public readonly string? OnboardingPipelineOrg;
         /// <summary>
-        /// Onboarding Pipeline project
+        /// Onboarding Pipeline project.
         /// </summary>
         public readonly string? OnboardingPipelineProject;
         /// <summary>
-        /// Sync the project automatically
+        /// Sync the project automatically.
         /// </summary>
         public readonly bool? OnboardingPipelineSync;
         public readonly string Org;
         public readonly string Project;
         /// <summary>
-        /// For account connectors, the repository where the module is stored
+        /// For account connectors, the repository name where the module is stored.
         /// </summary>
         public readonly string Repository;
         /// <summary>
@@ -460,7 +460,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string RepositoryUrl;
         /// <summary>
-        /// How to store the artifact
+        /// How to store the artifact.
         /// </summary>
         public readonly string StorageType;
         /// <summary>

@@ -17,20 +17,10 @@ public final class GetInfraModuleTestingMetadata {
      */
     private String account;
     /**
-     * @return Organization identifier
-     * 
-     */
-    private String org;
-    /**
      * @return Pipelines where the testing is enabled
      * 
      */
     private List<String> pipelines;
-    /**
-     * @return Project identifier
-     * 
-     */
-    private String project;
     /**
      * @return Provider connector for testing purposes
      * 
@@ -61,25 +51,11 @@ public final class GetInfraModuleTestingMetadata {
         return this.account;
     }
     /**
-     * @return Organization identifier
-     * 
-     */
-    public String org() {
-        return this.org;
-    }
-    /**
      * @return Pipelines where the testing is enabled
      * 
      */
     public List<String> pipelines() {
         return this.pipelines;
-    }
-    /**
-     * @return Project identifier
-     * 
-     */
-    public String project() {
-        return this.project;
     }
     /**
      * @return Provider connector for testing purposes
@@ -120,9 +96,7 @@ public final class GetInfraModuleTestingMetadata {
     @CustomType.Builder
     public static final class Builder {
         private String account;
-        private String org;
         private List<String> pipelines;
-        private String project;
         private String providerConnector;
         private String provisionerType;
         private String provisionerVersion;
@@ -131,9 +105,7 @@ public final class GetInfraModuleTestingMetadata {
         public Builder(GetInfraModuleTestingMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.account = defaults.account;
-    	      this.org = defaults.org;
     	      this.pipelines = defaults.pipelines;
-    	      this.project = defaults.project;
     	      this.providerConnector = defaults.providerConnector;
     	      this.provisionerType = defaults.provisionerType;
     	      this.provisionerVersion = defaults.provisionerVersion;
@@ -149,14 +121,6 @@ public final class GetInfraModuleTestingMetadata {
             return this;
         }
         @CustomType.Setter
-        public Builder org(String org) {
-            if (org == null) {
-              throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadata", "org");
-            }
-            this.org = org;
-            return this;
-        }
-        @CustomType.Setter
         public Builder pipelines(List<String> pipelines) {
             if (pipelines == null) {
               throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadata", "pipelines");
@@ -166,14 +130,6 @@ public final class GetInfraModuleTestingMetadata {
         }
         public Builder pipelines(String... pipelines) {
             return pipelines(List.of(pipelines));
-        }
-        @CustomType.Setter
-        public Builder project(String project) {
-            if (project == null) {
-              throw new MissingRequiredPropertyException("GetInfraModuleTestingMetadata", "project");
-            }
-            this.project = project;
-            return this;
         }
         @CustomType.Setter
         public Builder providerConnector(String providerConnector) {
@@ -210,9 +166,7 @@ public final class GetInfraModuleTestingMetadata {
         public GetInfraModuleTestingMetadata build() {
             final var _resultValue = new GetInfraModuleTestingMetadata();
             _resultValue.account = account;
-            _resultValue.org = org;
             _resultValue.pipelines = pipelines;
-            _resultValue.project = project;
             _resultValue.providerConnector = providerConnector;
             _resultValue.provisionerType = provisionerType;
             _resultValue.provisionerVersion = provisionerVersion;

@@ -44,8 +44,8 @@ class InfraModuleArgs:
         The set of arguments for constructing a InfraModule resource.
 
         :param pulumi.Input[_builtins.str] system: Provider of the module.
-        :param pulumi.Input[_builtins.str] connector_org: Connector organization.
-        :param pulumi.Input[_builtins.str] connector_project: Connector project.
+        :param pulumi.Input[_builtins.str] connector_org: Org of the connector to be used to fetch the code.
+        :param pulumi.Input[_builtins.str] connector_project: Project of the connector to be used to fetch the code.
         :param pulumi.Input[_builtins.int] created: Timestamp when the module was created.
         :param pulumi.Input[_builtins.str] description: Description of the module.
         :param pulumi.Input[_builtins.str] git_tag_style: Git Tag Style.
@@ -54,7 +54,7 @@ class InfraModuleArgs:
         :param pulumi.Input[_builtins.str] onboarding_pipeline_org: Onboarding Pipeline organization.
         :param pulumi.Input[_builtins.str] onboarding_pipeline_project: Onboarding Pipeline project.
         :param pulumi.Input[_builtins.bool] onboarding_pipeline_sync: Sync the project automatically.
-        :param pulumi.Input[_builtins.str] repository: For account connectors, the repository where the module can be found
+        :param pulumi.Input[_builtins.str] repository: For account connectors, the repository name where the module can be found.
         :param pulumi.Input[_builtins.str] repository_branch: Name of the branch to fetch the code from. This cannot be set if repository commit is set.
         :param pulumi.Input[_builtins.str] repository_commit: Tag to fetch the code from. This cannot be set if repository branch is set.
         :param pulumi.Input[_builtins.str] repository_connector: Reference to the connector to be used to fetch the code.
@@ -123,7 +123,7 @@ class InfraModuleArgs:
     @pulumi.getter(name="connectorOrg")
     def connector_org(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Connector organization.
+        Org of the connector to be used to fetch the code.
         """
         return pulumi.get(self, "connector_org")
 
@@ -135,7 +135,7 @@ class InfraModuleArgs:
     @pulumi.getter(name="connectorProject")
     def connector_project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Connector project.
+        Project of the connector to be used to fetch the code.
         """
         return pulumi.get(self, "connector_project")
 
@@ -243,7 +243,7 @@ class InfraModuleArgs:
     @pulumi.getter
     def repository(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        For account connectors, the repository where the module can be found
+        For account connectors, the repository name where the module can be found.
         """
         return pulumi.get(self, "repository")
 
@@ -387,8 +387,8 @@ class _InfraModuleState:
         """
         Input properties used for looking up and filtering InfraModule resources.
 
-        :param pulumi.Input[_builtins.str] connector_org: Connector organization.
-        :param pulumi.Input[_builtins.str] connector_project: Connector project.
+        :param pulumi.Input[_builtins.str] connector_org: Org of the connector to be used to fetch the code.
+        :param pulumi.Input[_builtins.str] connector_project: Project of the connector to be used to fetch the code.
         :param pulumi.Input[_builtins.int] created: Timestamp when the module was created.
         :param pulumi.Input[_builtins.str] description: Description of the module.
         :param pulumi.Input[_builtins.str] git_tag_style: Git Tag Style.
@@ -397,7 +397,7 @@ class _InfraModuleState:
         :param pulumi.Input[_builtins.str] onboarding_pipeline_org: Onboarding Pipeline organization.
         :param pulumi.Input[_builtins.str] onboarding_pipeline_project: Onboarding Pipeline project.
         :param pulumi.Input[_builtins.bool] onboarding_pipeline_sync: Sync the project automatically.
-        :param pulumi.Input[_builtins.str] repository: For account connectors, the repository where the module can be found
+        :param pulumi.Input[_builtins.str] repository: For account connectors, the repository name where the module can be found.
         :param pulumi.Input[_builtins.str] repository_branch: Name of the branch to fetch the code from. This cannot be set if repository commit is set.
         :param pulumi.Input[_builtins.str] repository_commit: Tag to fetch the code from. This cannot be set if repository branch is set.
         :param pulumi.Input[_builtins.str] repository_connector: Reference to the connector to be used to fetch the code.
@@ -456,7 +456,7 @@ class _InfraModuleState:
     @pulumi.getter(name="connectorOrg")
     def connector_org(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Connector organization.
+        Org of the connector to be used to fetch the code.
         """
         return pulumi.get(self, "connector_org")
 
@@ -468,7 +468,7 @@ class _InfraModuleState:
     @pulumi.getter(name="connectorProject")
     def connector_project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Connector project.
+        Project of the connector to be used to fetch the code.
         """
         return pulumi.get(self, "connector_project")
 
@@ -576,7 +576,7 @@ class _InfraModuleState:
     @pulumi.getter
     def repository(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        For account connectors, the repository where the module can be found
+        For account connectors, the repository name where the module can be found.
         """
         return pulumi.get(self, "repository")
 
@@ -746,7 +746,7 @@ class InfraModule(pulumi.CustomResource):
             description="example",
             name="name",
             system="provider",
-            repository="https://github.com/org/repo",
+            repository="repo",
             repository_branch="main",
             repository_path="tf/aws/basic",
             repository_connector=test["id"],
@@ -754,7 +754,7 @@ class InfraModule(pulumi.CustomResource):
             onboarding_pipeline_org="default",
             onboarding_pipeline_project="IaCM_Project",
             onboarding_pipeline_sync=True,
-            storage_type="harness",
+            storage_type="artifact",
             connector_org="default",
             connector_project="my_project")
         ```
@@ -770,8 +770,8 @@ class InfraModule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] connector_org: Connector organization.
-        :param pulumi.Input[_builtins.str] connector_project: Connector project.
+        :param pulumi.Input[_builtins.str] connector_org: Org of the connector to be used to fetch the code.
+        :param pulumi.Input[_builtins.str] connector_project: Project of the connector to be used to fetch the code.
         :param pulumi.Input[_builtins.int] created: Timestamp when the module was created.
         :param pulumi.Input[_builtins.str] description: Description of the module.
         :param pulumi.Input[_builtins.str] git_tag_style: Git Tag Style.
@@ -780,7 +780,7 @@ class InfraModule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] onboarding_pipeline_org: Onboarding Pipeline organization.
         :param pulumi.Input[_builtins.str] onboarding_pipeline_project: Onboarding Pipeline project.
         :param pulumi.Input[_builtins.bool] onboarding_pipeline_sync: Sync the project automatically.
-        :param pulumi.Input[_builtins.str] repository: For account connectors, the repository where the module can be found
+        :param pulumi.Input[_builtins.str] repository: For account connectors, the repository name where the module can be found.
         :param pulumi.Input[_builtins.str] repository_branch: Name of the branch to fetch the code from. This cannot be set if repository commit is set.
         :param pulumi.Input[_builtins.str] repository_commit: Tag to fetch the code from. This cannot be set if repository branch is set.
         :param pulumi.Input[_builtins.str] repository_connector: Reference to the connector to be used to fetch the code.
@@ -811,7 +811,7 @@ class InfraModule(pulumi.CustomResource):
             description="example",
             name="name",
             system="provider",
-            repository="https://github.com/org/repo",
+            repository="repo",
             repository_branch="main",
             repository_path="tf/aws/basic",
             repository_connector=test["id"],
@@ -819,7 +819,7 @@ class InfraModule(pulumi.CustomResource):
             onboarding_pipeline_org="default",
             onboarding_pipeline_project="IaCM_Project",
             onboarding_pipeline_sync=True,
-            storage_type="harness",
+            storage_type="artifact",
             connector_org="default",
             connector_project="my_project")
         ```
@@ -939,8 +939,8 @@ class InfraModule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] connector_org: Connector organization.
-        :param pulumi.Input[_builtins.str] connector_project: Connector project.
+        :param pulumi.Input[_builtins.str] connector_org: Org of the connector to be used to fetch the code.
+        :param pulumi.Input[_builtins.str] connector_project: Project of the connector to be used to fetch the code.
         :param pulumi.Input[_builtins.int] created: Timestamp when the module was created.
         :param pulumi.Input[_builtins.str] description: Description of the module.
         :param pulumi.Input[_builtins.str] git_tag_style: Git Tag Style.
@@ -949,7 +949,7 @@ class InfraModule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] onboarding_pipeline_org: Onboarding Pipeline organization.
         :param pulumi.Input[_builtins.str] onboarding_pipeline_project: Onboarding Pipeline project.
         :param pulumi.Input[_builtins.bool] onboarding_pipeline_sync: Sync the project automatically.
-        :param pulumi.Input[_builtins.str] repository: For account connectors, the repository where the module can be found
+        :param pulumi.Input[_builtins.str] repository: For account connectors, the repository name where the module can be found.
         :param pulumi.Input[_builtins.str] repository_branch: Name of the branch to fetch the code from. This cannot be set if repository commit is set.
         :param pulumi.Input[_builtins.str] repository_commit: Tag to fetch the code from. This cannot be set if repository branch is set.
         :param pulumi.Input[_builtins.str] repository_connector: Reference to the connector to be used to fetch the code.
@@ -992,7 +992,7 @@ class InfraModule(pulumi.CustomResource):
     @pulumi.getter(name="connectorOrg")
     def connector_org(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Connector organization.
+        Org of the connector to be used to fetch the code.
         """
         return pulumi.get(self, "connector_org")
 
@@ -1000,7 +1000,7 @@ class InfraModule(pulumi.CustomResource):
     @pulumi.getter(name="connectorProject")
     def connector_project(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Connector project.
+        Project of the connector to be used to fetch the code.
         """
         return pulumi.get(self, "connector_project")
 
@@ -1072,7 +1072,7 @@ class InfraModule(pulumi.CustomResource):
     @pulumi.getter
     def repository(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        For account connectors, the repository where the module can be found
+        For account connectors, the repository name where the module can be found.
         """
         return pulumi.get(self, "repository")
 

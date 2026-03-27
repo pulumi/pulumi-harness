@@ -20,14 +20,14 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final InfraModuleArgs Empty = new InfraModuleArgs();
 
     /**
-     * Connector organization.
+     * Org of the connector to be used to fetch the code.
      * 
      */
     @Import(name="connectorOrg")
     private @Nullable Output<String> connectorOrg;
 
     /**
-     * @return Connector organization.
+     * @return Org of the connector to be used to fetch the code.
      * 
      */
     public Optional<Output<String>> connectorOrg() {
@@ -35,14 +35,14 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connector project.
+     * Project of the connector to be used to fetch the code.
      * 
      */
     @Import(name="connectorProject")
     private @Nullable Output<String> connectorProject;
 
     /**
-     * @return Connector project.
+     * @return Project of the connector to be used to fetch the code.
      * 
      */
     public Optional<Output<String>> connectorProject() {
@@ -170,14 +170,14 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For account connectors, the repository where the module can be found
+     * For account connectors, the repository name where the module can be found.
      * 
      */
     @Import(name="repository")
     private @Nullable Output<String> repository;
 
     /**
-     * @return For account connectors, the repository where the module can be found
+     * @return For account connectors, the repository name where the module can be found.
      * 
      */
     public Optional<Output<String>> repository() {
@@ -379,7 +379,7 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectorOrg Connector organization.
+         * @param connectorOrg Org of the connector to be used to fetch the code.
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectorOrg Connector organization.
+         * @param connectorOrg Org of the connector to be used to fetch the code.
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectorProject Connector project.
+         * @param connectorProject Project of the connector to be used to fetch the code.
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectorProject Connector project.
+         * @param connectorProject Project of the connector to be used to fetch the code.
          * 
          * @return builder
          * 
@@ -589,7 +589,7 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repository For account connectors, the repository where the module can be found
+         * @param repository For account connectors, the repository name where the module can be found.
          * 
          * @return builder
          * 
@@ -600,7 +600,7 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repository For account connectors, the repository where the module can be found
+         * @param repository For account connectors, the repository name where the module can be found.
          * 
          * @return builder
          * 
