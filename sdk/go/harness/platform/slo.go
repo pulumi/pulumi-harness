@@ -82,10 +82,10 @@ import (
 //					SloTarget: &platform.SloRequestSloTargetArgs{
 //						Type:                pulumi.String("Calender"),
 //						SloTargetPercentage: pulumi.Float64(10),
-//						Spec:                pulumi.String(json0),
+//						Spec:                pulumi.String(pulumi.String(json0)),
 //					},
 //					Type: pulumi.String("Simple"),
-//					Spec: pulumi.String(json1),
+//					Spec: pulumi.String(pulumi.String(json1)),
 //					NotificationRuleRefs: platform.SloRequestNotificationRuleRefArray{
 //						&platform.SloRequestNotificationRuleRefArgs{
 //							NotificationRuleRef: pulumi.String("notification_rule_ref"),

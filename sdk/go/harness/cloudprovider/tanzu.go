@@ -38,7 +38,7 @@ import (
 //			tanzuPassword, err := harness.NewEncryptedText(ctx, "tanzu_password", &harness.EncryptedTextArgs{
 //				Name:            pulumi.String("tanzu_password"),
 //				Value:           pulumi.String("<PASSWORD>"),
-//				SecretManagerId: pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(pulumi.String(_default.Id)),
 //			})
 //			if err != nil {
 //				return err

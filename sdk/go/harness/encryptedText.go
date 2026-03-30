@@ -37,7 +37,7 @@ import (
 //			_, err = harness.NewEncryptedText(ctx, "example", &harness.EncryptedTextArgs{
 //				Name:            pulumi.String("example-secret"),
 //				Value:           pulumi.String("someval"),
-//				SecretManagerId: pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(pulumi.String(_default.Id)),
 //				UsageScopes: harness.EncryptedTextUsageScopeArray{
 //					&harness.EncryptedTextUsageScopeArgs{
 //						EnvironmentFilterType: pulumi.String("PRODUCTION_ENVIRONMENTS"),

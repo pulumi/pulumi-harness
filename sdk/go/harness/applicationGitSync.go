@@ -37,7 +37,7 @@ import (
 //			githubToken, err := harness.NewEncryptedText(ctx, "github_token", &harness.EncryptedTextArgs{
 //				Name:            pulumi.String("github_token"),
 //				Value:           pulumi.String("<TOKEN>"),
-//				SecretManagerId: pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(pulumi.String(_default.Id)),
 //			})
 //			if err != nil {
 //				return err

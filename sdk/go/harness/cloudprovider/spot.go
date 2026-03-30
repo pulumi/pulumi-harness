@@ -37,7 +37,7 @@ import (
 //			}
 //			spotToken, err := harness.NewEncryptedText(ctx, "spot_token", &harness.EncryptedTextArgs{
 //				Name:            pulumi.String("spot_token"),
-//				SecretManagerId: pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(pulumi.String(_default.Id)),
 //				Value:           pulumi.String("<SPOT_TOKEN>"),
 //			})
 //			if err != nil {
