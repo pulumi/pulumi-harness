@@ -37,7 +37,7 @@ import (
 //			awsAccessKey, err := harness.NewEncryptedText(ctx, "aws_access_key", &harness.EncryptedTextArgs{
 //				Name:            pulumi.String("aws_access_key"),
 //				Value:           pulumi.String("<ACCESS_KEY_ID>"),
-//				SecretManagerId: pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(pulumi.String(_default.Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -45,7 +45,7 @@ import (
 //			awsSecretKey, err := harness.NewEncryptedText(ctx, "aws_secret_key", &harness.EncryptedTextArgs{
 //				Name:            pulumi.String("aws_secret_key"),
 //				Value:           pulumi.String("<SECRET_KEY_ID>"),
-//				SecretManagerId: pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(pulumi.String(_default.Id)),
 //			})
 //			if err != nil {
 //				return err

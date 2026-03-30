@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			_, err = harness.NewDelegateApproval(ctx, "test", &harness.DelegateApprovalArgs{
-//				DelegateId: pulumi.String(test.Id),
+//				DelegateId: pulumi.String(pulumi.String(test.Id)),
 //				Approve:    pulumi.Bool(true),
 //			})
 //			if err != nil {

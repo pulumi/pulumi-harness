@@ -70,21 +70,21 @@ import (
 //					Name: pulumi.String("name"),
 //					NotificationMethod: &platform.NotificationRuleRequestNotificationMethodArgs{
 //						Type: pulumi.String("Slack"),
-//						Spec: pulumi.String(json0),
+//						Spec: pulumi.String(pulumi.String(json0)),
 //					},
 //					Type: pulumi.String("ServiceLevelObjective"),
 //					Conditions: platform.NotificationRuleRequestConditionArray{
 //						&platform.NotificationRuleRequestConditionArgs{
 //							Type: pulumi.String("ErrorBudgetBurnRate"),
-//							Spec: pulumi.String(json1),
+//							Spec: pulumi.String(pulumi.String(json1)),
 //						},
 //						&platform.NotificationRuleRequestConditionArgs{
 //							Type: pulumi.String("ErrorBudgetRemainingPercentage"),
-//							Spec: pulumi.String(json2),
+//							Spec: pulumi.String(pulumi.String(json2)),
 //						},
 //						&platform.NotificationRuleRequestConditionArgs{
 //							Type: pulumi.String("ErrorBudgetRemainingMinutes"),
-//							Spec: pulumi.String(json3),
+//							Spec: pulumi.String(pulumi.String(json3)),
 //						},
 //					},
 //				},
@@ -147,25 +147,25 @@ import (
 //					Name: pulumi.String("name"),
 //					NotificationMethod: &platform.NotificationRuleRequestNotificationMethodArgs{
 //						Type: pulumi.String("Slack"),
-//						Spec: pulumi.String(json4),
+//						Spec: pulumi.String(pulumi.String(json4)),
 //					},
 //					Type: pulumi.String("MonitoredService"),
 //					Conditions: platform.NotificationRuleRequestConditionArray{
 //						&platform.NotificationRuleRequestConditionArgs{
 //							Type: pulumi.String("ChangeImpact"),
-//							Spec: pulumi.String(json5),
+//							Spec: pulumi.String(pulumi.String(json5)),
 //						},
 //						&platform.NotificationRuleRequestConditionArgs{
 //							Type: pulumi.String("HealthScore"),
-//							Spec: pulumi.String(json6),
+//							Spec: pulumi.String(pulumi.String(json6)),
 //						},
 //						&platform.NotificationRuleRequestConditionArgs{
 //							Type: pulumi.String("ChangeObserved"),
-//							Spec: pulumi.String(json7),
+//							Spec: pulumi.String(pulumi.String(json7)),
 //						},
 //						&platform.NotificationRuleRequestConditionArgs{
 //							Type: pulumi.String("DeploymentImpactReport"),
-//							Spec: pulumi.String(json8),
+//							Spec: pulumi.String(pulumi.String(json8)),
 //						},
 //					},
 //				},

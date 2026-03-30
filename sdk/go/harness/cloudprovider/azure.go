@@ -38,7 +38,7 @@ import (
 //			azureKey, err := harness.NewEncryptedText(ctx, "azure_key", &harness.EncryptedTextArgs{
 //				Name:            pulumi.String("azure_key"),
 //				Value:           pulumi.String("<AZURE_KEY>"),
-//				SecretManagerId: pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(pulumi.String(_default.Id)),
 //			})
 //			if err != nil {
 //				return err

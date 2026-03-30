@@ -44,7 +44,7 @@ import (
 //			mySecret, err := harness.NewEncryptedText(ctx, "my_secret", &harness.EncryptedTextArgs{
 //				Name:            pulumi.String("my_secret"),
 //				Value:           harnessDeployKey.PrivateKeyPem,
-//				SecretManagerId: pulumi.String(secretManager.Id),
+//				SecretManagerId: pulumi.String(pulumi.String(secretManager.Id)),
 //			})
 //			if err != nil {
 //				return err
