@@ -14,6 +14,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
@@ -39,6 +40,16 @@ var modules = []string{
 	"cluster",
 	"governance",
 	"chaos",
+}
+
+func tokenStrategy(prov *info.Provider) (tks.Strategy, error) {
+	return fallbackstrat.KnownModulesWithInferredFallback(
+		prov,
+		"harness_",
+		"",
+		modules,
+		tks.MakeStandard(mainPkg),
+	)
 }
 
 func harnessDataSource(mod string, res string) tokens.ModuleMember {
@@ -431,7 +442,11 @@ func Provider() info.Provider {
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
-	prov.MustComputeTokens(tks.KnownModules("harness_", "", modules, tks.MakeStandard(mainPkg)))
+	strategy, err := tokenStrategy(&prov)
+	if err != nil {
+		panic(fmt.Sprintf("failed to build token strategy: %v", err))
+	}
+	prov.MustComputeTokens(strategy)
 	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
