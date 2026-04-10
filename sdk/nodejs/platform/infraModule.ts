@@ -108,6 +108,10 @@ export class InfraModule extends pulumi.CustomResource {
      */
     declare public readonly onboardingPipelineSync: pulumi.Output<boolean | undefined>;
     /**
+     * Unique identifier of the module.
+     */
+    declare public readonly platformInfraModuleId: pulumi.Output<string>;
+    /**
      * For account connectors, the repository name where the module can be found.
      */
     declare public readonly repository: pulumi.Output<string | undefined>;
@@ -175,6 +179,7 @@ export class InfraModule extends pulumi.CustomResource {
             resourceInputs["onboardingPipelineOrg"] = state?.onboardingPipelineOrg;
             resourceInputs["onboardingPipelineProject"] = state?.onboardingPipelineProject;
             resourceInputs["onboardingPipelineSync"] = state?.onboardingPipelineSync;
+            resourceInputs["platformInfraModuleId"] = state?.platformInfraModuleId;
             resourceInputs["repository"] = state?.repository;
             resourceInputs["repositoryBranch"] = state?.repositoryBranch;
             resourceInputs["repositoryCommit"] = state?.repositoryCommit;
@@ -201,6 +206,7 @@ export class InfraModule extends pulumi.CustomResource {
             resourceInputs["onboardingPipelineOrg"] = args?.onboardingPipelineOrg;
             resourceInputs["onboardingPipelineProject"] = args?.onboardingPipelineProject;
             resourceInputs["onboardingPipelineSync"] = args?.onboardingPipelineSync;
+            resourceInputs["platformInfraModuleId"] = args?.platformInfraModuleId;
             resourceInputs["repository"] = args?.repository;
             resourceInputs["repositoryBranch"] = args?.repositoryBranch;
             resourceInputs["repositoryCommit"] = args?.repositoryCommit;
@@ -262,6 +268,10 @@ export interface InfraModuleState {
      * Sync the project automatically.
      */
     onboardingPipelineSync?: pulumi.Input<boolean>;
+    /**
+     * Unique identifier of the module.
+     */
+    platformInfraModuleId?: pulumi.Input<string>;
     /**
      * For account connectors, the repository name where the module can be found.
      */
@@ -352,6 +362,10 @@ export interface InfraModuleArgs {
      * Sync the project automatically.
      */
     onboardingPipelineSync?: pulumi.Input<boolean>;
+    /**
+     * Unique identifier of the module.
+     */
+    platformInfraModuleId?: pulumi.Input<string>;
     /**
      * For account connectors, the repository name where the module can be found.
      */

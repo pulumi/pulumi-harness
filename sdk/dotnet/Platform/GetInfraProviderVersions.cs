@@ -31,7 +31,7 @@ namespace Pulumi.Harness.Platform
         ///         Type = "aws",
         ///     });
         /// 
-        ///     var v6CompatibleVersions = Output.Tuple(awsVersions, Std.Contains.Invoke(new()
+        ///     var v6CompatibleVersions = Output.Tuple(awsVersions, Std.Index.Contains.Invoke(new()
         ///     {
         ///         Input = v.Protocols,
         ///         Element = "6.0",
@@ -72,7 +72,7 @@ namespace Pulumi.Harness.Platform
         ///         Type = "aws",
         ///     });
         /// 
-        ///     var v6CompatibleVersions = Output.Tuple(awsVersions, Std.Contains.Invoke(new()
+        ///     var v6CompatibleVersions = Output.Tuple(awsVersions, Std.Index.Contains.Invoke(new()
         ///     {
         ///         Input = v.Protocols,
         ///         Element = "6.0",
@@ -113,7 +113,7 @@ namespace Pulumi.Harness.Platform
         ///         Type = "aws",
         ///     });
         /// 
-        ///     var v6CompatibleVersions = Output.Tuple(awsVersions, Std.Contains.Invoke(new()
+        ///     var v6CompatibleVersions = Output.Tuple(awsVersions, Std.Index.Contains.Invoke(new()
         ///     {
         ///         Input = v.Protocols,
         ///         Element = "6.0",

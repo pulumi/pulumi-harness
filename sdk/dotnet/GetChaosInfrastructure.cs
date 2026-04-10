@@ -24,7 +24,7 @@ namespace Pulumi.Harness
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.GetChaosInfrastructure.Invoke(new()
+        ///     var example = Harness.Index.GetChaosInfrastructure.Invoke(new()
         ///     {
         ///         Identifier = "identifier",
         ///         OrgId = "org_id",
@@ -51,7 +51,7 @@ namespace Pulumi.Harness
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.GetChaosInfrastructure.Invoke(new()
+        ///     var example = Harness.Index.GetChaosInfrastructure.Invoke(new()
         ///     {
         ///         Identifier = "identifier",
         ///         OrgId = "org_id",
@@ -78,7 +78,7 @@ namespace Pulumi.Harness
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.GetChaosInfrastructure.Invoke(new()
+        ///     var example = Harness.Index.GetChaosInfrastructure.Invoke(new()
         ///     {
         ///         Identifier = "identifier",
         ///         OrgId = "org_id",

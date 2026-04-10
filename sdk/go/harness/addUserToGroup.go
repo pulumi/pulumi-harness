@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harness.LookupUser(ctx, &harness.LookupUserArgs{
+//			_, err := harness.GetUser(ctx, &harness.LookupUserArgs{
 //				Email: pulumi.StringRef("testuser@example.com"),
 //			}, nil)
 //			if err != nil {

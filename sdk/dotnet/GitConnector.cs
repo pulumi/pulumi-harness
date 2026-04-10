@@ -22,19 +22,19 @@ namespace Pulumi.Harness
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = Harness.GetSecretManager.Invoke(new()
+    ///     var @default = Harness.Index.GetSecretManager.Invoke(new()
     ///     {
     ///         Default = true,
     ///     });
     /// 
-    ///     var example = new Harness.EncryptedText("example", new()
+    ///     var example = new Harness.Index.EncryptedText("example", new()
     ///     {
     ///         Name = "example-secret",
     ///         Value = "foo",
     ///         SecretManagerId = @default.Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
     ///     });
     /// 
-    ///     var exampleGitConnector = new Harness.GitConnector("example", new()
+    ///     var exampleGitConnector = new Harness.Index.GitConnector("example", new()
     ///     {
     ///         Name = "example",
     ///         Url = "https://github.com/harness/terraform-provider-harness",

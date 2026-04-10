@@ -24,7 +24,7 @@ namespace Pulumi.Harness
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.GetDelegate.Invoke(new()
+        ///     var example = Harness.Index.GetDelegate.Invoke(new()
         ///     {
         ///         Name = "harness-delegate",
         ///         Type = "KUBERNETES",
@@ -50,7 +50,7 @@ namespace Pulumi.Harness
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.GetDelegate.Invoke(new()
+        ///     var example = Harness.Index.GetDelegate.Invoke(new()
         ///     {
         ///         Name = "harness-delegate",
         ///         Type = "KUBERNETES",
@@ -76,7 +76,7 @@ namespace Pulumi.Harness
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.GetDelegate.Invoke(new()
+        ///     var example = Harness.Index.GetDelegate.Invoke(new()
         ///     {
         ///         Name = "harness-delegate",
         ///         Type = "KUBERNETES",

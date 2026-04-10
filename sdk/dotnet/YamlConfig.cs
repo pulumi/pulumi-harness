@@ -22,7 +22,7 @@ namespace Pulumi.Harness
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Harness.YamlConfig("test", new()
+    ///     var test = new Harness.Index.YamlConfig("test", new()
     ///     {
     ///         Path = "Setup/Cloud Providers/Kubernetes.yaml",
     ///         Content = @"harnessApiVersion: '1.0'

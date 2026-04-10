@@ -185,7 +185,7 @@ class SshCredential(pulumi.CustomResource):
         import pulumi_harness as harness
         import pulumi_tls as tls
 
-        harness_deploy_key = tls.index.PrivateKey("harness_deploy_key",
+        harness_deploy_key = tls.PrivateKey("harness_deploy_key",
             algorithm=RSA,
             rsa_bits=4096)
         secret_manager = harness.get_secret_manager(default=True)
@@ -238,7 +238,7 @@ class SshCredential(pulumi.CustomResource):
         import pulumi_harness as harness
         import pulumi_tls as tls
 
-        harness_deploy_key = tls.index.PrivateKey("harness_deploy_key",
+        harness_deploy_key = tls.PrivateKey("harness_deploy_key",
             algorithm=RSA,
             rsa_bits=4096)
         secret_manager = harness.get_secret_manager(default=True)

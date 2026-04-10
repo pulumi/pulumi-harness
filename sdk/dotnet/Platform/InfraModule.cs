@@ -115,6 +115,12 @@ namespace Pulumi.Harness.Platform
         public Output<bool?> OnboardingPipelineSync { get; private set; } = null!;
 
         /// <summary>
+        /// Unique identifier of the module.
+        /// </summary>
+        [Output("platformInfraModuleId")]
+        public Output<string> PlatformInfraModuleId { get; private set; } = null!;
+
+        /// <summary>
         /// For account connectors, the repository name where the module can be found.
         /// </summary>
         [Output("repository")]
@@ -288,6 +294,12 @@ namespace Pulumi.Harness.Platform
         public Input<bool>? OnboardingPipelineSync { get; set; }
 
         /// <summary>
+        /// Unique identifier of the module.
+        /// </summary>
+        [Input("platformInfraModuleId")]
+        public Input<string>? PlatformInfraModuleId { get; set; }
+
+        /// <summary>
         /// For account connectors, the repository name where the module can be found.
         /// </summary>
         [Input("repository")]
@@ -426,6 +438,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("onboardingPipelineSync")]
         public Input<bool>? OnboardingPipelineSync { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the module.
+        /// </summary>
+        [Input("platformInfraModuleId")]
+        public Input<string>? PlatformInfraModuleId { get; set; }
 
         /// <summary>
         /// For account connectors, the repository name where the module can be found.

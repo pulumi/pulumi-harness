@@ -22,17 +22,17 @@ namespace Pulumi.Harness
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = Harness.GetUser.Invoke(new()
+    ///     var exampleUser = Harness.Index.GetUser.Invoke(new()
     ///     {
     ///         Email = "testuser@example.com",
     ///     });
     /// 
-    ///     var admin = new Harness.UserGroup("admin", new()
+    ///     var admin = new Harness.Index.UserGroup("admin", new()
     ///     {
     ///         Name = "admin",
     ///     });
     /// 
-    ///     var exampleAddUserToGroups = new Harness.AddUserToGroup("example_add_user_to_groups", new()
+    ///     var exampleAddUserToGroups = new Harness.Index.AddUserToGroup("example_add_user_to_groups", new()
     ///     {
     ///         GroupId = admin.Id,
     ///         UserId = test.Id,

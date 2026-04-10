@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harness.LookupChaosInfrastructure(ctx, &harness.LookupChaosInfrastructureArgs{
+//			_, err := harness.GetChaosInfrastructure(ctx, &harness.LookupChaosInfrastructureArgs{
 //				Identifier:    "identifier",
 //				OrgId:         "org_id",
 //				ProjectId:     "project_id",

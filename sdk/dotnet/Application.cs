@@ -22,7 +22,7 @@ namespace Pulumi.Harness
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myapp = new Harness.Application("myapp", new()
+    ///     var myapp = new Harness.Index.Application("myapp", new()
     ///     {
     ///         Name = "My Application",
     ///         Description = "This is my first Harness application",

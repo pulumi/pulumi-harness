@@ -22,12 +22,12 @@ namespace Pulumi.Harness
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = Harness.GetDelegate.Invoke(new()
+    ///     var test = Harness.Index.GetDelegate.Invoke(new()
     ///     {
     ///         Name = "my-delegate",
     ///     });
     /// 
-    ///     var testDelegateApproval = new Harness.DelegateApproval("test", new()
+    ///     var testDelegateApproval = new Harness.Index.DelegateApproval("test", new()
     ///     {
     ///         DelegateId = test.Apply(getDelegateResult =&gt; getDelegateResult.Id),
     ///         Approve = true,

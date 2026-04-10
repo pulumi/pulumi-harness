@@ -24,13 +24,13 @@ namespace Pulumi.Harness
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleByName = Harness.GetTrigger.Invoke(new()
+        ///     var exampleByName = Harness.Index.GetTrigger.Invoke(new()
         ///     {
         ///         AppId = "app_id",
         ///         Name = "name",
         ///     });
         /// 
-        ///     var exampleById = Harness.GetTrigger.Invoke(new()
+        ///     var exampleById = Harness.Index.GetTrigger.Invoke(new()
         ///     {
         ///         Id = "trigger_id",
         ///     });
@@ -54,13 +54,13 @@ namespace Pulumi.Harness
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleByName = Harness.GetTrigger.Invoke(new()
+        ///     var exampleByName = Harness.Index.GetTrigger.Invoke(new()
         ///     {
         ///         AppId = "app_id",
         ///         Name = "name",
         ///     });
         /// 
-        ///     var exampleById = Harness.GetTrigger.Invoke(new()
+        ///     var exampleById = Harness.Index.GetTrigger.Invoke(new()
         ///     {
         ///         Id = "trigger_id",
         ///     });
@@ -84,13 +84,13 @@ namespace Pulumi.Harness
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleByName = Harness.GetTrigger.Invoke(new()
+        ///     var exampleByName = Harness.Index.GetTrigger.Invoke(new()
         ///     {
         ///         AppId = "app_id",
         ///         Name = "name",
         ///     });
         /// 
-        ///     var exampleById = Harness.GetTrigger.Invoke(new()
+        ///     var exampleById = Harness.Index.GetTrigger.Invoke(new()
         ///     {
         ///         Id = "trigger_id",
         ///     });
