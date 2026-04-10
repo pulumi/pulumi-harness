@@ -22,7 +22,7 @@ namespace Pulumi.Harness
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Harness.UserGroup("example", new()
+    ///     var example = new Harness.Index.UserGroup("example", new()
     ///     {
     ///         Name = "example-group",
     ///         Description = "This group demonstrates account level and resource level permissions.",

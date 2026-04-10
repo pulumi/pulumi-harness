@@ -35,12 +35,12 @@ namespace Pulumi.Harness
     ///         },
     ///     });
     /// 
-    ///     var example = new Harness.Application("example", new()
+    ///     var example = new Harness.Index.Application("example", new()
     ///     {
     ///         Name = "example",
     ///     });
     /// 
-    ///     var devEnvironment = new Harness.Environment("dev", new()
+    ///     var devEnvironment = new Harness.Index.Environment("dev", new()
     ///     {
     ///         Name = "dev",
     ///         AppId = example.Id,
@@ -48,7 +48,7 @@ namespace Pulumi.Harness
     ///     });
     /// 
     ///     // Creating a infrastructure of type KUBERNETES
-    ///     var k8s = new Harness.InfrastructureDefinition("k8s", new()
+    ///     var k8s = new Harness.Index.InfrastructureDefinition("k8s", new()
     ///     {
     ///         Name = "k8s-eks-us-east-1",
     ///         AppId = example.Id,
@@ -64,7 +64,7 @@ namespace Pulumi.Harness
     ///     });
     /// 
     ///     // Creating a Deployment Template for CUSTOM infrastructure type
-    ///     var exampleYaml = new Harness.YamlConfig("example_yaml", new()
+    ///     var exampleYaml = new Harness.Index.YamlConfig("example_yaml", new()
     ///     {
     ///         Path = "Setup/Template Library/Example Folder/deployment_template.yaml",
     ///         Content = @"harnessApiVersion: '1.0'
@@ -82,7 +82,7 @@ namespace Pulumi.Harness
     ///     });
     /// 
     ///     // Creating a infrastructure of type CUSTOM
-    ///     var custom = new Harness.InfrastructureDefinition("custom", new()
+    ///     var custom = new Harness.Index.InfrastructureDefinition("custom", new()
     ///     {
     ///         Name = "custom-infra",
     ///         AppId = example.Id,

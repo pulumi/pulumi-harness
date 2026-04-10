@@ -22,19 +22,19 @@ namespace Pulumi.Harness
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = Harness.GetSecretManager.Invoke(new()
+    ///     var @default = Harness.Index.GetSecretManager.Invoke(new()
     ///     {
     ///         Default = true,
     ///     });
     /// 
-    ///     var githubToken = new Harness.EncryptedText("github_token", new()
+    ///     var githubToken = new Harness.Index.EncryptedText("github_token", new()
     ///     {
     ///         Name = "github_token",
     ///         Value = "&lt;TOKEN&gt;",
     ///         SecretManagerId = @default.Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
     ///     });
     /// 
-    ///     var myrepo = new Harness.GitConnector("myrepo", new()
+    ///     var myrepo = new Harness.Index.GitConnector("myrepo", new()
     ///     {
     ///         Name = "myrepo",
     ///         Url = "https://github.com/someorg/myrepo",
@@ -45,12 +45,12 @@ namespace Pulumi.Harness
     ///         UrlType = "REPO",
     ///     });
     /// 
-    ///     var example = new Harness.Application("example", new()
+    ///     var example = new Harness.Index.Application("example", new()
     ///     {
     ///         Name = "example-app",
     ///     });
     /// 
-    ///     var exampleApplicationGitSync = new Harness.ApplicationGitSync("example", new()
+    ///     var exampleApplicationGitSync = new Harness.Index.ApplicationGitSync("example", new()
     ///     {
     ///         AppId = example.Id,
     ///         ConnectorId = myrepo.Id,

@@ -83,6 +83,8 @@ type InfraModule struct {
 	OnboardingPipelineProject pulumi.StringPtrOutput `pulumi:"onboardingPipelineProject"`
 	// Sync the project automatically.
 	OnboardingPipelineSync pulumi.BoolPtrOutput `pulumi:"onboardingPipelineSync"`
+	// Unique identifier of the module.
+	PlatformInfraModuleId pulumi.StringOutput `pulumi:"platformInfraModuleId"`
 	// For account connectors, the repository name where the module can be found.
 	Repository pulumi.StringPtrOutput `pulumi:"repository"`
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -160,6 +162,8 @@ type infraModuleState struct {
 	OnboardingPipelineProject *string `pulumi:"onboardingPipelineProject"`
 	// Sync the project automatically.
 	OnboardingPipelineSync *bool `pulumi:"onboardingPipelineSync"`
+	// Unique identifier of the module.
+	PlatformInfraModuleId *string `pulumi:"platformInfraModuleId"`
 	// For account connectors, the repository name where the module can be found.
 	Repository *string `pulumi:"repository"`
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -205,6 +209,8 @@ type InfraModuleState struct {
 	OnboardingPipelineProject pulumi.StringPtrInput
 	// Sync the project automatically.
 	OnboardingPipelineSync pulumi.BoolPtrInput
+	// Unique identifier of the module.
+	PlatformInfraModuleId pulumi.StringPtrInput
 	// For account connectors, the repository name where the module can be found.
 	Repository pulumi.StringPtrInput
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -254,6 +260,8 @@ type infraModuleArgs struct {
 	OnboardingPipelineProject *string `pulumi:"onboardingPipelineProject"`
 	// Sync the project automatically.
 	OnboardingPipelineSync *bool `pulumi:"onboardingPipelineSync"`
+	// Unique identifier of the module.
+	PlatformInfraModuleId *string `pulumi:"platformInfraModuleId"`
 	// For account connectors, the repository name where the module can be found.
 	Repository *string `pulumi:"repository"`
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -300,6 +308,8 @@ type InfraModuleArgs struct {
 	OnboardingPipelineProject pulumi.StringPtrInput
 	// Sync the project automatically.
 	OnboardingPipelineSync pulumi.BoolPtrInput
+	// Unique identifier of the module.
+	PlatformInfraModuleId pulumi.StringPtrInput
 	// For account connectors, the repository name where the module can be found.
 	Repository pulumi.StringPtrInput
 	// Name of the branch to fetch the code from. This cannot be set if repository commit is set.
@@ -459,6 +469,11 @@ func (o InfraModuleOutput) OnboardingPipelineProject() pulumi.StringPtrOutput {
 // Sync the project automatically.
 func (o InfraModuleOutput) OnboardingPipelineSync() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InfraModule) pulumi.BoolPtrOutput { return v.OnboardingPipelineSync }).(pulumi.BoolPtrOutput)
+}
+
+// Unique identifier of the module.
+func (o InfraModuleOutput) PlatformInfraModuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InfraModule) pulumi.StringOutput { return v.PlatformInfraModuleId }).(pulumi.StringOutput)
 }
 
 // For account connectors, the repository name where the module can be found.

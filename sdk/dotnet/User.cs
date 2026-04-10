@@ -22,7 +22,7 @@ namespace Pulumi.Harness
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var johnDoe = new Harness.User("john_doe", new()
+    ///     var johnDoe = new Harness.Index.User("john_doe", new()
     ///     {
     ///         Name = "John Doe",
     ///         Email = "john.doe@example.com",

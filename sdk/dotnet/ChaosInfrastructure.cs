@@ -23,7 +23,7 @@ namespace Pulumi.Harness
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Sample resource for chaos infrastructure
-    ///     var example = new Harness.ChaosInfrastructure("example", new()
+    ///     var example = new Harness.Index.ChaosInfrastructure("example", new()
     ///     {
     ///         Identifier = "identifier",
     ///         Name = "name",

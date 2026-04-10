@@ -29,19 +29,19 @@ namespace Pulumi.Harness
     ///         RsaBits = 4096,
     ///     });
     /// 
-    ///     var secretManager = Harness.GetSecretManager.Invoke(new()
+    ///     var secretManager = Harness.Index.GetSecretManager.Invoke(new()
     ///     {
     ///         Default = true,
     ///     });
     /// 
-    ///     var mySecret = new Harness.EncryptedText("my_secret", new()
+    ///     var mySecret = new Harness.Index.EncryptedText("my_secret", new()
     ///     {
     ///         Name = "my_secret",
     ///         Value = harnessDeployKey.PrivateKeyPem,
     ///         SecretManagerId = secretManager.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id),
     ///     });
     /// 
-    ///     var sshCreds = new Harness.SshCredential("ssh_creds", new()
+    ///     var sshCreds = new Harness.Index.SshCredential("ssh_creds", new()
     ///     {
     ///         Name = "ssh-test",
     ///         SshAuthentication = new Harness.Inputs.SshCredentialSshAuthenticationArgs

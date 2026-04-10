@@ -22,7 +22,7 @@ namespace Pulumi.Harness
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Harness.PlatformCcmFilters("test", new()
+    ///     var test = new Harness.Index.PlatformCcmFilters("test", new()
     ///     {
     ///         Identifier = "identifier",
     ///         Name = "name",

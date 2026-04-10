@@ -22,12 +22,12 @@ namespace Pulumi.Harness.Cloudprovider
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = Harness.GetSecretManager.Invoke(new()
+    ///     var @default = Harness.Index.GetSecretManager.Invoke(new()
     ///     {
     ///         Default = true,
     ///     });
     /// 
-    ///     var azureKey = new Harness.EncryptedText("azure_key", new()
+    ///     var azureKey = new Harness.Index.EncryptedText("azure_key", new()
     ///     {
     ///         Name = "azure_key",
     ///         Value = "&lt;AZURE_KEY&gt;",

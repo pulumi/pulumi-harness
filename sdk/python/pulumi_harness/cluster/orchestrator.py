@@ -181,7 +181,7 @@ class Orchestrator(pulumi.CustomResource):
         import pulumi_aws as aws
         import pulumi_harness as harness
 
-        current = aws.index.region()
+        current = aws.region()
         test = harness.cluster.Orchestrator("test",
             name="name",
             cluster_endpoint="http://test.test.com",
@@ -222,7 +222,7 @@ class Orchestrator(pulumi.CustomResource):
         import pulumi_aws as aws
         import pulumi_harness as harness
 
-        current = aws.index.region()
+        current = aws.region()
         test = harness.cluster.Orchestrator("test",
             name="name",
             cluster_endpoint="http://test.test.com",

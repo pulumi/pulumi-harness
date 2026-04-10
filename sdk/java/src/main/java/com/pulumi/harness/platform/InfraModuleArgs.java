@@ -170,6 +170,21 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Unique identifier of the module.
+     * 
+     */
+    @Import(name="platformInfraModuleId")
+    private @Nullable Output<String> platformInfraModuleId;
+
+    /**
+     * @return Unique identifier of the module.
+     * 
+     */
+    public Optional<Output<String>> platformInfraModuleId() {
+        return Optional.ofNullable(this.platformInfraModuleId);
+    }
+
+    /**
      * For account connectors, the repository name where the module can be found.
      * 
      */
@@ -347,6 +362,7 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
         this.onboardingPipelineOrg = $.onboardingPipelineOrg;
         this.onboardingPipelineProject = $.onboardingPipelineProject;
         this.onboardingPipelineSync = $.onboardingPipelineSync;
+        this.platformInfraModuleId = $.platformInfraModuleId;
         this.repository = $.repository;
         this.repositoryBranch = $.repositoryBranch;
         this.repositoryCommit = $.repositoryCommit;
@@ -586,6 +602,27 @@ public final class InfraModuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder onboardingPipelineSync(Boolean onboardingPipelineSync) {
             return onboardingPipelineSync(Output.of(onboardingPipelineSync));
+        }
+
+        /**
+         * @param platformInfraModuleId Unique identifier of the module.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder platformInfraModuleId(@Nullable Output<String> platformInfraModuleId) {
+            $.platformInfraModuleId = platformInfraModuleId;
+            return this;
+        }
+
+        /**
+         * @param platformInfraModuleId Unique identifier of the module.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder platformInfraModuleId(String platformInfraModuleId) {
+            return platformInfraModuleId(Output.of(platformInfraModuleId));
         }
 
         /**

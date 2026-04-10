@@ -30,6 +30,7 @@ class InfraModuleArgs:
                  onboarding_pipeline_org: Optional[pulumi.Input[_builtins.str]] = None,
                  onboarding_pipeline_project: Optional[pulumi.Input[_builtins.str]] = None,
                  onboarding_pipeline_sync: Optional[pulumi.Input[_builtins.bool]] = None,
+                 platform_infra_module_id: Optional[pulumi.Input[_builtins.str]] = None,
                  repository: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -54,6 +55,7 @@ class InfraModuleArgs:
         :param pulumi.Input[_builtins.str] onboarding_pipeline_org: Onboarding Pipeline organization.
         :param pulumi.Input[_builtins.str] onboarding_pipeline_project: Onboarding Pipeline project.
         :param pulumi.Input[_builtins.bool] onboarding_pipeline_sync: Sync the project automatically.
+        :param pulumi.Input[_builtins.str] platform_infra_module_id: Unique identifier of the module.
         :param pulumi.Input[_builtins.str] repository: For account connectors, the repository name where the module can be found.
         :param pulumi.Input[_builtins.str] repository_branch: Name of the branch to fetch the code from. This cannot be set if repository commit is set.
         :param pulumi.Input[_builtins.str] repository_commit: Tag to fetch the code from. This cannot be set if repository branch is set.
@@ -86,6 +88,8 @@ class InfraModuleArgs:
             pulumi.set(__self__, "onboarding_pipeline_project", onboarding_pipeline_project)
         if onboarding_pipeline_sync is not None:
             pulumi.set(__self__, "onboarding_pipeline_sync", onboarding_pipeline_sync)
+        if platform_infra_module_id is not None:
+            pulumi.set(__self__, "platform_infra_module_id", platform_infra_module_id)
         if repository is not None:
             pulumi.set(__self__, "repository", repository)
         if repository_branch is not None:
@@ -240,6 +244,18 @@ class InfraModuleArgs:
         pulumi.set(self, "onboarding_pipeline_sync", value)
 
     @_builtins.property
+    @pulumi.getter(name="platformInfraModuleId")
+    def platform_infra_module_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique identifier of the module.
+        """
+        return pulumi.get(self, "platform_infra_module_id")
+
+    @platform_infra_module_id.setter
+    def platform_infra_module_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "platform_infra_module_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def repository(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -373,6 +389,7 @@ class _InfraModuleState:
                  onboarding_pipeline_org: Optional[pulumi.Input[_builtins.str]] = None,
                  onboarding_pipeline_project: Optional[pulumi.Input[_builtins.str]] = None,
                  onboarding_pipeline_sync: Optional[pulumi.Input[_builtins.bool]] = None,
+                 platform_infra_module_id: Optional[pulumi.Input[_builtins.str]] = None,
                  repository: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -397,6 +414,7 @@ class _InfraModuleState:
         :param pulumi.Input[_builtins.str] onboarding_pipeline_org: Onboarding Pipeline organization.
         :param pulumi.Input[_builtins.str] onboarding_pipeline_project: Onboarding Pipeline project.
         :param pulumi.Input[_builtins.bool] onboarding_pipeline_sync: Sync the project automatically.
+        :param pulumi.Input[_builtins.str] platform_infra_module_id: Unique identifier of the module.
         :param pulumi.Input[_builtins.str] repository: For account connectors, the repository name where the module can be found.
         :param pulumi.Input[_builtins.str] repository_branch: Name of the branch to fetch the code from. This cannot be set if repository commit is set.
         :param pulumi.Input[_builtins.str] repository_commit: Tag to fetch the code from. This cannot be set if repository branch is set.
@@ -429,6 +447,8 @@ class _InfraModuleState:
             pulumi.set(__self__, "onboarding_pipeline_project", onboarding_pipeline_project)
         if onboarding_pipeline_sync is not None:
             pulumi.set(__self__, "onboarding_pipeline_sync", onboarding_pipeline_sync)
+        if platform_infra_module_id is not None:
+            pulumi.set(__self__, "platform_infra_module_id", platform_infra_module_id)
         if repository is not None:
             pulumi.set(__self__, "repository", repository)
         if repository_branch is not None:
@@ -571,6 +591,18 @@ class _InfraModuleState:
     @onboarding_pipeline_sync.setter
     def onboarding_pipeline_sync(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "onboarding_pipeline_sync", value)
+
+    @_builtins.property
+    @pulumi.getter(name="platformInfraModuleId")
+    def platform_infra_module_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique identifier of the module.
+        """
+        return pulumi.get(self, "platform_infra_module_id")
+
+    @platform_infra_module_id.setter
+    def platform_infra_module_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "platform_infra_module_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -721,6 +753,7 @@ class InfraModule(pulumi.CustomResource):
                  onboarding_pipeline_org: Optional[pulumi.Input[_builtins.str]] = None,
                  onboarding_pipeline_project: Optional[pulumi.Input[_builtins.str]] = None,
                  onboarding_pipeline_sync: Optional[pulumi.Input[_builtins.bool]] = None,
+                 platform_infra_module_id: Optional[pulumi.Input[_builtins.str]] = None,
                  repository: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -780,6 +813,7 @@ class InfraModule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] onboarding_pipeline_org: Onboarding Pipeline organization.
         :param pulumi.Input[_builtins.str] onboarding_pipeline_project: Onboarding Pipeline project.
         :param pulumi.Input[_builtins.bool] onboarding_pipeline_sync: Sync the project automatically.
+        :param pulumi.Input[_builtins.str] platform_infra_module_id: Unique identifier of the module.
         :param pulumi.Input[_builtins.str] repository: For account connectors, the repository name where the module can be found.
         :param pulumi.Input[_builtins.str] repository_branch: Name of the branch to fetch the code from. This cannot be set if repository commit is set.
         :param pulumi.Input[_builtins.str] repository_commit: Tag to fetch the code from. This cannot be set if repository branch is set.
@@ -858,6 +892,7 @@ class InfraModule(pulumi.CustomResource):
                  onboarding_pipeline_org: Optional[pulumi.Input[_builtins.str]] = None,
                  onboarding_pipeline_project: Optional[pulumi.Input[_builtins.str]] = None,
                  onboarding_pipeline_sync: Optional[pulumi.Input[_builtins.bool]] = None,
+                 platform_infra_module_id: Optional[pulumi.Input[_builtins.str]] = None,
                  repository: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
                  repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -888,6 +923,7 @@ class InfraModule(pulumi.CustomResource):
             __props__.__dict__["onboarding_pipeline_org"] = onboarding_pipeline_org
             __props__.__dict__["onboarding_pipeline_project"] = onboarding_pipeline_project
             __props__.__dict__["onboarding_pipeline_sync"] = onboarding_pipeline_sync
+            __props__.__dict__["platform_infra_module_id"] = platform_infra_module_id
             __props__.__dict__["repository"] = repository
             __props__.__dict__["repository_branch"] = repository_branch
             __props__.__dict__["repository_commit"] = repository_commit
@@ -921,6 +957,7 @@ class InfraModule(pulumi.CustomResource):
             onboarding_pipeline_org: Optional[pulumi.Input[_builtins.str]] = None,
             onboarding_pipeline_project: Optional[pulumi.Input[_builtins.str]] = None,
             onboarding_pipeline_sync: Optional[pulumi.Input[_builtins.bool]] = None,
+            platform_infra_module_id: Optional[pulumi.Input[_builtins.str]] = None,
             repository: Optional[pulumi.Input[_builtins.str]] = None,
             repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
             repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -949,6 +986,7 @@ class InfraModule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] onboarding_pipeline_org: Onboarding Pipeline organization.
         :param pulumi.Input[_builtins.str] onboarding_pipeline_project: Onboarding Pipeline project.
         :param pulumi.Input[_builtins.bool] onboarding_pipeline_sync: Sync the project automatically.
+        :param pulumi.Input[_builtins.str] platform_infra_module_id: Unique identifier of the module.
         :param pulumi.Input[_builtins.str] repository: For account connectors, the repository name where the module can be found.
         :param pulumi.Input[_builtins.str] repository_branch: Name of the branch to fetch the code from. This cannot be set if repository commit is set.
         :param pulumi.Input[_builtins.str] repository_commit: Tag to fetch the code from. This cannot be set if repository branch is set.
@@ -975,6 +1013,7 @@ class InfraModule(pulumi.CustomResource):
         __props__.__dict__["onboarding_pipeline_org"] = onboarding_pipeline_org
         __props__.__dict__["onboarding_pipeline_project"] = onboarding_pipeline_project
         __props__.__dict__["onboarding_pipeline_sync"] = onboarding_pipeline_sync
+        __props__.__dict__["platform_infra_module_id"] = platform_infra_module_id
         __props__.__dict__["repository"] = repository
         __props__.__dict__["repository_branch"] = repository_branch
         __props__.__dict__["repository_commit"] = repository_commit
@@ -1067,6 +1106,14 @@ class InfraModule(pulumi.CustomResource):
         Sync the project automatically.
         """
         return pulumi.get(self, "onboarding_pipeline_sync")
+
+    @_builtins.property
+    @pulumi.getter(name="platformInfraModuleId")
+    def platform_infra_module_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Unique identifier of the module.
+        """
+        return pulumi.get(self, "platform_infra_module_id")
 
     @_builtins.property
     @pulumi.getter

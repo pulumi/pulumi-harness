@@ -22,19 +22,19 @@ namespace Pulumi.Harness.Cloudprovider
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = Harness.GetSecretManager.Invoke(new()
+    ///     var @default = Harness.Index.GetSecretManager.Invoke(new()
     ///     {
     ///         Default = true,
     ///     });
     /// 
-    ///     var awsAccessKey = new Harness.EncryptedText("aws_access_key", new()
+    ///     var awsAccessKey = new Harness.Index.EncryptedText("aws_access_key", new()
     ///     {
     ///         Name = "aws_access_key",
     ///         Value = "&lt;ACCESS_KEY_ID&gt;",
     ///         SecretManagerId = @default.Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
     ///     });
     /// 
-    ///     var awsSecretKey = new Harness.EncryptedText("aws_secret_key", new()
+    ///     var awsSecretKey = new Harness.Index.EncryptedText("aws_secret_key", new()
     ///     {
     ///         Name = "aws_secret_key",
     ///         Value = "&lt;SECRET_KEY_ID&gt;",

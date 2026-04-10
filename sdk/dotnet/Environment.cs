@@ -22,7 +22,7 @@ namespace Pulumi.Harness
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Harness.Application("test", new()
+    ///     var test = new Harness.Index.Application("test", new()
     ///     {
     ///         Name = "%[1]s",
     ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.Harness
     ///         },
     ///     });
     /// 
-    ///     var testEnvironment = new Harness.Environment("test", new()
+    ///     var testEnvironment = new Harness.Index.Environment("test", new()
     ///     {
     ///         AppId = test.Id,
     ///         Name = "%[1]s",

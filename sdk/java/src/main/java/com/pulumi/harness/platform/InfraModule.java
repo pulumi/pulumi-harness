@@ -218,6 +218,20 @@ public class InfraModule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.onboardingPipelineSync);
     }
     /**
+     * Unique identifier of the module.
+     * 
+     */
+    @Export(name="platformInfraModuleId", refs={String.class}, tree="[0]")
+    private Output<String> platformInfraModuleId;
+
+    /**
+     * @return Unique identifier of the module.
+     * 
+     */
+    public Output<String> platformInfraModuleId() {
+        return this.platformInfraModuleId;
+    }
+    /**
      * For account connectors, the repository name where the module can be found.
      * 
      */
