@@ -203,8 +203,8 @@ __all__ = [
     'ProbeTemplateHttpProbeAuthArgsDict',
     'ProbeTemplateHttpProbeMethodArgs',
     'ProbeTemplateHttpProbeMethodArgsDict',
-    'ProbeTemplateHttpProbeMethodGetArgs',
-    'ProbeTemplateHttpProbeMethodGetArgsDict',
+    'ProbeTemplateHttpProbeMethodGetMethodArgs',
+    'ProbeTemplateHttpProbeMethodGetMethodArgsDict',
     'ProbeTemplateHttpProbeMethodPostArgs',
     'ProbeTemplateHttpProbeMethodPostArgsDict',
     'ProbeTemplateHttpProbeTlsConfigArgs',
@@ -7922,7 +7922,7 @@ class ProbeTemplateHttpProbeAuthArgs:
 
 
 class ProbeTemplateHttpProbeMethodArgsDict(TypedDict):
-    get: NotRequired[pulumi.Input['ProbeTemplateHttpProbeMethodGetArgsDict']]
+    get_method: NotRequired[pulumi.Input['ProbeTemplateHttpProbeMethodGetMethodArgsDict']]
     """
     GET method configuration.
     """
@@ -7934,28 +7934,28 @@ class ProbeTemplateHttpProbeMethodArgsDict(TypedDict):
 @pulumi.input_type
 class ProbeTemplateHttpProbeMethodArgs:
     def __init__(__self__, *,
-                 get: Optional[pulumi.Input['ProbeTemplateHttpProbeMethodGetArgs']] = None,
+                 get_method: Optional[pulumi.Input['ProbeTemplateHttpProbeMethodGetMethodArgs']] = None,
                  post: Optional[pulumi.Input['ProbeTemplateHttpProbeMethodPostArgs']] = None):
         """
-        :param pulumi.Input['ProbeTemplateHttpProbeMethodGetArgs'] get: GET method configuration.
+        :param pulumi.Input['ProbeTemplateHttpProbeMethodGetMethodArgs'] get_method: GET method configuration.
         :param pulumi.Input['ProbeTemplateHttpProbeMethodPostArgs'] post: POST method configuration.
         """
-        if get is not None:
-            pulumi.set(__self__, "get", get)
+        if get_method is not None:
+            pulumi.set(__self__, "get_method", get_method)
         if post is not None:
             pulumi.set(__self__, "post", post)
 
     @_builtins.property
-    @pulumi.getter
-    def get(self) -> Optional[pulumi.Input['ProbeTemplateHttpProbeMethodGetArgs']]:
+    @pulumi.getter(name="getMethod")
+    def get_method(self) -> Optional[pulumi.Input['ProbeTemplateHttpProbeMethodGetMethodArgs']]:
         """
         GET method configuration.
         """
-        return pulumi.get(self, "get")
+        return pulumi.get(self, "get_method")
 
-    @get.setter
-    def get(self, value: Optional[pulumi.Input['ProbeTemplateHttpProbeMethodGetArgs']]):
-        pulumi.set(self, "get", value)
+    @get_method.setter
+    def get_method(self, value: Optional[pulumi.Input['ProbeTemplateHttpProbeMethodGetMethodArgs']]):
+        pulumi.set(self, "get_method", value)
 
     @_builtins.property
     @pulumi.getter
@@ -7970,7 +7970,7 @@ class ProbeTemplateHttpProbeMethodArgs:
         pulumi.set(self, "post", value)
 
 
-class ProbeTemplateHttpProbeMethodGetArgsDict(TypedDict):
+class ProbeTemplateHttpProbeMethodGetMethodArgsDict(TypedDict):
     criteria: NotRequired[pulumi.Input[_builtins.str]]
     """
     Response criteria (e.g., '==', '!=', 'contains').
@@ -7985,7 +7985,7 @@ class ProbeTemplateHttpProbeMethodGetArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class ProbeTemplateHttpProbeMethodGetArgs:
+class ProbeTemplateHttpProbeMethodGetMethodArgs:
     def __init__(__self__, *,
                  criteria: Optional[pulumi.Input[_builtins.str]] = None,
                  response_body: Optional[pulumi.Input[_builtins.str]] = None,

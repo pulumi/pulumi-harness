@@ -110,7 +110,7 @@ __all__ = [
     'ProbeTemplateHttpProbe',
     'ProbeTemplateHttpProbeAuth',
     'ProbeTemplateHttpProbeMethod',
-    'ProbeTemplateHttpProbeMethodGet',
+    'ProbeTemplateHttpProbeMethodGetMethod',
     'ProbeTemplateHttpProbeMethodPost',
     'ProbeTemplateHttpProbeTlsConfig',
     'ProbeTemplateK8sProbe',
@@ -177,8 +177,8 @@ __all__ = [
     'GetProbeTemplateCmdProbeEnvResult',
     'GetProbeTemplateHttpProbeResult',
     'GetProbeTemplateHttpProbeMethodResult',
-    'GetProbeTemplateHttpProbeMethodResultGetResult',
-    'GetProbeTemplateHttpProbeMethodResultPostResult',
+    'GetProbeTemplateHttpProbeMethodGetResult',
+    'GetProbeTemplateHttpProbeMethodPostResult',
     'GetProbeTemplateK8sProbeResult',
     'GetProbeTemplateRunPropertyResult',
     'GetProbeTemplateVariableResult',
@@ -6042,25 +6042,42 @@ class ProbeTemplateHttpProbeAuth(dict):
 
 @pulumi.output_type
 class ProbeTemplateHttpProbeMethod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "getMethod":
+            suggest = "get_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateHttpProbeMethod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateHttpProbeMethod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateHttpProbeMethod.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 get: Optional['outputs.ProbeTemplateHttpProbeMethodGet'] = None,
+                 get_method: Optional['outputs.ProbeTemplateHttpProbeMethodGetMethod'] = None,
                  post: Optional['outputs.ProbeTemplateHttpProbeMethodPost'] = None):
         """
-        :param 'ProbeTemplateHttpProbeMethodGetArgs' get: GET method configuration.
+        :param 'ProbeTemplateHttpProbeMethodGetMethodArgs' get_method: GET method configuration.
         :param 'ProbeTemplateHttpProbeMethodPostArgs' post: POST method configuration.
         """
-        if get is not None:
-            pulumi.set(__self__, "get", get)
+        if get_method is not None:
+            pulumi.set(__self__, "get_method", get_method)
         if post is not None:
             pulumi.set(__self__, "post", post)
 
     @_builtins.property
-    @pulumi.getter
-    def get(self) -> Optional['outputs.ProbeTemplateHttpProbeMethodGet']:
+    @pulumi.getter(name="getMethod")
+    def get_method(self) -> Optional['outputs.ProbeTemplateHttpProbeMethodGetMethod']:
         """
         GET method configuration.
         """
-        return pulumi.get(self, "get")
+        return pulumi.get(self, "get_method")
 
     @_builtins.property
     @pulumi.getter
@@ -6072,7 +6089,7 @@ class ProbeTemplateHttpProbeMethod(dict):
 
 
 @pulumi.output_type
-class ProbeTemplateHttpProbeMethodGet(dict):
+class ProbeTemplateHttpProbeMethodGetMethod(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6082,14 +6099,14 @@ class ProbeTemplateHttpProbeMethodGet(dict):
             suggest = "response_code"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateHttpProbeMethodGet. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateHttpProbeMethodGetMethod. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ProbeTemplateHttpProbeMethodGet.__key_warning(key)
+        ProbeTemplateHttpProbeMethodGetMethod.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ProbeTemplateHttpProbeMethodGet.__key_warning(key)
+        ProbeTemplateHttpProbeMethodGetMethod.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -9521,18 +9538,18 @@ class GetProbeTemplateHttpProbeResult(dict):
 @pulumi.output_type
 class GetProbeTemplateHttpProbeMethodResult(dict):
     def __init__(__self__, *,
-                 gets: Sequence['outputs.GetProbeTemplateHttpProbeMethodResultGetResult'],
-                 posts: Sequence['outputs.GetProbeTemplateHttpProbeMethodResultPostResult']):
+                 gets: Sequence['outputs.GetProbeTemplateHttpProbeMethodGetResult'],
+                 posts: Sequence['outputs.GetProbeTemplateHttpProbeMethodPostResult']):
         """
-        :param Sequence['GetProbeTemplateHttpProbeMethodResultGetArgs'] gets: GET method configuration.
-        :param Sequence['GetProbeTemplateHttpProbeMethodResultPostArgs'] posts: POST method configuration.
+        :param Sequence['GetProbeTemplateHttpProbeMethodGetArgs'] gets: GET method configuration.
+        :param Sequence['GetProbeTemplateHttpProbeMethodPostArgs'] posts: POST method configuration.
         """
         pulumi.set(__self__, "gets", gets)
         pulumi.set(__self__, "posts", posts)
 
     @_builtins.property
     @pulumi.getter
-    def gets(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodResultGetResult']:
+    def gets(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodGetResult']:
         """
         GET method configuration.
         """
@@ -9540,7 +9557,7 @@ class GetProbeTemplateHttpProbeMethodResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def posts(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodResultPostResult']:
+    def posts(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodPostResult']:
         """
         POST method configuration.
         """
@@ -9548,7 +9565,7 @@ class GetProbeTemplateHttpProbeMethodResult(dict):
 
 
 @pulumi.output_type
-class GetProbeTemplateHttpProbeMethodResultGetResult(dict):
+class GetProbeTemplateHttpProbeMethodGetResult(dict):
     def __init__(__self__, *,
                  criteria: _builtins.str,
                  response_body: _builtins.str,
@@ -9574,7 +9591,7 @@ class GetProbeTemplateHttpProbeMethodResultGetResult(dict):
 
 
 @pulumi.output_type
-class GetProbeTemplateHttpProbeMethodResultPostResult(dict):
+class GetProbeTemplateHttpProbeMethodPostResult(dict):
     def __init__(__self__, *,
                  body: _builtins.str,
                  body_path: _builtins.str,

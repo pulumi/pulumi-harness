@@ -4762,14 +4762,14 @@ export namespace chaos {
         /**
          * GET method configuration.
          */
-        get?: pulumi.Input<inputs.chaos.ProbeTemplateHttpProbeMethodGet>;
+        getMethod?: pulumi.Input<inputs.chaos.ProbeTemplateHttpProbeMethodGetMethod>;
         /**
          * POST method configuration.
          */
         post?: pulumi.Input<inputs.chaos.ProbeTemplateHttpProbeMethodPost>;
     }
 
-    export interface ProbeTemplateHttpProbeMethodGet {
+    export interface ProbeTemplateHttpProbeMethodGetMethod {
         /**
          * Response criteria (e.g., '==', '!=', 'contains').
          */

@@ -224,8 +224,7 @@ import (
 //
 // The `pulumi import` command can be used, for example:
 //
-// Import Project level Service Discovery Agent
-// Account and Org level agents are not supported yet
+// # Import Project level Service Discovery Agent
 //
 // ```sh
 // $ pulumi import harness:service/discoveryAgent:DiscoveryAgent example <org_identifier>/<project_identifier>/<environment_identifier>/<infra_identifier>

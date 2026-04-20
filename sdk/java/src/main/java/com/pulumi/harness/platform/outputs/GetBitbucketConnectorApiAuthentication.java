@@ -11,7 +11,22 @@ import java.util.Objects;
 @CustomType
 public final class GetBitbucketConnectorApiAuthentication {
     /**
-     * @return Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Type of API authentication. Valid values are UsernameToken, AccessToken, EmailAndApiToken.
+     * 
+     */
+    private String authType;
+    /**
+     * @return The email used for connecting to the api (EmailAndApiToken auth).
+     * 
+     */
+    private String email;
+    /**
+     * @return The name of the Harness secret containing the email (EmailAndApiToken auth). To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
+    private String emailRef;
+    /**
+     * @return Reference to a Harness secret containing the token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String tokenRef;
@@ -28,7 +43,28 @@ public final class GetBitbucketConnectorApiAuthentication {
 
     private GetBitbucketConnectorApiAuthentication() {}
     /**
-     * @return Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Type of API authentication. Valid values are UsernameToken, AccessToken, EmailAndApiToken.
+     * 
+     */
+    public String authType() {
+        return this.authType;
+    }
+    /**
+     * @return The email used for connecting to the api (EmailAndApiToken auth).
+     * 
+     */
+    public String email() {
+        return this.email;
+    }
+    /**
+     * @return The name of the Harness secret containing the email (EmailAndApiToken auth). To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
+    public String emailRef() {
+        return this.emailRef;
+    }
+    /**
+     * @return Reference to a Harness secret containing the token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String tokenRef() {
@@ -58,17 +94,47 @@ public final class GetBitbucketConnectorApiAuthentication {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String authType;
+        private String email;
+        private String emailRef;
         private String tokenRef;
         private String username;
         private String usernameRef;
         public Builder() {}
         public Builder(GetBitbucketConnectorApiAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authType = defaults.authType;
+    	      this.email = defaults.email;
+    	      this.emailRef = defaults.emailRef;
     	      this.tokenRef = defaults.tokenRef;
     	      this.username = defaults.username;
     	      this.usernameRef = defaults.usernameRef;
         }
 
+        @CustomType.Setter
+        public Builder authType(String authType) {
+            if (authType == null) {
+              throw new MissingRequiredPropertyException("GetBitbucketConnectorApiAuthentication", "authType");
+            }
+            this.authType = authType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder email(String email) {
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetBitbucketConnectorApiAuthentication", "email");
+            }
+            this.email = email;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder emailRef(String emailRef) {
+            if (emailRef == null) {
+              throw new MissingRequiredPropertyException("GetBitbucketConnectorApiAuthentication", "emailRef");
+            }
+            this.emailRef = emailRef;
+            return this;
+        }
         @CustomType.Setter
         public Builder tokenRef(String tokenRef) {
             if (tokenRef == null) {
@@ -95,6 +161,9 @@ public final class GetBitbucketConnectorApiAuthentication {
         }
         public GetBitbucketConnectorApiAuthentication build() {
             final var _resultValue = new GetBitbucketConnectorApiAuthentication();
+            _resultValue.authType = authType;
+            _resultValue.email = email;
+            _resultValue.emailRef = emailRef;
             _resultValue.tokenRef = tokenRef;
             _resultValue.username = username;
             _resultValue.usernameRef = usernameRef;

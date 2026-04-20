@@ -21,14 +21,26 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "harness:chaos/actionTemplate:ActionTemplate":
+		r = &ActionTemplate{}
+	case "harness:chaos/experiment:Experiment":
+		r = &Experiment{}
+	case "harness:chaos/experimentTemplate:ExperimentTemplate":
+		r = &ExperimentTemplate{}
+	case "harness:chaos/faultTemplate:FaultTemplate":
+		r = &FaultTemplate{}
 	case "harness:chaos/hub:Hub":
 		r = &Hub{}
 	case "harness:chaos/hubSync:HubSync":
 		r = &HubSync{}
+	case "harness:chaos/hubV2:HubV2":
+		r = &HubV2{}
 	case "harness:chaos/imageRegistry:ImageRegistry":
 		r = &ImageRegistry{}
 	case "harness:chaos/infrastructureV2:InfrastructureV2":
 		r = &InfrastructureV2{}
+	case "harness:chaos/probeTemplate:ProbeTemplate":
+		r = &ProbeTemplate{}
 	case "harness:chaos/securityGovernanceCondition:SecurityGovernanceCondition":
 		r = &SecurityGovernanceCondition{}
 	case "harness:chaos/securityGovernanceRule:SecurityGovernanceRule":
@@ -48,6 +60,26 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"harness",
+		"chaos/actionTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"chaos/experiment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"chaos/experimentTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"chaos/faultTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"chaos/hub",
 		&module{version},
 	)
@@ -58,12 +90,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"chaos/hubV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"chaos/imageRegistry",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
 		"chaos/infrastructureV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"chaos/probeTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

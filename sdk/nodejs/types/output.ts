@@ -3713,20 +3713,20 @@ export namespace chaos {
         /**
          * GET method configuration.
          */
-        gets: outputs.chaos.GetProbeTemplateHttpProbeMethodResultGet[];
+        gets: outputs.chaos.GetProbeTemplateHttpProbeMethodGet[];
         /**
          * POST method configuration.
          */
-        posts: outputs.chaos.GetProbeTemplateHttpProbeMethodResultPost[];
+        posts: outputs.chaos.GetProbeTemplateHttpProbeMethodPost[];
     }
 
-    export interface GetProbeTemplateHttpProbeMethodResultGet {
+    export interface GetProbeTemplateHttpProbeMethodGet {
         criteria: string;
         responseBody: string;
         responseCode: string;
     }
 
-    export interface GetProbeTemplateHttpProbeMethodResultPost {
+    export interface GetProbeTemplateHttpProbeMethodPost {
         body: string;
         bodyPath: string;
         contentType: string;
@@ -4398,14 +4398,14 @@ export namespace chaos {
         /**
          * GET method configuration.
          */
-        get?: outputs.chaos.ProbeTemplateHttpProbeMethodGet;
+        getMethod?: outputs.chaos.ProbeTemplateHttpProbeMethodGetMethod;
         /**
          * POST method configuration.
          */
         post?: outputs.chaos.ProbeTemplateHttpProbeMethodPost;
     }
 
-    export interface ProbeTemplateHttpProbeMethodGet {
+    export interface ProbeTemplateHttpProbeMethodGetMethod {
         /**
          * Response criteria (e.g., '==', '!=', 'contains').
          */

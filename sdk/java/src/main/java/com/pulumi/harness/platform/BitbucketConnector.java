@@ -20,6 +20,125 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Bitbucket connector.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.BitbucketConnector;
+ * import com.pulumi.harness.platform.BitbucketConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.BitbucketConnectorCredentialsArgs;
+ * import com.pulumi.harness.platform.inputs.BitbucketConnectorCredentialsHttpArgs;
+ * import com.pulumi.harness.platform.inputs.BitbucketConnectorApiAuthenticationArgs;
+ * import com.pulumi.harness.platform.inputs.BitbucketConnectorCredentialsSshArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         // Credentials http (with username + personal access token - UsernameToken)
+ *         var usernameToken = new BitbucketConnector("usernameToken", BitbucketConnectorArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .url("https://bitbucket.com/account")
+ *             .connectionType("Account")
+ *             .validationRepo("some_repo")
+ *             .delegateSelectors("harness-delegate")
+ *             .credentials(BitbucketConnectorCredentialsArgs.builder()
+ *                 .http(BitbucketConnectorCredentialsHttpArgs.builder()
+ *                     .username("username")
+ *                     .passwordRef("account.secret_id")
+ *                     .build())
+ *                 .build())
+ *             .apiAuthentication(BitbucketConnectorApiAuthenticationArgs.builder()
+ *                 .authType("UsernameToken")
+ *                 .username("username")
+ *                 .tokenRef("account.secret_id")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Credentials http with Bitbucket Cloud Workspace API Token (email + API token)
+ *         // Use this when migrating off Bitbucket app passwords (EOL 2026-06-09).
+ *         var emailApiToken = new BitbucketConnector("emailApiToken", BitbucketConnectorArgs.builder()
+ *             .identifier("identifier_email_api_token")
+ *             .name("name_email_api_token")
+ *             .description("Bitbucket Cloud with Workspace API Token")
+ *             .tags("foo:bar")
+ *             .url("https://bitbucket.org/my-workspace")
+ *             .connectionType("Account")
+ *             .validationRepo("some_repo")
+ *             .delegateSelectors("harness-delegate")
+ *             .credentials(BitbucketConnectorCredentialsArgs.builder()
+ *                 .http(BitbucketConnectorCredentialsHttpArgs.builder()
+ *                     .username("username")
+ *                     .passwordRef("account.secret_id")
+ *                     .build())
+ *                 .build())
+ *             .apiAuthentication(BitbucketConnectorApiAuthenticationArgs.builder()
+ *                 .authType("EmailAndApiToken")
+ *                 .email("user}{@literal @}{@code example.com")
+ *                 .tokenRef("account.api_token_secret")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Credentials http with Bitbucket repo/project Access Token
+ *         var accessToken = new BitbucketConnector("accessToken", BitbucketConnectorArgs.builder()
+ *             .identifier("identifier_access_token")
+ *             .name("name_access_token")
+ *             .description("Bitbucket with Access Token")
+ *             .tags("foo:bar")
+ *             .url("https://bitbucket.org/my-workspace")
+ *             .connectionType("Account")
+ *             .validationRepo("some_repo")
+ *             .delegateSelectors("harness-delegate")
+ *             .credentials(BitbucketConnectorCredentialsArgs.builder()
+ *                 .http(BitbucketConnectorCredentialsHttpArgs.builder()
+ *                     .username("username")
+ *                     .passwordRef("account.secret_id")
+ *                     .build())
+ *                 .build())
+ *             .apiAuthentication(BitbucketConnectorApiAuthenticationArgs.builder()
+ *                 .authType("AccessToken")
+ *                 .tokenRef("account.access_token_secret")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Credentials ssh
+ *         var ssh = new BitbucketConnector("ssh", BitbucketConnectorArgs.builder()
+ *             .identifier("identifier_ssh")
+ *             .name("name_ssh")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .url("https://bitbucket.com/account")
+ *             .connectionType("Account")
+ *             .validationRepo("some_repo")
+ *             .delegateSelectors("harness-delegate")
+ *             .credentials(BitbucketConnectorCredentialsArgs.builder()
+ *                 .ssh(BitbucketConnectorCredentialsSshArgs.builder()
+ *                     .sshKeyRef("account.secret_id")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * The `pulumi import` command can be used, for example:

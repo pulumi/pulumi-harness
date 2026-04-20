@@ -105,14 +105,14 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+     * Unique identifier of the resource
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+     * @return Unique identifier of the resource
      * 
      */
     public Output<String> identifier() {
@@ -406,7 +406,7 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+         * @param identifier Unique identifier of the resource
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+         * @param identifier Unique identifier of the resource
          * 
          * @return builder
          * 
