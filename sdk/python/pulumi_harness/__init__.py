@@ -170,6 +170,38 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "chaos/actionTemplate",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/actionTemplate:ActionTemplate": "ActionTemplate"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/experiment",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/experiment:Experiment": "Experiment"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/experimentTemplate",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/experimentTemplate:ExperimentTemplate": "ExperimentTemplate"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/faultTemplate",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/faultTemplate:FaultTemplate": "FaultTemplate"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "chaos/hub",
   "fqn": "pulumi_harness.chaos",
   "classes": {
@@ -186,6 +218,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "chaos/hubV2",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/hubV2:HubV2": "HubV2"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "chaos/imageRegistry",
   "fqn": "pulumi_harness.chaos",
   "classes": {
@@ -198,6 +238,14 @@ _utilities.register(
   "fqn": "pulumi_harness.chaos",
   "classes": {
    "harness:chaos/infrastructureV2:InfrastructureV2": "InfrastructureV2"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/probeTemplate",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/probeTemplate:ProbeTemplate": "ProbeTemplate"
   }
  },
  {

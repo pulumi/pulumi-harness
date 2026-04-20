@@ -16,6 +16,68 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ActionTemplateContainerAction',
+    'ActionTemplateContainerActionEnv',
+    'ActionTemplateContainerActionResources',
+    'ActionTemplateContainerActionToleration',
+    'ActionTemplateContainerActionVolume',
+    'ActionTemplateContainerActionVolumeConfigMap',
+    'ActionTemplateContainerActionVolumeEmptyDir',
+    'ActionTemplateContainerActionVolumeHostPath',
+    'ActionTemplateContainerActionVolumeMount',
+    'ActionTemplateContainerActionVolumePersistentVolumeClaim',
+    'ActionTemplateContainerActionVolumeSecret',
+    'ActionTemplateCustomScriptAction',
+    'ActionTemplateCustomScriptActionEnv',
+    'ActionTemplateDelayAction',
+    'ActionTemplateRunProperties',
+    'ActionTemplateVariable',
+    'ExperimentTemplateDetail',
+    'ExperimentTemplateSpec',
+    'ExperimentTemplateSpecAction',
+    'ExperimentTemplateSpecActionValue',
+    'ExperimentTemplateSpecFault',
+    'ExperimentTemplateSpecFaultValue',
+    'ExperimentTemplateSpecProbe',
+    'ExperimentTemplateSpecProbeCondition',
+    'ExperimentTemplateSpecProbeValue',
+    'ExperimentTemplateSpecStatusCheckTimeouts',
+    'ExperimentTemplateSpecVertex',
+    'ExperimentTemplateSpecVertexEnd',
+    'ExperimentTemplateSpecVertexEndAction',
+    'ExperimentTemplateSpecVertexEndFault',
+    'ExperimentTemplateSpecVertexEndProbe',
+    'ExperimentTemplateSpecVertexStart',
+    'ExperimentTemplateSpecVertexStartAction',
+    'ExperimentTemplateSpecVertexStartFault',
+    'ExperimentTemplateSpecVertexStartProbe',
+    'FaultTemplateLink',
+    'FaultTemplateSpec',
+    'FaultTemplateSpecChaos',
+    'FaultTemplateSpecChaosAuth',
+    'FaultTemplateSpecChaosAuthAws',
+    'FaultTemplateSpecChaosAuthAzure',
+    'FaultTemplateSpecChaosAuthGcp',
+    'FaultTemplateSpecChaosAuthRedis',
+    'FaultTemplateSpecChaosAuthSsh',
+    'FaultTemplateSpecChaosAuthVmware',
+    'FaultTemplateSpecChaosKubernetes',
+    'FaultTemplateSpecChaosKubernetesConfigMap',
+    'FaultTemplateSpecChaosKubernetesContainerSecurityContext',
+    'FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilities',
+    'FaultTemplateSpecChaosKubernetesEnv',
+    'FaultTemplateSpecChaosKubernetesHostFileVolume',
+    'FaultTemplateSpecChaosKubernetesPodSecurityContext',
+    'FaultTemplateSpecChaosKubernetesResources',
+    'FaultTemplateSpecChaosKubernetesSecret',
+    'FaultTemplateSpecChaosKubernetesToleration',
+    'FaultTemplateSpecChaosParam',
+    'FaultTemplateSpecChaosStatusCheckTimeouts',
+    'FaultTemplateSpecChaosTls',
+    'FaultTemplateSpecTarget',
+    'FaultTemplateSpecTargetApplication',
+    'FaultTemplateSpecTargetKubernete',
+    'FaultTemplateVariable',
     'ImageRegistryCustomImage',
     'InfrastructureV2Env',
     'InfrastructureV2Identifier',
@@ -27,6 +89,33 @@ __all__ = [
     'InfrastructureV2Toleration',
     'InfrastructureV2Volume',
     'InfrastructureV2VolumeMount',
+    'ProbeTemplateApmProbe',
+    'ProbeTemplateApmProbeAppDynamicsInputs',
+    'ProbeTemplateApmProbeAppDynamicsInputsAppdMetrics',
+    'ProbeTemplateApmProbeComparator',
+    'ProbeTemplateApmProbeDatadogInputs',
+    'ProbeTemplateApmProbeDatadogInputsSyntheticsTest',
+    'ProbeTemplateApmProbeDynatraceInputs',
+    'ProbeTemplateApmProbeDynatraceInputsMetrics',
+    'ProbeTemplateApmProbeGcpCloudMonitoringInputs',
+    'ProbeTemplateApmProbeNewRelicInputs',
+    'ProbeTemplateApmProbeNewRelicInputsNewRelicMetric',
+    'ProbeTemplateApmProbePrometheusInputs',
+    'ProbeTemplateApmProbePrometheusInputsTlsConfig',
+    'ProbeTemplateApmProbeSplunkObservabilityInputs',
+    'ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics',
+    'ProbeTemplateCmdProbe',
+    'ProbeTemplateCmdProbeComparator',
+    'ProbeTemplateCmdProbeEnv',
+    'ProbeTemplateHttpProbe',
+    'ProbeTemplateHttpProbeAuth',
+    'ProbeTemplateHttpProbeMethod',
+    'ProbeTemplateHttpProbeMethodGet',
+    'ProbeTemplateHttpProbeMethodPost',
+    'ProbeTemplateHttpProbeTlsConfig',
+    'ProbeTemplateK8sProbe',
+    'ProbeTemplateRunProperties',
+    'ProbeTemplateVariable',
     'SecurityGovernanceConditionFaultSpec',
     'SecurityGovernanceConditionFaultSpecFault',
     'SecurityGovernanceConditionK8sSpec',
@@ -38,6 +127,42 @@ __all__ = [
     'SecurityGovernanceConditionMachineSpecInfraSpec',
     'SecurityGovernanceRuleTimeWindow',
     'SecurityGovernanceRuleTimeWindowRecurrence',
+    'GetActionTemplateContainerActionResult',
+    'GetActionTemplateContainerActionEnvResult',
+    'GetActionTemplateContainerActionResourcesResult',
+    'GetActionTemplateContainerActionTolerationResult',
+    'GetActionTemplateContainerActionVolumeResult',
+    'GetActionTemplateContainerActionVolumeConfigMapResult',
+    'GetActionTemplateContainerActionVolumeEmptyDirResult',
+    'GetActionTemplateContainerActionVolumeHostPathResult',
+    'GetActionTemplateContainerActionVolumeMountResult',
+    'GetActionTemplateContainerActionVolumePersistentVolumeClaimResult',
+    'GetActionTemplateContainerActionVolumeSecretResult',
+    'GetActionTemplateCustomScriptActionResult',
+    'GetActionTemplateCustomScriptActionEnvResult',
+    'GetActionTemplateDelayActionResult',
+    'GetActionTemplateRunPropertiesResult',
+    'GetActionTemplateVariableResult',
+    'GetExperimentTemplateDetailResult',
+    'GetExperimentTemplateSpecResult',
+    'GetExperimentTemplateSpecActionResult',
+    'GetExperimentTemplateSpecActionValueResult',
+    'GetExperimentTemplateSpecFaultResult',
+    'GetExperimentTemplateSpecFaultValueResult',
+    'GetExperimentTemplateSpecProbeResult',
+    'GetExperimentTemplateSpecProbeConditionResult',
+    'GetExperimentTemplateSpecProbeValueResult',
+    'GetExperimentTemplateSpecStatusCheckTimeoutResult',
+    'GetExperimentTemplateSpecVertexResult',
+    'GetExperimentTemplateSpecVertexEndResult',
+    'GetExperimentTemplateSpecVertexEndActionResult',
+    'GetExperimentTemplateSpecVertexEndFaultResult',
+    'GetExperimentTemplateSpecVertexEndProbeResult',
+    'GetExperimentTemplateSpecVertexStartResult',
+    'GetExperimentTemplateSpecVertexStartActionResult',
+    'GetExperimentTemplateSpecVertexStartFaultResult',
+    'GetExperimentTemplateSpecVertexStartProbeResult',
+    'GetFaultTemplateVariableResult',
     'GetImageRegistryCustomImageResult',
     'GetInfrastructureV2ImageRegistryResult',
     'GetInfrastructureV2ImageRegistryCustomImageResult',
@@ -47,6 +172,16 @@ __all__ = [
     'GetInfrastructureV2TolerationResult',
     'GetInfrastructureV2VolumeResult',
     'GetInfrastructureV2VolumeMountResult',
+    'GetProbeTemplateCmdProbeResult',
+    'GetProbeTemplateCmdProbeComparatorResult',
+    'GetProbeTemplateCmdProbeEnvResult',
+    'GetProbeTemplateHttpProbeResult',
+    'GetProbeTemplateHttpProbeMethodResult',
+    'GetProbeTemplateHttpProbeMethodGetResult',
+    'GetProbeTemplateHttpProbeMethodPostResult',
+    'GetProbeTemplateK8sProbeResult',
+    'GetProbeTemplateRunPropertyResult',
+    'GetProbeTemplateVariableResult',
     'GetSecurityGovernanceConditionFaultSpecResult',
     'GetSecurityGovernanceConditionFaultSpecFaultResult',
     'GetSecurityGovernanceConditionK8sSpecResult',
@@ -56,6 +191,3768 @@ __all__ = [
     'GetSecurityGovernanceRuleTimeWindowResult',
     'GetSecurityGovernanceRuleTimeWindowRecurrenceResult',
 ]
+
+@pulumi.output_type
+class ActionTemplateContainerAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostIpc":
+            suggest = "host_ipc"
+        elif key == "hostNetwork":
+            suggest = "host_network"
+        elif key == "hostPid":
+            suggest = "host_pid"
+        elif key == "imagePullPolicy":
+            suggest = "image_pull_policy"
+        elif key == "imagePullSecrets":
+            suggest = "image_pull_secrets"
+        elif key == "nodeSelector":
+            suggest = "node_selector"
+        elif key == "serviceAccountName":
+            suggest = "service_account_name"
+        elif key == "volumeMounts":
+            suggest = "volume_mounts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionTemplateContainerAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionTemplateContainerAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionTemplateContainerAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image: _builtins.str,
+                 annotations: Optional[Mapping[str, _builtins.str]] = None,
+                 args: Optional[_builtins.str] = None,
+                 commands: Optional[Sequence[_builtins.str]] = None,
+                 envs: Optional[Sequence['outputs.ActionTemplateContainerActionEnv']] = None,
+                 host_ipc: Optional[_builtins.bool] = None,
+                 host_network: Optional[_builtins.bool] = None,
+                 host_pid: Optional[_builtins.bool] = None,
+                 image_pull_policy: Optional[_builtins.str] = None,
+                 image_pull_secrets: Optional[Sequence[_builtins.str]] = None,
+                 labels: Optional[Mapping[str, _builtins.str]] = None,
+                 namespace: Optional[_builtins.str] = None,
+                 node_selector: Optional[Mapping[str, _builtins.str]] = None,
+                 resources: Optional['outputs.ActionTemplateContainerActionResources'] = None,
+                 service_account_name: Optional[_builtins.str] = None,
+                 tolerations: Optional[Sequence['outputs.ActionTemplateContainerActionToleration']] = None,
+                 volume_mounts: Optional[Sequence['outputs.ActionTemplateContainerActionVolumeMount']] = None,
+                 volumes: Optional[Sequence['outputs.ActionTemplateContainerActionVolume']] = None):
+        """
+        :param _builtins.str image: Container image to use (e.g., 'busybox:latest').
+        :param Mapping[str, _builtins.str] annotations: Annotations to apply to the container pod.
+        :param _builtins.str args: Arguments to pass to the container command.
+        :param Sequence[_builtins.str] commands: Command to run in the container.
+        :param Sequence['ActionTemplateContainerActionEnvArgs'] envs: Environment variables for the container.
+        :param _builtins.bool host_ipc: Use host IPC namespace.
+        :param _builtins.bool host_network: Use host network namespace.
+        :param _builtins.bool host_pid: Use host PID namespace.
+        :param _builtins.str image_pull_policy: Image pull policy (Always, IfNotPresent, Never). Supports runtime inputs like <+input>.allowedValues(...).
+        :param Sequence[_builtins.str] image_pull_secrets: List of image pull secrets for private registries.
+        :param Mapping[str, _builtins.str] labels: Labels to apply to the container pod.
+        :param _builtins.str namespace: Kubernetes namespace for the container.
+        :param Mapping[str, _builtins.str] node_selector: Node selector for pod scheduling.
+        :param 'ActionTemplateContainerActionResourcesArgs' resources: Resource requirements for the container.
+        :param _builtins.str service_account_name: Kubernetes service account name.
+        :param Sequence['ActionTemplateContainerActionTolerationArgs'] tolerations: Tolerations for pod scheduling on tainted nodes.
+        :param Sequence['ActionTemplateContainerActionVolumeMountArgs'] volume_mounts: Volume mounts for the container.
+        :param Sequence['ActionTemplateContainerActionVolumeArgs'] volumes: Volumes to attach to the pod.
+        """
+        pulumi.set(__self__, "image", image)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if host_ipc is not None:
+            pulumi.set(__self__, "host_ipc", host_ipc)
+        if host_network is not None:
+            pulumi.set(__self__, "host_network", host_network)
+        if host_pid is not None:
+            pulumi.set(__self__, "host_pid", host_pid)
+        if image_pull_policy is not None:
+            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if image_pull_secrets is not None:
+            pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if node_selector is not None:
+            pulumi.set(__self__, "node_selector", node_selector)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if service_account_name is not None:
+            pulumi.set(__self__, "service_account_name", service_account_name)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> _builtins.str:
+        """
+        Container image to use (e.g., 'busybox:latest').
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter
+    def annotations(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Annotations to apply to the container pod.
+        """
+        return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[_builtins.str]:
+        """
+        Arguments to pass to the container command.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Command to run in the container.
+        """
+        return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.ActionTemplateContainerActionEnv']]:
+        """
+        Environment variables for the container.
+        """
+        return pulumi.get(self, "envs")
+
+    @_builtins.property
+    @pulumi.getter(name="hostIpc")
+    def host_ipc(self) -> Optional[_builtins.bool]:
+        """
+        Use host IPC namespace.
+        """
+        return pulumi.get(self, "host_ipc")
+
+    @_builtins.property
+    @pulumi.getter(name="hostNetwork")
+    def host_network(self) -> Optional[_builtins.bool]:
+        """
+        Use host network namespace.
+        """
+        return pulumi.get(self, "host_network")
+
+    @_builtins.property
+    @pulumi.getter(name="hostPid")
+    def host_pid(self) -> Optional[_builtins.bool]:
+        """
+        Use host PID namespace.
+        """
+        return pulumi.get(self, "host_pid")
+
+    @_builtins.property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> Optional[_builtins.str]:
+        """
+        Image pull policy (Always, IfNotPresent, Never). Supports runtime inputs like <+input>.allowedValues(...).
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="imagePullSecrets")
+    def image_pull_secrets(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of image pull secrets for private registries.
+        """
+        return pulumi.get(self, "image_pull_secrets")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Labels to apply to the container pod.
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[_builtins.str]:
+        """
+        Kubernetes namespace for the container.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeSelector")
+    def node_selector(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Node selector for pod scheduling.
+        """
+        return pulumi.get(self, "node_selector")
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Optional['outputs.ActionTemplateContainerActionResources']:
+        """
+        Resource requirements for the container.
+        """
+        return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountName")
+    def service_account_name(self) -> Optional[_builtins.str]:
+        """
+        Kubernetes service account name.
+        """
+        return pulumi.get(self, "service_account_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.ActionTemplateContainerActionToleration']]:
+        """
+        Tolerations for pod scheduling on tainted nodes.
+        """
+        return pulumi.get(self, "tolerations")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Optional[Sequence['outputs.ActionTemplateContainerActionVolumeMount']]:
+        """
+        Volume mounts for the container.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Optional[Sequence['outputs.ActionTemplateContainerActionVolume']]:
+        """
+        Volumes to attach to the pod.
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class ActionTemplateContainerActionEnv(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Environment variable name.
+        :param _builtins.str value: Environment variable value.
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Environment variable name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Environment variable value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ActionTemplateContainerActionResources(dict):
+    def __init__(__self__, *,
+                 limits: Optional[Mapping[str, _builtins.str]] = None,
+                 requests: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] limits: Resource limits.
+        :param Mapping[str, _builtins.str] requests: Resource requests.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource limits.
+        """
+        return pulumi.get(self, "limits")
+
+    @_builtins.property
+    @pulumi.getter
+    def requests(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource requests.
+        """
+        return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class ActionTemplateContainerActionToleration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tolerationSeconds":
+            suggest = "toleration_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionTemplateContainerActionToleration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionTemplateContainerActionToleration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionTemplateContainerActionToleration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 effect: Optional[_builtins.str] = None,
+                 key: Optional[_builtins.str] = None,
+                 operator: Optional[_builtins.str] = None,
+                 toleration_seconds: Optional[_builtins.int] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str effect: Taint effect (NoSchedule, PreferNoSchedule, NoExecute).
+        :param _builtins.str key: Taint key to tolerate.
+        :param _builtins.str operator: Operator (Exists, Equal).
+        :param _builtins.int toleration_seconds: Toleration seconds for NoExecute effect.
+        :param _builtins.str value: Taint value to tolerate.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if toleration_seconds is not None:
+            pulumi.set(__self__, "toleration_seconds", toleration_seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def effect(self) -> Optional[_builtins.str]:
+        """
+        Taint effect (NoSchedule, PreferNoSchedule, NoExecute).
+        """
+        return pulumi.get(self, "effect")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Taint key to tolerate.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> Optional[_builtins.str]:
+        """
+        Operator (Exists, Equal).
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter(name="tolerationSeconds")
+    def toleration_seconds(self) -> Optional[_builtins.int]:
+        """
+        Toleration seconds for NoExecute effect.
+        """
+        return pulumi.get(self, "toleration_seconds")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Taint value to tolerate.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ActionTemplateContainerActionVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configMap":
+            suggest = "config_map"
+        elif key == "emptyDir":
+            suggest = "empty_dir"
+        elif key == "hostPath":
+            suggest = "host_path"
+        elif key == "persistentVolumeClaim":
+            suggest = "persistent_volume_claim"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionTemplateContainerActionVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionTemplateContainerActionVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionTemplateContainerActionVolume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 config_map: Optional['outputs.ActionTemplateContainerActionVolumeConfigMap'] = None,
+                 empty_dir: Optional['outputs.ActionTemplateContainerActionVolumeEmptyDir'] = None,
+                 host_path: Optional['outputs.ActionTemplateContainerActionVolumeHostPath'] = None,
+                 persistent_volume_claim: Optional['outputs.ActionTemplateContainerActionVolumePersistentVolumeClaim'] = None,
+                 secret: Optional['outputs.ActionTemplateContainerActionVolumeSecret'] = None):
+        """
+        :param _builtins.str name: Volume name.
+        :param 'ActionTemplateContainerActionVolumeConfigMapArgs' config_map: ConfigMap volume configuration.
+        :param 'ActionTemplateContainerActionVolumeEmptyDirArgs' empty_dir: EmptyDir volume configuration.
+        :param 'ActionTemplateContainerActionVolumeHostPathArgs' host_path: HostPath volume configuration.
+        :param 'ActionTemplateContainerActionVolumePersistentVolumeClaimArgs' persistent_volume_claim: PersistentVolumeClaim configuration.
+        :param 'ActionTemplateContainerActionVolumeSecretArgs' secret: Secret volume configuration.
+        """
+        pulumi.set(__self__, "name", name)
+        if config_map is not None:
+            pulumi.set(__self__, "config_map", config_map)
+        if empty_dir is not None:
+            pulumi.set(__self__, "empty_dir", empty_dir)
+        if host_path is not None:
+            pulumi.set(__self__, "host_path", host_path)
+        if persistent_volume_claim is not None:
+            pulumi.set(__self__, "persistent_volume_claim", persistent_volume_claim)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Volume name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="configMap")
+    def config_map(self) -> Optional['outputs.ActionTemplateContainerActionVolumeConfigMap']:
+        """
+        ConfigMap volume configuration.
+        """
+        return pulumi.get(self, "config_map")
+
+    @_builtins.property
+    @pulumi.getter(name="emptyDir")
+    def empty_dir(self) -> Optional['outputs.ActionTemplateContainerActionVolumeEmptyDir']:
+        """
+        EmptyDir volume configuration.
+        """
+        return pulumi.get(self, "empty_dir")
+
+    @_builtins.property
+    @pulumi.getter(name="hostPath")
+    def host_path(self) -> Optional['outputs.ActionTemplateContainerActionVolumeHostPath']:
+        """
+        HostPath volume configuration.
+        """
+        return pulumi.get(self, "host_path")
+
+    @_builtins.property
+    @pulumi.getter(name="persistentVolumeClaim")
+    def persistent_volume_claim(self) -> Optional['outputs.ActionTemplateContainerActionVolumePersistentVolumeClaim']:
+        """
+        PersistentVolumeClaim configuration.
+        """
+        return pulumi.get(self, "persistent_volume_claim")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional['outputs.ActionTemplateContainerActionVolumeSecret']:
+        """
+        Secret volume configuration.
+        """
+        return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class ActionTemplateContainerActionVolumeConfigMap(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 optional: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str name: ConfigMap name.
+        :param _builtins.bool optional: Whether the ConfigMap is optional.
+        """
+        pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        ConfigMap name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def optional(self) -> Optional[_builtins.bool]:
+        """
+        Whether the ConfigMap is optional.
+        """
+        return pulumi.get(self, "optional")
+
+
+@pulumi.output_type
+class ActionTemplateContainerActionVolumeEmptyDir(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeLimit":
+            suggest = "size_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionTemplateContainerActionVolumeEmptyDir. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionTemplateContainerActionVolumeEmptyDir.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionTemplateContainerActionVolumeEmptyDir.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 medium: Optional[_builtins.str] = None,
+                 size_limit: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str medium: Storage medium (empty string for default, Memory for tmpfs).
+        :param _builtins.str size_limit: Size limit (e.g., '1Gi').
+        """
+        if medium is not None:
+            pulumi.set(__self__, "medium", medium)
+        if size_limit is not None:
+            pulumi.set(__self__, "size_limit", size_limit)
+
+    @_builtins.property
+    @pulumi.getter
+    def medium(self) -> Optional[_builtins.str]:
+        """
+        Storage medium (empty string for default, Memory for tmpfs).
+        """
+        return pulumi.get(self, "medium")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeLimit")
+    def size_limit(self) -> Optional[_builtins.str]:
+        """
+        Size limit (e.g., '1Gi').
+        """
+        return pulumi.get(self, "size_limit")
+
+
+@pulumi.output_type
+class ActionTemplateContainerActionVolumeHostPath(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str path: Host path.
+        :param _builtins.str type: Host path type (Directory, File, etc.).
+        """
+        pulumi.set(__self__, "path", path)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        Host path.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Host path type (Directory, File, etc.).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ActionTemplateContainerActionVolumeMount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+        elif key == "readOnly":
+            suggest = "read_only"
+        elif key == "subPath":
+            suggest = "sub_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionTemplateContainerActionVolumeMount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionTemplateContainerActionVolumeMount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionTemplateContainerActionVolumeMount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_path: _builtins.str,
+                 name: _builtins.str,
+                 read_only: Optional[_builtins.bool] = None,
+                 sub_path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str mount_path: Path to mount the volume in the container.
+        :param _builtins.str name: Volume name to mount.
+        :param _builtins.bool read_only: Mount as read-only.
+        :param _builtins.str sub_path: Sub-path within the volume.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> _builtins.str:
+        """
+        Path to mount the volume in the container.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Volume name to mount.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[_builtins.bool]:
+        """
+        Mount as read-only.
+        """
+        return pulumi.get(self, "read_only")
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> Optional[_builtins.str]:
+        """
+        Sub-path within the volume.
+        """
+        return pulumi.get(self, "sub_path")
+
+
+@pulumi.output_type
+class ActionTemplateContainerActionVolumePersistentVolumeClaim(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "claimName":
+            suggest = "claim_name"
+        elif key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionTemplateContainerActionVolumePersistentVolumeClaim. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionTemplateContainerActionVolumePersistentVolumeClaim.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionTemplateContainerActionVolumePersistentVolumeClaim.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 claim_name: _builtins.str,
+                 read_only: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str claim_name: PVC name.
+        :param _builtins.bool read_only: Mount as read-only.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> _builtins.str:
+        """
+        PVC name.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[_builtins.bool]:
+        """
+        Mount as read-only.
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class ActionTemplateContainerActionVolumeSecret(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretName":
+            suggest = "secret_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionTemplateContainerActionVolumeSecret. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionTemplateContainerActionVolumeSecret.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionTemplateContainerActionVolumeSecret.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_name: _builtins.str,
+                 optional: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str secret_name: Secret name.
+        :param _builtins.bool optional: Whether the Secret is optional.
+        """
+        pulumi.set(__self__, "secret_name", secret_name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @_builtins.property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> _builtins.str:
+        """
+        Secret name.
+        """
+        return pulumi.get(self, "secret_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def optional(self) -> Optional[_builtins.bool]:
+        """
+        Whether the Secret is optional.
+        """
+        return pulumi.get(self, "optional")
+
+
+@pulumi.output_type
+class ActionTemplateCustomScriptAction(dict):
+    def __init__(__self__, *,
+                 command: _builtins.str,
+                 args: Optional[Sequence[_builtins.str]] = None,
+                 envs: Optional[Sequence['outputs.ActionTemplateCustomScriptActionEnv']] = None):
+        """
+        :param _builtins.str command: Command to execute (e.g., 'bash', 'python', 'sh').
+        :param Sequence[_builtins.str] args: Arguments to pass to the command.
+        :param Sequence['ActionTemplateCustomScriptActionEnvArgs'] envs: Environment variables for the script.
+        """
+        pulumi.set(__self__, "command", command)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+
+    @_builtins.property
+    @pulumi.getter
+    def command(self) -> _builtins.str:
+        """
+        Command to execute (e.g., 'bash', 'python', 'sh').
+        """
+        return pulumi.get(self, "command")
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Arguments to pass to the command.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.ActionTemplateCustomScriptActionEnv']]:
+        """
+        Environment variables for the script.
+        """
+        return pulumi.get(self, "envs")
+
+
+@pulumi.output_type
+class ActionTemplateCustomScriptActionEnv(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Environment variable name.
+        :param _builtins.str value: Environment variable value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Environment variable name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Environment variable value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ActionTemplateDelayAction(dict):
+    def __init__(__self__, *,
+                 duration: _builtins.str):
+        """
+        :param _builtins.str duration: Duration of the delay (e.g., '30s', '5m', '1h').
+        """
+        pulumi.set(__self__, "duration", duration)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> _builtins.str:
+        """
+        Duration of the delay (e.g., '30s', '5m', '1h').
+        """
+        return pulumi.get(self, "duration")
+
+
+@pulumi.output_type
+class ActionTemplateRunProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialDelay":
+            suggest = "initial_delay"
+        elif key == "maxRetries":
+            suggest = "max_retries"
+        elif key == "stopOnFailure":
+            suggest = "stop_on_failure"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionTemplateRunProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionTemplateRunProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionTemplateRunProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initial_delay: Optional[_builtins.str] = None,
+                 interval: Optional[_builtins.str] = None,
+                 max_retries: Optional[_builtins.int] = None,
+                 stop_on_failure: Optional[_builtins.bool] = None,
+                 timeout: Optional[_builtins.str] = None,
+                 verbosity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str initial_delay: Initial delay before action execution (e.g., '5s', '1m').
+        :param _builtins.str interval: Interval between retries (e.g., '10s', '30s').
+        :param _builtins.int max_retries: Maximum number of retries.
+        :param _builtins.bool stop_on_failure: Whether to stop on failure.
+        :param _builtins.str timeout: Timeout for action execution (e.g., '5m', '10m').
+        :param _builtins.str verbosity: Verbosity level for logging.
+        """
+        if initial_delay is not None:
+            pulumi.set(__self__, "initial_delay", initial_delay)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if max_retries is not None:
+            pulumi.set(__self__, "max_retries", max_retries)
+        if stop_on_failure is not None:
+            pulumi.set(__self__, "stop_on_failure", stop_on_failure)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if verbosity is not None:
+            pulumi.set(__self__, "verbosity", verbosity)
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelay")
+    def initial_delay(self) -> Optional[_builtins.str]:
+        """
+        Initial delay before action execution (e.g., '5s', '1m').
+        """
+        return pulumi.get(self, "initial_delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[_builtins.str]:
+        """
+        Interval between retries (e.g., '10s', '30s').
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of retries.
+        """
+        return pulumi.get(self, "max_retries")
+
+    @_builtins.property
+    @pulumi.getter(name="stopOnFailure")
+    def stop_on_failure(self) -> Optional[_builtins.bool]:
+        """
+        Whether to stop on failure.
+        """
+        return pulumi.get(self, "stop_on_failure")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[_builtins.str]:
+        """
+        Timeout for action execution (e.g., '5m', '10m').
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def verbosity(self) -> Optional[_builtins.str]:
+        """
+        Verbosity level for logging.
+        """
+        return pulumi.get(self, "verbosity")
+
+
+@pulumi.output_type
+class ActionTemplateVariable(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 required: Optional[_builtins.bool] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Variable name.
+        :param _builtins.str value: Variable value.
+        :param _builtins.str description: Variable description.
+        :param _builtins.bool required: Whether the variable is required.
+        :param _builtins.str type: Variable type (e.g., 'string', 'number', 'boolean').
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Variable name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Variable value.
+        """
+        return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Variable description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> Optional[_builtins.bool]:
+        """
+        Whether the variable is required.
+        """
+        return pulumi.get(self, "required")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Variable type (e.g., 'string', 'number', 'boolean').
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ExperimentTemplateDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hubReference":
+            suggest = "hub_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentTemplateDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentTemplateDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentTemplateDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hub_reference: Optional[_builtins.str] = None,
+                 identity: Optional[_builtins.str] = None,
+                 reference: Optional[_builtins.str] = None,
+                 revision: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str hub_reference: Hub reference where template resides
+        :param _builtins.str identity: Template identity
+        :param _builtins.str reference: Full template reference
+        :param _builtins.str revision: Template revision used
+        """
+        if hub_reference is not None:
+            pulumi.set(__self__, "hub_reference", hub_reference)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+        if reference is not None:
+            pulumi.set(__self__, "reference", reference)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+
+    @_builtins.property
+    @pulumi.getter(name="hubReference")
+    def hub_reference(self) -> Optional[_builtins.str]:
+        """
+        Hub reference where template resides
+        """
+        return pulumi.get(self, "hub_reference")
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> Optional[_builtins.str]:
+        """
+        Template identity
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter
+    def reference(self) -> Optional[_builtins.str]:
+        """
+        Full template reference
+        """
+        return pulumi.get(self, "reference")
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> Optional[_builtins.str]:
+        """
+        Template revision used
+        """
+        return pulumi.get(self, "revision")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infraType":
+            suggest = "infra_type"
+        elif key == "cleanupPolicy":
+            suggest = "cleanup_policy"
+        elif key == "infraId":
+            suggest = "infra_id"
+        elif key == "statusCheckTimeouts":
+            suggest = "status_check_timeouts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentTemplateSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentTemplateSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentTemplateSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 infra_type: _builtins.str,
+                 actions: Optional[Sequence['outputs.ExperimentTemplateSpecAction']] = None,
+                 cleanup_policy: Optional[_builtins.str] = None,
+                 faults: Optional[Sequence['outputs.ExperimentTemplateSpecFault']] = None,
+                 infra_id: Optional[_builtins.str] = None,
+                 probes: Optional[Sequence['outputs.ExperimentTemplateSpecProbe']] = None,
+                 status_check_timeouts: Optional['outputs.ExperimentTemplateSpecStatusCheckTimeouts'] = None,
+                 vertices: Optional[Sequence['outputs.ExperimentTemplateSpecVertex']] = None):
+        """
+        :param _builtins.str infra_type: Infrastructure type (Windows, Linux, CloudFoundry, Container, Kubernetes, KubernetesV2)
+        :param Sequence['ExperimentTemplateSpecActionArgs'] actions: List of actions in the experiment
+        :param _builtins.str cleanup_policy: Cleanup policy for experiment resources (retain, delete)
+        :param Sequence['ExperimentTemplateSpecFaultArgs'] faults: List of faults in the experiment
+        :param _builtins.str infra_id: Infrastructure identifier (supports runtime input: <+input>)
+        :param Sequence['ExperimentTemplateSpecProbeArgs'] probes: List of probes in the experiment
+        :param 'ExperimentTemplateSpecStatusCheckTimeoutsArgs' status_check_timeouts: Status check timeout configuration
+        :param Sequence['ExperimentTemplateSpecVertexArgs'] vertices: Workflow graph vertices defining execution order
+        """
+        pulumi.set(__self__, "infra_type", infra_type)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if cleanup_policy is not None:
+            pulumi.set(__self__, "cleanup_policy", cleanup_policy)
+        if faults is not None:
+            pulumi.set(__self__, "faults", faults)
+        if infra_id is not None:
+            pulumi.set(__self__, "infra_id", infra_id)
+        if probes is not None:
+            pulumi.set(__self__, "probes", probes)
+        if status_check_timeouts is not None:
+            pulumi.set(__self__, "status_check_timeouts", status_check_timeouts)
+        if vertices is not None:
+            pulumi.set(__self__, "vertices", vertices)
+
+    @_builtins.property
+    @pulumi.getter(name="infraType")
+    def infra_type(self) -> _builtins.str:
+        """
+        Infrastructure type (Windows, Linux, CloudFoundry, Container, Kubernetes, KubernetesV2)
+        """
+        return pulumi.get(self, "infra_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecAction']]:
+        """
+        List of actions in the experiment
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter(name="cleanupPolicy")
+    def cleanup_policy(self) -> Optional[_builtins.str]:
+        """
+        Cleanup policy for experiment resources (retain, delete)
+        """
+        return pulumi.get(self, "cleanup_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def faults(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecFault']]:
+        """
+        List of faults in the experiment
+        """
+        return pulumi.get(self, "faults")
+
+    @_builtins.property
+    @pulumi.getter(name="infraId")
+    def infra_id(self) -> Optional[_builtins.str]:
+        """
+        Infrastructure identifier (supports runtime input: <+input>)
+        """
+        return pulumi.get(self, "infra_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def probes(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecProbe']]:
+        """
+        List of probes in the experiment
+        """
+        return pulumi.get(self, "probes")
+
+    @_builtins.property
+    @pulumi.getter(name="statusCheckTimeouts")
+    def status_check_timeouts(self) -> Optional['outputs.ExperimentTemplateSpecStatusCheckTimeouts']:
+        """
+        Status check timeout configuration
+        """
+        return pulumi.get(self, "status_check_timeouts")
+
+    @_builtins.property
+    @pulumi.getter
+    def vertices(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecVertex']]:
+        """
+        Workflow graph vertices defining execution order
+        """
+        return pulumi.get(self, "vertices")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "continueOnCompletion":
+            suggest = "continue_on_completion"
+        elif key == "infraId":
+            suggest = "infra_id"
+        elif key == "isEnterprise":
+            suggest = "is_enterprise"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentTemplateSpecAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentTemplateSpecAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentTemplateSpecAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity: _builtins.str,
+                 name: _builtins.str,
+                 continue_on_completion: Optional[_builtins.bool] = None,
+                 infra_id: Optional[_builtins.str] = None,
+                 is_enterprise: Optional[_builtins.bool] = None,
+                 revision: Optional[_builtins.int] = None,
+                 values: Optional[Sequence['outputs.ExperimentTemplateSpecActionValue']] = None):
+        """
+        :param _builtins.str identity: Action template identity
+        :param _builtins.str name: Action name
+        :param _builtins.bool continue_on_completion: Whether to continue on completion
+        :param _builtins.str infra_id: Infrastructure identifier for this action
+        :param _builtins.bool is_enterprise: Whether this is an enterprise action
+        :param _builtins.int revision: Action template revision
+        :param Sequence['ExperimentTemplateSpecActionValueArgs'] values: Variable values for the action
+        """
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "name", name)
+        if continue_on_completion is not None:
+            pulumi.set(__self__, "continue_on_completion", continue_on_completion)
+        if infra_id is not None:
+            pulumi.set(__self__, "infra_id", infra_id)
+        if is_enterprise is not None:
+            pulumi.set(__self__, "is_enterprise", is_enterprise)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> _builtins.str:
+        """
+        Action template identity
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Action name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="continueOnCompletion")
+    def continue_on_completion(self) -> Optional[_builtins.bool]:
+        """
+        Whether to continue on completion
+        """
+        return pulumi.get(self, "continue_on_completion")
+
+    @_builtins.property
+    @pulumi.getter(name="infraId")
+    def infra_id(self) -> Optional[_builtins.str]:
+        """
+        Infrastructure identifier for this action
+        """
+        return pulumi.get(self, "infra_id")
+
+    @_builtins.property
+    @pulumi.getter(name="isEnterprise")
+    def is_enterprise(self) -> Optional[_builtins.bool]:
+        """
+        Whether this is an enterprise action
+        """
+        return pulumi.get(self, "is_enterprise")
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> Optional[_builtins.int]:
+        """
+        Action template revision
+        """
+        return pulumi.get(self, "revision")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecActionValue']]:
+        """
+        Variable values for the action
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecActionValue(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Variable name
+        :param _builtins.str value: Variable value (supports runtime input: <+input>)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Variable name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Variable value (supports runtime input: <+input>)
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecFault(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authEnabled":
+            suggest = "auth_enabled"
+        elif key == "infraId":
+            suggest = "infra_id"
+        elif key == "isEnterprise":
+            suggest = "is_enterprise"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentTemplateSpecFault. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentTemplateSpecFault.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentTemplateSpecFault.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity: _builtins.str,
+                 name: _builtins.str,
+                 auth_enabled: Optional[_builtins.bool] = None,
+                 infra_id: Optional[_builtins.str] = None,
+                 is_enterprise: Optional[_builtins.bool] = None,
+                 revision: Optional[_builtins.str] = None,
+                 values: Optional[Sequence['outputs.ExperimentTemplateSpecFaultValue']] = None):
+        """
+        :param _builtins.str identity: Fault template identity
+        :param _builtins.str name: Fault name
+        :param _builtins.bool auth_enabled: Whether authentication is enabled
+        :param _builtins.str infra_id: Infrastructure identifier for this fault
+        :param _builtins.bool is_enterprise: Whether this is an enterprise fault
+        :param _builtins.str revision: Fault template revision
+        :param Sequence['ExperimentTemplateSpecFaultValueArgs'] values: Variable values for the fault
+        """
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "name", name)
+        if auth_enabled is not None:
+            pulumi.set(__self__, "auth_enabled", auth_enabled)
+        if infra_id is not None:
+            pulumi.set(__self__, "infra_id", infra_id)
+        if is_enterprise is not None:
+            pulumi.set(__self__, "is_enterprise", is_enterprise)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> _builtins.str:
+        """
+        Fault template identity
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Fault name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="authEnabled")
+    def auth_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether authentication is enabled
+        """
+        return pulumi.get(self, "auth_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="infraId")
+    def infra_id(self) -> Optional[_builtins.str]:
+        """
+        Infrastructure identifier for this fault
+        """
+        return pulumi.get(self, "infra_id")
+
+    @_builtins.property
+    @pulumi.getter(name="isEnterprise")
+    def is_enterprise(self) -> Optional[_builtins.bool]:
+        """
+        Whether this is an enterprise fault
+        """
+        return pulumi.get(self, "is_enterprise")
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> Optional[_builtins.str]:
+        """
+        Fault template revision
+        """
+        return pulumi.get(self, "revision")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecFaultValue']]:
+        """
+        Variable values for the fault
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecFaultValue(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Variable name
+        :param _builtins.str value: Variable value (supports runtime input: <+input>)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Variable name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Variable value (supports runtime input: <+input>)
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableDataCollection":
+            suggest = "enable_data_collection"
+        elif key == "infraId":
+            suggest = "infra_id"
+        elif key == "isEnterprise":
+            suggest = "is_enterprise"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentTemplateSpecProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentTemplateSpecProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentTemplateSpecProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity: _builtins.str,
+                 name: _builtins.str,
+                 conditions: Optional[Sequence['outputs.ExperimentTemplateSpecProbeCondition']] = None,
+                 duration: Optional[_builtins.str] = None,
+                 enable_data_collection: Optional[_builtins.bool] = None,
+                 infra_id: Optional[_builtins.str] = None,
+                 is_enterprise: Optional[_builtins.bool] = None,
+                 revision: Optional[_builtins.int] = None,
+                 values: Optional[Sequence['outputs.ExperimentTemplateSpecProbeValue']] = None,
+                 weightage: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str identity: Probe template identity
+        :param _builtins.str name: Probe name
+        :param Sequence['ExperimentTemplateSpecProbeConditionArgs'] conditions: Probe execution conditions
+        :param _builtins.str duration: Probe duration
+        :param _builtins.bool enable_data_collection: Whether to enable data collection
+        :param _builtins.str infra_id: Infrastructure identifier for this probe
+        :param _builtins.bool is_enterprise: Whether this is an enterprise probe
+        :param _builtins.int revision: Probe template revision
+        :param Sequence['ExperimentTemplateSpecProbeValueArgs'] values: Variable values for the probe
+        :param _builtins.int weightage: Probe weightage for resilience score calculation
+        """
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "name", name)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if enable_data_collection is not None:
+            pulumi.set(__self__, "enable_data_collection", enable_data_collection)
+        if infra_id is not None:
+            pulumi.set(__self__, "infra_id", infra_id)
+        if is_enterprise is not None:
+            pulumi.set(__self__, "is_enterprise", is_enterprise)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+        if weightage is not None:
+            pulumi.set(__self__, "weightage", weightage)
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> _builtins.str:
+        """
+        Probe template identity
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Probe name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecProbeCondition']]:
+        """
+        Probe execution conditions
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[_builtins.str]:
+        """
+        Probe duration
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="enableDataCollection")
+    def enable_data_collection(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable data collection
+        """
+        return pulumi.get(self, "enable_data_collection")
+
+    @_builtins.property
+    @pulumi.getter(name="infraId")
+    def infra_id(self) -> Optional[_builtins.str]:
+        """
+        Infrastructure identifier for this probe
+        """
+        return pulumi.get(self, "infra_id")
+
+    @_builtins.property
+    @pulumi.getter(name="isEnterprise")
+    def is_enterprise(self) -> Optional[_builtins.bool]:
+        """
+        Whether this is an enterprise probe
+        """
+        return pulumi.get(self, "is_enterprise")
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> Optional[_builtins.int]:
+        """
+        Probe template revision
+        """
+        return pulumi.get(self, "revision")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecProbeValue']]:
+        """
+        Variable values for the probe
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter
+    def weightage(self) -> Optional[_builtins.int]:
+        """
+        Probe weightage for resilience score calculation
+        """
+        return pulumi.get(self, "weightage")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecProbeCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executeUpon":
+            suggest = "execute_upon"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentTemplateSpecProbeCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentTemplateSpecProbeCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentTemplateSpecProbeCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 execute_upon: _builtins.str):
+        """
+        :param _builtins.str execute_upon: When to execute the probe (onChaosStart, duringChaos, afterChaos)
+        """
+        pulumi.set(__self__, "execute_upon", execute_upon)
+
+    @_builtins.property
+    @pulumi.getter(name="executeUpon")
+    def execute_upon(self) -> _builtins.str:
+        """
+        When to execute the probe (onChaosStart, duringChaos, afterChaos)
+        """
+        return pulumi.get(self, "execute_upon")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecProbeValue(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Variable name
+        :param _builtins.str value: Variable value (supports runtime input: <+input>)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Variable name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Variable value (supports runtime input: <+input>)
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecStatusCheckTimeouts(dict):
+    def __init__(__self__, *,
+                 delay: Optional[_builtins.int] = None,
+                 timeout: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int delay: Delay before status check (in seconds)
+        :param _builtins.int timeout: Timeout for status check (in seconds)
+        """
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> Optional[_builtins.int]:
+        """
+        Delay before status check (in seconds)
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[_builtins.int]:
+        """
+        Timeout for status check (in seconds)
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecVertex(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 end: Optional['outputs.ExperimentTemplateSpecVertexEnd'] = None,
+                 start: Optional['outputs.ExperimentTemplateSpecVertexStart'] = None):
+        """
+        :param _builtins.str name: Vertex name
+        :param 'ExperimentTemplateSpecVertexEndArgs' end: End configuration for the vertex
+        :param 'ExperimentTemplateSpecVertexStartArgs' start: Start configuration for the vertex
+        """
+        pulumi.set(__self__, "name", name)
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Vertex name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> Optional['outputs.ExperimentTemplateSpecVertexEnd']:
+        """
+        End configuration for the vertex
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> Optional['outputs.ExperimentTemplateSpecVertexStart']:
+        """
+        Start configuration for the vertex
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecVertexEnd(dict):
+    def __init__(__self__, *,
+                 actions: Optional[Sequence['outputs.ExperimentTemplateSpecVertexEndAction']] = None,
+                 faults: Optional[Sequence['outputs.ExperimentTemplateSpecVertexEndFault']] = None,
+                 probes: Optional[Sequence['outputs.ExperimentTemplateSpecVertexEndProbe']] = None):
+        """
+        :param Sequence['ExperimentTemplateSpecVertexEndActionArgs'] actions: Actions to execute at end
+        :param Sequence['ExperimentTemplateSpecVertexEndFaultArgs'] faults: Faults to execute at end
+        :param Sequence['ExperimentTemplateSpecVertexEndProbeArgs'] probes: Probes to execute at end
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if faults is not None:
+            pulumi.set(__self__, "faults", faults)
+        if probes is not None:
+            pulumi.set(__self__, "probes", probes)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecVertexEndAction']]:
+        """
+        Actions to execute at end
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter
+    def faults(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecVertexEndFault']]:
+        """
+        Faults to execute at end
+        """
+        return pulumi.get(self, "faults")
+
+    @_builtins.property
+    @pulumi.getter
+    def probes(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecVertexEndProbe']]:
+        """
+        Probes to execute at end
+        """
+        return pulumi.get(self, "probes")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecVertexEndAction(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Action name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Action name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecVertexEndFault(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Fault name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Fault name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecVertexEndProbe(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Probe name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Probe name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecVertexStart(dict):
+    def __init__(__self__, *,
+                 actions: Optional[Sequence['outputs.ExperimentTemplateSpecVertexStartAction']] = None,
+                 faults: Optional[Sequence['outputs.ExperimentTemplateSpecVertexStartFault']] = None,
+                 probes: Optional[Sequence['outputs.ExperimentTemplateSpecVertexStartProbe']] = None):
+        """
+        :param Sequence['ExperimentTemplateSpecVertexStartActionArgs'] actions: Actions to execute at start
+        :param Sequence['ExperimentTemplateSpecVertexStartFaultArgs'] faults: Faults to execute at start
+        :param Sequence['ExperimentTemplateSpecVertexStartProbeArgs'] probes: Probes to execute at start
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if faults is not None:
+            pulumi.set(__self__, "faults", faults)
+        if probes is not None:
+            pulumi.set(__self__, "probes", probes)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecVertexStartAction']]:
+        """
+        Actions to execute at start
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter
+    def faults(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecVertexStartFault']]:
+        """
+        Faults to execute at start
+        """
+        return pulumi.get(self, "faults")
+
+    @_builtins.property
+    @pulumi.getter
+    def probes(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecVertexStartProbe']]:
+        """
+        Probes to execute at start
+        """
+        return pulumi.get(self, "probes")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecVertexStartAction(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Action name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Action name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecVertexStartFault(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Fault name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Fault name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecVertexStartProbe(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Probe name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Probe name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class FaultTemplateLink(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 url: _builtins.str):
+        """
+        :param _builtins.str name: Link name
+        :param _builtins.str url: Link URL
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Link name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> _builtins.str:
+        """
+        Link URL
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class FaultTemplateSpec(dict):
+    def __init__(__self__, *,
+                 chaos: Optional['outputs.FaultTemplateSpecChaos'] = None,
+                 target: Optional['outputs.FaultTemplateSpecTarget'] = None):
+        """
+        :param 'FaultTemplateSpecChaosArgs' chaos: Chaos configuration
+        :param 'FaultTemplateSpecTargetArgs' target: Target configuration
+        """
+        if chaos is not None:
+            pulumi.set(__self__, "chaos", chaos)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @_builtins.property
+    @pulumi.getter
+    def chaos(self) -> Optional['outputs.FaultTemplateSpecChaos']:
+        """
+        Chaos configuration
+        """
+        return pulumi.get(self, "chaos")
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> Optional['outputs.FaultTemplateSpecTarget']:
+        """
+        Target configuration
+        """
+        return pulumi.get(self, "target")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaos(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "faultName":
+            suggest = "fault_name"
+        elif key == "statusCheckTimeouts":
+            suggest = "status_check_timeouts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaos. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaos.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaos.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth: Optional['outputs.FaultTemplateSpecChaosAuth'] = None,
+                 fault_name: Optional[_builtins.str] = None,
+                 kubernetes: Optional['outputs.FaultTemplateSpecChaosKubernetes'] = None,
+                 params: Optional[Sequence['outputs.FaultTemplateSpecChaosParam']] = None,
+                 status_check_timeouts: Optional['outputs.FaultTemplateSpecChaosStatusCheckTimeouts'] = None,
+                 tls: Optional['outputs.FaultTemplateSpecChaosTls'] = None):
+        """
+        :param 'FaultTemplateSpecChaosAuthArgs' auth: Authentication configuration
+        :param _builtins.str fault_name: Name of the fault. Note: API may return a default value (e.g., 'byoc-injector') instead of the configured value due to API limitations.
+        :param 'FaultTemplateSpecChaosKubernetesArgs' kubernetes: Kubernetes-specific chaos configuration
+        :param Sequence['FaultTemplateSpecChaosParamArgs'] params: Fault parameters
+        :param 'FaultTemplateSpecChaosStatusCheckTimeoutsArgs' status_check_timeouts: Status check timeout configuration
+        :param 'FaultTemplateSpecChaosTlsArgs' tls: TLS configuration
+        """
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
+        if fault_name is not None:
+            pulumi.set(__self__, "fault_name", fault_name)
+        if kubernetes is not None:
+            pulumi.set(__self__, "kubernetes", kubernetes)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
+        if status_check_timeouts is not None:
+            pulumi.set(__self__, "status_check_timeouts", status_check_timeouts)
+        if tls is not None:
+            pulumi.set(__self__, "tls", tls)
+
+    @_builtins.property
+    @pulumi.getter
+    def auth(self) -> Optional['outputs.FaultTemplateSpecChaosAuth']:
+        """
+        Authentication configuration
+        """
+        return pulumi.get(self, "auth")
+
+    @_builtins.property
+    @pulumi.getter(name="faultName")
+    def fault_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the fault. Note: API may return a default value (e.g., 'byoc-injector') instead of the configured value due to API limitations.
+        """
+        return pulumi.get(self, "fault_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def kubernetes(self) -> Optional['outputs.FaultTemplateSpecChaosKubernetes']:
+        """
+        Kubernetes-specific chaos configuration
+        """
+        return pulumi.get(self, "kubernetes")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[Sequence['outputs.FaultTemplateSpecChaosParam']]:
+        """
+        Fault parameters
+        """
+        return pulumi.get(self, "params")
+
+    @_builtins.property
+    @pulumi.getter(name="statusCheckTimeouts")
+    def status_check_timeouts(self) -> Optional['outputs.FaultTemplateSpecChaosStatusCheckTimeouts']:
+        """
+        Status check timeout configuration
+        """
+        return pulumi.get(self, "status_check_timeouts")
+
+    @_builtins.property
+    @pulumi.getter
+    def tls(self) -> Optional['outputs.FaultTemplateSpecChaosTls']:
+        """
+        TLS configuration
+        """
+        return pulumi.get(self, "tls")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosAuth(dict):
+    def __init__(__self__, *,
+                 aws: Optional['outputs.FaultTemplateSpecChaosAuthAws'] = None,
+                 azure: Optional['outputs.FaultTemplateSpecChaosAuthAzure'] = None,
+                 gcp: Optional['outputs.FaultTemplateSpecChaosAuthGcp'] = None,
+                 redis: Optional['outputs.FaultTemplateSpecChaosAuthRedis'] = None,
+                 ssh: Optional['outputs.FaultTemplateSpecChaosAuthSsh'] = None,
+                 vmware: Optional['outputs.FaultTemplateSpecChaosAuthVmware'] = None):
+        """
+        :param 'FaultTemplateSpecChaosAuthAwsArgs' aws: AWS authentication
+        :param 'FaultTemplateSpecChaosAuthAzureArgs' azure: Azure authentication
+        :param 'FaultTemplateSpecChaosAuthGcpArgs' gcp: GCP authentication
+        :param 'FaultTemplateSpecChaosAuthRedisArgs' redis: Redis authentication
+        :param 'FaultTemplateSpecChaosAuthSshArgs' ssh: SSH authentication
+        :param 'FaultTemplateSpecChaosAuthVmwareArgs' vmware: VMware authentication
+        """
+        if aws is not None:
+            pulumi.set(__self__, "aws", aws)
+        if azure is not None:
+            pulumi.set(__self__, "azure", azure)
+        if gcp is not None:
+            pulumi.set(__self__, "gcp", gcp)
+        if redis is not None:
+            pulumi.set(__self__, "redis", redis)
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+        if vmware is not None:
+            pulumi.set(__self__, "vmware", vmware)
+
+    @_builtins.property
+    @pulumi.getter
+    def aws(self) -> Optional['outputs.FaultTemplateSpecChaosAuthAws']:
+        """
+        AWS authentication
+        """
+        return pulumi.get(self, "aws")
+
+    @_builtins.property
+    @pulumi.getter
+    def azure(self) -> Optional['outputs.FaultTemplateSpecChaosAuthAzure']:
+        """
+        Azure authentication
+        """
+        return pulumi.get(self, "azure")
+
+    @_builtins.property
+    @pulumi.getter
+    def gcp(self) -> Optional['outputs.FaultTemplateSpecChaosAuthGcp']:
+        """
+        GCP authentication
+        """
+        return pulumi.get(self, "gcp")
+
+    @_builtins.property
+    @pulumi.getter
+    def redis(self) -> Optional['outputs.FaultTemplateSpecChaosAuthRedis']:
+        """
+        Redis authentication
+        """
+        return pulumi.get(self, "redis")
+
+    @_builtins.property
+    @pulumi.getter
+    def ssh(self) -> Optional['outputs.FaultTemplateSpecChaosAuthSsh']:
+        """
+        SSH authentication
+        """
+        return pulumi.get(self, "ssh")
+
+    @_builtins.property
+    @pulumi.getter
+    def vmware(self) -> Optional['outputs.FaultTemplateSpecChaosAuthVmware']:
+        """
+        VMware authentication
+        """
+        return pulumi.get(self, "vmware")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosAuthAws(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "secretAccessKey":
+            suggest = "secret_access_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosAuthAws. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosAuthAws.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosAuthAws.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_id: _builtins.str,
+                 region: _builtins.str,
+                 secret_access_key: _builtins.str):
+        """
+        :param _builtins.str access_key_id: AWS access key ID
+        :param _builtins.str region: AWS region
+        :param _builtins.str secret_access_key: AWS secret access key
+        """
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @_builtins.property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> _builtins.str:
+        """
+        AWS access key ID
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        AWS region
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> _builtins.str:
+        """
+        AWS secret access key
+        """
+        return pulumi.get(self, "secret_access_key")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosAuthAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "subscriptionId":
+            suggest = "subscription_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosAuthAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosAuthAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosAuthAzure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: _builtins.str,
+                 client_secret: _builtins.str,
+                 subscription_id: _builtins.str,
+                 tenant_id: _builtins.str):
+        """
+        :param _builtins.str client_id: Azure client ID
+        :param _builtins.str client_secret: Azure client secret
+        :param _builtins.str subscription_id: Azure subscription ID
+        :param _builtins.str tenant_id: Azure tenant ID
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "subscription_id", subscription_id)
+        pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        Azure client ID
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> _builtins.str:
+        """
+        Azure client secret
+        """
+        return pulumi.get(self, "client_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> _builtins.str:
+        """
+        Azure subscription ID
+        """
+        return pulumi.get(self, "subscription_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> _builtins.str:
+        """
+        Azure tenant ID
+        """
+        return pulumi.get(self, "tenant_id")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosAuthGcp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "serviceAccountKey":
+            suggest = "service_account_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosAuthGcp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosAuthGcp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosAuthGcp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: _builtins.str,
+                 service_account_key: _builtins.str):
+        """
+        :param _builtins.str project_id: GCP project ID
+        :param _builtins.str service_account_key: GCP service account key (JSON)
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "service_account_key", service_account_key)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        GCP project ID
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKey")
+    def service_account_key(self) -> _builtins.str:
+        """
+        GCP service account key (JSON)
+        """
+        return pulumi.get(self, "service_account_key")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosAuthRedis(dict):
+    def __init__(__self__, *,
+                 password: _builtins.str,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str password: Redis password
+        :param _builtins.str username: Redis username
+        """
+        pulumi.set(__self__, "password", password)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> _builtins.str:
+        """
+        Redis password
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        Redis username
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosAuthSsh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosAuthSsh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosAuthSsh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosAuthSsh.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 username: _builtins.str,
+                 password: Optional[_builtins.str] = None,
+                 private_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str username: SSH username
+        :param _builtins.str password: SSH password
+        :param _builtins.str private_key: SSH private key
+        """
+        pulumi.set(__self__, "username", username)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        SSH username
+        """
+        return pulumi.get(self, "username")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        SSH password
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[_builtins.str]:
+        """
+        SSH private key
+        """
+        return pulumi.get(self, "private_key")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosAuthVmware(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vcenterServer":
+            suggest = "vcenter_server"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosAuthVmware. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosAuthVmware.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosAuthVmware.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password: _builtins.str,
+                 username: _builtins.str,
+                 vcenter_server: _builtins.str):
+        """
+        :param _builtins.str password: VMware password
+        :param _builtins.str username: VMware username
+        :param _builtins.str vcenter_server: vCenter server address
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "vcenter_server", vcenter_server)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> _builtins.str:
+        """
+        VMware password
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        VMware username
+        """
+        return pulumi.get(self, "username")
+
+    @_builtins.property
+    @pulumi.getter(name="vcenterServer")
+    def vcenter_server(self) -> _builtins.str:
+        """
+        vCenter server address
+        """
+        return pulumi.get(self, "vcenter_server")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosKubernetes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configMaps":
+            suggest = "config_maps"
+        elif key == "containerSecurityContext":
+            suggest = "container_security_context"
+        elif key == "hostFileVolumes":
+            suggest = "host_file_volumes"
+        elif key == "hostIpc":
+            suggest = "host_ipc"
+        elif key == "hostNetwork":
+            suggest = "host_network"
+        elif key == "hostPid":
+            suggest = "host_pid"
+        elif key == "imagePullPolicy":
+            suggest = "image_pull_policy"
+        elif key == "imagePullSecrets":
+            suggest = "image_pull_secrets"
+        elif key == "nodeSelector":
+            suggest = "node_selector"
+        elif key == "podSecurityContext":
+            suggest = "pod_security_context"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosKubernetes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosKubernetes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosKubernetes.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 annotations: Optional[Mapping[str, _builtins.str]] = None,
+                 args: Optional[Sequence[_builtins.str]] = None,
+                 commands: Optional[Sequence[_builtins.str]] = None,
+                 config_maps: Optional[Sequence['outputs.FaultTemplateSpecChaosKubernetesConfigMap']] = None,
+                 container_security_context: Optional['outputs.FaultTemplateSpecChaosKubernetesContainerSecurityContext'] = None,
+                 envs: Optional[Sequence['outputs.FaultTemplateSpecChaosKubernetesEnv']] = None,
+                 host_file_volumes: Optional[Sequence['outputs.FaultTemplateSpecChaosKubernetesHostFileVolume']] = None,
+                 host_ipc: Optional[_builtins.bool] = None,
+                 host_network: Optional[_builtins.bool] = None,
+                 host_pid: Optional[_builtins.bool] = None,
+                 image: Optional[_builtins.str] = None,
+                 image_pull_policy: Optional[_builtins.str] = None,
+                 image_pull_secrets: Optional[Sequence[_builtins.str]] = None,
+                 labels: Optional[Mapping[str, _builtins.str]] = None,
+                 node_selector: Optional[Mapping[str, _builtins.str]] = None,
+                 pod_security_context: Optional['outputs.FaultTemplateSpecChaosKubernetesPodSecurityContext'] = None,
+                 resources: Optional['outputs.FaultTemplateSpecChaosKubernetesResources'] = None,
+                 secrets: Optional[Sequence['outputs.FaultTemplateSpecChaosKubernetesSecret']] = None,
+                 tolerations: Optional[Sequence['outputs.FaultTemplateSpecChaosKubernetesToleration']] = None):
+        """
+        :param Mapping[str, _builtins.str] annotations: Pod annotations
+        :param Sequence[_builtins.str] args: Container arguments
+        :param Sequence[_builtins.str] commands: Container command
+        :param Sequence['FaultTemplateSpecChaosKubernetesConfigMapArgs'] config_maps: ConfigMap volumes
+        :param 'FaultTemplateSpecChaosKubernetesContainerSecurityContextArgs' container_security_context: Container security context
+        :param Sequence['FaultTemplateSpecChaosKubernetesEnvArgs'] envs: Environment variables
+        :param Sequence['FaultTemplateSpecChaosKubernetesHostFileVolumeArgs'] host_file_volumes: Host path volumes
+        :param _builtins.bool host_ipc: Use host IPC namespace
+        :param _builtins.bool host_network: Use host network namespace
+        :param _builtins.bool host_pid: Use host PID namespace
+        :param _builtins.str image: Container image for chaos experiment
+        :param _builtins.str image_pull_policy: Image pull policy
+        :param Sequence[_builtins.str] image_pull_secrets: Image pull secrets
+        :param Mapping[str, _builtins.str] labels: Pod labels
+        :param Mapping[str, _builtins.str] node_selector: Node selector for pod scheduling
+        :param 'FaultTemplateSpecChaosKubernetesPodSecurityContextArgs' pod_security_context: Pod security context
+        :param 'FaultTemplateSpecChaosKubernetesResourcesArgs' resources: Resource requirements
+        :param Sequence['FaultTemplateSpecChaosKubernetesSecretArgs'] secrets: Secret volumes
+        :param Sequence['FaultTemplateSpecChaosKubernetesTolerationArgs'] tolerations: Pod tolerations
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if config_maps is not None:
+            pulumi.set(__self__, "config_maps", config_maps)
+        if container_security_context is not None:
+            pulumi.set(__self__, "container_security_context", container_security_context)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if host_file_volumes is not None:
+            pulumi.set(__self__, "host_file_volumes", host_file_volumes)
+        if host_ipc is not None:
+            pulumi.set(__self__, "host_ipc", host_ipc)
+        if host_network is not None:
+            pulumi.set(__self__, "host_network", host_network)
+        if host_pid is not None:
+            pulumi.set(__self__, "host_pid", host_pid)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if image_pull_policy is not None:
+            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if image_pull_secrets is not None:
+            pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if node_selector is not None:
+            pulumi.set(__self__, "node_selector", node_selector)
+        if pod_security_context is not None:
+            pulumi.set(__self__, "pod_security_context", pod_security_context)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
+
+    @_builtins.property
+    @pulumi.getter
+    def annotations(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Pod annotations
+        """
+        return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Container arguments
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Container command
+        """
+        return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter(name="configMaps")
+    def config_maps(self) -> Optional[Sequence['outputs.FaultTemplateSpecChaosKubernetesConfigMap']]:
+        """
+        ConfigMap volumes
+        """
+        return pulumi.get(self, "config_maps")
+
+    @_builtins.property
+    @pulumi.getter(name="containerSecurityContext")
+    def container_security_context(self) -> Optional['outputs.FaultTemplateSpecChaosKubernetesContainerSecurityContext']:
+        """
+        Container security context
+        """
+        return pulumi.get(self, "container_security_context")
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.FaultTemplateSpecChaosKubernetesEnv']]:
+        """
+        Environment variables
+        """
+        return pulumi.get(self, "envs")
+
+    @_builtins.property
+    @pulumi.getter(name="hostFileVolumes")
+    def host_file_volumes(self) -> Optional[Sequence['outputs.FaultTemplateSpecChaosKubernetesHostFileVolume']]:
+        """
+        Host path volumes
+        """
+        return pulumi.get(self, "host_file_volumes")
+
+    @_builtins.property
+    @pulumi.getter(name="hostIpc")
+    def host_ipc(self) -> Optional[_builtins.bool]:
+        """
+        Use host IPC namespace
+        """
+        return pulumi.get(self, "host_ipc")
+
+    @_builtins.property
+    @pulumi.getter(name="hostNetwork")
+    def host_network(self) -> Optional[_builtins.bool]:
+        """
+        Use host network namespace
+        """
+        return pulumi.get(self, "host_network")
+
+    @_builtins.property
+    @pulumi.getter(name="hostPid")
+    def host_pid(self) -> Optional[_builtins.bool]:
+        """
+        Use host PID namespace
+        """
+        return pulumi.get(self, "host_pid")
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> Optional[_builtins.str]:
+        """
+        Container image for chaos experiment
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> Optional[_builtins.str]:
+        """
+        Image pull policy
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="imagePullSecrets")
+    def image_pull_secrets(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Image pull secrets
+        """
+        return pulumi.get(self, "image_pull_secrets")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Pod labels
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeSelector")
+    def node_selector(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Node selector for pod scheduling
+        """
+        return pulumi.get(self, "node_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="podSecurityContext")
+    def pod_security_context(self) -> Optional['outputs.FaultTemplateSpecChaosKubernetesPodSecurityContext']:
+        """
+        Pod security context
+        """
+        return pulumi.get(self, "pod_security_context")
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Optional['outputs.FaultTemplateSpecChaosKubernetesResources']:
+        """
+        Resource requirements
+        """
+        return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter
+    def secrets(self) -> Optional[Sequence['outputs.FaultTemplateSpecChaosKubernetesSecret']]:
+        """
+        Secret volumes
+        """
+        return pulumi.get(self, "secrets")
+
+    @_builtins.property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.FaultTemplateSpecChaosKubernetesToleration']]:
+        """
+        Pod tolerations
+        """
+        return pulumi.get(self, "tolerations")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosKubernetesConfigMap(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+        elif key == "mountMode":
+            suggest = "mount_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosKubernetesConfigMap. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosKubernetesConfigMap.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosKubernetesConfigMap.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_path: _builtins.str,
+                 name: _builtins.str,
+                 mount_mode: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str mount_path: Mount path
+        :param _builtins.str name: ConfigMap name
+        :param _builtins.int mount_mode: Mount mode (0-3)
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+        if mount_mode is not None:
+            pulumi.set(__self__, "mount_mode", mount_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> _builtins.str:
+        """
+        Mount path
+        """
+        return pulumi.get(self, "mount_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        ConfigMap name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="mountMode")
+    def mount_mode(self) -> Optional[_builtins.int]:
+        """
+        Mount mode (0-3)
+        """
+        return pulumi.get(self, "mount_mode")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosKubernetesContainerSecurityContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPrivilegeEscalation":
+            suggest = "allow_privilege_escalation"
+        elif key == "readOnlyRootFilesystem":
+            suggest = "read_only_root_filesystem"
+        elif key == "runAsGroup":
+            suggest = "run_as_group"
+        elif key == "runAsNonRoot":
+            suggest = "run_as_non_root"
+        elif key == "runAsUser":
+            suggest = "run_as_user"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosKubernetesContainerSecurityContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosKubernetesContainerSecurityContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosKubernetesContainerSecurityContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_privilege_escalation: Optional[_builtins.bool] = None,
+                 capabilities: Optional['outputs.FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilities'] = None,
+                 privileged: Optional[_builtins.bool] = None,
+                 read_only_root_filesystem: Optional[_builtins.bool] = None,
+                 run_as_group: Optional[_builtins.int] = None,
+                 run_as_non_root: Optional[_builtins.bool] = None,
+                 run_as_user: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool allow_privilege_escalation: Allow privilege escalation
+        :param 'FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgs' capabilities: Linux capabilities
+        :param _builtins.bool privileged: Run container in privileged mode
+        :param _builtins.bool read_only_root_filesystem: Mount root filesystem as read-only
+        :param _builtins.int run_as_group: Group ID to run as
+        :param _builtins.bool run_as_non_root: Run as non-root user
+        :param _builtins.int run_as_user: User ID to run as
+        """
+        if allow_privilege_escalation is not None:
+            pulumi.set(__self__, "allow_privilege_escalation", allow_privilege_escalation)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if privileged is not None:
+            pulumi.set(__self__, "privileged", privileged)
+        if read_only_root_filesystem is not None:
+            pulumi.set(__self__, "read_only_root_filesystem", read_only_root_filesystem)
+        if run_as_group is not None:
+            pulumi.set(__self__, "run_as_group", run_as_group)
+        if run_as_non_root is not None:
+            pulumi.set(__self__, "run_as_non_root", run_as_non_root)
+        if run_as_user is not None:
+            pulumi.set(__self__, "run_as_user", run_as_user)
+
+    @_builtins.property
+    @pulumi.getter(name="allowPrivilegeEscalation")
+    def allow_privilege_escalation(self) -> Optional[_builtins.bool]:
+        """
+        Allow privilege escalation
+        """
+        return pulumi.get(self, "allow_privilege_escalation")
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Optional['outputs.FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilities']:
+        """
+        Linux capabilities
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def privileged(self) -> Optional[_builtins.bool]:
+        """
+        Run container in privileged mode
+        """
+        return pulumi.get(self, "privileged")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnlyRootFilesystem")
+    def read_only_root_filesystem(self) -> Optional[_builtins.bool]:
+        """
+        Mount root filesystem as read-only
+        """
+        return pulumi.get(self, "read_only_root_filesystem")
+
+    @_builtins.property
+    @pulumi.getter(name="runAsGroup")
+    def run_as_group(self) -> Optional[_builtins.int]:
+        """
+        Group ID to run as
+        """
+        return pulumi.get(self, "run_as_group")
+
+    @_builtins.property
+    @pulumi.getter(name="runAsNonRoot")
+    def run_as_non_root(self) -> Optional[_builtins.bool]:
+        """
+        Run as non-root user
+        """
+        return pulumi.get(self, "run_as_non_root")
+
+    @_builtins.property
+    @pulumi.getter(name="runAsUser")
+    def run_as_user(self) -> Optional[_builtins.int]:
+        """
+        User ID to run as
+        """
+        return pulumi.get(self, "run_as_user")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilities(dict):
+    def __init__(__self__, *,
+                 adds: Optional[Sequence[_builtins.str]] = None,
+                 drops: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] adds: Capabilities to add
+        :param Sequence[_builtins.str] drops: Capabilities to drop
+        """
+        if adds is not None:
+            pulumi.set(__self__, "adds", adds)
+        if drops is not None:
+            pulumi.set(__self__, "drops", drops)
+
+    @_builtins.property
+    @pulumi.getter
+    def adds(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Capabilities to add
+        """
+        return pulumi.get(self, "adds")
+
+    @_builtins.property
+    @pulumi.getter
+    def drops(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Capabilities to drop
+        """
+        return pulumi.get(self, "drops")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosKubernetesEnv(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Environment variable name
+        :param _builtins.str value: Environment variable value
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Environment variable name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Environment variable value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosKubernetesHostFileVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+        elif key == "hostPath":
+            suggest = "host_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosKubernetesHostFileVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosKubernetesHostFileVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosKubernetesHostFileVolume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_path: _builtins.str,
+                 name: _builtins.str,
+                 host_path: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str mount_path: Mount path
+        :param _builtins.str name: Volume name
+        :param _builtins.str host_path: Host path on the node
+        :param _builtins.str type: Host path type (e.g., Directory, File, BlockDevice, CharDevice)
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+        if host_path is not None:
+            pulumi.set(__self__, "host_path", host_path)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> _builtins.str:
+        """
+        Mount path
+        """
+        return pulumi.get(self, "mount_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Volume name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="hostPath")
+    def host_path(self) -> Optional[_builtins.str]:
+        """
+        Host path on the node
+        """
+        return pulumi.get(self, "host_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Host path type (e.g., Directory, File, BlockDevice, CharDevice)
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosKubernetesPodSecurityContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fsGroup":
+            suggest = "fs_group"
+        elif key == "runAsGroup":
+            suggest = "run_as_group"
+        elif key == "runAsNonRoot":
+            suggest = "run_as_non_root"
+        elif key == "runAsUser":
+            suggest = "run_as_user"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosKubernetesPodSecurityContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosKubernetesPodSecurityContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosKubernetesPodSecurityContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fs_group: Optional[_builtins.int] = None,
+                 run_as_group: Optional[_builtins.int] = None,
+                 run_as_non_root: Optional[_builtins.bool] = None,
+                 run_as_user: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int fs_group: Filesystem group ID
+        :param _builtins.int run_as_group: Group ID to run as
+        :param _builtins.bool run_as_non_root: Run as non-root user
+        :param _builtins.int run_as_user: User ID to run as
+        """
+        if fs_group is not None:
+            pulumi.set(__self__, "fs_group", fs_group)
+        if run_as_group is not None:
+            pulumi.set(__self__, "run_as_group", run_as_group)
+        if run_as_non_root is not None:
+            pulumi.set(__self__, "run_as_non_root", run_as_non_root)
+        if run_as_user is not None:
+            pulumi.set(__self__, "run_as_user", run_as_user)
+
+    @_builtins.property
+    @pulumi.getter(name="fsGroup")
+    def fs_group(self) -> Optional[_builtins.int]:
+        """
+        Filesystem group ID
+        """
+        return pulumi.get(self, "fs_group")
+
+    @_builtins.property
+    @pulumi.getter(name="runAsGroup")
+    def run_as_group(self) -> Optional[_builtins.int]:
+        """
+        Group ID to run as
+        """
+        return pulumi.get(self, "run_as_group")
+
+    @_builtins.property
+    @pulumi.getter(name="runAsNonRoot")
+    def run_as_non_root(self) -> Optional[_builtins.bool]:
+        """
+        Run as non-root user
+        """
+        return pulumi.get(self, "run_as_non_root")
+
+    @_builtins.property
+    @pulumi.getter(name="runAsUser")
+    def run_as_user(self) -> Optional[_builtins.int]:
+        """
+        User ID to run as
+        """
+        return pulumi.get(self, "run_as_user")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosKubernetesResources(dict):
+    def __init__(__self__, *,
+                 limits: Optional[Mapping[str, _builtins.str]] = None,
+                 requests: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] limits: Resource limits
+        :param Mapping[str, _builtins.str] requests: Resource requests
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource limits
+        """
+        return pulumi.get(self, "limits")
+
+    @_builtins.property
+    @pulumi.getter
+    def requests(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource requests
+        """
+        return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosKubernetesSecret(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+        elif key == "secretName":
+            suggest = "secret_name"
+        elif key == "mountMode":
+            suggest = "mount_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosKubernetesSecret. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosKubernetesSecret.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosKubernetesSecret.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_path: _builtins.str,
+                 secret_name: _builtins.str,
+                 mount_mode: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str mount_path: Mount path
+        :param _builtins.str secret_name: Secret name
+        :param _builtins.int mount_mode: Mount mode (0-3)
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "secret_name", secret_name)
+        if mount_mode is not None:
+            pulumi.set(__self__, "mount_mode", mount_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> _builtins.str:
+        """
+        Mount path
+        """
+        return pulumi.get(self, "mount_path")
+
+    @_builtins.property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> _builtins.str:
+        """
+        Secret name
+        """
+        return pulumi.get(self, "secret_name")
+
+    @_builtins.property
+    @pulumi.getter(name="mountMode")
+    def mount_mode(self) -> Optional[_builtins.int]:
+        """
+        Mount mode (0-3)
+        """
+        return pulumi.get(self, "mount_mode")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosKubernetesToleration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tolerationSeconds":
+            suggest = "toleration_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosKubernetesToleration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosKubernetesToleration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosKubernetesToleration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 effect: Optional[_builtins.str] = None,
+                 key: Optional[_builtins.str] = None,
+                 operator: Optional[_builtins.str] = None,
+                 toleration_seconds: Optional[_builtins.int] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str effect: Toleration effect (NoSchedule, PreferNoSchedule, NoExecute)
+        :param _builtins.str key: Toleration key
+        :param _builtins.str operator: Toleration operator (Equal, Exists)
+        :param _builtins.int toleration_seconds: Toleration seconds
+        :param _builtins.str value: Toleration value
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if toleration_seconds is not None:
+            pulumi.set(__self__, "toleration_seconds", toleration_seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def effect(self) -> Optional[_builtins.str]:
+        """
+        Toleration effect (NoSchedule, PreferNoSchedule, NoExecute)
+        """
+        return pulumi.get(self, "effect")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Toleration key
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> Optional[_builtins.str]:
+        """
+        Toleration operator (Equal, Exists)
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter(name="tolerationSeconds")
+    def toleration_seconds(self) -> Optional[_builtins.int]:
+        """
+        Toleration seconds
+        """
+        return pulumi.get(self, "toleration_seconds")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Toleration value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosParam(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Parameter name
+        :param _builtins.str value: Parameter value
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Parameter name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Parameter value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosStatusCheckTimeouts(dict):
+    def __init__(__self__, *,
+                 delay: Optional[_builtins.int] = None,
+                 timeout: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int delay: Delay before status check (seconds)
+        :param _builtins.int timeout: Timeout for status check (seconds)
+        """
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> Optional[_builtins.int]:
+        """
+        Delay before status check (seconds)
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[_builtins.int]:
+        """
+        Timeout for status check (seconds)
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class FaultTemplateSpecChaosTls(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientKey":
+            suggest = "client_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecChaosTls. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecChaosTls.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecChaosTls.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: Optional[_builtins.str] = None,
+                 client_certificate: Optional[_builtins.str] = None,
+                 client_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ca_certificate: CA certificate
+        :param _builtins.str client_certificate: Client certificate
+        :param _builtins.str client_key: Client key
+        """
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if client_certificate is not None:
+            pulumi.set(__self__, "client_certificate", client_certificate)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[_builtins.str]:
+        """
+        CA certificate
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> Optional[_builtins.str]:
+        """
+        Client certificate
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @_builtins.property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[_builtins.str]:
+        """
+        Client key
+        """
+        return pulumi.get(self, "client_key")
+
+
+@pulumi.output_type
+class FaultTemplateSpecTarget(dict):
+    def __init__(__self__, *,
+                 application: Optional['outputs.FaultTemplateSpecTargetApplication'] = None,
+                 kubernetes: Optional[Sequence['outputs.FaultTemplateSpecTargetKubernete']] = None):
+        """
+        :param 'FaultTemplateSpecTargetApplicationArgs' application: Application target configuration
+        :param Sequence['FaultTemplateSpecTargetKuberneteArgs'] kubernetes: Kubernetes target configuration
+        """
+        if application is not None:
+            pulumi.set(__self__, "application", application)
+        if kubernetes is not None:
+            pulumi.set(__self__, "kubernetes", kubernetes)
+
+    @_builtins.property
+    @pulumi.getter
+    def application(self) -> Optional['outputs.FaultTemplateSpecTargetApplication']:
+        """
+        Application target configuration
+        """
+        return pulumi.get(self, "application")
+
+    @_builtins.property
+    @pulumi.getter
+    def kubernetes(self) -> Optional[Sequence['outputs.FaultTemplateSpecTargetKubernete']]:
+        """
+        Kubernetes target configuration
+        """
+        return pulumi.get(self, "kubernetes")
+
+
+@pulumi.output_type
+class FaultTemplateSpecTargetApplication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appKind":
+            suggest = "app_kind"
+        elif key == "appLabel":
+            suggest = "app_label"
+        elif key == "appNs":
+            suggest = "app_ns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecTargetApplication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecTargetApplication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecTargetApplication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 app_kind: Optional[_builtins.str] = None,
+                 app_label: Optional[_builtins.str] = None,
+                 app_ns: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str app_kind: Application kind
+        :param _builtins.str app_label: Application label
+        :param _builtins.str app_ns: Application namespace
+        """
+        if app_kind is not None:
+            pulumi.set(__self__, "app_kind", app_kind)
+        if app_label is not None:
+            pulumi.set(__self__, "app_label", app_label)
+        if app_ns is not None:
+            pulumi.set(__self__, "app_ns", app_ns)
+
+    @_builtins.property
+    @pulumi.getter(name="appKind")
+    def app_kind(self) -> Optional[_builtins.str]:
+        """
+        Application kind
+        """
+        return pulumi.get(self, "app_kind")
+
+    @_builtins.property
+    @pulumi.getter(name="appLabel")
+    def app_label(self) -> Optional[_builtins.str]:
+        """
+        Application label
+        """
+        return pulumi.get(self, "app_label")
+
+    @_builtins.property
+    @pulumi.getter(name="appNs")
+    def app_ns(self) -> Optional[_builtins.str]:
+        """
+        Application namespace
+        """
+        return pulumi.get(self, "app_ns")
+
+
+@pulumi.output_type
+class FaultTemplateSpecTargetKubernete(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "annotationCheck":
+            suggest = "annotation_check"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FaultTemplateSpecTargetKubernete. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FaultTemplateSpecTargetKubernete.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FaultTemplateSpecTargetKubernete.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 annotation_check: Optional[_builtins.str] = None,
+                 annotations: Optional[Mapping[str, _builtins.str]] = None,
+                 kind: Optional[_builtins.str] = None,
+                 labels: Optional[Mapping[str, _builtins.str]] = None,
+                 names: Optional[Sequence[_builtins.str]] = None,
+                 namespace: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str annotation_check: Annotation check expression
+        :param Mapping[str, _builtins.str] annotations: Annotation selectors
+        :param _builtins.str kind: Resource kind (e.g., deployment, pod)
+        :param Mapping[str, _builtins.str] labels: Label selectors
+        :param Sequence[_builtins.str] names: Specific resource names
+        :param _builtins.str namespace: Target namespace
+        """
+        if annotation_check is not None:
+            pulumi.set(__self__, "annotation_check", annotation_check)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @_builtins.property
+    @pulumi.getter(name="annotationCheck")
+    def annotation_check(self) -> Optional[_builtins.str]:
+        """
+        Annotation check expression
+        """
+        return pulumi.get(self, "annotation_check")
+
+    @_builtins.property
+    @pulumi.getter
+    def annotations(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Annotation selectors
+        """
+        return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> Optional[_builtins.str]:
+        """
+        Resource kind (e.g., deployment, pod)
+        """
+        return pulumi.get(self, "kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Label selectors
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specific resource names
+        """
+        return pulumi.get(self, "names")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[_builtins.str]:
+        """
+        Target namespace
+        """
+        return pulumi.get(self, "namespace")
+
+
+@pulumi.output_type
+class FaultTemplateVariable(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 required: Optional[_builtins.bool] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Variable name
+        :param _builtins.str description: Variable description
+        :param _builtins.bool required: Whether the variable is required
+        :param _builtins.str type: Variable type
+        :param _builtins.str value: Variable value
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Variable name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Variable description
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> Optional[_builtins.bool]:
+        """
+        Whether the variable is required
+        """
+        return pulumi.get(self, "required")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Variable type
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Variable value
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class ImageRegistryCustomImage(dict):
@@ -960,6 +4857,1774 @@ class InfrastructureV2VolumeMount(dict):
 
 
 @pulumi.output_type
+class ProbeTemplateApmProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apmType":
+            suggest = "apm_type"
+        elif key == "appDynamicsInputs":
+            suggest = "app_dynamics_inputs"
+        elif key == "datadogInputs":
+            suggest = "datadog_inputs"
+        elif key == "dynatraceInputs":
+            suggest = "dynatrace_inputs"
+        elif key == "gcpCloudMonitoringInputs":
+            suggest = "gcp_cloud_monitoring_inputs"
+        elif key == "newRelicInputs":
+            suggest = "new_relic_inputs"
+        elif key == "prometheusInputs":
+            suggest = "prometheus_inputs"
+        elif key == "splunkObservabilityInputs":
+            suggest = "splunk_observability_inputs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 apm_type: _builtins.str,
+                 app_dynamics_inputs: Optional['outputs.ProbeTemplateApmProbeAppDynamicsInputs'] = None,
+                 comparator: Optional['outputs.ProbeTemplateApmProbeComparator'] = None,
+                 datadog_inputs: Optional['outputs.ProbeTemplateApmProbeDatadogInputs'] = None,
+                 dynatrace_inputs: Optional['outputs.ProbeTemplateApmProbeDynatraceInputs'] = None,
+                 gcp_cloud_monitoring_inputs: Optional['outputs.ProbeTemplateApmProbeGcpCloudMonitoringInputs'] = None,
+                 new_relic_inputs: Optional['outputs.ProbeTemplateApmProbeNewRelicInputs'] = None,
+                 prometheus_inputs: Optional['outputs.ProbeTemplateApmProbePrometheusInputs'] = None,
+                 splunk_observability_inputs: Optional['outputs.ProbeTemplateApmProbeSplunkObservabilityInputs'] = None):
+        """
+        :param _builtins.str apm_type: APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+        :param 'ProbeTemplateApmProbeAppDynamicsInputsArgs' app_dynamics_inputs: AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+        :param 'ProbeTemplateApmProbeComparatorArgs' comparator: Comparator for APM metric validation.
+        :param 'ProbeTemplateApmProbeDatadogInputsArgs' datadog_inputs: Datadog-specific inputs. Required when apm*type is 'Datadog'.
+        :param 'ProbeTemplateApmProbeDynatraceInputsArgs' dynatrace_inputs: Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+        :param 'ProbeTemplateApmProbeGcpCloudMonitoringInputsArgs' gcp_cloud_monitoring_inputs: GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+        :param 'ProbeTemplateApmProbeNewRelicInputsArgs' new_relic_inputs: NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+        :param 'ProbeTemplateApmProbePrometheusInputsArgs' prometheus_inputs: Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+        :param 'ProbeTemplateApmProbeSplunkObservabilityInputsArgs' splunk_observability_inputs: SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+        """
+        pulumi.set(__self__, "apm_type", apm_type)
+        if app_dynamics_inputs is not None:
+            pulumi.set(__self__, "app_dynamics_inputs", app_dynamics_inputs)
+        if comparator is not None:
+            pulumi.set(__self__, "comparator", comparator)
+        if datadog_inputs is not None:
+            pulumi.set(__self__, "datadog_inputs", datadog_inputs)
+        if dynatrace_inputs is not None:
+            pulumi.set(__self__, "dynatrace_inputs", dynatrace_inputs)
+        if gcp_cloud_monitoring_inputs is not None:
+            pulumi.set(__self__, "gcp_cloud_monitoring_inputs", gcp_cloud_monitoring_inputs)
+        if new_relic_inputs is not None:
+            pulumi.set(__self__, "new_relic_inputs", new_relic_inputs)
+        if prometheus_inputs is not None:
+            pulumi.set(__self__, "prometheus_inputs", prometheus_inputs)
+        if splunk_observability_inputs is not None:
+            pulumi.set(__self__, "splunk_observability_inputs", splunk_observability_inputs)
+
+    @_builtins.property
+    @pulumi.getter(name="apmType")
+    def apm_type(self) -> _builtins.str:
+        """
+        APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+        """
+        return pulumi.get(self, "apm_type")
+
+    @_builtins.property
+    @pulumi.getter(name="appDynamicsInputs")
+    def app_dynamics_inputs(self) -> Optional['outputs.ProbeTemplateApmProbeAppDynamicsInputs']:
+        """
+        AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+        """
+        return pulumi.get(self, "app_dynamics_inputs")
+
+    @_builtins.property
+    @pulumi.getter
+    def comparator(self) -> Optional['outputs.ProbeTemplateApmProbeComparator']:
+        """
+        Comparator for APM metric validation.
+        """
+        return pulumi.get(self, "comparator")
+
+    @_builtins.property
+    @pulumi.getter(name="datadogInputs")
+    def datadog_inputs(self) -> Optional['outputs.ProbeTemplateApmProbeDatadogInputs']:
+        """
+        Datadog-specific inputs. Required when apm*type is 'Datadog'.
+        """
+        return pulumi.get(self, "datadog_inputs")
+
+    @_builtins.property
+    @pulumi.getter(name="dynatraceInputs")
+    def dynatrace_inputs(self) -> Optional['outputs.ProbeTemplateApmProbeDynatraceInputs']:
+        """
+        Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+        """
+        return pulumi.get(self, "dynatrace_inputs")
+
+    @_builtins.property
+    @pulumi.getter(name="gcpCloudMonitoringInputs")
+    def gcp_cloud_monitoring_inputs(self) -> Optional['outputs.ProbeTemplateApmProbeGcpCloudMonitoringInputs']:
+        """
+        GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+        """
+        return pulumi.get(self, "gcp_cloud_monitoring_inputs")
+
+    @_builtins.property
+    @pulumi.getter(name="newRelicInputs")
+    def new_relic_inputs(self) -> Optional['outputs.ProbeTemplateApmProbeNewRelicInputs']:
+        """
+        NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+        """
+        return pulumi.get(self, "new_relic_inputs")
+
+    @_builtins.property
+    @pulumi.getter(name="prometheusInputs")
+    def prometheus_inputs(self) -> Optional['outputs.ProbeTemplateApmProbePrometheusInputs']:
+        """
+        Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+        """
+        return pulumi.get(self, "prometheus_inputs")
+
+    @_builtins.property
+    @pulumi.getter(name="splunkObservabilityInputs")
+    def splunk_observability_inputs(self) -> Optional['outputs.ProbeTemplateApmProbeSplunkObservabilityInputs']:
+        """
+        SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+        """
+        return pulumi.get(self, "splunk_observability_inputs")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbeAppDynamicsInputs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorId":
+            suggest = "connector_id"
+        elif key == "appdMetrics":
+            suggest = "appd_metrics"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbeAppDynamicsInputs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbeAppDynamicsInputs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbeAppDynamicsInputs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connector_id: _builtins.str,
+                 appd_metrics: Optional['outputs.ProbeTemplateApmProbeAppDynamicsInputsAppdMetrics'] = None):
+        """
+        :param _builtins.str connector_id: Harness connector ID for AppDynamics.
+        :param 'ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs' appd_metrics: AppDynamics metrics configuration.
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        if appd_metrics is not None:
+            pulumi.set(__self__, "appd_metrics", appd_metrics)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        Harness connector ID for AppDynamics.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter(name="appdMetrics")
+    def appd_metrics(self) -> Optional['outputs.ProbeTemplateApmProbeAppDynamicsInputsAppdMetrics']:
+        """
+        AppDynamics metrics configuration.
+        """
+        return pulumi.get(self, "appd_metrics")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbeAppDynamicsInputsAppdMetrics(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationName":
+            suggest = "application_name"
+        elif key == "durationInMin":
+            suggest = "duration_in_min"
+        elif key == "metricsFullPath":
+            suggest = "metrics_full_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbeAppDynamicsInputsAppdMetrics. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbeAppDynamicsInputsAppdMetrics.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbeAppDynamicsInputsAppdMetrics.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 application_name: Optional[_builtins.str] = None,
+                 duration_in_min: Optional[_builtins.int] = None,
+                 metrics_full_path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str application_name: AppDynamics application name.
+        :param _builtins.int duration_in_min: Duration in minutes for the AppDynamics query.
+        :param _builtins.str metrics_full_path: Full path to the AppDynamics metric.
+        """
+        if application_name is not None:
+            pulumi.set(__self__, "application_name", application_name)
+        if duration_in_min is not None:
+            pulumi.set(__self__, "duration_in_min", duration_in_min)
+        if metrics_full_path is not None:
+            pulumi.set(__self__, "metrics_full_path", metrics_full_path)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationName")
+    def application_name(self) -> Optional[_builtins.str]:
+        """
+        AppDynamics application name.
+        """
+        return pulumi.get(self, "application_name")
+
+    @_builtins.property
+    @pulumi.getter(name="durationInMin")
+    def duration_in_min(self) -> Optional[_builtins.int]:
+        """
+        Duration in minutes for the AppDynamics query.
+        """
+        return pulumi.get(self, "duration_in_min")
+
+    @_builtins.property
+    @pulumi.getter(name="metricsFullPath")
+    def metrics_full_path(self) -> Optional[_builtins.str]:
+        """
+        Full path to the AppDynamics metric.
+        """
+        return pulumi.get(self, "metrics_full_path")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbeComparator(dict):
+    def __init__(__self__, *,
+                 criteria: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str criteria: Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+        :param _builtins.str type: Comparator type (string, int, float).
+        :param _builtins.str value: Expected value.
+        """
+        pulumi.set(__self__, "criteria", criteria)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def criteria(self) -> _builtins.str:
+        """
+        Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+        """
+        return pulumi.get(self, "criteria")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Comparator type (string, int, float).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Expected value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbeDatadogInputs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorId":
+            suggest = "connector_id"
+        elif key == "durationInMin":
+            suggest = "duration_in_min"
+        elif key == "syntheticsTest":
+            suggest = "synthetics_test"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbeDatadogInputs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbeDatadogInputs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbeDatadogInputs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connector_id: _builtins.str,
+                 duration_in_min: Optional[_builtins.int] = None,
+                 query: Optional[_builtins.str] = None,
+                 synthetics_test: Optional['outputs.ProbeTemplateApmProbeDatadogInputsSyntheticsTest'] = None):
+        """
+        :param _builtins.str connector_id: Harness connector ID for Datadog.
+        :param _builtins.int duration_in_min: Duration in minutes for the Datadog query.
+        :param _builtins.str query: Datadog query string.
+        :param 'ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs' synthetics_test: Datadog Synthetics test configuration.
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        if duration_in_min is not None:
+            pulumi.set(__self__, "duration_in_min", duration_in_min)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if synthetics_test is not None:
+            pulumi.set(__self__, "synthetics_test", synthetics_test)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        Harness connector ID for Datadog.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter(name="durationInMin")
+    def duration_in_min(self) -> Optional[_builtins.int]:
+        """
+        Duration in minutes for the Datadog query.
+        """
+        return pulumi.get(self, "duration_in_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> Optional[_builtins.str]:
+        """
+        Datadog query string.
+        """
+        return pulumi.get(self, "query")
+
+    @_builtins.property
+    @pulumi.getter(name="syntheticsTest")
+    def synthetics_test(self) -> Optional['outputs.ProbeTemplateApmProbeDatadogInputsSyntheticsTest']:
+        """
+        Datadog Synthetics test configuration.
+        """
+        return pulumi.get(self, "synthetics_test")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbeDatadogInputsSyntheticsTest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicId":
+            suggest = "public_id"
+        elif key == "testType":
+            suggest = "test_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbeDatadogInputsSyntheticsTest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbeDatadogInputsSyntheticsTest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbeDatadogInputsSyntheticsTest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_id: _builtins.str,
+                 test_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str public_id: Public ID of the Datadog Synthetics test.
+        :param _builtins.str test_type: Type of Synthetics test (api, browser).
+        """
+        pulumi.set(__self__, "public_id", public_id)
+        if test_type is not None:
+            pulumi.set(__self__, "test_type", test_type)
+
+    @_builtins.property
+    @pulumi.getter(name="publicId")
+    def public_id(self) -> _builtins.str:
+        """
+        Public ID of the Datadog Synthetics test.
+        """
+        return pulumi.get(self, "public_id")
+
+    @_builtins.property
+    @pulumi.getter(name="testType")
+    def test_type(self) -> Optional[_builtins.str]:
+        """
+        Type of Synthetics test (api, browser).
+        """
+        return pulumi.get(self, "test_type")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbeDynatraceInputs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorId":
+            suggest = "connector_id"
+        elif key == "durationInMin":
+            suggest = "duration_in_min"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbeDynatraceInputs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbeDynatraceInputs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbeDynatraceInputs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connector_id: _builtins.str,
+                 duration_in_min: Optional[_builtins.int] = None,
+                 metrics: Optional['outputs.ProbeTemplateApmProbeDynatraceInputsMetrics'] = None):
+        """
+        :param _builtins.str connector_id: Harness connector ID for Dynatrace.
+        :param _builtins.int duration_in_min: Duration in minutes for the Dynatrace query.
+        :param 'ProbeTemplateApmProbeDynatraceInputsMetricsArgs' metrics: Dynatrace metrics configuration.
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        if duration_in_min is not None:
+            pulumi.set(__self__, "duration_in_min", duration_in_min)
+        if metrics is not None:
+            pulumi.set(__self__, "metrics", metrics)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        Harness connector ID for Dynatrace.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter(name="durationInMin")
+    def duration_in_min(self) -> Optional[_builtins.int]:
+        """
+        Duration in minutes for the Dynatrace query.
+        """
+        return pulumi.get(self, "duration_in_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def metrics(self) -> Optional['outputs.ProbeTemplateApmProbeDynatraceInputsMetrics']:
+        """
+        Dynatrace metrics configuration.
+        """
+        return pulumi.get(self, "metrics")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbeDynatraceInputsMetrics(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entitySelector":
+            suggest = "entity_selector"
+        elif key == "metricsSelector":
+            suggest = "metrics_selector"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbeDynatraceInputsMetrics. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbeDynatraceInputsMetrics.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbeDynatraceInputsMetrics.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_selector: Optional[_builtins.str] = None,
+                 metrics_selector: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str entity_selector: Dynatrace entity selector.
+        :param _builtins.str metrics_selector: Dynatrace metrics selector.
+        """
+        if entity_selector is not None:
+            pulumi.set(__self__, "entity_selector", entity_selector)
+        if metrics_selector is not None:
+            pulumi.set(__self__, "metrics_selector", metrics_selector)
+
+    @_builtins.property
+    @pulumi.getter(name="entitySelector")
+    def entity_selector(self) -> Optional[_builtins.str]:
+        """
+        Dynatrace entity selector.
+        """
+        return pulumi.get(self, "entity_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="metricsSelector")
+    def metrics_selector(self) -> Optional[_builtins.str]:
+        """
+        Dynatrace metrics selector.
+        """
+        return pulumi.get(self, "metrics_selector")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbeGcpCloudMonitoringInputs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "serviceAccountKey":
+            suggest = "service_account_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbeGcpCloudMonitoringInputs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbeGcpCloudMonitoringInputs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbeGcpCloudMonitoringInputs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: _builtins.str,
+                 query: _builtins.str,
+                 service_account_key: _builtins.str):
+        """
+        :param _builtins.str project_id: GCP project ID.
+        :param _builtins.str query: GCP monitoring query string.
+        :param _builtins.str service_account_key: GCP service account key (JSON).
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "service_account_key", service_account_key)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        GCP project ID.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> _builtins.str:
+        """
+        GCP monitoring query string.
+        """
+        return pulumi.get(self, "query")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKey")
+    def service_account_key(self) -> _builtins.str:
+        """
+        GCP service account key (JSON).
+        """
+        return pulumi.get(self, "service_account_key")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbeNewRelicInputs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorId":
+            suggest = "connector_id"
+        elif key == "newRelicMetric":
+            suggest = "new_relic_metric"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbeNewRelicInputs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbeNewRelicInputs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbeNewRelicInputs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connector_id: _builtins.str,
+                 new_relic_metric: Optional['outputs.ProbeTemplateApmProbeNewRelicInputsNewRelicMetric'] = None):
+        """
+        :param _builtins.str connector_id: Harness connector ID for NewRelic.
+        :param 'ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs' new_relic_metric: NewRelic metric configuration.
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        if new_relic_metric is not None:
+            pulumi.set(__self__, "new_relic_metric", new_relic_metric)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        Harness connector ID for NewRelic.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter(name="newRelicMetric")
+    def new_relic_metric(self) -> Optional['outputs.ProbeTemplateApmProbeNewRelicInputsNewRelicMetric']:
+        """
+        NewRelic metric configuration.
+        """
+        return pulumi.get(self, "new_relic_metric")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbeNewRelicInputsNewRelicMetric(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryMetric":
+            suggest = "query_metric"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbeNewRelicInputsNewRelicMetric. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbeNewRelicInputsNewRelicMetric.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbeNewRelicInputsNewRelicMetric.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query: Optional[_builtins.str] = None,
+                 query_metric: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str query: NRQL query string.
+        :param _builtins.str query_metric: NewRelic query metric name.
+        """
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if query_metric is not None:
+            pulumi.set(__self__, "query_metric", query_metric)
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> Optional[_builtins.str]:
+        """
+        NRQL query string.
+        """
+        return pulumi.get(self, "query")
+
+    @_builtins.property
+    @pulumi.getter(name="queryMetric")
+    def query_metric(self) -> Optional[_builtins.str]:
+        """
+        NewRelic query metric name.
+        """
+        return pulumi.get(self, "query_metric")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbePrometheusInputs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorId":
+            suggest = "connector_id"
+        elif key == "tlsConfig":
+            suggest = "tls_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbePrometheusInputs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbePrometheusInputs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbePrometheusInputs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connector_id: _builtins.str,
+                 query: _builtins.str,
+                 tls_config: Optional['outputs.ProbeTemplateApmProbePrometheusInputsTlsConfig'] = None):
+        """
+        :param _builtins.str connector_id: Harness connector ID for Prometheus.
+        :param _builtins.str query: PromQL query string.
+        :param 'ProbeTemplateApmProbePrometheusInputsTlsConfigArgs' tls_config: TLS configuration for Prometheus connection.
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        pulumi.set(__self__, "query", query)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        Harness connector ID for Prometheus.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> _builtins.str:
+        """
+        PromQL query string.
+        """
+        return pulumi.get(self, "query")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> Optional['outputs.ProbeTemplateApmProbePrometheusInputsTlsConfig']:
+        """
+        TLS configuration for Prometheus connection.
+        """
+        return pulumi.get(self, "tls_config")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbePrometheusInputsTlsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertSecret":
+            suggest = "ca_cert_secret"
+        elif key == "clientCertSecret":
+            suggest = "client_cert_secret"
+        elif key == "clientKeySecret":
+            suggest = "client_key_secret"
+        elif key == "insecureSkipVerify":
+            suggest = "insecure_skip_verify"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbePrometheusInputsTlsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbePrometheusInputsTlsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbePrometheusInputsTlsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_cert_secret: Optional[_builtins.str] = None,
+                 client_cert_secret: Optional[_builtins.str] = None,
+                 client_key_secret: Optional[_builtins.str] = None,
+                 insecure_skip_verify: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str ca_cert_secret: Harness secret identifier for CA certificate.
+        :param _builtins.str client_cert_secret: Harness secret identifier for client certificate.
+        :param _builtins.str client_key_secret: Harness secret identifier for client key.
+        :param _builtins.bool insecure_skip_verify: Skip TLS certificate verification.
+        """
+        if ca_cert_secret is not None:
+            pulumi.set(__self__, "ca_cert_secret", ca_cert_secret)
+        if client_cert_secret is not None:
+            pulumi.set(__self__, "client_cert_secret", client_cert_secret)
+        if client_key_secret is not None:
+            pulumi.set(__self__, "client_key_secret", client_key_secret)
+        if insecure_skip_verify is not None:
+            pulumi.set(__self__, "insecure_skip_verify", insecure_skip_verify)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertSecret")
+    def ca_cert_secret(self) -> Optional[_builtins.str]:
+        """
+        Harness secret identifier for CA certificate.
+        """
+        return pulumi.get(self, "ca_cert_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertSecret")
+    def client_cert_secret(self) -> Optional[_builtins.str]:
+        """
+        Harness secret identifier for client certificate.
+        """
+        return pulumi.get(self, "client_cert_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="clientKeySecret")
+    def client_key_secret(self) -> Optional[_builtins.str]:
+        """
+        Harness secret identifier for client key.
+        """
+        return pulumi.get(self, "client_key_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="insecureSkipVerify")
+    def insecure_skip_verify(self) -> Optional[_builtins.bool]:
+        """
+        Skip TLS certificate verification.
+        """
+        return pulumi.get(self, "insecure_skip_verify")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbeSplunkObservabilityInputs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorId":
+            suggest = "connector_id"
+        elif key == "splunkObservabilityMetrics":
+            suggest = "splunk_observability_metrics"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbeSplunkObservabilityInputs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbeSplunkObservabilityInputs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbeSplunkObservabilityInputs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connector_id: _builtins.str,
+                 splunk_observability_metrics: Optional['outputs.ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics'] = None):
+        """
+        :param _builtins.str connector_id: Harness connector ID for Splunk Observability.
+        :param 'ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs' splunk_observability_metrics: Splunk Observability metrics configuration.
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        if splunk_observability_metrics is not None:
+            pulumi.set(__self__, "splunk_observability_metrics", splunk_observability_metrics)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        Harness connector ID for Splunk Observability.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter(name="splunkObservabilityMetrics")
+    def splunk_observability_metrics(self) -> Optional['outputs.ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics']:
+        """
+        Splunk Observability metrics configuration.
+        """
+        return pulumi.get(self, "splunk_observability_metrics")
+
+
+@pulumi.output_type
+class ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "durationInMin":
+            suggest = "duration_in_min"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration_in_min: Optional[_builtins.int] = None,
+                 query: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int duration_in_min: Duration in minutes for the Splunk query.
+        :param _builtins.str query: Splunk Observability query string.
+        """
+        if duration_in_min is not None:
+            pulumi.set(__self__, "duration_in_min", duration_in_min)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+
+    @_builtins.property
+    @pulumi.getter(name="durationInMin")
+    def duration_in_min(self) -> Optional[_builtins.int]:
+        """
+        Duration in minutes for the Splunk query.
+        """
+        return pulumi.get(self, "duration_in_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> Optional[_builtins.str]:
+        """
+        Splunk Observability query string.
+        """
+        return pulumi.get(self, "query")
+
+
+@pulumi.output_type
+class ProbeTemplateCmdProbe(dict):
+    def __init__(__self__, *,
+                 command: _builtins.str,
+                 comparator: Optional['outputs.ProbeTemplateCmdProbeComparator'] = None,
+                 envs: Optional[Sequence['outputs.ProbeTemplateCmdProbeEnv']] = None,
+                 source: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str command: Command to execute.
+        :param 'ProbeTemplateCmdProbeComparatorArgs' comparator: Comparator for command output validation.
+        :param Sequence['ProbeTemplateCmdProbeEnvArgs'] envs: Environment variables for the command.
+        :param _builtins.str source: Source of the command (inline, configMap, secret).
+        """
+        pulumi.set(__self__, "command", command)
+        if comparator is not None:
+            pulumi.set(__self__, "comparator", comparator)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @_builtins.property
+    @pulumi.getter
+    def command(self) -> _builtins.str:
+        """
+        Command to execute.
+        """
+        return pulumi.get(self, "command")
+
+    @_builtins.property
+    @pulumi.getter
+    def comparator(self) -> Optional['outputs.ProbeTemplateCmdProbeComparator']:
+        """
+        Comparator for command output validation.
+        """
+        return pulumi.get(self, "comparator")
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.ProbeTemplateCmdProbeEnv']]:
+        """
+        Environment variables for the command.
+        """
+        return pulumi.get(self, "envs")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> Optional[_builtins.str]:
+        """
+        Source of the command (inline, configMap, secret).
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class ProbeTemplateCmdProbeComparator(dict):
+    def __init__(__self__, *,
+                 criteria: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str criteria: Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+        :param _builtins.str type: Comparator type (string, int, float).
+        :param _builtins.str value: Expected value.
+        """
+        pulumi.set(__self__, "criteria", criteria)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def criteria(self) -> _builtins.str:
+        """
+        Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+        """
+        return pulumi.get(self, "criteria")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Comparator type (string, int, float).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Expected value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ProbeTemplateCmdProbeEnv(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Environment variable name.
+        :param _builtins.str value: Environment variable value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Environment variable name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Environment variable value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ProbeTemplateHttpProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tlsConfig":
+            suggest = "tls_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateHttpProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateHttpProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateHttpProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 url: _builtins.str,
+                 auth: Optional['outputs.ProbeTemplateHttpProbeAuth'] = None,
+                 headers: Optional[Mapping[str, _builtins.str]] = None,
+                 method: Optional['outputs.ProbeTemplateHttpProbeMethod'] = None,
+                 tls_config: Optional['outputs.ProbeTemplateHttpProbeTlsConfig'] = None):
+        """
+        :param _builtins.str url: URL to probe.
+        :param 'ProbeTemplateHttpProbeAuthArgs' auth: Authentication configuration.
+        :param Mapping[str, _builtins.str] headers: HTTP headers.
+        :param 'ProbeTemplateHttpProbeMethodArgs' method: HTTP method configuration with GET or POST.
+        :param 'ProbeTemplateHttpProbeTlsConfigArgs' tls_config: TLS configuration.
+        """
+        pulumi.set(__self__, "url", url)
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> _builtins.str:
+        """
+        URL to probe.
+        """
+        return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter
+    def auth(self) -> Optional['outputs.ProbeTemplateHttpProbeAuth']:
+        """
+        Authentication configuration.
+        """
+        return pulumi.get(self, "auth")
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        HTTP headers.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def method(self) -> Optional['outputs.ProbeTemplateHttpProbeMethod']:
+        """
+        HTTP method configuration with GET or POST.
+        """
+        return pulumi.get(self, "method")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> Optional['outputs.ProbeTemplateHttpProbeTlsConfig']:
+        """
+        TLS configuration.
+        """
+        return pulumi.get(self, "tls_config")
+
+
+@pulumi.output_type
+class ProbeTemplateHttpProbeAuth(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 password: Optional[_builtins.str] = None,
+                 token: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Auth type (basic, bearer, etc.).
+        :param _builtins.str password: Password for basic auth.
+        :param _builtins.str token: Token for bearer auth.
+        :param _builtins.str username: Username for basic auth.
+        """
+        pulumi.set(__self__, "type", type)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Auth type (basic, bearer, etc.).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Password for basic auth.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> Optional[_builtins.str]:
+        """
+        Token for bearer auth.
+        """
+        return pulumi.get(self, "token")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        Username for basic auth.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ProbeTemplateHttpProbeMethod(dict):
+    def __init__(__self__, *,
+                 get: Optional['outputs.ProbeTemplateHttpProbeMethodGet'] = None,
+                 post: Optional['outputs.ProbeTemplateHttpProbeMethodPost'] = None):
+        """
+        :param 'ProbeTemplateHttpProbeMethodGetArgs' get: GET method configuration.
+        :param 'ProbeTemplateHttpProbeMethodPostArgs' post: POST method configuration.
+        """
+        if get is not None:
+            pulumi.set(__self__, "get", get)
+        if post is not None:
+            pulumi.set(__self__, "post", post)
+
+    @_builtins.property
+    @pulumi.getter
+    def get(self) -> Optional['outputs.ProbeTemplateHttpProbeMethodGet']:
+        """
+        GET method configuration.
+        """
+        return pulumi.get(self, "get")
+
+    @_builtins.property
+    @pulumi.getter
+    def post(self) -> Optional['outputs.ProbeTemplateHttpProbeMethodPost']:
+        """
+        POST method configuration.
+        """
+        return pulumi.get(self, "post")
+
+
+@pulumi.output_type
+class ProbeTemplateHttpProbeMethodGet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "responseBody":
+            suggest = "response_body"
+        elif key == "responseCode":
+            suggest = "response_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateHttpProbeMethodGet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateHttpProbeMethodGet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateHttpProbeMethodGet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 criteria: Optional[_builtins.str] = None,
+                 response_body: Optional[_builtins.str] = None,
+                 response_code: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str criteria: Response criteria (e.g., '==', '!=', 'contains').
+        :param _builtins.str response_body: Expected response body.
+        :param _builtins.str response_code: Expected HTTP response code (e.g., '200', '404').
+        """
+        if criteria is not None:
+            pulumi.set(__self__, "criteria", criteria)
+        if response_body is not None:
+            pulumi.set(__self__, "response_body", response_body)
+        if response_code is not None:
+            pulumi.set(__self__, "response_code", response_code)
+
+    @_builtins.property
+    @pulumi.getter
+    def criteria(self) -> Optional[_builtins.str]:
+        """
+        Response criteria (e.g., '==', '!=', 'contains').
+        """
+        return pulumi.get(self, "criteria")
+
+    @_builtins.property
+    @pulumi.getter(name="responseBody")
+    def response_body(self) -> Optional[_builtins.str]:
+        """
+        Expected response body.
+        """
+        return pulumi.get(self, "response_body")
+
+    @_builtins.property
+    @pulumi.getter(name="responseCode")
+    def response_code(self) -> Optional[_builtins.str]:
+        """
+        Expected HTTP response code (e.g., '200', '404').
+        """
+        return pulumi.get(self, "response_code")
+
+
+@pulumi.output_type
+class ProbeTemplateHttpProbeMethodPost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bodyPath":
+            suggest = "body_path"
+        elif key == "contentType":
+            suggest = "content_type"
+        elif key == "responseBody":
+            suggest = "response_body"
+        elif key == "responseCode":
+            suggest = "response_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateHttpProbeMethodPost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateHttpProbeMethodPost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateHttpProbeMethodPost.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 body: Optional[_builtins.str] = None,
+                 body_path: Optional[_builtins.str] = None,
+                 content_type: Optional[_builtins.str] = None,
+                 criteria: Optional[_builtins.str] = None,
+                 response_body: Optional[_builtins.str] = None,
+                 response_code: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str body: POST request body.
+        :param _builtins.str body_path: Path to file containing POST body.
+        :param _builtins.str content_type: Content-Type header for POST request.
+        :param _builtins.str criteria: Response criteria (e.g., '==', '!=', 'contains').
+        :param _builtins.str response_body: Expected response body.
+        :param _builtins.str response_code: Expected HTTP response code (e.g., '200', '404').
+        """
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if body_path is not None:
+            pulumi.set(__self__, "body_path", body_path)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if criteria is not None:
+            pulumi.set(__self__, "criteria", criteria)
+        if response_body is not None:
+            pulumi.set(__self__, "response_body", response_body)
+        if response_code is not None:
+            pulumi.set(__self__, "response_code", response_code)
+
+    @_builtins.property
+    @pulumi.getter
+    def body(self) -> Optional[_builtins.str]:
+        """
+        POST request body.
+        """
+        return pulumi.get(self, "body")
+
+    @_builtins.property
+    @pulumi.getter(name="bodyPath")
+    def body_path(self) -> Optional[_builtins.str]:
+        """
+        Path to file containing POST body.
+        """
+        return pulumi.get(self, "body_path")
+
+    @_builtins.property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[_builtins.str]:
+        """
+        Content-Type header for POST request.
+        """
+        return pulumi.get(self, "content_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def criteria(self) -> Optional[_builtins.str]:
+        """
+        Response criteria (e.g., '==', '!=', 'contains').
+        """
+        return pulumi.get(self, "criteria")
+
+    @_builtins.property
+    @pulumi.getter(name="responseBody")
+    def response_body(self) -> Optional[_builtins.str]:
+        """
+        Expected response body.
+        """
+        return pulumi.get(self, "response_body")
+
+    @_builtins.property
+    @pulumi.getter(name="responseCode")
+    def response_code(self) -> Optional[_builtins.str]:
+        """
+        Expected HTTP response code (e.g., '200', '404').
+        """
+        return pulumi.get(self, "response_code")
+
+
+@pulumi.output_type
+class ProbeTemplateHttpProbeTlsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCert":
+            suggest = "ca_cert"
+        elif key == "clientCert":
+            suggest = "client_cert"
+        elif key == "clientKey":
+            suggest = "client_key"
+        elif key == "insecureSkipVerify":
+            suggest = "insecure_skip_verify"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateHttpProbeTlsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateHttpProbeTlsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateHttpProbeTlsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_cert: Optional[_builtins.str] = None,
+                 client_cert: Optional[_builtins.str] = None,
+                 client_key: Optional[_builtins.str] = None,
+                 insecure_skip_verify: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str ca_cert: CA certificate.
+        :param _builtins.str client_cert: Client certificate.
+        :param _builtins.str client_key: Client key.
+        :param _builtins.bool insecure_skip_verify: Skip TLS certificate verification.
+        """
+        if ca_cert is not None:
+            pulumi.set(__self__, "ca_cert", ca_cert)
+        if client_cert is not None:
+            pulumi.set(__self__, "client_cert", client_cert)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if insecure_skip_verify is not None:
+            pulumi.set(__self__, "insecure_skip_verify", insecure_skip_verify)
+
+    @_builtins.property
+    @pulumi.getter(name="caCert")
+    def ca_cert(self) -> Optional[_builtins.str]:
+        """
+        CA certificate.
+        """
+        return pulumi.get(self, "ca_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> Optional[_builtins.str]:
+        """
+        Client certificate.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[_builtins.str]:
+        """
+        Client key.
+        """
+        return pulumi.get(self, "client_key")
+
+    @_builtins.property
+    @pulumi.getter(name="insecureSkipVerify")
+    def insecure_skip_verify(self) -> Optional[_builtins.bool]:
+        """
+        Skip TLS certificate verification.
+        """
+        return pulumi.get(self, "insecure_skip_verify")
+
+
+@pulumi.output_type
+class ProbeTemplateK8sProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldSelector":
+            suggest = "field_selector"
+        elif key == "labelSelector":
+            suggest = "label_selector"
+        elif key == "resourceNames":
+            suggest = "resource_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateK8sProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateK8sProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateK8sProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource: _builtins.str,
+                 version: _builtins.str,
+                 field_selector: Optional[_builtins.str] = None,
+                 group: Optional[_builtins.str] = None,
+                 label_selector: Optional[_builtins.str] = None,
+                 namespace: Optional[_builtins.str] = None,
+                 operation: Optional[_builtins.str] = None,
+                 resource_names: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str resource: Resource type (e.g., 'pods', 'deployments').
+        :param _builtins.str version: API version (e.g., 'v1', 'v1beta1').
+        :param _builtins.str field_selector: Field selector for filtering resources.
+        :param _builtins.str group: API group (e.g., 'apps', 'batch').
+        :param _builtins.str label_selector: Label selector for filtering resources.
+        :param _builtins.str namespace: Kubernetes namespace.
+        :param _builtins.str operation: Operation to perform (create, delete, present, absent, etc.).
+        :param _builtins.str resource_names: Comma-separated list of resource names.
+        """
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "version", version)
+        if field_selector is not None:
+            pulumi.set(__self__, "field_selector", field_selector)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if label_selector is not None:
+            pulumi.set(__self__, "label_selector", label_selector)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
+        if resource_names is not None:
+            pulumi.set(__self__, "resource_names", resource_names)
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> _builtins.str:
+        """
+        Resource type (e.g., 'pods', 'deployments').
+        """
+        return pulumi.get(self, "resource")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        API version (e.g., 'v1', 'v1beta1').
+        """
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter(name="fieldSelector")
+    def field_selector(self) -> Optional[_builtins.str]:
+        """
+        Field selector for filtering resources.
+        """
+        return pulumi.get(self, "field_selector")
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> Optional[_builtins.str]:
+        """
+        API group (e.g., 'apps', 'batch').
+        """
+        return pulumi.get(self, "group")
+
+    @_builtins.property
+    @pulumi.getter(name="labelSelector")
+    def label_selector(self) -> Optional[_builtins.str]:
+        """
+        Label selector for filtering resources.
+        """
+        return pulumi.get(self, "label_selector")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[_builtins.str]:
+        """
+        Kubernetes namespace.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> Optional[_builtins.str]:
+        """
+        Operation to perform (create, delete, present, absent, etc.).
+        """
+        return pulumi.get(self, "operation")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> Optional[_builtins.str]:
+        """
+        Comma-separated list of resource names.
+        """
+        return pulumi.get(self, "resource_names")
+
+
+@pulumi.output_type
+class ProbeTemplateRunProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialDelay":
+            suggest = "initial_delay"
+        elif key == "pollingInterval":
+            suggest = "polling_interval"
+        elif key == "stopOnFailure":
+            suggest = "stop_on_failure"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeTemplateRunProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeTemplateRunProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeTemplateRunProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attempt: Optional[_builtins.int] = None,
+                 initial_delay: Optional[_builtins.str] = None,
+                 interval: Optional[_builtins.str] = None,
+                 polling_interval: Optional[_builtins.str] = None,
+                 retry: Optional[_builtins.int] = None,
+                 stop_on_failure: Optional[_builtins.bool] = None,
+                 timeout: Optional[_builtins.str] = None,
+                 verbosity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int attempt: Number of attempts.
+        :param _builtins.str initial_delay: Initial delay before probe execution (e.g., '5s', '1m').
+        :param _builtins.str interval: Interval between probe executions (e.g., '10s', '30s').
+        :param _builtins.str polling_interval: Polling interval for continuous probes (e.g., '2s', '5s').
+        :param _builtins.int retry: Number of retries.
+        :param _builtins.bool stop_on_failure: Whether to stop on failure.
+        :param _builtins.str timeout: Timeout for probe execution (e.g., '30s', '5m').
+        :param _builtins.str verbosity: Verbosity level for logging.
+        """
+        if attempt is not None:
+            pulumi.set(__self__, "attempt", attempt)
+        if initial_delay is not None:
+            pulumi.set(__self__, "initial_delay", initial_delay)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if polling_interval is not None:
+            pulumi.set(__self__, "polling_interval", polling_interval)
+        if retry is not None:
+            pulumi.set(__self__, "retry", retry)
+        if stop_on_failure is not None:
+            pulumi.set(__self__, "stop_on_failure", stop_on_failure)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if verbosity is not None:
+            pulumi.set(__self__, "verbosity", verbosity)
+
+    @_builtins.property
+    @pulumi.getter
+    def attempt(self) -> Optional[_builtins.int]:
+        """
+        Number of attempts.
+        """
+        return pulumi.get(self, "attempt")
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelay")
+    def initial_delay(self) -> Optional[_builtins.str]:
+        """
+        Initial delay before probe execution (e.g., '5s', '1m').
+        """
+        return pulumi.get(self, "initial_delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[_builtins.str]:
+        """
+        Interval between probe executions (e.g., '10s', '30s').
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter(name="pollingInterval")
+    def polling_interval(self) -> Optional[_builtins.str]:
+        """
+        Polling interval for continuous probes (e.g., '2s', '5s').
+        """
+        return pulumi.get(self, "polling_interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def retry(self) -> Optional[_builtins.int]:
+        """
+        Number of retries.
+        """
+        return pulumi.get(self, "retry")
+
+    @_builtins.property
+    @pulumi.getter(name="stopOnFailure")
+    def stop_on_failure(self) -> Optional[_builtins.bool]:
+        """
+        Whether to stop on failure.
+        """
+        return pulumi.get(self, "stop_on_failure")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[_builtins.str]:
+        """
+        Timeout for probe execution (e.g., '30s', '5m').
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def verbosity(self) -> Optional[_builtins.str]:
+        """
+        Verbosity level for logging.
+        """
+        return pulumi.get(self, "verbosity")
+
+
+@pulumi.output_type
+class ProbeTemplateVariable(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 required: Optional[_builtins.bool] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Variable name.
+        :param _builtins.str value: Variable value.
+        :param _builtins.str description: Variable description.
+        :param _builtins.bool required: Whether the variable is required.
+        :param _builtins.str type: Variable type (e.g., 'string', 'number', 'boolean').
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Variable name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Variable value.
+        """
+        return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Variable description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> Optional[_builtins.bool]:
+        """
+        Whether the variable is required.
+        """
+        return pulumi.get(self, "required")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Variable type (e.g., 'string', 'number', 'boolean').
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class SecurityGovernanceConditionFaultSpec(dict):
     def __init__(__self__, *,
                  faults: Sequence['outputs.SecurityGovernanceConditionFaultSpecFault'],
@@ -1473,6 +7138,1726 @@ class SecurityGovernanceRuleTimeWindowRecurrence(dict):
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetActionTemplateContainerActionResult(dict):
+    def __init__(__self__, *,
+                 image: _builtins.str,
+                 annotations: Optional[Mapping[str, _builtins.str]] = None,
+                 args: Optional[_builtins.str] = None,
+                 commands: Optional[Sequence[_builtins.str]] = None,
+                 envs: Optional[Sequence['outputs.GetActionTemplateContainerActionEnvResult']] = None,
+                 host_ipc: Optional[_builtins.bool] = None,
+                 host_network: Optional[_builtins.bool] = None,
+                 host_pid: Optional[_builtins.bool] = None,
+                 image_pull_policy: Optional[_builtins.str] = None,
+                 image_pull_secrets: Optional[Sequence[_builtins.str]] = None,
+                 labels: Optional[Mapping[str, _builtins.str]] = None,
+                 namespace: Optional[_builtins.str] = None,
+                 node_selector: Optional[Mapping[str, _builtins.str]] = None,
+                 resources: Optional['outputs.GetActionTemplateContainerActionResourcesResult'] = None,
+                 service_account_name: Optional[_builtins.str] = None,
+                 tolerations: Optional[Sequence['outputs.GetActionTemplateContainerActionTolerationResult']] = None,
+                 volume_mounts: Optional[Sequence['outputs.GetActionTemplateContainerActionVolumeMountResult']] = None,
+                 volumes: Optional[Sequence['outputs.GetActionTemplateContainerActionVolumeResult']] = None):
+        """
+        :param _builtins.str image: Container image to use (e.g., 'busybox:latest').
+        :param Mapping[str, _builtins.str] annotations: Annotations to apply to the container pod.
+        :param _builtins.str args: Arguments to pass to the container command.
+        :param Sequence[_builtins.str] commands: Command to run in the container.
+        :param Sequence['GetActionTemplateContainerActionEnvArgs'] envs: Environment variables for the container.
+        :param _builtins.bool host_ipc: Use host IPC namespace.
+        :param _builtins.bool host_network: Use host network namespace.
+        :param _builtins.bool host_pid: Use host PID namespace.
+        :param _builtins.str image_pull_policy: Image pull policy (Always, IfNotPresent, Never). Supports runtime inputs like <+input>.allowedValues(...).
+        :param Sequence[_builtins.str] image_pull_secrets: List of image pull secrets for private registries.
+        :param Mapping[str, _builtins.str] labels: Labels to apply to the container pod.
+        :param _builtins.str namespace: Kubernetes namespace for the container.
+        :param Mapping[str, _builtins.str] node_selector: Node selector for pod scheduling.
+        :param 'GetActionTemplateContainerActionResourcesArgs' resources: Resource requirements for the container.
+        :param _builtins.str service_account_name: Kubernetes service account name.
+        :param Sequence['GetActionTemplateContainerActionTolerationArgs'] tolerations: Tolerations for pod scheduling on tainted nodes.
+        :param Sequence['GetActionTemplateContainerActionVolumeMountArgs'] volume_mounts: Volume mounts for the container.
+        :param Sequence['GetActionTemplateContainerActionVolumeArgs'] volumes: Volumes to attach to the pod.
+        """
+        pulumi.set(__self__, "image", image)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if host_ipc is not None:
+            pulumi.set(__self__, "host_ipc", host_ipc)
+        if host_network is not None:
+            pulumi.set(__self__, "host_network", host_network)
+        if host_pid is not None:
+            pulumi.set(__self__, "host_pid", host_pid)
+        if image_pull_policy is not None:
+            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if image_pull_secrets is not None:
+            pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if node_selector is not None:
+            pulumi.set(__self__, "node_selector", node_selector)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if service_account_name is not None:
+            pulumi.set(__self__, "service_account_name", service_account_name)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> _builtins.str:
+        """
+        Container image to use (e.g., 'busybox:latest').
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter
+    def annotations(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Annotations to apply to the container pod.
+        """
+        return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[_builtins.str]:
+        """
+        Arguments to pass to the container command.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Command to run in the container.
+        """
+        return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.GetActionTemplateContainerActionEnvResult']]:
+        """
+        Environment variables for the container.
+        """
+        return pulumi.get(self, "envs")
+
+    @_builtins.property
+    @pulumi.getter(name="hostIpc")
+    def host_ipc(self) -> Optional[_builtins.bool]:
+        """
+        Use host IPC namespace.
+        """
+        return pulumi.get(self, "host_ipc")
+
+    @_builtins.property
+    @pulumi.getter(name="hostNetwork")
+    def host_network(self) -> Optional[_builtins.bool]:
+        """
+        Use host network namespace.
+        """
+        return pulumi.get(self, "host_network")
+
+    @_builtins.property
+    @pulumi.getter(name="hostPid")
+    def host_pid(self) -> Optional[_builtins.bool]:
+        """
+        Use host PID namespace.
+        """
+        return pulumi.get(self, "host_pid")
+
+    @_builtins.property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> Optional[_builtins.str]:
+        """
+        Image pull policy (Always, IfNotPresent, Never). Supports runtime inputs like <+input>.allowedValues(...).
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="imagePullSecrets")
+    def image_pull_secrets(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of image pull secrets for private registries.
+        """
+        return pulumi.get(self, "image_pull_secrets")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Labels to apply to the container pod.
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[_builtins.str]:
+        """
+        Kubernetes namespace for the container.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeSelector")
+    def node_selector(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Node selector for pod scheduling.
+        """
+        return pulumi.get(self, "node_selector")
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Optional['outputs.GetActionTemplateContainerActionResourcesResult']:
+        """
+        Resource requirements for the container.
+        """
+        return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountName")
+    def service_account_name(self) -> Optional[_builtins.str]:
+        """
+        Kubernetes service account name.
+        """
+        return pulumi.get(self, "service_account_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.GetActionTemplateContainerActionTolerationResult']]:
+        """
+        Tolerations for pod scheduling on tainted nodes.
+        """
+        return pulumi.get(self, "tolerations")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Optional[Sequence['outputs.GetActionTemplateContainerActionVolumeMountResult']]:
+        """
+        Volume mounts for the container.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Optional[Sequence['outputs.GetActionTemplateContainerActionVolumeResult']]:
+        """
+        Volumes to attach to the pod.
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class GetActionTemplateContainerActionEnvResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Environment variable name.
+        :param _builtins.str value: Environment variable value.
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Environment variable name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Environment variable value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetActionTemplateContainerActionResourcesResult(dict):
+    def __init__(__self__, *,
+                 limits: Optional[Mapping[str, _builtins.str]] = None,
+                 requests: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] limits: Resource limits.
+        :param Mapping[str, _builtins.str] requests: Resource requests.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource limits.
+        """
+        return pulumi.get(self, "limits")
+
+    @_builtins.property
+    @pulumi.getter
+    def requests(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource requests.
+        """
+        return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class GetActionTemplateContainerActionTolerationResult(dict):
+    def __init__(__self__, *,
+                 effect: Optional[_builtins.str] = None,
+                 key: Optional[_builtins.str] = None,
+                 operator: Optional[_builtins.str] = None,
+                 toleration_seconds: Optional[_builtins.int] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str effect: Taint effect (NoSchedule, PreferNoSchedule, NoExecute).
+        :param _builtins.str key: Taint key to tolerate.
+        :param _builtins.str operator: Operator (Exists, Equal).
+        :param _builtins.int toleration_seconds: Toleration seconds for NoExecute effect.
+        :param _builtins.str value: Taint value to tolerate.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if toleration_seconds is not None:
+            pulumi.set(__self__, "toleration_seconds", toleration_seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def effect(self) -> Optional[_builtins.str]:
+        """
+        Taint effect (NoSchedule, PreferNoSchedule, NoExecute).
+        """
+        return pulumi.get(self, "effect")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Taint key to tolerate.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> Optional[_builtins.str]:
+        """
+        Operator (Exists, Equal).
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter(name="tolerationSeconds")
+    def toleration_seconds(self) -> Optional[_builtins.int]:
+        """
+        Toleration seconds for NoExecute effect.
+        """
+        return pulumi.get(self, "toleration_seconds")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Taint value to tolerate.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetActionTemplateContainerActionVolumeResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 config_map: Optional['outputs.GetActionTemplateContainerActionVolumeConfigMapResult'] = None,
+                 empty_dir: Optional['outputs.GetActionTemplateContainerActionVolumeEmptyDirResult'] = None,
+                 host_path: Optional['outputs.GetActionTemplateContainerActionVolumeHostPathResult'] = None,
+                 persistent_volume_claim: Optional['outputs.GetActionTemplateContainerActionVolumePersistentVolumeClaimResult'] = None,
+                 secret: Optional['outputs.GetActionTemplateContainerActionVolumeSecretResult'] = None):
+        """
+        :param _builtins.str name: Volume name.
+        :param 'GetActionTemplateContainerActionVolumeConfigMapArgs' config_map: ConfigMap volume configuration.
+        :param 'GetActionTemplateContainerActionVolumeEmptyDirArgs' empty_dir: EmptyDir volume configuration.
+        :param 'GetActionTemplateContainerActionVolumeHostPathArgs' host_path: HostPath volume configuration.
+        :param 'GetActionTemplateContainerActionVolumePersistentVolumeClaimArgs' persistent_volume_claim: PersistentVolumeClaim configuration.
+        :param 'GetActionTemplateContainerActionVolumeSecretArgs' secret: Secret volume configuration.
+        """
+        pulumi.set(__self__, "name", name)
+        if config_map is not None:
+            pulumi.set(__self__, "config_map", config_map)
+        if empty_dir is not None:
+            pulumi.set(__self__, "empty_dir", empty_dir)
+        if host_path is not None:
+            pulumi.set(__self__, "host_path", host_path)
+        if persistent_volume_claim is not None:
+            pulumi.set(__self__, "persistent_volume_claim", persistent_volume_claim)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Volume name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="configMap")
+    def config_map(self) -> Optional['outputs.GetActionTemplateContainerActionVolumeConfigMapResult']:
+        """
+        ConfigMap volume configuration.
+        """
+        return pulumi.get(self, "config_map")
+
+    @_builtins.property
+    @pulumi.getter(name="emptyDir")
+    def empty_dir(self) -> Optional['outputs.GetActionTemplateContainerActionVolumeEmptyDirResult']:
+        """
+        EmptyDir volume configuration.
+        """
+        return pulumi.get(self, "empty_dir")
+
+    @_builtins.property
+    @pulumi.getter(name="hostPath")
+    def host_path(self) -> Optional['outputs.GetActionTemplateContainerActionVolumeHostPathResult']:
+        """
+        HostPath volume configuration.
+        """
+        return pulumi.get(self, "host_path")
+
+    @_builtins.property
+    @pulumi.getter(name="persistentVolumeClaim")
+    def persistent_volume_claim(self) -> Optional['outputs.GetActionTemplateContainerActionVolumePersistentVolumeClaimResult']:
+        """
+        PersistentVolumeClaim configuration.
+        """
+        return pulumi.get(self, "persistent_volume_claim")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional['outputs.GetActionTemplateContainerActionVolumeSecretResult']:
+        """
+        Secret volume configuration.
+        """
+        return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class GetActionTemplateContainerActionVolumeConfigMapResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 optional: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str name: ConfigMap name.
+        :param _builtins.bool optional: Whether the ConfigMap is optional.
+        """
+        pulumi.set(__self__, "name", name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        ConfigMap name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def optional(self) -> Optional[_builtins.bool]:
+        """
+        Whether the ConfigMap is optional.
+        """
+        return pulumi.get(self, "optional")
+
+
+@pulumi.output_type
+class GetActionTemplateContainerActionVolumeEmptyDirResult(dict):
+    def __init__(__self__, *,
+                 medium: Optional[_builtins.str] = None,
+                 size_limit: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str medium: Storage medium (empty string for default, Memory for tmpfs).
+        :param _builtins.str size_limit: Size limit (e.g., '1Gi').
+        """
+        if medium is not None:
+            pulumi.set(__self__, "medium", medium)
+        if size_limit is not None:
+            pulumi.set(__self__, "size_limit", size_limit)
+
+    @_builtins.property
+    @pulumi.getter
+    def medium(self) -> Optional[_builtins.str]:
+        """
+        Storage medium (empty string for default, Memory for tmpfs).
+        """
+        return pulumi.get(self, "medium")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeLimit")
+    def size_limit(self) -> Optional[_builtins.str]:
+        """
+        Size limit (e.g., '1Gi').
+        """
+        return pulumi.get(self, "size_limit")
+
+
+@pulumi.output_type
+class GetActionTemplateContainerActionVolumeHostPathResult(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str path: Host path.
+        :param _builtins.str type: Host path type (Directory, File, etc.).
+        """
+        pulumi.set(__self__, "path", path)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        Host path.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Host path type (Directory, File, etc.).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetActionTemplateContainerActionVolumeMountResult(dict):
+    def __init__(__self__, *,
+                 mount_path: _builtins.str,
+                 name: _builtins.str,
+                 read_only: Optional[_builtins.bool] = None,
+                 sub_path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str mount_path: Path to mount the volume in the container.
+        :param _builtins.str name: Volume name to mount.
+        :param _builtins.bool read_only: Mount as read-only.
+        :param _builtins.str sub_path: Sub-path within the volume.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> _builtins.str:
+        """
+        Path to mount the volume in the container.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Volume name to mount.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[_builtins.bool]:
+        """
+        Mount as read-only.
+        """
+        return pulumi.get(self, "read_only")
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> Optional[_builtins.str]:
+        """
+        Sub-path within the volume.
+        """
+        return pulumi.get(self, "sub_path")
+
+
+@pulumi.output_type
+class GetActionTemplateContainerActionVolumePersistentVolumeClaimResult(dict):
+    def __init__(__self__, *,
+                 claim_name: _builtins.str,
+                 read_only: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str claim_name: PVC name.
+        :param _builtins.bool read_only: Mount as read-only.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> _builtins.str:
+        """
+        PVC name.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[_builtins.bool]:
+        """
+        Mount as read-only.
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class GetActionTemplateContainerActionVolumeSecretResult(dict):
+    def __init__(__self__, *,
+                 secret_name: _builtins.str,
+                 optional: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str secret_name: Secret name.
+        :param _builtins.bool optional: Whether the Secret is optional.
+        """
+        pulumi.set(__self__, "secret_name", secret_name)
+        if optional is not None:
+            pulumi.set(__self__, "optional", optional)
+
+    @_builtins.property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> _builtins.str:
+        """
+        Secret name.
+        """
+        return pulumi.get(self, "secret_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def optional(self) -> Optional[_builtins.bool]:
+        """
+        Whether the Secret is optional.
+        """
+        return pulumi.get(self, "optional")
+
+
+@pulumi.output_type
+class GetActionTemplateCustomScriptActionResult(dict):
+    def __init__(__self__, *,
+                 command: _builtins.str,
+                 args: Optional[Sequence[_builtins.str]] = None,
+                 envs: Optional[Sequence['outputs.GetActionTemplateCustomScriptActionEnvResult']] = None):
+        """
+        :param _builtins.str command: Command to execute (e.g., 'bash', 'python', 'sh').
+        :param Sequence[_builtins.str] args: Arguments to pass to the command.
+        :param Sequence['GetActionTemplateCustomScriptActionEnvArgs'] envs: Environment variables for the script.
+        """
+        pulumi.set(__self__, "command", command)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+
+    @_builtins.property
+    @pulumi.getter
+    def command(self) -> _builtins.str:
+        """
+        Command to execute (e.g., 'bash', 'python', 'sh').
+        """
+        return pulumi.get(self, "command")
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Arguments to pass to the command.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.GetActionTemplateCustomScriptActionEnvResult']]:
+        """
+        Environment variables for the script.
+        """
+        return pulumi.get(self, "envs")
+
+
+@pulumi.output_type
+class GetActionTemplateCustomScriptActionEnvResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Environment variable name.
+        :param _builtins.str value: Environment variable value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Environment variable name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Environment variable value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetActionTemplateDelayActionResult(dict):
+    def __init__(__self__, *,
+                 duration: _builtins.str):
+        """
+        :param _builtins.str duration: Duration of the delay (e.g., '30s', '5m', '1h').
+        """
+        pulumi.set(__self__, "duration", duration)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> _builtins.str:
+        """
+        Duration of the delay (e.g., '30s', '5m', '1h').
+        """
+        return pulumi.get(self, "duration")
+
+
+@pulumi.output_type
+class GetActionTemplateRunPropertiesResult(dict):
+    def __init__(__self__, *,
+                 initial_delay: Optional[_builtins.str] = None,
+                 interval: Optional[_builtins.str] = None,
+                 max_retries: Optional[_builtins.int] = None,
+                 stop_on_failure: Optional[_builtins.bool] = None,
+                 timeout: Optional[_builtins.str] = None,
+                 verbosity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str initial_delay: Initial delay before action execution (e.g., '5s', '1m').
+        :param _builtins.str interval: Interval between retries (e.g., '10s', '30s').
+        :param _builtins.int max_retries: Maximum number of retries.
+        :param _builtins.bool stop_on_failure: Whether to stop on failure.
+        :param _builtins.str timeout: Timeout for action execution (e.g., '5m', '10m').
+        :param _builtins.str verbosity: Verbosity level for logging.
+        """
+        if initial_delay is not None:
+            pulumi.set(__self__, "initial_delay", initial_delay)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if max_retries is not None:
+            pulumi.set(__self__, "max_retries", max_retries)
+        if stop_on_failure is not None:
+            pulumi.set(__self__, "stop_on_failure", stop_on_failure)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if verbosity is not None:
+            pulumi.set(__self__, "verbosity", verbosity)
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelay")
+    def initial_delay(self) -> Optional[_builtins.str]:
+        """
+        Initial delay before action execution (e.g., '5s', '1m').
+        """
+        return pulumi.get(self, "initial_delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[_builtins.str]:
+        """
+        Interval between retries (e.g., '10s', '30s').
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of retries.
+        """
+        return pulumi.get(self, "max_retries")
+
+    @_builtins.property
+    @pulumi.getter(name="stopOnFailure")
+    def stop_on_failure(self) -> Optional[_builtins.bool]:
+        """
+        Whether to stop on failure.
+        """
+        return pulumi.get(self, "stop_on_failure")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[_builtins.str]:
+        """
+        Timeout for action execution (e.g., '5m', '10m').
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def verbosity(self) -> Optional[_builtins.str]:
+        """
+        Verbosity level for logging.
+        """
+        return pulumi.get(self, "verbosity")
+
+
+@pulumi.output_type
+class GetActionTemplateVariableResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 required: Optional[_builtins.bool] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Variable name.
+        :param _builtins.str value: Variable value.
+        :param _builtins.str description: Variable description.
+        :param _builtins.bool required: Whether the variable is required.
+        :param _builtins.str type: Variable type (e.g., 'string', 'number', 'boolean').
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Variable name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Variable value.
+        """
+        return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Variable description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> Optional[_builtins.bool]:
+        """
+        Whether the variable is required.
+        """
+        return pulumi.get(self, "required")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Variable type (e.g., 'string', 'number', 'boolean').
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetExperimentTemplateDetailResult(dict):
+    def __init__(__self__, *,
+                 hub_reference: _builtins.str,
+                 identity: _builtins.str,
+                 reference: _builtins.str,
+                 revision: _builtins.str):
+        """
+        :param _builtins.str hub_reference: Hub reference
+        :param _builtins.str identity: Template identity
+        :param _builtins.str reference: Template reference
+        :param _builtins.str revision: Template revision
+        """
+        pulumi.set(__self__, "hub_reference", hub_reference)
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "reference", reference)
+        pulumi.set(__self__, "revision", revision)
+
+    @_builtins.property
+    @pulumi.getter(name="hubReference")
+    def hub_reference(self) -> _builtins.str:
+        """
+        Hub reference
+        """
+        return pulumi.get(self, "hub_reference")
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> _builtins.str:
+        """
+        Template identity
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter
+    def reference(self) -> _builtins.str:
+        """
+        Template reference
+        """
+        return pulumi.get(self, "reference")
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> _builtins.str:
+        """
+        Template revision
+        """
+        return pulumi.get(self, "revision")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecResult(dict):
+    def __init__(__self__, *,
+                 actions: Sequence['outputs.GetExperimentTemplateSpecActionResult'],
+                 cleanup_policy: _builtins.str,
+                 faults: Sequence['outputs.GetExperimentTemplateSpecFaultResult'],
+                 infra_id: _builtins.str,
+                 infra_type: _builtins.str,
+                 probes: Sequence['outputs.GetExperimentTemplateSpecProbeResult'],
+                 status_check_timeouts: Sequence['outputs.GetExperimentTemplateSpecStatusCheckTimeoutResult'],
+                 vertices: Sequence['outputs.GetExperimentTemplateSpecVertexResult']):
+        """
+        :param Sequence['GetExperimentTemplateSpecActionArgs'] actions: List of actions in the experiment
+        :param _builtins.str cleanup_policy: Cleanup policy for experiment resources
+        :param Sequence['GetExperimentTemplateSpecFaultArgs'] faults: List of faults in the experiment
+        :param _builtins.str infra_id: Infrastructure identifier
+        :param _builtins.str infra_type: Infrastructure type
+        :param Sequence['GetExperimentTemplateSpecProbeArgs'] probes: List of probes in the experiment
+        :param Sequence['GetExperimentTemplateSpecStatusCheckTimeoutArgs'] status_check_timeouts: Status check timeout configuration
+        :param Sequence['GetExperimentTemplateSpecVertexArgs'] vertices: Workflow graph vertices defining execution order
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "cleanup_policy", cleanup_policy)
+        pulumi.set(__self__, "faults", faults)
+        pulumi.set(__self__, "infra_id", infra_id)
+        pulumi.set(__self__, "infra_type", infra_type)
+        pulumi.set(__self__, "probes", probes)
+        pulumi.set(__self__, "status_check_timeouts", status_check_timeouts)
+        pulumi.set(__self__, "vertices", vertices)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Sequence['outputs.GetExperimentTemplateSpecActionResult']:
+        """
+        List of actions in the experiment
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter(name="cleanupPolicy")
+    def cleanup_policy(self) -> _builtins.str:
+        """
+        Cleanup policy for experiment resources
+        """
+        return pulumi.get(self, "cleanup_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def faults(self) -> Sequence['outputs.GetExperimentTemplateSpecFaultResult']:
+        """
+        List of faults in the experiment
+        """
+        return pulumi.get(self, "faults")
+
+    @_builtins.property
+    @pulumi.getter(name="infraId")
+    def infra_id(self) -> _builtins.str:
+        """
+        Infrastructure identifier
+        """
+        return pulumi.get(self, "infra_id")
+
+    @_builtins.property
+    @pulumi.getter(name="infraType")
+    def infra_type(self) -> _builtins.str:
+        """
+        Infrastructure type
+        """
+        return pulumi.get(self, "infra_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def probes(self) -> Sequence['outputs.GetExperimentTemplateSpecProbeResult']:
+        """
+        List of probes in the experiment
+        """
+        return pulumi.get(self, "probes")
+
+    @_builtins.property
+    @pulumi.getter(name="statusCheckTimeouts")
+    def status_check_timeouts(self) -> Sequence['outputs.GetExperimentTemplateSpecStatusCheckTimeoutResult']:
+        """
+        Status check timeout configuration
+        """
+        return pulumi.get(self, "status_check_timeouts")
+
+    @_builtins.property
+    @pulumi.getter
+    def vertices(self) -> Sequence['outputs.GetExperimentTemplateSpecVertexResult']:
+        """
+        Workflow graph vertices defining execution order
+        """
+        return pulumi.get(self, "vertices")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecActionResult(dict):
+    def __init__(__self__, *,
+                 continue_on_completion: _builtins.bool,
+                 identity: _builtins.str,
+                 infra_id: _builtins.str,
+                 is_enterprise: _builtins.bool,
+                 name: _builtins.str,
+                 revision: _builtins.int,
+                 values: Sequence['outputs.GetExperimentTemplateSpecActionValueResult']):
+        """
+        :param _builtins.bool continue_on_completion: Whether to continue on completion
+        :param _builtins.str identity: Action template identity
+        :param _builtins.str infra_id: Infrastructure identifier for this action
+        :param _builtins.bool is_enterprise: Whether this is an enterprise action
+        :param _builtins.str name: Action name
+        :param _builtins.int revision: Action template revision
+        :param Sequence['GetExperimentTemplateSpecActionValueArgs'] values: Variable values for the action
+        """
+        pulumi.set(__self__, "continue_on_completion", continue_on_completion)
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "infra_id", infra_id)
+        pulumi.set(__self__, "is_enterprise", is_enterprise)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "revision", revision)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="continueOnCompletion")
+    def continue_on_completion(self) -> _builtins.bool:
+        """
+        Whether to continue on completion
+        """
+        return pulumi.get(self, "continue_on_completion")
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> _builtins.str:
+        """
+        Action template identity
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter(name="infraId")
+    def infra_id(self) -> _builtins.str:
+        """
+        Infrastructure identifier for this action
+        """
+        return pulumi.get(self, "infra_id")
+
+    @_builtins.property
+    @pulumi.getter(name="isEnterprise")
+    def is_enterprise(self) -> _builtins.bool:
+        """
+        Whether this is an enterprise action
+        """
+        return pulumi.get(self, "is_enterprise")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Action name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> _builtins.int:
+        """
+        Action template revision
+        """
+        return pulumi.get(self, "revision")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence['outputs.GetExperimentTemplateSpecActionValueResult']:
+        """
+        Variable values for the action
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecActionValueResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Variable name
+        :param _builtins.str value: Variable value
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Variable name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Variable value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecFaultResult(dict):
+    def __init__(__self__, *,
+                 auth_enabled: _builtins.bool,
+                 identity: _builtins.str,
+                 infra_id: _builtins.str,
+                 is_enterprise: _builtins.bool,
+                 name: _builtins.str,
+                 revision: _builtins.str,
+                 values: Sequence['outputs.GetExperimentTemplateSpecFaultValueResult']):
+        """
+        :param _builtins.bool auth_enabled: Whether authentication is enabled
+        :param _builtins.str identity: Fault template identity
+        :param _builtins.str infra_id: Infrastructure identifier for this fault
+        :param _builtins.bool is_enterprise: Whether this is an enterprise fault
+        :param _builtins.str name: Fault name
+        :param _builtins.str revision: Fault template revision
+        :param Sequence['GetExperimentTemplateSpecFaultValueArgs'] values: Variable values for the fault
+        """
+        pulumi.set(__self__, "auth_enabled", auth_enabled)
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "infra_id", infra_id)
+        pulumi.set(__self__, "is_enterprise", is_enterprise)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "revision", revision)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="authEnabled")
+    def auth_enabled(self) -> _builtins.bool:
+        """
+        Whether authentication is enabled
+        """
+        return pulumi.get(self, "auth_enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> _builtins.str:
+        """
+        Fault template identity
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter(name="infraId")
+    def infra_id(self) -> _builtins.str:
+        """
+        Infrastructure identifier for this fault
+        """
+        return pulumi.get(self, "infra_id")
+
+    @_builtins.property
+    @pulumi.getter(name="isEnterprise")
+    def is_enterprise(self) -> _builtins.bool:
+        """
+        Whether this is an enterprise fault
+        """
+        return pulumi.get(self, "is_enterprise")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Fault name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> _builtins.str:
+        """
+        Fault template revision
+        """
+        return pulumi.get(self, "revision")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence['outputs.GetExperimentTemplateSpecFaultValueResult']:
+        """
+        Variable values for the fault
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecFaultValueResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Variable name
+        :param _builtins.str value: Variable value
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Variable name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Variable value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecProbeResult(dict):
+    def __init__(__self__, *,
+                 conditions: Sequence['outputs.GetExperimentTemplateSpecProbeConditionResult'],
+                 duration: _builtins.str,
+                 enable_data_collection: _builtins.bool,
+                 identity: _builtins.str,
+                 infra_id: _builtins.str,
+                 is_enterprise: _builtins.bool,
+                 name: _builtins.str,
+                 revision: _builtins.int,
+                 values: Sequence['outputs.GetExperimentTemplateSpecProbeValueResult'],
+                 weightage: _builtins.int):
+        """
+        :param Sequence['GetExperimentTemplateSpecProbeConditionArgs'] conditions: Probe execution conditions
+        :param _builtins.str duration: Probe duration
+        :param _builtins.bool enable_data_collection: Whether to enable data collection
+        :param _builtins.str identity: Probe template identity
+        :param _builtins.str infra_id: Infrastructure identifier for this probe
+        :param _builtins.bool is_enterprise: Whether this is an enterprise probe
+        :param _builtins.str name: Probe name
+        :param _builtins.int revision: Probe template revision
+        :param Sequence['GetExperimentTemplateSpecProbeValueArgs'] values: Variable values for the probe
+        :param _builtins.int weightage: Probe weightage for resilience score calculation
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "enable_data_collection", enable_data_collection)
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "infra_id", infra_id)
+        pulumi.set(__self__, "is_enterprise", is_enterprise)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "revision", revision)
+        pulumi.set(__self__, "values", values)
+        pulumi.set(__self__, "weightage", weightage)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GetExperimentTemplateSpecProbeConditionResult']:
+        """
+        Probe execution conditions
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> _builtins.str:
+        """
+        Probe duration
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="enableDataCollection")
+    def enable_data_collection(self) -> _builtins.bool:
+        """
+        Whether to enable data collection
+        """
+        return pulumi.get(self, "enable_data_collection")
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> _builtins.str:
+        """
+        Probe template identity
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter(name="infraId")
+    def infra_id(self) -> _builtins.str:
+        """
+        Infrastructure identifier for this probe
+        """
+        return pulumi.get(self, "infra_id")
+
+    @_builtins.property
+    @pulumi.getter(name="isEnterprise")
+    def is_enterprise(self) -> _builtins.bool:
+        """
+        Whether this is an enterprise probe
+        """
+        return pulumi.get(self, "is_enterprise")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Probe name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> _builtins.int:
+        """
+        Probe template revision
+        """
+        return pulumi.get(self, "revision")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence['outputs.GetExperimentTemplateSpecProbeValueResult']:
+        """
+        Variable values for the probe
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter
+    def weightage(self) -> _builtins.int:
+        """
+        Probe weightage for resilience score calculation
+        """
+        return pulumi.get(self, "weightage")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecProbeConditionResult(dict):
+    def __init__(__self__, *,
+                 execute_upon: _builtins.str):
+        """
+        :param _builtins.str execute_upon: When to execute the probe
+        """
+        pulumi.set(__self__, "execute_upon", execute_upon)
+
+    @_builtins.property
+    @pulumi.getter(name="executeUpon")
+    def execute_upon(self) -> _builtins.str:
+        """
+        When to execute the probe
+        """
+        return pulumi.get(self, "execute_upon")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecProbeValueResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Variable name
+        :param _builtins.str value: Variable value
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Variable name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Variable value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecStatusCheckTimeoutResult(dict):
+    def __init__(__self__, *,
+                 delay: _builtins.int,
+                 timeout: _builtins.int):
+        """
+        :param _builtins.int delay: Delay before status check (in seconds)
+        :param _builtins.int timeout: Timeout for status check (in seconds)
+        """
+        pulumi.set(__self__, "delay", delay)
+        pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> _builtins.int:
+        """
+        Delay before status check (in seconds)
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        """
+        Timeout for status check (in seconds)
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecVertexResult(dict):
+    def __init__(__self__, *,
+                 ends: Sequence['outputs.GetExperimentTemplateSpecVertexEndResult'],
+                 name: _builtins.str,
+                 starts: Sequence['outputs.GetExperimentTemplateSpecVertexStartResult']):
+        """
+        :param Sequence['GetExperimentTemplateSpecVertexEndArgs'] ends: End configuration for the vertex
+        :param _builtins.str name: Vertex name
+        :param Sequence['GetExperimentTemplateSpecVertexStartArgs'] starts: Start configuration for the vertex
+        """
+        pulumi.set(__self__, "ends", ends)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "starts", starts)
+
+    @_builtins.property
+    @pulumi.getter
+    def ends(self) -> Sequence['outputs.GetExperimentTemplateSpecVertexEndResult']:
+        """
+        End configuration for the vertex
+        """
+        return pulumi.get(self, "ends")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Vertex name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def starts(self) -> Sequence['outputs.GetExperimentTemplateSpecVertexStartResult']:
+        """
+        Start configuration for the vertex
+        """
+        return pulumi.get(self, "starts")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecVertexEndResult(dict):
+    def __init__(__self__, *,
+                 actions: Sequence['outputs.GetExperimentTemplateSpecVertexEndActionResult'],
+                 faults: Sequence['outputs.GetExperimentTemplateSpecVertexEndFaultResult'],
+                 probes: Sequence['outputs.GetExperimentTemplateSpecVertexEndProbeResult']):
+        """
+        :param Sequence['GetExperimentTemplateSpecVertexEndActionArgs'] actions: Actions to execute at end
+        :param Sequence['GetExperimentTemplateSpecVertexEndFaultArgs'] faults: Faults to execute at end
+        :param Sequence['GetExperimentTemplateSpecVertexEndProbeArgs'] probes: Probes to execute at end
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "faults", faults)
+        pulumi.set(__self__, "probes", probes)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Sequence['outputs.GetExperimentTemplateSpecVertexEndActionResult']:
+        """
+        Actions to execute at end
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter
+    def faults(self) -> Sequence['outputs.GetExperimentTemplateSpecVertexEndFaultResult']:
+        """
+        Faults to execute at end
+        """
+        return pulumi.get(self, "faults")
+
+    @_builtins.property
+    @pulumi.getter
+    def probes(self) -> Sequence['outputs.GetExperimentTemplateSpecVertexEndProbeResult']:
+        """
+        Probes to execute at end
+        """
+        return pulumi.get(self, "probes")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecVertexEndActionResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Action name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Action name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecVertexEndFaultResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Fault name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Fault name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecVertexEndProbeResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Probe name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Probe name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecVertexStartResult(dict):
+    def __init__(__self__, *,
+                 actions: Sequence['outputs.GetExperimentTemplateSpecVertexStartActionResult'],
+                 faults: Sequence['outputs.GetExperimentTemplateSpecVertexStartFaultResult'],
+                 probes: Sequence['outputs.GetExperimentTemplateSpecVertexStartProbeResult']):
+        """
+        :param Sequence['GetExperimentTemplateSpecVertexStartActionArgs'] actions: Actions to execute at start
+        :param Sequence['GetExperimentTemplateSpecVertexStartFaultArgs'] faults: Faults to execute at start
+        :param Sequence['GetExperimentTemplateSpecVertexStartProbeArgs'] probes: Probes to execute at start
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "faults", faults)
+        pulumi.set(__self__, "probes", probes)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Sequence['outputs.GetExperimentTemplateSpecVertexStartActionResult']:
+        """
+        Actions to execute at start
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter
+    def faults(self) -> Sequence['outputs.GetExperimentTemplateSpecVertexStartFaultResult']:
+        """
+        Faults to execute at start
+        """
+        return pulumi.get(self, "faults")
+
+    @_builtins.property
+    @pulumi.getter
+    def probes(self) -> Sequence['outputs.GetExperimentTemplateSpecVertexStartProbeResult']:
+        """
+        Probes to execute at start
+        """
+        return pulumi.get(self, "probes")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecVertexStartActionResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Action name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Action name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecVertexStartFaultResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Fault name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Fault name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecVertexStartProbeResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Probe name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Probe name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetFaultTemplateVariableResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 name: _builtins.str,
+                 required: _builtins.bool,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str description: Variable description
+        :param _builtins.str name: Variable name
+        :param _builtins.bool required: Whether the variable is required
+        :param _builtins.str type: Variable type
+        :param _builtins.str value: Variable value
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "required", required)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Variable description
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Variable name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> _builtins.bool:
+        """
+        Whether the variable is required
+        """
+        return pulumi.get(self, "required")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Variable type
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Variable value
+        """
         return pulumi.get(self, "value")
 
 
@@ -2018,6 +9403,327 @@ class GetInfrastructureV2VolumeMountResult(dict):
         Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
         """
         return pulumi.get(self, "sub_path_expr")
+
+
+@pulumi.output_type
+class GetProbeTemplateCmdProbeResult(dict):
+    def __init__(__self__, *,
+                 command: _builtins.str,
+                 comparators: Sequence['outputs.GetProbeTemplateCmdProbeComparatorResult'],
+                 envs: Sequence['outputs.GetProbeTemplateCmdProbeEnvResult'],
+                 source: _builtins.str):
+        """
+        :param Sequence['GetProbeTemplateCmdProbeComparatorArgs'] comparators: Comparator configuration.
+        :param Sequence['GetProbeTemplateCmdProbeEnvArgs'] envs: Environment variables.
+        """
+        pulumi.set(__self__, "command", command)
+        pulumi.set(__self__, "comparators", comparators)
+        pulumi.set(__self__, "envs", envs)
+        pulumi.set(__self__, "source", source)
+
+    @_builtins.property
+    @pulumi.getter
+    def command(self) -> _builtins.str:
+        return pulumi.get(self, "command")
+
+    @_builtins.property
+    @pulumi.getter
+    def comparators(self) -> Sequence['outputs.GetProbeTemplateCmdProbeComparatorResult']:
+        """
+        Comparator configuration.
+        """
+        return pulumi.get(self, "comparators")
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> Sequence['outputs.GetProbeTemplateCmdProbeEnvResult']:
+        """
+        Environment variables.
+        """
+        return pulumi.get(self, "envs")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> _builtins.str:
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class GetProbeTemplateCmdProbeComparatorResult(dict):
+    def __init__(__self__, *,
+                 criteria: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        pulumi.set(__self__, "criteria", criteria)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def criteria(self) -> _builtins.str:
+        return pulumi.get(self, "criteria")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetProbeTemplateCmdProbeEnvResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetProbeTemplateHttpProbeResult(dict):
+    def __init__(__self__, *,
+                 methods: Sequence['outputs.GetProbeTemplateHttpProbeMethodResult'],
+                 url: _builtins.str):
+        """
+        :param Sequence['GetProbeTemplateHttpProbeMethodArgs'] methods: HTTP method configuration with GET or POST.
+        """
+        pulumi.set(__self__, "methods", methods)
+        pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def methods(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodResult']:
+        """
+        HTTP method configuration with GET or POST.
+        """
+        return pulumi.get(self, "methods")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> _builtins.str:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetProbeTemplateHttpProbeMethodResult(dict):
+    def __init__(__self__, *,
+                 gets: Sequence['outputs.GetProbeTemplateHttpProbeMethodGetResult'],
+                 posts: Sequence['outputs.GetProbeTemplateHttpProbeMethodPostResult']):
+        """
+        :param Sequence['GetProbeTemplateHttpProbeMethodGetArgs'] gets: GET method configuration.
+        :param Sequence['GetProbeTemplateHttpProbeMethodPostArgs'] posts: POST method configuration.
+        """
+        pulumi.set(__self__, "gets", gets)
+        pulumi.set(__self__, "posts", posts)
+
+    @_builtins.property
+    @pulumi.getter
+    def gets(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodGetResult']:
+        """
+        GET method configuration.
+        """
+        return pulumi.get(self, "gets")
+
+    @_builtins.property
+    @pulumi.getter
+    def posts(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodPostResult']:
+        """
+        POST method configuration.
+        """
+        return pulumi.get(self, "posts")
+
+
+@pulumi.output_type
+class GetProbeTemplateHttpProbeMethodGetResult(dict):
+    def __init__(__self__, *,
+                 criteria: _builtins.str,
+                 response_body: _builtins.str,
+                 response_code: _builtins.str):
+        pulumi.set(__self__, "criteria", criteria)
+        pulumi.set(__self__, "response_body", response_body)
+        pulumi.set(__self__, "response_code", response_code)
+
+    @_builtins.property
+    @pulumi.getter
+    def criteria(self) -> _builtins.str:
+        return pulumi.get(self, "criteria")
+
+    @_builtins.property
+    @pulumi.getter(name="responseBody")
+    def response_body(self) -> _builtins.str:
+        return pulumi.get(self, "response_body")
+
+    @_builtins.property
+    @pulumi.getter(name="responseCode")
+    def response_code(self) -> _builtins.str:
+        return pulumi.get(self, "response_code")
+
+
+@pulumi.output_type
+class GetProbeTemplateHttpProbeMethodPostResult(dict):
+    def __init__(__self__, *,
+                 body: _builtins.str,
+                 body_path: _builtins.str,
+                 content_type: _builtins.str,
+                 criteria: _builtins.str,
+                 response_body: _builtins.str,
+                 response_code: _builtins.str):
+        pulumi.set(__self__, "body", body)
+        pulumi.set(__self__, "body_path", body_path)
+        pulumi.set(__self__, "content_type", content_type)
+        pulumi.set(__self__, "criteria", criteria)
+        pulumi.set(__self__, "response_body", response_body)
+        pulumi.set(__self__, "response_code", response_code)
+
+    @_builtins.property
+    @pulumi.getter
+    def body(self) -> _builtins.str:
+        return pulumi.get(self, "body")
+
+    @_builtins.property
+    @pulumi.getter(name="bodyPath")
+    def body_path(self) -> _builtins.str:
+        return pulumi.get(self, "body_path")
+
+    @_builtins.property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> _builtins.str:
+        return pulumi.get(self, "content_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def criteria(self) -> _builtins.str:
+        return pulumi.get(self, "criteria")
+
+    @_builtins.property
+    @pulumi.getter(name="responseBody")
+    def response_body(self) -> _builtins.str:
+        return pulumi.get(self, "response_body")
+
+    @_builtins.property
+    @pulumi.getter(name="responseCode")
+    def response_code(self) -> _builtins.str:
+        return pulumi.get(self, "response_code")
+
+
+@pulumi.output_type
+class GetProbeTemplateK8sProbeResult(dict):
+    def __init__(__self__, *,
+                 field_selector: _builtins.str,
+                 label_selector: _builtins.str,
+                 namespace: _builtins.str,
+                 operation: _builtins.str,
+                 resource: _builtins.str,
+                 version: _builtins.str):
+        pulumi.set(__self__, "field_selector", field_selector)
+        pulumi.set(__self__, "label_selector", label_selector)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "operation", operation)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldSelector")
+    def field_selector(self) -> _builtins.str:
+        return pulumi.get(self, "field_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="labelSelector")
+    def label_selector(self) -> _builtins.str:
+        return pulumi.get(self, "label_selector")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> _builtins.str:
+        return pulumi.get(self, "operation")
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> _builtins.str:
+        return pulumi.get(self, "resource")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetProbeTemplateRunPropertyResult(dict):
+    def __init__(__self__, *,
+                 interval: _builtins.str,
+                 stop_on_failure: _builtins.bool,
+                 timeout: _builtins.str):
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "stop_on_failure", stop_on_failure)
+        pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> _builtins.str:
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter(name="stopOnFailure")
+    def stop_on_failure(self) -> _builtins.bool:
+        return pulumi.get(self, "stop_on_failure")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.str:
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class GetProbeTemplateVariableResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 required: _builtins.bool,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "required", required)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> _builtins.bool:
+        return pulumi.get(self, "required")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

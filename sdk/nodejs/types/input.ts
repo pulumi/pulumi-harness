@@ -2131,6 +2131,1724 @@ export namespace autostopping {
 }
 
 export namespace chaos {
+    export interface ActionTemplateContainerAction {
+        /**
+         * Annotations to apply to the container pod.
+         */
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Arguments to pass to the container command.
+         */
+        args?: pulumi.Input<string>;
+        /**
+         * Command to run in the container.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Environment variables for the container.
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.chaos.ActionTemplateContainerActionEnv>[]>;
+        /**
+         * Use host IPC namespace.
+         */
+        hostIpc?: pulumi.Input<boolean>;
+        /**
+         * Use host network namespace.
+         */
+        hostNetwork?: pulumi.Input<boolean>;
+        /**
+         * Use host PID namespace.
+         */
+        hostPid?: pulumi.Input<boolean>;
+        /**
+         * Container image to use (e.g., 'busybox:latest').
+         */
+        image: pulumi.Input<string>;
+        /**
+         * Image pull policy (Always, IfNotPresent, Never). Supports runtime inputs like <+input>.allowedValues(...).
+         */
+        imagePullPolicy?: pulumi.Input<string>;
+        /**
+         * List of image pull secrets for private registries.
+         */
+        imagePullSecrets?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Labels to apply to the container pod.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Kubernetes namespace for the container.
+         */
+        namespace?: pulumi.Input<string>;
+        /**
+         * Node selector for pod scheduling.
+         */
+        nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Resource requirements for the container.
+         */
+        resources?: pulumi.Input<inputs.chaos.ActionTemplateContainerActionResources>;
+        /**
+         * Kubernetes service account name.
+         */
+        serviceAccountName?: pulumi.Input<string>;
+        /**
+         * Tolerations for pod scheduling on tainted nodes.
+         */
+        tolerations?: pulumi.Input<pulumi.Input<inputs.chaos.ActionTemplateContainerActionToleration>[]>;
+        /**
+         * Volume mounts for the container.
+         */
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.chaos.ActionTemplateContainerActionVolumeMount>[]>;
+        /**
+         * Volumes to attach to the pod.
+         */
+        volumes?: pulumi.Input<pulumi.Input<inputs.chaos.ActionTemplateContainerActionVolume>[]>;
+    }
+
+    export interface ActionTemplateContainerActionEnv {
+        /**
+         * Environment variable name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Environment variable value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ActionTemplateContainerActionResources {
+        /**
+         * Resource limits.
+         */
+        limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Resource requests.
+         */
+        requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface ActionTemplateContainerActionToleration {
+        /**
+         * Taint effect (NoSchedule, PreferNoSchedule, NoExecute).
+         */
+        effect?: pulumi.Input<string>;
+        /**
+         * Taint key to tolerate.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Operator (Exists, Equal).
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * Toleration seconds for NoExecute effect.
+         */
+        tolerationSeconds?: pulumi.Input<number>;
+        /**
+         * Taint value to tolerate.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ActionTemplateContainerActionVolume {
+        /**
+         * ConfigMap volume configuration.
+         */
+        configMap?: pulumi.Input<inputs.chaos.ActionTemplateContainerActionVolumeConfigMap>;
+        /**
+         * EmptyDir volume configuration.
+         */
+        emptyDir?: pulumi.Input<inputs.chaos.ActionTemplateContainerActionVolumeEmptyDir>;
+        /**
+         * HostPath volume configuration.
+         */
+        hostPath?: pulumi.Input<inputs.chaos.ActionTemplateContainerActionVolumeHostPath>;
+        /**
+         * Volume name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * PersistentVolumeClaim configuration.
+         */
+        persistentVolumeClaim?: pulumi.Input<inputs.chaos.ActionTemplateContainerActionVolumePersistentVolumeClaim>;
+        /**
+         * Secret volume configuration.
+         */
+        secret?: pulumi.Input<inputs.chaos.ActionTemplateContainerActionVolumeSecret>;
+    }
+
+    export interface ActionTemplateContainerActionVolumeConfigMap {
+        /**
+         * ConfigMap name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Whether the ConfigMap is optional.
+         */
+        optional?: pulumi.Input<boolean>;
+    }
+
+    export interface ActionTemplateContainerActionVolumeEmptyDir {
+        /**
+         * Storage medium (empty string for default, Memory for tmpfs).
+         */
+        medium?: pulumi.Input<string>;
+        /**
+         * Size limit (e.g., '1Gi').
+         */
+        sizeLimit?: pulumi.Input<string>;
+    }
+
+    export interface ActionTemplateContainerActionVolumeHostPath {
+        /**
+         * Host path.
+         */
+        path: pulumi.Input<string>;
+        /**
+         * Host path type (Directory, File, etc.).
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface ActionTemplateContainerActionVolumeMount {
+        /**
+         * Path to mount the volume in the container.
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * Volume name to mount.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Mount as read-only.
+         */
+        readOnly?: pulumi.Input<boolean>;
+        /**
+         * Sub-path within the volume.
+         */
+        subPath?: pulumi.Input<string>;
+    }
+
+    export interface ActionTemplateContainerActionVolumePersistentVolumeClaim {
+        /**
+         * PVC name.
+         */
+        claimName: pulumi.Input<string>;
+        /**
+         * Mount as read-only.
+         */
+        readOnly?: pulumi.Input<boolean>;
+    }
+
+    export interface ActionTemplateContainerActionVolumeSecret {
+        /**
+         * Whether the Secret is optional.
+         */
+        optional?: pulumi.Input<boolean>;
+        /**
+         * Secret name.
+         */
+        secretName: pulumi.Input<string>;
+    }
+
+    export interface ActionTemplateCustomScriptAction {
+        /**
+         * Arguments to pass to the command.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Command to execute (e.g., 'bash', 'python', 'sh').
+         */
+        command: pulumi.Input<string>;
+        /**
+         * Environment variables for the script.
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.chaos.ActionTemplateCustomScriptActionEnv>[]>;
+    }
+
+    export interface ActionTemplateCustomScriptActionEnv {
+        /**
+         * Environment variable name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Environment variable value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ActionTemplateDelayAction {
+        /**
+         * Duration of the delay (e.g., '30s', '5m', '1h').
+         */
+        duration: pulumi.Input<string>;
+    }
+
+    export interface ActionTemplateRunProperties {
+        /**
+         * Initial delay before action execution (e.g., '5s', '1m').
+         */
+        initialDelay?: pulumi.Input<string>;
+        /**
+         * Interval between retries (e.g., '10s', '30s').
+         */
+        interval?: pulumi.Input<string>;
+        /**
+         * Maximum number of retries.
+         */
+        maxRetries?: pulumi.Input<number>;
+        /**
+         * Whether to stop on failure.
+         */
+        stopOnFailure?: pulumi.Input<boolean>;
+        /**
+         * Timeout for action execution (e.g., '5m', '10m').
+         */
+        timeout?: pulumi.Input<string>;
+        /**
+         * Verbosity level for logging.
+         */
+        verbosity?: pulumi.Input<string>;
+    }
+
+    export interface ActionTemplateVariable {
+        /**
+         * Variable description.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Variable name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Whether the variable is required.
+         */
+        required?: pulumi.Input<boolean>;
+        /**
+         * Variable type (e.g., 'string', 'number', 'boolean').
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Variable value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ExperimentTemplateDetail {
+        /**
+         * Hub reference where template resides
+         */
+        hubReference?: pulumi.Input<string>;
+        /**
+         * Template identity
+         */
+        identity?: pulumi.Input<string>;
+        /**
+         * Full template reference
+         */
+        reference?: pulumi.Input<string>;
+        /**
+         * Template revision used
+         */
+        revision?: pulumi.Input<string>;
+    }
+
+    export interface ExperimentTemplateSpec {
+        /**
+         * List of actions in the experiment
+         */
+        actions?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecAction>[]>;
+        /**
+         * Cleanup policy for experiment resources (retain, delete)
+         */
+        cleanupPolicy?: pulumi.Input<string>;
+        /**
+         * List of faults in the experiment
+         */
+        faults?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecFault>[]>;
+        /**
+         * Infrastructure identifier (supports runtime input: <+input>)
+         */
+        infraId?: pulumi.Input<string>;
+        /**
+         * Infrastructure type (Windows, Linux, CloudFoundry, Container, Kubernetes, KubernetesV2)
+         */
+        infraType: pulumi.Input<string>;
+        /**
+         * List of probes in the experiment
+         */
+        probes?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecProbe>[]>;
+        /**
+         * Status check timeout configuration
+         */
+        statusCheckTimeouts?: pulumi.Input<inputs.chaos.ExperimentTemplateSpecStatusCheckTimeouts>;
+        /**
+         * Workflow graph vertices defining execution order
+         */
+        vertices?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecVertex>[]>;
+    }
+
+    export interface ExperimentTemplateSpecAction {
+        /**
+         * Whether to continue on completion
+         */
+        continueOnCompletion?: pulumi.Input<boolean>;
+        /**
+         * Action template identity
+         */
+        identity: pulumi.Input<string>;
+        /**
+         * Infrastructure identifier for this action
+         */
+        infraId?: pulumi.Input<string>;
+        /**
+         * Whether this is an enterprise action
+         */
+        isEnterprise?: pulumi.Input<boolean>;
+        /**
+         * Action name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Action template revision
+         */
+        revision?: pulumi.Input<number>;
+        /**
+         * Variable values for the action
+         */
+        values?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecActionValue>[]>;
+    }
+
+    export interface ExperimentTemplateSpecActionValue {
+        /**
+         * Variable name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Variable value (supports runtime input: <+input>)
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ExperimentTemplateSpecFault {
+        /**
+         * Whether authentication is enabled
+         */
+        authEnabled?: pulumi.Input<boolean>;
+        /**
+         * Fault template identity
+         */
+        identity: pulumi.Input<string>;
+        /**
+         * Infrastructure identifier for this fault
+         */
+        infraId?: pulumi.Input<string>;
+        /**
+         * Whether this is an enterprise fault
+         */
+        isEnterprise?: pulumi.Input<boolean>;
+        /**
+         * Fault name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Fault template revision
+         */
+        revision?: pulumi.Input<string>;
+        /**
+         * Variable values for the fault
+         */
+        values?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecFaultValue>[]>;
+    }
+
+    export interface ExperimentTemplateSpecFaultValue {
+        /**
+         * Variable name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Variable value (supports runtime input: <+input>)
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ExperimentTemplateSpecProbe {
+        /**
+         * Probe execution conditions
+         */
+        conditions?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecProbeCondition>[]>;
+        /**
+         * Probe duration
+         */
+        duration?: pulumi.Input<string>;
+        /**
+         * Whether to enable data collection
+         */
+        enableDataCollection?: pulumi.Input<boolean>;
+        /**
+         * Probe template identity
+         */
+        identity: pulumi.Input<string>;
+        /**
+         * Infrastructure identifier for this probe
+         */
+        infraId?: pulumi.Input<string>;
+        /**
+         * Whether this is an enterprise probe
+         */
+        isEnterprise?: pulumi.Input<boolean>;
+        /**
+         * Probe name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Probe template revision
+         */
+        revision?: pulumi.Input<number>;
+        /**
+         * Variable values for the probe
+         */
+        values?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecProbeValue>[]>;
+        /**
+         * Probe weightage for resilience score calculation
+         */
+        weightage?: pulumi.Input<number>;
+    }
+
+    export interface ExperimentTemplateSpecProbeCondition {
+        /**
+         * When to execute the probe (onChaosStart, duringChaos, afterChaos)
+         */
+        executeUpon: pulumi.Input<string>;
+    }
+
+    export interface ExperimentTemplateSpecProbeValue {
+        /**
+         * Variable name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Variable value (supports runtime input: <+input>)
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ExperimentTemplateSpecStatusCheckTimeouts {
+        /**
+         * Delay before status check (in seconds)
+         */
+        delay?: pulumi.Input<number>;
+        /**
+         * Timeout for status check (in seconds)
+         */
+        timeout?: pulumi.Input<number>;
+    }
+
+    export interface ExperimentTemplateSpecVertex {
+        /**
+         * End configuration for the vertex
+         */
+        end?: pulumi.Input<inputs.chaos.ExperimentTemplateSpecVertexEnd>;
+        /**
+         * Vertex name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Start configuration for the vertex
+         */
+        start?: pulumi.Input<inputs.chaos.ExperimentTemplateSpecVertexStart>;
+    }
+
+    export interface ExperimentTemplateSpecVertexEnd {
+        /**
+         * Actions to execute at end
+         */
+        actions?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecVertexEndAction>[]>;
+        /**
+         * Faults to execute at end
+         */
+        faults?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecVertexEndFault>[]>;
+        /**
+         * Probes to execute at end
+         */
+        probes?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecVertexEndProbe>[]>;
+    }
+
+    export interface ExperimentTemplateSpecVertexEndAction {
+        /**
+         * Action name
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface ExperimentTemplateSpecVertexEndFault {
+        /**
+         * Fault name
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface ExperimentTemplateSpecVertexEndProbe {
+        /**
+         * Probe name
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface ExperimentTemplateSpecVertexStart {
+        /**
+         * Actions to execute at start
+         */
+        actions?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecVertexStartAction>[]>;
+        /**
+         * Faults to execute at start
+         */
+        faults?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecVertexStartFault>[]>;
+        /**
+         * Probes to execute at start
+         */
+        probes?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecVertexStartProbe>[]>;
+    }
+
+    export interface ExperimentTemplateSpecVertexStartAction {
+        /**
+         * Action name
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface ExperimentTemplateSpecVertexStartFault {
+        /**
+         * Fault name
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface ExperimentTemplateSpecVertexStartProbe {
+        /**
+         * Probe name
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateLink {
+        /**
+         * Link name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Link URL
+         */
+        url: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpec {
+        /**
+         * Chaos configuration
+         */
+        chaos?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaos>;
+        /**
+         * Target configuration
+         */
+        target?: pulumi.Input<inputs.chaos.FaultTemplateSpecTarget>;
+    }
+
+    export interface FaultTemplateSpecChaos {
+        /**
+         * Authentication configuration
+         */
+        auth?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosAuth>;
+        /**
+         * Name of the fault. Note: API may return a default value (e.g., 'byoc-injector') instead of the configured value due to API limitations.
+         */
+        faultName?: pulumi.Input<string>;
+        /**
+         * Kubernetes-specific chaos configuration
+         */
+        kubernetes?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosKubernetes>;
+        /**
+         * Fault parameters
+         */
+        params?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateSpecChaosParam>[]>;
+        /**
+         * Status check timeout configuration
+         */
+        statusCheckTimeouts?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosStatusCheckTimeouts>;
+        /**
+         * TLS configuration
+         */
+        tls?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosTls>;
+    }
+
+    export interface FaultTemplateSpecChaosAuth {
+        /**
+         * AWS authentication
+         */
+        aws?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosAuthAws>;
+        /**
+         * Azure authentication
+         */
+        azure?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosAuthAzure>;
+        /**
+         * GCP authentication
+         */
+        gcp?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosAuthGcp>;
+        /**
+         * Redis authentication
+         */
+        redis?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosAuthRedis>;
+        /**
+         * SSH authentication
+         */
+        ssh?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosAuthSsh>;
+        /**
+         * VMware authentication
+         */
+        vmware?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosAuthVmware>;
+    }
+
+    export interface FaultTemplateSpecChaosAuthAws {
+        /**
+         * AWS access key ID
+         */
+        accessKeyId: pulumi.Input<string>;
+        /**
+         * AWS region
+         */
+        region: pulumi.Input<string>;
+        /**
+         * AWS secret access key
+         */
+        secretAccessKey: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecChaosAuthAzure {
+        /**
+         * Azure client ID
+         */
+        clientId: pulumi.Input<string>;
+        /**
+         * Azure client secret
+         */
+        clientSecret: pulumi.Input<string>;
+        /**
+         * Azure subscription ID
+         */
+        subscriptionId: pulumi.Input<string>;
+        /**
+         * Azure tenant ID
+         */
+        tenantId: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecChaosAuthGcp {
+        /**
+         * GCP project ID
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * GCP service account key (JSON)
+         */
+        serviceAccountKey: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecChaosAuthRedis {
+        /**
+         * Redis password
+         */
+        password: pulumi.Input<string>;
+        /**
+         * Redis username
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecChaosAuthSsh {
+        /**
+         * SSH password
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * SSH private key
+         */
+        privateKey?: pulumi.Input<string>;
+        /**
+         * SSH username
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecChaosAuthVmware {
+        /**
+         * VMware password
+         */
+        password: pulumi.Input<string>;
+        /**
+         * VMware username
+         */
+        username: pulumi.Input<string>;
+        /**
+         * vCenter server address
+         */
+        vcenterServer: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetes {
+        /**
+         * Pod annotations
+         */
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Container arguments
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Container command
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * ConfigMap volumes
+         */
+        configMaps?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateSpecChaosKubernetesConfigMap>[]>;
+        /**
+         * Container security context
+         */
+        containerSecurityContext?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosKubernetesContainerSecurityContext>;
+        /**
+         * Environment variables
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateSpecChaosKubernetesEnv>[]>;
+        /**
+         * Host path volumes
+         */
+        hostFileVolumes?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateSpecChaosKubernetesHostFileVolume>[]>;
+        /**
+         * Use host IPC namespace
+         */
+        hostIpc?: pulumi.Input<boolean>;
+        /**
+         * Use host network namespace
+         */
+        hostNetwork?: pulumi.Input<boolean>;
+        /**
+         * Use host PID namespace
+         */
+        hostPid?: pulumi.Input<boolean>;
+        /**
+         * Container image for chaos experiment
+         */
+        image?: pulumi.Input<string>;
+        /**
+         * Image pull policy
+         */
+        imagePullPolicy?: pulumi.Input<string>;
+        /**
+         * Image pull secrets
+         */
+        imagePullSecrets?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Pod labels
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Node selector for pod scheduling
+         */
+        nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Pod security context
+         */
+        podSecurityContext?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosKubernetesPodSecurityContext>;
+        /**
+         * Resource requirements
+         */
+        resources?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosKubernetesResources>;
+        /**
+         * Secret volumes
+         */
+        secrets?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateSpecChaosKubernetesSecret>[]>;
+        /**
+         * Pod tolerations
+         */
+        tolerations?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateSpecChaosKubernetesToleration>[]>;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesConfigMap {
+        /**
+         * Mount mode (0-3)
+         */
+        mountMode?: pulumi.Input<number>;
+        /**
+         * Mount path
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * ConfigMap name
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesContainerSecurityContext {
+        /**
+         * Allow privilege escalation
+         */
+        allowPrivilegeEscalation?: pulumi.Input<boolean>;
+        /**
+         * Linux capabilities
+         */
+        capabilities?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilities>;
+        /**
+         * Run container in privileged mode
+         */
+        privileged?: pulumi.Input<boolean>;
+        /**
+         * Mount root filesystem as read-only
+         */
+        readOnlyRootFilesystem?: pulumi.Input<boolean>;
+        /**
+         * Group ID to run as
+         */
+        runAsGroup?: pulumi.Input<number>;
+        /**
+         * Run as non-root user
+         */
+        runAsNonRoot?: pulumi.Input<boolean>;
+        /**
+         * User ID to run as
+         */
+        runAsUser?: pulumi.Input<number>;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilities {
+        /**
+         * Capabilities to add
+         */
+        adds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Capabilities to drop
+         */
+        drops?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesEnv {
+        /**
+         * Environment variable name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Environment variable value
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesHostFileVolume {
+        /**
+         * Host path on the node
+         */
+        hostPath?: pulumi.Input<string>;
+        /**
+         * Mount path
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * Volume name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Host path type (e.g., Directory, File, BlockDevice, CharDevice)
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesPodSecurityContext {
+        /**
+         * Filesystem group ID
+         */
+        fsGroup?: pulumi.Input<number>;
+        /**
+         * Group ID to run as
+         */
+        runAsGroup?: pulumi.Input<number>;
+        /**
+         * Run as non-root user
+         */
+        runAsNonRoot?: pulumi.Input<boolean>;
+        /**
+         * User ID to run as
+         */
+        runAsUser?: pulumi.Input<number>;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesResources {
+        /**
+         * Resource limits
+         */
+        limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Resource requests
+         */
+        requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesSecret {
+        /**
+         * Mount mode (0-3)
+         */
+        mountMode?: pulumi.Input<number>;
+        /**
+         * Mount path
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * Secret name
+         */
+        secretName: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesToleration {
+        /**
+         * Toleration effect (NoSchedule, PreferNoSchedule, NoExecute)
+         */
+        effect?: pulumi.Input<string>;
+        /**
+         * Toleration key
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Toleration operator (Equal, Exists)
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * Toleration seconds
+         */
+        tolerationSeconds?: pulumi.Input<number>;
+        /**
+         * Toleration value
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecChaosParam {
+        /**
+         * Parameter name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Parameter value
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecChaosStatusCheckTimeouts {
+        /**
+         * Delay before status check (seconds)
+         */
+        delay?: pulumi.Input<number>;
+        /**
+         * Timeout for status check (seconds)
+         */
+        timeout?: pulumi.Input<number>;
+    }
+
+    export interface FaultTemplateSpecChaosTls {
+        /**
+         * CA certificate
+         */
+        caCertificate?: pulumi.Input<string>;
+        /**
+         * Client certificate
+         */
+        clientCertificate?: pulumi.Input<string>;
+        /**
+         * Client key
+         */
+        clientKey?: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecTarget {
+        /**
+         * Application target configuration
+         */
+        application?: pulumi.Input<inputs.chaos.FaultTemplateSpecTargetApplication>;
+        /**
+         * Kubernetes target configuration
+         */
+        kubernetes?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateSpecTargetKubernete>[]>;
+    }
+
+    export interface FaultTemplateSpecTargetApplication {
+        /**
+         * Application kind
+         */
+        appKind?: pulumi.Input<string>;
+        /**
+         * Application label
+         */
+        appLabel?: pulumi.Input<string>;
+        /**
+         * Application namespace
+         */
+        appNs?: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateSpecTargetKubernete {
+        /**
+         * Annotation check expression
+         */
+        annotationCheck?: pulumi.Input<string>;
+        /**
+         * Annotation selectors
+         */
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Resource kind (e.g., deployment, pod)
+         */
+        kind?: pulumi.Input<string>;
+        /**
+         * Label selectors
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Specific resource names
+         */
+        names?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Target namespace
+         */
+        namespace?: pulumi.Input<string>;
+    }
+
+    export interface FaultTemplateVariable {
+        /**
+         * Variable description
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Variable name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Whether the variable is required
+         */
+        required?: pulumi.Input<boolean>;
+        /**
+         * Variable type
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Variable value
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GetActionTemplateContainerAction {
+        /**
+         * Annotations to apply to the container pod.
+         */
+        annotations?: {[key: string]: string};
+        /**
+         * Arguments to pass to the container command.
+         */
+        args?: string;
+        /**
+         * Command to run in the container.
+         */
+        commands?: string[];
+        /**
+         * Environment variables for the container.
+         */
+        envs?: inputs.chaos.GetActionTemplateContainerActionEnv[];
+        /**
+         * Use host IPC namespace.
+         */
+        hostIpc?: boolean;
+        /**
+         * Use host network namespace.
+         */
+        hostNetwork?: boolean;
+        /**
+         * Use host PID namespace.
+         */
+        hostPid?: boolean;
+        /**
+         * Container image to use (e.g., 'busybox:latest').
+         */
+        image: string;
+        /**
+         * Image pull policy (Always, IfNotPresent, Never). Supports runtime inputs like <+input>.allowedValues(...).
+         */
+        imagePullPolicy?: string;
+        /**
+         * List of image pull secrets for private registries.
+         */
+        imagePullSecrets?: string[];
+        /**
+         * Labels to apply to the container pod.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * Kubernetes namespace for the container.
+         */
+        namespace?: string;
+        /**
+         * Node selector for pod scheduling.
+         */
+        nodeSelector?: {[key: string]: string};
+        /**
+         * Resource requirements for the container.
+         */
+        resources?: inputs.chaos.GetActionTemplateContainerActionResources;
+        /**
+         * Kubernetes service account name.
+         */
+        serviceAccountName?: string;
+        /**
+         * Tolerations for pod scheduling on tainted nodes.
+         */
+        tolerations?: inputs.chaos.GetActionTemplateContainerActionToleration[];
+        /**
+         * Volume mounts for the container.
+         */
+        volumeMounts?: inputs.chaos.GetActionTemplateContainerActionVolumeMount[];
+        /**
+         * Volumes to attach to the pod.
+         */
+        volumes?: inputs.chaos.GetActionTemplateContainerActionVolume[];
+    }
+
+    export interface GetActionTemplateContainerActionArgs {
+        /**
+         * Annotations to apply to the container pod.
+         */
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Arguments to pass to the container command.
+         */
+        args?: pulumi.Input<string>;
+        /**
+         * Command to run in the container.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Environment variables for the container.
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.chaos.GetActionTemplateContainerActionEnvArgs>[]>;
+        /**
+         * Use host IPC namespace.
+         */
+        hostIpc?: pulumi.Input<boolean>;
+        /**
+         * Use host network namespace.
+         */
+        hostNetwork?: pulumi.Input<boolean>;
+        /**
+         * Use host PID namespace.
+         */
+        hostPid?: pulumi.Input<boolean>;
+        /**
+         * Container image to use (e.g., 'busybox:latest').
+         */
+        image: pulumi.Input<string>;
+        /**
+         * Image pull policy (Always, IfNotPresent, Never). Supports runtime inputs like <+input>.allowedValues(...).
+         */
+        imagePullPolicy?: pulumi.Input<string>;
+        /**
+         * List of image pull secrets for private registries.
+         */
+        imagePullSecrets?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Labels to apply to the container pod.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Kubernetes namespace for the container.
+         */
+        namespace?: pulumi.Input<string>;
+        /**
+         * Node selector for pod scheduling.
+         */
+        nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Resource requirements for the container.
+         */
+        resources?: pulumi.Input<inputs.chaos.GetActionTemplateContainerActionResourcesArgs>;
+        /**
+         * Kubernetes service account name.
+         */
+        serviceAccountName?: pulumi.Input<string>;
+        /**
+         * Tolerations for pod scheduling on tainted nodes.
+         */
+        tolerations?: pulumi.Input<pulumi.Input<inputs.chaos.GetActionTemplateContainerActionTolerationArgs>[]>;
+        /**
+         * Volume mounts for the container.
+         */
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.chaos.GetActionTemplateContainerActionVolumeMountArgs>[]>;
+        /**
+         * Volumes to attach to the pod.
+         */
+        volumes?: pulumi.Input<pulumi.Input<inputs.chaos.GetActionTemplateContainerActionVolumeArgs>[]>;
+    }
+
+    export interface GetActionTemplateContainerActionEnv {
+        /**
+         * Environment variable name.
+         */
+        name: string;
+        /**
+         * Environment variable value.
+         */
+        value?: string;
+    }
+
+    export interface GetActionTemplateContainerActionEnvArgs {
+        /**
+         * Environment variable name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Environment variable value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GetActionTemplateContainerActionResources {
+        /**
+         * Resource limits.
+         */
+        limits?: {[key: string]: string};
+        /**
+         * Resource requests.
+         */
+        requests?: {[key: string]: string};
+    }
+
+    export interface GetActionTemplateContainerActionResourcesArgs {
+        /**
+         * Resource limits.
+         */
+        limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Resource requests.
+         */
+        requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface GetActionTemplateContainerActionToleration {
+        /**
+         * Taint effect (NoSchedule, PreferNoSchedule, NoExecute).
+         */
+        effect?: string;
+        /**
+         * Taint key to tolerate.
+         */
+        key?: string;
+        /**
+         * Operator (Exists, Equal).
+         */
+        operator?: string;
+        /**
+         * Toleration seconds for NoExecute effect.
+         */
+        tolerationSeconds?: number;
+        /**
+         * Taint value to tolerate.
+         */
+        value?: string;
+    }
+
+    export interface GetActionTemplateContainerActionTolerationArgs {
+        /**
+         * Taint effect (NoSchedule, PreferNoSchedule, NoExecute).
+         */
+        effect?: pulumi.Input<string>;
+        /**
+         * Taint key to tolerate.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Operator (Exists, Equal).
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * Toleration seconds for NoExecute effect.
+         */
+        tolerationSeconds?: pulumi.Input<number>;
+        /**
+         * Taint value to tolerate.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GetActionTemplateContainerActionVolume {
+        /**
+         * ConfigMap volume configuration.
+         */
+        configMap?: inputs.chaos.GetActionTemplateContainerActionVolumeConfigMap;
+        /**
+         * EmptyDir volume configuration.
+         */
+        emptyDir?: inputs.chaos.GetActionTemplateContainerActionVolumeEmptyDir;
+        /**
+         * HostPath volume configuration.
+         */
+        hostPath?: inputs.chaos.GetActionTemplateContainerActionVolumeHostPath;
+        /**
+         * Volume name.
+         */
+        name: string;
+        /**
+         * PersistentVolumeClaim configuration.
+         */
+        persistentVolumeClaim?: inputs.chaos.GetActionTemplateContainerActionVolumePersistentVolumeClaim;
+        /**
+         * Secret volume configuration.
+         */
+        secret?: inputs.chaos.GetActionTemplateContainerActionVolumeSecret;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeArgs {
+        /**
+         * ConfigMap volume configuration.
+         */
+        configMap?: pulumi.Input<inputs.chaos.GetActionTemplateContainerActionVolumeConfigMapArgs>;
+        /**
+         * EmptyDir volume configuration.
+         */
+        emptyDir?: pulumi.Input<inputs.chaos.GetActionTemplateContainerActionVolumeEmptyDirArgs>;
+        /**
+         * HostPath volume configuration.
+         */
+        hostPath?: pulumi.Input<inputs.chaos.GetActionTemplateContainerActionVolumeHostPathArgs>;
+        /**
+         * Volume name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * PersistentVolumeClaim configuration.
+         */
+        persistentVolumeClaim?: pulumi.Input<inputs.chaos.GetActionTemplateContainerActionVolumePersistentVolumeClaimArgs>;
+        /**
+         * Secret volume configuration.
+         */
+        secret?: pulumi.Input<inputs.chaos.GetActionTemplateContainerActionVolumeSecretArgs>;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeConfigMap {
+        /**
+         * ConfigMap name.
+         */
+        name: string;
+        /**
+         * Whether the ConfigMap is optional.
+         */
+        optional?: boolean;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeConfigMapArgs {
+        /**
+         * ConfigMap name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Whether the ConfigMap is optional.
+         */
+        optional?: pulumi.Input<boolean>;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeEmptyDir {
+        /**
+         * Storage medium (empty string for default, Memory for tmpfs).
+         */
+        medium?: string;
+        /**
+         * Size limit (e.g., '1Gi').
+         */
+        sizeLimit?: string;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeEmptyDirArgs {
+        /**
+         * Storage medium (empty string for default, Memory for tmpfs).
+         */
+        medium?: pulumi.Input<string>;
+        /**
+         * Size limit (e.g., '1Gi').
+         */
+        sizeLimit?: pulumi.Input<string>;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeHostPath {
+        /**
+         * Host path.
+         */
+        path: string;
+        /**
+         * Host path type (Directory, File, etc.).
+         */
+        type?: string;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeHostPathArgs {
+        /**
+         * Host path.
+         */
+        path: pulumi.Input<string>;
+        /**
+         * Host path type (Directory, File, etc.).
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeMount {
+        /**
+         * Path to mount the volume in the container.
+         */
+        mountPath: string;
+        /**
+         * Volume name to mount.
+         */
+        name: string;
+        /**
+         * Mount as read-only.
+         */
+        readOnly?: boolean;
+        /**
+         * Sub-path within the volume.
+         */
+        subPath?: string;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeMountArgs {
+        /**
+         * Path to mount the volume in the container.
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * Volume name to mount.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Mount as read-only.
+         */
+        readOnly?: pulumi.Input<boolean>;
+        /**
+         * Sub-path within the volume.
+         */
+        subPath?: pulumi.Input<string>;
+    }
+
+    export interface GetActionTemplateContainerActionVolumePersistentVolumeClaim {
+        /**
+         * PVC name.
+         */
+        claimName: string;
+        /**
+         * Mount as read-only.
+         */
+        readOnly?: boolean;
+    }
+
+    export interface GetActionTemplateContainerActionVolumePersistentVolumeClaimArgs {
+        /**
+         * PVC name.
+         */
+        claimName: pulumi.Input<string>;
+        /**
+         * Mount as read-only.
+         */
+        readOnly?: pulumi.Input<boolean>;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeSecret {
+        /**
+         * Whether the Secret is optional.
+         */
+        optional?: boolean;
+        /**
+         * Secret name.
+         */
+        secretName: string;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeSecretArgs {
+        /**
+         * Whether the Secret is optional.
+         */
+        optional?: pulumi.Input<boolean>;
+        /**
+         * Secret name.
+         */
+        secretName: pulumi.Input<string>;
+    }
+
+    export interface GetActionTemplateCustomScriptAction {
+        /**
+         * Arguments to pass to the command.
+         */
+        args?: string[];
+        /**
+         * Command to execute (e.g., 'bash', 'python', 'sh').
+         */
+        command: string;
+        /**
+         * Environment variables for the script.
+         */
+        envs?: inputs.chaos.GetActionTemplateCustomScriptActionEnv[];
+    }
+
+    export interface GetActionTemplateCustomScriptActionArgs {
+        /**
+         * Arguments to pass to the command.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Command to execute (e.g., 'bash', 'python', 'sh').
+         */
+        command: pulumi.Input<string>;
+        /**
+         * Environment variables for the script.
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.chaos.GetActionTemplateCustomScriptActionEnvArgs>[]>;
+    }
+
+    export interface GetActionTemplateCustomScriptActionEnv {
+        /**
+         * Environment variable name.
+         */
+        name: string;
+        /**
+         * Environment variable value.
+         */
+        value: string;
+    }
+
+    export interface GetActionTemplateCustomScriptActionEnvArgs {
+        /**
+         * Environment variable name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Environment variable value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface GetActionTemplateDelayAction {
+        /**
+         * Duration of the delay (e.g., '30s', '5m', '1h').
+         */
+        duration: string;
+    }
+
+    export interface GetActionTemplateDelayActionArgs {
+        /**
+         * Duration of the delay (e.g., '30s', '5m', '1h').
+         */
+        duration: pulumi.Input<string>;
+    }
+
+    export interface GetActionTemplateRunProperties {
+        /**
+         * Initial delay before action execution (e.g., '5s', '1m').
+         */
+        initialDelay?: string;
+        /**
+         * Interval between retries (e.g., '10s', '30s').
+         */
+        interval?: string;
+        /**
+         * Maximum number of retries.
+         */
+        maxRetries?: number;
+        /**
+         * Whether to stop on failure.
+         */
+        stopOnFailure?: boolean;
+        /**
+         * Timeout for action execution (e.g., '5m', '10m').
+         */
+        timeout?: string;
+        /**
+         * Verbosity level for logging.
+         */
+        verbosity?: string;
+    }
+
+    export interface GetActionTemplateRunPropertiesArgs {
+        /**
+         * Initial delay before action execution (e.g., '5s', '1m').
+         */
+        initialDelay?: pulumi.Input<string>;
+        /**
+         * Interval between retries (e.g., '10s', '30s').
+         */
+        interval?: pulumi.Input<string>;
+        /**
+         * Maximum number of retries.
+         */
+        maxRetries?: pulumi.Input<number>;
+        /**
+         * Whether to stop on failure.
+         */
+        stopOnFailure?: pulumi.Input<boolean>;
+        /**
+         * Timeout for action execution (e.g., '5m', '10m').
+         */
+        timeout?: pulumi.Input<string>;
+        /**
+         * Verbosity level for logging.
+         */
+        verbosity?: pulumi.Input<string>;
+    }
+
+    export interface GetActionTemplateVariable {
+        /**
+         * Variable description.
+         */
+        description?: string;
+        /**
+         * Variable name.
+         */
+        name: string;
+        /**
+         * Whether the variable is required.
+         */
+        required?: boolean;
+        /**
+         * Variable type (e.g., 'string', 'number', 'boolean').
+         */
+        type?: string;
+        /**
+         * Variable value.
+         */
+        value: string;
+    }
+
+    export interface GetActionTemplateVariableArgs {
+        /**
+         * Variable description.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Variable name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Whether the variable is required.
+         */
+        required?: pulumi.Input<boolean>;
+        /**
+         * Variable type (e.g., 'string', 'number', 'boolean').
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Variable value.
+         */
+        value: pulumi.Input<string>;
+    }
+
     export interface GetInfrastructureV2ImageRegistry {
         /**
          * Timestamp when the registry was created.
@@ -2722,6 +4440,487 @@ export namespace chaos {
          * Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
          */
         subPathExpr?: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateApmProbe {
+        /**
+         * APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+         */
+        apmType: pulumi.Input<string>;
+        /**
+         * AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+         */
+        appDynamicsInputs?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbeAppDynamicsInputs>;
+        /**
+         * Comparator for APM metric validation.
+         */
+        comparator?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbeComparator>;
+        /**
+         * Datadog-specific inputs. Required when apm*type is 'Datadog'.
+         */
+        datadogInputs?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbeDatadogInputs>;
+        /**
+         * Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+         */
+        dynatraceInputs?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbeDynatraceInputs>;
+        /**
+         * GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+         */
+        gcpCloudMonitoringInputs?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbeGcpCloudMonitoringInputs>;
+        /**
+         * NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+         */
+        newRelicInputs?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbeNewRelicInputs>;
+        /**
+         * Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+         */
+        prometheusInputs?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbePrometheusInputs>;
+        /**
+         * SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+         */
+        splunkObservabilityInputs?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbeSplunkObservabilityInputs>;
+    }
+
+    export interface ProbeTemplateApmProbeAppDynamicsInputs {
+        /**
+         * AppDynamics metrics configuration.
+         */
+        appdMetrics?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbeAppDynamicsInputsAppdMetrics>;
+        /**
+         * Harness connector ID for AppDynamics.
+         */
+        connectorId: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateApmProbeAppDynamicsInputsAppdMetrics {
+        /**
+         * AppDynamics application name.
+         */
+        applicationName?: pulumi.Input<string>;
+        /**
+         * Duration in minutes for the AppDynamics query.
+         */
+        durationInMin?: pulumi.Input<number>;
+        /**
+         * Full path to the AppDynamics metric.
+         */
+        metricsFullPath?: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateApmProbeComparator {
+        /**
+         * Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+         */
+        criteria: pulumi.Input<string>;
+        /**
+         * Comparator type (string, int, float).
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Expected value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateApmProbeDatadogInputs {
+        /**
+         * Harness connector ID for Datadog.
+         */
+        connectorId: pulumi.Input<string>;
+        /**
+         * Duration in minutes for the Datadog query.
+         */
+        durationInMin?: pulumi.Input<number>;
+        /**
+         * Datadog query string.
+         */
+        query?: pulumi.Input<string>;
+        /**
+         * Datadog Synthetics test configuration.
+         */
+        syntheticsTest?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbeDatadogInputsSyntheticsTest>;
+    }
+
+    export interface ProbeTemplateApmProbeDatadogInputsSyntheticsTest {
+        /**
+         * Public ID of the Datadog Synthetics test.
+         */
+        publicId: pulumi.Input<string>;
+        /**
+         * Type of Synthetics test (api, browser).
+         */
+        testType?: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateApmProbeDynatraceInputs {
+        /**
+         * Harness connector ID for Dynatrace.
+         */
+        connectorId: pulumi.Input<string>;
+        /**
+         * Duration in minutes for the Dynatrace query.
+         */
+        durationInMin?: pulumi.Input<number>;
+        /**
+         * Dynatrace metrics configuration.
+         */
+        metrics?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbeDynatraceInputsMetrics>;
+    }
+
+    export interface ProbeTemplateApmProbeDynatraceInputsMetrics {
+        /**
+         * Dynatrace entity selector.
+         */
+        entitySelector?: pulumi.Input<string>;
+        /**
+         * Dynatrace metrics selector.
+         */
+        metricsSelector?: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateApmProbeGcpCloudMonitoringInputs {
+        /**
+         * GCP project ID.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * GCP monitoring query string.
+         */
+        query: pulumi.Input<string>;
+        /**
+         * GCP service account key (JSON).
+         */
+        serviceAccountKey: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateApmProbeNewRelicInputs {
+        /**
+         * Harness connector ID for NewRelic.
+         */
+        connectorId: pulumi.Input<string>;
+        /**
+         * NewRelic metric configuration.
+         */
+        newRelicMetric?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbeNewRelicInputsNewRelicMetric>;
+    }
+
+    export interface ProbeTemplateApmProbeNewRelicInputsNewRelicMetric {
+        /**
+         * NRQL query string.
+         */
+        query?: pulumi.Input<string>;
+        /**
+         * NewRelic query metric name.
+         */
+        queryMetric?: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateApmProbePrometheusInputs {
+        /**
+         * Harness connector ID for Prometheus.
+         */
+        connectorId: pulumi.Input<string>;
+        /**
+         * PromQL query string.
+         */
+        query: pulumi.Input<string>;
+        /**
+         * TLS configuration for Prometheus connection.
+         */
+        tlsConfig?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbePrometheusInputsTlsConfig>;
+    }
+
+    export interface ProbeTemplateApmProbePrometheusInputsTlsConfig {
+        /**
+         * Harness secret identifier for CA certificate.
+         */
+        caCertSecret?: pulumi.Input<string>;
+        /**
+         * Harness secret identifier for client certificate.
+         */
+        clientCertSecret?: pulumi.Input<string>;
+        /**
+         * Harness secret identifier for client key.
+         */
+        clientKeySecret?: pulumi.Input<string>;
+        /**
+         * Skip TLS certificate verification.
+         */
+        insecureSkipVerify?: pulumi.Input<boolean>;
+    }
+
+    export interface ProbeTemplateApmProbeSplunkObservabilityInputs {
+        /**
+         * Harness connector ID for Splunk Observability.
+         */
+        connectorId: pulumi.Input<string>;
+        /**
+         * Splunk Observability metrics configuration.
+         */
+        splunkObservabilityMetrics?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics>;
+    }
+
+    export interface ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics {
+        /**
+         * Duration in minutes for the Splunk query.
+         */
+        durationInMin?: pulumi.Input<number>;
+        /**
+         * Splunk Observability query string.
+         */
+        query?: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateCmdProbe {
+        /**
+         * Command to execute.
+         */
+        command: pulumi.Input<string>;
+        /**
+         * Comparator for command output validation.
+         */
+        comparator?: pulumi.Input<inputs.chaos.ProbeTemplateCmdProbeComparator>;
+        /**
+         * Environment variables for the command.
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.chaos.ProbeTemplateCmdProbeEnv>[]>;
+        /**
+         * Source of the command (inline, configMap, secret).
+         */
+        source?: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateCmdProbeComparator {
+        /**
+         * Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+         */
+        criteria: pulumi.Input<string>;
+        /**
+         * Comparator type (string, int, float).
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Expected value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateCmdProbeEnv {
+        /**
+         * Environment variable name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Environment variable value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateHttpProbe {
+        /**
+         * Authentication configuration.
+         */
+        auth?: pulumi.Input<inputs.chaos.ProbeTemplateHttpProbeAuth>;
+        /**
+         * HTTP headers.
+         */
+        headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * HTTP method configuration with GET or POST.
+         */
+        method?: pulumi.Input<inputs.chaos.ProbeTemplateHttpProbeMethod>;
+        /**
+         * TLS configuration.
+         */
+        tlsConfig?: pulumi.Input<inputs.chaos.ProbeTemplateHttpProbeTlsConfig>;
+        /**
+         * URL to probe.
+         */
+        url: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateHttpProbeAuth {
+        /**
+         * Password for basic auth.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * Token for bearer auth.
+         */
+        token?: pulumi.Input<string>;
+        /**
+         * Auth type (basic, bearer, etc.).
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Username for basic auth.
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateHttpProbeMethod {
+        /**
+         * GET method configuration.
+         */
+        get?: pulumi.Input<inputs.chaos.ProbeTemplateHttpProbeMethodGet>;
+        /**
+         * POST method configuration.
+         */
+        post?: pulumi.Input<inputs.chaos.ProbeTemplateHttpProbeMethodPost>;
+    }
+
+    export interface ProbeTemplateHttpProbeMethodGet {
+        /**
+         * Response criteria (e.g., '==', '!=', 'contains').
+         */
+        criteria?: pulumi.Input<string>;
+        /**
+         * Expected response body.
+         */
+        responseBody?: pulumi.Input<string>;
+        /**
+         * Expected HTTP response code (e.g., '200', '404').
+         */
+        responseCode?: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateHttpProbeMethodPost {
+        /**
+         * POST request body.
+         */
+        body?: pulumi.Input<string>;
+        /**
+         * Path to file containing POST body.
+         */
+        bodyPath?: pulumi.Input<string>;
+        /**
+         * Content-Type header for POST request.
+         */
+        contentType?: pulumi.Input<string>;
+        /**
+         * Response criteria (e.g., '==', '!=', 'contains').
+         */
+        criteria?: pulumi.Input<string>;
+        /**
+         * Expected response body.
+         */
+        responseBody?: pulumi.Input<string>;
+        /**
+         * Expected HTTP response code (e.g., '200', '404').
+         */
+        responseCode?: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateHttpProbeTlsConfig {
+        /**
+         * CA certificate.
+         */
+        caCert?: pulumi.Input<string>;
+        /**
+         * Client certificate.
+         */
+        clientCert?: pulumi.Input<string>;
+        /**
+         * Client key.
+         */
+        clientKey?: pulumi.Input<string>;
+        /**
+         * Skip TLS certificate verification.
+         */
+        insecureSkipVerify?: pulumi.Input<boolean>;
+    }
+
+    export interface ProbeTemplateK8sProbe {
+        /**
+         * Field selector for filtering resources.
+         */
+        fieldSelector?: pulumi.Input<string>;
+        /**
+         * API group (e.g., 'apps', 'batch').
+         */
+        group?: pulumi.Input<string>;
+        /**
+         * Label selector for filtering resources.
+         */
+        labelSelector?: pulumi.Input<string>;
+        /**
+         * Kubernetes namespace.
+         */
+        namespace?: pulumi.Input<string>;
+        /**
+         * Operation to perform (create, delete, present, absent, etc.).
+         */
+        operation?: pulumi.Input<string>;
+        /**
+         * Resource type (e.g., 'pods', 'deployments').
+         */
+        resource: pulumi.Input<string>;
+        /**
+         * Comma-separated list of resource names.
+         */
+        resourceNames?: pulumi.Input<string>;
+        /**
+         * API version (e.g., 'v1', 'v1beta1').
+         */
+        version: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateRunProperties {
+        /**
+         * Number of attempts.
+         */
+        attempt?: pulumi.Input<number>;
+        /**
+         * Initial delay before probe execution (e.g., '5s', '1m').
+         */
+        initialDelay?: pulumi.Input<string>;
+        /**
+         * Interval between probe executions (e.g., '10s', '30s').
+         */
+        interval?: pulumi.Input<string>;
+        /**
+         * Polling interval for continuous probes (e.g., '2s', '5s').
+         */
+        pollingInterval?: pulumi.Input<string>;
+        /**
+         * Number of retries.
+         */
+        retry?: pulumi.Input<number>;
+        /**
+         * Whether to stop on failure.
+         */
+        stopOnFailure?: pulumi.Input<boolean>;
+        /**
+         * Timeout for probe execution (e.g., '30s', '5m').
+         */
+        timeout?: pulumi.Input<string>;
+        /**
+         * Verbosity level for logging.
+         */
+        verbosity?: pulumi.Input<string>;
+    }
+
+    export interface ProbeTemplateVariable {
+        /**
+         * Variable description.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Variable name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Whether the variable is required.
+         */
+        required?: pulumi.Input<boolean>;
+        /**
+         * Variable type (e.g., 'string', 'number', 'boolean').
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Variable value.
+         */
+        value: pulumi.Input<string>;
     }
 
     export interface SecurityGovernanceConditionFaultSpec {
@@ -3888,15 +6087,27 @@ export namespace platform {
 
     export interface BitbucketConnectorApiAuthentication {
         /**
-         * Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * Type of API authentication. Valid values are UsernameToken, AccessToken, EmailAndApiToken. Defaults to `UsernameToken` for backward compatibility.
+         */
+        authType?: pulumi.Input<string>;
+        /**
+         * The email used for connecting to the api. Applicable when `authType` is `EmailAndApiToken`.
+         */
+        email?: pulumi.Input<string>;
+        /**
+         * The name of the Harness secret containing the email. Applicable when `authType` is `EmailAndApiToken`. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        emailRef?: pulumi.Input<string>;
+        /**
+         * Reference to a Harness secret containing the personal access token (or API token for `EmailAndApiToken`/`AccessToken`) for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         tokenRef: pulumi.Input<string>;
         /**
-         * The username used for connecting to the api.
+         * The username used for connecting to the api. Applicable when `authType` is `UsernameToken`.
          */
         username?: pulumi.Input<string>;
         /**
-         * The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * The name of the Harness secret containing the username. Applicable when `authType` is `UsernameToken`. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: pulumi.Input<string>;
     }
@@ -36066,7 +38277,7 @@ export namespace platform {
          */
         repoName?: pulumi.Input<string>;
         /**
-         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE. Important: If your Harness account has the default store type configured as REMOTE (via account-level Git Experience settings), you must explicitly set this field to INLINE within a git*details block to create inline templates. Omitting git*details or this field will cause the server to apply the account default (REMOTE), which will fail unless all required remote Git fields are also provided.
          */
         storeType?: pulumi.Input<string>;
     }

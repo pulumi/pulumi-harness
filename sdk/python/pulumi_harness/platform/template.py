@@ -39,7 +39,7 @@ class TemplateArgs:
         """
         The set of arguments for constructing a Template resource.
 
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.str] version: Version Label for Template.
         :param pulumi.Input[_builtins.str] comments: Specify comment with respect to changes.
         :param pulumi.Input[_builtins.str] description: Description of the entity. Description field is deprecated
@@ -91,7 +91,7 @@ class TemplateArgs:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[_builtins.str]:
         """
-        Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+        Unique identifier of the resource
         """
         return pulumi.get(self, "identifier")
 
@@ -295,7 +295,7 @@ class _TemplateState:
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         :param pulumi.Input['TemplateGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input['TemplateGitImportDetailsArgs'] git_import_details: Contains Git Information for importing entities from Git
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.bool] is_stable: True if given version for template to be set as stable.
         :param pulumi.Input[_builtins.str] name: Name of the Variable
@@ -405,7 +405,7 @@ class _TemplateState:
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+        Unique identifier of the resource
         """
         return pulumi.get(self, "identifier")
 
@@ -577,7 +577,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         :param pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']] git_import_details: Contains Git Information for importing entities from Git
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.bool] is_stable: True if given version for template to be set as stable.
         :param pulumi.Input[_builtins.str] name: Name of the Variable
@@ -715,7 +715,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         :param pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']] git_import_details: Contains Git Information for importing entities from Git
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.bool] is_stable: True if given version for template to be set as stable.
         :param pulumi.Input[_builtins.str] name: Name of the Variable
@@ -792,7 +792,7 @@ class Template(pulumi.CustomResource):
     @pulumi.getter
     def identifier(self) -> pulumi.Output[_builtins.str]:
         """
-        Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+        Unique identifier of the resource
         """
         return pulumi.get(self, "identifier")
 

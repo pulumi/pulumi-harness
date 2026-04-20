@@ -306,6 +306,31 @@ func Provider() info.Provider {
 			"harness_trigger":              {Tok: harnessDataSource(mainMod, "getTrigger")},
 			"harness_yaml_config":          {Tok: harnessDataSource(mainMod, "getYamlConfig")},
 			"harness_chaos_infrastructure": {Tok: harnessDataSource(mainMod, "getChaosInfrastructure")},
+			"harness_chaos_probe_template": {
+				Tok: harnessDataSource("chaos", "getProbeTemplate"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"http_probe": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"method": {
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											// Give the invoke-only HTTP method result types unique C# names so
+											// they do not collide with the resource input types during .NET SDK generation.
+											"get": {
+												CSharpName: "GetRequests",
+											},
+											"post": {
+												CSharpName: "PostRequests",
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

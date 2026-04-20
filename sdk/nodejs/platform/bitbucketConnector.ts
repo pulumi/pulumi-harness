@@ -9,6 +9,96 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Bitbucket connector.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * // Credentials http (with username + personal access token - UsernameToken)
+ * const usernameToken = new harness.platform.BitbucketConnector("username_token", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     url: "https://bitbucket.com/account",
+ *     connectionType: "Account",
+ *     validationRepo: "some_repo",
+ *     delegateSelectors: ["harness-delegate"],
+ *     credentials: {
+ *         http: {
+ *             username: "username",
+ *             passwordRef: "account.secret_id",
+ *         },
+ *     },
+ *     apiAuthentication: {
+ *         authType: "UsernameToken",
+ *         username: "username",
+ *         tokenRef: "account.secret_id",
+ *     },
+ * });
+ * // Credentials http with Bitbucket Cloud Workspace API Token (email + API token)
+ * // Use this when migrating off Bitbucket app passwords (EOL 2026-06-09).
+ * const emailApiToken = new harness.platform.BitbucketConnector("email_api_token", {
+ *     identifier: "identifier_email_api_token",
+ *     name: "name_email_api_token",
+ *     description: "Bitbucket Cloud with Workspace API Token",
+ *     tags: ["foo:bar"],
+ *     url: "https://bitbucket.org/my-workspace",
+ *     connectionType: "Account",
+ *     validationRepo: "some_repo",
+ *     delegateSelectors: ["harness-delegate"],
+ *     credentials: {
+ *         http: {
+ *             username: "username",
+ *             passwordRef: "account.secret_id",
+ *         },
+ *     },
+ *     apiAuthentication: {
+ *         authType: "EmailAndApiToken",
+ *         email: "user@example.com",
+ *         tokenRef: "account.api_token_secret",
+ *     },
+ * });
+ * // Credentials http with Bitbucket repo/project Access Token
+ * const accessToken = new harness.platform.BitbucketConnector("access_token", {
+ *     identifier: "identifier_access_token",
+ *     name: "name_access_token",
+ *     description: "Bitbucket with Access Token",
+ *     tags: ["foo:bar"],
+ *     url: "https://bitbucket.org/my-workspace",
+ *     connectionType: "Account",
+ *     validationRepo: "some_repo",
+ *     delegateSelectors: ["harness-delegate"],
+ *     credentials: {
+ *         http: {
+ *             username: "username",
+ *             passwordRef: "account.secret_id",
+ *         },
+ *     },
+ *     apiAuthentication: {
+ *         authType: "AccessToken",
+ *         tokenRef: "account.access_token_secret",
+ *     },
+ * });
+ * // Credentials ssh
+ * const ssh = new harness.platform.BitbucketConnector("ssh", {
+ *     identifier: "identifier_ssh",
+ *     name: "name_ssh",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     url: "https://bitbucket.com/account",
+ *     connectionType: "Account",
+ *     validationRepo: "some_repo",
+ *     delegateSelectors: ["harness-delegate"],
+ *     credentials: {
+ *         ssh: {
+ *             sshKeyRef: "account.secret_id",
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * The `pulumi import` command can be used, for example:

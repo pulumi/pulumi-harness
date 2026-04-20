@@ -6,15 +6,27 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .action_template import *
+from .experiment import *
+from .experiment_template import *
+from .fault_template import *
+from .get_action_template import *
+from .get_experiment import *
+from .get_experiment_template import *
+from .get_fault_template import *
 from .get_hub import *
+from .get_hub_v2 import *
 from .get_image_registry import *
 from .get_infrastructure_v2 import *
+from .get_probe_template import *
 from .get_security_governance_condition import *
 from .get_security_governance_rule import *
 from .hub import *
 from .hub_sync import *
+from .hub_v2 import *
 from .image_registry import *
 from .infrastructure_v2 import *
+from .probe_template import *
 from .security_governance_condition import *
 from .security_governance_rule import *
 from ._inputs import *
