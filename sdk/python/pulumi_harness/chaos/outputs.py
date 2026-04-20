@@ -177,8 +177,8 @@ __all__ = [
     'GetProbeTemplateCmdProbeEnvResult',
     'GetProbeTemplateHttpProbeResult',
     'GetProbeTemplateHttpProbeMethodResult',
-    'GetProbeTemplateHttpProbeMethodGetResult',
-    'GetProbeTemplateHttpProbeMethodPostResult',
+    'GetProbeTemplateHttpProbeMethodResultGetResult',
+    'GetProbeTemplateHttpProbeMethodResultPostResult',
     'GetProbeTemplateK8sProbeResult',
     'GetProbeTemplateRunPropertyResult',
     'GetProbeTemplateVariableResult',
@@ -9521,18 +9521,18 @@ class GetProbeTemplateHttpProbeResult(dict):
 @pulumi.output_type
 class GetProbeTemplateHttpProbeMethodResult(dict):
     def __init__(__self__, *,
-                 gets: Sequence['outputs.GetProbeTemplateHttpProbeMethodGetResult'],
-                 posts: Sequence['outputs.GetProbeTemplateHttpProbeMethodPostResult']):
+                 gets: Sequence['outputs.GetProbeTemplateHttpProbeMethodResultGetResult'],
+                 posts: Sequence['outputs.GetProbeTemplateHttpProbeMethodResultPostResult']):
         """
-        :param Sequence['GetProbeTemplateHttpProbeMethodGetArgs'] gets: GET method configuration.
-        :param Sequence['GetProbeTemplateHttpProbeMethodPostArgs'] posts: POST method configuration.
+        :param Sequence['GetProbeTemplateHttpProbeMethodResultGetArgs'] gets: GET method configuration.
+        :param Sequence['GetProbeTemplateHttpProbeMethodResultPostArgs'] posts: POST method configuration.
         """
         pulumi.set(__self__, "gets", gets)
         pulumi.set(__self__, "posts", posts)
 
     @_builtins.property
     @pulumi.getter
-    def gets(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodGetResult']:
+    def gets(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodResultGetResult']:
         """
         GET method configuration.
         """
@@ -9540,7 +9540,7 @@ class GetProbeTemplateHttpProbeMethodResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def posts(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodPostResult']:
+    def posts(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodResultPostResult']:
         """
         POST method configuration.
         """
@@ -9548,7 +9548,7 @@ class GetProbeTemplateHttpProbeMethodResult(dict):
 
 
 @pulumi.output_type
-class GetProbeTemplateHttpProbeMethodGetResult(dict):
+class GetProbeTemplateHttpProbeMethodResultGetResult(dict):
     def __init__(__self__, *,
                  criteria: _builtins.str,
                  response_body: _builtins.str,
@@ -9574,7 +9574,7 @@ class GetProbeTemplateHttpProbeMethodGetResult(dict):
 
 
 @pulumi.output_type
-class GetProbeTemplateHttpProbeMethodPostResult(dict):
+class GetProbeTemplateHttpProbeMethodResultPostResult(dict):
     def __init__(__self__, *,
                  body: _builtins.str,
                  body_path: _builtins.str,

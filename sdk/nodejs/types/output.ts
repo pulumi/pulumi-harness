@@ -3713,20 +3713,20 @@ export namespace chaos {
         /**
          * GET method configuration.
          */
-        gets: outputs.chaos.GetProbeTemplateHttpProbeMethodGet[];
+        gets: outputs.chaos.GetProbeTemplateHttpProbeMethodResultGet[];
         /**
          * POST method configuration.
          */
-        posts: outputs.chaos.GetProbeTemplateHttpProbeMethodPost[];
+        posts: outputs.chaos.GetProbeTemplateHttpProbeMethodResultPost[];
     }
 
-    export interface GetProbeTemplateHttpProbeMethodGet {
+    export interface GetProbeTemplateHttpProbeMethodResultGet {
         criteria: string;
         responseBody: string;
         responseCode: string;
     }
 
-    export interface GetProbeTemplateHttpProbeMethodPost {
+    export interface GetProbeTemplateHttpProbeMethodResultPost {
         body: string;
         bodyPath: string;
         contentType: string;

@@ -16,7 +16,6 @@ import (
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	pschema "github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/pulumi/pulumi-harness/provider/pkg/version"
@@ -80,18 +79,6 @@ func Provider() info.Provider {
 		Repository:        "https://github.com/pulumi/pulumi-harness",
 		GitHubOrg:         "harness",
 		DocRules:          &info.DocRule{EditRules: editRules},
-		SchemaPostProcessor: func(spec *pschema.PackageSpec) {
-			renameSchemaTypeToken(
-				spec,
-				"harness:chaos/getProbeTemplateHttpProbeMethodGet:getProbeTemplateHttpProbeMethodGet",
-				"harness:chaos/getProbeTemplateHttpProbeMethodResultGet:getProbeTemplateHttpProbeMethodResultGet",
-			)
-			renameSchemaTypeToken(
-				spec,
-				"harness:chaos/getProbeTemplateHttpProbeMethodPost:getProbeTemplateHttpProbeMethodPost",
-				"harness:chaos/getProbeTemplateHttpProbeMethodResultPost:getProbeTemplateHttpProbeMethodResultPost",
-			)
-		},
 		Config: map[string]*info.Schema{
 			"endpoint": {
 				Default: &info.Default{
@@ -202,6 +189,24 @@ func Provider() info.Provider {
 			"harness_user_group":                 {Tok: harnessResource(mainMod, "UserGroup")},
 			"harness_user_group_permissions":     {Tok: harnessResource(mainMod, "UserGroupPermissions")},
 			"harness_chaos_infrastructure":       {Tok: harnessResource(mainMod, "ChaosInfrastructure")},
+			"harness_chaos_probe_template": {
+				Tok: harnessResource("chaos", "ProbeTemplate"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"http_probe": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"method": {
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"get": {Name: "getMethod"},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"harness_application":     {Tok: harnessDataSource(mainMod, "getApplication")},
@@ -371,30 +376,6 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 		defaults,
 		fixInstallationExample,
 	)
-}
-
-func renameSchemaTypeToken(spec *pschema.PackageSpec, oldToken, newToken string) {
-	oldRef := "#/types/" + oldToken
-	newRef := "#/types/" + newToken
-
-	typ, ok := spec.Types[oldToken]
-	if !ok {
-		return
-	}
-	spec.Types[newToken] = typ
-	delete(spec.Types, oldToken)
-
-	if methodType, ok := spec.Types["harness:chaos/getProbeTemplateHttpProbeMethod:getProbeTemplateHttpProbeMethod"]; ok {
-		if gets, ok := methodType.Properties["gets"]; ok && gets.Items != nil && gets.Items.Ref == oldRef {
-			gets.Items.Ref = newRef
-			methodType.Properties["gets"] = gets
-		}
-		if posts, ok := methodType.Properties["posts"]; ok && posts.Items != nil && posts.Items.Ref == oldRef {
-			posts.Items.Ref = newRef
-			methodType.Properties["posts"] = posts
-		}
-		spec.Types["harness:chaos/getProbeTemplateHttpProbeMethod:getProbeTemplateHttpProbeMethod"] = methodType
-	}
 }
 
 // In the upstream example, two providers are defined in the same code block.
