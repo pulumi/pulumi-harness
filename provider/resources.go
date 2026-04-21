@@ -189,6 +189,24 @@ func Provider() info.Provider {
 			"harness_user_group":                 {Tok: harnessResource(mainMod, "UserGroup")},
 			"harness_user_group_permissions":     {Tok: harnessResource(mainMod, "UserGroupPermissions")},
 			"harness_chaos_infrastructure":       {Tok: harnessResource(mainMod, "ChaosInfrastructure")},
+			"harness_chaos_probe_template": {
+				Tok: harnessResource("chaos", "ProbeTemplate"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"http_probe": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"method": {
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"get": {Name: "getMethod"},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"harness_application":     {Tok: harnessDataSource(mainMod, "getApplication")},

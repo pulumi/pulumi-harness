@@ -187,6 +187,7 @@ from .get_variables import *
 from .get_vault_connector import *
 from .get_workspace import *
 from .get_workspace_output_value import *
+from .get_workspaces import *
 from .git_connector import *
 from .git_ops_agent import *
 from .git_ops_applications import *

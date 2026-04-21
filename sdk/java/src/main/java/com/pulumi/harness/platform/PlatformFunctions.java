@@ -273,6 +273,8 @@ import com.pulumi.harness.platform.inputs.GetWorkspaceArgs;
 import com.pulumi.harness.platform.inputs.GetWorkspaceOutputValueArgs;
 import com.pulumi.harness.platform.inputs.GetWorkspaceOutputValuePlainArgs;
 import com.pulumi.harness.platform.inputs.GetWorkspacePlainArgs;
+import com.pulumi.harness.platform.inputs.GetWorkspacesArgs;
+import com.pulumi.harness.platform.inputs.GetWorkspacesPlainArgs;
 import com.pulumi.harness.platform.outputs.GetApiKeyResult;
 import com.pulumi.harness.platform.outputs.GetAppDynamicsConnectorResult;
 import com.pulumi.harness.platform.outputs.GetArtifactoryConnectorResult;
@@ -409,6 +411,7 @@ import com.pulumi.harness.platform.outputs.GetVariablesResult;
 import com.pulumi.harness.platform.outputs.GetVaultConnectorResult;
 import com.pulumi.harness.platform.outputs.GetWorkspaceOutputValueResult;
 import com.pulumi.harness.platform.outputs.GetWorkspaceResult;
+import com.pulumi.harness.platform.outputs.GetWorkspacesResult;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
@@ -25102,5 +25105,210 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetWorkspaceOutputValueResult> getWorkspaceOutputValuePlain(GetWorkspaceOutputValuePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getWorkspaceOutputValue:getWorkspaceOutputValue", TypeShape.of(GetWorkspaceOutputValueResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for listing workspaces.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetWorkspacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getWorkspaces(GetWorkspacesArgs.builder()
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspacesResult> getWorkspaces(GetWorkspacesArgs args) {
+        return getWorkspaces(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for listing workspaces.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetWorkspacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getWorkspaces(GetWorkspacesArgs.builder()
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspacesResult> getWorkspacesPlain(GetWorkspacesPlainArgs args) {
+        return getWorkspacesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for listing workspaces.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetWorkspacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getWorkspaces(GetWorkspacesArgs.builder()
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspacesResult> getWorkspaces(GetWorkspacesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getWorkspaces:getWorkspaces", TypeShape.of(GetWorkspacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for listing workspaces.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetWorkspacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getWorkspaces(GetWorkspacesArgs.builder()
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspacesResult> getWorkspaces(GetWorkspacesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getWorkspaces:getWorkspaces", TypeShape.of(GetWorkspacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for listing workspaces.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetWorkspacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getWorkspaces(GetWorkspacesArgs.builder()
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspacesResult> getWorkspacesPlain(GetWorkspacesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getWorkspaces:getWorkspaces", TypeShape.of(GetWorkspacesResult.class), args, Utilities.withVersion(options));
     }
 }

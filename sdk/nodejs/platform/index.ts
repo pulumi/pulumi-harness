@@ -910,6 +910,11 @@ export const getWorkspaceOutputValue: typeof import("./getWorkspaceOutputValue")
 export const getWorkspaceOutputValueOutput: typeof import("./getWorkspaceOutputValue").getWorkspaceOutputValueOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkspaceOutputValue","getWorkspaceOutputValueOutput"], () => require("./getWorkspaceOutputValue"));
 
+export { GetWorkspacesArgs, GetWorkspacesResult, GetWorkspacesOutputArgs } from "./getWorkspaces";
+export const getWorkspaces: typeof import("./getWorkspaces").getWorkspaces = null as any;
+export const getWorkspacesOutput: typeof import("./getWorkspaces").getWorkspacesOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkspaces","getWorkspacesOutput"], () => require("./getWorkspaces"));
+
 export { GitConnectorArgs, GitConnectorState } from "./gitConnector";
 export type GitConnector = import("./gitConnector").GitConnector;
 export const GitConnector: typeof import("./gitConnector").GitConnector = null as any;

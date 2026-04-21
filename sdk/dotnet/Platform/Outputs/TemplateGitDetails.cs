@@ -46,7 +46,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? RepoName;
         /// <summary>
-        /// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        /// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE. Important: If your Harness account has the default store type configured as REMOTE (via account-level Git Experience settings), you must explicitly set this field to INLINE within a git*details block to create inline templates. Omitting git*details or this field will cause the server to apply the account default (REMOTE), which will fail unless all required remote Git fields are also provided.
         /// </summary>
         public readonly string? StoreType;
 

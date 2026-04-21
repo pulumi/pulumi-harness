@@ -50,7 +50,7 @@ type Template struct {
 	GitDetails TemplateGitDetailsOutput `pulumi:"gitDetails"`
 	// Contains Git Information for importing entities from Git
 	GitImportDetails TemplateGitImportDetailsPtrOutput `pulumi:"gitImportDetails"`
-	// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+	// Unique identifier of the resource
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Flag to set if importing from Git
 	ImportFromGit pulumi.BoolPtrOutput `pulumi:"importFromGit"`
@@ -120,7 +120,7 @@ type templateState struct {
 	GitDetails *TemplateGitDetails `pulumi:"gitDetails"`
 	// Contains Git Information for importing entities from Git
 	GitImportDetails *TemplateGitImportDetails `pulumi:"gitImportDetails"`
-	// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+	// Unique identifier of the resource
 	Identifier *string `pulumi:"identifier"`
 	// Flag to set if importing from Git
 	ImportFromGit *bool `pulumi:"importFromGit"`
@@ -155,7 +155,7 @@ type TemplateState struct {
 	GitDetails TemplateGitDetailsPtrInput
 	// Contains Git Information for importing entities from Git
 	GitImportDetails TemplateGitImportDetailsPtrInput
-	// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+	// Unique identifier of the resource
 	Identifier pulumi.StringPtrInput
 	// Flag to set if importing from Git
 	ImportFromGit pulumi.BoolPtrInput
@@ -194,7 +194,7 @@ type templateArgs struct {
 	GitDetails *TemplateGitDetails `pulumi:"gitDetails"`
 	// Contains Git Information for importing entities from Git
 	GitImportDetails *TemplateGitImportDetails `pulumi:"gitImportDetails"`
-	// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+	// Unique identifier of the resource
 	Identifier string `pulumi:"identifier"`
 	// Flag to set if importing from Git
 	ImportFromGit *bool `pulumi:"importFromGit"`
@@ -230,7 +230,7 @@ type TemplateArgs struct {
 	GitDetails TemplateGitDetailsPtrInput
 	// Contains Git Information for importing entities from Git
 	GitImportDetails TemplateGitImportDetailsPtrInput
-	// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+	// Unique identifier of the resource
 	Identifier pulumi.StringInput
 	// Flag to set if importing from Git
 	ImportFromGit pulumi.BoolPtrInput
@@ -366,7 +366,7 @@ func (o TemplateOutput) GitImportDetails() TemplateGitImportDetailsPtrOutput {
 	return o.ApplyT(func(v *Template) TemplateGitImportDetailsPtrOutput { return v.GitImportDetails }).(TemplateGitImportDetailsPtrOutput)
 }
 
-// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+// Unique identifier of the resource
 func (o TemplateOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }

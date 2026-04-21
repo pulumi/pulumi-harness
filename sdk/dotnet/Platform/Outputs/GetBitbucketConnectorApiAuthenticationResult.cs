@@ -14,7 +14,19 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetBitbucketConnectorApiAuthenticationResult
     {
         /// <summary>
-        /// Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// Type of API authentication. Valid values are UsernameToken, AccessToken, EmailAndApiToken.
+        /// </summary>
+        public readonly string AuthType;
+        /// <summary>
+        /// The email used for connecting to the api (EmailAndApiToken auth).
+        /// </summary>
+        public readonly string Email;
+        /// <summary>
+        /// The name of the Harness secret containing the email (EmailAndApiToken auth). To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// </summary>
+        public readonly string EmailRef;
+        /// <summary>
+        /// Reference to a Harness secret containing the token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string TokenRef;
         /// <summary>
@@ -28,12 +40,21 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private GetBitbucketConnectorApiAuthenticationResult(
+            string authType,
+
+            string email,
+
+            string emailRef,
+
             string tokenRef,
 
             string username,
 
             string usernameRef)
         {
+            AuthType = authType;
+            Email = email;
+            EmailRef = emailRef;
             TokenRef = tokenRef;
             Username = username;
             UsernameRef = usernameRef;

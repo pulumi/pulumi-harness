@@ -23039,7 +23039,7 @@ type TemplateGitDetails struct {
 	LastObjectId *string `pulumi:"lastObjectId"`
 	// Name of the repository.
 	RepoName *string `pulumi:"repoName"`
-	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE. Important: If your Harness account has the default store type configured as REMOTE (via account-level Git Experience settings), you must explicitly set this field to INLINE within a git*details block to create inline templates. Omitting git*details or this field will cause the server to apply the account default (REMOTE), which will fail unless all required remote Git fields are also provided.
 	StoreType *string `pulumi:"storeType"`
 }
 
@@ -23071,7 +23071,7 @@ type TemplateGitDetailsArgs struct {
 	LastObjectId pulumi.StringPtrInput `pulumi:"lastObjectId"`
 	// Name of the repository.
 	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
-	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE. Important: If your Harness account has the default store type configured as REMOTE (via account-level Git Experience settings), you must explicitly set this field to INLINE within a git*details block to create inline templates. Omitting git*details or this field will cause the server to apply the account default (REMOTE), which will fail unless all required remote Git fields are also provided.
 	StoreType pulumi.StringPtrInput `pulumi:"storeType"`
 }
 
@@ -23192,7 +23192,7 @@ func (o TemplateGitDetailsOutput) RepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TemplateGitDetails) *string { return v.RepoName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE. Important: If your Harness account has the default store type configured as REMOTE (via account-level Git Experience settings), you must explicitly set this field to INLINE within a git*details block to create inline templates. Omitting git*details or this field will cause the server to apply the account default (REMOTE), which will fail unless all required remote Git fields are also provided.
 func (o TemplateGitDetailsOutput) StoreType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TemplateGitDetails) *string { return v.StoreType }).(pulumi.StringPtrOutput)
 }
@@ -23301,7 +23301,7 @@ func (o TemplateGitDetailsPtrOutput) RepoName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE. Important: If your Harness account has the default store type configured as REMOTE (via account-level Git Experience settings), you must explicitly set this field to INLINE within a git*details block to create inline templates. Omitting git*details or this field will cause the server to apply the account default (REMOTE), which will fail unless all required remote Git fields are also provided.
 func (o TemplateGitDetailsPtrOutput) StoreType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TemplateGitDetails) *string {
 		if v == nil {
@@ -28397,7 +28397,13 @@ func (o GetAzureCloudProviderConnectorCredentialAzureOidcSpecArrayOutput) Index(
 }
 
 type GetBitbucketConnectorApiAuthentication struct {
-	// Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// Type of API authentication. Valid values are UsernameToken, AccessToken, EmailAndApiToken.
+	AuthType string `pulumi:"authType"`
+	// The email used for connecting to the api (EmailAndApiToken auth).
+	Email string `pulumi:"email"`
+	// The name of the Harness secret containing the email (EmailAndApiToken auth). To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	EmailRef string `pulumi:"emailRef"`
+	// Reference to a Harness secret containing the token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	TokenRef string `pulumi:"tokenRef"`
 	// The username used for connecting to the api.
 	Username string `pulumi:"username"`
@@ -28417,7 +28423,13 @@ type GetBitbucketConnectorApiAuthenticationInput interface {
 }
 
 type GetBitbucketConnectorApiAuthenticationArgs struct {
-	// Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// Type of API authentication. Valid values are UsernameToken, AccessToken, EmailAndApiToken.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// The email used for connecting to the api (EmailAndApiToken auth).
+	Email pulumi.StringInput `pulumi:"email"`
+	// The name of the Harness secret containing the email (EmailAndApiToken auth). To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	EmailRef pulumi.StringInput `pulumi:"emailRef"`
+	// Reference to a Harness secret containing the token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
 	// The username used for connecting to the api.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -28476,7 +28488,22 @@ func (o GetBitbucketConnectorApiAuthenticationOutput) ToGetBitbucketConnectorApi
 	return o
 }
 
-// Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+// Type of API authentication. Valid values are UsernameToken, AccessToken, EmailAndApiToken.
+func (o GetBitbucketConnectorApiAuthenticationOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBitbucketConnectorApiAuthentication) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// The email used for connecting to the api (EmailAndApiToken auth).
+func (o GetBitbucketConnectorApiAuthenticationOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBitbucketConnectorApiAuthentication) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The name of the Harness secret containing the email (EmailAndApiToken auth). To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetBitbucketConnectorApiAuthenticationOutput) EmailRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBitbucketConnectorApiAuthentication) string { return v.EmailRef }).(pulumi.StringOutput)
+}
+
+// Reference to a Harness secret containing the token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetBitbucketConnectorApiAuthenticationOutput) TokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBitbucketConnectorApiAuthentication) string { return v.TokenRef }).(pulumi.StringOutput)
 }
@@ -54430,6 +54457,148 @@ func (o GetWorkspaceTerraformVariableFileArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetWorkspaceTerraformVariableFileOutput)
 }
 
+type GetWorkspacesWorkspace struct {
+	AccountId   string `pulumi:"accountId"`
+	Created     int    `pulumi:"created"`
+	Description string `pulumi:"description"`
+	Identifier  string `pulumi:"identifier"`
+	Name        string `pulumi:"name"`
+	OrgId       string `pulumi:"orgId"`
+	ProjectId   string `pulumi:"projectId"`
+	Status      string `pulumi:"status"`
+	Updated     int    `pulumi:"updated"`
+}
+
+// GetWorkspacesWorkspaceInput is an input type that accepts GetWorkspacesWorkspaceArgs and GetWorkspacesWorkspaceOutput values.
+// You can construct a concrete instance of `GetWorkspacesWorkspaceInput` via:
+//
+//	GetWorkspacesWorkspaceArgs{...}
+type GetWorkspacesWorkspaceInput interface {
+	pulumi.Input
+
+	ToGetWorkspacesWorkspaceOutput() GetWorkspacesWorkspaceOutput
+	ToGetWorkspacesWorkspaceOutputWithContext(context.Context) GetWorkspacesWorkspaceOutput
+}
+
+type GetWorkspacesWorkspaceArgs struct {
+	AccountId   pulumi.StringInput `pulumi:"accountId"`
+	Created     pulumi.IntInput    `pulumi:"created"`
+	Description pulumi.StringInput `pulumi:"description"`
+	Identifier  pulumi.StringInput `pulumi:"identifier"`
+	Name        pulumi.StringInput `pulumi:"name"`
+	OrgId       pulumi.StringInput `pulumi:"orgId"`
+	ProjectId   pulumi.StringInput `pulumi:"projectId"`
+	Status      pulumi.StringInput `pulumi:"status"`
+	Updated     pulumi.IntInput    `pulumi:"updated"`
+}
+
+func (GetWorkspacesWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspacesWorkspace)(nil)).Elem()
+}
+
+func (i GetWorkspacesWorkspaceArgs) ToGetWorkspacesWorkspaceOutput() GetWorkspacesWorkspaceOutput {
+	return i.ToGetWorkspacesWorkspaceOutputWithContext(context.Background())
+}
+
+func (i GetWorkspacesWorkspaceArgs) ToGetWorkspacesWorkspaceOutputWithContext(ctx context.Context) GetWorkspacesWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspacesWorkspaceOutput)
+}
+
+// GetWorkspacesWorkspaceArrayInput is an input type that accepts GetWorkspacesWorkspaceArray and GetWorkspacesWorkspaceArrayOutput values.
+// You can construct a concrete instance of `GetWorkspacesWorkspaceArrayInput` via:
+//
+//	GetWorkspacesWorkspaceArray{ GetWorkspacesWorkspaceArgs{...} }
+type GetWorkspacesWorkspaceArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkspacesWorkspaceArrayOutput() GetWorkspacesWorkspaceArrayOutput
+	ToGetWorkspacesWorkspaceArrayOutputWithContext(context.Context) GetWorkspacesWorkspaceArrayOutput
+}
+
+type GetWorkspacesWorkspaceArray []GetWorkspacesWorkspaceInput
+
+func (GetWorkspacesWorkspaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkspacesWorkspace)(nil)).Elem()
+}
+
+func (i GetWorkspacesWorkspaceArray) ToGetWorkspacesWorkspaceArrayOutput() GetWorkspacesWorkspaceArrayOutput {
+	return i.ToGetWorkspacesWorkspaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkspacesWorkspaceArray) ToGetWorkspacesWorkspaceArrayOutputWithContext(ctx context.Context) GetWorkspacesWorkspaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspacesWorkspaceArrayOutput)
+}
+
+type GetWorkspacesWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspacesWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspacesWorkspace)(nil)).Elem()
+}
+
+func (o GetWorkspacesWorkspaceOutput) ToGetWorkspacesWorkspaceOutput() GetWorkspacesWorkspaceOutput {
+	return o
+}
+
+func (o GetWorkspacesWorkspaceOutput) ToGetWorkspacesWorkspaceOutputWithContext(ctx context.Context) GetWorkspacesWorkspaceOutput {
+	return o
+}
+
+func (o GetWorkspacesWorkspaceOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+func (o GetWorkspacesWorkspaceOutput) Created() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkspacesWorkspace) int { return v.Created }).(pulumi.IntOutput)
+}
+
+func (o GetWorkspacesWorkspaceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetWorkspacesWorkspaceOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+func (o GetWorkspacesWorkspaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetWorkspacesWorkspaceOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+func (o GetWorkspacesWorkspaceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o GetWorkspacesWorkspaceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspacesWorkspace) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetWorkspacesWorkspaceOutput) Updated() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkspacesWorkspace) int { return v.Updated }).(pulumi.IntOutput)
+}
+
+type GetWorkspacesWorkspaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspacesWorkspaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkspacesWorkspace)(nil)).Elem()
+}
+
+func (o GetWorkspacesWorkspaceArrayOutput) ToGetWorkspacesWorkspaceArrayOutput() GetWorkspacesWorkspaceArrayOutput {
+	return o
+}
+
+func (o GetWorkspacesWorkspaceArrayOutput) ToGetWorkspacesWorkspaceArrayOutputWithContext(ctx context.Context) GetWorkspacesWorkspaceArrayOutput {
+	return o
+}
+
+func (o GetWorkspacesWorkspaceArrayOutput) Index(i pulumi.IntInput) GetWorkspacesWorkspaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkspacesWorkspace {
+		return vs[0].([]GetWorkspacesWorkspace)[vs[1].(int)]
+	}).(GetWorkspacesWorkspaceOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs{})
@@ -55194,6 +55363,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspacesWorkspaceInput)(nil)).Elem(), GetWorkspacesWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspacesWorkspaceArrayInput)(nil)).Elem(), GetWorkspacesWorkspaceArray{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedOutput{})
@@ -55957,4 +56128,6 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkspaceTerraformVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceTerraformVariableFileOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceTerraformVariableFileArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkspacesWorkspaceOutput{})
+	pulumi.RegisterOutputType(GetWorkspacesWorkspaceArrayOutput{})
 }

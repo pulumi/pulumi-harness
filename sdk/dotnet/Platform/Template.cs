@@ -68,7 +68,7 @@ namespace Pulumi.Harness.Platform
         public Output<Outputs.TemplateGitImportDetails?> GitImportDetails { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+        /// Unique identifier of the resource
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.TemplateGitImportDetailsArgs>? GitImportDetails { get; set; }
 
         /// <summary>
-        /// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+        /// Unique identifier of the resource
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
@@ -309,7 +309,7 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.TemplateGitImportDetailsGetArgs>? GitImportDetails { get; set; }
 
         /// <summary>
-        /// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+        /// Unique identifier of the resource
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }

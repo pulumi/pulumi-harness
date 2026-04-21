@@ -1752,6 +1752,1740 @@ export namespace autostopping {
 }
 
 export namespace chaos {
+    export interface ActionTemplateContainerAction {
+        /**
+         * Annotations to apply to the container pod.
+         */
+        annotations?: {[key: string]: string};
+        /**
+         * Arguments to pass to the container command.
+         */
+        args?: string;
+        /**
+         * Command to run in the container.
+         */
+        commands?: string[];
+        /**
+         * Environment variables for the container.
+         */
+        envs?: outputs.chaos.ActionTemplateContainerActionEnv[];
+        /**
+         * Use host IPC namespace.
+         */
+        hostIpc?: boolean;
+        /**
+         * Use host network namespace.
+         */
+        hostNetwork?: boolean;
+        /**
+         * Use host PID namespace.
+         */
+        hostPid?: boolean;
+        /**
+         * Container image to use (e.g., 'busybox:latest').
+         */
+        image: string;
+        /**
+         * Image pull policy (Always, IfNotPresent, Never). Supports runtime inputs like <+input>.allowedValues(...).
+         */
+        imagePullPolicy?: string;
+        /**
+         * List of image pull secrets for private registries.
+         */
+        imagePullSecrets?: string[];
+        /**
+         * Labels to apply to the container pod.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * Kubernetes namespace for the container.
+         */
+        namespace?: string;
+        /**
+         * Node selector for pod scheduling.
+         */
+        nodeSelector?: {[key: string]: string};
+        /**
+         * Resource requirements for the container.
+         */
+        resources?: outputs.chaos.ActionTemplateContainerActionResources;
+        /**
+         * Kubernetes service account name.
+         */
+        serviceAccountName?: string;
+        /**
+         * Tolerations for pod scheduling on tainted nodes.
+         */
+        tolerations?: outputs.chaos.ActionTemplateContainerActionToleration[];
+        /**
+         * Volume mounts for the container.
+         */
+        volumeMounts?: outputs.chaos.ActionTemplateContainerActionVolumeMount[];
+        /**
+         * Volumes to attach to the pod.
+         */
+        volumes?: outputs.chaos.ActionTemplateContainerActionVolume[];
+    }
+
+    export interface ActionTemplateContainerActionEnv {
+        /**
+         * Environment variable name.
+         */
+        name: string;
+        /**
+         * Environment variable value.
+         */
+        value?: string;
+    }
+
+    export interface ActionTemplateContainerActionResources {
+        /**
+         * Resource limits.
+         */
+        limits?: {[key: string]: string};
+        /**
+         * Resource requests.
+         */
+        requests?: {[key: string]: string};
+    }
+
+    export interface ActionTemplateContainerActionToleration {
+        /**
+         * Taint effect (NoSchedule, PreferNoSchedule, NoExecute).
+         */
+        effect?: string;
+        /**
+         * Taint key to tolerate.
+         */
+        key?: string;
+        /**
+         * Operator (Exists, Equal).
+         */
+        operator?: string;
+        /**
+         * Toleration seconds for NoExecute effect.
+         */
+        tolerationSeconds?: number;
+        /**
+         * Taint value to tolerate.
+         */
+        value?: string;
+    }
+
+    export interface ActionTemplateContainerActionVolume {
+        /**
+         * ConfigMap volume configuration.
+         */
+        configMap?: outputs.chaos.ActionTemplateContainerActionVolumeConfigMap;
+        /**
+         * EmptyDir volume configuration.
+         */
+        emptyDir?: outputs.chaos.ActionTemplateContainerActionVolumeEmptyDir;
+        /**
+         * HostPath volume configuration.
+         */
+        hostPath?: outputs.chaos.ActionTemplateContainerActionVolumeHostPath;
+        /**
+         * Volume name.
+         */
+        name: string;
+        /**
+         * PersistentVolumeClaim configuration.
+         */
+        persistentVolumeClaim?: outputs.chaos.ActionTemplateContainerActionVolumePersistentVolumeClaim;
+        /**
+         * Secret volume configuration.
+         */
+        secret?: outputs.chaos.ActionTemplateContainerActionVolumeSecret;
+    }
+
+    export interface ActionTemplateContainerActionVolumeConfigMap {
+        /**
+         * ConfigMap name.
+         */
+        name: string;
+        /**
+         * Whether the ConfigMap is optional.
+         */
+        optional?: boolean;
+    }
+
+    export interface ActionTemplateContainerActionVolumeEmptyDir {
+        /**
+         * Storage medium (empty string for default, Memory for tmpfs).
+         */
+        medium?: string;
+        /**
+         * Size limit (e.g., '1Gi').
+         */
+        sizeLimit?: string;
+    }
+
+    export interface ActionTemplateContainerActionVolumeHostPath {
+        /**
+         * Host path.
+         */
+        path: string;
+        /**
+         * Host path type (Directory, File, etc.).
+         */
+        type?: string;
+    }
+
+    export interface ActionTemplateContainerActionVolumeMount {
+        /**
+         * Path to mount the volume in the container.
+         */
+        mountPath: string;
+        /**
+         * Volume name to mount.
+         */
+        name: string;
+        /**
+         * Mount as read-only.
+         */
+        readOnly?: boolean;
+        /**
+         * Sub-path within the volume.
+         */
+        subPath?: string;
+    }
+
+    export interface ActionTemplateContainerActionVolumePersistentVolumeClaim {
+        /**
+         * PVC name.
+         */
+        claimName: string;
+        /**
+         * Mount as read-only.
+         */
+        readOnly?: boolean;
+    }
+
+    export interface ActionTemplateContainerActionVolumeSecret {
+        /**
+         * Whether the Secret is optional.
+         */
+        optional?: boolean;
+        /**
+         * Secret name.
+         */
+        secretName: string;
+    }
+
+    export interface ActionTemplateCustomScriptAction {
+        /**
+         * Arguments to pass to the command.
+         */
+        args?: string[];
+        /**
+         * Command to execute (e.g., 'bash', 'python', 'sh').
+         */
+        command: string;
+        /**
+         * Environment variables for the script.
+         */
+        envs?: outputs.chaos.ActionTemplateCustomScriptActionEnv[];
+    }
+
+    export interface ActionTemplateCustomScriptActionEnv {
+        /**
+         * Environment variable name.
+         */
+        name: string;
+        /**
+         * Environment variable value.
+         */
+        value: string;
+    }
+
+    export interface ActionTemplateDelayAction {
+        /**
+         * Duration of the delay (e.g., '30s', '5m', '1h').
+         */
+        duration: string;
+    }
+
+    export interface ActionTemplateRunProperties {
+        /**
+         * Initial delay before action execution (e.g., '5s', '1m').
+         */
+        initialDelay?: string;
+        /**
+         * Interval between retries (e.g., '10s', '30s').
+         */
+        interval?: string;
+        /**
+         * Maximum number of retries.
+         */
+        maxRetries?: number;
+        /**
+         * Whether to stop on failure.
+         */
+        stopOnFailure?: boolean;
+        /**
+         * Timeout for action execution (e.g., '5m', '10m').
+         */
+        timeout?: string;
+        /**
+         * Verbosity level for logging.
+         */
+        verbosity?: string;
+    }
+
+    export interface ActionTemplateVariable {
+        /**
+         * Variable description.
+         */
+        description?: string;
+        /**
+         * Variable name.
+         */
+        name: string;
+        /**
+         * Whether the variable is required.
+         */
+        required?: boolean;
+        /**
+         * Variable type (e.g., 'string', 'number', 'boolean').
+         */
+        type?: string;
+        /**
+         * Variable value.
+         */
+        value: string;
+    }
+
+    export interface ExperimentTemplateDetail {
+        /**
+         * Hub reference where template resides
+         */
+        hubReference: string;
+        /**
+         * Template identity
+         */
+        identity: string;
+        /**
+         * Full template reference
+         */
+        reference: string;
+        /**
+         * Template revision used
+         */
+        revision: string;
+    }
+
+    export interface ExperimentTemplateSpec {
+        /**
+         * List of actions in the experiment
+         */
+        actions?: outputs.chaos.ExperimentTemplateSpecAction[];
+        /**
+         * Cleanup policy for experiment resources (retain, delete)
+         */
+        cleanupPolicy?: string;
+        /**
+         * List of faults in the experiment
+         */
+        faults?: outputs.chaos.ExperimentTemplateSpecFault[];
+        /**
+         * Infrastructure identifier (supports runtime input: <+input>)
+         */
+        infraId?: string;
+        /**
+         * Infrastructure type (Windows, Linux, CloudFoundry, Container, Kubernetes, KubernetesV2)
+         */
+        infraType: string;
+        /**
+         * List of probes in the experiment
+         */
+        probes?: outputs.chaos.ExperimentTemplateSpecProbe[];
+        /**
+         * Status check timeout configuration
+         */
+        statusCheckTimeouts?: outputs.chaos.ExperimentTemplateSpecStatusCheckTimeouts;
+        /**
+         * Workflow graph vertices defining execution order
+         */
+        vertices?: outputs.chaos.ExperimentTemplateSpecVertex[];
+    }
+
+    export interface ExperimentTemplateSpecAction {
+        /**
+         * Whether to continue on completion
+         */
+        continueOnCompletion?: boolean;
+        /**
+         * Action template identity
+         */
+        identity: string;
+        /**
+         * Infrastructure identifier for this action
+         */
+        infraId?: string;
+        /**
+         * Whether this is an enterprise action
+         */
+        isEnterprise?: boolean;
+        /**
+         * Action name
+         */
+        name: string;
+        /**
+         * Action template revision
+         */
+        revision?: number;
+        /**
+         * Variable values for the action
+         */
+        values?: outputs.chaos.ExperimentTemplateSpecActionValue[];
+    }
+
+    export interface ExperimentTemplateSpecActionValue {
+        /**
+         * Variable name
+         */
+        name: string;
+        /**
+         * Variable value (supports runtime input: <+input>)
+         */
+        value: string;
+    }
+
+    export interface ExperimentTemplateSpecFault {
+        /**
+         * Whether authentication is enabled
+         */
+        authEnabled?: boolean;
+        /**
+         * Fault template identity
+         */
+        identity: string;
+        /**
+         * Infrastructure identifier for this fault
+         */
+        infraId?: string;
+        /**
+         * Whether this is an enterprise fault
+         */
+        isEnterprise?: boolean;
+        /**
+         * Fault name
+         */
+        name: string;
+        /**
+         * Fault template revision
+         */
+        revision?: string;
+        /**
+         * Variable values for the fault
+         */
+        values?: outputs.chaos.ExperimentTemplateSpecFaultValue[];
+    }
+
+    export interface ExperimentTemplateSpecFaultValue {
+        /**
+         * Variable name
+         */
+        name: string;
+        /**
+         * Variable value (supports runtime input: <+input>)
+         */
+        value: string;
+    }
+
+    export interface ExperimentTemplateSpecProbe {
+        /**
+         * Probe execution conditions
+         */
+        conditions?: outputs.chaos.ExperimentTemplateSpecProbeCondition[];
+        /**
+         * Probe duration
+         */
+        duration?: string;
+        /**
+         * Whether to enable data collection
+         */
+        enableDataCollection?: boolean;
+        /**
+         * Probe template identity
+         */
+        identity: string;
+        /**
+         * Infrastructure identifier for this probe
+         */
+        infraId?: string;
+        /**
+         * Whether this is an enterprise probe
+         */
+        isEnterprise?: boolean;
+        /**
+         * Probe name
+         */
+        name: string;
+        /**
+         * Probe template revision
+         */
+        revision?: number;
+        /**
+         * Variable values for the probe
+         */
+        values?: outputs.chaos.ExperimentTemplateSpecProbeValue[];
+        /**
+         * Probe weightage for resilience score calculation
+         */
+        weightage?: number;
+    }
+
+    export interface ExperimentTemplateSpecProbeCondition {
+        /**
+         * When to execute the probe (onChaosStart, duringChaos, afterChaos)
+         */
+        executeUpon: string;
+    }
+
+    export interface ExperimentTemplateSpecProbeValue {
+        /**
+         * Variable name
+         */
+        name: string;
+        /**
+         * Variable value (supports runtime input: <+input>)
+         */
+        value: string;
+    }
+
+    export interface ExperimentTemplateSpecStatusCheckTimeouts {
+        /**
+         * Delay before status check (in seconds)
+         */
+        delay?: number;
+        /**
+         * Timeout for status check (in seconds)
+         */
+        timeout?: number;
+    }
+
+    export interface ExperimentTemplateSpecVertex {
+        /**
+         * End configuration for the vertex
+         */
+        end?: outputs.chaos.ExperimentTemplateSpecVertexEnd;
+        /**
+         * Vertex name
+         */
+        name: string;
+        /**
+         * Start configuration for the vertex
+         */
+        start?: outputs.chaos.ExperimentTemplateSpecVertexStart;
+    }
+
+    export interface ExperimentTemplateSpecVertexEnd {
+        /**
+         * Actions to execute at end
+         */
+        actions?: outputs.chaos.ExperimentTemplateSpecVertexEndAction[];
+        /**
+         * Faults to execute at end
+         */
+        faults?: outputs.chaos.ExperimentTemplateSpecVertexEndFault[];
+        /**
+         * Probes to execute at end
+         */
+        probes?: outputs.chaos.ExperimentTemplateSpecVertexEndProbe[];
+    }
+
+    export interface ExperimentTemplateSpecVertexEndAction {
+        /**
+         * Action name
+         */
+        name: string;
+    }
+
+    export interface ExperimentTemplateSpecVertexEndFault {
+        /**
+         * Fault name
+         */
+        name: string;
+    }
+
+    export interface ExperimentTemplateSpecVertexEndProbe {
+        /**
+         * Probe name
+         */
+        name: string;
+    }
+
+    export interface ExperimentTemplateSpecVertexStart {
+        /**
+         * Actions to execute at start
+         */
+        actions?: outputs.chaos.ExperimentTemplateSpecVertexStartAction[];
+        /**
+         * Faults to execute at start
+         */
+        faults?: outputs.chaos.ExperimentTemplateSpecVertexStartFault[];
+        /**
+         * Probes to execute at start
+         */
+        probes?: outputs.chaos.ExperimentTemplateSpecVertexStartProbe[];
+    }
+
+    export interface ExperimentTemplateSpecVertexStartAction {
+        /**
+         * Action name
+         */
+        name: string;
+    }
+
+    export interface ExperimentTemplateSpecVertexStartFault {
+        /**
+         * Fault name
+         */
+        name: string;
+    }
+
+    export interface ExperimentTemplateSpecVertexStartProbe {
+        /**
+         * Probe name
+         */
+        name: string;
+    }
+
+    export interface FaultTemplateLink {
+        /**
+         * Link name
+         */
+        name: string;
+        /**
+         * Link URL
+         */
+        url: string;
+    }
+
+    export interface FaultTemplateSpec {
+        /**
+         * Chaos configuration
+         */
+        chaos?: outputs.chaos.FaultTemplateSpecChaos;
+        /**
+         * Target configuration
+         */
+        target?: outputs.chaos.FaultTemplateSpecTarget;
+    }
+
+    export interface FaultTemplateSpecChaos {
+        /**
+         * Authentication configuration
+         */
+        auth?: outputs.chaos.FaultTemplateSpecChaosAuth;
+        /**
+         * Name of the fault. Note: API may return a default value (e.g., 'byoc-injector') instead of the configured value due to API limitations.
+         */
+        faultName?: string;
+        /**
+         * Kubernetes-specific chaos configuration
+         */
+        kubernetes?: outputs.chaos.FaultTemplateSpecChaosKubernetes;
+        /**
+         * Fault parameters
+         */
+        params?: outputs.chaos.FaultTemplateSpecChaosParam[];
+        /**
+         * Status check timeout configuration
+         */
+        statusCheckTimeouts?: outputs.chaos.FaultTemplateSpecChaosStatusCheckTimeouts;
+        /**
+         * TLS configuration
+         */
+        tls?: outputs.chaos.FaultTemplateSpecChaosTls;
+    }
+
+    export interface FaultTemplateSpecChaosAuth {
+        /**
+         * AWS authentication
+         */
+        aws?: outputs.chaos.FaultTemplateSpecChaosAuthAws;
+        /**
+         * Azure authentication
+         */
+        azure?: outputs.chaos.FaultTemplateSpecChaosAuthAzure;
+        /**
+         * GCP authentication
+         */
+        gcp?: outputs.chaos.FaultTemplateSpecChaosAuthGcp;
+        /**
+         * Redis authentication
+         */
+        redis?: outputs.chaos.FaultTemplateSpecChaosAuthRedis;
+        /**
+         * SSH authentication
+         */
+        ssh?: outputs.chaos.FaultTemplateSpecChaosAuthSsh;
+        /**
+         * VMware authentication
+         */
+        vmware?: outputs.chaos.FaultTemplateSpecChaosAuthVmware;
+    }
+
+    export interface FaultTemplateSpecChaosAuthAws {
+        /**
+         * AWS access key ID
+         */
+        accessKeyId: string;
+        /**
+         * AWS region
+         */
+        region: string;
+        /**
+         * AWS secret access key
+         */
+        secretAccessKey: string;
+    }
+
+    export interface FaultTemplateSpecChaosAuthAzure {
+        /**
+         * Azure client ID
+         */
+        clientId: string;
+        /**
+         * Azure client secret
+         */
+        clientSecret: string;
+        /**
+         * Azure subscription ID
+         */
+        subscriptionId: string;
+        /**
+         * Azure tenant ID
+         */
+        tenantId: string;
+    }
+
+    export interface FaultTemplateSpecChaosAuthGcp {
+        /**
+         * GCP project ID
+         */
+        projectId: string;
+        /**
+         * GCP service account key (JSON)
+         */
+        serviceAccountKey: string;
+    }
+
+    export interface FaultTemplateSpecChaosAuthRedis {
+        /**
+         * Redis password
+         */
+        password: string;
+        /**
+         * Redis username
+         */
+        username?: string;
+    }
+
+    export interface FaultTemplateSpecChaosAuthSsh {
+        /**
+         * SSH password
+         */
+        password?: string;
+        /**
+         * SSH private key
+         */
+        privateKey?: string;
+        /**
+         * SSH username
+         */
+        username: string;
+    }
+
+    export interface FaultTemplateSpecChaosAuthVmware {
+        /**
+         * VMware password
+         */
+        password: string;
+        /**
+         * VMware username
+         */
+        username: string;
+        /**
+         * vCenter server address
+         */
+        vcenterServer: string;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetes {
+        /**
+         * Pod annotations
+         */
+        annotations?: {[key: string]: string};
+        /**
+         * Container arguments
+         */
+        args?: string[];
+        /**
+         * Container command
+         */
+        commands?: string[];
+        /**
+         * ConfigMap volumes
+         */
+        configMaps?: outputs.chaos.FaultTemplateSpecChaosKubernetesConfigMap[];
+        /**
+         * Container security context
+         */
+        containerSecurityContext?: outputs.chaos.FaultTemplateSpecChaosKubernetesContainerSecurityContext;
+        /**
+         * Environment variables
+         */
+        envs?: outputs.chaos.FaultTemplateSpecChaosKubernetesEnv[];
+        /**
+         * Host path volumes
+         */
+        hostFileVolumes?: outputs.chaos.FaultTemplateSpecChaosKubernetesHostFileVolume[];
+        /**
+         * Use host IPC namespace
+         */
+        hostIpc?: boolean;
+        /**
+         * Use host network namespace
+         */
+        hostNetwork?: boolean;
+        /**
+         * Use host PID namespace
+         */
+        hostPid?: boolean;
+        /**
+         * Container image for chaos experiment
+         */
+        image?: string;
+        /**
+         * Image pull policy
+         */
+        imagePullPolicy?: string;
+        /**
+         * Image pull secrets
+         */
+        imagePullSecrets?: string[];
+        /**
+         * Pod labels
+         */
+        labels?: {[key: string]: string};
+        /**
+         * Node selector for pod scheduling
+         */
+        nodeSelector?: {[key: string]: string};
+        /**
+         * Pod security context
+         */
+        podSecurityContext?: outputs.chaos.FaultTemplateSpecChaosKubernetesPodSecurityContext;
+        /**
+         * Resource requirements
+         */
+        resources?: outputs.chaos.FaultTemplateSpecChaosKubernetesResources;
+        /**
+         * Secret volumes
+         */
+        secrets?: outputs.chaos.FaultTemplateSpecChaosKubernetesSecret[];
+        /**
+         * Pod tolerations
+         */
+        tolerations?: outputs.chaos.FaultTemplateSpecChaosKubernetesToleration[];
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesConfigMap {
+        /**
+         * Mount mode (0-3)
+         */
+        mountMode?: number;
+        /**
+         * Mount path
+         */
+        mountPath: string;
+        /**
+         * ConfigMap name
+         */
+        name: string;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesContainerSecurityContext {
+        /**
+         * Allow privilege escalation
+         */
+        allowPrivilegeEscalation?: boolean;
+        /**
+         * Linux capabilities
+         */
+        capabilities?: outputs.chaos.FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilities;
+        /**
+         * Run container in privileged mode
+         */
+        privileged?: boolean;
+        /**
+         * Mount root filesystem as read-only
+         */
+        readOnlyRootFilesystem?: boolean;
+        /**
+         * Group ID to run as
+         */
+        runAsGroup?: number;
+        /**
+         * Run as non-root user
+         */
+        runAsNonRoot?: boolean;
+        /**
+         * User ID to run as
+         */
+        runAsUser?: number;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilities {
+        /**
+         * Capabilities to add
+         */
+        adds?: string[];
+        /**
+         * Capabilities to drop
+         */
+        drops?: string[];
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesEnv {
+        /**
+         * Environment variable name
+         */
+        name: string;
+        /**
+         * Environment variable value
+         */
+        value?: string;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesHostFileVolume {
+        /**
+         * Host path on the node
+         */
+        hostPath?: string;
+        /**
+         * Mount path
+         */
+        mountPath: string;
+        /**
+         * Volume name
+         */
+        name: string;
+        /**
+         * Host path type (e.g., Directory, File, BlockDevice, CharDevice)
+         */
+        type?: string;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesPodSecurityContext {
+        /**
+         * Filesystem group ID
+         */
+        fsGroup?: number;
+        /**
+         * Group ID to run as
+         */
+        runAsGroup?: number;
+        /**
+         * Run as non-root user
+         */
+        runAsNonRoot?: boolean;
+        /**
+         * User ID to run as
+         */
+        runAsUser?: number;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesResources {
+        /**
+         * Resource limits
+         */
+        limits?: {[key: string]: string};
+        /**
+         * Resource requests
+         */
+        requests?: {[key: string]: string};
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesSecret {
+        /**
+         * Mount mode (0-3)
+         */
+        mountMode?: number;
+        /**
+         * Mount path
+         */
+        mountPath: string;
+        /**
+         * Secret name
+         */
+        secretName: string;
+    }
+
+    export interface FaultTemplateSpecChaosKubernetesToleration {
+        /**
+         * Toleration effect (NoSchedule, PreferNoSchedule, NoExecute)
+         */
+        effect?: string;
+        /**
+         * Toleration key
+         */
+        key?: string;
+        /**
+         * Toleration operator (Equal, Exists)
+         */
+        operator?: string;
+        /**
+         * Toleration seconds
+         */
+        tolerationSeconds?: number;
+        /**
+         * Toleration value
+         */
+        value?: string;
+    }
+
+    export interface FaultTemplateSpecChaosParam {
+        /**
+         * Parameter name
+         */
+        name: string;
+        /**
+         * Parameter value
+         */
+        value: string;
+    }
+
+    export interface FaultTemplateSpecChaosStatusCheckTimeouts {
+        /**
+         * Delay before status check (seconds)
+         */
+        delay?: number;
+        /**
+         * Timeout for status check (seconds)
+         */
+        timeout?: number;
+    }
+
+    export interface FaultTemplateSpecChaosTls {
+        /**
+         * CA certificate
+         */
+        caCertificate?: string;
+        /**
+         * Client certificate
+         */
+        clientCertificate?: string;
+        /**
+         * Client key
+         */
+        clientKey?: string;
+    }
+
+    export interface FaultTemplateSpecTarget {
+        /**
+         * Application target configuration
+         */
+        application?: outputs.chaos.FaultTemplateSpecTargetApplication;
+        /**
+         * Kubernetes target configuration
+         */
+        kubernetes?: outputs.chaos.FaultTemplateSpecTargetKubernete[];
+    }
+
+    export interface FaultTemplateSpecTargetApplication {
+        /**
+         * Application kind
+         */
+        appKind?: string;
+        /**
+         * Application label
+         */
+        appLabel?: string;
+        /**
+         * Application namespace
+         */
+        appNs?: string;
+    }
+
+    export interface FaultTemplateSpecTargetKubernete {
+        /**
+         * Annotation check expression
+         */
+        annotationCheck?: string;
+        /**
+         * Annotation selectors
+         */
+        annotations?: {[key: string]: string};
+        /**
+         * Resource kind (e.g., deployment, pod)
+         */
+        kind?: string;
+        /**
+         * Label selectors
+         */
+        labels?: {[key: string]: string};
+        /**
+         * Specific resource names
+         */
+        names?: string[];
+        /**
+         * Target namespace
+         */
+        namespace?: string;
+    }
+
+    export interface FaultTemplateVariable {
+        /**
+         * Variable description
+         */
+        description?: string;
+        /**
+         * Variable name
+         */
+        name: string;
+        /**
+         * Whether the variable is required
+         */
+        required?: boolean;
+        /**
+         * Variable type
+         */
+        type?: string;
+        /**
+         * Variable value
+         */
+        value?: string;
+    }
+
+    export interface GetActionTemplateContainerAction {
+        /**
+         * Annotations to apply to the container pod.
+         */
+        annotations?: {[key: string]: string};
+        /**
+         * Arguments to pass to the container command.
+         */
+        args?: string;
+        /**
+         * Command to run in the container.
+         */
+        commands?: string[];
+        /**
+         * Environment variables for the container.
+         */
+        envs?: outputs.chaos.GetActionTemplateContainerActionEnv[];
+        /**
+         * Use host IPC namespace.
+         */
+        hostIpc?: boolean;
+        /**
+         * Use host network namespace.
+         */
+        hostNetwork?: boolean;
+        /**
+         * Use host PID namespace.
+         */
+        hostPid?: boolean;
+        /**
+         * Container image to use (e.g., 'busybox:latest').
+         */
+        image: string;
+        /**
+         * Image pull policy (Always, IfNotPresent, Never). Supports runtime inputs like <+input>.allowedValues(...).
+         */
+        imagePullPolicy?: string;
+        /**
+         * List of image pull secrets for private registries.
+         */
+        imagePullSecrets?: string[];
+        /**
+         * Labels to apply to the container pod.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * Kubernetes namespace for the container.
+         */
+        namespace?: string;
+        /**
+         * Node selector for pod scheduling.
+         */
+        nodeSelector?: {[key: string]: string};
+        /**
+         * Resource requirements for the container.
+         */
+        resources?: outputs.chaos.GetActionTemplateContainerActionResources;
+        /**
+         * Kubernetes service account name.
+         */
+        serviceAccountName?: string;
+        /**
+         * Tolerations for pod scheduling on tainted nodes.
+         */
+        tolerations?: outputs.chaos.GetActionTemplateContainerActionToleration[];
+        /**
+         * Volume mounts for the container.
+         */
+        volumeMounts?: outputs.chaos.GetActionTemplateContainerActionVolumeMount[];
+        /**
+         * Volumes to attach to the pod.
+         */
+        volumes?: outputs.chaos.GetActionTemplateContainerActionVolume[];
+    }
+
+    export interface GetActionTemplateContainerActionEnv {
+        /**
+         * Environment variable name.
+         */
+        name: string;
+        /**
+         * Environment variable value.
+         */
+        value?: string;
+    }
+
+    export interface GetActionTemplateContainerActionResources {
+        /**
+         * Resource limits.
+         */
+        limits?: {[key: string]: string};
+        /**
+         * Resource requests.
+         */
+        requests?: {[key: string]: string};
+    }
+
+    export interface GetActionTemplateContainerActionToleration {
+        /**
+         * Taint effect (NoSchedule, PreferNoSchedule, NoExecute).
+         */
+        effect?: string;
+        /**
+         * Taint key to tolerate.
+         */
+        key?: string;
+        /**
+         * Operator (Exists, Equal).
+         */
+        operator?: string;
+        /**
+         * Toleration seconds for NoExecute effect.
+         */
+        tolerationSeconds?: number;
+        /**
+         * Taint value to tolerate.
+         */
+        value?: string;
+    }
+
+    export interface GetActionTemplateContainerActionVolume {
+        /**
+         * ConfigMap volume configuration.
+         */
+        configMap?: outputs.chaos.GetActionTemplateContainerActionVolumeConfigMap;
+        /**
+         * EmptyDir volume configuration.
+         */
+        emptyDir?: outputs.chaos.GetActionTemplateContainerActionVolumeEmptyDir;
+        /**
+         * HostPath volume configuration.
+         */
+        hostPath?: outputs.chaos.GetActionTemplateContainerActionVolumeHostPath;
+        /**
+         * Volume name.
+         */
+        name: string;
+        /**
+         * PersistentVolumeClaim configuration.
+         */
+        persistentVolumeClaim?: outputs.chaos.GetActionTemplateContainerActionVolumePersistentVolumeClaim;
+        /**
+         * Secret volume configuration.
+         */
+        secret?: outputs.chaos.GetActionTemplateContainerActionVolumeSecret;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeConfigMap {
+        /**
+         * ConfigMap name.
+         */
+        name: string;
+        /**
+         * Whether the ConfigMap is optional.
+         */
+        optional?: boolean;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeEmptyDir {
+        /**
+         * Storage medium (empty string for default, Memory for tmpfs).
+         */
+        medium?: string;
+        /**
+         * Size limit (e.g., '1Gi').
+         */
+        sizeLimit?: string;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeHostPath {
+        /**
+         * Host path.
+         */
+        path: string;
+        /**
+         * Host path type (Directory, File, etc.).
+         */
+        type?: string;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeMount {
+        /**
+         * Path to mount the volume in the container.
+         */
+        mountPath: string;
+        /**
+         * Volume name to mount.
+         */
+        name: string;
+        /**
+         * Mount as read-only.
+         */
+        readOnly?: boolean;
+        /**
+         * Sub-path within the volume.
+         */
+        subPath?: string;
+    }
+
+    export interface GetActionTemplateContainerActionVolumePersistentVolumeClaim {
+        /**
+         * PVC name.
+         */
+        claimName: string;
+        /**
+         * Mount as read-only.
+         */
+        readOnly?: boolean;
+    }
+
+    export interface GetActionTemplateContainerActionVolumeSecret {
+        /**
+         * Whether the Secret is optional.
+         */
+        optional?: boolean;
+        /**
+         * Secret name.
+         */
+        secretName: string;
+    }
+
+    export interface GetActionTemplateCustomScriptAction {
+        /**
+         * Arguments to pass to the command.
+         */
+        args?: string[];
+        /**
+         * Command to execute (e.g., 'bash', 'python', 'sh').
+         */
+        command: string;
+        /**
+         * Environment variables for the script.
+         */
+        envs?: outputs.chaos.GetActionTemplateCustomScriptActionEnv[];
+    }
+
+    export interface GetActionTemplateCustomScriptActionEnv {
+        /**
+         * Environment variable name.
+         */
+        name: string;
+        /**
+         * Environment variable value.
+         */
+        value: string;
+    }
+
+    export interface GetActionTemplateDelayAction {
+        /**
+         * Duration of the delay (e.g., '30s', '5m', '1h').
+         */
+        duration: string;
+    }
+
+    export interface GetActionTemplateRunProperties {
+        /**
+         * Initial delay before action execution (e.g., '5s', '1m').
+         */
+        initialDelay?: string;
+        /**
+         * Interval between retries (e.g., '10s', '30s').
+         */
+        interval?: string;
+        /**
+         * Maximum number of retries.
+         */
+        maxRetries?: number;
+        /**
+         * Whether to stop on failure.
+         */
+        stopOnFailure?: boolean;
+        /**
+         * Timeout for action execution (e.g., '5m', '10m').
+         */
+        timeout?: string;
+        /**
+         * Verbosity level for logging.
+         */
+        verbosity?: string;
+    }
+
+    export interface GetActionTemplateVariable {
+        /**
+         * Variable description.
+         */
+        description?: string;
+        /**
+         * Variable name.
+         */
+        name: string;
+        /**
+         * Whether the variable is required.
+         */
+        required?: boolean;
+        /**
+         * Variable type (e.g., 'string', 'number', 'boolean').
+         */
+        type?: string;
+        /**
+         * Variable value.
+         */
+        value: string;
+    }
+
+    export interface GetExperimentTemplateDetail {
+        /**
+         * Hub reference
+         */
+        hubReference: string;
+        /**
+         * Template identity
+         */
+        identity: string;
+        /**
+         * Template reference
+         */
+        reference: string;
+        /**
+         * Template revision
+         */
+        revision: string;
+    }
+
+    export interface GetExperimentTemplateSpec {
+        /**
+         * List of actions in the experiment
+         */
+        actions: outputs.chaos.GetExperimentTemplateSpecAction[];
+        /**
+         * Cleanup policy for experiment resources
+         */
+        cleanupPolicy: string;
+        /**
+         * List of faults in the experiment
+         */
+        faults: outputs.chaos.GetExperimentTemplateSpecFault[];
+        /**
+         * Infrastructure identifier
+         */
+        infraId: string;
+        /**
+         * Infrastructure type
+         */
+        infraType: string;
+        /**
+         * List of probes in the experiment
+         */
+        probes: outputs.chaos.GetExperimentTemplateSpecProbe[];
+        /**
+         * Status check timeout configuration
+         */
+        statusCheckTimeouts: outputs.chaos.GetExperimentTemplateSpecStatusCheckTimeout[];
+        /**
+         * Workflow graph vertices defining execution order
+         */
+        vertices: outputs.chaos.GetExperimentTemplateSpecVertex[];
+    }
+
+    export interface GetExperimentTemplateSpecAction {
+        /**
+         * Whether to continue on completion
+         */
+        continueOnCompletion: boolean;
+        /**
+         * Action template identity
+         */
+        identity: string;
+        /**
+         * Infrastructure identifier for this action
+         */
+        infraId: string;
+        /**
+         * Whether this is an enterprise action
+         */
+        isEnterprise: boolean;
+        /**
+         * Action name
+         */
+        name: string;
+        /**
+         * Action template revision
+         */
+        revision: number;
+        /**
+         * Variable values for the action
+         */
+        values: outputs.chaos.GetExperimentTemplateSpecActionValue[];
+    }
+
+    export interface GetExperimentTemplateSpecActionValue {
+        /**
+         * Variable name
+         */
+        name: string;
+        /**
+         * Variable value
+         */
+        value: string;
+    }
+
+    export interface GetExperimentTemplateSpecFault {
+        /**
+         * Whether authentication is enabled
+         */
+        authEnabled: boolean;
+        /**
+         * Fault template identity
+         */
+        identity: string;
+        /**
+         * Infrastructure identifier for this fault
+         */
+        infraId: string;
+        /**
+         * Whether this is an enterprise fault
+         */
+        isEnterprise: boolean;
+        /**
+         * Fault name
+         */
+        name: string;
+        /**
+         * Fault template revision
+         */
+        revision: string;
+        /**
+         * Variable values for the fault
+         */
+        values: outputs.chaos.GetExperimentTemplateSpecFaultValue[];
+    }
+
+    export interface GetExperimentTemplateSpecFaultValue {
+        /**
+         * Variable name
+         */
+        name: string;
+        /**
+         * Variable value
+         */
+        value: string;
+    }
+
+    export interface GetExperimentTemplateSpecProbe {
+        /**
+         * Probe execution conditions
+         */
+        conditions: outputs.chaos.GetExperimentTemplateSpecProbeCondition[];
+        /**
+         * Probe duration
+         */
+        duration: string;
+        /**
+         * Whether to enable data collection
+         */
+        enableDataCollection: boolean;
+        /**
+         * Probe template identity
+         */
+        identity: string;
+        /**
+         * Infrastructure identifier for this probe
+         */
+        infraId: string;
+        /**
+         * Whether this is an enterprise probe
+         */
+        isEnterprise: boolean;
+        /**
+         * Probe name
+         */
+        name: string;
+        /**
+         * Probe template revision
+         */
+        revision: number;
+        /**
+         * Variable values for the probe
+         */
+        values: outputs.chaos.GetExperimentTemplateSpecProbeValue[];
+        /**
+         * Probe weightage for resilience score calculation
+         */
+        weightage: number;
+    }
+
+    export interface GetExperimentTemplateSpecProbeCondition {
+        /**
+         * When to execute the probe
+         */
+        executeUpon: string;
+    }
+
+    export interface GetExperimentTemplateSpecProbeValue {
+        /**
+         * Variable name
+         */
+        name: string;
+        /**
+         * Variable value
+         */
+        value: string;
+    }
+
+    export interface GetExperimentTemplateSpecStatusCheckTimeout {
+        /**
+         * Delay before status check (in seconds)
+         */
+        delay: number;
+        /**
+         * Timeout for status check (in seconds)
+         */
+        timeout: number;
+    }
+
+    export interface GetExperimentTemplateSpecVertex {
+        /**
+         * End configuration for the vertex
+         */
+        ends: outputs.chaos.GetExperimentTemplateSpecVertexEnd[];
+        /**
+         * Vertex name
+         */
+        name: string;
+        /**
+         * Start configuration for the vertex
+         */
+        starts: outputs.chaos.GetExperimentTemplateSpecVertexStart[];
+    }
+
+    export interface GetExperimentTemplateSpecVertexEnd {
+        /**
+         * Actions to execute at end
+         */
+        actions: outputs.chaos.GetExperimentTemplateSpecVertexEndAction[];
+        /**
+         * Faults to execute at end
+         */
+        faults: outputs.chaos.GetExperimentTemplateSpecVertexEndFault[];
+        /**
+         * Probes to execute at end
+         */
+        probes: outputs.chaos.GetExperimentTemplateSpecVertexEndProbe[];
+    }
+
+    export interface GetExperimentTemplateSpecVertexEndAction {
+        /**
+         * Action name
+         */
+        name: string;
+    }
+
+    export interface GetExperimentTemplateSpecVertexEndFault {
+        /**
+         * Fault name
+         */
+        name: string;
+    }
+
+    export interface GetExperimentTemplateSpecVertexEndProbe {
+        /**
+         * Probe name
+         */
+        name: string;
+    }
+
+    export interface GetExperimentTemplateSpecVertexStart {
+        /**
+         * Actions to execute at start
+         */
+        actions: outputs.chaos.GetExperimentTemplateSpecVertexStartAction[];
+        /**
+         * Faults to execute at start
+         */
+        faults: outputs.chaos.GetExperimentTemplateSpecVertexStartFault[];
+        /**
+         * Probes to execute at start
+         */
+        probes: outputs.chaos.GetExperimentTemplateSpecVertexStartProbe[];
+    }
+
+    export interface GetExperimentTemplateSpecVertexStartAction {
+        /**
+         * Action name
+         */
+        name: string;
+    }
+
+    export interface GetExperimentTemplateSpecVertexStartFault {
+        /**
+         * Fault name
+         */
+        name: string;
+    }
+
+    export interface GetExperimentTemplateSpecVertexStartProbe {
+        /**
+         * Probe name
+         */
+        name: string;
+    }
+
+    export interface GetFaultTemplateVariable {
+        /**
+         * Variable description
+         */
+        description: string;
+        /**
+         * Variable name
+         */
+        name: string;
+        /**
+         * Whether the variable is required
+         */
+        required: boolean;
+        /**
+         * Variable type
+         */
+        type: string;
+        /**
+         * Variable value
+         */
+        value: string;
+    }
+
     export interface GetImageRegistryCustomImage {
         ddcr: string;
         ddcrFault: string;
@@ -1941,6 +3675,86 @@ export namespace chaos {
          * Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
          */
         subPathExpr?: string;
+    }
+
+    export interface GetProbeTemplateCmdProbe {
+        command: string;
+        /**
+         * Comparator configuration.
+         */
+        comparators: outputs.chaos.GetProbeTemplateCmdProbeComparator[];
+        /**
+         * Environment variables.
+         */
+        envs: outputs.chaos.GetProbeTemplateCmdProbeEnv[];
+        source: string;
+    }
+
+    export interface GetProbeTemplateCmdProbeComparator {
+        criteria: string;
+        type: string;
+        value: string;
+    }
+
+    export interface GetProbeTemplateCmdProbeEnv {
+        name: string;
+        value: string;
+    }
+
+    export interface GetProbeTemplateHttpProbe {
+        /**
+         * HTTP method configuration with GET or POST.
+         */
+        methods: outputs.chaos.GetProbeTemplateHttpProbeMethod[];
+        url: string;
+    }
+
+    export interface GetProbeTemplateHttpProbeMethod {
+        /**
+         * GET method configuration.
+         */
+        gets: outputs.chaos.GetProbeTemplateHttpProbeMethodGet[];
+        /**
+         * POST method configuration.
+         */
+        posts: outputs.chaos.GetProbeTemplateHttpProbeMethodPost[];
+    }
+
+    export interface GetProbeTemplateHttpProbeMethodGet {
+        criteria: string;
+        responseBody: string;
+        responseCode: string;
+    }
+
+    export interface GetProbeTemplateHttpProbeMethodPost {
+        body: string;
+        bodyPath: string;
+        contentType: string;
+        criteria: string;
+        responseBody: string;
+        responseCode: string;
+    }
+
+    export interface GetProbeTemplateK8sProbe {
+        fieldSelector: string;
+        labelSelector: string;
+        namespace: string;
+        operation: string;
+        resource: string;
+        version: string;
+    }
+
+    export interface GetProbeTemplateRunProperty {
+        interval: string;
+        stopOnFailure: boolean;
+        timeout: string;
+    }
+
+    export interface GetProbeTemplateVariable {
+        name: string;
+        required: boolean;
+        type: string;
+        value: string;
     }
 
     export interface GetSecurityGovernanceConditionFaultSpec {
@@ -2262,6 +4076,487 @@ export namespace chaos {
          * Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
          */
         subPathExpr?: string;
+    }
+
+    export interface ProbeTemplateApmProbe {
+        /**
+         * APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+         */
+        apmType: string;
+        /**
+         * AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+         */
+        appDynamicsInputs?: outputs.chaos.ProbeTemplateApmProbeAppDynamicsInputs;
+        /**
+         * Comparator for APM metric validation.
+         */
+        comparator?: outputs.chaos.ProbeTemplateApmProbeComparator;
+        /**
+         * Datadog-specific inputs. Required when apm*type is 'Datadog'.
+         */
+        datadogInputs?: outputs.chaos.ProbeTemplateApmProbeDatadogInputs;
+        /**
+         * Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+         */
+        dynatraceInputs?: outputs.chaos.ProbeTemplateApmProbeDynatraceInputs;
+        /**
+         * GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+         */
+        gcpCloudMonitoringInputs?: outputs.chaos.ProbeTemplateApmProbeGcpCloudMonitoringInputs;
+        /**
+         * NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+         */
+        newRelicInputs?: outputs.chaos.ProbeTemplateApmProbeNewRelicInputs;
+        /**
+         * Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+         */
+        prometheusInputs?: outputs.chaos.ProbeTemplateApmProbePrometheusInputs;
+        /**
+         * SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+         */
+        splunkObservabilityInputs?: outputs.chaos.ProbeTemplateApmProbeSplunkObservabilityInputs;
+    }
+
+    export interface ProbeTemplateApmProbeAppDynamicsInputs {
+        /**
+         * AppDynamics metrics configuration.
+         */
+        appdMetrics?: outputs.chaos.ProbeTemplateApmProbeAppDynamicsInputsAppdMetrics;
+        /**
+         * Harness connector ID for AppDynamics.
+         */
+        connectorId: string;
+    }
+
+    export interface ProbeTemplateApmProbeAppDynamicsInputsAppdMetrics {
+        /**
+         * AppDynamics application name.
+         */
+        applicationName?: string;
+        /**
+         * Duration in minutes for the AppDynamics query.
+         */
+        durationInMin?: number;
+        /**
+         * Full path to the AppDynamics metric.
+         */
+        metricsFullPath?: string;
+    }
+
+    export interface ProbeTemplateApmProbeComparator {
+        /**
+         * Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+         */
+        criteria: string;
+        /**
+         * Comparator type (string, int, float).
+         */
+        type: string;
+        /**
+         * Expected value.
+         */
+        value: string;
+    }
+
+    export interface ProbeTemplateApmProbeDatadogInputs {
+        /**
+         * Harness connector ID for Datadog.
+         */
+        connectorId: string;
+        /**
+         * Duration in minutes for the Datadog query.
+         */
+        durationInMin?: number;
+        /**
+         * Datadog query string.
+         */
+        query?: string;
+        /**
+         * Datadog Synthetics test configuration.
+         */
+        syntheticsTest?: outputs.chaos.ProbeTemplateApmProbeDatadogInputsSyntheticsTest;
+    }
+
+    export interface ProbeTemplateApmProbeDatadogInputsSyntheticsTest {
+        /**
+         * Public ID of the Datadog Synthetics test.
+         */
+        publicId: string;
+        /**
+         * Type of Synthetics test (api, browser).
+         */
+        testType?: string;
+    }
+
+    export interface ProbeTemplateApmProbeDynatraceInputs {
+        /**
+         * Harness connector ID for Dynatrace.
+         */
+        connectorId: string;
+        /**
+         * Duration in minutes for the Dynatrace query.
+         */
+        durationInMin?: number;
+        /**
+         * Dynatrace metrics configuration.
+         */
+        metrics?: outputs.chaos.ProbeTemplateApmProbeDynatraceInputsMetrics;
+    }
+
+    export interface ProbeTemplateApmProbeDynatraceInputsMetrics {
+        /**
+         * Dynatrace entity selector.
+         */
+        entitySelector?: string;
+        /**
+         * Dynatrace metrics selector.
+         */
+        metricsSelector?: string;
+    }
+
+    export interface ProbeTemplateApmProbeGcpCloudMonitoringInputs {
+        /**
+         * GCP project ID.
+         */
+        projectId: string;
+        /**
+         * GCP monitoring query string.
+         */
+        query: string;
+        /**
+         * GCP service account key (JSON).
+         */
+        serviceAccountKey: string;
+    }
+
+    export interface ProbeTemplateApmProbeNewRelicInputs {
+        /**
+         * Harness connector ID for NewRelic.
+         */
+        connectorId: string;
+        /**
+         * NewRelic metric configuration.
+         */
+        newRelicMetric?: outputs.chaos.ProbeTemplateApmProbeNewRelicInputsNewRelicMetric;
+    }
+
+    export interface ProbeTemplateApmProbeNewRelicInputsNewRelicMetric {
+        /**
+         * NRQL query string.
+         */
+        query?: string;
+        /**
+         * NewRelic query metric name.
+         */
+        queryMetric?: string;
+    }
+
+    export interface ProbeTemplateApmProbePrometheusInputs {
+        /**
+         * Harness connector ID for Prometheus.
+         */
+        connectorId: string;
+        /**
+         * PromQL query string.
+         */
+        query: string;
+        /**
+         * TLS configuration for Prometheus connection.
+         */
+        tlsConfig?: outputs.chaos.ProbeTemplateApmProbePrometheusInputsTlsConfig;
+    }
+
+    export interface ProbeTemplateApmProbePrometheusInputsTlsConfig {
+        /**
+         * Harness secret identifier for CA certificate.
+         */
+        caCertSecret?: string;
+        /**
+         * Harness secret identifier for client certificate.
+         */
+        clientCertSecret?: string;
+        /**
+         * Harness secret identifier for client key.
+         */
+        clientKeySecret?: string;
+        /**
+         * Skip TLS certificate verification.
+         */
+        insecureSkipVerify?: boolean;
+    }
+
+    export interface ProbeTemplateApmProbeSplunkObservabilityInputs {
+        /**
+         * Harness connector ID for Splunk Observability.
+         */
+        connectorId: string;
+        /**
+         * Splunk Observability metrics configuration.
+         */
+        splunkObservabilityMetrics?: outputs.chaos.ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics;
+    }
+
+    export interface ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics {
+        /**
+         * Duration in minutes for the Splunk query.
+         */
+        durationInMin?: number;
+        /**
+         * Splunk Observability query string.
+         */
+        query?: string;
+    }
+
+    export interface ProbeTemplateCmdProbe {
+        /**
+         * Command to execute.
+         */
+        command: string;
+        /**
+         * Comparator for command output validation.
+         */
+        comparator?: outputs.chaos.ProbeTemplateCmdProbeComparator;
+        /**
+         * Environment variables for the command.
+         */
+        envs?: outputs.chaos.ProbeTemplateCmdProbeEnv[];
+        /**
+         * Source of the command (inline, configMap, secret).
+         */
+        source?: string;
+    }
+
+    export interface ProbeTemplateCmdProbeComparator {
+        /**
+         * Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+         */
+        criteria: string;
+        /**
+         * Comparator type (string, int, float).
+         */
+        type: string;
+        /**
+         * Expected value.
+         */
+        value: string;
+    }
+
+    export interface ProbeTemplateCmdProbeEnv {
+        /**
+         * Environment variable name.
+         */
+        name: string;
+        /**
+         * Environment variable value.
+         */
+        value: string;
+    }
+
+    export interface ProbeTemplateHttpProbe {
+        /**
+         * Authentication configuration.
+         */
+        auth?: outputs.chaos.ProbeTemplateHttpProbeAuth;
+        /**
+         * HTTP headers.
+         */
+        headers?: {[key: string]: string};
+        /**
+         * HTTP method configuration with GET or POST.
+         */
+        method?: outputs.chaos.ProbeTemplateHttpProbeMethod;
+        /**
+         * TLS configuration.
+         */
+        tlsConfig?: outputs.chaos.ProbeTemplateHttpProbeTlsConfig;
+        /**
+         * URL to probe.
+         */
+        url: string;
+    }
+
+    export interface ProbeTemplateHttpProbeAuth {
+        /**
+         * Password for basic auth.
+         */
+        password?: string;
+        /**
+         * Token for bearer auth.
+         */
+        token?: string;
+        /**
+         * Auth type (basic, bearer, etc.).
+         */
+        type: string;
+        /**
+         * Username for basic auth.
+         */
+        username?: string;
+    }
+
+    export interface ProbeTemplateHttpProbeMethod {
+        /**
+         * GET method configuration.
+         */
+        getMethod?: outputs.chaos.ProbeTemplateHttpProbeMethodGetMethod;
+        /**
+         * POST method configuration.
+         */
+        post?: outputs.chaos.ProbeTemplateHttpProbeMethodPost;
+    }
+
+    export interface ProbeTemplateHttpProbeMethodGetMethod {
+        /**
+         * Response criteria (e.g., '==', '!=', 'contains').
+         */
+        criteria?: string;
+        /**
+         * Expected response body.
+         */
+        responseBody?: string;
+        /**
+         * Expected HTTP response code (e.g., '200', '404').
+         */
+        responseCode?: string;
+    }
+
+    export interface ProbeTemplateHttpProbeMethodPost {
+        /**
+         * POST request body.
+         */
+        body?: string;
+        /**
+         * Path to file containing POST body.
+         */
+        bodyPath?: string;
+        /**
+         * Content-Type header for POST request.
+         */
+        contentType?: string;
+        /**
+         * Response criteria (e.g., '==', '!=', 'contains').
+         */
+        criteria?: string;
+        /**
+         * Expected response body.
+         */
+        responseBody?: string;
+        /**
+         * Expected HTTP response code (e.g., '200', '404').
+         */
+        responseCode?: string;
+    }
+
+    export interface ProbeTemplateHttpProbeTlsConfig {
+        /**
+         * CA certificate.
+         */
+        caCert?: string;
+        /**
+         * Client certificate.
+         */
+        clientCert?: string;
+        /**
+         * Client key.
+         */
+        clientKey?: string;
+        /**
+         * Skip TLS certificate verification.
+         */
+        insecureSkipVerify?: boolean;
+    }
+
+    export interface ProbeTemplateK8sProbe {
+        /**
+         * Field selector for filtering resources.
+         */
+        fieldSelector?: string;
+        /**
+         * API group (e.g., 'apps', 'batch').
+         */
+        group?: string;
+        /**
+         * Label selector for filtering resources.
+         */
+        labelSelector?: string;
+        /**
+         * Kubernetes namespace.
+         */
+        namespace?: string;
+        /**
+         * Operation to perform (create, delete, present, absent, etc.).
+         */
+        operation?: string;
+        /**
+         * Resource type (e.g., 'pods', 'deployments').
+         */
+        resource: string;
+        /**
+         * Comma-separated list of resource names.
+         */
+        resourceNames?: string;
+        /**
+         * API version (e.g., 'v1', 'v1beta1').
+         */
+        version: string;
+    }
+
+    export interface ProbeTemplateRunProperties {
+        /**
+         * Number of attempts.
+         */
+        attempt?: number;
+        /**
+         * Initial delay before probe execution (e.g., '5s', '1m').
+         */
+        initialDelay?: string;
+        /**
+         * Interval between probe executions (e.g., '10s', '30s').
+         */
+        interval?: string;
+        /**
+         * Polling interval for continuous probes (e.g., '2s', '5s').
+         */
+        pollingInterval?: string;
+        /**
+         * Number of retries.
+         */
+        retry?: number;
+        /**
+         * Whether to stop on failure.
+         */
+        stopOnFailure?: boolean;
+        /**
+         * Timeout for probe execution (e.g., '30s', '5m').
+         */
+        timeout?: string;
+        /**
+         * Verbosity level for logging.
+         */
+        verbosity?: string;
+    }
+
+    export interface ProbeTemplateVariable {
+        /**
+         * Variable description.
+         */
+        description?: string;
+        /**
+         * Variable name.
+         */
+        name: string;
+        /**
+         * Whether the variable is required.
+         */
+        required?: boolean;
+        /**
+         * Variable type (e.g., 'string', 'number', 'boolean').
+         */
+        type?: string;
+        /**
+         * Variable value.
+         */
+        value: string;
     }
 
     export interface SecurityGovernanceConditionFaultSpec {
@@ -3282,15 +5577,27 @@ export namespace platform {
 
     export interface BitbucketConnectorApiAuthentication {
         /**
-         * Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * Type of API authentication. Valid values are UsernameToken, AccessToken, EmailAndApiToken. Defaults to `UsernameToken` for backward compatibility.
+         */
+        authType?: string;
+        /**
+         * The email used for connecting to the api. Applicable when `authType` is `EmailAndApiToken`.
+         */
+        email?: string;
+        /**
+         * The name of the Harness secret containing the email. Applicable when `authType` is `EmailAndApiToken`. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        emailRef?: string;
+        /**
+         * Reference to a Harness secret containing the personal access token (or API token for `EmailAndApiToken`/`AccessToken`) for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         tokenRef: string;
         /**
-         * The username used for connecting to the api.
+         * The username used for connecting to the api. Applicable when `authType` is `UsernameToken`.
          */
         username?: string;
         /**
-         * The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * The name of the Harness secret containing the username. Applicable when `authType` is `UsernameToken`. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: string;
     }
@@ -4437,7 +6744,19 @@ export namespace platform {
 
     export interface GetBitbucketConnectorApiAuthentication {
         /**
-         * Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * Type of API authentication. Valid values are UsernameToken, AccessToken, EmailAndApiToken.
+         */
+        authType: string;
+        /**
+         * The email used for connecting to the api (EmailAndApiToken auth).
+         */
+        email: string;
+        /**
+         * The name of the Harness secret containing the email (EmailAndApiToken auth). To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        emailRef: string;
+        /**
+         * Reference to a Harness secret containing the token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         tokenRef: string;
         /**
@@ -7993,6 +10312,18 @@ export namespace platform {
          * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          */
         repositorySha: string;
+    }
+
+    export interface GetWorkspacesWorkspace {
+        accountId: string;
+        created: number;
+        description: string;
+        identifier: string;
+        name: string;
+        orgId: string;
+        projectId: string;
+        status: string;
+        updated: number;
     }
 
     export interface GitConnectorCredentials {
@@ -37539,7 +39870,7 @@ export namespace platform {
          */
         repoName: string;
         /**
-         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE. Important: If your Harness account has the default store type configured as REMOTE (via account-level Git Experience settings), you must explicitly set this field to INLINE within a git*details block to create inline templates. Omitting git*details or this field will cause the server to apply the account default (REMOTE), which will fail unless all required remote Git fields are also provided.
          */
         storeType: string;
     }

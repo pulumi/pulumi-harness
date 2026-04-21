@@ -136,14 +136,14 @@ public final class TemplateGitDetailsArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+     * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE. Important: If your Harness account has the default store type configured as REMOTE (via account-level Git Experience settings), you must explicitly set this field to INLINE within a git*details block to create inline templates. Omitting git*details or this field will cause the server to apply the account default (REMOTE), which will fail unless all required remote Git fields are also provided.
      * 
      */
     @Import(name="storeType")
     private @Nullable Output<String> storeType;
 
     /**
-     * @return Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+     * @return Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE. Important: If your Harness account has the default store type configured as REMOTE (via account-level Git Experience settings), you must explicitly set this field to INLINE within a git*details block to create inline templates. Omitting git*details or this field will cause the server to apply the account default (REMOTE), which will fail unless all required remote Git fields are also provided.
      * 
      */
     public Optional<Output<String>> storeType() {
@@ -351,7 +351,7 @@ public final class TemplateGitDetailsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param storeType Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         * @param storeType Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE. Important: If your Harness account has the default store type configured as REMOTE (via account-level Git Experience settings), you must explicitly set this field to INLINE within a git*details block to create inline templates. Omitting git*details or this field will cause the server to apply the account default (REMOTE), which will fail unless all required remote Git fields are also provided.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class TemplateGitDetailsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param storeType Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         * @param storeType Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE. Important: If your Harness account has the default store type configured as REMOTE (via account-level Git Experience settings), you must explicitly set this field to INLINE within a git*details block to create inline templates. Omitting git*details or this field will cause the server to apply the account default (REMOTE), which will fail unless all required remote Git fields are also provided.
          * 
          * @return builder
          * 

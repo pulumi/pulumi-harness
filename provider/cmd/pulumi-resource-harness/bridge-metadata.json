@@ -233,6 +233,338 @@
                     }
                 }
             },
+            "harness_chaos_action_template": {
+                "current": "harness:chaos/actionTemplate:ActionTemplate",
+                "fields": {
+                    "container_action": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "command": {
+                                    "maxItemsOne": false
+                                },
+                                "env": {
+                                    "maxItemsOne": false
+                                },
+                                "image_pull_secrets": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": true
+                                },
+                                "tolerations": {
+                                    "maxItemsOne": false
+                                },
+                                "volume_mounts": {
+                                    "maxItemsOne": false
+                                },
+                                "volumes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "config_map": {
+                                                "maxItemsOne": true
+                                            },
+                                            "empty_dir": {
+                                                "maxItemsOne": true
+                                            },
+                                            "host_path": {
+                                                "maxItemsOne": true
+                                            },
+                                            "persistent_volume_claim": {
+                                                "maxItemsOne": true
+                                            },
+                                            "secret": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "custom_script_action": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "args": {
+                                    "maxItemsOne": false
+                                },
+                                "env": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "delay_action": {
+                        "maxItemsOne": true
+                    },
+                    "run_properties": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "variables": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_experiment": {
+                "current": "harness:chaos/experiment:Experiment",
+                "fields": {
+                    "fault_ids": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "template_details": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_experiment_template": {
+                "current": "harness:chaos/experimentTemplate:ExperimentTemplate",
+                "fields": {
+                    "spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "faults": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "probes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "conditions": {
+                                                "maxItemsOne": false
+                                            },
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "status_check_timeouts": {
+                                    "maxItemsOne": true
+                                },
+                                "vertices": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "end": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "actions": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "faults": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "probes": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "start": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "actions": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "faults": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "probes": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_fault_template": {
+                "current": "harness:chaos/faultTemplate:FaultTemplate",
+                "fields": {
+                    "category": {
+                        "maxItemsOne": false
+                    },
+                    "infrastructures": {
+                        "maxItemsOne": false
+                    },
+                    "keywords": {
+                        "maxItemsOne": false
+                    },
+                    "links": {
+                        "maxItemsOne": false
+                    },
+                    "platforms": {
+                        "maxItemsOne": false
+                    },
+                    "spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "chaos": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "auth": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "aws": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "azure": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "gcp": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "redis": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "ssh": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "vmware": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "kubernetes": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "args": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "command": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "config_maps": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "container_security_context": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "capabilities": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "add": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "drop": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "env": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "host_file_volumes": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "image_pull_secrets": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "pod_security_context": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "resources": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "secrets": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "tolerations": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "params": {
+                                                "maxItemsOne": false
+                                            },
+                                            "status_check_timeouts": {
+                                                "maxItemsOne": true
+                                            },
+                                            "tls": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "target": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "application": {
+                                                "maxItemsOne": true
+                                            },
+                                            "kubernetes": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "variables": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_chaos_hub": {
                 "current": "harness:chaos/hub:Hub",
                 "fields": {
@@ -243,6 +575,14 @@
             },
             "harness_chaos_hub_sync": {
                 "current": "harness:chaos/hubSync:HubSync"
+            },
+            "harness_chaos_hub_v2": {
+                "current": "harness:chaos/hubV2:HubV2",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_chaos_image_registry": {
                 "current": "harness:chaos/imageRegistry:ImageRegistry",
@@ -298,6 +638,135 @@
                         "maxItemsOne": false
                     },
                     "volumes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_probe_template": {
+                "current": "harness:chaos/probeTemplate:ProbeTemplate",
+                "fields": {
+                    "apm_probe": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "app_dynamics_inputs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "appd_metrics": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "comparator": {
+                                    "maxItemsOne": true
+                                },
+                                "datadog_inputs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "synthetics_test": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "dynatrace_inputs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "metrics": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "gcp_cloud_monitoring_inputs": {
+                                    "maxItemsOne": true
+                                },
+                                "new_relic_inputs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "new_relic_metric": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "prometheus_inputs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "tls_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "splunk_observability_inputs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "splunk_observability_metrics": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "cmd_probe": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "comparator": {
+                                    "maxItemsOne": true
+                                },
+                                "env": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "http_probe": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "auth": {
+                                    "maxItemsOne": true
+                                },
+                                "method": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "get": {
+                                                "maxItemsOne": true
+                                            },
+                                            "post": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "tls_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "k8s_probe": {
+                        "maxItemsOne": true
+                    },
+                    "run_properties": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "variables": {
                         "maxItemsOne": false
                     }
                 }
@@ -15771,8 +16240,214 @@
                     }
                 }
             },
+            "harness_chaos_action_template": {
+                "current": "harness:chaos/getActionTemplate:getActionTemplate",
+                "fields": {
+                    "container_action": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "command": {
+                                    "maxItemsOne": false
+                                },
+                                "env": {
+                                    "maxItemsOne": false
+                                },
+                                "image_pull_secrets": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": true
+                                },
+                                "tolerations": {
+                                    "maxItemsOne": false
+                                },
+                                "volume_mounts": {
+                                    "maxItemsOne": false
+                                },
+                                "volumes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "config_map": {
+                                                "maxItemsOne": true
+                                            },
+                                            "empty_dir": {
+                                                "maxItemsOne": true
+                                            },
+                                            "host_path": {
+                                                "maxItemsOne": true
+                                            },
+                                            "persistent_volume_claim": {
+                                                "maxItemsOne": true
+                                            },
+                                            "secret": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "custom_script_action": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "args": {
+                                    "maxItemsOne": false
+                                },
+                                "env": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "delay_action": {
+                        "maxItemsOne": true
+                    },
+                    "run_properties": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "variables": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_experiment": {
+                "current": "harness:chaos/getExperiment:getExperiment",
+                "fields": {
+                    "fault_ids": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "template_details": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_experiment_template": {
+                "current": "harness:chaos/getExperimentTemplate:getExperimentTemplate",
+                "fields": {
+                    "spec": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "faults": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "probes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "conditions": {
+                                                "maxItemsOne": false
+                                            },
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "status_check_timeouts": {
+                                    "maxItemsOne": false
+                                },
+                                "vertices": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "end": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "actions": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "faults": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "probes": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "start": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "actions": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "faults": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "probes": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_fault_template": {
+                "current": "harness:chaos/getFaultTemplate:getFaultTemplate",
+                "fields": {
+                    "category": {
+                        "maxItemsOne": false
+                    },
+                    "infrastructures": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "variables": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_chaos_hub": {
                 "current": "harness:chaos/getHub:getHub",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_hub_v2": {
+                "current": "harness:chaos/getHubV2:getHubV2",
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
@@ -15822,6 +16497,56 @@
                         "maxItemsOne": false
                     },
                     "volumes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_probe_template": {
+                "current": "harness:chaos/getProbeTemplate:getProbeTemplate",
+                "fields": {
+                    "cmd_probe": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "comparator": {
+                                    "maxItemsOne": false
+                                },
+                                "env": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "http_probe": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "method": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "get": {
+                                                "maxItemsOne": false
+                                            },
+                                            "post": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "k8s_probe": {
+                        "maxItemsOne": false
+                    },
+                    "run_properties": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "variables": {
                         "maxItemsOne": false
                     }
                 }
@@ -18401,6 +19126,17 @@
                 "current": "harness:platform/getWorkspaceOutputValue:getWorkspaceOutputValue",
                 "fields": {
                     "outputs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_workspaces": {
+                "current": "harness:platform/getWorkspaces:getWorkspaces",
+                "fields": {
+                    "identifiers": {
+                        "maxItemsOne": false
+                    },
+                    "workspaces": {
                         "maxItemsOne": false
                     }
                 }

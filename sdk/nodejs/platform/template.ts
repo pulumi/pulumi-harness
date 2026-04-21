@@ -82,7 +82,7 @@ export class Template extends pulumi.CustomResource {
      */
     declare public readonly gitImportDetails: pulumi.Output<outputs.platform.TemplateGitImportDetails | undefined>;
     /**
-     * Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+     * Unique identifier of the resource
      */
     declare public readonly identifier: pulumi.Output<string>;
     /**
@@ -206,7 +206,7 @@ export interface TemplateState {
      */
     gitImportDetails?: pulumi.Input<inputs.platform.TemplateGitImportDetails>;
     /**
-     * Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+     * Unique identifier of the resource
      */
     identifier?: pulumi.Input<string>;
     /**
@@ -274,7 +274,7 @@ export interface TemplateArgs {
      */
     gitImportDetails?: pulumi.Input<inputs.platform.TemplateGitImportDetails>;
     /**
-     * Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+     * Unique identifier of the resource
      */
     identifier: pulumi.Input<string>;
     /**

@@ -13,38 +13,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BitbucketConnectorApiAuthentication {
     /**
-     * @return Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Type of API authentication. Valid values are UsernameToken, AccessToken, EmailAndApiToken. Defaults to `UsernameToken` for backward compatibility.
+     * 
+     */
+    private @Nullable String authType;
+    /**
+     * @return The email used for connecting to the api. Applicable when `authType` is `EmailAndApiToken`.
+     * 
+     */
+    private @Nullable String email;
+    /**
+     * @return The name of the Harness secret containing the email. Applicable when `authType` is `EmailAndApiToken`. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
+    private @Nullable String emailRef;
+    /**
+     * @return Reference to a Harness secret containing the personal access token (or API token for `EmailAndApiToken`/`AccessToken`) for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String tokenRef;
     /**
-     * @return The username used for connecting to the api.
+     * @return The username used for connecting to the api. Applicable when `authType` is `UsernameToken`.
      * 
      */
     private @Nullable String username;
     /**
-     * @return The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return The name of the Harness secret containing the username. Applicable when `authType` is `UsernameToken`. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String usernameRef;
 
     private BitbucketConnectorApiAuthentication() {}
     /**
-     * @return Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Type of API authentication. Valid values are UsernameToken, AccessToken, EmailAndApiToken. Defaults to `UsernameToken` for backward compatibility.
+     * 
+     */
+    public Optional<String> authType() {
+        return Optional.ofNullable(this.authType);
+    }
+    /**
+     * @return The email used for connecting to the api. Applicable when `authType` is `EmailAndApiToken`.
+     * 
+     */
+    public Optional<String> email() {
+        return Optional.ofNullable(this.email);
+    }
+    /**
+     * @return The name of the Harness secret containing the email. Applicable when `authType` is `EmailAndApiToken`. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
+    public Optional<String> emailRef() {
+        return Optional.ofNullable(this.emailRef);
+    }
+    /**
+     * @return Reference to a Harness secret containing the personal access token (or API token for `EmailAndApiToken`/`AccessToken`) for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String tokenRef() {
         return this.tokenRef;
     }
     /**
-     * @return The username used for connecting to the api.
+     * @return The username used for connecting to the api. Applicable when `authType` is `UsernameToken`.
      * 
      */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }
     /**
-     * @return The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return The name of the Harness secret containing the username. Applicable when `authType` is `UsernameToken`. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> usernameRef() {
@@ -60,17 +96,41 @@ public final class BitbucketConnectorApiAuthentication {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String authType;
+        private @Nullable String email;
+        private @Nullable String emailRef;
         private String tokenRef;
         private @Nullable String username;
         private @Nullable String usernameRef;
         public Builder() {}
         public Builder(BitbucketConnectorApiAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authType = defaults.authType;
+    	      this.email = defaults.email;
+    	      this.emailRef = defaults.emailRef;
     	      this.tokenRef = defaults.tokenRef;
     	      this.username = defaults.username;
     	      this.usernameRef = defaults.usernameRef;
         }
 
+        @CustomType.Setter
+        public Builder authType(@Nullable String authType) {
+
+            this.authType = authType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder email(@Nullable String email) {
+
+            this.email = email;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder emailRef(@Nullable String emailRef) {
+
+            this.emailRef = emailRef;
+            return this;
+        }
         @CustomType.Setter
         public Builder tokenRef(String tokenRef) {
             if (tokenRef == null) {
@@ -93,6 +153,9 @@ public final class BitbucketConnectorApiAuthentication {
         }
         public BitbucketConnectorApiAuthentication build() {
             final var _resultValue = new BitbucketConnectorApiAuthentication();
+            _resultValue.authType = authType;
+            _resultValue.email = email;
+            _resultValue.emailRef = emailRef;
             _resultValue.tokenRef = tokenRef;
             _resultValue.username = username;
             _resultValue.usernameRef = usernameRef;

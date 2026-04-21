@@ -14,26 +14,47 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class BitbucketConnectorApiAuthentication
     {
         /// <summary>
-        /// Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// Type of API authentication. Valid values are UsernameToken, AccessToken, EmailAndApiToken. Defaults to `UsernameToken` for backward compatibility.
+        /// </summary>
+        public readonly string? AuthType;
+        /// <summary>
+        /// The email used for connecting to the api. Applicable when `AuthType` is `EmailAndApiToken`.
+        /// </summary>
+        public readonly string? Email;
+        /// <summary>
+        /// The name of the Harness secret containing the email. Applicable when `AuthType` is `EmailAndApiToken`. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// </summary>
+        public readonly string? EmailRef;
+        /// <summary>
+        /// Reference to a Harness secret containing the personal access token (or API token for `EmailAndApiToken`/`AccessToken`) for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string TokenRef;
         /// <summary>
-        /// The username used for connecting to the api.
+        /// The username used for connecting to the api. Applicable when `AuthType` is `UsernameToken`.
         /// </summary>
         public readonly string? Username;
         /// <summary>
-        /// The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// The name of the Harness secret containing the username. Applicable when `AuthType` is `UsernameToken`. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? UsernameRef;
 
         [OutputConstructor]
         private BitbucketConnectorApiAuthentication(
+            string? authType,
+
+            string? email,
+
+            string? emailRef,
+
             string tokenRef,
 
             string? username,
 
             string? usernameRef)
         {
+            AuthType = authType;
+            Email = email;
+            EmailRef = emailRef;
             TokenRef = tokenRef;
             Username = username;
             UsernameRef = usernameRef;

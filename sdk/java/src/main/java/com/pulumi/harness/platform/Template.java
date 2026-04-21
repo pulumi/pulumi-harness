@@ -122,14 +122,14 @@ public class Template extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gitImportDetails);
     }
     /**
-     * Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+     * Unique identifier of the resource
      * 
      */
     @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
+     * @return Unique identifier of the resource
      * 
      */
     public Output<String> identifier() {
