@@ -53,7 +53,9 @@ import (
 //					pulumi.String("enterprise"),
 //					pulumi.String("chaos"),
 //				},
-//			})
+//			}, pulumi.IgnoreChanges([]string{
+//				"tags",
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -73,6 +75,8 @@ import (
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				this,
+//			}), pulumi.IgnoreChanges([]string{
+//				"tags",
 //			}))
 //			if err != nil {
 //				return err
@@ -94,6 +98,8 @@ import (
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				thisHarnessPlatformProject,
+//			}), pulumi.IgnoreChanges([]string{
+//				"tags",
 //			}))
 //			if err != nil {
 //				return err

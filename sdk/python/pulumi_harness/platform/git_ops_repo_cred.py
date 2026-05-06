@@ -304,7 +304,11 @@ class GitOpsRepoCred(pulumi.CustomResource):
         XXXXX
         -----END OPENSSH PRIVATE KEY -----
         \"\"\",
-            }])
+            }],
+            opts = pulumi.ResourceOptions(ignore_changes=[
+                    "accountId",
+                    "creds[0].sshPrivateKey",
+                ]))
         ```
 
         ## Import
@@ -370,7 +374,11 @@ class GitOpsRepoCred(pulumi.CustomResource):
         XXXXX
         -----END OPENSSH PRIVATE KEY -----
         \"\"\",
-            }])
+            }],
+            opts = pulumi.ResourceOptions(ignore_changes=[
+                    "accountId",
+                    "creds[0].sshPrivateKey",
+                ]))
         ```
 
         ## Import

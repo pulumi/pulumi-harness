@@ -35,8 +35,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.governance.GovernanceFunctions;
      * import com.pulumi.harness.governance.inputs.GetRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -75,8 +75,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.governance.GovernanceFunctions;
      * import com.pulumi.harness.governance.inputs.GetRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -115,8 +115,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.governance.GovernanceFunctions;
      * import com.pulumi.harness.governance.inputs.GetRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -155,8 +155,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.governance.GovernanceFunctions;
      * import com.pulumi.harness.governance.inputs.GetRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -195,8 +195,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.governance.GovernanceFunctions;
      * import com.pulumi.harness.governance.inputs.GetRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -235,8 +235,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.governance.GovernanceFunctions;
      * import com.pulumi.harness.governance.inputs.GetRuleEnforcementArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -275,8 +275,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.governance.GovernanceFunctions;
      * import com.pulumi.harness.governance.inputs.GetRuleEnforcementArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -315,8 +315,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.governance.GovernanceFunctions;
      * import com.pulumi.harness.governance.inputs.GetRuleEnforcementArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -355,8 +355,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.governance.GovernanceFunctions;
      * import com.pulumi.harness.governance.inputs.GetRuleEnforcementArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -395,8 +395,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.governance.GovernanceFunctions;
      * import com.pulumi.harness.governance.inputs.GetRuleEnforcementArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

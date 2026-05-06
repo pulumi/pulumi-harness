@@ -352,7 +352,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
             ],
             time_windows=[{
                 "time_zone": "UTC",
-                "start_time": 1711238400000,
+                "start_time": int(1711238400000),
                 "duration": "24h",
                 "recurrence": {
                     "type": "Daily",
@@ -374,7 +374,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
             ],
             time_windows=[{
                 "time_zone": "UTC",
-                "start_time": 1711238400000,
+                "start_time": int(1711238400000),
                 "duration": "24h",
                 "recurrence": {
                     "type": "Daily",
@@ -396,7 +396,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
             ],
             time_windows=[{
                 "time_zone": "UTC",
-                "start_time": 1711238400000,
+                "start_time": int(1711238400000),
                 "duration": "24h",
                 "recurrence": {
                     "type": "Daily",
@@ -457,7 +457,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
             ],
             time_windows=[{
                 "time_zone": "UTC",
-                "start_time": 1711238400000,
+                "start_time": int(1711238400000),
                 "duration": "24h",
                 "recurrence": {
                     "type": "Daily",
@@ -479,7 +479,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
             ],
             time_windows=[{
                 "time_zone": "UTC",
-                "start_time": 1711238400000,
+                "start_time": int(1711238400000),
                 "duration": "24h",
                 "recurrence": {
                     "type": "Daily",
@@ -501,7 +501,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
             ],
             time_windows=[{
                 "time_zone": "UTC",
-                "start_time": 1711238400000,
+                "start_time": int(1711238400000),
                 "duration": "24h",
                 "recurrence": {
                     "type": "Daily",

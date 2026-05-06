@@ -31,6 +31,11 @@ import * as utilities from "../utilities";
  * -----END OPENSSH PRIVATE KEY -----
  * `,
  *     }],
+ * }, {
+ *     ignoreChanges: [
+ *         "accountId",
+ *         "creds[0].sshPrivateKey",
+ *     ],
  * });
  * ```
  *

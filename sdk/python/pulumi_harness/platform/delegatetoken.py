@@ -366,7 +366,7 @@ class Delegatetoken(pulumi.CustomResource):
         expiry_token = harness.platform.Delegatetoken("expiry_token",
             name="expiry-delegate-token",
             account_id="account_id",
-            revoke_after=1769689600000)
+            revoke_after=int(1769689600000))
         ```
 
 
@@ -417,7 +417,7 @@ class Delegatetoken(pulumi.CustomResource):
         expiry_token = harness.platform.Delegatetoken("expiry_token",
             name="expiry-delegate-token",
             account_id="account_id",
-            revoke_after=1769689600000)
+            revoke_after=int(1769689600000))
         ```
 
 

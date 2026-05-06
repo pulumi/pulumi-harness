@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.InfraModule;
  * import com.pulumi.harness.platform.InfraModuleArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .providerConnector("account.connector")
  *             .provisionerType("tofu")
  *             .provisionerVersion("1.9.4")
- *             .pipelines(List.of(            
+ *             .pipelines(Arrays.asList(            
  *                 "pipelinea",
  *                 "pipelineb"))
  *             .build());

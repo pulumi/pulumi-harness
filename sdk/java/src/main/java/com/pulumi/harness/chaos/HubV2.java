@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.chaos.HubV2;
  * import com.pulumi.harness.chaos.HubV2Args;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -69,7 +69,9 @@ import javax.annotation.Nullable;
  *                 "account",
  *                 "enterprise",
  *                 "chaos")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .ignoreChanges("tags")
+ *                 .build());
  * 
  *         // ----------------------------------------------------------------------------
  *         // Example 2: Org-Level Chaos Hub (TESTED ✅)
@@ -86,6 +88,7 @@ import javax.annotation.Nullable;
  *                 "chaos")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(this_)
+ *                 .ignoreChanges("tags")
  *                 .build());
  * 
  *         // ----------------------------------------------------------------------------
@@ -104,6 +107,7 @@ import javax.annotation.Nullable;
  *                 "chaos")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(thisHarnessPlatformProject)
+ *                 .ignoreChanges("tags")
  *                 .build());
  * 
  *     }

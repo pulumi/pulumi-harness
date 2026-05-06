@@ -37,6 +37,8 @@ import * as utilities from "./utilities";
  *             sshKeyFileId: mySecret.id,
  *         },
  *     },
+ * }, {
+ *     ignoreChanges: ["sshAuthentication"],
  * });
  * ```
  *

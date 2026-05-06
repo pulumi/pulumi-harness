@@ -62,10 +62,10 @@ namespace Pulumi.Harness.Chaos
         ///         ["experimentId"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Id),
         ///         ["experimentIdentity"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Identity),
         ///         ["experimentSpec"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs),
-        ///         ["faultsCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Faults).Length,
-        ///         ["probesCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Probes).Length,
-        ///         ["actionsCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Actions).Length,
-        ///         ["verticesCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Vertices).Length,
+        ///         ["faultsCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Faults).Length(),
+        ///         ["probesCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Probes).Length(),
+        ///         ["actionsCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Actions).Length(),
+        ///         ["verticesCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Vertices).Length(),
         ///     };
         /// });
         /// ```
@@ -124,10 +124,10 @@ namespace Pulumi.Harness.Chaos
         ///         ["experimentId"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Id),
         ///         ["experimentIdentity"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Identity),
         ///         ["experimentSpec"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs),
-        ///         ["faultsCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Faults).Length,
-        ///         ["probesCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Probes).Length,
-        ///         ["actionsCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Actions).Length,
-        ///         ["verticesCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Vertices).Length,
+        ///         ["faultsCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Faults).Length(),
+        ///         ["probesCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Probes).Length(),
+        ///         ["actionsCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Actions).Length(),
+        ///         ["verticesCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Vertices).Length(),
         ///     };
         /// });
         /// ```
@@ -186,10 +186,10 @@ namespace Pulumi.Harness.Chaos
         ///         ["experimentId"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Id),
         ///         ["experimentIdentity"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Identity),
         ///         ["experimentSpec"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs),
-        ///         ["faultsCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Faults).Length,
-        ///         ["probesCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Probes).Length,
-        ///         ["actionsCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Actions).Length,
-        ///         ["verticesCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Vertices).Length,
+        ///         ["faultsCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Faults).Length(),
+        ///         ["probesCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Probes).Length(),
+        ///         ["actionsCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Actions).Length(),
+        ///         ["verticesCount"] = byIdentity.Apply(getExperimentTemplateResult =&gt; getExperimentTemplateResult.Specs[0]?.Vertices).Length(),
         ///     };
         /// });
         /// ```

@@ -231,7 +231,7 @@ import * as utilities from "../utilities";
  *             {
  *                 identity: "pod-status-check",
  *                 name: "pod-status-probe",
- *                 revision: "v1",
+ *                 revision: Number("v1"),
  *                 isEnterprise: true,
  *                 duration: "30",
  *                 weightage: 10,
@@ -249,7 +249,7 @@ import * as utilities from "../utilities";
  *             {
  *                 identity: "http-health-check",
  *                 name: "http-health-probe",
- *                 revision: "v1",
+ *                 revision: Number("v1"),
  *                 isEnterprise: true,
  *                 duration: "30",
  *                 weightage: 10,

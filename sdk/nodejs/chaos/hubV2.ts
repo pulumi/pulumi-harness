@@ -38,6 +38,8 @@ import * as utilities from "../utilities";
  *         "enterprise",
  *         "chaos",
  *     ],
+ * }, {
+ *     ignoreChanges: ["tags"],
  * });
  * // ----------------------------------------------------------------------------
  * // Example 2: Org-Level Chaos Hub (TESTED ✅)
@@ -55,6 +57,7 @@ import * as utilities from "../utilities";
  *     ],
  * }, {
  *     dependsOn: [_this],
+ *     ignoreChanges: ["tags"],
  * });
  * // ----------------------------------------------------------------------------
  * // Example 3: Project-Level Chaos Hub
@@ -73,6 +76,7 @@ import * as utilities from "../utilities";
  *     ],
  * }, {
  *     dependsOn: [thisHarnessPlatformProject],
+ *     ignoreChanges: ["tags"],
  * });
  * ```
  *

@@ -247,7 +247,8 @@ class GitOpsGnupg(pulumi.CustomResource):
                 "publickeys": [{
                     "key_data": "-----BEGIN PGP PUBLIC KEY BLOCK-----XXXXXX-----END PGP PUBLIC KEY BLOCK-----",
                 }],
-            }])
+            }],
+            opts = pulumi.ResourceOptions(ignore_changes=["requests[0].upsert"]))
         ```
 
         ## Import
@@ -304,7 +305,8 @@ class GitOpsGnupg(pulumi.CustomResource):
                 "publickeys": [{
                     "key_data": "-----BEGIN PGP PUBLIC KEY BLOCK-----XXXXXX-----END PGP PUBLIC KEY BLOCK-----",
                 }],
-            }])
+            }],
+            opts = pulumi.ResourceOptions(ignore_changes=["requests[0].upsert"]))
         ```
 
         ## Import

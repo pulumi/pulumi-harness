@@ -48,7 +48,10 @@ import (
 //
 //					},
 //				},
-//			})
+//			}, pulumi.IgnoreChanges([]string{
+//				"accountId",
+//				"creds[0].sshPrivateKey",
+//			}))
 //			if err != nil {
 //				return err
 //			}

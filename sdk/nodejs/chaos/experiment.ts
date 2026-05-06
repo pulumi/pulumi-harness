@@ -54,6 +54,7 @@ import * as utilities from "../utilities";
  *         myTemplate,
  *         myInfra,
  *     ],
+ *     ignoreChanges: ["tags"],
  * });
  * // ----------------------------------------------------------------------------
  * // Example 2: Experiment with LOCAL Import
@@ -81,6 +82,7 @@ import * as utilities from "../utilities";
  *         myTemplate,
  *         myInfra,
  *     ],
+ *     ignoreChanges: ["tags"],
  * });
  * // ----------------------------------------------------------------------------
  * // Example 3: Cross-Scope Experiment (Org Hub → Project Experiment)
@@ -107,6 +109,7 @@ import * as utilities from "../utilities";
  *         orgTemplate,
  *         myInfra,
  *     ],
+ *     ignoreChanges: ["tags"],
  * });
  * ```
  *

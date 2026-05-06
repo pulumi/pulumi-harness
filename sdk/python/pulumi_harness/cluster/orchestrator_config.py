@@ -286,15 +286,15 @@ class OrchestratorConfig(pulumi.CustomResource):
             disabled=False,
             distribution={
                 "base_ondemand_capacity": 2,
-                "ondemand_replica_percentage": 50,
+                "ondemand_replica_percentage": float(50),
                 "selector": "ALL",
                 "strategy": "CostOptimized",
             },
             binpacking={
                 "pod_eviction": {
                     "threshold": {
-                        "cpu": 60,
-                        "memory": 80,
+                        "cpu": float(60),
+                        "memory": float(80),
                     },
                 },
                 "disruption": {
@@ -383,15 +383,15 @@ class OrchestratorConfig(pulumi.CustomResource):
             disabled=False,
             distribution={
                 "base_ondemand_capacity": 2,
-                "ondemand_replica_percentage": 50,
+                "ondemand_replica_percentage": float(50),
                 "selector": "ALL",
                 "strategy": "CostOptimized",
             },
             binpacking={
                 "pod_eviction": {
                     "threshold": {
-                        "cpu": 60,
-                        "memory": 80,
+                        "cpu": float(60),
+                        "memory": float(80),
                     },
                 },
                 "disruption": {

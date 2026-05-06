@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.KubernetesConnector;
  * import com.pulumi.harness.platform.KubernetesConnectorArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .tags("foo:bar")
  *             .delegateSelectors("harness-delegate")
  *             .rancherUrl("https://rancher.cluster.example")
- *             .bearerToken(List.of(Map.of("bearerTokenRef", "account.test_rancher_bearer_token")))
+ *             .bearerToken(Arrays.asList(Map.of("bearerTokenRef", "account.test_rancher_bearer_token")))
  *             .build());
  * 
  *     }

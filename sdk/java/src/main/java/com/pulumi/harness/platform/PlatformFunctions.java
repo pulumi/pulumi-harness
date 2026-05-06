@@ -465,8 +465,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAppDynamicsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -505,8 +505,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAppDynamicsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -545,8 +545,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAppDynamicsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -585,8 +585,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAppDynamicsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -625,8 +625,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAppDynamicsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -665,8 +665,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetArtifactoryConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -705,8 +705,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetArtifactoryConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -745,8 +745,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetArtifactoryConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -785,8 +785,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetArtifactoryConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -825,8 +825,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetArtifactoryConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -865,8 +865,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetArtifactoryConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -905,8 +905,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetArtifactoryConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -945,8 +945,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsCCConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -985,8 +985,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsCCConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1025,8 +1025,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsCCConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1065,8 +1065,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsCCConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1105,8 +1105,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsCCConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1145,8 +1145,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1185,8 +1185,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1225,8 +1225,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1265,8 +1265,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1305,8 +1305,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1345,8 +1345,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsKmsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1385,8 +1385,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsKmsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1425,8 +1425,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsKmsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1465,8 +1465,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsKmsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1505,8 +1505,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsKmsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1545,8 +1545,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsSecretManagerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1585,8 +1585,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsSecretManagerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1625,8 +1625,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsSecretManagerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1665,8 +1665,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsSecretManagerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1705,8 +1705,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAwsSecretManagerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1745,8 +1745,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1785,8 +1785,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1825,8 +1825,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1865,8 +1865,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1905,8 +1905,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1945,8 +1945,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureCloudProviderConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1985,8 +1985,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureCloudProviderConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2025,8 +2025,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureCloudProviderConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2065,8 +2065,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureCloudProviderConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2105,8 +2105,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureCloudProviderConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2150,8 +2150,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureKeyVaultConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2195,8 +2195,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureKeyVaultConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2240,8 +2240,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureKeyVaultConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2285,8 +2285,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureKeyVaultConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2330,8 +2330,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetAzureKeyVaultConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2370,8 +2370,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetBitbucketConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2410,8 +2410,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetBitbucketConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2450,8 +2450,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetBitbucketConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2490,8 +2490,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetBitbucketConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2530,8 +2530,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetBitbucketConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2570,8 +2570,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetCcmFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2613,8 +2613,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetCcmFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2656,8 +2656,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetCcmFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2699,8 +2699,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetCcmFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2742,8 +2742,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetCcmFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3005,8 +3005,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3045,8 +3045,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3085,8 +3085,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3125,8 +3125,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3165,8 +3165,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3205,8 +3205,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorPdcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3245,8 +3245,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorPdcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3285,8 +3285,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorPdcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3325,8 +3325,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorPdcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3365,8 +3365,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorPdcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3405,8 +3405,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorRancherArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3445,8 +3445,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorRancherArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3485,8 +3485,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorRancherArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3525,8 +3525,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorRancherArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3565,8 +3565,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetConnectorRancherArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3703,8 +3703,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3743,8 +3743,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3783,8 +3783,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3823,8 +3823,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3863,8 +3863,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3903,8 +3903,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDashboardsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3943,8 +3943,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDashboardsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3983,8 +3983,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDashboardsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4023,8 +4023,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDashboardsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4063,8 +4063,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDashboardsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4103,8 +4103,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDatadogConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4143,8 +4143,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDatadogConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4183,8 +4183,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDatadogConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4223,8 +4223,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDatadogConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4263,8 +4263,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDatadogConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4303,8 +4303,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4346,8 +4346,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4389,8 +4389,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4432,8 +4432,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4475,8 +4475,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4518,8 +4518,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4560,8 +4560,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4602,8 +4602,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4644,8 +4644,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4686,8 +4686,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4739,8 +4739,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4773,8 +4773,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4808,8 +4808,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4842,8 +4842,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4877,8 +4877,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4911,8 +4911,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4964,8 +4964,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4998,8 +4998,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5033,8 +5033,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5067,8 +5067,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5102,8 +5102,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5136,8 +5136,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5189,8 +5189,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5223,8 +5223,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5258,8 +5258,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5292,8 +5292,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5327,8 +5327,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5361,8 +5361,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5414,8 +5414,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5448,8 +5448,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5483,8 +5483,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5517,8 +5517,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5552,8 +5552,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5586,8 +5586,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5639,8 +5639,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5673,8 +5673,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5708,8 +5708,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5742,8 +5742,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5777,8 +5777,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5811,8 +5811,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDefaultImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5892,8 +5892,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5926,8 +5926,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5960,8 +5960,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6006,8 +6006,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6040,8 +6040,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6074,8 +6074,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6120,8 +6120,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6154,8 +6154,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6188,8 +6188,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6234,8 +6234,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6268,8 +6268,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6302,8 +6302,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6348,8 +6348,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6382,8 +6382,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6416,8 +6416,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6462,8 +6462,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6496,8 +6496,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6530,8 +6530,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6576,8 +6576,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6610,8 +6610,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6644,8 +6644,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateDefaultVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6686,8 +6686,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6750,8 +6750,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6814,8 +6814,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6878,8 +6878,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6942,8 +6942,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegateListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7006,8 +7006,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7063,8 +7063,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7120,8 +7120,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7177,8 +7177,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7234,8 +7234,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7291,8 +7291,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDockerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7331,8 +7331,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDockerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7371,8 +7371,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDockerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7411,8 +7411,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDockerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7451,8 +7451,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDockerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7491,8 +7491,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDynatraceConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7531,8 +7531,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDynatraceConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7571,8 +7571,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDynatraceConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7611,8 +7611,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDynatraceConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7651,8 +7651,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetDynatraceConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7691,8 +7691,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetElasticsearchConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7731,8 +7731,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetElasticsearchConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7771,8 +7771,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetElasticsearchConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7811,8 +7811,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetElasticsearchConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7851,8 +7851,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetElasticsearchConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7891,8 +7891,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7933,8 +7933,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7975,8 +7975,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8017,8 +8017,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8059,8 +8059,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8101,8 +8101,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8170,8 +8170,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8239,8 +8239,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8308,8 +8308,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8377,8 +8377,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8446,8 +8446,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8488,8 +8488,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8530,8 +8530,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8572,8 +8572,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8614,8 +8614,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8705,8 +8705,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentServiceOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8748,8 +8748,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentServiceOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8791,8 +8791,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentServiceOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8834,8 +8834,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentServiceOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8877,8 +8877,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentServiceOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8920,8 +8920,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFileStoreFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8960,8 +8960,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFileStoreFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9000,8 +9000,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFileStoreFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9040,8 +9040,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFileStoreFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9080,8 +9080,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFileStoreFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9120,8 +9120,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFileStoreFolderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9160,8 +9160,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFileStoreFolderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9200,8 +9200,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFileStoreFolderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9240,8 +9240,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFileStoreFolderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9280,8 +9280,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFileStoreFolderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9320,8 +9320,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9363,8 +9363,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9406,8 +9406,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9449,8 +9449,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9492,8 +9492,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9535,8 +9535,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9575,8 +9575,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9615,8 +9615,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9655,8 +9655,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9695,8 +9695,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9735,8 +9735,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9775,8 +9775,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9815,8 +9815,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9855,8 +9855,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9895,8 +9895,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9935,8 +9935,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9989,8 +9989,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10043,8 +10043,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10097,8 +10097,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10151,8 +10151,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10205,8 +10205,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpSecretManagerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10245,8 +10245,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpSecretManagerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10285,8 +10285,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpSecretManagerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10325,8 +10325,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpSecretManagerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10365,8 +10365,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGcpSecretManagerConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10405,8 +10405,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10445,8 +10445,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10485,8 +10485,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10525,8 +10525,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10565,8 +10565,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10605,8 +10605,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGithubConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10645,8 +10645,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGithubConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10685,8 +10685,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGithubConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10725,8 +10725,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGithubConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10765,8 +10765,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGithubConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10805,8 +10805,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitlabConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10845,8 +10845,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitlabConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10885,8 +10885,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitlabConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10925,8 +10925,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitlabConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10965,8 +10965,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitlabConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11040,8 +11040,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11084,8 +11084,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11128,8 +11128,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11172,8 +11172,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11216,8 +11216,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11303,8 +11303,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsAppProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11342,8 +11342,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsAppProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11381,8 +11381,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsAppProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11420,8 +11420,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsAppProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11459,8 +11459,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsAppProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11590,8 +11590,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11634,8 +11634,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11678,8 +11678,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11722,8 +11722,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11766,8 +11766,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11845,8 +11845,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsGnupgArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11887,8 +11887,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsGnupgArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11929,8 +11929,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsGnupgArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11971,8 +11971,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsGnupgArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12013,8 +12013,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsGnupgArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12100,8 +12100,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsRepoCredArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12144,8 +12144,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsRepoCredArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12188,8 +12188,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsRepoCredArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12232,8 +12232,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsRepoCredArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12276,8 +12276,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsRepoCredArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12320,8 +12320,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12364,8 +12364,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12408,8 +12408,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12452,8 +12452,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12496,8 +12496,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12575,8 +12575,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetHarRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12616,8 +12616,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetHarRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12657,8 +12657,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetHarRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12698,8 +12698,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetHarRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12739,8 +12739,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetHarRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12780,8 +12780,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetHelmConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12820,8 +12820,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetHelmConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12860,8 +12860,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetHelmConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12900,8 +12900,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetHelmConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12940,8 +12940,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetHelmConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12980,8 +12980,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13023,8 +13023,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13066,8 +13066,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13109,8 +13109,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13152,8 +13152,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13443,8 +13443,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13485,8 +13485,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13527,8 +13527,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13569,8 +13569,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13611,8 +13611,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13653,8 +13653,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderSigningKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13695,8 +13695,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderSigningKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13737,8 +13737,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderSigningKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13779,8 +13779,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderSigningKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13821,8 +13821,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderSigningKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13926,8 +13926,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13969,8 +13969,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14012,8 +14012,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14055,8 +14055,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14098,8 +14098,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraProviderVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14249,8 +14249,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14300,8 +14300,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14351,8 +14351,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14402,8 +14402,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14453,8 +14453,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14504,8 +14504,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14548,8 +14548,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14592,8 +14592,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14636,8 +14636,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14680,8 +14680,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14759,8 +14759,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetJenkinsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14799,8 +14799,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetJenkinsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14839,8 +14839,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetJenkinsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14879,8 +14879,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetJenkinsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14919,8 +14919,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetJenkinsConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14959,8 +14959,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetJiraConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14999,8 +14999,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetJiraConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15039,8 +15039,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetJiraConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15079,8 +15079,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetJiraConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15119,8 +15119,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetJiraConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15159,8 +15159,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetKubernetesCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15199,8 +15199,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetKubernetesCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15239,8 +15239,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetKubernetesCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15279,8 +15279,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetKubernetesCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15319,8 +15319,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetKubernetesCloudCostConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15359,8 +15359,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetKubernetesConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15399,8 +15399,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetKubernetesConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15439,8 +15439,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetKubernetesConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15479,8 +15479,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetKubernetesConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15519,8 +15519,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetKubernetesConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15604,8 +15604,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetMonitoredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15646,8 +15646,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetMonitoredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15688,8 +15688,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetMonitoredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15730,8 +15730,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetMonitoredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15772,8 +15772,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetMonitoredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15814,8 +15814,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetNexusConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15854,8 +15854,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetNexusConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15894,8 +15894,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetNexusConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15934,8 +15934,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetNexusConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15974,8 +15974,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetNexusConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16014,8 +16014,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetNotificationRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16056,8 +16056,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetNotificationRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16098,8 +16098,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetNotificationRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16140,8 +16140,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetNotificationRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16182,8 +16182,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetNotificationRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16224,8 +16224,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOciHelmConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16264,8 +16264,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOciHelmConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16304,8 +16304,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOciHelmConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16344,8 +16344,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOciHelmConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16384,8 +16384,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOciHelmConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16424,8 +16424,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16464,8 +16464,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16504,8 +16504,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16544,8 +16544,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16584,8 +16584,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16624,8 +16624,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16664,8 +16664,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16704,8 +16704,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16746,8 +16746,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16788,8 +16788,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16830,8 +16830,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16872,8 +16872,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16914,8 +16914,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPagerdutyConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16954,8 +16954,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPagerdutyConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16994,8 +16994,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPagerdutyConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17034,8 +17034,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPagerdutyConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17074,8 +17074,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPagerdutyConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17114,8 +17114,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17155,8 +17155,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17196,8 +17196,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17237,8 +17237,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17278,8 +17278,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17319,8 +17319,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17360,8 +17360,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17401,8 +17401,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17443,8 +17443,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17485,8 +17485,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17527,8 +17527,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17569,8 +17569,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPipelineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17726,8 +17726,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17766,8 +17766,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17806,8 +17806,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17846,8 +17846,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17886,8 +17886,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17926,8 +17926,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17966,8 +17966,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18006,8 +18006,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicySetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18054,8 +18054,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicySetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18102,8 +18102,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicySetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18150,8 +18150,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicySetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18198,8 +18198,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicySetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18246,8 +18246,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18292,8 +18292,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18338,8 +18338,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18384,8 +18384,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18430,8 +18430,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18511,8 +18511,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18551,8 +18551,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18591,8 +18591,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18631,8 +18631,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18671,8 +18671,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18746,8 +18746,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRepoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18788,8 +18788,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRepoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18830,8 +18830,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRepoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18872,8 +18872,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRepoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18914,8 +18914,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRepoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19026,8 +19026,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetResourceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19066,8 +19066,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetResourceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19106,8 +19106,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetResourceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19146,8 +19146,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetResourceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19186,8 +19186,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetResourceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19226,8 +19226,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRoleAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19268,8 +19268,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRoleAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19310,8 +19310,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRoleAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19352,8 +19352,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRoleAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19394,8 +19394,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRoleAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19436,8 +19436,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19478,8 +19478,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19520,8 +19520,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19562,8 +19562,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19604,8 +19604,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19646,8 +19646,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19686,8 +19686,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19726,8 +19726,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19766,8 +19766,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19806,8 +19806,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19846,8 +19846,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretSshkeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19886,8 +19886,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretSshkeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19926,8 +19926,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretSshkeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19966,8 +19966,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretSshkeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20006,8 +20006,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretSshkeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20046,8 +20046,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretTextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20086,8 +20086,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretTextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20126,8 +20126,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretTextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20166,8 +20166,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretTextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20206,8 +20206,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretTextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20246,8 +20246,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretWinrmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20302,8 +20302,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretWinrmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20358,8 +20358,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretWinrmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20414,8 +20414,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretWinrmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20470,8 +20470,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSecretWinrmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20526,8 +20526,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20568,8 +20568,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20610,8 +20610,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20652,8 +20652,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20694,8 +20694,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20736,8 +20736,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20776,8 +20776,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20816,8 +20816,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20856,8 +20856,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20896,8 +20896,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20936,8 +20936,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20976,8 +20976,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21065,8 +21065,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceNowConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21105,8 +21105,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceNowConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21145,8 +21145,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceNowConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21185,8 +21185,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceNowConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21225,8 +21225,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceNowConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21265,8 +21265,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceOverridesV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21307,8 +21307,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceOverridesV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21349,8 +21349,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceOverridesV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21391,8 +21391,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceOverridesV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21433,8 +21433,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetServiceOverridesV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21475,8 +21475,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSloArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21517,8 +21517,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSloArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21559,8 +21559,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSloArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21601,8 +21601,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSloArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21643,8 +21643,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSloArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21685,8 +21685,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSplunkConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21725,8 +21725,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSplunkConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21765,8 +21765,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSplunkConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21805,8 +21805,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSplunkConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21845,8 +21845,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSplunkConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21885,8 +21885,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSpotConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21925,8 +21925,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSpotConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21965,8 +21965,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSpotConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22005,8 +22005,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSpotConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22045,8 +22045,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSpotConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22085,8 +22085,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSumologicConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22125,8 +22125,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSumologicConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22165,8 +22165,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSumologicConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22205,8 +22205,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSumologicConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22245,8 +22245,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetSumologicConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22285,8 +22285,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTasConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22325,8 +22325,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTasConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22365,8 +22365,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTasConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22405,8 +22405,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTasConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22445,8 +22445,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTasConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22485,8 +22485,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22542,8 +22542,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22599,8 +22599,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22656,8 +22656,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22713,8 +22713,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22770,8 +22770,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22827,8 +22827,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22884,8 +22884,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTemplateFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22927,8 +22927,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTemplateFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22970,8 +22970,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTemplateFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23013,8 +23013,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTemplateFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23056,8 +23056,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTemplateFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23099,8 +23099,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTerraformCloudConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23139,8 +23139,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTerraformCloudConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23179,8 +23179,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTerraformCloudConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23219,8 +23219,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTerraformCloudConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23259,8 +23259,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTerraformCloudConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23299,8 +23299,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23345,8 +23345,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23391,8 +23391,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23437,8 +23437,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23483,8 +23483,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23529,8 +23529,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTriggersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23572,8 +23572,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTriggersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23615,8 +23615,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTriggersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23658,8 +23658,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTriggersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23701,8 +23701,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetTriggersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23744,8 +23744,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23786,8 +23786,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23828,8 +23828,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23870,8 +23870,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23912,8 +23912,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23954,8 +23954,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetUsergroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24002,8 +24002,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetUsergroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24050,8 +24050,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetUsergroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24098,8 +24098,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetUsergroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24146,8 +24146,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetUsergroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24194,8 +24194,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetUsergroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24242,8 +24242,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetUsergroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24290,8 +24290,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24332,8 +24332,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24374,8 +24374,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24416,8 +24416,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24458,8 +24458,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24500,8 +24500,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetVaultConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24540,8 +24540,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetVaultConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24580,8 +24580,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetVaultConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24620,8 +24620,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetVaultConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24660,8 +24660,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetVaultConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24700,8 +24700,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24742,8 +24742,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24784,8 +24784,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24826,8 +24826,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24868,8 +24868,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24910,8 +24910,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspaceOutputValueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24952,8 +24952,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspaceOutputValueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24994,8 +24994,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspaceOutputValueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25036,8 +25036,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspaceOutputValueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25078,8 +25078,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspaceOutputValueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25120,8 +25120,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25161,8 +25161,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25202,8 +25202,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25243,8 +25243,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25284,8 +25284,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetWorkspacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

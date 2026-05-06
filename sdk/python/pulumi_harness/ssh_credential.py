@@ -201,7 +201,8 @@ class SshCredential(pulumi.CustomResource):
                 "inline_ssh": {
                     "ssh_key_file_id": my_secret.id,
                 },
-            })
+            },
+            opts = pulumi.ResourceOptions(ignore_changes=["sshAuthentication"]))
         ```
 
         ## Import
@@ -254,7 +255,8 @@ class SshCredential(pulumi.CustomResource):
                 "inline_ssh": {
                     "ssh_key_file_id": my_secret.id,
                 },
-            })
+            },
+            opts = pulumi.ResourceOptions(ignore_changes=["sshAuthentication"]))
         ```
 
         ## Import

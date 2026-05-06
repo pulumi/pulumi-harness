@@ -801,7 +801,8 @@ class Experiment(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[
                     my_template,
                     my_infra,
-                ]))
+                ],
+                ignore_changes=["tags"]))
         # ----------------------------------------------------------------------------
         # Example 2: Experiment with LOCAL Import
         # ----------------------------------------------------------------------------
@@ -826,7 +827,8 @@ class Experiment(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[
                     my_template,
                     my_infra,
-                ]))
+                ],
+                ignore_changes=["tags"]))
         # ----------------------------------------------------------------------------
         # Example 3: Cross-Scope Experiment (Org Hub → Project Experiment)
         # ----------------------------------------------------------------------------
@@ -850,7 +852,8 @@ class Experiment(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[
                     org_template,
                     my_infra,
-                ]))
+                ],
+                ignore_changes=["tags"]))
         ```
 
         ## Import
@@ -958,7 +961,8 @@ class Experiment(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[
                     my_template,
                     my_infra,
-                ]))
+                ],
+                ignore_changes=["tags"]))
         # ----------------------------------------------------------------------------
         # Example 2: Experiment with LOCAL Import
         # ----------------------------------------------------------------------------
@@ -983,7 +987,8 @@ class Experiment(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[
                     my_template,
                     my_infra,
-                ]))
+                ],
+                ignore_changes=["tags"]))
         # ----------------------------------------------------------------------------
         # Example 3: Cross-Scope Experiment (Org Hub → Project Experiment)
         # ----------------------------------------------------------------------------
@@ -1007,7 +1012,8 @@ class Experiment(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[
                     org_template,
                     my_infra,
-                ]))
+                ],
+                ignore_changes=["tags"]))
         ```
 
         ## Import

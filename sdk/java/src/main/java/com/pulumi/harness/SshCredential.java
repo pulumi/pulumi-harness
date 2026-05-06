@@ -40,8 +40,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.SshCredentialArgs;
  * import com.pulumi.harness.inputs.SshCredentialSshAuthenticationArgs;
  * import com.pulumi.harness.inputs.SshCredentialSshAuthenticationInlineSshArgs;
- * import java.util.List;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -77,7 +78,9 @@ import javax.annotation.Nullable;
  *                     .sshKeyFileId(mySecret.id())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .ignoreChanges("sshAuthentication")
+ *                 .build());
  * 
  *     }
  * }

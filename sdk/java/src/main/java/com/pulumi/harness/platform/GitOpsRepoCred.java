@@ -32,8 +32,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.GitOpsRepoCred;
  * import com.pulumi.harness.platform.GitOpsRepoCredArgs;
  * import com.pulumi.harness.platform.inputs.GitOpsRepoCredCredArgs;
- * import java.util.List;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -62,7 +63,9 @@ import javax.annotation.Nullable;
  * -----END OPENSSH PRIVATE KEY -----
  *                 """)
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .ignoreChanges("accountId", "creds[0].sshPrivateKey")
+ *                 .build());
  * 
  *     }}{@code
  * }}{@code

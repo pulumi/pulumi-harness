@@ -610,7 +610,8 @@ class HubV2(pulumi.CustomResource):
                 "account",
                 "enterprise",
                 "chaos",
-            ])
+            ],
+            opts = pulumi.ResourceOptions(ignore_changes=["tags"]))
         # ----------------------------------------------------------------------------
         # Example 2: Org-Level Chaos Hub (TESTED ✅)
         # ----------------------------------------------------------------------------
@@ -625,7 +626,8 @@ class HubV2(pulumi.CustomResource):
                 "shared",
                 "chaos",
             ],
-            opts = pulumi.ResourceOptions(depends_on=[this]))
+            opts = pulumi.ResourceOptions(depends_on=[this],
+                ignore_changes=["tags"]))
         # ----------------------------------------------------------------------------
         # Example 3: Project-Level Chaos Hub
         # ----------------------------------------------------------------------------
@@ -641,7 +643,8 @@ class HubV2(pulumi.CustomResource):
                 "team",
                 "chaos",
             ],
-            opts = pulumi.ResourceOptions(depends_on=[this_harness_platform_project]))
+            opts = pulumi.ResourceOptions(depends_on=[this_harness_platform_project],
+                ignore_changes=["tags"]))
         ```
 
         ## Import
@@ -718,7 +721,8 @@ class HubV2(pulumi.CustomResource):
                 "account",
                 "enterprise",
                 "chaos",
-            ])
+            ],
+            opts = pulumi.ResourceOptions(ignore_changes=["tags"]))
         # ----------------------------------------------------------------------------
         # Example 2: Org-Level Chaos Hub (TESTED ✅)
         # ----------------------------------------------------------------------------
@@ -733,7 +737,8 @@ class HubV2(pulumi.CustomResource):
                 "shared",
                 "chaos",
             ],
-            opts = pulumi.ResourceOptions(depends_on=[this]))
+            opts = pulumi.ResourceOptions(depends_on=[this],
+                ignore_changes=["tags"]))
         # ----------------------------------------------------------------------------
         # Example 3: Project-Level Chaos Hub
         # ----------------------------------------------------------------------------
@@ -749,7 +754,8 @@ class HubV2(pulumi.CustomResource):
                 "team",
                 "chaos",
             ],
-            opts = pulumi.ResourceOptions(depends_on=[this_harness_platform_project]))
+            opts = pulumi.ResourceOptions(depends_on=[this_harness_platform_project],
+                ignore_changes=["tags"]))
         ```
 
         ## Import

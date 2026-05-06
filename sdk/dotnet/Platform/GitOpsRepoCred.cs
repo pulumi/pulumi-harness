@@ -43,6 +43,13 @@ namespace Pulumi.Harness.Platform
     /// ",
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         IgnoreChanges =
+    ///         {
+    ///             "accountId",
+    ///             "creds[0].sshPrivateKey",
+    ///         },
     ///     });
     /// 
     /// });

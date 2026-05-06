@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *             keyData: "-----BEGIN PGP PUBLIC KEY BLOCK-----XXXXXX-----END PGP PUBLIC KEY BLOCK-----",
  *         }],
  *     }],
+ * }, {
+ *     ignoreChanges: ["requests[0].upsert"],
  * });
  * ```
  *

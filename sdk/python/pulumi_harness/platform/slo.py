@@ -199,7 +199,7 @@ class Slo(pulumi.CustomResource):
                 ],
                 "slo_target": {
                     "type": "Calender",
-                    "slo_target_percentage": 10,
+                    "slo_target_percentage": float(10),
                     "spec": json.dumps({
                         "type": "Monthly",
                         "spec": {
@@ -296,7 +296,7 @@ class Slo(pulumi.CustomResource):
                 ],
                 "slo_target": {
                     "type": "Calender",
-                    "slo_target_percentage": 10,
+                    "slo_target_percentage": float(10),
                     "spec": json.dumps({
                         "type": "Monthly",
                         "spec": {

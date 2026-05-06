@@ -589,7 +589,7 @@ class ExperimentTemplate(pulumi.CustomResource):
                     {
                         "identity": "pod-status-check",
                         "name": "pod-status-probe",
-                        "revision": "v1",
+                        "revision": int("v1"),
                         "is_enterprise": True,
                         "duration": "30",
                         "weightage": 10,
@@ -607,7 +607,7 @@ class ExperimentTemplate(pulumi.CustomResource):
                     {
                         "identity": "http-health-check",
                         "name": "http-health-probe",
-                        "revision": "v1",
+                        "revision": int("v1"),
                         "is_enterprise": True,
                         "duration": "30",
                         "weightage": 10,
@@ -945,7 +945,7 @@ class ExperimentTemplate(pulumi.CustomResource):
                     {
                         "identity": "pod-status-check",
                         "name": "pod-status-probe",
-                        "revision": "v1",
+                        "revision": int("v1"),
                         "is_enterprise": True,
                         "duration": "30",
                         "weightage": 10,
@@ -963,7 +963,7 @@ class ExperimentTemplate(pulumi.CustomResource):
                     {
                         "identity": "http-health-check",
                         "name": "http-health-probe",
-                        "revision": "v1",
+                        "revision": int("v1"),
                         "is_enterprise": True,
                         "duration": "30",
                         "weightage": 10,

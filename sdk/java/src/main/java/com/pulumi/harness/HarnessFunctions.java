@@ -120,8 +120,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetChaosInfrastructureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -163,8 +163,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetChaosInfrastructureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -206,8 +206,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetChaosInfrastructureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -249,8 +249,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetChaosInfrastructureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -292,8 +292,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetChaosInfrastructureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -384,8 +384,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetDelegateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -426,8 +426,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetDelegateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -468,8 +468,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetDelegateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -510,8 +510,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetDelegateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -552,8 +552,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetDelegateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -594,8 +594,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetDelegateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -636,8 +636,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetDelegateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -993,8 +993,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetTriggerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1038,8 +1038,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetTriggerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1083,8 +1083,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetTriggerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1128,8 +1128,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetTriggerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1173,8 +1173,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetTriggerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1218,8 +1218,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetTriggerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1263,8 +1263,8 @@ public final class HarnessFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.HarnessFunctions;
      * import com.pulumi.harness.inputs.GetTriggerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

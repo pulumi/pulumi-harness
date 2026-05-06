@@ -59,8 +59,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetActionTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -103,8 +103,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetActionTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -147,8 +147,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetActionTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -191,8 +191,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetActionTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -235,8 +235,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetActionTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -281,8 +281,8 @@ public final class ChaosFunctions {
      * import com.pulumi.harness.chaos.inputs.GetExperimentArgs;
      * import com.pulumi.harness.platform.MonitoredService;
      * import com.pulumi.harness.platform.MonitoredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -373,8 +373,8 @@ public final class ChaosFunctions {
      * import com.pulumi.harness.chaos.inputs.GetExperimentArgs;
      * import com.pulumi.harness.platform.MonitoredService;
      * import com.pulumi.harness.platform.MonitoredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -465,8 +465,8 @@ public final class ChaosFunctions {
      * import com.pulumi.harness.chaos.inputs.GetExperimentArgs;
      * import com.pulumi.harness.platform.MonitoredService;
      * import com.pulumi.harness.platform.MonitoredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -557,8 +557,8 @@ public final class ChaosFunctions {
      * import com.pulumi.harness.chaos.inputs.GetExperimentArgs;
      * import com.pulumi.harness.platform.MonitoredService;
      * import com.pulumi.harness.platform.MonitoredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -649,8 +649,8 @@ public final class ChaosFunctions {
      * import com.pulumi.harness.chaos.inputs.GetExperimentArgs;
      * import com.pulumi.harness.platform.MonitoredService;
      * import com.pulumi.harness.platform.MonitoredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -739,8 +739,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetExperimentTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -811,8 +811,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetExperimentTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -883,8 +883,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetExperimentTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -955,8 +955,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetExperimentTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1027,8 +1027,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetExperimentTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1088,12 +1088,16 @@ public final class ChaosFunctions {
     /**
      * Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetFaultTemplateResult> getFaultTemplate(GetFaultTemplateArgs args) {
         return getFaultTemplate(args, InvokeOptions.Empty);
     }
     /**
      * Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetFaultTemplateResult> getFaultTemplatePlain(GetFaultTemplatePlainArgs args) {
@@ -1102,6 +1106,8 @@ public final class ChaosFunctions {
     /**
      * Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetFaultTemplateResult> getFaultTemplate(GetFaultTemplateArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:chaos/getFaultTemplate:getFaultTemplate", TypeShape.of(GetFaultTemplateResult.class), args, Utilities.withVersion(options));
@@ -1109,12 +1115,16 @@ public final class ChaosFunctions {
     /**
      * Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetFaultTemplateResult> getFaultTemplate(GetFaultTemplateArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:chaos/getFaultTemplate:getFaultTemplate", TypeShape.of(GetFaultTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetFaultTemplateResult> getFaultTemplatePlain(GetFaultTemplatePlainArgs args, InvokeOptions options) {
@@ -1134,8 +1144,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetHubArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1176,8 +1186,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetHubArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1218,8 +1228,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetHubArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1260,8 +1270,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetHubArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1302,8 +1312,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetHubArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1407,8 +1417,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetImageRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1456,8 +1466,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetImageRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1505,8 +1515,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetImageRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1554,8 +1564,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetImageRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1603,8 +1613,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetImageRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1652,8 +1662,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetImageRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1701,8 +1711,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetImageRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1750,8 +1760,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1804,8 +1814,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1858,8 +1868,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1912,8 +1922,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1966,8 +1976,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2022,8 +2032,8 @@ public final class ChaosFunctions {
      * import com.pulumi.harness.chaos.inputs.GetProbeTemplateArgs;
      * import com.pulumi.harness.chaos.Experiment;
      * import com.pulumi.harness.chaos.ExperimentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2055,7 +2065,7 @@ public final class ChaosFunctions {
      * 
      *         // Example 3: Use in another resource
      *         var example = new Experiment("example", ExperimentArgs.builder()
-     *             .probe(List.of(Map.ofEntries(
+     *             .probe(Arrays.asList(Map.ofEntries(
      *                 Map.entry("name", byIdentity.name()),
      *                 Map.entry("type", byIdentity.type())
      *             )))
@@ -2086,8 +2096,8 @@ public final class ChaosFunctions {
      * import com.pulumi.harness.chaos.inputs.GetProbeTemplateArgs;
      * import com.pulumi.harness.chaos.Experiment;
      * import com.pulumi.harness.chaos.ExperimentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2119,7 +2129,7 @@ public final class ChaosFunctions {
      * 
      *         // Example 3: Use in another resource
      *         var example = new Experiment("example", ExperimentArgs.builder()
-     *             .probe(List.of(Map.ofEntries(
+     *             .probe(Arrays.asList(Map.ofEntries(
      *                 Map.entry("name", byIdentity.name()),
      *                 Map.entry("type", byIdentity.type())
      *             )))
@@ -2150,8 +2160,8 @@ public final class ChaosFunctions {
      * import com.pulumi.harness.chaos.inputs.GetProbeTemplateArgs;
      * import com.pulumi.harness.chaos.Experiment;
      * import com.pulumi.harness.chaos.ExperimentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2183,7 +2193,7 @@ public final class ChaosFunctions {
      * 
      *         // Example 3: Use in another resource
      *         var example = new Experiment("example", ExperimentArgs.builder()
-     *             .probe(List.of(Map.ofEntries(
+     *             .probe(Arrays.asList(Map.ofEntries(
      *                 Map.entry("name", byIdentity.name()),
      *                 Map.entry("type", byIdentity.type())
      *             )))
@@ -2214,8 +2224,8 @@ public final class ChaosFunctions {
      * import com.pulumi.harness.chaos.inputs.GetProbeTemplateArgs;
      * import com.pulumi.harness.chaos.Experiment;
      * import com.pulumi.harness.chaos.ExperimentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2247,7 +2257,7 @@ public final class ChaosFunctions {
      * 
      *         // Example 3: Use in another resource
      *         var example = new Experiment("example", ExperimentArgs.builder()
-     *             .probe(List.of(Map.ofEntries(
+     *             .probe(Arrays.asList(Map.ofEntries(
      *                 Map.entry("name", byIdentity.name()),
      *                 Map.entry("type", byIdentity.type())
      *             )))
@@ -2278,8 +2288,8 @@ public final class ChaosFunctions {
      * import com.pulumi.harness.chaos.inputs.GetProbeTemplateArgs;
      * import com.pulumi.harness.chaos.Experiment;
      * import com.pulumi.harness.chaos.ExperimentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2311,7 +2321,7 @@ public final class ChaosFunctions {
      * 
      *         // Example 3: Use in another resource
      *         var example = new Experiment("example", ExperimentArgs.builder()
-     *             .probe(List.of(Map.ofEntries(
+     *             .probe(Arrays.asList(Map.ofEntries(
      *                 Map.entry("name", byIdentity.name()),
      *                 Map.entry("type", byIdentity.type())
      *             )))
@@ -2340,8 +2350,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2392,8 +2402,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2444,8 +2454,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2496,8 +2506,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2548,8 +2558,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2600,8 +2610,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2652,8 +2662,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2704,8 +2714,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2759,8 +2769,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2814,8 +2824,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2869,8 +2879,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2924,8 +2934,8 @@ public final class ChaosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.chaos.ChaosFunctions;
      * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

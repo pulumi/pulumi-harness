@@ -8,6 +8,73 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * function tryOutput_(
+ * 	...fns: Array<() => pulumi.Input<any>>
+ * ): pulumi.Output<any> {
+ * 	if (fns.length === 0) {
+ * 		throw new Error("try: all parameters failed");
+ * 	}
+ * 	const [fn, ...rest] = fns;
+ * 	try {
+ * 		return pulumi.output(fn()).apply(result => result !== undefined ? result : tryOutput_(...rest));
+ * 	} catch {
+ * 		return tryOutput_(...rest);
+ * 	}
+ * 	throw new Error("try: all parameters failed");
+ * }
+ *
+ *
+ * // Example 1: Lookup Fault Template by Identity (Recommended)
+ * const byIdentity = harness.chaos.getFaultTemplate({
+ *     orgId: "my_org",
+ *     projectId: "my_project",
+ *     hubIdentity: "my-chaos-hub",
+ *     identity: "pod-delete-fault",
+ * });
+ * export const faultName = byIdentity.then(byIdentity => byIdentity.name);
+ * export const faultCategory = byIdentity.then(byIdentity => byIdentity.categories);
+ * export const faultDescription = byIdentity.then(byIdentity => byIdentity.description);
+ * // Example 2: Lookup Fault Template by Name
+ * const byName = harness.chaos.getFaultTemplate({
+ *     orgId: "my_org",
+ *     projectId: "my_project",
+ *     hubIdentity: "my-chaos-hub",
+ *     name: "Pod Delete Fault",
+ * });
+ * // Example 3: Use in Chaos Experiment
+ * const example = new harness.chaos.Experiment("example", {fault: [{
+ *     name: byIdentity.then(byIdentity => byIdentity.name),
+ *     description: byIdentity.then(byIdentity => byIdentity.description),
+ * }]});
+ * export const kubernetesImage = tryOutput_(
+ *     () => byIdentity.then(byIdentity => byIdentity.spec[0].chaos[0].kubernetes[0].image),
+ *     () => "not configured"
+ * );
+ * export const faultParams = tryOutput_(
+ *     () => byIdentity.then(byIdentity => byIdentity.spec[0].chaos[0].params),
+ *     () => []
+ * );
+ * const hasKubernetesSpec = tryOutput_(
+ *     () => byIdentity.then(byIdentity => byIdentity.spec[0].chaos[0].kubernetes),
+ *     () => []
+ * ).length.apply(length => length > 0);
+ * const hasTargets = tryOutput_(
+ *     () => byIdentity.then(byIdentity => byIdentity.spec[0].target),
+ *     () => []
+ * ).length.apply(length => length > 0);
+ * export const templateFeatures = {
+ *     hasKubernetesSpec: hasKubernetesSpec,
+ *     hasTargets: hasTargets,
+ *     tags: byIdentity.then(byIdentity => byIdentity.tags),
+ * };
+ * ```
  */
 export function getFaultTemplate(args: GetFaultTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetFaultTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -158,6 +225,73 @@ export interface GetFaultTemplateResult {
 }
 /**
  * Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * function tryOutput_(
+ * 	...fns: Array<() => pulumi.Input<any>>
+ * ): pulumi.Output<any> {
+ * 	if (fns.length === 0) {
+ * 		throw new Error("try: all parameters failed");
+ * 	}
+ * 	const [fn, ...rest] = fns;
+ * 	try {
+ * 		return pulumi.output(fn()).apply(result => result !== undefined ? result : tryOutput_(...rest));
+ * 	} catch {
+ * 		return tryOutput_(...rest);
+ * 	}
+ * 	throw new Error("try: all parameters failed");
+ * }
+ *
+ *
+ * // Example 1: Lookup Fault Template by Identity (Recommended)
+ * const byIdentity = harness.chaos.getFaultTemplate({
+ *     orgId: "my_org",
+ *     projectId: "my_project",
+ *     hubIdentity: "my-chaos-hub",
+ *     identity: "pod-delete-fault",
+ * });
+ * export const faultName = byIdentity.then(byIdentity => byIdentity.name);
+ * export const faultCategory = byIdentity.then(byIdentity => byIdentity.categories);
+ * export const faultDescription = byIdentity.then(byIdentity => byIdentity.description);
+ * // Example 2: Lookup Fault Template by Name
+ * const byName = harness.chaos.getFaultTemplate({
+ *     orgId: "my_org",
+ *     projectId: "my_project",
+ *     hubIdentity: "my-chaos-hub",
+ *     name: "Pod Delete Fault",
+ * });
+ * // Example 3: Use in Chaos Experiment
+ * const example = new harness.chaos.Experiment("example", {fault: [{
+ *     name: byIdentity.then(byIdentity => byIdentity.name),
+ *     description: byIdentity.then(byIdentity => byIdentity.description),
+ * }]});
+ * export const kubernetesImage = tryOutput_(
+ *     () => byIdentity.then(byIdentity => byIdentity.spec[0].chaos[0].kubernetes[0].image),
+ *     () => "not configured"
+ * );
+ * export const faultParams = tryOutput_(
+ *     () => byIdentity.then(byIdentity => byIdentity.spec[0].chaos[0].params),
+ *     () => []
+ * );
+ * const hasKubernetesSpec = tryOutput_(
+ *     () => byIdentity.then(byIdentity => byIdentity.spec[0].chaos[0].kubernetes),
+ *     () => []
+ * ).length.apply(length => length > 0);
+ * const hasTargets = tryOutput_(
+ *     () => byIdentity.then(byIdentity => byIdentity.spec[0].target),
+ *     () => []
+ * ).length.apply(length => length > 0);
+ * export const templateFeatures = {
+ *     hasKubernetesSpec: hasKubernetesSpec,
+ *     hasTargets: hasTargets,
+ *     tags: byIdentity.then(byIdentity => byIdentity.tags),
+ * };
+ * ```
  */
 export function getFaultTemplateOutput(args: GetFaultTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFaultTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
