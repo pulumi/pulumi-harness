@@ -420,103 +420,103 @@ export interface ActionTemplateState {
     /**
      * Account identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Container action configuration. Required when type is 'container'.
      */
-    containerAction?: pulumi.Input<inputs.chaos.ActionTemplateContainerAction>;
+    containerAction?: pulumi.Input<inputs.chaos.ActionTemplateContainerAction | undefined>;
     /**
      * Creation timestamp (Unix epoch).
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * User who created the action template.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Custom script action configuration. Required when type is 'customScript'.
      */
-    customScriptAction?: pulumi.Input<inputs.chaos.ActionTemplateCustomScriptAction>;
+    customScriptAction?: pulumi.Input<inputs.chaos.ActionTemplateCustomScriptAction | undefined>;
     /**
      * Delay action configuration. Required when type is 'delay'.
      */
-    delayAction?: pulumi.Input<inputs.chaos.ActionTemplateDelayAction>;
+    delayAction?: pulumi.Input<inputs.chaos.ActionTemplateDelayAction | undefined>;
     /**
      * Description of the action template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identity of the chaos hub this action template belongs to.
      */
-    hubIdentity?: pulumi.Input<string>;
+    hubIdentity?: pulumi.Input<string | undefined>;
     /**
      * Internal ID of the action template.
      */
-    idInternal?: pulumi.Input<string>;
+    idInternal?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for the action template (immutable).
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * Infrastructure type for the action template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container. Supports runtime inputs like <+input>.
      */
-    infrastructureType?: pulumi.Input<string>;
+    infrastructureType?: pulumi.Input<string | undefined>;
     /**
      * Whether this is the default version for predefined actions.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this is an enterprise action template.
      */
-    isEnterprise?: pulumi.Input<boolean>;
+    isEnterprise?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the action template has been removed.
      */
-    isRemoved?: pulumi.Input<boolean>;
+    isRemoved?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the action template.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Revision number of the action template.
      */
-    revision?: pulumi.Input<number>;
+    revision?: pulumi.Input<number | undefined>;
     /**
      * Run properties for the action template execution.
      */
-    runProperties?: pulumi.Input<inputs.chaos.ActionTemplateRunProperties>;
+    runProperties?: pulumi.Input<inputs.chaos.ActionTemplateRunProperties | undefined>;
     /**
      * Tags to associate with the action template.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Template content/definition.
      */
-    template?: pulumi.Input<string>;
+    template?: pulumi.Input<string | undefined>;
     /**
      * Type of the action template. Valid values: delay, customScript, container.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Last update timestamp (Unix epoch).
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * User who last updated the action template.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
     /**
      * Template variables that can be used in the action.
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.chaos.ActionTemplateVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.chaos.ActionTemplateVariable>[] | undefined>;
 }
 
 /**
@@ -526,19 +526,19 @@ export interface ActionTemplateArgs {
     /**
      * Container action configuration. Required when type is 'container'.
      */
-    containerAction?: pulumi.Input<inputs.chaos.ActionTemplateContainerAction>;
+    containerAction?: pulumi.Input<inputs.chaos.ActionTemplateContainerAction | undefined>;
     /**
      * Custom script action configuration. Required when type is 'customScript'.
      */
-    customScriptAction?: pulumi.Input<inputs.chaos.ActionTemplateCustomScriptAction>;
+    customScriptAction?: pulumi.Input<inputs.chaos.ActionTemplateCustomScriptAction | undefined>;
     /**
      * Delay action configuration. Required when type is 'delay'.
      */
-    delayAction?: pulumi.Input<inputs.chaos.ActionTemplateDelayAction>;
+    delayAction?: pulumi.Input<inputs.chaos.ActionTemplateDelayAction | undefined>;
     /**
      * Description of the action template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identity of the chaos hub this action template belongs to.
      */
@@ -550,27 +550,27 @@ export interface ActionTemplateArgs {
     /**
      * Infrastructure type for the action template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container. Supports runtime inputs like <+input>.
      */
-    infrastructureType?: pulumi.Input<string>;
+    infrastructureType?: pulumi.Input<string | undefined>;
     /**
      * Name of the action template.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Run properties for the action template execution.
      */
-    runProperties?: pulumi.Input<inputs.chaos.ActionTemplateRunProperties>;
+    runProperties?: pulumi.Input<inputs.chaos.ActionTemplateRunProperties | undefined>;
     /**
      * Tags to associate with the action template.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of the action template. Valid values: delay, customScript, container.
      */
@@ -578,5 +578,5 @@ export interface ActionTemplateArgs {
     /**
      * Template variables that can be used in the action.
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.chaos.ActionTemplateVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.chaos.ActionTemplateVariable>[] | undefined>;
 }

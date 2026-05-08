@@ -158,39 +158,39 @@ export interface FeatureFlagTargetGroupState {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Environment Identifier
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * A list of targets to exclude from the target group
      */
-    excludeds?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier of the feature flag target group.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * A list of targets to include in the target group
      */
-    includeds?: pulumi.Input<pulumi.Input<string>[]>;
+    includeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the feature flag target group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The list of rules used to include targets in the target group.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagTargetGroupRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagTargetGroupRule>[] | undefined>;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface FeatureFlagTargetGroupArgs {
     /**
      * A list of targets to exclude from the target group
      */
-    excludeds?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier of the feature flag target group.
      */
@@ -216,11 +216,11 @@ export interface FeatureFlagTargetGroupArgs {
     /**
      * A list of targets to include in the target group
      */
-    includeds?: pulumi.Input<pulumi.Input<string>[]>;
+    includeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the feature flag target group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier
      */
@@ -232,5 +232,5 @@ export interface FeatureFlagTargetGroupArgs {
     /**
      * The list of rules used to include targets in the target group.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagTargetGroupRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagTargetGroupRule>[] | undefined>;
 }

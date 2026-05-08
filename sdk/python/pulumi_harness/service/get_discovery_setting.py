@@ -160,9 +160,9 @@ def get_discovery_setting(correlation_id: Optional[_builtins.str] = None,
         org_identifier=pulumi.get(__ret__, 'org_identifier'),
         project_identifier=pulumi.get(__ret__, 'project_identifier'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_discovery_setting_output(correlation_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 org_identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 project_identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_discovery_setting_output(correlation_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 org_identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 project_identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiscoverySettingResult]:
     """
     Data source for retrieving service discovery settings.

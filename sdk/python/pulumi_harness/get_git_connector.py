@@ -224,8 +224,8 @@ def get_git_connector(id: Optional[_builtins.str] = None,
         url_type=pulumi.get(__ret__, 'url_type'),
         username=pulumi.get(__ret__, 'username'),
         webhook_url=pulumi.get(__ret__, 'webhook_url'))
-def get_git_connector_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_git_connector_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitConnectorResult]:
     """
     Data source for retrieving a Harness application

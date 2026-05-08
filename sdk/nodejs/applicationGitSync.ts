@@ -145,23 +145,23 @@ export interface ApplicationGitSyncState {
     /**
      * The id of the application.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The branch of the git repository to sync to.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The id of the git connector to use.
      */
-    connectorId?: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to enable git sync.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the git repository to sync to. This is only used if the git connector is for an account and not an individual repository.
      */
-    repositoryName?: pulumi.Input<string>;
+    repositoryName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -183,9 +183,9 @@ export interface ApplicationGitSyncArgs {
     /**
      * Whether or not to enable git sync.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the git repository to sync to. This is only used if the git connector is for an account and not an individual repository.
      */
-    repositoryName?: pulumi.Input<string>;
+    repositoryName?: pulumi.Input<string | undefined>;
 }

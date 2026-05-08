@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.autostopping.RuleEcsArgs;
  * import com.pulumi.harness.autostopping.inputs.RuleEcsContainerArgs;
  * import com.pulumi.harness.autostopping.inputs.RuleEcsDependArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -60,9 +60,9 @@ import javax.annotation.Nullable;
  *                 .region("us-east-1")
  *                 .taskCount(1)
  *                 .build())
- *             .tcp(List.of(Map.ofEntries(
+ *             .tcp(Arrays.asList(Map.ofEntries(
  *                 Map.entry("proxyId", "proxy_id"),
- *                 Map.entry("forwardRule", List.of(Map.of("port", 2233)))
+ *                 Map.entry("forwardRule", Arrays.asList(Map.of("port", 2233)))
  *             )))
  *             .depends(RuleEcsDependArgs.builder()
  *                 .ruleId(24576)

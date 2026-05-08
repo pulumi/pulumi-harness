@@ -320,27 +320,27 @@ export interface GitopsApplicationsetState {
     /**
      * Agent identifier of the GitOps applicationset.
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Definition of the GitOps applicationset resource.
      */
-    applicationset?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationset>;
+    applicationset?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationset | undefined>;
     /**
      * Identifier of the GitOps applicationset. This is a unique identifier for the applicationset generated automatically.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier of the GitOps applicationset.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps applicationset.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the GitOps application should be updated if existing and inserted if not.
      */
-    upsert?: pulumi.Input<boolean>;
+    upsert?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -366,5 +366,5 @@ export interface GitopsApplicationsetArgs {
     /**
      * Indicates if the GitOps application should be updated if existing and inserted if not.
      */
-    upsert?: pulumi.Input<boolean>;
+    upsert?: pulumi.Input<boolean | undefined>;
 }

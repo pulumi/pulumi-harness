@@ -19,10 +19,10 @@ __all__ = ['ApplicationArgs', 'Application']
 @pulumi.input_type
 class ApplicationArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_manual_trigger_authorized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_manual_trigger_authorized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Application resource.
 
@@ -42,62 +42,62 @@ class ApplicationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The application description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="isManualTriggerAuthorized")
-    def is_manual_trigger_authorized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_manual_trigger_authorized(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this is set to true, all manual triggers will require API Key authorization
         """
         return pulumi.get(self, "is_manual_trigger_authorized")
 
     @is_manual_trigger_authorized.setter
-    def is_manual_trigger_authorized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_manual_trigger_authorized(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_manual_trigger_authorized", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the application
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ApplicationState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_sync_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_sync_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_manual_trigger_authorized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_sync_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_manual_trigger_authorized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Application resources.
 
@@ -123,74 +123,74 @@ class _ApplicationState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The application description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gitSyncConnectorId")
-    def git_sync_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_sync_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the git sync connector
         """
         return pulumi.get(self, "git_sync_connector_id")
 
     @git_sync_connector_id.setter
-    def git_sync_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_sync_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_sync_connector_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gitSyncEnabled")
-    def git_sync_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def git_sync_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if git sync is enabled on this application
         """
         return pulumi.get(self, "git_sync_enabled")
 
     @git_sync_enabled.setter
-    def git_sync_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def git_sync_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "git_sync_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="isManualTriggerAuthorized")
-    def is_manual_trigger_authorized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_manual_trigger_authorized(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this is set to true, all manual triggers will require API Key authorization
         """
         return pulumi.get(self, "is_manual_trigger_authorized")
 
     @is_manual_trigger_authorized.setter
-    def is_manual_trigger_authorized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_manual_trigger_authorized(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_manual_trigger_authorized", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the application
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -200,10 +200,10 @@ class Application(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_manual_trigger_authorized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_manual_trigger_authorized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for creating a Harness application
@@ -291,10 +291,10 @@ class Application(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_manual_trigger_authorized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_manual_trigger_authorized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -320,12 +320,12 @@ class Application(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            git_sync_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            git_sync_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_manual_trigger_authorized: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Application':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_sync_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            git_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_manual_trigger_authorized: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Application':
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -80,13 +80,13 @@ export interface GetDelegateIdsOutputArgs {
     /**
      * The name of the delegate to query for.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The status of the delegate to query for. Valid values are DELETED, ENABLED, WAITING*FOR*APPROVAL
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The type of the delegate to query for. Valid values are DOCKER, ECS, HELM*DELEGATE, KUBERNETES, SHELL*SCRIPT
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

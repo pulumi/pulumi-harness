@@ -191,52 +191,52 @@ export interface GitOpsAgentState {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent token to be used for authentication of the agent with Harness.
      */
-    agentToken?: pulumi.Input<string>;
+    agentToken?: pulumi.Input<string | undefined>;
     /**
      * Description of the GitOps agent.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the GitOps agent.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Metadata of the agent.
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsAgentMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsAgentMetadata>[] | undefined>;
     /**
      * Name of the GitOps agent.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
      */
-    operator?: pulumi.Input<string>;
+    operator?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier of the GitOps agent.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
      */
-    prefixedIdentifier?: pulumi.Input<string>;
+    prefixedIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps agent.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Default: "AGENT*TYPE*UNSET"
      * Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -248,11 +248,11 @@ export interface GitOpsAgentArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Description of the GitOps agent.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the GitOps agent.
      */
@@ -260,27 +260,27 @@ export interface GitOpsAgentArgs {
     /**
      * Metadata of the agent.
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsAgentMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsAgentMetadata>[] | undefined>;
     /**
      * Name of the GitOps agent.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
      */
-    operator?: pulumi.Input<string>;
+    operator?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier of the GitOps agent.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps agent.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Default: "AGENT*TYPE*UNSET"
      * Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"

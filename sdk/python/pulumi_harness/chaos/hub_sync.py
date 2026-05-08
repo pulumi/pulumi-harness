@@ -65,10 +65,10 @@ class HubSyncArgs:
 @pulumi.input_type
 class _HubSyncState:
     def __init__(__self__, *,
-                 hub_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_synced_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 hub_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_synced_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HubSync resources.
 
@@ -86,44 +86,44 @@ class _HubSyncState:
 
     @_builtins.property
     @pulumi.getter(name="hubId")
-    def hub_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Chaos Hub to sync
         """
         return pulumi.get(self, "hub_id")
 
     @hub_id.setter
-    def hub_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSyncedAt")
-    def last_synced_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_synced_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp of the last sync
         """
         return pulumi.get(self, "last_synced_at")
 
     @last_synced_at.setter
-    def last_synced_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_synced_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_synced_at", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
@@ -133,9 +133,9 @@ class HubSync(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 hub_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 hub_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for syncing a Harness Chaos Hub
@@ -194,9 +194,9 @@ class HubSync(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 hub_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 hub_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -226,10 +226,10 @@ class HubSync(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            hub_id: Optional[pulumi.Input[_builtins.str]] = None,
-            last_synced_at: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'HubSync':
+            hub_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_synced_at: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'HubSync':
         """
         Get an existing HubSync resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

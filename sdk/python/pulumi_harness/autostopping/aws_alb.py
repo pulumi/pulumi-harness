@@ -23,10 +23,10 @@ class AwsAlbArgs:
                  delete_cloud_resources_on_destroy: pulumi.Input[_builtins.bool],
                  region: pulumi.Input[_builtins.str],
                  vpc: pulumi.Input[_builtins.str],
-                 alb_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alb_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AwsAlb resource.
 
@@ -101,62 +101,62 @@ class AwsAlbArgs:
 
     @_builtins.property
     @pulumi.getter(name="albArn")
-    def alb_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alb_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arn of AWS ALB to be imported. Required only for importing existing ALB
         """
         return pulumi.get(self, "alb_arn")
 
     @alb_arn.setter
-    def alb_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alb_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alb_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
-    def certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the proxy
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Security Group to define the security rules that determine the inbound and outbound traffic
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
 
 @pulumi.input_type
 class _AwsAlbState:
     def __init__(__self__, *,
-                 alb_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None):
+                 alb_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AwsAlb resources.
 
@@ -190,107 +190,107 @@ class _AwsAlbState:
 
     @_builtins.property
     @pulumi.getter(name="albArn")
-    def alb_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alb_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arn of AWS ALB to be imported. Required only for importing existing ALB
         """
         return pulumi.get(self, "alb_arn")
 
     @alb_arn.setter
-    def alb_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alb_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alb_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
-    def certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudConnectorId")
-    def cloud_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the cloud connector
         """
         return pulumi.get(self, "cloud_connector_id")
 
     @cloud_connector_id.setter
-    def cloud_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_connector_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
-    def delete_cloud_resources_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_cloud_resources_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
         """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @delete_cloud_resources_on_destroy.setter
-    def delete_cloud_resources_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_cloud_resources_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_cloud_resources_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the proxy
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region in which cloud resources are hosted
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Security Group to define the security rules that determine the inbound and outbound traffic
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC in which cloud resources are hosted
         """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
-    def vpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc", value)
 
 
@@ -300,14 +300,14 @@ class AwsAlb(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alb_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None,
+                 alb_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating an AWS application load balancer
@@ -404,14 +404,14 @@ class AwsAlb(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alb_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None,
+                 alb_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -448,15 +448,15 @@ class AwsAlb(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alb_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vpc: Optional[pulumi.Input[_builtins.str]] = None) -> 'AwsAlb':
+            alb_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc: pulumi.Input[Optional[_builtins.str]] = None) -> 'AwsAlb':
         """
         Get an existing AwsAlb resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

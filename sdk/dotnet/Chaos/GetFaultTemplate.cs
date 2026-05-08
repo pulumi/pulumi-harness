@@ -13,18 +13,24 @@ namespace Pulumi.Harness.Chaos
     {
         /// <summary>
         /// Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetFaultTemplateResult> InvokeAsync(GetFaultTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFaultTemplateResult>("harness:chaos/getFaultTemplate:getFaultTemplate", args ?? new GetFaultTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetFaultTemplateResult> Invoke(GetFaultTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFaultTemplateResult>("harness:chaos/getFaultTemplate:getFaultTemplate", args ?? new GetFaultTemplateInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetFaultTemplateResult> Invoke(GetFaultTemplateInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetFaultTemplateResult>("harness:chaos/getFaultTemplate:getFaultTemplate", args ?? new GetFaultTemplateInvokeArgs(), options.WithDefaults());

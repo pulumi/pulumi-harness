@@ -372,11 +372,11 @@ def get_discovery_agent(environment_identifier: Optional[_builtins.str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         updated_by=pulumi.get(__ret__, 'updated_by'),
         webhook_url=pulumi.get(__ret__, 'webhook_url'))
-def get_discovery_agent_output(environment_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                               identity: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               org_identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               project_identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_discovery_agent_output(environment_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                               identity: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               org_identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               project_identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiscoveryAgentResult]:
     """
     Data source for retrieving a Harness Service Discovery Agent.

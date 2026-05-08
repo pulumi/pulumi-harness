@@ -202,39 +202,39 @@ export interface SecretFileState {
     /**
      * Additional Metadata for the Secret
      */
-    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.SecretFileAdditionalMetadata>[]>;
+    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.SecretFileAdditionalMetadata>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Path of the file containing secret value
      */
-    filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the Secret Manager used to manage the secret.
      */
-    secretManagerIdentifier?: pulumi.Input<string>;
+    secretManagerIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -244,11 +244,11 @@ export interface SecretFileArgs {
     /**
      * Additional Metadata for the Secret
      */
-    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.SecretFileAdditionalMetadata>[]>;
+    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.SecretFileAdditionalMetadata>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Path of the file containing secret value
      */
@@ -260,15 +260,15 @@ export interface SecretFileArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the Secret Manager used to manage the secret.
      */
@@ -276,5 +276,5 @@ export interface SecretFileArgs {
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

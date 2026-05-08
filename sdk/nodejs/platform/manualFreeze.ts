@@ -214,55 +214,55 @@ export interface ManualFreezeState {
     /**
      * Account Identifier of the freeze
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Current or upcoming windows
      */
-    currentOrUpcomingWindows?: pulumi.Input<pulumi.Input<inputs.platform.ManualFreezeCurrentOrUpcomingWindow>[]>;
+    currentOrUpcomingWindows?: pulumi.Input<pulumi.Input<inputs.platform.ManualFreezeCurrentOrUpcomingWindow>[] | undefined>;
     /**
      * Description of the freeze
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Freeze windows in the freeze response
      */
-    freezeWindows?: pulumi.Input<pulumi.Input<inputs.platform.ManualFreezeFreezeWindow>[]>;
+    freezeWindows?: pulumi.Input<pulumi.Input<inputs.platform.ManualFreezeFreezeWindow>[] | undefined>;
     /**
      * Identifier of the freeze
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the freeze
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier of the freeze
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the freeze
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Scope of the freeze
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Status of the freeze
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Tags associated with the freeze
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of freeze
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Yaml of the freeze
      */
-    yaml?: pulumi.Input<string>;
+    yaml?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -280,11 +280,11 @@ export interface ManualFreezeArgs {
     /**
      * Organization identifier of the freeze
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the freeze
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Yaml of the freeze
      */

@@ -158,19 +158,19 @@ export interface GetHarRegistryOutputArgs {
     /**
      * Allowed artifact patterns
      */
-    allowedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Blocked artifact patterns
      */
-    blockedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    blockedPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for the registry
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.platform.GetHarRegistryConfigArgs>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.platform.GetHarRegistryConfigArgs>[] | undefined>;
     /**
      * Description of the registry
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the registry
      */
@@ -178,7 +178,7 @@ export interface GetHarRegistryOutputArgs {
     /**
      * Type of package (DOCKER, HELM, MAVEN, etc.)
      */
-    packageType?: pulumi.Input<string>;
+    packageType?: pulumi.Input<string | undefined>;
     /**
      * Parent reference for the registry
      */

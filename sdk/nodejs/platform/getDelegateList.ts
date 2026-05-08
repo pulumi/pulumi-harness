@@ -242,27 +242,27 @@ export interface GetDelegateListOutputArgs {
     /**
      * Filter delegates by auto upgrade setting.
      */
-    autoUpgrade?: pulumi.Input<string>;
+    autoUpgrade?: pulumi.Input<string | undefined>;
     /**
      * Filter delegates by group identifier.
      */
-    delegateGroupIdentifier?: pulumi.Input<string>;
+    delegateGroupIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Filter delegate instances. Valid values: AVAILABLE, EXPIRED.
      */
-    delegateInstanceFilter?: pulumi.Input<string>;
+    delegateInstanceFilter?: pulumi.Input<string | undefined>;
     /**
      * Filter delegates by name.
      */
-    delegateName?: pulumi.Input<string>;
+    delegateName?: pulumi.Input<string | undefined>;
     /**
      * Filter delegates by tags.
      */
-    delegateTags?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to fetch all delegates. Defaults to `false`.
      */
-    fetchAll?: pulumi.Input<boolean>;
+    fetchAll?: pulumi.Input<boolean | undefined>;
     /**
      * Filter type for delegates.
      */
@@ -270,17 +270,17 @@ export interface GetDelegateListOutputArgs {
     /**
      * Organization identifier.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Filter delegates by status. Valid values: CONNECTED, DISCONNECTED, ENABLED, DISABLED, WAITING*FOR*APPROVAL, DELETED.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Filter delegates by version status. Valid values: ACTIVE, EXPIRED, EXPIRING, UNSUPPORTED.
      */
-    versionStatus?: pulumi.Input<string>;
+    versionStatus?: pulumi.Input<string | undefined>;
 }

@@ -204,11 +204,11 @@ def get_secret_file(additional_metadatas: Optional[Sequence[Union['GetSecretFile
         project_id=pulumi.get(__ret__, 'project_id'),
         secret_manager_identifier=pulumi.get(__ret__, 'secret_manager_identifier'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_secret_file_output(additional_metadatas: Optional[pulumi.Input[Optional[Sequence[Union['GetSecretFileAdditionalMetadataArgs', 'GetSecretFileAdditionalMetadataArgsDict']]]]] = None,
-                           identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                           name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_secret_file_output(additional_metadatas: pulumi.Input[Optional[Optional[Sequence[Union['GetSecretFileAdditionalMetadataArgs', 'GetSecretFileAdditionalMetadataArgsDict']]]]] = None,
+                           identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                           name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretFileResult]:
     """
     Datasource for looking up secert file type secret.

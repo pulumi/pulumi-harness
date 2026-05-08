@@ -265,11 +265,11 @@ def get_experiment_template(hub_identity: Optional[_builtins.str] = None,
         revision=pulumi.get(__ret__, 'revision'),
         specs=pulumi.get(__ret__, 'specs'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_experiment_template_output(hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                                   identity: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_experiment_template_output(hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                                   identity: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExperimentTemplateResult]:
     """
     Data source for retrieving a Harness Chaos Experiment Template by identity or name.

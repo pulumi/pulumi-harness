@@ -60,5 +60,5 @@ export interface GetCurrentAccountOutputArgs {
     /**
      * Id of the account.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

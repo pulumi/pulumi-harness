@@ -58,7 +58,9 @@ import (
 //						SshKeyFileId: mySecret.ID(),
 //					},
 //				},
-//			})
+//			}, pulumi.IgnoreChanges([]string{
+//				"sshAuthentication",
+//			}))
 //			if err != nil {
 //				return err
 //			}

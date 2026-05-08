@@ -26,14 +26,14 @@ class ExperimentArgs:
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  template_identity: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Experiment resource.
 
@@ -135,135 +135,135 @@ class ExperimentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the chaos experiment
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="hubOrgId")
-    def hub_org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub_org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier where the hub/template resides (leave empty for account-level hubs). This is used to locate the template, not where the experiment will be created.
         """
         return pulumi.get(self, "hub_org_id")
 
     @hub_org_id.setter
-    def hub_org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub_org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub_org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hubProjectId")
-    def hub_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier where the hub/template resides (leave empty for org-level or account-level hubs). This is used to locate the template, not where the experiment will be created.
         """
         return pulumi.get(self, "hub_project_id")
 
     @hub_project_id.setter
-    def hub_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier for the experiment (auto-generated if not provided)
         """
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter(name="importType")
-    def import_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Import type: REFERENCE (template reference) or LOCAL (full copy). Default: REFERENCE
         """
         return pulumi.get(self, "import_type")
 
     @import_type.setter
-    def import_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the chaos experiment
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template revision to use (default: v1)
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to categorize the experiment. Note: Only user-configured tags are tracked in state. The API may add system-generated tags which are automatically filtered to prevent drift.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ExperimentState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 cron_syntax: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 fault_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_cron_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_custom_experiment: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_single_run_cron_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_executed_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 manifest: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_network_map_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_details: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateDetailArgs']]]] = None,
-                 template_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_experiment_runs: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 cron_syntax: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 fault_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_cron_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_custom_experiment: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_single_run_cron_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_executed_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 manifest: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_network_map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_details: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateDetailArgs']]]] = None,
+                 template_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_experiment_runs: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Experiment resources.
 
@@ -364,374 +364,374 @@ class _ExperimentState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Creation timestamp (Unix)
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username of the creator
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="cronSyntax")
-    def cron_syntax(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_syntax(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cron expression for scheduled execution
         """
         return pulumi.get(self, "cron_syntax")
 
     @cron_syntax.setter
-    def cron_syntax(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_syntax(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_syntax", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the chaos experiment
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="experimentId")
-    def experiment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def experiment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full experiment ID
         """
         return pulumi.get(self, "experiment_id")
 
     @experiment_id.setter
-    def experiment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def experiment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "experiment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="experimentType")
-    def experiment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def experiment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the experiment
         """
         return pulumi.get(self, "experiment_type")
 
     @experiment_type.setter
-    def experiment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def experiment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "experiment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="faultIds")
-    def fault_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def fault_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of fault IDs used in the experiment
         """
         return pulumi.get(self, "fault_ids")
 
     @fault_ids.setter
-    def fault_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def fault_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "fault_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="hubIdentity")
-    def hub_identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub_identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identity of the hub where the experiment template resides. Must include scope prefix for account and org levels: 'account.my-hub' for account-level hubs, 'org.my-hub' for org-level hubs, or just 'my-hub' for project-level hubs (no prefix)
         """
         return pulumi.get(self, "hub_identity")
 
     @hub_identity.setter
-    def hub_identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub_identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="hubOrgId")
-    def hub_org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub_org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier where the hub/template resides (leave empty for account-level hubs). This is used to locate the template, not where the experiment will be created.
         """
         return pulumi.get(self, "hub_org_id")
 
     @hub_org_id.setter
-    def hub_org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub_org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub_org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hubProjectId")
-    def hub_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier where the hub/template resides (leave empty for org-level or account-level hubs). This is used to locate the template, not where the experiment will be created.
         """
         return pulumi.get(self, "hub_project_id")
 
     @hub_project_id.setter
-    def hub_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier for the experiment (auto-generated if not provided)
         """
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter(name="importType")
-    def import_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Import type: REFERENCE (template reference) or LOCAL (full copy). Default: REFERENCE
         """
         return pulumi.get(self, "import_type")
 
     @import_type.setter
-    def import_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_type", value)
 
     @_builtins.property
     @pulumi.getter(name="infraId")
-    def infra_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resolved infrastructure ID
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
-    def infra_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_id", value)
 
     @_builtins.property
     @pulumi.getter(name="infraRef")
-    def infra_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Infrastructure reference (ID or identity) to bind the experiment to
         """
         return pulumi.get(self, "infra_ref")
 
     @infra_ref.setter
-    def infra_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="infraType")
-    def infra_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Infrastructure type (e.g., KubernetesV2)
         """
         return pulumi.get(self, "infra_type")
 
     @infra_type.setter
-    def infra_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_type", value)
 
     @_builtins.property
     @pulumi.getter(name="isCronEnabled")
-    def is_cron_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_cron_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether cron scheduling is enabled
         """
         return pulumi.get(self, "is_cron_enabled")
 
     @is_cron_enabled.setter
-    def is_cron_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_cron_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_cron_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="isCustomExperiment")
-    def is_custom_experiment(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_custom_experiment(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is a custom experiment
         """
         return pulumi.get(self, "is_custom_experiment")
 
     @is_custom_experiment.setter
-    def is_custom_experiment(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_custom_experiment(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_custom_experiment", value)
 
     @_builtins.property
     @pulumi.getter(name="isSingleRunCronEnabled")
-    def is_single_run_cron_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_single_run_cron_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether single-run cron is enabled
         """
         return pulumi.get(self, "is_single_run_cron_enabled")
 
     @is_single_run_cron_enabled.setter
-    def is_single_run_cron_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_single_run_cron_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_single_run_cron_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="lastExecutedAt")
-    def last_executed_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_executed_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp of last execution
         """
         return pulumi.get(self, "last_executed_at")
 
     @last_executed_at.setter
-    def last_executed_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_executed_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_executed_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def manifest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def manifest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full experiment manifest YAML (populated for LOCAL imports)
         """
         return pulumi.get(self, "manifest")
 
     @manifest.setter
-    def manifest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def manifest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "manifest", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the chaos experiment
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier where the experiment will be created
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier where the experiment will be created
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template revision to use (default: v1)
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to categorize the experiment. Note: Only user-configured tags are tracked in state. The API may add system-generated tags which are automatically filtered to prevent drift.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="targetNetworkMapId")
-    def target_network_map_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_network_map_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target network map ID
         """
         return pulumi.get(self, "target_network_map_id")
 
     @target_network_map_id.setter
-    def target_network_map_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_network_map_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_network_map_id", value)
 
     @_builtins.property
     @pulumi.getter(name="templateDetails")
-    def template_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateDetailArgs']]]]:
+    def template_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateDetailArgs']]]]:
         """
         Details about the experiment template used
         """
         return pulumi.get(self, "template_details")
 
     @template_details.setter
-    def template_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateDetailArgs']]]]):
+    def template_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateDetailArgs']]]]):
         pulumi.set(self, "template_details", value)
 
     @_builtins.property
     @pulumi.getter(name="templateIdentity")
-    def template_identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identity of the experiment template to launch from
         """
         return pulumi.get(self, "template_identity")
 
     @template_identity.setter
-    def template_identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="totalExperimentRuns")
-    def total_experiment_runs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_experiment_runs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total number of experiment runs
         """
         return pulumi.get(self, "total_experiment_runs")
 
     @total_experiment_runs.setter
-    def total_experiment_runs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_experiment_runs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_experiment_runs", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Last update timestamp (Unix)
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username of the last updater
         """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
 
@@ -741,19 +741,19 @@ class Experiment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_identity: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_identity: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating chaos experiments from experiment templates.
@@ -801,7 +801,8 @@ class Experiment(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[
                     my_template,
                     my_infra,
-                ]))
+                ],
+                ignore_changes=["tags"]))
         # ----------------------------------------------------------------------------
         # Example 2: Experiment with LOCAL Import
         # ----------------------------------------------------------------------------
@@ -826,7 +827,8 @@ class Experiment(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[
                     my_template,
                     my_infra,
-                ]))
+                ],
+                ignore_changes=["tags"]))
         # ----------------------------------------------------------------------------
         # Example 3: Cross-Scope Experiment (Org Hub → Project Experiment)
         # ----------------------------------------------------------------------------
@@ -850,7 +852,8 @@ class Experiment(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[
                     org_template,
                     my_infra,
-                ]))
+                ],
+                ignore_changes=["tags"]))
         ```
 
         ## Import
@@ -958,7 +961,8 @@ class Experiment(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[
                     my_template,
                     my_infra,
-                ]))
+                ],
+                ignore_changes=["tags"]))
         # ----------------------------------------------------------------------------
         # Example 2: Experiment with LOCAL Import
         # ----------------------------------------------------------------------------
@@ -983,7 +987,8 @@ class Experiment(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[
                     my_template,
                     my_infra,
-                ]))
+                ],
+                ignore_changes=["tags"]))
         # ----------------------------------------------------------------------------
         # Example 3: Cross-Scope Experiment (Org Hub → Project Experiment)
         # ----------------------------------------------------------------------------
@@ -1007,7 +1012,8 @@ class Experiment(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[
                     org_template,
                     my_infra,
-                ]))
+                ],
+                ignore_changes=["tags"]))
         ```
 
         ## Import
@@ -1062,19 +1068,19 @@ class Experiment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_identity: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_identity: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1135,37 +1141,37 @@ class Experiment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.int]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            cron_syntax: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            experiment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            fault_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-            hub_org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            hub_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            identity: Optional[pulumi.Input[_builtins.str]] = None,
-            import_type: Optional[pulumi.Input[_builtins.str]] = None,
-            infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-            infra_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-            is_cron_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_custom_experiment: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_single_run_cron_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_executed_at: Optional[pulumi.Input[_builtins.int]] = None,
-            manifest: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            revision: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_network_map_id: Optional[pulumi.Input[_builtins.str]] = None,
-            template_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExperimentTemplateDetailArgs', 'ExperimentTemplateDetailArgsDict']]]]] = None,
-            template_identity: Optional[pulumi.Input[_builtins.str]] = None,
-            total_experiment_runs: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.str]] = None) -> 'Experiment':
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            cron_syntax: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            fault_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            import_type: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+            is_cron_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_custom_experiment: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_single_run_cron_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_executed_at: pulumi.Input[Optional[_builtins.int]] = None,
+            manifest: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            revision: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_network_map_id: pulumi.Input[Optional[_builtins.str]] = None,
+            template_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentTemplateDetailArgs', 'ExperimentTemplateDetailArgsDict']]]]] = None,
+            template_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            total_experiment_runs: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> 'Experiment':
         """
         Get an existing Experiment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

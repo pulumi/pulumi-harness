@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *             keyData: "-----BEGIN PGP PUBLIC KEY BLOCK-----XXXXXX-----END PGP PUBLIC KEY BLOCK-----",
  *         }],
  *     }],
+ * }, {
+ *     ignoreChanges: ["requests[0].upsert"],
  * });
  * ```
  *
@@ -152,27 +154,27 @@ export interface GitOpsGnupgState {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier for the GnuPG Key.
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Identifier for the GnuPG Key.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the GnuPG Key.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the GnuPG Key.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * GnuPGPublicKey is a representation of a GnuPG public key
      */
-    requests?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsGnupgRequest>[]>;
+    requests?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsGnupgRequest>[] | undefined>;
 }
 
 /**
@@ -184,7 +186,7 @@ export interface GitOpsGnupgArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier for the GnuPG Key.
      */
@@ -192,11 +194,11 @@ export interface GitOpsGnupgArgs {
     /**
      * Organization Identifier for the GnuPG Key.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the GnuPG Key.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * GnuPGPublicKey is a representation of a GnuPG public key
      */

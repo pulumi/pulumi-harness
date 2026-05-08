@@ -88,10 +88,10 @@ class InfraProviderVersionInitArgs:
 @pulumi.input_type
 class _InfraProviderVersionState:
     def __init__(__self__, *,
-                 gpg_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 gpg_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InfraProviderVersion resources.
 
@@ -111,50 +111,50 @@ class _InfraProviderVersionState:
 
     @_builtins.property
     @pulumi.getter(name="gpgKeyId")
-    def gpg_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpg_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         GPG key ID for signing.
         """
         return pulumi.get(self, "gpg_key_id")
 
     @gpg_key_id.setter
-    def gpg_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpg_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpg_key_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Supported Terraform protocol versions (e.g., ['5.0', '6.0']).
         """
         return pulumi.get(self, "protocols")
 
     @protocols.setter
-    def protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="providerId")
-    def provider_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provider_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the provider this version belongs to.
         """
         return pulumi.get(self, "provider_id")
 
     @provider_id.setter
-    def provider_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provider_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provider_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version number (e.g., 1.0.0).
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -164,10 +164,10 @@ class InfraProviderVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 gpg_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 gpg_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for managing Terraform/OpenTofu Provider Versions in the IaCM Provider Registry.
@@ -273,10 +273,10 @@ class InfraProviderVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 gpg_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 gpg_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -308,10 +308,10 @@ class InfraProviderVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            gpg_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'InfraProviderVersion':
+            gpg_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'InfraProviderVersion':
         """
         Get an existing InfraProviderVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

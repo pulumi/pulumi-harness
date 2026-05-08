@@ -25,11 +25,11 @@ class SecurityGovernanceRuleArgs:
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  time_windows: pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceRuleTimeWindowArgs']]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecurityGovernanceRule resource.
 
@@ -104,77 +104,77 @@ class SecurityGovernanceRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the security governance rule
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the rule is enabled
         """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the security governance rule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags for the security governance rule
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userGroupIds")
-    def user_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user group IDs associated with this rule
         """
         return pulumi.get(self, "user_group_ids")
 
     @user_group_ids.setter
-    def user_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_group_ids", value)
 
 
 @pulumi.input_type
 class _SecurityGovernanceRuleState:
     def __init__(__self__, *,
-                 condition_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_windows: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceRuleTimeWindowArgs']]]] = None,
-                 user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 condition_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_windows: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceRuleTimeWindowArgs']]]] = None,
+                 user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SecurityGovernanceRule resources.
 
@@ -208,107 +208,107 @@ class _SecurityGovernanceRuleState:
 
     @_builtins.property
     @pulumi.getter(name="conditionIds")
-    def condition_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def condition_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of condition IDs associated with this rule
         """
         return pulumi.get(self, "condition_ids")
 
     @condition_ids.setter
-    def condition_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def condition_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "condition_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the security governance rule
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the rule is enabled
         """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the security governance rule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization ID of the security governance rule
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID of the security governance rule
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags for the security governance rule
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="timeWindows")
-    def time_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceRuleTimeWindowArgs']]]]:
+    def time_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceRuleTimeWindowArgs']]]]:
         return pulumi.get(self, "time_windows")
 
     @time_windows.setter
-    def time_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceRuleTimeWindowArgs']]]]):
+    def time_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceRuleTimeWindowArgs']]]]):
         pulumi.set(self, "time_windows", value)
 
     @_builtins.property
     @pulumi.getter(name="userGroupIds")
-    def user_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user group IDs associated with this rule
         """
         return pulumi.get(self, "user_group_ids")
 
     @user_group_ids.setter
-    def user_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_group_ids", value)
 
 
@@ -318,15 +318,15 @@ class SecurityGovernanceRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGovernanceRuleTimeWindowArgs', 'SecurityGovernanceRuleTimeWindowArgsDict']]]]] = None,
-                 user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 condition_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGovernanceRuleTimeWindowArgs', 'SecurityGovernanceRuleTimeWindowArgsDict']]]]] = None,
+                 user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for managing a Harness Chaos Security Governance Rule
@@ -352,7 +352,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
             ],
             time_windows=[{
                 "time_zone": "UTC",
-                "start_time": 1711238400000,
+                "start_time": int(1711238400000),
                 "duration": "24h",
                 "recurrence": {
                     "type": "Daily",
@@ -374,7 +374,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
             ],
             time_windows=[{
                 "time_zone": "UTC",
-                "start_time": 1711238400000,
+                "start_time": int(1711238400000),
                 "duration": "24h",
                 "recurrence": {
                     "type": "Daily",
@@ -396,7 +396,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
             ],
             time_windows=[{
                 "time_zone": "UTC",
-                "start_time": 1711238400000,
+                "start_time": int(1711238400000),
                 "duration": "24h",
                 "recurrence": {
                     "type": "Daily",
@@ -457,7 +457,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
             ],
             time_windows=[{
                 "time_zone": "UTC",
-                "start_time": 1711238400000,
+                "start_time": int(1711238400000),
                 "duration": "24h",
                 "recurrence": {
                     "type": "Daily",
@@ -479,7 +479,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
             ],
             time_windows=[{
                 "time_zone": "UTC",
-                "start_time": 1711238400000,
+                "start_time": int(1711238400000),
                 "duration": "24h",
                 "recurrence": {
                     "type": "Daily",
@@ -501,7 +501,7 @@ class SecurityGovernanceRule(pulumi.CustomResource):
             ],
             time_windows=[{
                 "time_zone": "UTC",
-                "start_time": 1711238400000,
+                "start_time": int(1711238400000),
                 "duration": "24h",
                 "recurrence": {
                     "type": "Daily",
@@ -536,15 +536,15 @@ class SecurityGovernanceRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGovernanceRuleTimeWindowArgs', 'SecurityGovernanceRuleTimeWindowArgsDict']]]]] = None,
-                 user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 condition_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGovernanceRuleTimeWindowArgs', 'SecurityGovernanceRuleTimeWindowArgsDict']]]]] = None,
+                 user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -581,15 +581,15 @@ class SecurityGovernanceRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            time_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGovernanceRuleTimeWindowArgs', 'SecurityGovernanceRuleTimeWindowArgsDict']]]]] = None,
-            user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SecurityGovernanceRule':
+            condition_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            time_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGovernanceRuleTimeWindowArgs', 'SecurityGovernanceRuleTimeWindowArgsDict']]]]] = None,
+            user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SecurityGovernanceRule':
         """
         Get an existing SecurityGovernanceRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

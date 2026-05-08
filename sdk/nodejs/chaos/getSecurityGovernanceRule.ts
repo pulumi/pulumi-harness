@@ -154,11 +154,11 @@ export interface GetSecurityGovernanceRuleOutputArgs {
     /**
      * The ID of the rule.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization identifier.
      */

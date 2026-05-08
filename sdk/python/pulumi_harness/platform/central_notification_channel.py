@@ -24,10 +24,10 @@ class CentralNotificationChannelArgs:
                  channel: pulumi.Input['CentralNotificationChannelChannelArgs'],
                  identifier: pulumi.Input[_builtins.str],
                  notification_channel_type: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CentralNotificationChannel resource.
         """
@@ -72,54 +72,54 @@ class CentralNotificationChannelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org")
 
     @org.setter
-    def org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _CentralNotificationChannelState:
     def __init__(__self__, *,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 channel: Optional[pulumi.Input['CentralNotificationChannelChannelArgs']] = None,
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 channel: pulumi.Input[Optional['CentralNotificationChannelChannelArgs']] = None,
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CentralNotificationChannel resources.
 
@@ -150,101 +150,101 @@ class _CentralNotificationChannelState:
 
     @_builtins.property
     @pulumi.getter
-    def account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier associated with this notification channel.
         """
         return pulumi.get(self, "account")
 
     @account.setter
-    def account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account", value)
 
     @_builtins.property
     @pulumi.getter
-    def channel(self) -> Optional[pulumi.Input['CentralNotificationChannelChannelArgs']]:
+    def channel(self) -> pulumi.Input[Optional['CentralNotificationChannelChannelArgs']]:
         return pulumi.get(self, "channel")
 
     @channel.setter
-    def channel(self, value: Optional[pulumi.Input['CentralNotificationChannelChannelArgs']]):
+    def channel(self, value: pulumi.Input[Optional['CentralNotificationChannelChannelArgs']]):
         pulumi.set(self, "channel", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the notification channel was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_modified(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the notification channel was last modified.
         """
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
-    def last_modified(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_modified(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationChannelType")
-    def notification_channel_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notification_channel_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notification_channel_type")
 
     @notification_channel_type.setter
-    def notification_channel_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notification_channel_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notification_channel_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org")
 
     @org.setter
-    def org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -254,13 +254,13 @@ class CentralNotificationChannel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 channel: Optional[pulumi.Input[Union['CentralNotificationChannelChannelArgs', 'CentralNotificationChannelChannelArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 channel: pulumi.Input[Optional[Union['CentralNotificationChannelChannelArgs', 'CentralNotificationChannelChannelArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for managing Harness Notification Channels.
@@ -294,13 +294,13 @@ class CentralNotificationChannel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 channel: Optional[pulumi.Input[Union['CentralNotificationChannelChannelArgs', 'CentralNotificationChannelChannelArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 channel: pulumi.Input[Optional[Union['CentralNotificationChannelChannelArgs', 'CentralNotificationChannelChannelArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -336,16 +336,16 @@ class CentralNotificationChannel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account: Optional[pulumi.Input[_builtins.str]] = None,
-            channel: Optional[pulumi.Input[Union['CentralNotificationChannelChannelArgs', 'CentralNotificationChannelChannelArgsDict']]] = None,
-            created: Optional[pulumi.Input[_builtins.int]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-            org: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'CentralNotificationChannel':
+            account: pulumi.Input[Optional[_builtins.str]] = None,
+            channel: pulumi.Input[Optional[Union['CentralNotificationChannelChannelArgs', 'CentralNotificationChannelChannelArgsDict']]] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+            org: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'CentralNotificationChannel':
         """
         Get an existing CentralNotificationChannel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

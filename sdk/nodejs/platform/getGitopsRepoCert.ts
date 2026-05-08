@@ -94,7 +94,7 @@ export interface GetGitopsRepoCertOutputArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the GitOps repository certificate.
      */
@@ -102,9 +102,9 @@ export interface GetGitopsRepoCertOutputArgs {
     /**
      * Organization identifier of the GitOps repository certificate.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps repository certificate.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

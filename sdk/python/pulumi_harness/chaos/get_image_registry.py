@@ -284,10 +284,10 @@ def get_image_registry(check_override: Optional[_builtins.bool] = None,
         secret_name=pulumi.get(__ret__, 'secret_name'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         use_custom_images=pulumi.get(__ret__, 'use_custom_images'))
-def get_image_registry_output(check_override: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                              infra_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_image_registry_output(check_override: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                              infra_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageRegistryResult]:
     """
     Data source for retrieving a Harness Chaos Image Registry and checking override status

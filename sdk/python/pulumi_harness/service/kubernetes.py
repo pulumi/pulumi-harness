@@ -22,10 +22,10 @@ __all__ = ['KubernetesArgs', 'Kubernetes']
 class KubernetesArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 helm_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesVariableArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 helm_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesVariableArgs']]]] = None):
         """
         The set of arguments for constructing a Kubernetes resource.
 
@@ -59,61 +59,61 @@ class KubernetesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of th service
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="helmVersion")
-    def helm_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def helm_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `type` is `KUBERNETES` or `HELM`.
         """
         return pulumi.get(self, "helm_version")
 
     @helm_version.setter
-    def helm_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def helm_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "helm_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the service
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesVariableArgs']]]]:
         """
         Variables to be used in the service
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
 @pulumi.input_type
 class _KubernetesState:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 helm_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesVariableArgs']]]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 helm_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering Kubernetes resources.
 
@@ -136,62 +136,62 @@ class _KubernetesState:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the application the service belongs to
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of th service
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="helmVersion")
-    def helm_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def helm_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `type` is `KUBERNETES` or `HELM`.
         """
         return pulumi.get(self, "helm_version")
 
     @helm_version.setter
-    def helm_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def helm_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "helm_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the service
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesVariableArgs']]]]:
         """
         Variables to be used in the service
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
@@ -201,11 +201,11 @@ class Kubernetes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 helm_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesVariableArgs', 'KubernetesVariableArgsDict']]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 helm_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesVariableArgs', 'KubernetesVariableArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating a Kubernetes service. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -316,11 +316,11 @@ class Kubernetes(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 helm_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesVariableArgs', 'KubernetesVariableArgsDict']]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 helm_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesVariableArgs', 'KubernetesVariableArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -347,11 +347,11 @@ class Kubernetes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            helm_version: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesVariableArgs', 'KubernetesVariableArgsDict']]]]] = None) -> 'Kubernetes':
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            helm_version: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesVariableArgs', 'KubernetesVariableArgsDict']]]]] = None) -> 'Kubernetes':
         """
         Get an existing Kubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -34,8 +34,8 @@ public final class ServiceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -90,8 +90,8 @@ public final class ServiceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -146,8 +146,8 @@ public final class ServiceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -202,8 +202,8 @@ public final class ServiceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -258,8 +258,8 @@ public final class ServiceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -312,8 +312,8 @@ public final class ServiceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoverySettingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -354,8 +354,8 @@ public final class ServiceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoverySettingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -396,8 +396,8 @@ public final class ServiceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoverySettingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -438,8 +438,8 @@ public final class ServiceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoverySettingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -480,8 +480,8 @@ public final class ServiceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoverySettingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -522,8 +522,8 @@ public final class ServiceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoverySettingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -564,8 +564,8 @@ public final class ServiceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.service.ServiceFunctions;
      * import com.pulumi.harness.service.inputs.GetDiscoverySettingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

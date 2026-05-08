@@ -192,47 +192,47 @@ export interface AwsCCConnectorState {
     /**
      * The AWS account id.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy to access the cost and usage reports and resources for the sole purpose of cost analysis and cost optimization.
      */
-    crossAccountAccess?: pulumi.Input<inputs.platform.AwsCCConnectorCrossAccountAccess>;
+    crossAccountAccess?: pulumi.Input<inputs.platform.AwsCCConnectorCrossAccountAccess | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      */
-    featuresEnableds?: pulumi.Input<pulumi.Input<string>[]>;
+    featuresEnableds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      */
-    reportName?: pulumi.Input<string>;
+    reportName?: pulumi.Input<string | undefined>;
     /**
      * The name of s3 bucket.
      */
-    s3Bucket?: pulumi.Input<string>;
+    s3Bucket?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -250,7 +250,7 @@ export interface AwsCCConnectorArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      */
@@ -262,25 +262,25 @@ export interface AwsCCConnectorArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      */
-    reportName?: pulumi.Input<string>;
+    reportName?: pulumi.Input<string | undefined>;
     /**
      * The name of s3 bucket.
      */
-    s3Bucket?: pulumi.Input<string>;
+    s3Bucket?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

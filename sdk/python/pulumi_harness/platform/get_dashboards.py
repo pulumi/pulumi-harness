@@ -248,9 +248,9 @@ def get_dashboards(id: Optional[_builtins.str] = None,
         title=pulumi.get(__ret__, 'title'),
         type=pulumi.get(__ret__, 'type'),
         view_count=pulumi.get(__ret__, 'view_count'))
-def get_dashboards_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                          identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_dashboards_output(id: pulumi.Input[Optional[_builtins.str]] = None,
+                          identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDashboardsResult]:
     """
     Data source for retrieving a Harness Dashboard.

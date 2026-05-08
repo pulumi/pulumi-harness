@@ -20,27 +20,27 @@ __all__ = ['InfraModuleArgs', 'InfraModule']
 class InfraModuleArgs:
     def __init__(__self__, *,
                  system: pulumi.Input[_builtins.str],
-                 connector_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_tag_style: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline_sync: Optional[pulumi.Input[_builtins.bool]] = None,
-                 platform_infra_module_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 synced: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 connector_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_tag_style: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+                 platform_infra_module_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 synced: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a InfraModule resource.
 
@@ -125,282 +125,282 @@ class InfraModuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectorOrg")
-    def connector_org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_org(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Org of the connector to be used to fetch the code.
         """
         return pulumi.get(self, "connector_org")
 
     @connector_org.setter
-    def connector_org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_org", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorProject")
-    def connector_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project of the connector to be used to fetch the code.
         """
         return pulumi.get(self, "connector_project")
 
     @connector_project.setter
-    def connector_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_project", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the module was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the module.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gitTagStyle")
-    def git_tag_style(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_tag_style(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git Tag Style.
         """
         return pulumi.get(self, "git_tag_style")
 
     @git_tag_style.setter
-    def git_tag_style(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_tag_style(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_tag_style", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the module.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onboardingPipeline")
-    def onboarding_pipeline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onboarding_pipeline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Onboarding Pipeline identifier.
         """
         return pulumi.get(self, "onboarding_pipeline")
 
     @onboarding_pipeline.setter
-    def onboarding_pipeline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onboarding_pipeline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onboarding_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="onboardingPipelineOrg")
-    def onboarding_pipeline_org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onboarding_pipeline_org(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Onboarding Pipeline organization.
         """
         return pulumi.get(self, "onboarding_pipeline_org")
 
     @onboarding_pipeline_org.setter
-    def onboarding_pipeline_org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onboarding_pipeline_org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onboarding_pipeline_org", value)
 
     @_builtins.property
     @pulumi.getter(name="onboardingPipelineProject")
-    def onboarding_pipeline_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onboarding_pipeline_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Onboarding Pipeline project.
         """
         return pulumi.get(self, "onboarding_pipeline_project")
 
     @onboarding_pipeline_project.setter
-    def onboarding_pipeline_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onboarding_pipeline_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onboarding_pipeline_project", value)
 
     @_builtins.property
     @pulumi.getter(name="onboardingPipelineSync")
-    def onboarding_pipeline_sync(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def onboarding_pipeline_sync(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sync the project automatically.
         """
         return pulumi.get(self, "onboarding_pipeline_sync")
 
     @onboarding_pipeline_sync.setter
-    def onboarding_pipeline_sync(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def onboarding_pipeline_sync(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "onboarding_pipeline_sync", value)
 
     @_builtins.property
     @pulumi.getter(name="platformInfraModuleId")
-    def platform_infra_module_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform_infra_module_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the module.
         """
         return pulumi.get(self, "platform_infra_module_id")
 
     @platform_infra_module_id.setter
-    def platform_infra_module_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform_infra_module_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform_infra_module_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For account connectors, the repository name where the module can be found.
         """
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryBranch")
-    def repository_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the branch to fetch the code from. This cannot be set if repository commit is set.
         """
         return pulumi.get(self, "repository_branch")
 
     @repository_branch.setter
-    def repository_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryCommit")
-    def repository_commit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_commit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tag to fetch the code from. This cannot be set if repository branch is set.
         """
         return pulumi.get(self, "repository_commit")
 
     @repository_commit.setter
-    def repository_commit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_commit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_commit", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryConnector")
-    def repository_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the connector to be used to fetch the code.
         """
         return pulumi.get(self, "repository_connector")
 
     @repository_connector.setter
-    def repository_connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_connector", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryPath")
-    def repository_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the module within the repository.
         """
         return pulumi.get(self, "repository_path")
 
     @repository_path.setter
-    def repository_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_path", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryUrl")
-    def repository_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the repository where the module is stored.
         """
         return pulumi.get(self, "repository_url")
 
     @repository_url.setter
-    def repository_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_url", value)
 
     @_builtins.property
     @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How to store the artifact.
         """
         return pulumi.get(self, "storage_type")
 
     @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def synced(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def synced(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the module was last synced.
         """
         return pulumi.get(self, "synced")
 
     @synced.setter
-    def synced(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def synced(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "synced", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tags(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git tags associated with the module.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tags(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of versions of the module.
         """
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "versions", value)
 
 
 @pulumi.input_type
 class _InfraModuleState:
     def __init__(__self__, *,
-                 connector_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_tag_style: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline_sync: Optional[pulumi.Input[_builtins.bool]] = None,
-                 platform_infra_module_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 synced: Optional[pulumi.Input[_builtins.int]] = None,
-                 system: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 connector_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_tag_style: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+                 platform_infra_module_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 synced: pulumi.Input[Optional[_builtins.int]] = None,
+                 system: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering InfraModule resources.
 
@@ -474,266 +474,266 @@ class _InfraModuleState:
 
     @_builtins.property
     @pulumi.getter(name="connectorOrg")
-    def connector_org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_org(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Org of the connector to be used to fetch the code.
         """
         return pulumi.get(self, "connector_org")
 
     @connector_org.setter
-    def connector_org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_org", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorProject")
-    def connector_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project of the connector to be used to fetch the code.
         """
         return pulumi.get(self, "connector_project")
 
     @connector_project.setter
-    def connector_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_project", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the module was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the module.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gitTagStyle")
-    def git_tag_style(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_tag_style(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git Tag Style.
         """
         return pulumi.get(self, "git_tag_style")
 
     @git_tag_style.setter
-    def git_tag_style(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_tag_style(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_tag_style", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the module.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onboardingPipeline")
-    def onboarding_pipeline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onboarding_pipeline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Onboarding Pipeline identifier.
         """
         return pulumi.get(self, "onboarding_pipeline")
 
     @onboarding_pipeline.setter
-    def onboarding_pipeline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onboarding_pipeline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onboarding_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="onboardingPipelineOrg")
-    def onboarding_pipeline_org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onboarding_pipeline_org(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Onboarding Pipeline organization.
         """
         return pulumi.get(self, "onboarding_pipeline_org")
 
     @onboarding_pipeline_org.setter
-    def onboarding_pipeline_org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onboarding_pipeline_org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onboarding_pipeline_org", value)
 
     @_builtins.property
     @pulumi.getter(name="onboardingPipelineProject")
-    def onboarding_pipeline_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onboarding_pipeline_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Onboarding Pipeline project.
         """
         return pulumi.get(self, "onboarding_pipeline_project")
 
     @onboarding_pipeline_project.setter
-    def onboarding_pipeline_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onboarding_pipeline_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onboarding_pipeline_project", value)
 
     @_builtins.property
     @pulumi.getter(name="onboardingPipelineSync")
-    def onboarding_pipeline_sync(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def onboarding_pipeline_sync(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sync the project automatically.
         """
         return pulumi.get(self, "onboarding_pipeline_sync")
 
     @onboarding_pipeline_sync.setter
-    def onboarding_pipeline_sync(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def onboarding_pipeline_sync(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "onboarding_pipeline_sync", value)
 
     @_builtins.property
     @pulumi.getter(name="platformInfraModuleId")
-    def platform_infra_module_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform_infra_module_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the module.
         """
         return pulumi.get(self, "platform_infra_module_id")
 
     @platform_infra_module_id.setter
-    def platform_infra_module_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform_infra_module_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform_infra_module_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For account connectors, the repository name where the module can be found.
         """
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryBranch")
-    def repository_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the branch to fetch the code from. This cannot be set if repository commit is set.
         """
         return pulumi.get(self, "repository_branch")
 
     @repository_branch.setter
-    def repository_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryCommit")
-    def repository_commit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_commit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tag to fetch the code from. This cannot be set if repository branch is set.
         """
         return pulumi.get(self, "repository_commit")
 
     @repository_commit.setter
-    def repository_commit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_commit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_commit", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryConnector")
-    def repository_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the connector to be used to fetch the code.
         """
         return pulumi.get(self, "repository_connector")
 
     @repository_connector.setter
-    def repository_connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_connector", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryPath")
-    def repository_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the module within the repository.
         """
         return pulumi.get(self, "repository_path")
 
     @repository_path.setter
-    def repository_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_path", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryUrl")
-    def repository_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the repository where the module is stored.
         """
         return pulumi.get(self, "repository_url")
 
     @repository_url.setter
-    def repository_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_url", value)
 
     @_builtins.property
     @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How to store the artifact.
         """
         return pulumi.get(self, "storage_type")
 
     @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def synced(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def synced(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the module was last synced.
         """
         return pulumi.get(self, "synced")
 
     @synced.setter
-    def synced(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def synced(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "synced", value)
 
     @_builtins.property
     @pulumi.getter
-    def system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provider of the module.
         """
         return pulumi.get(self, "system")
 
     @system.setter
-    def system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tags(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git tags associated with the module.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tags(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of versions of the module.
         """
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "versions", value)
 
 
@@ -743,28 +743,28 @@ class InfraModule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_tag_style: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline_sync: Optional[pulumi.Input[_builtins.bool]] = None,
-                 platform_infra_module_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 synced: Optional[pulumi.Input[_builtins.int]] = None,
-                 system: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 connector_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_tag_style: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+                 platform_infra_module_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 synced: pulumi.Input[Optional[_builtins.int]] = None,
+                 system: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for managing Terraform/Tofu Modules.
@@ -882,28 +882,28 @@ class InfraModule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_tag_style: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_pipeline_sync: Optional[pulumi.Input[_builtins.bool]] = None,
-                 platform_infra_module_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 synced: Optional[pulumi.Input[_builtins.int]] = None,
-                 system: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 connector_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_tag_style: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_pipeline_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+                 platform_infra_module_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 synced: pulumi.Input[Optional[_builtins.int]] = None,
+                 system: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -947,28 +947,28 @@ class InfraModule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connector_org: Optional[pulumi.Input[_builtins.str]] = None,
-            connector_project: Optional[pulumi.Input[_builtins.str]] = None,
-            created: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            git_tag_style: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            onboarding_pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-            onboarding_pipeline_org: Optional[pulumi.Input[_builtins.str]] = None,
-            onboarding_pipeline_project: Optional[pulumi.Input[_builtins.str]] = None,
-            onboarding_pipeline_sync: Optional[pulumi.Input[_builtins.bool]] = None,
-            platform_infra_module_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repository: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_path: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_url: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-            synced: Optional[pulumi.Input[_builtins.int]] = None,
-            system: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[_builtins.str]] = None,
-            versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'InfraModule':
+            connector_org: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_project: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_tag_style: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_pipeline_org: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_pipeline_project: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_pipeline_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+            platform_infra_module_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repository: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_url: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            synced: pulumi.Input[Optional[_builtins.int]] = None,
+            system: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[_builtins.str]] = None,
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'InfraModule':
         """
         Get an existing InfraModule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

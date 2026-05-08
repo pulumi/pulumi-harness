@@ -24,13 +24,13 @@ class TerraformCloudConnectorArgs:
                  credentials: pulumi.Input['TerraformCloudConnectorCredentialsArgs'],
                  identifier: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TerraformCloudConnector resource.
 
@@ -101,102 +101,102 @@ class TerraformCloudConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Connect only using delegates with these tags.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag to execute on delegate (default: true).
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _TerraformCloudConnectorState:
     def __init__(__self__, *,
-                 credentials: Optional[pulumi.Input['TerraformCloudConnectorCredentialsArgs']] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 credentials: pulumi.Input[Optional['TerraformCloudConnectorCredentialsArgs']] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TerraformCloudConnector resources.
 
@@ -234,122 +234,122 @@ class _TerraformCloudConnectorState:
 
     @_builtins.property
     @pulumi.getter
-    def credentials(self) -> Optional[pulumi.Input['TerraformCloudConnectorCredentialsArgs']]:
+    def credentials(self) -> pulumi.Input[Optional['TerraformCloudConnectorCredentialsArgs']]:
         """
         Credentials to connect to the Terraform Cloud platform.
         """
         return pulumi.get(self, "credentials")
 
     @credentials.setter
-    def credentials(self, value: Optional[pulumi.Input['TerraformCloudConnectorCredentialsArgs']]):
+    def credentials(self, value: pulumi.Input[Optional['TerraformCloudConnectorCredentialsArgs']]):
         pulumi.set(self, "credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Connect only using delegates with these tags.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag to execute on delegate (default: true).
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the Terraform Cloud platform.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -359,16 +359,16 @@ class TerraformCloudConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[Union['TerraformCloudConnectorCredentialsArgs', 'TerraformCloudConnectorCredentialsArgsDict']]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 credentials: pulumi.Input[Optional[Union['TerraformCloudConnectorCredentialsArgs', 'TerraformCloudConnectorCredentialsArgsDict']]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Terraform Cloud connector.
@@ -456,16 +456,16 @@ class TerraformCloudConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[Union['TerraformCloudConnectorCredentialsArgs', 'TerraformCloudConnectorCredentialsArgsDict']]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 credentials: pulumi.Input[Optional[Union['TerraformCloudConnectorCredentialsArgs', 'TerraformCloudConnectorCredentialsArgsDict']]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -501,16 +501,16 @@ class TerraformCloudConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            credentials: Optional[pulumi.Input[Union['TerraformCloudConnectorCredentialsArgs', 'TerraformCloudConnectorCredentialsArgsDict']]] = None,
-            delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'TerraformCloudConnector':
+            credentials: pulumi.Input[Optional[Union['TerraformCloudConnectorCredentialsArgs', 'TerraformCloudConnectorCredentialsArgsDict']]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'TerraformCloudConnector':
         """
         Get an existing TerraformCloudConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -318,12 +318,12 @@ def get_gitops_applications(account_id: Optional[_builtins.str] = None,
         skip_repo_validation=pulumi.get(__ret__, 'skip_repo_validation'),
         upsert=pulumi.get(__ret__, 'upsert'),
         validate=pulumi.get(__ret__, 'validate'))
-def get_gitops_applications_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   name: Optional[pulumi.Input[_builtins.str]] = None,
-                                   org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_gitops_applications_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   name: pulumi.Input[Optional[_builtins.str]] = None,
+                                   org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsApplicationsResult]:
     """
     Datasource for fetching a Harness GitOps Application.

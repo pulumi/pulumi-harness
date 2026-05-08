@@ -323,67 +323,67 @@ export interface UsergroupState {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the user group is externally managed.
      */
-    externallyManaged?: pulumi.Input<boolean>;
+    externallyManaged?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the linked SSO.
      */
-    linkedSsoDisplayName?: pulumi.Input<string>;
+    linkedSsoDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The SSO account ID that the user group is linked to.
      */
-    linkedSsoId?: pulumi.Input<string>;
+    linkedSsoId?: pulumi.Input<string | undefined>;
     /**
      * Type of linked SSO.
      */
-    linkedSsoType?: pulumi.Input<string>;
+    linkedSsoType?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of notification settings.
      */
-    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.UsergroupNotificationConfig>[]>;
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.UsergroupNotificationConfig>[] | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the userGroup in SSO.
      */
-    ssoGroupId?: pulumi.Input<string>;
+    ssoGroupId?: pulumi.Input<string | undefined>;
     /**
      * Name of the SSO userGroup.
      */
-    ssoGroupName?: pulumi.Input<string>;
+    ssoGroupName?: pulumi.Input<string | undefined>;
     /**
      * Whether sso is linked or not.
      */
-    ssoLinked?: pulumi.Input<boolean>;
+    ssoLinked?: pulumi.Input<boolean | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of user emails in the UserGroup. Either provide list of users or list of user emails.
      */
-    userEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    userEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
      */
-    users?: pulumi.Input<pulumi.Input<string>[]>;
+    users?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -393,11 +393,11 @@ export interface UsergroupArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the user group is externally managed.
      */
-    externallyManaged?: pulumi.Input<boolean>;
+    externallyManaged?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -405,53 +405,53 @@ export interface UsergroupArgs {
     /**
      * Name of the linked SSO.
      */
-    linkedSsoDisplayName?: pulumi.Input<string>;
+    linkedSsoDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The SSO account ID that the user group is linked to.
      */
-    linkedSsoId?: pulumi.Input<string>;
+    linkedSsoId?: pulumi.Input<string | undefined>;
     /**
      * Type of linked SSO.
      */
-    linkedSsoType?: pulumi.Input<string>;
+    linkedSsoType?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of notification settings.
      */
-    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.UsergroupNotificationConfig>[]>;
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.UsergroupNotificationConfig>[] | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the userGroup in SSO.
      */
-    ssoGroupId?: pulumi.Input<string>;
+    ssoGroupId?: pulumi.Input<string | undefined>;
     /**
      * Name of the SSO userGroup.
      */
-    ssoGroupName?: pulumi.Input<string>;
+    ssoGroupName?: pulumi.Input<string | undefined>;
     /**
      * Whether sso is linked or not.
      */
-    ssoLinked?: pulumi.Input<boolean>;
+    ssoLinked?: pulumi.Input<boolean | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of user emails in the UserGroup. Either provide list of users or list of user emails.
      */
-    userEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    userEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
      */
-    users?: pulumi.Input<pulumi.Input<string>[]>;
+    users?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

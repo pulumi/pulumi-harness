@@ -21,8 +21,8 @@ __all__ = ['DatacenterArgs', 'Datacenter']
 @pulumi.input_type
 class DatacenterArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]] = None):
         """
         The set of arguments for constructing a Datacenter resource.
 
@@ -36,34 +36,34 @@ class DatacenterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cloud provider.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="usageScopes")
-    def usage_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]]:
+    def usage_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]]:
         """
         This block is used for scoping the resource to a specific set of applications or environments.
         """
         return pulumi.get(self, "usage_scopes")
 
     @usage_scopes.setter
-    def usage_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]]):
+    def usage_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]]):
         pulumi.set(self, "usage_scopes", value)
 
 
 @pulumi.input_type
 class _DatacenterState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]] = None):
         """
         Input properties used for looking up and filtering Datacenter resources.
 
@@ -77,26 +77,26 @@ class _DatacenterState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cloud provider.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="usageScopes")
-    def usage_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]]:
+    def usage_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]]:
         """
         This block is used for scoping the resource to a specific set of applications or environments.
         """
         return pulumi.get(self, "usage_scopes")
 
     @usage_scopes.setter
-    def usage_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]]):
+    def usage_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatacenterUsageScopeArgs']]]]):
         pulumi.set(self, "usage_scopes", value)
 
 
@@ -106,8 +106,8 @@ class Datacenter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatacenterUsageScopeArgs', 'DatacenterUsageScopeArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatacenterUsageScopeArgs', 'DatacenterUsageScopeArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating a physical data center cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -181,8 +181,8 @@ class Datacenter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatacenterUsageScopeArgs', 'DatacenterUsageScopeArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatacenterUsageScopeArgs', 'DatacenterUsageScopeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -204,8 +204,8 @@ class Datacenter(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatacenterUsageScopeArgs', 'DatacenterUsageScopeArgsDict']]]]] = None) -> 'Datacenter':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatacenterUsageScopeArgs', 'DatacenterUsageScopeArgsDict']]]]] = None) -> 'Datacenter':
         """
         Get an existing Datacenter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

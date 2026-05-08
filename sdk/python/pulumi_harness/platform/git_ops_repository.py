@@ -24,17 +24,17 @@ class GitOpsRepositoryArgs:
                  agent_id: pulumi.Input[_builtins.str],
                  identifier: pulumi.Input[_builtins.str],
                  repos: pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creds_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecr_gen: Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcr_gen: Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']] = None,
-                 gen_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_masks: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creds_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecr_gen: pulumi.Input[Optional['GitOpsRepositoryEcrGenArgs']] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcr_gen: pulumi.Input[Optional['GitOpsRepositoryGcrGenArgs']] = None,
+                 gen_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_masks: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitOpsRepository resource.
 
@@ -125,67 +125,67 @@ class GitOpsRepositoryArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the GitOps repository.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="credsOnly")
-    def creds_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def creds_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if to operate on credential set instead of repository.
         """
         return pulumi.get(self, "creds_only")
 
     @creds_only.setter
-    def creds_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def creds_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "creds_only", value)
 
     @_builtins.property
     @pulumi.getter(name="ecrGen")
-    def ecr_gen(self) -> Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']]:
+    def ecr_gen(self) -> pulumi.Input[Optional['GitOpsRepositoryEcrGenArgs']]:
         """
         ECR access token generator specific configuration.
         """
         return pulumi.get(self, "ecr_gen")
 
     @ecr_gen.setter
-    def ecr_gen(self, value: Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']]):
+    def ecr_gen(self, value: pulumi.Input[Optional['GitOpsRepositoryEcrGenArgs']]):
         pulumi.set(self, "ecr_gen", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="gcrGen")
-    def gcr_gen(self) -> Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']]:
+    def gcr_gen(self) -> pulumi.Input[Optional['GitOpsRepositoryGcrGenArgs']]:
         """
         GCR access token generator specific configuration.
         """
         return pulumi.get(self, "gcr_gen")
 
     @gcr_gen.setter
-    def gcr_gen(self, value: Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']]):
+    def gcr_gen(self, value: pulumi.Input[Optional['GitOpsRepositoryGcrGenArgs']]):
         pulumi.set(self, "gcr_gen", value)
 
     @_builtins.property
     @pulumi.getter(name="genType")
-    def gen_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gen_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default: "UNSET"
         Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
@@ -193,88 +193,88 @@ class GitOpsRepositoryArgs:
         return pulumi.get(self, "gen_type")
 
     @gen_type.setter
-    def gen_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gen_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gen_type", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the GitOps repository.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the GitOps repository.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshInterval")
-    def refresh_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def refresh_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For OCI repos, this is the interval to refresh the token to access the registry.
         """
         return pulumi.get(self, "refresh_interval")
 
     @refresh_interval.setter
-    def refresh_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def refresh_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "refresh_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="updateMasks")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def update_masks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]]:
+    def update_masks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]]:
         """
         Update mask of the repository.
         """
         return pulumi.get(self, "update_masks")
 
     @update_masks.setter
-    def update_masks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]]):
+    def update_masks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]]):
         pulumi.set(self, "update_masks", value)
 
     @_builtins.property
     @pulumi.getter
-    def upsert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upsert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the GitOps repository should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
     @upsert.setter
-    def upsert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upsert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upsert", value)
 
 
 @pulumi.input_type
 class _GitOpsRepositoryState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creds_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecr_gen: Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcr_gen: Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']] = None,
-                 gen_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 repos: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]]] = None,
-                 update_masks: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creds_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecr_gen: pulumi.Input[Optional['GitOpsRepositoryEcrGenArgs']] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcr_gen: pulumi.Input[Optional['GitOpsRepositoryGcrGenArgs']] = None,
+                 gen_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 repos: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]]] = None,
+                 update_masks: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GitOpsRepository resources.
 
@@ -332,79 +332,79 @@ class _GitOpsRepositoryState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the GitOps repository.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Agent identifier of the GitOps repository.
         """
         return pulumi.get(self, "agent_id")
 
     @agent_id.setter
-    def agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="credsOnly")
-    def creds_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def creds_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if to operate on credential set instead of repository.
         """
         return pulumi.get(self, "creds_only")
 
     @creds_only.setter
-    def creds_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def creds_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "creds_only", value)
 
     @_builtins.property
     @pulumi.getter(name="ecrGen")
-    def ecr_gen(self) -> Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']]:
+    def ecr_gen(self) -> pulumi.Input[Optional['GitOpsRepositoryEcrGenArgs']]:
         """
         ECR access token generator specific configuration.
         """
         return pulumi.get(self, "ecr_gen")
 
     @ecr_gen.setter
-    def ecr_gen(self, value: Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']]):
+    def ecr_gen(self, value: pulumi.Input[Optional['GitOpsRepositoryEcrGenArgs']]):
         pulumi.set(self, "ecr_gen", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="gcrGen")
-    def gcr_gen(self) -> Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']]:
+    def gcr_gen(self) -> pulumi.Input[Optional['GitOpsRepositoryGcrGenArgs']]:
         """
         GCR access token generator specific configuration.
         """
         return pulumi.get(self, "gcr_gen")
 
     @gcr_gen.setter
-    def gcr_gen(self, value: Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']]):
+    def gcr_gen(self, value: pulumi.Input[Optional['GitOpsRepositoryGcrGenArgs']]):
         pulumi.set(self, "gcr_gen", value)
 
     @_builtins.property
     @pulumi.getter(name="genType")
-    def gen_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gen_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default: "UNSET"
         Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
@@ -412,92 +412,92 @@ class _GitOpsRepositoryState:
         return pulumi.get(self, "gen_type")
 
     @gen_type.setter
-    def gen_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gen_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gen_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the GitOps repository.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the GitOps repository.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the GitOps repository.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshInterval")
-    def refresh_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def refresh_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For OCI repos, this is the interval to refresh the token to access the registry.
         """
         return pulumi.get(self, "refresh_interval")
 
     @refresh_interval.setter
-    def refresh_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def refresh_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "refresh_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def repos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]]]:
+    def repos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]]]:
         """
         Repo details holding application configurations.
         """
         return pulumi.get(self, "repos")
 
     @repos.setter
-    def repos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]]]):
+    def repos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]]]):
         pulumi.set(self, "repos", value)
 
     @_builtins.property
     @pulumi.getter(name="updateMasks")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def update_masks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]]:
+    def update_masks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]]:
         """
         Update mask of the repository.
         """
         return pulumi.get(self, "update_masks")
 
     @update_masks.setter
-    def update_masks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]]):
+    def update_masks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]]):
         pulumi.set(self, "update_masks", value)
 
     @_builtins.property
     @pulumi.getter
-    def upsert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upsert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the GitOps repository should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
     @upsert.setter
-    def upsert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upsert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upsert", value)
 
 
@@ -507,20 +507,20 @@ class GitOpsRepository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creds_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecr_gen: Optional[pulumi.Input[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcr_gen: Optional[pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']]] = None,
-                 gen_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 repos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict']]]]] = None,
-                 update_masks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict']]]]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creds_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']]] = None,
+                 gen_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 repos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict']]]]] = None,
+                 update_masks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict']]]]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Resource for managing Harness Gitops Repository.
@@ -613,20 +613,20 @@ class GitOpsRepository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creds_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecr_gen: Optional[pulumi.Input[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcr_gen: Optional[pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']]] = None,
-                 gen_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 repos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict']]]]] = None,
-                 update_masks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict']]]]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creds_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']]] = None,
+                 gen_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 repos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict']]]]] = None,
+                 update_masks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict']]]]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -666,20 +666,20 @@ class GitOpsRepository(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            creds_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            ecr_gen: Optional[pulumi.Input[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            gcr_gen: Optional[pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']]] = None,
-            gen_type: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            repos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict']]]]] = None,
-            update_masks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict']]]]] = None,
-            upsert: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GitOpsRepository':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creds_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            ecr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            gcr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']]] = None,
+            gen_type: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            repos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict']]]]] = None,
+            update_masks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict']]]]] = None,
+            upsert: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GitOpsRepository':
         """
         Get an existing GitOpsRepository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -304,147 +304,147 @@ export interface InfrastructureV2State {
     /**
      * Enable AI features for the infrastructure.
      */
-    aiEnabled?: pulumi.Input<boolean>;
+    aiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Annotations to apply to the infrastructure pods.
      */
-    annotation?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotation?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Container configurations.
      */
-    containers?: pulumi.Input<string>;
+    containers?: pulumi.Input<string | undefined>;
     /**
      * Correlation ID for the request.
      */
-    correlationId?: pulumi.Input<string>;
+    correlationId?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the infrastructure.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * ID of the discovery agent to use.
      */
-    discoveryAgentId?: pulumi.Input<string>;
+    discoveryAgentId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the environment.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * List of environment variables to set in the container.
      */
-    envs?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Env>[]>;
+    envs?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Env>[] | undefined>;
     /**
      * Identifier for the infrastructure.
      */
-    identifiers?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Identifier>[]>;
+    identifiers?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Identifier>[] | undefined>;
     /**
      * Identity for the infrastructure.
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * Configuration for the container image registry.
      */
-    imageRegistries?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2ImageRegistry>[]>;
+    imageRegistries?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2ImageRegistry>[] | undefined>;
     /**
      * ID of the infrastructure.
      */
-    infraId?: pulumi.Input<string>;
+    infraId?: pulumi.Input<string | undefined>;
     /**
      * Namespace where the infrastructure is installed.
      */
-    infraNamespace?: pulumi.Input<string>;
+    infraNamespace?: pulumi.Input<string | undefined>;
     /**
      * Scope of the infrastructure. Valid values: NAMESPACE, CLUSTER
      */
-    infraScope?: pulumi.Input<string>;
+    infraScope?: pulumi.Input<string | undefined>;
     /**
      * Type of the infrastructure. Valid values: KUBERNETES, KUBERNETESV2
      */
-    infraType?: pulumi.Input<string>;
+    infraType?: pulumi.Input<string | undefined>;
     /**
      * Skip TLS verification for the infrastructure.
      */
-    insecureSkipVerify?: pulumi.Input<boolean>;
+    insecureSkipVerify?: pulumi.Input<boolean | undefined>;
     /**
      * Installation command for the infrastructure.
      */
-    installCommand?: pulumi.Input<string>;
+    installCommand?: pulumi.Input<string | undefined>;
     /**
      * Kubernetes connector identifier.
      */
-    k8sConnectorId?: pulumi.Input<string>;
+    k8sConnectorId?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to the infrastructure pods.
      */
-    label?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    label?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * mTLS configuration for the infrastructure.
      */
-    mtls?: pulumi.Input<inputs.chaos.InfrastructureV2Mtls>;
+    mtls?: pulumi.Input<inputs.chaos.InfrastructureV2Mtls | undefined>;
     /**
      * Name of the infrastructure.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Kubernetes namespace where the infrastructure will be installed. Maps to the infrastructure namespace.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Node selector for the infrastructure pods.
      */
-    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Proxy configuration for the infrastructure.
      */
-    proxy?: pulumi.Input<inputs.chaos.InfrastructureV2Proxy>;
+    proxy?: pulumi.Input<inputs.chaos.InfrastructureV2Proxy | undefined>;
     /**
      * Group ID to run the infrastructure as.
      */
-    runAsGroup?: pulumi.Input<number>;
+    runAsGroup?: pulumi.Input<number | undefined>;
     /**
      * User ID to run the infrastructure as.
      */
-    runAsUser?: pulumi.Input<number>;
+    runAsUser?: pulumi.Input<number | undefined>;
     /**
      * Service account used by the infrastructure.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Status of the infrastructure.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Tags for the infrastructure.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If specified, the pod's tolerations.
      */
-    tolerations?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Toleration>[]>;
+    tolerations?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Toleration>[] | undefined>;
     /**
      * Last update timestamp.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Volume mounts for the container.
      */
-    volumeMounts?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2VolumeMount>[]>;
+    volumeMounts?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2VolumeMount>[] | undefined>;
     /**
      * Volumes to be created in the infrastructure.
      */
-    volumes?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Volume>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Volume>[] | undefined>;
 }
 
 /**
@@ -454,27 +454,27 @@ export interface InfrastructureV2Args {
     /**
      * Enable AI features for the infrastructure.
      */
-    aiEnabled?: pulumi.Input<boolean>;
+    aiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Annotations to apply to the infrastructure pods.
      */
-    annotation?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotation?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Container configurations.
      */
-    containers?: pulumi.Input<string>;
+    containers?: pulumi.Input<string | undefined>;
     /**
      * Correlation ID for the request.
      */
-    correlationId?: pulumi.Input<string>;
+    correlationId?: pulumi.Input<string | undefined>;
     /**
      * Description of the infrastructure.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * ID of the discovery agent to use.
      */
-    discoveryAgentId?: pulumi.Input<string>;
+    discoveryAgentId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the environment.
      */
@@ -482,11 +482,11 @@ export interface InfrastructureV2Args {
     /**
      * List of environment variables to set in the container.
      */
-    envs?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Env>[]>;
+    envs?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Env>[] | undefined>;
     /**
      * Configuration for the container image registry.
      */
-    imageRegistries?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2ImageRegistry>[]>;
+    imageRegistries?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2ImageRegistry>[] | undefined>;
     /**
      * ID of the infrastructure.
      */
@@ -494,35 +494,35 @@ export interface InfrastructureV2Args {
     /**
      * Scope of the infrastructure. Valid values: NAMESPACE, CLUSTER
      */
-    infraScope?: pulumi.Input<string>;
+    infraScope?: pulumi.Input<string | undefined>;
     /**
      * Type of the infrastructure. Valid values: KUBERNETES, KUBERNETESV2
      */
-    infraType?: pulumi.Input<string>;
+    infraType?: pulumi.Input<string | undefined>;
     /**
      * Skip TLS verification for the infrastructure.
      */
-    insecureSkipVerify?: pulumi.Input<boolean>;
+    insecureSkipVerify?: pulumi.Input<boolean | undefined>;
     /**
      * Labels to apply to the infrastructure pods.
      */
-    label?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    label?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * mTLS configuration for the infrastructure.
      */
-    mtls?: pulumi.Input<inputs.chaos.InfrastructureV2Mtls>;
+    mtls?: pulumi.Input<inputs.chaos.InfrastructureV2Mtls | undefined>;
     /**
      * Name of the infrastructure.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Kubernetes namespace where the infrastructure will be installed. Maps to the infrastructure namespace.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Node selector for the infrastructure pods.
      */
-    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the organization.
      */
@@ -534,33 +534,33 @@ export interface InfrastructureV2Args {
     /**
      * Proxy configuration for the infrastructure.
      */
-    proxy?: pulumi.Input<inputs.chaos.InfrastructureV2Proxy>;
+    proxy?: pulumi.Input<inputs.chaos.InfrastructureV2Proxy | undefined>;
     /**
      * Group ID to run the infrastructure as.
      */
-    runAsGroup?: pulumi.Input<number>;
+    runAsGroup?: pulumi.Input<number | undefined>;
     /**
      * User ID to run the infrastructure as.
      */
-    runAsUser?: pulumi.Input<number>;
+    runAsUser?: pulumi.Input<number | undefined>;
     /**
      * Service account used by the infrastructure.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Tags for the infrastructure.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If specified, the pod's tolerations.
      */
-    tolerations?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Toleration>[]>;
+    tolerations?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Toleration>[] | undefined>;
     /**
      * Volume mounts for the container.
      */
-    volumeMounts?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2VolumeMount>[]>;
+    volumeMounts?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2VolumeMount>[] | undefined>;
     /**
      * Volumes to be created in the infrastructure.
      */
-    volumes?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Volume>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.chaos.InfrastructureV2Volume>[] | undefined>;
 }

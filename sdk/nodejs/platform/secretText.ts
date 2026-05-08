@@ -234,43 +234,43 @@ export interface SecretTextState {
     /**
      * Additional Metadata for the Secret
      */
-    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.SecretTextAdditionalMetadata>[]>;
+    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.SecretTextAdditionalMetadata>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the Secret Manager used to manage the secret.
      */
-    secretManagerIdentifier?: pulumi.Input<string>;
+    secretManagerIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value of the Secret
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * This has details to specify if the secret value is Inline or Reference.
      */
-    valueType?: pulumi.Input<string>;
+    valueType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -280,11 +280,11 @@ export interface SecretTextArgs {
     /**
      * Additional Metadata for the Secret
      */
-    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.SecretTextAdditionalMetadata>[]>;
+    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.SecretTextAdditionalMetadata>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -292,15 +292,15 @@ export interface SecretTextArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the Secret Manager used to manage the secret.
      */
@@ -308,11 +308,11 @@ export interface SecretTextArgs {
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value of the Secret
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * This has details to specify if the secret value is Inline or Reference.
      */

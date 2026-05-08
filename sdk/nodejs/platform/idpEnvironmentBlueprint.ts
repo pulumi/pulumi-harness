@@ -157,27 +157,27 @@ export interface IdpEnvironmentBlueprintState {
     /**
      * Whether the catalog entity is deprecated
      */
-    deprecated?: pulumi.Input<boolean>;
+    deprecated?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the catalog entity
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Whether the catalog entity is stable
      */
-    stable?: pulumi.Input<boolean>;
+    stable?: pulumi.Input<boolean | undefined>;
     /**
      * Version of the catalog entity
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * YAML definition of the catalog entity
      */
-    yaml?: pulumi.Input<string>;
+    yaml?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -187,11 +187,11 @@ export interface IdpEnvironmentBlueprintArgs {
     /**
      * Whether the catalog entity is deprecated
      */
-    deprecated?: pulumi.Input<boolean>;
+    deprecated?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the catalog entity
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -199,7 +199,7 @@ export interface IdpEnvironmentBlueprintArgs {
     /**
      * Whether the catalog entity is stable
      */
-    stable?: pulumi.Input<boolean>;
+    stable?: pulumi.Input<boolean | undefined>;
     /**
      * Version of the catalog entity
      */

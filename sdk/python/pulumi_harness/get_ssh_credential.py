@@ -98,9 +98,9 @@ def get_ssh_credential(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         usage_scopes=pulumi.get(__ret__, 'usage_scopes'))
-def get_ssh_credential_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              usage_scopes: Optional[pulumi.Input[Optional[Sequence[Union['GetSshCredentialUsageScopeArgs', 'GetSshCredentialUsageScopeArgsDict']]]]] = None,
+def get_ssh_credential_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              usage_scopes: pulumi.Input[Optional[Optional[Sequence[Union['GetSshCredentialUsageScopeArgs', 'GetSshCredentialUsageScopeArgsDict']]]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshCredentialResult]:
     """
     Data source for retrieving an SSH credential.

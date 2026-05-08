@@ -227,14 +227,14 @@ def get_har_registry(allowed_patterns: Optional[Sequence[_builtins.str]] = None,
         parent_ref=pulumi.get(__ret__, 'parent_ref'),
         space_ref=pulumi.get(__ret__, 'space_ref'),
         url=pulumi.get(__ret__, 'url'))
-def get_har_registry_output(allowed_patterns: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            blocked_patterns: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            configs: Optional[pulumi.Input[Optional[Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict']]]]] = None,
-                            description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                            package_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            parent_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                            space_ref: Optional[pulumi.Input[_builtins.str]] = None,
+def get_har_registry_output(allowed_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            blocked_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            configs: pulumi.Input[Optional[Optional[Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict']]]]] = None,
+                            description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                            package_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            parent_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                            space_ref: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHarRegistryResult]:
     """
     Resource for creating and managing Harness Registries.

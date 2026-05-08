@@ -25,10 +25,10 @@ class RuleK8sArgs:
                  k8s_connector_id: pulumi.Input[_builtins.str],
                  k8s_namespace: pulumi.Input[_builtins.str],
                  rule_yaml: pulumi.Input[_builtins.str],
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleK8sDependArgs']]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input['RuleK8sDependArgs']]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RuleK8s resource.
 
@@ -104,65 +104,65 @@ class RuleK8sArgs:
 
     @_builtins.property
     @pulumi.getter
-    def depends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleK8sDependArgs']]]]:
+    def depends(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleK8sDependArgs']]]]:
         """
         Dependent rules
         """
         return pulumi.get(self, "depends")
 
     @depends.setter
-    def depends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleK8sDependArgs']]]]):
+    def depends(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleK8sDependArgs']]]]):
         pulumi.set(self, "depends", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeMins")
-    def idle_time_mins(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_time_mins(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         """
         return pulumi.get(self, "idle_time_mins")
 
     @idle_time_mins.setter
-    def idle_time_mins(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_time_mins(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_time_mins", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the rule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _RuleK8sState:
     def __init__(__self__, *,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleK8sDependArgs']]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input['RuleK8sDependArgs']]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RuleK8s resources.
 
@@ -197,110 +197,110 @@ class _RuleK8sState:
 
     @_builtins.property
     @pulumi.getter(name="cloudConnectorId")
-    def cloud_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the cloud connector
         """
         return pulumi.get(self, "cloud_connector_id")
 
     @cloud_connector_id.setter
-    def cloud_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_connector_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def depends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleK8sDependArgs']]]]:
+    def depends(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleK8sDependArgs']]]]:
         """
         Dependent rules
         """
         return pulumi.get(self, "depends")
 
     @depends.setter
-    def depends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleK8sDependArgs']]]]):
+    def depends(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleK8sDependArgs']]]]):
         pulumi.set(self, "depends", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeMins")
-    def idle_time_mins(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_time_mins(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         """
         return pulumi.get(self, "idle_time_mins")
 
     @idle_time_mins.setter
-    def idle_time_mins(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_time_mins(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_time_mins", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sConnectorId")
-    def k8s_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def k8s_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the K8s connector
         """
         return pulumi.get(self, "k8s_connector_id")
 
     @k8s_connector_id.setter
-    def k8s_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def k8s_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "k8s_connector_id", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sNamespace")
-    def k8s_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def k8s_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Namespace of the cluster
         """
         return pulumi.get(self, "k8s_namespace")
 
     @k8s_namespace.setter
-    def k8s_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def k8s_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "k8s_namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the rule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleYaml")
-    def rule_yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
         """
         return pulumi.get(self, "rule_yaml")
 
     @rule_yaml.setter
-    def rule_yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_yaml", value)
 
 
@@ -310,14 +310,14 @@ class RuleK8s(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict']]]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict']]]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Data source for retrieving a Harness AutoStopping rule for K8s services.
@@ -359,14 +359,14 @@ class RuleK8s(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict']]]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict']]]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -403,15 +403,15 @@ class RuleK8s(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict']]]]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-            k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            k8s_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_yaml: Optional[pulumi.Input[_builtins.str]] = None) -> 'RuleK8s':
+            cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict']]]]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+            k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            k8s_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_yaml: pulumi.Input[Optional[_builtins.str]] = None) -> 'RuleK8s':
         """
         Get an existing RuleK8s resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

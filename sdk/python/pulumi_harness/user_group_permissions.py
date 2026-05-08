@@ -22,8 +22,8 @@ __all__ = ['UserGroupPermissionsInitArgs', 'UserGroupPermissions']
 class UserGroupPermissionsInitArgs:
     def __init__(__self__, *,
                  user_group_id: pulumi.Input[_builtins.str],
-                 account_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_permissions: Optional[pulumi.Input['UserGroupPermissionsAppPermissionsArgs']] = None):
+                 account_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_permissions: pulumi.Input[Optional['UserGroupPermissionsAppPermissionsArgs']] = None):
         """
         The set of arguments for constructing a UserGroupPermissions resource.
 
@@ -51,35 +51,35 @@ class UserGroupPermissionsInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountPermissions")
-    def account_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def account_permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
         """
         return pulumi.get(self, "account_permissions")
 
     @account_permissions.setter
-    def account_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def account_permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "account_permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="appPermissions")
-    def app_permissions(self) -> Optional[pulumi.Input['UserGroupPermissionsAppPermissionsArgs']]:
+    def app_permissions(self) -> pulumi.Input[Optional['UserGroupPermissionsAppPermissionsArgs']]:
         """
         Application specific permissions
         """
         return pulumi.get(self, "app_permissions")
 
     @app_permissions.setter
-    def app_permissions(self, value: Optional[pulumi.Input['UserGroupPermissionsAppPermissionsArgs']]):
+    def app_permissions(self, value: pulumi.Input[Optional['UserGroupPermissionsAppPermissionsArgs']]):
         pulumi.set(self, "app_permissions", value)
 
 
 @pulumi.input_type
 class _UserGroupPermissionsState:
     def __init__(__self__, *,
-                 account_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_permissions: Optional[pulumi.Input['UserGroupPermissionsAppPermissionsArgs']] = None,
-                 user_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_permissions: pulumi.Input[Optional['UserGroupPermissionsAppPermissionsArgs']] = None,
+                 user_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserGroupPermissions resources.
 
@@ -96,38 +96,38 @@ class _UserGroupPermissionsState:
 
     @_builtins.property
     @pulumi.getter(name="accountPermissions")
-    def account_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def account_permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
         """
         return pulumi.get(self, "account_permissions")
 
     @account_permissions.setter
-    def account_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def account_permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "account_permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="appPermissions")
-    def app_permissions(self) -> Optional[pulumi.Input['UserGroupPermissionsAppPermissionsArgs']]:
+    def app_permissions(self) -> pulumi.Input[Optional['UserGroupPermissionsAppPermissionsArgs']]:
         """
         Application specific permissions
         """
         return pulumi.get(self, "app_permissions")
 
     @app_permissions.setter
-    def app_permissions(self, value: Optional[pulumi.Input['UserGroupPermissionsAppPermissionsArgs']]):
+    def app_permissions(self, value: pulumi.Input[Optional['UserGroupPermissionsAppPermissionsArgs']]):
         pulumi.set(self, "app_permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="userGroupId")
-    def user_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the user group.
         """
         return pulumi.get(self, "user_group_id")
 
     @user_group_id.setter
-    def user_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_group_id", value)
 
 
@@ -137,9 +137,9 @@ class UserGroupPermissions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_permissions: Optional[pulumi.Input[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict']]] = None,
-                 user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_permissions: pulumi.Input[Optional[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict']]] = None,
+                 user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for adding permissions to an existing Harness user group.
@@ -176,9 +176,9 @@ class UserGroupPermissions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_permissions: Optional[pulumi.Input[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict']]] = None,
-                 user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_permissions: pulumi.Input[Optional[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict']]] = None,
+                 user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -203,9 +203,9 @@ class UserGroupPermissions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            app_permissions: Optional[pulumi.Input[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict']]] = None,
-            user_group_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserGroupPermissions':
+            account_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_permissions: pulumi.Input[Optional[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict']]] = None,
+            user_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserGroupPermissions':
         """
         Get an existing UserGroupPermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

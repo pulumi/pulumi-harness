@@ -22,16 +22,16 @@ __all__ = ['EnvironmentArgs', 'Environment']
 class EnvironmentArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_details: Optional[pulumi.Input['EnvironmentGitDetailsArgs']] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_details: pulumi.Input[Optional['EnvironmentGitDetailsArgs']] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Environment resource.
 
@@ -83,139 +83,139 @@ class EnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Color of the environment.
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag for force deletion of environments
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="gitDetails")
-    def git_details(self) -> Optional[pulumi.Input['EnvironmentGitDetailsArgs']]:
+    def git_details(self) -> pulumi.Input[Optional['EnvironmentGitDetailsArgs']]:
         """
         Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
     @git_details.setter
-    def git_details(self, value: Optional[pulumi.Input['EnvironmentGitDetailsArgs']]):
+    def git_details(self, value: pulumi.Input[Optional['EnvironmentGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
     @yaml.setter
-    def yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
 
 @pulumi.input_type
 class _EnvironmentState:
     def __init__(__self__, *,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_details: Optional[pulumi.Input['EnvironmentGitDetailsArgs']] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_details: pulumi.Input[Optional['EnvironmentGitDetailsArgs']] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
 
@@ -256,134 +256,134 @@ class _EnvironmentState:
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Color of the environment.
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag for force deletion of environments
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="gitDetails")
-    def git_details(self) -> Optional[pulumi.Input['EnvironmentGitDetailsArgs']]:
+    def git_details(self) -> pulumi.Input[Optional['EnvironmentGitDetailsArgs']]:
         """
         Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
     @git_details.setter
-    def git_details(self, value: Optional[pulumi.Input['EnvironmentGitDetailsArgs']]):
+    def git_details(self, value: pulumi.Input[Optional['EnvironmentGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of environment. Valid values are PreProduction, Production
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
     @yaml.setter
-    def yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
 
@@ -393,17 +393,17 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_details: Optional[pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_details: pulumi.Input[Optional[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Harness environment.
@@ -658,17 +658,17 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_details: Optional[pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_details: pulumi.Input[Optional[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -701,17 +701,17 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            color: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            git_details: Optional[pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            yaml: Optional[pulumi.Input[_builtins.str]] = None) -> 'Environment':
+            color: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            git_details: pulumi.Input[Optional[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

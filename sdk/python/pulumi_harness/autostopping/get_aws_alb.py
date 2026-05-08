@@ -200,14 +200,14 @@ def get_aws_alb(alb_arn: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         security_groups=pulumi.get(__ret__, 'security_groups'),
         vpc=pulumi.get(__ret__, 'vpc'))
-def get_aws_alb_output(alb_arn: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       certificate_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                       delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                       name: Optional[pulumi.Input[_builtins.str]] = None,
-                       region: Optional[pulumi.Input[_builtins.str]] = None,
-                       security_groups: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                       vpc: Optional[pulumi.Input[_builtins.str]] = None,
+def get_aws_alb_output(alb_arn: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       certificate_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                       delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                       name: pulumi.Input[Optional[_builtins.str]] = None,
+                       region: pulumi.Input[Optional[_builtins.str]] = None,
+                       security_groups: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                       vpc: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsAlbResult]:
     """
     Data source for AWS Autostopping proxy

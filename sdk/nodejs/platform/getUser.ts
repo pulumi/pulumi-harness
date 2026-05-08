@@ -124,9 +124,9 @@ export interface GetUserOutputArgs {
     /**
      * Organization identifier of the user.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the user.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

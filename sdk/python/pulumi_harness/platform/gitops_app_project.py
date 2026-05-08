@@ -23,11 +23,11 @@ class GitopsAppProjectArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[_builtins.str],
                  projects: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectArgs']]],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitopsAppProject resource.
 
@@ -82,75 +82,75 @@ class GitopsAppProjectArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the GitOps Agent where argo project will exist.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Org identifier of the GitOps Agent where argo project is to be created.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the Gitops Agent where argo project is to be created.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="queryName")
-    def query_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier for the GitOps Argo project.
         """
         return pulumi.get(self, "query_name")
 
     @query_name.setter
-    def query_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def upsert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upsert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the argo project should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
     @upsert.setter
-    def upsert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upsert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upsert", value)
 
 
 @pulumi.input_type
 class _GitopsAppProjectState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectArgs']]]] = None,
-                 query_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 projects: pulumi.Input[Optional[Sequence[pulumi.Input['GitopsAppProjectProjectArgs']]]] = None,
+                 query_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GitopsAppProject resources.
 
@@ -183,86 +183,86 @@ class _GitopsAppProjectState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the GitOps Agent where argo project will exist.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Agent identifier of the agent where argo project will exist (include scope prefix)
         """
         return pulumi.get(self, "agent_id")
 
     @agent_id.setter
-    def agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Org identifier of the GitOps Agent where argo project is to be created.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the Gitops Agent where argo project is to be created.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectArgs']]]]:
+    def projects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GitopsAppProjectProjectArgs']]]]:
         """
         GitOps project configuration.
         """
         return pulumi.get(self, "projects")
 
     @projects.setter
-    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectArgs']]]]):
+    def projects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GitopsAppProjectProjectArgs']]]]):
         pulumi.set(self, "projects", value)
 
     @_builtins.property
     @pulumi.getter(name="queryName")
-    def query_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier for the GitOps Argo project.
         """
         return pulumi.get(self, "query_name")
 
     @query_name.setter
-    def query_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def upsert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upsert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the argo project should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
     @upsert.setter
-    def upsert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upsert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upsert", value)
 
 
@@ -272,13 +272,13 @@ class GitopsAppProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]]] = None,
-                 query_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 projects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]]] = None,
+                 query_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -363,13 +363,13 @@ class GitopsAppProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]]] = None,
-                 query_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 projects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]]] = None,
+                 query_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -400,13 +400,13 @@ class GitopsAppProject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            projects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]]] = None,
-            query_name: Optional[pulumi.Input[_builtins.str]] = None,
-            upsert: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GitopsAppProject':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            projects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]]] = None,
+            query_name: pulumi.Input[Optional[_builtins.str]] = None,
+            upsert: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GitopsAppProject':
         """
         Get an existing GitopsAppProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -277,111 +277,111 @@ export interface InfraModuleTestingState {
     /**
      * Account that owns the module
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the module was created
      */
-    created?: pulumi.Input<number>;
+    created?: pulumi.Input<number | undefined>;
     /**
      * Description of the module
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Git Tag Style
      */
-    gitTagStyle?: pulumi.Input<string>;
+    gitTagStyle?: pulumi.Input<string | undefined>;
     /**
      * Error while retrieving the module
      */
-    moduleError?: pulumi.Input<string>;
+    moduleError?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the module to enable testing for
      */
-    moduleId?: pulumi.Input<string>;
+    moduleId?: pulumi.Input<string | undefined>;
     /**
      * Name of the module
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier
      */
-    org?: pulumi.Input<string>;
+    org?: pulumi.Input<string | undefined>;
     /**
      * List of pipeline IDs to create webhooks for triggering test executions
      */
-    pipelines?: pulumi.Input<pulumi.Input<string>[]>;
+    pipelines?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Project identifier
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Provider connector for testing purposes
      */
-    providerConnector?: pulumi.Input<string>;
+    providerConnector?: pulumi.Input<string | undefined>;
     /**
      * Provisioner type for testing purposes (e.g., terraform, tofu)
      */
-    provisionerType?: pulumi.Input<string>;
+    provisionerType?: pulumi.Input<string | undefined>;
     /**
      * Provisioner version for testing purposes
      */
-    provisionerVersion?: pulumi.Input<string>;
+    provisionerVersion?: pulumi.Input<string | undefined>;
     /**
      * Pipeline ID to create webhooks for releases
      */
-    releasePipeline?: pulumi.Input<string>;
+    releasePipeline?: pulumi.Input<string | undefined>;
     /**
      * For account connectors, the repository where the module is stored
      */
-    repository?: pulumi.Input<string>;
+    repository?: pulumi.Input<string | undefined>;
     /**
      * Repository Branch in which the module should be accessed
      */
-    repositoryBranch?: pulumi.Input<string>;
+    repositoryBranch?: pulumi.Input<string | undefined>;
     /**
      * Repository Commit in which the module should be accessed
      */
-    repositoryCommit?: pulumi.Input<string>;
+    repositoryCommit?: pulumi.Input<string | undefined>;
     /**
      * Repository Connector is the reference to the connector for the repository
      */
-    repositoryConnector?: pulumi.Input<string>;
+    repositoryConnector?: pulumi.Input<string | undefined>;
     /**
      * Repository Path is the path in which the module resides
      */
-    repositoryPath?: pulumi.Input<string>;
+    repositoryPath?: pulumi.Input<string | undefined>;
     /**
      * URL where the module is stored
      */
-    repositoryUrl?: pulumi.Input<string>;
+    repositoryUrl?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the module was last synced
      */
-    synced?: pulumi.Input<number>;
+    synced?: pulumi.Input<number | undefined>;
     /**
      * Provider of the module
      */
-    system?: pulumi.Input<string>;
+    system?: pulumi.Input<string | undefined>;
     /**
      * Tags associated with the module
      */
-    tags?: pulumi.Input<string>;
+    tags?: pulumi.Input<string | undefined>;
     /**
      * Whether testing is enabled for the module
      */
-    testingEnabled?: pulumi.Input<boolean>;
+    testingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Testing metadata for the module
      */
-    testingMetadata?: pulumi.Input<inputs.platform.InfraModuleTestingTestingMetadata>;
+    testingMetadata?: pulumi.Input<inputs.platform.InfraModuleTestingTestingMetadata | undefined>;
     /**
      * Timestamp when the module was last modified
      */
-    updated?: pulumi.Input<number>;
+    updated?: pulumi.Input<number | undefined>;
     /**
      * Versions of the module
      */
-    versions?: pulumi.Input<pulumi.Input<string>[]>;
+    versions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -419,21 +419,21 @@ export interface InfraModuleTestingArgs {
     /**
      * Pipeline ID to create webhooks for releases
      */
-    releasePipeline?: pulumi.Input<string>;
+    releasePipeline?: pulumi.Input<string | undefined>;
     /**
      * Whether testing is enabled for the module
      */
-    testingEnabled?: pulumi.Input<boolean>;
+    testingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Testing metadata for the module
      */
-    testingMetadata?: pulumi.Input<inputs.platform.InfraModuleTestingTestingMetadata>;
+    testingMetadata?: pulumi.Input<inputs.platform.InfraModuleTestingTestingMetadata | undefined>;
     /**
      * Timestamp when the module was last modified
      */
-    updated?: pulumi.Input<number>;
+    updated?: pulumi.Input<number | undefined>;
     /**
      * Versions of the module
      */
-    versions?: pulumi.Input<pulumi.Input<string>[]>;
+    versions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

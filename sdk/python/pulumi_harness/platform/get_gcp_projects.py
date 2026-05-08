@@ -137,9 +137,9 @@ def get_gcp_projects(connector_id: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         projects=pulumi.get(__ret__, 'projects'))
-def get_gcp_projects_output(connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_gcp_projects_output(connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGcpProjectsResult]:
     """
     Data source for listing GCP projects using a cloud connector identifier or secret manager connector identifier.

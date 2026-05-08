@@ -96,15 +96,15 @@ export interface InfraProviderVersionPublishState {
     /**
      * The ID of the provider.
      */
-    providerId?: pulumi.Input<string>;
+    providerId?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the provider version is published.
      */
-    published?: pulumi.Input<boolean>;
+    published?: pulumi.Input<boolean | undefined>;
     /**
      * Provider version number to publish.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**

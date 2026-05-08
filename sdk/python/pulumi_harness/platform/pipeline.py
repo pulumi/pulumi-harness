@@ -24,16 +24,16 @@ class PipelineArgs:
                  identifier: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_details: Optional[pulumi.Input['PipelineGitDetailsArgs']] = None,
-                 git_import_info: Optional[pulumi.Input['PipelineGitImportInfoArgs']] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_import_request: Optional[pulumi.Input['PipelinePipelineImportRequestArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_applied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 template_applied_pipeline_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_details: pulumi.Input[Optional['PipelineGitDetailsArgs']] = None,
+                 git_import_info: pulumi.Input[Optional['PipelineGitImportInfoArgs']] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_import_request: pulumi.Input[Optional['PipelinePipelineImportRequestArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_applied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 template_applied_pipeline_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Pipeline resource.
 
@@ -113,141 +113,141 @@ class PipelineArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gitDetails")
-    def git_details(self) -> Optional[pulumi.Input['PipelineGitDetailsArgs']]:
+    def git_details(self) -> pulumi.Input[Optional['PipelineGitDetailsArgs']]:
         """
         Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
     @git_details.setter
-    def git_details(self, value: Optional[pulumi.Input['PipelineGitDetailsArgs']]):
+    def git_details(self, value: pulumi.Input[Optional['PipelineGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
 
     @_builtins.property
     @pulumi.getter(name="gitImportInfo")
-    def git_import_info(self) -> Optional[pulumi.Input['PipelineGitImportInfoArgs']]:
+    def git_import_info(self) -> pulumi.Input[Optional['PipelineGitImportInfoArgs']]:
         """
         Contains Git Information for importing entities from Git
         """
         return pulumi.get(self, "git_import_info")
 
     @git_import_info.setter
-    def git_import_info(self, value: Optional[pulumi.Input['PipelineGitImportInfoArgs']]):
+    def git_import_info(self, value: pulumi.Input[Optional['PipelineGitImportInfoArgs']]):
         pulumi.set(self, "git_import_info", value)
 
     @_builtins.property
     @pulumi.getter(name="importFromGit")
-    def import_from_git(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_from_git(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to set if importing from Git
         """
         return pulumi.get(self, "import_from_git")
 
     @import_from_git.setter
-    def import_from_git(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_from_git(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_from_git", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineImportRequest")
-    def pipeline_import_request(self) -> Optional[pulumi.Input['PipelinePipelineImportRequestArgs']]:
+    def pipeline_import_request(self) -> pulumi.Input[Optional['PipelinePipelineImportRequestArgs']]:
         """
         Contains parameters for importing a pipeline
         """
         return pulumi.get(self, "pipeline_import_request")
 
     @pipeline_import_request.setter
-    def pipeline_import_request(self, value: Optional[pulumi.Input['PipelinePipelineImportRequestArgs']]):
+    def pipeline_import_request(self, value: pulumi.Input[Optional['PipelinePipelineImportRequestArgs']]):
         pulumi.set(self, "pipeline_import_request", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateApplied")
-    def template_applied(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def template_applied(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, returns Pipeline YAML with Templates applied on it.
         """
         return pulumi.get(self, "template_applied")
 
     @template_applied.setter
-    def template_applied(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def template_applied(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "template_applied", value)
 
     @_builtins.property
     @pulumi.getter(name="templateAppliedPipelineYaml")
-    def template_applied_pipeline_yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_applied_pipeline_yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pipeline YAML after resolving Templates (returned as a String).
         """
         return pulumi.get(self, "template_applied_pipeline_yaml")
 
     @template_applied_pipeline_yaml.setter
-    def template_applied_pipeline_yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_applied_pipeline_yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_applied_pipeline_yaml", value)
 
     @_builtins.property
     @pulumi.getter
-    def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
     @yaml.setter
-    def yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
 
 @pulumi.input_type
 class _PipelineState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_details: Optional[pulumi.Input['PipelineGitDetailsArgs']] = None,
-                 git_import_info: Optional[pulumi.Input['PipelineGitImportInfoArgs']] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_import_request: Optional[pulumi.Input['PipelinePipelineImportRequestArgs']] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_applied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 template_applied_pipeline_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_details: pulumi.Input[Optional['PipelineGitDetailsArgs']] = None,
+                 git_import_info: pulumi.Input[Optional['PipelineGitImportInfoArgs']] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_import_request: pulumi.Input[Optional['PipelinePipelineImportRequestArgs']] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_applied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 template_applied_pipeline_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Pipeline resources.
 
@@ -294,158 +294,158 @@ class _PipelineState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gitDetails")
-    def git_details(self) -> Optional[pulumi.Input['PipelineGitDetailsArgs']]:
+    def git_details(self) -> pulumi.Input[Optional['PipelineGitDetailsArgs']]:
         """
         Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
     @git_details.setter
-    def git_details(self, value: Optional[pulumi.Input['PipelineGitDetailsArgs']]):
+    def git_details(self, value: pulumi.Input[Optional['PipelineGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
 
     @_builtins.property
     @pulumi.getter(name="gitImportInfo")
-    def git_import_info(self) -> Optional[pulumi.Input['PipelineGitImportInfoArgs']]:
+    def git_import_info(self) -> pulumi.Input[Optional['PipelineGitImportInfoArgs']]:
         """
         Contains Git Information for importing entities from Git
         """
         return pulumi.get(self, "git_import_info")
 
     @git_import_info.setter
-    def git_import_info(self, value: Optional[pulumi.Input['PipelineGitImportInfoArgs']]):
+    def git_import_info(self, value: pulumi.Input[Optional['PipelineGitImportInfoArgs']]):
         pulumi.set(self, "git_import_info", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="importFromGit")
-    def import_from_git(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_from_git(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to set if importing from Git
         """
         return pulumi.get(self, "import_from_git")
 
     @import_from_git.setter
-    def import_from_git(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_from_git(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_from_git", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineImportRequest")
-    def pipeline_import_request(self) -> Optional[pulumi.Input['PipelinePipelineImportRequestArgs']]:
+    def pipeline_import_request(self) -> pulumi.Input[Optional['PipelinePipelineImportRequestArgs']]:
         """
         Contains parameters for importing a pipeline
         """
         return pulumi.get(self, "pipeline_import_request")
 
     @pipeline_import_request.setter
-    def pipeline_import_request(self, value: Optional[pulumi.Input['PipelinePipelineImportRequestArgs']]):
+    def pipeline_import_request(self, value: pulumi.Input[Optional['PipelinePipelineImportRequestArgs']]):
         pulumi.set(self, "pipeline_import_request", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateApplied")
-    def template_applied(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def template_applied(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, returns Pipeline YAML with Templates applied on it.
         """
         return pulumi.get(self, "template_applied")
 
     @template_applied.setter
-    def template_applied(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def template_applied(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "template_applied", value)
 
     @_builtins.property
     @pulumi.getter(name="templateAppliedPipelineYaml")
-    def template_applied_pipeline_yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_applied_pipeline_yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pipeline YAML after resolving Templates (returned as a String).
         """
         return pulumi.get(self, "template_applied_pipeline_yaml")
 
     @template_applied_pipeline_yaml.setter
-    def template_applied_pipeline_yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_applied_pipeline_yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_applied_pipeline_yaml", value)
 
     @_builtins.property
     @pulumi.getter
-    def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
     @yaml.setter
-    def yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
 
@@ -455,19 +455,19 @@ class Pipeline(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_details: Optional[pulumi.Input[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict']]] = None,
-                 git_import_info: Optional[pulumi.Input[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_import_request: Optional[pulumi.Input[Union['PipelinePipelineImportRequestArgs', 'PipelinePipelineImportRequestArgsDict']]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_applied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 template_applied_pipeline_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_details: pulumi.Input[Optional[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict']]] = None,
+                 git_import_info: pulumi.Input[Optional[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_import_request: pulumi.Input[Optional[Union['PipelinePipelineImportRequestArgs', 'PipelinePipelineImportRequestArgsDict']]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_applied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 template_applied_pipeline_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Harness pipeline.
@@ -802,19 +802,19 @@ class Pipeline(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_details: Optional[pulumi.Input[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict']]] = None,
-                 git_import_info: Optional[pulumi.Input[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_import_request: Optional[pulumi.Input[Union['PipelinePipelineImportRequestArgs', 'PipelinePipelineImportRequestArgsDict']]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_applied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 template_applied_pipeline_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_details: pulumi.Input[Optional[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict']]] = None,
+                 git_import_info: pulumi.Input[Optional[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_import_request: pulumi.Input[Optional[Union['PipelinePipelineImportRequestArgs', 'PipelinePipelineImportRequestArgsDict']]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_applied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 template_applied_pipeline_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -853,19 +853,19 @@ class Pipeline(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            git_details: Optional[pulumi.Input[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict']]] = None,
-            git_import_info: Optional[pulumi.Input[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict']]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            pipeline_import_request: Optional[pulumi.Input[Union['PipelinePipelineImportRequestArgs', 'PipelinePipelineImportRequestArgsDict']]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            template_applied: Optional[pulumi.Input[_builtins.bool]] = None,
-            template_applied_pipeline_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-            yaml: Optional[pulumi.Input[_builtins.str]] = None) -> 'Pipeline':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_details: pulumi.Input[Optional[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict']]] = None,
+            git_import_info: pulumi.Input[Optional[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_import_request: pulumi.Input[Optional[Union['PipelinePipelineImportRequestArgs', 'PipelinePipelineImportRequestArgsDict']]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template_applied: pulumi.Input[Optional[_builtins.bool]] = None,
+            template_applied_pipeline_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> 'Pipeline':
         """
         Get an existing Pipeline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

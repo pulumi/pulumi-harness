@@ -156,55 +156,55 @@ export interface ConnectorAzureRepoState {
     /**
      * Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
      */
-    apiAuthentication?: pulumi.Input<inputs.platform.ConnectorAzureRepoApiAuthentication>;
+    apiAuthentication?: pulumi.Input<inputs.platform.ConnectorAzureRepoApiAuthentication | undefined>;
     /**
      * Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * Credentials to use for the connection.
      */
-    credentials?: pulumi.Input<inputs.platform.ConnectorAzureRepoCredentials>;
+    credentials?: pulumi.Input<inputs.platform.ConnectorAzureRepoCredentials | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Execute on delegate or not.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the azure repository or account.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Repository to test the connection with. This is only used when `connectionType` is `Account`.
      */
-    validationRepo?: pulumi.Input<string>;
+    validationRepo?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -214,7 +214,7 @@ export interface ConnectorAzureRepoArgs {
     /**
      * Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
      */
-    apiAuthentication?: pulumi.Input<inputs.platform.ConnectorAzureRepoApiAuthentication>;
+    apiAuthentication?: pulumi.Input<inputs.platform.ConnectorAzureRepoApiAuthentication | undefined>;
     /**
      * Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
      */
@@ -226,15 +226,15 @@ export interface ConnectorAzureRepoArgs {
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Execute on delegate or not.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -242,19 +242,19 @@ export interface ConnectorAzureRepoArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the azure repository or account.
      */
@@ -262,5 +262,5 @@ export interface ConnectorAzureRepoArgs {
     /**
      * Repository to test the connection with. This is only used when `connectionType` is `Account`.
      */
-    validationRepo?: pulumi.Input<string>;
+    validationRepo?: pulumi.Input<string | undefined>;
 }

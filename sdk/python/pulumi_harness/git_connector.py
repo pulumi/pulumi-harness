@@ -23,15 +23,15 @@ class GitConnectorArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[_builtins.str],
                  url_type: pulumi.Input[_builtins.str],
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_details: Optional[pulumi.Input['GitConnectorCommitDetailsArgs']] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 generate_webhook_url: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_secret_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_setting_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_details: pulumi.Input[Optional['GitConnectorCommitDetailsArgs']] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 generate_webhook_url: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GitConnector resource.
 
@@ -94,129 +94,129 @@ class GitConnectorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The branch of the git connector to use
         """
         return pulumi.get(self, "branch")
 
     @branch.setter
-    def branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch", value)
 
     @_builtins.property
     @pulumi.getter(name="commitDetails")
-    def commit_details(self) -> Optional[pulumi.Input['GitConnectorCommitDetailsArgs']]:
+    def commit_details(self) -> pulumi.Input[Optional['GitConnectorCommitDetailsArgs']]:
         """
         Custom details to use when making commits using this git connector
         """
         return pulumi.get(self, "commit_details")
 
     @commit_details.setter
-    def commit_details(self, value: Optional[pulumi.Input['GitConnectorCommitDetailsArgs']]):
+    def commit_details(self, value: pulumi.Input[Optional['GitConnectorCommitDetailsArgs']]):
         pulumi.set(self, "commit_details", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Delegate selectors to apply to this git connector.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter(name="generateWebhookUrl")
-    def generate_webhook_url(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def generate_webhook_url(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean indicating whether or not to generate a webhook url.
         """
         return pulumi.get(self, "generate_webhook_url")
 
     @generate_webhook_url.setter
-    def generate_webhook_url(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def generate_webhook_url(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "generate_webhook_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the git connector.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordSecretId")
-    def password_secret_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_secret_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the secret for connecting to the git repository.
         """
         return pulumi.get(self, "password_secret_id")
 
     @password_secret_id.setter
-    def password_secret_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_secret_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_secret_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sshSettingId")
-    def ssh_setting_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssh_setting_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the SSH secret to use
         """
         return pulumi.get(self, "ssh_setting_id")
 
     @ssh_setting_id.setter
-    def ssh_setting_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssh_setting_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssh_setting_id", value)
 
     @_builtins.property
     @pulumi.getter(name="usageScopes")
-    def usage_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]]]:
+    def usage_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]]]:
         """
         This block is used for scoping the resource to a specific set of applications or environments.
         """
         return pulumi.get(self, "usage_scopes")
 
     @usage_scopes.setter
-    def usage_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]]]):
+    def usage_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]]]):
         pulumi.set(self, "usage_scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user used to connect to the git repository
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
 class _GitConnectorState:
     def __init__(__self__, *,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_details: Optional[pulumi.Input['GitConnectorCommitDetailsArgs']] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 generate_webhook_url: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_secret_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_setting_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_details: pulumi.Input[Optional['GitConnectorCommitDetailsArgs']] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 generate_webhook_url: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GitConnector resources.
 
@@ -263,158 +263,158 @@ class _GitConnectorState:
 
     @_builtins.property
     @pulumi.getter
-    def branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The branch of the git connector to use
         """
         return pulumi.get(self, "branch")
 
     @branch.setter
-    def branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch", value)
 
     @_builtins.property
     @pulumi.getter(name="commitDetails")
-    def commit_details(self) -> Optional[pulumi.Input['GitConnectorCommitDetailsArgs']]:
+    def commit_details(self) -> pulumi.Input[Optional['GitConnectorCommitDetailsArgs']]:
         """
         Custom details to use when making commits using this git connector
         """
         return pulumi.get(self, "commit_details")
 
     @commit_details.setter
-    def commit_details(self, value: Optional[pulumi.Input['GitConnectorCommitDetailsArgs']]):
+    def commit_details(self, value: pulumi.Input[Optional['GitConnectorCommitDetailsArgs']]):
         pulumi.set(self, "commit_details", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the git connector was created
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Delegate selectors to apply to this git connector.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter(name="generateWebhookUrl")
-    def generate_webhook_url(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def generate_webhook_url(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean indicating whether or not to generate a webhook url.
         """
         return pulumi.get(self, "generate_webhook_url")
 
     @generate_webhook_url.setter
-    def generate_webhook_url(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def generate_webhook_url(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "generate_webhook_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the git connector.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordSecretId")
-    def password_secret_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_secret_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the secret for connecting to the git repository.
         """
         return pulumi.get(self, "password_secret_id")
 
     @password_secret_id.setter
-    def password_secret_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_secret_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_secret_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sshSettingId")
-    def ssh_setting_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssh_setting_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the SSH secret to use
         """
         return pulumi.get(self, "ssh_setting_id")
 
     @ssh_setting_id.setter
-    def ssh_setting_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssh_setting_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssh_setting_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the git repository or account/organization
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="urlType")
-    def url_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of git url being used. Options are `ACCOUNT`, and `REPO.`
         """
         return pulumi.get(self, "url_type")
 
     @url_type.setter
-    def url_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_type", value)
 
     @_builtins.property
     @pulumi.getter(name="usageScopes")
-    def usage_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]]]:
+    def usage_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]]]:
         """
         This block is used for scoping the resource to a specific set of applications or environments.
         """
         return pulumi.get(self, "usage_scopes")
 
     @usage_scopes.setter
-    def usage_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]]]):
+    def usage_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]]]):
         pulumi.set(self, "usage_scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user used to connect to the git repository
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookUrl")
-    def webhook_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The generated webhook url
         """
         return pulumi.get(self, "webhook_url")
 
     @webhook_url.setter
-    def webhook_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook_url", value)
 
 
@@ -424,17 +424,17 @@ class GitConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_details: Optional[pulumi.Input[Union['GitConnectorCommitDetailsArgs', 'GitConnectorCommitDetailsArgsDict']]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 generate_webhook_url: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_secret_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_setting_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitConnectorUsageScopeArgs', 'GitConnectorUsageScopeArgsDict']]]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_details: pulumi.Input[Optional[Union['GitConnectorCommitDetailsArgs', 'GitConnectorCommitDetailsArgsDict']]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 generate_webhook_url: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitConnectorUsageScopeArgs', 'GitConnectorUsageScopeArgsDict']]]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a git connector
@@ -541,17 +541,17 @@ class GitConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_details: Optional[pulumi.Input[Union['GitConnectorCommitDetailsArgs', 'GitConnectorCommitDetailsArgsDict']]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 generate_webhook_url: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_secret_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_setting_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitConnectorUsageScopeArgs', 'GitConnectorUsageScopeArgsDict']]]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_details: pulumi.Input[Optional[Union['GitConnectorCommitDetailsArgs', 'GitConnectorCommitDetailsArgsDict']]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 generate_webhook_url: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitConnectorUsageScopeArgs', 'GitConnectorUsageScopeArgsDict']]]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -588,19 +588,19 @@ class GitConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            branch: Optional[pulumi.Input[_builtins.str]] = None,
-            commit_details: Optional[pulumi.Input[Union['GitConnectorCommitDetailsArgs', 'GitConnectorCommitDetailsArgsDict']]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            generate_webhook_url: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            password_secret_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ssh_setting_id: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            url_type: Optional[pulumi.Input[_builtins.str]] = None,
-            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitConnectorUsageScopeArgs', 'GitConnectorUsageScopeArgsDict']]]]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None,
-            webhook_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'GitConnector':
+            branch: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_details: pulumi.Input[Optional[Union['GitConnectorCommitDetailsArgs', 'GitConnectorCommitDetailsArgsDict']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            generate_webhook_url: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password_secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ssh_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            url_type: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitConnectorUsageScopeArgs', 'GitConnectorUsageScopeArgsDict']]]]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'GitConnector':
         """
         Get an existing GitConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

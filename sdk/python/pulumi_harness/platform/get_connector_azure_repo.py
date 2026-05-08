@@ -243,10 +243,10 @@ def get_connector_azure_repo(identifier: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         url=pulumi.get(__ret__, 'url'),
         validation_repo=pulumi.get(__ret__, 'validation_repo'))
-def get_connector_azure_repo_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                    name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_connector_azure_repo_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                    name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorAzureRepoResult]:
     """
     Datasource for looking up a Azure Repo connector.

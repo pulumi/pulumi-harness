@@ -22,16 +22,16 @@ __all__ = ['GcpConnectorArgs', 'GcpConnector']
 class GcpConnectorArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]] = None,
-                 manual: Optional[pulumi.Input['GcpConnectorManualArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inherit_from_delegates: pulumi.Input[Optional[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]] = None,
+                 manual: pulumi.Input[Optional['GcpConnectorManualArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a GcpConnector resource.
 
@@ -83,139 +83,139 @@ class GcpConnectorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag to execute on Delegate
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag for force deletion of connector
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="inheritFromDelegates")
-    def inherit_from_delegates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]]:
+    def inherit_from_delegates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]]:
         """
         Inherit configuration from delegate.
         """
         return pulumi.get(self, "inherit_from_delegates")
 
     @inherit_from_delegates.setter
-    def inherit_from_delegates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]]):
+    def inherit_from_delegates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]]):
         pulumi.set(self, "inherit_from_delegates", value)
 
     @_builtins.property
     @pulumi.getter
-    def manual(self) -> Optional[pulumi.Input['GcpConnectorManualArgs']]:
+    def manual(self) -> pulumi.Input[Optional['GcpConnectorManualArgs']]:
         """
         Manual credential configuration.
         """
         return pulumi.get(self, "manual")
 
     @manual.setter
-    def manual(self, value: Optional[pulumi.Input['GcpConnectorManualArgs']]):
+    def manual(self, value: pulumi.Input[Optional['GcpConnectorManualArgs']]):
         pulumi.set(self, "manual", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcAuthentications")
-    def oidc_authentications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]]:
+    def oidc_authentications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]]:
         """
         Authentication using harness oidc.
         """
         return pulumi.get(self, "oidc_authentications")
 
     @oidc_authentications.setter
-    def oidc_authentications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]]):
+    def oidc_authentications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]]):
         pulumi.set(self, "oidc_authentications", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _GcpConnectorState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]] = None,
-                 manual: Optional[pulumi.Input['GcpConnectorManualArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 inherit_from_delegates: pulumi.Input[Optional[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]] = None,
+                 manual: pulumi.Input[Optional['GcpConnectorManualArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering GcpConnector resources.
 
@@ -256,134 +256,134 @@ class _GcpConnectorState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag to execute on Delegate
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag for force deletion of connector
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="inheritFromDelegates")
-    def inherit_from_delegates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]]:
+    def inherit_from_delegates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]]:
         """
         Inherit configuration from delegate.
         """
         return pulumi.get(self, "inherit_from_delegates")
 
     @inherit_from_delegates.setter
-    def inherit_from_delegates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]]):
+    def inherit_from_delegates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]]):
         pulumi.set(self, "inherit_from_delegates", value)
 
     @_builtins.property
     @pulumi.getter
-    def manual(self) -> Optional[pulumi.Input['GcpConnectorManualArgs']]:
+    def manual(self) -> pulumi.Input[Optional['GcpConnectorManualArgs']]:
         """
         Manual credential configuration.
         """
         return pulumi.get(self, "manual")
 
     @manual.setter
-    def manual(self, value: Optional[pulumi.Input['GcpConnectorManualArgs']]):
+    def manual(self, value: pulumi.Input[Optional['GcpConnectorManualArgs']]):
         pulumi.set(self, "manual", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcAuthentications")
-    def oidc_authentications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]]:
+    def oidc_authentications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]]:
         """
         Authentication using harness oidc.
         """
         return pulumi.get(self, "oidc_authentications")
 
     @oidc_authentications.setter
-    def oidc_authentications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]]):
+    def oidc_authentications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]]):
         pulumi.set(self, "oidc_authentications", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -393,17 +393,17 @@ class GcpConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]]] = None,
-                 manual: Optional[pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorOidcAuthenticationArgs', 'GcpConnectorOidcAuthenticationArgsDict']]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 inherit_from_delegates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]]] = None,
+                 manual: pulumi.Input[Optional[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpConnectorOidcAuthenticationArgs', 'GcpConnectorOidcAuthenticationArgsDict']]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for creating a Gcp connector.
@@ -492,17 +492,17 @@ class GcpConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]]] = None,
-                 manual: Optional[pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorOidcAuthenticationArgs', 'GcpConnectorOidcAuthenticationArgsDict']]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 inherit_from_delegates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]]] = None,
+                 manual: pulumi.Input[Optional[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpConnectorOidcAuthenticationArgs', 'GcpConnectorOidcAuthenticationArgsDict']]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -535,17 +535,17 @@ class GcpConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]]] = None,
-            manual: Optional[pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorOidcAuthenticationArgs', 'GcpConnectorOidcAuthenticationArgsDict']]]]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'GcpConnector':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            inherit_from_delegates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]]] = None,
+            manual: pulumi.Input[Optional[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpConnectorOidcAuthenticationArgs', 'GcpConnectorOidcAuthenticationArgsDict']]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'GcpConnector':
         """
         Get an existing GcpConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

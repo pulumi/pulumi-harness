@@ -209,59 +209,59 @@ export interface AzureKeyVaultConnectorState {
     /**
      * Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
      */
-    azureEnvironmentType?: pulumi.Input<string>;
+    azureEnvironmentType?: pulumi.Input<string | undefined>;
     /**
      * Application ID of the Azure App.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether or not is the default value.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The Harness text secret with the Azure authentication key as its value.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * Azure subscription ID.
      */
-    subscription?: pulumi.Input<string>;
+    subscription?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Azure Active Directory (Azure AD) directory ID where you created your application.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Name of the vault.
      */
-    vaultName?: pulumi.Input<string>;
+    vaultName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -271,7 +271,7 @@ export interface AzureKeyVaultConnectorArgs {
     /**
      * Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
      */
-    azureEnvironmentType?: pulumi.Input<string>;
+    azureEnvironmentType?: pulumi.Input<string | undefined>;
     /**
      * Application ID of the Azure App.
      */
@@ -279,11 +279,11 @@ export interface AzureKeyVaultConnectorArgs {
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -291,19 +291,19 @@ export interface AzureKeyVaultConnectorArgs {
     /**
      * Specifies whether or not is the default value.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The Harness text secret with the Azure authentication key as its value.
      */
@@ -315,7 +315,7 @@ export interface AzureKeyVaultConnectorArgs {
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Azure Active Directory (Azure AD) directory ID where you created your application.
      */

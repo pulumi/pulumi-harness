@@ -206,14 +206,14 @@ def get_rule_k8s(cloud_connector_id: Optional[_builtins.str] = None,
         k8s_namespace=pulumi.get(__ret__, 'k8s_namespace'),
         name=pulumi.get(__ret__, 'name'),
         rule_yaml=pulumi.get(__ret__, 'rule_yaml'))
-def get_rule_k8s_output(cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        depends: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleK8sDependArgs', 'GetRuleK8sDependArgsDict']]]]] = None,
-                        dry_run: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        idle_time_mins: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                        k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        k8s_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                        name: Optional[pulumi.Input[_builtins.str]] = None,
-                        rule_yaml: Optional[pulumi.Input[_builtins.str]] = None,
+def get_rule_k8s_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleK8sDependArgs', 'GetRuleK8sDependArgsDict']]]]] = None,
+                        dry_run: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        idle_time_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                        k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        k8s_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                        name: pulumi.Input[Optional[_builtins.str]] = None,
+                        rule_yaml: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleK8sResult]:
     """
     Data source for retrieving a Harness AutoStopping rule for K8s services.

@@ -22,8 +22,8 @@ class ApplicationGitSyncArgs:
                  app_id: pulumi.Input[_builtins.str],
                  branch: pulumi.Input[_builtins.str],
                  connector_id: pulumi.Input[_builtins.str],
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationGitSync resource.
 
@@ -79,37 +79,37 @@ class ApplicationGitSyncArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to enable git sync.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryName")
-    def repository_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the git repository to sync to. This is only used if the git connector is for an account and not an individual repository.
         """
         return pulumi.get(self, "repository_name")
 
     @repository_name.setter
-    def repository_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_name", value)
 
 
 @pulumi.input_type
 class _ApplicationGitSyncState:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationGitSync resources.
 
@@ -132,62 +132,62 @@ class _ApplicationGitSyncState:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the application.
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The branch of the git repository to sync to.
         """
         return pulumi.get(self, "branch")
 
     @branch.setter
-    def branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the git connector to use.
         """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
-    def connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to enable git sync.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryName")
-    def repository_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the git repository to sync to. This is only used if the git connector is for an account and not an individual repository.
         """
         return pulumi.get(self, "repository_name")
 
     @repository_name.setter
-    def repository_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_name", value)
 
 
@@ -197,11 +197,11 @@ class ApplicationGitSync(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for configuring application git sync.
@@ -314,11 +314,11 @@ class ApplicationGitSync(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -349,11 +349,11 @@ class ApplicationGitSync(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            branch: Optional[pulumi.Input[_builtins.str]] = None,
-            connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            repository_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApplicationGitSync':
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            branch: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            repository_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationGitSync':
         """
         Get an existing ApplicationGitSync resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

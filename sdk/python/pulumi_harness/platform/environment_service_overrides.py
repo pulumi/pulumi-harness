@@ -22,9 +22,9 @@ class EnvironmentServiceOverridesArgs:
                  env_id: pulumi.Input[_builtins.str],
                  service_id: pulumi.Input[_builtins.str],
                  yaml: pulumi.Input[_builtins.str],
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvironmentServiceOverrides resource.
 
@@ -83,50 +83,50 @@ class EnvironmentServiceOverridesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         identifier of the service overrides.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
 @pulumi.input_type
 class _EnvironmentServiceOverridesState:
     def __init__(__self__, *,
-                 env_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 env_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentServiceOverrides resources.
 
@@ -152,74 +152,74 @@ class _EnvironmentServiceOverridesState:
 
     @_builtins.property
     @pulumi.getter(name="envId")
-    def env_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The env ID to which the overrides associated.
         """
         return pulumi.get(self, "env_id")
 
     @env_id.setter
-    def env_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         identifier of the service overrides.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service ID to which the overrides applies.
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
     @yaml.setter
-    def yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
 
@@ -229,12 +229,12 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 env_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 env_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Harness environment service overrides.
@@ -408,12 +408,12 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 env_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 env_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -445,12 +445,12 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            env_id: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            yaml: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnvironmentServiceOverrides':
+            env_id: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnvironmentServiceOverrides':
         """
         Get an existing EnvironmentServiceOverrides resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

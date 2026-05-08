@@ -97,11 +97,11 @@ export interface DatacenterState {
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.DatacenterUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.DatacenterUsageScope>[] | undefined>;
 }
 
 /**
@@ -111,9 +111,9 @@ export interface DatacenterArgs {
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.DatacenterUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.DatacenterUsageScope>[] | undefined>;
 }

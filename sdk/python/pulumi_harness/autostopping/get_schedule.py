@@ -169,7 +169,7 @@ def get_schedule(schedule_type: Optional[_builtins.str] = None,
         schedule_type=pulumi.get(__ret__, 'schedule_type'),
         starting_from=pulumi.get(__ret__, 'starting_from'),
         time_zone=pulumi.get(__ret__, 'time_zone'))
-def get_schedule_output(schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_schedule_output(schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScheduleResult]:
     """
     Data source for retrieving a fixed schedule for Harness AutoStopping rule

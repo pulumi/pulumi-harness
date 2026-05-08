@@ -185,55 +185,55 @@ export interface GitConnectorState {
     /**
      * The branch of the git connector to use
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Custom details to use when making commits using this git connector
      */
-    commitDetails?: pulumi.Input<inputs.GitConnectorCommitDetails>;
+    commitDetails?: pulumi.Input<inputs.GitConnectorCommitDetails | undefined>;
     /**
      * The time the git connector was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Delegate selectors to apply to this git connector.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Boolean indicating whether or not to generate a webhook url.
      */
-    generateWebhookUrl?: pulumi.Input<boolean>;
+    generateWebhookUrl?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the git connector.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The id of the secret for connecting to the git repository.
      */
-    passwordSecretId?: pulumi.Input<string>;
+    passwordSecretId?: pulumi.Input<string | undefined>;
     /**
      * The id of the SSH secret to use
      */
-    sshSettingId?: pulumi.Input<string>;
+    sshSettingId?: pulumi.Input<string | undefined>;
     /**
      * The URL of the git repository or account/organization
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * The type of git url being used. Options are `ACCOUNT`, and `REPO.`
      */
-    urlType?: pulumi.Input<string>;
+    urlType?: pulumi.Input<string | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.GitConnectorUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.GitConnectorUsageScope>[] | undefined>;
     /**
      * The name of the user used to connect to the git repository
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * The generated webhook url
      */
-    webhookUrl?: pulumi.Input<string>;
+    webhookUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -243,31 +243,31 @@ export interface GitConnectorArgs {
     /**
      * The branch of the git connector to use
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Custom details to use when making commits using this git connector
      */
-    commitDetails?: pulumi.Input<inputs.GitConnectorCommitDetails>;
+    commitDetails?: pulumi.Input<inputs.GitConnectorCommitDetails | undefined>;
     /**
      * Delegate selectors to apply to this git connector.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Boolean indicating whether or not to generate a webhook url.
      */
-    generateWebhookUrl?: pulumi.Input<boolean>;
+    generateWebhookUrl?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the git connector.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The id of the secret for connecting to the git repository.
      */
-    passwordSecretId?: pulumi.Input<string>;
+    passwordSecretId?: pulumi.Input<string | undefined>;
     /**
      * The id of the SSH secret to use
      */
-    sshSettingId?: pulumi.Input<string>;
+    sshSettingId?: pulumi.Input<string | undefined>;
     /**
      * The URL of the git repository or account/organization
      */
@@ -279,9 +279,9 @@ export interface GitConnectorArgs {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.GitConnectorUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.GitConnectorUsageScope>[] | undefined>;
     /**
      * The name of the user used to connect to the git repository
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

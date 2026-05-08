@@ -298,11 +298,11 @@ export interface GetExperimentOutputArgs {
     /**
      * Experiment identity to lookup
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * Experiment name to lookup
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier
      */

@@ -24,14 +24,14 @@ class ImageRegistryArgs:
                  is_private: pulumi.Input[_builtins.bool],
                  registry_account: pulumi.Input[_builtins.str],
                  registry_server: pulumi.Input[_builtins.str],
-                 custom_images: Optional[pulumi.Input[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_custom_images: Optional[pulumi.Input[_builtins.bool]] = None):
+                 custom_images: pulumi.Input[Optional[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_custom_images: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ImageRegistry resource.
 
@@ -105,117 +105,117 @@ class ImageRegistryArgs:
 
     @_builtins.property
     @pulumi.getter(name="customImages")
-    def custom_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]]]:
+    def custom_images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]]]:
         """
         Custom images configuration
         """
         return pulumi.get(self, "custom_images")
 
     @custom_images.setter
-    def custom_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]]]):
+    def custom_images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]]]):
         pulumi.set(self, "custom_images", value)
 
     @_builtins.property
     @pulumi.getter(name="infraId")
-    def infra_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The infrastructure ID to set up the image registry
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
-    def infra_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is the default registry
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter(name="isOverrideAllowed")
-    def is_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether override is allowed for this registry
         """
         return pulumi.get(self, "is_override_allowed")
 
     @is_override_allowed.setter
-    def is_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization ID of the image registry
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID of the image registry
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secretName")
-    def secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the secret for authentication
         """
         return pulumi.get(self, "secret_name")
 
     @secret_name.setter
-    def secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_name", value)
 
     @_builtins.property
     @pulumi.getter(name="useCustomImages")
-    def use_custom_images(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_custom_images(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use custom images
         """
         return pulumi.get(self, "use_custom_images")
 
     @use_custom_images.setter
-    def use_custom_images(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_custom_images(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_custom_images", value)
 
 
 @pulumi.input_type
 class _ImageRegistryState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_images: Optional[pulumi.Input[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_private: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_custom_images: Optional[pulumi.Input[_builtins.bool]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_images: pulumi.Input[Optional[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_private: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_custom_images: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ImageRegistry resources.
 
@@ -262,158 +262,158 @@ class _ImageRegistryState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="customImages")
-    def custom_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]]]:
+    def custom_images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]]]:
         """
         Custom images configuration
         """
         return pulumi.get(self, "custom_images")
 
     @custom_images.setter
-    def custom_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]]]):
+    def custom_images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageRegistryCustomImageArgs']]]]):
         pulumi.set(self, "custom_images", value)
 
     @_builtins.property
     @pulumi.getter(name="infraId")
-    def infra_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The infrastructure ID to set up the image registry
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
-    def infra_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is the default registry
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter(name="isOverrideAllowed")
-    def is_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether override is allowed for this registry
         """
         return pulumi.get(self, "is_override_allowed")
 
     @is_override_allowed.setter
-    def is_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="isPrivate")
-    def is_private(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_private(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the registry is private
         """
         return pulumi.get(self, "is_private")
 
     @is_private.setter
-    def is_private(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_private(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_private", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization ID of the image registry
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID of the image registry
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="registryAccount")
-    def registry_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registry_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The registry account name
         """
         return pulumi.get(self, "registry_account")
 
     @registry_account.setter
-    def registry_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registry_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registry_account", value)
 
     @_builtins.property
     @pulumi.getter(name="registryServer")
-    def registry_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registry_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The registry server URL
         """
         return pulumi.get(self, "registry_server")
 
     @registry_server.setter
-    def registry_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registry_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registry_server", value)
 
     @_builtins.property
     @pulumi.getter(name="secretName")
-    def secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the secret for authentication
         """
         return pulumi.get(self, "secret_name")
 
     @secret_name.setter
-    def secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_name", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last update timestamp
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="useCustomImages")
-    def use_custom_images(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_custom_images(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use custom images
         """
         return pulumi.get(self, "use_custom_images")
 
     @use_custom_images.setter
-    def use_custom_images(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_custom_images(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_custom_images", value)
 
 
@@ -423,17 +423,17 @@ class ImageRegistry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict']]]]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_private: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_custom_images: Optional[pulumi.Input[_builtins.bool]] = None,
+                 custom_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict']]]]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_private: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_custom_images: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Resource for managing a Harness Chaos Image Registry
@@ -526,17 +526,17 @@ class ImageRegistry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict']]]]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_private: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_custom_images: Optional[pulumi.Input[_builtins.bool]] = None,
+                 custom_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict']]]]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_private: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_custom_images: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -575,19 +575,19 @@ class ImageRegistry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict']]]]] = None,
-            infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_private: Optional[pulumi.Input[_builtins.bool]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            registry_account: Optional[pulumi.Input[_builtins.str]] = None,
-            registry_server: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            use_custom_images: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ImageRegistry':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict']]]]] = None,
+            infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_private: pulumi.Input[Optional[_builtins.bool]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            registry_account: pulumi.Input[Optional[_builtins.str]] = None,
+            registry_server: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            use_custom_images: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ImageRegistry':
         """
         Get an existing ImageRegistry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

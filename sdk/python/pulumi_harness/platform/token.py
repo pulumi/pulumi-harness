@@ -24,18 +24,18 @@ class TokenArgs:
                  apikey_type: pulumi.Input[_builtins.str],
                  identifier: pulumi.Input[_builtins.str],
                  parent_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoded_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_from: Optional[pulumi.Input[_builtins.int]] = None,
-                 valid_to: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoded_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_from: pulumi.Input[Optional[_builtins.int]] = None,
+                 valid_to: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Token resource.
 
@@ -149,170 +149,170 @@ class TokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email Id of the user who created the Token
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="encodedPassword")
-    def encoded_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoded_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Encoded password of the Token
         """
         return pulumi.get(self, "encoded_password")
 
     @encoded_password.setter
-    def encoded_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoded_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoded_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledExpireTime")
-    def scheduled_expire_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scheduled_expire_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Scheduled expiry time in milliseconds
         """
         return pulumi.get(self, "scheduled_expire_time")
 
     @scheduled_expire_time.setter
-    def scheduled_expire_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scheduled_expire_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scheduled_expire_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the user who created the Token
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter
-    def valid(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def valid(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if Token is valid or not.
         """
         return pulumi.get(self, "valid")
 
     @valid.setter
-    def valid(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def valid(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "valid", value)
 
     @_builtins.property
     @pulumi.getter(name="validFrom")
-    def valid_from(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def valid_from(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This is the time from which the Token is valid. The time is in milliseconds
         """
         return pulumi.get(self, "valid_from")
 
     @valid_from.setter
-    def valid_from(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def valid_from(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "valid_from", value)
 
     @_builtins.property
     @pulumi.getter(name="validTo")
-    def valid_to(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def valid_to(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This is the time till which the Token is valid. The time is in milliseconds
         """
         return pulumi.get(self, "valid_to")
 
     @valid_to.setter
-    def valid_to(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def valid_to(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "valid_to", value)
 
 
 @pulumi.input_type
 class _TokenState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 apikey_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 apikey_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoded_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_from: Optional[pulumi.Input[_builtins.int]] = None,
-                 valid_to: Optional[pulumi.Input[_builtins.int]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 apikey_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 apikey_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoded_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_from: pulumi.Input[Optional[_builtins.int]] = None,
+                 valid_to: pulumi.Input[Optional[_builtins.int]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Token resources.
 
@@ -374,218 +374,218 @@ class _TokenState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Identifier for the Entity
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="apikeyId")
-    def apikey_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def apikey_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the API Key
         """
         return pulumi.get(self, "apikey_id")
 
     @apikey_id.setter
-    def apikey_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def apikey_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "apikey_id", value)
 
     @_builtins.property
     @pulumi.getter(name="apikeyType")
-    def apikey_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def apikey_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the API Key
         """
         return pulumi.get(self, "apikey_type")
 
     @apikey_type.setter
-    def apikey_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def apikey_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "apikey_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email Id of the user who created the Token
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="encodedPassword")
-    def encoded_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoded_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Encoded password of the Token
         """
         return pulumi.get(self, "encoded_password")
 
     @encoded_password.setter
-    def encoded_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoded_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoded_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parent Entity Identifier of the API Key
         """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
-    def parent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledExpireTime")
-    def scheduled_expire_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scheduled_expire_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Scheduled expiry time in milliseconds
         """
         return pulumi.get(self, "scheduled_expire_time")
 
     @scheduled_expire_time.setter
-    def scheduled_expire_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scheduled_expire_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scheduled_expire_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the user who created the Token
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter
-    def valid(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def valid(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if Token is valid or not.
         """
         return pulumi.get(self, "valid")
 
     @valid.setter
-    def valid(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def valid(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "valid", value)
 
     @_builtins.property
     @pulumi.getter(name="validFrom")
-    def valid_from(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def valid_from(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This is the time from which the Token is valid. The time is in milliseconds
         """
         return pulumi.get(self, "valid_from")
 
     @valid_from.setter
-    def valid_from(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def valid_from(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "valid_from", value)
 
     @_builtins.property
     @pulumi.getter(name="validTo")
-    def valid_to(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def valid_to(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This is the time till which the Token is valid. The time is in milliseconds
         """
         return pulumi.get(self, "valid_to")
 
     @valid_to.setter
-    def valid_to(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def valid_to(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "valid_to", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value of the Token
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -595,23 +595,23 @@ class Token(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 apikey_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 apikey_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoded_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_from: Optional[pulumi.Input[_builtins.int]] = None,
-                 valid_to: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 apikey_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 apikey_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoded_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_from: pulumi.Input[Optional[_builtins.int]] = None,
+                 valid_to: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Resource for creating tokens.
@@ -692,23 +692,23 @@ class Token(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 apikey_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 apikey_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoded_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_from: Optional[pulumi.Input[_builtins.int]] = None,
-                 valid_to: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 apikey_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 apikey_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoded_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_from: pulumi.Input[Optional[_builtins.int]] = None,
+                 valid_to: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -758,24 +758,24 @@ class Token(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            apikey_id: Optional[pulumi.Input[_builtins.str]] = None,
-            apikey_type: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            encoded_password: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduled_expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None,
-            valid: Optional[pulumi.Input[_builtins.bool]] = None,
-            valid_from: Optional[pulumi.Input[_builtins.int]] = None,
-            valid_to: Optional[pulumi.Input[_builtins.int]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None) -> 'Token':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            apikey_id: pulumi.Input[Optional[_builtins.str]] = None,
+            apikey_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            encoded_password: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            valid: pulumi.Input[Optional[_builtins.bool]] = None,
+            valid_from: pulumi.Input[Optional[_builtins.int]] = None,
+            valid_to: pulumi.Input[Optional[_builtins.int]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> 'Token':
         """
         Get an existing Token resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

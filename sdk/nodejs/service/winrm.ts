@@ -127,23 +127,23 @@ export interface WinrmState {
     /**
      * The id of the application the service belongs to
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The type of artifact to deploy.
      */
-    artifactType?: pulumi.Input<string>;
+    artifactType?: pulumi.Input<string | undefined>;
     /**
      * Description of th service
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the service
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.service.WinrmVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.WinrmVariable>[] | undefined>;
 }
 
 /**
@@ -161,13 +161,13 @@ export interface WinrmArgs {
     /**
      * Description of th service
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the service
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.service.WinrmVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.WinrmVariable>[] | undefined>;
 }

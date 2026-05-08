@@ -116,5 +116,5 @@ export interface GetWorkspacesOutputArgs {
     /**
      * Filter results by partial name match when listing workspaces.
      */
-    searchTerm?: pulumi.Input<string>;
+    searchTerm?: pulumi.Input<string | undefined>;
 }

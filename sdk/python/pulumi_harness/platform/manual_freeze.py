@@ -24,8 +24,8 @@ class ManualFreezeArgs:
                  account_id: pulumi.Input[_builtins.str],
                  identifier: pulumi.Input[_builtins.str],
                  yaml: pulumi.Input[_builtins.str],
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ManualFreeze resource.
 
@@ -81,45 +81,45 @@ class ManualFreezeArgs:
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the freeze
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the freeze
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
 @pulumi.input_type
 class _ManualFreezeState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 current_or_upcoming_windows: Optional[pulumi.Input[Sequence[pulumi.Input['ManualFreezeCurrentOrUpcomingWindowArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 freeze_windows: Optional[pulumi.Input[Sequence[pulumi.Input['ManualFreezeFreezeWindowArgs']]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 current_or_upcoming_windows: pulumi.Input[Optional[Sequence[pulumi.Input['ManualFreezeCurrentOrUpcomingWindowArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 freeze_windows: pulumi.Input[Optional[Sequence[pulumi.Input['ManualFreezeFreezeWindowArgs']]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManualFreeze resources.
 
@@ -166,158 +166,158 @@ class _ManualFreezeState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Identifier of the freeze
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="currentOrUpcomingWindows")
-    def current_or_upcoming_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManualFreezeCurrentOrUpcomingWindowArgs']]]]:
+    def current_or_upcoming_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManualFreezeCurrentOrUpcomingWindowArgs']]]]:
         """
         Current or upcoming windows
         """
         return pulumi.get(self, "current_or_upcoming_windows")
 
     @current_or_upcoming_windows.setter
-    def current_or_upcoming_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManualFreezeCurrentOrUpcomingWindowArgs']]]]):
+    def current_or_upcoming_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManualFreezeCurrentOrUpcomingWindowArgs']]]]):
         pulumi.set(self, "current_or_upcoming_windows", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the freeze
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="freezeWindows")
-    def freeze_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManualFreezeFreezeWindowArgs']]]]:
+    def freeze_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManualFreezeFreezeWindowArgs']]]]:
         """
         Freeze windows in the freeze response
         """
         return pulumi.get(self, "freeze_windows")
 
     @freeze_windows.setter
-    def freeze_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManualFreezeFreezeWindowArgs']]]]):
+    def freeze_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManualFreezeFreezeWindowArgs']]]]):
         pulumi.set(self, "freeze_windows", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the freeze
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the freeze
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the freeze
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the freeze
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scope of the freeze
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the freeze
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with the freeze
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of freeze
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Yaml of the freeze
         """
         return pulumi.get(self, "yaml")
 
     @yaml.setter
-    def yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
 
@@ -327,11 +327,11 @@ class ManualFreeze(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for Manual Deployment Freeze Window.
@@ -490,11 +490,11 @@ class ManualFreeze(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -533,19 +533,19 @@ class ManualFreeze(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            current_or_upcoming_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManualFreezeCurrentOrUpcomingWindowArgs', 'ManualFreezeCurrentOrUpcomingWindowArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            freeze_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManualFreezeFreezeWindowArgs', 'ManualFreezeFreezeWindowArgsDict']]]]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            yaml: Optional[pulumi.Input[_builtins.str]] = None) -> 'ManualFreeze':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            current_or_upcoming_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManualFreezeCurrentOrUpcomingWindowArgs', 'ManualFreezeCurrentOrUpcomingWindowArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            freeze_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManualFreezeFreezeWindowArgs', 'ManualFreezeFreezeWindowArgsDict']]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> 'ManualFreeze':
         """
         Get an existing ManualFreeze resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

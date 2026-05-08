@@ -23,12 +23,12 @@ class RuleScaleGroupArgs:
     def __init__(__self__, *,
                  cloud_connector_id: pulumi.Input[_builtins.str],
                  scale_group: pulumi.Input['RuleScaleGroupScaleGroupArgs'],
-                 custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleScaleGroupDependArgs']]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 https: Optional[pulumi.Input[Sequence[pulumi.Input['RuleScaleGroupHttpArgs']]]] = None,
-                 idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupDependArgs']]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 https: pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupHttpArgs']]]] = None,
+                 idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RuleScaleGroup resource.
 
@@ -82,89 +82,89 @@ class RuleScaleGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="customDomains")
-    def custom_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Custom URLs used to access the instances
         """
         return pulumi.get(self, "custom_domains")
 
     @custom_domains.setter
-    def custom_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_domains", value)
 
     @_builtins.property
     @pulumi.getter
-    def depends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleScaleGroupDependArgs']]]]:
+    def depends(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupDependArgs']]]]:
         """
         Dependent rules
         """
         return pulumi.get(self, "depends")
 
     @depends.setter
-    def depends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleScaleGroupDependArgs']]]]):
+    def depends(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupDependArgs']]]]):
         pulumi.set(self, "depends", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def https(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleScaleGroupHttpArgs']]]]:
+    def https(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupHttpArgs']]]]:
         """
         Http routing configuration
         """
         return pulumi.get(self, "https")
 
     @https.setter
-    def https(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleScaleGroupHttpArgs']]]]):
+    def https(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupHttpArgs']]]]):
         pulumi.set(self, "https", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeMins")
-    def idle_time_mins(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_time_mins(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         """
         return pulumi.get(self, "idle_time_mins")
 
     @idle_time_mins.setter
-    def idle_time_mins(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_time_mins(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_time_mins", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the rule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _RuleScaleGroupState:
     def __init__(__self__, *,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleScaleGroupDependArgs']]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 https: Optional[pulumi.Input[Sequence[pulumi.Input['RuleScaleGroupHttpArgs']]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_group: Optional[pulumi.Input['RuleScaleGroupScaleGroupArgs']] = None):
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupDependArgs']]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 https: pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupHttpArgs']]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_group: pulumi.Input[Optional['RuleScaleGroupScaleGroupArgs']] = None):
         """
         Input properties used for looking up and filtering RuleScaleGroup resources.
 
@@ -199,110 +199,110 @@ class _RuleScaleGroupState:
 
     @_builtins.property
     @pulumi.getter(name="cloudConnectorId")
-    def cloud_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the cloud connector
         """
         return pulumi.get(self, "cloud_connector_id")
 
     @cloud_connector_id.setter
-    def cloud_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_connector_id", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomains")
-    def custom_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Custom URLs used to access the instances
         """
         return pulumi.get(self, "custom_domains")
 
     @custom_domains.setter
-    def custom_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_domains", value)
 
     @_builtins.property
     @pulumi.getter
-    def depends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleScaleGroupDependArgs']]]]:
+    def depends(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupDependArgs']]]]:
         """
         Dependent rules
         """
         return pulumi.get(self, "depends")
 
     @depends.setter
-    def depends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleScaleGroupDependArgs']]]]):
+    def depends(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupDependArgs']]]]):
         pulumi.set(self, "depends", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def https(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleScaleGroupHttpArgs']]]]:
+    def https(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupHttpArgs']]]]:
         """
         Http routing configuration
         """
         return pulumi.get(self, "https")
 
     @https.setter
-    def https(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleScaleGroupHttpArgs']]]]):
+    def https(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupHttpArgs']]]]):
         pulumi.set(self, "https", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeMins")
-    def idle_time_mins(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_time_mins(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         """
         return pulumi.get(self, "idle_time_mins")
 
     @idle_time_mins.setter
-    def idle_time_mins(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_time_mins(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_time_mins", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the rule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleGroup")
-    def scale_group(self) -> Optional[pulumi.Input['RuleScaleGroupScaleGroupArgs']]:
+    def scale_group(self) -> pulumi.Input[Optional['RuleScaleGroupScaleGroupArgs']]:
         """
         Scaling Group configuration
         """
         return pulumi.get(self, "scale_group")
 
     @scale_group.setter
-    def scale_group(self, value: Optional[pulumi.Input['RuleScaleGroupScaleGroupArgs']]):
+    def scale_group(self, value: pulumi.Input[Optional['RuleScaleGroupScaleGroupArgs']]):
         pulumi.set(self, "scale_group", value)
 
 
@@ -312,14 +312,14 @@ class RuleScaleGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleScaleGroupDependArgs', 'RuleScaleGroupDependArgsDict']]]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleScaleGroupHttpArgs', 'RuleScaleGroupHttpArgsDict']]]]] = None,
-                 idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_group: Optional[pulumi.Input[Union['RuleScaleGroupScaleGroupArgs', 'RuleScaleGroupScaleGroupArgsDict']]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleScaleGroupDependArgs', 'RuleScaleGroupDependArgsDict']]]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleScaleGroupHttpArgs', 'RuleScaleGroupHttpArgsDict']]]]] = None,
+                 idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_group: pulumi.Input[Optional[Union['RuleScaleGroupScaleGroupArgs', 'RuleScaleGroupScaleGroupArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating a Harness AutoStopping rule for Scaling Groups.
@@ -441,14 +441,14 @@ class RuleScaleGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleScaleGroupDependArgs', 'RuleScaleGroupDependArgsDict']]]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleScaleGroupHttpArgs', 'RuleScaleGroupHttpArgsDict']]]]] = None,
-                 idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_group: Optional[pulumi.Input[Union['RuleScaleGroupScaleGroupArgs', 'RuleScaleGroupScaleGroupArgsDict']]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleScaleGroupDependArgs', 'RuleScaleGroupDependArgsDict']]]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleScaleGroupHttpArgs', 'RuleScaleGroupHttpArgsDict']]]]] = None,
+                 idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_group: pulumi.Input[Optional[Union['RuleScaleGroupScaleGroupArgs', 'RuleScaleGroupScaleGroupArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -481,15 +481,15 @@ class RuleScaleGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleScaleGroupDependArgs', 'RuleScaleGroupDependArgsDict']]]]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleScaleGroupHttpArgs', 'RuleScaleGroupHttpArgsDict']]]]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            scale_group: Optional[pulumi.Input[Union['RuleScaleGroupScaleGroupArgs', 'RuleScaleGroupScaleGroupArgsDict']]] = None) -> 'RuleScaleGroup':
+            cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleScaleGroupDependArgs', 'RuleScaleGroupDependArgsDict']]]]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleScaleGroupHttpArgs', 'RuleScaleGroupHttpArgsDict']]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            scale_group: pulumi.Input[Optional[Union['RuleScaleGroupScaleGroupArgs', 'RuleScaleGroupScaleGroupArgsDict']]] = None) -> 'RuleScaleGroup':
         """
         Get an existing RuleScaleGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -23,10 +23,10 @@ class AlertArgs:
     def __init__(__self__, *,
                  events: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  recipients: pulumi.Input['AlertRecipientsArgs'],
-                 applicable_to_all_rules: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
+                 applicable_to_all_rules: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         The set of arguments for constructing a Alert resource.
 
@@ -74,62 +74,62 @@ class AlertArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicableToAllRules")
-    def applicable_to_all_rules(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def applicable_to_all_rules(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, the alert applies to all AutoStopping rules in the account (leave `rule_id_list` empty). Mutually exclusive with `rule_id_list`.
         """
         return pulumi.get(self, "applicable_to_all_rules")
 
     @applicable_to_all_rules.setter
-    def applicable_to_all_rules(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def applicable_to_all_rules(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "applicable_to_all_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the alert is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the alert.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleIdLists")
-    def rule_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def rule_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         List of AutoStopping rule IDs to apply the alert to. Required when `applicable_to_all_rules` is false. Mutually exclusive with `applicable_to_all_rules` = true.
         """
         return pulumi.get(self, "rule_id_lists")
 
     @rule_id_lists.setter
-    def rule_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def rule_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "rule_id_lists", value)
 
 
 @pulumi.input_type
 class _AlertState:
     def __init__(__self__, *,
-                 applicable_to_all_rules: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipients: Optional[pulumi.Input['AlertRecipientsArgs']] = None,
-                 rule_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
+                 applicable_to_all_rules: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipients: pulumi.Input[Optional['AlertRecipientsArgs']] = None,
+                 rule_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering Alert resources.
 
@@ -155,74 +155,74 @@ class _AlertState:
 
     @_builtins.property
     @pulumi.getter(name="applicableToAllRules")
-    def applicable_to_all_rules(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def applicable_to_all_rules(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, the alert applies to all AutoStopping rules in the account (leave `rule_id_list` empty). Mutually exclusive with `rule_id_list`.
         """
         return pulumi.get(self, "applicable_to_all_rules")
 
     @applicable_to_all_rules.setter
-    def applicable_to_all_rules(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def applicable_to_all_rules(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "applicable_to_all_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the alert is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def events(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def events(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of event types that trigger the alert (e.g. autostopping*rule*created, autostopping*warmup*failed, autostopping*cooldown*failed).
         """
         return pulumi.get(self, "events")
 
     @events.setter
-    def events(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def events(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "events", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the alert.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def recipients(self) -> Optional[pulumi.Input['AlertRecipientsArgs']]:
+    def recipients(self) -> pulumi.Input[Optional['AlertRecipientsArgs']]:
         """
         Notification recipients. At least one of `email` or `slack` is required (with at least one value).
         """
         return pulumi.get(self, "recipients")
 
     @recipients.setter
-    def recipients(self, value: Optional[pulumi.Input['AlertRecipientsArgs']]):
+    def recipients(self, value: pulumi.Input[Optional['AlertRecipientsArgs']]):
         pulumi.set(self, "recipients", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleIdLists")
-    def rule_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def rule_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         List of AutoStopping rule IDs to apply the alert to. Required when `applicable_to_all_rules` is false. Mutually exclusive with `applicable_to_all_rules` = true.
         """
         return pulumi.get(self, "rule_id_lists")
 
     @rule_id_lists.setter
-    def rule_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def rule_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "rule_id_lists", value)
 
 
@@ -232,12 +232,12 @@ class Alert(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 applicable_to_all_rules: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipients: Optional[pulumi.Input[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict']]] = None,
-                 rule_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 applicable_to_all_rules: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipients: pulumi.Input[Optional[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict']]] = None,
+                 rule_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
         """
         Resource for creating and managing Harness AutoStopping alerts. Alerts notify users via email or Slack when events such as warmup failures, cooldown failures, or rule lifecycle changes occur.
@@ -373,12 +373,12 @@ class Alert(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 applicable_to_all_rules: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipients: Optional[pulumi.Input[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict']]] = None,
-                 rule_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 applicable_to_all_rules: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipients: pulumi.Input[Optional[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict']]] = None,
+                 rule_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -408,12 +408,12 @@ class Alert(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            applicable_to_all_rules: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            recipients: Optional[pulumi.Input[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict']]] = None,
-            rule_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None) -> 'Alert':
+            applicable_to_all_rules: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            recipients: pulumi.Input[Optional[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict']]] = None,
+            rule_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None) -> 'Alert':
         """
         Get an existing Alert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

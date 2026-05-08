@@ -238,15 +238,15 @@ export interface GetWorkspaceOutputArgs {
     /**
      * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
-    connectors?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceConnectorArgs>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceConnectorArgs>[] | undefined>;
     /**
      * Description of the Workspace
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Environment variables configured on the workspace
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceEnvironmentVariableArgs>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceEnvironmentVariableArgs>[] | undefined>;
     /**
      * Identifier of the Workspace
      */
@@ -262,29 +262,29 @@ export interface GetWorkspaceOutputArgs {
     /**
      * Repository Branch in which the code should be accessed
      */
-    repositoryBranch?: pulumi.Input<string>;
+    repositoryBranch?: pulumi.Input<string | undefined>;
     /**
      * Repository Tag in which the code should be accessed
      */
-    repositoryCommit?: pulumi.Input<string>;
+    repositoryCommit?: pulumi.Input<string | undefined>;
     /**
      * Repository Commit SHA in which the code should be accessed
      */
-    repositorySha?: pulumi.Input<string>;
+    repositorySha?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Terraform variables files configured on the workspace (see below for nested schema)
      */
-    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableFileArgs>[]>;
+    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableFileArgs>[] | undefined>;
     /**
      * Terraform variables configured on the workspace (see below for nested schema)
      */
-    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableArgs>[]>;
+    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableArgs>[] | undefined>;
     /**
      * Variable sets to use.
      */
-    variableSets?: pulumi.Input<pulumi.Input<string>[]>;
+    variableSets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

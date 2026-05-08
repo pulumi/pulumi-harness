@@ -180,51 +180,51 @@ export interface RuleEnforcementState {
     /**
      * The cloud provider for the rule enforcement. It should be either AWS, AZURE or GCP.
      */
-    cloudProvider?: pulumi.Input<string>;
+    cloudProvider?: pulumi.Input<string | undefined>;
     /**
      * Description for rule enforcement.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Id of the rule enforcement.
      */
-    enforcementId?: pulumi.Input<string>;
+    enforcementId?: pulumi.Input<string | undefined>;
     /**
      * Execution schedule in cron format.
      */
-    executionSchedule?: pulumi.Input<string>;
+    executionSchedule?: pulumi.Input<string | undefined>;
     /**
      * Timezone for the execution schedule.
      */
-    executionTimezone?: pulumi.Input<string>;
+    executionTimezone?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the rule enforcement is a dry run. This by default is set to false.
      */
-    isDryRun?: pulumi.Input<boolean>;
+    isDryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the rule enforcement is enabled. This by default is set to true.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the rule enforcement.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of rule IDs. Either rule*ids or rule*set_ids should be provided.
      */
-    ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ruleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of rule set IDs. Either rule*ids or rule*set_ids should be provided.
      */
-    ruleSetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ruleSetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of target account which can be either AWS Account Ids or Azure Subscription Ids or Gcp Project Ids.
      */
-    targetAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    targetAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of target regions. For GCP it should be left empty but is required in case of AWS or Azure.
      */
-    targetRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    targetRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -238,7 +238,7 @@ export interface RuleEnforcementArgs {
     /**
      * Description for rule enforcement.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Execution schedule in cron format.
      */
@@ -250,23 +250,23 @@ export interface RuleEnforcementArgs {
     /**
      * Indicates if the rule enforcement is a dry run. This by default is set to false.
      */
-    isDryRun?: pulumi.Input<boolean>;
+    isDryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the rule enforcement is enabled. This by default is set to true.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the rule enforcement.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of rule IDs. Either rule*ids or rule*set_ids should be provided.
      */
-    ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ruleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of rule set IDs. Either rule*ids or rule*set_ids should be provided.
      */
-    ruleSetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ruleSetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of target account which can be either AWS Account Ids or Azure Subscription Ids or Gcp Project Ids.
      */
@@ -274,5 +274,5 @@ export interface RuleEnforcementArgs {
     /**
      * List of target regions. For GCP it should be left empty but is required in case of AWS or Azure.
      */
-    targetRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    targetRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -186,12 +186,12 @@ def get_pipeline_list(identifier: Optional[_builtins.str] = None,
         pipelines=pulumi.get(__ret__, 'pipelines'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_pipeline_list_output(identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             limit: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             page: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_pipeline_list_output(identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             limit: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             page: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             project_id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineListResult]:
     """
     Data source for retieving the Harness pipleine List

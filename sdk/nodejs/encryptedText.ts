@@ -148,31 +148,31 @@ export interface EncryptedTextState {
     /**
      * Boolean that indicates whether or not to inherit the usage scopes from the secret manager
      */
-    inheritScopesFromSecretManager?: pulumi.Input<boolean>;
+    inheritScopesFromSecretManager?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the encrypted text secret
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Boolean that indicates whether or not the secret is scoped to the account
      */
-    scopedToAccount?: pulumi.Input<boolean>;
+    scopedToAccount?: pulumi.Input<boolean | undefined>;
     /**
      * The id of the secret manager to associate the secret with. Once set, this field cannot be changed.
      */
-    secretManagerId?: pulumi.Input<string>;
+    secretManagerId?: pulumi.Input<string | undefined>;
     /**
      * Name of the existing secret. If you already have secrets created in a secrets manager such as HashiCorp Vault or AWS Secrets Manager, you do not need to re-create the existing secrets in Harness.
      */
-    secretReference?: pulumi.Input<string>;
+    secretReference?: pulumi.Input<string | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.EncryptedTextUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.EncryptedTextUsageScope>[] | undefined>;
     /**
      * The value of the secret.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,15 +182,15 @@ export interface EncryptedTextArgs {
     /**
      * Boolean that indicates whether or not to inherit the usage scopes from the secret manager
      */
-    inheritScopesFromSecretManager?: pulumi.Input<boolean>;
+    inheritScopesFromSecretManager?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the encrypted text secret
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Boolean that indicates whether or not the secret is scoped to the account
      */
-    scopedToAccount?: pulumi.Input<boolean>;
+    scopedToAccount?: pulumi.Input<boolean | undefined>;
     /**
      * The id of the secret manager to associate the secret with. Once set, this field cannot be changed.
      */
@@ -198,13 +198,13 @@ export interface EncryptedTextArgs {
     /**
      * Name of the existing secret. If you already have secrets created in a secrets manager such as HashiCorp Vault or AWS Secrets Manager, you do not need to re-create the existing secrets in Harness.
      */
-    secretReference?: pulumi.Input<string>;
+    secretReference?: pulumi.Input<string | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.EncryptedTextUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.EncryptedTextUsageScope>[] | undefined>;
     /**
      * The value of the secret.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }

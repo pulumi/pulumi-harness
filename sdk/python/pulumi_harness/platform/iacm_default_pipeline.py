@@ -103,11 +103,11 @@ class IacmDefaultPipelineArgs:
 @pulumi.input_type
 class _IacmDefaultPipelineState:
     def __init__(__self__, *,
-                 operation: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 operation: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IacmDefaultPipeline resources.
 
@@ -130,62 +130,62 @@ class _IacmDefaultPipelineState:
 
     @_builtins.property
     @pulumi.getter
-    def operation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operation associated with this default.
         """
         return pulumi.get(self, "operation")
 
     @operation.setter
-    def operation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the organization the default pipelines resides in.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def pipeline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pipeline associated with this default.
         """
         return pulumi.get(self, "pipeline")
 
     @pipeline.setter
-    def pipeline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the project the default pipelines resides in.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionerType")
-    def provisioner_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioner_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The provisioner associated with this default.
         """
         return pulumi.get(self, "provisioner_type")
 
     @provisioner_type.setter
-    def provisioner_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioner_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioner_type", value)
 
 
@@ -195,11 +195,11 @@ class IacmDefaultPipeline(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 operation: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 operation: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for managing IAC default pipelines
@@ -266,11 +266,11 @@ class IacmDefaultPipeline(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 operation: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 operation: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -305,11 +305,11 @@ class IacmDefaultPipeline(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            operation: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioner_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'IacmDefaultPipeline':
+            operation: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'IacmDefaultPipeline':
         """
         Get an existing IacmDefaultPipeline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

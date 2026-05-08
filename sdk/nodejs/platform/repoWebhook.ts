@@ -159,55 +159,55 @@ export interface RepoWebhookState {
     /**
      * Timestamp when the webhook was created.
      */
-    created?: pulumi.Input<number>;
+    created?: pulumi.Input<number | undefined>;
     /**
      * ID of the user who created the webhook.
      */
-    createdBy?: pulumi.Input<number>;
+    createdBy?: pulumi.Input<number | undefined>;
     /**
      * Description of the webhook.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Webhook enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Created webhook has secret encoding.
      */
-    hasSecret?: pulumi.Input<boolean>;
+    hasSecret?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier of the webhook.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Allow insecure connections for provided webhook URL.
      */
-    insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the repository.
      */
-    repoIdentifier?: pulumi.Input<string>;
+    repoIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Webhook secret which will be used to sign the webhook payload.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * List of triggers of the webhook (keep empty for all triggers).
      */
-    triggers?: pulumi.Input<pulumi.Input<string>[]>;
+    triggers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL that's called by the webhook.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -217,7 +217,7 @@ export interface RepoWebhookArgs {
     /**
      * Description of the webhook.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Webhook enabled.
      */
@@ -233,11 +233,11 @@ export interface RepoWebhookArgs {
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the repository.
      */
@@ -245,11 +245,11 @@ export interface RepoWebhookArgs {
     /**
      * Webhook secret which will be used to sign the webhook payload.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * List of triggers of the webhook (keep empty for all triggers).
      */
-    triggers?: pulumi.Input<pulumi.Input<string>[]>;
+    triggers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL that's called by the webhook.
      */

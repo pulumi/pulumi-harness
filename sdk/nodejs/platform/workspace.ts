@@ -328,103 +328,103 @@ export interface WorkspaceState {
     /**
      * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
-    connectors?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceConnector>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceConnector>[] | undefined>;
     /**
      * Cost estimation enabled determines if cost estimation operations are performed.
      */
-    costEstimationEnabled?: pulumi.Input<boolean>;
+    costEstimationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Default pipelines associated with this workspace
      */
-    defaultPipelines?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    defaultPipelines?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Environment variables configured on the workspace
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceEnvironmentVariable>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceEnvironmentVariable>[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Provider connector is the reference to the connector for the infrastructure provider
      */
-    providerConnector?: pulumi.Input<string>;
+    providerConnector?: pulumi.Input<string | undefined>;
     /**
      * Provisioner type defines the provisioning tool to use (terraform or opentofu)
      */
-    provisionerType?: pulumi.Input<string>;
+    provisionerType?: pulumi.Input<string | undefined>;
     /**
      * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
      */
-    provisionerVersion?: pulumi.Input<string>;
+    provisionerVersion?: pulumi.Input<string | undefined>;
     /**
      * Repository is the name of the repository to fetch the code from.
      */
-    repository?: pulumi.Input<string>;
+    repository?: pulumi.Input<string | undefined>;
     /**
      * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
      */
-    repositoryBranch?: pulumi.Input<string>;
+    repositoryBranch?: pulumi.Input<string | undefined>;
     /**
      * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
      */
-    repositoryCommit?: pulumi.Input<string>;
+    repositoryCommit?: pulumi.Input<string | undefined>;
     /**
      * Repository connector is the reference to the connector used to fetch the code.
      */
-    repositoryConnector?: pulumi.Input<string>;
+    repositoryConnector?: pulumi.Input<string | undefined>;
     /**
      * Repository path is the path in which the code resides.
      */
-    repositoryPath?: pulumi.Input<string>;
+    repositoryPath?: pulumi.Input<string | undefined>;
     /**
      * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
      */
-    repositorySha?: pulumi.Input<string>;
+    repositorySha?: pulumi.Input<string | undefined>;
     /**
      * Boolean flag for run-all terragrunt modules
      */
-    runAll?: pulumi.Input<boolean>;
+    runAll?: pulumi.Input<boolean | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Terraform variables files configured on the workspace (see below for nested schema)
      */
-    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariableFile>[]>;
+    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariableFile>[] | undefined>;
     /**
      * Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
      */
-    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariable>[]>;
+    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariable>[] | undefined>;
     /**
      * Set to true to enable Terragrunt mode
      */
-    terragruntProvider?: pulumi.Input<boolean>;
+    terragruntProvider?: pulumi.Input<boolean | undefined>;
     /**
      * Terragrunt version to use (e.g., 0.45.0)
      */
-    terragruntVersion?: pulumi.Input<string>;
+    terragruntVersion?: pulumi.Input<string | undefined>;
     /**
      * Variable sets to use.
      */
-    variableSets?: pulumi.Input<pulumi.Input<string>[]>;
+    variableSets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -434,7 +434,7 @@ export interface WorkspaceArgs {
     /**
      * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
-    connectors?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceConnector>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceConnector>[] | undefined>;
     /**
      * Cost estimation enabled determines if cost estimation operations are performed.
      */
@@ -442,15 +442,15 @@ export interface WorkspaceArgs {
     /**
      * Default pipelines associated with this workspace
      */
-    defaultPipelines?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    defaultPipelines?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Environment variables configured on the workspace
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceEnvironmentVariable>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceEnvironmentVariable>[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -458,7 +458,7 @@ export interface WorkspaceArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
@@ -470,7 +470,7 @@ export interface WorkspaceArgs {
     /**
      * Provider connector is the reference to the connector for the infrastructure provider
      */
-    providerConnector?: pulumi.Input<string>;
+    providerConnector?: pulumi.Input<string | undefined>;
     /**
      * Provisioner type defines the provisioning tool to use (terraform or opentofu)
      */
@@ -486,11 +486,11 @@ export interface WorkspaceArgs {
     /**
      * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
      */
-    repositoryBranch?: pulumi.Input<string>;
+    repositoryBranch?: pulumi.Input<string | undefined>;
     /**
      * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
      */
-    repositoryCommit?: pulumi.Input<string>;
+    repositoryCommit?: pulumi.Input<string | undefined>;
     /**
      * Repository connector is the reference to the connector used to fetch the code.
      */
@@ -502,33 +502,33 @@ export interface WorkspaceArgs {
     /**
      * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
      */
-    repositorySha?: pulumi.Input<string>;
+    repositorySha?: pulumi.Input<string | undefined>;
     /**
      * Boolean flag for run-all terragrunt modules
      */
-    runAll?: pulumi.Input<boolean>;
+    runAll?: pulumi.Input<boolean | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Terraform variables files configured on the workspace (see below for nested schema)
      */
-    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariableFile>[]>;
+    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariableFile>[] | undefined>;
     /**
      * Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
      */
-    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariable>[]>;
+    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariable>[] | undefined>;
     /**
      * Set to true to enable Terragrunt mode
      */
-    terragruntProvider?: pulumi.Input<boolean>;
+    terragruntProvider?: pulumi.Input<boolean | undefined>;
     /**
      * Terragrunt version to use (e.g., 0.45.0)
      */
-    terragruntVersion?: pulumi.Input<string>;
+    terragruntVersion?: pulumi.Input<string | undefined>;
     /**
      * Variable sets to use.
      */
-    variableSets?: pulumi.Input<pulumi.Input<string>[]>;
+    variableSets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

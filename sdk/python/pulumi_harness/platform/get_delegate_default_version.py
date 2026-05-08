@@ -155,8 +155,8 @@ def get_delegate_default_version(org_id: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         version=pulumi.get(__ret__, 'version'))
-def get_delegate_default_version_output(org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_delegate_default_version_output(org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDelegateDefaultVersionResult]:
     """
     Data source for retrieving the latest supported Harness delegate version.

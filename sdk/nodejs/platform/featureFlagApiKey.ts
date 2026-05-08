@@ -154,39 +154,39 @@ export interface FeatureFlagApiKeyState {
     /**
      * The value of the SDK API Key
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Description of the SDK API Key
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Environment Identifier
      */
-    envId?: pulumi.Input<string>;
+    envId?: pulumi.Input<string | undefined>;
     /**
      * Expiration datetime of the SDK API Key
      */
-    expiredAt?: pulumi.Input<number>;
+    expiredAt?: pulumi.Input<number | undefined>;
     /**
      * Identifier of the SDK API Key
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the SDK API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Type of SDK. Valid values are `Server` or `Client`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -196,7 +196,7 @@ export interface FeatureFlagApiKeyArgs {
     /**
      * Description of the SDK API Key
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Environment Identifier
      */
@@ -204,7 +204,7 @@ export interface FeatureFlagApiKeyArgs {
     /**
      * Expiration datetime of the SDK API Key
      */
-    expiredAt?: pulumi.Input<number>;
+    expiredAt?: pulumi.Input<number | undefined>;
     /**
      * Identifier of the SDK API Key
      */
@@ -212,7 +212,7 @@ export interface FeatureFlagApiKeyArgs {
     /**
      * Name of the SDK API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier
      */

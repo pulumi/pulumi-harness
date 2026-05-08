@@ -26,19 +26,19 @@ class GitOpsApplicationsArgs:
                  cluster_id: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options_remove_existing_finalizers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_propagation_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_repo_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validate: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options_remove_existing_finalizers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 request_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_propagation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_repo_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validate: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitOpsApplications resource.
 
@@ -162,183 +162,183 @@ class GitOpsApplicationsArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the GitOps application.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the GitOps application.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kind of the GitOps application.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="optionsRemoveExistingFinalizers")
-    def options_remove_existing_finalizers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def options_remove_existing_finalizers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Options to remove existing finalizers to delete the GitOps application.
         """
         return pulumi.get(self, "options_remove_existing_finalizers")
 
     @options_remove_existing_finalizers.setter
-    def options_remove_existing_finalizers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def options_remove_existing_finalizers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "options_remove_existing_finalizers", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="repoId")
-    def repo_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
         """
         return pulumi.get(self, "repo_id")
 
     @repo_id.setter
-    def repo_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoIds")
-    def repo_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def repo_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
         """
         return pulumi.get(self, "repo_ids")
 
     @repo_ids.setter
-    def repo_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def repo_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "repo_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="requestCascade")
-    def request_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def request_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Request cascade to delete the GitOps application.
         """
         return pulumi.get(self, "request_cascade")
 
     @request_cascade.setter
-    def request_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def request_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "request_cascade", value)
 
     @_builtins.property
     @pulumi.getter(name="requestPropagationPolicy")
-    def request_propagation_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_propagation_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Request propagation policy to delete the GitOps application.
         """
         return pulumi.get(self, "request_propagation_policy")
 
     @request_propagation_policy.setter
-    def request_propagation_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_propagation_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_propagation_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="skipRepoValidation")
-    def skip_repo_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_repo_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the GitOps application should skip validate repository definition exists.
         """
         return pulumi.get(self, "skip_repo_validation")
 
     @skip_repo_validation.setter
-    def skip_repo_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_repo_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_repo_validation", value)
 
     @_builtins.property
     @pulumi.getter
-    def upsert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upsert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the GitOps application should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
     @upsert.setter
-    def upsert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upsert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upsert", value)
 
     @_builtins.property
     @pulumi.getter
-    def validate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def validate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the GitOps application yaml has to be validated.
         """
         return pulumi.get(self, "validate")
 
     @validate.setter
-    def validate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def validate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "validate", value)
 
 
 @pulumi.input_type
 class _GitOpsApplicationsState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationArgs']]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options_remove_existing_finalizers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_propagation_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_repo_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validate: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsApplicationsApplicationArgs']]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options_remove_existing_finalizers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 request_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_propagation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_repo_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validate: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GitOpsApplications resources.
 
@@ -407,219 +407,219 @@ class _GitOpsApplicationsState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the GitOps application.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Agent identifier of the GitOps application.
         """
         return pulumi.get(self, "agent_id")
 
     @agent_id.setter
-    def agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationArgs']]]]:
+    def applications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsApplicationsApplicationArgs']]]]:
         """
         Definition of the GitOps application resource.
         """
         return pulumi.get(self, "applications")
 
     @applications.setter
-    def applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationArgs']]]]):
+    def applications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsApplicationsApplicationArgs']]]]):
         pulumi.set(self, "applications", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster identifier of the GitOps application.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the GitOps application.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kind of the GitOps application.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="optionsRemoveExistingFinalizers")
-    def options_remove_existing_finalizers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def options_remove_existing_finalizers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Options to remove existing finalizers to delete the GitOps application.
         """
         return pulumi.get(self, "options_remove_existing_finalizers")
 
     @options_remove_existing_finalizers.setter
-    def options_remove_existing_finalizers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def options_remove_existing_finalizers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "options_remove_existing_finalizers", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the GitOps application.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the GitOps application.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoId")
-    def repo_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
         """
         return pulumi.get(self, "repo_id")
 
     @repo_id.setter
-    def repo_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoIds")
-    def repo_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def repo_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
         """
         return pulumi.get(self, "repo_ids")
 
     @repo_ids.setter
-    def repo_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def repo_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "repo_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="requestCascade")
-    def request_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def request_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Request cascade to delete the GitOps application.
         """
         return pulumi.get(self, "request_cascade")
 
     @request_cascade.setter
-    def request_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def request_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "request_cascade", value)
 
     @_builtins.property
     @pulumi.getter(name="requestPropagationPolicy")
-    def request_propagation_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_propagation_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Request propagation policy to delete the GitOps application.
         """
         return pulumi.get(self, "request_propagation_policy")
 
     @request_propagation_policy.setter
-    def request_propagation_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_propagation_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_propagation_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="skipRepoValidation")
-    def skip_repo_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_repo_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the GitOps application should skip validate repository definition exists.
         """
         return pulumi.get(self, "skip_repo_validation")
 
     @skip_repo_validation.setter
-    def skip_repo_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_repo_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_repo_validation", value)
 
     @_builtins.property
     @pulumi.getter
-    def upsert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upsert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the GitOps application should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
     @upsert.setter
-    def upsert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upsert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upsert", value)
 
     @_builtins.property
     @pulumi.getter
-    def validate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def validate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the GitOps application yaml has to be validated.
         """
         return pulumi.get(self, "validate")
 
     @validate.setter
-    def validate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def validate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "validate", value)
 
 
@@ -629,24 +629,24 @@ class GitOpsApplications(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options_remove_existing_finalizers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_propagation_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_repo_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validate: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options_remove_existing_finalizers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 request_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_propagation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_repo_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validate: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Resource for managing a Harness Gitops Application.
@@ -818,24 +818,24 @@ class GitOpsApplications(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options_remove_existing_finalizers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_propagation_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_repo_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validate: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options_remove_existing_finalizers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 request_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_propagation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_repo_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validate: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -883,24 +883,24 @@ class GitOpsApplications(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            options_remove_existing_finalizers: Optional[pulumi.Input[_builtins.bool]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            request_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-            request_propagation_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_repo_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            upsert: Optional[pulumi.Input[_builtins.bool]] = None,
-            validate: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GitOpsApplications':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            options_remove_existing_finalizers: pulumi.Input[Optional[_builtins.bool]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+            request_propagation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_repo_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            upsert: pulumi.Input[Optional[_builtins.bool]] = None,
+            validate: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GitOpsApplications':
         """
         Get an existing GitOpsApplications resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

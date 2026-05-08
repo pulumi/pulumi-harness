@@ -21,8 +21,8 @@ class OrchestratorArgs:
     def __init__(__self__, *,
                  cluster_endpoint: pulumi.Input[_builtins.str],
                  k8s_connector_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Orchestrator resource.
 
@@ -64,36 +64,36 @@ class OrchestratorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Orchestrator
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region of the k8s cluster
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _OrchestratorState:
     def __init__(__self__, *,
-                 cluster_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Orchestrator resources.
 
@@ -113,50 +113,50 @@ class _OrchestratorState:
 
     @_builtins.property
     @pulumi.getter(name="clusterEndpoint")
-    def cluster_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Endpoint of the k8s cluster being onboarded under the orchestrator
         """
         return pulumi.get(self, "cluster_endpoint")
 
     @cluster_endpoint.setter
-    def cluster_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sConnectorId")
-    def k8s_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def k8s_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the Harness Kubernetes Connector Being used
         """
         return pulumi.get(self, "k8s_connector_id")
 
     @k8s_connector_id.setter
-    def k8s_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def k8s_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "k8s_connector_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Orchestrator
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region of the k8s cluster
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -166,10 +166,10 @@ class Orchestrator(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating and deleting ClusterOrchestrators.
@@ -255,10 +255,10 @@ class Orchestrator(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -286,10 +286,10 @@ class Orchestrator(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'Orchestrator':
+            cluster_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'Orchestrator':
         """
         Get an existing Orchestrator resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

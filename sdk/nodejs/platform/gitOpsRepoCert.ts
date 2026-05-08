@@ -152,23 +152,23 @@ export interface GitOpsRepoCertState {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the GitOps repository certificate.
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier of the GitOps repository certificate.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps repository certificate.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repository Certificate create/update request.
      */
-    requests?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepoCertRequest>[]>;
+    requests?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepoCertRequest>[] | undefined>;
 }
 
 /**
@@ -180,7 +180,7 @@ export interface GitOpsRepoCertArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the GitOps repository certificate.
      */
@@ -188,11 +188,11 @@ export interface GitOpsRepoCertArgs {
     /**
      * Organization identifier of the GitOps repository certificate.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps repository certificate.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repository Certificate create/update request.
      */

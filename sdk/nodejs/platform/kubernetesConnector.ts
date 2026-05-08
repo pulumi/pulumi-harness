@@ -243,55 +243,55 @@ export interface KubernetesConnectorState {
     /**
      * Client key and certificate config for the connector.
      */
-    clientKeyCert?: pulumi.Input<inputs.platform.KubernetesConnectorClientKeyCert>;
+    clientKeyCert?: pulumi.Input<inputs.platform.KubernetesConnectorClientKeyCert | undefined>;
     /**
      * Selectors to use for the delegate.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable this flag for force deletion of connector
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Credentials are inherited from the delegate.
      */
-    inheritFromDelegate?: pulumi.Input<inputs.platform.KubernetesConnectorInheritFromDelegate>;
+    inheritFromDelegate?: pulumi.Input<inputs.platform.KubernetesConnectorInheritFromDelegate | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OpenID configuration for the connector.
      */
-    openidConnect?: pulumi.Input<inputs.platform.KubernetesConnectorOpenidConnect>;
+    openidConnect?: pulumi.Input<inputs.platform.KubernetesConnectorOpenidConnect | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Service account for the connector.
      */
-    serviceAccount?: pulumi.Input<inputs.platform.KubernetesConnectorServiceAccount>;
+    serviceAccount?: pulumi.Input<inputs.platform.KubernetesConnectorServiceAccount | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Username and password for the connector.
      */
-    usernamePassword?: pulumi.Input<inputs.platform.KubernetesConnectorUsernamePassword>;
+    usernamePassword?: pulumi.Input<inputs.platform.KubernetesConnectorUsernamePassword | undefined>;
 }
 
 /**
@@ -301,19 +301,19 @@ export interface KubernetesConnectorArgs {
     /**
      * Client key and certificate config for the connector.
      */
-    clientKeyCert?: pulumi.Input<inputs.platform.KubernetesConnectorClientKeyCert>;
+    clientKeyCert?: pulumi.Input<inputs.platform.KubernetesConnectorClientKeyCert | undefined>;
     /**
      * Selectors to use for the delegate.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable this flag for force deletion of connector
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -321,33 +321,33 @@ export interface KubernetesConnectorArgs {
     /**
      * Credentials are inherited from the delegate.
      */
-    inheritFromDelegate?: pulumi.Input<inputs.platform.KubernetesConnectorInheritFromDelegate>;
+    inheritFromDelegate?: pulumi.Input<inputs.platform.KubernetesConnectorInheritFromDelegate | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OpenID configuration for the connector.
      */
-    openidConnect?: pulumi.Input<inputs.platform.KubernetesConnectorOpenidConnect>;
+    openidConnect?: pulumi.Input<inputs.platform.KubernetesConnectorOpenidConnect | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Service account for the connector.
      */
-    serviceAccount?: pulumi.Input<inputs.platform.KubernetesConnectorServiceAccount>;
+    serviceAccount?: pulumi.Input<inputs.platform.KubernetesConnectorServiceAccount | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Username and password for the connector.
      */
-    usernamePassword?: pulumi.Input<inputs.platform.KubernetesConnectorUsernamePassword>;
+    usernamePassword?: pulumi.Input<inputs.platform.KubernetesConnectorUsernamePassword | undefined>;
 }

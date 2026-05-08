@@ -172,7 +172,7 @@ export interface GetAzureGatewayOutputArgs {
     /**
      * ID of Azure AppGateway for importing
      */
-    appGatewayId?: pulumi.Input<string>;
+    appGatewayId?: pulumi.Input<string | undefined>;
     /**
      * Region in which azure cloud function will be provisioned
      */
@@ -180,7 +180,7 @@ export interface GetAzureGatewayOutputArgs {
     /**
      * ID of existing SSL certificate from AppGateway being imported. Required only for SSL based rules
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * Id of the cloud connector
      */
@@ -192,7 +192,7 @@ export interface GetAzureGatewayOutputArgs {
     /**
      * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
      */
-    frontendIp?: pulumi.Input<string>;
+    frontendIp?: pulumi.Input<string | undefined>;
     /**
      * Name of the proxy
      */
@@ -208,11 +208,11 @@ export interface GetAzureGatewayOutputArgs {
     /**
      * Size of machine used for the gateway
      */
-    skuSize?: pulumi.Input<string>;
+    skuSize?: pulumi.Input<string | undefined>;
     /**
      * Subnet in which cloud resources are hosted
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * VPC in which cloud resources are hosted
      */

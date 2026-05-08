@@ -22,7 +22,7 @@ __all__ = ['InfraProviderArgs', 'InfraProvider']
 class InfraProviderArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InfraProvider resource.
 
@@ -47,26 +47,26 @@ class InfraProviderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the provider.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _InfraProviderState:
     def __init__(__self__, *,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated: Optional[pulumi.Input[_builtins.int]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['InfraProviderVersionArgs']]]] = None):
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated: pulumi.Input[Optional[_builtins.int]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input['InfraProviderVersionArgs']]]] = None):
         """
         Input properties used for looking up and filtering InfraProvider resources.
 
@@ -92,74 +92,74 @@ class _InfraProviderState:
 
     @_builtins.property
     @pulumi.getter
-    def account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account that owns the provider.
         """
         return pulumi.get(self, "account")
 
     @account.setter
-    def account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the provider was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the provider.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provider type (e.g., aws, azurerm, google).
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the provider was last updated.
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated", value)
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraProviderVersionArgs']]]]:
+    def versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfraProviderVersionArgs']]]]:
         """
         List of provider versions.
         """
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfraProviderVersionArgs']]]]):
+    def versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfraProviderVersionArgs']]]]):
         pulumi.set(self, "versions", value)
 
 
@@ -169,8 +169,8 @@ class InfraProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for managing Terraform/OpenTofu Providers in the IaCM Provider Registry.
@@ -256,8 +256,8 @@ class InfraProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -285,12 +285,12 @@ class InfraProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account: Optional[pulumi.Input[_builtins.str]] = None,
-            created: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            updated: Optional[pulumi.Input[_builtins.int]] = None,
-            versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraProviderVersionArgs', 'InfraProviderVersionArgsDict']]]]] = None) -> 'InfraProvider':
+            account: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.int]] = None,
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraProviderVersionArgs', 'InfraProviderVersionArgsDict']]]]] = None) -> 'InfraProvider':
         """
         Get an existing InfraProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

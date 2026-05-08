@@ -58,9 +58,9 @@ class DelegateApprovalArgs:
 @pulumi.input_type
 class _DelegateApprovalState:
     def __init__(__self__, *,
-                 approve: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delegate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delegate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DelegateApproval resources.
 
@@ -77,38 +77,38 @@ class _DelegateApprovalState:
 
     @_builtins.property
     @pulumi.getter
-    def approve(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def approve(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to approve the delegate.
         """
         return pulumi.get(self, "approve")
 
     @approve.setter
-    def approve(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def approve(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "approve", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateId")
-    def delegate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delegate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the delegate.
         """
         return pulumi.get(self, "delegate_id")
 
     @delegate_id.setter
-    def delegate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delegate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delegate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the delegate.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -118,8 +118,8 @@ class DelegateApproval(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approve: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delegate_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delegate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for approving or rejecting delegates.
@@ -199,8 +199,8 @@ class DelegateApproval(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approve: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delegate_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delegate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -227,9 +227,9 @@ class DelegateApproval(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approve: Optional[pulumi.Input[_builtins.bool]] = None,
-            delegate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'DelegateApproval':
+            approve: pulumi.Input[Optional[_builtins.bool]] = None,
+            delegate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'DelegateApproval':
         """
         Get an existing DelegateApproval resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

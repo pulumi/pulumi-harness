@@ -25,30 +25,30 @@ class InfrastructureV2Args:
                  infra_id: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 ai_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotation: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 containers: Optional[pulumi.Input[_builtins.str]] = None,
-                 correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2EnvArgs']]]] = None,
-                 image_registries: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryArgs']]]] = None,
-                 infra_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_skip_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mtls: Optional[pulumi.Input['InfrastructureV2MtlsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 proxy: Optional[pulumi.Input['InfrastructureV2ProxyArgs']] = None,
-                 run_as_group: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_as_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2TolerationArgs']]]] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeMountArgs']]]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]] = None):
+                 ai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotation: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 containers: pulumi.Input[Optional[_builtins.str]] = None,
+                 correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2EnvArgs']]]] = None,
+                 image_registries: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryArgs']]]] = None,
+                 infra_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_skip_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mtls: pulumi.Input[Optional['InfrastructureV2MtlsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_selector: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 proxy: pulumi.Input[Optional['InfrastructureV2ProxyArgs']] = None,
+                 run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tolerations: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2TolerationArgs']]]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2VolumeMountArgs']]]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]] = None):
         """
         The set of arguments for constructing a InfrastructureV2 resource.
 
@@ -184,332 +184,332 @@ class InfrastructureV2Args:
 
     @_builtins.property
     @pulumi.getter(name="aiEnabled")
-    def ai_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ai_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable AI features for the infrastructure.
         """
         return pulumi.get(self, "ai_enabled")
 
     @ai_enabled.setter
-    def ai_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ai_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ai_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotation(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotation(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations to apply to the infrastructure pods.
         """
         return pulumi.get(self, "annotation")
 
     @annotation.setter
-    def annotation(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotation(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotation", value)
 
     @_builtins.property
     @pulumi.getter
-    def containers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def containers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container configurations.
         """
         return pulumi.get(self, "containers")
 
     @containers.setter
-    def containers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def containers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "containers", value)
 
     @_builtins.property
     @pulumi.getter(name="correlationId")
-    def correlation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def correlation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Correlation ID for the request.
         """
         return pulumi.get(self, "correlation_id")
 
     @correlation_id.setter
-    def correlation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def correlation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "correlation_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the infrastructure.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryAgentId")
-    def discovery_agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovery_agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the discovery agent to use.
         """
         return pulumi.get(self, "discovery_agent_id")
 
     @discovery_agent_id.setter
-    def discovery_agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovery_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovery_agent_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2EnvArgs']]]]:
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2EnvArgs']]]]:
         """
         List of environment variables to set in the container.
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2EnvArgs']]]]):
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2EnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter(name="imageRegistries")
-    def image_registries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryArgs']]]]:
+    def image_registries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryArgs']]]]:
         """
         Configuration for the container image registry.
         """
         return pulumi.get(self, "image_registries")
 
     @image_registries.setter
-    def image_registries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryArgs']]]]):
+    def image_registries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryArgs']]]]):
         pulumi.set(self, "image_registries", value)
 
     @_builtins.property
     @pulumi.getter(name="infraScope")
-    def infra_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scope of the infrastructure. Valid values: NAMESPACE, CLUSTER
         """
         return pulumi.get(self, "infra_scope")
 
     @infra_scope.setter
-    def infra_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="infraType")
-    def infra_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the infrastructure. Valid values: KUBERNETES, KUBERNETESV2
         """
         return pulumi.get(self, "infra_type")
 
     @infra_type.setter
-    def infra_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_type", value)
 
     @_builtins.property
     @pulumi.getter(name="insecureSkipVerify")
-    def insecure_skip_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure_skip_verify(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Skip TLS verification for the infrastructure.
         """
         return pulumi.get(self, "insecure_skip_verify")
 
     @insecure_skip_verify.setter
-    def insecure_skip_verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure_skip_verify(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure_skip_verify", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def label(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to the infrastructure pods.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def label(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtls(self) -> Optional[pulumi.Input['InfrastructureV2MtlsArgs']]:
+    def mtls(self) -> pulumi.Input[Optional['InfrastructureV2MtlsArgs']]:
         """
         mTLS configuration for the infrastructure.
         """
         return pulumi.get(self, "mtls")
 
     @mtls.setter
-    def mtls(self, value: Optional[pulumi.Input['InfrastructureV2MtlsArgs']]):
+    def mtls(self, value: pulumi.Input[Optional['InfrastructureV2MtlsArgs']]):
         pulumi.set(self, "mtls", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the infrastructure.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kubernetes namespace where the infrastructure will be installed. Maps to the infrastructure namespace.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def node_selector(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Node selector for the infrastructure pods.
         """
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def node_selector(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_selector", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxy(self) -> Optional[pulumi.Input['InfrastructureV2ProxyArgs']]:
+    def proxy(self) -> pulumi.Input[Optional['InfrastructureV2ProxyArgs']]:
         """
         Proxy configuration for the infrastructure.
         """
         return pulumi.get(self, "proxy")
 
     @proxy.setter
-    def proxy(self, value: Optional[pulumi.Input['InfrastructureV2ProxyArgs']]):
+    def proxy(self, value: pulumi.Input[Optional['InfrastructureV2ProxyArgs']]):
         pulumi.set(self, "proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsGroup")
-    def run_as_group(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_as_group(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Group ID to run the infrastructure as.
         """
         return pulumi.get(self, "run_as_group")
 
     @run_as_group.setter
-    def run_as_group(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_as_group(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_as_group", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsUser")
-    def run_as_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_as_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         User ID to run the infrastructure as.
         """
         return pulumi.get(self, "run_as_user")
 
     @run_as_user.setter
-    def run_as_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_as_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_as_user", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service account used by the infrastructure.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags for the infrastructure.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def tolerations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2TolerationArgs']]]]:
+    def tolerations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2TolerationArgs']]]]:
         """
         If specified, the pod's tolerations.
         """
         return pulumi.get(self, "tolerations")
 
     @tolerations.setter
-    def tolerations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2TolerationArgs']]]]):
+    def tolerations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2TolerationArgs']]]]):
         pulumi.set(self, "tolerations", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeMountArgs']]]]:
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2VolumeMountArgs']]]]:
         """
         Volume mounts for the container.
         """
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeMountArgs']]]]):
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2VolumeMountArgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
     @_builtins.property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]]:
+    def volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]]:
         """
         Volumes to be created in the infrastructure.
         """
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]]):
+    def volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
 
 @pulumi.input_type
 class _InfrastructureV2State:
     def __init__(__self__, *,
-                 ai_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotation: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 containers: Optional[pulumi.Input[_builtins.str]] = None,
-                 correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2EnvArgs']]]] = None,
-                 identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2IdentifierArgs']]]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_registries: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryArgs']]]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_skip_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 install_command: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mtls: Optional[pulumi.Input['InfrastructureV2MtlsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input['InfrastructureV2ProxyArgs']] = None,
-                 run_as_group: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_as_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2TolerationArgs']]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeMountArgs']]]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]] = None):
+                 ai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotation: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 containers: pulumi.Input[Optional[_builtins.str]] = None,
+                 correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2EnvArgs']]]] = None,
+                 identifiers: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2IdentifierArgs']]]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_registries: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryArgs']]]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_skip_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 install_command: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mtls: pulumi.Input[Optional['InfrastructureV2MtlsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_selector: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional['InfrastructureV2ProxyArgs']] = None,
+                 run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tolerations: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2TolerationArgs']]]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2VolumeMountArgs']]]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]] = None):
         """
         Input properties used for looking up and filtering InfrastructureV2 resources.
 
@@ -625,434 +625,434 @@ class _InfrastructureV2State:
 
     @_builtins.property
     @pulumi.getter(name="aiEnabled")
-    def ai_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ai_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable AI features for the infrastructure.
         """
         return pulumi.get(self, "ai_enabled")
 
     @ai_enabled.setter
-    def ai_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ai_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ai_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotation(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotation(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations to apply to the infrastructure pods.
         """
         return pulumi.get(self, "annotation")
 
     @annotation.setter
-    def annotation(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotation(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotation", value)
 
     @_builtins.property
     @pulumi.getter
-    def containers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def containers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container configurations.
         """
         return pulumi.get(self, "containers")
 
     @containers.setter
-    def containers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def containers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "containers", value)
 
     @_builtins.property
     @pulumi.getter(name="correlationId")
-    def correlation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def correlation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Correlation ID for the request.
         """
         return pulumi.get(self, "correlation_id")
 
     @correlation_id.setter
-    def correlation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def correlation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "correlation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the infrastructure.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryAgentId")
-    def discovery_agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovery_agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the discovery agent to use.
         """
         return pulumi.get(self, "discovery_agent_id")
 
     @discovery_agent_id.setter
-    def discovery_agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovery_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovery_agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the environment.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2EnvArgs']]]]:
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2EnvArgs']]]]:
         """
         List of environment variables to set in the container.
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2EnvArgs']]]]):
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2EnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2IdentifierArgs']]]]:
+    def identifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2IdentifierArgs']]]]:
         """
         Identifier for the infrastructure.
         """
         return pulumi.get(self, "identifiers")
 
     @identifiers.setter
-    def identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2IdentifierArgs']]]]):
+    def identifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2IdentifierArgs']]]]):
         pulumi.set(self, "identifiers", value)
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identity for the infrastructure.
         """
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter(name="imageRegistries")
-    def image_registries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryArgs']]]]:
+    def image_registries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryArgs']]]]:
         """
         Configuration for the container image registry.
         """
         return pulumi.get(self, "image_registries")
 
     @image_registries.setter
-    def image_registries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryArgs']]]]):
+    def image_registries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryArgs']]]]):
         pulumi.set(self, "image_registries", value)
 
     @_builtins.property
     @pulumi.getter(name="infraId")
-    def infra_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the infrastructure.
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
-    def infra_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_id", value)
 
     @_builtins.property
     @pulumi.getter(name="infraNamespace")
-    def infra_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Namespace where the infrastructure is installed.
         """
         return pulumi.get(self, "infra_namespace")
 
     @infra_namespace.setter
-    def infra_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="infraScope")
-    def infra_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scope of the infrastructure. Valid values: NAMESPACE, CLUSTER
         """
         return pulumi.get(self, "infra_scope")
 
     @infra_scope.setter
-    def infra_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="infraType")
-    def infra_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the infrastructure. Valid values: KUBERNETES, KUBERNETESV2
         """
         return pulumi.get(self, "infra_type")
 
     @infra_type.setter
-    def infra_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_type", value)
 
     @_builtins.property
     @pulumi.getter(name="insecureSkipVerify")
-    def insecure_skip_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure_skip_verify(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Skip TLS verification for the infrastructure.
         """
         return pulumi.get(self, "insecure_skip_verify")
 
     @insecure_skip_verify.setter
-    def insecure_skip_verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure_skip_verify(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure_skip_verify", value)
 
     @_builtins.property
     @pulumi.getter(name="installCommand")
-    def install_command(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def install_command(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Installation command for the infrastructure.
         """
         return pulumi.get(self, "install_command")
 
     @install_command.setter
-    def install_command(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def install_command(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "install_command", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sConnectorId")
-    def k8s_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def k8s_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kubernetes connector identifier.
         """
         return pulumi.get(self, "k8s_connector_id")
 
     @k8s_connector_id.setter
-    def k8s_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def k8s_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "k8s_connector_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def label(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to the infrastructure pods.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def label(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtls(self) -> Optional[pulumi.Input['InfrastructureV2MtlsArgs']]:
+    def mtls(self) -> pulumi.Input[Optional['InfrastructureV2MtlsArgs']]:
         """
         mTLS configuration for the infrastructure.
         """
         return pulumi.get(self, "mtls")
 
     @mtls.setter
-    def mtls(self, value: Optional[pulumi.Input['InfrastructureV2MtlsArgs']]):
+    def mtls(self, value: pulumi.Input[Optional['InfrastructureV2MtlsArgs']]):
         pulumi.set(self, "mtls", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the infrastructure.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kubernetes namespace where the infrastructure will be installed. Maps to the infrastructure namespace.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def node_selector(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Node selector for the infrastructure pods.
         """
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def node_selector(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_selector", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxy(self) -> Optional[pulumi.Input['InfrastructureV2ProxyArgs']]:
+    def proxy(self) -> pulumi.Input[Optional['InfrastructureV2ProxyArgs']]:
         """
         Proxy configuration for the infrastructure.
         """
         return pulumi.get(self, "proxy")
 
     @proxy.setter
-    def proxy(self, value: Optional[pulumi.Input['InfrastructureV2ProxyArgs']]):
+    def proxy(self, value: pulumi.Input[Optional['InfrastructureV2ProxyArgs']]):
         pulumi.set(self, "proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsGroup")
-    def run_as_group(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_as_group(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Group ID to run the infrastructure as.
         """
         return pulumi.get(self, "run_as_group")
 
     @run_as_group.setter
-    def run_as_group(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_as_group(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_as_group", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsUser")
-    def run_as_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_as_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         User ID to run the infrastructure as.
         """
         return pulumi.get(self, "run_as_user")
 
     @run_as_user.setter
-    def run_as_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_as_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_as_user", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service account used by the infrastructure.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the infrastructure.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags for the infrastructure.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def tolerations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2TolerationArgs']]]]:
+    def tolerations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2TolerationArgs']]]]:
         """
         If specified, the pod's tolerations.
         """
         return pulumi.get(self, "tolerations")
 
     @tolerations.setter
-    def tolerations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2TolerationArgs']]]]):
+    def tolerations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2TolerationArgs']]]]):
         pulumi.set(self, "tolerations", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last update timestamp.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeMountArgs']]]]:
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2VolumeMountArgs']]]]:
         """
         Volume mounts for the container.
         """
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeMountArgs']]]]):
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2VolumeMountArgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
     @_builtins.property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]]:
+    def volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]]:
         """
         Volumes to be created in the infrastructure.
         """
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]]):
+    def volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2VolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
 
@@ -1062,34 +1062,34 @@ class InfrastructureV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ai_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotation: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 containers: Optional[pulumi.Input[_builtins.str]] = None,
-                 correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict']]]]] = None,
-                 image_registries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict']]]]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_skip_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mtls: Optional[pulumi.Input[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']]] = None,
-                 run_as_group: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_as_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tolerations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict']]]]] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict']]]]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict']]]]] = None,
+                 ai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotation: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 containers: pulumi.Input[Optional[_builtins.str]] = None,
+                 correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict']]]]] = None,
+                 image_registries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict']]]]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_skip_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mtls: pulumi.Input[Optional[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_selector: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']]] = None,
+                 run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tolerations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict']]]]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict']]]]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for managing Harness Chaos Infrastructure V2.
@@ -1171,34 +1171,34 @@ class InfrastructureV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ai_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotation: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 containers: Optional[pulumi.Input[_builtins.str]] = None,
-                 correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict']]]]] = None,
-                 image_registries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict']]]]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_skip_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mtls: Optional[pulumi.Input[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']]] = None,
-                 run_as_group: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_as_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tolerations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict']]]]] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict']]]]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict']]]]] = None,
+                 ai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotation: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 containers: pulumi.Input[Optional[_builtins.str]] = None,
+                 correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict']]]]] = None,
+                 image_registries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict']]]]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_skip_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mtls: pulumi.Input[Optional[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_selector: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']]] = None,
+                 run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tolerations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict']]]]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict']]]]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1262,42 +1262,42 @@ class InfrastructureV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ai_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            annotation: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            containers: Optional[pulumi.Input[_builtins.str]] = None,
-            correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            discovery_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            envs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict']]]]] = None,
-            identifiers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2IdentifierArgs', 'InfrastructureV2IdentifierArgsDict']]]]] = None,
-            identity: Optional[pulumi.Input[_builtins.str]] = None,
-            image_registries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict']]]]] = None,
-            infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-            infra_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            infra_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-            insecure_skip_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-            install_command: Optional[pulumi.Input[_builtins.str]] = None,
-            k8s_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            label: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            mtls: Optional[pulumi.Input[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy: Optional[pulumi.Input[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']]] = None,
-            run_as_group: Optional[pulumi.Input[_builtins.int]] = None,
-            run_as_user: Optional[pulumi.Input[_builtins.int]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tolerations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict']]]]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict']]]]] = None,
-            volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict']]]]] = None) -> 'InfrastructureV2':
+            ai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            annotation: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            containers: pulumi.Input[Optional[_builtins.str]] = None,
+            correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            discovery_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            envs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict']]]]] = None,
+            identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2IdentifierArgs', 'InfrastructureV2IdentifierArgsDict']]]]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            image_registries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict']]]]] = None,
+            infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+            insecure_skip_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+            install_command: pulumi.Input[Optional[_builtins.str]] = None,
+            k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            mtls: pulumi.Input[Optional[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            node_selector: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy: pulumi.Input[Optional[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']]] = None,
+            run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
+            run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tolerations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict']]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict']]]]] = None,
+            volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict']]]]] = None) -> 'InfrastructureV2':
         """
         Get an existing InfrastructureV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

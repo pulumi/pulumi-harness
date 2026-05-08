@@ -262,67 +262,67 @@ export interface SplunkConnectorState {
     /**
      * Splunk account id.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Authenticate to Splunk using bearer token.
      */
-    bearerToken?: pulumi.Input<inputs.platform.SplunkConnectorBearerToken>;
+    bearerToken?: pulumi.Input<inputs.platform.SplunkConnectorBearerToken | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Authenticate to Splunk using HEC (HTTP Event Collector) token.
      */
-    hecToken?: pulumi.Input<inputs.platform.SplunkConnectorHecToken>;
+    hecToken?: pulumi.Input<inputs.platform.SplunkConnectorHecToken | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * No authentication required for Splunk.
      */
-    noAuthentication?: pulumi.Input<inputs.platform.SplunkConnectorNoAuthentication>;
+    noAuthentication?: pulumi.Input<inputs.platform.SplunkConnectorNoAuthentication | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      *
      * @deprecated Use 'username_password' authentication block instead
      */
-    passwordRef?: pulumi.Input<string>;
+    passwordRef?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the Splunk server.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
      *
      * @deprecated Use 'username_password' authentication block instead
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Authenticate to Splunk using username and password.
      */
-    usernamePassword?: pulumi.Input<inputs.platform.SplunkConnectorUsernamePassword>;
+    usernamePassword?: pulumi.Input<inputs.platform.SplunkConnectorUsernamePassword | undefined>;
 }
 
 /**
@@ -336,19 +336,19 @@ export interface SplunkConnectorArgs {
     /**
      * Authenticate to Splunk using bearer token.
      */
-    bearerToken?: pulumi.Input<inputs.platform.SplunkConnectorBearerToken>;
+    bearerToken?: pulumi.Input<inputs.platform.SplunkConnectorBearerToken | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Authenticate to Splunk using HEC (HTTP Event Collector) token.
      */
-    hecToken?: pulumi.Input<inputs.platform.SplunkConnectorHecToken>;
+    hecToken?: pulumi.Input<inputs.platform.SplunkConnectorHecToken | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -356,29 +356,29 @@ export interface SplunkConnectorArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * No authentication required for Splunk.
      */
-    noAuthentication?: pulumi.Input<inputs.platform.SplunkConnectorNoAuthentication>;
+    noAuthentication?: pulumi.Input<inputs.platform.SplunkConnectorNoAuthentication | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      *
      * @deprecated Use 'username_password' authentication block instead
      */
-    passwordRef?: pulumi.Input<string>;
+    passwordRef?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the Splunk server.
      */
@@ -388,9 +388,9 @@ export interface SplunkConnectorArgs {
      *
      * @deprecated Use 'username_password' authentication block instead
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Authenticate to Splunk using username and password.
      */
-    usernamePassword?: pulumi.Input<inputs.platform.SplunkConnectorUsernamePassword>;
+    usernamePassword?: pulumi.Input<inputs.platform.SplunkConnectorUsernamePassword | undefined>;
 }

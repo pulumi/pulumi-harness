@@ -142,7 +142,7 @@ export interface GetEnvironmentOutputArgs {
     /**
      * Contains parameters related to Git Experience for remote entities
      */
-    gitDetails?: pulumi.Input<inputs.platform.GetEnvironmentGitDetailsArgs>;
+    gitDetails?: pulumi.Input<inputs.platform.GetEnvironmentGitDetailsArgs | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -150,13 +150,13 @@ export interface GetEnvironmentOutputArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

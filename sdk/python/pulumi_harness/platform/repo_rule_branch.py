@@ -26,10 +26,10 @@ class RepoRuleBranchArgs:
                  policies: pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchPolicyArgs']]],
                  repo_identifier: pulumi.Input[_builtins.str],
                  state: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 patterns: Optional[pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchPatternArgs']]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 patterns: pulumi.Input[Optional[Sequence[pulumi.Input['RepoRuleBranchPatternArgs']]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RepoRuleBranch resource.
 
@@ -119,69 +119,69 @@ class RepoRuleBranchArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchPatternArgs']]]]:
+    def patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepoRuleBranchPatternArgs']]]]:
         """
         Pattern of branch to which rule will apply.
         """
         return pulumi.get(self, "patterns")
 
     @patterns.setter
-    def patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchPatternArgs']]]]):
+    def patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepoRuleBranchPatternArgs']]]]):
         pulumi.set(self, "patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
 @pulumi.input_type
 class _RepoRuleBranchState:
     def __init__(__self__, *,
-                 bypasses: Optional[pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchBypassArgs']]]] = None,
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 patterns: Optional[pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchPatternArgs']]]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchPolicyArgs']]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.int]] = None):
+                 bypasses: pulumi.Input[Optional[Sequence[pulumi.Input['RepoRuleBranchBypassArgs']]]] = None,
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 patterns: pulumi.Input[Optional[Sequence[pulumi.Input['RepoRuleBranchPatternArgs']]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input['RepoRuleBranchPolicyArgs']]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RepoRuleBranch resources.
 
@@ -228,158 +228,158 @@ class _RepoRuleBranchState:
 
     @_builtins.property
     @pulumi.getter
-    def bypasses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchBypassArgs']]]]:
+    def bypasses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepoRuleBranchBypassArgs']]]]:
         """
         List of users who can bypass this rule.
         """
         return pulumi.get(self, "bypasses")
 
     @bypasses.setter
-    def bypasses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchBypassArgs']]]]):
+    def bypasses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepoRuleBranchBypassArgs']]]]):
         pulumi.set(self, "bypasses", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the rule was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ID of the user who created the rule.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the rule.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchPatternArgs']]]]:
+    def patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepoRuleBranchPatternArgs']]]]:
         """
         Pattern of branch to which rule will apply.
         """
         return pulumi.get(self, "patterns")
 
     @patterns.setter
-    def patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchPatternArgs']]]]):
+    def patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepoRuleBranchPatternArgs']]]]):
         pulumi.set(self, "patterns", value)
 
     @_builtins.property
     @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchPolicyArgs']]]]:
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepoRuleBranchPolicyArgs']]]]:
         """
         Policies to be applied for this rule.
         """
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepoRuleBranchPolicyArgs']]]]):
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepoRuleBranchPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoIdentifier")
-    def repo_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repo identifier of the repository.
         """
         return pulumi.get(self, "repo_identifier")
 
     @repo_identifier.setter
-    def repo_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the rule (active, disable, monitor).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the rule was updated.
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ID of the user who updated the rule.
         """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_by", value)
 
 
@@ -389,15 +389,15 @@ class RepoRuleBranch(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bypasses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPatternArgs', 'RepoRuleBranchPatternArgsDict']]]]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPolicyArgs', 'RepoRuleBranchPolicyArgsDict']]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 bypasses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoRuleBranchPatternArgs', 'RepoRuleBranchPatternArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoRuleBranchPolicyArgs', 'RepoRuleBranchPolicyArgsDict']]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Harness Repo Branch Rule.
@@ -440,15 +440,15 @@ class RepoRuleBranch(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bypasses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPatternArgs', 'RepoRuleBranchPatternArgsDict']]]]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPolicyArgs', 'RepoRuleBranchPolicyArgsDict']]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 bypasses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoRuleBranchPatternArgs', 'RepoRuleBranchPatternArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoRuleBranchPolicyArgs', 'RepoRuleBranchPolicyArgsDict']]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -491,19 +491,19 @@ class RepoRuleBranch(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bypasses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict']]]]] = None,
-            created: Optional[pulumi.Input[_builtins.int]] = None,
-            created_by: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPatternArgs', 'RepoRuleBranchPatternArgsDict']]]]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPolicyArgs', 'RepoRuleBranchPolicyArgsDict']]]]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            updated: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.int]] = None) -> 'RepoRuleBranch':
+            bypasses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict']]]]] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoRuleBranchPatternArgs', 'RepoRuleBranchPatternArgsDict']]]]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoRuleBranchPolicyArgs', 'RepoRuleBranchPolicyArgsDict']]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.int]] = None) -> 'RepoRuleBranch':
         """
         Get an existing RepoRuleBranch resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

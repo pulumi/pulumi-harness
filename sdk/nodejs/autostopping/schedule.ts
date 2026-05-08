@@ -123,35 +123,35 @@ export interface ScheduleState {
     /**
      * Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
      */
-    endingOn?: pulumi.Input<string>;
+    endingOn?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the schedule
      */
-    identifier?: pulumi.Input<number>;
+    identifier?: pulumi.Input<number | undefined>;
     /**
      * Name of the schedule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
      */
-    repeats?: pulumi.Input<pulumi.Input<inputs.autostopping.ScheduleRepeat>[]>;
+    repeats?: pulumi.Input<pulumi.Input<inputs.autostopping.ScheduleRepeat>[] | undefined>;
     /**
      * ID of AutoStopping rules on which the schedule applies
      */
-    rules?: pulumi.Input<pulumi.Input<number>[]>;
+    rules?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Type of the schedule. Valid values are `uptime` and `downtime`
      */
-    scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string | undefined>;
     /**
      * Time from which schedule will be active. Schedule will take immediate effect if startingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
      */
-    startingFrom?: pulumi.Input<string>;
+    startingFrom?: pulumi.Input<string | undefined>;
     /**
      * Time zone in which schedule needs to be executed
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -161,15 +161,15 @@ export interface ScheduleArgs {
     /**
      * Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
      */
-    endingOn?: pulumi.Input<string>;
+    endingOn?: pulumi.Input<string | undefined>;
     /**
      * Name of the schedule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
      */
-    repeats?: pulumi.Input<pulumi.Input<inputs.autostopping.ScheduleRepeat>[]>;
+    repeats?: pulumi.Input<pulumi.Input<inputs.autostopping.ScheduleRepeat>[] | undefined>;
     /**
      * ID of AutoStopping rules on which the schedule applies
      */
@@ -181,7 +181,7 @@ export interface ScheduleArgs {
     /**
      * Time from which schedule will be active. Schedule will take immediate effect if startingFrom is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
      */
-    startingFrom?: pulumi.Input<string>;
+    startingFrom?: pulumi.Input<string | undefined>;
     /**
      * Time zone in which schedule needs to be executed
      */

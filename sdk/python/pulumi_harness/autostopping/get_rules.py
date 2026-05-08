@@ -130,8 +130,8 @@ def get_rules(kind: Optional[_builtins.str] = None,
         kind=pulumi.get(__ret__, 'kind'),
         name=pulumi.get(__ret__, 'name'),
         rules=pulumi.get(__ret__, 'rules'))
-def get_rules_output(kind: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_rules_output(kind: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulesResult]:
     """
     Datasource for listing Harness AutoStopping rules.

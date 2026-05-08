@@ -270,59 +270,59 @@ export interface ConnectorGcpKmsState {
     /**
      * Set this flag to set this secret manager as default secret manager.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable this flag to execute on Delegate.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * The project ID of the GCP KMS.
      */
-    gcpProjectId?: pulumi.Input<string>;
+    gcpProjectId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * The key name of the GCP KMS.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The key ring of the GCP KMS.
      */
-    keyRing?: pulumi.Input<string>;
+    keyRing?: pulumi.Input<string | undefined>;
     /**
      * Manual credential configuration.
      */
-    manual?: pulumi.Input<inputs.platform.ConnectorGcpKmsManual>;
+    manual?: pulumi.Input<inputs.platform.ConnectorGcpKmsManual | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Authentication using harness oidc.
      */
-    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorGcpKmsOidcAuthentication>[]>;
+    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorGcpKmsOidcAuthentication>[] | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region of the GCP KMS.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -332,15 +332,15 @@ export interface ConnectorGcpKmsArgs {
     /**
      * Set this flag to set this secret manager as default secret manager.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable this flag to execute on Delegate.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * The project ID of the GCP KMS.
      */
@@ -360,23 +360,23 @@ export interface ConnectorGcpKmsArgs {
     /**
      * Manual credential configuration.
      */
-    manual?: pulumi.Input<inputs.platform.ConnectorGcpKmsManual>;
+    manual?: pulumi.Input<inputs.platform.ConnectorGcpKmsManual | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Authentication using harness oidc.
      */
-    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorGcpKmsOidcAuthentication>[]>;
+    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorGcpKmsOidcAuthentication>[] | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region of the GCP KMS.
      */
@@ -384,5 +384,5 @@ export interface ConnectorGcpKmsArgs {
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

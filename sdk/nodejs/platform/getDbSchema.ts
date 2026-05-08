@@ -166,11 +166,11 @@ export interface GetDbSchemaOutputArgs {
     /**
      * DB Migration tool type. Valid values are: Liquibase, Flyway
      */
-    migrationType?: pulumi.Input<string>;
+    migrationType?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
@@ -182,9 +182,9 @@ export interface GetDbSchemaOutputArgs {
     /**
      * Type of the database schema. Valid values are: Repository, Script
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * If percona-toolkit is enabled for the database schema.
      */
-    usePercona?: pulumi.Input<boolean>;
+    usePercona?: pulumi.Input<boolean | undefined>;
 }

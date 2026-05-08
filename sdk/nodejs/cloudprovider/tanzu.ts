@@ -139,27 +139,27 @@ export interface TanzuState {
     /**
      * The url of the Tanzu platform.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the Harness secret containing the password to use to authenticate to Tanzu.
      */
-    passwordSecretName?: pulumi.Input<string>;
+    passwordSecretName?: pulumi.Input<string | undefined>;
     /**
      * Skip validation of Tanzu configuration.
      */
-    skipValidation?: pulumi.Input<boolean>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
     /**
      * The username to use to authenticate to Tanzu.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * The name of the Harness secret containing the username to authenticate to Tanzu with.
      */
-    usernameSecretName?: pulumi.Input<string>;
+    usernameSecretName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,7 +173,7 @@ export interface TanzuArgs {
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the Harness secret containing the password to use to authenticate to Tanzu.
      */
@@ -181,13 +181,13 @@ export interface TanzuArgs {
     /**
      * Skip validation of Tanzu configuration.
      */
-    skipValidation?: pulumi.Input<boolean>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
     /**
      * The username to use to authenticate to Tanzu.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * The name of the Harness secret containing the username to authenticate to Tanzu with.
      */
-    usernameSecretName?: pulumi.Input<string>;
+    usernameSecretName?: pulumi.Input<string | undefined>;
 }

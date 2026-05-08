@@ -22,21 +22,21 @@ __all__ = ['AwsConnectorArgs', 'AwsConnector']
 class AwsConnectorArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
-                 cross_account_access: Optional[pulumi.Input['AwsConnectorCrossAccountAccessArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 equal_jitter_backoff_strategy: Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fixed_delay_backoff_strategy: Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full_jitter_backoff_strategy: Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']] = None,
-                 inherit_from_delegate: Optional[pulumi.Input['AwsConnectorInheritFromDelegateArgs']] = None,
-                 irsa: Optional[pulumi.Input['AwsConnectorIrsaArgs']] = None,
-                 manual: Optional[pulumi.Input['AwsConnectorManualArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_authentication: Optional[pulumi.Input['AwsConnectorOidcAuthenticationArgs']] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cross_account_access: pulumi.Input[Optional['AwsConnectorCrossAccountAccessArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 equal_jitter_backoff_strategy: pulumi.Input[Optional['AwsConnectorEqualJitterBackoffStrategyArgs']] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fixed_delay_backoff_strategy: pulumi.Input[Optional['AwsConnectorFixedDelayBackoffStrategyArgs']] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full_jitter_backoff_strategy: pulumi.Input[Optional['AwsConnectorFullJitterBackoffStrategyArgs']] = None,
+                 inherit_from_delegate: pulumi.Input[Optional['AwsConnectorInheritFromDelegateArgs']] = None,
+                 irsa: pulumi.Input[Optional['AwsConnectorIrsaArgs']] = None,
+                 manual: pulumi.Input[Optional['AwsConnectorManualArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_authentication: pulumi.Input[Optional['AwsConnectorOidcAuthenticationArgs']] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AwsConnector resource.
 
@@ -103,204 +103,204 @@ class AwsConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="crossAccountAccess")
-    def cross_account_access(self) -> Optional[pulumi.Input['AwsConnectorCrossAccountAccessArgs']]:
+    def cross_account_access(self) -> pulumi.Input[Optional['AwsConnectorCrossAccountAccessArgs']]:
         """
         Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
         """
         return pulumi.get(self, "cross_account_access")
 
     @cross_account_access.setter
-    def cross_account_access(self, value: Optional[pulumi.Input['AwsConnectorCrossAccountAccessArgs']]):
+    def cross_account_access(self, value: pulumi.Input[Optional['AwsConnectorCrossAccountAccessArgs']]):
         pulumi.set(self, "cross_account_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="equalJitterBackoffStrategy")
-    def equal_jitter_backoff_strategy(self) -> Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']]:
+    def equal_jitter_backoff_strategy(self) -> pulumi.Input[Optional['AwsConnectorEqualJitterBackoffStrategyArgs']]:
         """
         Equal Jitter BackOff Strategy.
         """
         return pulumi.get(self, "equal_jitter_backoff_strategy")
 
     @equal_jitter_backoff_strategy.setter
-    def equal_jitter_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']]):
+    def equal_jitter_backoff_strategy(self, value: pulumi.Input[Optional['AwsConnectorEqualJitterBackoffStrategyArgs']]):
         pulumi.set(self, "equal_jitter_backoff_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag to execute on Delegate
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedDelayBackoffStrategy")
-    def fixed_delay_backoff_strategy(self) -> Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']]:
+    def fixed_delay_backoff_strategy(self) -> pulumi.Input[Optional['AwsConnectorFixedDelayBackoffStrategyArgs']]:
         """
         Fixed Delay BackOff Strategy.
         """
         return pulumi.get(self, "fixed_delay_backoff_strategy")
 
     @fixed_delay_backoff_strategy.setter
-    def fixed_delay_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']]):
+    def fixed_delay_backoff_strategy(self, value: pulumi.Input[Optional['AwsConnectorFixedDelayBackoffStrategyArgs']]):
         pulumi.set(self, "fixed_delay_backoff_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag for force deletion of connector
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="fullJitterBackoffStrategy")
-    def full_jitter_backoff_strategy(self) -> Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']]:
+    def full_jitter_backoff_strategy(self) -> pulumi.Input[Optional['AwsConnectorFullJitterBackoffStrategyArgs']]:
         """
         Full Jitter BackOff Strategy.
         """
         return pulumi.get(self, "full_jitter_backoff_strategy")
 
     @full_jitter_backoff_strategy.setter
-    def full_jitter_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']]):
+    def full_jitter_backoff_strategy(self, value: pulumi.Input[Optional['AwsConnectorFullJitterBackoffStrategyArgs']]):
         pulumi.set(self, "full_jitter_backoff_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="inheritFromDelegate")
-    def inherit_from_delegate(self) -> Optional[pulumi.Input['AwsConnectorInheritFromDelegateArgs']]:
+    def inherit_from_delegate(self) -> pulumi.Input[Optional['AwsConnectorInheritFromDelegateArgs']]:
         """
         Inherit credentials from the delegate.
         """
         return pulumi.get(self, "inherit_from_delegate")
 
     @inherit_from_delegate.setter
-    def inherit_from_delegate(self, value: Optional[pulumi.Input['AwsConnectorInheritFromDelegateArgs']]):
+    def inherit_from_delegate(self, value: pulumi.Input[Optional['AwsConnectorInheritFromDelegateArgs']]):
         pulumi.set(self, "inherit_from_delegate", value)
 
     @_builtins.property
     @pulumi.getter
-    def irsa(self) -> Optional[pulumi.Input['AwsConnectorIrsaArgs']]:
+    def irsa(self) -> pulumi.Input[Optional['AwsConnectorIrsaArgs']]:
         """
         Use IAM role for service accounts.
         """
         return pulumi.get(self, "irsa")
 
     @irsa.setter
-    def irsa(self, value: Optional[pulumi.Input['AwsConnectorIrsaArgs']]):
+    def irsa(self, value: pulumi.Input[Optional['AwsConnectorIrsaArgs']]):
         pulumi.set(self, "irsa", value)
 
     @_builtins.property
     @pulumi.getter
-    def manual(self) -> Optional[pulumi.Input['AwsConnectorManualArgs']]:
+    def manual(self) -> pulumi.Input[Optional['AwsConnectorManualArgs']]:
         """
         Use IAM role for service accounts.
         """
         return pulumi.get(self, "manual")
 
     @manual.setter
-    def manual(self, value: Optional[pulumi.Input['AwsConnectorManualArgs']]):
+    def manual(self, value: pulumi.Input[Optional['AwsConnectorManualArgs']]):
         pulumi.set(self, "manual", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcAuthentication")
-    def oidc_authentication(self) -> Optional[pulumi.Input['AwsConnectorOidcAuthenticationArgs']]:
+    def oidc_authentication(self) -> pulumi.Input[Optional['AwsConnectorOidcAuthenticationArgs']]:
         """
         Authentication using harness oidc.
         """
         return pulumi.get(self, "oidc_authentication")
 
     @oidc_authentication.setter
-    def oidc_authentication(self, value: Optional[pulumi.Input['AwsConnectorOidcAuthenticationArgs']]):
+    def oidc_authentication(self, value: pulumi.Input[Optional['AwsConnectorOidcAuthenticationArgs']]):
         pulumi.set(self, "oidc_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _AwsConnectorState:
     def __init__(__self__, *,
-                 cross_account_access: Optional[pulumi.Input['AwsConnectorCrossAccountAccessArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 equal_jitter_backoff_strategy: Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fixed_delay_backoff_strategy: Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full_jitter_backoff_strategy: Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 inherit_from_delegate: Optional[pulumi.Input['AwsConnectorInheritFromDelegateArgs']] = None,
-                 irsa: Optional[pulumi.Input['AwsConnectorIrsaArgs']] = None,
-                 manual: Optional[pulumi.Input['AwsConnectorManualArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_authentication: Optional[pulumi.Input['AwsConnectorOidcAuthenticationArgs']] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cross_account_access: pulumi.Input[Optional['AwsConnectorCrossAccountAccessArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 equal_jitter_backoff_strategy: pulumi.Input[Optional['AwsConnectorEqualJitterBackoffStrategyArgs']] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fixed_delay_backoff_strategy: pulumi.Input[Optional['AwsConnectorFixedDelayBackoffStrategyArgs']] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full_jitter_backoff_strategy: pulumi.Input[Optional['AwsConnectorFullJitterBackoffStrategyArgs']] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 inherit_from_delegate: pulumi.Input[Optional['AwsConnectorInheritFromDelegateArgs']] = None,
+                 irsa: pulumi.Input[Optional['AwsConnectorIrsaArgs']] = None,
+                 manual: pulumi.Input[Optional['AwsConnectorManualArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_authentication: pulumi.Input[Optional['AwsConnectorOidcAuthenticationArgs']] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AwsConnector resources.
 
@@ -356,194 +356,194 @@ class _AwsConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="crossAccountAccess")
-    def cross_account_access(self) -> Optional[pulumi.Input['AwsConnectorCrossAccountAccessArgs']]:
+    def cross_account_access(self) -> pulumi.Input[Optional['AwsConnectorCrossAccountAccessArgs']]:
         """
         Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
         """
         return pulumi.get(self, "cross_account_access")
 
     @cross_account_access.setter
-    def cross_account_access(self, value: Optional[pulumi.Input['AwsConnectorCrossAccountAccessArgs']]):
+    def cross_account_access(self, value: pulumi.Input[Optional['AwsConnectorCrossAccountAccessArgs']]):
         pulumi.set(self, "cross_account_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="equalJitterBackoffStrategy")
-    def equal_jitter_backoff_strategy(self) -> Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']]:
+    def equal_jitter_backoff_strategy(self) -> pulumi.Input[Optional['AwsConnectorEqualJitterBackoffStrategyArgs']]:
         """
         Equal Jitter BackOff Strategy.
         """
         return pulumi.get(self, "equal_jitter_backoff_strategy")
 
     @equal_jitter_backoff_strategy.setter
-    def equal_jitter_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']]):
+    def equal_jitter_backoff_strategy(self, value: pulumi.Input[Optional['AwsConnectorEqualJitterBackoffStrategyArgs']]):
         pulumi.set(self, "equal_jitter_backoff_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag to execute on Delegate
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedDelayBackoffStrategy")
-    def fixed_delay_backoff_strategy(self) -> Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']]:
+    def fixed_delay_backoff_strategy(self) -> pulumi.Input[Optional['AwsConnectorFixedDelayBackoffStrategyArgs']]:
         """
         Fixed Delay BackOff Strategy.
         """
         return pulumi.get(self, "fixed_delay_backoff_strategy")
 
     @fixed_delay_backoff_strategy.setter
-    def fixed_delay_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']]):
+    def fixed_delay_backoff_strategy(self, value: pulumi.Input[Optional['AwsConnectorFixedDelayBackoffStrategyArgs']]):
         pulumi.set(self, "fixed_delay_backoff_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag for force deletion of connector
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="fullJitterBackoffStrategy")
-    def full_jitter_backoff_strategy(self) -> Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']]:
+    def full_jitter_backoff_strategy(self) -> pulumi.Input[Optional['AwsConnectorFullJitterBackoffStrategyArgs']]:
         """
         Full Jitter BackOff Strategy.
         """
         return pulumi.get(self, "full_jitter_backoff_strategy")
 
     @full_jitter_backoff_strategy.setter
-    def full_jitter_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']]):
+    def full_jitter_backoff_strategy(self, value: pulumi.Input[Optional['AwsConnectorFullJitterBackoffStrategyArgs']]):
         pulumi.set(self, "full_jitter_backoff_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="inheritFromDelegate")
-    def inherit_from_delegate(self) -> Optional[pulumi.Input['AwsConnectorInheritFromDelegateArgs']]:
+    def inherit_from_delegate(self) -> pulumi.Input[Optional['AwsConnectorInheritFromDelegateArgs']]:
         """
         Inherit credentials from the delegate.
         """
         return pulumi.get(self, "inherit_from_delegate")
 
     @inherit_from_delegate.setter
-    def inherit_from_delegate(self, value: Optional[pulumi.Input['AwsConnectorInheritFromDelegateArgs']]):
+    def inherit_from_delegate(self, value: pulumi.Input[Optional['AwsConnectorInheritFromDelegateArgs']]):
         pulumi.set(self, "inherit_from_delegate", value)
 
     @_builtins.property
     @pulumi.getter
-    def irsa(self) -> Optional[pulumi.Input['AwsConnectorIrsaArgs']]:
+    def irsa(self) -> pulumi.Input[Optional['AwsConnectorIrsaArgs']]:
         """
         Use IAM role for service accounts.
         """
         return pulumi.get(self, "irsa")
 
     @irsa.setter
-    def irsa(self, value: Optional[pulumi.Input['AwsConnectorIrsaArgs']]):
+    def irsa(self, value: pulumi.Input[Optional['AwsConnectorIrsaArgs']]):
         pulumi.set(self, "irsa", value)
 
     @_builtins.property
     @pulumi.getter
-    def manual(self) -> Optional[pulumi.Input['AwsConnectorManualArgs']]:
+    def manual(self) -> pulumi.Input[Optional['AwsConnectorManualArgs']]:
         """
         Use IAM role for service accounts.
         """
         return pulumi.get(self, "manual")
 
     @manual.setter
-    def manual(self, value: Optional[pulumi.Input['AwsConnectorManualArgs']]):
+    def manual(self, value: pulumi.Input[Optional['AwsConnectorManualArgs']]):
         pulumi.set(self, "manual", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcAuthentication")
-    def oidc_authentication(self) -> Optional[pulumi.Input['AwsConnectorOidcAuthenticationArgs']]:
+    def oidc_authentication(self) -> pulumi.Input[Optional['AwsConnectorOidcAuthenticationArgs']]:
         """
         Authentication using harness oidc.
         """
         return pulumi.get(self, "oidc_authentication")
 
     @oidc_authentication.setter
-    def oidc_authentication(self, value: Optional[pulumi.Input['AwsConnectorOidcAuthenticationArgs']]):
+    def oidc_authentication(self, value: pulumi.Input[Optional['AwsConnectorOidcAuthenticationArgs']]):
         pulumi.set(self, "oidc_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -553,22 +553,22 @@ class AwsConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cross_account_access: Optional[pulumi.Input[Union['AwsConnectorCrossAccountAccessArgs', 'AwsConnectorCrossAccountAccessArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 equal_jitter_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorEqualJitterBackoffStrategyArgs', 'AwsConnectorEqualJitterBackoffStrategyArgsDict']]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fixed_delay_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorFixedDelayBackoffStrategyArgs', 'AwsConnectorFixedDelayBackoffStrategyArgsDict']]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full_jitter_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorFullJitterBackoffStrategyArgs', 'AwsConnectorFullJitterBackoffStrategyArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 inherit_from_delegate: Optional[pulumi.Input[Union['AwsConnectorInheritFromDelegateArgs', 'AwsConnectorInheritFromDelegateArgsDict']]] = None,
-                 irsa: Optional[pulumi.Input[Union['AwsConnectorIrsaArgs', 'AwsConnectorIrsaArgsDict']]] = None,
-                 manual: Optional[pulumi.Input[Union['AwsConnectorManualArgs', 'AwsConnectorManualArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_authentication: Optional[pulumi.Input[Union['AwsConnectorOidcAuthenticationArgs', 'AwsConnectorOidcAuthenticationArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cross_account_access: pulumi.Input[Optional[Union['AwsConnectorCrossAccountAccessArgs', 'AwsConnectorCrossAccountAccessArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 equal_jitter_backoff_strategy: pulumi.Input[Optional[Union['AwsConnectorEqualJitterBackoffStrategyArgs', 'AwsConnectorEqualJitterBackoffStrategyArgsDict']]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fixed_delay_backoff_strategy: pulumi.Input[Optional[Union['AwsConnectorFixedDelayBackoffStrategyArgs', 'AwsConnectorFixedDelayBackoffStrategyArgsDict']]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full_jitter_backoff_strategy: pulumi.Input[Optional[Union['AwsConnectorFullJitterBackoffStrategyArgs', 'AwsConnectorFullJitterBackoffStrategyArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 inherit_from_delegate: pulumi.Input[Optional[Union['AwsConnectorInheritFromDelegateArgs', 'AwsConnectorInheritFromDelegateArgsDict']]] = None,
+                 irsa: pulumi.Input[Optional[Union['AwsConnectorIrsaArgs', 'AwsConnectorIrsaArgsDict']]] = None,
+                 manual: pulumi.Input[Optional[Union['AwsConnectorManualArgs', 'AwsConnectorManualArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_authentication: pulumi.Input[Optional[Union['AwsConnectorOidcAuthenticationArgs', 'AwsConnectorOidcAuthenticationArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for creating an AWS connector.
@@ -662,22 +662,22 @@ class AwsConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cross_account_access: Optional[pulumi.Input[Union['AwsConnectorCrossAccountAccessArgs', 'AwsConnectorCrossAccountAccessArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 equal_jitter_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorEqualJitterBackoffStrategyArgs', 'AwsConnectorEqualJitterBackoffStrategyArgsDict']]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fixed_delay_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorFixedDelayBackoffStrategyArgs', 'AwsConnectorFixedDelayBackoffStrategyArgsDict']]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full_jitter_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorFullJitterBackoffStrategyArgs', 'AwsConnectorFullJitterBackoffStrategyArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 inherit_from_delegate: Optional[pulumi.Input[Union['AwsConnectorInheritFromDelegateArgs', 'AwsConnectorInheritFromDelegateArgsDict']]] = None,
-                 irsa: Optional[pulumi.Input[Union['AwsConnectorIrsaArgs', 'AwsConnectorIrsaArgsDict']]] = None,
-                 manual: Optional[pulumi.Input[Union['AwsConnectorManualArgs', 'AwsConnectorManualArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_authentication: Optional[pulumi.Input[Union['AwsConnectorOidcAuthenticationArgs', 'AwsConnectorOidcAuthenticationArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cross_account_access: pulumi.Input[Optional[Union['AwsConnectorCrossAccountAccessArgs', 'AwsConnectorCrossAccountAccessArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 equal_jitter_backoff_strategy: pulumi.Input[Optional[Union['AwsConnectorEqualJitterBackoffStrategyArgs', 'AwsConnectorEqualJitterBackoffStrategyArgsDict']]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fixed_delay_backoff_strategy: pulumi.Input[Optional[Union['AwsConnectorFixedDelayBackoffStrategyArgs', 'AwsConnectorFixedDelayBackoffStrategyArgsDict']]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full_jitter_backoff_strategy: pulumi.Input[Optional[Union['AwsConnectorFullJitterBackoffStrategyArgs', 'AwsConnectorFullJitterBackoffStrategyArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 inherit_from_delegate: pulumi.Input[Optional[Union['AwsConnectorInheritFromDelegateArgs', 'AwsConnectorInheritFromDelegateArgsDict']]] = None,
+                 irsa: pulumi.Input[Optional[Union['AwsConnectorIrsaArgs', 'AwsConnectorIrsaArgsDict']]] = None,
+                 manual: pulumi.Input[Optional[Union['AwsConnectorManualArgs', 'AwsConnectorManualArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_authentication: pulumi.Input[Optional[Union['AwsConnectorOidcAuthenticationArgs', 'AwsConnectorOidcAuthenticationArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -715,22 +715,22 @@ class AwsConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cross_account_access: Optional[pulumi.Input[Union['AwsConnectorCrossAccountAccessArgs', 'AwsConnectorCrossAccountAccessArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            equal_jitter_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorEqualJitterBackoffStrategyArgs', 'AwsConnectorEqualJitterBackoffStrategyArgsDict']]] = None,
-            execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-            fixed_delay_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorFixedDelayBackoffStrategyArgs', 'AwsConnectorFixedDelayBackoffStrategyArgsDict']]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            full_jitter_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorFullJitterBackoffStrategyArgs', 'AwsConnectorFullJitterBackoffStrategyArgsDict']]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            inherit_from_delegate: Optional[pulumi.Input[Union['AwsConnectorInheritFromDelegateArgs', 'AwsConnectorInheritFromDelegateArgsDict']]] = None,
-            irsa: Optional[pulumi.Input[Union['AwsConnectorIrsaArgs', 'AwsConnectorIrsaArgsDict']]] = None,
-            manual: Optional[pulumi.Input[Union['AwsConnectorManualArgs', 'AwsConnectorManualArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oidc_authentication: Optional[pulumi.Input[Union['AwsConnectorOidcAuthenticationArgs', 'AwsConnectorOidcAuthenticationArgsDict']]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AwsConnector':
+            cross_account_access: pulumi.Input[Optional[Union['AwsConnectorCrossAccountAccessArgs', 'AwsConnectorCrossAccountAccessArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            equal_jitter_backoff_strategy: pulumi.Input[Optional[Union['AwsConnectorEqualJitterBackoffStrategyArgs', 'AwsConnectorEqualJitterBackoffStrategyArgsDict']]] = None,
+            execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+            fixed_delay_backoff_strategy: pulumi.Input[Optional[Union['AwsConnectorFixedDelayBackoffStrategyArgs', 'AwsConnectorFixedDelayBackoffStrategyArgsDict']]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            full_jitter_backoff_strategy: pulumi.Input[Optional[Union['AwsConnectorFullJitterBackoffStrategyArgs', 'AwsConnectorFullJitterBackoffStrategyArgsDict']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            inherit_from_delegate: pulumi.Input[Optional[Union['AwsConnectorInheritFromDelegateArgs', 'AwsConnectorInheritFromDelegateArgsDict']]] = None,
+            irsa: pulumi.Input[Optional[Union['AwsConnectorIrsaArgs', 'AwsConnectorIrsaArgsDict']]] = None,
+            manual: pulumi.Input[Optional[Union['AwsConnectorManualArgs', 'AwsConnectorManualArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc_authentication: pulumi.Input[Optional[Union['AwsConnectorOidcAuthenticationArgs', 'AwsConnectorOidcAuthenticationArgsDict']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AwsConnector':
         """
         Get an existing AwsConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

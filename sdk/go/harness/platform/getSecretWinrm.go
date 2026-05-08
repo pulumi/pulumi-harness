@@ -52,13 +52,13 @@ import (
 //				return err
 //			}
 //			ctx.Export("winrmPort", example.Port)
-//			var tmp0 string
-//			if length > 0 {
-//				tmp0 = "NTLM"
-//			} else {
-//				tmp0 = "Kerberos"
-//			}
 //			ctx.Export("winrmAuthType", len(example.Ntlms).ApplyT(func(length int) (string, error) {
+//				var tmp0 string
+//				if length > 0 {
+//					tmp0 = "NTLM"
+//				} else {
+//					tmp0 = "Kerberos"
+//				}
 //				return tmp0, nil
 //			}).(pulumi.StringOutput))
 //			return nil

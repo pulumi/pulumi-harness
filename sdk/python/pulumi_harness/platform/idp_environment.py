@@ -26,10 +26,10 @@ class IdpEnvironmentArgs:
                  overrides: pulumi.Input[_builtins.str],
                  owner: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 based_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 inputs: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 based_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 inputs: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a IdpEnvironment resource.
 
@@ -147,67 +147,67 @@ class IdpEnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="basedOn")
-    def based_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def based_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Based on environment reference. This should be passed as \\n\\n.\\n\\n/\\n\\n
         """
         return pulumi.get(self, "based_on")
 
     @based_on.setter
-    def based_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def based_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "based_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inputs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional inputs for controlling the environment in YAML format
         """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inputs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inputs", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="targetState")
-    def target_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         target state of the environment. If different from the current, a pipeline will be triggered to update the environment
         """
         return pulumi.get(self, "target_state")
 
     @target_state.setter
-    def target_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_state", value)
 
 
 @pulumi.input_type
 class _IdpEnvironmentState:
     def __init__(__self__, *,
-                 based_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 blueprint_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 blueprint_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 inputs: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 overrides: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 based_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 blueprint_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 blueprint_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 inputs: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 overrides: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IdpEnvironment resources.
 
@@ -248,134 +248,134 @@ class _IdpEnvironmentState:
 
     @_builtins.property
     @pulumi.getter(name="basedOn")
-    def based_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def based_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Based on environment reference. This should be passed as \\n\\n.\\n\\n/\\n\\n
         """
         return pulumi.get(self, "based_on")
 
     @based_on.setter
-    def based_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def based_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "based_on", value)
 
     @_builtins.property
     @pulumi.getter(name="blueprintIdentifier")
-    def blueprint_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def blueprint_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Blueprint to base the environment on
         """
         return pulumi.get(self, "blueprint_identifier")
 
     @blueprint_identifier.setter
-    def blueprint_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def blueprint_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "blueprint_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="blueprintVersion")
-    def blueprint_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def blueprint_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version of the blueprint to base the environment on
         """
         return pulumi.get(self, "blueprint_version")
 
     @blueprint_version.setter
-    def blueprint_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def blueprint_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "blueprint_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inputs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional inputs for controlling the environment in YAML format
         """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inputs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inputs", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def overrides(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def overrides(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides for environment blueprint inputs in YAML format
         """
         return pulumi.get(self, "overrides")
 
     @overrides.setter
-    def overrides(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def overrides(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "overrides", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Owner of the environment
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetState")
-    def target_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         target state of the environment. If different from the current, a pipeline will be triggered to update the environment
         """
         return pulumi.get(self, "target_state")
 
     @target_state.setter
-    def target_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_state", value)
 
 
@@ -385,17 +385,17 @@ class IdpEnvironment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 based_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 blueprint_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 blueprint_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 inputs: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 overrides: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_state: Optional[pulumi.Input[_builtins.str]] = None,
+                 based_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 blueprint_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 blueprint_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 inputs: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 overrides: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating IDP environments.
@@ -504,17 +504,17 @@ class IdpEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 based_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 blueprint_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 blueprint_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 inputs: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 overrides: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_state: Optional[pulumi.Input[_builtins.str]] = None,
+                 based_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 blueprint_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 blueprint_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 inputs: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 overrides: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -559,17 +559,17 @@ class IdpEnvironment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            based_on: Optional[pulumi.Input[_builtins.str]] = None,
-            blueprint_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            blueprint_version: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            inputs: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            overrides: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            target_state: Optional[pulumi.Input[_builtins.str]] = None) -> 'IdpEnvironment':
+            based_on: pulumi.Input[Optional[_builtins.str]] = None,
+            blueprint_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            blueprint_version: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            inputs: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            overrides: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_state: pulumi.Input[Optional[_builtins.str]] = None) -> 'IdpEnvironment':
         """
         Get an existing IdpEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

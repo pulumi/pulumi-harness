@@ -282,11 +282,11 @@ def get_connector_custom_secret_manager(delegate_selectors: Optional[Sequence[_b
         type=pulumi.get(__ret__, 'type'),
         version_label=pulumi.get(__ret__, 'version_label'),
         working_directory=pulumi.get(__ret__, 'working_directory'))
-def get_connector_custom_secret_manager_output(delegate_selectors: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                               identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                               name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_connector_custom_secret_manager_output(delegate_selectors: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                               identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorCustomSecretManagerResult]:
     """
     Datasource for looking up a Custom Secret Manager connector.

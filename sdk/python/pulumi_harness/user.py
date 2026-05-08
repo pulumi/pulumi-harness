@@ -20,8 +20,8 @@ __all__ = ['UserArgs', 'User']
 class UserArgs:
     def __init__(__self__, *,
                  email: pulumi.Input[_builtins.str],
-                 group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
 
@@ -49,40 +49,40 @@ class UserArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupIds")
-    def group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = ["group_ids"] }`.
         """
         return pulumi.get(self, "group_ids")
 
     @group_ids.setter
-    def group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_email_verified: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_imported_from_identity_provider: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_password_expired: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_two_factor_auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_user_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 is_email_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_imported_from_identity_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_password_expired: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_two_factor_auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_user_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
 
@@ -114,98 +114,98 @@ class _UserState:
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the user.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="groupIds")
-    def group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = ["group_ids"] }`.
         """
         return pulumi.get(self, "group_ids")
 
     @group_ids.setter
-    def group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="isEmailVerified")
-    def is_email_verified(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_email_verified(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag indicating whether or not the users email has been verified.
         """
         return pulumi.get(self, "is_email_verified")
 
     @is_email_verified.setter
-    def is_email_verified(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_email_verified(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_email_verified", value)
 
     @_builtins.property
     @pulumi.getter(name="isImportedFromIdentityProvider")
-    def is_imported_from_identity_provider(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_imported_from_identity_provider(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag indicating whether or not the user was imported from an identity provider.
         """
         return pulumi.get(self, "is_imported_from_identity_provider")
 
     @is_imported_from_identity_provider.setter
-    def is_imported_from_identity_provider(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_imported_from_identity_provider(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_imported_from_identity_provider", value)
 
     @_builtins.property
     @pulumi.getter(name="isPasswordExpired")
-    def is_password_expired(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_password_expired(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag indicating whether or not the users password has expired.
         """
         return pulumi.get(self, "is_password_expired")
 
     @is_password_expired.setter
-    def is_password_expired(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_password_expired(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_password_expired", value)
 
     @_builtins.property
     @pulumi.getter(name="isTwoFactorAuthEnabled")
-    def is_two_factor_auth_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_two_factor_auth_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag indicating whether or not two-factor authentication is enabled for the user.
         """
         return pulumi.get(self, "is_two_factor_auth_enabled")
 
     @is_two_factor_auth_enabled.setter
-    def is_two_factor_auth_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_two_factor_auth_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_two_factor_auth_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="isUserLocked")
-    def is_user_locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_user_locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag indicating whether or not the user is locked out.
         """
         return pulumi.get(self, "is_user_locked")
 
     @is_user_locked.setter
-    def is_user_locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_user_locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_user_locked", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -215,9 +215,9 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Harness user
@@ -296,9 +296,9 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -328,14 +328,14 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            is_email_verified: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_imported_from_identity_provider: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_password_expired: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_two_factor_auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_user_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'User':
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_email_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_imported_from_identity_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_password_expired: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_two_factor_auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_user_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

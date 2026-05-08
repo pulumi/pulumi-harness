@@ -23,9 +23,9 @@ class GitOpsRepoCertArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[_builtins.str],
                  requests: pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GitOpsRepoCert resource.
 
@@ -74,49 +74,49 @@ class GitOpsRepoCertArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
 @pulumi.input_type
 class _GitOpsRepoCertState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 requests: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]]] = None):
         """
         Input properties used for looking up and filtering GitOpsRepoCert resources.
 
@@ -143,62 +143,62 @@ class _GitOpsRepoCertState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Agent identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "agent_id")
 
     @agent_id.setter
-    def agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def requests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]]]:
+    def requests(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]]]:
         """
         Repository Certificate create/update request.
         """
         return pulumi.get(self, "requests")
 
     @requests.setter
-    def requests(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]]]):
+    def requests(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]]]):
         pulumi.set(self, "requests", value)
 
 
@@ -208,11 +208,11 @@ class GitOpsRepoCert(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 requests: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for managing a Harness Gitops Repository Certificate. You can only create 1 instance per agent which has all the certificates of this resource.
@@ -341,11 +341,11 @@ class GitOpsRepoCert(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 requests: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -374,11 +374,11 @@ class GitOpsRepoCert(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            requests: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict']]]]] = None) -> 'GitOpsRepoCert':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict']]]]] = None) -> 'GitOpsRepoCert':
         """
         Get an existing GitOpsRepoCert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

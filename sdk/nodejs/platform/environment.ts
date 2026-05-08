@@ -242,47 +242,47 @@ export interface EnvironmentState {
     /**
      * Color of the environment.
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable this flag for force deletion of environments
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    gitDetails?: pulumi.Input<inputs.platform.EnvironmentGitDetails>;
+    gitDetails?: pulumi.Input<inputs.platform.EnvironmentGitDetails | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of environment. Valid values are PreProduction, Production
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    yaml?: pulumi.Input<string>;
+    yaml?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -292,39 +292,39 @@ export interface EnvironmentArgs {
     /**
      * Color of the environment.
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable this flag for force deletion of environments
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    gitDetails?: pulumi.Input<inputs.platform.EnvironmentGitDetails>;
+    gitDetails?: pulumi.Input<inputs.platform.EnvironmentGitDetails | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of environment. Valid values are PreProduction, Production
      */
@@ -332,5 +332,5 @@ export interface EnvironmentArgs {
     /**
      * Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    yaml?: pulumi.Input<string>;
+    yaml?: pulumi.Input<string | undefined>;
 }

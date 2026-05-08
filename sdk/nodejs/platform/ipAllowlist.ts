@@ -141,39 +141,39 @@ export interface IpAllowlistState {
     /**
      * List of sources to allow. Valid values are `UI` and `API`.
      */
-    allowedSourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedSourceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Creation timestamp for the config.
      */
-    created?: pulumi.Input<number>;
+    created?: pulumi.Input<number | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the allowlist config is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * CIDR range or IP address to allow.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Last update timestamp for the config.
      */
-    updated?: pulumi.Input<number>;
+    updated?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -183,15 +183,15 @@ export interface IpAllowlistArgs {
     /**
      * List of sources to allow. Valid values are `UI` and `API`.
      */
-    allowedSourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedSourceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the allowlist config is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -203,9 +203,9 @@ export interface IpAllowlistArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

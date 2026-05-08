@@ -239,10 +239,10 @@ def get_service_now_connector(identifier: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         username=pulumi.get(__ret__, 'username'),
         username_ref=pulumi.get(__ret__, 'username_ref'))
-def get_service_now_connector_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                     name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_service_now_connector_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                     name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceNowConnectorResult]:
     """
     Datasource for looking up a Service Now connector.

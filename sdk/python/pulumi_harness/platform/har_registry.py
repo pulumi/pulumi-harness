@@ -25,10 +25,10 @@ class HarRegistryArgs:
                  package_type: pulumi.Input[_builtins.str],
                  parent_ref: pulumi.Input[_builtins.str],
                  space_ref: pulumi.Input[_builtins.str],
-                 allowed_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 blocked_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 blocked_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input['HarRegistryConfigArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HarRegistry resource.
 
@@ -104,66 +104,66 @@ class HarRegistryArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedPatterns")
-    def allowed_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed artifact patterns
         """
         return pulumi.get(self, "allowed_patterns")
 
     @allowed_patterns.setter
-    def allowed_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="blockedPatterns")
-    def blocked_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def blocked_patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Blocked artifact patterns
         """
         return pulumi.get(self, "blocked_patterns")
 
     @blocked_patterns.setter
-    def blocked_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def blocked_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blocked_patterns", value)
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]:
+    def configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]:
         """
         Configuration for the registry
         """
         return pulumi.get(self, "configs")
 
     @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]):
+    def configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]):
         pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the registry
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _HarRegistryState:
     def __init__(__self__, *,
-                 allowed_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 blocked_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 space_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 blocked_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input['HarRegistryConfigArgs']]]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 space_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HarRegistry resources.
 
@@ -201,122 +201,122 @@ class _HarRegistryState:
 
     @_builtins.property
     @pulumi.getter(name="allowedPatterns")
-    def allowed_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed artifact patterns
         """
         return pulumi.get(self, "allowed_patterns")
 
     @allowed_patterns.setter
-    def allowed_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="blockedPatterns")
-    def blocked_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def blocked_patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Blocked artifact patterns
         """
         return pulumi.get(self, "blocked_patterns")
 
     @blocked_patterns.setter
-    def blocked_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def blocked_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blocked_patterns", value)
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]:
+    def configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]:
         """
         Configuration for the registry
         """
         return pulumi.get(self, "configs")
 
     @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]):
+    def configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]):
         pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the registry
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the registry
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="packageType")
-    def package_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of package (DOCKER, HELM, MAVEN, etc.)
         """
         return pulumi.get(self, "package_type")
 
     @package_type.setter
-    def package_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_type", value)
 
     @_builtins.property
     @pulumi.getter(name="parentRef")
-    def parent_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parent reference for the registry (required for creation)
         """
         return pulumi.get(self, "parent_ref")
 
     @parent_ref.setter
-    def parent_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="spaceRef")
-    def space_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def space_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Space reference for the registry (required for creation)
         """
         return pulumi.get(self, "space_ref")
 
     @space_ref.setter
-    def space_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def space_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "space_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the registry
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -326,14 +326,14 @@ class HarRegistry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 blocked_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 space_ref: Optional[pulumi.Input[_builtins.str]] = None,
+                 allowed_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 blocked_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 space_ref: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating and managing Harness Registries.
@@ -513,14 +513,14 @@ class HarRegistry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 blocked_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 space_ref: Optional[pulumi.Input[_builtins.str]] = None,
+                 allowed_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 blocked_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 space_ref: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -558,16 +558,16 @@ class HarRegistry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allowed_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            blocked_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            package_type: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            space_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'HarRegistry':
+            allowed_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            blocked_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            package_type: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            space_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'HarRegistry':
         """
         Get an existing HarRegistry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

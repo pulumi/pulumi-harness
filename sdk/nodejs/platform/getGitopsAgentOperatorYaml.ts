@@ -134,7 +134,7 @@ export interface GetGitopsAgentOperatorYamlOutputArgs {
     /**
      * CA data of the GitOps agent, base64 encoded content of ca chain.
      */
-    caData?: pulumi.Input<string>;
+    caData?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the GitOps agent.
      */
@@ -146,21 +146,21 @@ export interface GetGitopsAgentOperatorYamlOutputArgs {
     /**
      * Organization identifier of the GitOps agent.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps agent.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Proxy settings for the GitOps agent.
      */
-    proxies?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsAgentOperatorYamlProxyArgs>[]>;
+    proxies?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsAgentOperatorYamlProxyArgs>[] | undefined>;
     /**
      * Skip CRDs for the GitOps agent.
      */
-    skipCrds?: pulumi.Input<boolean>;
+    skipCrds?: pulumi.Input<boolean | undefined>;
 }

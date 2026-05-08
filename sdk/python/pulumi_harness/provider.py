@@ -19,10 +19,10 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform_api_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform_api_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -50,50 +50,50 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
-    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
         """
         return pulumi.get(self, "api_key")
 
     @api_key.setter
-    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="platformApiKey")
-    def platform_api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform_api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
         """
         return pulumi.get(self, "platform_api_key")
 
     @platform_api_key.setter
-    def platform_api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform_api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform_api_key", value)
 
 
@@ -103,10 +103,10 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform_api_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform_api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the harness package. By default, resources use package-wide configuration
@@ -150,10 +150,10 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform_api_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform_api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

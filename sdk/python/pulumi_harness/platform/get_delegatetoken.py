@@ -213,11 +213,11 @@ def get_delegatetoken(account_id: Optional[_builtins.str] = None,
         revoke_after=pulumi.get(__ret__, 'revoke_after'),
         token_status=pulumi.get(__ret__, 'token_status'),
         value=pulumi.get(__ret__, 'value'))
-def get_delegatetoken_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             name: Optional[pulumi.Input[_builtins.str]] = None,
-                             org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             token_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_delegatetoken_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             name: pulumi.Input[Optional[_builtins.str]] = None,
+                             org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             token_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDelegatetokenResult]:
     """
     Data source for retrieving a Harness delegate Token.

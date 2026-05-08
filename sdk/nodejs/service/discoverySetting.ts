@@ -120,27 +120,27 @@ export interface DiscoverySettingState {
     /**
      * Correlation ID for the request.
      */
-    correlationId?: pulumi.Input<string>;
+    correlationId?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the setting was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Image registry configuration.
      */
-    imageRegistry?: pulumi.Input<inputs.service.DiscoverySettingImageRegistry>;
+    imageRegistry?: pulumi.Input<inputs.service.DiscoverySettingImageRegistry | undefined>;
     /**
      * The organization identifier.
      */
-    orgIdentifier?: pulumi.Input<string>;
+    orgIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The project identifier.
      */
-    projectIdentifier?: pulumi.Input<string>;
+    projectIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the setting was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -150,17 +150,17 @@ export interface DiscoverySettingArgs {
     /**
      * Correlation ID for the request.
      */
-    correlationId?: pulumi.Input<string>;
+    correlationId?: pulumi.Input<string | undefined>;
     /**
      * Image registry configuration.
      */
-    imageRegistry?: pulumi.Input<inputs.service.DiscoverySettingImageRegistry>;
+    imageRegistry?: pulumi.Input<inputs.service.DiscoverySettingImageRegistry | undefined>;
     /**
      * The organization identifier.
      */
-    orgIdentifier?: pulumi.Input<string>;
+    orgIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The project identifier.
      */
-    projectIdentifier?: pulumi.Input<string>;
+    projectIdentifier?: pulumi.Input<string | undefined>;
 }

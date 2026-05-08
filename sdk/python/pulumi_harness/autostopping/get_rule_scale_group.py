@@ -206,14 +206,14 @@ def get_rule_scale_group(cloud_connector_id: Optional[_builtins.str] = None,
         idle_time_mins=pulumi.get(__ret__, 'idle_time_mins'),
         name=pulumi.get(__ret__, 'name'),
         scale_group=pulumi.get(__ret__, 'scale_group'))
-def get_rule_scale_group_output(cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                custom_domains: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                depends: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleScaleGroupDependArgs', 'GetRuleScaleGroupDependArgsDict']]]]] = None,
-                                dry_run: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                https: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleScaleGroupHttpArgs', 'GetRuleScaleGroupHttpArgsDict']]]]] = None,
-                                idle_time_mins: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                name: Optional[pulumi.Input[_builtins.str]] = None,
-                                scale_group: Optional[pulumi.Input[Union['GetRuleScaleGroupScaleGroupArgs', 'GetRuleScaleGroupScaleGroupArgsDict']]] = None,
+def get_rule_scale_group_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                custom_domains: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleScaleGroupDependArgs', 'GetRuleScaleGroupDependArgsDict']]]]] = None,
+                                dry_run: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                https: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleScaleGroupHttpArgs', 'GetRuleScaleGroupHttpArgsDict']]]]] = None,
+                                idle_time_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                name: pulumi.Input[Optional[_builtins.str]] = None,
+                                scale_group: pulumi.Input[Optional[Union['GetRuleScaleGroupScaleGroupArgs', 'GetRuleScaleGroupScaleGroupArgsDict']]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleScaleGroupResult]:
     """
     Data source for retrieving a Harness AutoStopping rule for Scaling Groups.

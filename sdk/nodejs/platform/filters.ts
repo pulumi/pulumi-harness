@@ -159,31 +159,31 @@ export interface FiltersState {
     /**
      * Properties of the filter entity defined in Harness.
      */
-    filterProperties?: pulumi.Input<inputs.platform.FiltersFilterProperties>;
+    filterProperties?: pulumi.Input<inputs.platform.FiltersFilterProperties | undefined>;
     /**
      * This indicates visibility of filter. By default, everyone can view this filter. Can either be EveryOne or OnlyCreator
      */
-    filterVisibility?: pulumi.Input<string>;
+    filterVisibility?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the Filter
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * organization Identifier for the Entity
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * project Identifier for the Entity
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Type of filter. Currently supported types are {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,7 +197,7 @@ export interface FiltersArgs {
     /**
      * This indicates visibility of filter. By default, everyone can view this filter. Can either be EveryOne or OnlyCreator
      */
-    filterVisibility?: pulumi.Input<string>;
+    filterVisibility?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource
      */
@@ -205,15 +205,15 @@ export interface FiltersArgs {
     /**
      * Name of the Filter
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * organization Identifier for the Entity
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * project Identifier for the Entity
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Type of filter. Currently supported types are {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
      */

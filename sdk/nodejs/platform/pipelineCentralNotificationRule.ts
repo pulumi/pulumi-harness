@@ -207,35 +207,35 @@ export interface PipelineCentralNotificationRuleState {
     /**
      * Account identifier associated with this notification channel.
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the notification rule was created.
      */
-    created?: pulumi.Input<number>;
-    customNotificationTemplateRef?: pulumi.Input<inputs.platform.PipelineCentralNotificationRuleCustomNotificationTemplateRef>;
-    identifier?: pulumi.Input<string>;
+    created?: pulumi.Input<number | undefined>;
+    customNotificationTemplateRef?: pulumi.Input<inputs.platform.PipelineCentralNotificationRuleCustomNotificationTemplateRef | undefined>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the notification rule was last modified.
      */
-    lastModified?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    notificationChannelRefs?: pulumi.Input<pulumi.Input<string>[]>;
-    notificationConditions?: pulumi.Input<pulumi.Input<inputs.platform.PipelineCentralNotificationRuleNotificationCondition>[]>;
-    org?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    lastModified?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    notificationChannelRefs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    notificationConditions?: pulumi.Input<pulumi.Input<inputs.platform.PipelineCentralNotificationRuleNotificationCondition>[] | undefined>;
+    org?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a PipelineCentralNotificationRule resource.
  */
 export interface PipelineCentralNotificationRuleArgs {
-    customNotificationTemplateRef?: pulumi.Input<inputs.platform.PipelineCentralNotificationRuleCustomNotificationTemplateRef>;
+    customNotificationTemplateRef?: pulumi.Input<inputs.platform.PipelineCentralNotificationRuleCustomNotificationTemplateRef | undefined>;
     identifier: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     notificationChannelRefs: pulumi.Input<pulumi.Input<string>[]>;
     notificationConditions: pulumi.Input<pulumi.Input<inputs.platform.PipelineCentralNotificationRuleNotificationCondition>[]>;
-    org?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    org?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }

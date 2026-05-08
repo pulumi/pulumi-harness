@@ -231,7 +231,7 @@ import * as utilities from "../utilities";
  *             {
  *                 identity: "pod-status-check",
  *                 name: "pod-status-probe",
- *                 revision: "v1",
+ *                 revision: Number("v1"),
  *                 isEnterprise: true,
  *                 duration: "30",
  *                 weightage: 10,
@@ -249,7 +249,7 @@ import * as utilities from "../utilities";
  *             {
  *                 identity: "http-health-check",
  *                 name: "http-health-probe",
- *                 revision: "v1",
+ *                 revision: Number("v1"),
  *                 isEnterprise: true,
  *                 duration: "30",
  *                 weightage: 10,
@@ -488,51 +488,51 @@ export interface ExperimentTemplateState {
     /**
      * API version of the experiment template
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * Description of the experiment template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Hub identifier where the template is stored
      */
-    hubIdentity?: pulumi.Input<string>;
+    hubIdentity?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for the experiment template
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * Whether this is a default template
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Kind of the experiment template
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Name of the experiment template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Revision of the experiment template
      */
-    revision?: pulumi.Input<string>;
+    revision?: pulumi.Input<string | undefined>;
     /**
      * Specification of the experiment template
      */
-    spec?: pulumi.Input<inputs.chaos.ExperimentTemplateSpec>;
+    spec?: pulumi.Input<inputs.chaos.ExperimentTemplateSpec | undefined>;
     /**
      * Tags associated with the experiment template
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -542,7 +542,7 @@ export interface ExperimentTemplateArgs {
     /**
      * Description of the experiment template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Hub identifier where the template is stored
      */
@@ -554,15 +554,15 @@ export interface ExperimentTemplateArgs {
     /**
      * Name of the experiment template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Specification of the experiment template
      */
@@ -570,5 +570,5 @@ export interface ExperimentTemplateArgs {
     /**
      * Tags associated with the experiment template
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

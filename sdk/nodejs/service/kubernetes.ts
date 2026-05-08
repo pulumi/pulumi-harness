@@ -136,23 +136,23 @@ export interface KubernetesState {
     /**
      * The id of the application the service belongs to
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Description of th service
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `type` is `KUBERNETES` or `HELM`.
      */
-    helmVersion?: pulumi.Input<string>;
+    helmVersion?: pulumi.Input<string | undefined>;
     /**
      * Name of the service
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.service.KubernetesVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.KubernetesVariable>[] | undefined>;
 }
 
 /**
@@ -166,17 +166,17 @@ export interface KubernetesArgs {
     /**
      * Description of th service
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `type` is `KUBERNETES` or `HELM`.
      */
-    helmVersion?: pulumi.Input<string>;
+    helmVersion?: pulumi.Input<string | undefined>;
     /**
      * Name of the service
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.service.KubernetesVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.KubernetesVariable>[] | undefined>;
 }

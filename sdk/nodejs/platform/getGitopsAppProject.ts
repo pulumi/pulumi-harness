@@ -120,7 +120,7 @@ export interface GetGitopsAppProjectOutputArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the agent where argo project resides(include scope prefix)
      */
@@ -128,13 +128,13 @@ export interface GetGitopsAppProjectOutputArgs {
     /**
      * Org identifier of the GitOps Agent where argo project resides.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the Gitops Agent where argo project resides.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Identifier for the GitOps Argo project.
      */
-    queryName?: pulumi.Input<string>;
+    queryName?: pulumi.Input<string | undefined>;
 }

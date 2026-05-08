@@ -23,14 +23,14 @@ class RuleVmArgs:
     def __init__(__self__, *,
                  cloud_connector_id: pulumi.Input[_builtins.str],
                  filter: pulumi.Input['RuleVmFilterArgs'],
-                 custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmDependArgs']]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 https: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmHttpArgs']]]] = None,
-                 idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcps: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmTcpArgs']]]] = None,
-                 use_spot: Optional[pulumi.Input[_builtins.bool]] = None):
+                 custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmDependArgs']]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 https: pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmHttpArgs']]]] = None,
+                 idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcps: pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmTcpArgs']]]] = None,
+                 use_spot: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RuleVm resource.
 
@@ -86,116 +86,116 @@ class RuleVmArgs:
 
     @_builtins.property
     @pulumi.getter(name="customDomains")
-    def custom_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Custom URLs used to access the instances
         """
         return pulumi.get(self, "custom_domains")
 
     @custom_domains.setter
-    def custom_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_domains", value)
 
     @_builtins.property
     @pulumi.getter
-    def depends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmDependArgs']]]]:
+    def depends(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmDependArgs']]]]:
         """
         Dependent rules
         """
         return pulumi.get(self, "depends")
 
     @depends.setter
-    def depends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmDependArgs']]]]):
+    def depends(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmDependArgs']]]]):
         pulumi.set(self, "depends", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def https(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmHttpArgs']]]]:
+    def https(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmHttpArgs']]]]:
         """
         Http routing configuration
         """
         return pulumi.get(self, "https")
 
     @https.setter
-    def https(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmHttpArgs']]]]):
+    def https(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmHttpArgs']]]]):
         pulumi.set(self, "https", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeMins")
-    def idle_time_mins(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_time_mins(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         """
         return pulumi.get(self, "idle_time_mins")
 
     @idle_time_mins.setter
-    def idle_time_mins(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_time_mins(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_time_mins", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the rule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tcps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmTcpArgs']]]]:
+    def tcps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmTcpArgs']]]]:
         """
         TCP routing configuration
         """
         return pulumi.get(self, "tcps")
 
     @tcps.setter
-    def tcps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmTcpArgs']]]]):
+    def tcps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmTcpArgs']]]]):
         pulumi.set(self, "tcps", value)
 
     @_builtins.property
     @pulumi.getter(name="useSpot")
-    def use_spot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_spot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether the selected instances should be converted to spot vm
         """
         return pulumi.get(self, "use_spot")
 
     @use_spot.setter
-    def use_spot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_spot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_spot", value)
 
 
 @pulumi.input_type
 class _RuleVmState:
     def __init__(__self__, *,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connect: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmDependArgs']]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter: Optional[pulumi.Input['RuleVmFilterArgs']] = None,
-                 https: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmHttpArgs']]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcps: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmTcpArgs']]]] = None,
-                 use_spot: Optional[pulumi.Input[_builtins.bool]] = None):
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connect: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmDependArgs']]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional['RuleVmFilterArgs']] = None,
+                 https: pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmHttpArgs']]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcps: pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmTcpArgs']]]] = None,
+                 use_spot: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering RuleVm resources.
 
@@ -238,143 +238,143 @@ class _RuleVmState:
 
     @_builtins.property
     @pulumi.getter(name="cloudConnectorId")
-    def cloud_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the cloud connector
         """
         return pulumi.get(self, "cloud_connector_id")
 
     @cloud_connector_id.setter
-    def cloud_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_connector_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def connect(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]:
+    def connect(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]:
         """
         Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
         """
         return pulumi.get(self, "connect")
 
     @connect.setter
-    def connect(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]):
+    def connect(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "connect", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomains")
-    def custom_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Custom URLs used to access the instances
         """
         return pulumi.get(self, "custom_domains")
 
     @custom_domains.setter
-    def custom_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_domains", value)
 
     @_builtins.property
     @pulumi.getter
-    def depends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmDependArgs']]]]:
+    def depends(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmDependArgs']]]]:
         """
         Dependent rules
         """
         return pulumi.get(self, "depends")
 
     @depends.setter
-    def depends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmDependArgs']]]]):
+    def depends(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmDependArgs']]]]):
         pulumi.set(self, "depends", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['RuleVmFilterArgs']]:
+    def filter(self) -> pulumi.Input[Optional['RuleVmFilterArgs']]:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['RuleVmFilterArgs']]):
+    def filter(self, value: pulumi.Input[Optional['RuleVmFilterArgs']]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def https(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmHttpArgs']]]]:
+    def https(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmHttpArgs']]]]:
         """
         Http routing configuration
         """
         return pulumi.get(self, "https")
 
     @https.setter
-    def https(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmHttpArgs']]]]):
+    def https(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmHttpArgs']]]]):
         pulumi.set(self, "https", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeMins")
-    def idle_time_mins(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_time_mins(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         """
         return pulumi.get(self, "idle_time_mins")
 
     @idle_time_mins.setter
-    def idle_time_mins(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_time_mins(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_time_mins", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the rule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tcps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmTcpArgs']]]]:
+    def tcps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmTcpArgs']]]]:
         """
         TCP routing configuration
         """
         return pulumi.get(self, "tcps")
 
     @tcps.setter
-    def tcps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmTcpArgs']]]]):
+    def tcps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmTcpArgs']]]]):
         pulumi.set(self, "tcps", value)
 
     @_builtins.property
     @pulumi.getter(name="useSpot")
-    def use_spot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_spot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether the selected instances should be converted to spot vm
         """
         return pulumi.get(self, "use_spot")
 
     @use_spot.setter
-    def use_spot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_spot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_spot", value)
 
 
@@ -384,16 +384,16 @@ class RuleVm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict']]] = None,
-                 https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]]] = None,
-                 idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmTcpArgs', 'RuleVmTcpArgsDict']]]]] = None,
-                 use_spot: Optional[pulumi.Input[_builtins.bool]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict']]] = None,
+                 https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]]] = None,
+                 idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleVmTcpArgs', 'RuleVmTcpArgsDict']]]]] = None,
+                 use_spot: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Resource for creating a AutoStopping rule for VMs.
@@ -556,16 +556,16 @@ class RuleVm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict']]] = None,
-                 https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]]] = None,
-                 idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmTcpArgs', 'RuleVmTcpArgsDict']]]]] = None,
-                 use_spot: Optional[pulumi.Input[_builtins.bool]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict']]] = None,
+                 https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]]] = None,
+                 idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleVmTcpArgs', 'RuleVmTcpArgsDict']]]]] = None,
+                 use_spot: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -601,18 +601,18 @@ class RuleVm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            connect: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-            custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            filter: Optional[pulumi.Input[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict']]] = None,
-            https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            idle_time_mins: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmTcpArgs', 'RuleVmTcpArgsDict']]]]] = None,
-            use_spot: Optional[pulumi.Input[_builtins.bool]] = None) -> 'RuleVm':
+            cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connect: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+            custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            filter: pulumi.Input[Optional[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict']]] = None,
+            https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tcps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleVmTcpArgs', 'RuleVmTcpArgsDict']]]]] = None,
+            use_spot: pulumi.Input[Optional[_builtins.bool]] = None) -> 'RuleVm':
         """
         Get an existing RuleVm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

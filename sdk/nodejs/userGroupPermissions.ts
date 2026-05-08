@@ -87,15 +87,15 @@ export interface UserGroupPermissionsState {
     /**
      * The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
      */
-    accountPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    accountPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Application specific permissions
      */
-    appPermissions?: pulumi.Input<inputs.UserGroupPermissionsAppPermissions>;
+    appPermissions?: pulumi.Input<inputs.UserGroupPermissionsAppPermissions | undefined>;
     /**
      * Unique identifier of the user group.
      */
-    userGroupId?: pulumi.Input<string>;
+    userGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -105,11 +105,11 @@ export interface UserGroupPermissionsArgs {
     /**
      * The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
      */
-    accountPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    accountPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Application specific permissions
      */
-    appPermissions?: pulumi.Input<inputs.UserGroupPermissionsAppPermissions>;
+    appPermissions?: pulumi.Input<inputs.UserGroupPermissionsAppPermissions | undefined>;
     /**
      * Unique identifier of the user group.
      */

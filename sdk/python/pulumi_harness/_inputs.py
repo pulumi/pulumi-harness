@@ -106,15 +106,15 @@ __all__ = [
 ]
 
 class EncryptedTextUsageScopeArgsDict(TypedDict):
-    application_id: NotRequired[pulumi.Input[_builtins.str]]
+    application_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the application to scope to. If empty then this scope applies to all applications.
     """
-    environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
+    environment_filter_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
     """
-    environment_id: NotRequired[pulumi.Input[_builtins.str]]
+    environment_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
     """
@@ -122,9 +122,9 @@ class EncryptedTextUsageScopeArgsDict(TypedDict):
 @pulumi.input_type
 class EncryptedTextUsageScopeArgs:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_filter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_filter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] application_id: Id of the application to scope to. If empty then this scope applies to all applications.
         :param pulumi.Input[_builtins.str] environment_filter_type: Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
@@ -139,38 +139,38 @@ class EncryptedTextUsageScopeArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the application to scope to. If empty then this scope applies to all applications.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentFilterType")
-    def environment_filter_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_filter_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
         """
         return pulumi.get(self, "environment_filter_type")
 
     @environment_filter_type.setter
-    def environment_filter_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_filter_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_filter_type", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
 
@@ -187,7 +187,7 @@ class EnvironmentVariableOverrideArgsDict(TypedDict):
     """
     The value of the service variable
     """
-    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    service_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the service
     """
@@ -198,7 +198,7 @@ class EnvironmentVariableOverrideArgs:
                  name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the variable
         :param pulumi.Input[_builtins.str] type: The type of the service variable. Valid values are `TEXT` and `ENCRYPTED_TEXT`
@@ -249,27 +249,27 @@ class EnvironmentVariableOverrideArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
 
 class GitConnectorCommitDetailsArgsDict(TypedDict):
-    author_email_id: NotRequired[pulumi.Input[_builtins.str]]
+    author_email_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The email id of the author
     """
-    author_name: NotRequired[pulumi.Input[_builtins.str]]
+    author_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the author
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Commit message
     """
@@ -277,9 +277,9 @@ class GitConnectorCommitDetailsArgsDict(TypedDict):
 @pulumi.input_type
 class GitConnectorCommitDetailsArgs:
     def __init__(__self__, *,
-                 author_email_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 author_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 author_email_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 author_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] author_email_id: The email id of the author
         :param pulumi.Input[_builtins.str] author_name: The name of the author
@@ -294,51 +294,51 @@ class GitConnectorCommitDetailsArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorEmailId")
-    def author_email_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_email_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email id of the author
         """
         return pulumi.get(self, "author_email_id")
 
     @author_email_id.setter
-    def author_email_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_email_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_email_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authorName")
-    def author_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the author
         """
         return pulumi.get(self, "author_name")
 
     @author_name.setter
-    def author_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Commit message
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class GitConnectorUsageScopeArgsDict(TypedDict):
-    application_id: NotRequired[pulumi.Input[_builtins.str]]
+    application_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the application to scope to. If empty then this scope applies to all applications.
     """
-    environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
+    environment_filter_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
     """
-    environment_id: NotRequired[pulumi.Input[_builtins.str]]
+    environment_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
     """
@@ -346,9 +346,9 @@ class GitConnectorUsageScopeArgsDict(TypedDict):
 @pulumi.input_type
 class GitConnectorUsageScopeArgs:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_filter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_filter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] application_id: Id of the application to scope to. If empty then this scope applies to all applications.
         :param pulumi.Input[_builtins.str] environment_filter_type: Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
@@ -363,38 +363,38 @@ class GitConnectorUsageScopeArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the application to scope to. If empty then this scope applies to all applications.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentFilterType")
-    def environment_filter_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_filter_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
         """
         return pulumi.get(self, "environment_filter_type")
 
     @environment_filter_type.setter
-    def environment_filter_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_filter_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_filter_type", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
 
@@ -411,43 +411,43 @@ class InfrastructureDefinitionAwsAmiArgsDict(TypedDict):
     """
     The region to deploy to.
     """
-    asg_identifies_workload: NotRequired[pulumi.Input[_builtins.bool]]
+    asg_identifies_workload: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Flag to indicate whether the autoscaling group identifies the workload.
     """
-    autoscaling_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    autoscaling_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the autoscaling group.
     """
-    classic_loadbalancers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    classic_loadbalancers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The classic load balancers to use.
     """
-    hostname_convention: NotRequired[pulumi.Input[_builtins.str]]
+    hostname_convention: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The naming convention to use for the hostname. Defaults to ${host.ec2Instance.privateDnsName.split('.')[0]}
     """
-    spotinst_cloud_provider_name: NotRequired[pulumi.Input[_builtins.str]]
+    spotinst_cloud_provider_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the SpotInst cloud provider to connect with.
     """
-    spotinst_config_json: NotRequired[pulumi.Input[_builtins.str]]
+    spotinst_config_json: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The SpotInst configuration to use.
     """
-    stage_classic_loadbalancers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    stage_classic_loadbalancers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The staging classic load balancers to use.
     """
-    stage_target_group_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    stage_target_group_arns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The staging classic load balancers to use.
     """
-    target_group_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    target_group_arns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The ARN's of the target groups.
     """
-    use_traffic_shift: NotRequired[pulumi.Input[_builtins.bool]]
+    use_traffic_shift: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Flag to enable traffic shifting.
     """
@@ -458,16 +458,16 @@ class InfrastructureDefinitionAwsAmiArgs:
                  ami_deployment_type: pulumi.Input[_builtins.str],
                  cloud_provider_name: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 asg_identifies_workload: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autoscaling_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 classic_loadbalancers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hostname_convention: Optional[pulumi.Input[_builtins.str]] = None,
-                 spotinst_cloud_provider_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 spotinst_config_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 stage_classic_loadbalancers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 stage_target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_traffic_shift: Optional[pulumi.Input[_builtins.bool]] = None):
+                 asg_identifies_workload: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autoscaling_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 classic_loadbalancers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hostname_convention: pulumi.Input[Optional[_builtins.str]] = None,
+                 spotinst_cloud_provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 spotinst_config_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 stage_classic_loadbalancers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 stage_target_group_arns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_group_arns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_traffic_shift: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] ami_deployment_type: The ami deployment type to use. Valid options are AWS_ASG, SPOTINST
         :param pulumi.Input[_builtins.str] cloud_provider_name: The name of the cloud provider to connect with.
@@ -545,122 +545,122 @@ class InfrastructureDefinitionAwsAmiArgs:
 
     @_builtins.property
     @pulumi.getter(name="asgIdentifiesWorkload")
-    def asg_identifies_workload(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def asg_identifies_workload(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to indicate whether the autoscaling group identifies the workload.
         """
         return pulumi.get(self, "asg_identifies_workload")
 
     @asg_identifies_workload.setter
-    def asg_identifies_workload(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def asg_identifies_workload(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "asg_identifies_workload", value)
 
     @_builtins.property
     @pulumi.getter(name="autoscalingGroupName")
-    def autoscaling_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def autoscaling_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the autoscaling group.
         """
         return pulumi.get(self, "autoscaling_group_name")
 
     @autoscaling_group_name.setter
-    def autoscaling_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def autoscaling_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "autoscaling_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="classicLoadbalancers")
-    def classic_loadbalancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def classic_loadbalancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The classic load balancers to use.
         """
         return pulumi.get(self, "classic_loadbalancers")
 
     @classic_loadbalancers.setter
-    def classic_loadbalancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def classic_loadbalancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "classic_loadbalancers", value)
 
     @_builtins.property
     @pulumi.getter(name="hostnameConvention")
-    def hostname_convention(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname_convention(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The naming convention to use for the hostname. Defaults to ${host.ec2Instance.privateDnsName.split('.')[0]}
         """
         return pulumi.get(self, "hostname_convention")
 
     @hostname_convention.setter
-    def hostname_convention(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname_convention(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname_convention", value)
 
     @_builtins.property
     @pulumi.getter(name="spotinstCloudProviderName")
-    def spotinst_cloud_provider_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spotinst_cloud_provider_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the SpotInst cloud provider to connect with.
         """
         return pulumi.get(self, "spotinst_cloud_provider_name")
 
     @spotinst_cloud_provider_name.setter
-    def spotinst_cloud_provider_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spotinst_cloud_provider_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spotinst_cloud_provider_name", value)
 
     @_builtins.property
     @pulumi.getter(name="spotinstConfigJson")
-    def spotinst_config_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spotinst_config_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SpotInst configuration to use.
         """
         return pulumi.get(self, "spotinst_config_json")
 
     @spotinst_config_json.setter
-    def spotinst_config_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spotinst_config_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spotinst_config_json", value)
 
     @_builtins.property
     @pulumi.getter(name="stageClassicLoadbalancers")
-    def stage_classic_loadbalancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def stage_classic_loadbalancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The staging classic load balancers to use.
         """
         return pulumi.get(self, "stage_classic_loadbalancers")
 
     @stage_classic_loadbalancers.setter
-    def stage_classic_loadbalancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def stage_classic_loadbalancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "stage_classic_loadbalancers", value)
 
     @_builtins.property
     @pulumi.getter(name="stageTargetGroupArns")
-    def stage_target_group_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def stage_target_group_arns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The staging classic load balancers to use.
         """
         return pulumi.get(self, "stage_target_group_arns")
 
     @stage_target_group_arns.setter
-    def stage_target_group_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def stage_target_group_arns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "stage_target_group_arns", value)
 
     @_builtins.property
     @pulumi.getter(name="targetGroupArns")
-    def target_group_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_group_arns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ARN's of the target groups.
         """
         return pulumi.get(self, "target_group_arns")
 
     @target_group_arns.setter
-    def target_group_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_group_arns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_group_arns", value)
 
     @_builtins.property
     @pulumi.getter(name="useTrafficShift")
-    def use_traffic_shift(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_traffic_shift(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to enable traffic shifting.
         """
         return pulumi.get(self, "use_traffic_shift")
 
     @use_traffic_shift.setter
-    def use_traffic_shift(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_traffic_shift(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_traffic_shift", value)
 
 
@@ -681,23 +681,23 @@ class InfrastructureDefinitionAwsEcsArgsDict(TypedDict):
     """
     The region to deploy to.
     """
-    assign_public_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    assign_public_ip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Flag to assign a public IP address.
     """
-    execution_role: NotRequired[pulumi.Input[_builtins.str]]
+    execution_role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ARN of the role to use for execution.
     """
-    security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    security_group_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The security group ids to apply to the ecs service.
     """
-    subnet_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    subnet_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The subnet ids to apply to the ecs service.
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VPC ids to use when selecting the instances.
     """
@@ -709,11 +709,11 @@ class InfrastructureDefinitionAwsEcsArgs:
                  cluster_name: pulumi.Input[_builtins.str],
                  launch_type: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 assign_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 execution_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 assign_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 execution_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cloud_provider_name: The name of the cloud provider to connect with.
         :param pulumi.Input[_builtins.str] cluster_name: The name of the ECS cluster to use.
@@ -790,62 +790,62 @@ class InfrastructureDefinitionAwsEcsArgs:
 
     @_builtins.property
     @pulumi.getter(name="assignPublicIp")
-    def assign_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def assign_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to assign a public IP address.
         """
         return pulumi.get(self, "assign_public_ip")
 
     @assign_public_ip.setter
-    def assign_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def assign_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "assign_public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="executionRole")
-    def execution_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the role to use for execution.
         """
         return pulumi.get(self, "execution_role")
 
     @execution_role.setter
-    def execution_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_role", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The security group ids to apply to the ecs service.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subnet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The subnet ids to apply to the ecs service.
         """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
-    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subnet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subnet_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ids to use when selecting the instances.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -858,19 +858,19 @@ class InfrastructureDefinitionAwsLambdaArgsDict(TypedDict):
     """
     The region to deploy to.
     """
-    iam_role: NotRequired[pulumi.Input[_builtins.str]]
+    iam_role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IAM role to use.
     """
-    security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    security_group_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The security group ids to apply to the ecs service.
     """
-    subnet_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    subnet_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The subnet ids to apply to the ecs service.
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VPC ids to use when selecting the instances.
     """
@@ -880,10 +880,10 @@ class InfrastructureDefinitionAwsLambdaArgs:
     def __init__(__self__, *,
                  cloud_provider_name: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 iam_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 iam_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cloud_provider_name: The name of the cloud provider to connect with.
         :param pulumi.Input[_builtins.str] region: The region to deploy to.
@@ -929,50 +929,50 @@ class InfrastructureDefinitionAwsLambdaArgs:
 
     @_builtins.property
     @pulumi.getter(name="iamRole")
-    def iam_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IAM role to use.
         """
         return pulumi.get(self, "iam_role")
 
     @iam_role.setter
-    def iam_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_role", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The security group ids to apply to the ecs service.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subnet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The subnet ids to apply to the ecs service.
         """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
-    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subnet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subnet_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ids to use when selecting the instances.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -989,31 +989,31 @@ class InfrastructureDefinitionAwsSshArgsDict(TypedDict):
     """
     The region to deploy to.
     """
-    autoscaling_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    autoscaling_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the autoscaling group.
     """
-    desired_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    desired_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The desired capacity of the auto scaling group.
     """
-    host_connection_attrs_name: NotRequired[pulumi.Input[_builtins.str]]
+    host_connection_attrs_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the host connection attributes to use.
     """
-    hostname_convention: NotRequired[pulumi.Input[_builtins.str]]
+    hostname_convention: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The naming convention to use for the hostname. Defaults to ${host.ec2Instance.privateDnsName.split('.')[0]}
     """
-    loadbalancer_name: NotRequired[pulumi.Input[_builtins.str]]
+    loadbalancer_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the load balancer to use.
     """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionAwsSshTagArgsDict']]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureDefinitionAwsSshTagArgs']]]]]
     """
     The tags to use when selecting the instances.
     """
-    vpc_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    vpc_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The VPC ids to use when selecting the instances.
     """
@@ -1024,13 +1024,13 @@ class InfrastructureDefinitionAwsSshArgs:
                  cloud_provider_name: pulumi.Input[_builtins.str],
                  host_connection_type: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 autoscaling_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_connection_attrs_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname_convention: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionAwsSshTagArgs']]]] = None,
-                 vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 autoscaling_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_connection_attrs_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname_convention: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureDefinitionAwsSshTagArgs']]]] = None,
+                 vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] cloud_provider_name: The name of the cloud provider to connect with.
         :param pulumi.Input[_builtins.str] host_connection_type: The type of host connection to use. Valid options are PRIVATE*DNS, PUBLIC*DNS, PRIVATE*IP, PUBLIC*IP
@@ -1099,86 +1099,86 @@ class InfrastructureDefinitionAwsSshArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoscalingGroupName")
-    def autoscaling_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def autoscaling_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the autoscaling group.
         """
         return pulumi.get(self, "autoscaling_group_name")
 
     @autoscaling_group_name.setter
-    def autoscaling_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def autoscaling_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "autoscaling_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The desired capacity of the auto scaling group.
         """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="hostConnectionAttrsName")
-    def host_connection_attrs_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_connection_attrs_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the host connection attributes to use.
         """
         return pulumi.get(self, "host_connection_attrs_name")
 
     @host_connection_attrs_name.setter
-    def host_connection_attrs_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_connection_attrs_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_connection_attrs_name", value)
 
     @_builtins.property
     @pulumi.getter(name="hostnameConvention")
-    def hostname_convention(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname_convention(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The naming convention to use for the hostname. Defaults to ${host.ec2Instance.privateDnsName.split('.')[0]}
         """
         return pulumi.get(self, "hostname_convention")
 
     @hostname_convention.setter
-    def hostname_convention(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname_convention(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname_convention", value)
 
     @_builtins.property
     @pulumi.getter(name="loadbalancerName")
-    def loadbalancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loadbalancer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the load balancer to use.
         """
         return pulumi.get(self, "loadbalancer_name")
 
     @loadbalancer_name.setter
-    def loadbalancer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loadbalancer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loadbalancer_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionAwsSshTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureDefinitionAwsSshTagArgs']]]]:
         """
         The tags to use when selecting the instances.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionAwsSshTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureDefinitionAwsSshTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcIds")
-    def vpc_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vpc_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The VPC ids to use when selecting the instances.
         """
         return pulumi.get(self, "vpc_ids")
 
     @vpc_ids.setter
-    def vpc_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vpc_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vpc_ids", value)
 
 
@@ -1250,15 +1250,15 @@ class InfrastructureDefinitionAwsWinrmArgsDict(TypedDict):
     """
     The region to deploy to.
     """
-    desired_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    desired_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The desired capacity of the autoscaling group.
     """
-    hostname_convention: NotRequired[pulumi.Input[_builtins.str]]
+    hostname_convention: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The naming convention to use for the hostname. Defaults to ${host.ec2Instance.privateDnsName.split('.')[0]}
     """
-    loadbalancer_name: NotRequired[pulumi.Input[_builtins.str]]
+    loadbalancer_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the load balancer to use.
     """
@@ -1271,9 +1271,9 @@ class InfrastructureDefinitionAwsWinrmArgs:
                  host_connection_attrs_name: pulumi.Input[_builtins.str],
                  host_connection_type: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 hostname_convention: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 hostname_convention: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] autoscaling_group_name: The name of the autoscaling group.
         :param pulumi.Input[_builtins.str] cloud_provider_name: The name of the cloud provider to connect with.
@@ -1358,38 +1358,38 @@ class InfrastructureDefinitionAwsWinrmArgs:
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The desired capacity of the autoscaling group.
         """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="hostnameConvention")
-    def hostname_convention(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname_convention(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The naming convention to use for the hostname. Defaults to ${host.ec2Instance.privateDnsName.split('.')[0]}
         """
         return pulumi.get(self, "hostname_convention")
 
     @hostname_convention.setter
-    def hostname_convention(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname_convention(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname_convention", value)
 
     @_builtins.property
     @pulumi.getter(name="loadbalancerName")
-    def loadbalancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loadbalancer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the load balancer to use.
         """
         return pulumi.get(self, "loadbalancer_name")
 
     @loadbalancer_name.setter
-    def loadbalancer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loadbalancer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loadbalancer_name", value)
 
 
@@ -1422,7 +1422,7 @@ class InfrastructureDefinitionAzureVmssArgsDict(TypedDict):
     """
     The username to connect with.
     """
-    host_connection_attrs_name: NotRequired[pulumi.Input[_builtins.str]]
+    host_connection_attrs_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the host connection attributes to use.
     """
@@ -1437,7 +1437,7 @@ class InfrastructureDefinitionAzureVmssArgs:
                  resource_group_name: pulumi.Input[_builtins.str],
                  subscription_id: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 host_connection_attrs_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 host_connection_attrs_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_type: The type of authentication to use. Valid options are SSH*PUBLIC*KEY.
         :param pulumi.Input[_builtins.str] base_name: Base name.
@@ -1544,14 +1544,14 @@ class InfrastructureDefinitionAzureVmssArgs:
 
     @_builtins.property
     @pulumi.getter(name="hostConnectionAttrsName")
-    def host_connection_attrs_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_connection_attrs_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the host connection attributes to use.
         """
         return pulumi.get(self, "host_connection_attrs_name")
 
     @host_connection_attrs_name.setter
-    def host_connection_attrs_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_connection_attrs_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_connection_attrs_name", value)
 
 
@@ -1626,7 +1626,7 @@ class InfrastructureDefinitionCustomArgsDict(TypedDict):
     """
     The template version
     """
-    variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgsDict']]]]
+    variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]]]]
     """
     Variables to be used in the service
     """
@@ -1635,7 +1635,7 @@ class InfrastructureDefinitionCustomArgsDict(TypedDict):
 class InfrastructureDefinitionCustomArgs:
     def __init__(__self__, *,
                  deployment_type_template_version: pulumi.Input[_builtins.str],
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]]] = None):
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] deployment_type_template_version: The template version
         :param pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]] variables: Variables to be used in the service
@@ -1658,14 +1658,14 @@ class InfrastructureDefinitionCustomArgs:
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]]]:
         """
         Variables to be used in the service
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
@@ -2070,7 +2070,7 @@ class PlatformCcmFiltersFilterPropertiesArgsDict(TypedDict):
     """
     Type of CCM filters.
     """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Tags to associate with the resource. Tags should be in the form `name:value`.
     """
@@ -2079,7 +2079,7 @@ class PlatformCcmFiltersFilterPropertiesArgsDict(TypedDict):
 class PlatformCcmFiltersFilterPropertiesArgs:
     def __init__(__self__, *,
                  filter_type: pulumi.Input[_builtins.str],
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] filter_type: Type of CCM filters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
@@ -2102,14 +2102,14 @@ class PlatformCcmFiltersFilterPropertiesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -2126,7 +2126,7 @@ class SshCredentialKerberosAuthenticationArgsDict(TypedDict):
     """
     Realm associated with the Kerberos authentication
     """
-    tgt_generation_method: NotRequired[pulumi.Input['SshCredentialKerberosAuthenticationTgtGenerationMethodArgsDict']]
+    tgt_generation_method: NotRequired[pulumi.Input[Optional['SshCredentialKerberosAuthenticationTgtGenerationMethodArgs']]]
     """
     TGT generation method
     """
@@ -2137,7 +2137,7 @@ class SshCredentialKerberosAuthenticationArgs:
                  port: pulumi.Input[_builtins.int],
                  principal: pulumi.Input[_builtins.str],
                  realm: pulumi.Input[_builtins.str],
-                 tgt_generation_method: Optional[pulumi.Input['SshCredentialKerberosAuthenticationTgtGenerationMethodArgs']] = None):
+                 tgt_generation_method: pulumi.Input[Optional['SshCredentialKerberosAuthenticationTgtGenerationMethodArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] port: Port to use for Kerberos authentication
         :param pulumi.Input[_builtins.str] principal: Name of the principal for authentication
@@ -2188,23 +2188,23 @@ class SshCredentialKerberosAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="tgtGenerationMethod")
-    def tgt_generation_method(self) -> Optional[pulumi.Input['SshCredentialKerberosAuthenticationTgtGenerationMethodArgs']]:
+    def tgt_generation_method(self) -> pulumi.Input[Optional['SshCredentialKerberosAuthenticationTgtGenerationMethodArgs']]:
         """
         TGT generation method
         """
         return pulumi.get(self, "tgt_generation_method")
 
     @tgt_generation_method.setter
-    def tgt_generation_method(self, value: Optional[pulumi.Input['SshCredentialKerberosAuthenticationTgtGenerationMethodArgs']]):
+    def tgt_generation_method(self, value: pulumi.Input[Optional['SshCredentialKerberosAuthenticationTgtGenerationMethodArgs']]):
         pulumi.set(self, "tgt_generation_method", value)
 
 
 class SshCredentialKerberosAuthenticationTgtGenerationMethodArgsDict(TypedDict):
-    kerberos_password_id: NotRequired[pulumi.Input[_builtins.str]]
+    kerberos_password_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The id of the encrypted text secret
     """
-    key_tab_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    key_tab_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to the key tab file
     """
@@ -2212,8 +2212,8 @@ class SshCredentialKerberosAuthenticationTgtGenerationMethodArgsDict(TypedDict):
 @pulumi.input_type
 class SshCredentialKerberosAuthenticationTgtGenerationMethodArgs:
     def __init__(__self__, *,
-                 kerberos_password_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_tab_file_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 kerberos_password_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_tab_file_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kerberos_password_id: The id of the encrypted text secret
         :param pulumi.Input[_builtins.str] key_tab_file_path: The path to the key tab file
@@ -2225,26 +2225,26 @@ class SshCredentialKerberosAuthenticationTgtGenerationMethodArgs:
 
     @_builtins.property
     @pulumi.getter(name="kerberosPasswordId")
-    def kerberos_password_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kerberos_password_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the encrypted text secret
         """
         return pulumi.get(self, "kerberos_password_id")
 
     @kerberos_password_id.setter
-    def kerberos_password_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kerberos_password_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kerberos_password_id", value)
 
     @_builtins.property
     @pulumi.getter(name="keyTabFilePath")
-    def key_tab_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_tab_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the key tab file
         """
         return pulumi.get(self, "key_tab_file_path")
 
     @key_tab_file_path.setter
-    def key_tab_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_tab_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_tab_file_path", value)
 
 
@@ -2257,15 +2257,15 @@ class SshCredentialSshAuthenticationArgsDict(TypedDict):
     """
     The username to use when connecting to ssh
     """
-    inline_ssh: NotRequired[pulumi.Input['SshCredentialSshAuthenticationInlineSshArgsDict']]
+    inline_ssh: NotRequired[pulumi.Input[Optional['SshCredentialSshAuthenticationInlineSshArgs']]]
     """
     Inline SSH authentication configuration. Only ond of `passphrase_secret_id` or `ssh_key_file_id` should be used
     """
-    server_password: NotRequired[pulumi.Input['SshCredentialSshAuthenticationServerPasswordArgsDict']]
+    server_password: NotRequired[pulumi.Input[Optional['SshCredentialSshAuthenticationServerPasswordArgs']]]
     """
     Server password authentication configuration
     """
-    ssh_key_file: NotRequired[pulumi.Input['SshCredentialSshAuthenticationSshKeyFileArgsDict']]
+    ssh_key_file: NotRequired[pulumi.Input[Optional['SshCredentialSshAuthenticationSshKeyFileArgs']]]
     """
     Use ssh key file for authentication
     """
@@ -2275,9 +2275,9 @@ class SshCredentialSshAuthenticationArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[_builtins.int],
                  username: pulumi.Input[_builtins.str],
-                 inline_ssh: Optional[pulumi.Input['SshCredentialSshAuthenticationInlineSshArgs']] = None,
-                 server_password: Optional[pulumi.Input['SshCredentialSshAuthenticationServerPasswordArgs']] = None,
-                 ssh_key_file: Optional[pulumi.Input['SshCredentialSshAuthenticationSshKeyFileArgs']] = None):
+                 inline_ssh: pulumi.Input[Optional['SshCredentialSshAuthenticationInlineSshArgs']] = None,
+                 server_password: pulumi.Input[Optional['SshCredentialSshAuthenticationServerPasswordArgs']] = None,
+                 ssh_key_file: pulumi.Input[Optional['SshCredentialSshAuthenticationSshKeyFileArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] port: The port to connect to
         :param pulumi.Input[_builtins.str] username: The username to use when connecting to ssh
@@ -2320,38 +2320,38 @@ class SshCredentialSshAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="inlineSsh")
-    def inline_ssh(self) -> Optional[pulumi.Input['SshCredentialSshAuthenticationInlineSshArgs']]:
+    def inline_ssh(self) -> pulumi.Input[Optional['SshCredentialSshAuthenticationInlineSshArgs']]:
         """
         Inline SSH authentication configuration. Only ond of `passphrase_secret_id` or `ssh_key_file_id` should be used
         """
         return pulumi.get(self, "inline_ssh")
 
     @inline_ssh.setter
-    def inline_ssh(self, value: Optional[pulumi.Input['SshCredentialSshAuthenticationInlineSshArgs']]):
+    def inline_ssh(self, value: pulumi.Input[Optional['SshCredentialSshAuthenticationInlineSshArgs']]):
         pulumi.set(self, "inline_ssh", value)
 
     @_builtins.property
     @pulumi.getter(name="serverPassword")
-    def server_password(self) -> Optional[pulumi.Input['SshCredentialSshAuthenticationServerPasswordArgs']]:
+    def server_password(self) -> pulumi.Input[Optional['SshCredentialSshAuthenticationServerPasswordArgs']]:
         """
         Server password authentication configuration
         """
         return pulumi.get(self, "server_password")
 
     @server_password.setter
-    def server_password(self, value: Optional[pulumi.Input['SshCredentialSshAuthenticationServerPasswordArgs']]):
+    def server_password(self, value: pulumi.Input[Optional['SshCredentialSshAuthenticationServerPasswordArgs']]):
         pulumi.set(self, "server_password", value)
 
     @_builtins.property
     @pulumi.getter(name="sshKeyFile")
-    def ssh_key_file(self) -> Optional[pulumi.Input['SshCredentialSshAuthenticationSshKeyFileArgs']]:
+    def ssh_key_file(self) -> pulumi.Input[Optional['SshCredentialSshAuthenticationSshKeyFileArgs']]:
         """
         Use ssh key file for authentication
         """
         return pulumi.get(self, "ssh_key_file")
 
     @ssh_key_file.setter
-    def ssh_key_file(self, value: Optional[pulumi.Input['SshCredentialSshAuthenticationSshKeyFileArgs']]):
+    def ssh_key_file(self, value: pulumi.Input[Optional['SshCredentialSshAuthenticationSshKeyFileArgs']]):
         pulumi.set(self, "ssh_key_file", value)
 
 
@@ -2360,7 +2360,7 @@ class SshCredentialSshAuthenticationInlineSshArgsDict(TypedDict):
     """
     The id of the secret containing the SSH key
     """
-    passphrase_secret_id: NotRequired[pulumi.Input[_builtins.str]]
+    passphrase_secret_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The id of the encrypted secret to use
     """
@@ -2369,7 +2369,7 @@ class SshCredentialSshAuthenticationInlineSshArgsDict(TypedDict):
 class SshCredentialSshAuthenticationInlineSshArgs:
     def __init__(__self__, *,
                  ssh_key_file_id: pulumi.Input[_builtins.str],
-                 passphrase_secret_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 passphrase_secret_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ssh_key_file_id: The id of the secret containing the SSH key
         :param pulumi.Input[_builtins.str] passphrase_secret_id: The id of the encrypted secret to use
@@ -2392,14 +2392,14 @@ class SshCredentialSshAuthenticationInlineSshArgs:
 
     @_builtins.property
     @pulumi.getter(name="passphraseSecretId")
-    def passphrase_secret_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def passphrase_secret_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the encrypted secret to use
         """
         return pulumi.get(self, "passphrase_secret_id")
 
     @passphrase_secret_id.setter
-    def passphrase_secret_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def passphrase_secret_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "passphrase_secret_id", value)
 
 
@@ -2436,7 +2436,7 @@ class SshCredentialSshAuthenticationSshKeyFileArgsDict(TypedDict):
     """
     The path to the key file on the delegate
     """
-    passphrase_secret_id: NotRequired[pulumi.Input[_builtins.str]]
+    passphrase_secret_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The id of the secret containing the password to use for the ssh key
     """
@@ -2445,7 +2445,7 @@ class SshCredentialSshAuthenticationSshKeyFileArgsDict(TypedDict):
 class SshCredentialSshAuthenticationSshKeyFileArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
-                 passphrase_secret_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 passphrase_secret_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: The path to the key file on the delegate
         :param pulumi.Input[_builtins.str] passphrase_secret_id: The id of the secret containing the password to use for the ssh key
@@ -2468,27 +2468,27 @@ class SshCredentialSshAuthenticationSshKeyFileArgs:
 
     @_builtins.property
     @pulumi.getter(name="passphraseSecretId")
-    def passphrase_secret_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def passphrase_secret_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the secret containing the password to use for the ssh key
         """
         return pulumi.get(self, "passphrase_secret_id")
 
     @passphrase_secret_id.setter
-    def passphrase_secret_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def passphrase_secret_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "passphrase_secret_id", value)
 
 
 class SshCredentialUsageScopeArgsDict(TypedDict):
-    application_id: NotRequired[pulumi.Input[_builtins.str]]
+    application_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the application to scope to. If empty then this scope applies to all applications.
     """
-    environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
+    environment_filter_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
     """
-    environment_id: NotRequired[pulumi.Input[_builtins.str]]
+    environment_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
     """
@@ -2496,9 +2496,9 @@ class SshCredentialUsageScopeArgsDict(TypedDict):
 @pulumi.input_type
 class SshCredentialUsageScopeArgs:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_filter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_filter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] application_id: Id of the application to scope to. If empty then this scope applies to all applications.
         :param pulumi.Input[_builtins.str] environment_filter_type: Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
@@ -2513,51 +2513,51 @@ class SshCredentialUsageScopeArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the application to scope to. If empty then this scope applies to all applications.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentFilterType")
-    def environment_filter_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_filter_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
         """
         return pulumi.get(self, "environment_filter_type")
 
     @environment_filter_type.setter
-    def environment_filter_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_filter_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_filter_type", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
 
 class UserGroupLdapSettingsArgsDict(TypedDict):
-    group_dn: NotRequired[pulumi.Input[_builtins.str]]
+    group_dn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The group DN of the LDAP user group.
     """
-    group_name: NotRequired[pulumi.Input[_builtins.str]]
+    group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The group name of the LDAP user group.
     """
-    sso_provider_id: NotRequired[pulumi.Input[_builtins.str]]
+    sso_provider_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the SSO provider.
     """
@@ -2565,9 +2565,9 @@ class UserGroupLdapSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class UserGroupLdapSettingsArgs:
     def __init__(__self__, *,
-                 group_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_provider_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_provider_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] group_dn: The group DN of the LDAP user group.
         :param pulumi.Input[_builtins.str] group_name: The group name of the LDAP user group.
@@ -2582,63 +2582,63 @@ class UserGroupLdapSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupDn")
-    def group_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group DN of the LDAP user group.
         """
         return pulumi.get(self, "group_dn")
 
     @group_dn.setter
-    def group_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_dn", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group name of the LDAP user group.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ssoProviderId")
-    def sso_provider_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sso_provider_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the SSO provider.
         """
         return pulumi.get(self, "sso_provider_id")
 
     @sso_provider_id.setter
-    def sso_provider_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sso_provider_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sso_provider_id", value)
 
 
 class UserGroupNotificationSettingsArgsDict(TypedDict):
-    group_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    group_email_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The email addresses of the user group.
     """
-    microsoft_teams_webhook_url: NotRequired[pulumi.Input[_builtins.str]]
+    microsoft_teams_webhook_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Microsoft Teams webhook URL of the user group.
     """
-    send_mail_to_new_members: NotRequired[pulumi.Input[_builtins.bool]]
+    send_mail_to_new_members: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether an email is sent when a new user is added to the group.
     """
-    send_notifications_to_members: NotRequired[pulumi.Input[_builtins.bool]]
+    send_notifications_to_members: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable this setting to have notifications sent to the members of this group.
     """
-    slack_channel: NotRequired[pulumi.Input[_builtins.str]]
+    slack_channel: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Slack channel to send notifications to.
     """
-    slack_webhook_url: NotRequired[pulumi.Input[_builtins.str]]
+    slack_webhook_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Slack webhook URL to send notifications to.
     """
@@ -2646,12 +2646,12 @@ class UserGroupNotificationSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class UserGroupNotificationSettingsArgs:
     def __init__(__self__, *,
-                 group_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 microsoft_teams_webhook_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_mail_to_new_members: Optional[pulumi.Input[_builtins.bool]] = None,
-                 send_notifications_to_members: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slack_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_webhook_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_email_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 microsoft_teams_webhook_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_mail_to_new_members: pulumi.Input[Optional[_builtins.bool]] = None,
+                 send_notifications_to_members: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slack_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_webhook_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_email_addresses: The email addresses of the user group.
         :param pulumi.Input[_builtins.str] microsoft_teams_webhook_url: The Microsoft Teams webhook URL of the user group.
@@ -2675,83 +2675,83 @@ class UserGroupNotificationSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupEmailAddresses")
-    def group_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def group_email_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The email addresses of the user group.
         """
         return pulumi.get(self, "group_email_addresses")
 
     @group_email_addresses.setter
-    def group_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def group_email_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_email_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="microsoftTeamsWebhookUrl")
-    def microsoft_teams_webhook_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def microsoft_teams_webhook_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Microsoft Teams webhook URL of the user group.
         """
         return pulumi.get(self, "microsoft_teams_webhook_url")
 
     @microsoft_teams_webhook_url.setter
-    def microsoft_teams_webhook_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def microsoft_teams_webhook_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "microsoft_teams_webhook_url", value)
 
     @_builtins.property
     @pulumi.getter(name="sendMailToNewMembers")
-    def send_mail_to_new_members(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_mail_to_new_members(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether an email is sent when a new user is added to the group.
         """
         return pulumi.get(self, "send_mail_to_new_members")
 
     @send_mail_to_new_members.setter
-    def send_mail_to_new_members(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_mail_to_new_members(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_mail_to_new_members", value)
 
     @_builtins.property
     @pulumi.getter(name="sendNotificationsToMembers")
-    def send_notifications_to_members(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_notifications_to_members(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this setting to have notifications sent to the members of this group.
         """
         return pulumi.get(self, "send_notifications_to_members")
 
     @send_notifications_to_members.setter
-    def send_notifications_to_members(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_notifications_to_members(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_notifications_to_members", value)
 
     @_builtins.property
     @pulumi.getter(name="slackChannel")
-    def slack_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slack_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Slack channel to send notifications to.
         """
         return pulumi.get(self, "slack_channel")
 
     @slack_channel.setter
-    def slack_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slack_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slack_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="slackWebhookUrl")
-    def slack_webhook_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slack_webhook_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Slack webhook URL to send notifications to.
         """
         return pulumi.get(self, "slack_webhook_url")
 
     @slack_webhook_url.setter
-    def slack_webhook_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slack_webhook_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slack_webhook_url", value)
 
 
 class UserGroupPermissionsArgsDict(TypedDict):
-    account_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    account_permissions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
     """
-    app_permissions: NotRequired[pulumi.Input['UserGroupPermissionsAppPermissionsArgsDict']]
+    app_permissions: NotRequired[pulumi.Input[Optional['UserGroupPermissionsAppPermissionsArgs']]]
     """
     Application specific permissions
     """
@@ -2759,8 +2759,8 @@ class UserGroupPermissionsArgsDict(TypedDict):
 @pulumi.input_type
 class UserGroupPermissionsArgs:
     def __init__(__self__, *,
-                 account_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_permissions: Optional[pulumi.Input['UserGroupPermissionsAppPermissionsArgs']] = None):
+                 account_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_permissions: pulumi.Input[Optional['UserGroupPermissionsAppPermissionsArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_permissions: The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
         :param pulumi.Input['UserGroupPermissionsAppPermissionsArgs'] app_permissions: Application specific permissions
@@ -2772,59 +2772,59 @@ class UserGroupPermissionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountPermissions")
-    def account_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def account_permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
         """
         return pulumi.get(self, "account_permissions")
 
     @account_permissions.setter
-    def account_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def account_permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "account_permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="appPermissions")
-    def app_permissions(self) -> Optional[pulumi.Input['UserGroupPermissionsAppPermissionsArgs']]:
+    def app_permissions(self) -> pulumi.Input[Optional['UserGroupPermissionsAppPermissionsArgs']]:
         """
         Application specific permissions
         """
         return pulumi.get(self, "app_permissions")
 
     @app_permissions.setter
-    def app_permissions(self, value: Optional[pulumi.Input['UserGroupPermissionsAppPermissionsArgs']]):
+    def app_permissions(self, value: pulumi.Input[Optional['UserGroupPermissionsAppPermissionsArgs']]):
         pulumi.set(self, "app_permissions", value)
 
 
 class UserGroupPermissionsAppPermissionsArgsDict(TypedDict):
-    alls: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgsDict']]]]
+    alls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgs']]]]]
     """
     The permission to perform actions against all resources.
     """
-    deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgsDict']]]]
+    deployments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgs']]]]]
     """
     Permission configuration to perform actions against deployments.
     """
-    environments: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgsDict']]]]
+    environments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgs']]]]]
     """
     Permission configuration to perform actions against workflows.
     """
-    pipelines: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgsDict']]]]
+    pipelines: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgs']]]]]
     """
     Permission configuration to perform actions against pipelines.
     """
-    provisioners: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgsDict']]]]
+    provisioners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgs']]]]]
     """
     Permission configuration to perform actions against provisioners.
     """
-    services: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgsDict']]]]
+    services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgs']]]]]
     """
     Permission configuration to perform actions against services.
     """
-    templates: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgsDict']]]]
+    templates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgs']]]]]
     """
     Permission configuration to perform actions against templates.
     """
-    workflows: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgsDict']]]]
+    workflows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgs']]]]]
     """
     Permission configuration to perform actions against workflows.
     """
@@ -2832,14 +2832,14 @@ class UserGroupPermissionsAppPermissionsArgsDict(TypedDict):
 @pulumi.input_type
 class UserGroupPermissionsAppPermissionsArgs:
     def __init__(__self__, *,
-                 alls: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgs']]]] = None,
-                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgs']]]] = None,
-                 environments: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgs']]]] = None,
-                 pipelines: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgs']]]] = None,
-                 provisioners: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgs']]]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgs']]]] = None,
-                 templates: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgs']]]] = None,
-                 workflows: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgs']]]] = None):
+                 alls: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgs']]]] = None,
+                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgs']]]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgs']]]] = None,
+                 pipelines: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgs']]]] = None,
+                 provisioners: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgs']]]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgs']]]] = None,
+                 templates: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgs']]]] = None,
+                 workflows: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgs']]] alls: The permission to perform actions against all resources.
         :param pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgs']]] deployments: Permission configuration to perform actions against deployments.
@@ -2869,98 +2869,98 @@ class UserGroupPermissionsAppPermissionsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgs']]]]:
+    def alls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgs']]]]:
         """
         The permission to perform actions against all resources.
         """
         return pulumi.get(self, "alls")
 
     @alls.setter
-    def alls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgs']]]]):
+    def alls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgs']]]]):
         pulumi.set(self, "alls", value)
 
     @_builtins.property
     @pulumi.getter
-    def deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgs']]]]:
+    def deployments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgs']]]]:
         """
         Permission configuration to perform actions against deployments.
         """
         return pulumi.get(self, "deployments")
 
     @deployments.setter
-    def deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgs']]]]):
+    def deployments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgs']]]]):
         pulumi.set(self, "deployments", value)
 
     @_builtins.property
     @pulumi.getter
-    def environments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgs']]]]:
+    def environments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgs']]]]:
         """
         Permission configuration to perform actions against workflows.
         """
         return pulumi.get(self, "environments")
 
     @environments.setter
-    def environments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgs']]]]):
+    def environments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgs']]]]):
         pulumi.set(self, "environments", value)
 
     @_builtins.property
     @pulumi.getter
-    def pipelines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgs']]]]:
+    def pipelines(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgs']]]]:
         """
         Permission configuration to perform actions against pipelines.
         """
         return pulumi.get(self, "pipelines")
 
     @pipelines.setter
-    def pipelines(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgs']]]]):
+    def pipelines(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgs']]]]):
         pulumi.set(self, "pipelines", value)
 
     @_builtins.property
     @pulumi.getter
-    def provisioners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgs']]]]:
+    def provisioners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgs']]]]:
         """
         Permission configuration to perform actions against provisioners.
         """
         return pulumi.get(self, "provisioners")
 
     @provisioners.setter
-    def provisioners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgs']]]]):
+    def provisioners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgs']]]]):
         pulumi.set(self, "provisioners", value)
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgs']]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgs']]]]:
         """
         Permission configuration to perform actions against services.
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgs']]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgs']]]]):
         pulumi.set(self, "services", value)
 
     @_builtins.property
     @pulumi.getter
-    def templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgs']]]]:
+    def templates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgs']]]]:
         """
         Permission configuration to perform actions against templates.
         """
         return pulumi.get(self, "templates")
 
     @templates.setter
-    def templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgs']]]]):
+    def templates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgs']]]]):
         pulumi.set(self, "templates", value)
 
     @_builtins.property
     @pulumi.getter
-    def workflows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgs']]]]:
+    def workflows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgs']]]]:
         """
         Permission configuration to perform actions against workflows.
         """
         return pulumi.get(self, "workflows")
 
     @workflows.setter
-    def workflows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgs']]]]):
+    def workflows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgs']]]]):
         pulumi.set(self, "workflows", value)
 
 
@@ -2969,7 +2969,7 @@ class UserGroupPermissionsAppPermissionsAllArgsDict(TypedDict):
     """
     The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
     """
-    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    app_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The application IDs to which the permission applies. Leave empty to apply to all applications.
     """
@@ -2978,7 +2978,7 @@ class UserGroupPermissionsAppPermissionsAllArgsDict(TypedDict):
 class UserGroupPermissionsAppPermissionsAllArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 app_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_ids: The application IDs to which the permission applies. Leave empty to apply to all applications.
@@ -3001,14 +3001,14 @@ class UserGroupPermissionsAppPermissionsAllArgs:
 
     @_builtins.property
     @pulumi.getter(name="appIds")
-    def app_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def app_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application IDs to which the permission applies. Leave empty to apply to all applications.
         """
         return pulumi.get(self, "app_ids")
 
     @app_ids.setter
-    def app_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def app_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_ids", value)
 
 
@@ -3017,15 +3017,15 @@ class UserGroupPermissionsAppPermissionsDeploymentArgsDict(TypedDict):
     """
     The actions allowed to be performed. Valid options are READ, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK*WORKFLOW, ABORT*WORKFLOW
     """
-    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    app_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The application IDs to which the permission applies. Leave empty to apply to all applications.
     """
-    env_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    env_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The environment IDs to which the permission applies. Leave empty to apply to all environments.
     """
-    filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
     """
@@ -3034,9 +3034,9 @@ class UserGroupPermissionsAppPermissionsDeploymentArgsDict(TypedDict):
 class UserGroupPermissionsAppPermissionsDeploymentArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 env_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 app_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The actions allowed to be performed. Valid options are READ, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK*WORKFLOW, ABORT*WORKFLOW
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_ids: The application IDs to which the permission applies. Leave empty to apply to all applications.
@@ -3065,38 +3065,38 @@ class UserGroupPermissionsAppPermissionsDeploymentArgs:
 
     @_builtins.property
     @pulumi.getter(name="appIds")
-    def app_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def app_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application IDs to which the permission applies. Leave empty to apply to all applications.
         """
         return pulumi.get(self, "app_ids")
 
     @app_ids.setter
-    def app_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def app_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="envIds")
-    def env_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def env_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The environment IDs to which the permission applies. Leave empty to apply to all environments.
         """
         return pulumi.get(self, "env_ids")
 
     @env_ids.setter
-    def env_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def env_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "env_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "filters", value)
 
 
@@ -3105,15 +3105,15 @@ class UserGroupPermissionsAppPermissionsEnvironmentArgsDict(TypedDict):
     """
     The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
     """
-    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    app_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The application IDs to which the permission applies. Leave empty to apply to all applications.
     """
-    env_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    env_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The environment IDs to which the permission applies. Leave empty to apply to all environments.
     """
-    filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
     """
@@ -3122,9 +3122,9 @@ class UserGroupPermissionsAppPermissionsEnvironmentArgsDict(TypedDict):
 class UserGroupPermissionsAppPermissionsEnvironmentArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 env_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 app_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_ids: The application IDs to which the permission applies. Leave empty to apply to all applications.
@@ -3153,38 +3153,38 @@ class UserGroupPermissionsAppPermissionsEnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="appIds")
-    def app_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def app_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application IDs to which the permission applies. Leave empty to apply to all applications.
         """
         return pulumi.get(self, "app_ids")
 
     @app_ids.setter
-    def app_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def app_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="envIds")
-    def env_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def env_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The environment IDs to which the permission applies. Leave empty to apply to all environments.
         """
         return pulumi.get(self, "env_ids")
 
     @env_ids.setter
-    def env_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def env_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "env_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "filters", value)
 
 
@@ -3193,15 +3193,15 @@ class UserGroupPermissionsAppPermissionsPipelineArgsDict(TypedDict):
     """
     The actions allowed to be performed. Valid options are [CREATE READ UPDATE DELETE]
     """
-    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    app_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The application IDs to which the permission applies. Leave empty to apply to all applications.
     """
-    env_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    env_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The environment IDs to which the permission applies. Leave empty to apply to all environments.
     """
-    filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The filters to apply to the action. Valid options are: NON*PRODUCTION*PIPELINES, PRODUCTION_PIPELINES.
     """
@@ -3210,9 +3210,9 @@ class UserGroupPermissionsAppPermissionsPipelineArgsDict(TypedDict):
 class UserGroupPermissionsAppPermissionsPipelineArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 env_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 app_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The actions allowed to be performed. Valid options are [CREATE READ UPDATE DELETE]
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_ids: The application IDs to which the permission applies. Leave empty to apply to all applications.
@@ -3241,38 +3241,38 @@ class UserGroupPermissionsAppPermissionsPipelineArgs:
 
     @_builtins.property
     @pulumi.getter(name="appIds")
-    def app_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def app_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application IDs to which the permission applies. Leave empty to apply to all applications.
         """
         return pulumi.get(self, "app_ids")
 
     @app_ids.setter
-    def app_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def app_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="envIds")
-    def env_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def env_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The environment IDs to which the permission applies. Leave empty to apply to all environments.
         """
         return pulumi.get(self, "env_ids")
 
     @env_ids.setter
-    def env_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def env_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "env_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The filters to apply to the action. Valid options are: NON*PRODUCTION*PIPELINES, PRODUCTION_PIPELINES.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "filters", value)
 
 
@@ -3281,11 +3281,11 @@ class UserGroupPermissionsAppPermissionsProvisionerArgsDict(TypedDict):
     """
     The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
     """
-    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    app_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The application IDs to which the permission applies. Leave empty to apply to all applications.
     """
-    provisioner_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    provisioner_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The provisioner IDs to which the permission applies. Leave empty to apply to all provisioners.
     """
@@ -3294,8 +3294,8 @@ class UserGroupPermissionsAppPermissionsProvisionerArgsDict(TypedDict):
 class UserGroupPermissionsAppPermissionsProvisionerArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 provisioner_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 app_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 provisioner_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_ids: The application IDs to which the permission applies. Leave empty to apply to all applications.
@@ -3321,26 +3321,26 @@ class UserGroupPermissionsAppPermissionsProvisionerArgs:
 
     @_builtins.property
     @pulumi.getter(name="appIds")
-    def app_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def app_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application IDs to which the permission applies. Leave empty to apply to all applications.
         """
         return pulumi.get(self, "app_ids")
 
     @app_ids.setter
-    def app_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def app_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionerIds")
-    def provisioner_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def provisioner_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The provisioner IDs to which the permission applies. Leave empty to apply to all provisioners.
         """
         return pulumi.get(self, "provisioner_ids")
 
     @provisioner_ids.setter
-    def provisioner_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def provisioner_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "provisioner_ids", value)
 
 
@@ -3349,11 +3349,11 @@ class UserGroupPermissionsAppPermissionsServiceArgsDict(TypedDict):
     """
     The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
     """
-    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    app_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The application IDs to which the permission applies. Leave empty to apply to all applications.
     """
-    service_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    service_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The service IDs to which the permission applies. Leave empty to apply to all services.
     """
@@ -3362,8 +3362,8 @@ class UserGroupPermissionsAppPermissionsServiceArgsDict(TypedDict):
 class UserGroupPermissionsAppPermissionsServiceArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 app_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_ids: The application IDs to which the permission applies. Leave empty to apply to all applications.
@@ -3389,26 +3389,26 @@ class UserGroupPermissionsAppPermissionsServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="appIds")
-    def app_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def app_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application IDs to which the permission applies. Leave empty to apply to all applications.
         """
         return pulumi.get(self, "app_ids")
 
     @app_ids.setter
-    def app_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def app_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceIds")
-    def service_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def service_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The service IDs to which the permission applies. Leave empty to apply to all services.
         """
         return pulumi.get(self, "service_ids")
 
     @service_ids.setter
-    def service_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def service_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_ids", value)
 
 
@@ -3417,11 +3417,11 @@ class UserGroupPermissionsAppPermissionsTemplateArgsDict(TypedDict):
     """
     The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
     """
-    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    app_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The application IDs to which the permission applies. Leave empty to apply to all applications.
     """
-    template_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    template_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The template IDs to which the permission applies. Leave empty to apply to all environments.
     """
@@ -3430,8 +3430,8 @@ class UserGroupPermissionsAppPermissionsTemplateArgsDict(TypedDict):
 class UserGroupPermissionsAppPermissionsTemplateArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 app_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_ids: The application IDs to which the permission applies. Leave empty to apply to all applications.
@@ -3457,26 +3457,26 @@ class UserGroupPermissionsAppPermissionsTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="appIds")
-    def app_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def app_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application IDs to which the permission applies. Leave empty to apply to all applications.
         """
         return pulumi.get(self, "app_ids")
 
     @app_ids.setter
-    def app_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def app_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="templateIds")
-    def template_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def template_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The template IDs to which the permission applies. Leave empty to apply to all environments.
         """
         return pulumi.get(self, "template_ids")
 
     @template_ids.setter
-    def template_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def template_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "template_ids", value)
 
 
@@ -3485,11 +3485,11 @@ class UserGroupPermissionsAppPermissionsWorkflowArgsDict(TypedDict):
     """
     The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
     """
-    app_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    app_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The application IDs to which the permission applies. Leave empty to apply to all applications.
     """
-    filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The filters to apply to the action. Valid options are: NON*PRODUCTION*WORKFLOWS, PRODUCTION*WORKFLOWS, WORKFLOW*TEMPLATES.
     """
@@ -3498,8 +3498,8 @@ class UserGroupPermissionsAppPermissionsWorkflowArgsDict(TypedDict):
 class UserGroupPermissionsAppPermissionsWorkflowArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 app_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_ids: The application IDs to which the permission applies. Leave empty to apply to all applications.
@@ -3525,35 +3525,35 @@ class UserGroupPermissionsAppPermissionsWorkflowArgs:
 
     @_builtins.property
     @pulumi.getter(name="appIds")
-    def app_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def app_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application IDs to which the permission applies. Leave empty to apply to all applications.
         """
         return pulumi.get(self, "app_ids")
 
     @app_ids.setter
-    def app_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def app_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The filters to apply to the action. Valid options are: NON*PRODUCTION*WORKFLOWS, PRODUCTION*WORKFLOWS, WORKFLOW*TEMPLATES.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "filters", value)
 
 
 class UserGroupSamlSettingsArgsDict(TypedDict):
-    group_name: NotRequired[pulumi.Input[_builtins.str]]
+    group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The group name of the SAML user group.
     """
-    sso_provider_id: NotRequired[pulumi.Input[_builtins.str]]
+    sso_provider_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the SSO provider.
     """
@@ -3561,8 +3561,8 @@ class UserGroupSamlSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class UserGroupSamlSettingsArgs:
     def __init__(__self__, *,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_provider_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_provider_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] group_name: The group name of the SAML user group.
         :param pulumi.Input[_builtins.str] sso_provider_id: The ID of the SSO provider.
@@ -3574,26 +3574,26 @@ class UserGroupSamlSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group name of the SAML user group.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ssoProviderId")
-    def sso_provider_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sso_provider_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the SSO provider.
         """
         return pulumi.get(self, "sso_provider_id")
 
     @sso_provider_id.setter
-    def sso_provider_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sso_provider_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sso_provider_id", value)
 
 

@@ -48,7 +48,7 @@ namespace Pulumi.Harness.Platform
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["winrmPort"] = example.Apply(getSecretWinrmResult =&gt; getSecretWinrmResult.Port),
-        ///         ["winrmAuthType"] = example.Apply(getSecretWinrmResult =&gt; getSecretWinrmResult.Ntlms).Length.Apply(length =&gt; length &gt; 0 ? "NTLM" : "Kerberos"),
+        ///         ["winrmAuthType"] = example.Apply(getSecretWinrmResult =&gt; getSecretWinrmResult.Ntlms).Length().Apply(length =&gt; length &gt; 0 ? "NTLM" : "Kerberos"),
         ///     };
         /// });
         /// ```
@@ -93,7 +93,7 @@ namespace Pulumi.Harness.Platform
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["winrmPort"] = example.Apply(getSecretWinrmResult =&gt; getSecretWinrmResult.Port),
-        ///         ["winrmAuthType"] = example.Apply(getSecretWinrmResult =&gt; getSecretWinrmResult.Ntlms).Length.Apply(length =&gt; length &gt; 0 ? "NTLM" : "Kerberos"),
+        ///         ["winrmAuthType"] = example.Apply(getSecretWinrmResult =&gt; getSecretWinrmResult.Ntlms).Length().Apply(length =&gt; length &gt; 0 ? "NTLM" : "Kerberos"),
         ///     };
         /// });
         /// ```
@@ -138,7 +138,7 @@ namespace Pulumi.Harness.Platform
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["winrmPort"] = example.Apply(getSecretWinrmResult =&gt; getSecretWinrmResult.Port),
-        ///         ["winrmAuthType"] = example.Apply(getSecretWinrmResult =&gt; getSecretWinrmResult.Ntlms).Length.Apply(length =&gt; length &gt; 0 ? "NTLM" : "Kerberos"),
+        ///         ["winrmAuthType"] = example.Apply(getSecretWinrmResult =&gt; getSecretWinrmResult.Ntlms).Length().Apply(length =&gt; length &gt; 0 ? "NTLM" : "Kerberos"),
         ///     };
         /// });
         /// ```

@@ -174,11 +174,11 @@ export interface GetInfraVariableSetOutputArgs {
     /**
      * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      */
-    connectors?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetConnectorArgs>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetConnectorArgs>[] | undefined>;
     /**
      * Environment variables configured on the Variable Set
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetEnvironmentVariableArgs>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetEnvironmentVariableArgs>[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -186,21 +186,21 @@ export interface GetInfraVariableSetOutputArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Terraform variables files configured on the Variable Set (see below for nested schema)
      */
-    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetTerraformVariableFileArgs>[]>;
+    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetTerraformVariableFileArgs>[] | undefined>;
     /**
      * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
      */
-    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetTerraformVariableArgs>[]>;
+    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetTerraformVariableArgs>[] | undefined>;
 }

@@ -193,55 +193,55 @@ export interface AzureGatewayState {
     /**
      * ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
      */
-    appGatewayId?: pulumi.Input<string>;
+    appGatewayId?: pulumi.Input<string | undefined>;
     /**
      * Region in which azure cloud function will be provisioned
      */
-    azureFuncRegion?: pulumi.Input<string>;
+    azureFuncRegion?: pulumi.Input<string | undefined>;
     /**
      * ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * Id of the cloud connector
      */
-    cloudConnectorId?: pulumi.Input<string>;
+    cloudConnectorId?: pulumi.Input<string | undefined>;
     /**
      * Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
      */
-    deleteCloudResourcesOnDestroy?: pulumi.Input<boolean>;
+    deleteCloudResourcesOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
      */
-    frontendIp?: pulumi.Input<string>;
+    frontendIp?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the proxy
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Region in which cloud resources are hosted
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Resource group in which cloud resources are hosted
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Size of machine used for the gateway. Required only for creating new AppGateway
      */
-    skuSize?: pulumi.Input<string>;
+    skuSize?: pulumi.Input<string | undefined>;
     /**
      * Subnet in which cloud resources are hosted. Required only for creating new AppGateway
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * VNet in which cloud resources are hosted. Required only for creating new AppGateway
      */
-    vpc?: pulumi.Input<string>;
+    vpc?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -251,7 +251,7 @@ export interface AzureGatewayArgs {
     /**
      * ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
      */
-    appGatewayId?: pulumi.Input<string>;
+    appGatewayId?: pulumi.Input<string | undefined>;
     /**
      * Region in which azure cloud function will be provisioned
      */
@@ -259,7 +259,7 @@ export interface AzureGatewayArgs {
     /**
      * ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * Id of the cloud connector
      */
@@ -271,11 +271,11 @@ export interface AzureGatewayArgs {
     /**
      * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
      */
-    frontendIp?: pulumi.Input<string>;
+    frontendIp?: pulumi.Input<string | undefined>;
     /**
      * Name of the proxy
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Region in which cloud resources are hosted
      */
@@ -287,11 +287,11 @@ export interface AzureGatewayArgs {
     /**
      * Size of machine used for the gateway. Required only for creating new AppGateway
      */
-    skuSize?: pulumi.Input<string>;
+    skuSize?: pulumi.Input<string | undefined>;
     /**
      * Subnet in which cloud resources are hosted. Required only for creating new AppGateway
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * VNet in which cloud resources are hosted. Required only for creating new AppGateway
      */

@@ -144,12 +144,12 @@ def get_application(description: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         is_manual_trigger_authorized=pulumi.get(__ret__, 'is_manual_trigger_authorized'),
         name=pulumi.get(__ret__, 'name'))
-def get_application_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           git_sync_connector_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           git_sync_enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                           id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           is_manual_trigger_authorized: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                           name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_application_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           git_sync_connector_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           git_sync_enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                           id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           is_manual_trigger_authorized: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                           name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationResult]:
     """
     Data source for retrieving a Harness application

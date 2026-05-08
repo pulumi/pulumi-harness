@@ -156,39 +156,39 @@ export interface AwsState {
     /**
      * The plain text AWS access key id.
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Harness secret containing the AWS access key id
      */
-    accessKeyIdSecretName?: pulumi.Input<string>;
+    accessKeyIdSecretName?: pulumi.Input<string | undefined>;
     /**
      * Configuration for assuming a cross account role.
      */
-    assumeCrossAccountRole?: pulumi.Input<inputs.cloudprovider.AwsAssumeCrossAccountRole>;
+    assumeCrossAccountRole?: pulumi.Input<inputs.cloudprovider.AwsAssumeCrossAccountRole | undefined>;
     /**
      * Select the Delegate to use via one of its Selectors.
      */
-    delegateSelector?: pulumi.Input<string>;
+    delegateSelector?: pulumi.Input<string | undefined>;
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the Harness secret containing the AWS secret access key.
      */
-    secretAccessKeySecretName?: pulumi.Input<string>;
+    secretAccessKeySecretName?: pulumi.Input<string | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.AwsUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.AwsUsageScope>[] | undefined>;
     /**
      * Use the EC2 Instance Profile for Service Accounts.
      */
-    useEc2IamCredentials?: pulumi.Input<boolean>;
+    useEc2IamCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * Use the AWS IAM Role for Service Accounts.
      */
-    useIrsa?: pulumi.Input<boolean>;
+    useIrsa?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -198,37 +198,37 @@ export interface AwsArgs {
     /**
      * The plain text AWS access key id.
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Harness secret containing the AWS access key id
      */
-    accessKeyIdSecretName?: pulumi.Input<string>;
+    accessKeyIdSecretName?: pulumi.Input<string | undefined>;
     /**
      * Configuration for assuming a cross account role.
      */
-    assumeCrossAccountRole?: pulumi.Input<inputs.cloudprovider.AwsAssumeCrossAccountRole>;
+    assumeCrossAccountRole?: pulumi.Input<inputs.cloudprovider.AwsAssumeCrossAccountRole | undefined>;
     /**
      * Select the Delegate to use via one of its Selectors.
      */
-    delegateSelector?: pulumi.Input<string>;
+    delegateSelector?: pulumi.Input<string | undefined>;
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the Harness secret containing the AWS secret access key.
      */
-    secretAccessKeySecretName?: pulumi.Input<string>;
+    secretAccessKeySecretName?: pulumi.Input<string | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.AwsUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.AwsUsageScope>[] | undefined>;
     /**
      * Use the EC2 Instance Profile for Service Accounts.
      */
-    useEc2IamCredentials?: pulumi.Input<boolean>;
+    useEc2IamCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * Use the AWS IAM Role for Service Accounts.
      */
-    useIrsa?: pulumi.Input<boolean>;
+    useIrsa?: pulumi.Input<boolean | undefined>;
 }

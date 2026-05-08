@@ -157,47 +157,47 @@ export interface GcpConnectorState {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable this flag to execute on Delegate
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Enable this flag for force deletion of connector
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Inherit configuration from delegate.
      */
-    inheritFromDelegates?: pulumi.Input<pulumi.Input<inputs.platform.GcpConnectorInheritFromDelegate>[]>;
+    inheritFromDelegates?: pulumi.Input<pulumi.Input<inputs.platform.GcpConnectorInheritFromDelegate>[] | undefined>;
     /**
      * Manual credential configuration.
      */
-    manual?: pulumi.Input<inputs.platform.GcpConnectorManual>;
+    manual?: pulumi.Input<inputs.platform.GcpConnectorManual | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Authentication using harness oidc.
      */
-    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.GcpConnectorOidcAuthentication>[]>;
+    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.GcpConnectorOidcAuthentication>[] | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -207,15 +207,15 @@ export interface GcpConnectorArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable this flag to execute on Delegate
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Enable this flag for force deletion of connector
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -223,29 +223,29 @@ export interface GcpConnectorArgs {
     /**
      * Inherit configuration from delegate.
      */
-    inheritFromDelegates?: pulumi.Input<pulumi.Input<inputs.platform.GcpConnectorInheritFromDelegate>[]>;
+    inheritFromDelegates?: pulumi.Input<pulumi.Input<inputs.platform.GcpConnectorInheritFromDelegate>[] | undefined>;
     /**
      * Manual credential configuration.
      */
-    manual?: pulumi.Input<inputs.platform.GcpConnectorManual>;
+    manual?: pulumi.Input<inputs.platform.GcpConnectorManual | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Authentication using harness oidc.
      */
-    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.GcpConnectorOidcAuthentication>[]>;
+    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.GcpConnectorOidcAuthentication>[] | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

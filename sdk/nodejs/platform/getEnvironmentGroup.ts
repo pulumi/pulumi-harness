@@ -114,7 +114,7 @@ export interface GetEnvironmentGroupOutputArgs {
     /**
      * Color of the environment group.
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * identifier of the environment group.
      */
@@ -122,9 +122,9 @@ export interface GetEnvironmentGroupOutputArgs {
     /**
      * org_id of the environment group.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * project_id of the environment group.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

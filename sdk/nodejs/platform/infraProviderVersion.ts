@@ -137,19 +137,19 @@ export interface InfraProviderVersionState {
     /**
      * GPG key ID for signing.
      */
-    gpgKeyId?: pulumi.Input<string>;
+    gpgKeyId?: pulumi.Input<string | undefined>;
     /**
      * Supported Terraform protocol versions (e.g., ['5.0', '6.0']).
      */
-    protocols?: pulumi.Input<pulumi.Input<string>[]>;
+    protocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the provider this version belongs to.
      */
-    providerId?: pulumi.Input<string>;
+    providerId?: pulumi.Input<string | undefined>;
     /**
      * Version number (e.g., 1.0.0).
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**

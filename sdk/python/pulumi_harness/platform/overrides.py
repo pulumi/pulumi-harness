@@ -23,16 +23,16 @@ class OverridesArgs:
     def __init__(__self__, *,
                  env_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_details: Optional[pulumi.Input['OverridesGitDetailsArgs']] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_force_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_details: pulumi.Input[Optional['OverridesGitDetailsArgs']] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_force_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Overrides resource.
 
@@ -98,140 +98,140 @@ class OverridesArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster ID to which the overrides are associated.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gitDetails")
-    def git_details(self) -> Optional[pulumi.Input['OverridesGitDetailsArgs']]:
+    def git_details(self) -> pulumi.Input[Optional['OverridesGitDetailsArgs']]:
         """
         Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
     @git_details.setter
-    def git_details(self, value: Optional[pulumi.Input['OverridesGitDetailsArgs']]):
+    def git_details(self, value: pulumi.Input[Optional['OverridesGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the override entity.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="importFromGit")
-    def import_from_git(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_from_git(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         import override from git
         """
         return pulumi.get(self, "import_from_git")
 
     @import_from_git.setter
-    def import_from_git(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_from_git(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_from_git", value)
 
     @_builtins.property
     @pulumi.getter(name="infraId")
-    def infra_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The infrastructure ID to which the overrides are associated.
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
-    def infra_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isForceImport")
-    def is_force_import(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_force_import(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         force import override from remote even if same file path already exist
         """
         return pulumi.get(self, "is_force_import")
 
     @is_force_import.setter
-    def is_force_import(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_force_import(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_force_import", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service ID to which the overrides applies.
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The yaml of the override entity
         """
         return pulumi.get(self, "yaml")
 
     @yaml.setter
-    def yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
 
 @pulumi.input_type
 class _OverridesState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_details: Optional[pulumi.Input['OverridesGitDetailsArgs']] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_force_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_details: pulumi.Input[Optional['OverridesGitDetailsArgs']] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_force_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Overrides resources.
 
@@ -275,146 +275,146 @@ class _OverridesState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster ID to which the overrides are associated.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="envId")
-    def env_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment ID to which the overrides are associated.
         """
         return pulumi.get(self, "env_id")
 
     @env_id.setter
-    def env_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gitDetails")
-    def git_details(self) -> Optional[pulumi.Input['OverridesGitDetailsArgs']]:
+    def git_details(self) -> pulumi.Input[Optional['OverridesGitDetailsArgs']]:
         """
         Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
     @git_details.setter
-    def git_details(self, value: Optional[pulumi.Input['OverridesGitDetailsArgs']]):
+    def git_details(self, value: pulumi.Input[Optional['OverridesGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the override entity.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="importFromGit")
-    def import_from_git(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_from_git(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         import override from git
         """
         return pulumi.get(self, "import_from_git")
 
     @import_from_git.setter
-    def import_from_git(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_from_git(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_from_git", value)
 
     @_builtins.property
     @pulumi.getter(name="infraId")
-    def infra_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The infrastructure ID to which the overrides are associated.
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
-    def infra_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isForceImport")
-    def is_force_import(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_force_import(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         force import override from remote even if same file path already exist
         """
         return pulumi.get(self, "is_force_import")
 
     @is_force_import.setter
-    def is_force_import(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_force_import(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_force_import", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service ID to which the overrides applies.
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the overrides.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The yaml of the override entity
         """
         return pulumi.get(self, "yaml")
 
     @yaml.setter
-    def yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
 
@@ -424,18 +424,18 @@ class Overrides(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_details: Optional[pulumi.Input[Union['OverridesGitDetailsArgs', 'OverridesGitDetailsArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_force_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_details: pulumi.Input[Optional[Union['OverridesGitDetailsArgs', 'OverridesGitDetailsArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_force_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Harness Override V2.
@@ -525,18 +525,18 @@ class Overrides(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_details: Optional[pulumi.Input[Union['OverridesGitDetailsArgs', 'OverridesGitDetailsArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_force_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_details: pulumi.Input[Optional[Union['OverridesGitDetailsArgs', 'OverridesGitDetailsArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_force_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -572,18 +572,18 @@ class Overrides(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            env_id: Optional[pulumi.Input[_builtins.str]] = None,
-            git_details: Optional[pulumi.Input[Union['OverridesGitDetailsArgs', 'OverridesGitDetailsArgsDict']]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-            infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_force_import: Optional[pulumi.Input[_builtins.bool]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            yaml: Optional[pulumi.Input[_builtins.str]] = None) -> 'Overrides':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            env_id: pulumi.Input[Optional[_builtins.str]] = None,
+            git_details: pulumi.Input[Optional[Union['OverridesGitDetailsArgs', 'OverridesGitDetailsArgsDict']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+            infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_force_import: pulumi.Input[Optional[_builtins.bool]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> 'Overrides':
         """
         Get an existing Overrides resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

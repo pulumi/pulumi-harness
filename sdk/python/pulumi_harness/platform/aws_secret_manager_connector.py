@@ -24,18 +24,18 @@ class AwsSecretManagerConnectorArgs:
                  credentials: pulumi.Input['AwsSecretManagerConnectorCredentialsArgs'],
                  identifier: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete_without_recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_put_secret: Optional[pulumi.Input[_builtins.bool]] = None):
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete_without_recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_put_secret: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AwsSecretManagerConnector resource.
 
@@ -121,167 +121,167 @@ class AwsSecretManagerConnectorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use as Default Secrets Manager.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Run the operation on the delegate or harness platform.
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDeleteWithoutRecovery")
-    def force_delete_without_recovery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete_without_recovery(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force delete secret value or not.
         """
         return pulumi.get(self, "force_delete_without_recovery")
 
     @force_delete_without_recovery.setter
-    def force_delete_without_recovery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete_without_recovery(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete_without_recovery", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="recoveryWindowInDays")
-    def recovery_window_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def recovery_window_in_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Recovery duration in days in AWS Secrets Manager.
         """
         return pulumi.get(self, "recovery_window_in_days")
 
     @recovery_window_in_days.setter
-    def recovery_window_in_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def recovery_window_in_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "recovery_window_in_days", value)
 
     @_builtins.property
     @pulumi.getter(name="secretNamePrefix")
-    def secret_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A prefix to be added to all secrets.
         """
         return pulumi.get(self, "secret_name_prefix")
 
     @secret_name_prefix.setter
-    def secret_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="usePutSecret")
-    def use_put_secret(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_put_secret(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to update secret value using putSecretValue action.
         """
         return pulumi.get(self, "use_put_secret")
 
     @use_put_secret.setter
-    def use_put_secret(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_put_secret(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_put_secret", value)
 
 
 @pulumi.input_type
 class _AwsSecretManagerConnectorState:
     def __init__(__self__, *,
-                 credentials: Optional[pulumi.Input['AwsSecretManagerConnectorCredentialsArgs']] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete_without_recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_put_secret: Optional[pulumi.Input[_builtins.bool]] = None):
+                 credentials: pulumi.Input[Optional['AwsSecretManagerConnectorCredentialsArgs']] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete_without_recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_put_secret: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AwsSecretManagerConnector resources.
 
@@ -334,182 +334,182 @@ class _AwsSecretManagerConnectorState:
 
     @_builtins.property
     @pulumi.getter
-    def credentials(self) -> Optional[pulumi.Input['AwsSecretManagerConnectorCredentialsArgs']]:
+    def credentials(self) -> pulumi.Input[Optional['AwsSecretManagerConnectorCredentialsArgs']]:
         """
         Credentials to connect to AWS.
         """
         return pulumi.get(self, "credentials")
 
     @credentials.setter
-    def credentials(self, value: Optional[pulumi.Input['AwsSecretManagerConnectorCredentialsArgs']]):
+    def credentials(self, value: pulumi.Input[Optional['AwsSecretManagerConnectorCredentialsArgs']]):
         pulumi.set(self, "credentials", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use as Default Secrets Manager.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Run the operation on the delegate or harness platform.
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDeleteWithoutRecovery")
-    def force_delete_without_recovery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete_without_recovery(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force delete secret value or not.
         """
         return pulumi.get(self, "force_delete_without_recovery")
 
     @force_delete_without_recovery.setter
-    def force_delete_without_recovery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete_without_recovery(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete_without_recovery", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="recoveryWindowInDays")
-    def recovery_window_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def recovery_window_in_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Recovery duration in days in AWS Secrets Manager.
         """
         return pulumi.get(self, "recovery_window_in_days")
 
     @recovery_window_in_days.setter
-    def recovery_window_in_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def recovery_window_in_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "recovery_window_in_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS region where the AWS Secret Manager is.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="secretNamePrefix")
-    def secret_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A prefix to be added to all secrets.
         """
         return pulumi.get(self, "secret_name_prefix")
 
     @secret_name_prefix.setter
-    def secret_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="usePutSecret")
-    def use_put_secret(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_put_secret(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to update secret value using putSecretValue action.
         """
         return pulumi.get(self, "use_put_secret")
 
     @use_put_secret.setter
-    def use_put_secret(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_put_secret(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_put_secret", value)
 
 
@@ -519,21 +519,21 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[Union['AwsSecretManagerConnectorCredentialsArgs', 'AwsSecretManagerConnectorCredentialsArgsDict']]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete_without_recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_put_secret: Optional[pulumi.Input[_builtins.bool]] = None,
+                 credentials: pulumi.Input[Optional[Union['AwsSecretManagerConnectorCredentialsArgs', 'AwsSecretManagerConnectorCredentialsArgsDict']]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete_without_recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_put_secret: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Resource for creating an AWS Secret Manager connector.
@@ -626,21 +626,21 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[Union['AwsSecretManagerConnectorCredentialsArgs', 'AwsSecretManagerConnectorCredentialsArgsDict']]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete_without_recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_put_secret: Optional[pulumi.Input[_builtins.bool]] = None,
+                 credentials: pulumi.Input[Optional[Union['AwsSecretManagerConnectorCredentialsArgs', 'AwsSecretManagerConnectorCredentialsArgsDict']]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete_without_recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_put_secret: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -681,21 +681,21 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            credentials: Optional[pulumi.Input[Union['AwsSecretManagerConnectorCredentialsArgs', 'AwsSecretManagerConnectorCredentialsArgsDict']]] = None,
-            default: Optional[pulumi.Input[_builtins.bool]] = None,
-            delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_delete_without_recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            recovery_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            use_put_secret: Optional[pulumi.Input[_builtins.bool]] = None) -> 'AwsSecretManagerConnector':
+            credentials: pulumi.Input[Optional[Union['AwsSecretManagerConnectorCredentialsArgs', 'AwsSecretManagerConnectorCredentialsArgsDict']]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_delete_without_recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            recovery_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            use_put_secret: pulumi.Input[Optional[_builtins.bool]] = None) -> 'AwsSecretManagerConnector':
         """
         Get an existing AwsSecretManagerConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

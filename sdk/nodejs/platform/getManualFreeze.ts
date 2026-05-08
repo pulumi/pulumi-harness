@@ -134,9 +134,9 @@ export interface GetManualFreezeOutputArgs {
     /**
      * Organization identifier of the freeze
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the freeze
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

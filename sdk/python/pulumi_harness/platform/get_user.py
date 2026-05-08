@@ -185,9 +185,9 @@ def get_user(email: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
-def get_user_output(email: Optional[pulumi.Input[_builtins.str]] = None,
-                    org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_output(email: pulumi.Input[Optional[_builtins.str]] = None,
+                    org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Data source for retrieving the user based on the API key.

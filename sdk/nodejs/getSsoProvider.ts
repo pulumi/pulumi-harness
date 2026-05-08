@@ -66,9 +66,9 @@ export interface GetSsoProviderOutputArgs {
     /**
      * Unique identifier of the SSO provider.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the SSO provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -25,7 +25,7 @@ class GitopsApplicationsetArgs:
                  applicationset: pulumi.Input['GitopsApplicationsetApplicationsetArgs'],
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None):
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitopsApplicationset resource.
 
@@ -92,26 +92,26 @@ class GitopsApplicationsetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def upsert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upsert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the GitOps application should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
     @upsert.setter
-    def upsert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upsert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upsert", value)
 
 
 @pulumi.input_type
 class _GitopsApplicationsetState:
     def __init__(__self__, *,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 applicationset: Optional[pulumi.Input['GitopsApplicationsetApplicationsetArgs']] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None):
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 applicationset: pulumi.Input[Optional['GitopsApplicationsetApplicationsetArgs']] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GitopsApplicationset resources.
 
@@ -137,74 +137,74 @@ class _GitopsApplicationsetState:
 
     @_builtins.property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Agent identifier of the GitOps applicationset.
         """
         return pulumi.get(self, "agent_id")
 
     @agent_id.setter
-    def agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def applicationset(self) -> Optional[pulumi.Input['GitopsApplicationsetApplicationsetArgs']]:
+    def applicationset(self) -> pulumi.Input[Optional['GitopsApplicationsetApplicationsetArgs']]:
         """
         Definition of the GitOps applicationset resource.
         """
         return pulumi.get(self, "applicationset")
 
     @applicationset.setter
-    def applicationset(self, value: Optional[pulumi.Input['GitopsApplicationsetApplicationsetArgs']]):
+    def applicationset(self, value: pulumi.Input[Optional['GitopsApplicationsetApplicationsetArgs']]):
         pulumi.set(self, "applicationset", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the GitOps applicationset. This is a unique identifier for the applicationset generated automatically.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the GitOps applicationset.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the GitOps applicationset.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def upsert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upsert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the GitOps application should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
     @upsert.setter
-    def upsert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upsert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upsert", value)
 
 
@@ -214,11 +214,11 @@ class GitopsApplicationset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 applicationset: Optional[pulumi.Input[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 applicationset: pulumi.Input[Optional[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Resource for managing a Harness Gitops Applicationset. Please note this resource is in an alpha/experimental state and is subject to change.
@@ -661,11 +661,11 @@ class GitopsApplicationset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 applicationset: Optional[pulumi.Input[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 applicationset: pulumi.Input[Optional[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -699,12 +699,12 @@ class GitopsApplicationset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            applicationset: Optional[pulumi.Input[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict']]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            upsert: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GitopsApplicationset':
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            applicationset: pulumi.Input[Optional[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            upsert: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GitopsApplicationset':
         """
         Get an existing GitopsApplicationset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

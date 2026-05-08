@@ -21,8 +21,8 @@ class DefaultImagesArgs:
     def __init__(__self__, *,
                  field: pulumi.Input[_builtins.str],
                  kind: pulumi.Input[_builtins.str],
-                 infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DefaultImages resource.
 
@@ -64,36 +64,36 @@ class DefaultImagesArgs:
 
     @_builtins.property
     @pulumi.getter(name="infraType")
-    def infra_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The infrastructure type passed to the execution config API (e.g. `K8`, `VM`). Defaults to `K8`.
         """
         return pulumi.get(self, "infra_type")
 
     @infra_type.setter
-    def infra_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image tag value to set. When omitted or set to `null`, the field override is reset to the Harness default.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
 class _DefaultImagesState:
     def __init__(__self__, *,
-                 field: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DefaultImages resources.
 
@@ -113,50 +113,50 @@ class _DefaultImagesState:
 
     @_builtins.property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image field name to override (e.g. `addonTag`, `liteEngineTag`).
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field", value)
 
     @_builtins.property
     @pulumi.getter(name="infraType")
-    def infra_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The infrastructure type passed to the execution config API (e.g. `K8`, `VM`). Defaults to `K8`.
         """
         return pulumi.get(self, "infra_type")
 
     @infra_type.setter
-    def infra_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service kind. Supported values: `ci`, `iacm`, `idp`.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image tag value to set. When omitted or set to `null`, the field override is reset to the Harness default.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -166,10 +166,10 @@ class DefaultImages(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 field: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for managing a Harness execution image override for CI, IACM, or IDP.
@@ -367,10 +367,10 @@ class DefaultImages(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 field: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -398,10 +398,10 @@ class DefaultImages(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            field: Optional[pulumi.Input[_builtins.str]] = None,
-            infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None) -> 'DefaultImages':
+            field: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> 'DefaultImages':
         """
         Get an existing DefaultImages resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

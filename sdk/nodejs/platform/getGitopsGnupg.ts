@@ -138,7 +138,7 @@ export interface GetGitopsGnupgOutputArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier for the GnuPG Key.
      */
@@ -150,13 +150,13 @@ export interface GetGitopsGnupgOutputArgs {
     /**
      * Organization Identifier for the GnuPG Key.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the GnuPG Key.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * GnuPGPublicKey is a representation of a GnuPG public key
      */
-    requests?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsGnupgRequestArgs>[]>;
+    requests?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsGnupgRequestArgs>[] | undefined>;
 }

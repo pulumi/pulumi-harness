@@ -233,15 +233,15 @@ def get_default_notification_template_set(description: Optional[_builtins.str] =
         org=pulumi.get(__ret__, 'org'),
         project=pulumi.get(__ret__, 'project'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_default_notification_template_set_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 event_template_configuration_sets: Optional[pulumi.Input[Sequence[Union['GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]] = None,
-                                                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 notification_entity: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 org: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_default_notification_template_set_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 event_template_configuration_sets: pulumi.Input[Optional[Sequence[Union['GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]] = None,
+                                                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 notification_entity: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 org: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDefaultNotificationTemplateSetResult]:
     """
     Data source for retrieving a Default Notification Template Set.

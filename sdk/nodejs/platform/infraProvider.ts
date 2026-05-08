@@ -133,27 +133,27 @@ export interface InfraProviderState {
     /**
      * Account that owns the provider.
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the provider was created.
      */
-    created?: pulumi.Input<number>;
+    created?: pulumi.Input<number | undefined>;
     /**
      * Description of the provider.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Provider type (e.g., aws, azurerm, google).
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the provider was last updated.
      */
-    updated?: pulumi.Input<number>;
+    updated?: pulumi.Input<number | undefined>;
     /**
      * List of provider versions.
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.platform.InfraProviderVersion>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.platform.InfraProviderVersion>[] | undefined>;
 }
 
 /**
@@ -163,7 +163,7 @@ export interface InfraProviderArgs {
     /**
      * Description of the provider.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Provider type (e.g., aws, azurerm, google).
      */

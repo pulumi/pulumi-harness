@@ -31,6 +31,11 @@ import * as utilities from "../utilities";
  * -----END OPENSSH PRIVATE KEY -----
  * `,
  *     }],
+ * }, {
+ *     ignoreChanges: [
+ *         "accountId",
+ *         "creds[0].sshPrivateKey",
+ *     ],
  * });
  * ```
  *
@@ -165,31 +170,31 @@ export interface GitOpsRepoCredState {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the Repository Credentials.
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * credential details.
      */
-    creds?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepoCredCred>[]>;
+    creds?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepoCredCred>[] | undefined>;
     /**
      * Identifier of the Repository Credentials.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier of the Repository Credentials.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the Repository Credentials.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the GitOps repository credential should be updated if existing and inserted if not.
      */
-    upsert?: pulumi.Input<boolean>;
+    upsert?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -201,7 +206,7 @@ export interface GitOpsRepoCredArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the Repository Credentials.
      */
@@ -209,7 +214,7 @@ export interface GitOpsRepoCredArgs {
     /**
      * credential details.
      */
-    creds?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepoCredCred>[]>;
+    creds?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepoCredCred>[] | undefined>;
     /**
      * Identifier of the Repository Credentials.
      */
@@ -217,13 +222,13 @@ export interface GitOpsRepoCredArgs {
     /**
      * Organization identifier of the Repository Credentials.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the Repository Credentials.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the GitOps repository credential should be updated if existing and inserted if not.
      */
-    upsert?: pulumi.Input<boolean>;
+    upsert?: pulumi.Input<boolean | undefined>;
 }

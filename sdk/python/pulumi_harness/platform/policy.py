@@ -21,21 +21,21 @@ class PolicyArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
                  rego: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_base_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_commit_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_commit_sha: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_connector_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_is_new_branch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_base_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_commit_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_connector_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_is_new_branch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Policy resource.
 
@@ -116,205 +116,205 @@ class PolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gitBaseBranch")
-    def git_base_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_base_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base branch for the new git branch.
         """
         return pulumi.get(self, "git_base_branch")
 
     @git_base_branch.setter
-    def git_base_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_base_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_base_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="gitBranch")
-    def git_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git branch for the policy.
         """
         return pulumi.get(self, "git_branch")
 
     @git_branch.setter
-    def git_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="gitCommitMsg")
-    def git_commit_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_commit_msg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git commit message for the policy.
         """
         return pulumi.get(self, "git_commit_msg")
 
     @git_commit_msg.setter
-    def git_commit_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_commit_msg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_commit_msg", value)
 
     @_builtins.property
     @pulumi.getter(name="gitCommitSha")
-    def git_commit_sha(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_commit_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The existing commit sha of the file being updated
         """
         return pulumi.get(self, "git_commit_sha")
 
     @git_commit_sha.setter
-    def git_commit_sha(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_commit_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_commit_sha", value)
 
     @_builtins.property
     @pulumi.getter(name="gitConnectorRef")
-    def git_connector_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_connector_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git connector reference for the policy.
         """
         return pulumi.get(self, "git_connector_ref")
 
     @git_connector_ref.setter
-    def git_connector_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_connector_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_connector_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="gitFileId")
-    def git_file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The existing file id of the file being updated, not required for bitbucket files
         """
         return pulumi.get(self, "git_file_id")
 
     @git_file_id.setter
-    def git_file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_file_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gitImport")
-    def git_import(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def git_import(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to import the policy from git.
         """
         return pulumi.get(self, "git_import")
 
     @git_import.setter
-    def git_import(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def git_import(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "git_import", value)
 
     @_builtins.property
     @pulumi.getter(name="gitIsNewBranch")
-    def git_is_new_branch(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def git_is_new_branch(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to create a new branch for the policy.
         """
         return pulumi.get(self, "git_is_new_branch")
 
     @git_is_new_branch.setter
-    def git_is_new_branch(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def git_is_new_branch(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "git_is_new_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="gitPath")
-    def git_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git path for the policy.
         """
         return pulumi.get(self, "git_path")
 
     @git_path.setter
-    def git_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_path", value)
 
     @_builtins.property
     @pulumi.getter(name="gitRepo")
-    def git_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git repository for the policy.
         """
         return pulumi.get(self, "git_repo")
 
     @git_repo.setter
-    def git_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_repo", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _PolicyState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_base_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_commit_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_commit_sha: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_connector_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_is_new_branch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rego: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_base_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_commit_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_connector_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_is_new_branch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rego: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
 
@@ -373,206 +373,206 @@ class _PolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gitBaseBranch")
-    def git_base_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_base_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base branch for the new git branch.
         """
         return pulumi.get(self, "git_base_branch")
 
     @git_base_branch.setter
-    def git_base_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_base_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_base_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="gitBranch")
-    def git_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git branch for the policy.
         """
         return pulumi.get(self, "git_branch")
 
     @git_branch.setter
-    def git_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="gitCommitMsg")
-    def git_commit_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_commit_msg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git commit message for the policy.
         """
         return pulumi.get(self, "git_commit_msg")
 
     @git_commit_msg.setter
-    def git_commit_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_commit_msg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_commit_msg", value)
 
     @_builtins.property
     @pulumi.getter(name="gitCommitSha")
-    def git_commit_sha(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_commit_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The existing commit sha of the file being updated
         """
         return pulumi.get(self, "git_commit_sha")
 
     @git_commit_sha.setter
-    def git_commit_sha(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_commit_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_commit_sha", value)
 
     @_builtins.property
     @pulumi.getter(name="gitConnectorRef")
-    def git_connector_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_connector_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git connector reference for the policy.
         """
         return pulumi.get(self, "git_connector_ref")
 
     @git_connector_ref.setter
-    def git_connector_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_connector_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_connector_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="gitFileId")
-    def git_file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The existing file id of the file being updated, not required for bitbucket files
         """
         return pulumi.get(self, "git_file_id")
 
     @git_file_id.setter
-    def git_file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_file_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gitImport")
-    def git_import(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def git_import(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to import the policy from git.
         """
         return pulumi.get(self, "git_import")
 
     @git_import.setter
-    def git_import(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def git_import(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "git_import", value)
 
     @_builtins.property
     @pulumi.getter(name="gitIsNewBranch")
-    def git_is_new_branch(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def git_is_new_branch(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to create a new branch for the policy.
         """
         return pulumi.get(self, "git_is_new_branch")
 
     @git_is_new_branch.setter
-    def git_is_new_branch(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def git_is_new_branch(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "git_is_new_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="gitPath")
-    def git_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git path for the policy.
         """
         return pulumi.get(self, "git_path")
 
     @git_path.setter
-    def git_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_path", value)
 
     @_builtins.property
     @pulumi.getter(name="gitRepo")
-    def git_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git repository for the policy.
         """
         return pulumi.get(self, "git_repo")
 
     @git_repo.setter
-    def git_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_repo", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def rego(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rego(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rego code for the policy.
         """
         return pulumi.get(self, "rego")
 
     @rego.setter
-    def rego(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rego(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rego", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -582,23 +582,23 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_base_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_commit_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_commit_sha: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_connector_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_is_new_branch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rego: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_base_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_commit_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_connector_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_is_new_branch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rego: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for creating a Harness Policy.
@@ -669,23 +669,23 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_base_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_commit_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_commit_sha: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_connector_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_is_new_branch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rego: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_base_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_commit_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_connector_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_is_new_branch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rego: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -726,23 +726,23 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            git_base_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            git_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            git_commit_msg: Optional[pulumi.Input[_builtins.str]] = None,
-            git_commit_sha: Optional[pulumi.Input[_builtins.str]] = None,
-            git_connector_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            git_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-            git_import: Optional[pulumi.Input[_builtins.bool]] = None,
-            git_is_new_branch: Optional[pulumi.Input[_builtins.bool]] = None,
-            git_path: Optional[pulumi.Input[_builtins.str]] = None,
-            git_repo: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rego: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Policy':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_base_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            git_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            git_commit_msg: pulumi.Input[Optional[_builtins.str]] = None,
+            git_commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
+            git_connector_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            git_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+            git_import: pulumi.Input[Optional[_builtins.bool]] = None,
+            git_is_new_branch: pulumi.Input[Optional[_builtins.bool]] = None,
+            git_path: pulumi.Input[Optional[_builtins.str]] = None,
+            git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rego: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -22,40 +22,40 @@ class VaultConnectorArgs:
                  identifier: pulumi.Input[_builtins.str],
                  renewal_interval_minutes: pulumi.Input[_builtins.int],
                  vault_url: pulumi.Input[_builtins.str],
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 base_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 k8s_auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 renew_app_role_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret_engine_manually_configured: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_engine_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_token_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 sink_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_aws_iam: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_jwt_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_k8s_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_vault_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_aws_iam_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_jwt_auth_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_jwt_auth_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_k8s_auth_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 xvault_aws_iam_server_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 base_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 k8s_auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 renew_app_role_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_engine_manually_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_engine_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_token_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 sink_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_aws_iam: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_jwt_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_k8s_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_vault_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_aws_iam_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_jwt_auth_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_jwt_auth_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_k8s_auth_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 xvault_aws_iam_server_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VaultConnector resource.
 
@@ -207,453 +207,453 @@ class VaultConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access type.
         """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="appRoleId")
-    def app_role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of App Role.
         """
         return pulumi.get(self, "app_role_id")
 
     @app_role_id.setter
-    def app_role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authToken")
-    def auth_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication token for Vault.
         """
         return pulumi.get(self, "auth_token")
 
     @auth_token.setter
-    def auth_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_token", value)
 
     @_builtins.property
     @pulumi.getter(name="awsRegion")
-    def aws_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS region where the AWS IAM authentication will happen.
         """
         return pulumi.get(self, "aws_region")
 
     @aws_region.setter
-    def aws_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_region", value)
 
     @_builtins.property
     @pulumi.getter(name="basePath")
-    def base_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of the Vault directory where the secret will be stored.
         """
         return pulumi.get(self, "base_path")
 
     @base_path.setter
-    def base_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is default or not.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of Delegate Selectors that belong to the same Delegate and are used to connect to the Secret Manager.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Execute on delegate or not.
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is default or not.
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter(name="isReadOnly")
-    def is_read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Read only or not.
         """
         return pulumi.get(self, "is_read_only")
 
     @is_read_only.setter
-    def is_read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sAuthEndpoint")
-    def k8s_auth_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def k8s_auth_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path where Kubernetes Auth is enabled in Vault.
         """
         return pulumi.get(self, "k8s_auth_endpoint")
 
     @k8s_auth_endpoint.setter
-    def k8s_auth_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def k8s_auth_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "k8s_auth_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Vault namespace where the Secret will be created.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Read only.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="renewAppRoleToken")
-    def renew_app_role_token(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def renew_app_role_token(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if AppRole token renewal is enabled or not.
         """
         return pulumi.get(self, "renew_app_role_token")
 
     @renew_app_role_token.setter
-    def renew_app_role_token(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def renew_app_role_token(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "renew_app_role_token", value)
 
     @_builtins.property
     @pulumi.getter(name="secretEngineManuallyConfigured")
-    def secret_engine_manually_configured(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secret_engine_manually_configured(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Manually entered Secret Engine.
         """
         return pulumi.get(self, "secret_engine_manually_configured")
 
     @secret_engine_manually_configured.setter
-    def secret_engine_manually_configured(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secret_engine_manually_configured(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secret_engine_manually_configured", value)
 
     @_builtins.property
     @pulumi.getter(name="secretEngineName")
-    def secret_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Secret Engine.
         """
         return pulumi.get(self, "secret_engine_name")
 
     @secret_engine_name.setter
-    def secret_engine_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_engine_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_engine_name", value)
 
     @_builtins.property
     @pulumi.getter(name="secretEngineVersion")
-    def secret_engine_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secret_engine_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Version of Secret Engine.
         """
         return pulumi.get(self, "secret_engine_version")
 
     @secret_engine_version.setter
-    def secret_engine_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secret_engine_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secret_engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="secretId")
-    def secret_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the Secret.
         """
         return pulumi.get(self, "secret_id")
 
     @secret_id.setter
-    def secret_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountTokenPath")
-    def service_account_token_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_token_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Service Account token path in the K8s pod where the token is mounted.
         """
         return pulumi.get(self, "service_account_token_path")
 
     @service_account_token_path.setter
-    def service_account_token_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_token_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_token_path", value)
 
     @_builtins.property
     @pulumi.getter(name="sinkPath")
-    def sink_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sink_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location from which the authentication token should be read.
         """
         return pulumi.get(self, "sink_path")
 
     @sink_path.setter
-    def sink_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sink_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sink_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="useAwsIam")
-    def use_aws_iam(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_aws_iam(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if AWS IAM is used for authentication.
         """
         return pulumi.get(self, "use_aws_iam")
 
     @use_aws_iam.setter
-    def use_aws_iam(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_aws_iam(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_aws_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="useJwtAuth")
-    def use_jwt_auth(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_jwt_auth(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if JWT is used for authentication.
         """
         return pulumi.get(self, "use_jwt_auth")
 
     @use_jwt_auth.setter
-    def use_jwt_auth(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_jwt_auth(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_jwt_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="useK8sAuth")
-    def use_k8s_auth(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_k8s_auth(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if K8s Auth is used for authentication.
         """
         return pulumi.get(self, "use_k8s_auth")
 
     @use_k8s_auth.setter
-    def use_k8s_auth(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_k8s_auth(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_k8s_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="useVaultAgent")
-    def use_vault_agent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_vault_agent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if Vault Agent is used for authentication.
         """
         return pulumi.get(self, "use_vault_agent")
 
     @use_vault_agent.setter
-    def use_vault_agent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_vault_agent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_vault_agent", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultAwsIamRole")
-    def vault_aws_iam_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_aws_iam_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Vault role defined to bind to aws iam account/role being accessed.
         """
         return pulumi.get(self, "vault_aws_iam_role")
 
     @vault_aws_iam_role.setter
-    def vault_aws_iam_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_aws_iam_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_aws_iam_role", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultJwtAuthPath")
-    def vault_jwt_auth_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_jwt_auth_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom path at with JWT auth in enabled for Vault
         """
         return pulumi.get(self, "vault_jwt_auth_path")
 
     @vault_jwt_auth_path.setter
-    def vault_jwt_auth_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_jwt_auth_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_jwt_auth_path", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultJwtAuthRole")
-    def vault_jwt_auth_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_jwt_auth_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Vault role defined with JWT auth type for accessing Vault as per policies binded.
         """
         return pulumi.get(self, "vault_jwt_auth_role")
 
     @vault_jwt_auth_role.setter
-    def vault_jwt_auth_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_jwt_auth_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_jwt_auth_role", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultK8sAuthRole")
-    def vault_k8s_auth_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_k8s_auth_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role where K8s Auth will happen.
         """
         return pulumi.get(self, "vault_k8s_auth_role")
 
     @vault_k8s_auth_role.setter
-    def vault_k8s_auth_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_k8s_auth_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_k8s_auth_role", value)
 
     @_builtins.property
     @pulumi.getter(name="xvaultAwsIamServerId")
-    def xvault_aws_iam_server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def xvault_aws_iam_server_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS IAM Header Server ID that has been configured for this AWS IAM instance.
         """
         return pulumi.get(self, "xvault_aws_iam_server_id")
 
     @xvault_aws_iam_server_id.setter
-    def xvault_aws_iam_server_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def xvault_aws_iam_server_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "xvault_aws_iam_server_id", value)
 
 
 @pulumi.input_type
 class _VaultConnectorState:
     def __init__(__self__, *,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 base_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 k8s_auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 renew_app_role_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 renewal_interval_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_engine_manually_configured: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_engine_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_token_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 sink_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_aws_iam: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_jwt_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_k8s_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_vault_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_aws_iam_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_jwt_auth_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_jwt_auth_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_k8s_auth_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 xvault_aws_iam_server_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 base_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 k8s_auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 renew_app_role_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 renewal_interval_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_engine_manually_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_engine_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_token_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 sink_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_aws_iam: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_jwt_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_k8s_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_vault_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_aws_iam_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_jwt_auth_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_jwt_auth_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_k8s_auth_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 xvault_aws_iam_server_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VaultConnector resources.
 
@@ -772,446 +772,446 @@ class _VaultConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access type.
         """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="appRoleId")
-    def app_role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of App Role.
         """
         return pulumi.get(self, "app_role_id")
 
     @app_role_id.setter
-    def app_role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authToken")
-    def auth_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication token for Vault.
         """
         return pulumi.get(self, "auth_token")
 
     @auth_token.setter
-    def auth_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_token", value)
 
     @_builtins.property
     @pulumi.getter(name="awsRegion")
-    def aws_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS region where the AWS IAM authentication will happen.
         """
         return pulumi.get(self, "aws_region")
 
     @aws_region.setter
-    def aws_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_region", value)
 
     @_builtins.property
     @pulumi.getter(name="basePath")
-    def base_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of the Vault directory where the secret will be stored.
         """
         return pulumi.get(self, "base_path")
 
     @base_path.setter
-    def base_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is default or not.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of Delegate Selectors that belong to the same Delegate and are used to connect to the Secret Manager.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Execute on delegate or not.
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is default or not.
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter(name="isReadOnly")
-    def is_read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Read only or not.
         """
         return pulumi.get(self, "is_read_only")
 
     @is_read_only.setter
-    def is_read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sAuthEndpoint")
-    def k8s_auth_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def k8s_auth_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path where Kubernetes Auth is enabled in Vault.
         """
         return pulumi.get(self, "k8s_auth_endpoint")
 
     @k8s_auth_endpoint.setter
-    def k8s_auth_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def k8s_auth_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "k8s_auth_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Vault namespace where the Secret will be created.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Read only.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="renewAppRoleToken")
-    def renew_app_role_token(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def renew_app_role_token(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if AppRole token renewal is enabled or not.
         """
         return pulumi.get(self, "renew_app_role_token")
 
     @renew_app_role_token.setter
-    def renew_app_role_token(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def renew_app_role_token(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "renew_app_role_token", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalIntervalMinutes")
-    def renewal_interval_minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renewal_interval_minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time interval for the token renewal.
         """
         return pulumi.get(self, "renewal_interval_minutes")
 
     @renewal_interval_minutes.setter
-    def renewal_interval_minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renewal_interval_minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renewal_interval_minutes", value)
 
     @_builtins.property
     @pulumi.getter(name="secretEngineManuallyConfigured")
-    def secret_engine_manually_configured(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secret_engine_manually_configured(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Manually entered Secret Engine.
         """
         return pulumi.get(self, "secret_engine_manually_configured")
 
     @secret_engine_manually_configured.setter
-    def secret_engine_manually_configured(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secret_engine_manually_configured(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secret_engine_manually_configured", value)
 
     @_builtins.property
     @pulumi.getter(name="secretEngineName")
-    def secret_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Secret Engine.
         """
         return pulumi.get(self, "secret_engine_name")
 
     @secret_engine_name.setter
-    def secret_engine_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_engine_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_engine_name", value)
 
     @_builtins.property
     @pulumi.getter(name="secretEngineVersion")
-    def secret_engine_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secret_engine_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Version of Secret Engine.
         """
         return pulumi.get(self, "secret_engine_version")
 
     @secret_engine_version.setter
-    def secret_engine_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secret_engine_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secret_engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="secretId")
-    def secret_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the Secret.
         """
         return pulumi.get(self, "secret_id")
 
     @secret_id.setter
-    def secret_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountTokenPath")
-    def service_account_token_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_token_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Service Account token path in the K8s pod where the token is mounted.
         """
         return pulumi.get(self, "service_account_token_path")
 
     @service_account_token_path.setter
-    def service_account_token_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_token_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_token_path", value)
 
     @_builtins.property
     @pulumi.getter(name="sinkPath")
-    def sink_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sink_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location from which the authentication token should be read.
         """
         return pulumi.get(self, "sink_path")
 
     @sink_path.setter
-    def sink_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sink_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sink_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="useAwsIam")
-    def use_aws_iam(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_aws_iam(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if AWS IAM is used for authentication.
         """
         return pulumi.get(self, "use_aws_iam")
 
     @use_aws_iam.setter
-    def use_aws_iam(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_aws_iam(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_aws_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="useJwtAuth")
-    def use_jwt_auth(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_jwt_auth(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if JWT is used for authentication.
         """
         return pulumi.get(self, "use_jwt_auth")
 
     @use_jwt_auth.setter
-    def use_jwt_auth(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_jwt_auth(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_jwt_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="useK8sAuth")
-    def use_k8s_auth(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_k8s_auth(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if K8s Auth is used for authentication.
         """
         return pulumi.get(self, "use_k8s_auth")
 
     @use_k8s_auth.setter
-    def use_k8s_auth(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_k8s_auth(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_k8s_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="useVaultAgent")
-    def use_vault_agent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_vault_agent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if Vault Agent is used for authentication.
         """
         return pulumi.get(self, "use_vault_agent")
 
     @use_vault_agent.setter
-    def use_vault_agent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_vault_agent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_vault_agent", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultAwsIamRole")
-    def vault_aws_iam_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_aws_iam_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Vault role defined to bind to aws iam account/role being accessed.
         """
         return pulumi.get(self, "vault_aws_iam_role")
 
     @vault_aws_iam_role.setter
-    def vault_aws_iam_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_aws_iam_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_aws_iam_role", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultJwtAuthPath")
-    def vault_jwt_auth_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_jwt_auth_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom path at with JWT auth in enabled for Vault
         """
         return pulumi.get(self, "vault_jwt_auth_path")
 
     @vault_jwt_auth_path.setter
-    def vault_jwt_auth_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_jwt_auth_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_jwt_auth_path", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultJwtAuthRole")
-    def vault_jwt_auth_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_jwt_auth_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Vault role defined with JWT auth type for accessing Vault as per policies binded.
         """
         return pulumi.get(self, "vault_jwt_auth_role")
 
     @vault_jwt_auth_role.setter
-    def vault_jwt_auth_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_jwt_auth_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_jwt_auth_role", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultK8sAuthRole")
-    def vault_k8s_auth_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_k8s_auth_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role where K8s Auth will happen.
         """
         return pulumi.get(self, "vault_k8s_auth_role")
 
     @vault_k8s_auth_role.setter
-    def vault_k8s_auth_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_k8s_auth_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_k8s_auth_role", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultUrl")
-    def vault_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the HashiCorp Vault.
         """
         return pulumi.get(self, "vault_url")
 
     @vault_url.setter
-    def vault_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_url", value)
 
     @_builtins.property
     @pulumi.getter(name="xvaultAwsIamServerId")
-    def xvault_aws_iam_server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def xvault_aws_iam_server_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS IAM Header Server ID that has been configured for this AWS IAM instance.
         """
         return pulumi.get(self, "xvault_aws_iam_server_id")
 
     @xvault_aws_iam_server_id.setter
-    def xvault_aws_iam_server_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def xvault_aws_iam_server_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "xvault_aws_iam_server_id", value)
 
 
@@ -1221,43 +1221,43 @@ class VaultConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 base_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 k8s_auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 renew_app_role_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 renewal_interval_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_engine_manually_configured: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_engine_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_token_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 sink_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_aws_iam: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_jwt_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_k8s_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_vault_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_aws_iam_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_jwt_auth_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_jwt_auth_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_k8s_auth_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 xvault_aws_iam_server_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 base_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 k8s_auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 renew_app_role_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 renewal_interval_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_engine_manually_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_engine_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_token_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 sink_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_aws_iam: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_jwt_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_k8s_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_vault_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_aws_iam_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_jwt_auth_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_jwt_auth_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_k8s_auth_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 xvault_aws_iam_server_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a HashiCorp Vault Secret Manager connector.
@@ -1654,43 +1654,43 @@ class VaultConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 base_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 k8s_auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 renew_app_role_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 renewal_interval_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_engine_manually_configured: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_engine_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_token_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 sink_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_aws_iam: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_jwt_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_k8s_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_vault_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_aws_iam_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_jwt_auth_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_jwt_auth_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_k8s_auth_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 xvault_aws_iam_server_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 base_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 k8s_auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 renew_app_role_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 renewal_interval_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_engine_manually_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_engine_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_token_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 sink_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_aws_iam: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_jwt_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_k8s_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_vault_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_aws_iam_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_jwt_auth_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_jwt_auth_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_k8s_auth_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 xvault_aws_iam_server_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1753,43 +1753,43 @@ class VaultConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_type: Optional[pulumi.Input[_builtins.str]] = None,
-            app_role_id: Optional[pulumi.Input[_builtins.str]] = None,
-            auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-            base_path: Optional[pulumi.Input[_builtins.str]] = None,
-            default: Optional[pulumi.Input[_builtins.bool]] = None,
-            delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            k8s_auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            renew_app_role_token: Optional[pulumi.Input[_builtins.bool]] = None,
-            renewal_interval_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-            secret_engine_manually_configured: Optional[pulumi.Input[_builtins.bool]] = None,
-            secret_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_engine_version: Optional[pulumi.Input[_builtins.int]] = None,
-            secret_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account_token_path: Optional[pulumi.Input[_builtins.str]] = None,
-            sink_path: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            use_aws_iam: Optional[pulumi.Input[_builtins.bool]] = None,
-            use_jwt_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-            use_k8s_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-            use_vault_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-            vault_aws_iam_role: Optional[pulumi.Input[_builtins.str]] = None,
-            vault_jwt_auth_path: Optional[pulumi.Input[_builtins.str]] = None,
-            vault_jwt_auth_role: Optional[pulumi.Input[_builtins.str]] = None,
-            vault_k8s_auth_role: Optional[pulumi.Input[_builtins.str]] = None,
-            vault_url: Optional[pulumi.Input[_builtins.str]] = None,
-            xvault_aws_iam_server_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VaultConnector':
+            access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            app_role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+            base_path: pulumi.Input[Optional[_builtins.str]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            k8s_auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            renew_app_role_token: pulumi.Input[Optional[_builtins.bool]] = None,
+            renewal_interval_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+            secret_engine_manually_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+            secret_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_engine_version: pulumi.Input[Optional[_builtins.int]] = None,
+            secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_token_path: pulumi.Input[Optional[_builtins.str]] = None,
+            sink_path: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            use_aws_iam: pulumi.Input[Optional[_builtins.bool]] = None,
+            use_jwt_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+            use_k8s_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+            use_vault_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+            vault_aws_iam_role: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_jwt_auth_path: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_jwt_auth_role: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_k8s_auth_role: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_url: pulumi.Input[Optional[_builtins.str]] = None,
+            xvault_aws_iam_server_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VaultConnector':
         """
         Get an existing VaultConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

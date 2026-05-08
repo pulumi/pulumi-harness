@@ -187,63 +187,63 @@ export interface AwsSecretManagerConnectorState {
     /**
      * Credentials to connect to AWS.
      */
-    credentials?: pulumi.Input<inputs.platform.AwsSecretManagerConnectorCredentials>;
+    credentials?: pulumi.Input<inputs.platform.AwsSecretManagerConnectorCredentials | undefined>;
     /**
      * Use as Default Secrets Manager.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Run the operation on the delegate or harness platform.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force delete secret value or not.
      */
-    forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
+    forceDeleteWithoutRecovery?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Recovery duration in days in AWS Secrets Manager.
      */
-    recoveryWindowInDays?: pulumi.Input<number>;
+    recoveryWindowInDays?: pulumi.Input<number | undefined>;
     /**
      * The AWS region where the AWS Secret Manager is.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A prefix to be added to all secrets.
      */
-    secretNamePrefix?: pulumi.Input<string>;
+    secretNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to update secret value using putSecretValue action.
      */
-    usePutSecret?: pulumi.Input<boolean>;
+    usePutSecret?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -257,23 +257,23 @@ export interface AwsSecretManagerConnectorArgs {
     /**
      * Use as Default Secrets Manager.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Run the operation on the delegate or harness platform.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force delete secret value or not.
      */
-    forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
+    forceDeleteWithoutRecovery?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -281,19 +281,19 @@ export interface AwsSecretManagerConnectorArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Recovery duration in days in AWS Secrets Manager.
      */
-    recoveryWindowInDays?: pulumi.Input<number>;
+    recoveryWindowInDays?: pulumi.Input<number | undefined>;
     /**
      * The AWS region where the AWS Secret Manager is.
      */
@@ -301,13 +301,13 @@ export interface AwsSecretManagerConnectorArgs {
     /**
      * A prefix to be added to all secrets.
      */
-    secretNamePrefix?: pulumi.Input<string>;
+    secretNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to update secret value using putSecretValue action.
      */
-    usePutSecret?: pulumi.Input<boolean>;
+    usePutSecret?: pulumi.Input<boolean | undefined>;
 }

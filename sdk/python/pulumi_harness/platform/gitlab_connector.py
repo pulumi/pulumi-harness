@@ -25,15 +25,15 @@ class GitlabConnectorArgs:
                  credentials: pulumi.Input['GitlabConnectorCredentialsArgs'],
                  identifier: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 api_authentication: Optional[pulumi.Input['GitlabConnectorApiAuthenticationArgs']] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 validation_repo: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_authentication: pulumi.Input[Optional['GitlabConnectorApiAuthenticationArgs']] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 validation_repo: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GitlabConnector resource.
 
@@ -124,129 +124,129 @@ class GitlabConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiAuthentication")
-    def api_authentication(self) -> Optional[pulumi.Input['GitlabConnectorApiAuthenticationArgs']]:
+    def api_authentication(self) -> pulumi.Input[Optional['GitlabConnectorApiAuthenticationArgs']]:
         """
         Configuration for using the gitlab api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         """
         return pulumi.get(self, "api_authentication")
 
     @api_authentication.setter
-    def api_authentication(self, value: Optional[pulumi.Input['GitlabConnectorApiAuthenticationArgs']]):
+    def api_authentication(self, value: pulumi.Input[Optional['GitlabConnectorApiAuthenticationArgs']]):
         pulumi.set(self, "api_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Execute on delegate or not.
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="validationRepo")
-    def validation_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def validation_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         return pulumi.get(self, "validation_repo")
 
     @validation_repo.setter
-    def validation_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def validation_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "validation_repo", value)
 
 
 @pulumi.input_type
 class _GitlabConnectorState:
     def __init__(__self__, *,
-                 api_authentication: Optional[pulumi.Input['GitlabConnectorApiAuthenticationArgs']] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials: Optional[pulumi.Input['GitlabConnectorCredentialsArgs']] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 validation_repo: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_authentication: pulumi.Input[Optional['GitlabConnectorApiAuthenticationArgs']] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials: pulumi.Input[Optional['GitlabConnectorCredentialsArgs']] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_repo: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GitlabConnector resources.
 
@@ -293,158 +293,158 @@ class _GitlabConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="apiAuthentication")
-    def api_authentication(self) -> Optional[pulumi.Input['GitlabConnectorApiAuthenticationArgs']]:
+    def api_authentication(self) -> pulumi.Input[Optional['GitlabConnectorApiAuthenticationArgs']]:
         """
         Configuration for using the gitlab api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         """
         return pulumi.get(self, "api_authentication")
 
     @api_authentication.setter
-    def api_authentication(self, value: Optional[pulumi.Input['GitlabConnectorApiAuthenticationArgs']]):
+    def api_authentication(self, value: pulumi.Input[Optional['GitlabConnectorApiAuthenticationArgs']]):
         pulumi.set(self, "api_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the connection we're making is to a gitlab repository or a gitlab account. Valid values are Account, Repo.
         """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def credentials(self) -> Optional[pulumi.Input['GitlabConnectorCredentialsArgs']]:
+    def credentials(self) -> pulumi.Input[Optional['GitlabConnectorCredentialsArgs']]:
         """
         Credentials to use for the connection.
         """
         return pulumi.get(self, "credentials")
 
     @credentials.setter
-    def credentials(self, value: Optional[pulumi.Input['GitlabConnectorCredentialsArgs']]):
+    def credentials(self, value: pulumi.Input[Optional['GitlabConnectorCredentialsArgs']]):
         pulumi.set(self, "credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Execute on delegate or not.
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the gitlab repository or account.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="validationRepo")
-    def validation_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def validation_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         return pulumi.get(self, "validation_repo")
 
     @validation_repo.setter
-    def validation_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def validation_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "validation_repo", value)
 
 
@@ -454,19 +454,19 @@ class GitlabConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_authentication: Optional[pulumi.Input[Union['GitlabConnectorApiAuthenticationArgs', 'GitlabConnectorApiAuthenticationArgsDict']]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials: Optional[pulumi.Input[Union['GitlabConnectorCredentialsArgs', 'GitlabConnectorCredentialsArgsDict']]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 validation_repo: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_authentication: pulumi.Input[Optional[Union['GitlabConnectorApiAuthenticationArgs', 'GitlabConnectorApiAuthenticationArgsDict']]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials: pulumi.Input[Optional[Union['GitlabConnectorCredentialsArgs', 'GitlabConnectorCredentialsArgsDict']]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_repo: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Gitlab connector.
@@ -557,19 +557,19 @@ class GitlabConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_authentication: Optional[pulumi.Input[Union['GitlabConnectorApiAuthenticationArgs', 'GitlabConnectorApiAuthenticationArgsDict']]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials: Optional[pulumi.Input[Union['GitlabConnectorCredentialsArgs', 'GitlabConnectorCredentialsArgsDict']]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 validation_repo: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_authentication: pulumi.Input[Optional[Union['GitlabConnectorApiAuthenticationArgs', 'GitlabConnectorApiAuthenticationArgsDict']]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials: pulumi.Input[Optional[Union['GitlabConnectorCredentialsArgs', 'GitlabConnectorCredentialsArgsDict']]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_repo: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -610,19 +610,19 @@ class GitlabConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_authentication: Optional[pulumi.Input[Union['GitlabConnectorApiAuthenticationArgs', 'GitlabConnectorApiAuthenticationArgsDict']]] = None,
-            connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-            credentials: Optional[pulumi.Input[Union['GitlabConnectorCredentialsArgs', 'GitlabConnectorCredentialsArgsDict']]] = None,
-            delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            validation_repo: Optional[pulumi.Input[_builtins.str]] = None) -> 'GitlabConnector':
+            api_authentication: pulumi.Input[Optional[Union['GitlabConnectorApiAuthenticationArgs', 'GitlabConnectorApiAuthenticationArgsDict']]] = None,
+            connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+            credentials: pulumi.Input[Optional[Union['GitlabConnectorCredentialsArgs', 'GitlabConnectorCredentialsArgsDict']]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_repo: pulumi.Input[Optional[_builtins.str]] = None) -> 'GitlabConnector':
         """
         Get an existing GitlabConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

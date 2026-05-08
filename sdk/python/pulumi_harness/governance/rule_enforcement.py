@@ -23,13 +23,13 @@ class RuleEnforcementArgs:
                  execution_schedule: pulumi.Input[_builtins.str],
                  execution_timezone: pulumi.Input[_builtins.str],
                  target_accounts: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule_set_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RuleEnforcement resource.
 
@@ -114,104 +114,104 @@ class RuleEnforcementArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for rule enforcement.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="isDryRun")
-    def is_dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the rule enforcement is a dry run. This by default is set to false.
         """
         return pulumi.get(self, "is_dry_run")
 
     @is_dry_run.setter
-    def is_dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the rule enforcement is enabled. This by default is set to true.
         """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the rule enforcement.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleIds")
-    def rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def rule_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of rule IDs. Either rule*ids or rule*set_ids should be provided.
         """
         return pulumi.get(self, "rule_ids")
 
     @rule_ids.setter
-    def rule_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def rule_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "rule_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleSetIds")
-    def rule_set_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def rule_set_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of rule set IDs. Either rule*ids or rule*set_ids should be provided.
         """
         return pulumi.get(self, "rule_set_ids")
 
     @rule_set_ids.setter
-    def rule_set_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def rule_set_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "rule_set_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="targetRegions")
-    def target_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of target regions. For GCP it should be left empty but is required in case of AWS or Azure.
         """
         return pulumi.get(self, "target_regions")
 
     @target_regions.setter
-    def target_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_regions", value)
 
 
 @pulumi.input_type
 class _RuleEnforcementState:
     def __init__(__self__, *,
-                 cloud_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforcement_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforcement_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule_set_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering RuleEnforcement resources.
 
@@ -255,146 +255,146 @@ class _RuleEnforcementState:
 
     @_builtins.property
     @pulumi.getter(name="cloudProvider")
-    def cloud_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud provider for the rule enforcement. It should be either AWS, AZURE or GCP.
         """
         return pulumi.get(self, "cloud_provider")
 
     @cloud_provider.setter
-    def cloud_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_provider", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for rule enforcement.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enforcementId")
-    def enforcement_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enforcement_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the rule enforcement.
         """
         return pulumi.get(self, "enforcement_id")
 
     @enforcement_id.setter
-    def enforcement_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enforcement_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enforcement_id", value)
 
     @_builtins.property
     @pulumi.getter(name="executionSchedule")
-    def execution_schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Execution schedule in cron format.
         """
         return pulumi.get(self, "execution_schedule")
 
     @execution_schedule.setter
-    def execution_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="executionTimezone")
-    def execution_timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timezone for the execution schedule.
         """
         return pulumi.get(self, "execution_timezone")
 
     @execution_timezone.setter
-    def execution_timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="isDryRun")
-    def is_dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the rule enforcement is a dry run. This by default is set to false.
         """
         return pulumi.get(self, "is_dry_run")
 
     @is_dry_run.setter
-    def is_dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the rule enforcement is enabled. This by default is set to true.
         """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the rule enforcement.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleIds")
-    def rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def rule_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of rule IDs. Either rule*ids or rule*set_ids should be provided.
         """
         return pulumi.get(self, "rule_ids")
 
     @rule_ids.setter
-    def rule_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def rule_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "rule_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleSetIds")
-    def rule_set_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def rule_set_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of rule set IDs. Either rule*ids or rule*set_ids should be provided.
         """
         return pulumi.get(self, "rule_set_ids")
 
     @rule_set_ids.setter
-    def rule_set_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def rule_set_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "rule_set_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="targetAccounts")
-    def target_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of target account which can be either AWS Account Ids or Azure Subscription Ids or Gcp Project Ids.
         """
         return pulumi.get(self, "target_accounts")
 
     @target_accounts.setter
-    def target_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="targetRegions")
-    def target_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of target regions. For GCP it should be left empty but is required in case of AWS or Azure.
         """
         return pulumi.get(self, "target_regions")
 
     @target_regions.setter
-    def target_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_regions", value)
 
 
@@ -404,17 +404,17 @@ class RuleEnforcement(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule_set_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for creating, updating, and managing rule enforcement.
@@ -521,17 +521,17 @@ class RuleEnforcement(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule_set_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -571,18 +571,18 @@ class RuleEnforcement(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_provider: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enforcement_id: Optional[pulumi.Input[_builtins.str]] = None,
-            execution_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-            execution_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-            is_dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            rule_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'RuleEnforcement':
+            cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enforcement_id: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            is_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rule_set_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'RuleEnforcement':
         """
         Get an existing RuleEnforcement resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

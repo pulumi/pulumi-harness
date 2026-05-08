@@ -154,9 +154,9 @@ export interface GetDelegateDefaultVersionOutputArgs {
     /**
      * Organization identifier.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

@@ -150,10 +150,10 @@ def get_iacm_default_pipeline(operation: Optional[_builtins.str] = None,
         pipeline=pulumi.get(__ret__, 'pipeline'),
         project_id=pulumi.get(__ret__, 'project_id'),
         provisioner_type=pulumi.get(__ret__, 'provisioner_type'))
-def get_iacm_default_pipeline_output(operation: Optional[pulumi.Input[_builtins.str]] = None,
-                                     org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     provisioner_type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_iacm_default_pipeline_output(operation: pulumi.Input[Optional[_builtins.str]] = None,
+                                     org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIacmDefaultPipelineResult]:
     """
     Data source for retrieving IACM default pipelines.

@@ -200,63 +200,63 @@ export interface RepoState {
     /**
      * Timestamp when the repository was created.
      */
-    created?: pulumi.Input<number>;
+    created?: pulumi.Input<number | undefined>;
     /**
      * ID of the user who created the repository.
      */
-    createdBy?: pulumi.Input<number>;
+    createdBy?: pulumi.Input<number | undefined>;
     /**
      * Default branch of the repository (Applicate only for create).
      */
-    defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string | undefined>;
     /**
      * Description of the repository.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Repository should be created with specified predefined gitignore file.
      */
-    gitIgnore?: pulumi.Input<string>;
+    gitIgnore?: pulumi.Input<string | undefined>;
     /**
      * Git URL of the repository.
      */
-    gitUrl?: pulumi.Input<string>;
+    gitUrl?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the repository.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Repository should be created with specified predefined license file.
      */
-    license?: pulumi.Input<string>;
+    license?: pulumi.Input<string | undefined>;
     /**
      * Name of the repository.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Path of the repository.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repository should be created with readme file.
      */
-    readme?: pulumi.Input<boolean>;
+    readme?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration for importing an existing repository from SCM provider.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.platform.RepoSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.platform.RepoSource>[] | undefined>;
     /**
      * Timestamp when the repository was last updated.
      */
-    updated?: pulumi.Input<number>;
+    updated?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -266,15 +266,15 @@ export interface RepoArgs {
     /**
      * Default branch of the repository (Applicate only for create).
      */
-    defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string | undefined>;
     /**
      * Description of the repository.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Repository should be created with specified predefined gitignore file.
      */
-    gitIgnore?: pulumi.Input<string>;
+    gitIgnore?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the repository.
      */
@@ -282,21 +282,21 @@ export interface RepoArgs {
     /**
      * Repository should be created with specified predefined license file.
      */
-    license?: pulumi.Input<string>;
+    license?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repository should be created with readme file.
      */
-    readme?: pulumi.Input<boolean>;
+    readme?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration for importing an existing repository from SCM provider.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.platform.RepoSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.platform.RepoSource>[] | undefined>;
 }

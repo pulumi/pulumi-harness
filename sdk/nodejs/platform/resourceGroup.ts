@@ -401,47 +401,47 @@ export interface ResourceGroupState {
     /**
      * Account Identifier of the account
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The scope levels at which this resource group can be used
      */
-    allowedScopeLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedScopeLevels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Color of the environment.
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Included scopes; default selected based on resource group scope if not specified.
      */
-    includedScopes?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupIncludedScope>[]>;
+    includedScopes?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupIncludedScope>[] | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Contains resource filter for a resource group
      */
-    resourceFilters?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupResourceFilter>[]>;
+    resourceFilters?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupResourceFilter>[] | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -455,15 +455,15 @@ export interface ResourceGroupArgs {
     /**
      * The scope levels at which this resource group can be used
      */
-    allowedScopeLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedScopeLevels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Color of the environment.
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -471,25 +471,25 @@ export interface ResourceGroupArgs {
     /**
      * Included scopes; default selected based on resource group scope if not specified.
      */
-    includedScopes?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupIncludedScope>[]>;
+    includedScopes?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupIncludedScope>[] | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Contains resource filter for a resource group
      */
-    resourceFilters?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupResourceFilter>[]>;
+    resourceFilters?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupResourceFilter>[] | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

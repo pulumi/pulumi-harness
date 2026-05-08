@@ -514,111 +514,111 @@ export interface FaultTemplateState {
     /**
      * Account identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * API version
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * Fault categories
      */
-    categories?: pulumi.Input<pulumi.Input<string>[]>;
+    categories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Creation timestamp
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Creator user ID
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Description of the fault template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Hub identity reference
      */
-    hubIdentity?: pulumi.Input<string>;
+    hubIdentity?: pulumi.Input<string | undefined>;
     /**
      * Hub reference (computed)
      */
-    hubRef?: pulumi.Input<string>;
+    hubRef?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for the fault template (immutable)
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * List of supported infrastructures
      */
-    infrastructures?: pulumi.Input<pulumi.Input<string>[]>;
+    infrastructures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether this is an enterprise-only template
      */
-    isEnterprise?: pulumi.Input<boolean>;
+    isEnterprise?: pulumi.Input<boolean | undefined>;
     /**
      * Soft delete flag
      */
-    isRemoved?: pulumi.Input<boolean>;
+    isRemoved?: pulumi.Input<boolean | undefined>;
     /**
      * Search keywords
      */
-    keywords?: pulumi.Input<pulumi.Input<string>[]>;
+    keywords?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource kind
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Related links
      */
-    links?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateLink>[]>;
+    links?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateLink>[] | undefined>;
     /**
      * Name of the fault template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Required permissions for the fault
      */
-    permissionsRequired?: pulumi.Input<string>;
+    permissionsRequired?: pulumi.Input<string | undefined>;
     /**
      * Supported platforms
      */
-    platforms?: pulumi.Input<pulumi.Input<string>[]>;
+    platforms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Project identifier
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Template revision (defaults to v1 if not specified)
      */
-    revision?: pulumi.Input<string>;
+    revision?: pulumi.Input<string | undefined>;
     /**
      * Fault specification
      */
-    spec?: pulumi.Input<inputs.chaos.FaultTemplateSpec>;
+    spec?: pulumi.Input<inputs.chaos.FaultTemplateSpec | undefined>;
     /**
      * Tags for the fault template
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Fault type
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Update timestamp
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * Updater user ID
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
     /**
      * Template variables
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateVariable>[] | undefined>;
 }
 
 /**
@@ -628,15 +628,15 @@ export interface FaultTemplateArgs {
     /**
      * API version
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * Fault categories
      */
-    categories?: pulumi.Input<pulumi.Input<string>[]>;
+    categories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the fault template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Hub identity reference
      */
@@ -648,57 +648,57 @@ export interface FaultTemplateArgs {
     /**
      * List of supported infrastructures
      */
-    infrastructures?: pulumi.Input<pulumi.Input<string>[]>;
+    infrastructures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Search keywords
      */
-    keywords?: pulumi.Input<pulumi.Input<string>[]>;
+    keywords?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource kind
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Related links
      */
-    links?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateLink>[]>;
+    links?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateLink>[] | undefined>;
     /**
      * Name of the fault template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Required permissions for the fault
      */
-    permissionsRequired?: pulumi.Input<string>;
+    permissionsRequired?: pulumi.Input<string | undefined>;
     /**
      * Supported platforms
      */
-    platforms?: pulumi.Input<pulumi.Input<string>[]>;
+    platforms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Project identifier
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Template revision (defaults to v1 if not specified)
      */
-    revision?: pulumi.Input<string>;
+    revision?: pulumi.Input<string | undefined>;
     /**
      * Fault specification
      */
-    spec?: pulumi.Input<inputs.chaos.FaultTemplateSpec>;
+    spec?: pulumi.Input<inputs.chaos.FaultTemplateSpec | undefined>;
     /**
      * Tags for the fault template
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Fault type
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Template variables
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.chaos.FaultTemplateVariable>[] | undefined>;
 }

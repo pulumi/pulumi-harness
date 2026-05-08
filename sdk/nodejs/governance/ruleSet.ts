@@ -100,23 +100,23 @@ export interface RuleSetState {
     /**
      * The cloud provider for the rule set. It should be either AWS, AZURE or GCP.
      */
-    cloudProvider?: pulumi.Input<string>;
+    cloudProvider?: pulumi.Input<string | undefined>;
     /**
      * Description for rule set.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the rule set.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of rule IDs
      */
-    ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ruleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Id of the rule.
      */
-    ruleSetId?: pulumi.Input<string>;
+    ruleSetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -130,11 +130,11 @@ export interface RuleSetArgs {
     /**
      * Description for rule set.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the rule set.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of rule IDs
      */

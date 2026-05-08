@@ -231,91 +231,91 @@ export interface InfraModuleState {
     /**
      * Org of the connector to be used to fetch the code.
      */
-    connectorOrg?: pulumi.Input<string>;
+    connectorOrg?: pulumi.Input<string | undefined>;
     /**
      * Project of the connector to be used to fetch the code.
      */
-    connectorProject?: pulumi.Input<string>;
+    connectorProject?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the module was created.
      */
-    created?: pulumi.Input<number>;
+    created?: pulumi.Input<number | undefined>;
     /**
      * Description of the module.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Git Tag Style.
      */
-    gitTagStyle?: pulumi.Input<string>;
+    gitTagStyle?: pulumi.Input<string | undefined>;
     /**
      * Name of the module.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Onboarding Pipeline identifier.
      */
-    onboardingPipeline?: pulumi.Input<string>;
+    onboardingPipeline?: pulumi.Input<string | undefined>;
     /**
      * Onboarding Pipeline organization.
      */
-    onboardingPipelineOrg?: pulumi.Input<string>;
+    onboardingPipelineOrg?: pulumi.Input<string | undefined>;
     /**
      * Onboarding Pipeline project.
      */
-    onboardingPipelineProject?: pulumi.Input<string>;
+    onboardingPipelineProject?: pulumi.Input<string | undefined>;
     /**
      * Sync the project automatically.
      */
-    onboardingPipelineSync?: pulumi.Input<boolean>;
+    onboardingPipelineSync?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the module.
      */
-    platformInfraModuleId?: pulumi.Input<string>;
+    platformInfraModuleId?: pulumi.Input<string | undefined>;
     /**
      * For account connectors, the repository name where the module can be found.
      */
-    repository?: pulumi.Input<string>;
+    repository?: pulumi.Input<string | undefined>;
     /**
      * Name of the branch to fetch the code from. This cannot be set if repository commit is set.
      */
-    repositoryBranch?: pulumi.Input<string>;
+    repositoryBranch?: pulumi.Input<string | undefined>;
     /**
      * Tag to fetch the code from. This cannot be set if repository branch is set.
      */
-    repositoryCommit?: pulumi.Input<string>;
+    repositoryCommit?: pulumi.Input<string | undefined>;
     /**
      * Reference to the connector to be used to fetch the code.
      */
-    repositoryConnector?: pulumi.Input<string>;
+    repositoryConnector?: pulumi.Input<string | undefined>;
     /**
      * Path to the module within the repository.
      */
-    repositoryPath?: pulumi.Input<string>;
+    repositoryPath?: pulumi.Input<string | undefined>;
     /**
      * URL of the repository where the module is stored.
      */
-    repositoryUrl?: pulumi.Input<string>;
+    repositoryUrl?: pulumi.Input<string | undefined>;
     /**
      * How to store the artifact.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the module was last synced.
      */
-    synced?: pulumi.Input<number>;
+    synced?: pulumi.Input<number | undefined>;
     /**
      * Provider of the module.
      */
-    system?: pulumi.Input<string>;
+    system?: pulumi.Input<string | undefined>;
     /**
      * Git tags associated with the module.
      */
-    tags?: pulumi.Input<string>;
+    tags?: pulumi.Input<string | undefined>;
     /**
      * List of versions of the module.
      */
-    versions?: pulumi.Input<pulumi.Input<string>[]>;
+    versions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -325,79 +325,79 @@ export interface InfraModuleArgs {
     /**
      * Org of the connector to be used to fetch the code.
      */
-    connectorOrg?: pulumi.Input<string>;
+    connectorOrg?: pulumi.Input<string | undefined>;
     /**
      * Project of the connector to be used to fetch the code.
      */
-    connectorProject?: pulumi.Input<string>;
+    connectorProject?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the module was created.
      */
-    created?: pulumi.Input<number>;
+    created?: pulumi.Input<number | undefined>;
     /**
      * Description of the module.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Git Tag Style.
      */
-    gitTagStyle?: pulumi.Input<string>;
+    gitTagStyle?: pulumi.Input<string | undefined>;
     /**
      * Name of the module.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Onboarding Pipeline identifier.
      */
-    onboardingPipeline?: pulumi.Input<string>;
+    onboardingPipeline?: pulumi.Input<string | undefined>;
     /**
      * Onboarding Pipeline organization.
      */
-    onboardingPipelineOrg?: pulumi.Input<string>;
+    onboardingPipelineOrg?: pulumi.Input<string | undefined>;
     /**
      * Onboarding Pipeline project.
      */
-    onboardingPipelineProject?: pulumi.Input<string>;
+    onboardingPipelineProject?: pulumi.Input<string | undefined>;
     /**
      * Sync the project automatically.
      */
-    onboardingPipelineSync?: pulumi.Input<boolean>;
+    onboardingPipelineSync?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the module.
      */
-    platformInfraModuleId?: pulumi.Input<string>;
+    platformInfraModuleId?: pulumi.Input<string | undefined>;
     /**
      * For account connectors, the repository name where the module can be found.
      */
-    repository?: pulumi.Input<string>;
+    repository?: pulumi.Input<string | undefined>;
     /**
      * Name of the branch to fetch the code from. This cannot be set if repository commit is set.
      */
-    repositoryBranch?: pulumi.Input<string>;
+    repositoryBranch?: pulumi.Input<string | undefined>;
     /**
      * Tag to fetch the code from. This cannot be set if repository branch is set.
      */
-    repositoryCommit?: pulumi.Input<string>;
+    repositoryCommit?: pulumi.Input<string | undefined>;
     /**
      * Reference to the connector to be used to fetch the code.
      */
-    repositoryConnector?: pulumi.Input<string>;
+    repositoryConnector?: pulumi.Input<string | undefined>;
     /**
      * Path to the module within the repository.
      */
-    repositoryPath?: pulumi.Input<string>;
+    repositoryPath?: pulumi.Input<string | undefined>;
     /**
      * URL of the repository where the module is stored.
      */
-    repositoryUrl?: pulumi.Input<string>;
+    repositoryUrl?: pulumi.Input<string | undefined>;
     /**
      * How to store the artifact.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the module was last synced.
      */
-    synced?: pulumi.Input<number>;
+    synced?: pulumi.Input<number | undefined>;
     /**
      * Provider of the module.
      */
@@ -405,9 +405,9 @@ export interface InfraModuleArgs {
     /**
      * Git tags associated with the module.
      */
-    tags?: pulumi.Input<string>;
+    tags?: pulumi.Input<string | undefined>;
     /**
      * List of versions of the module.
      */
-    versions?: pulumi.Input<pulumi.Input<string>[]>;
+    versions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

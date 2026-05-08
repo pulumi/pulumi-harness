@@ -198,67 +198,67 @@ export interface HubState {
     /**
      * ID of the Git connector
      */
-    connectorId?: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string | undefined>;
     /**
      * Scope of the Git connector (PROJECT, ORGANISATION, or ACCOUNT)
      */
-    connectorScope?: pulumi.Input<string>;
+    connectorScope?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the chaos hub
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the chaos hub is available
      */
-    isAvailable?: pulumi.Input<boolean>;
+    isAvailable?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this is the default chaos hub
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Timestamp of the last sync
      */
-    lastSyncedAt?: pulumi.Input<string>;
+    lastSyncedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the chaos hub
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization ID of the chaos hub
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The project ID of the chaos hub
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Git repository branch
      */
-    repoBranch?: pulumi.Input<string>;
+    repoBranch?: pulumi.Input<string | undefined>;
     /**
      * Name of the Git repository (required for account-level connectors)
      */
-    repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the chaos hub
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Total number of experiments in the hub
      */
-    totalExperiments?: pulumi.Input<number>;
+    totalExperiments?: pulumi.Input<number | undefined>;
     /**
      * Total number of faults in the hub
      */
-    totalFaults?: pulumi.Input<number>;
+    totalFaults?: pulumi.Input<number | undefined>;
     /**
      * Last update timestamp
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -272,27 +272,27 @@ export interface HubArgs {
     /**
      * Scope of the Git connector (PROJECT, ORGANISATION, or ACCOUNT)
      */
-    connectorScope?: pulumi.Input<string>;
+    connectorScope?: pulumi.Input<string | undefined>;
     /**
      * Description of the chaos hub
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether this is the default chaos hub
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the chaos hub
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization ID of the chaos hub
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The project ID of the chaos hub
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Git repository branch
      */
@@ -300,9 +300,9 @@ export interface HubArgs {
     /**
      * Name of the Git repository (required for account-level connectors)
      */
-    repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the chaos hub
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

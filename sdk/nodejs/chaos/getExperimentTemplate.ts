@@ -208,17 +208,17 @@ export interface GetExperimentTemplateOutputArgs {
     /**
      * Unique identifier of the experiment template. Either identity or name must be specified.
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * Name of the experiment template. Either identity or name must be specified.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier. Leave empty for account-level templates.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier. Leave empty for account and org-level templates.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

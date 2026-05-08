@@ -164,7 +164,7 @@ export interface GetAwsSecretManagerConnectorOutputArgs {
     /**
      * Whether to force delete secret value or not.
      */
-    forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
+    forceDeleteWithoutRecovery?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -172,17 +172,17 @@ export interface GetAwsSecretManagerConnectorOutputArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Recovery duration in days in AWS Secrets Manager.
      */
-    recoveryWindowInDays?: pulumi.Input<number>;
+    recoveryWindowInDays?: pulumi.Input<number | undefined>;
 }

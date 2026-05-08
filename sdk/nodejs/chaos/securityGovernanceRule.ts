@@ -216,36 +216,36 @@ export interface SecurityGovernanceRuleState {
     /**
      * List of condition IDs associated with this rule
      */
-    conditionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    conditionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the security governance rule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the rule is enabled
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the security governance rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization ID of the security governance rule
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The project ID of the security governance rule
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags for the security governance rule
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    timeWindows?: pulumi.Input<pulumi.Input<inputs.chaos.SecurityGovernanceRuleTimeWindow>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeWindows?: pulumi.Input<pulumi.Input<inputs.chaos.SecurityGovernanceRuleTimeWindow>[] | undefined>;
     /**
      * List of user group IDs associated with this rule
      */
-    userGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    userGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -259,15 +259,15 @@ export interface SecurityGovernanceRuleArgs {
     /**
      * Description of the security governance rule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the rule is enabled
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the security governance rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization ID of the security governance rule
      */
@@ -279,10 +279,10 @@ export interface SecurityGovernanceRuleArgs {
     /**
      * Tags for the security governance rule
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     timeWindows: pulumi.Input<pulumi.Input<inputs.chaos.SecurityGovernanceRuleTimeWindow>[]>;
     /**
      * List of user group IDs associated with this rule
      */
-    userGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    userGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -22,9 +22,9 @@ class IdpEnvironmentBlueprintArgs:
                  identifier: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
                  yaml: pulumi.Input[_builtins.str],
-                 deprecated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 stable: Optional[pulumi.Input[_builtins.bool]] = None):
+                 deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 stable: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IdpEnvironmentBlueprint resource.
 
@@ -83,50 +83,50 @@ class IdpEnvironmentBlueprintArgs:
 
     @_builtins.property
     @pulumi.getter
-    def deprecated(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deprecated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the catalog entity is deprecated
         """
         return pulumi.get(self, "deprecated")
 
     @deprecated.setter
-    def deprecated(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deprecated(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deprecated", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the catalog entity
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def stable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the catalog entity is stable
         """
         return pulumi.get(self, "stable")
 
     @stable.setter
-    def stable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stable", value)
 
 
 @pulumi.input_type
 class _IdpEnvironmentBlueprintState:
     def __init__(__self__, *,
-                 deprecated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 stable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 stable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IdpEnvironmentBlueprint resources.
 
@@ -152,74 +152,74 @@ class _IdpEnvironmentBlueprintState:
 
     @_builtins.property
     @pulumi.getter
-    def deprecated(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deprecated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the catalog entity is deprecated
         """
         return pulumi.get(self, "deprecated")
 
     @deprecated.setter
-    def deprecated(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deprecated(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deprecated", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the catalog entity
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def stable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the catalog entity is stable
         """
         return pulumi.get(self, "stable")
 
     @stable.setter
-    def stable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stable", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version of the catalog entity
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter
-    def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         YAML definition of the catalog entity
         """
         return pulumi.get(self, "yaml")
 
     @yaml.setter
-    def yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
 
@@ -229,12 +229,12 @@ class IdpEnvironmentBlueprint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deprecated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 stable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 stable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating IDP environment blueprints.
@@ -368,12 +368,12 @@ class IdpEnvironmentBlueprint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deprecated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 stable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 stable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -405,12 +405,12 @@ class IdpEnvironmentBlueprint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deprecated: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            stable: Optional[pulumi.Input[_builtins.bool]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None,
-            yaml: Optional[pulumi.Input[_builtins.str]] = None) -> 'IdpEnvironmentBlueprint':
+            deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            stable: pulumi.Input[Optional[_builtins.bool]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> 'IdpEnvironmentBlueprint':
         """
         Get an existing IdpEnvironmentBlueprint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

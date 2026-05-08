@@ -138,7 +138,7 @@ export interface GetRolesOutputArgs {
     /**
      * The scope levels at which this role can be used
      */
-    allowedScopeLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedScopeLevels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -146,17 +146,17 @@ export interface GetRolesOutputArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * List of the permission identifiers
      */
-    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    permissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

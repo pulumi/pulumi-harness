@@ -158,31 +158,31 @@ export interface VariablesState {
     /**
      * Description of the entity
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the Variable
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the Entity
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * List of Spec Fields.
      */
-    spec?: pulumi.Input<inputs.platform.VariablesSpec>;
+    spec?: pulumi.Input<inputs.platform.VariablesSpec | undefined>;
     /**
      * Type of Variable
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -192,7 +192,7 @@ export interface VariablesArgs {
     /**
      * Description of the entity
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource
      */
@@ -200,15 +200,15 @@ export interface VariablesArgs {
     /**
      * Name of the Variable
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the Entity
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * List of Spec Fields.
      */

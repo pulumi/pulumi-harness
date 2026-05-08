@@ -214,43 +214,43 @@ export interface InfraVariableSetState {
     /**
      * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      */
-    connectors?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetConnector>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetConnector>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Environment variables configured on the Variable Set
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetEnvironmentVariable>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetEnvironmentVariable>[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Terraform variables files configured on the Variable Set (see below for nested schema)
      */
-    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetTerraformVariableFile>[]>;
+    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetTerraformVariableFile>[] | undefined>;
     /**
      * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
      */
-    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetTerraformVariable>[]>;
+    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetTerraformVariable>[] | undefined>;
 }
 
 /**
@@ -260,15 +260,15 @@ export interface InfraVariableSetArgs {
     /**
      * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      */
-    connectors?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetConnector>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetConnector>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Environment variables configured on the Variable Set
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetEnvironmentVariable>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetEnvironmentVariable>[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -276,25 +276,25 @@ export interface InfraVariableSetArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Terraform variables files configured on the Variable Set (see below for nested schema)
      */
-    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetTerraformVariableFile>[]>;
+    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetTerraformVariableFile>[] | undefined>;
     /**
      * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
      */
-    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetTerraformVariable>[]>;
+    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetTerraformVariable>[] | undefined>;
 }

@@ -156,27 +156,27 @@ export interface EnvironmentClustersMappingState {
     /**
      * list of cluster identifiers and names
      */
-    clusters?: pulumi.Input<pulumi.Input<inputs.platform.EnvironmentClustersMappingCluster>[]>;
+    clusters?: pulumi.Input<pulumi.Input<inputs.platform.EnvironmentClustersMappingCluster>[] | undefined>;
     /**
      * environment identifier.
      */
-    envId?: pulumi.Input<string>;
+    envId?: pulumi.Input<string | undefined>;
     /**
      * identifier for the cluster mapping(can be given any value).
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * org_id of the environment.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * project_id of the environment.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * scope at which the environment exists in harness.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -186,7 +186,7 @@ export interface EnvironmentClustersMappingArgs {
     /**
      * list of cluster identifiers and names
      */
-    clusters?: pulumi.Input<pulumi.Input<inputs.platform.EnvironmentClustersMappingCluster>[]>;
+    clusters?: pulumi.Input<pulumi.Input<inputs.platform.EnvironmentClustersMappingCluster>[] | undefined>;
     /**
      * environment identifier.
      */
@@ -198,9 +198,9 @@ export interface EnvironmentClustersMappingArgs {
     /**
      * org_id of the environment.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * project_id of the environment.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

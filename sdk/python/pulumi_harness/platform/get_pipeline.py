@@ -219,11 +219,11 @@ def get_pipeline(git_details: Optional[Union['GetPipelineGitDetailsArgs', 'GetPi
         template_applied=pulumi.get(__ret__, 'template_applied'),
         template_applied_pipeline_yaml=pulumi.get(__ret__, 'template_applied_pipeline_yaml'),
         yaml=pulumi.get(__ret__, 'yaml'))
-def get_pipeline_output(git_details: Optional[pulumi.Input[Optional[Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict']]]] = None,
-                        identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_pipeline_output(git_details: pulumi.Input[Optional[Optional[Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict']]]] = None,
+                        identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        project_id: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineResult]:
     """
     Data source for retrieving a Harness pipeline.

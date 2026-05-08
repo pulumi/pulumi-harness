@@ -192,11 +192,11 @@ def get_environment_clusters_mapping(clusters: Optional[Sequence[Union['GetEnvir
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         scope=pulumi.get(__ret__, 'scope'))
-def get_environment_clusters_mapping_output(clusters: Optional[pulumi.Input[Optional[Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict']]]]] = None,
-                                            env_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                            org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_environment_clusters_mapping_output(clusters: pulumi.Input[Optional[Optional[Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict']]]]] = None,
+                                            env_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                            org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentClustersMappingResult]:
     """
     Data source for retrieving Harness Gitops clusters mapped to Harness Environment.

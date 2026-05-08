@@ -121,8 +121,8 @@ def get_infra_provider_versions(account: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         type=pulumi.get(__ret__, 'type'),
         versions=pulumi.get(__ret__, 'versions'))
-def get_infra_provider_versions_output(account: Optional[pulumi.Input[_builtins.str]] = None,
-                                       type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_infra_provider_versions_output(account: pulumi.Input[Optional[_builtins.str]] = None,
+                                       type: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfraProviderVersionsResult]:
     """
     Data source for listing Terraform/OpenTofu Provider Versions from the IaCM Provider Registry.

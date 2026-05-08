@@ -23,7 +23,7 @@ namespace Pulumi.Harness.Cluster
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = Aws.Index.Region.Invoke();
+    ///     var current = Aws.Region.Invoke();
     /// 
     ///     var test = new Harness.Cluster.Orchestrator("test", new()
     ///     {

@@ -23,15 +23,15 @@ class ResourceGroupArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  identifier: pulumi.Input[_builtins.str],
-                 allowed_scope_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 included_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_filters: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_scope_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 included_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_filters: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ResourceGroup resource.
 
@@ -94,127 +94,127 @@ class ResourceGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedScopeLevels")
-    def allowed_scope_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_scope_levels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The scope levels at which this resource group can be used
         """
         return pulumi.get(self, "allowed_scope_levels")
 
     @allowed_scope_levels.setter
-    def allowed_scope_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_scope_levels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_scope_levels", value)
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Color of the environment.
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="includedScopes")
-    def included_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]]:
+    def included_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]]:
         """
         Included scopes; default selected based on resource group scope if not specified.
         """
         return pulumi.get(self, "included_scopes")
 
     @included_scopes.setter
-    def included_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]]):
+    def included_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]]):
         pulumi.set(self, "included_scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceFilters")
-    def resource_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]]]:
+    def resource_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]]]:
         """
         Contains resource filter for a resource group
         """
         return pulumi.get(self, "resource_filters")
 
     @resource_filters.setter
-    def resource_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]]]):
+    def resource_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]]]):
         pulumi.set(self, "resource_filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ResourceGroupState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_scope_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 included_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_filters: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_scope_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 included_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_filters: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ResourceGroup resources.
 
@@ -255,134 +255,134 @@ class _ResourceGroupState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Identifier of the account
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedScopeLevels")
-    def allowed_scope_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_scope_levels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The scope levels at which this resource group can be used
         """
         return pulumi.get(self, "allowed_scope_levels")
 
     @allowed_scope_levels.setter
-    def allowed_scope_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_scope_levels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_scope_levels", value)
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Color of the environment.
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="includedScopes")
-    def included_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]]:
+    def included_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]]:
         """
         Included scopes; default selected based on resource group scope if not specified.
         """
         return pulumi.get(self, "included_scopes")
 
     @included_scopes.setter
-    def included_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]]):
+    def included_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]]):
         pulumi.set(self, "included_scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceFilters")
-    def resource_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]]]:
+    def resource_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]]]:
         """
         Contains resource filter for a resource group
         """
         return pulumi.get(self, "resource_filters")
 
     @resource_filters.setter
-    def resource_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]]]):
+    def resource_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]]]):
         pulumi.set(self, "resource_filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -392,17 +392,17 @@ class ResourceGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_scope_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 included_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupIncludedScopeArgs', 'ResourceGroupIncludedScopeArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupResourceFilterArgs', 'ResourceGroupResourceFilterArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_scope_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 included_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceGroupIncludedScopeArgs', 'ResourceGroupIncludedScopeArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceGroupResourceFilterArgs', 'ResourceGroupResourceFilterArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         A **Resource Group** defines the **set of Harness resources** that fall within an RBAC boundary (for example, all pipelines, selected connectors, or specific secrets), along with the **scopes** (account, organization, or project) where the group applies.
@@ -965,17 +965,17 @@ class ResourceGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_scope_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 included_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupIncludedScopeArgs', 'ResourceGroupIncludedScopeArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupResourceFilterArgs', 'ResourceGroupResourceFilterArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_scope_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 included_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceGroupIncludedScopeArgs', 'ResourceGroupIncludedScopeArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceGroupResourceFilterArgs', 'ResourceGroupResourceFilterArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1010,17 +1010,17 @@ class ResourceGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            allowed_scope_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            color: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            included_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupIncludedScopeArgs', 'ResourceGroupIncludedScopeArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupResourceFilterArgs', 'ResourceGroupResourceFilterArgsDict']]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ResourceGroup':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_scope_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            color: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            included_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceGroupIncludedScopeArgs', 'ResourceGroupIncludedScopeArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceGroupResourceFilterArgs', 'ResourceGroupResourceFilterArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ResourceGroup':
         """
         Get an existing ResourceGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -152,17 +152,17 @@ export interface GetSecurityGovernanceConditionOutputArgs {
     /**
      * The ID of the security governance condition. Either `id` or `name` must be specified.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the security governance condition. Either `id` or `name` must be specified.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization ID of the security governance condition
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The project ID of the security governance condition
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

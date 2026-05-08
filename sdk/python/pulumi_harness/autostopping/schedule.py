@@ -24,10 +24,10 @@ class ScheduleArgs:
                  rules: pulumi.Input[Sequence[pulumi.Input[_builtins.float]]],
                  schedule_type: pulumi.Input[_builtins.str],
                  time_zone: pulumi.Input[_builtins.str],
-                 ending_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeats: Optional[pulumi.Input[Sequence[pulumi.Input['ScheduleRepeatArgs']]]] = None,
-                 starting_from: Optional[pulumi.Input[_builtins.str]] = None):
+                 ending_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeats: pulumi.Input[Optional[Sequence[pulumi.Input['ScheduleRepeatArgs']]]] = None,
+                 starting_from: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Schedule resource.
 
@@ -89,64 +89,64 @@ class ScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="endingOn")
-    def ending_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ending_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         """
         return pulumi.get(self, "ending_on")
 
     @ending_on.setter
-    def ending_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ending_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ending_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the schedule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def repeats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScheduleRepeatArgs']]]]:
+    def repeats(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScheduleRepeatArgs']]]]:
         """
         For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
         """
         return pulumi.get(self, "repeats")
 
     @repeats.setter
-    def repeats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScheduleRepeatArgs']]]]):
+    def repeats(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScheduleRepeatArgs']]]]):
         pulumi.set(self, "repeats", value)
 
     @_builtins.property
     @pulumi.getter(name="startingFrom")
-    def starting_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def starting_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         """
         return pulumi.get(self, "starting_from")
 
     @starting_from.setter
-    def starting_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def starting_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "starting_from", value)
 
 
 @pulumi.input_type
 class _ScheduleState:
     def __init__(__self__, *,
-                 ending_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.float]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeats: Optional[pulumi.Input[Sequence[pulumi.Input['ScheduleRepeatArgs']]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]] = None,
-                 schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 starting_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 ending_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.float]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeats: pulumi.Input[Optional[Sequence[pulumi.Input['ScheduleRepeatArgs']]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]] = None,
+                 schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 starting_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Schedule resources.
 
@@ -178,98 +178,98 @@ class _ScheduleState:
 
     @_builtins.property
     @pulumi.getter(name="endingOn")
-    def ending_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ending_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         """
         return pulumi.get(self, "ending_on")
 
     @ending_on.setter
-    def ending_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ending_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ending_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Unique identifier of the schedule
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the schedule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def repeats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScheduleRepeatArgs']]]]:
+    def repeats(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScheduleRepeatArgs']]]]:
         """
         For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
         """
         return pulumi.get(self, "repeats")
 
     @repeats.setter
-    def repeats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScheduleRepeatArgs']]]]):
+    def repeats(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScheduleRepeatArgs']]]]):
         pulumi.set(self, "repeats", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]]:
         """
         ID of AutoStopping rules on which the schedule applies
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleType")
-    def schedule_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the schedule. Valid values are `uptime` and `downtime`
         """
         return pulumi.get(self, "schedule_type")
 
     @schedule_type.setter
-    def schedule_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_type", value)
 
     @_builtins.property
     @pulumi.getter(name="startingFrom")
-    def starting_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def starting_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         """
         return pulumi.get(self, "starting_from")
 
     @starting_from.setter
-    def starting_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def starting_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "starting_from", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time zone in which schedule needs to be executed
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
 
@@ -279,13 +279,13 @@ class Schedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ending_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]] = None,
-                 schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 starting_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 ending_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]] = None,
+                 schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 starting_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a fixed schedule for Harness AutoStopping rule
@@ -326,13 +326,13 @@ class Schedule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ending_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]] = None,
-                 schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 starting_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 ending_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]] = None,
+                 schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 starting_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -366,14 +366,14 @@ class Schedule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ending_on: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.float]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            repeats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]] = None,
-            schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-            starting_from: Optional[pulumi.Input[_builtins.str]] = None,
-            time_zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'Schedule':
+            ending_on: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.float]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]] = None,
+            schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            starting_from: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'Schedule':
         """
         Get an existing Schedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

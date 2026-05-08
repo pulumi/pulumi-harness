@@ -196,9 +196,9 @@ def get_default_images(infra_type: Optional[_builtins.str] = None,
         infra_type=pulumi.get(__ret__, 'infra_type'),
         kind=pulumi.get(__ret__, 'kind'),
         type=pulumi.get(__ret__, 'type'))
-def get_default_images_output(infra_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              kind: Optional[pulumi.Input[_builtins.str]] = None,
-                              type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_default_images_output(infra_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              kind: pulumi.Input[Optional[_builtins.str]] = None,
+                              type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDefaultImagesResult]:
     """
     Data source for retrieving Harness default execution images for CI, IACM, or IDP.

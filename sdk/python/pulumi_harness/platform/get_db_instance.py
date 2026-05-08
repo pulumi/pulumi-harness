@@ -234,12 +234,12 @@ def get_db_instance(identifier: Optional[_builtins.str] = None,
         schema=pulumi.get(__ret__, 'schema'),
         substitute_properties=pulumi.get(__ret__, 'substitute_properties'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_db_instance_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                           name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                           project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                           schema: Optional[pulumi.Input[_builtins.str]] = None,
-                           substitute_properties: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_db_instance_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                           name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                           project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                           schema: pulumi.Input[Optional[_builtins.str]] = None,
+                           substitute_properties: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbInstanceResult]:
     """
     Data source for retrieving a Harness DBDevOps Instance.

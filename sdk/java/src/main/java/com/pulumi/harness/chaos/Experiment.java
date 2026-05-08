@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.chaos.Experiment;
  * import com.pulumi.harness.chaos.ExperimentArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -83,6 +83,7 @@ import javax.annotation.Nullable;
  *                 .dependsOn(                
  *                     myTemplate,
  *                     myInfra)
+ *                 .ignoreChanges("tags")
  *                 .build());
  * 
  *         // ----------------------------------------------------------------------------
@@ -109,6 +110,7 @@ import javax.annotation.Nullable;
  *                 .dependsOn(                
  *                     myTemplate,
  *                     myInfra)
+ *                 .ignoreChanges("tags")
  *                 .build());
  * 
  *         // ----------------------------------------------------------------------------
@@ -134,6 +136,7 @@ import javax.annotation.Nullable;
  *                 .dependsOn(                
  *                     orgTemplate,
  *                     myInfra)
+ *                 .ignoreChanges("tags")
  *                 .build());
  * 
  *     }

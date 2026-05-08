@@ -26,15 +26,15 @@ class ConnectorGcpKmsArgs:
                  key_name: pulumi.Input[_builtins.str],
                  key_ring: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 manual: Optional[pulumi.Input['ConnectorGcpKmsManualArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorGcpKmsOidcAuthenticationArgs']]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 manual: pulumi.Input[Optional['ConnectorGcpKmsManualArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorGcpKmsOidcAuthenticationArgs']]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ConnectorGcpKms resource.
 
@@ -139,130 +139,130 @@ class ConnectorGcpKmsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set this flag to set this secret manager as default secret manager.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag to execute on Delegate.
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter
-    def manual(self) -> Optional[pulumi.Input['ConnectorGcpKmsManualArgs']]:
+    def manual(self) -> pulumi.Input[Optional['ConnectorGcpKmsManualArgs']]:
         """
         Manual credential configuration.
         """
         return pulumi.get(self, "manual")
 
     @manual.setter
-    def manual(self, value: Optional[pulumi.Input['ConnectorGcpKmsManualArgs']]):
+    def manual(self, value: pulumi.Input[Optional['ConnectorGcpKmsManualArgs']]):
         pulumi.set(self, "manual", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcAuthentications")
-    def oidc_authentications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorGcpKmsOidcAuthenticationArgs']]]]:
+    def oidc_authentications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorGcpKmsOidcAuthenticationArgs']]]]:
         """
         Authentication using harness oidc.
         """
         return pulumi.get(self, "oidc_authentications")
 
     @oidc_authentications.setter
-    def oidc_authentications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorGcpKmsOidcAuthenticationArgs']]]]):
+    def oidc_authentications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorGcpKmsOidcAuthenticationArgs']]]]):
         pulumi.set(self, "oidc_authentications", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ConnectorGcpKmsState:
     def __init__(__self__, *,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcp_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_ring: Optional[pulumi.Input[_builtins.str]] = None,
-                 manual: Optional[pulumi.Input['ConnectorGcpKmsManualArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorGcpKmsOidcAuthenticationArgs']]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcp_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_ring: pulumi.Input[Optional[_builtins.str]] = None,
+                 manual: pulumi.Input[Optional['ConnectorGcpKmsManualArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorGcpKmsOidcAuthenticationArgs']]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ConnectorGcpKms resources.
 
@@ -312,170 +312,170 @@ class _ConnectorGcpKmsState:
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set this flag to set this secret manager as default secret manager.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeOnDelegate")
-    def execute_on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_on_delegate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag to execute on Delegate.
         """
         return pulumi.get(self, "execute_on_delegate")
 
     @execute_on_delegate.setter
-    def execute_on_delegate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_on_delegate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_on_delegate", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpProjectId")
-    def gcp_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcp_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID of the GCP KMS.
         """
         return pulumi.get(self, "gcp_project_id")
 
     @gcp_project_id.setter
-    def gcp_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcp_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key name of the GCP KMS.
         """
         return pulumi.get(self, "key_name")
 
     @key_name.setter
-    def key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="keyRing")
-    def key_ring(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_ring(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key ring of the GCP KMS.
         """
         return pulumi.get(self, "key_ring")
 
     @key_ring.setter
-    def key_ring(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_ring(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_ring", value)
 
     @_builtins.property
     @pulumi.getter
-    def manual(self) -> Optional[pulumi.Input['ConnectorGcpKmsManualArgs']]:
+    def manual(self) -> pulumi.Input[Optional['ConnectorGcpKmsManualArgs']]:
         """
         Manual credential configuration.
         """
         return pulumi.get(self, "manual")
 
     @manual.setter
-    def manual(self, value: Optional[pulumi.Input['ConnectorGcpKmsManualArgs']]):
+    def manual(self, value: pulumi.Input[Optional['ConnectorGcpKmsManualArgs']]):
         pulumi.set(self, "manual", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcAuthentications")
-    def oidc_authentications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorGcpKmsOidcAuthenticationArgs']]]]:
+    def oidc_authentications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorGcpKmsOidcAuthenticationArgs']]]]:
         """
         Authentication using harness oidc.
         """
         return pulumi.get(self, "oidc_authentications")
 
     @oidc_authentications.setter
-    def oidc_authentications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorGcpKmsOidcAuthenticationArgs']]]]):
+    def oidc_authentications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorGcpKmsOidcAuthenticationArgs']]]]):
         pulumi.set(self, "oidc_authentications", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the GCP KMS.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -485,20 +485,20 @@ class ConnectorGcpKms(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcp_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_ring: Optional[pulumi.Input[_builtins.str]] = None,
-                 manual: Optional[pulumi.Input[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict']]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcp_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_ring: pulumi.Input[Optional[_builtins.str]] = None,
+                 manual: pulumi.Input[Optional[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict']]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for creating a GCP KMS connector.
@@ -746,20 +746,20 @@ class ConnectorGcpKms(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcp_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_ring: Optional[pulumi.Input[_builtins.str]] = None,
-                 manual: Optional[pulumi.Input[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict']]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcp_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_ring: pulumi.Input[Optional[_builtins.str]] = None,
+                 manual: pulumi.Input[Optional[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict']]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -803,20 +803,20 @@ class ConnectorGcpKms(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            execute_on_delegate: Optional[pulumi.Input[_builtins.bool]] = None,
-            gcp_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            key_ring: Optional[pulumi.Input[_builtins.str]] = None,
-            manual: Optional[pulumi.Input[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict']]]]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ConnectorGcpKms':
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+            gcp_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            key_ring: pulumi.Input[Optional[_builtins.str]] = None,
+            manual: pulumi.Input[Optional[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict']]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ConnectorGcpKms':
         """
         Get an existing ConnectorGcpKms resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

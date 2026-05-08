@@ -127,23 +127,23 @@ export interface RuleState {
     /**
      * The cloud provider for the rule. It should be either AWS, AZURE or GCP.
      */
-    cloudProvider?: pulumi.Input<string>;
+    cloudProvider?: pulumi.Input<string | undefined>;
     /**
      * Description for rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Id of the rule.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * The policy YAML of the rule
      */
-    rulesYaml?: pulumi.Input<string>;
+    rulesYaml?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,11 +157,11 @@ export interface RuleArgs {
     /**
      * Description for rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The policy YAML of the rule
      */

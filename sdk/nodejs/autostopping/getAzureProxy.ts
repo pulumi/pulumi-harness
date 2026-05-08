@@ -190,13 +190,13 @@ export interface GetAzureProxyOutputArgs {
     /**
      * Boolean value to indicate if proxy vm needs to have static IP
      */
-    allocateStaticIp?: pulumi.Input<boolean>;
+    allocateStaticIp?: pulumi.Input<boolean | undefined>;
     /**
      * Harness NG API key
      */
     apiKey: pulumi.Input<string>;
-    certificateId?: pulumi.Input<string>;
-    certificates?: pulumi.Input<inputs.autostopping.GetAzureProxyCertificatesArgs>;
+    certificateId?: pulumi.Input<string | undefined>;
+    certificates?: pulumi.Input<inputs.autostopping.GetAzureProxyCertificatesArgs | undefined>;
     /**
      * Id of the cloud connector
      */
@@ -228,7 +228,7 @@ export interface GetAzureProxyOutputArgs {
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Subnet in which cloud resources are hosted
      */

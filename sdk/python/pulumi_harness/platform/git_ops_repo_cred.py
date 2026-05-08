@@ -23,11 +23,11 @@ class GitOpsRepoCredArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[_builtins.str],
                  identifier: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creds: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creds: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitOpsRepoCred resource.
 
@@ -82,75 +82,75 @@ class GitOpsRepoCredArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the Repository Credentials.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def creds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]]:
+    def creds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]]:
         """
         credential details.
         """
         return pulumi.get(self, "creds")
 
     @creds.setter
-    def creds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]]):
+    def creds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]]):
         pulumi.set(self, "creds", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the Repository Credentials.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the Repository Credentials.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def upsert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upsert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
     @upsert.setter
-    def upsert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upsert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upsert", value)
 
 
 @pulumi.input_type
 class _GitOpsRepoCredState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creds: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creds: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GitOpsRepoCred resources.
 
@@ -183,86 +183,86 @@ class _GitOpsRepoCredState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the Repository Credentials.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Agent identifier of the Repository Credentials.
         """
         return pulumi.get(self, "agent_id")
 
     @agent_id.setter
-    def agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def creds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]]:
+    def creds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]]:
         """
         credential details.
         """
         return pulumi.get(self, "creds")
 
     @creds.setter
-    def creds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]]):
+    def creds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]]):
         pulumi.set(self, "creds", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the Repository Credentials.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the Repository Credentials.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the Repository Credentials.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def upsert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upsert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
     @upsert.setter
-    def upsert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upsert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upsert", value)
 
 
@@ -272,13 +272,13 @@ class GitOpsRepoCred(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict']]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict']]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Resource for managing a Harness Gitops Repository Credentials.
@@ -304,7 +304,11 @@ class GitOpsRepoCred(pulumi.CustomResource):
         XXXXX
         -----END OPENSSH PRIVATE KEY -----
         \"\"\",
-            }])
+            }],
+            opts = pulumi.ResourceOptions(ignore_changes=[
+                    "accountId",
+                    "creds[0].sshPrivateKey",
+                ]))
         ```
 
         ## Import
@@ -370,7 +374,11 @@ class GitOpsRepoCred(pulumi.CustomResource):
         XXXXX
         -----END OPENSSH PRIVATE KEY -----
         \"\"\",
-            }])
+            }],
+            opts = pulumi.ResourceOptions(ignore_changes=[
+                    "accountId",
+                    "creds[0].sshPrivateKey",
+                ]))
         ```
 
         ## Import
@@ -411,13 +419,13 @@ class GitOpsRepoCred(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict']]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 upsert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict']]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 upsert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -448,13 +456,13 @@ class GitOpsRepoCred(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            creds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict']]]]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            upsert: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GitOpsRepoCred':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict']]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            upsert: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GitOpsRepoCred':
         """
         Get an existing GitOpsRepoCred resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

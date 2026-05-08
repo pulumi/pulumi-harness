@@ -108,27 +108,27 @@ export interface ProviderState {
     /**
      * The description of the provider entity.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the provider entity.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * The last modified time of the provider entity.
      */
-    lastModifiedAt?: pulumi.Input<number>;
+    lastModifiedAt?: pulumi.Input<number | undefined>;
     /**
      * The name of the provider entity.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Contains parameters related to the provider entity.
      */
-    spec?: pulumi.Input<inputs.platform.ProviderSpec>;
+    spec?: pulumi.Input<inputs.platform.ProviderSpec | undefined>;
     /**
      * The type of the provider entity.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -138,7 +138,7 @@ export interface ProviderArgs {
     /**
      * The description of the provider entity.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the provider entity.
      */
@@ -146,7 +146,7 @@ export interface ProviderArgs {
     /**
      * The name of the provider entity.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Contains parameters related to the provider entity.
      */

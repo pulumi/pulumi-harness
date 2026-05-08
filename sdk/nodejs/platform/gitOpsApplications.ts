@@ -256,77 +256,77 @@ export interface GitOpsApplicationsState {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the GitOps application.
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Definition of the GitOps application resource.
      */
-    applications?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplication>[]>;
+    applications?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplication>[] | undefined>;
     /**
      * Cluster identifier of the GitOps application.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the GitOps application.
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Kind of the GitOps application.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Name of the GitOps application.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Options to remove existing finalizers to delete the GitOps application.
      */
-    optionsRemoveExistingFinalizers?: pulumi.Input<boolean>;
+    optionsRemoveExistingFinalizers?: pulumi.Input<boolean | undefined>;
     /**
      * Organization identifier of the GitOps application.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps application.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
      */
-    repoId?: pulumi.Input<string>;
+    repoId?: pulumi.Input<string | undefined>;
     /**
      * List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
      */
-    repoIds?: pulumi.Input<pulumi.Input<string>[]>;
+    repoIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Request cascade to delete the GitOps application.
      */
-    requestCascade?: pulumi.Input<boolean>;
+    requestCascade?: pulumi.Input<boolean | undefined>;
     /**
      * Request propagation policy to delete the GitOps application.
      */
-    requestPropagationPolicy?: pulumi.Input<string>;
+    requestPropagationPolicy?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the GitOps application should skip validate repository definition exists.
      */
-    skipRepoValidation?: pulumi.Input<boolean>;
+    skipRepoValidation?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the GitOps application should be updated if existing and inserted if not.
      */
-    upsert?: pulumi.Input<boolean>;
+    upsert?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the GitOps application yaml has to be validated.
      */
-    validate?: pulumi.Input<boolean>;
+    validate?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -338,7 +338,7 @@ export interface GitOpsApplicationsArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the GitOps application.
      */
@@ -356,19 +356,19 @@ export interface GitOpsApplicationsArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Kind of the GitOps application.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Name of the GitOps application.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Options to remove existing finalizers to delete the GitOps application.
      */
-    optionsRemoveExistingFinalizers?: pulumi.Input<boolean>;
+    optionsRemoveExistingFinalizers?: pulumi.Input<boolean | undefined>;
     /**
      * Organization identifier of the GitOps application.
      */
@@ -376,7 +376,7 @@ export interface GitOpsApplicationsArgs {
     /**
      * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps application.
      */
@@ -384,29 +384,29 @@ export interface GitOpsApplicationsArgs {
     /**
      * Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
      */
-    repoId?: pulumi.Input<string>;
+    repoId?: pulumi.Input<string | undefined>;
     /**
      * List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
      */
-    repoIds?: pulumi.Input<pulumi.Input<string>[]>;
+    repoIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Request cascade to delete the GitOps application.
      */
-    requestCascade?: pulumi.Input<boolean>;
+    requestCascade?: pulumi.Input<boolean | undefined>;
     /**
      * Request propagation policy to delete the GitOps application.
      */
-    requestPropagationPolicy?: pulumi.Input<string>;
+    requestPropagationPolicy?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the GitOps application should skip validate repository definition exists.
      */
-    skipRepoValidation?: pulumi.Input<boolean>;
+    skipRepoValidation?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the GitOps application should be updated if existing and inserted if not.
      */
-    upsert?: pulumi.Input<boolean>;
+    upsert?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the GitOps application yaml has to be validated.
      */
-    validate?: pulumi.Input<boolean>;
+    validate?: pulumi.Input<boolean | undefined>;
 }

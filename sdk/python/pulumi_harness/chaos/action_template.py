@@ -24,17 +24,17 @@ class ActionTemplateArgs:
                  hub_identity: pulumi.Input[_builtins.str],
                  identity: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 container_action: Optional[pulumi.Input['ActionTemplateContainerActionArgs']] = None,
-                 custom_script_action: Optional[pulumi.Input['ActionTemplateCustomScriptActionArgs']] = None,
-                 delay_action: Optional[pulumi.Input['ActionTemplateDelayActionArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_properties: Optional[pulumi.Input['ActionTemplateRunPropertiesArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateVariableArgs']]]] = None):
+                 container_action: pulumi.Input[Optional['ActionTemplateContainerActionArgs']] = None,
+                 custom_script_action: pulumi.Input[Optional['ActionTemplateCustomScriptActionArgs']] = None,
+                 delay_action: pulumi.Input[Optional['ActionTemplateDelayActionArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_properties: pulumi.Input[Optional['ActionTemplateRunPropertiesArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateVariableArgs']]]] = None):
         """
         The set of arguments for constructing a ActionTemplate resource.
 
@@ -117,165 +117,165 @@ class ActionTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerAction")
-    def container_action(self) -> Optional[pulumi.Input['ActionTemplateContainerActionArgs']]:
+    def container_action(self) -> pulumi.Input[Optional['ActionTemplateContainerActionArgs']]:
         """
         Container action configuration. Required when type is 'container'.
         """
         return pulumi.get(self, "container_action")
 
     @container_action.setter
-    def container_action(self, value: Optional[pulumi.Input['ActionTemplateContainerActionArgs']]):
+    def container_action(self, value: pulumi.Input[Optional['ActionTemplateContainerActionArgs']]):
         pulumi.set(self, "container_action", value)
 
     @_builtins.property
     @pulumi.getter(name="customScriptAction")
-    def custom_script_action(self) -> Optional[pulumi.Input['ActionTemplateCustomScriptActionArgs']]:
+    def custom_script_action(self) -> pulumi.Input[Optional['ActionTemplateCustomScriptActionArgs']]:
         """
         Custom script action configuration. Required when type is 'customScript'.
         """
         return pulumi.get(self, "custom_script_action")
 
     @custom_script_action.setter
-    def custom_script_action(self, value: Optional[pulumi.Input['ActionTemplateCustomScriptActionArgs']]):
+    def custom_script_action(self, value: pulumi.Input[Optional['ActionTemplateCustomScriptActionArgs']]):
         pulumi.set(self, "custom_script_action", value)
 
     @_builtins.property
     @pulumi.getter(name="delayAction")
-    def delay_action(self) -> Optional[pulumi.Input['ActionTemplateDelayActionArgs']]:
+    def delay_action(self) -> pulumi.Input[Optional['ActionTemplateDelayActionArgs']]:
         """
         Delay action configuration. Required when type is 'delay'.
         """
         return pulumi.get(self, "delay_action")
 
     @delay_action.setter
-    def delay_action(self, value: Optional[pulumi.Input['ActionTemplateDelayActionArgs']]):
+    def delay_action(self, value: pulumi.Input[Optional['ActionTemplateDelayActionArgs']]):
         pulumi.set(self, "delay_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the action template.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="infrastructureType")
-    def infrastructure_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infrastructure_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Infrastructure type for the action template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container. Supports runtime inputs like <+input>.
         """
         return pulumi.get(self, "infrastructure_type")
 
     @infrastructure_type.setter
-    def infrastructure_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infrastructure_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infrastructure_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the action template.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="runProperties")
-    def run_properties(self) -> Optional[pulumi.Input['ActionTemplateRunPropertiesArgs']]:
+    def run_properties(self) -> pulumi.Input[Optional['ActionTemplateRunPropertiesArgs']]:
         """
         Run properties for the action template execution.
         """
         return pulumi.get(self, "run_properties")
 
     @run_properties.setter
-    def run_properties(self, value: Optional[pulumi.Input['ActionTemplateRunPropertiesArgs']]):
+    def run_properties(self, value: pulumi.Input[Optional['ActionTemplateRunPropertiesArgs']]):
         pulumi.set(self, "run_properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the action template.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateVariableArgs']]]]:
         """
         Template variables that can be used in the action.
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
 @pulumi.input_type
 class _ActionTemplateState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_action: Optional[pulumi.Input['ActionTemplateContainerActionArgs']] = None,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_script_action: Optional[pulumi.Input['ActionTemplateCustomScriptActionArgs']] = None,
-                 delay_action: Optional[pulumi.Input['ActionTemplateDelayActionArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 id_internal: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_enterprise: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_removed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_properties: Optional[pulumi.Input['ActionTemplateRunPropertiesArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateVariableArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_action: pulumi.Input[Optional['ActionTemplateContainerActionArgs']] = None,
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_script_action: pulumi.Input[Optional['ActionTemplateCustomScriptActionArgs']] = None,
+                 delay_action: pulumi.Input[Optional['ActionTemplateDelayActionArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 id_internal: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_enterprise: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_removed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_properties: pulumi.Input[Optional['ActionTemplateRunPropertiesArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering ActionTemplate resources.
 
@@ -358,302 +358,302 @@ class _ActionTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="containerAction")
-    def container_action(self) -> Optional[pulumi.Input['ActionTemplateContainerActionArgs']]:
+    def container_action(self) -> pulumi.Input[Optional['ActionTemplateContainerActionArgs']]:
         """
         Container action configuration. Required when type is 'container'.
         """
         return pulumi.get(self, "container_action")
 
     @container_action.setter
-    def container_action(self, value: Optional[pulumi.Input['ActionTemplateContainerActionArgs']]):
+    def container_action(self, value: pulumi.Input[Optional['ActionTemplateContainerActionArgs']]):
         pulumi.set(self, "container_action", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Creation timestamp (Unix epoch).
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User who created the action template.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="customScriptAction")
-    def custom_script_action(self) -> Optional[pulumi.Input['ActionTemplateCustomScriptActionArgs']]:
+    def custom_script_action(self) -> pulumi.Input[Optional['ActionTemplateCustomScriptActionArgs']]:
         """
         Custom script action configuration. Required when type is 'customScript'.
         """
         return pulumi.get(self, "custom_script_action")
 
     @custom_script_action.setter
-    def custom_script_action(self, value: Optional[pulumi.Input['ActionTemplateCustomScriptActionArgs']]):
+    def custom_script_action(self, value: pulumi.Input[Optional['ActionTemplateCustomScriptActionArgs']]):
         pulumi.set(self, "custom_script_action", value)
 
     @_builtins.property
     @pulumi.getter(name="delayAction")
-    def delay_action(self) -> Optional[pulumi.Input['ActionTemplateDelayActionArgs']]:
+    def delay_action(self) -> pulumi.Input[Optional['ActionTemplateDelayActionArgs']]:
         """
         Delay action configuration. Required when type is 'delay'.
         """
         return pulumi.get(self, "delay_action")
 
     @delay_action.setter
-    def delay_action(self, value: Optional[pulumi.Input['ActionTemplateDelayActionArgs']]):
+    def delay_action(self, value: pulumi.Input[Optional['ActionTemplateDelayActionArgs']]):
         pulumi.set(self, "delay_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the action template.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="hubIdentity")
-    def hub_identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub_identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identity of the chaos hub this action template belongs to.
         """
         return pulumi.get(self, "hub_identity")
 
     @hub_identity.setter
-    def hub_identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub_identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="idInternal")
-    def id_internal(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id_internal(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Internal ID of the action template.
         """
         return pulumi.get(self, "id_internal")
 
     @id_internal.setter
-    def id_internal(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id_internal(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id_internal", value)
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier for the action template (immutable).
         """
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter(name="infrastructureType")
-    def infrastructure_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infrastructure_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Infrastructure type for the action template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container. Supports runtime inputs like <+input>.
         """
         return pulumi.get(self, "infrastructure_type")
 
     @infrastructure_type.setter
-    def infrastructure_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infrastructure_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infrastructure_type", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is the default version for predefined actions.
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnterprise")
-    def is_enterprise(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enterprise(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is an enterprise action template.
         """
         return pulumi.get(self, "is_enterprise")
 
     @is_enterprise.setter
-    def is_enterprise(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enterprise(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enterprise", value)
 
     @_builtins.property
     @pulumi.getter(name="isRemoved")
-    def is_removed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_removed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the action template has been removed.
         """
         return pulumi.get(self, "is_removed")
 
     @is_removed.setter
-    def is_removed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_removed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_removed", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the action template.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Revision number of the action template.
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter(name="runProperties")
-    def run_properties(self) -> Optional[pulumi.Input['ActionTemplateRunPropertiesArgs']]:
+    def run_properties(self) -> pulumi.Input[Optional['ActionTemplateRunPropertiesArgs']]:
         """
         Run properties for the action template execution.
         """
         return pulumi.get(self, "run_properties")
 
     @run_properties.setter
-    def run_properties(self, value: Optional[pulumi.Input['ActionTemplateRunPropertiesArgs']]):
+    def run_properties(self, value: pulumi.Input[Optional['ActionTemplateRunPropertiesArgs']]):
         pulumi.set(self, "run_properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the action template.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template content/definition.
         """
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the action template. Valid values: delay, customScript, container.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Last update timestamp (Unix epoch).
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User who last updated the action template.
         """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateVariableArgs']]]]:
         """
         Template variables that can be used in the action.
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
@@ -663,20 +663,20 @@ class ActionTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_action: Optional[pulumi.Input[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict']]] = None,
-                 custom_script_action: Optional[pulumi.Input[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict']]] = None,
-                 delay_action: Optional[pulumi.Input[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_properties: Optional[pulumi.Input[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict']]]]] = None,
+                 container_action: pulumi.Input[Optional[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict']]] = None,
+                 custom_script_action: pulumi.Input[Optional[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict']]] = None,
+                 delay_action: pulumi.Input[Optional[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_properties: pulumi.Input[Optional[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for managing Harness Chaos Action Templates. Action templates define reusable actions that can be used in chaos experiments.
@@ -1102,20 +1102,20 @@ class ActionTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_action: Optional[pulumi.Input[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict']]] = None,
-                 custom_script_action: Optional[pulumi.Input[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict']]] = None,
-                 delay_action: Optional[pulumi.Input[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_properties: Optional[pulumi.Input[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict']]]]] = None,
+                 container_action: pulumi.Input[Optional[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict']]] = None,
+                 custom_script_action: pulumi.Input[Optional[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict']]] = None,
+                 delay_action: pulumi.Input[Optional[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_properties: pulumi.Input[Optional[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1166,31 +1166,31 @@ class ActionTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            container_action: Optional[pulumi.Input[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict']]] = None,
-            created_at: Optional[pulumi.Input[_builtins.int]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_script_action: Optional[pulumi.Input[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict']]] = None,
-            delay_action: Optional[pulumi.Input[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-            id_internal: Optional[pulumi.Input[_builtins.str]] = None,
-            identity: Optional[pulumi.Input[_builtins.str]] = None,
-            infrastructure_type: Optional[pulumi.Input[_builtins.str]] = None,
-            is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_enterprise: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_removed: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            revision: Optional[pulumi.Input[_builtins.int]] = None,
-            run_properties: Optional[pulumi.Input[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            template: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-            variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict']]]]] = None) -> 'ActionTemplate':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            container_action: pulumi.Input[Optional[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_script_action: pulumi.Input[Optional[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict']]] = None,
+            delay_action: pulumi.Input[Optional[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            id_internal: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_enterprise: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_removed: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            revision: pulumi.Input[Optional[_builtins.int]] = None,
+            run_properties: pulumi.Input[Optional[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict']]]]] = None) -> 'ActionTemplate':
         """
         Get an existing ActionTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

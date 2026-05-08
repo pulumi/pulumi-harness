@@ -208,63 +208,63 @@ export interface FileStoreFileState {
     /**
      * File content stored on Harness File Store
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Created by
      */
-    createdBies?: pulumi.Input<pulumi.Input<inputs.platform.FileStoreFileCreatedBy>[]>;
+    createdBies?: pulumi.Input<pulumi.Input<inputs.platform.FileStoreFileCreatedBy>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * File content path to be upladed on Harness File Store
      */
-    fileContentPath?: pulumi.Input<string>;
+    fileContentPath?: pulumi.Input<string | undefined>;
     /**
      * File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
      */
-    fileUsage?: pulumi.Input<string>;
+    fileUsage?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Last modified at
      */
-    lastModifiedAt?: pulumi.Input<number>;
+    lastModifiedAt?: pulumi.Input<number | undefined>;
     /**
      * Last modified by
      */
-    lastModifiedBies?: pulumi.Input<pulumi.Input<inputs.platform.FileStoreFileLastModifiedBy>[]>;
+    lastModifiedBies?: pulumi.Input<pulumi.Input<inputs.platform.FileStoreFileLastModifiedBy>[] | undefined>;
     /**
      * File mime type
      */
-    mimeType?: pulumi.Input<string>;
+    mimeType?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * File parent identifier on Harness File Store
      */
-    parentIdentifier?: pulumi.Input<string>;
+    parentIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Harness File Store file path
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -274,19 +274,19 @@ export interface FileStoreFileArgs {
     /**
      * File content stored on Harness File Store
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * File content path to be upladed on Harness File Store
      */
-    fileContentPath?: pulumi.Input<string>;
+    fileContentPath?: pulumi.Input<string | undefined>;
     /**
      * File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
      */
-    fileUsage?: pulumi.Input<string>;
+    fileUsage?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -294,15 +294,15 @@ export interface FileStoreFileArgs {
     /**
      * File mime type
      */
-    mimeType?: pulumi.Input<string>;
+    mimeType?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * File parent identifier on Harness File Store
      */
@@ -310,9 +310,9 @@ export interface FileStoreFileArgs {
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

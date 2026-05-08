@@ -216,10 +216,10 @@ def get_idp_environment(identifier: Optional[_builtins.str] = None,
         owner=pulumi.get(__ret__, 'owner'),
         project_id=pulumi.get(__ret__, 'project_id'),
         target_state=pulumi.get(__ret__, 'target_state'))
-def get_idp_environment_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                               name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_idp_environment_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdpEnvironmentResult]:
     """
     Data source for retrieving IDP environments.

@@ -21,14 +21,14 @@ class HubArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[_builtins.str],
                  repo_branch: pulumi.Input[_builtins.str],
-                 connector_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 connector_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Hub resource.
 
@@ -88,120 +88,120 @@ class HubArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectorScope")
-    def connector_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scope of the Git connector (PROJECT, ORGANISATION, or ACCOUNT)
         """
         return pulumi.get(self, "connector_scope")
 
     @connector_scope.setter
-    def connector_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the chaos hub
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is the default chaos hub
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the chaos hub
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization ID of the chaos hub
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID of the chaos hub
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoName")
-    def repo_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Git repository (required for account-level connectors)
         """
         return pulumi.get(self, "repo_name")
 
     @repo_name.setter
-    def repo_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the chaos hub
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _HubState:
     def __init__(__self__, *,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_available: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_synced_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 total_experiments: Optional[pulumi.Input[_builtins.int]] = None,
-                 total_faults: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_available: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_synced_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 total_experiments: pulumi.Input[Optional[_builtins.int]] = None,
+                 total_faults: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Hub resources.
 
@@ -257,194 +257,194 @@ class _HubState:
 
     @_builtins.property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the Git connector
         """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
-    def connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_id", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorScope")
-    def connector_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scope of the Git connector (PROJECT, ORGANISATION, or ACCOUNT)
         """
         return pulumi.get(self, "connector_scope")
 
     @connector_scope.setter
-    def connector_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the chaos hub
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="isAvailable")
-    def is_available(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_available(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the chaos hub is available
         """
         return pulumi.get(self, "is_available")
 
     @is_available.setter
-    def is_available(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_available(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_available", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is the default chaos hub
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSyncedAt")
-    def last_synced_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_synced_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp of the last sync
         """
         return pulumi.get(self, "last_synced_at")
 
     @last_synced_at.setter
-    def last_synced_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_synced_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_synced_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the chaos hub
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization ID of the chaos hub
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID of the chaos hub
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoBranch")
-    def repo_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git repository branch
         """
         return pulumi.get(self, "repo_branch")
 
     @repo_branch.setter
-    def repo_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="repoName")
-    def repo_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Git repository (required for account-level connectors)
         """
         return pulumi.get(self, "repo_name")
 
     @repo_name.setter
-    def repo_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the chaos hub
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="totalExperiments")
-    def total_experiments(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_experiments(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total number of experiments in the hub
         """
         return pulumi.get(self, "total_experiments")
 
     @total_experiments.setter
-    def total_experiments(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_experiments(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_experiments", value)
 
     @_builtins.property
     @pulumi.getter(name="totalFaults")
-    def total_faults(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_faults(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total number of faults in the hub
         """
         return pulumi.get(self, "total_faults")
 
     @total_faults.setter
-    def total_faults(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_faults(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_faults", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last update timestamp
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -454,16 +454,16 @@ class Hub(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for managing a Harness Chaos Hub
@@ -569,16 +569,16 @@ class Hub(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -618,22 +618,22 @@ class Hub(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            connector_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            is_available: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_synced_at: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            total_experiments: Optional[pulumi.Input[_builtins.int]] = None,
-            total_faults: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'Hub':
+            connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            is_available: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_synced_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            total_experiments: pulumi.Input[Optional[_builtins.int]] = None,
+            total_faults: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'Hub':
         """
         Get an existing Hub resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

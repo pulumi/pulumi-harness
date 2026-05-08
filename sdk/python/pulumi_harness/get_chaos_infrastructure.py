@@ -137,10 +137,10 @@ def get_chaos_infrastructure(environment_id: Optional[_builtins.str] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
-def get_chaos_infrastructure_output(environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                    org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_chaos_infrastructure_output(environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                    org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetChaosInfrastructureResult]:
     """
     Data source for retrieving a chaos infrastructure.

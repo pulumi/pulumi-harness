@@ -204,47 +204,47 @@ export interface AzureCloudCostConnectorState {
     /**
      * Returns billing details for the Azure account.
      */
-    billingExportSpec?: pulumi.Input<inputs.platform.AzureCloudCostConnectorBillingExportSpec>;
+    billingExportSpec?: pulumi.Input<inputs.platform.AzureCloudCostConnectorBillingExportSpec | undefined>;
     /**
      * Returns billing details for the Azure account.
      */
-    billingExportSpec2?: pulumi.Input<inputs.platform.AzureCloudCostConnectorBillingExportSpec2>;
+    billingExportSpec2?: pulumi.Input<inputs.platform.AzureCloudCostConnectorBillingExportSpec2 | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      */
-    featuresEnableds?: pulumi.Input<pulumi.Input<string>[]>;
+    featuresEnableds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Subsription id.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Tenant id.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -254,15 +254,15 @@ export interface AzureCloudCostConnectorArgs {
     /**
      * Returns billing details for the Azure account.
      */
-    billingExportSpec?: pulumi.Input<inputs.platform.AzureCloudCostConnectorBillingExportSpec>;
+    billingExportSpec?: pulumi.Input<inputs.platform.AzureCloudCostConnectorBillingExportSpec | undefined>;
     /**
      * Returns billing details for the Azure account.
      */
-    billingExportSpec2?: pulumi.Input<inputs.platform.AzureCloudCostConnectorBillingExportSpec2>;
+    billingExportSpec2?: pulumi.Input<inputs.platform.AzureCloudCostConnectorBillingExportSpec2 | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      */
@@ -274,15 +274,15 @@ export interface AzureCloudCostConnectorArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Subsription id.
      */
@@ -290,7 +290,7 @@ export interface AzureCloudCostConnectorArgs {
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Tenant id.
      */

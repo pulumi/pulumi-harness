@@ -167,39 +167,39 @@ export interface RuleScaleGroupState {
     /**
      * Id of the cloud connector
      */
-    cloudConnectorId?: pulumi.Input<string>;
+    cloudConnectorId?: pulumi.Input<string | undefined>;
     /**
      * Custom URLs used to access the instances
      */
-    customDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    customDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Dependent rules
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleScaleGroupDepend>[]>;
+    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleScaleGroupDepend>[] | undefined>;
     /**
      * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Http routing configuration
      */
-    https?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleScaleGroupHttp>[]>;
+    https?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleScaleGroupHttp>[] | undefined>;
     /**
      * Unique identifier of the resource
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    idleTimeMins?: pulumi.Input<number>;
+    idleTimeMins?: pulumi.Input<number | undefined>;
     /**
      * Name of the rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Scaling Group configuration
      */
-    scaleGroup?: pulumi.Input<inputs.autostopping.RuleScaleGroupScaleGroup>;
+    scaleGroup?: pulumi.Input<inputs.autostopping.RuleScaleGroupScaleGroup | undefined>;
 }
 
 /**
@@ -213,27 +213,27 @@ export interface RuleScaleGroupArgs {
     /**
      * Custom URLs used to access the instances
      */
-    customDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    customDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Dependent rules
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleScaleGroupDepend>[]>;
+    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleScaleGroupDepend>[] | undefined>;
     /**
      * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Http routing configuration
      */
-    https?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleScaleGroupHttp>[]>;
+    https?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleScaleGroupHttp>[] | undefined>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    idleTimeMins?: pulumi.Input<number>;
+    idleTimeMins?: pulumi.Input<number | undefined>;
     /**
      * Name of the rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Scaling Group configuration
      */

@@ -102,25 +102,25 @@ export interface GetApplicationOutputArgs {
     /**
      * The application description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The id of the git sync connector
      */
-    gitSyncConnectorId?: pulumi.Input<string>;
+    gitSyncConnectorId?: pulumi.Input<string | undefined>;
     /**
      * True if git sync is enabled on this application
      */
-    gitSyncEnabled?: pulumi.Input<boolean>;
+    gitSyncEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the application
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * When this is set to true, all manual triggers will require API Key authorization
      */
-    isManualTriggerAuthorized?: pulumi.Input<boolean>;
+    isManualTriggerAuthorized?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the application
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -144,7 +144,7 @@ export interface GetDefaultNotificationTemplateSetOutputArgs {
     /**
      * Description for Default Notification Template Set
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Set of event-template configurations
      */
@@ -168,13 +168,13 @@ export interface GetDefaultNotificationTemplateSetOutputArgs {
     /**
      * Organization identifier
      */
-    org?: pulumi.Input<string>;
+    org?: pulumi.Input<string | undefined>;
     /**
      * Project identifier
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Key-value tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

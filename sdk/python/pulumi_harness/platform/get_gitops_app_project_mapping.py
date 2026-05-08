@@ -170,11 +170,11 @@ def get_gitops_app_project_mapping(account_id: Optional[_builtins.str] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
-def get_gitops_app_project_mapping_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                          argo_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                          org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                          project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_gitops_app_project_mapping_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                          argo_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                          org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                          project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsAppProjectMappingResult]:
     """
     Resource for managing the Harness GitOps Application Project Mappings.

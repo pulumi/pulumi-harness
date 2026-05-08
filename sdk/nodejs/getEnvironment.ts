@@ -98,13 +98,13 @@ export interface GetEnvironmentOutputArgs {
     /**
      * The id of the environment.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Override for a service variable
      */
-    variableOverrides?: pulumi.Input<pulumi.Input<inputs.GetEnvironmentVariableOverrideArgs>[]>;
+    variableOverrides?: pulumi.Input<pulumi.Input<inputs.GetEnvironmentVariableOverrideArgs>[] | undefined>;
 }

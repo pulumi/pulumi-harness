@@ -231,14 +231,14 @@ def get_infra_variable_set(connectors: Optional[Sequence[Union['GetInfraVariable
         tags=pulumi.get(__ret__, 'tags'),
         terraform_variable_files=pulumi.get(__ret__, 'terraform_variable_files'),
         terraform_variables=pulumi.get(__ret__, 'terraform_variables'))
-def get_infra_variable_set_output(connectors: Optional[pulumi.Input[Optional[Sequence[Union['GetInfraVariableSetConnectorArgs', 'GetInfraVariableSetConnectorArgsDict']]]]] = None,
-                                  environment_variables: Optional[pulumi.Input[Optional[Sequence[Union['GetInfraVariableSetEnvironmentVariableArgs', 'GetInfraVariableSetEnvironmentVariableArgsDict']]]]] = None,
-                                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                  name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  terraform_variable_files: Optional[pulumi.Input[Optional[Sequence[Union['GetInfraVariableSetTerraformVariableFileArgs', 'GetInfraVariableSetTerraformVariableFileArgsDict']]]]] = None,
-                                  terraform_variables: Optional[pulumi.Input[Optional[Sequence[Union['GetInfraVariableSetTerraformVariableArgs', 'GetInfraVariableSetTerraformVariableArgsDict']]]]] = None,
+def get_infra_variable_set_output(connectors: pulumi.Input[Optional[Optional[Sequence[Union['GetInfraVariableSetConnectorArgs', 'GetInfraVariableSetConnectorArgsDict']]]]] = None,
+                                  environment_variables: pulumi.Input[Optional[Optional[Sequence[Union['GetInfraVariableSetEnvironmentVariableArgs', 'GetInfraVariableSetEnvironmentVariableArgsDict']]]]] = None,
+                                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                  name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  terraform_variable_files: pulumi.Input[Optional[Optional[Sequence[Union['GetInfraVariableSetTerraformVariableFileArgs', 'GetInfraVariableSetTerraformVariableFileArgsDict']]]]] = None,
+                                  terraform_variables: pulumi.Input[Optional[Optional[Sequence[Union['GetInfraVariableSetTerraformVariableArgs', 'GetInfraVariableSetTerraformVariableArgsDict']]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfraVariableSetResult]:
     """
     Data source for retrieving Variable Sets.

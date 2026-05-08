@@ -146,15 +146,15 @@ export interface GetCentralNotificationChannelOutputArgs {
     /**
      * Account identifier associated with this notification channel.
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * Configuration details of the notification channel.
      */
-    channels?: pulumi.Input<pulumi.Input<inputs.platform.GetCentralNotificationChannelChannelArgs>[]>;
+    channels?: pulumi.Input<pulumi.Input<inputs.platform.GetCentralNotificationChannelChannelArgs>[] | undefined>;
     /**
      * Timestamp when the notification channel was created.
      */
-    created?: pulumi.Input<number>;
+    created?: pulumi.Input<number | undefined>;
     /**
      * Unique identifier of the notification channel.
      */
@@ -162,25 +162,25 @@ export interface GetCentralNotificationChannelOutputArgs {
     /**
      * Timestamp when the notification channel was last modified.
      */
-    lastModified?: pulumi.Input<number>;
+    lastModified?: pulumi.Input<number | undefined>;
     /**
      * Name of the notification channel.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Type of notification channel. One of: EMAIL, SLACK, PAGERDUTY, MSTeams, WEBHOOK, DATADOG.
      */
-    notificationChannelType?: pulumi.Input<string>;
+    notificationChannelType?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the organization the notification channel is scoped to.
      */
-    org?: pulumi.Input<string>;
+    org?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the project the notification channel is scoped to.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Status of the notification channel. Possible values are ENABLED or DISABLED.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

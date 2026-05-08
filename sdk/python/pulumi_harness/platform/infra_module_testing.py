@@ -28,11 +28,11 @@ class InfraModuleTestingArgs:
                  provider_connector: pulumi.Input[_builtins.str],
                  provisioner_type: pulumi.Input[_builtins.str],
                  provisioner_version: pulumi.Input[_builtins.str],
-                 release_pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 testing_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 testing_metadata: Optional[pulumi.Input['InfraModuleTestingTestingMetadataArgs']] = None,
-                 updated: Optional[pulumi.Input[_builtins.int]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 release_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 testing_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 testing_metadata: pulumi.Input[Optional['InfraModuleTestingTestingMetadataArgs']] = None,
+                 updated: pulumi.Input[Optional[_builtins.int]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a InfraModuleTesting resource.
 
@@ -153,95 +153,95 @@ class InfraModuleTestingArgs:
 
     @_builtins.property
     @pulumi.getter(name="releasePipeline")
-    def release_pipeline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_pipeline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pipeline ID to create webhooks for releases
         """
         return pulumi.get(self, "release_pipeline")
 
     @release_pipeline.setter
-    def release_pipeline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_pipeline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="testingEnabled")
-    def testing_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def testing_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether testing is enabled for the module
         """
         return pulumi.get(self, "testing_enabled")
 
     @testing_enabled.setter
-    def testing_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def testing_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "testing_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="testingMetadata")
-    def testing_metadata(self) -> Optional[pulumi.Input['InfraModuleTestingTestingMetadataArgs']]:
+    def testing_metadata(self) -> pulumi.Input[Optional['InfraModuleTestingTestingMetadataArgs']]:
         """
         Testing metadata for the module
         """
         return pulumi.get(self, "testing_metadata")
 
     @testing_metadata.setter
-    def testing_metadata(self, value: Optional[pulumi.Input['InfraModuleTestingTestingMetadataArgs']]):
+    def testing_metadata(self, value: pulumi.Input[Optional['InfraModuleTestingTestingMetadataArgs']]):
         pulumi.set(self, "testing_metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the module was last modified
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated", value)
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Versions of the module
         """
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "versions", value)
 
 
 @pulumi.input_type
 class _InfraModuleTestingState:
     def __init__(__self__, *,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_tag_style: Optional[pulumi.Input[_builtins.str]] = None,
-                 module_error: Optional[pulumi.Input[_builtins.str]] = None,
-                 module_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipelines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 synced: Optional[pulumi.Input[_builtins.int]] = None,
-                 system: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 testing_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 testing_metadata: Optional[pulumi.Input['InfraModuleTestingTestingMetadataArgs']] = None,
-                 updated: Optional[pulumi.Input[_builtins.int]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_tag_style: pulumi.Input[Optional[_builtins.str]] = None,
+                 module_error: pulumi.Input[Optional[_builtins.str]] = None,
+                 module_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 synced: pulumi.Input[Optional[_builtins.int]] = None,
+                 system: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 testing_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 testing_metadata: pulumi.Input[Optional['InfraModuleTestingTestingMetadataArgs']] = None,
+                 updated: pulumi.Input[Optional[_builtins.int]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering InfraModuleTesting resources.
 
@@ -330,326 +330,326 @@ class _InfraModuleTestingState:
 
     @_builtins.property
     @pulumi.getter
-    def account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account that owns the module
         """
         return pulumi.get(self, "account")
 
     @account.setter
-    def account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the module was created
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the module
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gitTagStyle")
-    def git_tag_style(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_tag_style(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git Tag Style
         """
         return pulumi.get(self, "git_tag_style")
 
     @git_tag_style.setter
-    def git_tag_style(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_tag_style(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_tag_style", value)
 
     @_builtins.property
     @pulumi.getter(name="moduleError")
-    def module_error(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def module_error(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Error while retrieving the module
         """
         return pulumi.get(self, "module_error")
 
     @module_error.setter
-    def module_error(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def module_error(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "module_error", value)
 
     @_builtins.property
     @pulumi.getter(name="moduleId")
-    def module_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def module_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the module to enable testing for
         """
         return pulumi.get(self, "module_id")
 
     @module_id.setter
-    def module_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def module_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "module_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the module
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier
         """
         return pulumi.get(self, "org")
 
     @org.setter
-    def org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org", value)
 
     @_builtins.property
     @pulumi.getter
-    def pipelines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pipelines(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of pipeline IDs to create webhooks for triggering test executions
         """
         return pulumi.get(self, "pipelines")
 
     @pipelines.setter
-    def pipelines(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pipelines(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pipelines", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConnector")
-    def provider_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provider_connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provider connector for testing purposes
         """
         return pulumi.get(self, "provider_connector")
 
     @provider_connector.setter
-    def provider_connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provider_connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provider_connector", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionerType")
-    def provisioner_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioner_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provisioner type for testing purposes (e.g., terraform, tofu)
         """
         return pulumi.get(self, "provisioner_type")
 
     @provisioner_type.setter
-    def provisioner_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioner_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioner_type", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionerVersion")
-    def provisioner_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioner_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provisioner version for testing purposes
         """
         return pulumi.get(self, "provisioner_version")
 
     @provisioner_version.setter
-    def provisioner_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioner_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioner_version", value)
 
     @_builtins.property
     @pulumi.getter(name="releasePipeline")
-    def release_pipeline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_pipeline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pipeline ID to create webhooks for releases
         """
         return pulumi.get(self, "release_pipeline")
 
     @release_pipeline.setter
-    def release_pipeline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_pipeline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_pipeline", value)
 
     @_builtins.property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For account connectors, the repository where the module is stored
         """
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryBranch")
-    def repository_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository Branch in which the module should be accessed
         """
         return pulumi.get(self, "repository_branch")
 
     @repository_branch.setter
-    def repository_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryCommit")
-    def repository_commit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_commit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository Commit in which the module should be accessed
         """
         return pulumi.get(self, "repository_commit")
 
     @repository_commit.setter
-    def repository_commit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_commit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_commit", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryConnector")
-    def repository_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository Connector is the reference to the connector for the repository
         """
         return pulumi.get(self, "repository_connector")
 
     @repository_connector.setter
-    def repository_connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_connector", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryPath")
-    def repository_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository Path is the path in which the module resides
         """
         return pulumi.get(self, "repository_path")
 
     @repository_path.setter
-    def repository_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_path", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryUrl")
-    def repository_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL where the module is stored
         """
         return pulumi.get(self, "repository_url")
 
     @repository_url.setter
-    def repository_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def synced(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def synced(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the module was last synced
         """
         return pulumi.get(self, "synced")
 
     @synced.setter
-    def synced(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def synced(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "synced", value)
 
     @_builtins.property
     @pulumi.getter
-    def system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provider of the module
         """
         return pulumi.get(self, "system")
 
     @system.setter
-    def system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tags(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tags associated with the module
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tags(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="testingEnabled")
-    def testing_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def testing_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether testing is enabled for the module
         """
         return pulumi.get(self, "testing_enabled")
 
     @testing_enabled.setter
-    def testing_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def testing_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "testing_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="testingMetadata")
-    def testing_metadata(self) -> Optional[pulumi.Input['InfraModuleTestingTestingMetadataArgs']]:
+    def testing_metadata(self) -> pulumi.Input[Optional['InfraModuleTestingTestingMetadataArgs']]:
         """
         Testing metadata for the module
         """
         return pulumi.get(self, "testing_metadata")
 
     @testing_metadata.setter
-    def testing_metadata(self, value: Optional[pulumi.Input['InfraModuleTestingTestingMetadataArgs']]):
+    def testing_metadata(self, value: pulumi.Input[Optional['InfraModuleTestingTestingMetadataArgs']]):
         pulumi.set(self, "testing_metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the module was last modified
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated", value)
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Versions of the module
         """
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "versions", value)
 
 
@@ -659,18 +659,18 @@ class InfraModuleTesting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 module_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipelines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 testing_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 testing_metadata: Optional[pulumi.Input[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict']]] = None,
-                 updated: Optional[pulumi.Input[_builtins.int]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 module_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 testing_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 testing_metadata: pulumi.Input[Optional[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict']]] = None,
+                 updated: pulumi.Input[Optional[_builtins.int]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for managing Terraform/Tofu Modules.
@@ -770,18 +770,18 @@ class InfraModuleTesting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 module_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipelines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 testing_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 testing_metadata: Optional[pulumi.Input[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict']]] = None,
-                 updated: Optional[pulumi.Input[_builtins.int]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 module_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 testing_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 testing_metadata: pulumi.Input[Optional[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict']]] = None,
+                 updated: pulumi.Input[Optional[_builtins.int]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -842,33 +842,33 @@ class InfraModuleTesting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account: Optional[pulumi.Input[_builtins.str]] = None,
-            created: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            git_tag_style: Optional[pulumi.Input[_builtins.str]] = None,
-            module_error: Optional[pulumi.Input[_builtins.str]] = None,
-            module_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org: Optional[pulumi.Input[_builtins.str]] = None,
-            pipelines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_connector: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioner_type: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioner_version: Optional[pulumi.Input[_builtins.str]] = None,
-            release_pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-            repository: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_path: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_url: Optional[pulumi.Input[_builtins.str]] = None,
-            synced: Optional[pulumi.Input[_builtins.int]] = None,
-            system: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[_builtins.str]] = None,
-            testing_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            testing_metadata: Optional[pulumi.Input[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict']]] = None,
-            updated: Optional[pulumi.Input[_builtins.int]] = None,
-            versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'InfraModuleTesting':
+            account: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_tag_style: pulumi.Input[Optional[_builtins.str]] = None,
+            module_error: pulumi.Input[Optional[_builtins.str]] = None,
+            module_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org: pulumi.Input[Optional[_builtins.str]] = None,
+            pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
+            release_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+            repository: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_url: pulumi.Input[Optional[_builtins.str]] = None,
+            synced: pulumi.Input[Optional[_builtins.int]] = None,
+            system: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[_builtins.str]] = None,
+            testing_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            testing_metadata: pulumi.Input[Optional[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict']]] = None,
+            updated: pulumi.Input[Optional[_builtins.int]] = None,
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'InfraModuleTesting':
         """
         Get an existing InfraModuleTesting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

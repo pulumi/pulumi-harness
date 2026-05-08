@@ -89,17 +89,17 @@ export interface GetServiceListOutputArgs {
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Page index of the results to fetch. Default: 0
      */
-    page?: pulumi.Input<number>;
+    page?: pulumi.Input<number | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Results per page. Default: 100; Max: 1000
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }

@@ -186,19 +186,19 @@ export interface DefaultImagesState {
     /**
      * The image field name to override (e.g. `addonTag`, `liteEngineTag`).
      */
-    field?: pulumi.Input<string>;
+    field?: pulumi.Input<string | undefined>;
     /**
      * The infrastructure type passed to the execution config API (e.g. `K8`, `VM`). Defaults to `K8`.
      */
-    infraType?: pulumi.Input<string>;
+    infraType?: pulumi.Input<string | undefined>;
     /**
      * The service kind. Supported values: `ci`, `iacm`, `idp`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The image tag value to set. When omitted or set to `null`, the field override is reset to the Harness default.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -212,7 +212,7 @@ export interface DefaultImagesArgs {
     /**
      * The infrastructure type passed to the execution config API (e.g. `K8`, `VM`). Defaults to `K8`.
      */
-    infraType?: pulumi.Input<string>;
+    infraType?: pulumi.Input<string | undefined>;
     /**
      * The service kind. Supported values: `ci`, `iacm`, `idp`.
      */
@@ -220,5 +220,5 @@ export interface DefaultImagesArgs {
     /**
      * The image tag value to set. When omitted or set to `null`, the field override is reset to the Harness default.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }

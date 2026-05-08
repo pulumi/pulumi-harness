@@ -128,19 +128,19 @@ export interface YamlConfigState {
     /**
      * The id of the application. This is required for all resources except global ones.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The raw YAML configuration.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The path of the resource.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -150,7 +150,7 @@ export interface YamlConfigArgs {
     /**
      * The id of the application. This is required for all resources except global ones.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The raw YAML configuration.
      */

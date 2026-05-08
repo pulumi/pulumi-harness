@@ -26,10 +26,10 @@ class FeatureFlagTargetGroupArgs:
                  identifier: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 excludeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 includeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]] = None):
+                 excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]] = None):
         """
         The set of arguments for constructing a FeatureFlagTargetGroup resource.
 
@@ -119,65 +119,65 @@ class FeatureFlagTargetGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def excludeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def excludeds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of targets to exclude from the target group
         """
         return pulumi.get(self, "excludeds")
 
     @excludeds.setter
-    def excludeds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def excludeds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excludeds", value)
 
     @_builtins.property
     @pulumi.getter
-    def includeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def includeds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of targets to include in the target group
         """
         return pulumi.get(self, "includeds")
 
     @includeds.setter
-    def includeds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def includeds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "includeds", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the feature flag target group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]]:
         """
         The list of rules used to include targets in the target group.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
 class _FeatureFlagTargetGroupState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 excludeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 includeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering FeatureFlagTargetGroup resources.
 
@@ -212,110 +212,110 @@ class _FeatureFlagTargetGroupState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment Identifier
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter
-    def excludeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def excludeds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of targets to exclude from the target group
         """
         return pulumi.get(self, "excludeds")
 
     @excludeds.setter
-    def excludeds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def excludeds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excludeds", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the feature flag target group.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def includeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def includeds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of targets to include in the target group
         """
         return pulumi.get(self, "includeds")
 
     @includeds.setter
-    def includeds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def includeds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "includeds", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the feature flag target group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization Identifier
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project Identifier
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]]:
         """
         The list of rules used to include targets in the target group.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagTargetGroupRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
@@ -325,15 +325,15 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 excludeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 includeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating a Harness Feature Flag Target Group.
@@ -420,15 +420,15 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 excludeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 includeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -467,15 +467,15 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            environment: Optional[pulumi.Input[_builtins.str]] = None,
-            excludeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            includeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]]] = None) -> 'FeatureFlagTargetGroup':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]]] = None) -> 'FeatureFlagTargetGroup':
         """
         Get an existing FeatureFlagTargetGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -24,18 +24,18 @@ class ProbeTemplateArgs:
                  hub_identity: pulumi.Input[_builtins.str],
                  identity: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 apm_probe: Optional[pulumi.Input['ProbeTemplateApmProbeArgs']] = None,
-                 cmd_probe: Optional[pulumi.Input['ProbeTemplateCmdProbeArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_probe: Optional[pulumi.Input['ProbeTemplateHttpProbeArgs']] = None,
-                 infrastructure_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_probe: Optional[pulumi.Input['ProbeTemplateK8sProbeArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_properties: Optional[pulumi.Input['ProbeTemplateRunPropertiesArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['ProbeTemplateVariableArgs']]]] = None):
+                 apm_probe: pulumi.Input[Optional['ProbeTemplateApmProbeArgs']] = None,
+                 cmd_probe: pulumi.Input[Optional['ProbeTemplateCmdProbeArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_probe: pulumi.Input[Optional['ProbeTemplateHttpProbeArgs']] = None,
+                 infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_probe: pulumi.Input[Optional['ProbeTemplateK8sProbeArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_properties: pulumi.Input[Optional['ProbeTemplateRunPropertiesArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['ProbeTemplateVariableArgs']]]] = None):
         """
         The set of arguments for constructing a ProbeTemplate resource.
 
@@ -121,171 +121,171 @@ class ProbeTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="apmProbe")
-    def apm_probe(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeArgs']]:
+    def apm_probe(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeArgs']]:
         """
         APM probe configuration. Required when type is 'apmProbe'.
         """
         return pulumi.get(self, "apm_probe")
 
     @apm_probe.setter
-    def apm_probe(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeArgs']]):
+    def apm_probe(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeArgs']]):
         pulumi.set(self, "apm_probe", value)
 
     @_builtins.property
     @pulumi.getter(name="cmdProbe")
-    def cmd_probe(self) -> Optional[pulumi.Input['ProbeTemplateCmdProbeArgs']]:
+    def cmd_probe(self) -> pulumi.Input[Optional['ProbeTemplateCmdProbeArgs']]:
         """
         Command probe configuration. Required when type is 'cmdProbe'.
         """
         return pulumi.get(self, "cmd_probe")
 
     @cmd_probe.setter
-    def cmd_probe(self, value: Optional[pulumi.Input['ProbeTemplateCmdProbeArgs']]):
+    def cmd_probe(self, value: pulumi.Input[Optional['ProbeTemplateCmdProbeArgs']]):
         pulumi.set(self, "cmd_probe", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the probe template.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="httpProbe")
-    def http_probe(self) -> Optional[pulumi.Input['ProbeTemplateHttpProbeArgs']]:
+    def http_probe(self) -> pulumi.Input[Optional['ProbeTemplateHttpProbeArgs']]:
         """
         HTTP probe configuration. Required when type is 'httpProbe'.
         """
         return pulumi.get(self, "http_probe")
 
     @http_probe.setter
-    def http_probe(self, value: Optional[pulumi.Input['ProbeTemplateHttpProbeArgs']]):
+    def http_probe(self, value: pulumi.Input[Optional['ProbeTemplateHttpProbeArgs']]):
         pulumi.set(self, "http_probe", value)
 
     @_builtins.property
     @pulumi.getter(name="infrastructureType")
-    def infrastructure_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infrastructure_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
         """
         return pulumi.get(self, "infrastructure_type")
 
     @infrastructure_type.setter
-    def infrastructure_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infrastructure_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infrastructure_type", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sProbe")
-    def k8s_probe(self) -> Optional[pulumi.Input['ProbeTemplateK8sProbeArgs']]:
+    def k8s_probe(self) -> pulumi.Input[Optional['ProbeTemplateK8sProbeArgs']]:
         """
         Kubernetes probe configuration. Required when type is 'k8sProbe'.
         """
         return pulumi.get(self, "k8s_probe")
 
     @k8s_probe.setter
-    def k8s_probe(self, value: Optional[pulumi.Input['ProbeTemplateK8sProbeArgs']]):
+    def k8s_probe(self, value: pulumi.Input[Optional['ProbeTemplateK8sProbeArgs']]):
         pulumi.set(self, "k8s_probe", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the probe template.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="runProperties")
-    def run_properties(self) -> Optional[pulumi.Input['ProbeTemplateRunPropertiesArgs']]:
+    def run_properties(self) -> pulumi.Input[Optional['ProbeTemplateRunPropertiesArgs']]:
         """
         Run properties for the probe template execution.
         """
         return pulumi.get(self, "run_properties")
 
     @run_properties.setter
-    def run_properties(self, value: Optional[pulumi.Input['ProbeTemplateRunPropertiesArgs']]):
+    def run_properties(self, value: pulumi.Input[Optional['ProbeTemplateRunPropertiesArgs']]):
         pulumi.set(self, "run_properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the probe template.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProbeTemplateVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProbeTemplateVariableArgs']]]]:
         """
         Template variables that can be used in the probe.
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProbeTemplateVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProbeTemplateVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
 @pulumi.input_type
 class _ProbeTemplateState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 apm_probe: Optional[pulumi.Input['ProbeTemplateApmProbeArgs']] = None,
-                 cmd_probe: Optional[pulumi.Input['ProbeTemplateCmdProbeArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_probe: Optional[pulumi.Input['ProbeTemplateHttpProbeArgs']] = None,
-                 hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 k8s_probe: Optional[pulumi.Input['ProbeTemplateK8sProbeArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_properties: Optional[pulumi.Input['ProbeTemplateRunPropertiesArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['ProbeTemplateVariableArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 apm_probe: pulumi.Input[Optional['ProbeTemplateApmProbeArgs']] = None,
+                 cmd_probe: pulumi.Input[Optional['ProbeTemplateCmdProbeArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_probe: pulumi.Input[Optional['ProbeTemplateHttpProbeArgs']] = None,
+                 hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 k8s_probe: pulumi.Input[Optional['ProbeTemplateK8sProbeArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_properties: pulumi.Input[Optional['ProbeTemplateRunPropertiesArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['ProbeTemplateVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering ProbeTemplate resources.
 
@@ -350,230 +350,230 @@ class _ProbeTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="apmProbe")
-    def apm_probe(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeArgs']]:
+    def apm_probe(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeArgs']]:
         """
         APM probe configuration. Required when type is 'apmProbe'.
         """
         return pulumi.get(self, "apm_probe")
 
     @apm_probe.setter
-    def apm_probe(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeArgs']]):
+    def apm_probe(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeArgs']]):
         pulumi.set(self, "apm_probe", value)
 
     @_builtins.property
     @pulumi.getter(name="cmdProbe")
-    def cmd_probe(self) -> Optional[pulumi.Input['ProbeTemplateCmdProbeArgs']]:
+    def cmd_probe(self) -> pulumi.Input[Optional['ProbeTemplateCmdProbeArgs']]:
         """
         Command probe configuration. Required when type is 'cmdProbe'.
         """
         return pulumi.get(self, "cmd_probe")
 
     @cmd_probe.setter
-    def cmd_probe(self, value: Optional[pulumi.Input['ProbeTemplateCmdProbeArgs']]):
+    def cmd_probe(self, value: pulumi.Input[Optional['ProbeTemplateCmdProbeArgs']]):
         pulumi.set(self, "cmd_probe", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the probe template.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="httpProbe")
-    def http_probe(self) -> Optional[pulumi.Input['ProbeTemplateHttpProbeArgs']]:
+    def http_probe(self) -> pulumi.Input[Optional['ProbeTemplateHttpProbeArgs']]:
         """
         HTTP probe configuration. Required when type is 'httpProbe'.
         """
         return pulumi.get(self, "http_probe")
 
     @http_probe.setter
-    def http_probe(self, value: Optional[pulumi.Input['ProbeTemplateHttpProbeArgs']]):
+    def http_probe(self, value: pulumi.Input[Optional['ProbeTemplateHttpProbeArgs']]):
         pulumi.set(self, "http_probe", value)
 
     @_builtins.property
     @pulumi.getter(name="hubIdentity")
-    def hub_identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub_identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identity of the chaos hub this probe template belongs to.
         """
         return pulumi.get(self, "hub_identity")
 
     @hub_identity.setter
-    def hub_identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub_identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="hubRef")
-    def hub_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hub reference.
         """
         return pulumi.get(self, "hub_ref")
 
     @hub_ref.setter
-    def hub_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier for the probe template (immutable).
         """
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter(name="infrastructureType")
-    def infrastructure_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infrastructure_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
         """
         return pulumi.get(self, "infrastructure_type")
 
     @infrastructure_type.setter
-    def infrastructure_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infrastructure_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infrastructure_type", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is the default version for predefined probes.
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sProbe")
-    def k8s_probe(self) -> Optional[pulumi.Input['ProbeTemplateK8sProbeArgs']]:
+    def k8s_probe(self) -> pulumi.Input[Optional['ProbeTemplateK8sProbeArgs']]:
         """
         Kubernetes probe configuration. Required when type is 'k8sProbe'.
         """
         return pulumi.get(self, "k8s_probe")
 
     @k8s_probe.setter
-    def k8s_probe(self, value: Optional[pulumi.Input['ProbeTemplateK8sProbeArgs']]):
+    def k8s_probe(self, value: pulumi.Input[Optional['ProbeTemplateK8sProbeArgs']]):
         pulumi.set(self, "k8s_probe", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the probe template.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Revision number of the probe template.
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter(name="runProperties")
-    def run_properties(self) -> Optional[pulumi.Input['ProbeTemplateRunPropertiesArgs']]:
+    def run_properties(self) -> pulumi.Input[Optional['ProbeTemplateRunPropertiesArgs']]:
         """
         Run properties for the probe template execution.
         """
         return pulumi.get(self, "run_properties")
 
     @run_properties.setter
-    def run_properties(self, value: Optional[pulumi.Input['ProbeTemplateRunPropertiesArgs']]):
+    def run_properties(self, value: pulumi.Input[Optional['ProbeTemplateRunPropertiesArgs']]):
         pulumi.set(self, "run_properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the probe template.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProbeTemplateVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProbeTemplateVariableArgs']]]]:
         """
         Template variables that can be used in the probe.
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProbeTemplateVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProbeTemplateVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
@@ -583,21 +583,21 @@ class ProbeTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apm_probe: Optional[pulumi.Input[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict']]] = None,
-                 cmd_probe: Optional[pulumi.Input[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_probe: Optional[pulumi.Input[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict']]] = None,
-                 hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_probe: Optional[pulumi.Input[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_properties: Optional[pulumi.Input[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict']]]]] = None,
+                 apm_probe: pulumi.Input[Optional[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict']]] = None,
+                 cmd_probe: pulumi.Input[Optional[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_probe: pulumi.Input[Optional[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict']]] = None,
+                 hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_probe: pulumi.Input[Optional[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_properties: pulumi.Input[Optional[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for managing Harness Chaos Probe Templates.
@@ -696,21 +696,21 @@ class ProbeTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apm_probe: Optional[pulumi.Input[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict']]] = None,
-                 cmd_probe: Optional[pulumi.Input[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_probe: Optional[pulumi.Input[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict']]] = None,
-                 hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_probe: Optional[pulumi.Input[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_properties: Optional[pulumi.Input[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict']]]]] = None,
+                 apm_probe: pulumi.Input[Optional[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict']]] = None,
+                 cmd_probe: pulumi.Input[Optional[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_probe: pulumi.Input[Optional[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict']]] = None,
+                 hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_probe: pulumi.Input[Optional[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_properties: pulumi.Input[Optional[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -755,25 +755,25 @@ class ProbeTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            apm_probe: Optional[pulumi.Input[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict']]] = None,
-            cmd_probe: Optional[pulumi.Input[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            http_probe: Optional[pulumi.Input[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict']]] = None,
-            hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-            hub_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            identity: Optional[pulumi.Input[_builtins.str]] = None,
-            infrastructure_type: Optional[pulumi.Input[_builtins.str]] = None,
-            is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-            k8s_probe: Optional[pulumi.Input[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            revision: Optional[pulumi.Input[_builtins.int]] = None,
-            run_properties: Optional[pulumi.Input[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict']]]]] = None) -> 'ProbeTemplate':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            apm_probe: pulumi.Input[Optional[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict']]] = None,
+            cmd_probe: pulumi.Input[Optional[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            http_probe: pulumi.Input[Optional[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict']]] = None,
+            hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            k8s_probe: pulumi.Input[Optional[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            revision: pulumi.Input[Optional[_builtins.int]] = None,
+            run_properties: pulumi.Input[Optional[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict']]]]] = None) -> 'ProbeTemplate':
         """
         Get an existing ProbeTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -186,65 +186,65 @@ export interface TemplateState {
     /**
      * Specify comment with respect to changes.
      */
-    comments?: pulumi.Input<string>;
+    comments?: pulumi.Input<string | undefined>;
     /**
      * Description of the entity. Description field is deprecated
      *
      * @deprecated description field is deprecated
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    gitDetails?: pulumi.Input<inputs.platform.TemplateGitDetails>;
+    gitDetails?: pulumi.Input<inputs.platform.TemplateGitDetails | undefined>;
     /**
      * Contains Git Information for importing entities from Git
      */
-    gitImportDetails?: pulumi.Input<inputs.platform.TemplateGitImportDetails>;
+    gitImportDetails?: pulumi.Input<inputs.platform.TemplateGitImportDetails | undefined>;
     /**
      * Unique identifier of the resource
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Flag to set if importing from Git
      */
-    importFromGit?: pulumi.Input<boolean>;
+    importFromGit?: pulumi.Input<boolean | undefined>;
     /**
      * True if given version for template to be set as stable.
      */
-    isStable?: pulumi.Input<boolean>;
+    isStable?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Variable
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the Entity
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Contains parameters for importing template.
      */
-    templateImportRequest?: pulumi.Input<inputs.platform.TemplateTemplateImportRequest>;
+    templateImportRequest?: pulumi.Input<inputs.platform.TemplateTemplateImportRequest | undefined>;
     /**
      * Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    templateYaml?: pulumi.Input<string>;
+    templateYaml?: pulumi.Input<string | undefined>;
     /**
      * Version Label for Template.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -254,25 +254,25 @@ export interface TemplateArgs {
     /**
      * Specify comment with respect to changes.
      */
-    comments?: pulumi.Input<string>;
+    comments?: pulumi.Input<string | undefined>;
     /**
      * Description of the entity. Description field is deprecated
      *
      * @deprecated description field is deprecated
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    gitDetails?: pulumi.Input<inputs.platform.TemplateGitDetails>;
+    gitDetails?: pulumi.Input<inputs.platform.TemplateGitDetails | undefined>;
     /**
      * Contains Git Information for importing entities from Git
      */
-    gitImportDetails?: pulumi.Input<inputs.platform.TemplateGitImportDetails>;
+    gitImportDetails?: pulumi.Input<inputs.platform.TemplateGitImportDetails | undefined>;
     /**
      * Unique identifier of the resource
      */
@@ -280,35 +280,35 @@ export interface TemplateArgs {
     /**
      * Flag to set if importing from Git
      */
-    importFromGit?: pulumi.Input<boolean>;
+    importFromGit?: pulumi.Input<boolean | undefined>;
     /**
      * True if given version for template to be set as stable.
      */
-    isStable?: pulumi.Input<boolean>;
+    isStable?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Variable
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the Entity
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Contains parameters for importing template.
      */
-    templateImportRequest?: pulumi.Input<inputs.platform.TemplateTemplateImportRequest>;
+    templateImportRequest?: pulumi.Input<inputs.platform.TemplateTemplateImportRequest | undefined>;
     /**
      * Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    templateYaml?: pulumi.Input<string>;
+    templateYaml?: pulumi.Input<string | undefined>;
     /**
      * Version Label for Template.
      */

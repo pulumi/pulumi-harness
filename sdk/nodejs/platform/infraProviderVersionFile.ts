@@ -179,23 +179,23 @@ export interface InfraProviderVersionFileState {
     /**
      * Local path to the file to upload. Required for uploading file content.
      */
-    filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
     /**
      * Name of the file to upload (e.g., terraform-provider-aws*5.0.0*linux*amd64.zip). If not provided, will be derived from file*path. Use this to override the uploaded filename if it should differ from the local filename.
      */
-    filename?: pulumi.Input<string>;
+    filename?: pulumi.Input<string | undefined>;
     /**
      * The ID of the provider.
      */
-    providerId?: pulumi.Input<string>;
+    providerId?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the provider version is synced after file upload.
      */
-    synced?: pulumi.Input<boolean>;
+    synced?: pulumi.Input<boolean | undefined>;
     /**
      * Provider version number.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -209,7 +209,7 @@ export interface InfraProviderVersionFileArgs {
     /**
      * Name of the file to upload (e.g., terraform-provider-aws*5.0.0*linux*amd64.zip). If not provided, will be derived from file*path. Use this to override the uploaded filename if it should differ from the local filename.
      */
-    filename?: pulumi.Input<string>;
+    filename?: pulumi.Input<string | undefined>;
     /**
      * The ID of the provider.
      */

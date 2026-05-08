@@ -173,9 +173,9 @@ def get_project(identifier: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_project_output(identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       org_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_output(identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       org_id: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
     Data source for retrieving a Harness project.

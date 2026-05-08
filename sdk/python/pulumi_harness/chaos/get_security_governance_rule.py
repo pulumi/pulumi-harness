@@ -209,10 +209,10 @@ def get_security_governance_rule(id: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         time_windows=pulumi.get(__ret__, 'time_windows'),
         user_group_ids=pulumi.get(__ret__, 'user_group_ids'))
-def get_security_governance_rule_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                        project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_security_governance_rule_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                        project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityGovernanceRuleResult]:
     """
     Data source for retrieving a Harness Chaos Security Governance Rule.

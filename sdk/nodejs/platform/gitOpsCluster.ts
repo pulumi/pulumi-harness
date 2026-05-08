@@ -146,35 +146,35 @@ export interface GitOpsClusterState {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the GitOps cluster. (include scope prefix)
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
      */
-    forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier of the GitOps cluster.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier of the cluster.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps cluster.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Cluster create or update request.
      */
-    requests?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequest>[]>;
+    requests?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequest>[] | undefined>;
 }
 
 /**
@@ -186,7 +186,7 @@ export interface GitOpsClusterArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the GitOps cluster. (include scope prefix)
      */
@@ -194,11 +194,11 @@ export interface GitOpsClusterArgs {
     /**
      * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
      */
-    forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier of the GitOps cluster.
      */
@@ -206,13 +206,13 @@ export interface GitOpsClusterArgs {
     /**
      * Organization identifier of the cluster.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps cluster.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Cluster create or update request.
      */
-    requests?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequest>[]>;
+    requests?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequest>[] | undefined>;
 }

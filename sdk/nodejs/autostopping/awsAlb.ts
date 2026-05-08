@@ -157,36 +157,36 @@ export interface AwsAlbState {
     /**
      * Arn of AWS ALB to be imported. Required only for importing existing ALB
      */
-    albArn?: pulumi.Input<string>;
-    certificateId?: pulumi.Input<string>;
+    albArn?: pulumi.Input<string | undefined>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * Id of the cloud connector
      */
-    cloudConnectorId?: pulumi.Input<string>;
+    cloudConnectorId?: pulumi.Input<string | undefined>;
     /**
      * Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
      */
-    deleteCloudResourcesOnDestroy?: pulumi.Input<boolean>;
+    deleteCloudResourcesOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the proxy
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Region in which cloud resources are hosted
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * VPC in which cloud resources are hosted
      */
-    vpc?: pulumi.Input<string>;
+    vpc?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -196,8 +196,8 @@ export interface AwsAlbArgs {
     /**
      * Arn of AWS ALB to be imported. Required only for importing existing ALB
      */
-    albArn?: pulumi.Input<string>;
-    certificateId?: pulumi.Input<string>;
+    albArn?: pulumi.Input<string | undefined>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * Id of the cloud connector
      */
@@ -209,7 +209,7 @@ export interface AwsAlbArgs {
     /**
      * Name of the proxy
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Region in which cloud resources are hosted
      */
@@ -217,7 +217,7 @@ export interface AwsAlbArgs {
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * VPC in which cloud resources are hosted
      */

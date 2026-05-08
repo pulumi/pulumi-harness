@@ -24,14 +24,14 @@ class AppDynamicsConnectorArgs:
                  account_name: pulumi.Input[_builtins.str],
                  identifier: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 api_token: Optional[pulumi.Input['AppDynamicsConnectorApiTokenArgs']] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 username_password: Optional[pulumi.Input['AppDynamicsConnectorUsernamePasswordArgs']] = None):
+                 api_token: pulumi.Input[Optional['AppDynamicsConnectorApiTokenArgs']] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 username_password: pulumi.Input[Optional['AppDynamicsConnectorUsernamePasswordArgs']] = None):
         """
         The set of arguments for constructing a AppDynamicsConnector resource.
 
@@ -105,115 +105,115 @@ class AppDynamicsConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiToken")
-    def api_token(self) -> Optional[pulumi.Input['AppDynamicsConnectorApiTokenArgs']]:
+    def api_token(self) -> pulumi.Input[Optional['AppDynamicsConnectorApiTokenArgs']]:
         """
         Authenticate to App Dynamics using api token.
         """
         return pulumi.get(self, "api_token")
 
     @api_token.setter
-    def api_token(self, value: Optional[pulumi.Input['AppDynamicsConnectorApiTokenArgs']]):
+    def api_token(self, value: pulumi.Input[Optional['AppDynamicsConnectorApiTokenArgs']]):
         pulumi.set(self, "api_token", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="usernamePassword")
-    def username_password(self) -> Optional[pulumi.Input['AppDynamicsConnectorUsernamePasswordArgs']]:
+    def username_password(self) -> pulumi.Input[Optional['AppDynamicsConnectorUsernamePasswordArgs']]:
         """
         Authenticate to App Dynamics using username and password.
         """
         return pulumi.get(self, "username_password")
 
     @username_password.setter
-    def username_password(self, value: Optional[pulumi.Input['AppDynamicsConnectorUsernamePasswordArgs']]):
+    def username_password(self, value: pulumi.Input[Optional['AppDynamicsConnectorUsernamePasswordArgs']]):
         pulumi.set(self, "username_password", value)
 
 
 @pulumi.input_type
 class _AppDynamicsConnectorState:
     def __init__(__self__, *,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_token: Optional[pulumi.Input['AppDynamicsConnectorApiTokenArgs']] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_password: Optional[pulumi.Input['AppDynamicsConnectorUsernamePasswordArgs']] = None):
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_token: pulumi.Input[Optional['AppDynamicsConnectorApiTokenArgs']] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_password: pulumi.Input[Optional['AppDynamicsConnectorUsernamePasswordArgs']] = None):
         """
         Input properties used for looking up and filtering AppDynamicsConnector resources.
 
@@ -254,134 +254,134 @@ class _AppDynamicsConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The App Dynamics account name.
         """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="apiToken")
-    def api_token(self) -> Optional[pulumi.Input['AppDynamicsConnectorApiTokenArgs']]:
+    def api_token(self) -> pulumi.Input[Optional['AppDynamicsConnectorApiTokenArgs']]:
         """
         Authenticate to App Dynamics using api token.
         """
         return pulumi.get(self, "api_token")
 
     @api_token.setter
-    def api_token(self, value: Optional[pulumi.Input['AppDynamicsConnectorApiTokenArgs']]):
+    def api_token(self, value: pulumi.Input[Optional['AppDynamicsConnectorApiTokenArgs']]):
         pulumi.set(self, "api_token", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the App Dynamics controller.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="usernamePassword")
-    def username_password(self) -> Optional[pulumi.Input['AppDynamicsConnectorUsernamePasswordArgs']]:
+    def username_password(self) -> pulumi.Input[Optional['AppDynamicsConnectorUsernamePasswordArgs']]:
         """
         Authenticate to App Dynamics using username and password.
         """
         return pulumi.get(self, "username_password")
 
     @username_password.setter
-    def username_password(self, value: Optional[pulumi.Input['AppDynamicsConnectorUsernamePasswordArgs']]):
+    def username_password(self, value: pulumi.Input[Optional['AppDynamicsConnectorUsernamePasswordArgs']]):
         pulumi.set(self, "username_password", value)
 
 
@@ -391,17 +391,17 @@ class AppDynamicsConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_token: Optional[pulumi.Input[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict']]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_password: Optional[pulumi.Input[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict']]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_token: pulumi.Input[Optional[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict']]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_password: pulumi.Input[Optional[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating an App Dynamics connector.
@@ -558,17 +558,17 @@ class AppDynamicsConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_token: Optional[pulumi.Input[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict']]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_password: Optional[pulumi.Input[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict']]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_token: pulumi.Input[Optional[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict']]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_password: pulumi.Input[Optional[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -605,17 +605,17 @@ class AppDynamicsConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            api_token: Optional[pulumi.Input[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict']]] = None,
-            delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            username_password: Optional[pulumi.Input[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict']]] = None) -> 'AppDynamicsConnector':
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            api_token: pulumi.Input[Optional[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict']]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            username_password: pulumi.Input[Optional[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict']]] = None) -> 'AppDynamicsConnector':
         """
         Get an existing AppDynamicsConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

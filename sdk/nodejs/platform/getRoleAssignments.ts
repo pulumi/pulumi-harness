@@ -126,9 +126,9 @@ export interface GetRoleAssignmentsOutputArgs {
     /**
      * Org identifier.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

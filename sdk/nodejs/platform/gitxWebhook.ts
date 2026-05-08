@@ -155,43 +155,43 @@ export interface GitxWebhookState {
     /**
      * ConnectorRef to be used to create Gitx webhook.
      */
-    connectorRef?: pulumi.Input<string>;
+    connectorRef?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Folder Paths
      */
-    folderPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    folderPaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Flag to enable the webhook
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repo Identifier for Gitx webhook.
      */
-    repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -205,11 +205,11 @@ export interface GitxWebhookArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Folder Paths
      */
-    folderPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    folderPaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -217,19 +217,19 @@ export interface GitxWebhookArgs {
     /**
      * Flag to enable the webhook
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repo Identifier for Gitx webhook.
      */
@@ -237,5 +237,5 @@ export interface GitxWebhookArgs {
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

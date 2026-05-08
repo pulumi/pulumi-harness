@@ -286,7 +286,7 @@ export interface GetInfrastructureV2OutputArgs {
     /**
      * Configuration for the container image registry.
      */
-    imageRegistries?: pulumi.Input<pulumi.Input<inputs.chaos.GetInfrastructureV2ImageRegistryArgs>[]>;
+    imageRegistries?: pulumi.Input<pulumi.Input<inputs.chaos.GetInfrastructureV2ImageRegistryArgs>[] | undefined>;
     /**
      * The ID of the infrastructure.
      */
@@ -294,7 +294,7 @@ export interface GetInfrastructureV2OutputArgs {
     /**
      * mTLS configuration for the infrastructure.
      */
-    mtls?: pulumi.Input<inputs.chaos.GetInfrastructureV2MtlsArgs>;
+    mtls?: pulumi.Input<inputs.chaos.GetInfrastructureV2MtlsArgs | undefined>;
     /**
      * The ID of the organization.
      */
@@ -306,17 +306,17 @@ export interface GetInfrastructureV2OutputArgs {
     /**
      * Proxy configuration for the infrastructure.
      */
-    proxy?: pulumi.Input<inputs.chaos.GetInfrastructureV2ProxyArgs>;
+    proxy?: pulumi.Input<inputs.chaos.GetInfrastructureV2ProxyArgs | undefined>;
     /**
      * If specified, the pod's tolerations.
      */
-    tolerations?: pulumi.Input<pulumi.Input<inputs.chaos.GetInfrastructureV2TolerationArgs>[]>;
+    tolerations?: pulumi.Input<pulumi.Input<inputs.chaos.GetInfrastructureV2TolerationArgs>[] | undefined>;
     /**
      * Volume mounts for the container.
      */
-    volumeMounts?: pulumi.Input<pulumi.Input<inputs.chaos.GetInfrastructureV2VolumeMountArgs>[]>;
+    volumeMounts?: pulumi.Input<pulumi.Input<inputs.chaos.GetInfrastructureV2VolumeMountArgs>[] | undefined>;
     /**
      * Volumes to be created in the infrastructure.
      */
-    volumes?: pulumi.Input<pulumi.Input<inputs.chaos.GetInfrastructureV2VolumeArgs>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.chaos.GetInfrastructureV2VolumeArgs>[] | undefined>;
 }

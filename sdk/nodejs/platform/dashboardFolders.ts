@@ -85,11 +85,11 @@ export interface DashboardFoldersState {
     /**
      * Created DateTime of the folder.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the folder.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -99,5 +99,5 @@ export interface DashboardFoldersArgs {
     /**
      * Name of the folder.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

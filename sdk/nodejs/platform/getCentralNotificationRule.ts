@@ -109,21 +109,21 @@ export function getCentralNotificationRuleOutput(args: GetCentralNotificationRul
  * A collection of arguments for invoking getCentralNotificationRule.
  */
 export interface GetCentralNotificationRuleOutputArgs {
-    customNotificationTemplateRef?: pulumi.Input<inputs.platform.GetCentralNotificationRuleCustomNotificationTemplateRefArgs>;
+    customNotificationTemplateRef?: pulumi.Input<inputs.platform.GetCentralNotificationRuleCustomNotificationTemplateRefArgs | undefined>;
     /**
      * Identifier of the Notification Rule.
      */
     identifier: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    notificationChannelRefs?: pulumi.Input<pulumi.Input<string>[]>;
-    notificationConditions?: pulumi.Input<pulumi.Input<inputs.platform.GetCentralNotificationRuleNotificationConditionArgs>[]>;
+    name?: pulumi.Input<string | undefined>;
+    notificationChannelRefs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    notificationConditions?: pulumi.Input<pulumi.Input<inputs.platform.GetCentralNotificationRuleNotificationConditionArgs>[] | undefined>;
     /**
      * Identifier of the organization in which the Notification Rule is configured.
      */
-    org?: pulumi.Input<string>;
+    org?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the project in which the Notification Rule is configured.
      */
-    project?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }

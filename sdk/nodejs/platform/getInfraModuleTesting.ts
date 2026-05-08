@@ -254,21 +254,21 @@ export interface GetInfraModuleTestingOutputArgs {
     /**
      * Pipeline ID to create webhooks for releases
      */
-    releasePipeline?: pulumi.Input<string>;
+    releasePipeline?: pulumi.Input<string | undefined>;
     /**
      * Whether testing is enabled for the module
      */
-    testingEnabled?: pulumi.Input<boolean>;
+    testingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Testing metadata for the module
      */
-    testingMetadata?: pulumi.Input<inputs.platform.GetInfraModuleTestingTestingMetadataArgs>;
+    testingMetadata?: pulumi.Input<inputs.platform.GetInfraModuleTestingTestingMetadataArgs | undefined>;
     /**
      * Timestamp when the module was last modified
      */
-    updated?: pulumi.Input<number>;
+    updated?: pulumi.Input<number | undefined>;
     /**
      * Versions of the module
      */
-    versions?: pulumi.Input<pulumi.Input<string>[]>;
+    versions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

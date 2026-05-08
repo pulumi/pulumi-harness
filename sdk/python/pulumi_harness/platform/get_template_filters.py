@@ -177,10 +177,10 @@ def get_template_filters(identifier: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         type=pulumi.get(__ret__, 'type'))
-def get_template_filters_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_template_filters_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                type: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTemplateFiltersResult]:
     """
     Data source for retrieving a Harness Template Filter.

@@ -158,23 +158,23 @@ export interface EnvironmentState {
     /**
      * The id of the application.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The description of the environment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of the environment. Valid values are `PROD` and `NON_PROD`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Override for a service variable
      */
-    variableOverrides?: pulumi.Input<pulumi.Input<inputs.EnvironmentVariableOverride>[]>;
+    variableOverrides?: pulumi.Input<pulumi.Input<inputs.EnvironmentVariableOverride>[] | undefined>;
 }
 
 /**
@@ -188,11 +188,11 @@ export interface EnvironmentArgs {
     /**
      * The description of the environment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of the environment. Valid values are `PROD` and `NON_PROD`
      */
@@ -200,5 +200,5 @@ export interface EnvironmentArgs {
     /**
      * Override for a service variable
      */
-    variableOverrides?: pulumi.Input<pulumi.Input<inputs.EnvironmentVariableOverride>[]>;
+    variableOverrides?: pulumi.Input<pulumi.Input<inputs.EnvironmentVariableOverride>[] | undefined>;
 }

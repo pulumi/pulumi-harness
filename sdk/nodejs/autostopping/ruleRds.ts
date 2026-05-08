@@ -141,32 +141,32 @@ export interface RuleRdsState {
     /**
      * Id of the cloud connector
      */
-    cloudConnectorId?: pulumi.Input<string>;
-    database?: pulumi.Input<inputs.autostopping.RuleRdsDatabase>;
+    cloudConnectorId?: pulumi.Input<string | undefined>;
+    database?: pulumi.Input<inputs.autostopping.RuleRdsDatabase | undefined>;
     /**
      * Dependent rules
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleRdsDepend>[]>;
+    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleRdsDepend>[] | undefined>;
     /**
      * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    idleTimeMins?: pulumi.Input<number>;
+    idleTimeMins?: pulumi.Input<number | undefined>;
     /**
      * Name of the rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * TCP routing configuration
      */
-    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleRdsTcp>[]>;
+    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleRdsTcp>[] | undefined>;
 }
 
 /**
@@ -181,21 +181,21 @@ export interface RuleRdsArgs {
     /**
      * Dependent rules
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleRdsDepend>[]>;
+    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleRdsDepend>[] | undefined>;
     /**
      * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    idleTimeMins?: pulumi.Input<number>;
+    idleTimeMins?: pulumi.Input<number | undefined>;
     /**
      * Name of the rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * TCP routing configuration
      */
-    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleRdsTcp>[]>;
+    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleRdsTcp>[] | undefined>;
 }

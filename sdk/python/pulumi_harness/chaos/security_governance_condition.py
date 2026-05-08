@@ -25,11 +25,11 @@ class SecurityGovernanceConditionArgs:
                  infra_type: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_spec: Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecArgs']] = None,
-                 machine_spec: Optional[pulumi.Input['SecurityGovernanceConditionMachineSpecArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_spec: pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecArgs']] = None,
+                 machine_spec: pulumi.Input[Optional['SecurityGovernanceConditionMachineSpecArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecurityGovernanceCondition resource.
 
@@ -108,77 +108,77 @@ class SecurityGovernanceConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the security governance condition
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sSpec")
-    def k8s_spec(self) -> Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecArgs']]:
+    def k8s_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecArgs']]:
         """
         Kubernetes specific configuration (required when infra*type is KUBERNETES or KUBERNETESV2)
         """
         return pulumi.get(self, "k8s_spec")
 
     @k8s_spec.setter
-    def k8s_spec(self, value: Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecArgs']]):
+    def k8s_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecArgs']]):
         pulumi.set(self, "k8s_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="machineSpec")
-    def machine_spec(self) -> Optional[pulumi.Input['SecurityGovernanceConditionMachineSpecArgs']]:
+    def machine_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionMachineSpecArgs']]:
         """
         Machine specific configuration (required when infra*type is LINUX or WINDOWS)
         """
         return pulumi.get(self, "machine_spec")
 
     @machine_spec.setter
-    def machine_spec(self, value: Optional[pulumi.Input['SecurityGovernanceConditionMachineSpecArgs']]):
+    def machine_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionMachineSpecArgs']]):
         pulumi.set(self, "machine_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the security governance condition
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags for the security governance condition
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _SecurityGovernanceConditionState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fault_spec: Optional[pulumi.Input['SecurityGovernanceConditionFaultSpecArgs']] = None,
-                 infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_spec: Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecArgs']] = None,
-                 machine_spec: Optional[pulumi.Input['SecurityGovernanceConditionMachineSpecArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fault_spec: pulumi.Input[Optional['SecurityGovernanceConditionFaultSpecArgs']] = None,
+                 infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_spec: pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecArgs']] = None,
+                 machine_spec: pulumi.Input[Optional['SecurityGovernanceConditionMachineSpecArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SecurityGovernanceCondition resources.
 
@@ -213,110 +213,110 @@ class _SecurityGovernanceConditionState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the security governance condition
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="faultSpec")
-    def fault_spec(self) -> Optional[pulumi.Input['SecurityGovernanceConditionFaultSpecArgs']]:
+    def fault_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionFaultSpecArgs']]:
         """
         Specification for faults to be included in the condition
         """
         return pulumi.get(self, "fault_spec")
 
     @fault_spec.setter
-    def fault_spec(self, value: Optional[pulumi.Input['SecurityGovernanceConditionFaultSpecArgs']]):
+    def fault_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionFaultSpecArgs']]):
         pulumi.set(self, "fault_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="infraType")
-    def infra_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of infrastructure (Kubernetes, KubernetesV2, Linux, Windows, CloudFoundry, Container)
         """
         return pulumi.get(self, "infra_type")
 
     @infra_type.setter
-    def infra_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_type", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sSpec")
-    def k8s_spec(self) -> Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecArgs']]:
+    def k8s_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecArgs']]:
         """
         Kubernetes specific configuration (required when infra*type is KUBERNETES or KUBERNETESV2)
         """
         return pulumi.get(self, "k8s_spec")
 
     @k8s_spec.setter
-    def k8s_spec(self, value: Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecArgs']]):
+    def k8s_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecArgs']]):
         pulumi.set(self, "k8s_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="machineSpec")
-    def machine_spec(self) -> Optional[pulumi.Input['SecurityGovernanceConditionMachineSpecArgs']]:
+    def machine_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionMachineSpecArgs']]:
         """
         Machine specific configuration (required when infra*type is LINUX or WINDOWS)
         """
         return pulumi.get(self, "machine_spec")
 
     @machine_spec.setter
-    def machine_spec(self, value: Optional[pulumi.Input['SecurityGovernanceConditionMachineSpecArgs']]):
+    def machine_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionMachineSpecArgs']]):
         pulumi.set(self, "machine_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the security governance condition
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization ID of the security governance condition
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID of the security governance condition
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags for the security governance condition
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -326,15 +326,15 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fault_spec: Optional[pulumi.Input[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict']]] = None,
-                 infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_spec: Optional[pulumi.Input[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict']]] = None,
-                 machine_spec: Optional[pulumi.Input[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fault_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict']]] = None,
+                 infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict']]] = None,
+                 machine_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for managing a Harness Chaos Security Governance Condition
@@ -639,15 +639,15 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fault_spec: Optional[pulumi.Input[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict']]] = None,
-                 infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_spec: Optional[pulumi.Input[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict']]] = None,
-                 machine_spec: Optional[pulumi.Input[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fault_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict']]] = None,
+                 infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict']]] = None,
+                 machine_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -684,15 +684,15 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            fault_spec: Optional[pulumi.Input[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict']]] = None,
-            infra_type: Optional[pulumi.Input[_builtins.str]] = None,
-            k8s_spec: Optional[pulumi.Input[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict']]] = None,
-            machine_spec: Optional[pulumi.Input[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SecurityGovernanceCondition':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fault_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict']]] = None,
+            infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+            k8s_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict']]] = None,
+            machine_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SecurityGovernanceCondition':
         """
         Get an existing SecurityGovernanceCondition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

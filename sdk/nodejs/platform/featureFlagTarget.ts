@@ -140,31 +140,31 @@ export interface FeatureFlagTargetState {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Attributes
      */
-    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Environment Identifier
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the Feature Flag Target
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Target Name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -178,7 +178,7 @@ export interface FeatureFlagTargetArgs {
     /**
      * Attributes
      */
-    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Environment Identifier
      */
@@ -190,7 +190,7 @@ export interface FeatureFlagTargetArgs {
     /**
      * Target Name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier
      */

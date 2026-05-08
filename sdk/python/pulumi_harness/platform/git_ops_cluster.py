@@ -23,12 +23,12 @@ class GitOpsClusterArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[_builtins.str],
                  identifier: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 requests: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]] = None):
         """
         The set of arguments for constructing a GitOpsCluster resource.
 
@@ -86,88 +86,88 @@ class GitOpsClusterArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the GitOps cluster.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
         """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
-    def force_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_update", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the cluster.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the GitOps cluster.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def requests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]]:
+    def requests(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]]:
         """
         Cluster create or update request.
         """
         return pulumi.get(self, "requests")
 
     @requests.setter
-    def requests(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]]):
+    def requests(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]]):
         pulumi.set(self, "requests", value)
 
 
 @pulumi.input_type
 class _GitOpsClusterState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 requests: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]] = None):
         """
         Input properties used for looking up and filtering GitOpsCluster resources.
 
@@ -203,98 +203,98 @@ class _GitOpsClusterState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the GitOps cluster.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Agent identifier of the GitOps cluster. (include scope prefix)
         """
         return pulumi.get(self, "agent_id")
 
     @agent_id.setter
-    def agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
         """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
-    def force_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_update", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the GitOps cluster.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the cluster.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the GitOps cluster.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def requests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]]:
+    def requests(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]]:
         """
         Cluster create or update request.
         """
         return pulumi.get(self, "requests")
 
     @requests.setter
-    def requests(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]]):
+    def requests(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]]):
         pulumi.set(self, "requests", value)
 
 
@@ -304,14 +304,14 @@ class GitOpsCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 requests: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for managing a Harness Gitops Cluster.
@@ -397,14 +397,14 @@ class GitOpsCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 requests: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -436,14 +436,14 @@ class GitOpsCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            requests: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict']]]]] = None) -> 'GitOpsCluster':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict']]]]] = None) -> 'GitOpsCluster':
         """
         Get an existing GitOpsCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -140,31 +140,31 @@ export interface GitopsAppProjectState {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the agent where argo project will exist (include scope prefix)
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Org identifier of the GitOps Agent where argo project is to be created.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the Gitops Agent where argo project is to be created.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * GitOps project configuration.
      */
-    projects?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProject>[]>;
+    projects?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProject>[] | undefined>;
     /**
      * Identifier for the GitOps Argo project.
      */
-    queryName?: pulumi.Input<string>;
+    queryName?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the argo project should be updated if existing and inserted if not.
      */
-    upsert?: pulumi.Input<boolean>;
+    upsert?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -176,7 +176,7 @@ export interface GitopsAppProjectArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the agent where argo project will exist (include scope prefix)
      */
@@ -184,11 +184,11 @@ export interface GitopsAppProjectArgs {
     /**
      * Org identifier of the GitOps Agent where argo project is to be created.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the Gitops Agent where argo project is to be created.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * GitOps project configuration.
      */
@@ -196,9 +196,9 @@ export interface GitopsAppProjectArgs {
     /**
      * Identifier for the GitOps Argo project.
      */
-    queryName?: pulumi.Input<string>;
+    queryName?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the argo project should be updated if existing and inserted if not.
      */
-    upsert?: pulumi.Input<boolean>;
+    upsert?: pulumi.Input<boolean | undefined>;
 }

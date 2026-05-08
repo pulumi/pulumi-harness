@@ -202,48 +202,48 @@ export interface RuleVmState {
     /**
      * Id of the cloud connector
      */
-    cloudConnectorId?: pulumi.Input<string>;
+    cloudConnectorId?: pulumi.Input<string | undefined>;
     /**
      * Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
      */
-    connect?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    connect?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     /**
      * Custom URLs used to access the instances
      */
-    customDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    customDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Dependent rules
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmDepend>[]>;
+    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmDepend>[] | undefined>;
     /**
      * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
      */
-    dryRun?: pulumi.Input<boolean>;
-    filter?: pulumi.Input<inputs.autostopping.RuleVmFilter>;
+    dryRun?: pulumi.Input<boolean | undefined>;
+    filter?: pulumi.Input<inputs.autostopping.RuleVmFilter | undefined>;
     /**
      * Http routing configuration
      */
-    https?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmHttp>[]>;
+    https?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmHttp>[] | undefined>;
     /**
      * Unique identifier of the resource
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    idleTimeMins?: pulumi.Input<number>;
+    idleTimeMins?: pulumi.Input<number | undefined>;
     /**
      * Name of the rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * TCP routing configuration
      */
-    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmTcp>[]>;
+    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmTcp>[] | undefined>;
     /**
      * Boolean that indicates whether the selected instances should be converted to spot vm
      */
-    useSpot?: pulumi.Input<boolean>;
+    useSpot?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -257,34 +257,34 @@ export interface RuleVmArgs {
     /**
      * Custom URLs used to access the instances
      */
-    customDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    customDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Dependent rules
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmDepend>[]>;
+    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmDepend>[] | undefined>;
     /**
      * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     filter: pulumi.Input<inputs.autostopping.RuleVmFilter>;
     /**
      * Http routing configuration
      */
-    https?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmHttp>[]>;
+    https?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmHttp>[] | undefined>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    idleTimeMins?: pulumi.Input<number>;
+    idleTimeMins?: pulumi.Input<number | undefined>;
     /**
      * Name of the rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * TCP routing configuration
      */
-    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmTcp>[]>;
+    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmTcp>[] | undefined>;
     /**
      * Boolean that indicates whether the selected instances should be converted to spot vm
      */
-    useSpot?: pulumi.Input<boolean>;
+    useSpot?: pulumi.Input<boolean | undefined>;
 }

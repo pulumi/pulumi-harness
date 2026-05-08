@@ -192,31 +192,31 @@ export interface OrchestratorConfigState {
     /**
      * Binpacking preferences for Cluster Orchestrator
      */
-    binpacking?: pulumi.Input<inputs.cluster.OrchestratorConfigBinpacking>;
+    binpacking?: pulumi.Input<inputs.cluster.OrchestratorConfigBinpacking | undefined>;
     /**
      * Commitment integration configuration for Cluster Orchestrator
      */
-    commitmentIntegration?: pulumi.Input<inputs.cluster.OrchestratorConfigCommitmentIntegration>;
+    commitmentIntegration?: pulumi.Input<inputs.cluster.OrchestratorConfigCommitmentIntegration | undefined>;
     /**
      * Whether the cluster orchestrator is disabled
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Spot and Ondemand Distribution Preferences for workload replicas
      */
-    distribution?: pulumi.Input<inputs.cluster.OrchestratorConfigDistribution>;
+    distribution?: pulumi.Input<inputs.cluster.OrchestratorConfigDistribution | undefined>;
     /**
      * Node preferences for Cluster Orchestrator
      */
-    nodePreferences?: pulumi.Input<inputs.cluster.OrchestratorConfigNodePreferences>;
+    nodePreferences?: pulumi.Input<inputs.cluster.OrchestratorConfigNodePreferences | undefined>;
     /**
      * ID of the Cluster Orchestrator Object
      */
-    orchestratorId?: pulumi.Input<string>;
+    orchestratorId?: pulumi.Input<string | undefined>;
     /**
      * Replacement schedule for Cluster Orchestrator
      */
-    replacementSchedule?: pulumi.Input<inputs.cluster.OrchestratorConfigReplacementSchedule>;
+    replacementSchedule?: pulumi.Input<inputs.cluster.OrchestratorConfigReplacementSchedule | undefined>;
 }
 
 /**
@@ -226,15 +226,15 @@ export interface OrchestratorConfigArgs {
     /**
      * Binpacking preferences for Cluster Orchestrator
      */
-    binpacking?: pulumi.Input<inputs.cluster.OrchestratorConfigBinpacking>;
+    binpacking?: pulumi.Input<inputs.cluster.OrchestratorConfigBinpacking | undefined>;
     /**
      * Commitment integration configuration for Cluster Orchestrator
      */
-    commitmentIntegration?: pulumi.Input<inputs.cluster.OrchestratorConfigCommitmentIntegration>;
+    commitmentIntegration?: pulumi.Input<inputs.cluster.OrchestratorConfigCommitmentIntegration | undefined>;
     /**
      * Whether the cluster orchestrator is disabled
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Spot and Ondemand Distribution Preferences for workload replicas
      */
@@ -242,7 +242,7 @@ export interface OrchestratorConfigArgs {
     /**
      * Node preferences for Cluster Orchestrator
      */
-    nodePreferences?: pulumi.Input<inputs.cluster.OrchestratorConfigNodePreferences>;
+    nodePreferences?: pulumi.Input<inputs.cluster.OrchestratorConfigNodePreferences | undefined>;
     /**
      * ID of the Cluster Orchestrator Object
      */
@@ -250,5 +250,5 @@ export interface OrchestratorConfigArgs {
     /**
      * Replacement schedule for Cluster Orchestrator
      */
-    replacementSchedule?: pulumi.Input<inputs.cluster.OrchestratorConfigReplacementSchedule>;
+    replacementSchedule?: pulumi.Input<inputs.cluster.OrchestratorConfigReplacementSchedule | undefined>;
 }

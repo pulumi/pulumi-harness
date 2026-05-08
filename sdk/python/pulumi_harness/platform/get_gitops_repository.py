@@ -182,11 +182,11 @@ def get_gitops_repository(account_id: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         repos=pulumi.get(__ret__, 'repos'))
-def get_gitops_repository_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                 org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_gitops_repository_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                 org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsRepositoryResult]:
     """
     Data source for fetching a Harness GitOps Repository.

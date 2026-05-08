@@ -292,71 +292,71 @@ class ActionTemplateContainerActionArgsDict(TypedDict):
     """
     Container image to use (e.g., 'busybox:latest').
     """
-    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    annotations: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Annotations to apply to the container pod.
     """
-    args: NotRequired[pulumi.Input[_builtins.str]]
+    args: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Arguments to pass to the container command.
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Command to run in the container.
     """
-    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionEnvArgsDict']]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionEnvArgs']]]]]
     """
     Environment variables for the container.
     """
-    host_ipc: NotRequired[pulumi.Input[_builtins.bool]]
+    host_ipc: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Use host IPC namespace.
     """
-    host_network: NotRequired[pulumi.Input[_builtins.bool]]
+    host_network: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Use host network namespace.
     """
-    host_pid: NotRequired[pulumi.Input[_builtins.bool]]
+    host_pid: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Use host PID namespace.
     """
-    image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
+    image_pull_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Image pull policy (Always, IfNotPresent, Never). Supports runtime inputs like <+input>.allowedValues(...).
     """
-    image_pull_secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    image_pull_secrets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of image pull secrets for private registries.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels to apply to the container pod.
     """
-    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Kubernetes namespace for the container.
     """
-    node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    node_selector: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Node selector for pod scheduling.
     """
-    resources: NotRequired[pulumi.Input['ActionTemplateContainerActionResourcesArgsDict']]
+    resources: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionResourcesArgs']]]
     """
     Resource requirements for the container.
     """
-    service_account_name: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Kubernetes service account name.
     """
-    tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionTolerationArgsDict']]]]
+    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionTolerationArgs']]]]]
     """
     Tolerations for pod scheduling on tainted nodes.
     """
-    volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeMountArgsDict']]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeMountArgs']]]]]
     """
     Volume mounts for the container.
     """
-    volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeArgsDict']]]]
+    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeArgs']]]]]
     """
     Volumes to attach to the pod.
     """
@@ -365,23 +365,23 @@ class ActionTemplateContainerActionArgsDict(TypedDict):
 class ActionTemplateContainerActionArgs:
     def __init__(__self__, *,
                  image: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 args: Optional[pulumi.Input[_builtins.str]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionEnvArgs']]]] = None,
-                 host_ipc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_pid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_pull_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_pull_secrets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resources: Optional[pulumi.Input['ActionTemplateContainerActionResourcesArgs']] = None,
-                 service_account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionTolerationArgs']]]] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeMountArgs']]]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeArgs']]]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 args: pulumi.Input[Optional[_builtins.str]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionEnvArgs']]]] = None,
+                 host_ipc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_pid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_pull_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_pull_secrets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_selector: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resources: pulumi.Input[Optional['ActionTemplateContainerActionResourcesArgs']] = None,
+                 service_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tolerations: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionTolerationArgs']]]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeMountArgs']]]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] image: Container image to use (e.g., 'busybox:latest').
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations to apply to the container pod.
@@ -452,206 +452,206 @@ class ActionTemplateContainerActionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations to apply to the container pod.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def args(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arguments to pass to the container command.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def args(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Command to run in the container.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionEnvArgs']]]]:
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionEnvArgs']]]]:
         """
         Environment variables for the container.
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionEnvArgs']]]]):
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter(name="hostIpc")
-    def host_ipc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def host_ipc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use host IPC namespace.
         """
         return pulumi.get(self, "host_ipc")
 
     @host_ipc.setter
-    def host_ipc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def host_ipc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "host_ipc", value)
 
     @_builtins.property
     @pulumi.getter(name="hostNetwork")
-    def host_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def host_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use host network namespace.
         """
         return pulumi.get(self, "host_network")
 
     @host_network.setter
-    def host_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def host_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "host_network", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPid")
-    def host_pid(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def host_pid(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use host PID namespace.
         """
         return pulumi.get(self, "host_pid")
 
     @host_pid.setter
-    def host_pid(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def host_pid(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "host_pid", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePullPolicy")
-    def image_pull_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_pull_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Image pull policy (Always, IfNotPresent, Never). Supports runtime inputs like <+input>.allowedValues(...).
         """
         return pulumi.get(self, "image_pull_policy")
 
     @image_pull_policy.setter
-    def image_pull_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_pull_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_pull_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePullSecrets")
-    def image_pull_secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def image_pull_secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of image pull secrets for private registries.
         """
         return pulumi.get(self, "image_pull_secrets")
 
     @image_pull_secrets.setter
-    def image_pull_secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def image_pull_secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "image_pull_secrets", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to the container pod.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kubernetes namespace for the container.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def node_selector(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Node selector for pod scheduling.
         """
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def node_selector(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_selector", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input['ActionTemplateContainerActionResourcesArgs']]:
+    def resources(self) -> pulumi.Input[Optional['ActionTemplateContainerActionResourcesArgs']]:
         """
         Resource requirements for the container.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input['ActionTemplateContainerActionResourcesArgs']]):
+    def resources(self, value: pulumi.Input[Optional['ActionTemplateContainerActionResourcesArgs']]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountName")
-    def service_account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kubernetes service account name.
         """
         return pulumi.get(self, "service_account_name")
 
     @service_account_name.setter
-    def service_account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tolerations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionTolerationArgs']]]]:
+    def tolerations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionTolerationArgs']]]]:
         """
         Tolerations for pod scheduling on tainted nodes.
         """
         return pulumi.get(self, "tolerations")
 
     @tolerations.setter
-    def tolerations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionTolerationArgs']]]]):
+    def tolerations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionTolerationArgs']]]]):
         pulumi.set(self, "tolerations", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeMountArgs']]]]:
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeMountArgs']]]]:
         """
         Volume mounts for the container.
         """
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeMountArgs']]]]):
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeMountArgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
     @_builtins.property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeArgs']]]]:
+    def volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeArgs']]]]:
         """
         Volumes to attach to the pod.
         """
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeArgs']]]]):
+    def volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
 
@@ -660,7 +660,7 @@ class ActionTemplateContainerActionEnvArgsDict(TypedDict):
     """
     Environment variable name.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Environment variable value.
     """
@@ -669,7 +669,7 @@ class ActionTemplateContainerActionEnvArgsDict(TypedDict):
 class ActionTemplateContainerActionEnvArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Environment variable name.
         :param pulumi.Input[_builtins.str] value: Environment variable value.
@@ -692,23 +692,23 @@ class ActionTemplateContainerActionEnvArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment variable value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class ActionTemplateContainerActionResourcesArgsDict(TypedDict):
-    limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    limits: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Resource limits.
     """
-    requests: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    requests: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Resource requests.
     """
@@ -716,8 +716,8 @@ class ActionTemplateContainerActionResourcesArgsDict(TypedDict):
 @pulumi.input_type
 class ActionTemplateContainerActionResourcesArgs:
     def __init__(__self__, *,
-                 limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 requests: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 limits: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 requests: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] limits: Resource limits.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] requests: Resource requests.
@@ -729,47 +729,47 @@ class ActionTemplateContainerActionResourcesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def limits(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource limits.
         """
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def limits(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "limits", value)
 
     @_builtins.property
     @pulumi.getter
-    def requests(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def requests(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource requests.
         """
         return pulumi.get(self, "requests")
 
     @requests.setter
-    def requests(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def requests(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "requests", value)
 
 
 class ActionTemplateContainerActionTolerationArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Taint effect (NoSchedule, PreferNoSchedule, NoExecute).
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Taint key to tolerate.
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Operator (Exists, Equal).
     """
-    toleration_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    toleration_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Toleration seconds for NoExecute effect.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Taint value to tolerate.
     """
@@ -777,11 +777,11 @@ class ActionTemplateContainerActionTolerationArgsDict(TypedDict):
 @pulumi.input_type
 class ActionTemplateContainerActionTolerationArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 toleration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 toleration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Taint effect (NoSchedule, PreferNoSchedule, NoExecute).
         :param pulumi.Input[_builtins.str] key: Taint key to tolerate.
@@ -802,62 +802,62 @@ class ActionTemplateContainerActionTolerationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Taint effect (NoSchedule, PreferNoSchedule, NoExecute).
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Taint key to tolerate.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Operator (Exists, Equal).
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter(name="tolerationSeconds")
-    def toleration_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def toleration_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Toleration seconds for NoExecute effect.
         """
         return pulumi.get(self, "toleration_seconds")
 
     @toleration_seconds.setter
-    def toleration_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def toleration_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "toleration_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Taint value to tolerate.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -866,23 +866,23 @@ class ActionTemplateContainerActionVolumeArgsDict(TypedDict):
     """
     Volume name.
     """
-    config_map: NotRequired[pulumi.Input['ActionTemplateContainerActionVolumeConfigMapArgsDict']]
+    config_map: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumeConfigMapArgs']]]
     """
     ConfigMap volume configuration.
     """
-    empty_dir: NotRequired[pulumi.Input['ActionTemplateContainerActionVolumeEmptyDirArgsDict']]
+    empty_dir: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumeEmptyDirArgs']]]
     """
     EmptyDir volume configuration.
     """
-    host_path: NotRequired[pulumi.Input['ActionTemplateContainerActionVolumeHostPathArgsDict']]
+    host_path: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumeHostPathArgs']]]
     """
     HostPath volume configuration.
     """
-    persistent_volume_claim: NotRequired[pulumi.Input['ActionTemplateContainerActionVolumePersistentVolumeClaimArgsDict']]
+    persistent_volume_claim: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumePersistentVolumeClaimArgs']]]
     """
     PersistentVolumeClaim configuration.
     """
-    secret: NotRequired[pulumi.Input['ActionTemplateContainerActionVolumeSecretArgsDict']]
+    secret: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumeSecretArgs']]]
     """
     Secret volume configuration.
     """
@@ -891,11 +891,11 @@ class ActionTemplateContainerActionVolumeArgsDict(TypedDict):
 class ActionTemplateContainerActionVolumeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 config_map: Optional[pulumi.Input['ActionTemplateContainerActionVolumeConfigMapArgs']] = None,
-                 empty_dir: Optional[pulumi.Input['ActionTemplateContainerActionVolumeEmptyDirArgs']] = None,
-                 host_path: Optional[pulumi.Input['ActionTemplateContainerActionVolumeHostPathArgs']] = None,
-                 persistent_volume_claim: Optional[pulumi.Input['ActionTemplateContainerActionVolumePersistentVolumeClaimArgs']] = None,
-                 secret: Optional[pulumi.Input['ActionTemplateContainerActionVolumeSecretArgs']] = None):
+                 config_map: pulumi.Input[Optional['ActionTemplateContainerActionVolumeConfigMapArgs']] = None,
+                 empty_dir: pulumi.Input[Optional['ActionTemplateContainerActionVolumeEmptyDirArgs']] = None,
+                 host_path: pulumi.Input[Optional['ActionTemplateContainerActionVolumeHostPathArgs']] = None,
+                 persistent_volume_claim: pulumi.Input[Optional['ActionTemplateContainerActionVolumePersistentVolumeClaimArgs']] = None,
+                 secret: pulumi.Input[Optional['ActionTemplateContainerActionVolumeSecretArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: Volume name.
         :param pulumi.Input['ActionTemplateContainerActionVolumeConfigMapArgs'] config_map: ConfigMap volume configuration.
@@ -930,62 +930,62 @@ class ActionTemplateContainerActionVolumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="configMap")
-    def config_map(self) -> Optional[pulumi.Input['ActionTemplateContainerActionVolumeConfigMapArgs']]:
+    def config_map(self) -> pulumi.Input[Optional['ActionTemplateContainerActionVolumeConfigMapArgs']]:
         """
         ConfigMap volume configuration.
         """
         return pulumi.get(self, "config_map")
 
     @config_map.setter
-    def config_map(self, value: Optional[pulumi.Input['ActionTemplateContainerActionVolumeConfigMapArgs']]):
+    def config_map(self, value: pulumi.Input[Optional['ActionTemplateContainerActionVolumeConfigMapArgs']]):
         pulumi.set(self, "config_map", value)
 
     @_builtins.property
     @pulumi.getter(name="emptyDir")
-    def empty_dir(self) -> Optional[pulumi.Input['ActionTemplateContainerActionVolumeEmptyDirArgs']]:
+    def empty_dir(self) -> pulumi.Input[Optional['ActionTemplateContainerActionVolumeEmptyDirArgs']]:
         """
         EmptyDir volume configuration.
         """
         return pulumi.get(self, "empty_dir")
 
     @empty_dir.setter
-    def empty_dir(self, value: Optional[pulumi.Input['ActionTemplateContainerActionVolumeEmptyDirArgs']]):
+    def empty_dir(self, value: pulumi.Input[Optional['ActionTemplateContainerActionVolumeEmptyDirArgs']]):
         pulumi.set(self, "empty_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPath")
-    def host_path(self) -> Optional[pulumi.Input['ActionTemplateContainerActionVolumeHostPathArgs']]:
+    def host_path(self) -> pulumi.Input[Optional['ActionTemplateContainerActionVolumeHostPathArgs']]:
         """
         HostPath volume configuration.
         """
         return pulumi.get(self, "host_path")
 
     @host_path.setter
-    def host_path(self, value: Optional[pulumi.Input['ActionTemplateContainerActionVolumeHostPathArgs']]):
+    def host_path(self, value: pulumi.Input[Optional['ActionTemplateContainerActionVolumeHostPathArgs']]):
         pulumi.set(self, "host_path", value)
 
     @_builtins.property
     @pulumi.getter(name="persistentVolumeClaim")
-    def persistent_volume_claim(self) -> Optional[pulumi.Input['ActionTemplateContainerActionVolumePersistentVolumeClaimArgs']]:
+    def persistent_volume_claim(self) -> pulumi.Input[Optional['ActionTemplateContainerActionVolumePersistentVolumeClaimArgs']]:
         """
         PersistentVolumeClaim configuration.
         """
         return pulumi.get(self, "persistent_volume_claim")
 
     @persistent_volume_claim.setter
-    def persistent_volume_claim(self, value: Optional[pulumi.Input['ActionTemplateContainerActionVolumePersistentVolumeClaimArgs']]):
+    def persistent_volume_claim(self, value: pulumi.Input[Optional['ActionTemplateContainerActionVolumePersistentVolumeClaimArgs']]):
         pulumi.set(self, "persistent_volume_claim", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input['ActionTemplateContainerActionVolumeSecretArgs']]:
+    def secret(self) -> pulumi.Input[Optional['ActionTemplateContainerActionVolumeSecretArgs']]:
         """
         Secret volume configuration.
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input['ActionTemplateContainerActionVolumeSecretArgs']]):
+    def secret(self, value: pulumi.Input[Optional['ActionTemplateContainerActionVolumeSecretArgs']]):
         pulumi.set(self, "secret", value)
 
 
@@ -994,7 +994,7 @@ class ActionTemplateContainerActionVolumeConfigMapArgsDict(TypedDict):
     """
     ConfigMap name.
     """
-    optional: NotRequired[pulumi.Input[_builtins.bool]]
+    optional: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the ConfigMap is optional.
     """
@@ -1003,7 +1003,7 @@ class ActionTemplateContainerActionVolumeConfigMapArgsDict(TypedDict):
 class ActionTemplateContainerActionVolumeConfigMapArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 optional: Optional[pulumi.Input[_builtins.bool]] = None):
+                 optional: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] name: ConfigMap name.
         :param pulumi.Input[_builtins.bool] optional: Whether the ConfigMap is optional.
@@ -1026,23 +1026,23 @@ class ActionTemplateContainerActionVolumeConfigMapArgs:
 
     @_builtins.property
     @pulumi.getter
-    def optional(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def optional(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the ConfigMap is optional.
         """
         return pulumi.get(self, "optional")
 
     @optional.setter
-    def optional(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def optional(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "optional", value)
 
 
 class ActionTemplateContainerActionVolumeEmptyDirArgsDict(TypedDict):
-    medium: NotRequired[pulumi.Input[_builtins.str]]
+    medium: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Storage medium (empty string for default, Memory for tmpfs).
     """
-    size_limit: NotRequired[pulumi.Input[_builtins.str]]
+    size_limit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Size limit (e.g., '1Gi').
     """
@@ -1050,8 +1050,8 @@ class ActionTemplateContainerActionVolumeEmptyDirArgsDict(TypedDict):
 @pulumi.input_type
 class ActionTemplateContainerActionVolumeEmptyDirArgs:
     def __init__(__self__, *,
-                 medium: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_limit: Optional[pulumi.Input[_builtins.str]] = None):
+                 medium: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_limit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] medium: Storage medium (empty string for default, Memory for tmpfs).
         :param pulumi.Input[_builtins.str] size_limit: Size limit (e.g., '1Gi').
@@ -1063,26 +1063,26 @@ class ActionTemplateContainerActionVolumeEmptyDirArgs:
 
     @_builtins.property
     @pulumi.getter
-    def medium(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def medium(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Storage medium (empty string for default, Memory for tmpfs).
         """
         return pulumi.get(self, "medium")
 
     @medium.setter
-    def medium(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def medium(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "medium", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeLimit")
-    def size_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def size_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Size limit (e.g., '1Gi').
         """
         return pulumi.get(self, "size_limit")
 
     @size_limit.setter
-    def size_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def size_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "size_limit", value)
 
 
@@ -1091,7 +1091,7 @@ class ActionTemplateContainerActionVolumeHostPathArgsDict(TypedDict):
     """
     Host path.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host path type (Directory, File, etc.).
     """
@@ -1100,7 +1100,7 @@ class ActionTemplateContainerActionVolumeHostPathArgsDict(TypedDict):
 class ActionTemplateContainerActionVolumeHostPathArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: Host path.
         :param pulumi.Input[_builtins.str] type: Host path type (Directory, File, etc.).
@@ -1123,14 +1123,14 @@ class ActionTemplateContainerActionVolumeHostPathArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host path type (Directory, File, etc.).
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -1143,11 +1143,11 @@ class ActionTemplateContainerActionVolumeMountArgsDict(TypedDict):
     """
     Volume name to mount.
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Mount as read-only.
     """
-    sub_path: NotRequired[pulumi.Input[_builtins.str]]
+    sub_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Sub-path within the volume.
     """
@@ -1157,8 +1157,8 @@ class ActionTemplateContainerActionVolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sub_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sub_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: Path to mount the volume in the container.
         :param pulumi.Input[_builtins.str] name: Volume name to mount.
@@ -1198,26 +1198,26 @@ class ActionTemplateContainerActionVolumeMountArgs:
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Mount as read-only.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="subPath")
-    def sub_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sub-path within the volume.
         """
         return pulumi.get(self, "sub_path")
 
     @sub_path.setter
-    def sub_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_path", value)
 
 
@@ -1226,7 +1226,7 @@ class ActionTemplateContainerActionVolumePersistentVolumeClaimArgsDict(TypedDict
     """
     PVC name.
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Mount as read-only.
     """
@@ -1235,7 +1235,7 @@ class ActionTemplateContainerActionVolumePersistentVolumeClaimArgsDict(TypedDict
 class ActionTemplateContainerActionVolumePersistentVolumeClaimArgs:
     def __init__(__self__, *,
                  claim_name: pulumi.Input[_builtins.str],
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] claim_name: PVC name.
         :param pulumi.Input[_builtins.bool] read_only: Mount as read-only.
@@ -1258,14 +1258,14 @@ class ActionTemplateContainerActionVolumePersistentVolumeClaimArgs:
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Mount as read-only.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
@@ -1274,7 +1274,7 @@ class ActionTemplateContainerActionVolumeSecretArgsDict(TypedDict):
     """
     Secret name.
     """
-    optional: NotRequired[pulumi.Input[_builtins.bool]]
+    optional: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the Secret is optional.
     """
@@ -1283,7 +1283,7 @@ class ActionTemplateContainerActionVolumeSecretArgsDict(TypedDict):
 class ActionTemplateContainerActionVolumeSecretArgs:
     def __init__(__self__, *,
                  secret_name: pulumi.Input[_builtins.str],
-                 optional: Optional[pulumi.Input[_builtins.bool]] = None):
+                 optional: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] secret_name: Secret name.
         :param pulumi.Input[_builtins.bool] optional: Whether the Secret is optional.
@@ -1306,14 +1306,14 @@ class ActionTemplateContainerActionVolumeSecretArgs:
 
     @_builtins.property
     @pulumi.getter
-    def optional(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def optional(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Secret is optional.
         """
         return pulumi.get(self, "optional")
 
     @optional.setter
-    def optional(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def optional(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "optional", value)
 
 
@@ -1322,11 +1322,11 @@ class ActionTemplateCustomScriptActionArgsDict(TypedDict):
     """
     Command to execute (e.g., 'bash', 'python', 'sh').
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Arguments to pass to the command.
     """
-    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionTemplateCustomScriptActionEnvArgsDict']]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateCustomScriptActionEnvArgs']]]]]
     """
     Environment variables for the script.
     """
@@ -1335,8 +1335,8 @@ class ActionTemplateCustomScriptActionArgsDict(TypedDict):
 class ActionTemplateCustomScriptActionArgs:
     def __init__(__self__, *,
                  command: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateCustomScriptActionEnvArgs']]]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateCustomScriptActionEnvArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] command: Command to execute (e.g., 'bash', 'python', 'sh').
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Arguments to pass to the command.
@@ -1362,26 +1362,26 @@ class ActionTemplateCustomScriptActionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Arguments to pass to the command.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateCustomScriptActionEnvArgs']]]]:
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateCustomScriptActionEnvArgs']]]]:
         """
         Environment variables for the script.
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionTemplateCustomScriptActionEnvArgs']]]]):
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateCustomScriptActionEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
 
@@ -1461,27 +1461,27 @@ class ActionTemplateDelayActionArgs:
 
 
 class ActionTemplateRunPropertiesArgsDict(TypedDict):
-    initial_delay: NotRequired[pulumi.Input[_builtins.str]]
+    initial_delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Initial delay before action execution (e.g., '5s', '1m').
     """
-    interval: NotRequired[pulumi.Input[_builtins.str]]
+    interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Interval between retries (e.g., '10s', '30s').
     """
-    max_retries: NotRequired[pulumi.Input[_builtins.int]]
+    max_retries: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of retries.
     """
-    stop_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
+    stop_on_failure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to stop on failure.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.str]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Timeout for action execution (e.g., '5m', '10m').
     """
-    verbosity: NotRequired[pulumi.Input[_builtins.str]]
+    verbosity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Verbosity level for logging.
     """
@@ -1489,12 +1489,12 @@ class ActionTemplateRunPropertiesArgsDict(TypedDict):
 @pulumi.input_type
 class ActionTemplateRunPropertiesArgs:
     def __init__(__self__, *,
-                 initial_delay: Optional[pulumi.Input[_builtins.str]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 stop_on_failure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 verbosity: Optional[pulumi.Input[_builtins.str]] = None):
+                 initial_delay: pulumi.Input[Optional[_builtins.str]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 stop_on_failure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 verbosity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] initial_delay: Initial delay before action execution (e.g., '5s', '1m').
         :param pulumi.Input[_builtins.str] interval: Interval between retries (e.g., '10s', '30s').
@@ -1518,74 +1518,74 @@ class ActionTemplateRunPropertiesArgs:
 
     @_builtins.property
     @pulumi.getter(name="initialDelay")
-    def initial_delay(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initial_delay(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial delay before action execution (e.g., '5s', '1m').
         """
         return pulumi.get(self, "initial_delay")
 
     @initial_delay.setter
-    def initial_delay(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initial_delay(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Interval between retries (e.g., '10s', '30s').
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetries")
-    def max_retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of retries.
         """
         return pulumi.get(self, "max_retries")
 
     @max_retries.setter
-    def max_retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_retries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_retries", value)
 
     @_builtins.property
     @pulumi.getter(name="stopOnFailure")
-    def stop_on_failure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stop_on_failure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to stop on failure.
         """
         return pulumi.get(self, "stop_on_failure")
 
     @stop_on_failure.setter
-    def stop_on_failure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stop_on_failure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stop_on_failure", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timeout for action execution (e.g., '5m', '10m').
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def verbosity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def verbosity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Verbosity level for logging.
         """
         return pulumi.get(self, "verbosity")
 
     @verbosity.setter
-    def verbosity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def verbosity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "verbosity", value)
 
 
@@ -1598,15 +1598,15 @@ class ActionTemplateVariableArgsDict(TypedDict):
     """
     Variable value.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Variable description.
     """
-    required: NotRequired[pulumi.Input[_builtins.bool]]
+    required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the variable is required.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Variable type (e.g., 'string', 'number', 'boolean').
     """
@@ -1616,9 +1616,9 @@ class ActionTemplateVariableArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Variable name.
         :param pulumi.Input[_builtins.str] value: Variable value.
@@ -1661,55 +1661,55 @@ class ActionTemplateVariableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Variable description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the variable is required.
         """
         return pulumi.get(self, "required")
 
     @required.setter
-    def required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "required", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Variable type (e.g., 'string', 'number', 'boolean').
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ExperimentTemplateDetailArgsDict(TypedDict):
-    hub_reference: NotRequired[pulumi.Input[_builtins.str]]
+    hub_reference: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Hub reference where template resides
     """
-    identity: NotRequired[pulumi.Input[_builtins.str]]
+    identity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Template identity
     """
-    reference: NotRequired[pulumi.Input[_builtins.str]]
+    reference: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Full template reference
     """
-    revision: NotRequired[pulumi.Input[_builtins.str]]
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Template revision used
     """
@@ -1717,10 +1717,10 @@ class ExperimentTemplateDetailArgsDict(TypedDict):
 @pulumi.input_type
 class ExperimentTemplateDetailArgs:
     def __init__(__self__, *,
-                 hub_reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None):
+                 hub_reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] hub_reference: Hub reference where template resides
         :param pulumi.Input[_builtins.str] identity: Template identity
@@ -1738,50 +1738,50 @@ class ExperimentTemplateDetailArgs:
 
     @_builtins.property
     @pulumi.getter(name="hubReference")
-    def hub_reference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub_reference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hub reference where template resides
         """
         return pulumi.get(self, "hub_reference")
 
     @hub_reference.setter
-    def hub_reference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub_reference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub_reference", value)
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template identity
         """
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter
-    def reference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full template reference
         """
         return pulumi.get(self, "reference")
 
     @reference.setter
-    def reference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reference", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template revision used
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
 
@@ -1790,31 +1790,31 @@ class ExperimentTemplateSpecArgsDict(TypedDict):
     """
     Infrastructure type (Windows, Linux, CloudFoundry, Container, Kubernetes, KubernetesV2)
     """
-    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecActionArgsDict']]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecActionArgs']]]]]
     """
     List of actions in the experiment
     """
-    cleanup_policy: NotRequired[pulumi.Input[_builtins.str]]
+    cleanup_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cleanup policy for experiment resources (retain, delete)
     """
-    faults: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecFaultArgsDict']]]]
+    faults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecFaultArgs']]]]]
     """
     List of faults in the experiment
     """
-    infra_id: NotRequired[pulumi.Input[_builtins.str]]
+    infra_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Infrastructure identifier (supports runtime input: <+input>)
     """
-    probes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecProbeArgsDict']]]]
+    probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeArgs']]]]]
     """
     List of probes in the experiment
     """
-    status_check_timeouts: NotRequired[pulumi.Input['ExperimentTemplateSpecStatusCheckTimeoutsArgsDict']]
+    status_check_timeouts: NotRequired[pulumi.Input[Optional['ExperimentTemplateSpecStatusCheckTimeoutsArgs']]]
     """
     Status check timeout configuration
     """
-    vertices: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexArgsDict']]]]
+    vertices: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexArgs']]]]]
     """
     Workflow graph vertices defining execution order
     """
@@ -1823,13 +1823,13 @@ class ExperimentTemplateSpecArgsDict(TypedDict):
 class ExperimentTemplateSpecArgs:
     def __init__(__self__, *,
                  infra_type: pulumi.Input[_builtins.str],
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecActionArgs']]]] = None,
-                 cleanup_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 faults: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecFaultArgs']]]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 probes: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecProbeArgs']]]] = None,
-                 status_check_timeouts: Optional[pulumi.Input['ExperimentTemplateSpecStatusCheckTimeoutsArgs']] = None,
-                 vertices: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexArgs']]]] = None):
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecActionArgs']]]] = None,
+                 cleanup_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 faults: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecFaultArgs']]]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 probes: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeArgs']]]] = None,
+                 status_check_timeouts: pulumi.Input[Optional['ExperimentTemplateSpecStatusCheckTimeoutsArgs']] = None,
+                 vertices: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] infra_type: Infrastructure type (Windows, Linux, CloudFoundry, Container, Kubernetes, KubernetesV2)
         :param pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecActionArgs']]] actions: List of actions in the experiment
@@ -1870,86 +1870,86 @@ class ExperimentTemplateSpecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecActionArgs']]]]:
+    def actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecActionArgs']]]]:
         """
         List of actions in the experiment
         """
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecActionArgs']]]]):
+    def actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecActionArgs']]]]):
         pulumi.set(self, "actions", value)
 
     @_builtins.property
     @pulumi.getter(name="cleanupPolicy")
-    def cleanup_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cleanup_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cleanup policy for experiment resources (retain, delete)
         """
         return pulumi.get(self, "cleanup_policy")
 
     @cleanup_policy.setter
-    def cleanup_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cleanup_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cleanup_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def faults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecFaultArgs']]]]:
+    def faults(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecFaultArgs']]]]:
         """
         List of faults in the experiment
         """
         return pulumi.get(self, "faults")
 
     @faults.setter
-    def faults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecFaultArgs']]]]):
+    def faults(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecFaultArgs']]]]):
         pulumi.set(self, "faults", value)
 
     @_builtins.property
     @pulumi.getter(name="infraId")
-    def infra_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Infrastructure identifier (supports runtime input: <+input>)
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
-    def infra_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def probes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecProbeArgs']]]]:
+    def probes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeArgs']]]]:
         """
         List of probes in the experiment
         """
         return pulumi.get(self, "probes")
 
     @probes.setter
-    def probes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecProbeArgs']]]]):
+    def probes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeArgs']]]]):
         pulumi.set(self, "probes", value)
 
     @_builtins.property
     @pulumi.getter(name="statusCheckTimeouts")
-    def status_check_timeouts(self) -> Optional[pulumi.Input['ExperimentTemplateSpecStatusCheckTimeoutsArgs']]:
+    def status_check_timeouts(self) -> pulumi.Input[Optional['ExperimentTemplateSpecStatusCheckTimeoutsArgs']]:
         """
         Status check timeout configuration
         """
         return pulumi.get(self, "status_check_timeouts")
 
     @status_check_timeouts.setter
-    def status_check_timeouts(self, value: Optional[pulumi.Input['ExperimentTemplateSpecStatusCheckTimeoutsArgs']]):
+    def status_check_timeouts(self, value: pulumi.Input[Optional['ExperimentTemplateSpecStatusCheckTimeoutsArgs']]):
         pulumi.set(self, "status_check_timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def vertices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexArgs']]]]:
+    def vertices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexArgs']]]]:
         """
         Workflow graph vertices defining execution order
         """
         return pulumi.get(self, "vertices")
 
     @vertices.setter
-    def vertices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexArgs']]]]):
+    def vertices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexArgs']]]]):
         pulumi.set(self, "vertices", value)
 
 
@@ -1962,23 +1962,23 @@ class ExperimentTemplateSpecActionArgsDict(TypedDict):
     """
     Action name
     """
-    continue_on_completion: NotRequired[pulumi.Input[_builtins.bool]]
+    continue_on_completion: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to continue on completion
     """
-    infra_id: NotRequired[pulumi.Input[_builtins.str]]
+    infra_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Infrastructure identifier for this action
     """
-    is_enterprise: NotRequired[pulumi.Input[_builtins.bool]]
+    is_enterprise: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether this is an enterprise action
     """
-    revision: NotRequired[pulumi.Input[_builtins.int]]
+    revision: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Action template revision
     """
-    values: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecActionValueArgsDict']]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecActionValueArgs']]]]]
     """
     Variable values for the action
     """
@@ -1988,11 +1988,11 @@ class ExperimentTemplateSpecActionArgs:
     def __init__(__self__, *,
                  identity: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 continue_on_completion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enterprise: Optional[pulumi.Input[_builtins.bool]] = None,
-                 revision: Optional[pulumi.Input[_builtins.int]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecActionValueArgs']]]] = None):
+                 continue_on_completion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enterprise: pulumi.Input[Optional[_builtins.bool]] = None,
+                 revision: pulumi.Input[Optional[_builtins.int]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecActionValueArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] identity: Action template identity
         :param pulumi.Input[_builtins.str] name: Action name
@@ -2041,62 +2041,62 @@ class ExperimentTemplateSpecActionArgs:
 
     @_builtins.property
     @pulumi.getter(name="continueOnCompletion")
-    def continue_on_completion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def continue_on_completion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to continue on completion
         """
         return pulumi.get(self, "continue_on_completion")
 
     @continue_on_completion.setter
-    def continue_on_completion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def continue_on_completion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "continue_on_completion", value)
 
     @_builtins.property
     @pulumi.getter(name="infraId")
-    def infra_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Infrastructure identifier for this action
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
-    def infra_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnterprise")
-    def is_enterprise(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enterprise(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is an enterprise action
         """
         return pulumi.get(self, "is_enterprise")
 
     @is_enterprise.setter
-    def is_enterprise(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enterprise(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enterprise", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Action template revision
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecActionValueArgs']]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecActionValueArgs']]]]:
         """
         Variable values for the action
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecActionValueArgs']]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecActionValueArgs']]]]):
         pulumi.set(self, "values", value)
 
 
@@ -2156,23 +2156,23 @@ class ExperimentTemplateSpecFaultArgsDict(TypedDict):
     """
     Fault name
     """
-    auth_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    auth_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether authentication is enabled
     """
-    infra_id: NotRequired[pulumi.Input[_builtins.str]]
+    infra_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Infrastructure identifier for this fault
     """
-    is_enterprise: NotRequired[pulumi.Input[_builtins.bool]]
+    is_enterprise: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether this is an enterprise fault
     """
-    revision: NotRequired[pulumi.Input[_builtins.str]]
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fault template revision
     """
-    values: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecFaultValueArgsDict']]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecFaultValueArgs']]]]]
     """
     Variable values for the fault
     """
@@ -2182,11 +2182,11 @@ class ExperimentTemplateSpecFaultArgs:
     def __init__(__self__, *,
                  identity: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enterprise: Optional[pulumi.Input[_builtins.bool]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecFaultValueArgs']]]] = None):
+                 auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enterprise: pulumi.Input[Optional[_builtins.bool]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecFaultValueArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] identity: Fault template identity
         :param pulumi.Input[_builtins.str] name: Fault name
@@ -2235,62 +2235,62 @@ class ExperimentTemplateSpecFaultArgs:
 
     @_builtins.property
     @pulumi.getter(name="authEnabled")
-    def auth_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auth_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether authentication is enabled
         """
         return pulumi.get(self, "auth_enabled")
 
     @auth_enabled.setter
-    def auth_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auth_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auth_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="infraId")
-    def infra_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Infrastructure identifier for this fault
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
-    def infra_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnterprise")
-    def is_enterprise(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enterprise(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is an enterprise fault
         """
         return pulumi.get(self, "is_enterprise")
 
     @is_enterprise.setter
-    def is_enterprise(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enterprise(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enterprise", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fault template revision
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecFaultValueArgs']]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecFaultValueArgs']]]]:
         """
         Variable values for the fault
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecFaultValueArgs']]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecFaultValueArgs']]]]):
         pulumi.set(self, "values", value)
 
 
@@ -2350,35 +2350,35 @@ class ExperimentTemplateSpecProbeArgsDict(TypedDict):
     """
     Probe name
     """
-    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecProbeConditionArgsDict']]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeConditionArgs']]]]]
     """
     Probe execution conditions
     """
-    duration: NotRequired[pulumi.Input[_builtins.str]]
+    duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Probe duration
     """
-    enable_data_collection: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_data_collection: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable data collection
     """
-    infra_id: NotRequired[pulumi.Input[_builtins.str]]
+    infra_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Infrastructure identifier for this probe
     """
-    is_enterprise: NotRequired[pulumi.Input[_builtins.bool]]
+    is_enterprise: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether this is an enterprise probe
     """
-    revision: NotRequired[pulumi.Input[_builtins.int]]
+    revision: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Probe template revision
     """
-    values: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecProbeValueArgsDict']]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeValueArgs']]]]]
     """
     Variable values for the probe
     """
-    weightage: NotRequired[pulumi.Input[_builtins.int]]
+    weightage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Probe weightage for resilience score calculation
     """
@@ -2388,14 +2388,14 @@ class ExperimentTemplateSpecProbeArgs:
     def __init__(__self__, *,
                  identity: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecProbeConditionArgs']]]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_data_collection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enterprise: Optional[pulumi.Input[_builtins.bool]] = None,
-                 revision: Optional[pulumi.Input[_builtins.int]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecProbeValueArgs']]]] = None,
-                 weightage: Optional[pulumi.Input[_builtins.int]] = None):
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeConditionArgs']]]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_data_collection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enterprise: pulumi.Input[Optional[_builtins.bool]] = None,
+                 revision: pulumi.Input[Optional[_builtins.int]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeValueArgs']]]] = None,
+                 weightage: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] identity: Probe template identity
         :param pulumi.Input[_builtins.str] name: Probe name
@@ -2453,98 +2453,98 @@ class ExperimentTemplateSpecProbeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecProbeConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeConditionArgs']]]]:
         """
         Probe execution conditions
         """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecProbeConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Probe duration
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDataCollection")
-    def enable_data_collection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_data_collection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable data collection
         """
         return pulumi.get(self, "enable_data_collection")
 
     @enable_data_collection.setter
-    def enable_data_collection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_data_collection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_data_collection", value)
 
     @_builtins.property
     @pulumi.getter(name="infraId")
-    def infra_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Infrastructure identifier for this probe
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
-    def infra_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnterprise")
-    def is_enterprise(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enterprise(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is an enterprise probe
         """
         return pulumi.get(self, "is_enterprise")
 
     @is_enterprise.setter
-    def is_enterprise(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enterprise(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enterprise", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Probe template revision
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecProbeValueArgs']]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeValueArgs']]]]:
         """
         Variable values for the probe
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecProbeValueArgs']]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeValueArgs']]]]):
         pulumi.set(self, "values", value)
 
     @_builtins.property
     @pulumi.getter
-    def weightage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weightage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Probe weightage for resilience score calculation
         """
         return pulumi.get(self, "weightage")
 
     @weightage.setter
-    def weightage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weightage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weightage", value)
 
 
@@ -2624,11 +2624,11 @@ class ExperimentTemplateSpecProbeValueArgs:
 
 
 class ExperimentTemplateSpecStatusCheckTimeoutsArgsDict(TypedDict):
-    delay: NotRequired[pulumi.Input[_builtins.int]]
+    delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Delay before status check (in seconds)
     """
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Timeout for status check (in seconds)
     """
@@ -2636,8 +2636,8 @@ class ExperimentTemplateSpecStatusCheckTimeoutsArgsDict(TypedDict):
 @pulumi.input_type
 class ExperimentTemplateSpecStatusCheckTimeoutsArgs:
     def __init__(__self__, *,
-                 delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] delay: Delay before status check (in seconds)
         :param pulumi.Input[_builtins.int] timeout: Timeout for status check (in seconds)
@@ -2649,26 +2649,26 @@ class ExperimentTemplateSpecStatusCheckTimeoutsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Delay before status check (in seconds)
         """
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for status check (in seconds)
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
@@ -2677,11 +2677,11 @@ class ExperimentTemplateSpecVertexArgsDict(TypedDict):
     """
     Vertex name
     """
-    end: NotRequired[pulumi.Input['ExperimentTemplateSpecVertexEndArgsDict']]
+    end: NotRequired[pulumi.Input[Optional['ExperimentTemplateSpecVertexEndArgs']]]
     """
     End configuration for the vertex
     """
-    start: NotRequired[pulumi.Input['ExperimentTemplateSpecVertexStartArgsDict']]
+    start: NotRequired[pulumi.Input[Optional['ExperimentTemplateSpecVertexStartArgs']]]
     """
     Start configuration for the vertex
     """
@@ -2690,8 +2690,8 @@ class ExperimentTemplateSpecVertexArgsDict(TypedDict):
 class ExperimentTemplateSpecVertexArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 end: Optional[pulumi.Input['ExperimentTemplateSpecVertexEndArgs']] = None,
-                 start: Optional[pulumi.Input['ExperimentTemplateSpecVertexStartArgs']] = None):
+                 end: pulumi.Input[Optional['ExperimentTemplateSpecVertexEndArgs']] = None,
+                 start: pulumi.Input[Optional['ExperimentTemplateSpecVertexStartArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: Vertex name
         :param pulumi.Input['ExperimentTemplateSpecVertexEndArgs'] end: End configuration for the vertex
@@ -2717,39 +2717,39 @@ class ExperimentTemplateSpecVertexArgs:
 
     @_builtins.property
     @pulumi.getter
-    def end(self) -> Optional[pulumi.Input['ExperimentTemplateSpecVertexEndArgs']]:
+    def end(self) -> pulumi.Input[Optional['ExperimentTemplateSpecVertexEndArgs']]:
         """
         End configuration for the vertex
         """
         return pulumi.get(self, "end")
 
     @end.setter
-    def end(self, value: Optional[pulumi.Input['ExperimentTemplateSpecVertexEndArgs']]):
+    def end(self, value: pulumi.Input[Optional['ExperimentTemplateSpecVertexEndArgs']]):
         pulumi.set(self, "end", value)
 
     @_builtins.property
     @pulumi.getter
-    def start(self) -> Optional[pulumi.Input['ExperimentTemplateSpecVertexStartArgs']]:
+    def start(self) -> pulumi.Input[Optional['ExperimentTemplateSpecVertexStartArgs']]:
         """
         Start configuration for the vertex
         """
         return pulumi.get(self, "start")
 
     @start.setter
-    def start(self, value: Optional[pulumi.Input['ExperimentTemplateSpecVertexStartArgs']]):
+    def start(self, value: pulumi.Input[Optional['ExperimentTemplateSpecVertexStartArgs']]):
         pulumi.set(self, "start", value)
 
 
 class ExperimentTemplateSpecVertexEndArgsDict(TypedDict):
-    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndActionArgsDict']]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndActionArgs']]]]]
     """
     Actions to execute at end
     """
-    faults: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndFaultArgsDict']]]]
+    faults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndFaultArgs']]]]]
     """
     Faults to execute at end
     """
-    probes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndProbeArgsDict']]]]
+    probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndProbeArgs']]]]]
     """
     Probes to execute at end
     """
@@ -2757,9 +2757,9 @@ class ExperimentTemplateSpecVertexEndArgsDict(TypedDict):
 @pulumi.input_type
 class ExperimentTemplateSpecVertexEndArgs:
     def __init__(__self__, *,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndActionArgs']]]] = None,
-                 faults: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndFaultArgs']]]] = None,
-                 probes: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndProbeArgs']]]] = None):
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndActionArgs']]]] = None,
+                 faults: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndFaultArgs']]]] = None,
+                 probes: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndProbeArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndActionArgs']]] actions: Actions to execute at end
         :param pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndFaultArgs']]] faults: Faults to execute at end
@@ -2774,38 +2774,38 @@ class ExperimentTemplateSpecVertexEndArgs:
 
     @_builtins.property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndActionArgs']]]]:
+    def actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndActionArgs']]]]:
         """
         Actions to execute at end
         """
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndActionArgs']]]]):
+    def actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndActionArgs']]]]):
         pulumi.set(self, "actions", value)
 
     @_builtins.property
     @pulumi.getter
-    def faults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndFaultArgs']]]]:
+    def faults(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndFaultArgs']]]]:
         """
         Faults to execute at end
         """
         return pulumi.get(self, "faults")
 
     @faults.setter
-    def faults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndFaultArgs']]]]):
+    def faults(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndFaultArgs']]]]):
         pulumi.set(self, "faults", value)
 
     @_builtins.property
     @pulumi.getter
-    def probes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndProbeArgs']]]]:
+    def probes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndProbeArgs']]]]:
         """
         Probes to execute at end
         """
         return pulumi.get(self, "probes")
 
     @probes.setter
-    def probes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndProbeArgs']]]]):
+    def probes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndProbeArgs']]]]):
         pulumi.set(self, "probes", value)
 
 
@@ -2894,15 +2894,15 @@ class ExperimentTemplateSpecVertexEndProbeArgs:
 
 
 class ExperimentTemplateSpecVertexStartArgsDict(TypedDict):
-    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartActionArgsDict']]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartActionArgs']]]]]
     """
     Actions to execute at start
     """
-    faults: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartFaultArgsDict']]]]
+    faults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartFaultArgs']]]]]
     """
     Faults to execute at start
     """
-    probes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartProbeArgsDict']]]]
+    probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartProbeArgs']]]]]
     """
     Probes to execute at start
     """
@@ -2910,9 +2910,9 @@ class ExperimentTemplateSpecVertexStartArgsDict(TypedDict):
 @pulumi.input_type
 class ExperimentTemplateSpecVertexStartArgs:
     def __init__(__self__, *,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartActionArgs']]]] = None,
-                 faults: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartFaultArgs']]]] = None,
-                 probes: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartProbeArgs']]]] = None):
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartActionArgs']]]] = None,
+                 faults: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartFaultArgs']]]] = None,
+                 probes: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartProbeArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartActionArgs']]] actions: Actions to execute at start
         :param pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartFaultArgs']]] faults: Faults to execute at start
@@ -2927,38 +2927,38 @@ class ExperimentTemplateSpecVertexStartArgs:
 
     @_builtins.property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartActionArgs']]]]:
+    def actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartActionArgs']]]]:
         """
         Actions to execute at start
         """
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartActionArgs']]]]):
+    def actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartActionArgs']]]]):
         pulumi.set(self, "actions", value)
 
     @_builtins.property
     @pulumi.getter
-    def faults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartFaultArgs']]]]:
+    def faults(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartFaultArgs']]]]:
         """
         Faults to execute at start
         """
         return pulumi.get(self, "faults")
 
     @faults.setter
-    def faults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartFaultArgs']]]]):
+    def faults(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartFaultArgs']]]]):
         pulumi.set(self, "faults", value)
 
     @_builtins.property
     @pulumi.getter
-    def probes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartProbeArgs']]]]:
+    def probes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartProbeArgs']]]]:
         """
         Probes to execute at start
         """
         return pulumi.get(self, "probes")
 
     @probes.setter
-    def probes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartProbeArgs']]]]):
+    def probes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartProbeArgs']]]]):
         pulumi.set(self, "probes", value)
 
 
@@ -3094,11 +3094,11 @@ class FaultTemplateLinkArgs:
 
 
 class FaultTemplateSpecArgsDict(TypedDict):
-    chaos: NotRequired[pulumi.Input['FaultTemplateSpecChaosArgsDict']]
+    chaos: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosArgs']]]
     """
     Chaos configuration
     """
-    target: NotRequired[pulumi.Input['FaultTemplateSpecTargetArgsDict']]
+    target: NotRequired[pulumi.Input[Optional['FaultTemplateSpecTargetArgs']]]
     """
     Target configuration
     """
@@ -3106,8 +3106,8 @@ class FaultTemplateSpecArgsDict(TypedDict):
 @pulumi.input_type
 class FaultTemplateSpecArgs:
     def __init__(__self__, *,
-                 chaos: Optional[pulumi.Input['FaultTemplateSpecChaosArgs']] = None,
-                 target: Optional[pulumi.Input['FaultTemplateSpecTargetArgs']] = None):
+                 chaos: pulumi.Input[Optional['FaultTemplateSpecChaosArgs']] = None,
+                 target: pulumi.Input[Optional['FaultTemplateSpecTargetArgs']] = None):
         """
         :param pulumi.Input['FaultTemplateSpecChaosArgs'] chaos: Chaos configuration
         :param pulumi.Input['FaultTemplateSpecTargetArgs'] target: Target configuration
@@ -3119,51 +3119,51 @@ class FaultTemplateSpecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def chaos(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosArgs']]:
+    def chaos(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosArgs']]:
         """
         Chaos configuration
         """
         return pulumi.get(self, "chaos")
 
     @chaos.setter
-    def chaos(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosArgs']]):
+    def chaos(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosArgs']]):
         pulumi.set(self, "chaos", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input['FaultTemplateSpecTargetArgs']]:
+    def target(self) -> pulumi.Input[Optional['FaultTemplateSpecTargetArgs']]:
         """
         Target configuration
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input['FaultTemplateSpecTargetArgs']]):
+    def target(self, value: pulumi.Input[Optional['FaultTemplateSpecTargetArgs']]):
         pulumi.set(self, "target", value)
 
 
 class FaultTemplateSpecChaosArgsDict(TypedDict):
-    auth: NotRequired[pulumi.Input['FaultTemplateSpecChaosAuthArgsDict']]
+    auth: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthArgs']]]
     """
     Authentication configuration
     """
-    fault_name: NotRequired[pulumi.Input[_builtins.str]]
+    fault_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the fault. Note: API may return a default value (e.g., 'byoc-injector') instead of the configured value due to API limitations.
     """
-    kubernetes: NotRequired[pulumi.Input['FaultTemplateSpecChaosKubernetesArgsDict']]
+    kubernetes: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesArgs']]]
     """
     Kubernetes-specific chaos configuration
     """
-    params: NotRequired[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosParamArgsDict']]]]
+    params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosParamArgs']]]]]
     """
     Fault parameters
     """
-    status_check_timeouts: NotRequired[pulumi.Input['FaultTemplateSpecChaosStatusCheckTimeoutsArgsDict']]
+    status_check_timeouts: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosStatusCheckTimeoutsArgs']]]
     """
     Status check timeout configuration
     """
-    tls: NotRequired[pulumi.Input['FaultTemplateSpecChaosTlsArgsDict']]
+    tls: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosTlsArgs']]]
     """
     TLS configuration
     """
@@ -3171,12 +3171,12 @@ class FaultTemplateSpecChaosArgsDict(TypedDict):
 @pulumi.input_type
 class FaultTemplateSpecChaosArgs:
     def __init__(__self__, *,
-                 auth: Optional[pulumi.Input['FaultTemplateSpecChaosAuthArgs']] = None,
-                 fault_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes: Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesArgs']] = None,
-                 params: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosParamArgs']]]] = None,
-                 status_check_timeouts: Optional[pulumi.Input['FaultTemplateSpecChaosStatusCheckTimeoutsArgs']] = None,
-                 tls: Optional[pulumi.Input['FaultTemplateSpecChaosTlsArgs']] = None):
+                 auth: pulumi.Input[Optional['FaultTemplateSpecChaosAuthArgs']] = None,
+                 fault_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes: pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesArgs']] = None,
+                 params: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosParamArgs']]]] = None,
+                 status_check_timeouts: pulumi.Input[Optional['FaultTemplateSpecChaosStatusCheckTimeoutsArgs']] = None,
+                 tls: pulumi.Input[Optional['FaultTemplateSpecChaosTlsArgs']] = None):
         """
         :param pulumi.Input['FaultTemplateSpecChaosAuthArgs'] auth: Authentication configuration
         :param pulumi.Input[_builtins.str] fault_name: Name of the fault. Note: API may return a default value (e.g., 'byoc-injector') instead of the configured value due to API limitations.
@@ -3200,99 +3200,99 @@ class FaultTemplateSpecChaosArgs:
 
     @_builtins.property
     @pulumi.getter
-    def auth(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosAuthArgs']]:
+    def auth(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosAuthArgs']]:
         """
         Authentication configuration
         """
         return pulumi.get(self, "auth")
 
     @auth.setter
-    def auth(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosAuthArgs']]):
+    def auth(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosAuthArgs']]):
         pulumi.set(self, "auth", value)
 
     @_builtins.property
     @pulumi.getter(name="faultName")
-    def fault_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fault_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the fault. Note: API may return a default value (e.g., 'byoc-injector') instead of the configured value due to API limitations.
         """
         return pulumi.get(self, "fault_name")
 
     @fault_name.setter
-    def fault_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fault_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fault_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def kubernetes(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesArgs']]:
+    def kubernetes(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesArgs']]:
         """
         Kubernetes-specific chaos configuration
         """
         return pulumi.get(self, "kubernetes")
 
     @kubernetes.setter
-    def kubernetes(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesArgs']]):
+    def kubernetes(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesArgs']]):
         pulumi.set(self, "kubernetes", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosParamArgs']]]]:
+    def params(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosParamArgs']]]]:
         """
         Fault parameters
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosParamArgs']]]]):
+    def params(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosParamArgs']]]]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="statusCheckTimeouts")
-    def status_check_timeouts(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosStatusCheckTimeoutsArgs']]:
+    def status_check_timeouts(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosStatusCheckTimeoutsArgs']]:
         """
         Status check timeout configuration
         """
         return pulumi.get(self, "status_check_timeouts")
 
     @status_check_timeouts.setter
-    def status_check_timeouts(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosStatusCheckTimeoutsArgs']]):
+    def status_check_timeouts(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosStatusCheckTimeoutsArgs']]):
         pulumi.set(self, "status_check_timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosTlsArgs']]:
+    def tls(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosTlsArgs']]:
         """
         TLS configuration
         """
         return pulumi.get(self, "tls")
 
     @tls.setter
-    def tls(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosTlsArgs']]):
+    def tls(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosTlsArgs']]):
         pulumi.set(self, "tls", value)
 
 
 class FaultTemplateSpecChaosAuthArgsDict(TypedDict):
-    aws: NotRequired[pulumi.Input['FaultTemplateSpecChaosAuthAwsArgsDict']]
+    aws: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthAwsArgs']]]
     """
     AWS authentication
     """
-    azure: NotRequired[pulumi.Input['FaultTemplateSpecChaosAuthAzureArgsDict']]
+    azure: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthAzureArgs']]]
     """
     Azure authentication
     """
-    gcp: NotRequired[pulumi.Input['FaultTemplateSpecChaosAuthGcpArgsDict']]
+    gcp: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthGcpArgs']]]
     """
     GCP authentication
     """
-    redis: NotRequired[pulumi.Input['FaultTemplateSpecChaosAuthRedisArgsDict']]
+    redis: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthRedisArgs']]]
     """
     Redis authentication
     """
-    ssh: NotRequired[pulumi.Input['FaultTemplateSpecChaosAuthSshArgsDict']]
+    ssh: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthSshArgs']]]
     """
     SSH authentication
     """
-    vmware: NotRequired[pulumi.Input['FaultTemplateSpecChaosAuthVmwareArgsDict']]
+    vmware: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthVmwareArgs']]]
     """
     VMware authentication
     """
@@ -3300,12 +3300,12 @@ class FaultTemplateSpecChaosAuthArgsDict(TypedDict):
 @pulumi.input_type
 class FaultTemplateSpecChaosAuthArgs:
     def __init__(__self__, *,
-                 aws: Optional[pulumi.Input['FaultTemplateSpecChaosAuthAwsArgs']] = None,
-                 azure: Optional[pulumi.Input['FaultTemplateSpecChaosAuthAzureArgs']] = None,
-                 gcp: Optional[pulumi.Input['FaultTemplateSpecChaosAuthGcpArgs']] = None,
-                 redis: Optional[pulumi.Input['FaultTemplateSpecChaosAuthRedisArgs']] = None,
-                 ssh: Optional[pulumi.Input['FaultTemplateSpecChaosAuthSshArgs']] = None,
-                 vmware: Optional[pulumi.Input['FaultTemplateSpecChaosAuthVmwareArgs']] = None):
+                 aws: pulumi.Input[Optional['FaultTemplateSpecChaosAuthAwsArgs']] = None,
+                 azure: pulumi.Input[Optional['FaultTemplateSpecChaosAuthAzureArgs']] = None,
+                 gcp: pulumi.Input[Optional['FaultTemplateSpecChaosAuthGcpArgs']] = None,
+                 redis: pulumi.Input[Optional['FaultTemplateSpecChaosAuthRedisArgs']] = None,
+                 ssh: pulumi.Input[Optional['FaultTemplateSpecChaosAuthSshArgs']] = None,
+                 vmware: pulumi.Input[Optional['FaultTemplateSpecChaosAuthVmwareArgs']] = None):
         """
         :param pulumi.Input['FaultTemplateSpecChaosAuthAwsArgs'] aws: AWS authentication
         :param pulumi.Input['FaultTemplateSpecChaosAuthAzureArgs'] azure: Azure authentication
@@ -3329,74 +3329,74 @@ class FaultTemplateSpecChaosAuthArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosAuthAwsArgs']]:
+    def aws(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosAuthAwsArgs']]:
         """
         AWS authentication
         """
         return pulumi.get(self, "aws")
 
     @aws.setter
-    def aws(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosAuthAwsArgs']]):
+    def aws(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosAuthAwsArgs']]):
         pulumi.set(self, "aws", value)
 
     @_builtins.property
     @pulumi.getter
-    def azure(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosAuthAzureArgs']]:
+    def azure(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosAuthAzureArgs']]:
         """
         Azure authentication
         """
         return pulumi.get(self, "azure")
 
     @azure.setter
-    def azure(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosAuthAzureArgs']]):
+    def azure(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosAuthAzureArgs']]):
         pulumi.set(self, "azure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcp(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosAuthGcpArgs']]:
+    def gcp(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosAuthGcpArgs']]:
         """
         GCP authentication
         """
         return pulumi.get(self, "gcp")
 
     @gcp.setter
-    def gcp(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosAuthGcpArgs']]):
+    def gcp(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosAuthGcpArgs']]):
         pulumi.set(self, "gcp", value)
 
     @_builtins.property
     @pulumi.getter
-    def redis(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosAuthRedisArgs']]:
+    def redis(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosAuthRedisArgs']]:
         """
         Redis authentication
         """
         return pulumi.get(self, "redis")
 
     @redis.setter
-    def redis(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosAuthRedisArgs']]):
+    def redis(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosAuthRedisArgs']]):
         pulumi.set(self, "redis", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssh(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosAuthSshArgs']]:
+    def ssh(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosAuthSshArgs']]:
         """
         SSH authentication
         """
         return pulumi.get(self, "ssh")
 
     @ssh.setter
-    def ssh(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosAuthSshArgs']]):
+    def ssh(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosAuthSshArgs']]):
         pulumi.set(self, "ssh", value)
 
     @_builtins.property
     @pulumi.getter
-    def vmware(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosAuthVmwareArgs']]:
+    def vmware(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosAuthVmwareArgs']]:
         """
         VMware authentication
         """
         return pulumi.get(self, "vmware")
 
     @vmware.setter
-    def vmware(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosAuthVmwareArgs']]):
+    def vmware(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosAuthVmwareArgs']]):
         pulumi.set(self, "vmware", value)
 
 
@@ -3603,7 +3603,7 @@ class FaultTemplateSpecChaosAuthRedisArgsDict(TypedDict):
     """
     Redis password
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Redis username
     """
@@ -3612,7 +3612,7 @@ class FaultTemplateSpecChaosAuthRedisArgsDict(TypedDict):
 class FaultTemplateSpecChaosAuthRedisArgs:
     def __init__(__self__, *,
                  password: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] password: Redis password
         :param pulumi.Input[_builtins.str] username: Redis username
@@ -3635,14 +3635,14 @@ class FaultTemplateSpecChaosAuthRedisArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Redis username
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -3651,11 +3651,11 @@ class FaultTemplateSpecChaosAuthSshArgsDict(TypedDict):
     """
     SSH username
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SSH password
     """
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SSH private key
     """
@@ -3664,8 +3664,8 @@ class FaultTemplateSpecChaosAuthSshArgsDict(TypedDict):
 class FaultTemplateSpecChaosAuthSshArgs:
     def __init__(__self__, *,
                  username: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] username: SSH username
         :param pulumi.Input[_builtins.str] password: SSH password
@@ -3691,26 +3691,26 @@ class FaultTemplateSpecChaosAuthSshArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SSH password
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SSH private key
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
@@ -3781,79 +3781,79 @@ class FaultTemplateSpecChaosAuthVmwareArgs:
 
 
 class FaultTemplateSpecChaosKubernetesArgsDict(TypedDict):
-    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    annotations: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Pod annotations
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Container arguments
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Container command
     """
-    config_maps: NotRequired[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesConfigMapArgsDict']]]]
+    config_maps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesConfigMapArgs']]]]]
     """
     ConfigMap volumes
     """
-    container_security_context: NotRequired[pulumi.Input['FaultTemplateSpecChaosKubernetesContainerSecurityContextArgsDict']]
+    container_security_context: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesContainerSecurityContextArgs']]]
     """
     Container security context
     """
-    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesEnvArgsDict']]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesEnvArgs']]]]]
     """
     Environment variables
     """
-    host_file_volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesHostFileVolumeArgsDict']]]]
+    host_file_volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesHostFileVolumeArgs']]]]]
     """
     Host path volumes
     """
-    host_ipc: NotRequired[pulumi.Input[_builtins.bool]]
+    host_ipc: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Use host IPC namespace
     """
-    host_network: NotRequired[pulumi.Input[_builtins.bool]]
+    host_network: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Use host network namespace
     """
-    host_pid: NotRequired[pulumi.Input[_builtins.bool]]
+    host_pid: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Use host PID namespace
     """
-    image: NotRequired[pulumi.Input[_builtins.str]]
+    image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Container image for chaos experiment
     """
-    image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
+    image_pull_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Image pull policy
     """
-    image_pull_secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    image_pull_secrets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Image pull secrets
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Pod labels
     """
-    node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    node_selector: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Node selector for pod scheduling
     """
-    pod_security_context: NotRequired[pulumi.Input['FaultTemplateSpecChaosKubernetesPodSecurityContextArgsDict']]
+    pod_security_context: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesPodSecurityContextArgs']]]
     """
     Pod security context
     """
-    resources: NotRequired[pulumi.Input['FaultTemplateSpecChaosKubernetesResourcesArgsDict']]
+    resources: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesResourcesArgs']]]
     """
     Resource requirements
     """
-    secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesSecretArgsDict']]]]
+    secrets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesSecretArgs']]]]]
     """
     Secret volumes
     """
-    tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesTolerationArgsDict']]]]
+    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesTolerationArgs']]]]]
     """
     Pod tolerations
     """
@@ -3861,25 +3861,25 @@ class FaultTemplateSpecChaosKubernetesArgsDict(TypedDict):
 @pulumi.input_type
 class FaultTemplateSpecChaosKubernetesArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 config_maps: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesConfigMapArgs']]]] = None,
-                 container_security_context: Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesContainerSecurityContextArgs']] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesEnvArgs']]]] = None,
-                 host_file_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesHostFileVolumeArgs']]]] = None,
-                 host_ipc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_pid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_pull_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_pull_secrets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pod_security_context: Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesPodSecurityContextArgs']] = None,
-                 resources: Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesResourcesArgs']] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesSecretArgs']]]] = None,
-                 tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesTolerationArgs']]]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config_maps: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesConfigMapArgs']]]] = None,
+                 container_security_context: pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesContainerSecurityContextArgs']] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesEnvArgs']]]] = None,
+                 host_file_volumes: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesHostFileVolumeArgs']]]] = None,
+                 host_ipc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_pid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_pull_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_pull_secrets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_selector: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 pod_security_context: pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesPodSecurityContextArgs']] = None,
+                 resources: pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesResourcesArgs']] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesSecretArgs']]]] = None,
+                 tolerations: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesTolerationArgs']]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Pod annotations
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Container arguments
@@ -3942,230 +3942,230 @@ class FaultTemplateSpecChaosKubernetesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Pod annotations
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Container arguments
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Container command
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter(name="configMaps")
-    def config_maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesConfigMapArgs']]]]:
+    def config_maps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesConfigMapArgs']]]]:
         """
         ConfigMap volumes
         """
         return pulumi.get(self, "config_maps")
 
     @config_maps.setter
-    def config_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesConfigMapArgs']]]]):
+    def config_maps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesConfigMapArgs']]]]):
         pulumi.set(self, "config_maps", value)
 
     @_builtins.property
     @pulumi.getter(name="containerSecurityContext")
-    def container_security_context(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesContainerSecurityContextArgs']]:
+    def container_security_context(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesContainerSecurityContextArgs']]:
         """
         Container security context
         """
         return pulumi.get(self, "container_security_context")
 
     @container_security_context.setter
-    def container_security_context(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesContainerSecurityContextArgs']]):
+    def container_security_context(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesContainerSecurityContextArgs']]):
         pulumi.set(self, "container_security_context", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesEnvArgs']]]]:
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesEnvArgs']]]]:
         """
         Environment variables
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesEnvArgs']]]]):
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter(name="hostFileVolumes")
-    def host_file_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesHostFileVolumeArgs']]]]:
+    def host_file_volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesHostFileVolumeArgs']]]]:
         """
         Host path volumes
         """
         return pulumi.get(self, "host_file_volumes")
 
     @host_file_volumes.setter
-    def host_file_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesHostFileVolumeArgs']]]]):
+    def host_file_volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesHostFileVolumeArgs']]]]):
         pulumi.set(self, "host_file_volumes", value)
 
     @_builtins.property
     @pulumi.getter(name="hostIpc")
-    def host_ipc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def host_ipc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use host IPC namespace
         """
         return pulumi.get(self, "host_ipc")
 
     @host_ipc.setter
-    def host_ipc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def host_ipc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "host_ipc", value)
 
     @_builtins.property
     @pulumi.getter(name="hostNetwork")
-    def host_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def host_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use host network namespace
         """
         return pulumi.get(self, "host_network")
 
     @host_network.setter
-    def host_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def host_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "host_network", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPid")
-    def host_pid(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def host_pid(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use host PID namespace
         """
         return pulumi.get(self, "host_pid")
 
     @host_pid.setter
-    def host_pid(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def host_pid(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "host_pid", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container image for chaos experiment
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePullPolicy")
-    def image_pull_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_pull_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Image pull policy
         """
         return pulumi.get(self, "image_pull_policy")
 
     @image_pull_policy.setter
-    def image_pull_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_pull_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_pull_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePullSecrets")
-    def image_pull_secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def image_pull_secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Image pull secrets
         """
         return pulumi.get(self, "image_pull_secrets")
 
     @image_pull_secrets.setter
-    def image_pull_secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def image_pull_secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "image_pull_secrets", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Pod labels
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def node_selector(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Node selector for pod scheduling
         """
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def node_selector(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_selector", value)
 
     @_builtins.property
     @pulumi.getter(name="podSecurityContext")
-    def pod_security_context(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesPodSecurityContextArgs']]:
+    def pod_security_context(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesPodSecurityContextArgs']]:
         """
         Pod security context
         """
         return pulumi.get(self, "pod_security_context")
 
     @pod_security_context.setter
-    def pod_security_context(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesPodSecurityContextArgs']]):
+    def pod_security_context(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesPodSecurityContextArgs']]):
         pulumi.set(self, "pod_security_context", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesResourcesArgs']]:
+    def resources(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesResourcesArgs']]:
         """
         Resource requirements
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesResourcesArgs']]):
+    def resources(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesResourcesArgs']]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesSecretArgs']]]]:
+    def secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesSecretArgs']]]]:
         """
         Secret volumes
         """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesSecretArgs']]]]):
+    def secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesSecretArgs']]]]):
         pulumi.set(self, "secrets", value)
 
     @_builtins.property
     @pulumi.getter
-    def tolerations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesTolerationArgs']]]]:
+    def tolerations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesTolerationArgs']]]]:
         """
         Pod tolerations
         """
         return pulumi.get(self, "tolerations")
 
     @tolerations.setter
-    def tolerations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesTolerationArgs']]]]):
+    def tolerations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesTolerationArgs']]]]):
         pulumi.set(self, "tolerations", value)
 
 
@@ -4178,7 +4178,7 @@ class FaultTemplateSpecChaosKubernetesConfigMapArgsDict(TypedDict):
     """
     ConfigMap name
     """
-    mount_mode: NotRequired[pulumi.Input[_builtins.int]]
+    mount_mode: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Mount mode (0-3)
     """
@@ -4188,7 +4188,7 @@ class FaultTemplateSpecChaosKubernetesConfigMapArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 mount_mode: Optional[pulumi.Input[_builtins.int]] = None):
+                 mount_mode: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: Mount path
         :param pulumi.Input[_builtins.str] name: ConfigMap name
@@ -4225,43 +4225,43 @@ class FaultTemplateSpecChaosKubernetesConfigMapArgs:
 
     @_builtins.property
     @pulumi.getter(name="mountMode")
-    def mount_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mount_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Mount mode (0-3)
         """
         return pulumi.get(self, "mount_mode")
 
     @mount_mode.setter
-    def mount_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mount_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mount_mode", value)
 
 
 class FaultTemplateSpecChaosKubernetesContainerSecurityContextArgsDict(TypedDict):
-    allow_privilege_escalation: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_privilege_escalation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allow privilege escalation
     """
-    capabilities: NotRequired[pulumi.Input['FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgsDict']]
+    capabilities: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgs']]]
     """
     Linux capabilities
     """
-    privileged: NotRequired[pulumi.Input[_builtins.bool]]
+    privileged: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Run container in privileged mode
     """
-    read_only_root_filesystem: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only_root_filesystem: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Mount root filesystem as read-only
     """
-    run_as_group: NotRequired[pulumi.Input[_builtins.int]]
+    run_as_group: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Group ID to run as
     """
-    run_as_non_root: NotRequired[pulumi.Input[_builtins.bool]]
+    run_as_non_root: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Run as non-root user
     """
-    run_as_user: NotRequired[pulumi.Input[_builtins.int]]
+    run_as_user: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     User ID to run as
     """
@@ -4269,13 +4269,13 @@ class FaultTemplateSpecChaosKubernetesContainerSecurityContextArgsDict(TypedDict
 @pulumi.input_type
 class FaultTemplateSpecChaosKubernetesContainerSecurityContextArgs:
     def __init__(__self__, *,
-                 allow_privilege_escalation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 capabilities: Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgs']] = None,
-                 privileged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 read_only_root_filesystem: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_as_group: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_as_non_root: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_as_user: Optional[pulumi.Input[_builtins.int]] = None):
+                 allow_privilege_escalation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 capabilities: pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgs']] = None,
+                 privileged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 read_only_root_filesystem: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_as_non_root: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_as_user: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_privilege_escalation: Allow privilege escalation
         :param pulumi.Input['FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgs'] capabilities: Linux capabilities
@@ -4302,95 +4302,95 @@ class FaultTemplateSpecChaosKubernetesContainerSecurityContextArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowPrivilegeEscalation")
-    def allow_privilege_escalation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_privilege_escalation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow privilege escalation
         """
         return pulumi.get(self, "allow_privilege_escalation")
 
     @allow_privilege_escalation.setter
-    def allow_privilege_escalation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_privilege_escalation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_privilege_escalation", value)
 
     @_builtins.property
     @pulumi.getter
-    def capabilities(self) -> Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgs']]:
+    def capabilities(self) -> pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgs']]:
         """
         Linux capabilities
         """
         return pulumi.get(self, "capabilities")
 
     @capabilities.setter
-    def capabilities(self, value: Optional[pulumi.Input['FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgs']]):
+    def capabilities(self, value: pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgs']]):
         pulumi.set(self, "capabilities", value)
 
     @_builtins.property
     @pulumi.getter
-    def privileged(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def privileged(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Run container in privileged mode
         """
         return pulumi.get(self, "privileged")
 
     @privileged.setter
-    def privileged(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def privileged(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "privileged", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnlyRootFilesystem")
-    def read_only_root_filesystem(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only_root_filesystem(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Mount root filesystem as read-only
         """
         return pulumi.get(self, "read_only_root_filesystem")
 
     @read_only_root_filesystem.setter
-    def read_only_root_filesystem(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only_root_filesystem(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only_root_filesystem", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsGroup")
-    def run_as_group(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_as_group(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Group ID to run as
         """
         return pulumi.get(self, "run_as_group")
 
     @run_as_group.setter
-    def run_as_group(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_as_group(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_as_group", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsNonRoot")
-    def run_as_non_root(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_as_non_root(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Run as non-root user
         """
         return pulumi.get(self, "run_as_non_root")
 
     @run_as_non_root.setter
-    def run_as_non_root(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_as_non_root(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_as_non_root", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsUser")
-    def run_as_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_as_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         User ID to run as
         """
         return pulumi.get(self, "run_as_user")
 
     @run_as_user.setter
-    def run_as_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_as_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_as_user", value)
 
 
 class FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgsDict(TypedDict):
-    adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    adds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Capabilities to add
     """
-    drops: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    drops: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Capabilities to drop
     """
@@ -4398,8 +4398,8 @@ class FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgsDi
 @pulumi.input_type
 class FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgs:
     def __init__(__self__, *,
-                 adds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 drops: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 adds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 drops: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] adds: Capabilities to add
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] drops: Capabilities to drop
@@ -4411,26 +4411,26 @@ class FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def adds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Capabilities to add
         """
         return pulumi.get(self, "adds")
 
     @adds.setter
-    def adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def adds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "adds", value)
 
     @_builtins.property
     @pulumi.getter
-    def drops(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def drops(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Capabilities to drop
         """
         return pulumi.get(self, "drops")
 
     @drops.setter
-    def drops(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def drops(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "drops", value)
 
 
@@ -4439,7 +4439,7 @@ class FaultTemplateSpecChaosKubernetesEnvArgsDict(TypedDict):
     """
     Environment variable name
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Environment variable value
     """
@@ -4448,7 +4448,7 @@ class FaultTemplateSpecChaosKubernetesEnvArgsDict(TypedDict):
 class FaultTemplateSpecChaosKubernetesEnvArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Environment variable name
         :param pulumi.Input[_builtins.str] value: Environment variable value
@@ -4471,14 +4471,14 @@ class FaultTemplateSpecChaosKubernetesEnvArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment variable value
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -4491,11 +4491,11 @@ class FaultTemplateSpecChaosKubernetesHostFileVolumeArgsDict(TypedDict):
     """
     Volume name
     """
-    host_path: NotRequired[pulumi.Input[_builtins.str]]
+    host_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host path on the node
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host path type (e.g., Directory, File, BlockDevice, CharDevice)
     """
@@ -4505,8 +4505,8 @@ class FaultTemplateSpecChaosKubernetesHostFileVolumeArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 host_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 host_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: Mount path
         :param pulumi.Input[_builtins.str] name: Volume name
@@ -4546,43 +4546,43 @@ class FaultTemplateSpecChaosKubernetesHostFileVolumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="hostPath")
-    def host_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host path on the node
         """
         return pulumi.get(self, "host_path")
 
     @host_path.setter
-    def host_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host path type (e.g., Directory, File, BlockDevice, CharDevice)
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class FaultTemplateSpecChaosKubernetesPodSecurityContextArgsDict(TypedDict):
-    fs_group: NotRequired[pulumi.Input[_builtins.int]]
+    fs_group: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Filesystem group ID
     """
-    run_as_group: NotRequired[pulumi.Input[_builtins.int]]
+    run_as_group: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Group ID to run as
     """
-    run_as_non_root: NotRequired[pulumi.Input[_builtins.bool]]
+    run_as_non_root: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Run as non-root user
     """
-    run_as_user: NotRequired[pulumi.Input[_builtins.int]]
+    run_as_user: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     User ID to run as
     """
@@ -4590,10 +4590,10 @@ class FaultTemplateSpecChaosKubernetesPodSecurityContextArgsDict(TypedDict):
 @pulumi.input_type
 class FaultTemplateSpecChaosKubernetesPodSecurityContextArgs:
     def __init__(__self__, *,
-                 fs_group: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_as_group: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_as_non_root: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_as_user: Optional[pulumi.Input[_builtins.int]] = None):
+                 fs_group: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_as_non_root: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_as_user: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] fs_group: Filesystem group ID
         :param pulumi.Input[_builtins.int] run_as_group: Group ID to run as
@@ -4611,59 +4611,59 @@ class FaultTemplateSpecChaosKubernetesPodSecurityContextArgs:
 
     @_builtins.property
     @pulumi.getter(name="fsGroup")
-    def fs_group(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fs_group(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Filesystem group ID
         """
         return pulumi.get(self, "fs_group")
 
     @fs_group.setter
-    def fs_group(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fs_group(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fs_group", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsGroup")
-    def run_as_group(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_as_group(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Group ID to run as
         """
         return pulumi.get(self, "run_as_group")
 
     @run_as_group.setter
-    def run_as_group(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_as_group(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_as_group", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsNonRoot")
-    def run_as_non_root(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_as_non_root(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Run as non-root user
         """
         return pulumi.get(self, "run_as_non_root")
 
     @run_as_non_root.setter
-    def run_as_non_root(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_as_non_root(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_as_non_root", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsUser")
-    def run_as_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_as_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         User ID to run as
         """
         return pulumi.get(self, "run_as_user")
 
     @run_as_user.setter
-    def run_as_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_as_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_as_user", value)
 
 
 class FaultTemplateSpecChaosKubernetesResourcesArgsDict(TypedDict):
-    limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    limits: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Resource limits
     """
-    requests: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    requests: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Resource requests
     """
@@ -4671,8 +4671,8 @@ class FaultTemplateSpecChaosKubernetesResourcesArgsDict(TypedDict):
 @pulumi.input_type
 class FaultTemplateSpecChaosKubernetesResourcesArgs:
     def __init__(__self__, *,
-                 limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 requests: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 limits: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 requests: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] limits: Resource limits
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] requests: Resource requests
@@ -4684,26 +4684,26 @@ class FaultTemplateSpecChaosKubernetesResourcesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def limits(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource limits
         """
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def limits(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "limits", value)
 
     @_builtins.property
     @pulumi.getter
-    def requests(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def requests(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource requests
         """
         return pulumi.get(self, "requests")
 
     @requests.setter
-    def requests(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def requests(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "requests", value)
 
 
@@ -4716,7 +4716,7 @@ class FaultTemplateSpecChaosKubernetesSecretArgsDict(TypedDict):
     """
     Secret name
     """
-    mount_mode: NotRequired[pulumi.Input[_builtins.int]]
+    mount_mode: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Mount mode (0-3)
     """
@@ -4726,7 +4726,7 @@ class FaultTemplateSpecChaosKubernetesSecretArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
                  secret_name: pulumi.Input[_builtins.str],
-                 mount_mode: Optional[pulumi.Input[_builtins.int]] = None):
+                 mount_mode: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: Mount path
         :param pulumi.Input[_builtins.str] secret_name: Secret name
@@ -4763,35 +4763,35 @@ class FaultTemplateSpecChaosKubernetesSecretArgs:
 
     @_builtins.property
     @pulumi.getter(name="mountMode")
-    def mount_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mount_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Mount mode (0-3)
         """
         return pulumi.get(self, "mount_mode")
 
     @mount_mode.setter
-    def mount_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mount_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mount_mode", value)
 
 
 class FaultTemplateSpecChaosKubernetesTolerationArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Toleration effect (NoSchedule, PreferNoSchedule, NoExecute)
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Toleration key
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Toleration operator (Equal, Exists)
     """
-    toleration_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    toleration_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Toleration seconds
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Toleration value
     """
@@ -4799,11 +4799,11 @@ class FaultTemplateSpecChaosKubernetesTolerationArgsDict(TypedDict):
 @pulumi.input_type
 class FaultTemplateSpecChaosKubernetesTolerationArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 toleration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 toleration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Toleration effect (NoSchedule, PreferNoSchedule, NoExecute)
         :param pulumi.Input[_builtins.str] key: Toleration key
@@ -4824,62 +4824,62 @@ class FaultTemplateSpecChaosKubernetesTolerationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Toleration effect (NoSchedule, PreferNoSchedule, NoExecute)
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Toleration key
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Toleration operator (Equal, Exists)
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter(name="tolerationSeconds")
-    def toleration_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def toleration_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Toleration seconds
         """
         return pulumi.get(self, "toleration_seconds")
 
     @toleration_seconds.setter
-    def toleration_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def toleration_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "toleration_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Toleration value
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -4931,11 +4931,11 @@ class FaultTemplateSpecChaosParamArgs:
 
 
 class FaultTemplateSpecChaosStatusCheckTimeoutsArgsDict(TypedDict):
-    delay: NotRequired[pulumi.Input[_builtins.int]]
+    delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Delay before status check (seconds)
     """
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Timeout for status check (seconds)
     """
@@ -4943,8 +4943,8 @@ class FaultTemplateSpecChaosStatusCheckTimeoutsArgsDict(TypedDict):
 @pulumi.input_type
 class FaultTemplateSpecChaosStatusCheckTimeoutsArgs:
     def __init__(__self__, *,
-                 delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] delay: Delay before status check (seconds)
         :param pulumi.Input[_builtins.int] timeout: Timeout for status check (seconds)
@@ -4956,39 +4956,39 @@ class FaultTemplateSpecChaosStatusCheckTimeoutsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Delay before status check (seconds)
         """
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for status check (seconds)
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
 class FaultTemplateSpecChaosTlsArgsDict(TypedDict):
-    ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ca_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     CA certificate
     """
-    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    client_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client certificate
     """
-    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    client_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client key
     """
@@ -4996,9 +4996,9 @@ class FaultTemplateSpecChaosTlsArgsDict(TypedDict):
 @pulumi.input_type
 class FaultTemplateSpecChaosTlsArgs:
     def __init__(__self__, *,
-                 ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ca_certificate: CA certificate
         :param pulumi.Input[_builtins.str] client_certificate: Client certificate
@@ -5013,47 +5013,47 @@ class FaultTemplateSpecChaosTlsArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA certificate
         """
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
-    def ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client certificate
         """
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client key
         """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
 
 class FaultTemplateSpecTargetArgsDict(TypedDict):
-    application: NotRequired[pulumi.Input['FaultTemplateSpecTargetApplicationArgsDict']]
+    application: NotRequired[pulumi.Input[Optional['FaultTemplateSpecTargetApplicationArgs']]]
     """
     Application target configuration
     """
-    kubernetes: NotRequired[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecTargetKuberneteArgsDict']]]]
+    kubernetes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecTargetKuberneteArgs']]]]]
     """
     Kubernetes target configuration
     """
@@ -5061,8 +5061,8 @@ class FaultTemplateSpecTargetArgsDict(TypedDict):
 @pulumi.input_type
 class FaultTemplateSpecTargetArgs:
     def __init__(__self__, *,
-                 application: Optional[pulumi.Input['FaultTemplateSpecTargetApplicationArgs']] = None,
-                 kubernetes: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecTargetKuberneteArgs']]]] = None):
+                 application: pulumi.Input[Optional['FaultTemplateSpecTargetApplicationArgs']] = None,
+                 kubernetes: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecTargetKuberneteArgs']]]] = None):
         """
         :param pulumi.Input['FaultTemplateSpecTargetApplicationArgs'] application: Application target configuration
         :param pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecTargetKuberneteArgs']]] kubernetes: Kubernetes target configuration
@@ -5074,39 +5074,39 @@ class FaultTemplateSpecTargetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def application(self) -> Optional[pulumi.Input['FaultTemplateSpecTargetApplicationArgs']]:
+    def application(self) -> pulumi.Input[Optional['FaultTemplateSpecTargetApplicationArgs']]:
         """
         Application target configuration
         """
         return pulumi.get(self, "application")
 
     @application.setter
-    def application(self, value: Optional[pulumi.Input['FaultTemplateSpecTargetApplicationArgs']]):
+    def application(self, value: pulumi.Input[Optional['FaultTemplateSpecTargetApplicationArgs']]):
         pulumi.set(self, "application", value)
 
     @_builtins.property
     @pulumi.getter
-    def kubernetes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecTargetKuberneteArgs']]]]:
+    def kubernetes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecTargetKuberneteArgs']]]]:
         """
         Kubernetes target configuration
         """
         return pulumi.get(self, "kubernetes")
 
     @kubernetes.setter
-    def kubernetes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateSpecTargetKuberneteArgs']]]]):
+    def kubernetes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecTargetKuberneteArgs']]]]):
         pulumi.set(self, "kubernetes", value)
 
 
 class FaultTemplateSpecTargetApplicationArgsDict(TypedDict):
-    app_kind: NotRequired[pulumi.Input[_builtins.str]]
+    app_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Application kind
     """
-    app_label: NotRequired[pulumi.Input[_builtins.str]]
+    app_label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Application label
     """
-    app_ns: NotRequired[pulumi.Input[_builtins.str]]
+    app_ns: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Application namespace
     """
@@ -5114,9 +5114,9 @@ class FaultTemplateSpecTargetApplicationArgsDict(TypedDict):
 @pulumi.input_type
 class FaultTemplateSpecTargetApplicationArgs:
     def __init__(__self__, *,
-                 app_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_ns: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_ns: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] app_kind: Application kind
         :param pulumi.Input[_builtins.str] app_label: Application label
@@ -5131,63 +5131,63 @@ class FaultTemplateSpecTargetApplicationArgs:
 
     @_builtins.property
     @pulumi.getter(name="appKind")
-    def app_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application kind
         """
         return pulumi.get(self, "app_kind")
 
     @app_kind.setter
-    def app_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_kind", value)
 
     @_builtins.property
     @pulumi.getter(name="appLabel")
-    def app_label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application label
         """
         return pulumi.get(self, "app_label")
 
     @app_label.setter
-    def app_label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_label", value)
 
     @_builtins.property
     @pulumi.getter(name="appNs")
-    def app_ns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_ns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application namespace
         """
         return pulumi.get(self, "app_ns")
 
     @app_ns.setter
-    def app_ns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_ns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_ns", value)
 
 
 class FaultTemplateSpecTargetKuberneteArgsDict(TypedDict):
-    annotation_check: NotRequired[pulumi.Input[_builtins.str]]
+    annotation_check: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Annotation check expression
     """
-    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    annotations: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Annotation selectors
     """
-    kind: NotRequired[pulumi.Input[_builtins.str]]
+    kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Resource kind (e.g., deployment, pod)
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Label selectors
     """
-    names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Specific resource names
     """
-    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Target namespace
     """
@@ -5195,12 +5195,12 @@ class FaultTemplateSpecTargetKuberneteArgsDict(TypedDict):
 @pulumi.input_type
 class FaultTemplateSpecTargetKuberneteArgs:
     def __init__(__self__, *,
-                 annotation_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotation_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] annotation_check: Annotation check expression
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotation selectors
@@ -5224,74 +5224,74 @@ class FaultTemplateSpecTargetKuberneteArgs:
 
     @_builtins.property
     @pulumi.getter(name="annotationCheck")
-    def annotation_check(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def annotation_check(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Annotation check expression
         """
         return pulumi.get(self, "annotation_check")
 
     @annotation_check.setter
-    def annotation_check(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def annotation_check(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "annotation_check", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotation selectors
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource kind (e.g., deployment, pod)
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Label selectors
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specific resource names
         """
         return pulumi.get(self, "names")
 
     @names.setter
-    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "names", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target namespace
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
 
@@ -5300,19 +5300,19 @@ class FaultTemplateVariableArgsDict(TypedDict):
     """
     Variable name
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Variable description
     """
-    required: NotRequired[pulumi.Input[_builtins.bool]]
+    required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the variable is required
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Variable type
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Variable value
     """
@@ -5321,10 +5321,10 @@ class FaultTemplateVariableArgsDict(TypedDict):
 class FaultTemplateVariableArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Variable name
         :param pulumi.Input[_builtins.str] description: Variable description
@@ -5356,66 +5356,66 @@ class FaultTemplateVariableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Variable description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the variable is required
         """
         return pulumi.get(self, "required")
 
     @required.setter
-    def required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "required", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Variable type
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Variable value
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class ImageRegistryCustomImageArgsDict(TypedDict):
-    ddcr: NotRequired[pulumi.Input[_builtins.str]]
-    ddcr_fault: NotRequired[pulumi.Input[_builtins.str]]
-    ddcr_lib: NotRequired[pulumi.Input[_builtins.str]]
-    log_watcher: NotRequired[pulumi.Input[_builtins.str]]
+    ddcr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    ddcr_fault: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    ddcr_lib: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    log_watcher: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ImageRegistryCustomImageArgs:
     def __init__(__self__, *,
-                 ddcr: Optional[pulumi.Input[_builtins.str]] = None,
-                 ddcr_fault: Optional[pulumi.Input[_builtins.str]] = None,
-                 ddcr_lib: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_watcher: Optional[pulumi.Input[_builtins.str]] = None):
+                 ddcr: pulumi.Input[Optional[_builtins.str]] = None,
+                 ddcr_fault: pulumi.Input[Optional[_builtins.str]] = None,
+                 ddcr_lib: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_watcher: pulumi.Input[Optional[_builtins.str]] = None):
         if ddcr is not None:
             pulumi.set(__self__, "ddcr", ddcr)
         if ddcr_fault is not None:
@@ -5427,38 +5427,38 @@ class ImageRegistryCustomImageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ddcr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ddcr(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ddcr")
 
     @ddcr.setter
-    def ddcr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ddcr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ddcr", value)
 
     @_builtins.property
     @pulumi.getter(name="ddcrFault")
-    def ddcr_fault(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ddcr_fault(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ddcr_fault")
 
     @ddcr_fault.setter
-    def ddcr_fault(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ddcr_fault(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ddcr_fault", value)
 
     @_builtins.property
     @pulumi.getter(name="ddcrLib")
-    def ddcr_lib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ddcr_lib(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ddcr_lib")
 
     @ddcr_lib.setter
-    def ddcr_lib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ddcr_lib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ddcr_lib", value)
 
     @_builtins.property
     @pulumi.getter(name="logWatcher")
-    def log_watcher(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_watcher(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "log_watcher")
 
     @log_watcher.setter
-    def log_watcher(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_watcher(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_watcher", value)
 
 
@@ -5467,15 +5467,15 @@ class InfrastructureV2EnvArgsDict(TypedDict):
     """
     Name of the environment variable. Must be a C_IDENTIFIER.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Variable references $(VAR*NAME) are expanded using the container's environment. If the variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
     """
-    value_from: NotRequired[pulumi.Input[_builtins.str]]
+    value_from: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Source for the environment variable's value. Cannot be used if value is not empty.
     """
@@ -5484,9 +5484,9 @@ class InfrastructureV2EnvArgsDict(TypedDict):
 class InfrastructureV2EnvArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_from: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_from: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of the environment variable. Must be a C_IDENTIFIER.
         :param pulumi.Input[_builtins.str] key: Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
@@ -5515,51 +5515,51 @@ class InfrastructureV2EnvArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Variable name from a ConfigMap or Secret. Required when value_from is configMapKeyRef or secretKeyRef.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Variable references $(VAR*NAME) are expanded using the container's environment. If the variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR*NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter(name="valueFrom")
-    def value_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source for the environment variable's value. Cannot be used if value is not empty.
         """
         return pulumi.get(self, "value_from")
 
     @value_from.setter
-    def value_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value_from", value)
 
 
 class InfrastructureV2IdentifierArgsDict(TypedDict):
-    account_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    account_identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Account identifier.
     """
-    org_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    org_identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Organization identifier.
     """
-    project_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    project_identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Project identifier.
     """
@@ -5567,9 +5567,9 @@ class InfrastructureV2IdentifierArgsDict(TypedDict):
 @pulumi.input_type
 class InfrastructureV2IdentifierArgs:
     def __init__(__self__, *,
-                 account_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] account_identifier: Account identifier.
         :param pulumi.Input[_builtins.str] org_identifier: Organization identifier.
@@ -5584,87 +5584,87 @@ class InfrastructureV2IdentifierArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountIdentifier")
-    def account_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier.
         """
         return pulumi.get(self, "account_identifier")
 
     @account_identifier.setter
-    def account_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="orgIdentifier")
-    def org_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier.
         """
         return pulumi.get(self, "org_identifier")
 
     @org_identifier.setter
-    def org_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="projectIdentifier")
-    def project_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier.
         """
         return pulumi.get(self, "project_identifier")
 
     @project_identifier.setter
-    def project_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_identifier", value)
 
 
 class InfrastructureV2ImageRegistryArgsDict(TypedDict):
-    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    created_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Timestamp when the registry was created.
     """
-    custom_images: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgsDict']]]]
+    custom_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgs']]]]]
     """
     Custom image configurations. Required when use*custom*images is true.
     """
-    identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryIdentifierArgsDict']]]]
+    identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryIdentifierArgs']]]]]
     """
     Scoped identifiers for the registry.
     """
-    infra_id: NotRequired[pulumi.Input[_builtins.str]]
+    infra_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ID of the infrastructure.
     """
-    is_default: NotRequired[pulumi.Input[_builtins.bool]]
+    is_default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether this is the default registry.
     """
-    is_override_allowed: NotRequired[pulumi.Input[_builtins.bool]]
+    is_override_allowed: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether override is allowed for this registry.
     """
-    is_private: NotRequired[pulumi.Input[_builtins.bool]]
+    is_private: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the registry is private.
     """
-    registry_account: NotRequired[pulumi.Input[_builtins.str]]
+    registry_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The account name for the container registry.
     """
-    registry_server: NotRequired[pulumi.Input[_builtins.str]]
+    registry_server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The container image registry server URL (e.g., docker.io, gcr.io).
     """
-    secret_name: NotRequired[pulumi.Input[_builtins.str]]
+    secret_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Kubernetes secret containing registry credentials.
     """
-    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    updated_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Timestamp when the registry was last updated.
     """
-    use_custom_images: NotRequired[pulumi.Input[_builtins.bool]]
+    use_custom_images: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to use custom images instead of default ones.
     """
@@ -5672,18 +5672,18 @@ class InfrastructureV2ImageRegistryArgsDict(TypedDict):
 @pulumi.input_type
 class InfrastructureV2ImageRegistryArgs:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_images: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgs']]]] = None,
-                 identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryIdentifierArgs']]]] = None,
-                 infra_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_private: Optional[pulumi.Input[_builtins.bool]] = None,
-                 registry_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_custom_images: Optional[pulumi.Input[_builtins.bool]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_images: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgs']]]] = None,
+                 identifiers: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryIdentifierArgs']]]] = None,
+                 infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_private: pulumi.Input[Optional[_builtins.bool]] = None,
+                 registry_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_custom_images: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the registry was created.
         :param pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgs']]] custom_images: Custom image configurations. Required when use*custom*images is true.
@@ -5725,163 +5725,163 @@ class InfrastructureV2ImageRegistryArgs:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the registry was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="customImages")
-    def custom_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgs']]]]:
+    def custom_images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgs']]]]:
         """
         Custom image configurations. Required when use*custom*images is true.
         """
         return pulumi.get(self, "custom_images")
 
     @custom_images.setter
-    def custom_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgs']]]]):
+    def custom_images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgs']]]]):
         pulumi.set(self, "custom_images", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryIdentifierArgs']]]]:
+    def identifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryIdentifierArgs']]]]:
         """
         Scoped identifiers for the registry.
         """
         return pulumi.get(self, "identifiers")
 
     @identifiers.setter
-    def identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureV2ImageRegistryIdentifierArgs']]]]):
+    def identifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryIdentifierArgs']]]]):
         pulumi.set(self, "identifiers", value)
 
     @_builtins.property
     @pulumi.getter(name="infraId")
-    def infra_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the infrastructure.
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
-    def infra_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is the default registry.
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter(name="isOverrideAllowed")
-    def is_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether override is allowed for this registry.
         """
         return pulumi.get(self, "is_override_allowed")
 
     @is_override_allowed.setter
-    def is_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="isPrivate")
-    def is_private(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_private(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the registry is private.
         """
         return pulumi.get(self, "is_private")
 
     @is_private.setter
-    def is_private(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_private(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_private", value)
 
     @_builtins.property
     @pulumi.getter(name="registryAccount")
-    def registry_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registry_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account name for the container registry.
         """
         return pulumi.get(self, "registry_account")
 
     @registry_account.setter
-    def registry_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registry_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registry_account", value)
 
     @_builtins.property
     @pulumi.getter(name="registryServer")
-    def registry_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registry_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The container image registry server URL (e.g., docker.io, gcr.io).
         """
         return pulumi.get(self, "registry_server")
 
     @registry_server.setter
-    def registry_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registry_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registry_server", value)
 
     @_builtins.property
     @pulumi.getter(name="secretName")
-    def secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Kubernetes secret containing registry credentials.
         """
         return pulumi.get(self, "secret_name")
 
     @secret_name.setter
-    def secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_name", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the registry was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="useCustomImages")
-    def use_custom_images(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_custom_images(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use custom images instead of default ones.
         """
         return pulumi.get(self, "use_custom_images")
 
     @use_custom_images.setter
-    def use_custom_images(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_custom_images(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_custom_images", value)
 
 
 class InfrastructureV2ImageRegistryCustomImageArgsDict(TypedDict):
-    ddcr: NotRequired[pulumi.Input[_builtins.str]]
+    ddcr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Custom image for ddcr.
     """
-    ddcr_fault: NotRequired[pulumi.Input[_builtins.str]]
+    ddcr_fault: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Custom image for ddcr-fault.
     """
-    ddcr_lib: NotRequired[pulumi.Input[_builtins.str]]
+    ddcr_lib: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Custom image for ddcr-lib.
     """
-    log_watcher: NotRequired[pulumi.Input[_builtins.str]]
+    log_watcher: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Custom image for log-watcher.
     """
@@ -5889,10 +5889,10 @@ class InfrastructureV2ImageRegistryCustomImageArgsDict(TypedDict):
 @pulumi.input_type
 class InfrastructureV2ImageRegistryCustomImageArgs:
     def __init__(__self__, *,
-                 ddcr: Optional[pulumi.Input[_builtins.str]] = None,
-                 ddcr_fault: Optional[pulumi.Input[_builtins.str]] = None,
-                 ddcr_lib: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_watcher: Optional[pulumi.Input[_builtins.str]] = None):
+                 ddcr: pulumi.Input[Optional[_builtins.str]] = None,
+                 ddcr_fault: pulumi.Input[Optional[_builtins.str]] = None,
+                 ddcr_lib: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_watcher: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ddcr: Custom image for ddcr.
         :param pulumi.Input[_builtins.str] ddcr_fault: Custom image for ddcr-fault.
@@ -5910,63 +5910,63 @@ class InfrastructureV2ImageRegistryCustomImageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ddcr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ddcr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom image for ddcr.
         """
         return pulumi.get(self, "ddcr")
 
     @ddcr.setter
-    def ddcr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ddcr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ddcr", value)
 
     @_builtins.property
     @pulumi.getter(name="ddcrFault")
-    def ddcr_fault(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ddcr_fault(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom image for ddcr-fault.
         """
         return pulumi.get(self, "ddcr_fault")
 
     @ddcr_fault.setter
-    def ddcr_fault(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ddcr_fault(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ddcr_fault", value)
 
     @_builtins.property
     @pulumi.getter(name="ddcrLib")
-    def ddcr_lib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ddcr_lib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom image for ddcr-lib.
         """
         return pulumi.get(self, "ddcr_lib")
 
     @ddcr_lib.setter
-    def ddcr_lib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ddcr_lib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ddcr_lib", value)
 
     @_builtins.property
     @pulumi.getter(name="logWatcher")
-    def log_watcher(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_watcher(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom image for log-watcher.
         """
         return pulumi.get(self, "log_watcher")
 
     @log_watcher.setter
-    def log_watcher(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_watcher(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_watcher", value)
 
 
 class InfrastructureV2ImageRegistryIdentifierArgsDict(TypedDict):
-    account_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    account_identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Harness account identifier.
     """
-    org_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    org_identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Harness organization identifier.
     """
-    project_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    project_identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Harness project identifier.
     """
@@ -5974,9 +5974,9 @@ class InfrastructureV2ImageRegistryIdentifierArgsDict(TypedDict):
 @pulumi.input_type
 class InfrastructureV2ImageRegistryIdentifierArgs:
     def __init__(__self__, *,
-                 account_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] account_identifier: Harness account identifier.
         :param pulumi.Input[_builtins.str] org_identifier: Harness organization identifier.
@@ -5991,55 +5991,55 @@ class InfrastructureV2ImageRegistryIdentifierArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountIdentifier")
-    def account_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Harness account identifier.
         """
         return pulumi.get(self, "account_identifier")
 
     @account_identifier.setter
-    def account_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="orgIdentifier")
-    def org_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Harness organization identifier.
         """
         return pulumi.get(self, "org_identifier")
 
     @org_identifier.setter
-    def org_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="projectIdentifier")
-    def project_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Harness project identifier.
         """
         return pulumi.get(self, "project_identifier")
 
     @project_identifier.setter
-    def project_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_identifier", value)
 
 
 class InfrastructureV2MtlsArgsDict(TypedDict):
-    cert_path: NotRequired[pulumi.Input[_builtins.str]]
+    cert_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to the certificate file for mTLS
     """
-    key_path: NotRequired[pulumi.Input[_builtins.str]]
+    key_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to the private key file for mTLS
     """
-    secret_name: NotRequired[pulumi.Input[_builtins.str]]
+    secret_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Kubernetes secret containing mTLS certificates
     """
-    url: NotRequired[pulumi.Input[_builtins.str]]
+    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL for the mTLS endpoint
     """
@@ -6047,10 +6047,10 @@ class InfrastructureV2MtlsArgsDict(TypedDict):
 @pulumi.input_type
 class InfrastructureV2MtlsArgs:
     def __init__(__self__, *,
-                 cert_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 cert_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cert_path: Path to the certificate file for mTLS
         :param pulumi.Input[_builtins.str] key_path: Path to the private key file for mTLS
@@ -6068,50 +6068,50 @@ class InfrastructureV2MtlsArgs:
 
     @_builtins.property
     @pulumi.getter(name="certPath")
-    def cert_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the certificate file for mTLS
         """
         return pulumi.get(self, "cert_path")
 
     @cert_path.setter
-    def cert_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_path", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPath")
-    def key_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the private key file for mTLS
         """
         return pulumi.get(self, "key_path")
 
     @key_path.setter
-    def key_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_path", value)
 
     @_builtins.property
     @pulumi.getter(name="secretName")
-    def secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Kubernetes secret containing mTLS certificates
         """
         return pulumi.get(self, "secret_name")
 
     @secret_name.setter
-    def secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL for the mTLS endpoint
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -6120,15 +6120,15 @@ class InfrastructureV2ProxyArgsDict(TypedDict):
     """
     Proxy URL.
     """
-    http_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    http_proxy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     HTTP proxy URL.
     """
-    https_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    https_proxy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     HTTPS proxy URL.
     """
-    no_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    no_proxy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     List of hosts that should not use proxy.
     """
@@ -6137,9 +6137,9 @@ class InfrastructureV2ProxyArgsDict(TypedDict):
 class InfrastructureV2ProxyArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[_builtins.str],
-                 http_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_proxy: Optional[pulumi.Input[_builtins.str]] = None):
+                 http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_proxy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] url: Proxy URL.
         :param pulumi.Input[_builtins.str] http_proxy: HTTP proxy URL.
@@ -6168,38 +6168,38 @@ class InfrastructureV2ProxyArgs:
 
     @_builtins.property
     @pulumi.getter(name="httpProxy")
-    def http_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTP proxy URL.
         """
         return pulumi.get(self, "http_proxy")
 
     @http_proxy.setter
-    def http_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsProxy")
-    def https_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTPS proxy URL.
         """
         return pulumi.get(self, "https_proxy")
 
     @https_proxy.setter
-    def https_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="noProxy")
-    def no_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def no_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of hosts that should not use proxy.
         """
         return pulumi.get(self, "no_proxy")
 
     @no_proxy.setter
-    def no_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def no_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "no_proxy", value)
 
 
@@ -6216,11 +6216,11 @@ class InfrastructureV2TolerationArgsDict(TypedDict):
     """
     Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal.
     """
-    toleration_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    toleration_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
     """
@@ -6231,8 +6231,8 @@ class InfrastructureV2TolerationArgs:
                  effect: pulumi.Input[_builtins.str],
                  key: pulumi.Input[_builtins.str],
                  operator: pulumi.Input[_builtins.str],
-                 toleration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 toleration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
         :param pulumi.Input[_builtins.str] key: Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists.
@@ -6286,26 +6286,26 @@ class InfrastructureV2TolerationArgs:
 
     @_builtins.property
     @pulumi.getter(name="tolerationSeconds")
-    def toleration_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def toleration_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
         """
         return pulumi.get(self, "toleration_seconds")
 
     @toleration_seconds.setter
-    def toleration_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def toleration_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "toleration_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -6314,7 +6314,7 @@ class InfrastructureV2VolumeArgsDict(TypedDict):
     """
     Name of the volume. Must be a DNS_LABEL and unique within the pod.
     """
-    size_limit: NotRequired[pulumi.Input[_builtins.str]]
+    size_limit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Size limit of the volume. Example: '10Gi', '100Mi'
     """
@@ -6323,7 +6323,7 @@ class InfrastructureV2VolumeArgsDict(TypedDict):
 class InfrastructureV2VolumeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 size_limit: Optional[pulumi.Input[_builtins.str]] = None):
+                 size_limit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of the volume. Must be a DNS_LABEL and unique within the pod.
         :param pulumi.Input[_builtins.str] size_limit: Size limit of the volume. Example: '10Gi', '100Mi'
@@ -6346,14 +6346,14 @@ class InfrastructureV2VolumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="sizeLimit")
-    def size_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def size_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Size limit of the volume. Example: '10Gi', '100Mi'
         """
         return pulumi.get(self, "size_limit")
 
     @size_limit.setter
-    def size_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def size_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "size_limit", value)
 
 
@@ -6366,19 +6366,19 @@ class InfrastructureV2VolumeMountArgsDict(TypedDict):
     """
     This must match the Name of a Volume.
     """
-    mount_propagation: NotRequired[pulumi.Input[_builtins.str]]
+    mount_propagation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used.
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Mounted read-only if true, read-write otherwise.
     """
-    sub_path: NotRequired[pulumi.Input[_builtins.str]]
+    sub_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path within the volume from which the container's volume should be mounted. Mutually exclusive with sub*path*expr.
     """
-    sub_path_expr: NotRequired[pulumi.Input[_builtins.str]]
+    sub_path_expr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
     """
@@ -6388,10 +6388,10 @@ class InfrastructureV2VolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 mount_propagation: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sub_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_path_expr: Optional[pulumi.Input[_builtins.str]] = None):
+                 mount_propagation: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sub_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_path_expr: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'.
         :param pulumi.Input[_builtins.str] name: This must match the Name of a Volume.
@@ -6437,50 +6437,50 @@ class InfrastructureV2VolumeMountArgs:
 
     @_builtins.property
     @pulumi.getter(name="mountPropagation")
-    def mount_propagation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_propagation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used.
         """
         return pulumi.get(self, "mount_propagation")
 
     @mount_propagation.setter
-    def mount_propagation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_propagation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_propagation", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Mounted read-only if true, read-write otherwise.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="subPath")
-    def sub_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path within the volume from which the container's volume should be mounted. Mutually exclusive with sub*path*expr.
         """
         return pulumi.get(self, "sub_path")
 
     @sub_path.setter
-    def sub_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_path", value)
 
     @_builtins.property
     @pulumi.getter(name="subPathExpr")
-    def sub_path_expr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_path_expr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
         """
         return pulumi.get(self, "sub_path_expr")
 
     @sub_path_expr.setter
-    def sub_path_expr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_path_expr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_path_expr", value)
 
 
@@ -6489,35 +6489,35 @@ class ProbeTemplateApmProbeArgsDict(TypedDict):
     """
     APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
     """
-    app_dynamics_inputs: NotRequired[pulumi.Input['ProbeTemplateApmProbeAppDynamicsInputsArgsDict']]
+    app_dynamics_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeAppDynamicsInputsArgs']]]
     """
     AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
     """
-    comparator: NotRequired[pulumi.Input['ProbeTemplateApmProbeComparatorArgsDict']]
+    comparator: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeComparatorArgs']]]
     """
     Comparator for APM metric validation.
     """
-    datadog_inputs: NotRequired[pulumi.Input['ProbeTemplateApmProbeDatadogInputsArgsDict']]
+    datadog_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeDatadogInputsArgs']]]
     """
     Datadog-specific inputs. Required when apm*type is 'Datadog'.
     """
-    dynatrace_inputs: NotRequired[pulumi.Input['ProbeTemplateApmProbeDynatraceInputsArgsDict']]
+    dynatrace_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeDynatraceInputsArgs']]]
     """
     Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
     """
-    gcp_cloud_monitoring_inputs: NotRequired[pulumi.Input['ProbeTemplateApmProbeGcpCloudMonitoringInputsArgsDict']]
+    gcp_cloud_monitoring_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeGcpCloudMonitoringInputsArgs']]]
     """
     GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
     """
-    new_relic_inputs: NotRequired[pulumi.Input['ProbeTemplateApmProbeNewRelicInputsArgsDict']]
+    new_relic_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeNewRelicInputsArgs']]]
     """
     NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
     """
-    prometheus_inputs: NotRequired[pulumi.Input['ProbeTemplateApmProbePrometheusInputsArgsDict']]
+    prometheus_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbePrometheusInputsArgs']]]
     """
     Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
     """
-    splunk_observability_inputs: NotRequired[pulumi.Input['ProbeTemplateApmProbeSplunkObservabilityInputsArgsDict']]
+    splunk_observability_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeSplunkObservabilityInputsArgs']]]
     """
     SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
     """
@@ -6526,14 +6526,14 @@ class ProbeTemplateApmProbeArgsDict(TypedDict):
 class ProbeTemplateApmProbeArgs:
     def __init__(__self__, *,
                  apm_type: pulumi.Input[_builtins.str],
-                 app_dynamics_inputs: Optional[pulumi.Input['ProbeTemplateApmProbeAppDynamicsInputsArgs']] = None,
-                 comparator: Optional[pulumi.Input['ProbeTemplateApmProbeComparatorArgs']] = None,
-                 datadog_inputs: Optional[pulumi.Input['ProbeTemplateApmProbeDatadogInputsArgs']] = None,
-                 dynatrace_inputs: Optional[pulumi.Input['ProbeTemplateApmProbeDynatraceInputsArgs']] = None,
-                 gcp_cloud_monitoring_inputs: Optional[pulumi.Input['ProbeTemplateApmProbeGcpCloudMonitoringInputsArgs']] = None,
-                 new_relic_inputs: Optional[pulumi.Input['ProbeTemplateApmProbeNewRelicInputsArgs']] = None,
-                 prometheus_inputs: Optional[pulumi.Input['ProbeTemplateApmProbePrometheusInputsArgs']] = None,
-                 splunk_observability_inputs: Optional[pulumi.Input['ProbeTemplateApmProbeSplunkObservabilityInputsArgs']] = None):
+                 app_dynamics_inputs: pulumi.Input[Optional['ProbeTemplateApmProbeAppDynamicsInputsArgs']] = None,
+                 comparator: pulumi.Input[Optional['ProbeTemplateApmProbeComparatorArgs']] = None,
+                 datadog_inputs: pulumi.Input[Optional['ProbeTemplateApmProbeDatadogInputsArgs']] = None,
+                 dynatrace_inputs: pulumi.Input[Optional['ProbeTemplateApmProbeDynatraceInputsArgs']] = None,
+                 gcp_cloud_monitoring_inputs: pulumi.Input[Optional['ProbeTemplateApmProbeGcpCloudMonitoringInputsArgs']] = None,
+                 new_relic_inputs: pulumi.Input[Optional['ProbeTemplateApmProbeNewRelicInputsArgs']] = None,
+                 prometheus_inputs: pulumi.Input[Optional['ProbeTemplateApmProbePrometheusInputsArgs']] = None,
+                 splunk_observability_inputs: pulumi.Input[Optional['ProbeTemplateApmProbeSplunkObservabilityInputsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] apm_type: APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
         :param pulumi.Input['ProbeTemplateApmProbeAppDynamicsInputsArgs'] app_dynamics_inputs: AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
@@ -6577,98 +6577,98 @@ class ProbeTemplateApmProbeArgs:
 
     @_builtins.property
     @pulumi.getter(name="appDynamicsInputs")
-    def app_dynamics_inputs(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeAppDynamicsInputsArgs']]:
+    def app_dynamics_inputs(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeAppDynamicsInputsArgs']]:
         """
         AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
         """
         return pulumi.get(self, "app_dynamics_inputs")
 
     @app_dynamics_inputs.setter
-    def app_dynamics_inputs(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeAppDynamicsInputsArgs']]):
+    def app_dynamics_inputs(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeAppDynamicsInputsArgs']]):
         pulumi.set(self, "app_dynamics_inputs", value)
 
     @_builtins.property
     @pulumi.getter
-    def comparator(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeComparatorArgs']]:
+    def comparator(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeComparatorArgs']]:
         """
         Comparator for APM metric validation.
         """
         return pulumi.get(self, "comparator")
 
     @comparator.setter
-    def comparator(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeComparatorArgs']]):
+    def comparator(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeComparatorArgs']]):
         pulumi.set(self, "comparator", value)
 
     @_builtins.property
     @pulumi.getter(name="datadogInputs")
-    def datadog_inputs(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeDatadogInputsArgs']]:
+    def datadog_inputs(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeDatadogInputsArgs']]:
         """
         Datadog-specific inputs. Required when apm*type is 'Datadog'.
         """
         return pulumi.get(self, "datadog_inputs")
 
     @datadog_inputs.setter
-    def datadog_inputs(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeDatadogInputsArgs']]):
+    def datadog_inputs(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeDatadogInputsArgs']]):
         pulumi.set(self, "datadog_inputs", value)
 
     @_builtins.property
     @pulumi.getter(name="dynatraceInputs")
-    def dynatrace_inputs(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeDynatraceInputsArgs']]:
+    def dynatrace_inputs(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeDynatraceInputsArgs']]:
         """
         Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
         """
         return pulumi.get(self, "dynatrace_inputs")
 
     @dynatrace_inputs.setter
-    def dynatrace_inputs(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeDynatraceInputsArgs']]):
+    def dynatrace_inputs(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeDynatraceInputsArgs']]):
         pulumi.set(self, "dynatrace_inputs", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpCloudMonitoringInputs")
-    def gcp_cloud_monitoring_inputs(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeGcpCloudMonitoringInputsArgs']]:
+    def gcp_cloud_monitoring_inputs(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeGcpCloudMonitoringInputsArgs']]:
         """
         GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
         """
         return pulumi.get(self, "gcp_cloud_monitoring_inputs")
 
     @gcp_cloud_monitoring_inputs.setter
-    def gcp_cloud_monitoring_inputs(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeGcpCloudMonitoringInputsArgs']]):
+    def gcp_cloud_monitoring_inputs(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeGcpCloudMonitoringInputsArgs']]):
         pulumi.set(self, "gcp_cloud_monitoring_inputs", value)
 
     @_builtins.property
     @pulumi.getter(name="newRelicInputs")
-    def new_relic_inputs(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeNewRelicInputsArgs']]:
+    def new_relic_inputs(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeNewRelicInputsArgs']]:
         """
         NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
         """
         return pulumi.get(self, "new_relic_inputs")
 
     @new_relic_inputs.setter
-    def new_relic_inputs(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeNewRelicInputsArgs']]):
+    def new_relic_inputs(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeNewRelicInputsArgs']]):
         pulumi.set(self, "new_relic_inputs", value)
 
     @_builtins.property
     @pulumi.getter(name="prometheusInputs")
-    def prometheus_inputs(self) -> Optional[pulumi.Input['ProbeTemplateApmProbePrometheusInputsArgs']]:
+    def prometheus_inputs(self) -> pulumi.Input[Optional['ProbeTemplateApmProbePrometheusInputsArgs']]:
         """
         Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
         """
         return pulumi.get(self, "prometheus_inputs")
 
     @prometheus_inputs.setter
-    def prometheus_inputs(self, value: Optional[pulumi.Input['ProbeTemplateApmProbePrometheusInputsArgs']]):
+    def prometheus_inputs(self, value: pulumi.Input[Optional['ProbeTemplateApmProbePrometheusInputsArgs']]):
         pulumi.set(self, "prometheus_inputs", value)
 
     @_builtins.property
     @pulumi.getter(name="splunkObservabilityInputs")
-    def splunk_observability_inputs(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeSplunkObservabilityInputsArgs']]:
+    def splunk_observability_inputs(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeSplunkObservabilityInputsArgs']]:
         """
         SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
         """
         return pulumi.get(self, "splunk_observability_inputs")
 
     @splunk_observability_inputs.setter
-    def splunk_observability_inputs(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeSplunkObservabilityInputsArgs']]):
+    def splunk_observability_inputs(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeSplunkObservabilityInputsArgs']]):
         pulumi.set(self, "splunk_observability_inputs", value)
 
 
@@ -6677,7 +6677,7 @@ class ProbeTemplateApmProbeAppDynamicsInputsArgsDict(TypedDict):
     """
     Harness connector ID for AppDynamics.
     """
-    appd_metrics: NotRequired[pulumi.Input['ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgsDict']]
+    appd_metrics: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs']]]
     """
     AppDynamics metrics configuration.
     """
@@ -6686,7 +6686,7 @@ class ProbeTemplateApmProbeAppDynamicsInputsArgsDict(TypedDict):
 class ProbeTemplateApmProbeAppDynamicsInputsArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[_builtins.str],
-                 appd_metrics: Optional[pulumi.Input['ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs']] = None):
+                 appd_metrics: pulumi.Input[Optional['ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] connector_id: Harness connector ID for AppDynamics.
         :param pulumi.Input['ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs'] appd_metrics: AppDynamics metrics configuration.
@@ -6709,27 +6709,27 @@ class ProbeTemplateApmProbeAppDynamicsInputsArgs:
 
     @_builtins.property
     @pulumi.getter(name="appdMetrics")
-    def appd_metrics(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs']]:
+    def appd_metrics(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs']]:
         """
         AppDynamics metrics configuration.
         """
         return pulumi.get(self, "appd_metrics")
 
     @appd_metrics.setter
-    def appd_metrics(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs']]):
+    def appd_metrics(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs']]):
         pulumi.set(self, "appd_metrics", value)
 
 
 class ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgsDict(TypedDict):
-    application_name: NotRequired[pulumi.Input[_builtins.str]]
+    application_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     AppDynamics application name.
     """
-    duration_in_min: NotRequired[pulumi.Input[_builtins.int]]
+    duration_in_min: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Duration in minutes for the AppDynamics query.
     """
-    metrics_full_path: NotRequired[pulumi.Input[_builtins.str]]
+    metrics_full_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Full path to the AppDynamics metric.
     """
@@ -6737,9 +6737,9 @@ class ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgsDict(TypedDict):
 @pulumi.input_type
 class ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs:
     def __init__(__self__, *,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration_in_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_full_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration_in_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_full_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] application_name: AppDynamics application name.
         :param pulumi.Input[_builtins.int] duration_in_min: Duration in minutes for the AppDynamics query.
@@ -6754,38 +6754,38 @@ class ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationName")
-    def application_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AppDynamics application name.
         """
         return pulumi.get(self, "application_name")
 
     @application_name.setter
-    def application_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_name", value)
 
     @_builtins.property
     @pulumi.getter(name="durationInMin")
-    def duration_in_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration_in_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration in minutes for the AppDynamics query.
         """
         return pulumi.get(self, "duration_in_min")
 
     @duration_in_min.setter
-    def duration_in_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration_in_min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration_in_min", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsFullPath")
-    def metrics_full_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metrics_full_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path to the AppDynamics metric.
         """
         return pulumi.get(self, "metrics_full_path")
 
     @metrics_full_path.setter
-    def metrics_full_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metrics_full_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metrics_full_path", value)
 
 
@@ -6860,15 +6860,15 @@ class ProbeTemplateApmProbeDatadogInputsArgsDict(TypedDict):
     """
     Harness connector ID for Datadog.
     """
-    duration_in_min: NotRequired[pulumi.Input[_builtins.int]]
+    duration_in_min: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Duration in minutes for the Datadog query.
     """
-    query: NotRequired[pulumi.Input[_builtins.str]]
+    query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Datadog query string.
     """
-    synthetics_test: NotRequired[pulumi.Input['ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgsDict']]
+    synthetics_test: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs']]]
     """
     Datadog Synthetics test configuration.
     """
@@ -6877,9 +6877,9 @@ class ProbeTemplateApmProbeDatadogInputsArgsDict(TypedDict):
 class ProbeTemplateApmProbeDatadogInputsArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[_builtins.str],
-                 duration_in_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 query: Optional[pulumi.Input[_builtins.str]] = None,
-                 synthetics_test: Optional[pulumi.Input['ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs']] = None):
+                 duration_in_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 query: pulumi.Input[Optional[_builtins.str]] = None,
+                 synthetics_test: pulumi.Input[Optional['ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] connector_id: Harness connector ID for Datadog.
         :param pulumi.Input[_builtins.int] duration_in_min: Duration in minutes for the Datadog query.
@@ -6908,38 +6908,38 @@ class ProbeTemplateApmProbeDatadogInputsArgs:
 
     @_builtins.property
     @pulumi.getter(name="durationInMin")
-    def duration_in_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration_in_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration in minutes for the Datadog query.
         """
         return pulumi.get(self, "duration_in_min")
 
     @duration_in_min.setter
-    def duration_in_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration_in_min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration_in_min", value)
 
     @_builtins.property
     @pulumi.getter
-    def query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Datadog query string.
         """
         return pulumi.get(self, "query")
 
     @query.setter
-    def query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query", value)
 
     @_builtins.property
     @pulumi.getter(name="syntheticsTest")
-    def synthetics_test(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs']]:
+    def synthetics_test(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs']]:
         """
         Datadog Synthetics test configuration.
         """
         return pulumi.get(self, "synthetics_test")
 
     @synthetics_test.setter
-    def synthetics_test(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs']]):
+    def synthetics_test(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs']]):
         pulumi.set(self, "synthetics_test", value)
 
 
@@ -6948,7 +6948,7 @@ class ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgsDict(TypedDict):
     """
     Public ID of the Datadog Synthetics test.
     """
-    test_type: NotRequired[pulumi.Input[_builtins.str]]
+    test_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of Synthetics test (api, browser).
     """
@@ -6957,7 +6957,7 @@ class ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgsDict(TypedDict):
 class ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs:
     def __init__(__self__, *,
                  public_id: pulumi.Input[_builtins.str],
-                 test_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 test_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] public_id: Public ID of the Datadog Synthetics test.
         :param pulumi.Input[_builtins.str] test_type: Type of Synthetics test (api, browser).
@@ -6980,14 +6980,14 @@ class ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs:
 
     @_builtins.property
     @pulumi.getter(name="testType")
-    def test_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def test_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of Synthetics test (api, browser).
         """
         return pulumi.get(self, "test_type")
 
     @test_type.setter
-    def test_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def test_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "test_type", value)
 
 
@@ -6996,11 +6996,11 @@ class ProbeTemplateApmProbeDynatraceInputsArgsDict(TypedDict):
     """
     Harness connector ID for Dynatrace.
     """
-    duration_in_min: NotRequired[pulumi.Input[_builtins.int]]
+    duration_in_min: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Duration in minutes for the Dynatrace query.
     """
-    metrics: NotRequired[pulumi.Input['ProbeTemplateApmProbeDynatraceInputsMetricsArgsDict']]
+    metrics: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeDynatraceInputsMetricsArgs']]]
     """
     Dynatrace metrics configuration.
     """
@@ -7009,8 +7009,8 @@ class ProbeTemplateApmProbeDynatraceInputsArgsDict(TypedDict):
 class ProbeTemplateApmProbeDynatraceInputsArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[_builtins.str],
-                 duration_in_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics: Optional[pulumi.Input['ProbeTemplateApmProbeDynatraceInputsMetricsArgs']] = None):
+                 duration_in_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics: pulumi.Input[Optional['ProbeTemplateApmProbeDynatraceInputsMetricsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] connector_id: Harness connector ID for Dynatrace.
         :param pulumi.Input[_builtins.int] duration_in_min: Duration in minutes for the Dynatrace query.
@@ -7036,35 +7036,35 @@ class ProbeTemplateApmProbeDynatraceInputsArgs:
 
     @_builtins.property
     @pulumi.getter(name="durationInMin")
-    def duration_in_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration_in_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration in minutes for the Dynatrace query.
         """
         return pulumi.get(self, "duration_in_min")
 
     @duration_in_min.setter
-    def duration_in_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration_in_min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration_in_min", value)
 
     @_builtins.property
     @pulumi.getter
-    def metrics(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeDynatraceInputsMetricsArgs']]:
+    def metrics(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeDynatraceInputsMetricsArgs']]:
         """
         Dynatrace metrics configuration.
         """
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeDynatraceInputsMetricsArgs']]):
+    def metrics(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeDynatraceInputsMetricsArgs']]):
         pulumi.set(self, "metrics", value)
 
 
 class ProbeTemplateApmProbeDynatraceInputsMetricsArgsDict(TypedDict):
-    entity_selector: NotRequired[pulumi.Input[_builtins.str]]
+    entity_selector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Dynatrace entity selector.
     """
-    metrics_selector: NotRequired[pulumi.Input[_builtins.str]]
+    metrics_selector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Dynatrace metrics selector.
     """
@@ -7072,8 +7072,8 @@ class ProbeTemplateApmProbeDynatraceInputsMetricsArgsDict(TypedDict):
 @pulumi.input_type
 class ProbeTemplateApmProbeDynatraceInputsMetricsArgs:
     def __init__(__self__, *,
-                 entity_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 metrics_selector: Optional[pulumi.Input[_builtins.str]] = None):
+                 entity_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 metrics_selector: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] entity_selector: Dynatrace entity selector.
         :param pulumi.Input[_builtins.str] metrics_selector: Dynatrace metrics selector.
@@ -7085,26 +7085,26 @@ class ProbeTemplateApmProbeDynatraceInputsMetricsArgs:
 
     @_builtins.property
     @pulumi.getter(name="entitySelector")
-    def entity_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dynatrace entity selector.
         """
         return pulumi.get(self, "entity_selector")
 
     @entity_selector.setter
-    def entity_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_selector", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsSelector")
-    def metrics_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metrics_selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dynatrace metrics selector.
         """
         return pulumi.get(self, "metrics_selector")
 
     @metrics_selector.setter
-    def metrics_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metrics_selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metrics_selector", value)
 
 
@@ -7179,7 +7179,7 @@ class ProbeTemplateApmProbeNewRelicInputsArgsDict(TypedDict):
     """
     Harness connector ID for NewRelic.
     """
-    new_relic_metric: NotRequired[pulumi.Input['ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgsDict']]
+    new_relic_metric: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs']]]
     """
     NewRelic metric configuration.
     """
@@ -7188,7 +7188,7 @@ class ProbeTemplateApmProbeNewRelicInputsArgsDict(TypedDict):
 class ProbeTemplateApmProbeNewRelicInputsArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[_builtins.str],
-                 new_relic_metric: Optional[pulumi.Input['ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs']] = None):
+                 new_relic_metric: pulumi.Input[Optional['ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] connector_id: Harness connector ID for NewRelic.
         :param pulumi.Input['ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs'] new_relic_metric: NewRelic metric configuration.
@@ -7211,23 +7211,23 @@ class ProbeTemplateApmProbeNewRelicInputsArgs:
 
     @_builtins.property
     @pulumi.getter(name="newRelicMetric")
-    def new_relic_metric(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs']]:
+    def new_relic_metric(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs']]:
         """
         NewRelic metric configuration.
         """
         return pulumi.get(self, "new_relic_metric")
 
     @new_relic_metric.setter
-    def new_relic_metric(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs']]):
+    def new_relic_metric(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs']]):
         pulumi.set(self, "new_relic_metric", value)
 
 
 class ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgsDict(TypedDict):
-    query: NotRequired[pulumi.Input[_builtins.str]]
+    query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     NRQL query string.
     """
-    query_metric: NotRequired[pulumi.Input[_builtins.str]]
+    query_metric: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     NewRelic query metric name.
     """
@@ -7235,8 +7235,8 @@ class ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgsDict(TypedDict):
 @pulumi.input_type
 class ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs:
     def __init__(__self__, *,
-                 query: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_metric: Optional[pulumi.Input[_builtins.str]] = None):
+                 query: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_metric: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] query: NRQL query string.
         :param pulumi.Input[_builtins.str] query_metric: NewRelic query metric name.
@@ -7248,26 +7248,26 @@ class ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs:
 
     @_builtins.property
     @pulumi.getter
-    def query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         NRQL query string.
         """
         return pulumi.get(self, "query")
 
     @query.setter
-    def query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query", value)
 
     @_builtins.property
     @pulumi.getter(name="queryMetric")
-    def query_metric(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_metric(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         NewRelic query metric name.
         """
         return pulumi.get(self, "query_metric")
 
     @query_metric.setter
-    def query_metric(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_metric(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_metric", value)
 
 
@@ -7280,7 +7280,7 @@ class ProbeTemplateApmProbePrometheusInputsArgsDict(TypedDict):
     """
     PromQL query string.
     """
-    tls_config: NotRequired[pulumi.Input['ProbeTemplateApmProbePrometheusInputsTlsConfigArgsDict']]
+    tls_config: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbePrometheusInputsTlsConfigArgs']]]
     """
     TLS configuration for Prometheus connection.
     """
@@ -7290,7 +7290,7 @@ class ProbeTemplateApmProbePrometheusInputsArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[_builtins.str],
                  query: pulumi.Input[_builtins.str],
-                 tls_config: Optional[pulumi.Input['ProbeTemplateApmProbePrometheusInputsTlsConfigArgs']] = None):
+                 tls_config: pulumi.Input[Optional['ProbeTemplateApmProbePrometheusInputsTlsConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] connector_id: Harness connector ID for Prometheus.
         :param pulumi.Input[_builtins.str] query: PromQL query string.
@@ -7327,31 +7327,31 @@ class ProbeTemplateApmProbePrometheusInputsArgs:
 
     @_builtins.property
     @pulumi.getter(name="tlsConfig")
-    def tls_config(self) -> Optional[pulumi.Input['ProbeTemplateApmProbePrometheusInputsTlsConfigArgs']]:
+    def tls_config(self) -> pulumi.Input[Optional['ProbeTemplateApmProbePrometheusInputsTlsConfigArgs']]:
         """
         TLS configuration for Prometheus connection.
         """
         return pulumi.get(self, "tls_config")
 
     @tls_config.setter
-    def tls_config(self, value: Optional[pulumi.Input['ProbeTemplateApmProbePrometheusInputsTlsConfigArgs']]):
+    def tls_config(self, value: pulumi.Input[Optional['ProbeTemplateApmProbePrometheusInputsTlsConfigArgs']]):
         pulumi.set(self, "tls_config", value)
 
 
 class ProbeTemplateApmProbePrometheusInputsTlsConfigArgsDict(TypedDict):
-    ca_cert_secret: NotRequired[pulumi.Input[_builtins.str]]
+    ca_cert_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Harness secret identifier for CA certificate.
     """
-    client_cert_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_cert_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Harness secret identifier for client certificate.
     """
-    client_key_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_key_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Harness secret identifier for client key.
     """
-    insecure_skip_verify: NotRequired[pulumi.Input[_builtins.bool]]
+    insecure_skip_verify: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Skip TLS certificate verification.
     """
@@ -7359,10 +7359,10 @@ class ProbeTemplateApmProbePrometheusInputsTlsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ProbeTemplateApmProbePrometheusInputsTlsConfigArgs:
     def __init__(__self__, *,
-                 ca_cert_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_skip_verify: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ca_cert_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_skip_verify: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] ca_cert_secret: Harness secret identifier for CA certificate.
         :param pulumi.Input[_builtins.str] client_cert_secret: Harness secret identifier for client certificate.
@@ -7380,50 +7380,50 @@ class ProbeTemplateApmProbePrometheusInputsTlsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCertSecret")
-    def ca_cert_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Harness secret identifier for CA certificate.
         """
         return pulumi.get(self, "ca_cert_secret")
 
     @ca_cert_secret.setter
-    def ca_cert_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertSecret")
-    def client_cert_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Harness secret identifier for client certificate.
         """
         return pulumi.get(self, "client_cert_secret")
 
     @client_cert_secret.setter
-    def client_cert_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKeySecret")
-    def client_key_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Harness secret identifier for client key.
         """
         return pulumi.get(self, "client_key_secret")
 
     @client_key_secret.setter
-    def client_key_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="insecureSkipVerify")
-    def insecure_skip_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure_skip_verify(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Skip TLS certificate verification.
         """
         return pulumi.get(self, "insecure_skip_verify")
 
     @insecure_skip_verify.setter
-    def insecure_skip_verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure_skip_verify(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure_skip_verify", value)
 
 
@@ -7432,7 +7432,7 @@ class ProbeTemplateApmProbeSplunkObservabilityInputsArgsDict(TypedDict):
     """
     Harness connector ID for Splunk Observability.
     """
-    splunk_observability_metrics: NotRequired[pulumi.Input['ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgsDict']]
+    splunk_observability_metrics: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs']]]
     """
     Splunk Observability metrics configuration.
     """
@@ -7441,7 +7441,7 @@ class ProbeTemplateApmProbeSplunkObservabilityInputsArgsDict(TypedDict):
 class ProbeTemplateApmProbeSplunkObservabilityInputsArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[_builtins.str],
-                 splunk_observability_metrics: Optional[pulumi.Input['ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs']] = None):
+                 splunk_observability_metrics: pulumi.Input[Optional['ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] connector_id: Harness connector ID for Splunk Observability.
         :param pulumi.Input['ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs'] splunk_observability_metrics: Splunk Observability metrics configuration.
@@ -7464,23 +7464,23 @@ class ProbeTemplateApmProbeSplunkObservabilityInputsArgs:
 
     @_builtins.property
     @pulumi.getter(name="splunkObservabilityMetrics")
-    def splunk_observability_metrics(self) -> Optional[pulumi.Input['ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs']]:
+    def splunk_observability_metrics(self) -> pulumi.Input[Optional['ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs']]:
         """
         Splunk Observability metrics configuration.
         """
         return pulumi.get(self, "splunk_observability_metrics")
 
     @splunk_observability_metrics.setter
-    def splunk_observability_metrics(self, value: Optional[pulumi.Input['ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs']]):
+    def splunk_observability_metrics(self, value: pulumi.Input[Optional['ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs']]):
         pulumi.set(self, "splunk_observability_metrics", value)
 
 
 class ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgsDict(TypedDict):
-    duration_in_min: NotRequired[pulumi.Input[_builtins.int]]
+    duration_in_min: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Duration in minutes for the Splunk query.
     """
-    query: NotRequired[pulumi.Input[_builtins.str]]
+    query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Splunk Observability query string.
     """
@@ -7488,8 +7488,8 @@ class ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsAr
 @pulumi.input_type
 class ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs:
     def __init__(__self__, *,
-                 duration_in_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 query: Optional[pulumi.Input[_builtins.str]] = None):
+                 duration_in_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 query: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] duration_in_min: Duration in minutes for the Splunk query.
         :param pulumi.Input[_builtins.str] query: Splunk Observability query string.
@@ -7501,26 +7501,26 @@ class ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsAr
 
     @_builtins.property
     @pulumi.getter(name="durationInMin")
-    def duration_in_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration_in_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration in minutes for the Splunk query.
         """
         return pulumi.get(self, "duration_in_min")
 
     @duration_in_min.setter
-    def duration_in_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration_in_min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration_in_min", value)
 
     @_builtins.property
     @pulumi.getter
-    def query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Splunk Observability query string.
         """
         return pulumi.get(self, "query")
 
     @query.setter
-    def query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query", value)
 
 
@@ -7529,15 +7529,15 @@ class ProbeTemplateCmdProbeArgsDict(TypedDict):
     """
     Command to execute.
     """
-    comparator: NotRequired[pulumi.Input['ProbeTemplateCmdProbeComparatorArgsDict']]
+    comparator: NotRequired[pulumi.Input[Optional['ProbeTemplateCmdProbeComparatorArgs']]]
     """
     Comparator for command output validation.
     """
-    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ProbeTemplateCmdProbeEnvArgsDict']]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ProbeTemplateCmdProbeEnvArgs']]]]]
     """
     Environment variables for the command.
     """
-    source: NotRequired[pulumi.Input[_builtins.str]]
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Source of the command (inline, configMap, secret).
     """
@@ -7546,9 +7546,9 @@ class ProbeTemplateCmdProbeArgsDict(TypedDict):
 class ProbeTemplateCmdProbeArgs:
     def __init__(__self__, *,
                  command: pulumi.Input[_builtins.str],
-                 comparator: Optional[pulumi.Input['ProbeTemplateCmdProbeComparatorArgs']] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['ProbeTemplateCmdProbeEnvArgs']]]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 comparator: pulumi.Input[Optional['ProbeTemplateCmdProbeComparatorArgs']] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['ProbeTemplateCmdProbeEnvArgs']]]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] command: Command to execute.
         :param pulumi.Input['ProbeTemplateCmdProbeComparatorArgs'] comparator: Comparator for command output validation.
@@ -7577,38 +7577,38 @@ class ProbeTemplateCmdProbeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comparator(self) -> Optional[pulumi.Input['ProbeTemplateCmdProbeComparatorArgs']]:
+    def comparator(self) -> pulumi.Input[Optional['ProbeTemplateCmdProbeComparatorArgs']]:
         """
         Comparator for command output validation.
         """
         return pulumi.get(self, "comparator")
 
     @comparator.setter
-    def comparator(self, value: Optional[pulumi.Input['ProbeTemplateCmdProbeComparatorArgs']]):
+    def comparator(self, value: pulumi.Input[Optional['ProbeTemplateCmdProbeComparatorArgs']]):
         pulumi.set(self, "comparator", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProbeTemplateCmdProbeEnvArgs']]]]:
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProbeTemplateCmdProbeEnvArgs']]]]:
         """
         Environment variables for the command.
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProbeTemplateCmdProbeEnvArgs']]]]):
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProbeTemplateCmdProbeEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source of the command (inline, configMap, secret).
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
@@ -7730,19 +7730,19 @@ class ProbeTemplateHttpProbeArgsDict(TypedDict):
     """
     URL to probe.
     """
-    auth: NotRequired[pulumi.Input['ProbeTemplateHttpProbeAuthArgsDict']]
+    auth: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeAuthArgs']]]
     """
     Authentication configuration.
     """
-    headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    headers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     HTTP headers.
     """
-    method: NotRequired[pulumi.Input['ProbeTemplateHttpProbeMethodArgsDict']]
+    method: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeMethodArgs']]]
     """
     HTTP method configuration with GET or POST.
     """
-    tls_config: NotRequired[pulumi.Input['ProbeTemplateHttpProbeTlsConfigArgsDict']]
+    tls_config: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeTlsConfigArgs']]]
     """
     TLS configuration.
     """
@@ -7751,10 +7751,10 @@ class ProbeTemplateHttpProbeArgsDict(TypedDict):
 class ProbeTemplateHttpProbeArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[_builtins.str],
-                 auth: Optional[pulumi.Input['ProbeTemplateHttpProbeAuthArgs']] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 method: Optional[pulumi.Input['ProbeTemplateHttpProbeMethodArgs']] = None,
-                 tls_config: Optional[pulumi.Input['ProbeTemplateHttpProbeTlsConfigArgs']] = None):
+                 auth: pulumi.Input[Optional['ProbeTemplateHttpProbeAuthArgs']] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 method: pulumi.Input[Optional['ProbeTemplateHttpProbeMethodArgs']] = None,
+                 tls_config: pulumi.Input[Optional['ProbeTemplateHttpProbeTlsConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] url: URL to probe.
         :param pulumi.Input['ProbeTemplateHttpProbeAuthArgs'] auth: Authentication configuration.
@@ -7786,50 +7786,50 @@ class ProbeTemplateHttpProbeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def auth(self) -> Optional[pulumi.Input['ProbeTemplateHttpProbeAuthArgs']]:
+    def auth(self) -> pulumi.Input[Optional['ProbeTemplateHttpProbeAuthArgs']]:
         """
         Authentication configuration.
         """
         return pulumi.get(self, "auth")
 
     @auth.setter
-    def auth(self, value: Optional[pulumi.Input['ProbeTemplateHttpProbeAuthArgs']]):
+    def auth(self, value: pulumi.Input[Optional['ProbeTemplateHttpProbeAuthArgs']]):
         pulumi.set(self, "auth", value)
 
     @_builtins.property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         HTTP headers.
         """
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def method(self) -> Optional[pulumi.Input['ProbeTemplateHttpProbeMethodArgs']]:
+    def method(self) -> pulumi.Input[Optional['ProbeTemplateHttpProbeMethodArgs']]:
         """
         HTTP method configuration with GET or POST.
         """
         return pulumi.get(self, "method")
 
     @method.setter
-    def method(self, value: Optional[pulumi.Input['ProbeTemplateHttpProbeMethodArgs']]):
+    def method(self, value: pulumi.Input[Optional['ProbeTemplateHttpProbeMethodArgs']]):
         pulumi.set(self, "method", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsConfig")
-    def tls_config(self) -> Optional[pulumi.Input['ProbeTemplateHttpProbeTlsConfigArgs']]:
+    def tls_config(self) -> pulumi.Input[Optional['ProbeTemplateHttpProbeTlsConfigArgs']]:
         """
         TLS configuration.
         """
         return pulumi.get(self, "tls_config")
 
     @tls_config.setter
-    def tls_config(self, value: Optional[pulumi.Input['ProbeTemplateHttpProbeTlsConfigArgs']]):
+    def tls_config(self, value: pulumi.Input[Optional['ProbeTemplateHttpProbeTlsConfigArgs']]):
         pulumi.set(self, "tls_config", value)
 
 
@@ -7838,15 +7838,15 @@ class ProbeTemplateHttpProbeAuthArgsDict(TypedDict):
     """
     Auth type (basic, bearer, etc.).
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password for basic auth.
     """
-    token: NotRequired[pulumi.Input[_builtins.str]]
+    token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token for bearer auth.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username for basic auth.
     """
@@ -7855,9 +7855,9 @@ class ProbeTemplateHttpProbeAuthArgsDict(TypedDict):
 class ProbeTemplateHttpProbeAuthArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Auth type (basic, bearer, etc.).
         :param pulumi.Input[_builtins.str] password: Password for basic auth.
@@ -7886,47 +7886,47 @@ class ProbeTemplateHttpProbeAuthArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for basic auth.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token for bearer auth.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for basic auth.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 class ProbeTemplateHttpProbeMethodArgsDict(TypedDict):
-    get_method: NotRequired[pulumi.Input['ProbeTemplateHttpProbeMethodGetMethodArgsDict']]
+    get_method: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeMethodGetMethodArgs']]]
     """
     GET method configuration.
     """
-    post: NotRequired[pulumi.Input['ProbeTemplateHttpProbeMethodPostArgsDict']]
+    post: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeMethodPostArgs']]]
     """
     POST method configuration.
     """
@@ -7934,8 +7934,8 @@ class ProbeTemplateHttpProbeMethodArgsDict(TypedDict):
 @pulumi.input_type
 class ProbeTemplateHttpProbeMethodArgs:
     def __init__(__self__, *,
-                 get_method: Optional[pulumi.Input['ProbeTemplateHttpProbeMethodGetMethodArgs']] = None,
-                 post: Optional[pulumi.Input['ProbeTemplateHttpProbeMethodPostArgs']] = None):
+                 get_method: pulumi.Input[Optional['ProbeTemplateHttpProbeMethodGetMethodArgs']] = None,
+                 post: pulumi.Input[Optional['ProbeTemplateHttpProbeMethodPostArgs']] = None):
         """
         :param pulumi.Input['ProbeTemplateHttpProbeMethodGetMethodArgs'] get_method: GET method configuration.
         :param pulumi.Input['ProbeTemplateHttpProbeMethodPostArgs'] post: POST method configuration.
@@ -7947,39 +7947,39 @@ class ProbeTemplateHttpProbeMethodArgs:
 
     @_builtins.property
     @pulumi.getter(name="getMethod")
-    def get_method(self) -> Optional[pulumi.Input['ProbeTemplateHttpProbeMethodGetMethodArgs']]:
+    def get_method(self) -> pulumi.Input[Optional['ProbeTemplateHttpProbeMethodGetMethodArgs']]:
         """
         GET method configuration.
         """
         return pulumi.get(self, "get_method")
 
     @get_method.setter
-    def get_method(self, value: Optional[pulumi.Input['ProbeTemplateHttpProbeMethodGetMethodArgs']]):
+    def get_method(self, value: pulumi.Input[Optional['ProbeTemplateHttpProbeMethodGetMethodArgs']]):
         pulumi.set(self, "get_method", value)
 
     @_builtins.property
     @pulumi.getter
-    def post(self) -> Optional[pulumi.Input['ProbeTemplateHttpProbeMethodPostArgs']]:
+    def post(self) -> pulumi.Input[Optional['ProbeTemplateHttpProbeMethodPostArgs']]:
         """
         POST method configuration.
         """
         return pulumi.get(self, "post")
 
     @post.setter
-    def post(self, value: Optional[pulumi.Input['ProbeTemplateHttpProbeMethodPostArgs']]):
+    def post(self, value: pulumi.Input[Optional['ProbeTemplateHttpProbeMethodPostArgs']]):
         pulumi.set(self, "post", value)
 
 
 class ProbeTemplateHttpProbeMethodGetMethodArgsDict(TypedDict):
-    criteria: NotRequired[pulumi.Input[_builtins.str]]
+    criteria: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Response criteria (e.g., '==', '!=', 'contains').
     """
-    response_body: NotRequired[pulumi.Input[_builtins.str]]
+    response_body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Expected response body.
     """
-    response_code: NotRequired[pulumi.Input[_builtins.str]]
+    response_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Expected HTTP response code (e.g., '200', '404').
     """
@@ -7987,9 +7987,9 @@ class ProbeTemplateHttpProbeMethodGetMethodArgsDict(TypedDict):
 @pulumi.input_type
 class ProbeTemplateHttpProbeMethodGetMethodArgs:
     def __init__(__self__, *,
-                 criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 response_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 response_code: Optional[pulumi.Input[_builtins.str]] = None):
+                 criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 response_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 response_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] criteria: Response criteria (e.g., '==', '!=', 'contains').
         :param pulumi.Input[_builtins.str] response_body: Expected response body.
@@ -8004,63 +8004,63 @@ class ProbeTemplateHttpProbeMethodGetMethodArgs:
 
     @_builtins.property
     @pulumi.getter
-    def criteria(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def criteria(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Response criteria (e.g., '==', '!=', 'contains').
         """
         return pulumi.get(self, "criteria")
 
     @criteria.setter
-    def criteria(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def criteria(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "criteria", value)
 
     @_builtins.property
     @pulumi.getter(name="responseBody")
-    def response_body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def response_body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expected response body.
         """
         return pulumi.get(self, "response_body")
 
     @response_body.setter
-    def response_body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def response_body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "response_body", value)
 
     @_builtins.property
     @pulumi.getter(name="responseCode")
-    def response_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def response_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expected HTTP response code (e.g., '200', '404').
         """
         return pulumi.get(self, "response_code")
 
     @response_code.setter
-    def response_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def response_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "response_code", value)
 
 
 class ProbeTemplateHttpProbeMethodPostArgsDict(TypedDict):
-    body: NotRequired[pulumi.Input[_builtins.str]]
+    body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     POST request body.
     """
-    body_path: NotRequired[pulumi.Input[_builtins.str]]
+    body_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to file containing POST body.
     """
-    content_type: NotRequired[pulumi.Input[_builtins.str]]
+    content_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Content-Type header for POST request.
     """
-    criteria: NotRequired[pulumi.Input[_builtins.str]]
+    criteria: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Response criteria (e.g., '==', '!=', 'contains').
     """
-    response_body: NotRequired[pulumi.Input[_builtins.str]]
+    response_body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Expected response body.
     """
-    response_code: NotRequired[pulumi.Input[_builtins.str]]
+    response_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Expected HTTP response code (e.g., '200', '404').
     """
@@ -8068,12 +8068,12 @@ class ProbeTemplateHttpProbeMethodPostArgsDict(TypedDict):
 @pulumi.input_type
 class ProbeTemplateHttpProbeMethodPostArgs:
     def __init__(__self__, *,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 body_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 response_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 response_code: Optional[pulumi.Input[_builtins.str]] = None):
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 body_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 response_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 response_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] body: POST request body.
         :param pulumi.Input[_builtins.str] body_path: Path to file containing POST body.
@@ -8097,91 +8097,91 @@ class ProbeTemplateHttpProbeMethodPostArgs:
 
     @_builtins.property
     @pulumi.getter
-    def body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         POST request body.
         """
         return pulumi.get(self, "body")
 
     @body.setter
-    def body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body", value)
 
     @_builtins.property
     @pulumi.getter(name="bodyPath")
-    def body_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to file containing POST body.
         """
         return pulumi.get(self, "body_path")
 
     @body_path.setter
-    def body_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body_path", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content-Type header for POST request.
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def criteria(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def criteria(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Response criteria (e.g., '==', '!=', 'contains').
         """
         return pulumi.get(self, "criteria")
 
     @criteria.setter
-    def criteria(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def criteria(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "criteria", value)
 
     @_builtins.property
     @pulumi.getter(name="responseBody")
-    def response_body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def response_body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expected response body.
         """
         return pulumi.get(self, "response_body")
 
     @response_body.setter
-    def response_body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def response_body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "response_body", value)
 
     @_builtins.property
     @pulumi.getter(name="responseCode")
-    def response_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def response_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expected HTTP response code (e.g., '200', '404').
         """
         return pulumi.get(self, "response_code")
 
     @response_code.setter
-    def response_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def response_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "response_code", value)
 
 
 class ProbeTemplateHttpProbeTlsConfigArgsDict(TypedDict):
-    ca_cert: NotRequired[pulumi.Input[_builtins.str]]
+    ca_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     CA certificate.
     """
-    client_cert: NotRequired[pulumi.Input[_builtins.str]]
+    client_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client certificate.
     """
-    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    client_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client key.
     """
-    insecure_skip_verify: NotRequired[pulumi.Input[_builtins.bool]]
+    insecure_skip_verify: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Skip TLS certificate verification.
     """
@@ -8189,10 +8189,10 @@ class ProbeTemplateHttpProbeTlsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ProbeTemplateHttpProbeTlsConfigArgs:
     def __init__(__self__, *,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_skip_verify: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_skip_verify: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] ca_cert: CA certificate.
         :param pulumi.Input[_builtins.str] client_cert: Client certificate.
@@ -8210,50 +8210,50 @@ class ProbeTemplateHttpProbeTlsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA certificate.
         """
         return pulumi.get(self, "ca_cert")
 
     @ca_cert.setter
-    def ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client certificate.
         """
         return pulumi.get(self, "client_cert")
 
     @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client key.
         """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="insecureSkipVerify")
-    def insecure_skip_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure_skip_verify(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Skip TLS certificate verification.
         """
         return pulumi.get(self, "insecure_skip_verify")
 
     @insecure_skip_verify.setter
-    def insecure_skip_verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure_skip_verify(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure_skip_verify", value)
 
 
@@ -8266,27 +8266,27 @@ class ProbeTemplateK8sProbeArgsDict(TypedDict):
     """
     API version (e.g., 'v1', 'v1beta1').
     """
-    field_selector: NotRequired[pulumi.Input[_builtins.str]]
+    field_selector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field selector for filtering resources.
     """
-    group: NotRequired[pulumi.Input[_builtins.str]]
+    group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API group (e.g., 'apps', 'batch').
     """
-    label_selector: NotRequired[pulumi.Input[_builtins.str]]
+    label_selector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Label selector for filtering resources.
     """
-    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Kubernetes namespace.
     """
-    operation: NotRequired[pulumi.Input[_builtins.str]]
+    operation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Operation to perform (create, delete, present, absent, etc.).
     """
-    resource_names: NotRequired[pulumi.Input[_builtins.str]]
+    resource_names: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Comma-separated list of resource names.
     """
@@ -8296,12 +8296,12 @@ class ProbeTemplateK8sProbeArgs:
     def __init__(__self__, *,
                  resource: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
-                 field_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 label_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_names: Optional[pulumi.Input[_builtins.str]] = None):
+                 field_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 label_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_names: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource: Resource type (e.g., 'pods', 'deployments').
         :param pulumi.Input[_builtins.str] version: API version (e.g., 'v1', 'v1beta1').
@@ -8353,107 +8353,107 @@ class ProbeTemplateK8sProbeArgs:
 
     @_builtins.property
     @pulumi.getter(name="fieldSelector")
-    def field_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field selector for filtering resources.
         """
         return pulumi.get(self, "field_selector")
 
     @field_selector.setter
-    def field_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_selector", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API group (e.g., 'apps', 'batch').
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter(name="labelSelector")
-    def label_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label_selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Label selector for filtering resources.
         """
         return pulumi.get(self, "label_selector")
 
     @label_selector.setter
-    def label_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label_selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label_selector", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kubernetes namespace.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def operation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Operation to perform (create, delete, present, absent, etc.).
         """
         return pulumi.get(self, "operation")
 
     @operation.setter
-    def operation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceNames")
-    def resource_names(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_names(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comma-separated list of resource names.
         """
         return pulumi.get(self, "resource_names")
 
     @resource_names.setter
-    def resource_names(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_names(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_names", value)
 
 
 class ProbeTemplateRunPropertiesArgsDict(TypedDict):
-    attempt: NotRequired[pulumi.Input[_builtins.int]]
+    attempt: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of attempts.
     """
-    initial_delay: NotRequired[pulumi.Input[_builtins.str]]
+    initial_delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Initial delay before probe execution (e.g., '5s', '1m').
     """
-    interval: NotRequired[pulumi.Input[_builtins.str]]
+    interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Interval between probe executions (e.g., '10s', '30s').
     """
-    polling_interval: NotRequired[pulumi.Input[_builtins.str]]
+    polling_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Polling interval for continuous probes (e.g., '2s', '5s').
     """
-    retry: NotRequired[pulumi.Input[_builtins.int]]
+    retry: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of retries.
     """
-    stop_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
+    stop_on_failure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to stop on failure.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.str]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Timeout for probe execution (e.g., '30s', '5m').
     """
-    verbosity: NotRequired[pulumi.Input[_builtins.str]]
+    verbosity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Verbosity level for logging.
     """
@@ -8461,14 +8461,14 @@ class ProbeTemplateRunPropertiesArgsDict(TypedDict):
 @pulumi.input_type
 class ProbeTemplateRunPropertiesArgs:
     def __init__(__self__, *,
-                 attempt: Optional[pulumi.Input[_builtins.int]] = None,
-                 initial_delay: Optional[pulumi.Input[_builtins.str]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry: Optional[pulumi.Input[_builtins.int]] = None,
-                 stop_on_failure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 verbosity: Optional[pulumi.Input[_builtins.str]] = None):
+                 attempt: pulumi.Input[Optional[_builtins.int]] = None,
+                 initial_delay: pulumi.Input[Optional[_builtins.str]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry: pulumi.Input[Optional[_builtins.int]] = None,
+                 stop_on_failure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 verbosity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] attempt: Number of attempts.
         :param pulumi.Input[_builtins.str] initial_delay: Initial delay before probe execution (e.g., '5s', '1m').
@@ -8498,98 +8498,98 @@ class ProbeTemplateRunPropertiesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def attempt(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def attempt(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of attempts.
         """
         return pulumi.get(self, "attempt")
 
     @attempt.setter
-    def attempt(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def attempt(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "attempt", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelay")
-    def initial_delay(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initial_delay(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial delay before probe execution (e.g., '5s', '1m').
         """
         return pulumi.get(self, "initial_delay")
 
     @initial_delay.setter
-    def initial_delay(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initial_delay(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Interval between probe executions (e.g., '10s', '30s').
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="pollingInterval")
-    def polling_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def polling_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Polling interval for continuous probes (e.g., '2s', '5s').
         """
         return pulumi.get(self, "polling_interval")
 
     @polling_interval.setter
-    def polling_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def polling_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "polling_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def retry(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retry(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of retries.
         """
         return pulumi.get(self, "retry")
 
     @retry.setter
-    def retry(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retry(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retry", value)
 
     @_builtins.property
     @pulumi.getter(name="stopOnFailure")
-    def stop_on_failure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stop_on_failure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to stop on failure.
         """
         return pulumi.get(self, "stop_on_failure")
 
     @stop_on_failure.setter
-    def stop_on_failure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stop_on_failure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stop_on_failure", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timeout for probe execution (e.g., '30s', '5m').
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def verbosity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def verbosity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Verbosity level for logging.
         """
         return pulumi.get(self, "verbosity")
 
     @verbosity.setter
-    def verbosity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def verbosity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "verbosity", value)
 
 
@@ -8602,15 +8602,15 @@ class ProbeTemplateVariableArgsDict(TypedDict):
     """
     Variable value.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Variable description.
     """
-    required: NotRequired[pulumi.Input[_builtins.bool]]
+    required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the variable is required.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Variable type (e.g., 'string', 'number', 'boolean').
     """
@@ -8620,9 +8620,9 @@ class ProbeTemplateVariableArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Variable name.
         :param pulumi.Input[_builtins.str] value: Variable value.
@@ -8665,38 +8665,38 @@ class ProbeTemplateVariableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Variable description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the variable is required.
         """
         return pulumi.get(self, "required")
 
     @required.setter
-    def required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "required", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Variable type (e.g., 'string', 'number', 'boolean').
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -8795,15 +8795,15 @@ class SecurityGovernanceConditionFaultSpecFaultArgs:
 
 
 class SecurityGovernanceConditionK8sSpecArgsDict(TypedDict):
-    application_spec: NotRequired[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecArgsDict']]
+    application_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecApplicationSpecArgs']]]
     """
     Application specification
     """
-    chaos_service_account_spec: NotRequired[pulumi.Input['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgsDict']]
+    chaos_service_account_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs']]]
     """
     Chaos service account specification
     """
-    infra_spec: NotRequired[pulumi.Input['SecurityGovernanceConditionK8sSpecInfraSpecArgsDict']]
+    infra_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecInfraSpecArgs']]]
     """
     Infrastructure specification
     """
@@ -8811,9 +8811,9 @@ class SecurityGovernanceConditionK8sSpecArgsDict(TypedDict):
 @pulumi.input_type
 class SecurityGovernanceConditionK8sSpecArgs:
     def __init__(__self__, *,
-                 application_spec: Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecArgs']] = None,
-                 chaos_service_account_spec: Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs']] = None,
-                 infra_spec: Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecInfraSpecArgs']] = None):
+                 application_spec: pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecApplicationSpecArgs']] = None,
+                 chaos_service_account_spec: pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs']] = None,
+                 infra_spec: pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecInfraSpecArgs']] = None):
         """
         :param pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecArgs'] application_spec: Application specification
         :param pulumi.Input['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs'] chaos_service_account_spec: Chaos service account specification
@@ -8828,38 +8828,38 @@ class SecurityGovernanceConditionK8sSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationSpec")
-    def application_spec(self) -> Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecArgs']]:
+    def application_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecApplicationSpecArgs']]:
         """
         Application specification
         """
         return pulumi.get(self, "application_spec")
 
     @application_spec.setter
-    def application_spec(self, value: Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecArgs']]):
+    def application_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecApplicationSpecArgs']]):
         pulumi.set(self, "application_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="chaosServiceAccountSpec")
-    def chaos_service_account_spec(self) -> Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs']]:
+    def chaos_service_account_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs']]:
         """
         Chaos service account specification
         """
         return pulumi.get(self, "chaos_service_account_spec")
 
     @chaos_service_account_spec.setter
-    def chaos_service_account_spec(self, value: Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs']]):
+    def chaos_service_account_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs']]):
         pulumi.set(self, "chaos_service_account_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="infraSpec")
-    def infra_spec(self) -> Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecInfraSpecArgs']]:
+    def infra_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecInfraSpecArgs']]:
         """
         Infrastructure specification
         """
         return pulumi.get(self, "infra_spec")
 
     @infra_spec.setter
-    def infra_spec(self, value: Optional[pulumi.Input['SecurityGovernanceConditionK8sSpecInfraSpecArgs']]):
+    def infra_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecInfraSpecArgs']]):
         pulumi.set(self, "infra_spec", value)
 
 
@@ -8868,7 +8868,7 @@ class SecurityGovernanceConditionK8sSpecApplicationSpecArgsDict(TypedDict):
     """
     Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
     """
-    workloads: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgsDict']]]]
+    workloads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs']]]]]
     """
     List of workloads to include/exclude
     """
@@ -8877,7 +8877,7 @@ class SecurityGovernanceConditionK8sSpecApplicationSpecArgsDict(TypedDict):
 class SecurityGovernanceConditionK8sSpecApplicationSpecArgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[_builtins.str],
-                 workloads: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs']]]] = None):
+                 workloads: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] operator: Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs']]] workloads: List of workloads to include/exclude
@@ -8900,14 +8900,14 @@ class SecurityGovernanceConditionK8sSpecApplicationSpecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def workloads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs']]]]:
+    def workloads(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs']]]]:
         """
         List of workloads to include/exclude
         """
         return pulumi.get(self, "workloads")
 
     @workloads.setter
-    def workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs']]]]):
+    def workloads(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs']]]]):
         pulumi.set(self, "workloads", value)
 
 
@@ -8916,19 +8916,19 @@ class SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgsDict(TypedDic
     """
     Namespace of the workload
     """
-    application_map_id: NotRequired[pulumi.Input[_builtins.str]]
+    application_map_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ID for the application map
     """
-    kind: NotRequired[pulumi.Input[_builtins.str]]
+    kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Kind of the workload (e.g., deployment, statefulset)
     """
-    label: NotRequired[pulumi.Input[_builtins.str]]
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Label selector for the workload
     """
-    services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of services associated with the workload
     """
@@ -8937,10 +8937,10 @@ class SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgsDict(TypedDic
 class SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs:
     def __init__(__self__, *,
                  namespace: pulumi.Input[_builtins.str],
-                 application_map_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 application_map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] namespace: Namespace of the workload
         :param pulumi.Input[_builtins.str] application_map_id: ID for the application map
@@ -8972,50 +8972,50 @@ class SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationMapId")
-    def application_map_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_map_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID for the application map
         """
         return pulumi.get(self, "application_map_id")
 
     @application_map_id.setter
-    def application_map_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_map_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_map_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kind of the workload (e.g., deployment, statefulset)
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Label selector for the workload
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of services associated with the workload
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "services", value)
 
 
@@ -9114,7 +9114,7 @@ class SecurityGovernanceConditionK8sSpecInfraSpecArgs:
 
 
 class SecurityGovernanceConditionMachineSpecArgsDict(TypedDict):
-    infra_spec: NotRequired[pulumi.Input['SecurityGovernanceConditionMachineSpecInfraSpecArgsDict']]
+    infra_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionMachineSpecInfraSpecArgs']]]
     """
     Infrastructure specification
     """
@@ -9122,7 +9122,7 @@ class SecurityGovernanceConditionMachineSpecArgsDict(TypedDict):
 @pulumi.input_type
 class SecurityGovernanceConditionMachineSpecArgs:
     def __init__(__self__, *,
-                 infra_spec: Optional[pulumi.Input['SecurityGovernanceConditionMachineSpecInfraSpecArgs']] = None):
+                 infra_spec: pulumi.Input[Optional['SecurityGovernanceConditionMachineSpecInfraSpecArgs']] = None):
         """
         :param pulumi.Input['SecurityGovernanceConditionMachineSpecInfraSpecArgs'] infra_spec: Infrastructure specification
         """
@@ -9131,14 +9131,14 @@ class SecurityGovernanceConditionMachineSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="infraSpec")
-    def infra_spec(self) -> Optional[pulumi.Input['SecurityGovernanceConditionMachineSpecInfraSpecArgs']]:
+    def infra_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionMachineSpecInfraSpecArgs']]:
         """
         Infrastructure specification
         """
         return pulumi.get(self, "infra_spec")
 
     @infra_spec.setter
-    def infra_spec(self, value: Optional[pulumi.Input['SecurityGovernanceConditionMachineSpecInfraSpecArgs']]):
+    def infra_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionMachineSpecInfraSpecArgs']]):
         pulumi.set(self, "infra_spec", value)
 
 
@@ -9192,18 +9192,18 @@ class SecurityGovernanceConditionMachineSpecInfraSpecArgs:
 class SecurityGovernanceRuleTimeWindowArgsDict(TypedDict):
     start_time: pulumi.Input[_builtins.int]
     time_zone: pulumi.Input[_builtins.str]
-    duration: NotRequired[pulumi.Input[_builtins.str]]
-    end_time: NotRequired[pulumi.Input[_builtins.int]]
-    recurrence: NotRequired[pulumi.Input['SecurityGovernanceRuleTimeWindowRecurrenceArgsDict']]
+    duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    recurrence: NotRequired[pulumi.Input[Optional['SecurityGovernanceRuleTimeWindowRecurrenceArgs']]]
 
 @pulumi.input_type
 class SecurityGovernanceRuleTimeWindowArgs:
     def __init__(__self__, *,
                  start_time: pulumi.Input[_builtins.int],
                  time_zone: pulumi.Input[_builtins.str],
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 recurrence: Optional[pulumi.Input['SecurityGovernanceRuleTimeWindowRecurrenceArgs']] = None):
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 recurrence: pulumi.Input[Optional['SecurityGovernanceRuleTimeWindowRecurrenceArgs']] = None):
         pulumi.set(__self__, "start_time", start_time)
         pulumi.set(__self__, "time_zone", time_zone)
         if duration is not None:
@@ -9233,43 +9233,43 @@ class SecurityGovernanceRuleTimeWindowArgs:
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def recurrence(self) -> Optional[pulumi.Input['SecurityGovernanceRuleTimeWindowRecurrenceArgs']]:
+    def recurrence(self) -> pulumi.Input[Optional['SecurityGovernanceRuleTimeWindowRecurrenceArgs']]:
         return pulumi.get(self, "recurrence")
 
     @recurrence.setter
-    def recurrence(self, value: Optional[pulumi.Input['SecurityGovernanceRuleTimeWindowRecurrenceArgs']]):
+    def recurrence(self, value: pulumi.Input[Optional['SecurityGovernanceRuleTimeWindowRecurrenceArgs']]):
         pulumi.set(self, "recurrence", value)
 
 
 class SecurityGovernanceRuleTimeWindowRecurrenceArgsDict(TypedDict):
     type: pulumi.Input[_builtins.str]
     until: pulumi.Input[_builtins.int]
-    value: NotRequired[pulumi.Input[_builtins.int]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class SecurityGovernanceRuleTimeWindowRecurrenceArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
                  until: pulumi.Input[_builtins.int],
-                 value: Optional[pulumi.Input[_builtins.int]] = None):
+                 value: pulumi.Input[Optional[_builtins.int]] = None):
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "until", until)
         if value is not None:
@@ -9295,11 +9295,11 @@ class SecurityGovernanceRuleTimeWindowRecurrenceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "value", value)
 
 

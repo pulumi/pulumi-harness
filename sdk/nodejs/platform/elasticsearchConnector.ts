@@ -203,47 +203,47 @@ export interface ElasticsearchConnectorState {
     /**
      * Authenticate to ElasticSearch using api token.
      */
-    apiToken?: pulumi.Input<inputs.platform.ElasticsearchConnectorApiToken>;
+    apiToken?: pulumi.Input<inputs.platform.ElasticsearchConnectorApiToken | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * No Authentication to ElasticSearch
      */
-    noAuthentication?: pulumi.Input<inputs.platform.ElasticsearchConnectorNoAuthentication>;
+    noAuthentication?: pulumi.Input<inputs.platform.ElasticsearchConnectorNoAuthentication | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the elasticsearch
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Authenticate to ElasticSearch using username and password.
      */
-    usernamePassword?: pulumi.Input<inputs.platform.ElasticsearchConnectorUsernamePassword>;
+    usernamePassword?: pulumi.Input<inputs.platform.ElasticsearchConnectorUsernamePassword | undefined>;
 }
 
 /**
@@ -253,15 +253,15 @@ export interface ElasticsearchConnectorArgs {
     /**
      * Authenticate to ElasticSearch using api token.
      */
-    apiToken?: pulumi.Input<inputs.platform.ElasticsearchConnectorApiToken>;
+    apiToken?: pulumi.Input<inputs.platform.ElasticsearchConnectorApiToken | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -269,23 +269,23 @@ export interface ElasticsearchConnectorArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * No Authentication to ElasticSearch
      */
-    noAuthentication?: pulumi.Input<inputs.platform.ElasticsearchConnectorNoAuthentication>;
+    noAuthentication?: pulumi.Input<inputs.platform.ElasticsearchConnectorNoAuthentication | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the elasticsearch
      */
@@ -293,5 +293,5 @@ export interface ElasticsearchConnectorArgs {
     /**
      * Authenticate to ElasticSearch using username and password.
      */
-    usernamePassword?: pulumi.Input<inputs.platform.ElasticsearchConnectorUsernamePassword>;
+    usernamePassword?: pulumi.Input<inputs.platform.ElasticsearchConnectorUsernamePassword | undefined>;
 }

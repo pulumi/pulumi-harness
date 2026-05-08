@@ -30,11 +30,11 @@ class AzureProxyArgs:
                  resource_group: pulumi.Input[_builtins.str],
                  subnet_id: pulumi.Input[_builtins.str],
                  vpc: pulumi.Input[_builtins.str],
-                 allocate_static_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificates: Optional[pulumi.Input['AzureProxyCertificatesArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional['AzureProxyCertificatesArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AzureProxy resource.
 
@@ -181,79 +181,79 @@ class AzureProxyArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocateStaticIp")
-    def allocate_static_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allocate_static_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if proxy vm needs to have static IP
         """
         return pulumi.get(self, "allocate_static_ip")
 
     @allocate_static_ip.setter
-    def allocate_static_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allocate_static_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allocate_static_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
-    def certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input['AzureProxyCertificatesArgs']]:
+    def certificates(self) -> pulumi.Input[Optional['AzureProxyCertificatesArgs']]:
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input['AzureProxyCertificatesArgs']]):
+    def certificates(self, value: pulumi.Input[Optional['AzureProxyCertificatesArgs']]):
         pulumi.set(self, "certificates", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the proxy
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Security Group to define the security rules that determine the inbound and outbound traffic
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
 
 @pulumi.input_type
 class _AzureProxyState:
     def __init__(__self__, *,
-                 allocate_static_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificates: Optional[pulumi.Input['AzureProxyCertificatesArgs']] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None):
+                 allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional['AzureProxyCertificatesArgs']] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AzureProxy resources.
 
@@ -310,200 +310,200 @@ class _AzureProxyState:
 
     @_builtins.property
     @pulumi.getter(name="allocateStaticIp")
-    def allocate_static_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allocate_static_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if proxy vm needs to have static IP
         """
         return pulumi.get(self, "allocate_static_ip")
 
     @allocate_static_ip.setter
-    def allocate_static_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allocate_static_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allocate_static_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
-    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Harness NG API key
         """
         return pulumi.get(self, "api_key")
 
     @api_key.setter
-    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
-    def certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input['AzureProxyCertificatesArgs']]:
+    def certificates(self) -> pulumi.Input[Optional['AzureProxyCertificatesArgs']]:
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input['AzureProxyCertificatesArgs']]):
+    def certificates(self, value: pulumi.Input[Optional['AzureProxyCertificatesArgs']]):
         pulumi.set(self, "certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudConnectorId")
-    def cloud_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the cloud connector
         """
         return pulumi.get(self, "cloud_connector_id")
 
     @cloud_connector_id.setter
-    def cloud_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_connector_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
-    def delete_cloud_resources_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_cloud_resources_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
         """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @delete_cloud_resources_on_destroy.setter
-    def delete_cloud_resources_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_cloud_resources_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_cloud_resources_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def keypair(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of SSH Key to be used for proxy VM
         """
         return pulumi.get(self, "keypair")
 
     @keypair.setter
-    def keypair(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of instance to be used for proxy
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the proxy
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private IP address of the proxy
         """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
-    def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Public IP address of the proxy
         """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
-    def public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region in which cloud resources are hosted
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroup")
-    def resource_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource group in which cloud resources are hosted
         """
         return pulumi.get(self, "resource_group")
 
     @resource_group.setter
-    def resource_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Security Group to define the security rules that determine the inbound and outbound traffic
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subnet in which cloud resources are hosted
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC in which cloud resources are hosted
         """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
-    def vpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc", value)
 
 
@@ -513,20 +513,20 @@ class AzureProxy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocate_static_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificates: Optional[pulumi.Input[Union['AzureProxyCertificatesArgs', 'AzureProxyCertificatesArgsDict']]] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keypair: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None,
+                 allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional[Union['AzureProxyCertificatesArgs', 'AzureProxyCertificatesArgsDict']]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keypair: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating an Azure autostopping proxy
@@ -614,20 +614,20 @@ class AzureProxy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocate_static_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificates: Optional[pulumi.Input[Union['AzureProxyCertificatesArgs', 'AzureProxyCertificatesArgsDict']]] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keypair: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None,
+                 allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional[Union['AzureProxyCertificatesArgs', 'AzureProxyCertificatesArgsDict']]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keypair: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -684,23 +684,23 @@ class AzureProxy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allocate_static_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            api_key: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            certificates: Optional[pulumi.Input[Union['AzureProxyCertificatesArgs', 'AzureProxyCertificatesArgsDict']]] = None,
-            cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            keypair: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-            security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc: Optional[pulumi.Input[_builtins.str]] = None) -> 'AzureProxy':
+            allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            certificates: pulumi.Input[Optional[Union['AzureProxyCertificatesArgs', 'AzureProxyCertificatesArgsDict']]] = None,
+            cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc: pulumi.Input[Optional[_builtins.str]] = None) -> 'AzureProxy':
         """
         Get an existing AzureProxy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

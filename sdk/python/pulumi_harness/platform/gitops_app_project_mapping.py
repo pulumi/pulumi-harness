@@ -23,8 +23,8 @@ class GitopsAppProjectMappingArgs:
                  argo_project_name: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_create_service_env: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_create_service_env: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitopsAppProjectMapping resource.
 
@@ -98,39 +98,39 @@ class GitopsAppProjectMappingArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the GitOps agent's Application Project.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoCreateServiceEnv")
-    def auto_create_service_env(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create_service_env(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable automated creation of service, environment and cluster-env link. Defaults to false.
         """
         return pulumi.get(self, "auto_create_service_env")
 
     @auto_create_service_env.setter
-    def auto_create_service_env(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create_service_env(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create_service_env", value)
 
 
 @pulumi.input_type
 class _GitopsAppProjectMappingState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 argo_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_create_service_env: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 argo_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_create_service_env: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GitopsAppProjectMapping resources.
 
@@ -163,86 +163,86 @@ class _GitopsAppProjectMappingState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier of the GitOps agent's Application Project.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Agent identifier for which the ArgoCD and Harness project mapping is to be created.
         """
         return pulumi.get(self, "agent_id")
 
     @agent_id.setter
-    def agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="argoProjectName")
-    def argo_project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def argo_project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ArgoCD Project name which is to be mapped to the Harness project.
         """
         return pulumi.get(self, "argo_project_name")
 
     @argo_project_name.setter
-    def argo_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def argo_project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "argo_project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="autoCreateServiceEnv")
-    def auto_create_service_env(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create_service_env(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable automated creation of service, environment and cluster-env link. Defaults to false.
         """
         return pulumi.get(self, "auto_create_service_env")
 
     @auto_create_service_env.setter
-    def auto_create_service_env(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create_service_env(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create_service_env", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the GitOps Application Project.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the GitOps agent's Application Project.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the GitOps agent's Application Project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
@@ -252,12 +252,12 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 argo_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_create_service_env: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 argo_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_create_service_env: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for managing Harness GitOps Application Project Mappings.
@@ -347,12 +347,12 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 argo_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_create_service_env: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 argo_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_create_service_env: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -387,13 +387,13 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            argo_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_create_service_env: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GitopsAppProjectMapping':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            argo_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_create_service_env: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'GitopsAppProjectMapping':
         """
         Get an existing GitopsAppProjectMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

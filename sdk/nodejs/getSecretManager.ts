@@ -84,17 +84,17 @@ export interface GetSecretManagerOutputArgs {
     /**
      * True to lookup the id of the default secret manager
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the secret manager
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the secret manager
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.GetSecretManagerUsageScopeArgs>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.GetSecretManagerUsageScopeArgs>[] | undefined>;
 }
